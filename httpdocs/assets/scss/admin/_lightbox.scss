@@ -1,0 +1,306 @@
+#lightbox-cont, #lightbox-cont2{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 50;
+	visibility: hidden;
+	@include mp-ieopacity(0);
+	@include mp-transitions();
+	
+	.overlay{
+		background: #777;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 50;
+		@include mp-ieopacity(80);
+	}
+
+	#lightbox-content{
+		background: $bgColor;
+		width: 93%;
+		margin: 0;
+		padding: 0.5em;
+		position: fixed;
+		top: 10%;
+		left: 3.5%;
+		z-index: 55;
+		@include border-radius(0.5em);
+		
+		.close{
+			font: 0.95em PTSansBold, arial, sans-serif; 
+			color: white; 
+			margin: -11px -8px 0 0;
+			padding: 4px 7px; 
+			float: right; 
+			margin-right: -1.9em; 
+			margin-top: -1.75em;
+			border: none;
+			outline:none;
+			@include border-radius(25px);
+			@include mp-gradient($catBg, rgba($catBg, 0.65), 0%, 80%);
+		}
+
+		@include respond-to(admin2){
+			width: 40% !important;
+			min-width: 65em;
+			left:10%;
+			right:10%;
+			margin: 0 auto;
+			top: 10em;
+			position: fixed !important;
+		}
+	}
+
+	&.lightbox-shown{
+		visibility: visible;
+		@include mp-ieopacity(100);
+	}
+
+	.featured-section{
+		.featured-image{
+			@include respond-to(admin2){
+				width: 35%;
+			}
+		}
+
+		.featured-info{
+			@include respond-to(bp1_5){
+				width: 66%;
+			}
+
+			@include respond-to(admin2){
+				width: 62%;
+			}
+		}	
+
+		footer{
+			@include respond-to(admin2){
+				width: 63%;
+			}
+		}
+	}
+
+	.sidebar-articles{
+		article{
+			background: #f7f7f7;
+			margin: 0.25em 0 0;
+			
+			.article-image,
+			.article-image-prev{
+				width: 25%;
+				margin: 0.5em;
+			}
+
+			@include respond-to(bp1_5){
+				width: 100%;
+				float: none;
+			}
+		}
+	}
+}
+
+.sidebar-articles{
+	width: 100%;
+	max-width: 300px;
+	margin: 0.5em auto 0;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+
+	header{
+		background: $sectionHeaderColor;
+		width: 100%;
+		margin: 0;
+		padding: 0.5em 0 0.5em 0.5em;
+		position: relative;
+		z-index: 15;
+		@include border-corner-radius(top, left, 1em);
+		@include border-corner-radius(top, right, 1em);
+		border: none;
+
+		h2{
+			color: #000;
+			font: 1.25em PTSansBold, arial, sans-serif;
+			text-transform: uppercase;
+			width: 98%;
+			margin: 0 auto;
+			padding: 0;
+			position: relative;
+
+			span:after{
+				content: '>';
+				font: 1.5em ModernPics;
+				margin: 0 0 0 0.25em;
+				padding: 0;
+				position:  relative;
+				top: 1px;
+			}
+		}
+	}
+
+	article{
+		background: none;
+		width: 100%;
+		margin: 0.5em 0 0;
+		padding: 0;
+		position: relative;
+		@include mp-clearfix();
+
+		.article-image{
+			width: 30%;
+			margin: 0 0.5em;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			a{
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+
+			img{
+				max-width: 100%;
+			}
+
+			@include respond-to(bp3){
+				width: 25%;
+				margin: 0.5em;
+			}
+		}
+
+		.article-image-prev{
+			content: " ";
+			background: rgba(0, 0, 0, 0.25);
+			width: 30%;
+			height: 60px;
+			margin: 0 0.5em;
+			padding: 0;
+			position: relative;
+			float: left;
+			
+			@include respond-to(bp3){
+				width: 25%;
+				margin: 0.5em;
+			}
+		}
+
+		.article-info{
+			width: 65%;
+			margin: 0.5em 0 0;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			h2{
+				color: $catBg;
+				font: 1.25em/1em PTSansBold, arial, sans-serif;
+				margin: 0 0 0.25em 0;
+				padding: 0;
+				position: relative;
+				text-transform: uppercase;
+
+				a{
+					color: $catBg;
+					text-decoration: none;
+
+					&:hover,
+					&:focus{
+						text-decoration: underline;
+					}
+				}
+
+				@include respond-to(bp3){
+					margin: 0 0 0.125em 0;
+				}
+			}
+
+			p{
+				color: black;
+				font: 1em/1em PTSansRegular, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+
+				@include respond-to(bp3){
+					font-size: 0.925em;
+				}
+			}
+		}
+
+		.article-info-prev{
+			width: 65%;
+			margin: 0.5em 0 0;
+			padding: 0;
+			position: relative;
+			float: left;
+			@include mp-ieopacity(25);
+
+			h2{
+				color: $catBg;
+				font: 1.25em/1em PTSansBold, arial, sans-serif;
+				margin: 0 0 0.25em 0;
+				padding: 0;
+				position: relative;
+				text-transform: uppercase;
+
+				a{
+					color: $catBg;
+					text-decoration: none;
+
+					&:hover,
+					&:focus{
+						text-decoration: underline;
+					}
+				}
+
+				@include respond-to(bp3){
+					margin: 0 0 0.125em 0;
+				}
+			}
+
+			p{
+				color: black;
+				font: 1em/1em PTSansRegular, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+
+				@include respond-to(bp3){
+					font-size: 0.925em;
+				}
+			}
+		}
+
+		@include respond-to(bp1_5){
+			width: 50%;
+			float: left;
+		}
+
+		@include respond-to(bp3){
+			background: lighten($sectionHeaderColor, 10%);
+			width: 100%;
+			margin: 0.25em 0 0;
+			float: none;
+		}
+	}
+}
+
+.article-lightbox{
+	position: absolute !important;
+    width: 67% !important;
+}
+
+#lightbox-cont2 #lightbox-content {
+    min-width: 32.2em;
+    width: 29% !important;
+}

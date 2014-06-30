@@ -1,0 +1,100 @@
+#recent-articles{
+	width: 100%;
+	margin: 0.5em 0 0;
+	padding: 0;
+	position: relative;
+}
+
+#recent-articles-cont{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+
+	.recent-article{
+		width: 100%;
+		margin:1em 0 0;
+		padding: 0;
+		position: relative;
+		@include mp-clearfix();
+
+		.article-image{
+			width: 30%;
+			margin: 0 0.5em;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			a{
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+
+			img{
+				max-width: 100%;
+			}
+
+			@include respond-to(bp3){
+				margin: 0 0.5em 0 0;
+			}
+		}
+
+		.article-info{
+			width: 66%;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			h2{
+				color: $catBg;
+				font: 1.25em PTSansBold, arial, sans-serif;
+				text-transform: uppercase;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				
+				a{
+					color: $catBg;
+					text-decoration: none;
+
+					&:hover,
+					&:focus{
+					//	text-decoration: underline;
+					}
+				}
+			}
+
+			p{
+				font: 1em/1.125em OsloRegular, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+			}
+
+			@include respond-to(bp3){
+				width: 68%;
+			}
+		}
+
+		#rating{
+			width: 66%;
+			margin: 0 0 0 1em;
+			padding: 0;
+			position: absolute;
+			bottom: 0;
+			left: 30%;
+
+			@include respond-to(bp3){
+				margin: 0 0 0 0.5em;
+			}
+		}
+
+		@include respond-to(bp1_5){
+			width: 50%;
+			float: left;
+		}
+	}
+}

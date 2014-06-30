@@ -1,0 +1,219 @@
+.sidebar-articles{
+	width: 100%;
+	margin: 0 0 1.154em;
+	padding: 0;
+	position: relative;
+	border: 1px solid $borderColor;
+	@include mp-clearfix();
+
+	#articles-cont{
+		padding: 0 1em;
+	}
+
+	article{
+		background: none;
+		width: 100%;
+		margin: 0.5em 0 0;
+		padding: 0;
+		position: relative;
+		border-bottom: 1px solid #DDDDDD;
+		@include mp-clearfix();
+
+		.article-image{
+			width: 30%;
+			margin: 0 0.5em;
+			padding: 0;
+			position: relative;
+			float: left;
+			display:none;
+
+			a{
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+
+			img{
+				max-width: 100%;
+			}
+
+			@include respond-to(bp1){
+				width: 23%;
+				margin: 0.3em 1em 0.5em 0;
+			}
+		}
+
+		.article-info{
+			width:auto;
+			margin: 0.6em 0.4em;
+			padding: 0;
+			position: relative;
+			display: table-cell;
+			height: 45px;
+			vertical-align: middle;
+			
+			h2{
+				color: $articleTitleColor;
+				font: 1.1em/1.2em OsloRegular, arial, sans-serif;
+				margin: 0 0 0.25em 0;
+				padding: 0;
+				position: relative;
+			
+				a{
+					color: $darkGray;
+					text-decoration: none;
+					outline:none;
+				}
+
+				@include respond-to(bp1){
+					margin: 0 0 0.125em 0;
+				}
+			}
+
+			p{
+				color: black;
+				font: 1.1em/1.2em OsloRegular, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+			}
+
+			@include respond-to(bp1){
+				width:  100%;
+			}
+		}
+
+
+		&:first-child{
+			.article-info{
+				 padding-top: 0.5em;
+
+			     h2{
+			     		display: table-cell;
+					    height: 80px;
+					    vertical-align: middle;
+			     		font-family: OswaldRegular, arial, sans-serif;
+			     		font-size: 1.2em;
+			     	a{
+			     		color: #000;
+			     	}
+			     }
+			}
+
+			.article-image{
+				width: 30%;
+				display:inline-block;
+			}
+		}
+
+		&:last-child{
+			border-bottom: medium none;
+		}
+
+		@include respond-to(bp1){
+			background: $bgColor;
+			width: 100%;
+			margin: 0.25em 0 0;
+			float: none;
+		}
+	}
+
+	@include respond-to(bp1){
+		width: 47%;
+		float: right;
+	}
+
+	@include respond-to(bp3){
+		width: 100%;
+		float: none;
+	}
+}
+
+.sidebar-facebook{
+	width: 100%;
+	margin: 0 0 1.154em;
+	padding: 0;
+	position: relative;
+	border: 1px solid $borderColor;
+	display:none;
+	@include mp-clearfix();
+	
+	label{
+		color: #3B5998;
+	}
+	
+	header{
+		width: 100%;
+		padding: 2%;
+		background: $bgColor !important;
+
+		h2{
+			color: #000 !important;
+			font: 1.5em OsloBold,arial,sans-serif !important;
+			margin: 0 0 0.25em 0;
+			padding: 2% 0 !important;
+			position: relative;
+			
+		}
+	}
+
+	.featured-articles-facebook{
+		text-align: center;
+		width: 100%;
+
+		img{
+			padding: 0.3em;
+    		width: 45%;
+		}
+	}
+
+	#pinterest-view-board{
+		font: 1.6em OsloBold,arial,sans-serif;
+	    margin: 0.5em;
+	    padding: 0;
+	    text-align: center;
+		
+		a{
+			color: #000000;
+		    text-decoration: none;
+		    text-transform: uppercase;
+		    outline:none;
+
+		}
+	}
+	
+	@include respond-to(bp3){
+		display:block;
+		width:100%;
+		float:none;
+	}
+
+}
+
+#sidebar-most-viewed{
+	display:none;
+
+	@include respond-to(bp3){
+		display:block;
+	}
+}
+
+#sidebar-most-viewed-ph{
+	display:block;
+
+	#sidebar-most-viewed-cont{
+		display:none;
+
+		@include respond-to(bp1){
+			display:block;
+		}
+		@include respond-to(bp3){
+			display:none;
+		}
+	}
+	@include respond-to(bp3){
+		display:none;
+	}
+}
+
+

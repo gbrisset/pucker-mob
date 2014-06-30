@@ -1,0 +1,67 @@
+#contact-us-cont{
+	p{
+		padding: 2px 0; 
+		margin: 0;  
+		font: 1.1em OsloRegular, arial, sans-serif;
+
+		@include respond-to(admin2){
+		
+		}
+	}
+
+	a{
+		outline:none;
+		color: #0090D1;
+		text-decoration: none;
+
+		&:hover, &:focus{
+			text-decoration: none;
+			cursor:pointer;
+		}
+
+		@include respond-to(admin2){
+
+		}
+	}
+
+	h3{
+		font: 1.2em OsloRegular,arial,sans-serif; 
+		color: #6AA41F; 
+		padding: 0; 
+		margin: 0;
+
+		@include respond-to(admin2){
+		
+		}
+	}
+
+	.contact-info{
+		float:left;
+
+		div{ 
+			margin-bottom: 3em;
+		    float: left;
+		    margin-left: 0;
+		    overflow: hidden;
+		    position: relative;
+		    width: 45%;
+		}
+
+		div:nth-child(even){
+			margin-left: 2em;
+		}
+
+		div:nth-child(odd){
+			
+		}
+	}
+
+	.btn-wrapper { 
+		margin: 0.25em auto;
+
+		@include respond-to(admin2){
+		
+		} 
+	}
+
+}	

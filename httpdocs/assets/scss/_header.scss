@@ -1,0 +1,1021 @@
+ /* Begin Header Styling */
+.shadow {
+	// webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+	// moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+	// box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+	// -webkit-transition: box-shadow .3s linear;
+	// -o-transition: box-shadow .3s linear;
+	// -moz-transition: box-shadow .3s linear;
+	// -ms-transition: box-shadow .3s linear;
+	// -kthtml-transition: box-shadow .3s linear;
+	// transition: box-shadow .3s linear;
+}
+
+#header-cont{
+	background: $headerBg;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	height: 5em;
+	z-index:10;
+	top:0;
+	left:0;
+	background-image: none;
+
+	// -webkit-transition: box-shadow .3s linear;
+	// -o-transition: box-shadow .3s linear;
+	// -moz-transition: box-shadow .3s linear;
+	// -ms-transition: box-shadow .3s linear;
+	// -kthtml-transition: box-shadow .3s linear;
+	// transition: box-shadow .3s linear;
+
+
+	header{
+		width:100%;
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0;
+		position: relative;
+		z-index: 5;
+		
+
+
+		span{
+			width: auto;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			color: $headerLinkColor;
+			cursor: pointer;
+			@include mp-transitions();
+		}
+
+		span.current,
+		span:hover,
+		span:focus{
+			color: black;
+			text-shadow: none;
+		}
+		#logo-wrap{
+			#ad-728-atf{
+				display: none;
+				margin-left: 58px;
+				@include respond-to(bp3){
+					display: inline-block;
+				}
+			}
+			#media_net{
+				display: none;
+				margin: 10px 0 0 58px;
+				@include respond-to(bp3){
+					display: inline-block;
+					height: 90px;
+					overflow: hidden;
+				}
+			}
+		}
+		.header-icon{
+			width: auto;
+			margin: 0;
+			padding: 0.2em;
+			position: relative;
+			text-align: center;
+			font-size: 2.5em;
+			color: $iconAndBorderColor;
+			min-width: 1.5em;
+			max-width: 4em;
+
+			@include respond-to(bp3){
+				display: none;
+				padding: 0;
+			}
+		}
+
+		#menu-icon{
+			border: 1px solid $borderColor;
+			float: left;
+			margin: 0.5% 0 0.5% 1%;
+    		width: 10%;
+		}
+
+		#logo{
+			width: 60%;
+			padding: 0 0 0 1em;
+			margin: 0.5em auto;
+			position: relative;
+			float: left;
+			text-align: center;
+			left: 0;
+
+			a{
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+
+			img{
+				max-height: 5em;
+				max-width: 15em;
+				width:100%;
+
+			}
+
+			@include respond-to(bp1){
+				margin: 0.5em 0 0.35em;
+			}
+
+			@include respond-to(bp3){
+				margin: 0.3em 0;
+				width: auto;
+				padding: 25px 0;
+				left: 1.7%;
+			}
+		}
+
+		.main-header {
+			text-align: left; 
+		    background: none repeat scroll 0 0 white;
+		    border-bottom: 3px solid $borderColor;
+		    float: left;
+		    position: relative;
+		    width: 100%;
+		    overflow: hidden;
+
+		    @include respond-to(bp3){
+		    	background: none;
+		    	border-bottom: none;
+		    }
+		}
+
+
+
+		.nav-right {
+			display:none;
+		    float: right;
+		    width: 27%;
+
+		    ul {
+			    float: left;
+			    margin: 0.3em 0 0;
+			    overflow: hidden;
+			    position: relative;
+			    padding: 0;
+			    width:93%;
+
+			    li {
+				    float: left;
+				    height: 4em;
+				    list-style: none outside none;
+				    position: relative;
+				    width: 100%;
+				}
+
+				.divider-vertical {
+				    border-left: 1px solid #FBF7EE;
+				    border-right: 1px solid #FBF7EE;
+
+				    &:after, &:before {
+					    border-left: 1px solid red;
+					    border-right: 1px solid red;
+					}
+				}
+			}
+
+
+
+			@include respond-to(bp3){
+				display:block;
+				width: 100%;
+				margin: 0.5em 0 0;
+			}
+
+			@include respond-to(bp4){
+				width: 93%;
+			}
+
+
+		}
+
+		#header-partner-sites{
+			width: auto;
+			margin: 1.75em 0 0;
+			padding: 0;
+			position: relative;
+			float: right;
+			display: none;
+
+			p{
+				color: $headerLinkColor;
+				font: 1em PTSansRegular, arial, sans-serif;
+				width: auto;
+				margin: 0 0.5em 0 0;
+				padding: 0;
+				position: relative;
+				float: left;
+			}
+
+			ul{
+				width: auto;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				float: left;
+				list-style: none;
+
+				li{
+					color: $headerLinkColor;
+					font: 1em PTSansRegular, arial, sans-serif;
+					width: auto;
+					margin: 0;
+					padding: 0;
+					position: relative;
+					float: left;
+
+					a{
+						color: $headerLinkColor;
+						text-decoration: none;
+						@include mp-transitions();
+						padding: 3.5px;
+						border: none;
+						outline: none;
+
+						&:hover,
+						&:focus{
+							color: $headerLinkColorHover;
+							text-decoration: underline;
+						}
+					}
+				}
+				li:after{
+					content: '|';
+					margin: 0.25em;
+				}
+	
+				li:last-child:after{
+					content: none;
+				}
+			}
+
+			ul.fe-bar{
+				li:after{
+					content: 'or';
+				}
+			}
+
+			ul.cms-bar{
+				li:after{
+					content: '|';
+				}
+			}
+			
+			p#other-sites{
+				margin-right: 0;
+				cursor: pointer;
+				@include mp-transitions();
+
+				&:hover,
+				&:focus{
+					color: $headerLinkColorHover;
+				}
+			}
+
+			p#other-sites:after{
+				content: '>';
+				font: 1.35em ModernPics;
+				margin: -0.05em 0 0 0.35em;
+				padding: 0;
+				float: right;
+			}
+
+			p.shown{
+				color: $headerLinkColorHover;
+			}
+
+			p.shown:after{
+				content: '/' !important;
+			}
+
+			@include respond-to(bp1){
+				display: block;
+				margin-right: 0.5em;
+			}
+
+			@include respond-to(bp3){
+				display: none;
+				position:fixed;
+				margin: 2.75em 0 0;
+			}
+		}
+		
+		#search-text{
+			width: 10%;
+			margin: 1%;
+			position: relative;
+			float: right;
+			margin:0.1em;
+			border: 1px solid $borderColor;
+
+			p{
+				color: $headerLinkColor;
+				font: 1.05em PTSansRegular, arial, sans-serif;
+				width: auto;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				cursor: pointer;
+				@include mp-transitions();
+
+				a{
+					color: $headerLinkColor;
+					text-decoration: none;
+					@include mp-transitions();
+
+					&:hover,
+					&:focus{
+						color: $headerLinkColorHover;;
+					}
+				}
+
+				&:hover,
+				&:focus{
+					color: $headerLinkColorHover;;
+				}
+			}
+
+			@include respond-to(bp3){
+				border: none;
+				margin: 2% 0 0;
+			}
+		}
+
+		#search-text-bs{
+			right: 0;
+			margin:0;
+			display:none;
+			font-size: 2em;
+			color: #000;
+			padding: 0.4em 4%;
+
+			div {
+			    background: none repeat scroll 0 0 #E06B15;
+			    color: #FFFFFF;
+			    display: table;
+    			padding: 0.15em 0.2em 0.1em;
+    			cursor: pointer;
+				
+				label {
+				    text-transform: uppercase;
+				}
+
+				p {
+				    display: table-cell;
+				    font-family: oswaldlight;
+				    font-size: 0.7em;
+				    height: 22px;
+				    margin: 0;
+				    padding: 0;
+				    vertical-align: bottom;
+				    text-transform: uppercase;
+				}
+
+				.icon-search {
+				    display: table;
+				    font-size: 0.7em;
+				    height: 22px;
+				    margin-left: 0.5em;
+
+				    &:hover{
+	    				color: #FFF;
+	    			}
+				}
+
+				@include respond-to(bp4){
+					padding: 0.15em 0.3em 0.1em;
+				}
+
+			}
+			@include respond-to(bp3){
+				display:block;
+			}
+
+			@include respond-to(bp4){
+				//padding: 0.4em 10%;
+			}
+		}
+
+		@include respond-to(bp3){
+			//margin: 0.65em auto 0;
+		}
+	}
+
+
+	#partnerd-list, #search-list{
+		display:none;
+
+		@include respond-to(bp3){
+			display:block;
+		}
+	}
+	.powered-by {
+		padding: 3px 0 0 24px;
+	    text-align: right;
+	    text-transform: none;
+
+	    p {
+		 	font-size: 0.8em;
+		    margin: 0;
+		    display: table-cell;
+    		height: 5em;
+    		vertical-align: middle;
+		}
+
+		a{
+			outline:none;
+		}
+
+		img{
+			margin-left: 5px;
+		    margin-top: -12px;
+		}
+
+	    @include respond-to(bp3){
+	    	display:block;
+	    	padding: 3px 0 0 4%;
+	    	margin-left: 2%;
+	    }
+
+	     @include respond-to(bp4){
+	    	display:block;
+	    	padding: 3px 0 0 3.5%;
+	    }
+	}
+
+	#other-sites-cont{
+		@include mp-gradient(#FFF, $borderColor, 0%, 80%);
+		width: 100%;
+		margin: 0;
+		padding: 0.3em;
+		position: relative;
+		@include mp-clearfix();
+		display: none;
+		top:0;
+
+		#header-other-sites label {
+		    margin-left: 0.5em;
+		    font: 1em OsloRegular,arial,sans-serif;
+		}
+
+		ul{
+			width:98%;
+			max-width: 1120px;
+			margin: 0 auto;
+			padding: 0;
+			position: relative;
+			z-index: 5;
+			list-style: none;
+			text-align: right;
+			@include mp-clearfix();
+
+			li{
+				font: 1em OsloRegular, arial, sans-serif;
+				width: auto;
+				margin: 0;
+				padding: 0 0.5em;
+				position: relative;
+				display: inline-block;
+
+				a{
+					color: #0099ff;
+					text-decoration: none;
+					outline: none;
+					@include mp-transitions();
+					
+					&:hover,
+					&:focus{
+						color:  #0099ff;
+						text-decoration:none;
+					}
+				}
+			}
+
+			.fe-bar:after{
+				content: "or";
+			}
+
+			li:after{
+				content: '|';
+				float: right;
+				margin: 0.1em -0.5em 0 0.7em;
+			}
+
+			li:last-child:after{
+				content: none;
+			}
+
+			li#site1{
+				padding-left: 0;
+			}
+		}
+		@include respond-to(bp3){
+			display: block;
+		}
+	}
+
+	@include respond-to(bp3){
+		border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+		height: 163px;
+		background-image: url('http://images.simpledish.com/articlesites/simpledish/bg.jpg');
+		background-repeat: repeat;
+		//position: fixed;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-navigation-wrap{
+	height: 52px !important; 
+
+	#header-menu{
+		margin: 0 0 2em;
+		background: white;
+		padding: 0;
+		position: relative;
+		float: left;
+		display: none;
+		text-transform: uppercase;
+		width: 100%;
+		z-index:5;
+
+
+		ul{
+			list-style: none outside none;
+				width: 100%;
+			margin: 0;
+			padding: 0 0 0 8px;
+			position: relative;
+			z-index: 5;
+		
+			li{
+				font: 1.5em OswaldRegular,arial,sans-serif;
+				color: $headerLinkColor;
+				width: 100%;
+				margin: 0;
+				border-bottom: 1px solid $iconAndBorderColor;
+				padding: 0.8em 0;
+				position: relative;
+				float: left;
+      			text-align: left;
+      			z-index: 5;
+
+      			label{
+      				margin-left: 0;
+      			}
+      
+				a{
+					color: $headerLinkColor;
+					text-decoration: none;
+					padding: 0.1em;
+					border: none;
+					outline: none;
+					@include mp-transitions();
+
+					&:hover,
+					&:focus{
+					    color: $catBg;
+					}
+				}
+				
+				
+				@include respond-to(bp3){
+				  width: auto;
+				  margin: 0;
+				  border-bottom: none;
+				  font: 1.2em OswaldRegular,arial,sans-serif;
+				  padding: 0 25px 0 0;
+				  text-align:right;
+				}
+
+				@include respond-to(bp4){
+				  font: 1.3em OswaldRegular,arial,sans-serif;
+				}
+			}
+			
+			.parent{
+	   			ul {
+					position: relative;
+				   	font-size: 0.6em;
+				   	min-width: 17em;
+				   	width: 100%;
+				   	display:none;
+
+				    li{
+					    color: $headerLinkColor;
+					    background: #fff;
+						font: 1.7em OswaldRegular,arial,sans-serif;
+						width: 100%;
+						min-width:10em;
+						margin: 0;
+						padding:3%;
+						position: relative;
+						text-align:left;
+						border-bottom: 1px solid $borderColor;
+					    	
+					    a{
+					    	color: $headerLinkColor;
+					    	vertical-align: middle;
+					    	padding-bottom: 0;
+                  			padding-top: 0.4em;
+
+                  			&:hover,
+							&:focus{
+							    color: $catBg;
+							}
+					    }
+
+					    a.nilla-link{
+					    	color: #D40000;
+
+					    	&:hover,
+							&:focus{
+							    color: $catBg;
+							}
+					    }
+					    a:after{
+                  			content: '';
+
+                  			&:hover,
+							&:focus{
+							    color: $catBg;
+							}
+                		}
+					    	
+					    &:hover,
+					    &:focus{
+					    	cursor: poiter;	
+					    }
+
+					    &:last-child{
+					    	border-bottom: none;
+					    }
+
+					    	
+					    @include respond-to(bp1){
+					      padding: 0.5em;
+					     
+					    }
+					 }
+
+					@include respond-to(bp3){
+					    display:block;
+					}
+
+					&:focus{
+						display:block;
+					}
+				}
+
+				.submenu-wrapper {
+					background: none;
+				    border: none;
+				    padding: 0;
+				    display:none;
+				    margin: 0;
+				    position: relative;
+				    z-index: -1;
+					
+					@include respond-to(bp3){
+						display:none;
+					    background: none repeat scroll 0 0 #FBF7EE;
+					    border: 1px solid #DDDDDD;
+					    min-width: 32em;
+					    padding: 0.5em;
+					    position: absolute;
+					    width: 100%;
+					    z-index: -1;
+					    margin-top: 0.35em;
+					}
+					
+				}
+				
+				.parent-title {
+					border-left: 1px solid transparent;
+				    border-right: 1px solid transparent;
+				    border-top: 1px solid transparent;
+				    padding: 0;
+				    
+				    &.shown,
+				    {
+			    		background: #FBF7EE;
+			    		border-left: 1px solid $borderColor;
+				    	border-right: 1px solid $borderColor;
+				    	border-top: 1px solid $borderColor;
+			    	}
+
+			    	@include respond-to(bp3){
+				    	padding: 0.5em 0 0.4em 0.5em;
+				    }
+				}	
+
+				.isParent{
+					
+					&:hover:after{
+						color: $catBg;
+					}
+					&:after{
+				        right: 0;
+				        content: '/';
+				        color:#000;
+				        font: 1.2em ModernPics;
+				        margin: -0.1em 0.15em 0;
+				        position: relative;
+				        line-height: .7em;
+
+				       	@include respond-to(bp3){
+			           		right: auto;
+			           	}
+			        }
+		        }
+		        
+		        .left{
+
+		        	@include respond-to(bp3){
+			        	float: left;
+					    position: relative;
+					    width: 38%;
+			        }
+
+			    }
+
+		        .right{
+		        	display:none;
+		        	
+		        	#image-recipe{
+		        		width:100%;
+		        		max-width: 18em;
+		        		height: 16em;
+		        		overflow:hidden;
+		        		
+		        		a{
+		        			outline:none;
+		        		}
+
+		        		img{
+		        			width:100%;
+		        		}
+		        	}
+
+		        	#info-recipe{
+		        		text-align: left;
+		        		h2 {
+						    font: 1.2em OsloRegular,arial,sans-serif;
+						    margin: 3% 0;
+						    text-align: left;
+						    text-transform: capitalize;
+						}
+
+						p {
+						    font-size: 1em;
+						    text-transform: none;
+						}
+					}
+
+					.get-recipe{
+						font: 0.8em OsloRegular, arial, sans-serif;
+						margin: 0;
+					}
+
+		        	@include respond-to(bp3){
+		        		display:block;
+		        		background: #FFF;
+					 	float: right;
+					    padding: 0.5em;
+					    position: relative;
+					    width: 60%;
+		   		    }
+				}
+			}
+
+
+			@include respond-to(bp3){
+				width: 100%;
+			}
+
+	  	}
+		
+		p.shown{
+			color: $headerLinkColorHover;
+		}
+
+		p.shown:after{
+			content: '/' !important;
+		}
+
+ 
+		@include respond-to(bp3){
+			margin: 1.3em 0 0;
+			padding: 0;
+	     	border-top:none;
+	        display: block;
+	        background: none;
+			float: right;
+		}
+
+		@include respond-to(bp4){
+			margin: 1.3em 0 0;
+			padding: 0;
+	     	border-top:none;
+	        display: block;
+	        background: none;
+			float: right;
+		}
+	}
+	@include respond-to(bp3){
+		display: block;
+		background-image: url('http://images.simpledish.com/articlesites/simpledish/light_bg.jpg') !important;
+	}
+
+}
+
+#search-cont.search-header-section{
+
+	#search-header-cont{
+		margin:0 auto;
+		max-width: 1000px;	
+
+		form{
+			float: left;
+    		#search-bg{
+    			float: left;
+    			width: 100%;
+    			border: 1px solid $borderColor;
+
+    			input{
+    				width:100% !important;
+					font: 1.8em/1em OsloLight,arial,sans-serif !important;
+					
+					@include respond-to(bp3){
+						padding: 0.3em 0.5em !important;
+					}
+				}
+				@include respond-to(bp3){
+					width: 90%;
+					border:none !important;
+				}
+    		}
+    		.search-button{
+    			display:none;
+    			background: none repeat scroll 0 0 $orangeColor;
+			    color: #FFFFFF;
+			    float: left;
+			    padding: 0.3em 1em;
+			    width: auto;
+			    cursor: pointer;
+
+			    .icon-search {
+				    font-size: 2.5em;
+
+				    &:hover{
+				    	color: #FFF;
+				    }
+				}
+
+				@include respond-to(bp3){
+					display:block;
+				}
+    		}
+
+    		.close-search {
+			    float: left;
+			    margin: 0 0 0 1em;
+			    padding: 0;
+			    width: auto;
+			    display:none;
+			    cursor:pointer;
+
+			    p {
+				    color: $orangeColor;
+				    font-size: 2.5em;
+				    margin: 0;
+				    padding: 0.05em;
+				}
+
+				@include respond-to(bp3){
+					display:block;
+				}
+			}
+			
+
+
+    		@include respond-to(bp3){
+    			padding: 0.5%;	
+    		}
+		}
+	}
+	@include respond-to(bp3){
+
+		display:none !important;
+		position: fixed !important;
+		right: 0;
+    	top: 7em;
+    	z-index: 5;
+    }
+}
+
+
+.right{
+ 	float: right;
+    margin: 0;
+    width: 34%;
+
+    h2 {
+		font: 1em OswaldRegular,arial,sans-serif;
+		margin: 0.2em 0 0.5em 0.1em;
+		text-align: left;
+	}
+
+	@include respond-to(bp3){
+    	width: 32%;
+    }
+
+	@include respond-to(bp4){
+    	width: 34.5%;
+    }
+}
+
+.left{
+	width: 100%;
+	float: left;
+    margin: 0;
+    
+    @include respond-to(bp3){
+    	width: 61%;
+    }
+
+    @include respond-to(bp4){
+    	width: 61%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#search-fieldset {
+			
+		#searchemailinput {
+		    border: 1px solid $orangeColor;
+		    font: 1.2em OsloLight,arial,sans-serif;
+		    height: 2em;
+		    margin: 0 -0.5em 0 0;
+		    padding: 0.3em 0.2em 0.2em;
+		    width: 71%;
+		    background: #FFF;
+
+		    @include respond-to(bp4){
+		    	width: 72%;
+		    }
+		}
+
+		#searchsubmit {
+		    background: none repeat scroll 0 0 $orangeColor;
+		    border: medium none;
+		    color: #FFFFFF;
+		    font: 1.2em OswaldLight,arial,sans-serif;
+		    height: 2em;
+		    margin: 0;
+		    padding: 0.4em 0.2em 0.2em 0.4em;
+		    text-transform: uppercase;
+		    width: auto;
+		    float:right;
+		}
+
+		.icon-search{
+			padding: 0 0.2em 0 0.5em;
+		}
+	}

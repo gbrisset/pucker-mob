@@ -1,0 +1,4 @@
+Options -Multiviews
+
+RewriteEngine On
+RewriteRule ^([^\.]+)$ index.php?h=$1

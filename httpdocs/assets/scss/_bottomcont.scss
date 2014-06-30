@@ -1,0 +1,42 @@
+#bottom-cont{
+	width: 100%;
+	max-width: 1030px;
+	margin: 0.5em auto 0;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+
+	#left{
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		text-align: center;
+		
+		@include respond-to(bp3){
+		//	width: 73%;
+		//	float: left;
+		//	text-align: left;
+		}
+	}
+
+	#right{
+		width: 26.5%;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		float: right;
+		text-align: right;
+		overflow: hidden;
+		display: none;
+
+		img{
+			width: 100%;
+			max-height: 90px;
+		}
+
+		@include respond-to(bp3){
+			display: block;
+		}
+	}
+}

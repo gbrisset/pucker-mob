@@ -1,0 +1,215 @@
+#about-the-author{
+	width: 100%;
+	position:relative;
+	//padding:0;
+	//margin:0;
+	background:none;
+	border-top: 1px solid #DDDDDD;
+    margin: 2em 0 0;
+    padding: 1em 0 0;
+    
+	h2{
+		font:1.3em OswaldRegular,arial,sans-serif;
+		margin: 0 0 0.5em;
+		padding:0;
+		text-transform: uppercase;
+	}
+
+	.author-content{
+		background: #FFF;
+		border-bottom: 1px solid $borderColor;
+		padding:1em 0;
+		overflow:hidden;
+		margin:0;
+		width: 100%;
+
+		#author-img{
+			float:left;
+			margin: 0 1em 0 0;
+			padding:0;
+			position:relative;
+			width:35%;
+			min-width:5em;
+			max-width:9em;
+			z-index: 99;
+			
+			a{
+				outline:none;
+				text-decoration:none;
+			}
+			
+			img{
+				width:100%;
+			}
+
+			@include respond-to(bp1){
+				width: 17%;
+				min-width: 8em;
+				max-width:100%;
+			}
+		}
+
+		#author-desc{
+			float:none;
+			width: 100%;
+			padding:0;
+			position:relative;
+			z-index:1;
+			margin: 1% 0;
+
+			h3 {
+			    color: $iconAndBorderColor;
+			    font: 1.3em OsloBold,arial,sans-serif;
+			    margin: 0.3em 0;
+			    padding: 0;
+
+			    a{
+			    	outline:none;
+			    	text-decoration:none;
+			    	color:  $iconAndBorderColor;
+			    	font: 1.3em OsloBold,arial,sans-serif;
+			    }
+			}
+
+			p{
+				display:inline;
+				color: $iconAndBorderColor;
+			}
+
+			a{
+				outline:none;
+			    text-decoration:none;
+			    color: #0090D1;
+			    font: 0.8em OsloRegular,arial,sans-serif;
+			}
+
+			@include respond-to(bp1){
+				width:100%;
+				float:none;
+			}
+		}
+		.social-buttons {
+				float:left;
+				margin:0;
+				padding:0.5em 0;
+				position: relative;
+			    width: 100%;
+			    font-size: 1em;
+
+			    a {
+				    color: #0090D1;
+				    font: 1.2em OsloRegular,arial,sans-serif;
+				    margin-right: 1%;
+				    outline: none;
+				    text-decoration: none;
+
+				    i{
+				    	font-size: 2em;
+					}
+				    
+				  
+				}
+
+				@include respond-to(bp1){
+					font-size:1em;
+					 width: 70%;
+				}
+				@include respond-to(bp1_5){
+					width:75%;
+					padding:0;
+				}
+			}
+
+		@include respond-to(bp2){
+			border: 1px solid $borderColor;
+			padding:1em;
+			margin:0 auto;
+			width: 98%;
+		}
+	}
+
+	.save-article {
+
+				padding: 1.5% 0;
+    			width: auto;
+
+				a{
+				    color: #999999;
+				    cursor: pointer;
+				    font: 1.2em OsloRegular,arial,sans-serif;
+				    outline: medium none;
+				    text-decoration: none;
+			    }
+			}
+
+	@include respond-to(bp2){
+		padding: 1.3em 1em;
+		background: rgba(190, 190, 190, 0.2);
+		margin:2em 0;
+		border-top: 0px solid #DDDDDD;
+	}
+}
+
+#search-results-articles-cont #sort-by-results #sort-by{
+	float:left;
+}
+
+#about-the-author .author-content .social-buttons .icon-twitter-sign{
+	font-size: 1.5em;
+}
+
+.header{
+		background: none;
+		width: 97%;
+		margin: 0 0 0 0.7em;
+		position: relative;
+		z-index: 15;
+		
+		h2{
+			color: #000;
+			font: 1.3em OsloBold, arial, sans-serif;
+			text-transform: uppercase;
+			width: 98%;
+			margin: 0 auto;
+			padding: 0;
+			position: relative;
+			text-align:left;
+
+		}
+
+		#right{
+			background: none;
+			width: auto;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			@include mp-transitions();
+
+			p{
+				width: auto;
+				color: #000;
+				font: 1.2em OsloRegular, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				@include mp-transitions();
+
+				a{
+					color: #0090D1;
+					outline:none;
+					text-decoration: none;
+					@include mp-transitions();
+
+					&:hover,
+					&:focus{
+					//	text-decoration: underline;
+					}
+			
+				}
+			}
+
+		}
+	}

@@ -1,0 +1,141 @@
+/* Begin non-semantic helper classes */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+.hidden { display: none !important; visibility: hidden; }
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* End non-semantic helper classes */
+
+/* Begin Print Styling */
+@media print {
+body:after {
+    content: 'print';
+}
+
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+  
+}
+/* End Print Styling */
+
+//Begin Mixins
+@mixin respond-to($media){
+	@if $media == bp1{
+		@media only screen and (min-width: 38.4375em){@content;}
+	}@else if $media == bp1_5{
+		@media only screen and (min-width: 43.125em){@content;}
+	}@else if $media == bp728{
+		@media only screen and (min-width: 45.5em){@content;}
+	}@else if $media == bp2{
+		@media only screen and (min-width: 50em){@content;}
+	}@else if $media == bp3{
+		@media only screen and (min-width: 62em){@content;}
+	}@else if $media == bp4{ //~1200px
+		@media only screen and (min-width: 70em){@content;}
+	}@else if $media == bp5{ //~1400px
+		@media only screen and (min-width: 87.5em){@content;}
+	}@else if $media == bp6{ //~1600px
+		@media only screen and (min-width: 100em){@content;}
+	}@else if $media == bp7{ //~1800px
+		@media only screen and (min-width: 112.5em){@content;}
+	}@else if $media == bp7_5{ //~1920px
+		@media only screen and (min-width: 120em){@content;}
+	}@else if $media == bp8{ //~2000px
+		@media only screen and (min-width: 125em){@content;}
+	}@else if $media == bp9{ //~2200px
+		@media only screen and (min-width: 137.5em){@content;}
+	}@else if $media == bp10{ //~2400px
+		@media only screen and (min-width: 150em){@content;}
+	}@else if $media == bp10_5{ //~2560px
+		@media only screen and (min-width: 160em){@content;}
+	}@else if $media == bp11{ //~2600px
+		@media only screen and (min-width: 162.5em){@content;}
+	}
+
+	@if $media == admin0bp1{
+		@media only screen and (min-width: 38.4375em){@content;}
+	}@else if $media == admin1{
+		@media only screen and (min-width: 43.75em){@content;}
+	}@else if $media == admin2{
+		@media only screen and (min-width: 56.25em){@content;}
+	}@else if $media == admin2_5{
+		@media only screen and (min-width: 66.5625em){@content;}
+	}@else if $media == admin3{
+		@media only screen and (min-width: 81.25em){@content;}
+	}@else if $media == admin4{
+		@media only screen and (min-width: 106.25em){@content;}
+	}@else if $media == admin5{
+		@media only screen and (min-width: 156.25em){@content;}
+	}
+
+}
+
+@mixin mp-clearfix(){
+	overflow:hidden;
+	zoom:1;
+	*-ms-inject: expression(this.x||(this.innerHTML+='<br\ style="clear:both;font:0/0">',this.x=1));
+}
+
+@mixin mp-transitions($prop: all, $time: 0.3 + s, $ease: ease-in-out){
+	-webkit-transition: $prop $time $ease; 
+	-moz-transition: $prop $time $ease; 
+	-o-transition: $prop $time $ease; 
+	transition: $prop $time $ease;
+}
+
+@mixin mp-ieopacity($a){
+	opacity: $a / 100;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$a})";
+	filter: alpha(opacity = $a);
+}
+
+@mixin mp-roundborder($val){
+	-moz-border-radius: $val;
+    -webkit-border-radius: $val;
+    -khtml-border-radius: $val;
+    border-radius: $val;
+}
+
+@mixin mp-gradient($from, $to, $start, $end, $imp: false){
+	@if $imp == true {
+		background: -moz-linear-gradient(top, $from $start, $to $end) !important; /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop($start, $from), color-stop($end, $to)) !important; /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, $from $start, $to $end) !important; /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, $from $start, $to $end) !important; /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, $from $start, $to $end) !important; /* IE10+ */
+		background: linear-gradient(top, $from $start, $to $end) !important; /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$from}', endColorstr='#{$to}',GradientType=0 ) !important; /* IE6-9 */
+	} @else {
+		background: -moz-linear-gradient(top, $from $start, $to $end); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop($start, $from), color-stop($end, $to)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, $from $start, $to $end); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, $from $start, $to $end); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, $from $start, $to $end); /* IE10+ */
+		background: linear-gradient(top, $from $start, $to $end); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$from}', endColorstr='#{$to}',GradientType=0 ); /* IE6-9 */
+	}
+	
+}
+
+@mixin mp-backface(){
+	display: none; 
+    backface-visibility:hidden;
+	-webkit-backface-visibility:hidden; /* Chrome and Safari */
+	-moz-backface-visibility:hidden; /* Firefox */
+	-ms-backface-visibility:hidden; /*  IE */
+}
+//End Mixins

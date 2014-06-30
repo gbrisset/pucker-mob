@@ -1,0 +1,51 @@
+//Overwritable Colors
+$bgColor: #ffffff;
+$catBg: #6ca32c;
+
+@import "_normalize.scss";
+@import "_fontface.scss";
+@import "_helpers.scss";
+@import "compass/css3";
+
+#ninja{color:#000;visibility:hidden;}
+body,
+html{
+	background: $bgColor;
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-family: 'bp0';
+}
+
+form{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+fieldset{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	border: none;
+}
+
+label{
+
+}
+
+input{
+
+}
+
+textarea{
+
+}
+
+#submit{
+
+}

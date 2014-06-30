@@ -1,0 +1,88 @@
+#related-articles{
+	width: 100%;
+	margin: 0.5em auto 0;
+	padding: 0;
+	position: relative;
+}
+
+#related-articles-cont{
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+
+	article{
+		width: 100%;
+		margin: 0.5em 0 0;
+		padding: 0;
+		position: relative;
+		@include mp-clearfix();
+
+		.article-image{
+			width: 30%;
+			margin: 0 0.5em;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			a{
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+
+			img{
+				max-width: 100%;
+			}
+
+			@include respond-to(bp3){
+				width: 40%;
+			}
+		}
+
+		.article-info{
+			width: 65%;
+			margin: 0.5em 0 0;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			h2{
+				color: $catBg;
+				font: 1.25em/1em PTSansBold, arial, sans-serif;
+				margin: 0 0 0.25em 0;
+				padding: 0;
+				position: relative;
+				text-transform: uppercase;
+
+				a{
+					color: $catBg;
+					text-decoration: none;
+
+					&:hover,
+					&:focus{
+					//	text-decoration: underline;
+					}
+				}
+			}
+
+			p{
+				color: black;
+				font: 1em/1em PTSansRegular, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+			}
+
+			@include respond-to(bp3){
+				width: 55%;
+			}
+		}
+
+		@include respond-to(bp1_5){
+			width: 50%;
+			float: left;
+		}
+	}
+}

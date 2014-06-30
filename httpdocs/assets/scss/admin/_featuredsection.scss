@@ -1,0 +1,156 @@
+.featured-section{
+
+	width: 100%;
+	margin-bottom: 1.154em;
+	padding: 0;
+	position: relative;
+	border: 1px solid $borderColor;
+	height: auto;
+
+	header{
+		background: $catBg;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		z-index: 15;
+		display:table;
+		border-bottom:none;
+			
+		h2{
+			color: #FFF;
+			font: 1.2em OsloBold, arial, sans-serif;
+			text-transform: uppercase;
+			width: 98%;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			text-align:center;
+			display:table-cell;
+			height: 22px;
+			vertical-align: middle;
+		}
+	}
+
+	article,
+	section{
+		width: 100%;
+		margin: 0;
+		padding: 0.5em;
+		position: relative;
+		@include mp-clearfix();
+
+		.featured-image{
+			width: 40%;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			text-align: center;
+			z-index: 10;
+			display:none;
+
+			a{
+				outline: none;
+				border: none;
+			}
+
+			img{
+				max-width: 100%;
+
+				@include respond-to(bp1){
+					width: 100%;
+				}
+			}
+
+			@include respond-to(bp1){
+				width: 40%;
+				float: left;
+				margin: 0 0.5em;
+				float:left;
+				display:block;
+				min-width: 7em;
+			}
+
+			@include respond-to(bp1_5){
+				width: 33%;
+				float: left;
+				margin: 0 0.5em;
+				float:left;
+				display:block;
+				min-width: 9em;
+			}
+			
+
+			@include respond-to(bp2){
+				width: 40%;
+				display:block;
+				float: left;
+				max-width: 11em;
+  			}
+
+			@include respond-to(bp3){
+				margin: 0;
+   				width: 43%;
+   				display:block;
+   				float:left;
+			}
+		}
+
+		.featured-info{
+			width: 98%;
+			//margin: 0.5em auto;
+			padding: 0;
+			position: relative;
+			z-index: 5;
+
+			h2{
+				color: #000;
+				font: 800 1.2em OsloRegular, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				display: table-cell;
+				vertical-align: middle;
+			
+				a{
+					color: #000;;
+					text-decoration: none;
+					outline: medium none;
+				}
+
+				@include respond-to(bp1){
+					text-align: left;
+					height: 7.3em;
+				}
+
+				@include respond-to(bp3){
+					height: 7em;
+				}
+
+				@include respond-to(bp4){
+					height: 8em;
+				}
+		
+    			.get-recipe {
+				    margin-top: 0.5em;
+				    width: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+.single-article{
+
+	.article-img{
+
+		img{
+			border:none;
+			box-shadow:none;
+			border-radius: 0px;
+		}
+
+	} 
+	
+} 

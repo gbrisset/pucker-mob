@@ -1,0 +1,708 @@
+//Overwritable Colors
+$bgColor: #ffffff;
+
+$catBg: #6ca32c;
+$playerAccent: #6ca32c;
+
+$headerBg: #ffffff;
+$headerLinkColor: #333333;
+$headerLinkColorHover: #000000;
+
+$darkBg: #afafaf;
+$slideShowBg: rgba($catBg, 0.15);
+
+$iconAndBorderColor: #707070;
+$sectionHeaderColor: #DDD;
+$borderColor: #DDD;
+$darkGray: #777;
+
+$articleTitleColor:#0090D1;
+
+$orangeColor: #E06B15;
+
+@import "_normalize.scss";
+@import "_fontface.scss";
+@import "_helpers.scss";
+@import "compass/css3";
+@import "_icons.scss";
+
+#ninja{color:#000;visibility:hidden;}
+body,
+html{
+	background: $bgColor;
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-family: 'bp0';
+
+	@include respond-to(bp1){
+		font-family: "bp1";
+	}
+
+	@include respond-to(bp1_5){
+		font-family: "bp1_5";
+	}
+
+	@include respond-to(bp728){
+		font-family: "bp728";
+	}
+
+	@include respond-to(bp2){
+		font-family: "bp2";
+	}
+
+	@include respond-to(bp3){
+		font-family: "bp3";
+	}
+
+	@include respond-to(bp4){
+		font-family: "bp4";
+	}
+}
+
+body{
+	font-family: arial, sans-serif;
+	background-image: none;
+	background-repeat: repeat;
+	margin-top: 0;
+
+	@include respond-to(bp3){
+		background-image: url('http://images.simpledish.com/articlesites/simpledish/bg.jpg');
+		margin-top: -1em;
+	}
+}
+
+/* Begin Header Styling */
+@import "_header.scss";
+/* End Header Styling */
+
+/* Begin Cateogries Styling */
+@import "_categoriebar.scss";
+/* End Categories Styling */
+
+/* Begin Cateogries Styling */
+@import "_homepage_slider.scss";
+/* End Categories Styling */
+
+/* Begin Shared Styling */
+@import "_shared.scss";
+/* End Shared Styling */
+
+/* Begin Player Styling */
+@import "_articleplayer.scss";
+/* End Player Styling */
+
+/* Begin Cross Browser Styling */
+@import "_crossbrowserplayer.scss";
+/* End Cross Browser Styling */
+
+/* Begin Cross Browser Styling */
+@import "_playerstyling.scss";
+/* End Cross Browser Styling */
+
+
+/* Begin Sidebar Styling */
+@import "_sidebar.scss";
+/* End Sidebar Styling */
+
+/* Begin ad Styling */
+@import "_adstyling.scss";
+/* End Ad Styling */
+
+/* Begin Featured Section Styling */
+@import "_featuredsection.scss";
+/* End Featured Section Styling */
+
+/* Begin Recent Articles Styling */
+@import "_recentarticles.scss";
+/* End Recent Articles Styling */
+
+/* Begin SlideShow Styling */
+@import "_slideshow.scss";
+/* End SlideShow Styling */
+
+/* Begin Article Page Styling */
+@import "_articlepage.scss";
+/* End Article Page Styling */
+
+/* Begin shared-icons Styling */
+@import "_sharedicons.scss";
+/* End shared-icons Styling */
+
+/* Begin social-buttons Styling */
+@import "_socialbuttons.scss";
+/* End shared-icons Styling */
+
+/* Begin Contributors Page Styling */
+@import "_contributorspage.scss";
+/* End Contributors Page Styling */
+
+/* Begin Pages Styling */
+@import "_pages.scss";
+/* End Pages Styling */
+
+/* Begin LightBox Styling */
+@import "_lightbox.scss";
+/* End LightBox Styling */
+
+/* Begin Search Page Styling */
+@import "_searchpage.scss";
+/* End Search Page Styling */
+
+/* Begin Ad Styling */
+@import "_adstyling.scss";
+/* End Ad Styling */
+
+/* Begin Form Styling */
+@import "_forms.scss";
+/* End Form Styling */
+
+/* Begin Video Series Page Styling */
+@import "_video_series.scss";
+/* End  Video Series Page Styling */
+
+/* Begin Misc Pages Styling */
+@import "_miscellaneous.scss";
+/* End Misc Pages Styling */
+
+
+/* Begin Popular Search Section Styling */
+@import "_popularsearches.scss";
+/* End Popular Search Section Styling */
+
+/* Begin Article List Template Styling */
+@import "_pagelist.scss";
+/* End Article List Template Styling */
+
+/* Begin SD Popup Styling */
+@import "_popup.scss";
+/* End SD Popup Styling */
+
+/* Begin My simpledish promo pop up Styling */
+@import "_my_sd_pop_up_promo.scss";
+/* End My simpledish promo pop up Styling */
+
+/* Begin My simpledish Header promo Styling */
+@import "_my_sd_header_promo.scss";
+/* End My simpledish Header promo Styling */
+
+/* Begin AOL Player Styling */
+@import "_aol_player.scss";
+/* End AOL Player Styling */
+
+/* Begin Footer Styling */
+@import "footer.scss";
+/* End Footer Styling */
+
+/* Begin Cross Browser Styling */
+@import "_crossbrowsers.scss";
+/* End Cross Browser Styling */
+
+
+
+
+#section-video-player {
+    //padding-bottom: 0.5em;
+    padding-bottom: 0;
+    z-index:1;
+}
+
+#video_description,
+#article-page-heading,
+#contributor-page-heading
+{
+	width: 100%;
+	margin: 2% 0 1%;
+	padding: 0 0 5px 0;
+	position: relative;
+
+	h1{
+		width: auto;
+		color: #000;
+		font: 1.5em OsloRegular, arial, sans-serif;
+		margin: 0 0 0.3em;
+		padding: 0;
+		position: relative;
+
+		a{
+			color: #000;
+			text-decoration: none;	
+		}
+
+		@include respond-to(bp1){
+			font: 1.7em OsloRegular, arial, sans-serif;
+		}
+	}
+
+	p{
+		width: auto;
+		color: #000;
+		font: 1.2em/1.125em OsloRegular, arial, sans-serif;
+		margin-bottom: 1em;
+		padding: 0;
+		position: relative;
+		white-space: pre-wrap;
+	}
+
+	.urls {
+		.get-recipe {
+			float:none;
+			a {
+    			margin-right: 2em;	
+    		}
+    	}
+    }
+}
+
+#video_description{
+	p{
+		margin: 0.3em 0;
+	}
+}
+
+#category-page-heading{
+	width: 100%;
+	max-width: 1030px;
+	margin: 0.25em auto 1em;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+	//border-bottom: 1px solid $borderColor;
+
+	h1{
+		width: 100%;
+		color: $catBg;
+		font: 2.2em OswaldRegular,arial,sans-serif;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+
+	p{
+		font-size: 1.2em;
+
+		a{
+			color: $catBg;
+		    outline: medium none;
+		    text-decoration: none;
+		}
+	}
+}
+
+#favorites-cat-dishes .rating {
+    margin: 0;
+    padding: 2% 0 0 0;
+    width: 100%;
+}
+
+#contributor-page-heading{
+	width: 100%;
+	max-width: 1000px;
+	margin: 0.25em auto 0.5em;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+
+	h1{
+		width: 100%;
+		color: $catBg;
+		font: 2.8em OswaldRegular,arial,sans-serif;
+		margin:0;
+		padding: 0;
+		position: relative;
+
+		a{
+			color: #000;
+			text-decoration: none;
+		}
+
+		@include respond-to(bp1_5){
+			margin-left: 0;
+		}
+	}
+
+	@include respond-to(bp1_5){
+		width: 98%;
+		margin: 0.25em auto 0;
+	}
+
+	@include respond-to(bp3){
+		width: 100%;
+	}
+}
+
+#misc-page-heading{
+	width: 100% !important;
+	max-width: 1000px;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+
+	h1{
+		width: auto;
+		font: 1.8em OswaldRegular,arial,sans-serif;
+    	text-transform: uppercase;
+		color: $catBg;
+		font-weight: 500;
+		margin:  0 0 0 0.125em;
+		padding: 0;
+		position: relative;
+
+		@include respond-to(bp3){
+			width: 100%;
+			font: 1.8em OswaldRegular,arial,sans-serif;
+			float: left;
+			margin: 2% 0;
+		}
+	}
+}
+
+#featured-badge-page-heading{
+	width: 100% !important;
+	max-width: 1000px;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+
+	h1{
+		width: auto;
+		color: $catBg;
+		font: 1.8em OswaldRegular,arial,sans-serif;
+		font-weight: 500;
+		margin:  0 0 0 0.125em;
+		padding: 0;
+		position: relative;
+
+		@include respond-to(bp3){
+			font: 1.8em OswaldRegular,arial,sans-serif;
+			float: left;
+			margin: 2% 0 0;
+		}
+	}
+}
+
+#featured-image-cont{
+	width: 98%;
+	margin: 0.5em auto 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+
+	a{
+		border: none;
+		outline: none;
+		text-decoration: none;
+	}
+
+	img{
+		max-width: 100%;
+
+		@include respond-to(bp3){
+			width: 100%;
+		}
+	}
+
+	@include respond-to(bp1_5){
+		display: block;
+	}
+
+	@include respond-to(bp3){
+		width: 100%;
+	}
+}
+
+#featured-image{
+	display: none;
+
+	@include respond-to(bp3){
+		display: block;
+	}
+}
+
+#featured-image-ph{
+	@include respond-to(bp3){
+		display: none;
+	}
+}
+
+.msie7,
+.msie8{
+	#article-page-heading{
+		display: none;
+	}
+
+	#category-page-heading{
+		width: 1000px;
+		margin: 0.25em auto 0;
+		padding: 0;
+		position: relative;
+		@include mp-clearfix();
+
+		h1{
+			width: 30%;
+			color: $catBg;
+			font: 3em OsloRegular, arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			a{
+				color: $catBg;
+				text-decoration: none;	
+			}
+		}
+
+		p{
+			width: 70%;
+			color: rgba($catBg, 0.85);
+			font: 1em OsloRegular, arial, sans-serif;
+			text-align: right;
+			margin: 1.5em 0 0;
+			padding: 0;
+			position: relative;
+			float: right;
+		}
+	}
+
+	#contributor-page-heading{
+		width: 100%;
+		margin: 0.25em auto 0.5em;
+		padding: 0;
+		position: relative;
+		@include mp-clearfix();
+
+		h1{
+			width: 100%;
+			color: #000;
+			font: 5em OsloRegular, arial, sans-serif;
+			text-transform: uppercase;
+			margin: 0 0 -0.35em 0.125em;
+			padding: 0;
+			position: relative;
+
+			a{
+				color: #000;
+				text-decoration: none;
+			}
+		}
+
+		p{
+			width: auto;
+			color: #000;
+			font: 1.5em OsloRegular, arial, sans-serif;
+			text-transform: uppercase;
+			margin: 0.5em 0 0;
+			padding: 0.25em 0 0 0.35em;
+			position: relative;
+			border-top: 1px solid #000;
+			border-top: 1px solid rgba(0, 0, 0, 0.5);
+		}
+	}
+	
+	#misc-page-heading{
+		width: 100% !important;
+		max-width: 1000px;
+		padding: 0;
+		position: relative;
+		@include mp-clearfix();
+
+		h1{
+			width: auto;
+			color: $catBg;
+			font: 1.8em OswaldRegular,arial,sans-serif;
+			text-transform: uppercase;
+			font-weight: 500;
+			margin:  0 0 0 0.125em;
+			padding: 0;
+			position: relative;
+
+			@include respond-to(bp3){
+				width: 100%;
+				float: left;
+				margin: 2% 0 0;
+			}
+		}
+
+		p{
+			width: auto;
+			color: #000;
+			font: 1.5em OsloRegular, arial, sans-serif;
+			text-transform: uppercase;
+			margin: 0.5em 0 0;
+			padding: 0.25em 0 0 0.35em;
+			position: relative;
+			border-top: 1px solid #000;
+			border-top: 1px solid rgba(0, 0, 0, 0.5);
+		}
+	
+	    @include respond-to(bp3){
+			width: 100%;
+			font: 1.8em OswaldRegular,arial,sans-serif;
+			float: left;
+			margin: 2% 0;
+		}
+	}
+
+
+
+	#featured-image-cont{
+		width: 100%;
+		margin: 0.5em auto 0;
+		padding: 0;
+		position: relative;
+		text-align: center;
+		display: block;
+
+		a{
+			border: none;
+			outline: none;
+			text-decoration: none;
+		}
+
+		img{
+			width: 100%;
+		}
+	}
+
+	#featured-image{
+		display: block;
+	}
+
+	#featured-image-ph{
+		display: none;
+	}
+}
+
+.terms-conditions{
+	h2{
+		color: $catBg;
+   		font: 1.5em OswaldRegular,arial,sans-serif;
+	    margin: 0 0 0.5em;
+	    padding: 1em 0 0;
+	    text-transform: uppercase;
+	    border-bottom: 1px solid #DDDDDD;
+
+	}
+
+	h3{
+		font: 500 1.125em OsloRegular,arial,sans-serif;
+		color:#000;
+		text-transform: uppercase;
+	}
+
+	a{
+		outline:none;
+		color:$catBg;
+		text-decoration:none;
+
+		&:focus,
+		&:hover{
+		//	text-decoration:underline;
+		}
+	}
+}
+
+#bg {
+    display: none;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+
+    img {
+	    margin-left: -17%;
+	    width: 120%;
+	}
+
+	@include respond-to(bp3){
+		display:block;
+	}
+}
+
+#sidebar-promoted-articles{
+	display:block;
+
+	@include respond-to(bp2){
+		display:none;
+	}
+
+	@include respond-to(bp3){
+		display:block;
+	}
+}
+
+#contest-display-ads-box-cont{
+	display:none;
+	border:none;
+	padding: 0.5em;
+	border: 1px solid #DDDDDD;
+
+	img{
+		width: auto;
+	}
+	article{
+		padding:0;
+	}
+
+	a{
+		outline: none;
+		text-decoration:none;
+	}
+
+	@include respond-to(bp1){
+		float: right;
+	    height: 260px;
+	    margin: 0 0 1.154em;
+	    text-align: left;
+	    width: 300px;
+	    border:none;
+	    padding: 0;
+	}
+
+	@include respond-to(bp2){
+		display:none;
+	}
+
+	@include respond-to(bp3){
+		float: none;
+	    height: 100%;
+	    margin: 0 0 1.154em ;
+	    width: auto;
+	    clear: both;
+	    border: 1px solid #DDDDDD;
+	}
+}
+
+#foodfight-body {
+	span {
+    	color: #6CA32C;
+    	font: 1.1em OsloBold, arial;
+    }
+
+    a{
+    	color: #0090D1 !important;
+    }
+
+    .p-label{
+    font-size: 1.1em !important;
+    }
+}
+
+.cf {
+    padding: 0 !important;
+}
+
+#MN-Container{
+	text-align: center;
+}
+
+.thumbs-1r .videoCube.syndicatedItem.horizontal{
+	width: 13.6em !important
+}
+
+

@@ -1,0 +1,46 @@
+.sortable {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	&.grid {
+		overflow: hidden;
+		li {
+			float: left;
+		}
+	}
+	&.connected {
+		width: 200px;
+		min-height: 100px;
+		float: left;
+	}
+
+	.handle {
+		cursor: move;
+	}
+
+	li {
+		list-style: none;
+		&.disabled {
+			opacity: 0.5;
+		}
+		&.highlight {
+			background: #FEE25F;
+		}
+
+		&.sortable-placeholder {
+			//	The width and height of this should be the same as the other items in the list
+			width: 74px;
+			height: 50px;
+			overflow: hidden;
+			border: 2px dashed #6ca32c !important;
+			border-radius: 10px;
+			padding: 0px 5px;
+			margin: 5px;
+
+			border: 1px dashed #CCC;
+			background: none;
+		}
+	}
+
+}

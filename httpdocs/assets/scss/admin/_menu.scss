@@ -1,0 +1,233 @@
+$navBg: #FBF7EE;
+
+#nav-cont{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: none;
+	z-index:99;
+
+	nav{
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		float: left;
+		@include mp-transitions();
+
+		ul{
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			list-style: none;
+
+			li,
+			h2{
+				color: black;
+				font: 1.1em OsloRegular,arial,sans-serif;
+				width: 100%;
+				margin: 0;
+				padding: 0.6em 0;
+				position: relative;
+				@include mp-transitions();
+				cursor: pointer;
+				background: $navBg;
+
+				a{
+					padding: 0.6em;
+					color: inherit;
+					text-decoration: none;
+					outline: none;
+
+					@include respond-to(admin2){
+						padding: 0.6em;
+						color: inherit;
+						text-decoration: none;
+					}
+				}
+
+				&:hover,
+				&:focus,
+				&.current{
+					color: white;
+					background: #696969;
+					text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.35);
+				}
+		
+				@include respond-to(admin2){
+					background: none;
+				}
+			}
+		
+			li:after{
+				content: ' ';
+				width: 100%;
+				height: 1px;
+				position: absolute;
+				bottom: 0;
+				left: 0px;
+				z-index: 0;
+				//border-bottom: 1px solid #cecdcc;
+				border-bottom: 1px solid #ddd;
+			}
+
+			.parent{
+					&:before{
+						content: '>';
+						float: right;
+						margin: 0.1em 1em 0 0;
+						font: 1.3em/1em ModernPics;
+						color: #DDD;
+		
+						@include respond-to(admin2){
+							content: '/';
+							margin: 0 5px 0 0;
+						}
+					}
+					
+					&:hover:before,
+					&:focus:before{
+						color: white;
+						text-shadow: none;
+					}
+			}
+
+			li.shown{
+				border-bottom: none;
+				
+				&:before{
+					@include respond-to(admin2){
+						content: '-' !important;
+					}
+				}
+			}
+
+			ul.shown{
+				display: block;
+				margin-bottom: 0.3em;
+			}
+			
+	 		 h2{
+				font: 1.1em PTSansBold,arial,sans-serif;
+				text-align: center;
+				cursor: pointer;
+
+				&:hover:before,
+			  	&:focus:before{
+					color: white;
+					text-shadow: none;
+		 		}
+		 		
+				@include respond-to(admin2){
+					display: none;
+				}
+			}
+
+			h2:after{
+				content: ' ';
+				width: 100%;
+				height: 1px;
+				position: absolute;
+				bottom: -2px;
+				left: 0px;
+				z-index: 0;
+				border-bottom: 1px solid #fff;
+			}
+
+			h2:before{
+				content: '<';
+				float: left;
+				margin: 0.1em 0 0 1em;
+				font: 1.3em/1em ModernPics;
+			}
+
+			ul{
+				position: absolute;
+				top: 0;
+				left: 100%;
+				@include mp-transitions();
+
+				li{
+					@include respond-to(admin2){
+						border: none;
+						font-size: 1em;
+					}
+
+					&:after{
+						border: none;
+					}
+					
+					&.current,
+					&:hover,
+					&:focus{
+						@include respond-to(admin2){
+							background: $catBg;
+							color: white;
+							text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+						}
+					}
+
+					a{
+						margin-left:0.5em;
+					}
+				}
+
+				@include respond-to(admin2){
+					position: relative;
+					left: auto;
+					background: white;
+					display: none;
+					@include mp-transitions(none);
+				}
+			}
+
+			@include respond-to(admin2){
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				list-style: none;
+			}
+		}
+
+		@include respond-to(admin2){
+			width: 100%;
+			margin: 0 0 0 1em;
+			padding: 0;
+			position: relative;
+
+		}
+	}
+
+	@include respond-to(admin2){
+		width: 20%;
+		max-width: 175px;
+		height: 100%;
+		position: absolute;
+		//top: 0;
+		left: 0;
+		z-index: 1;
+		background: #FFF;
+		//@include box-shadow(1px 0 3px rgba(0, 0, 0, 0.25));
+	}
+}
+
+.active_menu{
+	nav{
+		ul{
+			li{
+				margin-left: -100% !important;	
+			}
+
+			ul{
+				left: 0 !important;
+
+				li{
+					margin-left: 0 !important;
+				}
+			}
+		}
+	}
+}

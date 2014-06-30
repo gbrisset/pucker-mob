@@ -1,0 +1,79 @@
+.series-playlist{
+	ul{
+		margin: 0;
+		padding: 0;
+
+		li{
+			list-style: none;
+			width:100%;
+			border: 1px solid #DDD;
+			float:left;
+			padding:0.5%;
+
+			.icon-play{
+				float:left;
+				width:5%;
+				color: #DDDDDD;
+			}
+
+			h2{
+				font: 1.2em OsloRegular, arial, sans-serif;
+				margin:0;
+				padding:0;
+				float:left;
+				width:60%;
+			}
+
+			form{
+				width: 20%;
+				float:left;
+				margin: 0;
+
+				.btn-wrapper{
+					margin: 0;
+				}
+			}
+		}
+	}
+}
+
+#series-video-add-remove-slideshow{
+
+	float:left;
+	width:15%;
+	a{
+		color: #707070;
+		outline:none;
+		text-decoration:none;
+		cursor: pointer;
+		display:table-cell;
+		height:25px;
+		vertical-align: middle;
+
+		&:hover,
+		&:focus{
+			color: $catBg;
+		}
+
+
+		i{
+			margin-right: 10px;
+
+		}
+	}
+
+	label{
+		color: $catBg;
+		cursor: pointer;
+		display:table-cell;
+		height:25px;
+		vertical-align: middle;
+
+		i{
+			margin-right: 10px;
+		}
+	}
+
+
+}
+

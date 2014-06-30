@@ -1,0 +1,210 @@
+#related-article-pods{
+	width: 100%;
+	margin: 0.5em 0 0;
+	padding: 0;
+	position: relative;
+
+	header{
+		font-size: 0.925em;
+
+		@include respond-to(bp1){
+			font-size: 1em;
+		}
+	}
+}
+
+#related-article-pods-cont{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	@include mp-clearfix();
+
+	.pod{
+		width: 100%;
+		margin: 0.5em 0 0;
+		padding: 0;
+		position: relative;
+		overflow: hidden;
+		float: left;
+		@include mp-clearfix();
+
+		.pod-image{
+			width: 30%;
+			margin: 0 0.5em;
+			padding: 0;
+			position: relative;
+			float: left;
+			z-index: 10;
+			@include mp-transitions();
+
+			a{
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+
+			img{
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				@include mp-transitions();
+			}
+
+			#play-button{
+				background: #000;
+				width: 40%;
+				margin: -25px 0 0 -27.5px;
+				padding: 0.6em 1.1em 0.55em 1.2em;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				z-index: 15;
+				@include border-radius(0.5em);
+				@include mp-ieopacity(70);
+
+				@include respond-to(bp1){
+					width: 35%;
+					margin: -30px 0 0 -30px;
+					@include border-radius(0.75em);
+				}
+
+				@include respond-to(bp1_5){
+					width: 45%;
+					margin: -25px 0 0 -22.5px;
+					@include border-radius(0.5em);
+				}
+
+				@include respond-to(bp2){
+					width: 40%;
+					margin: -25px 0 0 -25px;
+					@include border-radius(0.5em);
+				}
+			}
+
+			@include respond-to(bp1){
+				width: 25%;
+			}
+
+			@include respond-to(bp1_5){
+				width: 30%;
+			}
+
+			@include respond-to(bp3){
+				width: 40%;
+			}
+		}
+
+		.pod-info{
+			width: 65%;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			h2{
+				color: #4f4f4f;
+				font: 1em/1.15em PTSansBold, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				overflow: hidden;
+
+				a{
+					color: #4f4f4f;
+					text-decoration: none;
+
+					&:hover,
+					&:focus{
+						text-decoration: underline;
+					}
+				}
+			}
+
+			p{
+				width: 100%;
+				font: 1em/1.175em PTSansRegular, arial, sans-serif;
+				margin: 0.5em 0 0;
+				padding: 0;
+				position: relative;
+
+				a{
+					color: black;
+					text-decoration: none;
+				}
+			}
+
+			@include respond-to(bp1){
+				width: 70%;
+			}
+
+			@include respond-to(bp1_5){
+				width: 65%;	
+			}
+
+			@include respond-to(bp3){
+				width: 55%;
+			}
+		}
+
+		.visit-pod{
+			background-color: #afafaf;
+			width: 67%;
+			color: #fff;
+			font: 1em PTSansRegular, arial, sans-serif;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+			margin: 0 0 0 30%;
+			padding: 0 0 0 0.45em;
+			position: absolute;
+			bottom: 0;
+			left: 0.5em;
+
+			a{
+				color: #fff;
+				text-decoration: none;
+				@include mp-transitions();
+
+				&:hover,
+				&:focus{
+					color: #000
+				}
+			}
+
+			a:after{
+				content: '>';
+				font: 1.5em ModernPics;
+				margin: 0 0 0 0.25em;
+				padding: 0;
+				position:  relative;
+				top: 1px;
+			}
+
+			@include respond-to(bp1){
+				width: 73%;
+				margin: 0 0 0 25%;
+			}
+
+			@include respond-to(bp1_5){
+				width: 68%;
+				margin: 0 0 0 30%;	
+			}
+
+			@include respond-to(bp3){
+					width: 55%;
+					margin: 0 0 0 40%;
+			}
+		}
+
+		@include respond-to(bp1_5){
+			width: 50%;
+		}
+	}
+
+	#pod4,
+	#pod8,
+	#pod12,
+	#pod16{
+		margin-right: 0;
+	}
+}

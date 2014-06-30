@@ -1,0 +1,212 @@
+#register-form{
+	hr{
+		margin: 20px 0;
+	}
+}
+.admin-box{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+
+	header{
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		border-bottom: none;
+		text-align: center;
+
+		
+		img{
+			max-height: 5em;
+			
+			@include respond-to(bp1){
+				max-height: 6em;
+			}
+		}
+	}
+
+	@include respond-to(bp1){
+		width: 350px;
+		margin: 0 auto;
+	}
+}
+
+header{
+	h1{
+		width: auto;
+		color: #000;
+		font: 1.5em/1em OsloRegular, arial, sans-serif;
+		margin: 0;
+		padding: 0.5em;
+		position: relative;
+		text-align: center;
+
+		span{
+			color: $orangeColor;
+		}
+	}
+}
+
+.admin-form-cont{
+	background: $navBg;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	border: 1px solid #DDDDDD;
+	border-radius: 8px;
+	
+	h1{
+		width: auto;
+		color: #000;
+		font: 1.5em/1em OsloRegular, arial, sans-serif;
+		margin: 0;
+		padding: 0.5em;
+		position: relative;
+		text-align: center;
+
+		span{
+			color: $orangeColor;
+		}
+	}
+
+	form{
+		width: 90%;
+		margin: 1.5em;
+	}
+
+	fieldset{
+		margin: 0.5em auto 0;
+	}
+
+	label{
+		display: none;
+	}
+
+	input{
+		background: white !important;
+		width: 100%;
+		font-size: 1.2em;
+		@include border-radius(0);
+		border: 1px solid #ddd;
+		@include mp-transitions();
+		
+		&:focus{
+			outline: none;
+			border-color:$catBg;
+			@include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 3px rgba($catBg, 0.6));
+		}
+	}
+
+	.btn-wrapper{
+		padding-bottom: 1em;
+		@include mp-clearfix();
+		
+		p{	
+			margin: 0 0 1em;
+			
+			a {
+			    color: #0099FF !important;
+			}
+
+			@include respond-to(bp1){
+				width: 100%;
+				float: left !important;
+				text-align: left !important;
+			}
+		}
+	}
+
+	#submit{
+		margin-top: 0;
+		width: 100%;
+		//height: 100%;
+		font-size:1.3em;
+
+	}
+
+	p{
+		width: 90%;
+		color: black;
+		font: 1.2em OsloRegular, arial, sans-serif;
+		margin: 2em auto 0;
+		padding: 0;
+		position: relative;
+		
+		&.error{
+			color: #B94A48;
+		}
+
+		&.success{
+			color: #468847;
+		}
+
+		a{
+			color: inherit;
+		}
+	}
+
+	#bottom-link{
+		width: 100%;
+		color: $catBg;
+		font: 1em/1em OsloRegular, arial, sans-serif;
+		margin: 1.5em 0 0;
+		padding: 0 0 1em !important;
+		position: relative;
+		
+		a{
+			color: #0099FF;
+			outline:none;
+			cursor:pointer;
+
+			 &:first-child {
+			    float: left;
+			}
+
+			 &:last-child {
+			    float: right;
+			}
+		}
+
+		@include respond-to(bp1){
+			margin: 0;
+		}
+	}
+
+	@include respond-to(bp1){
+		min-height: 200px;
+	}
+}
+
+#verify-cont{
+	background: none;
+    border: none;
+    min-height: 100% !important;
+
+    p{
+    	margin: 1em auto;
+
+    	a{
+    		color: #0099FF;
+    	}
+    }
+}
+
+.login-form{
+	label{
+		display: inherit;
+		text-align: left;
+		float: none;
+		text-transform: none;
+		color: #9E9E9E !important;
+		font-style: italic;
+		padding: 7px 0 0 0;
+	}
+}
+
+
+
+
+

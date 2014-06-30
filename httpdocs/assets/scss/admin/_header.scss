@@ -1,0 +1,296 @@
+#header-cont{
+	background: none repeat scroll 0 0 #FBF7EE;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 4.3em;
+	z-index:999 !important;
+	top:0;
+	left:0;
+	background-image: none;
+	border-bottom: 1px solid #DDDDDD;
+
+	header{
+		width:100%;
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0;
+		position: relative;
+		z-index: 5;
+		@include mp-clearfix();
+		
+		span{
+			width: auto;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			color: $headerLinkColor;
+			cursor: pointer;
+			@include mp-transitions();
+		}
+
+		span.current,
+		span:hover,
+		span:focus{
+			color: black;
+			text-shadow: none;
+		}
+
+		.header-icon{
+			width: 4.5em;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			text-align: center;
+
+			[data-icon]:before{
+				content: attr(data-icon);
+				width: auto;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				speak: none;
+			}
+			@include respond-to(admin2){
+				width: 5em;
+			}
+		}
+
+		#menu-icon{
+			padding: 1.6em 0 0.5em;
+			border-right: 1px solid rgba($headerLinkColor, 0.45);
+			float: left;
+
+			[data-icon]:before{
+				font: 5em/0em Entypo;
+			}
+
+			@include respond-to(admin2){
+				display: none;
+			}
+		}
+
+		#article-logo{
+			width: 30%;
+			margin: 0.25em 0 0 1.25em;
+			padding: 0;
+			position: relative;
+			float: left;
+
+			a{
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+
+			img{
+				max-height: 4em;
+
+				@include respond-to(admin2){
+					max-height: 4em;
+				}
+			}
+		}
+
+		#greeting{
+			width: auto;
+			margin: 1.45em 0.5em 0 0;
+			padding: 0;
+			position: relative;
+			float: right;
+			
+			p{
+				color: $headerLinkColor;
+				font: 1em PTSansRegular, arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				position: relative;
+			}
+
+			@include respond-to(admin2){
+				margin: 2em 1.5em 0 0;
+			}
+		}
+	}
+
+	#search-cont.search-header-section{
+		position: fixed;
+		
+		#search-header-cont{
+			margin:0 auto;
+			max-width: 1120px;	
+
+			form{
+				float: left;
+	    		#search-bg{
+	    			float: left;
+	    			width: 100%;
+	    			border: 1px solid $borderColor;
+
+	    			input{
+	    				width:100% !important;
+						font: 1.8em/1em OsloLight,arial,sans-serif !important;
+						
+						@include respond-to(bp3){
+							padding: 0.3em 0.5em !important;
+						}
+					}
+					@include respond-to(bp3){
+						width: 90%;
+						border:none !important;
+					}
+	    		}
+	    		.search-button{
+	    			display:none;
+	    			background: none repeat scroll 0 0 $orangeColor;
+				    color: #FFFFFF;
+				    float: left;
+				    padding: 0.3em 1em;
+				    width: auto;
+				    cursor: pointer;
+
+				    .icon-search {
+					    font-size: 2.5em;
+
+					    &:hover{
+					    	color: #FFF;
+					    }
+					}
+
+					@include respond-to(bp3){
+						display:block;
+					}
+	    		}
+
+	    		.close-search {
+				    float: left;
+				    margin: 0 0 0 1em;
+				    padding: 0;
+				    width: auto;
+				    display:none;
+				    cursor:pointer;
+
+				    p {
+					    color: $orangeColor;
+					    font-size: 2.5em;
+					    margin: 0;
+					    padding: 0.05em;
+					}
+
+					@include respond-to(bp3){
+						display:block;
+					}
+				}
+				
+
+
+	    		@include respond-to(bp3){
+	    			padding: 0.5%;	
+	    		}
+			}
+		}
+		@include respond-to(bp3){
+
+			display:none;
+			position: fixed !important;
+			right: 0;
+	    	top: 6.5em;
+	    	z-index: 5;
+	    }
+	}
+
+	#other-sites-cont{
+			@include mp-gradient(#FFF, $borderColor, 0%, 80%);
+			width: 100%;
+			margin: 0;
+			padding: 0.3em;
+			position: relative;
+			@include mp-clearfix();
+			display: none;
+
+			#header-other-sites label {
+			    margin-left: 0.5em;
+			    font: 1em OsloRegular,arial,sans-serif;
+			}
+
+			ul{
+				width:98%;
+				max-width: 1120px;
+				margin: 0 auto;
+				padding: 0;
+				position: relative;
+				z-index: 5;
+				list-style: none;
+				text-align: right;
+				@include mp-clearfix();
+
+				li{
+					font: 1em OsloRegular, arial, sans-serif;
+					width: auto;
+					margin: 0;
+					padding: 0 0.5em;
+					position: relative;
+					display: inline-block;
+
+					a{
+						color: $headerLinkColor;
+						text-decoration: none;
+						outline: none;
+						@include mp-transitions();
+						
+						&:hover,
+						&:focus{
+							color: $headerLinkColorHover;
+						}
+					}
+
+					&#sign_join_link{
+					    a{
+					    	color: #0099ff !important;
+					    }
+					}
+				}
+
+				li:after{
+					content: '|';
+					float: right;
+					margin: 0.1em -0.5em 0 0.7em;
+				}
+
+				li:last-child:after{
+					content: none;
+				}
+
+				li#site1{
+					padding-left: 0;
+				}
+			}
+
+			.fe-bar{
+				li:after{
+					content: 'or';
+				}
+			}
+
+			.cms-bar{
+				li:after{
+					content: '|';
+				}
+			}
+
+			@include respond-to(admin2){
+				display: block;
+			}
+		}
+	@include respond-to(admin0bp1){
+		//height: 6.4em;
+	}
+	@include respond-to(admin2){
+		border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+		height: 6.4em;
+		background-image: url('http://images.simpledish.com/articlesites/simpledish/light_bg.jpg');
+		background-repeat: repeat;
+
+	}
+
+}

@@ -1,0 +1,19 @@
+#aol-player-wrap{
+	//display: none;
+	height: 550px;
+	margin: 0 0 1.2em 0;
+	padding: 0 0 10px 0;
+	border-bottom: thin solid $borderColor;
+	h2{
+		color: #6ca32c;
+		font: 1.8em OswaldRegular,arial,sans-serif;
+		text-transform: uppercase;
+		float: none;
+		margin: 1em 0;
+	}
+	@include respond-to(bp1_5){
+		display: block;
+	}
+
+
+}

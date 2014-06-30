@@ -1,0 +1,132 @@
+#categories-cont{
+	background: $headerBg;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: none;
+
+	ul{
+		width:100%;
+		max-width: 1050px;
+		margin: 0 auto;
+		padding: 0;
+		position: relative;
+		z-index: 5;
+		list-style: none;
+		@include mp-clearfix();
+
+		a{
+			color: $headerLinkColor;
+			text-decoration: none;
+
+			@include respond-to(bp1){
+				color: #fff;
+			}
+		}
+
+		li{
+			width: 50%;
+			color: $headerLinkColor;
+			font: 1.125em PTSansBold, arial, sans-serif;
+			text-align: center;
+			margin: 0;
+			padding: 0.5em 0.3em;
+			position: relative;
+			border-bottom: 1px solid #000;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+			cursor: pointer;
+			float: left;
+			@include mp-transitions();
+
+			@include respond-to(bp1){
+				color: #fff;
+				font: 0.9em PTSansRegular, arial, sans-serif;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.45);
+				width: 20%;
+				border-bottom: 1px solid #fff;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+				border-right: 1px solid #fff;
+				border-right: 1px solid rgba(255, 255, 255, 0.5);
+			}
+
+			@include respond-to(bp3){
+				width: 9.6%;
+				border-bottom: none;
+			}
+		}
+
+		li.current,
+		li:hover,
+		li:focus{
+			background: rgba(255, 255, 255, 0.35);
+		}
+
+		li#category5,
+		li#category10{
+			border-right: none;
+
+			@include respond-to(bp3){
+				border-right: 1px solid #fff;
+				border-right: 1px solid rgba(255, 255, 255, 0.5);
+			}
+		}
+
+		li#category1{
+			@include respond-to(bp3){
+				border-right: 1px solid #fff;
+				border-left: 1px solid rgba(255, 255, 255, 0.5);
+			}
+		}
+	}
+
+	@include respond-to(bp1){
+		display: block;
+		background: lighten($catBg, 20);
+		background: $catBg;
+	}
+	
+	.header-icon{
+			width: 3em;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			text-align: right;
+			display:none;
+			
+				&.current,
+				&:hover,
+				&:focus{
+					background: rgba(255, 255, 255, 0.35);
+				}
+
+			[data-icon]:before{
+				content: attr(data-icon);
+				margin: 0;
+				padding: 0.6em;
+				speak: none;
+			}
+			
+			li{
+				padding-left: 0;
+				padding-right: 0;
+				width: 0;
+			}
+			
+			@include respond-to(bp3){
+				display: block;
+			}
+		}
+
+		#home-icon{
+		  float: left;
+	  
+			[data-icon]:before{
+				color: white;
+				font: 1.6em/0em Pictos;
+			}
+			@include respond-to(bp3){
+				display: block;
+			}
+		}
+}

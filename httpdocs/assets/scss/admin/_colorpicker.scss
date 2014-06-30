@@ -1,0 +1,67 @@
+.picker-input{
+	width:80%;
+
+	@include respond-to(admin2){
+		width: 70%;
+	}
+}
+
+.picker-element{
+	background: url($siteImageUrl + "select.png") repeat scroll center center transparent;
+	width: 28px;
+	height: 28px;
+	margin: 0 0 0 0.5em;
+	padding: 0;
+	position: relative;
+	float: left;
+	cursor: pointer;
+}
+
+.colorpicker-parent{
+	width: 100%;
+	position: relative;
+	@include mp-clearfix();
+	display: none;
+}
+
+.colorpicker{
+	margin: 0 auto;
+	width: 200px;
+
+	.farbtastic { 
+		position: relative;
+		width: 195px;
+		height: 195px;
+
+		* {
+			position: absolute;
+			cursor: crosshair;
+		}
+
+		.wheel {
+			width: 195px;
+			height: 195px;
+			background: url($siteImageUrl + "wheel.png") no-repeat;
+		}
+
+		.color, 
+		.overlay {
+			top: 48px;
+			left: 48px;
+			width: 98px;
+			height: 98px;
+		}
+
+		.overlay {
+			background: url($siteImageUrl + "mask.png") no-repeat;
+		}
+
+		.marker {
+			width: 17px;
+			height: 17px;
+			margin: -8px 0 0 -8px;
+			overflow: hidden; 
+			background: url($siteImageUrl + "marker.png") no-repeat;
+		}
+	}
+}

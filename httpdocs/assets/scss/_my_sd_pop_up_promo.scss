@@ -1,0 +1,139 @@
+/*****************************
+
+Begin My Simple Dish PROMO Pop-Up Stylings
+
+*****************************/
+
+#my-sd-promo-content{
+	width: 470px; 
+	height: 333px; 
+	min-width: 0px;
+
+	background: -webkit-radial-gradient(#fff , #eee4e0); /* Safari */
+	background: -o-radial-gradient(#fff , #eee4e0); /* For Opera 11.1 to 12.0 */
+	background: -moz-radial-gradient(#fff , #eee4e0); /* For Firefox 3.6 to 15 */
+	background: radial-gradient(#fff , #eee4e0); /* Standard syntax */
+	font-family: OsloRegular;
+	button, p{
+		display: inline-block;
+	}
+
+}
+
+#my-sd-promo{
+	text-align: center;
+	h1{
+		font: 2em OsloBold, Arial;
+		padding: 12px 0 0 0; 
+		margin: 0;
+		color: #fb7151;
+	}
+	
+	p{
+		font-size: 1.3em;
+		padding: 3px 40px; 
+		margin-bottom: 17px;
+		line-height: 1.6em;
+		font-family: OsloRegular;
+	}
+	hr{
+		margin: 0 40px;
+		display: block;
+	}
+	.heading{
+		text-align: center;
+		padding-top: 45px;
+		margin: 12px 0 0 0; 
+
+		-webkit-transition:opacity 200ms ease-in;
+		-moz-transition:opacity 200ms ease-in;
+		-o-transition:opacity 200ms ease-in;
+		transition:opacity 200ms ease-in;
+      	-webkit-backface-visibility: hidden;
+
+		img{
+			margin-top: -29px;
+			margin-bottom: -4px;
+			display: inline;
+		}
+		h1{
+			display: inline;
+		}
+		&:hover{
+			opacity: 0.60;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+			filter: alpha(opacity=60);
+
+		}
+	}
+
+	.popup-top{
+		border-bottom: thin solid #959595;
+		margin: 0 50px;
+
+	}
+	.highlighted-link{
+		color: #f84c49;
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+
+	#links{
+		text-align: center;
+		padding: 15px 0 21px 0; 
+		
+		p{
+			margin: 0;
+			padding: 0;
+			width: inherit;
+		}
+
+		button{
+			background: #f84c49;
+			padding: 5px 10px 5px 10px;
+			margin: 0 10px 0 -9px;
+			color: #fff;
+			cursor: pointer;
+			-webkit-transition:background-color 200ms ease-in;
+			-moz-transition:background-color 200ms ease-in;
+			-o-transition:background-color 200ms ease-in;
+			transition:background-color 200ms ease-in;
+			border: 1px outset buttonface;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			-ms-border-radius: 10px;
+			-o-border-radius: 10px;
+			border-radius: 10px;
+
+			font: 1.3em Arial;
+			float: none;
+			width: inherit;
+			&:hover{
+				background: #ff7a78;
+			}
+		}
+
+		a{
+			text-decoration: none;
+			color: #fb7151;
+			-webkit-transition:color 200ms ease-in;
+			-moz-transition:color 200ms ease-in;
+			-o-transition:color 200ms ease-in;
+			transition:color 200ms ease-in;
+			
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+
+	}
+	
+	.overlay{
+		background: #000;
+		opacity: 0.65 ;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+		filter: alpha(opacity=65);
+	}
+
+}

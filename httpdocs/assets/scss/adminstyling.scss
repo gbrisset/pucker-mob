@@ -1,0 +1,303 @@
+//Overwritable Colors
+$siteImageUrl: "http://localhost:8888/premium_sites_redesign/subdomains/images/httpdocs/articlesites/sharedimages/admin/";
+$bgColor: #ffffff;
+$catBg: #6ca32c;
+$headerBg: #ffffff;
+$headerLinkColor: #333333;
+$headerLinkColorHover: #000000;
+$simpleDishGreen: #6ca32c;
+$a_color: #0090D1; /*Blue Color on Anchor*/
+
+$darkBg: #afafaf;
+$slideShowBg: rgba($catBg, 0.15);
+
+$iconAndBorderColor: #707070;
+$sectionHeaderColor: #DDD;
+$borderColor: #DDD;
+
+$orangeColor: #E06B15;
+
+@import "_normalize.scss";
+@import "_fontface.scss";
+@import "_helpers.scss";
+@import "compass/css3";
+
+
+#ninja{color:#000;visibility:hidden;}
+body,
+html{
+	//background: $bgColor;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background: #FFF;
+
+	@include respond-to(admin1){
+	//	background: url("http://images.simpledish.com/articlesites/simpledish/bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
+html{
+	font-family: 'admin0';
+	
+	@include respond-to(admin0bp1){
+		font-family: "admin0bp1";
+	}
+
+	@include respond-to(admin1){
+		font-family: "admin1";
+	}
+
+	@include respond-to(admin2){
+		font-family: "admin2";
+	}
+}
+
+body{
+	font-family: arial, sans-serif;
+}
+
+/* Begin Header Styling */
+/*@import "admin/_header.scss";*/
+@import "_header.scss";
+/* End Header Styling */
+
+/* Begin Menu Styling */
+@import "admin/_menu.scss";
+/* End Menu Styling */
+
+/* Begin Login Styling */
+@import "admin/_login.scss";
+/* End Login Styling */
+
+/* Begin Register Styling */
+@import "admin/_register.scss";
+/* End Register Styling */
+
+/* Begin Generic Elements Styling*/
+@import "admin/_shared.scss";
+/* End Generic Elements Styling*/
+
+/* Begin Form Styling*/
+@import "admin/_jquery_sortable.scss";
+@import "admin/_forms.scss";
+/*End Form Styling*/
+
+/* Begin Icon Styling */
+@import "_icons.scss";
+
+/*Begin LightBox Styling*/
+@import "admin/_lightbox.scss";
+/*End LightBox Styling*/
+
+/*Begin Tooltip Styling*/
+@import "admin/_tooltip.scss";
+/*End Tooltip Styling*/
+
+/*Begin Uploader Styling*/
+@import "admin/_uploader.scss";
+/*End Uploader Styling*/
+
+/*Begin Color Picker Styling*/
+@import "admin/_colorpicker.scss";
+/*End Color Picker Styling*/
+
+/* Begin Featured Section Styling */
+@import "_featuredsection.scss";
+/* End Featured Section Styling */
+
+/* Begin Categories Section Styling */
+@import "admin/_categorysection.scss";
+/* End Categories Section Styling */
+
+/* Begin Contributor Section Styling */
+@import "admin/_contributorsection.scss";
+/* End Contributor Section Styling */
+
+/* Begin Account Section Styling */
+@import "admin/_accountsection.scss";
+/* End Account Section Styling */
+
+/* Begin Article Section Styling */
+@import "admin/_articlesection.scss";
+/* End Article Section Styling */
+
+/* Begin shared-icons Styling */
+@import "_sharedicons.scss";
+/* End shared-icons Styling */
+
+/* Begin social-buttons Styling */
+@import "_socialbuttons.scss";
+/* End shared-icons Styling */
+
+/* Begin Featured Section Styling */
+@import "admin/_featuredsection.scss";
+/* End Featured Section Styling */
+
+/* Begin Featured Section Styling */
+@import "admin/_pagelist.scss";
+/* End Featured Section Styling */
+
+/* Begin SD Popup Styling */
+@import "_popup.scss";
+/* End SD Popup Styling */
+
+/* Begin My simpledish promo pop up Styling */
+@import "_my_sd_pop_up_promo.scss";
+/* End My simpledish promo pop up Styling */
+
+/* Begin My simpledish Header promo Styling */
+@import "admin/_my_sd_header_promo.scss";
+/* End My simpledish Header promo Styling */
+
+/* Begin Pages Styling */
+@import "_pages.scss";
+/* End Pages Styling */
+
+/* Begin Contact Styling */
+@import "admin/_contact.scss";
+/* End Contact Styling */
+
+/* Begin Contact Styling */
+@import "admin/_bug.scss";
+/* End Contact Styling */
+
+/* Begin HP_Slider Styling */
+@import "admin/_hp_slideshow.scss";
+/* End HP_Slider Styling */
+
+#pages{
+	margin-bottom: 0.5em !important;
+}
+
+/* Begin WYSIWYG Styling */
+@import "admin/_wysiwyg.scss";
+/* End WYSIWYG Styling */
+
+/* Begin Footer Styling */
+@import "_footer.scss";
+/* End Footer Styling */
+
+
+@import "admin/_appendaround.scss";
+@import "admin/_dropbox.scss";
+@import "admin/_pikaday.scss";
+@import "admin/_articlestyling.scss";
+@import "admin/_seriesandplaylist.scss";
+
+#footer-cont{
+	top:0;
+	overflow: hidden;
+	
+	#footer-connect #connect-cont{
+		display: block !important;
+	}
+}
+
+#search-header-cont, #search-footer-cont{
+		width:100%;
+		position: relative;
+		float:none;
+
+		form{
+			width: 100% !important;
+			margin: 0;
+			padding: 1% 0 2%;
+			position: relative;
+			text-align: center;
+			
+			.focus-bg{
+				background: white !important;
+			}
+
+			#search-bg{
+				background: #fff;
+				width: 100%;
+				border: 1px solid $borderColor;
+				padding: 0;
+				position: relative;
+				@include mp-transitions();
+				@include mp-clearfix();
+
+				input{
+					background: none;
+					color: $headerLinkColor;
+					font: 1.5em/1em OsloRegular,arial,sans-serif;
+					width: 80%;
+					margin: 0;
+					padding: 0.4em;
+					border: none;
+					float: left;
+					@include mp-transitions();
+
+					@include respond-to(bp3){
+						padding: 0.6em 0.5em 0.4em;
+					}
+				}
+
+				input:focus{
+					outline: none;
+					color: $headerLinkColorHover;
+				}
+
+				input:focus ~ span{
+					color: $headerLinkColorHover;
+				}
+
+				.icon-search {
+				    color: #999999;
+				    float: left;
+				    font-size: 2.5em;
+				    margin: 2%;
+
+				    @include respond-to(bp3){
+				    	margin:1%;
+				    	font-size:2.4em;
+				    }
+				}
+
+				@include respond-to(bp3){
+					 width:76%;
+					 float:left;
+				}
+			}
+
+			#search-button {
+
+				display:none;
+				
+				@include respond-to(bp3){
+					display:block;
+					background: $orangeColor;
+				    border: none;
+				    color: white;
+				    float: right;
+				    font: 1.5em OsloLight,arial,sans-serif;
+				    padding: 0.6em 0.5em 0.5em 0.4em;
+				    width: 22%;
+				}
+			   
+			}
+
+			@include respond-to(bp3){
+				float: left;
+				padding: 0.5%;
+			}
+		}
+		@include respond-to(bp3){
+			padding: 0;
+    		position: relative;
+    		right: 0;
+    		width: 100%;
+		}
+	}
+
+	#contributor-target-img{
+		display:none !important;
+	}
+
+	#header-cont{
+	 z-index: 999 !important;
+	}

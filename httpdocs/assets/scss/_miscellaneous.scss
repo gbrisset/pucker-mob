@@ -1,0 +1,156 @@
+.writeforus-cont, .advertise-cont, .featured-partner-badge-cont{
+	width: 100%;
+	
+	h2{
+		 font: 1.2em OsloRegular,arial,sans-serif;
+		 width: 98%%;
+		 color: #000;
+		 padding-top: 0.7em;
+		 line-height: 1.3em;
+		 margin:0 0 0 0.125em;
+		}
+	
+	.body-desc{
+		width: 98%;
+		margin:0 0 0 0.125em;
+		font: 1.2em OlsoRegular,arial,sans-serif;
+		
+		p{
+			strong{
+				margin-right:5px;
+			}
+			a{
+				color: $catBg;
+				text-decoration:none;
+				outline: none;
+				
+				&:hover,
+				&:focus{
+					//text-decoration: underline;
+				}
+			}
+		}
+		ul{
+			margin: 0;
+			padding: 0 0 0 13px;
+			
+			li{
+				padding-top: 5px;
+			}
+		}
+		label{
+			color: $catBg;
+		}
+	}
+	
+	#contact-us-cont{
+		#div-result{
+			float: right;
+			width: auto;
+			margin: -5px 5px;
+			font: 1.2em OsloRegular, arial, sans-serif;
+			position: relative;
+			padding: 0;
+			
+			p.success{
+				color: #59B259;
+			}
+			p.error{
+				color: #CA413B;
+			}
+		}
+	}
+}
+.featured-partner-badge-cont{
+	margin: 1%;
+	
+	#featured-badge-cont{
+
+		margin-bottom: 5%;
+	
+		h2{
+			color: $catBg;
+			font: 1.2em/1.3em OsloRegular,arial,sans-serif;
+		}	
+		fieldset{
+			padding-top: 1%;
+		}
+		
+		.badge-img{
+			width: 100%;
+			text-align:center;
+				
+			img{
+				width: auto;
+				max-width: 80%;
+				
+				@include respond-to(bp3){
+					max-width: 30%;
+				}
+			}
+			
+			@include respond-to(bp3){
+				width: 80%;
+				text-align:left;
+			}
+		}
+		
+		#favicon-img{
+			width: 185px;
+			font: 1em OlsoRegular,arial,sans-serif;
+			margin: 0 auto;
+			
+			p{
+				float: right;
+				margin-top: 5%;
+				
+				a{
+					color: $catBg;
+					text-decoration:none;
+					outline: none;
+				}
+			}
+			@include respond-to(bp3){
+				margin: 0;
+			}
+		}
+	
+		.badge-text{
+			float: right; 
+			margin: 0px; 
+			text-align: left; 
+			width: 60%;
+			
+			p{
+				width: 65%;
+			}
+			
+		}
+		.badge-code{
+			width: 100%; 
+			float: left;
+			
+			textarea{
+				background: none repeat scroll 0 0 transparent;
+			    border: 1px solid rgba(0, 0, 0, 0.25);
+			    border-radius: 5px 5px 5px 5px;
+			    color: #5E5E5E;
+			    font: 1.2em OlsoRegular,arial,sans-serif;
+			    text-trasform: uppercase;
+			    margin: 0.25em 0 0;
+			    padding: 0.3em;
+			    position: relative;
+			    width: 100%;
+			    min-height: 100px;
+		    
+			    @include respond-to(bp3){
+						width: 100%;
+				}
+			}
+			
+			@include respond-to(bp3){
+					width: 80%;
+			}
+		}
+	}
+}

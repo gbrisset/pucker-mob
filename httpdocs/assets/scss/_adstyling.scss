@@ -1,0 +1,184 @@
+.adsbygoogle_caption{
+	text-align: right; 
+	font-size: .8em !important; 
+	color: #999;
+	font-style: italic;
+	margin: 0;
+	padding: 2px 0 10px 0;
+}
+
+.ad-300{
+	content: " " ;
+	width: 100%;
+	max-width: 300px;
+	height: 260px;
+	//margin: 0 0 1.154em;
+	margin: 0 0 1.154em 0.5em;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	display: block;
+
+	@include respond-to(bp1){
+	    float: left;
+	    margin: 0.5em 0.5em 0.5em 0;
+	    width: 46%;
+	    margin: 0 0 1.154em;
+	}
+
+
+	@include respond-to(bp2){
+		display:none;
+	}
+	
+	@include respond-to(bp3){
+		display: block;
+		width: 100%;
+		margin: 0 0 1.154em;
+	}
+	@include respond-to(bp4){
+		display: block;
+		width: 100%;
+		margin: 0 0 18px 0;
+	}
+
+}
+
+.ad-728{
+	content: " " ;
+	width: 100%;
+	max-width: 728px;
+	height: 90px;
+	margin: 10px auto;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	display: none;
+	
+	@include respond-to(bp728){
+		display: block;
+	}
+}
+
+.ad_1050 {
+  content: " ";
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  display: block;
+  clear: both;
+  border:1px solid #DDD;
+
+  a{
+  	outline:none;
+  	decoration-text: none;
+  }
+}
+.ad_1050 .nilla-cat-button-single {
+  width: 20%;
+  position: absolute;
+  bottom: 20%;
+  right: 3%;
+}
+.ad_1050 .nilla-cat-button-single a {
+  opacity: 1;
+  transition: opacity .2s ease-out;
+  -moz-transition: opacity .2s ease-out;
+  -webkit-transition: opacity .2s ease-out;
+  -o-transition: opacity .2s ease-out;
+  -webkit-backface-visibility: hidden;
+}
+.ad_1050 .nilla-cat-button-single a:hover {
+  opacity: .7;
+}
+.ad_1050 .nilla-cat-button-double {
+  width: 20%;
+  position: absolute;
+  bottom: 18%;
+  right: 4%;
+}
+.ad_1050 .nilla-cat-button-double a {
+  opacity: 1;
+  transition: opacity .2s ease-out;
+  -moz-transition: opacity .2s ease-out;
+  -webkit-transition: opacity .2s ease-out;
+  -o-transition: opacity .2s ease-out;
+  -webkit-backface-visibility: hidden;
+}
+.ad_1050 .nilla-cat-button-double a:hover {
+  opacity: .7;
+}
+.ad_1050 img {
+  position: relative;
+  width: 100%;
+}
+.ad_1050 a.nilla-banner-button {
+  display: block;
+  margin: 3%;
+}
+
+.ad-300-mobile,
+.ad-300-mobile2,
+.ad-300-mobile3{
+	content: " ";
+	width: 100%;
+	max-width: 300px;
+	height: 250px;
+	margin: 0.5em auto 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	
+	@include respond-to(bp3){
+		display: none;
+	}
+}
+
+.ad-300-mobile2{
+	@include respond-to(bp1_5){
+		display: none;
+	}
+}
+
+.ad-300-mobile3{
+	display: none;
+	
+	@include respond-to(bp1_5){
+		display: block;
+	}
+
+	@include respond-to(bp3){
+		display: none;
+	}
+}
+/* Change default background for the google display ads from yellow to white */
+ins {
+	background: #fff; 
+}
+
+/*Media Net Styling*/
+#media_net{
+	text-align: center;
+	margin: 2em auto;
+}
+
+/*VSW ADS*/
+.era_ad_block.default{
+	margin-bottom: 1em !important; 
+}
+
+/*3Lift Tags*/
+
+#lift_tag{
+	clear:both;
+	//margin-top:5em;
+	display:none;
+
+	@include respond-to(bp2){
+		display:block;
+	}
+}

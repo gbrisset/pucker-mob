@@ -1,0 +1,194 @@
+#contributors-list{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+
+	.section-bar {
+	    margin-bottom: 2em !important;
+	}
+
+	.icon-edit {
+	    margin-right: 0.5em;
+	}
+
+	.admin-contributor{
+		width: 98%;
+		margin: 0.5em auto;
+		padding: 0 0 0.5em;
+		position: relative;
+		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+		clear:both;
+
+		@include respond-to(admin2){
+			width: 100%;
+			@include mp-clearfix();
+		}
+
+		.contributor-image{
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			text-align: center;
+
+			@include respond-to(admin2){
+				float: left;
+				clear: both;
+				max-width: 6em;
+    			min-width: 6em;
+    			width: 98%;
+				margin: 0 0.5em 0 0;
+			}
+
+			a{
+				border: none;
+				outline: none;
+			}
+
+			img{
+				max-width: 100%;
+			}
+		}
+
+		.contributor-info{
+			width: 80%;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			float:left;
+			
+			h2{
+				width: auto;
+				font: 1.2em OsloRegular, arial, sans-serif;
+				margin: 0 0 0.5em;
+				padding: 0;
+				position: relative;
+				text-align: center;
+
+				@include respond-to(admin2){
+					text-align: left;
+				}
+
+				a{
+					color: #0090D1;
+					text-decoration: none;
+				}
+			}
+
+			a#edit{
+				color: #999999;
+			    cursor: pointer;
+			    margin: 0 3em 0 0;
+			    outline: medium none;
+			}
+
+			p{
+				color: black;
+				width: auto;
+				font: 1.2em/1.25em OsloRegular, arial, sans-serif;
+				margin: 0 0 1em;
+				padding: 0;
+				position: relative;
+				-webkit-hyphens: auto;
+				-moz-hyphens: auto;
+				-ms-hyphens: auto;
+				hyphens: auto;
+			}
+		}
+
+		.btn-wrapper{
+			position: absolute;
+			bottom: 0.5em;
+			right: 0;
+		}
+
+		&:last-child{
+			border-bottom: none;
+		}
+	}
+}
+
+#contributor_wide_img{
+	@include mp-ieopacity(0);
+	cursor: pointer;
+    float: left;
+    height: 2em;
+    position: absolute;
+    top: 5px;
+    width: 5em;
+    z-index: 20;
+}
+
+#contributor-wide-image-upload-form{
+	
+	a {
+	    float: left;
+	    padding: 10px 0 0 10px; 
+	    z-index: 10;
+	    color: rgb(0, 144, 209) !important; 
+		text-decoration:none;
+		outline:none;
+		&:hover{
+			text-decoration:underline;
+		}
+	}
+
+	h2{
+		font: 1.2em OsloRegular,arial,sans-serif;
+		margin:0.5em;
+		float:left;
+		padding:0;
+		width: 100%;
+		color: #6CA32C;
+	}
+
+	span{
+		p{
+			font: 1.2em OsloRegular,arial,sans-serif;
+			margin:0.5em;
+			float:left;
+			padding:0;
+		}
+	}
+
+	.info{
+		display:none;
+
+		label {
+		    clear: both;
+		    margin: 0 0.7em;
+		    min-width: 50px;
+		    text-align: left;
+		    width: auto;
+		}
+
+		input{
+			width: 5em;
+		}
+
+		 p {
+		    font: 0.925em/1.2em OsloRegular,arial,sans-serif;
+		    margin: 0.5em 0.7em;
+		    padding: 0;
+		}
+	}
+
+	#rules{
+		width:100%;
+		clear:both;
+		margin: 3.5em 3.5em 0;
+		color: #e06b15;
+	}
+
+	.step2{
+		display:none;
+	}
+
+	.image-info{
+		margin-left: 3.5em;
+	}
+}
+
+

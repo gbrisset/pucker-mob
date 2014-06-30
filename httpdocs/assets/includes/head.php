@@ -28,20 +28,18 @@
 	<link rel="dns-prefetch" href="//mycdn.media.net" />
 	<?php } ?>
 	<link rel="prefetch prerender" href="http://www.simpledish.com" />
-	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Simple Dish | Quick, Easy & Healthy Recipes";} ?></title>
+	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<?php 
 		$headDesc = '';
 		if(isset($articleInfo) && isset($articleInfo['articles'][0]) && strlen($articleInfo['articles'][0]['article_desc'])) $headDesc = $articleInfo['articles'][0]['article_desc'];
 		else if(isset($categoryInfo) && strlen($categoryInfo['cat_desc'])) $headDesc = $categoryInfo['cat_desc'];
-		else if(isset($collections_info) && strlen($collections_info['collections_desc'])) $headDesc = $collections_info['collections_desc'];
 		else if(isset($mpArticle->data) && strlen($mpArticle->data['article_page_desc'])) $headDesc = $mpArticle->data['article_page_desc'];
 
 		$headTags = '';
 		if(isset($articleInfo) && isset($articleInfo['articles'][0]) && strlen($articleInfo['articles'][0]['article_tags'])) $headTags = $articleInfo['articles'][0]['article_tags'];
 		else if(isset($categoryInfo) && strlen($categoryInfo['cat_tags'])) $headTags = $categoryInfo['cat_tags'];
-		else if(isset($collections_info) && strlen($collections_info['collections_tags'])) $headTags = $collections_info['collections_tags'];
 		else if(isset($mpArticle->data) && strlen($mpArticle->data['article_page_tags'])) $headTags = $mpArticle->data['article_page_tags'];
 	?>
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
@@ -52,7 +50,7 @@
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />
 	<meta property="og:site_name" content="<?php echo $mpArticle->data['article_page_name']; ?>" />
 	<meta property="og:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
-	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo && isset($articleInfo['articles'][0])){echo $config['image_url'].'articlesites/simpledish/tall/'.$articleInfo['articles'][0]['article_id'].'_tall.jpg';}else{echo $config['image_url'].'articlesites/featured/'.$mpArticle->data['featured_img'];}?>" />
+	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo && isset($articleInfo['articles'][0])){echo $config['image_url'].'articlesites/puckermob/tall/'.$articleInfo['articles'][0]['article_id'].'_tall.jpg';}else{echo $config['image_url'].'articlesites/featured/'.$mpArticle->data['featured_img'];}?>" />
 	<?php if(isset($articleInfo) && $articleInfo){ ?>
 	<meta property="article:published_time" content="<?php if (isset($articleInfo['articles'][0])) echo date('Y-m-d\TH:i', strtotime($articleInfo['articles'][0]['creation_date'])); ?>" />
 	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />

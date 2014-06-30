@@ -54,7 +54,8 @@ $body-font-family: "Oslo", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans
 // $default-float: left;
 
 // We use these as default colors throughout
-$primary-color: #6ad98a;
+$primary-color: #03ffd6;
+//#6ad98a;
 // $secondary-color: #e7e7e7;
 $alert-color: rgb(124,124,124);
 // $success-color: #43AC6A;
@@ -1169,7 +1170,8 @@ $panel-padding: rem-calc(15);
 
 // $include-html-top-bar-classes: $include-html-classes;
 // Background color for the top bar
-$topbar-bg-color: rgb(70,70,70);
+//$topbar-bg-color: rgb(70,70,70);
+$topbar-bg-color: #232323;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin

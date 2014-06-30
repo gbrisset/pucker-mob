@@ -1,1 +1,0 @@
-<script src="<?php echo $config['this_url']; ?>assets/js/app_test.js"></script>

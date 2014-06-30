@@ -19,7 +19,7 @@
    <description><?php echo $mpArticle->data['article_page_desc']; ?></description>
    <category>Recipes</category>
    <language>en-us</language>
-   <copyright>Copyright 2013sequelmediagroup.com, All rights reserved.</copyright>
+   <copyright>Copyright 2013 sequelmediagroup.com, All rights reserved.</copyright>
    <managingEditor>info@sequelmediagroup.com (Sequel Media Group)</managingEditor>
    <webMaster>info@sequelmediagroup.com (Sequel Media Group)</webMaster>
    <image>

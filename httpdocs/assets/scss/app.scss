@@ -36,8 +36,9 @@ $sidebar-border-color: $todays-favorites-border-color;
 $logo-width: rem-calc(175);
 $logo-height: rem-calc(48);
 
+$main-color: #03ffd6;
 $header-padding: rem-calc(8);
-$header-color: #93918f;
+$header-color: #747371;
 $header-font-color: #ffffff;
 
 $sidebar-header-bg-color: $primary-color;
@@ -71,6 +72,10 @@ a{ outline: none !important; }
 
 .padding-top {
 	padding-top: ($panel-padding/2);
+}
+.half-padding-bottom-top {
+	padding-top: ($panel-padding/2) !important;
+	padding-bottom: ($panel-padding/2) !important;
 }
 .half-padding {
 	padding-left: ($panel-padding/2);
@@ -149,8 +154,7 @@ header {
 
 // Homepage Sections
 
-.todays-favorites h5 {margin-top: ($panel-padding/2); margin-bottom: 0;}
-.todays-favorites:hover {background-color: $todays-favorites-background-hover-color;}
+
 .orbit-container {max-width: 784px; margin: 0 auto;}
 #puc-articles a > h5{ text-align: left;}
 
@@ -200,32 +204,14 @@ body#home #main h2 {
 	color: $primary-color;
 	text-transform: uppercase;
 }
-.sidebar h4 {font-size: 1.625rem; color: $primary-color; text-transform: uppercase;}
+
 i {margin-left: 5px; margin-right: 5px;}
 
 
 .sidebar {padding-left: $panel-padding; padding-right: $panel-padding;}
 
 
-.todays-favorites {
-	border: 1px solid $todays-favorites-border-color;
-	padding: $todays-favorites-padding $todays-favorites-padding $todays-favorites-padding $todays-favorites-padding;
-	background-color: $todays-favorites-background-color;
-	border-top: 0;
-}
-#popular-articles > a:last-child > .todays-favorites {
-	border-bottom-left-radius: $todays-favorites-border-radius;
-	border-bottom-right-radius: $todays-favorites-border-radius;
-}
-#popular-articles-top {
-	border-top: 1px solid #dddddd;
-	border-top-left-radius: $todays-favorites-border-radius;
-	border-top-right-radius: $todays-favorites-border-radius;
-}
-.todays-favorites img {
-	border: 1px solid $todays-favorites-border-color;
-	border-radius: $todays-favorites-border-radius;
-}
+
 @media screen {#main hr {margin-left: -$panel-padding; margin-right: -$panel-padding;}}
 .sidebar-on-right {padding-left: 0; padding-right: 0;}
 
@@ -348,11 +334,11 @@ transition: all 0.3s ease-in-out;}
 #legal-links ul.inline-centered {float: right; padding-top: 5px;}
 #footer-logo {text-align: left;}
 #footer-right > div.row {margin-left: -$panel-padding;}
-#popular-articles-top {border-top: 0; border-radius: 0;}
+
 .nr_rc_link:first-child {border-top: 0; border-radius: 0;}
 #ac_19640 .ac_container:nth-child(4n) {display: none;}
 .ac_container {width: 33.33333%;}
-	#aside {right: $panel-padding; /*border-left: $panel-padding solid white;*/ top: $panel-padding}
+	
 	#_ci_widget_div_31931 ul li {width: 50%;}
 	#_ci_widget_div_31931 ul li:last-child {display: none;}
 	.panel {border-color: #ddd;}
@@ -362,8 +348,8 @@ transition: all 0.3s ease-in-out;}
  		-webkit-box-shadow: 0px 1px 1px 0px $shadow-color;
   		box-shadow:         0px 1px 1px 0px $shadow-color;
 	}
-	.sidebar .todays-favorites {border-top: 0; margin-bottom: 0; border-radius: 0;}
-	.sidebar #last-trending-now {border-bottom-left-radius: $mega-menu-border-radius; border-bottom-right-radius: $mega-menu-border-radius;}
+	
+	
 	.padding-right {padding-right: $panel-padding;}
 	body {background: #eaeae9; }
 	#sectioned-article-border {border: 1px solid #ddd; border-radius: $mega-menu-border-radius;}
@@ -400,15 +386,7 @@ transition: all 0.3s ease-in-out;}
 		margin-bottom: $panel-padding;
 	}
 	#about-the-author h4 {font-size: 1.25rem;}
-	.sidebar h4 {
-		text-align: center;
-		padding-top: $sidebar-header-padding;
-		padding-bottom: $sidebar-header-padding;
-		margin: 0;
-		color: white;
-		background-color: $primary-color;
-		font-size: 1rem;
-	}
+	
 	.half-padding-left-on-lg {
 	padding-left: ($panel-padding/2);
 }
@@ -463,6 +441,7 @@ transition: all 0.3s ease-in-out;}
   		box-shadow:         0 5px 3px -4px $shadow-color; 
   		margin-bottom: ($panel-padding/2); 
   		z-index: 9999999;
+  		border-bottom: 1px solid $main-color;
 }
 
 #social-buttons i {margin-left: 0; margin-right: 0;}
@@ -479,13 +458,12 @@ transition: all 0.3s ease-in-out;}
 #recipe-summary > .row > #recipe-rating > .label {display: inline-block;}
 #savings-center-ad {margin-bottom: $panel-padding; border: 1px solid $todays-favorites-border-color; border-radius: $sidebar-border-radius; margin: 0 auto;}
 #savings-center-ad img {padding: 0.1875rem;}
-#topbar-container {height: 1.8rem; width: 135px; background-color: white; float: right; margin-top: -0.4rem; margin-right: 2rem;}
+#topbar-container {height: 1.8rem; width: 135px; background-color: white; float: right; margin-top: -0.4rem; margin-right: 3.7rem;}
 #topbar-search-contents {width: 100%; float: left; margin: 0 !important; height: 1.8rem !important; background-color: rgb(204,204,204); border: 1px solid rgb(204,204,204); box-shadow: none;}
 #topbar-search-submit {float: right; width: rem-calc(32); position: absolute; height: 1.8rem !important; padding: 0 !important;}
 #connect-with-us .button, #connect-with-us input {margin-bottom: ($panel-padding/2);}
 #todays-favorites .todays-favorites {text-align: center;}
 .hr-hidden {display: none !important;}
-#popular-articles {overflow-y: auto; overflow-x: hidden; margin-bottom: $panel-padding;}
 #ingredients ul, #instructions ol, #additional-comments p {margin-bottom: ($panel-padding/2);}
 #ingredients h2, #instructions h2, #additional-comments h2 {margin-top: ($panel-padding/2);}
 #lift-ad {width: 100%;}
@@ -734,7 +712,7 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 //#nav-bar {position: fixed; top: 0; left: 0;}
 //#header-ad {margin-top: ($topbar-height + ($panel-padding/2));}
 
-.span-category{ color: #01b88a; text-transform: uppercase; font-size:0.8rem;}
+.span-category{ color: $primary-color; text-transform: uppercase; font-size:0.8rem;}
 .span-date, .span-author{ color: #464646; font-size:0.8rem;}
 .span-author a{ color: #464646;}
 .span-category:after{ content: '|'; margin: 0 0 0 0.4rem; color: #464646;}
@@ -796,8 +774,11 @@ body{padding-top:0 !important;}
 .top-bar-section ul li{
 		margin-top:2px;
 		background: none !important;
-
 	a{
 		background: none !important;
+		padding: 0 0 0 1.8rem !important;
 	}
 } 
+
+div.creative_container{ border:none !important; }
+@import "right_side_bar";

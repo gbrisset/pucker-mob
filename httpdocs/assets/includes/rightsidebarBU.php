@@ -5,10 +5,8 @@
     <div id="atf-ad" class="ad-unit ad300"></div>
     <div id="atf1050-ad" class="ad-unit ad300"></div>
 
-     <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
-     
     <section id="sister-site" class="sidebar">
-        <div class="h4-container"><h4>Trending Now</h4></div>
+        <h4>Trending Now</h4>
         <div id="contentad21794"></div>
 
         <!-- Begin Ads by RevContent Code -->

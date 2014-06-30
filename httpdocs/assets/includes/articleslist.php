@@ -3,7 +3,7 @@
 <?php 
 $articlesList = $mpArticle->getArticles(['count' => 24]);
 
-$articleIndex = 1;
+$articleIndex = 0;
 foreach ($articlesList['articles'] as $articles){
 
 	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
@@ -31,7 +31,7 @@ foreach ($articlesList['articles'] as $articles){
 				<p><small>By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></small></p>
 			</div>
 			<?php }else{?>
-			<?php if($articleIndex === 1 || $articleIndex === 5 || $articleIndex === 9 || $articleIndex === 13) {$articleIndex++; ?>
+			<?php if($articleIndex === 0|| ($articleIndex % 4) == 0 ) {$articleIndex++; ?>
 			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt=''>
 			</a>
@@ -40,11 +40,12 @@ foreach ($articlesList['articles'] as $articles){
 					<span class="span-category"><?php echo $articles['cat_name']?></span>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
-				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></span></p>
+				<p class="right uppercase">
+					<span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></span>
+				</p>
 				<a class="left clear-left" href="<?php echo $linkToArticle; ?>">
 					<h1 class="h1-large-article"><?php echo $articles['article_title']?></h1>
 				</a>
-
 			</div>
 			<?php }else{ $articleIndex++; ?>
 			<a class="mobile-5 small-5 medium-5 large-6 xlarge-6 half-padding-right left" href="<?php echo $linkToArticle; ?>">
@@ -58,7 +59,9 @@ foreach ($articlesList['articles'] as $articles){
 				<a href="<?php echo $linkToArticle; ?>">
 					<h1><?php echo $articles['article_title']?></h1>
 				</a>
-				<p class="uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></span></p>
+				<p class="uppercase">
+					<span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></span>
+				</p>
 			</div>
 			<?php } }?>
 		</div>

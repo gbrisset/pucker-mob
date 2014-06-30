@@ -1,0 +1,153 @@
+//SideBar General Settings
+.sidebar {
+padding:0.6rem;
+background: #fff;
+border: 1px solid #ddd;
+
+.h4-container{
+background: none repeat scroll 0 0 #232323;
+padding-bottom: 0.05rem;
+}
+h4{
+font-size: 1.625rem; 
+color: $main-color; 
+text-transform: uppercase;
+}
+
+#last-trending-now {
+border-bottom: none;
+}
+}
+
+#popular-articles {
+overflow-y: auto; 
+overflow-x: hidden; 
+margin-bottom: 
+$panel-padding;
+
+}
+
+.todays-favorites {
+padding: $todays-favorites-padding 0;
+border-top: 0;
+
+h5 {margin-top: 0.5rem; margin-bottom: 0; font-size: 13px;  line-height: 1.5;}
+}
+
+.connect-with-us, .newsletter{
+padding: $todays-favorites-padding 0;
+}
+
+@media #{$large-up} {
+#aside {
+right: $panel-padding; 
+}
+
+#popular-articles-top {
+border-top: 0; 
+border-radius: 0;
+}
+
+.sidebar h4 {
+padding-top: $sidebar-header-padding / 2;
+padding-bottom: $sidebar-header-padding / 3;
+padding-left: $sidebar-header-padding;
+margin: 0;
+color: $main-color;
+background-color: $topbar-bg-color;
+font-size: 1rem;
+border-bottom: 1px solid $main-color;
+}
+
+.sidebar .todays-favorites {
+border-top: 0; 
+margin-bottom: 0; 
+border-radius: 0; 
+border-bottom: 2px solid #232323;
+
+&:last-child(){
+border-bottom: none;
+}
+}
+}
+
+.social{
+
+float:left;
+width: 49%;
+margin-bottom: 0 !important;
+}
+
+
+.newsletter{
+background: #b2b2b2;
+padding: $panel-padding;
+
+.newsletter-container{
+background: #c9c9c9;
+padding: $panel-padding;
+
+h3 {
+font-family: oslo;
+text-align: center;
+text-transform: uppercase;
+}
+
+strong{
+font-size: 140%;
+}
+
+
+
+form input {
+background: none repeat scroll 0 0 #e7e7e7;
+box-shadow: none;
+height: 2.08rem;
+margin: 0;
+width: 99%;
+
+}
+
+.tiny.button.secondary {
+color: #fff;
+height: 2rem;
+margin: 0.05rem 0 0;
+padding: 0.1rem;
+}
+
+}
+
+
+
+}
+
+.writeforus{
+
+background: #b581cf;
+padding: $panel-padding;
+
+.writeforus-container{
+background: #BF93D6;
+padding: $panel-padding;
+color:#fff;
+
+strong{
+font-size: 1.5rem;
+}
+
+h3 {
+font-size: 1.7rem;
+color:#fff;
+font-family: oslo;
+text-align: center;
+text-transform: uppercase;
+}
+
+.writeforus-button
+{
+	background: #EBCCFF;
+	text-transform: uppercase;
+}
+}
+}
+

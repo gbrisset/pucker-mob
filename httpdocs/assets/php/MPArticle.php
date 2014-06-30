@@ -676,7 +676,7 @@ public function getMostRecentArticleList( $articleID = null ){
 		$queryString .= " AND articles.article_id != ".$articleID;
 	}
 
-	$queryString .= " ORDER BY articles.creation_date DESC LIMIT 18,5 ";
+	$queryString .= " ORDER BY articles.creation_date DESC LIMIT 18,3 ";
 
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;

@@ -122,25 +122,35 @@ if (isset($hasParent) && $hasParent){
 
 				} else {
 					include_once($config['template_path'].'single_page_article.php');
-				}
+				} ?>
+				<section class="sidebar-right small-12 columns">
+				<hr>
+			</section>
+				<?php 	
+					include_once($config['include_path'].'abouttheauthor.php');
 			?>
 			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
-			<div id="wide-aol-ad" class="hide-for-print">
+			<!--<div id="wide-aol-ad" class="hide-for-print">
 				<script type="text/javascript">adsonar_placementId=1605010;adsonar_pid=3232776;adsonar_ps=0;adsonar_zw=600;adsonar_zh=250;adsonar_jv='ads.adsonar.com';</script><script language="JavaScript" src="http://js.adsonar.com/js/adsonar.js"></script>
 			</div>
-			<div id="ingageunit"></div>
+			<div id="ingageunit"></div>-->
+			<section class="sidebar-right small-12 columns">
+				<hr>
+			</section>
 			<?php include_once($config['include_path'].'similarrecipes.php');?>
-			<?php 
-			if(isset($categoryInfo) && !$categoryInfo['cat_partner_banner_recipe_page'] && !$articleInfoObj['isTopic']){
-				include_once($config['include_path'].'abouttheauthor.php');
-			}?>
-			<?php include_once($config['include_path'].'fromourpartners.php');?>
+			<section class="sidebar-right small-12 columns">
+				<hr>
+			</section>
+			<?php // include_once($config['include_path'].'fromourpartners.php');?>
 			<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			   
 		</section>
 			<?php include_once($config['include_path'].'rightsidebar.php');?>
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
+
 	</body>
 	</html>
 	<?php } ?>

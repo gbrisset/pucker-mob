@@ -1,0 +1,40 @@
+#about-the-author {
+	i {
+		margin: 0;
+	}
+	
+	h4 {
+		text-transform: uppercase;
+		margin-top: 0;
+		font-size: 1.45rem;
+
+
+		a{
+			color: #777;
+		}
+	}
+	
+	#about-the-author-bg {
+		padding: 0;
+
+
+		p {
+			margin-bottom: 1rem;
+			color:#777;
+			font-size: 85%;
+		}
+
+		#author-links {padding-top: ($panel-padding/2); text-align: center;}
+		#author-links > .button {margin-top: ($panel-padding/2);}
+		#author-links > a {margin: 0; text-decoration: none;}
+		#author-links i {margin-right: rem-calc(5);}
+
+		.author-image {float: left; margin-right: $panel-padding; height: 130px; }
+		}
+
+	.social-link {
+    color: #777;
+    text-transform: uppercase;
+}	
+
+}

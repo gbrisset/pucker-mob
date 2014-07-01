@@ -74,6 +74,10 @@ a{ outline: none !important; }
 .padding-top {
 	padding-top: ($panel-padding/2);
 }
+
+.padding-bottom {
+	padding-bottom: ($panel-padding/2);
+}
 .half-padding-bottom-top {
 	padding-top: ($panel-padding/2) !important;
 	padding-bottom: ($panel-padding/2) !important;
@@ -234,28 +238,16 @@ h4 {font-size: 1rem;}
 #recipe-stats h6 {text-align: center; text-transform: uppercase; font-family: $header-font-family; margin-bottom: 0.2rem;}
 #recipe-stats span {text-align: center;}
 #recipe-stats small {text-align: center; padding-left: 0.1rem;}
-.author-image {float: left; width: 100px; height: 100px; margin-right: $panel-padding;}
-#about-the-author-bg {
-	border: 1px solid #dddddd;
-	padding: $panel-padding;
-	background-color: $todays-favorites-background-color;
-	border-radius: $todays-favorites-border-radius;
-}
-#about-the-author i {margin: 0;}
 #about-the-author a:hover, #social-buttons a:hover, .pagination a, #notfound .alert, #search .alert {text-decoration: none;}
 #email-save-print
 #email-save-print i {display: inline-block;}
-#author-links {padding-top: ($panel-padding/2); text-align: center;}
-#author-links > .button {margin-top: ($panel-padding/2);}
-#author-links > a {margin: 0; text-decoration: none;}
-#author-links i {margin-right: rem-calc(5);}
-#about-the-author-bg p {margin-bottom: 0;}
+
 #recipe-image, #article-image {text-align: center;}
 #recipe-stats > .inline-centered > li {padding-left: 10px; padding-right: 10px; border-right: 1px black solid;}
 #recipe-stats > .inline-centered > li:last-child {padding-right: 0; border: 0; padding-left: 0px;}
 #recipe-stats > .inline-centered > li:first-child {padding-left: 0;}
 #recipe-stats {padding-top: $panel-padding;}
-#about-the-author h4 {text-transform: uppercase;}
+
 ul.inline-centered {
 	text-align: center;
 	list-style-type: none;
@@ -386,7 +378,7 @@ transition: all 0.3s ease-in-out;}
 		width: $sidebar-width;
 		margin-bottom: $panel-padding;
 	}
-	#about-the-author h4 {font-size: 1.25rem;}
+	
 	
 	.half-padding-left-on-lg {
 	padding-left: ($panel-padding/2);
@@ -478,6 +470,11 @@ transition: all 0.3s ease-in-out;}
 .no-padding {
 	padding-left: 0;
 	padding-right: 0;
+}
+
+.no-margin {
+	margin-left: 0;
+	margin-right: 0;
 }
 footer > div:not(.row) {text-align: center; margin: 0 auto;}
 footer > div:not(.row) div {text-align: center; margin: 0 auto;}
@@ -770,6 +767,11 @@ body{padding-top:0 !important;}
 	}
 }
 
+#email-comment{
+margin-top: -0.35rem;
+margin-right: 0.35rem;
+    text-align: right;
+   }
 
 /*TOP BAR*/
 .top-bar-section ul li{
@@ -783,3 +785,4 @@ body{padding-top:0 !important;}
 
 div.creative_container{ border:none !important; }
 @import "right_side_bar";
+@import "author";

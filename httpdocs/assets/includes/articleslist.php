@@ -18,7 +18,7 @@ foreach ($articlesList['articles'] as $articles){
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12">
 			<?php if ( $detect->isMobile() ) {  $articleIndex++;?>
 			<a class="mobile-5 small-5 medium-5 large-5 xlarge-5 half-padding-right left" href="<?php echo $linkToArticle; ?>">
-				<img src="<?php echo $linkToImage; ?>" alt=''>
+				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-7 xlarge-7 half-padding-left mobile-vertical-center vertical-align-center">
 				<p class="vertical-center">
@@ -33,7 +33,7 @@ foreach ($articlesList['articles'] as $articles){
 			<?php }else{?>
 			<?php if($articleIndex === 0|| ($articleIndex % 4) == 0 ) {$articleIndex++; ?>
 			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
-				<img src="<?php echo $linkToImage; ?>" alt=''>
+				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-12 xlarge-12 mobile-vertical-center padding-top">
 				<p class="left uppercase" >
@@ -49,7 +49,7 @@ foreach ($articlesList['articles'] as $articles){
 			</div>
 			<?php }else{ $articleIndex++; ?>
 			<a class="mobile-5 small-5 medium-5 large-6 xlarge-6 half-padding-right left" href="<?php echo $linkToArticle; ?>">
-				<img src="<?php echo $linkToImage; ?>" alt=''>
+				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-6 xlarge-6 mobile-vertical-center vertical-align-center half-padding-left half-padding-right">
 				<p class="uppercase">

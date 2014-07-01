@@ -2,7 +2,7 @@
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
 	<meta http-equiv="x-dns-prefetch-control" content="on">
-	<link rel="dns-prefetch" href="//images.simpledish.com" />
+	<link rel="dns-prefetch" href="//images.puckermob.com" />
 	<link rel="dns-prefetch" href="//www.google-analytics.com" />
 	<link rel="dns-prefetch" href="//ad.doubleclick.net" />
 	<link rel="dns-prefetch" href="//cdn.assets.craveonline.com" />
@@ -27,7 +27,7 @@
 	<link rel="dns-prefetch" href="//fei.pro-market.net" />
 	<link rel="dns-prefetch" href="//mycdn.media.net" />
 	<?php } ?>
-	<link rel="prefetch prerender" href="http://www.simpledish.com" />
+	<link rel="prefetch prerender" href="http://www.puckermob.com" />
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -45,7 +45,7 @@
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
 	<meta name="author" content="Sequel Media Group">
-	<meta property="og:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Simple Dish: Real food for real life.";} ?>" />
+	<meta property="og:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />
 	<meta property="og:description" content="<?php echo $headDesc; ?>" />
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />
 	<meta property="og:site_name" content="<?php echo $mpArticle->data['article_page_name']; ?>" />

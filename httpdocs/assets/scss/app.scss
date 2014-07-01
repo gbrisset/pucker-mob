@@ -36,7 +36,8 @@ $sidebar-border-color: $todays-favorites-border-color;
 $logo-width: rem-calc(175);
 $logo-height: rem-calc(48);
 
-$main-color: #03ffd6;
+$main-color: #6ad98a;
+$text-type-color: #01b88a;
 $header-padding: rem-calc(8);
 $header-color: #747371;
 $header-font-color: #ffffff;
@@ -712,7 +713,7 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 //#nav-bar {position: fixed; top: 0; left: 0;}
 //#header-ad {margin-top: ($topbar-height + ($panel-padding/2));}
 
-.span-category{ color: $primary-color; text-transform: uppercase; font-size:0.8rem;}
+.span-category{ color: $text-type-color; text-transform: uppercase; font-size:0.8rem;}
 .span-date, .span-author{ color: #464646; font-size:0.8rem;}
 .span-author a{ color: #464646;}
 .span-category:after{ content: '|'; margin: 0 0 0 0.4rem; color: #464646;}

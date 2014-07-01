@@ -22,11 +22,14 @@ border-bottom: none;
 #popular-articles {
 overflow-y: auto; 
 overflow-x: hidden; 
-margin-bottom: 
-$panel-padding;
 
 }
 
+#popular-sister-articles{
+	overflow-y: auto; 
+overflow-x: hidden; 
+margin: $panel-padding 0 0 !important;
+}
 .todays-favorites {
 padding: $todays-favorites-padding 0;
 border-top: 0;
@@ -34,8 +37,12 @@ border-top: 0;
 h5 {margin-top: 0.5rem; margin-bottom: 0; font-size: 13px;  line-height: 1.5;}
 }
 
-.connect-with-us, .newsletter{
-padding: $todays-favorites-padding 0;
+.connect-with-us{
+padding-top: 5px;
+}
+
+.newsletter, .writeforus{
+	margin-top: 5px !important;
 }
 
 @media #{$large-up} {
@@ -46,11 +53,12 @@ right: $panel-padding;
 #popular-articles-top {
 border-top: 0; 
 border-radius: 0;
+
 }
 
 .sidebar h4 {
-padding-top: $sidebar-header-padding / 2;
-padding-bottom: $sidebar-header-padding / 3;
+padding-top: 0.3rem ;
+padding-bottom: 0.1rem;
 padding-left: $sidebar-header-padding;
 margin: 0;
 color: $main-color;
@@ -81,7 +89,7 @@ margin-bottom: 0 !important;
 
 .newsletter{
 background: #b2b2b2;
-padding: $panel-padding;
+padding: $panel-padding /2;
 
 .newsletter-container{
 background: #c9c9c9;
@@ -124,7 +132,7 @@ padding: 0.1rem;
 .writeforus{
 
 background: #b581cf;
-padding: $panel-padding;
+padding: $panel-padding / 2;
 
 .writeforus-container{
 background: #BF93D6;
@@ -147,7 +155,31 @@ text-transform: uppercase;
 {
 	background: #EBCCFF;
 	text-transform: uppercase;
+	margin-bottom: 0;
 }
 }
+}
+
+//From our sister site
+
+.sister-logo{
+
+    padding: 0.9rem 0 0;
+p {
+    font-size: 85%;
+    margin-bottom: 0;
+    padding-left: 0.4rem !important;
+    padding-top: 0.2rem;
+    text-transform: capitalize;
+}
+
+}
+
+.sister-article-img, .sister-article-title{
+	padding:0 !important;
+}
+
+.last-child{
+	border-bottom:none !important;
 }
 

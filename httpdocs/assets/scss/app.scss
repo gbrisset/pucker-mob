@@ -191,7 +191,7 @@ header {
 
 
 #header-ad {min-height: 50px;}
-#main {padding-top: 0;/* ($panel-padding/2);*/ margin-bottom: $panel-padding; background: none repeat scroll 0 0 rgba(0, 0, 0, 0); border: medium none; max-width: 62.5rem;}
+#main {padding-top: 0;/* ($panel-padding/2);*/ margin-bottom: 0; background: none repeat scroll 0 0 rgba(0, 0, 0, 0); border: medium none; max-width: 62.5rem;}
 .ad90 {height: 90px;}
 .ad250 {height: 252px !important;}
 .ad300 {width: 302px !important;}
@@ -228,7 +228,7 @@ html {overflow-x: hidden;}
 	margin: 0 auto;
 }
 h4 {font-size: 1rem;}
-#sectioned-article-content {padding-left: 0; padding-right: 0;}
+/*#sectioned-article-content {padding-left: 0; padding-right: 0;}*/
 #social-buttons {text-align: center; padding-top: $panel-padding;}
 #recipe-rating, #article-rating {text-align: center;}
 #recipe-rating i, #results i, #article-rating i {color: rgb(226,108,21); margin-left: 0; margin-right: 0;}
@@ -335,7 +335,7 @@ transition: all 0.3s ease-in-out;}
 	#_ci_widget_div_31931 ul li {width: 50%;}
 	#_ci_widget_div_31931 ul li:last-child {display: none;}
 	.panel {border-color: #ddd;}
-	#sectioned-article-content, #recipe-content, #full-page-article {padding-left: $panel-padding; padding-right: ($panel-padding * 2)}
+	/*#sectioned-article-content, #recipe-content, #full-page-article {padding-left: $panel-padding; padding-right: ($panel-padding * 2)}*/
 	.shadow-on-large-up {
 		-moz-box-shadow:    0px 1px 1px 0px $shadow-color;
  		-webkit-box-shadow: 0px 1px 1px 0px $shadow-color;
@@ -764,11 +764,12 @@ body{padding-top:0 !important;}
     padding-right: 0;
 	h1{
 		font-size: 1.8rem;
+		text-transform: uppercase;
 	}
 }
 
 #email-comment{
-margin-top: -0.35rem;
+margin-top: -0.25rem;
 margin-right: 0.35rem;
     text-align: right;
    }
@@ -783,6 +784,50 @@ margin-right: 0.35rem;
 	}
 } 
 
+#similar-results, #content-ad-around-the-web, #disqus-comments, #around-the-web{ 
+	padding-bottom: 0.8rem;
+    padding-top: 0.5rem;
+
+	h2{ color: #777; font-size: 1.7rem; text-transform: uppercase;}
+}
+#similar-results h2 span { color: $main-color; }
+#similar-results h2{margin-bottom: 1rem;}
+
 div.creative_container{ border:none !important; }
 @import "right_side_bar";
 @import "author";
+
+/*From around the web ad force styling*/
+#gt_widget_0 > div {
+    border: medium none !important;
+}
+
+.git_title {
+    display: none;
+}
+
+#content-ad-around-the-web h2 {
+    color: #777;
+}
+
+#gt_widget_0 > div {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.gslide_title_a {
+    color: #333 !important;
+}
+
+.fa-25x{
+	font-size: 2.5em;
+}
+
+.MsoNormal > span {
+    font-family: oslo !important;
+}
+
+.like-us-fb{
+	div{ margin-left: -1rem; padding-left: 0;}
+	p{ font-size: 0.8rem; padding-right: 0; margin-bottom: 0;}
+} 

@@ -123,26 +123,23 @@ if (isset($hasParent) && $hasParent){
 				} else {
 					include_once($config['template_path'].'single_page_article.php');
 				} ?>
-				<section class="sidebar-right small-12 columns">
-				<hr>
-			</section>
-				<?php 	
-					include_once($config['include_path'].'abouttheauthor.php');
-			?>
+			<hr>
+
+<div class="row hide-for-print like-us-fb">
+	<p class="columns small-3">Like Us on Facebook!
+	<div class="columns small-9" >
+		<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.puckermob.com&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=35&amp;appId=424687180979285" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px;" allowTransparency="true"></iframe>
+	</div>	 </p>
+</div>
+<hr>
+				<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+			<hr>
 			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
-			<!--<div id="wide-aol-ad" class="hide-for-print">
-				<script type="text/javascript">adsonar_placementId=1605010;adsonar_pid=3232776;adsonar_ps=0;adsonar_zw=600;adsonar_zh=250;adsonar_jv='ads.adsonar.com';</script><script language="JavaScript" src="http://js.adsonar.com/js/adsonar.js"></script>
-			</div>
-			<div id="ingageunit"></div>-->
-			<section class="sidebar-right small-12 columns">
-				<hr>
-			</section>
-			<?php include_once($config['include_path'].'similarrecipes.php');?>
-			<section class="sidebar-right small-12 columns">
-				<hr>
-			</section>
-			<?php // include_once($config['include_path'].'fromourpartners.php');?>
+		
+			<?php include_once($config['include_path'].'similararticles.php');?>
+			<hr>
 			<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
+			<hr>
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 			   
 		</section>

@@ -47,7 +47,7 @@ padding-top: 5px;
 
 @media #{$large-up} {
 #aside {
-right: $panel-padding; 
+right: 1.3rem; 
 }
 
 #popular-articles-top {
@@ -183,3 +183,6 @@ p {
 	border-bottom:none !important;
 }
 
+#email-comment > a {
+    color: #01b88a;
+}

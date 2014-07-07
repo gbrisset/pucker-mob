@@ -16,7 +16,7 @@
 			<a href="http://www.twitter.com/<?php echo $articleInfoObj['contributor_twitter_handle']; ?>" class="social-link" target="_blank">Twitter</a>
 			<?php } ?>
 			<?php if(isset($articleInfoObj['contributor_blog_link']) && strlen($articleInfoObj['contributor_blog_link'])){ ?>
-			<a href="<?php echo $articleInfoObj['contributor_blog_link']; ?>" class="social-link" target="_blank">
+			<a href="<?php echo $articleInfoObj['contributor_blog_link']; ?>" class="social-link" target="_blank">Visit 
 				<?php echo explode(' ', $articleInfoObj['contributor_name'])[0]; ?>'s Website
 			</a>
 			<?php } ?>

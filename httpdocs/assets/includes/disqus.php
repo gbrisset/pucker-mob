@@ -1,4 +1,6 @@
- 
+<section id="disqus-comments" class="sidebar-right small-12 columns hide-for-print no-padding"> 
+   
+<h2 id="disqus-container">We'd love to hear what you have to say!</h2>
 
  <div id="disqus_thread"></div>
     <script type="text/javascript">
@@ -14,4 +16,6 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<div id="disqus-container"></div>
+
+
+</section>

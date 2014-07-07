@@ -1,5 +1,4 @@
-<section id="around-the-web" class="sidebar-right small-12 columns margin-top-on-recipes hide-for-print">
-<hr class="hidden-on-recipes">
+<section id="around-the-web" class="sidebar-right small-12 columns margin-top-on-recipes hide-for-print no-padding">
 <h2>From Our Partners</h2>
 <div class="row half-padding">
 <script type='text/javascript'>

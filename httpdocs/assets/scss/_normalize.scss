@@ -8,7 +8,7 @@ html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-
 body { margin: 0; font-size: 13px; line-height: 1.231; }
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 ::-moz-selection { background: none; color: $bgColor; text-shadow: none; }
-::selection { background: none; color: $bgColor; text-shadow: none; }
+::selection { background: #6ad98a; color: $bgColor; text-shadow: none; }
 a { color: #00e; outline:none; text-decoration:none; }
 a:hover { color: #06e; }
 a:focus { outline: thin dotted; }

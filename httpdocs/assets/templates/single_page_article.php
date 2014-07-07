@@ -32,8 +32,11 @@ if (isset($articleInfoObj)) {
 				</button>
 			</section>
 			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding " style="text-align: right;">
-				<a href="#disqus-container" ><i class="fa fa-comment-o fa-3x no-margin"></i></a>
-				<a href="mailto:?subject=Hey,%20check%20out%20this%article&body=Hi%20there,%0D%0D%20I%20saw%20this%20great%20article%20on%20Pucker%20Mob%20(http://www.puckermob.com/).%0D%0D%20Check%20it%20out:%20<?php echo $article_title; ?>%20(<?php echo urlencode($mpHelpers->curPageURL()); ?>)%0D%0DCheers!" ><i class="fa fa-envelope-o fa-3x no-margin"></i></a>
+				<a href="#disqus-container" ><i class="fa fa-comment-o fa-25x no-margin"></i></a>
+				<!--<a href="mailto:?subject=Hey,%20check%20out%20this%article&body=Hi%20there,%0D%0D%20I%20saw%20this%20great%20article%20on%20Pucker%20Mob%20(http://www.puckermob.com/).%0D%0D%20Check%20it%20out:%20<?php echo $article_title; ?>%20(<?php echo urlencode($mpHelpers->curPageURL()); ?>)%0D%0DCheers!" >-->
+				<a href="mailto:?subject=Hey,%20check%20out%20this%20article&body=Hi%20there,%0D%0D%20I%20saw%20this%20great%20article%20on%20Pucker%20Mob%20(http://www.puckermob.com/).%0D%0D%20Check%20it%20out:%20<?php echo $articleInfoObj['article_title']; ?>%20(<?php echo urlencode($mpHelpers->curPageURL()); ?>)%0D%0DCheers!">
+					<i class="fa fa-envelope-o fa-25x no-margin"></i>
+				</a>
 			</div>
 		</div>
 		<div class="row">

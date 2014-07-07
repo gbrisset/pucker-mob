@@ -13,10 +13,9 @@ foreach ($articlesList['articles'] as $articles){
 
 	//$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/list/Closet--intro.jpg';
 	?>
-	<article class="row" id="<?php echo 'article-'.$articleIndex;?>">
-		
-		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12">
-			<?php if ( $detect->isMobile() ) {  $articleIndex++;?>
+	<!--<article class="row" id="<?php echo 'article-'.$articleIndex;?>">-->
+		<?php if ( $detect->isMobile() ) {  $articleIndex++;?>
+		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-5 xlarge-5 half-padding-right left" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
@@ -30,8 +29,11 @@ foreach ($articlesList['articles'] as $articles){
 				</a>
 				<p><small>By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></small></p>
 			</div>
-			<?php }else{?>
-			<?php if($articleIndex === 0|| ($articleIndex % 4) == 0 ) {$articleIndex++; ?>
+		</div>
+		<?php }else{?>
+		
+		<?php if($articleIndex == 0 || ($articleIndex % 7 == 0) ) { $articleIndex++; ?>
+		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
@@ -47,25 +49,39 @@ foreach ($articlesList['articles'] as $articles){
 					<h1 class="h1-large-article"><?php echo $articles['article_title']?></h1>
 				</a>
 			</div>
-			<?php }else{ $articleIndex++; ?>
-			<a class="mobile-5 small-5 medium-5 large-6 xlarge-6 half-padding-right left" href="<?php echo $linkToArticle; ?>">
+		</div>
+		<hr class="padding-top">
+		<?php }else{
+
+		$clearLeft='no-padding-right'; 
+		if($articleIndex  == 0 || $articleIndex  == 1  || $articleIndex  == 3 || $articleIndex  == 5 || $articleIndex  == 7 || $articleIndex  == 8 || $articleIndex  == 10 || $articleIndex  == 12 || $articleIndex  == 14 || $articleIndex  == 15 || $articleIndex  == 17 || $articleIndex  == 19 || $articleIndex  == 22 ) $clearLeft = 'clear-left no-padding-left';
+		$articleIndex++; 
+		
+		 ?>
+		<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?>" id="<?php echo 'article-'.$articleIndex;?>">
+			<a class="mobile-5 small-5 medium-12 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
-			<div class="mobile-7 small-7 medium-7 large-6 xlarge-6 mobile-vertical-center vertical-align-center half-padding-left half-padding-right">
-				<p class="uppercase">
+			<div class="mobile-7 small-7 medium-12 large-12 xlarge-12 mobile-vertical-center padding-top">
+				<p class="uppercase small-7 left small-font">
 					<span class="span-category"><?php echo $articles['cat_name']?></span>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
-				<a href="<?php echo $linkToArticle; ?>">
-					<h1><?php echo $articles['article_title']?></h1>
-				</a>
-				<p class="uppercase">
+				<p class="right uppercase small-5 align-right small-font">
 					<span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></span>
 				</p>
+				<a class="left clear-left" href="<?php echo $linkToArticle; ?>">
+					<h1 class="h1-small-article"><?php echo $articles['article_title']?></h1>
+				</a>
 			</div>
-			<?php } }?>
 		</div>
+		<?php 
+			if($articleIndex  == 3 ||  $articleIndex  == 5 || $articleIndex  == 7 || $articleIndex  == 8 || $articleIndex  == 10 || $articleIndex  == 12 || $articleIndex  == 14 || $articleIndex  == 15 || $articleIndex  == 17 || $articleIndex  == 19 || $articleIndex  == 21) echo '<hr class="padding-top">';
+	} ?> 
 	</div>
-</article>
-<hr />
+	<?php }?>
+</div>
+</div>
+<!--</article>
+<hr />-->
 <?php } ?>

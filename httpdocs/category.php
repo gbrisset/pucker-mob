@@ -16,7 +16,7 @@ if(!is_null($categoryInfo)){
 	$parentCategorySEOName = ($categoryInfo['parent_dir_name']);
 
 	$recentArticles = $mpArticle->getMostRecentByCatId(['pageId' => $categoryInfo['cat_id']]);
-	$articlesPerPage = 8;
+	$articlesPerPage = 24;
 	$totalPages = ceil(count($recentArticles['articles']) / $articlesPerPage);
 	if($totalPages > 1){
 		$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
@@ -68,10 +68,8 @@ if ( $detect->isMobile() ) {
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
 			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left">
-				<section id="category-intro" class="small-12 columns sidebar-right">
-					<h1><?php echo $categoryInfo['cat_name']; ?></h1>
-					<hr>
-				</section>
+					<h1 id="category-name" class="h1-large-article"><?php echo $categoryInfo['cat_name']; ?></h1>
+			
 					<?php include_once($config['include_path'].'categoryresults.php');?>
 					<?php include_once($config['shared_include'].'pagination.php');?>
 					<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
@@ -79,8 +77,8 @@ if ( $detect->isMobile() ) {
 					<div id="ingageunit" class="hide-for-print"></div>
 					<hr>
 					<?php include_once($config['include_path'].'fromourpartners.php'); ?>
-					<hr>
-					<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
+					<!--<hr>-->
+					<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
 			</section>
 			<?php include_once($config['include_path'].'rightsidebar.php');?>
 		</main>

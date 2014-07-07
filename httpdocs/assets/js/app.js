@@ -7,6 +7,7 @@ var trendingNowHeight = Foundation.utils.S('#trending-now').height();
 var socialwidget = Foundation.utils.S('#social_widget');
 var adsonarHeight = Foundation.utils.S('#ad-sonar').height();
 var main = Foundation.utils.S('#main');
+var leftSide = Foundation.utils.S('#puc-articles');
 var base_url = 'http://www.puckermob.com';
 var URL = $(location).attr('href');
 var page = document.body.id;
@@ -21,7 +22,7 @@ var asideHeight = {
 	connect: Foundation.utils.S("#connect-with-us").height(),
 	btf1: 0,
 	btf2: 0,
-	subsidebar3: poparticles.height() + 100,
+	subsidebar3: poparticles.height() + 140,
 	margin: parseInt(main.css("padding-bottom"))
 };
 
@@ -99,23 +100,25 @@ $(document).ready(function() {
 
 	Foundation.utils.image_loaded(Foundation.utils.S('#aside img'), function(){
 		asideHeight.popular = poparticles.height();
-		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 + (asideHeight.margin * 7) - 8));
+		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));/*+ (asideHeight.margin * 7) - 8*/
+		leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));
 		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
 	});
 
 	function resizeMainOnResize() {
 		asideHeight.trending = trendingNowHeight;
 		asideHeight.popular = poparticles.height();
-		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
-		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.adSonar + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
-		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 5) - 8)); 
+		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf2 ));/*+ (asideHeight.margin * 7) - 8*/
+		leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf2 ));
 	}
 
 	function resizeMainOnAdLoad() {
 		asideHeight.trending = trendingNowHeight;
 		asideHeight.popular = poparticles.height();
 		
-		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2 + (asideHeight.margin * 7) - 8));
+		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2 /*+ (asideHeight.margin * 7) - 8*/));
+		leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2));
+
 	}
 
 	function loadAd(target, adcode) {

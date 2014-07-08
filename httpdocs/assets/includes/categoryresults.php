@@ -33,7 +33,7 @@
 
 		else{ 
 		
-			if($articleIndex == 1 || $articleIndex == 8 || $articleIndex == 16 || $articleIndex == 23) { ?>
+			if($articleIndex == 1 || $articleIndex == 8 || $articleIndex == 15 || $articleIndex == 22) { ?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>

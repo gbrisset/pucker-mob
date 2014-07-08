@@ -665,18 +665,21 @@ public function getMostRecentArticleList( $articleID = null ){
 	
 	$queryString = "SELECT articles.article_id as a_id, articles.article_title, 
 	articles.article_seo_title, articles.creation_date, articles.article_status, 
-	articles.page_list_id, categories.cat_name, categories.cat_dir_name 
+	articles.page_list_id, categories.cat_name, categories.cat_dir_name, 
+	article_contributors.contributor_name, article_contributors.contributor_seo_name 
 	FROM articles
-	INNER JOIN ( article_categories, categories )
+	INNER JOIN ( article_categories, categories, article_contributors, article_contributor_articles )
 	ON articles.article_id=article_categories.article_id 
-		AND article_categories.cat_id=categories.cat_id 
-	WHERE articles.article_status = 1 AND articles.page_list_id != 0 ";
+		AND article_categories.cat_id=categories.cat_id
+		AND articles.article_id = article_contributor_articles.article_id
+		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
+	WHERE articles.article_status = 1 ";
 
 	if( isset( $articleID ) && $articleID ){
 		$queryString .= " AND articles.article_id != ".$articleID;
 	}
 
-	$queryString .= " ORDER BY articles.creation_date DESC LIMIT 18,3 ";
+	$queryString .= " ORDER BY articles.creation_date DESC LIMIT 30,3 ";
 
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;
@@ -687,13 +690,16 @@ public function getMostRecentsArticlesList( ){
 	$queryString = "SELECT articles.article_id as a_id, articles.article_title, 
 	articles.article_seo_title, articles.creation_date, articles.article_status, 
 	articles.page_list_id, categories.cat_name, categories.cat_dir_name 
+	article_contributors.contributor_name, article_contributors.contributor_seo_name 
 	FROM articles
-	INNER JOIN ( article_categories, categories )
+	INNER JOIN ( article_categories, categories, article_contributors, article_contributor_articles )
 	ON articles.article_id=article_categories.article_id 
 		AND article_categories.cat_id=categories.cat_id 
-	WHERE articles.article_status = 1 AND articles.page_list_id != 0 
-	ORDER BY articles.creation_date DESC LIMIT 6 ";
-
+		AND articles.article_id = article_contributor_articles.article_id
+		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
+	WHERE articles.article_status = 1
+	ORDER BY articles.creation_date DESC LIMIT 30,3 ";
+echo $queryString; die;
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;
 }

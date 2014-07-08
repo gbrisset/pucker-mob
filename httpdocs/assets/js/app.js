@@ -242,8 +242,7 @@ $(document).ready(function() {
 	notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
 	notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
 
-
-	// Sharing popups
+ 	// Sharing popups
 	facebook_button.click(function () {
 		share_popup_width = 650;
 		share_popup_height = 380;
@@ -295,8 +294,9 @@ var app = {
     },
 }
     app.addPrefetchTags();
-    if(page === 'recipe') {
-    	$.getJSON( 'http://free.sharedcount.com/?apikey=ba577b27200bd0f72614cc0c580aa05a5a285859&url=' + URL, function(shareData) {
+
+    if(page === 'article') {
+    	$.getJSON( 'http://free.sharedcount.com/?apikey=709226bb97515fd204f07c3d4bac38f78ba009eb&url=' + URL, function(shareData) {
     		Foundation.utils.S('#facebook-count').text(shareData.Facebook.total_count);
        		Foundation.utils.S('#twitter-count').text(shareData.Twitter);
     		Foundation.utils.S('#pinterest-count').text(shareData.Pinterest);

@@ -7,6 +7,7 @@ $articleIndex = 0;
 foreach ($articlesList['articles'] as $articles){
 
 	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
+	$linkToACategory = $config['this_url'].$articles['cat_dir_name'];
 	$date = date("M d, Y", strtotime($articles['creation_date']));
 	$linkToImage = $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$articles['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
@@ -39,7 +40,7 @@ foreach ($articlesList['articles'] as $articles){
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-12 xlarge-12 mobile-vertical-center padding-top">
 				<p class="left uppercase" >
-					<span class="span-category"><?php echo $articles['cat_name']?></span>
+					<span class="span-category"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
 				<p class="right uppercase">
@@ -64,7 +65,7 @@ foreach ($articlesList['articles'] as $articles){
 			</a>
 			<div class="mobile-7 small-7 medium-12 large-12 xlarge-12 mobile-vertical-center padding-top">
 				<p class="uppercase small-7 left small-font">
-					<span class="span-category"><?php echo $articles['cat_name']?></span>
+					<span class="span-category"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
 				<p class="right uppercase small-5 align-right small-font">

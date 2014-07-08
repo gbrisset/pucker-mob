@@ -23,6 +23,10 @@ border-bottom: none;
 overflow-y: auto; 
 overflow-x: hidden; 
 
+p{
+	margin-bottom:0;
+}
+
 }
 
 #popular-sister-articles{
@@ -30,11 +34,13 @@ overflow-x: hidden;
 overflow-x: hidden; 
 margin: $panel-padding 0 0 !important;
 }
+
+
 .todays-favorites {
-padding: $todays-favorites-padding 0;
+padding: $todays-favorites-padding 0 2px;
 border-top: 0;
 
-h5 {margin-top: 0.5rem; margin-bottom: 0; font-size: 13px;  line-height: 1.5;}
+h5 {margin-top: 0.2rem; margin-bottom: 0; font-size: 13px;  line-height: 1.5;}
 }
 
 .connect-with-us{

@@ -6,7 +6,7 @@ if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articl
 }else{
 	$mostReadArticlesList = $mpArticle->getMostRecentArticleList();
 }
-$image = '<img src="http://localhost:8888/puckermob/subdomains/images/httpdocs/articlesites/puckermob/large/3860_tall.jpg">';
+var_dump($articleInfoObj);
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 	<section id="popular-articles" class="sidebar shadow-on-large-up">
 		<div class="h4-container"><h4>Most Popular</h4></div>

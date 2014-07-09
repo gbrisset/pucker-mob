@@ -1,6 +1,7 @@
 <?php  if(isset($recentArticles) && $recentArticles){ 
 
 	$articleIndex = 1;
+	$bigImageCounter =  0;
 	foreach ($recentArticles['articles'] as $articles) {
 		$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 	$date = date("M d, Y", strtotime($articles['creation_date']));
@@ -29,11 +30,12 @@
 
 		<?php 
 		$articleIndex++;
+
 		}
 
 		else{ 
-		
-			if($articleIndex == 1 || $articleIndex == 8 || $articleIndex == 15 || $articleIndex == 22) { ?>
+			
+			if($articleIndex == 1 || $articleIndex == 8 || $articleIndex == 15 || $articleIndex == 22) { $bigImageCounter++; ?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
@@ -51,7 +53,14 @@
 				</a>
 			</div>
 		</div>
+		<?php if($bigImageCounter % 2 ){  ?>
+		<div id="lift-ad">
+		<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>
+	</div>
+		<?php  }else{?>
 		<hr class="padding-top">
+
+		<?php } ?>
 		<?php }else{
 
 		$clearLeft='no-padding-right'; 
@@ -82,6 +91,7 @@
 	</div>
 	<?php 
 $articleIndex++; 
+
 } ?>
 </div>
 </div>

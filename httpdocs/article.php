@@ -132,6 +132,9 @@ if (isset($hasParent) && $hasParent){
 	</div>	 </p>
 </div>
 <hr>
+<div id="lift-ad">
+	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
+</div>
 				<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 			<hr>
 			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>

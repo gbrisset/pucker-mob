@@ -654,9 +654,10 @@ ul.dropdown {z-index: 9999;}
 #header-ad {margin-top: ($topbar-height + ($panel-padding/2));}
 .mobile-vertical-center {
 	position: absolute;
-	top: 0;
+	top: $panel-padding;
 	bottom: $panel-padding;
-	left: 41.66667%;
+	/*left: 41.66667%;*/
+	left: 58.3333333333%;
 	right: 0;
 	margin: auto;
 	height: 65px;
@@ -668,12 +669,12 @@ h5 {height: 65px; padding: 0;vertical-align: middle; display: table-cell; text-a
 }
 .mobile-7 {
 	@include grid-column(7);
-	padding-left: $panel-padding;
-	padding-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: $panel-padding / 2;
 }
 .mobile-5 {
 	@include grid-column(5);
-	padding-right: 0 !important;
+	padding-right: $panel-padding / 2;
 	padding-left: 0 !important;
 	min-height: 80px;
 }
@@ -697,9 +698,14 @@ h5 {height: 65px; padding: 0;vertical-align: middle; display: table-cell; text-a
     }
 }
 #header-social {height: 0;}
+
+@media #{$mobile-only}{
+	#main {margin-top: ($panel-padding);}
+}
 @media #{$small-only} {
 	#nav-bar {position: fixed; top: 0; left: 0;}
 	#header-ad {margin-top: ($topbar-height + ($panel-padding/2));}
+	#main {margin-top: ($panel-padding); }
 }
 @media #{$medium-only} {
 	#nav-bar {position: fixed; top: 0; left: 0;}
@@ -757,16 +763,21 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 
 @media #{$mobile-only} { 
 	#puc-articles{
-		h5, h1{ 
+		 h1{ 
 			padding: 0; 
 			line-height: 1.1rem;
-			font-size: 0.7rem;
+			font-size: 1.2rem;
 			margin-top: 0;
 		}
 		p{ line-height: 0; margin: 0;}
-		.span-category:after{ margin: 0 0.4rem; }
-		.span-category, span-date, .span-author{ font-size: 0.7rem; }
-		hr{ margin: 0 0 0.8rem !important;}
+		.span-category:after{ margin: 0 0.25rem; }
+		.span-category{font-size: 0.7rem; }
+		.span-date, .span-author{ font-size: 0.65rem; }
+		.span-date{ margin-left: -0.5rem;}
+		small{ font-size: 70%;}
+		hr{ margin: 0 0 0.5rem !important;}
+
+		h5{ font-size: 0.9rem;}
 
 	}
 }

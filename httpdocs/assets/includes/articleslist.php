@@ -13,9 +13,9 @@ foreach ($articlesList['articles'] as $articles){
 	$linkToImage = $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$articles['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
 
-	//$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/list/Closet--intro.jpg';
+	$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/list/Closet--intro.jpg';
 	?>
-	<!--<article class="row" id="<?php echo 'article-'.$articleIndex;?>">-->
+
 		<?php if ( $detect->isMobile() ) {  $articleIndex++;?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-5 xlarge-5 half-padding-right left" href="<?php echo $linkToArticle; ?>">
@@ -58,16 +58,16 @@ foreach ($articlesList['articles'] as $articles){
 				</a>
 			</div>
 		</div>
-		
+		<hr class="padding-top">
 		
 		<?php if($bigImageCounter % 2 ){  ?>
 		<div id="lift-ad">
 		<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>
-	</div>
-		<?php  }else{?>
-		<hr class="padding-top">
+		</div>
+		<?php  }?>
+		
 
-		<?php } } else{
+		<?php  } else{
 
 		$clearLeft='no-padding-right'; 
 		if($articleIndex  == 0 || $articleIndex  == 1  || $articleIndex  == 3 || $articleIndex  == 5 || $articleIndex  == 7 || $articleIndex  == 8 || $articleIndex  == 10 || $articleIndex  == 12 || $articleIndex  == 14 || $articleIndex  == 15 || $articleIndex  == 17 || $articleIndex  == 19 || $articleIndex  == 22 ) $clearLeft = 'clear-left no-padding-left';
@@ -98,6 +98,5 @@ foreach ($articlesList['articles'] as $articles){
 	<?php }?>
 </div>
 </div>
-<!--</article>
-<hr />-->
+
 <?php } ?>

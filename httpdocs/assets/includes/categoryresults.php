@@ -53,14 +53,14 @@
 				</a>
 			</div>
 		</div>
+		<hr class="padding-top">
 		<?php if($bigImageCounter % 2 ){  ?>
 		<div id="lift-ad">
 		<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>
 	</div>
-		<?php  }else{?>
-		<hr class="padding-top">
+		<?php  }?>
+		
 
-		<?php } ?>
 		<?php }else{
 
 		$clearLeft='no-padding-right'; 

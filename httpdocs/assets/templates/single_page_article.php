@@ -12,7 +12,7 @@ if (isset($articleInfoObj)) {
 }
 ?>
 
-<article id="article-<?php echo $article_id; ?>" class="columns small-12 microsidebar-article">
+<article id="article-<?php echo $article_id; ?>" class="columns small-12 <?php if($detect->isMobile()) echo " no-padding "; ?>">
 
 	<section id="article-summary" class="small-12 column">
 		<h1><?php echo $article_title; ?></h1>
@@ -31,9 +31,8 @@ if (isset($articleInfoObj)) {
 					<i class="fa fa-google-plus fa-fw"></i><div id="google-plus-count" class="social-fade-in">0</div>
 				</button>
 			</section>
-			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding " style="text-align: right;">
+			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
 				<a href="#disqus-container" ><i class="fa fa-comment-o fa-25x no-margin"></i></a>
-				<!--<a href="mailto:?subject=Hey,%20check%20out%20this%article&body=Hi%20there,%0D%0D%20I%20saw%20this%20great%20article%20on%20Pucker%20Mob%20(http://www.puckermob.com/).%0D%0D%20Check%20it%20out:%20<?php echo $article_title; ?>%20(<?php echo urlencode($mpHelpers->curPageURL()); ?>)%0D%0DCheers!" >-->
 				<a href="mailto:?subject=Hey,%20check%20out%20this%20article&body=Hi%20there,%0D%0D%20I%20saw%20this%20great%20article%20on%20Pucker%20Mob%20(http://www.puckermob.com/).%0D%0D%20Check%20it%20out:%20<?php echo $articleInfoObj['article_title']; ?>%20(<?php echo urlencode($mpHelpers->curPageURL()); ?>)%0D%0DCheers!">
 					<i class="fa fa-envelope-o fa-25x no-margin"></i>
 				</a>
@@ -46,7 +45,7 @@ if (isset($articleInfoObj)) {
 			</div>
 		</div>
 		<div class="row">
-			<div class="columns mobile-7 small-7 medium-7 large-12 xlarge-12 mobile-vertical-center padding-top half-padding-right-on-lg">
+			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
 				<p class="left uppercase">
 					<span class="span-category"><?php echo $article_category; ?></span>
 					<span class="span-date"><?php echo $date; ?></span>

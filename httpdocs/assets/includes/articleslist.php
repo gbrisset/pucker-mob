@@ -13,7 +13,7 @@ foreach ($articlesList['articles'] as $articles){
 	$linkToImage = $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$articles['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
 
-	$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/list/Closet--intro.jpg';
+	//$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/list/Closet--intro.jpg';
 	?>
 
 		<?php if ( $detect->isMobile() ) {  $articleIndex++;?>
@@ -92,7 +92,8 @@ foreach ($articlesList['articles'] as $articles){
 			</div>
 		</div>
 		<?php 
-			if($articleIndex  == 3 ||  $articleIndex  == 5 || $articleIndex  == 7 || $articleIndex  == 8 || $articleIndex  == 10 || $articleIndex  == 12 || $articleIndex  == 14 || $articleIndex  == 15 || $articleIndex  == 17 || $articleIndex  == 19 || $articleIndex  == 21) echo '<hr class="padding-top">';
+			if($articleIndex  == 3 ||  $articleIndex  == 5 || $articleIndex  == 7 || $articleIndex  == 8 || $articleIndex  == 10 || $articleIndex  == 12 || $articleIndex  == 14 
+				|| $articleIndex  == 15 || $articleIndex  == 17 || $articleIndex  == 19 || $articleIndex  == 21) echo '<hr class="padding-top">';
 	} ?> 
 	</div>
 	<?php }?>

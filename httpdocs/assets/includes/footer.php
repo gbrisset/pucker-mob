@@ -1,5 +1,7 @@
+    
     <div class="row hide-for-print">
     <?php if ( $detect->isMobile() ) { ?>
+    <div class="ad-unit hide-for-print mobile-ad90" id="footer-ad">
   <script type="text/javascript">
 var gsad = {
     site_id : 91477, 
@@ -7,6 +9,7 @@ var gsad = {
  };
 </script>
 <script type="text/javascript" src="http://c.greystripe.com/gsswf/ad.js"></script>
+</div>
     <?php } ?>
       <div id="footer-ad" class="ad-unit"></div>
     </div>

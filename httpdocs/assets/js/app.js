@@ -58,9 +58,8 @@ $(document).ready(function() {
 	     	footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214369/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
 		},
 		lift: {
-			home: '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>',
-			category: '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>',
-			article: '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>'
+			home: liftCSS + '<script src="http://ib.3lift.com/ttj?inv_code=simpledish_main_feed"></script>',
+			category: liftCSS + '<script src="http://ib.3lift.com/ttj?inv_code=simpledish_subpage"></script>'
 		},
 		mobileheader: '<script src="http://uac.advertising.com/mobile/madserverUAC.js" type="text/javascript"></script><script type="text/javascript">(function() {var a = {mobilePlacementID: "348-254-2cd-1635", width: "320", height: "50"}; madserver.requestAd(a);})();</script>',
 		medianet: {
@@ -101,25 +100,40 @@ $(document).ready(function() {
 
 	Foundation.utils.image_loaded(Foundation.utils.S('#aside img'), function(){
 		asideHeight.popular = poparticles.height();
-		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));/*+ (asideHeight.margin * 7) - 8*/
-		leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));
+		//main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));/*+ (asideHeight.margin * 7) - 8*/
+		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));
 		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
+	
+		if(!$('body').hasClass('mobile')) {
+			leftSide.css("min-height", (2746 +  asideHeight.atf ));
+			main.css("min-height", (2746 +  asideHeight.atf ));
+		}
 	});
 
 	function resizeMainOnResize() {
 		asideHeight.trending = trendingNowHeight;
 		asideHeight.popular = poparticles.height();
-		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf2 ));/*+ (asideHeight.margin * 7) - 8*/
-		leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf2 ));
+		//main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf2 ));/*+ (asideHeight.margin * 7) - 8*/
+		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf2 ));
+
+		if(!$('body').hasClass('mobile')) {
+			leftSide.css("min-height", (2746 +  asideHeight.atf ));
+			main.css("min-height", (2746 +  asideHeight.atf ));
+		}
+
 	}
 
 	function resizeMainOnAdLoad() {
 		asideHeight.trending = trendingNowHeight;
 		asideHeight.popular = poparticles.height();
 		
-		main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2 /*+ (asideHeight.margin * 7) - 8*/));
-		leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2));
-
+		//main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2 /*+ (asideHeight.margin * 7) - 8*/));
+		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2));
+		
+		if(!$('body').hasClass('mobile')) {
+			leftSide.css("min-height", (2746 +  asideHeight.atf ));
+			main.css("min-height", (2746 +  asideHeight.atf ));
+		}
 	}
 
 	function loadAd(target, adcode) {
@@ -181,9 +195,9 @@ $(document).ready(function() {
 			}
 		}
 	}
-	if(page === 'category' || page === 'home' || page === 'article' ) {
+	//if(page === 'category' || page === 'home') {
 		//loadAd(select.ad.lift, ad.lift[page]);
-	}
+	//}
 
 	loadAd(select.ad.atf, ad[adPage].atf);
 
@@ -318,7 +332,7 @@ var app = {
  		});
     }
 
-    //Scroll Down Functionality
+    
 	$(function() {
 	  $('a[href*=#]:not([href=#])').click(function() {
 	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {

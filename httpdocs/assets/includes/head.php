@@ -109,8 +109,8 @@
 		}
 	}
 	</script>
-	<?php } ?>
 
+	<!--AD SUPPLY-->
 	<script data-cfasync="false" type="text/javascript">
 (function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");
 (function() {
@@ -120,4 +120,7 @@ s.id = "infinity"; s.setAttribute("data-guid", "ce106c14-9ffe-4f0b-8cb8-c965d9d0
 var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
 })();
 </script>
+	<?php } ?>
+
+	
 </head>

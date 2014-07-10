@@ -11,7 +11,9 @@ if ( $detect->isMobile() ) {?>
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<section id="puc-articles" class="sidebar-right shadow-on-large-up mobile-12 small-12 medium-11 columns translate-fix sidebar-main-left">
-		<?php include_once($config['include_path'].'articlelistmobile.php'); ?>
+		<?php 
+		$articlesList = $mpArticle->getArticles(['count' => 24]);
+		include_once($config['include_path'].'articlelistmobile.php'); ?>
 		</section>
 	</main>
 	<?php include_once($config['include_path'].'footer.php'); ?>
@@ -28,7 +30,8 @@ if ( $detect->isMobile() ) {?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left">
-		<?php include_once($config['include_path'].'articleslist.php'); ?>
+		<?php 
+		include_once($config['include_path'].'articleslist.php'); ?>
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
 	</main>

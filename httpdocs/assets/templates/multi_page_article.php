@@ -11,12 +11,10 @@ $pagination = new Pagination($page, $per_page, $total_count);
 $offset = $pagination->offset();
 $page_list_items = PageListItem::get_current($articleInfoObj['page_list_id'], $offset);
 ?>
-<article id="sectioned-article-content" class="small-12 column microsidebar-article">
-	<!--<div class="no-padding">-->
+<article id="sectioned-article-content" class="small-12 column <?php if($detect->isMobile()) echo " no-padding "; ?>">
 	<section class="small-12 column" id="article-summary">
-		<!--<div class="columns small-12">-->
+
 			<h1 id="<?php echo $articleInfoObj['article_id']; ?>"><?php echo $articleInfoObj['article_title']; ?></h1>
-		<!--</div>-->
 		<div class="row">
 			<section id="social-buttons" class="small-12 xxlarge-7 columns  hide-for-print">
 				<button id="facebook-button" class="columns small-3 button small facebook">
@@ -32,25 +30,13 @@ $page_list_items = PageListItem::get_current($articleInfoObj['page_list_id'], $o
 					<i class="fa fa-google-plus fa-fw"></i><div id="google-plus-count" class="social-fade-in">0</div>
 				</button>
 			</section>
-		<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding " style="text-align: right;">
+			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
 				<a href="#disqus-container" ><i class="fa fa-comment-o fa-25x no-margin"></i></a>
 				<a href="mailto:?subject=Hey,%20check%20out%20this%20article&body=Hi%20there,%0D%0D%20I%20saw%20this%20great%20article%20on%20Pucker%20Mob%20(http://www.puckermob.com/).%0D%0D%20Check%20it%20out:%20<?php echo $articleInfoObj['article_title']; ?>%20(<?php echo urlencode($mpHelpers->curPageURL()); ?>)%0D%0DCheers!">
 					<i class="fa fa-envelope-o fa-25x no-margin"></i>
 				</a>			
 			</div>
 		</div>
-		<!--<section id="top-nav-buttons" class="columns small-12 medium-4" style="padding-left: 0;">
-			<ul class="vertical-centered">
-				<?php if($page > 1) { ?>
-				<li><a class="prefetch" href="<?php echo $article_link.'?p='.($page - 1); ?>"><i class="fa fa-angle-left fa-2x"></i></a></li>
-				<?php } ?>
-				<li><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
-				<?php if($total_count > $page){ ?>
-				<li><a class="prefetch" href="<?php echo $article_link.'?p='.($page + 1); ?>"><i class="fa fa-angle-right fa-2x"></i></a></li>
-				<?php } ?>
-			</ul>
-		</section>-->
-
 		<?php if($page_list_items->page_list_item_image != '' && $page_list_items->page_list_item_youtube_embed == ''){ ?>
 		<div class="row">
 		<section id="article-slide" class="columns small-12 half-padding-right-on-lg">
@@ -88,5 +74,5 @@ $page_list_items = PageListItem::get_current($articleInfoObj['page_list_id'], $o
 			<?php include_once($config['include_path'].'sharedicons.php');?>
 		</section>
 	</div>
-	<!--</div>--></section>
+	</section>
 </article>

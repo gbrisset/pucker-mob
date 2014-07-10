@@ -15,14 +15,15 @@ if(!is_null($categoryInfo)){
 	$pageName = $categoryInfo['cat_name'].' | '.$mpArticle->data['article_page_name'];
 	$parentCategorySEOName = ($categoryInfo['parent_dir_name']);
 
-	$recentArticles = $mpArticle->getMostRecentByCatId(['pageId' => $categoryInfo['cat_id']]);
+	$articlesList = $mpArticle->getMostRecentByCatId(['pageId' => $categoryInfo['cat_id']]);
+	$recentArticles = $articlesList;
 	$articlesPerPage = 24;
-	$totalPages = ceil(count($recentArticles['articles']) / $articlesPerPage);
+	$totalPages = ceil(count($articlesList['articles']) / $articlesPerPage);
 	if($totalPages > 1){
 		$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
 		if($currentPage > $totalPages) $currentPage = 1;
 		$offset = ($currentPage - 1) * $articlesPerPage;
-		$recentArticles['articles'] = array_slice($recentArticles['articles'], $offset, $articlesPerPage);
+		$articlesList['articles'] = array_slice($articlesList['articles'], $offset, $articlesPerPage);
 		if ($hasParent){
 			$parentCategorySEOName = $categoryInfo['parent_dir_name'];
 			$parentCategoryVisibleName = $categoryInfo['parent_name'];
@@ -42,8 +43,8 @@ if ( $detect->isMobile() ) {
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
-
-			<?php include_once($config['include_path'].'categoryresults.php');?>
+			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 columns translate-fix sidebar-main-left">
+			<?php include_once($config['include_path'].'articlelistmobile.php');?>
 			<?php include_once($config['shared_include'].'pagination.php');?>
 			<section class="sidebar-right small-12 columns">
 				<hr>
@@ -53,6 +54,7 @@ if ( $detect->isMobile() ) {
 
 			<section class="sidebar-right small-12 columns">
 				<hr>
+			</section>
 			</section>
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>

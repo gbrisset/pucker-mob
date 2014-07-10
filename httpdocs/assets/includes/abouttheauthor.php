@@ -1,4 +1,8 @@
-<section id="about-the-author" class="columns small-12 hide-for-print sidebar-right no-padding">
+<?php
+$class = " column small-12 hide-for-print sidebar-right  no-padding ";
+if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right no-padding "; ?>
+
+<section id="about-the-author" class="<?php echo $class; ?>">
 	<div id="about-the-author-bg" class="columns small-12">
 		<?php 
 		$bio = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_bio"])));

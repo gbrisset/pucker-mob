@@ -219,6 +219,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         &.menu-icon {
           top: 50%;
           margin-top: -16px;
+          right: 0.9rem;
+          padding-left: 40px;
+
 
           a {
             @if $text-direction == rtl {

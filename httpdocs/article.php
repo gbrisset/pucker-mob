@@ -54,7 +54,7 @@ if (isset($hasParent) && $hasParent){
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php'); ?>
 		<main id="main" class="row panel sidebar-on-right shadow-on-large-up" role="main">
-
+			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 columns translate-fix sidebar-main-left">
 			<?php 
 			if(isset($articleInfoObj['article_template_type']) && $articleInfoObj['article_template_type'] == 1){
 				include_once($config['template_path'].'recipe.php');
@@ -67,7 +67,7 @@ if (isset($hasParent) && $hasParent){
 
 			}
 			?>
-			<?php include_once($config['include_path'].'similarrecipes.php');?>
+			<!-- CONTENT.AD --> 
 			<div id="contentad21632"></div>
 			<script type="text/javascript">
 			(function() {
@@ -89,25 +89,20 @@ if (isset($hasParent) && $hasParent){
 				document.getElementById("contentad21632").appendChild(s);
 			})();
 			</script>
-			<?php 
-			if(isset($categoryInfo) && !$categoryInfo['cat_partner_banner_recipe_page'] && !$articleInfoObj['isTopic']){
-				include_once($config['include_path'].'abouttheauthor.php');
-			}?>
-			<section class="sidebar-right small-12 columns">
-				<hr>
-			</section>
 
-			<div id="bottom-ad" class="ad-unit hide-for-print"></div>
-
-			<section class="sidebar-right small-12 columns">
-				<hr>
-			</section>
+			<hr>
+			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+			<hr>
+			<?php include_once($config['include_path'].'similararticles.php');?>
+			<hr>
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+		</section>
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
 	</body>
 	</html>
-<?php } else { ?>
+	<?php } else { ?>
 	<!DOCTYPE html>
 	<html class="no-js" lang="en">
 	<?php include_once($config['include_path'].'head.php');?>
@@ -116,36 +111,55 @@ if (isset($hasParent) && $hasParent){
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
 			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left">
-			<?php 
+				<?php 
 				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
 					include_once($config['template_path'].'multi_page_article.php');
 
 				} else {
 					include_once($config['template_path'].'single_page_article.php');
 				} ?>
-			<hr>
+				<hr>
+				<!-- NESTEER -->
+				<script type="text/javascript">
 
-<div class="row hide-for-print like-us-fb">
-	<p class="columns small-3">Like Us on Facebook!
-	<div class="columns small-9" >
-<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=35&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe>	</div>	 </p>
-	</div>	 </p>
-</div>
-<hr>
-<div id="lift-ad">
-	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-</div>
+				netseer_tag_id="19129";
+
+				netseer_task="in-image";
+
+				netseer_inimage_render_mode="sync";
+
+				</script>
+
+				<script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+
+				<!-- Like us on FB --> 
+				<div class="row hide-for-print like-us-fb">
+					<p class="columns small-3">Like Us on Facebook!
+						<div class="columns small-9" >
+							<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=35&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe>	
+						</div>	 
+					</p>
+				</div>	 
+
+				<hr>
+				<!-- LIFT AD -->
+				<div id="lift-ad">
+					<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
+				</div>
+
 				<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
-			<hr>
-			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
-		
-			<?php include_once($config['include_path'].'similararticles.php');?>
-			<hr>
-			<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
-			<hr>
-			<?php include_once($config['include_path'].'disqus.php'); ?>
-			   
-		</section>
+				<hr>
+
+				<!-- Media Net -->
+				<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
+
+				<?php include_once($config['include_path'].'similararticles.php');?>
+				<hr>
+				<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
+				<hr>
+				<?php include_once($config['include_path'].'disqus.php'); ?>
+
+			</section>
 			<?php include_once($config['include_path'].'rightsidebar.php');?>
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>

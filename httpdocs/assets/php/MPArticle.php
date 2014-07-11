@@ -41,7 +41,7 @@ $pageQueryString .= "WHERE article_pages.article_page_id = 1 ";
 $pageQueryString .= "LIMIT 0, 1 ";
 $q = $pdo->query($pageQueryString);
 if($q && $q->rowCount()){
-	$q->setFetchMode(PDO::FETCH_ASSOC);
+	$q->setFetchMode(PDO::FETCH_ASSOC); 
 	$row = $q->fetch();
 	$r = $row;
 	$q->closeCursor();
@@ -679,7 +679,7 @@ public function getMostRecentArticleList( $articleID = null ){
 		$queryString .= " AND articles.article_id != ".$articleID;
 	}
 
-	$queryString .= " ORDER BY articles.creation_date DESC LIMIT 30,3 ";
+	$queryString .= " GROUP BY articles.article_id ORDER BY articles.creation_date DESC LIMIT 25,3 ";
 
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;

@@ -63,8 +63,8 @@ $(document).ready(function() {
 		},
 		mobileheader: '<script src="http://uac.advertising.com/mobile/madserverUAC.js" type="text/javascript"></script><script type="text/javascript">(function() {var a = {mobilePlacementID: "348-254-2cd-1635", width: "320", height: "50"}; madserver.requestAd(a);})();</script>',
 		medianet: {
-			recipe: '<script id="mNCC" language="javascript">  medianet_width=\'600\';  medianet_height= \'175\';  medianet_crid=\'426275056\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script>',
-			sectioned: '<script id="mNCC" language="javascript">  medianet_width=\'600\';  medianet_height= \'175\';  medianet_crid=\'426275056\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script>'
+			article: '<script id="mNCC" language="javascript">  medianet_width=\'600\';  medianet_height= \'175\';  medianet_crid=\'470643824\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script>',
+			sectioned: '<script id="mNCC" language="javascript">  medianet_width=\'600\';  medianet_height= \'175\';  medianet_crid=\'470643824\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script>'
 		}
 	};
 	var mobilead = {
@@ -186,12 +186,12 @@ $(document).ready(function() {
 			loadAd(select.ad.header, ad[adPage].header);
 			loadAd(select.ad.footer, ad[adPage].footer);
 		if(adPage === 'category') {
-			loadAd(select.ad.medianet, ad.medianet.recipe);
-		} else if(page === 'recipe') {
+			loadAd(select.ad.medianet, ad.medianet.article);
+		} else if(page === 'article') {
 			if(Foundation.utils.S('#sectioned-article-content').length) {
 				loadAd(select.ad.medianet, ad.medianet.sectioned);
 			} else {
-				loadAd(select.ad.medianet, ad.medianet.recipe);
+				loadAd(select.ad.medianet, ad.medianet.article);
 			}
 		}
 	}
@@ -208,6 +208,7 @@ $(document).ready(function() {
     });
 	}
 
+	if(!$('body').hasClass('mobile')) {
 	iFrameResize({
 			checkOrigin: false,
 			sizeWidth: true,
@@ -233,7 +234,7 @@ $(document).ready(function() {
 				container.setAttribute("class", classToAdd);
 		}
 	});
-	
+	}
     Foundation.utils.S('#around-the-web a').attr('target', '_blank');
 
 	var facebook_button = Foundation.utils.S('#facebook-button');

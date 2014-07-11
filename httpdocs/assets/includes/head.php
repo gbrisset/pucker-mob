@@ -7,7 +7,7 @@
 	<link rel="dns-prefetch" href="//ad.doubleclick.net" />
 	<link rel="dns-prefetch" href="//cdn.assets.craveonline.com" />
 	<link rel="dns-prefetch" href="//b.scorecardresearch.com" />
-	<link rel="dns-prefetch" href="//g2.gumgum.com" />
+
 	<link rel="dns-prefetch" href="//widget.crowdignite.com" />
 	<link rel="dns-prefetch" href="//ib.3lift.com" />
 	<link rel="dns-prefetch" href="//contextual.media.net" />

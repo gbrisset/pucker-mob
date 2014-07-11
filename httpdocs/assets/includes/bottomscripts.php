@@ -12,9 +12,7 @@ s.id = "infinity"; s.setAttribute("data-guid", "490ee41f-4f8d-4fdf-a842-6a22653a
 var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
 })();
 </script>
-<?php /* Gum Gum */ ?>
-<script>ggv2id='aa8ca942';</script>
-<script src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
+
 <?php } else { ?>
 <script type="text/javascript" src="http://ads.crisppremium.com/partners/simple_dish/simple_dish.js?%param%&c=%click%&v=%view%"></script>
 <?php } ?>

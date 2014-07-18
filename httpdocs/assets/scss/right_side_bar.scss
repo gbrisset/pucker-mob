@@ -52,39 +52,47 @@ padding-top: 5px;
 }
 
 @media #{$large-up} {
-#aside {
-right: 0; 
+	#aside {
+		right: 0; 
+	}
+
+	#popular-articles-top {
+		border-top: 0; 
+		border-radius: 0;
+	}
+
+	.sidebar h4 {
+		padding-top: 0.3rem ;
+		padding-bottom: 0.1rem;
+		padding-left: $sidebar-header-padding;
+		margin: 0;
+		color: $main-color;
+		background-color: $topbar-bg-color;
+		font-size: 1rem;
+		border-bottom: 1px solid $main-color;
+	}
+
+	.sidebar .todays-favorites {
+	border-top: 0; 
+	margin-bottom: 0; 
+	border-radius: 0; 
+	border-bottom: 2px solid #232323;
+
+	&:last-child(){
+	border-bottom: none;
+	}
+	}
 }
-
-#popular-articles-top {
-border-top: 0; 
-border-radius: 0;
-
-}
-
 .sidebar h4 {
-padding-top: 0.3rem ;
-padding-bottom: 0.1rem;
-padding-left: $sidebar-header-padding;
-margin: 0;
-color: $main-color;
-background-color: $topbar-bg-color;
-font-size: 1rem;
-border-bottom: 1px solid $main-color;
-}
-
-.sidebar .todays-favorites {
-border-top: 0; 
-margin-bottom: 0; 
-border-radius: 0; 
-border-bottom: 2px solid #232323;
-
-&:last-child(){
-border-bottom: none;
-}
-}
-}
-
+		padding-top: 0.3rem ;
+		padding-bottom: 0.1rem;
+		padding-left: $sidebar-header-padding;
+		margin: 0;
+		color: $main-color;
+		background-color: $topbar-bg-color;
+		font-size: 1rem;
+		border-bottom: 1px solid $main-color;
+	}
 .social{
 
 float:left;

@@ -1,5 +1,5 @@
 
-	<div class="h4-container"><h4>Be part of the puckermob</h4></div>
+	<div class="h4-container"><h4>Join the Mob!</h4></div>
 	<div class="row collapse connect-with-us">
 		<a href="https://www.facebook.com/pages/Puckermob/1492027101033794" class="button columns facebook social" target="_blank"><i class="fa fa-4x fa-facebook fade-in-out"></i></a>
 		<a href="https://twitter.com/Puckermob" class="button columns twitter social" target="_blank"><i class="fa fa-4x fa-twitter fade-in-out"></i></a>

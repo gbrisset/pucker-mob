@@ -8,7 +8,7 @@ if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articl
 }
 
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
-	<section id="popular-articles" class="sidebar shadow-on-large-up">
+	<section id="popular-articles" class="sidebar shadow-on-large-up show-on-large-up ">
 		<div class="h4-container"><h4>Most Popular</h4></div>
 			<?php 
 				$articleNumber = 1;
@@ -29,7 +29,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 							
 						$mostReadArticle .= '</div><div class="small-12 columns article-information" data-equalizer-watch>';
 						$mostReadArticle .= '<p class="small-7 left uppercase" >
-												<a class="span-category" href="'.$linkToCategory.'">'.$article['cat_name'].'</a>
+												<a class="span-category '.$article['cat_dir_name'].'" href="'.$linkToCategory.'">'.$article['cat_name'].'</a>
 												<span class="span-date">'.$date.'</span>
 											</p><p class="small-5 right uppercase author">
 												<span class="span-author">By <a href="'.$linkToContributor.'" >'.$article['contributor_name'].'</a></span>
@@ -47,7 +47,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 					$mostReadArticle .= '</div><div class="small-12 columns article-information" data-equalizer-watch>';
 						//$mostReadArticle .= '<h5>'.$mpHelpers->truncate($article['article_title'], 80).'</h5></div></div></div></a>';
 						$mostReadArticle .= '<p class="small-7 left uppercase" >
-												<a class="span-category" href="'.$linkToCategory.'">'.$article['cat_name'].'</a>
+												<a class="span-category '.$article['cat_dir_name'].'" href="'.$linkToCategory.'">'.$article['cat_name'].'</a>
 												<span class="span-date">'.$date.'</span>
 											</p><p class="small-5 right uppercase author">
 												<span class="span-author">By <a href="'.$linkToContributor.'" >'.$article['contributor_name'].'</a></span>
@@ -65,7 +65,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						$mostReadArticle .= '</div><div class="small-12 columns article-information" data-equalizer-watch>';
 						//$mostReadArticle .= '<h5>'.$mpHelpers->truncate($article['article_title'], 80).'</h5></div></div></div></a>';
 						$mostReadArticle .= '<p class="small-7 left uppercase" >
-												<a class="span-category" href="'.$linkToCategory.'">'.$article['cat_name'].'</a>
+												<a class="span-category '.$article['cat_dir_name'].'" href="'.$linkToCategory.'">'.$article['cat_name'].'</a>
 												<span class="span-date">'.$date.'</span>
 											</p><p class="small-5 right uppercase author">
 												<span class="span-author">By <a href="'.$linkToContributor.'" >'.$article['contributor_name'].'</a></span>
@@ -83,7 +83,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						$mostReadArticle .= '</div><div class="small-12 columns article-information" data-equalizer-watch>';
 						//$mostReadArticle .= '<h5>'.$mpHelpers->truncate($article['article_title'], 80).'</h5></div></div></div></a>';
 						$mostReadArticle .= '<p class="small-7 left uppercase" >
-												<a class="span-category" href="'.$linkToCategory.'">'.$article['cat_name'].'</a>
+												<a class="span-category '.$article['cat_dir_name'].'" href="'.$linkToCategory.'">'.$article['cat_name'].'</a>
 												<span class="span-date">'.$date.'</span>
 											</p><p class="small-5 right uppercase author">
 												<span class="span-author">By <a href="'.$linkToContributor.'" >'.$article['contributor_name'].'</a></span>

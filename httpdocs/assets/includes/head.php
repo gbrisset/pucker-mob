@@ -1,13 +1,15 @@
 <head>
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
+
+
 	<meta http-equiv="x-dns-prefetch-control" content="on">
 	<link rel="dns-prefetch" href="//images.puckermob.com" />
 	<link rel="dns-prefetch" href="//www.google-analytics.com" />
 	<link rel="dns-prefetch" href="//ad.doubleclick.net" />
 	<link rel="dns-prefetch" href="//cdn.assets.craveonline.com" />
 	<link rel="dns-prefetch" href="//b.scorecardresearch.com" />
-
+	<link rel="dns-prefetch" href="//s7.addthis.com" />
 	<link rel="dns-prefetch" href="//widget.crowdignite.com" />
 	<link rel="dns-prefetch" href="//ib.3lift.com" />
 	<link rel="dns-prefetch" href="//contextual.media.net" />
@@ -72,6 +74,8 @@
     else echo $mpArticle->data['article_page_analytics'];
 	}
 	?>
+	
+
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
@@ -122,5 +126,7 @@ var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s,
 </script>
 	<?php } ?>
 
+
 	
 </head>
+ <?php flush(); ?>

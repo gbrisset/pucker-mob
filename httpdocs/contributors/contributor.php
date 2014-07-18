@@ -76,7 +76,7 @@ if($contributorInfo['contributors']){
 			</section>
 			<?php if(isset($contributorInfo['articles']['articles']) && $contributorInfo['articles']['articles']){ ?>
 			<section id="results" class="small-12 columns sidebar-right">
-				<h2><?php echo $contributorInfoObj['contributor_name']; ?>'s Recipes</h2>
+				<h2><?php echo $contributorInfoObj['contributor_name']; ?>'s Articles</h2>
 				<?php
 				$articleIndex = 1; 
 				foreach ($contributorInfo['articles']['articles'] as $article) {

@@ -100,17 +100,22 @@ if (isset($hasParent) && $hasParent){
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+
 	</body>
 	</html>
 	<?php } else { ?>
 	<!DOCTYPE html>
-	<html class="no-js" lang="en">
+	<html class="no-js" lang="en"  xmlns:fb="http://ogp.me/ns/fb#"> 
 	<?php include_once($config['include_path'].'head.php');?>
 	<body id="article">
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634"></script>
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
-			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left">
+			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left" style="z-index:999;">
 				<?php 
 				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
 					include_once($config['template_path'].'multi_page_article.php');
@@ -118,25 +123,17 @@ if (isset($hasParent) && $hasParent){
 				} else {
 					include_once($config['template_path'].'single_page_article.php');
 				} ?>
+						<hr>
+				<?php if($articleInfoObj['article_id'] == 3942){ ?>
+					<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="193069"></script>
+				<?php }?>
 				<hr>
-				<!-- NESTEER -->
-				<script type="text/javascript">
-
-				netseer_tag_id="19129";
-
-				netseer_task="in-image";
-
-				netseer_inimage_render_mode="sync";
-
-				</script>
-
-				<script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-
+				
 				<!-- Like us on FB --> 
 				<div class="row hide-for-print like-us-fb">
-					<p class="columns small-3">Like Us on Facebook!
+					<p class="columns small-2">Join the Mob!
 						<div class="columns small-9" >
-							<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=35&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe>	
+							<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
 						</div>	 
 					</p>
 				</div>	 
@@ -164,6 +161,11 @@ if (isset($hasParent) && $hasParent){
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
+
+		<!-- Gum Gum -->
+		<script>ggv2id='64bad626';</script>
+		<script src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
+
 
 	</body>
 	</html>

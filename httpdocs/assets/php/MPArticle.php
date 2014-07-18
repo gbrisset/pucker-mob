@@ -134,17 +134,17 @@ public function getArticles($args = [], $attempts = 0){
 	$options = array_merge([
 		'pageId' => null, 
 		'count' => 12, 
-			'sortType' =>1, //1 == Most Recent, 2 == Most Popular, 3 == Most Visited, 4 == A-Z, 5 == Z-A
-			'featured'=> false, 
-			'featureType' =>1, //1 == Sidebar, 2 == On-Page
-			'contributorId' => null, 
-			'omit'=> [],
-			'articleId' => null, 
-			'articleTitles' => [],
-			'articleSEOTitle' => '',
-			'articleSEOTitles' =>[],
-			'articleStatus' => 1
-			], $args);
+		'sortType' =>1, //1 == Most Recent, 2 == Most Popular, 3 == Most Visited, 4 == A-Z, 5 == Z-A
+		'featured'=> false, 
+		'featureType' =>1, //1 == Sidebar, 2 == On-Page
+		'contributorId' => null, 
+		'omit'=> [],
+		'articleId' => null, 
+		'articleTitles' => [],
+		'articleSEOTitle' => '',
+		'articleSEOTitles' =>[],
+		'articleStatus' => 1
+	], $args);
 	$innerJoinTables = [
 	'article_images',
 	'article_categories',
@@ -679,7 +679,7 @@ public function getMostRecentArticleList( $articleID = null ){
 		$queryString .= " AND articles.article_id != ".$articleID;
 	}
 
-	$queryString .= " GROUP BY articles.article_id ORDER BY articles.creation_date DESC LIMIT 25,3 ";
+	$queryString .= " GROUP BY articles.article_id ORDER BY articles.creation_date DESC LIMIT 26,3 ";
 
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;
@@ -1492,7 +1492,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
  *	@return array 		The dataset
  */	
 public function get_next_with_list($current_article_id){
-	$s = "SELECT * FROM articles
+	/*$s = "SELECT * FROM articles
 	WHERE article_id < {$current_article_id}
 	AND page_list_id >0
 	AND article_status = 1
@@ -1501,7 +1501,27 @@ public function get_next_with_list($current_article_id){
 
 	LIMIT 1";
 	$q = $this->performQuery(['queryString' => $s]);
+	return ($q);*/
+
+	$s = "SELECT articles.article_id, articles.article_title, 
+	articles.article_seo_title, articles.creation_date, articles.article_status, 
+	articles.page_list_id, categories.cat_name, categories.cat_dir_name
+	FROM articles
+	INNER JOIN ( article_categories, categories )
+	ON articles.article_id=article_categories.article_id 
+		AND article_categories.cat_id=categories.cat_id 
+
+	WHERE articles.article_id < {$current_article_id}
+	AND articles.page_list_id >0
+	AND articles.article_status = 1
+
+	ORDER BY articles.article_id DESC
+
+	LIMIT 1 ";
+	
+	$q = $this->performQuery(['queryString' => $s]);
 	return ($q);
+
 }
 
 
@@ -1541,6 +1561,27 @@ public function getUserInfo(){
 	'bypassCache' => true
 	);
 	return $this->performQuery($options);
+}
+
+public function getFeaturedArticle( $cat_id = 1 ){
+	$cat_id = filter_var($cat_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	$s = "
+		SELECT featured_article.article_id, articles.article_title, articles.article_seo_title, articles.creation_date, articles.article_status, 
+		categories.cat_name, categories.cat_dir_name, 
+		article_contributors.contributor_name, article_contributors.contributor_seo_name  
+		FROM featured_article 
+		INNER JOIN ( articles, article_categories, categories, article_contributors, article_contributor_articles )
+		ON featured_article.article_id=articles.article_id 
+		AND articles.article_id=article_categories.article_id 
+		AND article_categories.cat_id=categories.cat_id 
+		AND featured_article.article_id = article_contributor_articles.article_id
+		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
+		WHERE articles.article_status = 1 AND featured_article.category_id = ".$cat_id." LIMIT 1 
+		";
+
+	$q = $this->performQuery(['queryString' => $s]);
+
+	return $q;
 }
 
 }

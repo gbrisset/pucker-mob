@@ -15,20 +15,20 @@ var gsad = {
     </div>
     <footer class="hide-for-print">
       <div class="row">
-        <div class="small-4 large-2 columns">
+        <div class="small-4 large-2 columns category-colors">
         <h4>Categories</h4>
          <ul class="no-bullet">
-              <li><a href="<?php echo $config['this_url']; ?>hot-topics">Hot Topics</a></li>
-              <li><a href="<?php echo $config['this_url']; ?>relationships">Relationships</a></li>
-              <li><a href="<?php echo $config['this_url']; ?>entertainment">Entertainment</a></li>
+              <li><a href="<?php echo $config['this_url']; ?>hot-topics" class="hot-topics">Hot Topics</a></li>
+              <li><a href="<?php echo $config['this_url']; ?>relationships" class="relationships">Relationships</a></li>
+              <li><a href="<?php echo $config['this_url']; ?>entertainment" class="entertainment">Entertainment</a></li>
          </ul>
       </div>
-        <div class="small-4 large-2 columns">
+        <div class="small-4 large-2 columns category-colors">
           <ul class="no-bullet">
-            <li><a href="<?php echo $config['this_url']; ?>style">Style</a></li>
-            <li><a href="<?php echo $config['this_url']; ?>money">Money</a></li>
-            <li><a href="<?php echo $config['this_url']; ?>wellness">Wellness</a></li>
-            <li><a href="<?php echo $config['this_url']; ?>fun">Fun</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>style" class="style">Style</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>money" class="money">Money</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>wellness" class="wellness">Wellness</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>fun" class="fun">Fun</a></li>
           </ul>
         </div>
         <div id="footer-right" class="large-6 columns">

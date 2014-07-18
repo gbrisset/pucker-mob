@@ -18,7 +18,7 @@
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-7 xlarge-7 half-padding-left mobile-vertical-center vertical-align-center">
 				<p class="vertical-center">
-					<span class="span-category"><?php echo $articles['cat_name']?></span>
+					<span class="span-category <?php echo $articles['cat_dir_name']?>"><?php echo $articles['cat_name']?></span>
 					<small><?php echo $date; ?></small>
 				</p>
 				<a href="<?php echo $linkToArticle; ?>">
@@ -42,7 +42,7 @@
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-12 xlarge-12 mobile-vertical-center padding-top">
 				<p class="left uppercase" >
-					<span class="span-category"><?php echo $articles['cat_name']?></span>
+					<span class="span-category <?php echo $articles['cat_dir_name']?>"><?php echo $articles['cat_name']?></span>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
 				<p class="right uppercase">
@@ -74,7 +74,7 @@
 			</a>
 			<div class="mobile-7 small-7 medium-12 large-12 xlarge-12 mobile-vertical-center padding-top">
 				<p class="uppercase small-7 left small-font">
-					<span class="span-category"><?php echo $articles['cat_name']?></span>
+					<span class="span-category <?php echo $articles['cat_dir_name']?>"><?php echo $articles['cat_name']?></span>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
 				<p class="right uppercase small-5 align-right small-font">

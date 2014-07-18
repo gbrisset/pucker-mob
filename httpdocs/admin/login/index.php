@@ -28,7 +28,7 @@
 
 	<div id="main-cont" class="main-cont-min">
 	<header>
-		<h1>Welcome to <span>My Simple Dish</span> Login!</h1>
+		<h1>Welcome to <span>Pucker Mob</span> Login!</h1>
 	</header>
 
 	<div class="admin-box" id="login-cont">

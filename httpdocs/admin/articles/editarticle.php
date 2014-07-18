@@ -12,12 +12,12 @@
 
 	$articleCategories = $articleResultSet['categories'];
 	$isRecipe = false;
-	$tallExtension = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$article["article_id"].'_tall');
+	$tallExtension = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall');
 
 	if(!$tallExtension) $tallExtension = 'jpg';
 
-	$tallImageUrl = $config['image_url'].'articlesites/puckermob/tall/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
-	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/tall/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
+	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
+	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
 
 	//Verify if user is a content provider...
 	$content_provider = false;
@@ -28,7 +28,7 @@
 		$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $contributor_email ])['contributors'][0];
 	}
 	//Verify if Article Image file exists.
-	$artImageDir =  $config['image_upload_dir'].'articlesites/puckermob/tall/'.$article['article_id'].'_tall.jpg';
+	$artImageDir =  $config['image_upload_dir'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';
 	$artImageExists = false;
 
 	if(isset($artImageDir) && !empty($artImageDir) && !is_null($artImageDir)){
@@ -38,6 +38,7 @@
 	$articleImages = $mpArticle->getArticlesImages($article['article_id']);	
 	if(empty($article)) $mpShared->get404();
 
+	// SUMMIT FORM
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
@@ -49,7 +50,7 @@
 					$updateStatus = array_merge($mpArticleAdmin->uploadNewImage($_FILES, [
 						'allowedExtensions' => 'png,jpg,jpeg,gif',
 						'imgType' => 'article',
-						'uploadDirectory' => $config['image_upload_dir'].'articlesites/puckermob/tall/',
+						'uploadDirectory' => $config['image_upload_dir'].'articlesites/puckermob/large/',
 						'articleId' => $article['article_id'],
 						'imgData' => $_POST,
 						'whereClause' => 'article_id = '.$article['article_id'],
@@ -84,26 +85,6 @@
 		}
 	}
 
-	//Article PREP && COOK TIME FORMAT CONV.
-	$time_prep_hr = 0;
-	$time_cook_hr = 0;
-	$time_prep_min = 0;
-	$time_cook_min = 0;
-	
-	$time_prep = $article['article_prep_time'];
-	$time_cook = $article['article_cook_time'];
-
-	if(!empty($time_prep) && $time_prep > 0){
-		$time_prep_hr = floor($time_prep / 60);
-		$time_prep_min = $time_prep % 60;
-	}
-
-	if(!empty($time_cook) && $time_cook > 0){
-		$time_cook_hr = floor($time_cook / 60);
-		$time_cook_min = $time_cook % 60;
-	}
-	//END Article PREP && COOK TIME FORMAT CONV.
-
 	//Preview Article Content
 	//include_once($config['include_path_admin'].'preview.php');
 	
@@ -135,7 +116,7 @@
 							<div class="image-steps image-sec">
 								<div id="image-container">
 							<?php if(file_exists($pathToTallImage)){?>
-							<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/tall/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	?>
+							<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	?>
 									<img src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
 									<span><a id="change-art-image" href=""><i class="icon-picture"></i>Change Photo</a></span>
 								<?php } else{ ?>
@@ -160,7 +141,7 @@
 							        	<ul>
 							        	<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
 		    							<li>Do not exceed a maximum size: 1 MB.</li>
-		    							<li>Has a minimun dimensions of  405 x 415</li>
+		    							<!--<li>Has a minimun dimensions of  405 x 415</li>-->
 							        </div>
 						        </fieldset>
 						         <p id="error-img" class="error-img"></p>
@@ -361,6 +342,25 @@
 							</section>
 						</fieldset>
 					<?php } ?>
+					
+					<!-- Featured Article -->
+					<?php if(!$content_provider){ 
+						$featuredArticle = $mpArticle->getFeaturedArticle( 1 );
+					?>
+					<fieldset>
+						<label>Feature this article: </label>
+						<?php 
+						$y_checked = ''; $n_checked = 'checked';
+
+						if( $featuredArticle && isset($featuredArticle['article_id'])) { $y_checked = 'checked'; $n_checked = ''; } ?>
+						<input type="radio" name="feature_article" data-info="yes"  value="1" <?php echo $y_checked; ?> />
+						<label for="" class="radio-label">Yes</label>
+								
+						<input type="radio" name="feature_article" id="no" value="0"  <?php echo $n_checked; ?> />
+						<label for="" class="radio-label">No</label>
+					</fieldset>
+					<?php }?>
+
 					<fieldset>
 						<div class="btn-wrapper">
 							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
@@ -376,7 +376,7 @@
 			<section>
 				<fieldset class="multiple-forms">
 					<div>
-						<div data-preview='<?php echo  $preview_article; ?>' class="preview-art-container" ></div>
+						<!--<div data-preview='<?php echo  $preview_article; ?>' class="preview-art-container" ></div>-->
 					</div>
 
 					<form class="ajax-submit-form" id="article-review-form" name="article-review-form" action="<?php echo $config['this_admin_url'].'articles/edit/'.$uri[2]; ?>" method="POST">

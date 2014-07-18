@@ -598,6 +598,7 @@ class MPArticleAdminController extends MPArticle{
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_categories WHERE article_id = '.$post['a_i']));
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_contributor_articles WHERE article_id = '.$post['a_i']));
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_videos WHERE article_id = '.$post['a_i']));
+		$this->performUpdate(array('updateString' => 'DELETE FROM featured_article '));
 
 			$this->performUpdate(array(
 				'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId",
@@ -633,6 +634,15 @@ class MPArticleAdminController extends MPArticle{
 			$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_videos SET article_id = :articleId, syn_video_id = :videoId",
 				'updateParams' => array(':articleId' => $post['a_i'], ':videoId' => $videoId)
+			));
+		}
+
+		//Update Feature Article
+		if(isset($post['feature_article']) && $post['feature_article'] > 0){
+			$featureArticle = intval(filter_var($post['feature_article'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
+			$this->performUpdate(array(
+				'updateString' => "INSERT INTO featured_article SET  article_id = :articleId, category_id = 1",
+				'updateParams' => array(':articleId' => $post['a_i'])
 			));
 		}
 

@@ -1576,7 +1576,7 @@ public function getFeaturedArticle( $cat_id = 1 ){
 		AND article_categories.cat_id=categories.cat_id 
 		AND featured_article.article_id = article_contributor_articles.article_id
 		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
-		WHERE articles.article_status = 1 AND featured_article.category_id = ".$cat_id." LIMIT 1 
+		WHERE featured_article.category_id = ".$cat_id." LIMIT 1 
 		";
 
 	$q = $this->performQuery(['queryString' => $s]);

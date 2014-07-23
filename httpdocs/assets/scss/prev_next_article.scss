@@ -1,0 +1,70 @@
+#prev-next-articles{
+	margin: $panel-padding  0;
+
+}
+
+.direction {
+	p{
+		/*position: absolute;*/
+		display:inherit;
+		color: #6ad98a !important;
+		text-transform: uppercase;
+		margin:0;
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	i{
+		color: #6ad98a !important;
+	}
+}
+
+.direction.previous{
+	position: absolute;
+	text-align: right;
+	right: 0.5rem;
+}
+
+.direction.next{
+	position:absolute;
+	text-align: left;
+}
+
+.small-title{
+	font-size: 0.8rem;
+	line-height: 1.2;
+	
+	
+	a{
+		color: #333333;
+	}
+}
+
+#prev-article, #next-article{
+	padding: 0.4rem 0;
+	margin: 0.4rem 0;
+	margin-bottom: 0.25rem;
+}
+
+#prev-article{
+	border-right: 1px solid #ddd;
+}
+
+.text-content{
+	padding:0;
+}
+
+.center-small-title{
+	display: table-cell;
+	height: 97px;
+	vertical-align: bottom;
+}
+
+
+.add-shadow{
+	box-shadow: 0 1px 2px -1px #747371;
+}
+
+
+
+
+

@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'OswaldRegular';
+  src: url("../fonts/Oswald-Regular.eot");
+  src: url("../fonts/Oswald-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Oswald-Regular.woff") format("woff"), url("../fonts/Oswald-Regular.ttf") format("truetype"), url("../fonts/Oswald-Regular.svg#OswaldRegular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'OswaldLight';
+  src: url("../fonts/Oswald-Light.eot");
+  src: url("../fonts/Oswald-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Oswald-Light.woff") format("woff"), url("../fonts/Oswald-Light.ttf") format("truetype"), url("../fonts/Oswald-Light.svg#OswaldLight") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Oslo';
+  src: url("../fonts/Oslo-Light.eot");
+  src: url("../fonts/Oslo-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Oslo-Light.woff") format("woff"), url("../fonts/Oslo-Light.ttf") format("truetype"), url("../fonts/Oslo-Light.svg#OsloRegular") format("svg");
+  font-weight: normal;
+  font-style: normal; }

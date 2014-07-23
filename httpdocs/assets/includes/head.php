@@ -28,6 +28,21 @@
 	<link rel="dns-prefetch" href="//ib.adnxs.com" />
 	<link rel="dns-prefetch" href="//fei.pro-market.net" />
 	<link rel="dns-prefetch" href="//mycdn.media.net" />
+	<link rel="dns-prefetch" href="//disqus.com" />
+	<link rel="dns-prefetch" href="//ib.3lift.com" />
+	<link rel="dns-prefetch" href="//uac.advertising.com" />
+	<link rel="dns-prefetch" href="//static.adsafeprotected.com" />
+	<link rel="dns-prefetch" href="//fw.adsafeprotected.com" />
+	<link rel="dns-prefetch" href="//ds.serving-sys.com" />
+	<link rel="dns-prefetch" href="//go.disqus.com" />
+	<link rel="dns-prefetch" href="//g2.gumgum.com" />
+	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
+	<link rel="dns-prefetch" href="//adserver.adtechus.com" />
+	<link rel="dns-prefetch" href="//api.adsnative.com" />
+	<link rel="dns-prefetch" href="//mob.adnxs.com" />
+	<link rel="dns-prefetch" href="//cms.springboardplatform.com" />
+		
+
 	<?php } ?>
 	<link rel="prefetch prerender" href="http://www.puckermob.com" />
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
@@ -52,7 +67,7 @@
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />
 	<meta property="og:site_name" content="<?php echo $mpArticle->data['article_page_name']; ?>" />
 	<meta property="og:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
-	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo && isset($articleInfo['articles'][0])){echo $config['image_url'].'articlesites/puckermob/tall/'.$articleInfo['articles'][0]['article_id'].'_tall.jpg';}else{echo $config['image_url'].'articlesites/featured/'.$mpArticle->data['featured_img'];}?>" />
+	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo && isset($articleInfo['articles'][0])){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['articles'][0]['article_id'].'_tall.jpg';}else{echo $config['image_url'].'articlesites/featured/'.$mpArticle->data['featured_img'];}?>" />
 	<?php if(isset($articleInfo) && $articleInfo){ ?>
 	<meta property="article:published_time" content="<?php if (isset($articleInfo['articles'][0])) echo date('Y-m-d\TH:i', strtotime($articleInfo['articles'][0]['creation_date'])); ?>" />
 	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />

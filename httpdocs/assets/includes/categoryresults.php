@@ -13,7 +13,7 @@
 		
 		if ( $detect->isMobile() ) {  ?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12" id="<?php echo 'article-'.$articleIndex;?>">
-			<a class="mobile-5 small-5 medium-5 large-5 xlarge-5 half-padding-right left" href="<?php echo $linkToArticle; ?>">
+			<a class="mobile-5 small-5 medium-5 large-5 xlarge-5 half-padding-right left prefetch" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-7 xlarge-7 half-padding-left mobile-vertical-center vertical-align-center">
@@ -37,7 +37,7 @@
 			
 			if($articleIndex == 1 || $articleIndex == 8 || $articleIndex == 15 || $articleIndex == 22) { $bigImageCounter++; ?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
-			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
+			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-12 xlarge-12 mobile-vertical-center padding-top">
@@ -69,7 +69,7 @@
 		
 		 ?>
 		<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?>" id="<?php echo 'article-'.$articleIndex;?>">
-			<a class="mobile-5 small-5 medium-12 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
+			<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
 			<div class="mobile-7 small-7 medium-12 large-12 xlarge-12 mobile-vertical-center padding-top">

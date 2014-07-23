@@ -38,7 +38,7 @@ var gsad = {
             <li><a href="<?php echo $mpArticle->data['article_page_facebook_url'];?>" target="_blank"><i class="fa fa-facebook-square fa-lg fade-in-out"></i></a></li>
             <li><a href="<?php echo $mpArticle->data['article_page_twitter_url'];?>" target="_blank"><i class="fa fa-twitter-square fa-lg fade-in-out"></i></a></li>
             <li><a href="<?php echo $mpArticle->data['article_page_pinterest_url'];?>" target="_blank"><i class="fa fa-pinterest-square fa-lg fade-in-out"></i></a></li>
-            <li><a href="<?php echo $mpArticle->data['article_page_googleplus_url'];?>" target="_blank" rel="publisher"><i class="fa fa-google-plus-square fa-lg fade-in-out"></i></a></li>
+            <li><a href="https://plus.google.com/b/112707727253651609975/112707727253651609975/posts" target="_blank" rel="publisher"><i class="fa fa-google-plus-square fa-lg fade-in-out"></i></a></li>
           </ul>
         </div>
        

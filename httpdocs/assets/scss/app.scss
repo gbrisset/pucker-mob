@@ -80,6 +80,7 @@ a{ outline: none !important; }
 .padding-bottom {
 	padding-bottom: ($panel-padding/2);
 }
+
 .half-padding-bottom-top {
 	padding-top: ($panel-padding/2) !important;
 	padding-bottom: ($panel-padding/2) !important;
@@ -104,8 +105,31 @@ a{ outline: none !important; }
 .align-right{
 	text-align: right;
 }
+.align-left{
+	text-align: left;
+}
 
-/*#micro-sidebar, #wide-aol-ad {display: none;}*/
+/*Arrows*/
+.arrow-left, .arrow-right{
+	background: url(http://puckermob.com/assets/img/sprites.png) no-repeat;
+
+}
+
+.arrow-left{
+	background-position: 0 0;
+	width: 51px;
+	height: 52px;
+}
+
+.arrow-right{
+	background-position: -61px 0;
+	width: 51px;
+	height: 52px;
+}
+
+.clear{
+	clear:both;
+}
 
 /*Social Media Styles*/
 .twitter, .twitter:focus {background-color: $twitter-color;}
@@ -268,6 +292,8 @@ ul.inline-centered {
 ul.inline-centered > li {
 	display: inline-block;
 }
+
+.inline-centered.vertical-centered span{ color: #6ad98a; }
 ul.vertical-centered {
 	list-style-type: none;
 	margin-left: 0;
@@ -486,7 +512,7 @@ transition: all 0.3s ease-in-out;}
 #article-next-prev-bottom a:first-child {position: relative; left: 4.5rem;}
 #article-next-prev-bottom a:last-child {position: relative; right: 4.5rem;}
 #article-caption ul li a button {margin-bottom: 0;}
-#sectioned-article-content, #recipe-content {padding-bottom: $panel-padding;}
+#sectioned-article-content, #recipe-content {padding-bottom: $panel-padding /2; border-bottom: 0.4rem solid #232323; margin-bottom: 0.2rem}
 .no-padding {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
@@ -787,6 +813,10 @@ h5 {height: 65px; padding: 0;vertical-align: middle; display: table-cell; text-a
 
 @media #{$mobile-only}{
 	#main {margin-top: ($panel-padding);}
+	.show-on-large-up {
+		visibility: hidden;
+		display:none;
+	}
 }
 @media #{$small-only} {
 	#nav-bar {position: fixed; top: 0; left: 0;}
@@ -908,6 +938,10 @@ body{padding-top:0 !important;}
 	}
 	@media #{$mobile-only} { 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
+		h1{
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		}
 	}
 }
 
@@ -931,10 +965,16 @@ body{padding-top:0 !important;}
 	padding-bottom: 0.8rem;
     padding-top: 0.5rem;
 
-	h2{ color: #777; font-size: 1.7rem; text-transform: uppercase;}
+	h2{ color: #777; font-size: 1.4rem; text-transform: uppercase;}
 }
 #similar-results h2 span { color: $main-color; }
 #similar-results h2{margin-bottom: 1rem;}
+#similar-results h5{ height: auto; margin: 0; padding: 0.3rem 0;}
+@media #{$large-up} {
+	#similar-results, #content-ad-around-the-web, #disqus-comments, #around-the-web{ 
+		h2{ color: #777; font-size: 1.7rem; text-transform: uppercase;}
+	}
+}
 
 div.creative_container{ border:none !important; }
 @import "right_side_bar";
@@ -1074,8 +1114,57 @@ $fun: #f9651b;
 
 .flex-video{
 	margin-bottom: 0; 
+
 }
 
+/* ADDTHIS STYLING */
 .at4-hide{opacity:0 !important; display: none !important;} 
 .social-show{opacity:1 !important; display: inline !important;} 
 .fb-like.fb_iframe_widget{margin-top:0.4rem;}
+#at-share-dock{width: 101%; max-width: 101%;}
+
+
+
+/*multi page article*/
+#article-top-bar{
+	border-top: 0.4rem solid #232323;
+    margin-bottom: 1rem;
+
+    header {
+	    background: none repeat scroll 0 0 #6ad98a;
+	    border-top: 1px solid #fff;
+	    padding-bottom: 0.2rem;
+	    padding-left: 1.1rem;
+	    padding-top: 0.3rem;
+	    text-transform: uppercase;
+	    vertical-align: middle;
+	}
+}
+
+.at4-toaster-outer .at4-recommended .at4-recommended-item .at4-recommended-item-caption h4{ height: 28px !important; }
+
+@import "prev_next_article";
+
+/*Borders*/
+.add-border{
+	border: 1px solid #ddd;
+}
+
+.right-border{
+	border-right: 1px solid #ddd;
+}
+
+.bottom-border{
+	border-bottom: 1px solid #ddd;
+}
+
+.top-border{
+	border-top: 1px solid #ddd;
+}
+
+.left-border{
+	border-left: 1px solid #ddd;
+}
+.remove-border{
+	border: none;
+}

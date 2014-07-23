@@ -6,6 +6,10 @@
 	$quantity = 24;
 	$omitThis = 0;
 	$cat_id = $mpArticle->data['cat_id'];
+	if(isset($categoryInfo) &&  $categoryInfo){
+		$cat_id = $categoryInfo['cat_id'];
+	}
+
 	$featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 	if( $featuredArticle && $featuredArticle['article_status'] == 1){
 		$articleIndex++;

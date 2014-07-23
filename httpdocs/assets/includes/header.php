@@ -14,7 +14,7 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
   <div class="row">
     <div id="header-social" class="small-6 columns half-padding-right">FOLLOW US <a href="<?php echo $mpArticle->data['article_page_facebook_url'];?>" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a>
       <a href="<?php echo $mpArticle->data['article_page_twitter_url'];?>" target="_blank"><i class="fa fa-twitter fade-in-out"></i></a><a href="<?php echo $mpArticle->data['article_page_pinterest_url'];?>" target="_blank"><i class="fa fa-pinterest fade-in-out"></i></a>
-      <a href="<?php echo $mpArticle->data['article_page_googleplus_url'];?>" target="_blank" rel="publisher"><i class="fa fa-google-plus fade-in-out"></i></a>
+      <a href="https://plus.google.com/b/112707727253651609975/112707727253651609975/posts" target="_blank" rel="publisher"><i class="fa fa-google-plus fade-in-out"></i></a>
     </div>
     <div id="topbar-container">
       <input id="topbar-search-contents" type="search" placeholder="SEARCH">

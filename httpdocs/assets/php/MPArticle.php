@@ -1584,5 +1584,51 @@ public function getFeaturedArticle( $cat_id = 1 ){
 	return $q;
 }
 
+
+/***** Article Page ( Get prev. and next article from the current article in the same category ) ********/
+
+public function getPrevArticle( $article_id = null, $cat_id = 1){
+	$article_id = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	$cat_id = filter_var($cat_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+	$s = "
+		SELECT articles.article_id, articles.article_title, articles.article_seo_title, categories.cat_dir_name
+		FROM articles
+		INNER JOIN (categories, article_categories)
+   			ON (articles.article_id = article_categories.article_id
+   			AND article_categories.cat_id = categories.cat_id)
+		WHERE articles.article_id < ".$article_id."  && articles.article_status = 1 && categories.cat_id = ".$cat_id."
+		 ORDER BY articles.article_id DESC 
+		LIMIT 1
+	";
+
+	$q = $this->performQuery(['queryString' => $s]);
+
+	return $q;
+
+}
+
+public function getNextArticle( $article_id = null, $cat_id = 1){
+	$article_id = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	$cat_id = filter_var($cat_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+	$s = "
+		SELECT articles.article_id, articles.article_title, articles.article_seo_title, categories.cat_dir_name
+		FROM articles
+		INNER JOIN (categories, article_categories)
+   			ON (articles.article_id = article_categories.article_id
+   			AND article_categories.cat_id = categories.cat_id)
+		WHERE articles.article_id > ".$article_id."  && articles.article_status = 1 && categories.cat_id = ".$cat_id."
+		 ORDER BY articles.article_id ASC 
+		LIMIT 1
+	";
+
+	$q = $this->performQuery(['queryString' => $s]);
+
+	return $q;
+
+}
+
+
 }
 ?>

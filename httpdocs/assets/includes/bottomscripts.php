@@ -13,8 +13,6 @@ var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s,
 })();
 </script>
 
-<?php } else { ?>
-<script type="text/javascript" src="http://ads.crisppremium.com/partners/simple_dish/simple_dish.js?%param%&c=%click%&v=%view%"></script>
 <?php } ?>
 
 <!--Disqus Comment Box Implementation (Comments Counter)-->

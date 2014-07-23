@@ -361,6 +361,16 @@
 					</fieldset>
 					<?php }?>
 
+					<!-- Poll Script -->
+					<?php if(!$content_provider){ 
+					?>
+
+					<fieldset>
+						<label>Article Poll ID: </label>
+						<input type="text" name="article_poll_id-s" id="article_poll_id-s" value="<?php if(isset($article['article_poll_id'])) echo $article['article_poll_id']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_poll_id') echo 'autofocus'; ?> />
+					</fieldset>
+					<?php }?>
+
 					<fieldset>
 						<div class="btn-wrapper">
 							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">

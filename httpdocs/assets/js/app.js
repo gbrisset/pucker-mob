@@ -106,8 +106,8 @@ $(document).ready(function() {
 		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
 
 		if(!$('body').hasClass('mobile')) {
-			leftSide.css("min-height", (2746 +  asideHeight.atf ));
-			main.css("min-height", (2746 +  asideHeight.atf ));
+			leftSide.css("min-height", (2746 +  asideHeight.atf + asideHeight.video));
+			main.css("min-height", (2746 +  asideHeight.atf  + asideHeight.video));
 		}
 	});
 
@@ -118,8 +118,8 @@ $(document).ready(function() {
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf2 ));
 
 		if(!$('body').hasClass('mobile')) {
-			leftSide.css("min-height", (2746 +  asideHeight.atf ));
-			main.css("min-height", (2746 +  asideHeight.atf ));
+			leftSide.css("min-height", (2746 +  asideHeight.atf  + asideHeight.video));
+			main.css("min-height", (2746 +  asideHeight.atf  + asideHeight.video));
 		}
 
 	}
@@ -132,8 +132,8 @@ $(document).ready(function() {
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2));
 		
 		if(!$('body').hasClass('mobile')) {
-			leftSide.css("min-height", (2746 +  asideHeight.atf ));
-			main.css("min-height", (2746 +  asideHeight.atf ));
+			leftSide.css("min-height", (2746 +  asideHeight.atf  + asideHeight.video));
+			main.css("min-height", (2746 +  asideHeight.atf  + asideHeight.video));
 		}
 	}
 
@@ -383,9 +383,6 @@ function addthisReady(evt) {
 	}
 }
 
-// Listen for the ready event
-//addthis.addEventListener('addthis.ready', addthisReady);
-
 $(window).scroll( function(){
 
 	 if(isOnScreen($('#social-buttons')) ){
@@ -396,30 +393,5 @@ $(window).scroll( function(){
 
 });
 
-
 });
 
-//$('#get-counts-button').click(function () {
-  $.ajax({
-    type: 'GET',
-    url: "http://disqus.com/api/3.0/threads/set.json",
-    data: { api_secret: "nlYiFKe4zm5pNE22WRK521jjRCvTLHFGyaziqYqB5V4RBcSzQOumGTmfxUBsAkOP", forum : "puckermob", thread : "link:http://www.puckermob.com/entertainment/10-people-who-had-plastic-surgery-to-look-like-a-celeb" },
-    dataType: 'json',
-    success: function (result) {
-
-        var countText = " comments";
-        var count = result.response.posts;
-console.log(count);
-
-
-      
-    }
-  });
-//}); 
-
-function initAddThis() 
-     {
-          addthis.init()
-     }
-     // After the DOM has loaded...
-     initAddThis();

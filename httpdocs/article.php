@@ -1,5 +1,6 @@
 <?php
 $categoryInfo = null;
+$isArticle = true;
 $articleInfoObj = array();
 foreach($MPNavigation->categories as $category){
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
@@ -94,14 +95,14 @@ if (isset($hasParent) && $hasParent){
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 			<hr>
 			<?php include_once($config['include_path'].'similararticles.php');?>
-			<hr>
+			
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 		</section>
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 
 	</body>
 	</html>
@@ -110,8 +111,8 @@ if (isset($hasParent) && $hasParent){
 	<html class="no-js" lang="en"  xmlns:fb="http://ogp.me/ns/fb#"> 
 	<?php include_once($config['include_path'].'head.php');?>
 	<body id="article">
-		<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634"></script>
+	
+		
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
@@ -123,11 +124,16 @@ if (isset($hasParent) && $hasParent){
 				} else {
 					include_once($config['template_path'].'single_page_article.php');
 				} ?>
-						<hr>
-				<?php if($articleInfoObj['article_id'] == 3942){ ?>
-					<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="193069"></script>
-				<?php }?>
 				<hr>
+
+				<!-- Setting the Pod -->			
+				<?php 
+				if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>
+					<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="<?php echo $articleInfoObj['article_poll_id']; ?>"></script>
+					<hr>
+				<?php }?>
+				
+				
 				
 				<!-- Like us on FB --> 
 				<div class="row hide-for-print like-us-fb">
@@ -137,8 +143,12 @@ if (isset($hasParent) && $hasParent){
 						</div>	 
 					</p>
 				</div>	 
-
 				<hr>
+
+				<!-- Prev & Next Articles -->
+				<?php include_once($config['include_path'].'prevnextarticles.php'); ?>
+
+				
 				<!-- LIFT AD -->
 				<div id="lift-ad">
 					<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
@@ -159,13 +169,15 @@ if (isset($hasParent) && $hasParent){
 			</section>
 			<?php include_once($config['include_path'].'rightsidebar.php');?>
 		</main>
+		<!-- Gum Gum In IMAGE-->
+		<script type="text/javascript">ggv2id='64bad626';</script>
+
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634"></script>
 
-		<!-- Gum Gum -->
-		<script>ggv2id='64bad626';</script>
-		<script src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
-
+	
 
 	</body>
 	</html>

@@ -535,7 +535,7 @@ class MPArticleAdminController extends MPArticle{
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category for an article.'));
 		
 		//Check for prep and cook time and conver values enter by the user in minutes to insert into the db fields.
-		if(isset($post['article_prep_time_hr-s']) && isset($post['article_prep_time_min-s'])){
+	/*	if(isset($post['article_prep_time_hr-s']) && isset($post['article_prep_time_min-s'])){
 			$prep_in_mins = ($post['article_prep_time_hr-s']*60) + $post['article_prep_time_min-s'];
 			if($prep_in_mins == 0){
 				return array_merge($this->helpers->returnStatus(500), array('message' => 'The recipe\'s prep time cannot be set to 0 minutes.'));
@@ -557,7 +557,7 @@ class MPArticleAdminController extends MPArticle{
 			$post['article_cook_time-s'] = $cook_in_mins;
 			unset($post['article_cook_time_hr-s']);
 			unset($post['article_cook_time_min-s']);
-		}
+		}*/
 		//END
 
 		//Check for same seo-name
@@ -565,8 +565,8 @@ class MPArticleAdminController extends MPArticle{
 
 		/*Ingredients And Instructions*/
 		//Get the ingredients and instructions value and convert into a string object
-		$ingredients =  $this->helpers->getElementList($post, 'article_ingredients');
-		$instructions = $this->helpers->getElementList($post, 'article_instructions');
+		//$ingredients =  $this->helpers->getElementList($post, 'article_ingredients');
+		//$instructions = $this->helpers->getElementList($post, 'article_instructions');
 
 		//Clean the $post array and remove the ingredients and instructions to avoid conflic between fields
 		foreach( $post as $key => $val ){
@@ -576,8 +576,8 @@ class MPArticleAdminController extends MPArticle{
 		}
 
 		//Set the right key for ingredients and instructions value
-		$post['article_ingredients-nf'] = $ingredients;
-		$post['article_instructions-nf'] = $instructions;
+		//$post['article_ingredients-nf'] = $ingredients;
+		//$post['article_instructions-nf'] = $instructions;
 
 		/*END Ingredients And Instructions*/
 
@@ -598,7 +598,7 @@ class MPArticleAdminController extends MPArticle{
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_categories WHERE article_id = '.$post['a_i']));
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_contributor_articles WHERE article_id = '.$post['a_i']));
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_videos WHERE article_id = '.$post['a_i']));
-		$this->performUpdate(array('updateString' => 'DELETE FROM featured_article '));
+		
 
 			$this->performUpdate(array(
 				'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId",
@@ -639,6 +639,7 @@ class MPArticleAdminController extends MPArticle{
 
 		//Update Feature Article
 		if(isset($post['feature_article']) && $post['feature_article'] > 0){
+			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article '));
 			$featureArticle = intval(filter_var($post['feature_article'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
 			$this->performUpdate(array(
 				'updateString' => "INSERT INTO featured_article SET  article_id = :articleId, category_id = 1",
@@ -649,7 +650,7 @@ class MPArticleAdminController extends MPArticle{
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
 			'post' => $post,
-			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_body', 'article_keywords', 'article_ingredients', 'article_instructions', 'article_additional_comments')
+			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_body', 'article_keywords', 'article_ingredients', 'article_instructions', 'article_additional_comments', 'article_poll_id')
 		));
 
 		$article_prev_content = $this->getPreviewRecipe(array('articleId' => $post['a_i']));

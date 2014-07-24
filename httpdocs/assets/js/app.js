@@ -34,7 +34,7 @@ $(document).ready(function() {
 	var liftCSS = '<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSB7CmxpbmUtaGVpZ2h0OiAwOwp0ZXh0LWFsaWduOiBsZWZ0ICFpbXBvcnRhbnQ7Cm1hcmdpbi1ib3R0b206IDEuMjVyZW07CmhlaWdodDogYXV0bzsKfQoubGlzdC1hcnRpY2xlcyB7ZGlzcGxheTogdGFibGU7IG1hcmdpbi1sZWZ0OiAtMC45Mzc1cmVtOyBtYXJnaW4tcmlnaHQ6IC0wLjkzNzVyZW07IHdpZHRoOiAxMDAlO30KYm9keSAuYXJ0aWNsZS1pbWFnZSB7CglmbG9hdDogbGVmdDsKCWJveC1zaXppbmc6IGJvcmRlci1ib3g7Cglwb3NpdGlvbjogcmVsYXRpdmU7CglwYWRkaW5nLWxlZnQ6IDAuOTM3NXJlbTsKCXBhZGRpbmctcmlnaHQ6IDAuNDY4NzVyZW07CglwYWRkaW5nLWJvdHRvbTogMS4xODc1cmVtOwp9Ci5hcnRpY2xlLWltYWdlIGltZyB7Cgl3aWR0aDogMTAwJTsKCS1tb3otYm94LXNoYWRvdzogMXB4IDFweCAxcHggMXB4ICM5MzkxOGY7Cgktd2Via2l0LWJveC1zaGFkb3c6IDFweCAxcHggMXB4IDFweCAjOTM5MThmOwoJYm94LXNoYWRvdzogMXB4IDFweCAxcHggMXB4ICM5MzkxOGY7Cn0KLmFydGljbGUtaW5mbyB7CglmbG9hdDogcmlnaHQ7Cglib3gtc2l6aW5nOiBib3JkZXItYm94OwoJcG9zaXRpb246IHJlbGF0aXZlOwoJbGluZS1oZWlnaHQ6IDE7CglwYWRkaW5nLWxlZnQ6IDAuNDY4NzVyZW07CglwYWRkaW5nLXJpZ2h0OiAwLjkzNzVyZW07Cn0KaDIge21hcmdpbi10b3A6IDA7Cm1hcmdpbi1ib3R0b206MC42MjVyZW07CmNvbG9yOiAjMzMzMzMzICFpbXBvcnRhbnQ7CmZvbnQtc2l6ZTogMXJlbTt9CmxhYmVsIHttYXJnaW4tYm90dG9tOiAxLjI1cmVtO30KaDIgPiBhIHtjb2xvcjogIzMzMzMzMyAhaW1wb3J0YW50OyB0ZXh0LWRlY29yYXRpb246IG5vbmUgIWltcG9ydGFudDt9CnAgewoJY29sb3I6ICMzMzMzMzM7Cglmb250LXdlaWdodDogbm9ybWFsOwoJZm9udC1zaXplOiAxcmVtOwoJZm9udC1zdHlsZTogbm9ybWFsOwoJbGluZS1oZWlnaHQ6IDEuNjsKCW1hcmdpbi1ib3R0b206IDEuMTg3NXJlbTsKCXRleHQtcmVuZGVyaW5nOiBvcHRpbWl6ZUxlZ2liaWxpdHk7Cglib3gtc2l6aW5nOiBib3JkZXItYm94OwoJbWFyZ2luLXRvcDogMDsKfQphOmhvdmVyIHt0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZSAhaW1wb3J0YW50O30KYm9keSA+IGRpdjpmaXJzdC1jaGlsZCB7bWFyZ2luLWxlZnQ6IDAuOTM3NXJlbTsgbWFyZ2luLXJpZ2h0OiAwLjkzNzVyZW07IGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZGRkOyBkaXNwbGF5OiB0YWJsZSAhaW1wb3J0YW50OyB3aWR0aDogMTAwJTt9CmJyIHtkaXNwbGF5OiBub25lO30KLmFydGljbGUtaW5mbyA+IGxhYmVsID4gYTpob3ZlciB7dGV4dC1kZW9jcmF0aW9uOiB1bmRlcmxpbmUgIWltcG9ydGFudDt9Ci5hcnRpY2xlLWluZm8gPiBsYWJlbCA+IGEge2ZvbnQ6IDFyZW0gJGJvZHktZm9udC1mYW1pbHkgIWltcG9ydGFudDsgY29sb3I6ICMzMzMzMzM7IHRleHQtZGVjb3JhdGlvbjogbm9uZSAhaW1wb3J0YW50O30KYm9keSA+IGltZyB7ZGlzcGxheTogbm9uZSAhaW1wb3J0YW50OyBoZWlnaHQ6IDBweCAhaW1wb3J0YW50O30=" />';
 	var browser_width = $(window).width();
 	var ad = {
-		home: {
+		/*home: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214357/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214358/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -57,6 +57,30 @@ $(document).ready(function() {
 			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214372/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214369/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+		},*/
+		home: {
+			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243108/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247639/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214360/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+		},
+		category: {
+			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243116/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243119/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247639/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214368/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+		},
+		recipe: {
+			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214361/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247641/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214362/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+		},
+		article: {
+			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243112/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214372/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243113/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
 		},
 		lift: {
 			home: liftCSS + '<script src="http://ib.3lift.com/ttj?inv_code=simpledish_main_feed"></script>',
@@ -312,28 +336,31 @@ var notfound_search_submit = Foundation.utils.S('#notfound-search-submit');
 }
 app.addPrefetchTags();
 
-if(page === 'article') {
-	$.getJSON( 'http://free.sharedcount.com/?apikey=709226bb97515fd204f07c3d4bac38f78ba009eb&url=' + URL, function(shareData) {
-		Foundation.utils.S('#facebook-count').text(shareData.Facebook.total_count);
-		Foundation.utils.S('#twitter-count').text(shareData.Twitter);
-		Foundation.utils.S('#pinterest-count').text(shareData.Pinterest);
-		Foundation.utils.S('#google-plus-count').text(shareData.GooglePlusOne);
-		Foundation.utils.S('.social-fade-in').fadeTo(800, 1);
-	});
-    	//var requiredImages = Foundation.utils.S('.wait-for-me');
- 		//Foundation.utils.image_loaded(requiredImages, function(){
-    		//var article = Foundation.utils.S('.microsidebar-article');
-    		//var microSidebar = Foundation.utils.S('#micro-sidebar');
-    		//var asideHeightCounter = Foundation.utils.S('#micro-sidebar').height();
-    		//var firstEntryHeight = Foundation.utils.S('#microw-1').height();
- 			//var rowNumber = 1;
-    		//while((article.height() > (microSidebar.height() + firstEntryHeight)) && rowNumber < 8) {
-    		//	Foundation.utils.S('#microw-' + (rowNumber + 5)).show();
-    		//	rowNumber++;
-    		//}
- 		//});
+//Social Shares Tracking FB Sharing Functionality
+var SocialShares = {
+	updateFBShare: function( count, article_id ){
+		$.post("http://www.puckermob.com/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
+	},
+
+	fbEventHandler: function(evt) { 
+	    if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
+	    	console.log(evt.data.service);
+	       //console.log(evt.data);
+	  	   // evt.data.service is specific to the "addthis.menu.share" event
+	       addthis.sharecounters.getShareCounts('facebook', function(obj) {        
+	    		//console.log(obj.count);
+	    		var count = obj.count;
+	    		var article_id = Foundation.utils.S('#article_id').val();
+	    		SocialShares.updateFBShare( count, article_id );
+			});
+	    }
+	}
 }
 
+if(page === 'article') {
+	// Listen to events
+	addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
+}
 
 $(function() {
 	$('a[href*=#]:not([href=#])').click(function() {

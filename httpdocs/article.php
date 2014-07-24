@@ -56,6 +56,7 @@ if (isset($hasParent) && $hasParent){
 		<?php include_once($config['include_path'].'header_ad.php'); ?>
 		<main id="main" class="row panel sidebar-on-right shadow-on-large-up" role="main">
 			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 columns translate-fix sidebar-main-left">
+					<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			<?php 
 			if(isset($articleInfoObj['article_template_type']) && $articleInfoObj['article_template_type'] == 1){
 				include_once($config['template_path'].'recipe.php');
@@ -91,10 +92,13 @@ if (isset($hasParent) && $hasParent){
 			})();
 			</script>
 
-			<hr>
-			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+			<!-- Prev & Next Articles -->
+			<?php include_once($config['include_path'].'prevnextarticles.php'); ?>
+			
 			<hr>
 			<?php include_once($config['include_path'].'similararticles.php');?>
+			
+			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 			
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 		</section>
@@ -116,7 +120,8 @@ if (isset($hasParent) && $hasParent){
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
-			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left" style="z-index:999;">
+			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
+					<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 				<?php 
 				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
 					include_once($config['template_path'].'multi_page_article.php');
@@ -169,8 +174,10 @@ if (isset($hasParent) && $hasParent){
 			</section>
 			<?php include_once($config['include_path'].'rightsidebar.php');?>
 		</main>
-		<!-- Gum Gum In IMAGE-->
-		<script type="text/javascript">ggv2id='64bad626';</script>
+		<!-- Gum Gum -->
+		<?php if($articleInfoObj['article_id'] != 3978 ){?>
+		<script>ggv2id='64bad626';</script>
+		<?php }?>
 
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>

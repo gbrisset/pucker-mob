@@ -661,7 +661,7 @@ return $q;
 
 }
 
-public function getMostRecentArticleList( $articleID = null ){
+/*public function getMostRecentArticleList( $articleID = null ){
 	
 	$queryString = "SELECT articles.article_id as a_id, articles.article_title, 
 	articles.article_seo_title, articles.creation_date, articles.article_status, 
@@ -683,9 +683,36 @@ public function getMostRecentArticleList( $articleID = null ){
 
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;
+}*/
+public function getMostRecentArticleList( $articleID = null ){
+	
+	$length_day = 86400; //Length of a day is constant ( 24*60*60)
+	$current_date = time();
+	$yesterday = $current_date - $length_day;
+
+	$queryString = "SELECT articles.article_id as a_id, articles.article_title, 
+	articles.article_seo_title, articles.creation_date, articles.article_status, 
+	articles.page_list_id, categories.cat_name, categories.cat_dir_name, 
+	article_contributors.contributor_name, article_contributors.contributor_seo_name 
+	FROM articles
+	INNER JOIN ( article_categories, categories, article_contributors, article_contributor_articles )
+	ON articles.article_id=article_categories.article_id 
+		AND article_categories.cat_id=categories.cat_id
+		AND articles.article_id = article_contributor_articles.article_id
+		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
+	WHERE articles.article_status = 1 AND articles.fb_shares_update BETWEEN '".date('Y-m-d H:i:s', $yesterday)."' AND '".date('Y-m-d H:i:s', $current_date)."' ";
+
+	if( isset( $articleID ) && $articleID ){
+	//	$queryString .= " AND articles.article_id != ".$articleID;
+	}
+
+	$queryString .= " GROUP BY articles.article_id ORDER BY  articles.fb_shares DESC LIMIT 3 ";
+
+	$q = $this->performQuery(['queryString' => $queryString]);
+	return $q;
 }
 
-public function getMostRecentsArticlesList( ){
+/*public function getMostRecentsArticlesList( ){
 	
 	$queryString = "SELECT articles.article_id as a_id, articles.article_title, 
 	articles.article_seo_title, articles.creation_date, articles.article_status, 
@@ -699,10 +726,10 @@ public function getMostRecentsArticlesList( ){
 		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
 	WHERE articles.article_status = 1
 	ORDER BY articles.creation_date DESC LIMIT 30,3 ";
-echo $queryString; die;
+
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;
-}
+}*/
 
 
 public function getTodaysFavorites(){
@@ -1171,6 +1198,34 @@ $s .= 'AND parent.rgt ';
 
 			return $s; 
 		}
+
+		public function updateFBShares($count, $article_id){
+			if( $count == 0 ) $count = 1;
+
+			if( $count > 0 ){
+				$current_date = date('Y-m-d H:i:s', time());
+				$s = "UPDATE articles 
+					  SET fb_shares = :fbShares, fb_shares_update = :fbSharesUpdate
+					  WHERE article_id = :articleId";
+
+				
+				$queryParams = [
+				':articleId' => filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
+				':fbShares' => filter_var($count, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
+				':fbSharesUpdate' => $current_date
+				];
+				
+				$pdo = $this->con->openCon();
+				$q = $pdo->prepare($s);
+
+				$row = $q->execute($queryParams);
+
+				return $row; 
+			}else{
+				return false;
+			}
+		}
+
 
 		public function getMostRecentByCatId($args = []){
 			$options = array_merge([

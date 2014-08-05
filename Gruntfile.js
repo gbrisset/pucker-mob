@@ -1,82 +1,44 @@
 module.exports = function(grunt) {
   grunt.initConfig({
+   
     pkg: grunt.file.readJSON('package.json'),
 
-   /* sass: {
-      options: {
-        includePaths: ['bower_components/foundation/scss']
-      },
-      dist: {
-        options: {
-          outputStyle: 'compressed'
-        },
-        files: {
-          'httpdocs/assets/css/app.css': 'httpdocs/assets/scss/app.scss',
-          'httpdocs/assets/css/appadmin.css': 'httpdocs/assets/scss/appadmin.scss'
-        }        
-      }
-    },
-
-    watch: {
-      grunt: { files: ['Gruntfile.js'] },
-      sass: {
-        files: 'scss/**//*.scss',
-        tasks: ['sass'],
-        options: {
-          livereload: true,
-        }
-      }
-    }
-  });
-
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  grunt.registerTask('build', ['sass']);
-  grunt.registerTask('default', ['build','watch']);*/
-
-  compass: {
-      options: {
-        includePaths: ['bower_components/foundation/scss']
-      },
-      dist: {
-        options: {
-          sassDir: 'httpdocs/assets/scss/app.scss',
-          cssDir: 'httpdocs/assets/css/app.css'
-        }
-      }
-    },
-    watch: {
-      css: {
-        files: 'scss/**//*.scss',
-        tasks: ['compass']
-      }
-    }
-  });
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('default',['watch']);
-}
-/*
-module.exports = function(grunt) {
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
     sass: {
+      options: {
+        includePaths: ['bower_components/foundation/scss']
+      },
+      
       dist: {
-        files: {
-          'httpdocs-articles/assets/css/app.css' : 'httpdocs-articles/assets/scss/app.scss'
-        }
+            options: {
+              outputStyle: 'compressed'
+            },
+            
+            files: {
+              'httpdocs/assets/css/app.css': 'httpdocs/assets/scss/app.scss',
+              'httpdocs/assets/css/appadmin.css': 'httpdocs/assets/scss/appadmin.scss'
+            }        
       }
     },
+
     watch: {
-      css: {
-        files: '**//*.scss',
-        tasks: ['sass']
-      }
+        css: {
+          
+          files: 'httpdocs/assets/scss/**/*.scss',
+          tasks: ['sass'],
+          
+          options:{
+
+          }
+          
+        }
     }
   });
+
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('default',['watch']);
-}*/
+
+  grunt.registerTask('dev', ['watch:css']);
+  grunt.registerTask('default', ['sass']);
+}
+
 

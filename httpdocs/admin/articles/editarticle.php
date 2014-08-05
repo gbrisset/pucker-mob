@@ -157,7 +157,7 @@
 					<h2>Article Information</h2>
 				</header>
 
-				<form  class="ajax-submit-form" id="article-info-form" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
+				<form  class="ajax-submit-form-no" id="article-info-form" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 
@@ -217,14 +217,14 @@
 
 					<fieldset>
 						<label for="article_body-nf">Article Body:</label>
-						<textarea class="elm-wysiwyg" name="article_body-nf" id="article_body-nf" rows="30" required placeholder="Please enter the article's body here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
+						<textarea class="elm-wysiwyg" name="article_body-nf" id="article_body-nf" rows="45" required placeholder="Please enter the article's body here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+						<!--<div class="tooltip">
+							<img src="<?php // echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
 							<div class="tooltip-info">
 								<p>This is the main content of the article, formatted in HTML.</p>
 							</div>
-						</div>
+						</div>-->
 					</fieldset>
 				
 					<!-- PAGE LIST -->				
@@ -291,6 +291,7 @@
 					if(!$content_provider){
 						$allContributors = $adminController->getSiteObjectAll(array('queryString' => 'SELECT * FROM article_contributors ORDER BY contributor_name ASC'));
 						if($allContributors && count($allContributors)){
+
 					?>
 						<fieldset>
 							<label for="article_contributor">Article Contributor<span>*</span> :</label>
@@ -298,8 +299,10 @@
 								<option value="-1">None</option>
 								<?php
 									foreach($allContributors as $contributorsInfo){
+
 										$option = '<option value="'.$contributorsInfo['contributor_id'].'"';
-										if($contributorsInfo['contributor_id'] == $article['contributor_id']) $option .= ' selected="selected"';
+										if( $article['contributor_id']  && $contributorsInfo['contributor_id'] == $article['contributor_id'] ) $option .= ' selected="selected"';
+										else if($article['contributor']['contributor_id'] && $contributorsInfo['contributor_id'] == $article['contributor']['contributor_id'])  $option .= ' selected="selected"';
 										$option .= '>'.$contributorsInfo['contributor_name'].'</option>';
 										echo $option;
 									}
@@ -352,7 +355,7 @@
 						<?php 
 						$y_checked = ''; $n_checked = 'checked';
 
-						if( $featuredArticle && isset($featuredArticle['article_id'])) { $y_checked = 'checked'; $n_checked = ''; } ?>
+						if( $featuredArticle && $featuredArticle['article_id'] == $article['article_id']) { $y_checked = 'checked'; $n_checked = ''; } ?>
 						<input type="radio" name="feature_article" data-info="yes"  value="1" <?php echo $y_checked; ?> />
 						<label for="" class="radio-label">Yes</label>
 								
@@ -383,10 +386,10 @@
 				</form>
 			</section>
 
-			<section>
+			<!--<section>
 				<fieldset class="multiple-forms">
 					<div>
-						<!--<div data-preview='<?php echo  $preview_article; ?>' class="preview-art-container" ></div>-->
+						<div data-preview='<?php echo  $preview_article; ?>' class="preview-art-container" ></div>
 					</div>
 
 					<form class="ajax-submit-form" id="article-review-form" name="article-review-form" action="<?php echo $config['this_admin_url'].'articles/edit/'.$uri[2]; ?>" method="POST">
@@ -400,7 +403,7 @@
 					</div>
 				</form>
 				</fieldset>
-			</section>
+			</section>-->
 			
 		</div>
 	</div>

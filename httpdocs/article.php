@@ -69,7 +69,14 @@ if (isset($hasParent) && $hasParent){
 
 			}
 			?>
-			<!-- CONTENT.AD --> 
+
+			<!-- GUM GUM 320x250 AD MOBILE-->
+			<div class="columns small-12 hide-for-print sidebar-right  no-padding " style="margin-left: -4px;">
+				<div style="width:300px;height:250px" data-gg-slot="448"></div>
+			</div>
+			
+
+			<!-- CONTENT.AD 
 			<div id="contentad21632"></div>
 			<script type="text/javascript">
 			(function() {
@@ -90,14 +97,17 @@ if (isset($hasParent) && $hasParent){
 				s.async = true;
 				document.getElementById("contentad21632").appendChild(s);
 			})();
-			</script>
+			</script>-->
 
-			<!-- Prev & Next Articles -->
-			<?php include_once($config['include_path'].'prevnextarticles.php'); ?>
-			
 			<hr>
 			<?php include_once($config['include_path'].'similararticles.php');?>
 			
+			<!-- GUM GUM 320x250 AD MOBILE-->
+			<section class="columns small-12 hide-for-print sidebar-right  no-padding padding-bottom clear " style="margin-left: -4px;">
+				<div style="width:300px;height:250px" data-gg-slot="448"></div>
+			</section>
+			<hr>
+
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 			
 			<?php include_once($config['include_path'].'disqus.php'); ?>

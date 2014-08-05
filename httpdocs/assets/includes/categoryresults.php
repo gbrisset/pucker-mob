@@ -32,8 +32,12 @@
 				<p><small>By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></small></p>
 			</div>
 		</div>
-
+		<!-- SHARETHROUG AD PLACEMENTE MOBILE CATEGORIES -->
 		<?php 
+		if( $articleIndex == 3){ ?>
+			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			<div data-str-native-key="6b53e139" style="display: none;"></div>
+		<?php }
 		$articleIndex++;
 
 		}

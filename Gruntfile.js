@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    sass: {
+   /* sass: {
       options: {
         includePaths: ['bower_components/foundation/scss']
       },
@@ -11,7 +11,8 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'httpdocs/assets/css/app.css': 'httpdocs/assets/scss/app.scss'
+          'httpdocs/assets/css/app.css': 'httpdocs/assets/scss/app.scss',
+          'httpdocs/assets/css/appadmin.css': 'httpdocs/assets/scss/appadmin.scss'
         }        
       }
     },
@@ -19,7 +20,7 @@ module.exports = function(grunt) {
     watch: {
       grunt: { files: ['Gruntfile.js'] },
       sass: {
-        files: 'scss/**/*.scss',
+        files: 'scss/**//*.scss',
         tasks: ['sass'],
         options: {
           livereload: true,
@@ -32,7 +33,29 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('build', ['sass']);
-  grunt.registerTask('default', ['build','watch']);
+  grunt.registerTask('default', ['build','watch']);*/
+
+  compass: {
+      options: {
+        includePaths: ['bower_components/foundation/scss']
+      },
+      dist: {
+        options: {
+          sassDir: 'httpdocs/assets/scss/app.scss',
+          cssDir: 'httpdocs/assets/css/app.css'
+        }
+      }
+    },
+    watch: {
+      css: {
+        files: 'scss/**//*.scss',
+        tasks: ['compass']
+      }
+    }
+  });
+  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.registerTask('default',['watch']);
 }
 /*
 module.exports = function(grunt) {

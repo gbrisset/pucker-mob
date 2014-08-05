@@ -1,3 +1,28 @@
+$bgColor: #ffffff;
+
+@import "normalize";
+@import "settings";
+@import "fontawesome/font-awesome";
+@import "fonts";
+// Or selectively include components
+@import
+"foundation/components/accordion",
+"foundation/components/buttons",
+"foundation/components/clearing",
+"foundation/components/flex-video",
+"foundation/components/forms",
+"foundation/components/grid",
+"foundation/components/inline-lists",
+"foundation/components/orbit",
+"foundation/components/pagination",
+"foundation/components/panels",
+"foundation/components/side-nav",
+"foundation/components/top-bar",
+"foundation/components/type",
+"foundation/components/offcanvas",
+"foundation/components/visibility";
+// Custom variables
+
 //Overwritable Colors
 $siteImageUrl: "http://localhost:8888/premium_sites_redesign/subdomains/images/httpdocs/articlesites/sharedimages/admin/";
 $bgColor: #ffffff;
@@ -17,10 +42,8 @@ $borderColor: #DDD;
 
 $orangeColor: #E06B15;
 
-@import "_normalize.scss";
-@import "_fontface.scss";
-@import "_helpers.scss";
-@import "compass/css3";
+
+
 
 
 #ninja{color:#000;visibility:hidden;}
@@ -153,6 +176,7 @@ body{
 /* End My simpledish Header promo Styling */
 
 /* Begin Pages Styling */
+
 @import "_pages.scss";
 /* End Pages Styling */
 
@@ -172,12 +196,12 @@ body{
 	margin-bottom: 0.5em !important;
 }
 
-/* Begin WYSIWYG Styling */
-@import "admin/_wysiwyg.scss";
+/* Begin WYSIWYG Styling 
+@import "admin/_wysiwyg.scss";*/
 /* End WYSIWYG Styling */
 
-/* Begin Footer Styling */
-@import "_footer.scss";
+/* Begin Footer Styling 
+@import "_footer.scss";*/
 /* End Footer Styling */
 
 

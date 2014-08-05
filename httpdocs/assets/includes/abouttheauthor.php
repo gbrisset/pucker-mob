@@ -1,3 +1,4 @@
+
 <?php
 $class = " column small-12 hide-for-print sidebar-right  no-padding ";
 if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right no-padding "; ?>
@@ -12,7 +13,13 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" />
 		</a>
 		<h4>Written By <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
-		<p><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 200); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
+		
+		<?php if(!$detect->isMobile()){ ?>
+		<p>
+			<?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 200); 
+		}?> 
+			<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a>
+		</p> 
 			<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>
 			<a href="<?php echo $articleInfoObj['contributor_facebook_link']; ?>" class="social-link" target="_blank">Facebook</a>
 			<?php } ?>
@@ -23,8 +30,10 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<a href="<?php echo $articleInfoObj['contributor_blog_link']; ?>" class="social-link" target="_blank">Visit 
 				<?php echo explode(' ', $articleInfoObj['contributor_name'])[0]; ?>'s Website
 			</a>
-			<?php } ?>
+			<?php } 
+		?>
 		
 		
 	</div>
 </section>
+<hr>

@@ -16,28 +16,43 @@ if (isset($articleInfoObj)) {
 	<section id="article-summary" class="small-12 column">
 		<h1><?php echo $article_title; ?></h1>
 		<div class="row">
-			<section id="social-buttons" class="small-12 xxlarge-9 columns  hide-for-print social-buttons-top half-padding-right">
-				<!-- Social  Buttons From AddThis.com -->
-				<!-- Go to www.addthis.com/dashboard to customize your tools -->
-				<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-					<a class="addthis_counter_facebook"></a>
-					<a class="addthis_counter_twitter"></a>
-					<a class="addthis_button_pinterest_share  show-on-large-up"></a>
-					<a class="addthis_button_google_plusone_share  show-on-large-up"></a>
-					<a class="addthis_button_linkedin  show-on-large-up"></a>
-					<a class="addthis_button_stumbleupon  show-on-large-up"></a>
-					<a class="addthis_button_email   show-on-large-up"></a>
-					<a class="addthis_button_facebook_like"></a>
-				</div>
+			<!-- 	<section id="social-buttons" class="small-12 xxlarge-9 columns  hide-for-print social-buttons-top half-padding-right">
 
-			</section>
+			Go to www.addthis.com/dashboard to customize your tools -->
+				<!--<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+				  <a class="addthis_counter_facebook"></a>
+				  <a class="addthis_counter_twitter"></a>
+				  <a class="addthis_button_pinterest_share"></a>
+				  <a class="addthis_button_google_plusone_share"></a>
+				   <a class="addthis_button_linkedin"></a>
+				   <a class="addthis_button_stumbleupon"></a>
+				   <a class="addthis_button_email"></a>
+				   <a class="addthis_button_facebook_like" fb:like:send="true"></a>-->
+				   <!--<a class="addthis_button_twitter_follow_native" addthis:userid="puckermob"></a>-->
+				   <!--</div>-->
+
+				   <div class="addthis_jumbo_share small-12 xxlarge-9 columns  hide-for-print social-buttons-top half-padding-right">
+				   </div>
+				   <a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
+ 				<!--<button id="facebook-button" class="columns small-3 button small facebook">
+					<i class="fa fa-facebook fa-fw"></i><div id="facebook-count" class="social-fade-in">0</div>
+				</button>
+				<button id="twitter-button" class="columns small-3 button small twitter">
+					<i class="fa fa-twitter fa-fw"></i><div id="twitter-count" class="social-fade-in">0</div>
+				</button>
+				<button id="pinterest-button" class="columns small-3 button small pinterest">
+					<i class="fa fa-pinterest fa-fw"></i><div id="pinterest-count" class="social-fade-in">0</div>
+				</button>
+				<button id="google-plus-button" class="columns small-3 button small google-plus">                
+					<i class="fa fa-google-plus fa-fw"></i><div id="google-plus-count" class="social-fade-in">0</div>
+				</button>
+			</section>-->
 			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
 				
 				<a href="#disqus_thread">0 Comments</a>
 				<a href="#disqus-container" >
 					<i class="fa fa-comments-o fa-2x no-margin"></i>
 				</a>
-				<!-- Disqus Comments Configuration -->
 				<script type="text/javascript">
 				/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 				var disqus_shortname = 'puckermob'; // required: replace example with your forum shortname
@@ -68,6 +83,18 @@ if (isset($articleInfoObj)) {
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
 		</div>
+		<!-- SHARETHROUG ARTICLE AD MOBILE -->
+		<?php if ( $detect->isMobile() ) { ?>
+	
+			<!--<div class="row">
+				<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+				<div data-str-native-key="536c62e7" style="display: none;"></div>
+				</div>
+			</div>-->
+
+		<?php } ?>
+
 		<div class="row">
 			<section id="article-content" class="small-12 column">
 				<p><?php echo $article_body; ?></p>

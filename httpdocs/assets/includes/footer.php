@@ -1,18 +1,14 @@
     
-    <div class="row hide-for-print">
+    <div class="clear padding-bottom">
     <?php if ( $detect->isMobile() ) { ?>
-    <div class="ad-unit hide-for-print mobile-ad90" id="footer-ad">
-  <script type="text/javascript">
-var gsad = {
-    site_id : 91477, 
-    sizes : ["320x50"], 
- };
-</script>
-<script type="text/javascript" src="http://c.greystripe.com/gsswf/ad.js"></script>
-</div>
-    <?php } ?>
-      <div id="footer-ad" class="ad-unit"></div>
+    <div class="ad-unit hide-for-print mobile-ad90 padding-bottom" id="footer-ad">
+      <div style="width:320px;height:50px;" data-gg-slot="514"></div>
     </div>
+    <?php }else{ ?>
+      <div id="footer-ad" class="ad-unit"></div>
+    <?php } ?>
+     </div>
+    
     <footer class="hide-for-print">
       <div class="row">
         <div class="small-4 large-2 columns category-colors">

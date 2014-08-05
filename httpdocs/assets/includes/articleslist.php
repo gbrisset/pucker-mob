@@ -50,7 +50,7 @@ foreach ($articlesList['articles'] as $articles){
 		</div>
 		<hr class="padding-top">
 		
-		<?php if($bigImageCounter % 2 ){  ?>
+		<?php if($bigImageCounter % 2){  ?>
 		<div id="lift-ad">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>
 		</div>
@@ -63,6 +63,28 @@ foreach ($articlesList['articles'] as $articles){
 			$articleIndex++; 
 
 			?>
+			
+			<div id="contentad23184"></div>
+<script type="text/javascript">
+    (function() {
+        var params =
+        {
+            id: "341da429-460d-43f9-b462-c283ebc24919",
+            d:  "cHVja2VybW9iLmNvbQ==",
+            wid: "23184",
+            cb: (new Date()).getTime()
+        };
+
+        var qs="";
+        for(var key in params){qs+=key+"="+params[key]+"&"}
+        qs=qs.substring(0,qs.length-1);
+        var s = document.createElement("script");
+        s.type= 'text/javascript';
+        s.src = "http://api.content.ad/Scripts/widget.aspx?" + qs;
+        s.async = true;
+        document.getElementById("contentad23184").appendChild(s);
+    })();
+</script>
 			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?>" id="<?php echo 'article-'.$articleIndex;?>">
 				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
 					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>

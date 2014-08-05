@@ -13,7 +13,13 @@ var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s,
 })();
 </script>
 
-<?php } ?>
+<!-- GUM GUM -->
+<script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
+<script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_impact_right.php?eid=50198&position=bottom-right'></script>
+
+<?php }else{ ?>
+    <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+<?php }?>
 
 <!--Disqus Comment Box Implementation (Comments Counter)-->
  <script type="text/javascript">

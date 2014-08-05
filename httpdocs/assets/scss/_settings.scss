@@ -41,7 +41,8 @@ $include-xl-html-grid-classes: true;
 // We use these to control various global styles
 $body-bg: #fff;
 // $body-font-color: #222;
-$body-font-family: "Oslo", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: Arial, "Oslo", "Helvetica Neue", "Helvetica", Helvetica, sans-serif;
+$heading-font-family: "Oslo", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -120,7 +121,7 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-$header-font-family: $body-font-family;
+$header-font-family: $heading-font-family;
 // $header-font-weight: normal;
 // $header-font-style: normal;
 // $header-font-color: #222;

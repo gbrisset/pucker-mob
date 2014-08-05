@@ -34,20 +34,25 @@
 	<link rel="dns-prefetch" href="//static.adsafeprotected.com" />
 	<link rel="dns-prefetch" href="//fw.adsafeprotected.com" />
 	<link rel="dns-prefetch" href="//ds.serving-sys.com" />
-	<link rel="dns-prefetch" href="//go.disqus.com" />
-	<link rel="dns-prefetch" href="//g2.gumgum.com" />
-	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
+
 	<link rel="dns-prefetch" href="//adserver.adtechus.com" />
 	<link rel="dns-prefetch" href="//api.adsnative.com" />
 	<link rel="dns-prefetch" href="//mob.adnxs.com" />
 	<link rel="dns-prefetch" href="//cms.springboardplatform.com" />
-		
-
+	<link rel="dns-prefetch" href="//c.jsrdn.com" />
+	
 	<?php } ?>
+	<link rel="dns-prefetch" href="//go.disqus.com" />
+	<link rel="dns-prefetch" href="//g2.gumgum.com" />
+	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
 	<link rel="prefetch prerender" href="http://www.puckermob.com" />
+	<link rel="dns-prefetch" href="//native.sharethrough.com" />
+	
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
 	<?php 
 		$headDesc = '';
 		if(isset($articleInfo) && isset($articleInfo['articles'][0]) && strlen($articleInfo['articles'][0]['article_desc'])) $headDesc = $articleInfo['articles'][0]['article_desc'];
@@ -76,17 +81,19 @@
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
 	<style>
-	body {background: #fcf4de;}
+		body {background: #fcf4de;}
 	</style>
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+	
+
 	<?php
 	if (!$local){
-    if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
-    else echo $mpArticle->data['article_page_analytics'];
+	    if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
+	    else echo $mpArticle->data['article_page_analytics'];
 	}
 	?>
 	
@@ -94,10 +101,10 @@
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+	
 	<?php if ( !$detect->isMobile() ) { ?>
 	<script>var trendingNowHeight = 0;</script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
-	<!--<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
 	<script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
 	<!--[if !IE]>
 	<script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -139,9 +146,13 @@ s.id = "infinity"; s.setAttribute("data-guid", "ce106c14-9ffe-4f0b-8cb8-c965d9d0
 var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
 })();
 </script>
-	<?php } ?>
 
+<!-- Distro Scale AD Tag -->
+<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
 
+<?php }else{ ?>
+	<script src="//g2.gumgum.com/javascripts/ad.js"></script>
+<?php } ?>
 	
 </head>
  <?php flush(); ?>

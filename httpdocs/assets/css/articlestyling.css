@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Begin Normalize Styling*/
 /* line 2, ../scss/_normalize.scss */
 * {
@@ -590,7 +591,7 @@ td {
   h2, h3 {
     page-break-after: avoid; } }
 /* End Print Styling */
-/*
+/*!
  *  Font Awesome 3.1.0
  *  the iconic font designed for Bootstrap
  *  -------------------------------------------------------
@@ -662,7 +663,7 @@ a [class*=" icon-"]:before {
 /* line 68, ../scss/_icons.scss */
 ul.icons-ul {
   list-style-type: none;
-  text-indent: -0.71429em;
+  text-indent: -0.7142857142857143em;
   margin-left: 2.142857142857143em; }
 
 /* line 73, ../scss/_icons.scss */
@@ -2282,11 +2283,7 @@ body {
       padding: 0;
       position: relative;
       color: #333333;
-      cursor: pointer;
-      -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out; }
+      cursor: pointer; }
     /* line 56, ../scss/_header.scss */
     #header-cont header span.current,
     #header-cont header span:hover,
@@ -2453,10 +2450,6 @@ body {
           #header-cont header #header-partner-sites ul li a {
             color: #333333;
             text-decoration: none;
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -o-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
             padding: 3.5px;
             border: none;
             outline: none; }
@@ -2480,11 +2473,7 @@ body {
       /* line 272, ../scss/_header.scss */
       #header-cont header #header-partner-sites p#other-sites {
         margin-right: 0;
-        cursor: pointer;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out; }
+        cursor: pointer; }
         /* line 278, ../scss/_header.scss */
         #header-cont header #header-partner-sites p#other-sites:hover, #header-cont header #header-partner-sites p#other-sites:focus {
           color: black; }
@@ -2528,19 +2517,11 @@ body {
         margin: 0;
         padding: 0;
         position: relative;
-        cursor: pointer;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out; }
+        cursor: pointer; }
         /* line 329, ../scss/_header.scss */
         #header-cont header #search-text p a {
           color: #333333;
-          text-decoration: none;
-          -webkit-transition: all 0.3s ease-in-out;
-          -moz-transition: all 0.3s ease-in-out;
-          -o-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out; }
+          text-decoration: none; }
           /* line 335, ../scss/_header.scss */
           #header-cont header #search-text p a:hover, #header-cont header #search-text p a:focus {
             color: black; }
@@ -2688,11 +2669,7 @@ body {
         #header-cont #other-sites-cont ul li a {
           color: #0099ff;
           text-decoration: none;
-          outline: none;
-          -webkit-transition: all 0.3s ease-in-out;
-          -moz-transition: all 0.3s ease-in-out;
-          -o-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out; }
+          outline: none; }
           /* line 495, ../scss/_header.scss */
           #header-cont #other-sites-cont ul li a:hover, #header-cont #other-sites-cont ul li a:focus {
             color: #0099ff;
@@ -2766,11 +2743,7 @@ body {
           text-decoration: none;
           padding: 0.1em;
           border: none;
-          outline: none;
-          -webkit-transition: all 0.3s ease-in-out;
-          -moz-transition: all 0.3s ease-in-out;
-          -o-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out; }
+          outline: none; }
           /* line 598, ../scss/_header.scss */
           .main-navigation-wrap #header-menu ul li a:hover, .main-navigation-wrap #header-menu ul li a:focus {
             color: #6ca32c; }
@@ -2993,7 +2966,7 @@ body {
       /* line 867, ../scss/_header.scss */
       #search-cont.search-header-section #search-header-cont form #search-bg input {
         width: 100% !important;
-        font: 1.8em/1em OsloLight, arial, sans-serif !important; }
+        font: 1.8em/1em OsloLight,arial,sans-serif !important; }
         @media only screen and (min-width: 62em) {
           /* line 867, ../scss/_header.scss */
           #search-cont.search-header-section #search-header-cont form #search-bg input {
@@ -3299,9 +3272,9 @@ body {
   /* IE10+ */
   background: linear-gradient(top, #ffffff 0%, #ededed 100%);
   /* W3C */
-  box-shadow: inset 1px 1px 0 white, inset -1px -1px 0 white;
-  -moz-box-shadow: inset 1px 1px 0 white, inset -1px -1px 0 white;
-  -webkit-box-shadow: inset 1px 1px 0 white, inset -1px -1px 0 white; }
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #fff;
+  -moz-box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #fff;
+  -webkit-box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #fff; }
 
 /* line 24, ../scss/_homepage_slider.scss */
 .toggle li:first-child a {
@@ -3352,7 +3325,7 @@ body {
   display: inline-block;
   margin: 0;
   padding: .461em 1.563em .41em;
-  color: #fff!important;
+  color: white !important;
   text-align: center;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
@@ -3472,7 +3445,7 @@ body {
 
   /* line 111, ../scss/_homepage_slider.scss */
   nav ul:hover .active {
-    border: 1px solid #1e5486!important;
+    border: 1px solid #1e5486 !important;
     background: #255a8c;
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
@@ -4295,7 +4268,7 @@ p {
         #search-cont #search-header-cont form #search-bg input, #search-cont #search-footer-cont form #search-bg input, #search-cont-ph #search-header-cont form #search-bg input, #search-cont-ph #search-footer-cont form #search-bg input {
           background: none;
           color: #333333;
-          font: 1.5em/1em OsloRegular, arial, sans-serif;
+          font: 1.5em/1em OsloRegular,arial,sans-serif;
           width: 80%;
           margin: 0;
           padding: 0.4em;
@@ -7744,7 +7717,7 @@ ins {
 
 /* line 768, ../scss/_featuredsection.scss */
 #recipe-box .featured-info h2 p {
-  font: 0.9em/1.125em OsloRegular, arial, sans-serif;
+  font: 0.9em/1.125em OsloRegular,arial,sans-serif;
   margin-top: 0.2em; }
 
 /* line 775, ../scss/_featuredsection.scss */
@@ -8570,7 +8543,7 @@ hr {
     width: 100%; }
     /* line 310, ../scss/_articlepage.scss */
     #main-article-cont .article-description #short-description p {
-      font: 15px/20px OsloRegular, arial, sans-serif; }
+      font: 15px/20px OsloRegular,arial,sans-serif; }
     /* line 315, ../scss/_articlepage.scss */
     #main-article-cont .article-description #preps-yields {
       padding: 0.5em;
@@ -8690,7 +8663,7 @@ hr {
     /* line 442, ../scss/_articlepage.scss */
     #main-article-cont #article-body p {
       margin: 1.5em 0;
-      font: 15px/20px OsloRegular, arial, sans-serif; }
+      font: 15px/20px OsloRegular,arial,sans-serif; }
     /* line 452, ../scss/_articlepage.scss */
     #main-article-cont #article-body h3 {
       height: auto;
@@ -8750,7 +8723,7 @@ hr {
   /* line 524, ../scss/_articlepage.scss */
   #main-article-cont li {
     width: 98%;
-    font: 15px/20px OsloRegular, arial, sans-serif;
+    font: 15px/20px OsloRegular,arial,sans-serif;
     margin: 0.4em 0;
     padding: 0;
     position: relative; }
@@ -9038,7 +9011,7 @@ hr {
 /* line 152, ../scss/_sharedicons.scss */
 #main-article-cont li {
   width: 98%;
-  font: 15px/20px OsloRegular, arial, sans-serif;
+  font: 15px/20px OsloRegular,arial,sans-serif;
   margin: 0.4em 0;
   padding: 0;
   position: relative; }
@@ -10733,7 +10706,7 @@ button {
     /* line 71, ../scss/_miscellaneous.scss */
     .featured-partner-badge-cont #featured-badge-cont h2 {
       color: #6ca32c;
-      font: 1.2em/1.3em OsloRegular, arial, sans-serif; }
+      font: 1.2em/1.3em OsloRegular,arial,sans-serif; }
     /* line 75, ../scss/_miscellaneous.scss */
     .featured-partner-badge-cont #featured-badge-cont fieldset {
       padding-top: 1%; }
@@ -11071,7 +11044,7 @@ button {
   .list-item #short-description {
     color: #707070;
     padding: 0px 30px;
-    font: 15px/20px OsloRegular, arial, sans-serif; }
+    font: 15px/20px OsloRegular,arial,sans-serif; }
     /* line 177, ../scss/_pagelist.scss */
     .list-item #short-description a {
       color: #0090D1;

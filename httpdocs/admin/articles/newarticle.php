@@ -35,7 +35,7 @@
 					<h2>Add New Article</h2>
 				</header>
 
-				<form  id="article-add-form" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST">
+				<form  id="article-add-form" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 
 					<fieldset>
@@ -96,14 +96,14 @@
 
 					<fieldset>
 						<label for="article_body-nf">Article Body<span>*</span> :</label>
-						<textarea  class="elm-wysiwyg" name="article_body-nf" id="article_body-nf" rows="30" required placeholder="Please enter the article's body here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
+						<textarea  class="elm-wysiwyg-no" name="article_body-nf" id="article_body-nf" rows="45" required placeholder="Please enter the article's body here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
+						<!--<div class="tooltip">
+							<img src="<?php //echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
 							<div class="tooltip-info">
 								<p>This is the main content of the article, formatted in HTML.</p>
 							</div>
-						</div>
+						</div>-->
 					</fieldset>
 
 <!--

@@ -34,30 +34,7 @@ $(document).ready(function() {
 	var liftCSS = '<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSB7CmxpbmUtaGVpZ2h0OiAwOwp0ZXh0LWFsaWduOiBsZWZ0ICFpbXBvcnRhbnQ7Cm1hcmdpbi1ib3R0b206IDEuMjVyZW07CmhlaWdodDogYXV0bzsKfQoubGlzdC1hcnRpY2xlcyB7ZGlzcGxheTogdGFibGU7IG1hcmdpbi1sZWZ0OiAtMC45Mzc1cmVtOyBtYXJnaW4tcmlnaHQ6IC0wLjkzNzVyZW07IHdpZHRoOiAxMDAlO30KYm9keSAuYXJ0aWNsZS1pbWFnZSB7CglmbG9hdDogbGVmdDsKCWJveC1zaXppbmc6IGJvcmRlci1ib3g7Cglwb3NpdGlvbjogcmVsYXRpdmU7CglwYWRkaW5nLWxlZnQ6IDAuOTM3NXJlbTsKCXBhZGRpbmctcmlnaHQ6IDAuNDY4NzVyZW07CglwYWRkaW5nLWJvdHRvbTogMS4xODc1cmVtOwp9Ci5hcnRpY2xlLWltYWdlIGltZyB7Cgl3aWR0aDogMTAwJTsKCS1tb3otYm94LXNoYWRvdzogMXB4IDFweCAxcHggMXB4ICM5MzkxOGY7Cgktd2Via2l0LWJveC1zaGFkb3c6IDFweCAxcHggMXB4IDFweCAjOTM5MThmOwoJYm94LXNoYWRvdzogMXB4IDFweCAxcHggMXB4ICM5MzkxOGY7Cn0KLmFydGljbGUtaW5mbyB7CglmbG9hdDogcmlnaHQ7Cglib3gtc2l6aW5nOiBib3JkZXItYm94OwoJcG9zaXRpb246IHJlbGF0aXZlOwoJbGluZS1oZWlnaHQ6IDE7CglwYWRkaW5nLWxlZnQ6IDAuNDY4NzVyZW07CglwYWRkaW5nLXJpZ2h0OiAwLjkzNzVyZW07Cn0KaDIge21hcmdpbi10b3A6IDA7Cm1hcmdpbi1ib3R0b206MC42MjVyZW07CmNvbG9yOiAjMzMzMzMzICFpbXBvcnRhbnQ7CmZvbnQtc2l6ZTogMXJlbTt9CmxhYmVsIHttYXJnaW4tYm90dG9tOiAxLjI1cmVtO30KaDIgPiBhIHtjb2xvcjogIzMzMzMzMyAhaW1wb3J0YW50OyB0ZXh0LWRlY29yYXRpb246IG5vbmUgIWltcG9ydGFudDt9CnAgewoJY29sb3I6ICMzMzMzMzM7Cglmb250LXdlaWdodDogbm9ybWFsOwoJZm9udC1zaXplOiAxcmVtOwoJZm9udC1zdHlsZTogbm9ybWFsOwoJbGluZS1oZWlnaHQ6IDEuNjsKCW1hcmdpbi1ib3R0b206IDEuMTg3NXJlbTsKCXRleHQtcmVuZGVyaW5nOiBvcHRpbWl6ZUxlZ2liaWxpdHk7Cglib3gtc2l6aW5nOiBib3JkZXItYm94OwoJbWFyZ2luLXRvcDogMDsKfQphOmhvdmVyIHt0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZSAhaW1wb3J0YW50O30KYm9keSA+IGRpdjpmaXJzdC1jaGlsZCB7bWFyZ2luLWxlZnQ6IDAuOTM3NXJlbTsgbWFyZ2luLXJpZ2h0OiAwLjkzNzVyZW07IGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZGRkOyBkaXNwbGF5OiB0YWJsZSAhaW1wb3J0YW50OyB3aWR0aDogMTAwJTt9CmJyIHtkaXNwbGF5OiBub25lO30KLmFydGljbGUtaW5mbyA+IGxhYmVsID4gYTpob3ZlciB7dGV4dC1kZW9jcmF0aW9uOiB1bmRlcmxpbmUgIWltcG9ydGFudDt9Ci5hcnRpY2xlLWluZm8gPiBsYWJlbCA+IGEge2ZvbnQ6IDFyZW0gJGJvZHktZm9udC1mYW1pbHkgIWltcG9ydGFudDsgY29sb3I6ICMzMzMzMzM7IHRleHQtZGVjb3JhdGlvbjogbm9uZSAhaW1wb3J0YW50O30KYm9keSA+IGltZyB7ZGlzcGxheTogbm9uZSAhaW1wb3J0YW50OyBoZWlnaHQ6IDBweCAhaW1wb3J0YW50O30=" />';
 	var browser_width = $(window).width();
 	var ad = {
-		/*home: {
-			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214357/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214358/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214360/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
-		},
-		category: {
-			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214366/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214367/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214368/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
-		},
-		recipe: {
-			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214361/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214363/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214362/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
-		},
-		article: {
-			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214371/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214372/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214369/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
-		},*/
+
 		home: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243108/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -80,7 +57,7 @@ $(document).ready(function() {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243112/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214372/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243113/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243113/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 		},
 		lift: {
 			home: liftCSS + '<script src="http://ib.3lift.com/ttj?inv_code=simpledish_main_feed"></script>',
@@ -118,7 +95,9 @@ $(document).ready(function() {
 			bottom: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3219888/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			middle: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3219893/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3219892/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3219889/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'	
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3219889/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			inarticle: '<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script><div data-str-native-key="536c62e7" style="display: none;"><\/div>'
+	
 		}
 	};
 
@@ -161,6 +140,7 @@ $(document).ready(function() {
 		}
 	}
 
+	//Load and Insert the Ad in an IFRAME
 	function loadAd(target, adcode) {
 		var iframe = document.createElement('iframe');
 		iframe.id=target.id + '-iframe';
@@ -173,7 +153,40 @@ $(document).ready(function() {
 		content.close();
 	}
 
-	
+	var inBodyAd = {
+		inserDivAdTag: function(target, adcode){
+			$(adcode).appendTo(target);
+		},
+		insertElement: function(target, id, elm, elClass) {
+			var div = $('<'+elm+'></'+elm+'>')
+			div.addClass(elClass);
+			div.attr('id', id);
+
+			$(target).after(div);
+		},
+		loadInArticleAd: function( content, position, iframe, ad, elm ){
+			var tag = $('#'+content).find(elm),
+			index = 0,
+			totalTag= $(tag).length,
+			this_obj = this;
+
+			if(totalTag > 0 && totalTag >= position){
+
+				tag.each( function(){
+					index++;
+
+					if( index === position ){
+						this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print margin-bottom half-padding' );
+
+						if(iframe) loadAd(document.getElementById('inarticle'+index+'-ad'), ad);	
+						else this_obj.inserDivAdTag(document.getElementById('inarticle'+index+'-ad'), ad);
+					}
+				});
+			}
+		}
+	}
+		
+	//If is Mobile
 	if($('body').hasClass('mobile')) {
 		var select = {
 			ad: {
@@ -186,9 +199,12 @@ $(document).ready(function() {
 			}
 		};
 
-		//if(adPage !== 'category') loadAd(select.ad.middle, mobilead[adPage].middle);	
-		//if(adPage === 'recipe') loadAd(select.ad.middle1, mobilead[adPage].middle1);
-		
+
+		//Load and Insert a middle article in the article body
+		if( adPage === 'article' ){
+			inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticle, 'p');	
+		}
+
 		//loadAd(select.ad.header, mobilead[adPage].header);
 		//loadAd(select.ad.bottom, mobilead[adPage].bottom);
 		
@@ -202,11 +218,11 @@ $(document).ready(function() {
 				btf2: document.getElementById("btf2-ad"),
 				footer: document.getElementById("footer-ad"),
 				lift: document.getElementById("lift-ad"),
-				medianet: document.getElementById("medianet-ad")
+				medianet: document.getElementById("medianet-ad"),
 			}
 		};
 		if(browser_width < 740) {
-			loadAd(select.ad.header, ad.mobileheader);
+			loadAd(select.ad.header, mobilead[adPage].header);
 		} else {
 			loadAd(select.ad.header, ad[adPage].header);
 			loadAd(select.ad.footer, ad[adPage].footer);
@@ -220,48 +236,54 @@ $(document).ready(function() {
 				}
 			}
 		}
-	//if(page === 'category' || page === 'home') {
-		//loadAd(select.ad.lift, ad.lift[page]);
-	//}
 
-	loadAd(select.ad.atf, ad[adPage].atf);
+		//Load and Insert a middle article in the article body
+		//if( page === 'article' ){
+		//	inBodyAd.loadInArticleAd( 'article-content', 3, 1, ad['article'].btf2, 'p');	
+		//}
 
-	loadAd(select.ad.btf2, ad[adPage].btf2);
+		//ATF
+		loadAd(select.ad.atf, ad[adPage].atf);
 
-	$(window).resize(function() {
-		resizeMainOnResize();
-	});
-}
+		//BTF2
+		loadAd(select.ad.btf2, ad[adPage].btf2);
 
-if(!$('body').hasClass('mobile')) {
-	iFrameResize({
-		checkOrigin: false,
-		sizeWidth: true,
-		resizedCallback: function(messageData){
-			var label = messageData.id.slice(0, -10);
-			var container = select.ad[label];
-			var classToAdd = 'ad-unit hide-for-print';
-			if(label === 'atf' && messageData.height > 500) {
-				if(label === 'atf' && messageData.height < 700) {
-					classToAdd += ' ad300 ad600'; asideHeight[label] = 600 + asideHeight.margin; resizeMainOnAdLoad();
+		$(window).resize(function() {
+			resizeMainOnResize();
+		});
+	}
+
+	// If is Desktop
+	if(!$('body').hasClass('mobile')) {
+		iFrameResize({
+			checkOrigin: false,
+			sizeWidth: true,
+			resizedCallback: function(messageData){
+				var label = messageData.id.slice(0, -10);
+				var container = select.ad[label];
+
+				var classToAdd = 'ad-unit hide-for-print';
+				if(label === 'atf' && messageData.height > 500) {
+					if(label === 'atf' && messageData.height < 700) {
+						classToAdd += ' ad300 ad600'; asideHeight[label] = 600 + asideHeight.margin; resizeMainOnAdLoad();
+					}
+					else { classToAdd += ' ad300 ad1050'; asideHeight[label] = 1050 + asideHeight.margin; resizeMainOnAdLoad();}
 				}
-				else { classToAdd += ' ad300 ad1050'; asideHeight[label] = 1050 + asideHeight.margin; resizeMainOnAdLoad();}
+				else if(label === 'atf' || label === 'btf1' || label === 'btf2') { classToAdd += ' ad300 ad250'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
+				else if(label === 'header' || label === 'footer') {
+					if(label === 'footer' || (label === 'header' && messageData.height < 110 && messageData.height > 80)) {classToAdd += ' ad90';}
+					else if(label === 'header' && messageData.height < 80) {Foundation.utils.S("#header-ad").css("min-height", messageData.height);}					
+					if(messageData.width < 500) {classToAdd += ' ad320';}
+					else if(messageData.width < 780) {classToAdd += ' ad728';}
+					else if(messageData.width < 1200) {classToAdd += ' ad980';}
+				} else if(label === 'medianet') {classToAdd += ' show-ad padding-right show-for-xxlarge-only'; Foundation.utils.S('hr.hr-hidden').removeClass('hr-hidden');}
+				else if(label === 'lift') {classToAdd += 'row half-margin'}
+					if( container != null ) container.setAttribute("class", classToAdd);
 			}
-			else if(label === 'atf' || label === 'btf1' || label === 'btf2') { classToAdd += ' ad300 ad250'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
-			else if(label === 'header' || label === 'footer') {
-				if(label === 'footer' || (label === 'header' && messageData.height < 110 && messageData.height > 80)) {classToAdd += ' ad90';}
-				else if(label === 'header' && messageData.height < 80) {Foundation.utils.S("#header-ad").css("min-height", messageData.height);}					
-				if(messageData.width < 500) {classToAdd += ' ad320';}
-				else if(messageData.width < 780) {classToAdd += ' ad728';}
-				else if(messageData.width < 1200) {classToAdd += ' ad980';}
-			} else if(label === 'medianet') {classToAdd += ' show-ad padding-right show-for-xxlarge-only'; Foundation.utils.S('hr.hr-hidden').removeClass('hr-hidden');}
-			else if(label === 'lift') {classToAdd += 'row half-margin'}
-				container.setAttribute("class", classToAdd);
-		}
-	});
+		});
 }
-Foundation.utils.S('#around-the-web a').attr('target', '_blank');
 
+Foundation.utils.S('#around-the-web a').attr('target', '_blank');
 var facebook_button = Foundation.utils.S('#facebook-button');
 var twitter_button = Foundation.utils.S('#twitter-button');
 var pinterest_button = Foundation.utils.S('#pinterest-button');
@@ -310,6 +332,8 @@ var notfound_search_submit = Foundation.utils.S('#notfound-search-submit');
  		window.open('http://www.stumbleupon.com/submit?url=' + encodeURIComponent(share_url), 'StumbleUpon', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
  	});
  	email_button.click(function() {alert("Email"); });
+ 	
+ 	//Prefetch Links
  	var app = {
     // returns an array of each url to prefetch
     prefetchLinks: function(){
@@ -343,25 +367,25 @@ var SocialShares = {
 	},
 
 	fbEventHandler: function(evt) { 
-	    if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
-	    	console.log(evt.data.service);
-	       //console.log(evt.data);
-	  	   // evt.data.service is specific to the "addthis.menu.share" event
-	       addthis.sharecounters.getShareCounts('facebook', function(obj) {        
+		if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
+			console.log(evt.data.service);
+	     	   addthis.sharecounters.getShareCounts('facebook', function(obj) {        
 	    		//console.log(obj.count);
 	    		var count = obj.count;
 	    		var article_id = Foundation.utils.S('#article_id').val();
 	    		SocialShares.updateFBShare( count, article_id );
-			});
-	    }
+	    	});
+	  	}
+	  }
 	}
-}
+	
+	// Listen to events	
+	if(page === 'article') {
+		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
+	}
 
-if(page === 'article') {
-	// Listen to events
-	addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-}
 
+//Scroll Window 
 $(function() {
 	$('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -380,7 +404,6 @@ $(function() {
 
 
 /* DETECT SCROLLLING POSITION */
-
 function isOnScreen( element ) {
 
 	var win = $(window);
@@ -403,14 +426,14 @@ function isOnScreen( element ) {
 /* Every time the window is scrolled ... */
 // Alert a message when the AddThis API is ready
 function addthisReady(evt) {
-   if(isOnScreen($('#social-buttons'))){
+	if(isOnScreen($('#social-buttons'))){
 		$('#at4-share').removeClass('social-show').addClass('at4-hide');
 	}else{
 		$('#at4-share').removeClass('at4-hide').addClass('social-show');
 	}
 }
 
-$(window).scroll( function(){
+/*$(window).scroll( function(){
 
 	 if(isOnScreen($('#social-buttons')) ){
 		$('#at4-share').removeClass('social-show').addClass('at4-hide').fadeOut(200);
@@ -418,7 +441,7 @@ $(window).scroll( function(){
 		$('#at4-share').removeClass('at4-hide').addClass('social-show').fadeIn(slow);
 	}
 
-});
+});*/
 
 });
 

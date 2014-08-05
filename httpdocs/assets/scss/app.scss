@@ -152,7 +152,7 @@ html {
 }
 .row {position: relative;}
 small {font-family: $header-font-family;}
-h5, h6 {font-family: $body-font-family;}
+h5, h6 {font-family: $heading-font-family;}
 
 // Header / Navbar
 
@@ -172,7 +172,7 @@ header {
 #header-social .fa-pinterest:hover, .fa-pinterest-square:hover {color: $pinterest-color;}
 #header-social i {color: $header-font-color;}
 
-#header-login {font-family: $body-font-family; text-align: right;}
+#header-login {font-family: $heading-font-family; text-align: right;}
 
 .top-bar-section .right {position: initial;}
 .top-bar .has-form .small-3 {font-size: 0;}
@@ -462,9 +462,7 @@ transition: all 0.3s ease-in-out;}
 	.top-bar ul.right li.has-form {width: 210px;}
 	#recipe-excerpt {padding-top: $panel-padding;}
 }
-.margin-top {
-	margin-top: $panel-padding;
-}
+
 #connect-with-us p {text-align: center; font-size: 0.8rem;}
 #connect-with-us small.error {background: #ffffff; color: black;}
 .top-bar div.mega-menu {text-align: center;}
@@ -536,6 +534,14 @@ transition: all 0.3s ease-in-out;}
 
 .no-margin-mobile {
 margin:0 !important;
+}
+
+.margin-top {
+	margin-top: $panel-padding;
+}
+
+.margin-bottom {
+	margin-bottom: 1.25rem !important;
 }
 footer > div:not(.row) {text-align: center; margin: 0 auto;}
 footer > div:not(.row) div {text-align: center; margin: 0 auto;}
@@ -610,7 +616,7 @@ img {display: inherit;}
 body#contributor #results h2 {margin-top: $panel-padding; margin-bottom: $panel-padding;}
 body#contributors #contributors-list h3 {color: #333333;}
 #social-buttons i {float: left;}
-#social-buttons div {float:left;min-width:30px;text-align:right;line-height:1rem;margin-bottom: 0.2rem;}
+/*#social-buttons div {float:left;min-width:30px;text-align:right;line-height:1rem;margin-bottom: 0.2rem;}*/
 #share-buttons .fa, #social-buttons .fa {line-height: 1rem;}
 #google-plus-count, #pinterest-count, #twitter-count, #facebook-count {
  float: right; line-height: 1rem; position: absolute; right: 10px;}
@@ -957,6 +963,7 @@ body{padding-top:0 !important;}
 	a{	
 		color: #01b88a;
 		padding-right: 0.4rem;
+		font-size:14px;
 	}
 }
 
@@ -995,7 +1002,7 @@ div.creative_container{ border:none !important; }
 
 #gt_widget_0 > div {
     margin-top: 0 !important;
-    padding-top: 0 !important;
+    padding-top: 20 !important;
 }
 
 .gslide_title_a {
@@ -1019,6 +1026,9 @@ div.creative_container{ border:none !important; }
 #article-content, #article-content p, #article-content p span, #article-content span, #article-content p font, #article-content font {
 	font-family: $body-font-family !important;
 }
+
+#article-content li{ margin: 0.6rem 0; }
+#article-content hr{ border-bottom: 1px solid #dddddd !important; }
 	
 #_ci_widget_div_32363{width:auto;max-width:280px;}
 
@@ -1117,14 +1127,6 @@ $fun: #f9651b;
 
 }
 
-/* ADDTHIS STYLING */
-.at4-hide{opacity:0 !important; display: none !important;} 
-.social-show{opacity:1 !important; display: inline !important;} 
-.fb-like.fb_iframe_widget{margin-top:0.4rem;}
-#at-share-dock{width: 101%; max-width: 101%;}
-
-
-
 /*multi page article*/
 #article-top-bar{
 	border-top: 0.4rem solid #232323;
@@ -1141,7 +1143,6 @@ $fun: #f9651b;
 	}
 }
 
-.at4-toaster-outer .at4-recommended .at4-recommended-item .at4-recommended-item-caption h4{ height: 28px !important; }
 
 @import "prev_next_article";
 
@@ -1168,3 +1169,32 @@ $fun: #f9651b;
 .remove-border{
 	border: none;
 }
+/* ADDTHIS STYLING */
+	.at4-hide{opacity:0 !important; display: none !important;} 
+	.social-show{opacity:1 !important; display: inline !important;} 
+	.fb-like.fb_iframe_widget{margin-top:0.4rem; margin-left: 5px;}
+	#at-share-dock{width: 101%; max-width: 101%;}
+
+	.at4-toaster-outer .at4-recommended .at4-recommended-item .at4-recommended-item-caption h4{ height: 28px !important; }
+
+	  tr{display:inline-flex  !important;} 
+	  .addthis_jumbo_share{padding-bottom: 0.2rem  !important;} 
+	  .at4-jumboshare .at4-count{font-size: 2rem  !important; line-height: 1.2  !important; font-family: arial  !important; font-weight: bold  !important;} 
+	  .at4-jumboshare .at4-title{font-size: 1rem  !important; line-height: 1.2  !important;} 
+	  .at4-jumboshare .at4-count-container{ padding-right: 0 !important;} 
+	  .at4-jumboshare .at4-share-container{padding-top: 0.7rem  !important; padding-left: 14px  !important;} 
+	  #email-comment{margin-top: 1.1rem  !important} 
+	  .at4-jumboshare .at4-share-btn{margin-right: 5px  !important;} 
+	  .addthis_button_facebook_like{margin-top: 1rem  !important; position: absolute  !important; left: 65%  !important;}
+
+
+	  .at4-jumboshare .at4-mobile .at4-share-btn span{
+	  	display:inline-block;
+	  }
+	  .at4-jumboshare a .label{
+	  	display:none ;
+	  }
+
+	  @media #{$large-up} {
+	  	display:inline-block;
+	  }

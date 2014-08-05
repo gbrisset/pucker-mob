@@ -48,7 +48,7 @@
 			position: relative;
 			color: $headerLinkColor;
 			cursor: pointer;
-			@include mp-transitions();
+		
 		}
 
 		span.current,
@@ -235,7 +235,7 @@
 					a{
 						color: $headerLinkColor;
 						text-decoration: none;
-						@include mp-transitions();
+						
 						padding: 3.5px;
 						border: none;
 						outline: none;
@@ -272,7 +272,7 @@
 			p#other-sites{
 				margin-right: 0;
 				cursor: pointer;
-				@include mp-transitions();
+			
 
 				&:hover,
 				&:focus{
@@ -324,12 +324,12 @@
 				padding: 0;
 				position: relative;
 				cursor: pointer;
-				@include mp-transitions();
+			
 
 				a{
 					color: $headerLinkColor;
 					text-decoration: none;
-					@include mp-transitions();
+				
 
 					&:hover,
 					&:focus{
@@ -489,7 +489,7 @@
 					color: #0099ff;
 					text-decoration: none;
 					outline: none;
-					@include mp-transitions();
+				
 					
 					&:hover,
 					&:focus{
@@ -592,7 +592,7 @@
 					padding: 0.1em;
 					border: none;
 					outline: none;
-					@include mp-transitions();
+				
 
 					&:hover,
 					&:focus{

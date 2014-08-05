@@ -1,4 +1,4 @@
-<div id="popular-sister-articles" class="show-on-large-up">
+<div id="popular-sister-articles">
 
     <div class="h4-container"><h4>Today on our sister site</h4></div>
     <div class="row collapse sister-logo">

@@ -900,7 +900,7 @@ $(document).ready(function (){
 	});
 
 
-	if($('.elm-wysiwyg').length > 0){
+	/*if($('.elm-wysiwyg').length > 0){
 		$('.elm-wysiwyg').wysiwyg({
 			rmUnusedControls: true,
 			autoSave: true,
@@ -926,7 +926,7 @@ $(document).ready(function (){
 			$('.elm-wysiwyg').css({'margin-left': '10%'});
 		}
 		$('.wysiwyg iframe').css({'width': '100%'});
-	}	
+	}	*/
 	
 
 	//Image Ajax Processor

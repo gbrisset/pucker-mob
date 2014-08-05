@@ -3,8 +3,30 @@
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
 
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
-<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.js"></script>
-<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.link.js"></script>
+<!--<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.js"></script>
+<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.link.js"></script>-->
+
+	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
+	<script type="text/javascript">
+	tinymce.init({
+		setup: function (ed) {
+	        ed.on('init', function(args) {
+	            console.debug(args.target.id);
+	        });
+	    },
+	    selector: "textarea",
+	    theme: "modern",
+	    plugins: [
+	        "jbimages advlist autolink lists link image charmap print preview anchor",
+	        "searchreplace visualblocks code fullscreen",
+	        "insertdatetime media table contextmenu paste hr spellchecker "
+	    ],
+
+	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview",
+	    relative_urls:false,
+	    init_instance_callback : function() { tinyMCE.activeEditor.getContent();}
+	});
+</script>
 <script src="<?php echo $config['this_url']; ?>assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>

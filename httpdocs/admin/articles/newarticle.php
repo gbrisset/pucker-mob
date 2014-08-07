@@ -96,7 +96,7 @@
 
 					<fieldset>
 						<label for="article_body-nf">Article Body<span>*</span> :</label>
-						<textarea  class="elm-wysiwyg-no" name="article_body-nf" id="article_body-nf" rows="45" required placeholder="Please enter the article's body here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
+						<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="45" required placeholder="Please enter the article's body here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
 						<!--<div class="tooltip">
 							<img src="<?php //echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 

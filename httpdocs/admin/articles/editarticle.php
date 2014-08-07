@@ -43,6 +43,7 @@
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
 				case isset($_POST['article_title-s']):
+			
 					$updateStatus = $adminController->updateArticleInfo($_POST);
 					$updateStatus['arrayId'] = 'article-info-form';
 					break;
@@ -157,7 +158,7 @@
 					<h2>Article Information</h2>
 				</header>
 
-				<form  class="ajax-submit-form-no" id="article-info-form" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
+				<form  id="article-info-form" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 
@@ -217,7 +218,7 @@
 
 					<fieldset>
 						<label for="article_body-nf">Article Body:</label>
-						<textarea class="elm-wysiwyg" name="article_body-nf" id="article_body-nf" rows="45" required placeholder="Please enter the article's body here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+						<textarea class="mceEditor" name="article_body-nf" id="article_body-nf" rows="45" placeholder="Please enter the article's body here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
 						<!--<div class="tooltip">
 							<img src="<?php // echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 

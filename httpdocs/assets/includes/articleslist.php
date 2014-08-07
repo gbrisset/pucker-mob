@@ -13,6 +13,9 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$quantity = 25;
 	$omitThis =  $featuredArticle['article_id'];
 	include_once($config['include_path'].'featured_article.php');
+	echo '<div id="lift-ad">';
+	echo '	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
+	echo '	</div>';
 }
 
 $articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
@@ -50,11 +53,11 @@ foreach ($articlesList['articles'] as $articles){
 		</div>
 		<hr class="padding-top">
 		
-		<?php //if($bigImageCounter % 2){  ?>
+	
 		<div id="lift-ad">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>
 		</div>
-		<?php  //} ?>
+	
 		<?php  } else{
 			
 			$clearLeft='no-padding-right'; 

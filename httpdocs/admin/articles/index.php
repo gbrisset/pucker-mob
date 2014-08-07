@@ -1,18 +1,18 @@
 <?php
-$admin = true;
-require_once('../../assets/php/config.php');
-if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
-
-$userData = $adminController->user->data = $adminController->user->getUserInfo();
-
-if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
-
-if(isset($_POST['submit'])){
+	$admin = true;
+	require_once('../../assets/php/config.php');
+	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
+	
+	$userData = $adminController->user->data = $adminController->user->getUserInfo();
+	
+	if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
+	
+	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
 				case isset($_POST['article-delete-form']): //Delete Article
-				$updateStatus = array_merge($adminController->deleteArticleById($_POST['formData']));	
-				break;
+					$updateStatus = array_merge($adminController->deleteArticleById($_POST['formData']));	
+					break;
 			}
 		}else $adminController->redirectTo('logout/');
 	}
@@ -51,54 +51,54 @@ if(isset($_POST['submit'])){
 	$pagination = new Pagination($page, $per_page, $total_count);
 	$offset = $pagination->offset();
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset);
-	?>
-	<!DOCTYPE html>
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<?php include_once($config['include_path_admin'].'head.php');?>
+<body>
+	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<html class="no-js" lang="en">
-
-	<?php include_once($config['include_path_admin'].'head.php');?>
-
-	<body id="article">
-		<?php include_once($config['include_path_admin'].'header.php');?>
-
-		<main id="main" class="row panel sidebar-on-right" role="main">
-			<?php  include_once($config['include_path_admin'].'menu-test.php');?>
-			
-			<div id="content" class="columns small-9 large-10 ">
-				<section id="articles-list">
-					<form class="search-form-admin" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
+	<div id="main-cont">
+		<?php include_once($config['include_path_admin'].'menu.php');?>
+		
+		<div id="content">
+			<section id="articles-list">
+				<form class="search-form-admin" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<fieldset id="search-fieldset">
-							<input type="text" value="" placeholder="Search all of Pucker Mob CMS" id="searchemailinput" name="searchemailinput">
+							<input type="text" value="" placeholder="Search all of Simple Dish CMS" id="searchemailinput" name="searchemailinput">
 							<button type="submit" id="searchsubmit" name="searchsubmit">SEARCH<i class="icon-search"></i></button>
 						</fieldset>
-					</form>
-
-					<header class="section-bar">
-						<h2 class="left">Recipes</h2>
-						<div id="right">
-							<div id="sort-by">
-								<input type="hidden" value="<?php echo $article_sort_by; ?>" id="sort-by-value" />
-								<label>Sort By: </label>
-								<ul>
-									<?php
+				</form>
+				
+				<header class="section-bar">
+					<h2 class="left">Recipes</h2>
+					<div id="right">
+						<div id="sort-by">
+							<input type="hidden" value="<?php echo $article_sort_by; ?>" id="sort-by-value" />
+							<label>Sort By: </label>
+							<ul>
+								<?php
 									$dropDownOmits = [6];
 									foreach($mpArticleAdmin->dropDownInfo as $dropDownObj){
 										if(in_array($dropDownObj['id'], $dropDownOmits)) continue;
 										$li = '<li>';
-										$li .= '<a data-info="'.$dropDownObj['shortname'].'" href="'.$config['this_admin_url'].'articles/';
-										$li .= ($page > 1) ? '?p='.$page.'&sort='.$dropDownObj['shortname'] : '?sort='.$dropDownObj['shortname'];
-										$li .= '">';
-										$li .= $dropDownObj['label'];
-										$li .= '</a>';
+											$li .= '<a data-info="'.$dropDownObj['shortname'].'" href="'.$config['this_admin_url'].'articles/';
+											$li .= ($page > 1) ? '?p='.$page.'&sort='.$dropDownObj['shortname'] : '?sort='.$dropDownObj['shortname'];
+											$li .= '">';
+												$li .= $dropDownObj['label'];
+											$li .= '</a>';
 										$li .= '</li>';
 										echo $li;
 									}
-									?>
-								</ul>
-							</div>
+								?>
+							</ul>
 						</div>
-					</header>
-					<?php
+					</div>
+				</header>
+ 				<?php
 					if($articles){
 						foreach($articles as $articleInfo){
 
@@ -113,40 +113,40 @@ if(isset($_POST['submit'])){
 								$imageUrl = $config['image_url'].'/articlesites/sharedimages/recipe_default_image.jpg';
 							}
 
-							$article .= '<div class="article-image">';
-							$article .= '<a href="'.$articleUrl.'">';
-							$article .= '<img src="'.$imageUrl.'" alt="'.$articleInfo['article_title'].' Preview Image" />';
-							$article .= '</a>';
-							$article .= '</div>';
+								$article .= '<div class="article-image">';
+									$article .= '<a href="'.$articleUrl.'">';
+										$article .= '<img src="'.$imageUrl.'" alt="'.$articleInfo['article_title'].' Preview Image" />';
+									$article .= '</a>';
+								$article .= '</div>';
 
 							$article .= '<div class="article-info">';
-							$article .= '<div class="article-status">';
-							(isset($articleInfo["article_status"])) ? $article .= MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : $article .= '';
+								$article .= '<div class="article-status">';
+								(isset($articleInfo["article_status"])) ? $article .= MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : $article .= '';
+								$article .= '</div>';
+
+
+								$article .= '<h2><a href="'.$articleUrl.'">'.$articleInfo['article_title'].'</a></h2>';
+								$articleSnippet = utf8_encode(trim(strip_tags($articleInfo['article_desc'])));
+								$articleSnippet = (strlen($articleSnippet) > 100) ? substr($articleSnippet, 0, 100).'...' : $articleSnippet;
+								$article .= '<p>'.$articleSnippet.'</p>';
+								
+								$article .='<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="'.$config['this_admin_url'].'articles/index.php" method="POST">';
+									$article .='<input type="text" class="hidden" id="c_t" name="c_t" value="'.$_SESSION['csrf'].'" >';
+									$article .='<input type="text" class="hidden" id="article_id" name="article_id" value="'.$articleInfo['article_id'].'" />';
+									$article .='<a class="manage-links" href="'.$articleUrl.'" name="edit" id="edit"><i class="icon-edit"></i> Edit</a>';
+									$article .='<a class="manage-links" href="'.$articleUrl.'" class="b-delete" name="submit" id="submit"><i class="icon-remove"></i> Delete</a>';
+								$article .='</form>';
 							$article .= '</div>';
-
-
-							$article .= '<h2><a href="'.$articleUrl.'">'.$articleInfo['article_title'].'</a></h2>';
-							$articleSnippet = utf8_encode(trim(strip_tags($articleInfo['article_desc'])));
-							$articleSnippet = (strlen($articleSnippet) > 100) ? substr($articleSnippet, 0, 100).'...' : $articleSnippet;
-							$article .= '<p>'.$articleSnippet.'</p>';
-
-							$article .='<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="'.$config['this_admin_url'].'articles/index.php" method="POST">';
-							$article .='<input type="text" class="hidden" id="c_t" name="c_t" value="'.$_SESSION['csrf'].'" >';
-							$article .='<input type="text" class="hidden" id="article_id" name="article_id" value="'.$articleInfo['article_id'].'" />';
-							$article .='<a class="manage-links" href="'.$articleUrl.'" name="edit" id="edit"><i class="icon-edit"></i> Edit</a>';
-							$article .='<a class="manage-links" href="'.$articleUrl.'" class="b-delete" name="submit" id="submit"><i class="icon-remove"></i> Delete</a>';
-							$article .='</form>';
-							$article .= '</div>';
-							echo $article;
-							?>
+						echo $article;
+				?>
 						</div>
 
 
 
-						<?php
-					}
-				}else{
-					?>
+				<?php
+						}
+					}else{
+				?>
 					<p class="not-found">
 						Sorry, no recipes were found!
 					</p>
@@ -155,13 +155,13 @@ if(isset($_POST['submit'])){
 						Start adding your own recipes to our site clicking <a href="<?php echo $config['this_admin_url']?>articles/newrecipe/">HERE</a>.
 					</p>
 					
-				</p>
+					</p>
 				<?php } ?>
 			</section>
 
 			<?php include_once($config['include_path_admin'].'pages.php'); ?>
 		</div>
-	</main>
+	</div>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

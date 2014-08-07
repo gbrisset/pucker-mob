@@ -47,6 +47,7 @@
 	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
 	<link rel="prefetch prerender" href="http://www.puckermob.com" />
 	<link rel="dns-prefetch" href="//native.sharethrough.com" />
+	<link rel="dns-prefetch" href="http://c.jsrdn.com/" />
 	
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     
@@ -81,19 +82,17 @@
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
 	<style>
-		body {background: #fcf4de;}
+	body {background: #fcf4de;}
 	</style>
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-	
-
 	<?php
 	if (!$local){
-	    if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
-	    else echo $mpArticle->data['article_page_analytics'];
+    if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
+    else echo $mpArticle->data['article_page_analytics'];
 	}
 	?>
 	
@@ -105,6 +104,7 @@
 	<?php if ( !$detect->isMobile() ) { ?>
 	<script>var trendingNowHeight = 0;</script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
+	<!--<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
 	<script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
 	<!--[if !IE]>
 	<script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -147,12 +147,13 @@ var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s,
 })();
 </script>
 
+<?php }else{ ?>
+		<script src="//g2.gumgum.com/javascripts/ad.js"></script>
+		<!-- <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script> -->
+	<?php } ?>
+
 <!-- Distro Scale AD Tag -->
 <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
-
-<?php }else{ ?>
-	<script src="//g2.gumgum.com/javascripts/ad.js"></script>
-<?php } ?>
-	
+  
 </head>
  <?php flush(); ?>

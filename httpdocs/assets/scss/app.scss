@@ -74,7 +74,7 @@ a{ outline: none !important; }
 
 /*Padding Helper*/
 .padding-top {
-	padding-top: ($panel-padding/2);
+	padding-top: ($panel-padding/2) !important;
 }
 
 .padding-bottom {
@@ -238,6 +238,9 @@ header {
 #_ci_widget_div_31931 ul li {width: 50%;}
 #top-nav-buttons {text-align: center;}
 .ac_container {width: 33.33333%;}
+@media #{$large-up} {
+.ac_container {width: 33.33333%;}
+}
 #footer-right > div.row {margin-left: 0;}
 #legal-links > ul.inline-centered {margin-bottom: 0;}
 body#home #main h2 {
@@ -1172,7 +1175,7 @@ $fun: #f9651b;
 /* ADDTHIS STYLING */
 	.at4-hide{opacity:0 !important; display: none !important;} 
 	.social-show{opacity:1 !important; display: inline !important;} 
-	.fb-like.fb_iframe_widget{margin-top:0.4rem;}
+	.fb-like.fb_iframe_widget{margin-top:1.2rem;}
 	#at-share-dock{width: 101%; max-width: 101%;}
 
 	.at4-toaster-outer .at4-recommended .at4-recommended-item .at4-recommended-item-caption h4{ height: 28px !important; }
@@ -1195,6 +1198,59 @@ $fun: #f9651b;
 	  	display:none ;
 	  }
 
-	  @media #{$large-up} {
-	  	display:inline-block;
-	  }
+
+	  /* Content Ads */
+		  #ac_24356 .ac_container{
+		  	display:block !important;
+		  }
+
+		  #ac_24356 .ac_image{
+		  	width: 290px !important;
+		  }
+
+		  #ac_24777 .ac_container{
+		  width: 100% !important;
+		  }
+
+		  #ac_24777 .ac_adbox_title {
+			margin: 0px;
+			padding: 0 0 7px;
+			border: none;
+			direction: ltr;
+			text-align: left;
+			vertical-align: middle;
+			font-size: 1.2rem;
+			font-weight: bold;
+			text-decoration: none;
+			color: #777;
+			font-family: oslo;
+			text-transform: uppercase;
+			}
+
+			#ac_24777 .ac_container {
+			position: relative;
+			display: list-item;
+			list-style-type: square;
+			vertical-align: top;
+			margin-left: 16px;
+			font-family: arial;
+			width: 100%;
+			color: #777;
+			}
+
+			#ac_24777 .ac_adbox.first-child {
+			display: inline-block;
+			width: 49% !important;
+			padding-right: 5%;
+			border-right: 1px solid #ccc !important;
+			float: left;
+			}
+
+#ac_24777 .ac_adbox.second-child {
+display: block;
+width: 50% !important;
+padding-left: 5%;
+float: right;
+border-left: none !important;
+}
+	 

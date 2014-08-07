@@ -83,23 +83,25 @@ if (isset($articleInfoObj)) {
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
 		</div>
-		<!-- SHARETHROUG ARTICLE AD MOBILE -->
-		<?php if ( $detect->isMobile() ) { ?>
-	
-			<!--<div class="row">
-				<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-				<div data-str-native-key="536c62e7" style="display: none;"></div>
-				</div>
-			</div>-->
-
-		<?php } ?>
-
+		
 		<div class="row">
 			<section id="article-content" class="small-12 column">
 				<p><?php echo $article_body; ?></p>
 			</section>
 		</div>
+
+		<!-- SHARETHROUG ARTICLE AD MOBILE -->
+		<?php if ( $detect->isMobile() ) { ?>
+	
+			<div class="row">
+				<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+				<div data-str-native-key="536c62e7" style="display: none;"></div>
+				</div>
+			</div>
+
+		<?php } ?>
+
 
 	</section>
 </article>

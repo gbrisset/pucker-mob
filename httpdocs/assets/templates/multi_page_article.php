@@ -112,3 +112,8 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<?php } ?>
 	</section>
 </article>
+
+<section class="small-12 column padding-bottom padding-top">
+  <div id="atfleft-ad" class="ad-unit ad300 show-on-large-up left"></div>
+  <div id="atfright-ad" class="ad-unit ad300 show-on-large-up right"></div>
+</section>

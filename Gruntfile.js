@@ -19,8 +19,14 @@ module.exports = function(grunt) {
 
     watch: {
       grunt: { files: ['Gruntfile.js'] },
+      html: {
+        files: ['*.html'],
+        options: {
+          livereload: true,
+        }
+      },
       sass: {
-        files: 'scss/**/*.scss',
+        files: 'httpdocs/assets/scss/**//*.scss',
         tasks: ['sass'],
         options: {
           livereload: true,
@@ -39,22 +45,45 @@ module.exports = function(grunt) {
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     sass: {
+      options: {
+        includePaths: ['bower_components/foundation/scss']
+      },
       dist: {
+        options: {
+          outputStyle: 'compressed'
+        },
         files: {
-          'httpdocs-articles/assets/css/app.css' : 'httpdocs-articles/assets/scss/app.scss'
-        }
+          'css/app.css': 'scss/app.scss'
+        }        
       }
     },
+
     watch: {
-      css: {
-        files: '**//*.scss',
-        tasks: ['sass']
+      grunt: { files: ['Gruntfile.js'] },
+      html: {
+        files: ['*.html'],
+        options: {
+          livereload: true,
+        }
+      },
+      sass: {
+        files: 'scss/**//*.scss',
+        tasks: ['sass'],
+        options: {
+          livereload: true,
+  }
       }
     }
   });
-  grunt.loadNpmTasks('grunt-contrib-sass');
+
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('default',['watch']);
+
+  grunt.registerTask('build', ['sass']);
+  grunt.registerTask('default', ['build','watch']);
+}
+
 }*/
 

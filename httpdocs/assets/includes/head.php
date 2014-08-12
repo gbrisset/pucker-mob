@@ -151,8 +151,7 @@ var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s,
 		<script src="//g2.gumgum.com/javascripts/ad.js"></script>
 		<!-- <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script> -->
 	<?php } ?>
-
-<!-- Distro Scale AD Tag -->
+	<!-- Distro Scale AD Tag -->
 <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
   
 </head>

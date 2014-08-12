@@ -55,6 +55,14 @@
 			<div data-str-native-key="c2887a0b" style="display: none;"></div>
 		</div>
 		
+		<?php } ?>
+
+		<?php if( $articleIndex == 7 ){ ?>
+		<div class="columns mobile-12 no-padding">
+			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			<div data-str-native-key="98e3b5d6" style="display: none;"></div>
+		</div>
+		
 		<?php } 
 	}
 ?>

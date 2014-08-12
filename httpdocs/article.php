@@ -20,6 +20,7 @@ foreach($MPNavigation->categories as $category){
 
 if(!is_null($categoryInfo)){
 	$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
+	$cat_name = $categoryInfo['cat_dir_name'];
 
 	if(isset($articleInfo['articles']) &&  $articleInfo['articles']){
 		$articleInfoObj = $articleInfo['articles'][0];
@@ -32,15 +33,17 @@ if(!is_null($categoryInfo)){
 }else {
 	$mpShared->get404();
 }
-if (isset($hasParent) && $hasParent){
+
+
+/*if (isset($hasParent) && $hasParent){
 	$parentCategorySEOName = $categoryInfo['parent_dir_name'];
 	$parentCategoryVisibleName = $categoryInfo['parent_name'];
 	$article_link = $config['this_url'].$parentCategorySEOName.'/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
 	$pagesArray['url'] = $config['this_url'].$parentCategorySEOName.'/'.$categoryInfo['cat_dir_name'];
-} else {
+} else {*/
 	$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
 	$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
-}
+//}
 ?>
 <?php if ( $detect->isMobile() ) { ?>
 <!DOCTYPE html>
@@ -71,10 +74,11 @@ if (isset($hasParent) && $hasParent){
 				}
 				?>
 
-				<!-- GUM GUM 320x250 AD MOBILE-->
+				<!-- GUM GUM 320x250 AD MOBILE
 				<div class="columns small-12 hide-for-print sidebar-right  no-padding " style="margin-left: -4px;">
 					<div style="width:300px;height:250px" data-gg-slot="448"></div>
-				</div>
+				</div>-->
+				<div id="btf1-ad" class="ad-unit columns"></div>
 
 		<hr>
 		<?php include_once($config['include_path'].'similararticles.php');?>
@@ -83,12 +87,13 @@ if (isset($hasParent) && $hasParent){
 		<hr>
 	</div>
 
-	<!-- GUM GUM 320x250 AD MOBILE-->
+	<!-- GUM GUM 320x250 AD MOBILE
 	<section class="columns small-12 hide-for-print sidebar-right  no-padding padding-bottom clear " style="margin-left: -4px;">
 		<div style="width:300px;height:250px" data-gg-slot="448"></div>
-	</section>
+	</section>-->
 	
-	<hr>
+	<div id="btf2-ad" class="ad-unit columns"></div>
+	
 
 	<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
@@ -170,6 +175,30 @@ addthis_config.pubid = 'ra-53c4498040efc634';
 			<hr>
 			<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
 			<hr>
+			<div id="contentad24777"></div>
+<script type="text/javascript">
+    (function() {
+        var params =
+        {
+            id: "a8eb16d0-6594-4e2f-a80b-7ff948aee7a2",
+            d:  "cHVja2VybW9iLmNvbQ==",
+            wid: "24777",
+            cb: (new Date()).getTime()
+        };
+
+        var qs="";
+        for(var key in params){qs+=key+"="+params[key]+"&"}
+        qs=qs.substring(0,qs.length-1);
+        var s = document.createElement("script");
+        s.type= 'text/javascript';
+        s.src = "http://api.content.ad/Scripts/widget.aspx?" + qs;
+        s.async = true;
+        document.getElementById("contentad24777").appendChild(s);
+    })();
+</script>
+
+
+<hr>
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 
 		</section>

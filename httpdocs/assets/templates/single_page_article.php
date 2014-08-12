@@ -10,7 +10,7 @@ if (isset($articleInfoObj)) {
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 }
 ?>
-
+<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 <?php if($detect->isMobile()) echo " no-padding "; ?>">
 
 	<section id="article-summary" class="small-12 column">
@@ -95,12 +95,14 @@ if (isset($articleInfoObj)) {
 	
 			<div class="row">
 				<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-				<div data-str-native-key="536c62e7" style="display: none;"></div>
+					
+					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 				</div>
 			</div>
 
 		<?php } ?>
+
+		
 
 
 	</section>

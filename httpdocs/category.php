@@ -12,6 +12,7 @@ foreach($MPNavigation->categories as $category){
 	}
 }
 if(!is_null($categoryInfo)){
+	$cat_name = $categoryInfo['cat_dir_name'];
 	$pageName = $categoryInfo['cat_name'].' | '.$mpArticle->data['article_page_name'];
 	$parentCategorySEOName = ($categoryInfo['parent_dir_name']);
 

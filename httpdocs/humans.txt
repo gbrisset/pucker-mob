@@ -4,28 +4,27 @@
 		Diana Herrera - Content Curation/Scheduling/Administration/Hipster Chick/First Lady
 		Contact - dherrera [at] sequelmediagroup.com
 		Twitter - @dianaherhur
-		
+
+		Miriam Pinedo - Content Management
+		Contact - mpinedo [at] sequelmediagroup.com
+
 	/* Development */
 
-		Flor Guzman - CMS Front-End/QA/Loud Mouth
+		Flor Guzman - Front End Engineer /Loud Mouth
 		Contact - fguzman [at] sequelmediagroup.com
 		Twitter - @FlorGuzmanb
 
-		Michael Mrnak - Front-End/Back-End/Stop Bothering Me
-		Contact - mmrnak [at] sequelmediagroup.com
-		
-	/* Sales */
-		Patrick Tuthill - Ad Sales/Resident Old Man
-		Contact - ptuthill [at] sequelmediagroup.com
-		Twitter - @PatMyPod
+	/* Branding and Marketing */
+		Christina Contaldi - Director of Branding and Marketing
+		Contact - ccontaldi@sequelmediagroup.com
 		
 	/* Design */
 		Jay Miletsky - Project Design Lead/Template Design
 		Contact - jmiletsky [at] sequelmediagroup.com
 		
 /* SITE */
-	Last Update: Monday, 25 Nov 2013 04:40:00
+	Last Update: Monday, 10 AUG 2014 04:40:00
 	Language: English
 	Doctype: HTML5
 	IDE: Sublime Text 2
-	Tech: SASS (Compass - http://compass-style.org/), Vanilla-JS (http://vanilla-js.com/), jQuery, Node.JS
+	Tech: SASS (Grunt - http://gruntjs.com/ ), Foundation (http://foundation.zurb.com/ ), Vanilla-JS (http://vanilla-js.com/), jQuery, Node.JS

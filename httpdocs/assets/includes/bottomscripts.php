@@ -15,27 +15,8 @@ var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s,
 
 <!-- GUM GUM -->
 <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
-<!-- BEGIN Tynt Script -->
-<script>
-try {
-  var w = top,
-      guid = 'cRcCGMgEKr5jLJacwqm_6r';
-      if(w.document.location.protocol=='http:') {
-        w.Tynt=w.Tynt||[];
-        w.Tynt.push(guid);
 
-        var s = w.document.createElement('script');
-        s.async = "async";
-        s.type  = "text/javascript";
-        s.src   = 'http://tcr.tynt.com/ti.js';
-
-        var h = w.document.getElementsByTagName('script')[0];
-        h.parentNode.insertBefore(s,h);
-      }
-}
-catch(e){}
-</script>
-<!-- END Tynt Script --><?php }else{ ?>
+<?php }else{ ?>
     <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
 <?php }?>
 

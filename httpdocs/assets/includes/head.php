@@ -40,6 +40,7 @@
 	<link rel="dns-prefetch" href="//mob.adnxs.com" />
 	<link rel="dns-prefetch" href="//cms.springboardplatform.com" />
 	<link rel="dns-prefetch" href="//c.jsrdn.com" />
+	<link rel="dns-prefetch" href="//tcr.tynt.com" />
 	
 	<?php } ?>
 	<link rel="dns-prefetch" href="//go.disqus.com" />
@@ -47,7 +48,19 @@
 	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
 	<link rel="prefetch prerender" href="http://www.puckermob.com" />
 	<link rel="dns-prefetch" href="//native.sharethrough.com" />
-	<link rel="dns-prefetch" href="http://c.jsrdn.com/" />
+	<link rel="dns-prefetch" href="//c.jsrdn.com/" />
+
+	<link rel="dns-prefetch" href="//uat-net.technoratimedia.com" />
+	<link rel="dns-prefetch" href="//static.adsnative.com" />
+	<link rel="dns-prefetch" href="//sic-akamai.33across.com" />
+	<link rel="dns-prefetch" href="//googletagservices.com" />
+	<link rel="dns-prefetch" href="//dynamic.3lift.com" />
+	<link rel="dns-prefetch" href="//cdn.amgdgt.com" />
+	<link rel="dns-prefetch" href="//cdn.adnxs.com" />
+	<link rel="dns-prefetch" href="//c.betrad.com" />
+	<link rel="dns-prefetch" href="//ad-cdn.technoratimedia.com" />
+	
+	<link rel="dns-prefetch" href="//1.sic.33across.com" />
 	
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     
@@ -138,20 +151,30 @@
 
 	<!--AD SUPPLY-->
 	<script data-cfasync="false" type="text/javascript">
-(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");
-(function() {
-var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-s.src = "http://cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";
-s.id = "infinity"; s.setAttribute("data-guid", "ce106c14-9ffe-4f0b-8cb8-c965d9d04213"); s.setAttribute("data-version", "async");
-var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
-})();
-</script>
+	(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");
+	(function() {
+	var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+	s.src = "http://cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";
+	s.id = "infinity"; s.setAttribute("data-guid", "ce106c14-9ffe-4f0b-8cb8-c965d9d04213"); s.setAttribute("data-version", "async");
+	var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
+	})();
+	</script>
+
+	<!-- BEGIN Tynt Script -->
+	<script type="text/javascript">
+	if(document.location.protocol=='http:'){
+	 var Tynt=Tynt||[];Tynt.push('cRcCGMgEKr5jLJacwqm_6r');
+	 (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/ti.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
+	}
+	</script>
+	<!-- END Tynt Script -->
 
 <?php }else{ ?>
-		<script src="//g2.gumgum.com/javascripts/ad.js"></script>
-		<!-- <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script> -->
-	<?php } ?>
-	<!-- Distro Scale AD Tag -->
+	<script src="//g2.gumgum.com/javascripts/ad.js"></script>
+	<!-- <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script> -->
+<?php } ?>
+
+<!-- Distro Scale AD Tag -->
 <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
   
 </head>

@@ -334,12 +334,17 @@ $.fn.mpValidate = function(opts){
 		thisId = thisForm.attr('id'),
 		result = thisForm.find('#result'),
 		submit = thisForm.find('#submit');
+
 		
 		submit.click(function(e){
 			if(!options.updateUrl.length) return;
 			e.preventDefault();
 			submit.attr('disabled', true);
 			var confirmed = false;
+
+			if(tinyMCE){
+				tinyMCE.triggerSave();
+			}
 
 			if(options.additionalParams == 'file' && $(options.imageFile)[0].files[0] != null){
 				

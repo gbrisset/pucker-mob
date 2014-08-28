@@ -13,11 +13,11 @@
 			if(isset($uri[2]) && strlen($uri[2])) include_once('editlist.php');
 			//else $mpShared->get404();
 			break;
-		case "newlist":
+		case "new":
 			include_once('newlist.php');
 			break;
 		default:
-			//$mpShared->get404();
+			$mpShared->get404();
 			break;	
 	}
 ?>

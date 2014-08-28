@@ -54,7 +54,10 @@ $twitter-color: #55acee;
 $facebook-color: #3b5998;
 $google-plus-color: #dd4b39;
 $pinterest-color: #c8232c;
-$stumbleupon-color: #f74425;
+$stumbleupon-color: #a55138;
+$linkedin-color: #0077b5;
+
+
 $social-hover-darken-percent: -25%;
 #top-banner {height: 2rem;}
 
@@ -136,12 +139,18 @@ a{ outline: none !important; }
 .facebook, .facebook:focus {background-color: $facebook-color;}
 .google-plus, .google-plus:focus {background-color: $google-plus-color;}
 .pinterest, .pinterest:focus {background-color: $pinterest-color;}
-.stumbleupon, .stumbleupon:focus {background-color: $stumbleupon-color;}
+.stumble-upon, .stumble-upon:focus{background-color: #ea5d32;}
+.linkedin, .linkedin:focus{ background-color: #0077b5;}
 .twitter:hover {background-color: scale-color($twitter-color, $lightness: $social-hover-darken-percent)}
 .facebook:hover {background-color: scale-color($facebook-color, $lightness: $social-hover-darken-percent)}
 .google-plus:hover {background-color: scale-color($google-plus-color, $lightness: $social-hover-darken-percent)}
 .pinterest:hover {background-color: scale-color($pinterest-color, $lightness: $social-hover-darken-percent)}
-.stumbleupon:hover {background-color: scale-color($stumbleupon-color, $lightness: $social-hover-darken-percent)}
+.stumble-upon:hover{background-color: scale-color($stumbleupon-color, $lightness: $social-hover-darken-percent)}
+.linkedin:hover{background-color: #0b5175;}
+
+.small-16P {
+	width: 16%;
+}
 
 // Base Style Modifications and Fixes
 
@@ -267,7 +276,7 @@ html {overflow-x: hidden;}
 }
 h4 {font-size: 1rem;}
 /*#sectioned-article-content {padding-left: 0; padding-right: 0;}*/
-#social-buttons {margin-left: -2px; text-align: center; padding-top: $panel-padding;}
+#social-buttons { text-align: center; padding-top: $panel-padding; margin-bottom: -12px;}
 #recipe-rating, #article-rating {text-align: center;}
 #recipe-rating i, #results i, #article-rating i {color: rgb(226,108,21); margin-left: 0; margin-right: 0;}
 #search-intro i {margin-left: 0;}
@@ -1033,7 +1042,7 @@ div.creative_container{ border:none !important; }
 #article-content li{ margin: 0.6rem 0; }
 #article-content hr{ border-bottom: 1px solid #dddddd !important; }
 
-#article-content a { color: #006633; }
+#article-content a { color: #006633; text-decoration: underline;}
 
 #_ci_widget_div_32363{width:auto;max-width:280px;}
 
@@ -1174,7 +1183,7 @@ $fun: #f9651b;
 .remove-border{
 	border: none;
 }
-/* ADDTHIS STYLING */
+/* ADDTHIS STYLING
 	.at4-hide{opacity:0 !important; display: none !important;} 
 	.social-show{opacity:1 !important; display: inline !important;} 
 	.fb-like.fb_iframe_widget{margin-top:1.2rem;}
@@ -1199,7 +1208,7 @@ $fun: #f9651b;
 	  .at4-jumboshare a .label{
 	  	display:none ;
 	  }
-
+ */
 
 	  /* Content Ads */
 		  #ac_24356 .ac_container{
@@ -1259,11 +1268,21 @@ $fun: #f9651b;
 				font-size:  0.85rem !important;
 			}
 
-#ac_24777 .ac_adbox.second-child {
-display: block;
-width: 50% !important;
-padding-left: 5%;
-float: right;
-border-left: none !important;
-}
+			#ac_24777 .ac_adbox.second-child {
+				display: block;
+				width: 50% !important;
+				padding-left: 5%;
+				float: right;
+				border-left: none !important;
+			}
+			/* End Content Ad */
+
+/* New Social Buttons Styling From PO.ST */
+#social-buttons .pw-icon{ display: none !important; }
+#social-buttons .pw-widget{ float: none !important; }
+#social-buttons .pw-button{ font: normal 16px/16px  Oslo, 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif !important; display: inline !important; }
+#social-buttons .pw-size-small.pw-button { margin-right: 0px!important; }
+
+
+
 	 

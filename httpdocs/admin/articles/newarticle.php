@@ -29,7 +29,7 @@
 	<div id="main-cont">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
+		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
 				<header class="section-bar">
 					<h2>Add New Article</h2>

@@ -34,6 +34,15 @@
 
 		$articleIndex++;
 		?>
+
+		<!-- SHARETHROUGH HOMEPAGE Mobile Placement -->
+		<?php if( $articleIndex == 2 ){ ?>
+		<div class="columns mobile-12 no-padding">
+			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			<div data-str-native-key="c2887a0b" style="display: none;"></div>
+		</div>
+			<?php } ?>
+
 		<div class="columns mobile-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-12 no-padding" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
@@ -48,22 +57,24 @@
 			</div>
 		</div>
 		<hr>
-		<!-- SHARETHROUGH HOMEPAGE Mobile Placement -->
-		<?php if( $articleIndex == 3 ){ ?>
-		<div class="columns mobile-12 no-padding">
-			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-			<div data-str-native-key="c2887a0b" style="display: none;"></div>
-		</div>
 		
-		<?php } ?>
+	
 
-		<?php if( $articleIndex == 7 ){ ?>
+		<?php if( $articleIndex == 4 ){ ?>
 		<div class="columns mobile-12 no-padding">
 			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			<div data-str-native-key="98e3b5d6" style="display: none;"></div>
 		</div>
 		
 		<?php } 
+
+		if( $articleIndex % 7 == 0 ) { ?>
+		<!-- 3LIFT -->
+		
+			<div id="lift-ad">
+				<script src="http://ib.3lift.com/ttj?inv_code=puckermob_mobile_feed"></script> 
+			</div>
+		<?php }
 	}
 ?>
 

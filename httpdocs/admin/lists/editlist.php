@@ -8,7 +8,7 @@
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
 
-//	WHERE I LEFT OFF:
+	//	WHERE I LEFT OFF:
 //				I need to make the form inputs an array, so that post includes more than just one element.
 //				Maybe checkout my old minute code to see how i did this
 
@@ -66,11 +66,9 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-
-
 	<div id="main-cont">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
-		<div id="content">
+		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
 
 				<header class="section-bar">
@@ -80,61 +78,45 @@
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="page_list_id" name="page_list_id" value="<?php echo $page_list->page_list_id; ?>" />
 					<input type="hidden" id="seo_title_updated" name="seo_title_updated" value="" />
-
-					<fieldset>
-						<label for="page-list-title">List Title<span>*</span> :</label>
-						<input type="text" name="page_list_title" id="page_list_title" placeholder="Please enter the lists's title here." value="<?php if(isset($page_list->page_list_title)) echo $page_list->page_list_title; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_title') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the lists's title that will be visible throughout the network.</p>
+					
+					<div class="row">
+					    <div class="large-12 columns  padding-bottom">
+					      <label>Title
+					        <input type="text" name="page_list_title" id="page_list_title" placeholder="Please enter the lists's title here." value="<?php if(isset($page_list->page_list_title)) echo $page_list->page_list_title; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_title') echo 'autofocus'; ?> />
+					      </label>
+					    </div>
+				  	</div>
+				  	<div class="row">
+					    <div class="large-12 columns  padding-bottom">
+					      <label>SEO Title
+					        <input type="text" name="page_list_seo_title" id="page_list_seo_title" placeholder="Please enter the article's seo-formatted title here." value="<?php if(isset($page_list->page_list_seo_title)) echo $page_list->page_list_seo_title; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+					      </label>
+					    </div>
+				  	</div>
+					<div class="row">
+					    <div class="large-12 columns  padding-bottom">
+					      <label>Description
+						  <textarea name="page_list_desc" id="page_list_desc" rows="5" required placeholder="Please enter the list's description here." ><?php if(isset($page_list->page_list_desc)) echo $page_list->page_list_desc; ?></textarea>					      </label>
+					    </div>
+				  	</div>
+				  	<div class="row">
+					    <div class="large-12 columns">
+					     	<div class="btn-wrapper list-button right-aligned" >
+								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo $updateStatus['message']; ?>
+								</p>
+								
+								<button type="submit" id="submit" name="submit">SAVE</button>
 							</div>
 						</div>
-					</fieldset>
-
-					<fieldset>
-						<label for="page_list_seo_title">List SEO Title<span>*</span> :</label>
-						<input type="text" name="page_list_seo_title" id="page_list_seo_title" placeholder="Please enter the article's seo-formatted title here." value="<?php if(isset($page_list->page_list_seo_title)) echo $page_list->page_list_seo_title; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the lists's seo title that will be used in URLs.</p>
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<label for="page_list_desc">List Description<span>*</span> :</label>
-						<textarea name="page_list_desc" id="page_list_desc" rows="5" required placeholder="Please enter the list's description here." ><?php if(isset($page_list->page_list_desc)) echo $page_list->page_list_desc; ?></textarea>
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the list's description.</p>
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="btn-wrapper list-button right-aligned" >
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-								<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo $updateStatus['message']; ?>
-							</p>
-							
-							<button type="submit" id="submit" name="submit">Submit</button>
-						</div>
-					</fieldset>
+				  	</div>
 				</form>
 
 			</section>			
 			<?php $page_list_items = PageListItem::get_all_by_page_list_id($page_list->page_list_id); ?>
 
 
-<!--BEGIN SORT ORDER-->
+			<!--BEGIN SORT ORDER-->
 			<section>
 				<header class="section-bar">
 					<h2>Change order</h2>
@@ -188,19 +170,21 @@
 
 			</section>
 
-
+			<!-- ADD PAGE LIST SETTINGS -->
 			<section id="page-list-settings">
 				<header class="section-bar">
 					<h2>Add List Items</h2>
 				</header>
-				<ul>
+				<ul class="row no-padding">
 				<?php 
 					foreach($page_list_items as $page_list_item){
 						//	Display EDIT FORM
 				?>
-				<li class="inline-div" style="background-color: #fff;" id="<?php echo $page_list_item->page_list_item_id; ?>">
+				<li class="columns small-12 list-li half-padding margin-top" id="<?php echo $page_list_item->page_list_item_id; ?>">
+
 				<div id="<?php echo $page_list_item->page_list_item_id; ?>">
 
+					<!-- DELETE FORM -->
 					<form class="list-item-delete-form" id="list-item-delete-form" name="list-delete-form" action="<?php echo $config['this_admin_url']; ?>lists/edit/<?php echo $uri[2]; ?>" method="POST">
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 						<input type="hidden" id="page_list_id" name="page_list_id" value="<?php echo $page_list->page_list_id; ?>" />
@@ -211,217 +195,190 @@
 					</form>
 
 
-<!-- EDIT FORM -->
-
+					<!-- EDIT FORM -->
 					<form id="page-list-item-data-form<?php echo '-'.$page_list_item->page_list_item_id; ?>" enctype="multipart/form-data"  class="page-list-item-data-form" action="<?php echo $config['this_admin_url']; ?>lists/edit/<?php echo $uri[2]; ?>" method="POST">
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 						<input type="text" class="hidden" id="page_list_item_id" name="page_list_item_id" value="<?php echo $page_list_item->page_list_item_id; ?>" >
 						<input type="hidden" id="existing_image" name="existing_image" value="<?php echo $page_list_item->page_list_item_image; ?>" />
 
-						<fieldset>
-							<input type="text" name="page_list_item_title" id="page_list_item_title" placeholder="Please enter the page list's title here." value="<?php if(isset($page_list_item->page_list_item_title)) echo $page_list_item->page_list_item_title; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
-
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>This is the page list item's title.</p>
-								</div>
-							</div>
-						</fieldset>
-
-						<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') {echo $updateStatus['message'];} else { echo '&nbsp;';} ?>
-						</p>
-
-						<fieldset>
-							<textarea class="elm-wysiwyg" name="page_list_item_body" id="page_list_item_body" rows="5" required placeholder="Please enter the item's content here." ><?php if(isset($page_list_item->page_list_item_body)) echo $page_list_item->page_list_item_body; ?></textarea>
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>This is the list item's main content</p>
-								</div>
-							</div>
-						</fieldset>
-
-<!--BEGIN IMAGE PREVIEW-->
-						<div class="image-preview">
-							<!-- <p>This is the Page List image.</p> -->
-							<div class="image-bg list-item-img">
+						<div class="row padding-top">
+						    <div class="small-12 columns">
+						      <label>Title:
+								<input type="text" name="page_list_item_title" id="page_list_item_title" placeholder="Please enter the page list's title here." value="<?php if(isset($page_list_item->page_list_item_title)) echo $page_list_item->page_list_item_title; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
+						      </label>
+						    </div>
+				  		</div>
+				  		<hr>
+				  		<div class="row">
+						    <div class="small-12 columns">
+						      <label>Description:
+								<textarea class="" name="page_list_item_body" id="page_list_item_body" rows="10" required placeholder="Please enter the item's content here." ><?php if(isset($page_list_item->page_list_item_body)) echo $page_list_item->page_list_item_body; ?></textarea>
+							  </label>
+						    </div>
+				  		</div>
+				  		<hr>
+						
+						<!--BEGIN IMAGE PREVIEW-->
+						<div class="row image-preview">
+							<div class="columns small-12 image-bg list-item-img padding-top">
 								<img id="preview-<?php echo $page_list_item->page_list_item_id; ?>" class="<?php if(empty($page_list_item->page_list_item_image)) {echo 'hidden';} ?>" src="<?php echo $config['image_url'].'articlesites/puckermob/list/'.$page_list_item->page_list_item_image; ?>" alt="<?php echo $page_list_item->page_list_item_title; ?> Preview Image" />
 								<?php if(empty($page_list_item->page_list_item_image)){ ?>
 									<p class="no-img">This page list item doesn't have a preview image yet!</p>
 								<?php } ?>
 							</div>
 						</div>						
-<!--END IMAGE PREVIEW-->
-<!-- 							<input type="radio" class="radio-input" name="media_type" value="image-inputs" checked>Image
-							<input type="radio" class="radio-input" name="media_type" value="you-tube-inputs">YouTube
-							
-							<div class="tooltip">
-								<img src="<?php //echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
+						<hr>
 
-								<div class="tooltip-info">
-									<p>Select which Media type to use for the main image placement in the list.</p>
-								</div>
-							</div> -->
-
-
-<!--Image Fields-->
+						<!--Image Fields-->
 						<div id="image-inputs" class="radio-toggle shown">
-							<fieldset>
-								<label for="page_list_item_image">Change Image</label>
-								<input type="file" id="userfile" name="userfile" class="userfile<?php echo '-'.$page_list_item->page_list_item_id; ?>" value="" />
-								<div class="tooltip">
-									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
+							<div class="row">
+							    <div class="small-11 columns">
+							      <label>Change Image: 
+									<input type="file" id="userfile" name="userfile" class="userfile<?php echo '-'.$page_list_item->page_list_item_id; ?>" value="" />		
+								  </label>
+								</div>
+								<div class="small-1 tooltip">
+									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 									<div class="tooltip-info">
 										<p>This is the main image for the page list item.</p>
 									</div>
-								</div>
-
-							</fieldset>
-
-							<fieldset>
-								<label for="page_list_item_image_source">Image Credit</label>
-								<input type="text" name="page_list_item_image_source" id="page_list_item_image_source" placeholder="Please enter the image's source." value="<?php if(isset($page_list_item->page_list_item_image_source)) echo htmlentities($page_list_item->page_list_item_image_source); ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
-
-								<div class="tooltip">
+								</div>	
+							</div>
+							<hr>
+					  		<div class="row">
+							    <div class="small-11 columns">
+							      <label>Image Credit:
+									<input type="text" name="page_list_item_image_source" id="page_list_item_image_source" placeholder="Please enter the image's source." value="<?php if(isset($page_list_item->page_list_item_image_source)) echo htmlentities($page_list_item->page_list_item_image_source); ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
+								  </label>
+							    </div>
+							    <div class="small-1 tooltip">
 									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
 									<div class="tooltip-info">
 										<p>This is the source of the item's image.</p>
 									</div>
 								</div>
-							</fieldset>
+					  		</div>
+					  		<hr>
 						</div>
-<!--End Image Fields-->	
 
-
-<!--Youtube -->	
+						<!--Youtube -->	
 						<div id="you-tube-inputs" class="radio-toggle">
-							<fieldset>
-								<label for="page_list_item_youtube_embed">YouTube Embed</label>
-								<input type="text" name="page_list_item_youtube_embed" id="page_list_item_youtube_embed" placeholder="Add youTube embed code, if desired." value="<?php if(isset($page_list_item->page_list_item_youtube_embed)) echo htmlentities($page_list_item->page_list_item_youtube_embed); ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
-
-								<div class="tooltip">
+							<div class="row">
+ 								<div class="small-11 columns">
+							      <label>YouTube Embed:
+									<input type="text" name="page_list_item_youtube_embed" id="page_list_item_youtube_embed" placeholder="Add youTube embed code, if desired." value="<?php if(isset($page_list_item->page_list_item_youtube_embed)) echo htmlentities($page_list_item->page_list_item_youtube_embed); ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
+								  </label>
+							    </div>
+							    <div class="small-1 tooltip">
 									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
 									<div class="tooltip-info">
 										<p>If this is set, it will show instead of image.</p>
 									</div>
 								</div>
-							</fieldset>
+							</div>
 						</div>
-
-<!--End Youtube -->	
 
 						<fieldset>
-							<div class="btn-wrapper list-button">
-
-						<?php include_once($config['include_path_admin'].'preview_page_list.php');  ?>
-
-						<div class="main-buttons edit-recipe" style="float: left; ">
-							<!--<button type="button" id="cont-preview" name="button" class="profile-preview">Preview</button>-->
-						</div>
-
+							<div class="columns small-10">
+								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') {echo $updateStatus['message'];} else { echo '&nbsp;';} ?>
+								</p>
+							</div>
+							<div class="btn-wrapper list-button columns small-2">
 								<button type="submit" id="submit" name="submit">Save</button>
 							</div>
 						</fieldset>
 					</form>
-
 				</div>
-				</li>
+			</li>
 			<?php } ?>
 
-<!--   Begin the add new form    -->
-				<li class="inline-div">
-				<?php  ?>
-				<div class="inline-div add-list-item" id="add-list-item">
+
+				<li class="columns small-12 list-li half-padding margin-top">
+				
+				<div class="add-list-item" id="add-list-item">
 					<p class="large-add-text" id="large-add-text">+<br />add</p>
 					<form id="page-list-item-data-add-form" enctype="multipart/form-data" class="page-list-item-data-add-form" action="<?php echo $config['this_admin_url']; ?>lists/edit/<?php echo $uri[2]; ?>" method="POST">
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 						<input type="text" class="hidden" id="form" name="form" value="add" >
 						<input type="text" class="hidden" id="page_list_item_image" name="page_list_item_image" value="" />
 
-						<fieldset>
-							<input type="text" name="page_list_item_title" id="page_list_item_title" placeholder="Please enter the page list's title here." value="" required />
+						<div class="row padding-top">
+						    <div class="small-12 columns">
+								<label>Title:
+									<input type="text" name="page_list_item_title" id="page_list_item_title" placeholder="Please enter the page list's title here." value=""  />
+							 	</label>
+						    </div>
+				  		</div>
+				  		<hr>
+						<div class="row">
+						    <div class="small-12 columns">
+						      <label>Description:
+								<textarea class="" name="page_list_item_body" id="page_list_item_body" rows="10" placeholder="Please enter the item's content here." ></textarea>
+							  </label>
+						    </div>
+				  		</div>
+				  		<hr>
 
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>This is the page list item's title.</p>
-								</div>
+						<div class="row">
+						    <div class="small-11 columns">
+						      <label>Image:
+							  <input type="file" id="page_list_item_image" name="page_list_item_image" />
 							</div>
-						</fieldset>
-						<p class="" id="result">&nbsp;</p>
-
-						<fieldset>
-							<textarea class="elm-wysiwyg" name="page_list_item_body" id="page_list_item_body" rows="5" required placeholder="Please enter the item's content here." ></textarea>
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>This is the list item's main content</p>
-								</div>
-							</div>
-						</fieldset>
-
-						<fieldset>
-							<label for="page_list_item_image">Item Image</label>
-							<input type="file" id="page_list_item_image" name="page_list_item_image" />
-							<div class="tooltip">
+							<div class="small-1 tooltip">
 								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
 								<div class="tooltip-info">
 									<p>This is the main image for the page list item.</p>
 								</div>
 							</div>
+						</div>
 
-						</fieldset>
-
-						<fieldset>
-							<input type="text" name="page_list_item_image_source" id="page_list_item_image_source" placeholder="Please enter the image's source." value=""  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
-
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>This is the source of the item's image.</p>
-								</div>
-							</div>
-						</fieldset>
-
-<!--Youtube -->	
-						<fieldset>
-							<input type="text" name="page_list_item_youtube_embed" id="page_list_item_youtube_embed" placeholder="Add youTube embed code, if desired." value=""  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
-								<div class="tooltip">
+						<hr>
+					  		<div class="row">
+							    <div class="small-11 columns">
+							      <label>Image Credit:
+										<input type="text" name="page_list_item_image_source" id="page_list_item_image_source" placeholder="Please enter the image's source." value=""  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
+								  </label>
+							    </div>
+							    <div class="small-1 tooltip">
 									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
+									<div class="tooltip-info">
+										<p>This is the source of the image.</p>
+									</div>
+								</div>
+					  		</div>
+					  		<hr>
+					
+							<!--Youtube -->	
+							<div id="you-tube-inputs" class="radio-toggle">
+							<div class="row">
+ 								<div class="small-11 columns">
+							      <label>YouTube Embed:
+									<input type="text" name="page_list_item_youtube_embed" id="page_list_item_youtube_embed" placeholder="Add youTube embed code, if desired." value=""  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
+								  </label>
+							    </div>
+							    <div class="small-1 tooltip">
+									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 									<div class="tooltip-info">
 										<p>If this is set, it will show instead of image.</p>
 									</div>
 								</div>
-						</fieldset>
-
-<!--End Youtube -->	
+							</div>
+						</div>
+						
 						<fieldset>
-							<div class="btn-wrapper list-button">
+							<div class="columns small-10">
 								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
 									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo $updateStatus['message']; ?>
 								</p>
-								
-								<button type="submit" id="submit" name="submit" value="add">Save</button>
+							</div>
+							<div class="btn-wrapper list-button columns small-2">
+								<button type="submit" id="submit" name="submit" value="add" >Save</button>
 							</div>
 						</fieldset>
-						
 					</form>
-
-						<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'page-list-item-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'page-list-item-image-upload-form') echo $updateStatus['message']; ?>
-						</p>
 
 					</div>
 				</li>

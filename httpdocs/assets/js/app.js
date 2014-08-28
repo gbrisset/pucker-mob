@@ -42,7 +42,9 @@ $(document).ready(function() {
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243109/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247637/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf3: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247638/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214360/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214360/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285623/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+
 		},
 		category: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243116/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -50,7 +52,9 @@ $(document).ready(function() {
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243119/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247639/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf3: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247640/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214368/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214368/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285606/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+
 		},
 		articleslide: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273034/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -59,7 +63,9 @@ $(document).ready(function() {
 			atfright:'<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273029/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273031/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273030/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273033/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273033/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285630/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+
 		},
 		article: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243112/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -67,6 +73,8 @@ $(document).ready(function() {
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243115/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247641/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243113/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285586/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+
 		},
 		lift: {
 			home: liftCSS + '<script src="http://ib.3lift.com/ttj?inv_code=simpledish_main_feed"></script>',
@@ -85,7 +93,7 @@ $(document).ready(function() {
 		},
 		articleslide: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273459/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273458/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273458/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273460/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273461/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
 		},
@@ -95,7 +103,7 @@ $(document).ready(function() {
 		},
 		article: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273456/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273453/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273453/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273457/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273455/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			inarticle: '<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script><div data-str-native-key="536c62e7" style="display: none;"><\/div>'
@@ -220,8 +228,8 @@ $(document).ready(function() {
 		};
 
 		//Header Footer 300x50 ATFs
-		loadAd(select.ad.header, mobilead[adPage].header);
-		loadAd(select.ad.footer, mobilead[adPage].footer);
+		//loadAd(select.ad.header, mobilead[adPage].header);
+		//loadAd(select.ad.footer, mobilead[adPage].footer);
 		
 		// Single & Multi Article Pages
 		if(adPage === 'article' || adPage === 'articleslide'){
@@ -251,6 +259,7 @@ $(document).ready(function() {
 				footer: document.getElementById("footer-ad"),
 				lift: document.getElementById("lift-ad"),
 				medianet: document.getElementById("medianet-ad"),
+				flyatf: document.getElementById("flyatf-ad"),
 			}
 		};
 		if(browser_width < 740) {
@@ -262,9 +271,9 @@ $(document).ready(function() {
 				loadAd(select.ad.medianet, ad.medianet.article);
 			} else if(page === 'article') {
 				if(Foundation.utils.S('#sectioned-article-content').length) {
-					loadAd(select.ad.medianet, ad.medianet.sectioned);
+					//loadAd(select.ad.medianet, ad.medianet.sectioned);
 				} else {
-					loadAd(select.ad.medianet, ad.medianet.article);
+					//loadAd(select.ad.medianet, ad.medianet.article);
 				}
 			}
 		}
@@ -281,15 +290,17 @@ $(document).ready(function() {
 		loadAd(select.ad.btf2, ad[adPage].btf2);
 
 		//BTF3
-
 		if( page === 'home' ||  page === 'category'){
 			loadAd(select.ad.btf3, ad[adPage].btf3);
 		}
 
+		//FLY ATF FROM 33ACROSS
+		//loadAd(select.ad.flyatf, ad[adPage].flyatf);
+
 		//ATF LEFT AND RIGHT FOR MULTI PAGE ARTICLES
 		if( page === 'articleslide'){
-			loadAd(select.ad.atfleft, ad[adPage].atfleft);
-			loadAd(select.ad.atfright, ad[adPage].atfright);
+		//	loadAd(select.ad.atfleft, ad[adPage].atfleft);
+		//	loadAd(select.ad.atfright, ad[adPage].atfright);
 		}
 
 		$(window).resize(function() {
@@ -302,6 +313,9 @@ $(document).ready(function() {
 		iFrameResize({
 			checkOrigin: false,
 			sizeWidth: true,
+			//maxWidth: 1000,
+			log: true,
+
 			resizedCallback: function(messageData){
 				var label = messageData.id.slice(0, -10);
 				var container = select.ad[label];

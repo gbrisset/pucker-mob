@@ -64,7 +64,7 @@
 	<div id="main-cont">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
+		<div id="content" class="columns small-9 large-11">
 			<section id="articles-list">
 				<form class="search-form-admin" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<fieldset id="search-fieldset">
@@ -74,7 +74,7 @@
 				</form>
 				
 				<header class="section-bar">
-					<h2 class="left">Recipes</h2>
+					<h1 class="left">Articles</h1>
 					<div id="right">
 						<div id="sort-by">
 							<input type="hidden" value="<?php echo $article_sort_by; ?>" id="sort-by-value" />

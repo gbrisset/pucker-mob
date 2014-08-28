@@ -68,75 +68,13 @@
 	<div id="main-cont">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
+		<div id="content" class="columns small-9 large-11">
 			<section id="articles-list">
-				<header class="section-bar">
-					<h2 class="left">Lists</h2>
-
-				</header>
-
-				<div id="admin-add-new-list" class="admin-add-new">
-					<div>
-						<div class="btn-wrapper list-button" style="text-align: left;">
-							<button id="add-new-toggle-button" class="toggle-link">Add New List</button>
-						</div>
-					</div>
-					<div id="add-list-form" class="" style="display: none;">
-						<form  class="non-ajax-submit-form" id="page-list-data-form" name="page-list-data-form" action="<?php echo $config['this_admin_url']; ?>lists/index.php" method="POST">
-							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-
-							<fieldset>
-								<label for="page-list-title">List Title<span>*</span> :</label>
-								<input type="text" name="page_list_title" id="page_list_title" placeholder="Please enter the lists's title here." value="" required />
-
-								<div class="tooltip">
-									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-									<div class="tooltip-info">
-										<p>This is the lists's title that will be visible throughout the network.</p>
-									</div>
-								</div>
-							</fieldset>
-
-							<fieldset>
-								<label for="page_list_seo_title">List SEO Title<span>*</span> :</label>
-								<input type="text" name="page_list_seo_title" id="page_list_seo_title" placeholder="Please enter the article's seo-formatted title here." value="" required />
-
-								<div class="tooltip">
-									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-									<div class="tooltip-info">
-										<p>This is the lists's seo title that will be used in URLs.</p>
-									</div>
-								</div>
-							</fieldset>
-
-							<fieldset>
-								<label for="page_list_desc">List Description<span>*</span> :</label>
-								<textarea name="page_list_desc" id="page_list_desc" rows="4" required placeholder="Please enter the list's description here." ></textarea>
-								<div class="tooltip">
-									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-									<div class="tooltip-info">
-										<p>This is the list's description.</p>
-									</div>
-								</div>
-							</fieldset>
-
-							<fieldset>
-								<div class="btn-wrapper list-button">
-									<p class="result <?php if(isset($updateStatus['arrayId']) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-										<?php if(isset($updateStatus['arrayId']) && $updateStatus['arrayId'] == 'article-info-form') echo $updateStatus['message']; ?>
-									</p>
-									
-									<button type="submit" id="submit" name="submit">Add List</button>
-								</div>
-							</fieldset>
-						</form>
-					</div>
+				<div class="row">
+					<h1>Lists</h1>
 				</div>
 
- 				<?php
+				<?php
 					if(isset($page_lists) && $page_lists){
 						foreach($page_lists as $page_list){
 							if(isset($page_list) && $page_list){

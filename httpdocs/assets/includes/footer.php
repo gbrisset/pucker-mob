@@ -1,9 +1,18 @@
     
     <div class="clear padding-bottom">
     <?php if ( $detect->isMobile() ) { ?>
-    <div class="ad-unit hide-for-print mobile-ad90 padding-bottom" id="footer-ad">
+    <!--<div class="ad-unit hide-for-print mobile-ad90 padding-bottom" id="footer-ad">
       <div style="width:320px;height:50px;" data-gg-slot="514"></div>
-    </div>
+    </div>-->
+   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- PuckerMob Mobile -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:320px;height:50px"
+         data-ad-client="ca-pub-8978874786792646"
+         data-ad-slot="5274646185"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     <?php }else{ ?>
       <div id="footer-ad" class="ad-unit"></div>
     <?php } ?>
@@ -57,3 +66,6 @@
       </div>
       </div>
     </footer>
+
+    <!-- 33ACROSS AD SERVER 
+    <div id="flyatf-ad"></div>-->

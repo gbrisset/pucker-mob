@@ -125,7 +125,7 @@
 					<h2>Contributor Information</h2>
 				</header>
 
-				<form class="ajax-submit-form" id="contributor-info-form" name="contributor-info-form" action="<?php echo $config['this_admin_url']; ?>contributors/edit/<?php echo $uri[2]; ?>" method="POST">
+				<form class="ajax-submit-form " id="contributor-info-form" name="contributor-info-form" action="<?php echo $config['this_admin_url']; ?>contributors/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="c_i" name="c_i" value="<?php echo $contributorInfo['contributor_id']; ?>" />
 

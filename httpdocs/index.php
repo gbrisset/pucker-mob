@@ -35,8 +35,9 @@ if ( $detect->isMobile() ) {?>
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
 	</main>
-	<!-- GUM GUM In Screen -->
-	<script type="text/javascript">ggv2id='56d76089';</script>
+
+	<!-- GUM GUM In Screen 
+	<script type="text/javascript">ggv2id='56d76089';</script>-->
 
 	<?php include_once($config['include_path'].'footer.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>

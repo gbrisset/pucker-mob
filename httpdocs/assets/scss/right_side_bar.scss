@@ -6,7 +6,7 @@ border: 1px solid #ddd;
 
 .h4-container{
 background: none repeat scroll 0 0 #232323;
-padding-bottom: 0.05rem;
+padding-bottom: 0.08rem;
 }
 h4{
 font-size: 1.625rem; 
@@ -203,4 +203,23 @@ p {
 
 #sub-sidebar-3{
 	margin-bottom: 0 !important;
+}
+
+.h4-no-box-container h4{
+	padding-top: 0.3rem;
+	padding-bottom: 0.1rem;
+	padding-left: 0.375rem;
+	margin: 0;
+	margin-top: 0.1rem;
+	color: #6ad98a;
+	font-family: Oslo;
+	background-color: #232323;
+	text-transform: uppercase;
+	font-size: 1rem;
+	border-bottom: 1px solid #6ad98a;
+}
+
+.h4-no-box-container{
+	background: none repeat scroll 0 0 #232323;
+padding-bottom: 0.06rem;
 }

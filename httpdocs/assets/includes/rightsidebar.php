@@ -1,48 +1,52 @@
 <aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print">
 
     <?php if( isset($cat_name) ){
-       //var_dump($cat_name);
-        switch ( $cat_name ){
-          case 'hot-topics':
-            $flexVideoPlayer = '<script language="javascript" type="text/javascript" src="http://player.grabnetworks.com/js/Player.js?id=2250547&width=280&height=225&content=pff4f0fe0db43424bfb9a235f33eae8d414e960d4"></script>';
-          break;
+          $videoPlayer = false;
+          switch($cat_name){
+            case "hot-topics":
+              $videoPlayer = "<script type='text/javascript' id='a226a2a6d15d3ede1b8b58a654153588'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=a226a2a6d15d3ede1b8b58a654153588'; document.body.appendChild(s);}catch(e){}</script>";
+              break;
 
-          case 'relationships':
-             $flexVideoPlayer = '<script language="javascript" type="text/javascript" src="http://player.grabnetworks.com/js/Player.js?id=2250573&width=280&height=225&content=pcb9880e3597f623c0058188005a5c3a55e4ad195"></script>';
-          break;
+            case "relationships":
+              $videoPlayer = "<script type='text/javascript' id='3df7d9a9e3aa77e7814948ca284a27d6'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=3df7d9a9e3aa77e7814948ca284a27d6'; document.body.appendChild(s);}catch(e){}</script>";
+              break;
 
-          case 'entertainment':
-            $flexVideoPlayer = ' <script language="javascript" type="text/javascript" src="http://player.grabnetworks.com/js/Player.js?id=2250521&width=280&height=225&content=pa42bc4c480c622419761177b32bca231c2e53656"></script>';
-          break;
+            case "entertainment":
+              $videoPlayer = "<script type='text/javascript' id='5415aef0454ea1b1738927f50e6b0ffd'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=5415aef0454ea1b1738927f50e6b0ffd'; document.body.appendChild(s);}catch(e){}</script>";
+              break;
 
-          case 'style':
-             $flexVideoPlayer = '<script language="javascript" type="text/javascript" src="http://player.grabnetworks.com/js/Player.js?id=2250611&width=280&height=225&content=p4b8220a8ad36ed2f045eae9e845a465003bb8f1b"></script>';
-          break;
+            case "style":
+              $videoPlayer = "<script type='text/javascript' id='12d86eab82f880c7f114132147d075c7'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=12d86eab82f880c7f114132147d075c7'; document.body.appendChild(s);}catch(e){}</script>";
+              break;
 
-          case 'money':
-             $flexVideoPlayer = '<script language="javascript" type="text/javascript" src="http://player.grabnetworks.com/js/Player.js?id=2250633&width=280&height=225&content=pe36f16724df8dcbb352023f867032a5dd5acded7"></script>';
-          break;
+            case "money":
+              $videoPlayer = "<script type='text/javascript' id='c93fd061bc0b606a99feb96d19baaf23'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=c93fd061bc0b606a99feb96d19baaf23'; document.body.appendChild(s);}catch(e){}</script>";
+              break;
 
-          case 'wellness':
-             $flexVideoPlayer = '<script language="javascript" type="text/javascript" src="http://player.grabnetworks.com/js/Player.js?id=2250653&width=280&height=225&content=pcfd59417f0abf3b3a91cab4000a85ac4f3e56c39"></script>';
-          break;
+            case "wellness":
+              $videoPlayer = "<script type='text/javascript' id='f2f95855e9d44bbad9160b0592eafdfe'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=f2f95855e9d44bbad9160b0592eafdfe'; document.body.appendChild(s);}catch(e){}</script>";
+              break;
 
-          case 'fun':
-             $flexVideoPlayer = '<script language="javascript" type="text/javascript" src="http://player.grabnetworks.com/js/Player.js?id=2250647&width=280&height=225&content=pba7891afe8f1571d62534ba1e00c2c5e552c97f0"></script>';
-          break;
+            case "fun":
+              $videoPlayer = "<script type='text/javascript' id='f2d9e62962e3eaa1599940fa84f3cf63'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=f2d9e62962e3eaa1599940fa84f3cf63'; document.body.appendChild(s);}catch(e){}</script>";
+              break;
 
-          default:
-             $flexVideoPlayer = false;
+            default: 
+              $videoPlayer = false;
+              break;
+          }
+       } ?>
 
-        }
-
-        if( isset( $flexVideoPlayer) && $flexVideoPlayer ){?>
-         <section id="sub-sidebar-3" class="sidebar shadow-on-large-up show-on-large-up"  style="margin: 0 0 0.9375rem 0 !important;">
-         <div class="h4-container" style="margin-bottom: 10px;"><h4 >Featured Video</h4></div>
-            <?php echo $flexVideoPlayer; ?>
-         </section>
-      <?php } 
-    } ?>
+      <?php if(isset($videoPlayer) && $videoPlayer){?>
+        <section class="show-on-large-up"  style=" padding-bottom: 0.9rem;">
+         <div class="h4-no-box-container" style="margin-bottom: 5px;">
+            <h4>Featured Video</h4>
+        </div>
+        <div>
+          <?php echo $videoPlayer; ?>
+        <div>
+     </section>
+      <?php }?>
 
     <?php if ( isset($isArticle) && $isArticle ){?>
      

@@ -15,6 +15,7 @@
 	<link type="text/plain" rel="author" href="<?php echo $config['this_url']; ?>humans.txt" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/adminstyling.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/appadmin.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
 
 	<!--[if lt IE 9]>

@@ -49,7 +49,7 @@
 	<div id="main-cont" class="edit-category">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content" class = 'categories'>
+		<div id="content" class = 'categories columns small-9 large-11'>
 			<section id="category-info">
 				<header class="section-bar">
 					<h2>Category Information</h2>

@@ -76,8 +76,9 @@ if ( $detect->isMobile() ) {
 					<?php include_once($config['include_path'].'categoryresults.php');?>
 					<?php //include_once($config['shared_include'].'pagination.php');?>
 					<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
-					
-					<div id="ingageunit" class="hide-for-print"></div>
+					<section class="hide-for-print ">
+						<div id="ingageunit" class="hide-for-print"></div>
+					</section>
 					<hr>
 					<?php include_once($config['include_path'].'fromourpartners.php'); ?>
 					<!--<hr>-->

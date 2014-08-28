@@ -2,16 +2,20 @@
 	$uri = $adminController->helpers->getURI($mpHelpers->curPageURL());
 	($adminController->user->data['user_name']) ? $userLink = 'account/user/'.$adminController->user->data['user_name'] : $userLink = 'noacess';
 ?>
-<h1 class="main-header"><a href="<?php echo $config['this_admin_url'].'articles/'?>">My Pucker Mob</a></h1>
+<!--<h1 class="main-header"><a href="<?php // echo $config['this_admin_url'].'articles/'?>">My Pucker Mob</a></h1>-->
 <div id="nav-cont" class="columns small-3 large-1 no-padding sticky hide-for-print fixed-content padding-top">
-	<nav id="nav-sidemenu">
+	<nav id="nav-sidemenu" style="position: fixed;">
+
+		<!-- 
+			
+		-->
 		<ul>
 			<?php
 				
 				/* Begin Manage Categories Menu Generation */
-				$siteNavItem = array(
+				/*$siteNavItem = array(
 					'link' => $config['this_admin_url'].'categories/',
-					'label' => 'Manage Categories',
+					'label' => 'Categories',
 					'shown' => (isset($uri[0]) && $uri[0] == 'categories') ? 'shown' : '',
 					'childElements' => array(
 						array(
@@ -22,21 +26,29 @@
 						)
 					)
 				);
+				*/
+				if($adminController->user->checkPermission('user_permission_show_manage_categories')) 	echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'categories/', 'label' => 'Manage Categories', 'current' => (isset($uri[0]) && $uri[0] == 'categories' && isset($uri[1]) && (empty($uri[1]) || $uri[1] == 'edit')) ? 'current' : ''));
 
-				if($adminController->user->checkPermission('user_permission_show_manage_categories')) echo $adminController->makeNavItemGroup($siteNavItem);
+					//echo $adminController->makeNavItemGroup($siteNavItem);
+				
 				/* End Manage Categories Menu Generation */
 
 
 				/* Begin Manage Articles Menu Generation */
-				
+				if($adminController->user->checkPermission('user_permission_show_add_article') ){
+					echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'articles/newarticle/', 'label' => 'Add New Article', 'current' => (isset($uri[0]) && $uri[0] == 'articles' && isset($uri[1]) && $uri[1] == 'new') ? 'current' : ''));
+				}
+				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'articles/', 'label' => 'View/Edit Articles', 'current' => (isset($uri[0]) && $uri[0] == 'articles' && isset($uri[1]) && (empty($uri[1]) || $uri[1] == 'edit')) ? 'current' : ''));
+
+				/*
 				$siteNavItem = array(
 					'link' => $config['this_admin_url'].'articles/',
 					'label' => 'My Articles',
 					'shown' => (isset($uri[0]) && $uri[0] == 'articles') ? 'shown' : '',
-				);
+				);*/
 
 
-				if($adminController->user->checkPermission('user_permission_show_add_article') ) $siteNavItem['childElements'][] = array(
+			/*	if($adminController->user->checkPermission('user_permission_show_add_article') ) $siteNavItem['childElements'][] = array(
 					'childId' => 'new_article',
 					'childLink' => $config['this_admin_url'].'articles/newarticle/',
 					'childLabel' => 'Add New Article',
@@ -48,16 +60,24 @@
 					'childLink' => $config['this_admin_url'].'articles/',
 					'childLabel' => 'View/Edit Articles',
 					'current' => (isset($uri[0]) && $uri[0] == 'articles' && isset($uri[1]) && (empty($uri[1]) || $uri[1] == 'edit')) ? 'current' : ''
-				);
+				);*/
 
-				if($adminController->user->checkPermission('user_permission_show_manage_articles')) echo $adminController->makeNavItemGroup($siteNavItem);
+				//if($adminController->user->checkPermission('user_permission_show_manage_articles')) echo $adminController->makeNavItemGroup($siteNavItem);
 				/* End Manage Articles Menu Generation */
 
 
 
 
 				/* Begin Manage Lists Menu Generation */
-				$siteNavItem = array(
+				
+				if($adminController->user->checkPermission('user_permission_show_manage_lists') ){
+					echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'lists/new/', 'label' => 'Add New List', 'current' => (isset($uri[0]) && $uri[0] == 'lists' && isset($uri[1]) && $uri[1] == 'new') ? 'current' : ''));
+					echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'lists/', 'label' => 'View/Edit Lists', 'current' => (isset($uri[0]) && $uri[0] == 'lists' && isset($uri[1]) && (empty($uri[1]) || $uri[1] == 'edit')) ? 'current' : ''));
+
+				}
+
+
+				/*$siteNavItem = array(
 					'link' => $config['this_admin_url'].'lists/',
 					'label' => 'Manage Lists',
 					'shown' => (isset($uri[0]) && $uri[0] == 'lists') ? 'shown' : '',
@@ -71,11 +91,10 @@
 					)
 				);
 
-				if($adminController->user->checkPermission('user_permission_show_manage_lists')) echo $adminController->makeNavItemGroup($siteNavItem);
+				if($adminController->user->checkPermission('user_permission_show_manage_lists')) echo $adminController->makeNavItemGroup($siteNavItem);*/
 				/* End Manage Articles Menu Generation */
 
-				
-				$label = 'Manage Contributors';
+				$label = 'Contributors';
 				$link = $config['this_admin_url'].'contributors/';
 				$childeditLabel = 'View/Edit Contributors';
 				if(!$adminController->user->data['user_permission_show_other_contributors']){
@@ -112,8 +131,8 @@
 				if($adminController->user->checkPermission('user_permission_show_manage_contributors')) echo $adminController->makeNavItemGroup($siteNavItem);
 				/* End Manage Contributors Menu Generation */
 
-
-				
+				echo '<li class="empty-li"></li>';
+								
 				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].$userLink, 'label' => 'My Profile', 'current' => (isset($uri[1]) && $uri[1] == 'user') ? 'current' : ''));
 
 				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'contact/', 'label' => 'Contact Us', 'current' => (isset($uri[0]) && $uri[0] == 'contact') ? 'current' : '' ));

@@ -753,6 +753,7 @@ $(document).ready(function (){
 	//	edit LIST: editlist.php
 
 	$('.page-list-data-form').each(function(){
+
 		var thisForm = $(this)
 		thisForm.mpValidate({
 			updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
@@ -767,6 +768,8 @@ $(document).ready(function (){
 	//	edit LIST ITEM: editlist.php
 
 	$('.page-list-item-data-form').each(function(){
+	
+	
 		var thisForm = $(this),
 		listItemId = thisForm.children('#page_list_item_id').attr("value"),
 		thisId = thisForm.attr('id');
@@ -1444,7 +1447,7 @@ $(document).ready(function (){
 
 			//	add the form...
 			addForm.style.display="inherit";
-			addNewListItemDiv.style.backgroundColor="#fff";
+			addNewListItemDiv.style.backgroundColor="#eee";
 			addNewListItemDiv.style.cursor="auto";
 		}
 	}

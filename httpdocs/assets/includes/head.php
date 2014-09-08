@@ -153,24 +153,16 @@
 	}
 	</script>
 
-
-<!-- BEGIN Tynt Script 
-<script type="text/javascript">
-if(document.location.protocol=='http:'){
- var Tynt=Tynt||[];Tynt.push('cRcCGMgEKr5jLJacwqm_6r');
- (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/ti.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
-}
-</script>-->
-<!-- END Tynt Script -->
-
 <!-- QuDaBra -->
 <script type="text/javascript" >var qadserve_width  = "160";var qadserve_height = "600";var qadserve_pid = "bf101924-f70d-4cea-863c-cdff9a5a336f";var qadserve_direction = "left";var qadserve_from_top = 60;</script>
 <script type="text/javascript"  src="http://mmrm.qadserve.com/qadserve_slider.min.js"></script>
 
-<!-- WAHWAH RADIO PLAYER -->
+
+<?php if( !isset($isVideoPage) ){ ?>
+	<!-- WAHWAH RADIO PLAYER -->
 	<script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>
 	<!-- End WAHWAH Radio Player -->
-	
+<?php }?>
 <!--AD SUPPLY -->
 	<script data-cfasync="false" type="text/javascript">
 	(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");
@@ -191,11 +183,15 @@ if(document.location.protocol=='http:'){
 		<!-- Distro Scale AD Tag -->
 			<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
 		
-		<!-- EZMOD -->
-		<script type="text/javascript" src="http://ai.ezmob.com/ezmob.php?webid=9425b08ee0"></script>
+		<!-- EZMOD 
+		<script type="text/javascript" src="http://ai.ezmob.com/ezmob.php?webid=9425b08ee0"></script>-->
 
-		<!-- Q1 Media 
-		<script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script> -->
+		<!-- Q1 Media -->
+		<script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script> 
+
+		<!-- SHARETHROUNG -->
+   		<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+
 <?php } ?>
 	
 	<!-- Nativo -->

@@ -95,7 +95,8 @@ $(document).ready(function() {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273459/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273458/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273460/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273461/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273461/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			inarticle: '<div data-str-native-key="81d7c1fc" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 		},
 		category: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273103/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -106,8 +107,7 @@ $(document).ready(function() {
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273453/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273457/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273455/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			inarticle: '<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script><div data-str-native-key="536c62e7" style="display: none;"><\/div>'
-	
+			inarticle: '<div data-str-native-key="81d7c1fc" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 		}
 	};
 
@@ -118,12 +118,12 @@ $(document).ready(function() {
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));
 		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
 
-		totalHeight = 2746;
+		totalHeight = 2766;
 
 		if( page === 'home' || page === 'category'){
 			totalHeight+= 300;
 		}
-
+		if( page == "videos") totalHeight += 80;
 		if(!$('body').hasClass('mobile')) {
 			leftSide.css("min-height", (totalHeight +  asideHeight.atf + asideHeight.video));
 			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
@@ -138,11 +138,14 @@ $(document).ready(function() {
 
 		if(!$('body').hasClass('mobile')) {
 
+
 			totalHeight = 2746;
 
 			if( page === 'home' || page === 'category'){
 				totalHeight+= 300;
 			}
+			if( page == "videos") totalHeight += 80;
+			
 			leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 		}
@@ -161,7 +164,7 @@ $(document).ready(function() {
 		if( page === 'home' || page === 'category'){
 			totalHeight+= 300;
 		}
-
+		if( page == "videos") totalHeight += 80;
 		if(!$('body').hasClass('mobile')) {
 			leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
@@ -205,7 +208,7 @@ $(document).ready(function() {
 					index++;
 
 					if( index === position ){
-						this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print margin-bottom half-padding' );
+						this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print padding' );
 
 						if(iframe) loadAd(document.getElementById('inarticle'+index+'-ad'), ad);	
 						else this_obj.inserDivAdTag(document.getElementById('inarticle'+index+'-ad'), ad);
@@ -223,7 +226,7 @@ $(document).ready(function() {
 				btf1: document.getElementById("btf1-ad"),
 				btf2:document.getElementById("btf2-ad"),
 				bottom: document.getElementById("bottom-ad"),
-				footer: document.getElementById("footer-ad")
+				footer: document.getElementById("footer-ad"),
 			}
 		};
 
@@ -242,7 +245,11 @@ $(document).ready(function() {
 		
 		if( adPage === 'article' ){
 			//Single Page Article ATFs 
-			inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticle, 'p');	
+			inBodyAd.loadInArticleAd( 'article-content', 3, 0, mobilead[adPage].inarticle, 'p');	
+		}
+
+		if( adPage === 'articleslide'){
+			inBodyAd.loadInArticleAd( 'article-caption', 2, 0, mobilead[adPage].inarticle, 'p');	
 		}
 	
 
@@ -298,9 +305,9 @@ $(document).ready(function() {
 		//loadAd(select.ad.flyatf, ad[adPage].flyatf);
 
 		//ATF LEFT AND RIGHT FOR MULTI PAGE ARTICLES
-		if( page === 'articleslide'){
-		//	loadAd(select.ad.atfleft, ad[adPage].atfleft);
-		//	loadAd(select.ad.atfright, ad[adPage].atfright);
+		if( document.body.id == "videos"){
+			loadAd(select.ad.atfleft, ad['articleslide'].atfleft);
+			loadAd(select.ad.atfright, ad['articleslide'].atfright);
 		}
 
 		$(window).resize(function() {
@@ -440,9 +447,9 @@ var SocialShares = {
 	}
 	
 	// Listen to events	
-	if(page === 'article') {
+	/*if(page === 'article') {
 		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-	}
+	}*/
 
 
 //Scroll Window 

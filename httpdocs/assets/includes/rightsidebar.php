@@ -1,6 +1,8 @@
 <aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print">
 
-    <?php if( isset($cat_name) ){
+    <?php 
+
+    if( !isset($isVideoPage)  && isset($cat_name) ){
           $videoPlayer = false;
           switch($cat_name){
             case "hot-topics":

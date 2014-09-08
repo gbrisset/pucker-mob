@@ -4,12 +4,14 @@
 <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>
 
 <!-- GUM GUM -->
+
 <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
 
     <!-- Vibrant Media Ads -->
     <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70526"></script>
 
 <?php }else{ ?>
+<!-- SHARETHROUNG -->
     <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
 
     <!-- Vibrant Media Ads -->
@@ -29,7 +31,7 @@
 <noscript>
   <img src="http://b.scorecardresearch.com/p?c1=2&c2=18667744&cv=2.0&cj=1" />
 </noscript>
-<!-- End comScore Tag -->
+<!-- End COMSCORE Tag -->
 
 <!-- Quantcast Tag -->
 <script type="text/javascript">

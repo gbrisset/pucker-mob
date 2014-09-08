@@ -33,17 +33,9 @@ if(!is_null($categoryInfo)){
 }else {
 	$mpShared->get404();
 }
-
-
-/*if (isset($hasParent) && $hasParent){
-	$parentCategorySEOName = $categoryInfo['parent_dir_name'];
-	$parentCategoryVisibleName = $categoryInfo['parent_name'];
-	$article_link = $config['this_url'].$parentCategorySEOName.'/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
-	$pagesArray['url'] = $config['this_url'].$parentCategorySEOName.'/'.$categoryInfo['cat_dir_name'];
-} else {*/
 	$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
 	$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
-//}
+
 ?>
 <?php if ( $detect->isMobile() ) { ?>
 <!DOCTYPE html>
@@ -73,17 +65,26 @@ if(!is_null($categoryInfo)){
 
 				}
 				?>
-				
-				<div id="btf1-ad" class="ad-unit columns"></div>
 		<hr>
 		<?php include_once($config['include_path'].'similararticles.php');?>
-
+		<div id="btf1-ad" class="ad-unit columns"></div>
+		<!-- BTF1 TAG HARDCODED -->
+		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){?>
+			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273458/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
+		<?php } else{ ?>
+			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273453/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
+		<?php } ?> 
+		<hr>
 		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+		
+		<div id="btf2-ad" class="ad-unit columns"></div>
+		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){?>
+			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273460/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>	
+		<?php } else{ ?>
+			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273457/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
+		<?php } ?> 
 		<hr>
 	</div>
-
-	<div id="btf2-ad" class="ad-unit columns"></div>
-
 	<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
 	<?php include_once($config['include_path'].'disqus.php'); ?>
@@ -91,16 +92,6 @@ if(!is_null($categoryInfo)){
 </main>
 <?php include_once($config['include_path'].'footer.php');?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-<script type="text/javascript">
-var addthis_config = addthis_config||{};
-addthis_config.pubid = 'ra-53c4498040efc634';
-</script>-->
-
-
-
 </body>
 </html>
 

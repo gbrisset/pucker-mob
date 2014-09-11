@@ -39,7 +39,9 @@
           }
        } ?>
 
-      <?php if(isset($videoPlayer) && $videoPlayer){?>
+      <?php 
+      $videoPlayer = false;
+      if(isset($videoPlayer) && $videoPlayer){?>
         <section class="show-on-large-up"  style=" padding-bottom: 0.9rem;">
          <div class="h4-no-box-container" style="margin-bottom: 5px;">
             <h4>Featured Video</h4>

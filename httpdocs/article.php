@@ -2,6 +2,7 @@
 $categoryInfo = null;
 $isArticle = true;
 $articleInfoObj = array();
+
 foreach($MPNavigation->categories as $category){
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
 			// uri[2] not set, cat has no parent
@@ -54,36 +55,36 @@ if(!is_null($categoryInfo)){
 			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 columns translate-fix sidebar-main-left">
 				<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 				<?php 
-				if(isset($articleInfoObj['article_template_type']) && $articleInfoObj['article_template_type'] == 1){
-					include_once($config['template_path'].'recipe.php');
-				}else{
+				//if(isset($articleInfoObj['article_template_type']) && $articleInfoObj['article_template_type'] == 1){
+				//	include_once($config['template_path'].'recipe.php');
+				//}else{
 					if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
 						include_once($config['template_path'].'multi_page_article.php');
 					} else {
 						include_once($config['template_path'].'single_page_article.php');
 					}
 
-				}
+				//}
 				?>
 		<hr>
 		<?php include_once($config['include_path'].'similararticles.php');?>
-		<div id="btf1-ad" class="ad-unit columns"></div>
-		<!-- BTF1 TAG HARDCODED -->
+		<div id="btf1-ad" class="ad-unit hide-for-print ad300 ad250"></div>
+		<!-- BTF1 TAG HARDCODED 
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){?>
 			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273458/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
 		<?php } else{ ?>
 			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273453/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
 		<?php } ?> 
-		<hr>
+		<hr>-->
 		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
 		
-		<div id="btf2-ad" class="ad-unit columns"></div>
+		<!--<div id="btf2-ad" class="ad-unit hide-for-print ad300 ad250"></div>
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){?>
 			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273460/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>	
 		<?php } else{ ?>
 			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273457/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
 		<?php } ?> 
-		<hr>
+		<hr>-->
 	</div>
 	<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
@@ -92,6 +93,12 @@ if(!is_null($categoryInfo)){
 </main>
 <?php include_once($config['include_path'].'footer.php');?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		addthis.init();
+	})
+	</script>
+
 </body>
 </html>
 
@@ -146,10 +153,10 @@ if(!is_null($categoryInfo)){
 			<!-- Prev & Next Articles -->
 			<?php include_once($config['include_path'].'prevnextarticles.php'); ?>
 
-			<!-- LIFT AD -->
+			<!-- LIFT AD 
 			<div id="lift-ad">
 				<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-			</div>
+			</div>-->
 
 			<!-- Media Net
 			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div> -->
@@ -198,19 +205,16 @@ if(!is_null($categoryInfo)){
 	
 	<!-- Gum Gum -->
 	<?php if($articleInfoObj['article_id'] != 3978 ){?>
-	<script>ggv2id='64bad626';</script>
+		<script>ggv2id='64bad626';</script>
 	<?php }?>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path'].'bottomscripts.php');?>
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634"></script>
-
 	<script type="text/javascript">
-	var addthis_config = addthis_config||{};
-	addthis_config.pubid = 'ra-53c4498040efc634';
+	$(document).ready(function(){
+		addthis.init();
+	})
 	</script>
-
 </body>
 </html>
 <?php } ?>

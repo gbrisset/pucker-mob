@@ -23,22 +23,34 @@ if(!is_null($categoryInfo)){
 
 if( isset($cat_name) ){
           $video = false;
-          $hottopicsClass = $entClass = $wellnessClass = " ";
+          $hottopicsClass = $entClass = $wellnessClass = $funClass = " ";
           switch($cat_name){
             case "hot-topics":
-              $video = "<script type='text/javascript' id='c4a50490e6e7dba70f2671da149ca8e2'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=c4a50490e6e7dba70f2671da149ca8e2'; document.body.appendChild(s);}catch(e){}</script>";
+              $video = '<!-- TAG START { player: "Player:PuckerMob_Entertinment US_SY", owner: "Matomy", for: "Matomy" } -->
+						<div class="vdb_player vdb_5411af72e4b0c0b74c9b82db5176c647e4b09e5e67af5b27">
+						    <script type="text/javascript" src="http://cdn.vidible.tv/prod/tags/2014-09/pid=5411af72e4b0c0b74c9b82db/5176c647e4b09e5e67af5b27.js"></script>
+						</div>
+						<!-- TAG END { date: 09/11/14 } -->';
               $hottopicsClass="active";
               break;
 
             case "entertainment":
-              $video = "<script type='text/javascript' id='4cb34f955174cf5e55ed8787be11d34e'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=4cb34f955174cf5e55ed8787be11d34e'; document.body.appendChild(s);}catch(e){}</script>";
+              $video = '<!-- TAG START { player: "Player:PuckerMob_News US_SY", owner: "Matomy", for: "Matomy" } -->
+						<div class="vdb_player vdb_5411afc4e4b025f1659c546c5176c647e4b09e5e67af5b27">
+						   <script type="text/javascript" src="http://cdn.vidible.tv/prod/tags/2014-09/pid=5411afc4e4b025f1659c546c/5176c647e4b09e5e67af5b27.js"></script>
+						</div>
+						<!-- TAG END { date: 09/11/14 } -->';
               $entClass="active";	
               break;
 
-            case "wellness":
-              $video = "<script type='text/javascript' id='e0f821b7214c3a25d9ac9a2621a32c5c'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=e0f821b7214c3a25d9ac9a2621a32c5c'; document.body.appendChild(s);}catch(e){}</script>";
-              $wellnessClass = "active";
-              break;
+            case "fun":
+              $video = '<!-- TAG START { player: "Player:PuckerMob_Comedy US_SY", owner: "Matomy", for: "Matomy" } -->
+						<div class="vdb_player vdb_5411ae62e4b025f1659c53df5176c647e4b09e5e67af5b27">
+						      <script type="text/javascript" src="http://cdn.vidible.tv/prod/tags/2014-09/pid=5411ae62e4b025f1659c53df/5176c647e4b09e5e67af5b27.js"></script>
+						</div>
+						<!-- TAG END { date: 09/11/14 } -->';
+              $funClass="active";	
+              break;  
 
             default: 
               $video = false;
@@ -53,18 +65,18 @@ if( isset($cat_name) ){
 	<body id="videos">
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
-		<section id="" class="fullsize-section row panel shadow-on-large-up translate-fix">
+		<!--<section id="" class="fullsize-section row panel shadow-on-large-up translate-fix">
 			<h1><?php echo $categoryInfo['cat_name']; ?> Videos</h1>
-		</section>
+		</section>-->
 		<?php if($video){?>
 		<section id="" class="fullsize-section row panel shadow-on-large-up translate-fix">
 			<dl class="sub-nav">
-			  <dt>Categories:</dt>
+			  <dt>Videos:</dt>
 			  <dd class="<?php echo $hottopicsClass; ?>"><a href="<?php echo $config['this_url'].'videos/hot-topics'; ?>">Hot Topics</a></dd>
 			  <dd class="<?php echo $entClass; ?>" ><a href="<?php echo $config['this_url'].'videos/entertainment'; ?>">Entertainment</a></dd>
-			  <dd class="<?php echo $wellnessClass; ?>" ><a href="<?php echo $config['this_url'].'videos/wellness'; ?>">Wellness</a></dd>
+			  <dd class="<?php echo $funClass; ?>" ><a href="<?php echo $config['this_url'].'videos/fun'; ?>">Fun</a></dd>
 			</dl>
-			<hr style="margin-top: -0.3rem;">
+			<hr style="margin-top: -0.3rem; margin-bottom: 0.5rem;">
 			<?php echo $video; ?>
 		</section>
 		<?php } ?>

@@ -16,8 +16,11 @@ if (isset($articleInfoObj)) {
 		<h1><?php echo $article_title; ?></h1>
 		
 		<div class="row">
-			<section id="social-buttons" class="small-12 xlarge-8 columns hide-for-print">
-				<div class="pw-widget">
+			
+			 	<div class="addthis_jumbo_share mobile-12 small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
+ 				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
+
+				<!--<section id="social-buttons" class="small-12 xlarge-8 columns hide-for-print"><div class="pw-widget">
 					<a class="pw-button-facebook">
 						<button id="facebook-button" class="columns small-16P button small facebook">
 							<i class="fa fa-facebook fa-fw"></i><div id="facebook-count" class="social-fade-in pw-box-counter" data-channel="facebook"></div>
@@ -48,8 +51,8 @@ if (isset($articleInfoObj)) {
 							<i class="fa fa-linkedin fa-fw"></i><div id="linkedin-count" class="social-fade-in pw-box-counter" data-channel="linkedin"></div>
 						</button>
 					</a>
-				</div>
-			</section>
+				</div></section>-->
+			
 			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
 				<a href="#disqus_thread">0 Comments</a>
 				<a href="#disqus-container" >
@@ -106,7 +109,7 @@ if (isset($articleInfoObj)) {
 
 		<!-- Social Media Icons -->
 		<div class="row">
-			<section id="social-buttons" class="small-12 xlarge-8 columns hide-for-print">
+			<!-- <section id="social-buttons" class="small-12 xlarge-8 columns hide-for-print">
 				<div class="pw-widget">
 					<a class="pw-button-facebook">
 						<button id="facebook-button" class="columns small-16P button small facebook">
@@ -139,8 +142,10 @@ if (isset($articleInfoObj)) {
 						</button>
 					</a>
 				</div>
-			</section>
-
+			</section>-->
+			<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
+ 			<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
+			
 			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
 				<a href="#disqus_thread">0 Comments</a>
 				<a href="#disqus-container" >

@@ -175,6 +175,7 @@ $(document).ready(function() {
 	function loadAd(target, adcode) {
 		var iframe = document.createElement('iframe');
 		iframe.id=target.id + '-iframe';
+		console.log(target);
 		iframe.className="ad-unit hide-for-print";
 		iframe.scrolling="no";
 		iframe.height="0";
@@ -208,8 +209,12 @@ $(document).ready(function() {
 					index++;
 
 					if( index === position ){
-						this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print padding' );
 
+						if($('body').hasClass('mobile')) {
+							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print padding' );
+						}else{
+							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print padding margin-bottom' );
+						}
 						if(iframe) loadAd(document.getElementById('inarticle'+index+'-ad'), ad);	
 						else this_obj.inserDivAdTag(document.getElementById('inarticle'+index+'-ad'), ad);
 					}
@@ -235,14 +240,13 @@ $(document).ready(function() {
 		//loadAd(select.ad.footer, mobilead[adPage].footer);
 		
 		// Single & Multi Article Pages
-		if(adPage === 'article' || adPage === 'articleslide'){
+		console.log(adPage);
+		if(adPage == 'article' || adPage == 'articleslide'){
 			loadAd(select.ad.btf1, mobilead[adPage].btf1);
-			loadAd(select.ad.btf2, mobilead[adPage].btf2);
+			//loadAd(select.ad.btf2, mobilead[adPage].btf2);
 		}		
 
 		//Load and Insert a middle article in the article body
-		
-		
 		if( adPage === 'article' ){
 			//Single Page Article ATFs 
 			inBodyAd.loadInArticleAd( 'article-content', 3, 0, mobilead[adPage].inarticle, 'p');	
@@ -288,6 +292,12 @@ $(document).ready(function() {
 		if( page === 'article' ||  page === 'articleslide'){
 			//ATF//
 			loadAd(select.ad.atf, ad[adPage].atf);
+		}
+
+		//Load and Insert a middle article in the article body
+		if( adPage === 'article' ){
+			//Single Page Article ATFs 
+			inBodyAd.loadInArticleAd( 'article-content', 2, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 		}
 
 		//BTF1

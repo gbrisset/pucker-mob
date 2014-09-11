@@ -1,8 +1,6 @@
 <head>
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
-
-
 	<meta http-equiv="x-dns-prefetch-control" content="on">
 	<link rel="dns-prefetch" href="//images.puckermob.com" />
 	<link rel="dns-prefetch" href="//www.google-analytics.com" />
@@ -63,7 +61,11 @@
 	<link rel="dns-prefetch" href="//c.betrad.com" />
 	<link rel="dns-prefetch" href="//ad-cdn.technoratimedia.com" />
 	<link rel="dns-prefetch" href="//1.sic.33across.com" />
-	
+
+	<?php if(isset($isArticle) && $isArticle && $articleInfoObj){ ?>
+		<link rel="canonical" href="<?php echo 'http://puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
+	<?php } ?>
+
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -96,131 +98,53 @@
 	<?php } ?>
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<style>
-	body {background: #fcf4de;}
-	</style>
+	
+	<style>	body {background: #fcf4de;} </style>
+	
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-	<?php
-	if (!$local){
-    if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
-    else echo $mpArticle->data['article_page_analytics'];
-	}
-	?>
+	<?php if (!$local){
+    	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
+    	else echo $mpArticle->data['article_page_analytics'];
+	} ?>
 	
-
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
 	
+	<!-- DESKTOP -->
 	<?php if ( !$detect->isMobile() ) { ?>
 	<script>var trendingNowHeight = 0;</script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
-	<!--<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
 
 	<!--[if !IE]>
 	<script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
 	<![endif]-->
-
-	<!-- Spring Board ADs -->
-	<script type="text/javascript">
-
-	var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
-
-	function sbElementCheck() {
-
-		var targetedElement = document.getElementById('ingageunit');
-		if(targetedElement) {
-			clearInterval(sbElementInterval);
-			(function(d) {
-				var js, s = d.getElementsByTagName('script')[0];
-				js = d.createElement('script');
-				js.async = true;
-				js.onload = function(e) {
-					SbInGageWidget.init({
-						partnerId : 3809,
-						widgetId : 'spld002',
-						cmsPath : 'http://cms.springboardplatform.com'
-					});
-				}
-				js.src = "http://cdn.springboardplatform.com/storage/js/ingage/apingage.min.js";
-				s.parentNode.insertBefore(js, s);
-			})(window.document);
-		}
-	}
-	</script>
-
-<!-- QuDaBra -->
-<script type="text/javascript" >var qadserve_width  = "160";var qadserve_height = "600";var qadserve_pid = "bf101924-f70d-4cea-863c-cdff9a5a336f";var qadserve_direction = "left";var qadserve_from_top = 60;</script>
-<script type="text/javascript"  src="http://mmrm.qadserve.com/qadserve_slider.min.js"></script>
-
-
-<?php if( !isset($isVideoPage) ){ ?>
-	<!-- WAHWAH RADIO PLAYER -->
-	<script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>
-	<!-- End WAHWAH Radio Player -->
-<?php }?>
-<!--AD SUPPLY -->
-	<script data-cfasync="false" type="text/javascript">
-	(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");
-	(function() {
-	var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-	s.src = "http://cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";
-	s.id = "infinity"; s.setAttribute("data-guid", "ce106c14-9ffe-4f0b-8cb8-c965d9d04213"); s.setAttribute("data-version", "async");
-	var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
-	})();
-	</script>
 	
+	<!--AD SUPPLY 
+		<script data-cfasync="false" type="text/javascript">
+			(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");
+			(function() {
+			var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+			s.src = "http://cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";
+			s.id = "infinity"; s.setAttribute("data-guid", "ce106c14-9ffe-4f0b-8cb8-c965d9d04213"); s.setAttribute("data-version", "async");
+			var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
+			})();
+		</script>-->
 	
-<?php }else{ ?>
-	<!-- GUM GUM -->
-		<script src="//g2.gumgum.com/javascripts/ad.js"></script>
-		<!-- <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script> -->
-
-		<!-- Distro Scale AD Tag -->
-			<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
-		
-		<!-- EZMOD 
-		<script type="text/javascript" src="http://ai.ezmob.com/ezmob.php?webid=9425b08ee0"></script>-->
-
-		<!-- Q1 Media -->
-		<script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script> 
-
+	<!-- MOBILE -->
+	<?php }else{ ?>
 		<!-- SHARETHROUNG -->
    		<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
-
-<?php } ?>
+	<?php } ?>
+	
+	<!-- DESKTOP & MOBILE SCRIPT -->
 	
 	<!-- Nativo -->
 	<script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
-	
-	<?php if(isset($articleInfo) && $articleInfo){ ?>
-	<!-- PO.ST SOCIAL MEDIA ADS -->
-	<script>
-		(function () {
-			var s = document.createElement('script'); 
-			s.type = 'text/javascript'; 
-			s.async = true; s
-			s.src = ('https:' == document.location.protocol ? 'https://s' : 'http://i') + '.po.st/share/script/post-widget.js';
-			var x = document.getElementsByTagName('script')[0];
-			x.parentNode.insertBefore(s, x);
-			})();
-			
-		var pwidget_config = {
-			publisherKey: 'vb2fp4ggidsu7tl0b82a',
-			defaults: {
-				sharePopups: true,
-					services: {
-						twitter: {
-						via: 'puckermob'
-					}
-				}
-			}	
-		};
-	</script>
-	<?php }?>
+
 </head>
  <?php flush(); ?>

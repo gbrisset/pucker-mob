@@ -53,10 +53,10 @@ foreach ($articlesList['articles'] as $articles){
 		</div>
 		<hr class="padding-top">
 		
-	
-		<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
+		<!-- 3LIFT -->	
+		<!--<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>
-		</div>
+		</div>-->
 	
 		<?php  } else{
 			

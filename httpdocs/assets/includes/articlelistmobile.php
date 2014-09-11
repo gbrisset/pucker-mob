@@ -68,13 +68,13 @@
 		
 		<?php } 
 
-		if( $articleIndex % 7 == 0 ) { ?>
-		<!-- 3LIFT -->
+		//if( $articleIndex % 7 == 0 ) { ?>
+		<!-- 3LIFT 
 		
 			<div id="lift-ad">
 				<script src="http://ib.3lift.com/ttj?inv_code=puckermob_mobile_feed"></script> 
-			</div>
-		<?php }
+			</div> -->
+		<?php //}
 	}
 ?>
 

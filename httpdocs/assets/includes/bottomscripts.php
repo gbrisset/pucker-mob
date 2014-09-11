@@ -1,22 +1,111 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
+
+<!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
-<?php /* AdsNative.com */ ?>
-<script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>
+    <!-- AdsNative.com -->
+    <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>
 
-<!-- GUM GUM -->
-
-<script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
+    <!-- GUM GUM -->
+    <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
 
     <!-- Vibrant Media Ads -->
     <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70526"></script>
 
+    <!-- TLV POP UNDER TAG -->
+    <script type="text/javascript">t_sec=280000013;</script>
+    <script type="text/javascript" src="http://t.cttsrv.com/pt.js"></script>
+
+    <!-- IS NOT VIDEO PAGE -->
+    <?php if( !isset($isVideoPage) ){
+      if (!$local){?>
+      <!-- WAHWAH RADIO PLAYER -->
+      <script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>
+      <!-- End WAHWAH Radio Player -->
+    <?php } } ?>
+
+    <!-- Spring Board ADs (VIDEO ON CATGORIES) -->
+    <script type="text/javascript">
+
+    var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
+
+    function sbElementCheck() {
+
+      var targetedElement = document.getElementById('ingageunit');
+      if(targetedElement) {
+        clearInterval(sbElementInterval);
+        (function(d) {
+          var js, s = d.getElementsByTagName('script')[0];
+          js = d.createElement('script');
+          js.async = true;
+          js.onload = function(e) {
+            SbInGageWidget.init({
+              partnerId : 3809,
+              widgetId : 'spld002',
+              cmsPath : 'http://cms.springboardplatform.com'
+            });
+          }
+          js.src = "http://cdn.springboardplatform.com/storage/js/ingage/apingage.min.js";
+          s.parentNode.insertBefore(js, s);
+        })(window.document);
+      }
+    }
+    </script>
+
+    <!-- QuDaBra 
+    <script type="text/javascript" >var qadserve_width  = "160";var qadserve_height = "600";var qadserve_pid = "bf101924-f70d-4cea-863c-cdff9a5a336f";var qadserve_direction = "left";var qadserve_from_top = 60;</script>
+    <script type="text/javascript"  src="http://mmrm.qadserve.com/qadserve_slider.min.js"></script>-->
+
+<!-- MOBILE -->
 <?php }else{ ?>
-<!-- SHARETHROUNG -->
-    <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+    
+    <!-- GUM GUM -->
+    <script src="//g2.gumgum.com/javascripts/ad.js"></script>
+
+    <!-- Distro Scale AD Tag -->
+    <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
+    
+    <!-- Q1 Media -->
+    <script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script> 
 
     <!-- Vibrant Media Ads -->
     <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70527"></script>
 <?php }?>
+
+<!-- DESKTOP & MOBILE SCRIPT -->
+
+<!-- IF ARTICLE PAGE -->
+  <?php if(isset($articleInfo) && $articleInfo){ ?>
+  <!-- PO.ST SOCIAL MEDIA ADS 
+  <script>
+    (function () {
+      var s = document.createElement('script'); 
+      s.type = 'text/javascript'; 
+      s.async = true; s
+      s.src = ('https:' == document.location.protocol ? 'https://s' : 'http://i') + '.po.st/share/script/post-widget.js';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+      })();
+      
+    var pwidget_config = {
+      publisherKey: 'vb2fp4ggidsu7tl0b82a',
+      defaults: {
+        sharePopups: true,
+          services: {
+            twitter: {
+            via: 'puckermob'
+          }
+        }
+      } 
+    };
+  </script>-->
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#async=1"></script>
+  <script type="text/javascript">
+    var addthis_config = addthis_config||{};
+    addthis_config.pubid = 'ra-53c4498040efc634';
+  </script>
+  
+  <?php }?>
 
 <!-- COMSCORE -->
 <script>

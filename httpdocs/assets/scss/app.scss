@@ -1235,12 +1235,13 @@ $fun: #f9651b;
 			}
 /**************************** End Content Ad ****************************/
 
-/**************************** New Social Buttons Styling From PO.ST *****************************/
+/**************************** New Social Buttons Styling From PO.ST ****************************
 #social-buttons{ padding-top: 0.9375rem; }
 #social-buttons .pw-icon{ display: none !important; }
 #social-buttons .pw-widget{ float: none !important; }
 #social-buttons .pw-button{ font: normal 16px/16px  Oslo, 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif !important; display: inline !important; }
 #social-buttons .pw-size-small.pw-button { margin-right: 0px!important; }
+**/
 
 .fullsize-section{
 	max-width: 62.5rem;
@@ -1258,6 +1259,26 @@ $fun: #f9651b;
 	text-transform: uppercase;
 	font-family: "Oslo",arial,"Helvetica Neue","Helvetica",Helvetica,sans-serif;
 	margin-bottom: 0;
+	color: #6ad98a;
 }
 
-	 
+/*VIDEOS PAGE*/
+dl { margin-bottom: 0.5rem !important; }
+
+/* ADDTHIS STYLING */
+ .at4-hide{opacity:0 !important; display: none !important;}
+ .social-show{opacity:1 !important; display: inline !important;}
+ .fb-like.fb_iframe_widget{margin-top:1.2rem;}
+ #at-share-dock{width: 101%; max-width: 101%;}
+ .at4-toaster-outer .at4-recommended .at4-recommended-item .at4-recommended-item-caption h4{ height: 28px !important; }
+ tr{display:inline-flex !important;}
+ .addthis_jumbo_share{padding-bottom: 0.2rem !important;}
+ .at4-jumboshare .at4-count{font-size: 2rem !important; line-height: 1.2 !important; font-family: arial !important; font-weight: bold !important;}
+ .at4-jumboshare .at4-title{font-size: 1rem !important; line-height: 1.2 !important;}
+ .at4-jumboshare .at4-count-container{ padding-right: 0 !important;}
+ .at4-jumboshare .at4-share-container{padding-top: 0.7rem !important; padding-left: 14px !important;}
+ #email-comment{margin-top: 1.1rem !important}
+ .at4-jumboshare .at4-share-btn{margin-right: 5px !important;}
+ .addthis_button_facebook_like{margin-top: 1rem !important; position: absolute !important; left: 65% !important;}
+ .at4-jumboshare .at4-mobile .at4-share-btn span{ display:inline-block; }
+ .at4-jumboshare a .label{ display:none ; }

@@ -5,15 +5,15 @@
     <!-- AdsNative.com -->
     <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>
 
-    <!-- GUM GUM -->
-    <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
+    <!-- GUM GUM 
+    <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>-->
 
-    <!-- Vibrant Media Ads -->
+    <!-- Vibrant in-text Media Ads -->
     <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70526"></script>
 
-    <!-- TLV POP UNDER TAG -->
+    <!-- TLV POP UNDER TAG 
     <script type="text/javascript">t_sec=280000013;</script>
-    <script type="text/javascript" src="http://t.cttsrv.com/pt.js"></script>
+    <script type="text/javascript" src="http://t.cttsrv.com/pt.js"></script>-->
 
     <!-- IS NOT VIDEO PAGE -->
     <?php if( !isset($isVideoPage) ){
@@ -58,14 +58,14 @@
 <!-- MOBILE -->
 <?php }else{ ?>
     
-    <!-- GUM GUM -->
-    <script src="//g2.gumgum.com/javascripts/ad.js"></script>
+    <!-- GUM GUM 
+    <script src="//g2.gumgum.com/javascripts/ad.js"></script>-->
 
     <!-- Distro Scale AD Tag -->
     <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
     
-    <!-- Q1 Media -->
-    <script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script> 
+    <!-- Q1 Media 
+    <script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script> -->
 
     <!-- Vibrant Media Ads -->
     <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70527"></script>

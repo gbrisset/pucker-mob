@@ -96,7 +96,9 @@ $(document).ready(function() {
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273458/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273460/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273461/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			inarticle: '<div data-str-native-key="81d7c1fc" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
+			//inarticle: '<div data-str-native-key="81d7c1fc" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
+			inarticle: '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
+
 		},
 		category: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273103/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -107,7 +109,8 @@ $(document).ready(function() {
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273453/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273457/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273455/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			inarticle: '<div data-str-native-key="81d7c1fc" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
+			//inarticle: '<div data-str-native-key="81d7c1fc" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
+			inarticle: '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 		}
 	};
 
@@ -295,9 +298,13 @@ $(document).ready(function() {
 		}
 
 		//Load and Insert a middle article in the article body
-		if( adPage === 'article' ){
+		if( adPage === 'article'){
 			//Single Page Article ATFs 
 			inBodyAd.loadInArticleAd( 'article-content', 2, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
+		}
+		if( adPage === 'articleslide'){
+			//Single Page Article ATFs 
+			inBodyAd.loadInArticleAd( 'article-caption', 2, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 		}
 
 		//BTF1
@@ -447,7 +454,7 @@ var SocialShares = {
 		if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
 			console.log(evt.data.service);
 	     	   addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-	    		//console.log(obj.count);
+	    		console.log(obj.count);
 	    		var count = obj.count;
 	    		var article_id = Foundation.utils.S('#article_id').val();
 	    		SocialShares.updateFBShare( count, article_id );
@@ -457,9 +464,9 @@ var SocialShares = {
 	}
 	
 	// Listen to events	
-	/*if(page === 'article') {
+	if(page === 'article') {
 		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-	}*/
+	}
 
 
 //Scroll Window 

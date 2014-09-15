@@ -17,7 +17,7 @@ if (isset($articleInfoObj)) {
 		
 		<div class="row">
 			
-			 	<div class="addthis_jumbo_share mobile-12 small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
+			 	<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
  				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
 
 				<!--<section id="social-buttons" class="small-12 xlarge-8 columns hide-for-print"><div class="pw-widget">
@@ -92,12 +92,25 @@ if (isset($articleInfoObj)) {
 			</div>
 		</div>
 		
-		<!-- SHARETHROUGH 1 ARTICLE MOBILE AD -->
+		<!-- SHARETHROUGH 1 ARTICLE MOBILE AD 
 		<div class="hide-for-print">
 			<div data-str-native-key="536c62e7" style="display: none;"></div>
 			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-		</div>
-
+		</div>-->
+		<!-- GOOGLE AD UNIT MOBILE --> 
+		<?php if ( $detect->isMobile() ) {?>
+		<div class="hide-for-print row half-padding padding-top" style="margin-bottom: -1.5rem;">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- PM Mobile 310x90 -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:310px;height:90px"
+			     data-ad-client="ca-pub-8978874786792646"
+			     data-ad-slot="8366956187"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			</div>
+		<?php }?>
 		<!-- Article Content -->
 		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
 			  else{ echo '<div class="row">'; }
@@ -106,43 +119,25 @@ if (isset($articleInfoObj)) {
 				<p><?php echo $article_body; ?></p>
 			</section>
 		</div>
-
-		<!-- Social Media Icons -->
+		<?php if(!$detect->isMobile()){?>
+		<!-- GOOGLE ADS UNIT -->
 		<div class="row">
-			<!-- <section id="social-buttons" class="small-12 xlarge-8 columns hide-for-print">
-				<div class="pw-widget">
-					<a class="pw-button-facebook">
-						<button id="facebook-button" class="columns small-16P button small facebook">
-							<i class="fa fa-facebook fa-fw"></i><div id="facebook-count" class="social-fade-in pw-box-counter" data-channel="facebook"></div>
-						</button>
-					</a>
-					<a class="pw-button-twitter">
-						<button id="twitter-button" class="columns small-16P button small twitter">
-							<i class="fa fa-twitter fa-fw"></i><div id="twitter-count" class="social-fade-in pw-box-counter" data-channel="twitter"></div>
-						</button>
-					</a>
-					<a class="pw-button-pinterest">
-						<button id="pinterest-button" class="columns small-16P button small pinterest">
-							<i class="fa fa-pinterest fa-fw"></i><div id="pinterest-count" class="social-fade-in pw-box-counter" data-channel="pinterest"></div>
-						</button>
-					</a>
-					<a class="pw-button-googleplus">
-						<button id="google-plus-button" class="columns small-16P button small google-plus">                
-							<i class="fa fa-google-plus fa-fw"></i><div id="google-plus-count" class="social-fade-in pw-box-counter" data-channel="googleplus"></div>
-						</button>
-					</a>
-					<a class="pw-button-stumbleupon">
-						<button id="stumble-upon-button" class="columns small-16P button small stumble-upon">                
-							<i class="fa fa-stumbleupon fa-fw"></i><div id="stumble-upon-count" class="social-fade-in pw-box-counter" data-channel="stumbleupon"></div>
-						</button>
-					</a>
-					<a class="pw-button-linkedin">
-						<button id="linkedin-button" class="columns small-16P button small linkedin">                
-							<i class="fa fa-linkedin fa-fw"></i><div id="linkedin-count" class="social-fade-in pw-box-counter" data-channel="linkedin"></div>
-						</button>
-					</a>
-				</div>
-			</section>-->
+			<section class="columns small-12">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- PM 637x90 Bottom -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:637px;height:90px"
+				     data-ad-client="ca-pub-8978874786792646"
+				     data-ad-slot="3114328182"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</section>
+		</div>
+		<hr>
+		
+		<!-- Social Media Icons -->
+		<div class="row padding-bottom">
 			<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
  			<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
 			
@@ -165,6 +160,14 @@ if (isset($articleInfoObj)) {
 				</script>
 			</div>
 		</div>
+		<?php }else{ ?>
+			<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
+			<div class="hide-for-print">
+				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			</div>
+
+		<?php }?>
 		<section class="nativo-ad">
 			<div class="nativo"></div> 
 		</section>

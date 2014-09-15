@@ -109,9 +109,21 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		</div>
 
 		<?php if ( $detect->isMobile() ) { ?>
-		<!-- SHARETHROUGH 1 MOBILE AD -->
+		<!-- SHARETHROUGH 1 MOBILE AD
 		<div class="hide-for-print">
 			<div data-str-native-key="536c62e7" style="display: none;"></div>
+		</div> -->
+		<!-- GOOGLE AD UNIT MOBILE --> 
+		<div class="hide-for-print row half-padding padding-top" style="margin-bottom: -1.5rem;">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- PM Mobile 310x90 -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:310px;height:90px"
+			     data-ad-client="ca-pub-8978874786792646"
+			     data-ad-slot="8366956187"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
 		</div>
 		<?php } ?>
 
@@ -120,7 +132,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 			  else{ echo '<div class="row">'; }
 		?> 
 			<section id="article-caption" class="columns small-12 ">
-				<h2 class="padding-top"><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
+				<h2 class=""><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
 				<ul class="inline-centered vertical-centered">
 					<?php 
@@ -141,6 +153,24 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<br>
 			</section>
 		</div>
+				<?php if(!$detect->isMobile()){?>
+		<!-- GOOGLE ADS UNIT -->
+		<hr>
+		<div class="row">
+			<section class="columns small-12">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- PM 637x90 Bottom -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:637px;height:90px"
+				     data-ad-client="ca-pub-8978874786792646"
+				     data-ad-slot="3114328182"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</section>
+		</div>
+		<hr>
+		
 	
 		<!-- Social Media Icons -->
 		<div class="row">
@@ -166,14 +196,11 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</script>
 			</div>
 		</div>
-		
-		<!-- SHARETHROUG 2 ARTICLE AD MOBILE -->
-		<?php if ( $detect->isMobile() ) { ?>
-			<div class="row">
-				<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
-					
-					<div id="sharethrough"></div>
-				</div>
+		<?php }else{?>
+		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
+			<div class="hide-for-print">
+				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			</div>
 		<?php } ?>
 	</section>

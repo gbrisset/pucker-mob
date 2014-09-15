@@ -26,20 +26,24 @@ if( isset($cat_name) ){
           $hottopicsClass = $entClass = $wellnessClass = $funClass = " ";
           switch($cat_name){
             case "hot-topics":
-              $video = '<!-- TAG START { player: "Player:PuckerMob_Entertinment US_SY", owner: "Matomy", for: "Matomy" } -->
-						<div class="vdb_player vdb_5411af72e4b0c0b74c9b82db5176c647e4b09e5e67af5b27">
-						    <script type="text/javascript" src="http://cdn.vidible.tv/prod/tags/2014-09/pid=5411af72e4b0c0b74c9b82db/5176c647e4b09e5e67af5b27.js"></script>
+              //$video = "<script type='text/javascript' id='c4a50490e6e7dba70f2671da149ca8e2'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=c4a50490e6e7dba70f2671da149ca8e2'; document.body.appendChild(s);}catch(e){}</script>";
+              $video = '<!-- TAG START { player: "Player:PuckerMob_News US_SY", owner: "Matomy", for: "Matomy" } -->
+						<div class="vdb_player vdb_5411afc4e4b025f1659c546c5176c647e4b09e5e67af5b27">
+						   <script type="text/javascript" src="http://cdn.vidible.tv/prod/tags/2014-09/pid=5411afc4e4b025f1659c546c/5176c647e4b09e5e67af5b27.js"></script>
 						</div>
 						<!-- TAG END { date: 09/11/14 } -->';
               $hottopicsClass="active";
               break;
 
             case "entertainment":
-              $video = '<!-- TAG START { player: "Player:PuckerMob_News US_SY", owner: "Matomy", for: "Matomy" } -->
-						<div class="vdb_player vdb_5411afc4e4b025f1659c546c5176c647e4b09e5e67af5b27">
-						   <script type="text/javascript" src="http://cdn.vidible.tv/prod/tags/2014-09/pid=5411afc4e4b025f1659c546c/5176c647e4b09e5e67af5b27.js"></script>
+             // $video = "<script type='text/javascript' id='4cb34f955174cf5e55ed8787be11d34e'>try{ var s=document.createElement('script'); s.type='text/javascript'; s.src='http://www.mefeedia.com/newestentry/mf3.0.1.php?playerID=4cb34f955174cf5e55ed8787be11d34e'; document.body.appendChild(s);}catch(e){}</script>";
+               $video = '<!-- TAG START { player: "Player:PuckerMob_Entertinment US_SY", owner: "Matomy", for: "Matomy" } -->
+						<div class="vdb_player vdb_5411af72e4b0c0b74c9b82db5176c647e4b09e5e67af5b27">
+						    <script type="text/javascript" src="http://cdn.vidible.tv/prod/tags/2014-09/pid=5411af72e4b0c0b74c9b82db/5176c647e4b09e5e67af5b27.js"></script>
 						</div>
 						<!-- TAG END { date: 09/11/14 } -->';
+              
+             
               $entClass="active";	
               break;
 

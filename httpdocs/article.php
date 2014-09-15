@@ -25,7 +25,7 @@ if(!is_null($categoryInfo)){
 
 	if(isset($articleInfo['articles']) &&  $articleInfo['articles']){
 		$articleInfoObj = $articleInfo['articles'][0];
-		$pageName = $articleInfoObj['article_title'].' | '.$mpArticle->data['article_page_name'];
+		$pageName = $articleInfoObj['article_title'];//.' | '.$mpArticle->data['article_page_name'];
 		$relatedArticles = $mpArticle->getArticles(['count' => 18, 'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['ids']]);
 		$articleImages = $mpArticle->getArticlesImages($articleInfoObj['article_id']);
 	}else {

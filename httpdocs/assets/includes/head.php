@@ -45,7 +45,7 @@
 	<?php } ?>
 	
 	<link rel="dns-prefetch" href="//go.disqus.com" />
-	<link rel="dns-prefetch" href="//g2.gumgum.com" />
+	<!--<link rel="dns-prefetch" href="//g2.gumgum.com" />-->
 	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
 	<link rel="prefetch prerender" href="http://www.puckermob.com" />
 	<link rel="dns-prefetch" href="//native.sharethrough.com" />

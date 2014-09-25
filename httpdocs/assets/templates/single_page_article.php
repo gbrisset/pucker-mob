@@ -12,6 +12,7 @@ if (isset($articleInfoObj)) {
 ?>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 <?php if($detect->isMobile()) echo " no-padding "; ?>">
+	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	<section id="article-summary" class="small-12 column">
 		<h1><?php echo $article_title; ?></h1>
 		
@@ -19,39 +20,6 @@ if (isset($articleInfoObj)) {
 			
 			 	<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
  				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
-
-				<!--<section id="social-buttons" class="small-12 xlarge-8 columns hide-for-print"><div class="pw-widget">
-					<a class="pw-button-facebook">
-						<button id="facebook-button" class="columns small-16P button small facebook">
-							<i class="fa fa-facebook fa-fw"></i><div id="facebook-count" class="social-fade-in pw-box-counter" data-channel="facebook"></div>
-						</button>
-					</a>
-					<a class="pw-button-twitter">
-						<button id="twitter-button" class="columns small-16P button small twitter">
-							<i class="fa fa-twitter fa-fw"></i><div id="twitter-count" class="social-fade-in pw-box-counter" data-channel="twitter"></div>
-						</button>
-					</a>
-					<a class="pw-button-pinterest">
-						<button id="pinterest-button" class="columns small-16P button small pinterest">
-							<i class="fa fa-pinterest fa-fw"></i><div id="pinterest-count" class="social-fade-in pw-box-counter" data-channel="pinterest"></div>
-						</button>
-					</a>
-					<a class="pw-button-googleplus">
-						<button id="google-plus-button" class="columns small-16P button small google-plus">                
-							<i class="fa fa-google-plus fa-fw"></i><div id="google-plus-count" class="social-fade-in pw-box-counter" data-channel="googleplus"></div>
-						</button>
-					</a>
-					<a class="pw-button-stumbleupon">
-						<button id="stumble-upon-button" class="columns small-16P button small stumble-upon">                
-							<i class="fa fa-stumbleupon fa-fw"></i><div id="stumble-upon-count" class="social-fade-in pw-box-counter" data-channel="stumbleupon"></div>
-						</button>
-					</a>
-					<a class="pw-button-linkedin">
-						<button id="linkedin-button" class="columns small-16P button small linkedin">                
-							<i class="fa fa-linkedin fa-fw"></i><div id="linkedin-count" class="social-fade-in pw-box-counter" data-channel="linkedin"></div>
-						</button>
-					</a>
-				</div></section>-->
 			
 			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
 				<a href="#disqus_thread">0 Comments</a>
@@ -72,7 +40,19 @@ if (isset($articleInfoObj)) {
 				</script>
 			</div>
 		</div>
-		
+		<!-- Sponsore UNit -->
+		<?php if(!$detect->isMobile()){?>
+			<div class="padding-bottom" style="">
+				<div id="sponsor-ad"></div>
+			</div>
+			<?php }//else{
+				//if($article_id == 4024){?>
+				<!--<div class="padding-bottom" style="">
+					<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3347316/0/6374/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
+					</div>-->
+				<?php //}
+			//}?>
+
 		<!-- Article Image -->
 		<div class="row">
 			<div id="article-image" class="small-12 columns half-padding-right-on-lg">
@@ -92,31 +72,36 @@ if (isset($articleInfoObj)) {
 			</div>
 		</div>
 		
-		<!-- SHARETHROUGH 1 ARTICLE MOBILE AD 
-		<div class="hide-for-print">
-			<div data-str-native-key="536c62e7" style="display: none;"></div>
-			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-		</div>-->
-		<!-- GOOGLE AD UNIT MOBILE --> 
+		<!-- GOOGLE AD UNIT MOBILE  -->
 		<?php if ( $detect->isMobile() ) {?>
-		<div class="hide-for-print row half-padding padding-top" style="margin-bottom: -1.5rem;">
+		
+			<div class="hide-for-print row half-padding padding-top ads" style="margin-bottom: -1.5rem;">
+			<!--	<div data-str-native-key="536c62e7" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>-->
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- PM Mobile 310x90 -->
+			<!-- PM Mobile 300x90 -->
 			<ins class="adsbygoogle"
-			     style="display:inline-block;width:310px;height:90px"
+			     style="display:inline-block;width:300px;height:90px"
 			     data-ad-client="ca-pub-8978874786792646"
-			     data-ad-slot="8366956187"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
+			     data-ad-slot="6565492184"></ins>
+			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+			
 			</div>
+
 		<?php }?>
+
 		<!-- Article Content -->
 		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
 			  else{ echo '<div class="row">'; }
 		?> 
-			<section id="article-content" class="small-12 column">
+			<section id="article-content" class="small-12 column sidebar-box">
 				<p><?php echo $article_body; ?></p>
+				<?php if($detect->isMobile() && !$detect->isTablet()){?>
+				<div id="grad"></div>
+				<p class="read-more"><a href="#" class="button">
+					<i class="fa fa-caret-down caret-down-left"></i>Click To Read More<i class="fa fa-caret-down caret-down-right"></i></a>
+				</p>
+				<?php } ?>
 			</section>
 		</div>
 		<?php if(!$detect->isMobile()){?>
@@ -162,11 +147,27 @@ if (isset($articleInfoObj)) {
 		</div>
 		<?php }else{ ?>
 			<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
-			<div class="hide-for-print">
+			<div class="hide-for-print padding-top ads">
 				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			</div>
 
+			<hr style="margin: 1.5rem 0 0rem !important">
+
+			<!-- GOOGLE AD UNIT MOBILE  -->
+			<div class="hide-for-print row half-padding padding-top padding-bottom">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- PM 300x90 Bottom -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:300px;height:90px"
+			     data-ad-client="ca-pub-8978874786792646"
+			     data-ad-slot="6028938587"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			
+			</div>
+			
 		<?php }?>
 		<section class="nativo-ad">
 			<div class="nativo"></div> 

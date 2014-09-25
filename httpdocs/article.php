@@ -25,7 +25,11 @@ if(!is_null($categoryInfo)){
 
 	if(isset($articleInfo['articles']) &&  $articleInfo['articles']){
 		$articleInfoObj = $articleInfo['articles'][0];
+
 		$pageName = $articleInfoObj['article_title'];//.' | '.$mpArticle->data['article_page_name'];
+		//if($articleInfoObj['article_id'] == 4024){
+		//	$pageName = strtoupper($articleInfoObj['article_title']).' | Sponsored by Smarties Candies';
+		//}
 		$relatedArticles = $mpArticle->getArticles(['count' => 18, 'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['ids']]);
 		$articleImages = $mpArticle->getArticlesImages($articleInfoObj['article_id']);
 	}else {
@@ -165,11 +169,17 @@ if(!is_null($categoryInfo)){
 			<?php include_once($config['include_path'].'similararticles.php');?>
 			<hr>
 			
+			<!-- ADBLADE -->
+			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
+				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
+				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
+			</section>
 		
 			<!-- AROUND THE WEB -->
-			<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
+			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
 			<hr>
 
+			<!-- CONTENT AD -->
 			<div id="contentad24777"></div>
 			<script type="text/javascript">
 			    (function() {
@@ -191,7 +201,9 @@ if(!is_null($categoryInfo)){
 			        document.getElementById("contentad24777").appendChild(s);
 			    })();
 			</script>
+			
 
+			
 			<hr>
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>
@@ -203,18 +215,23 @@ if(!is_null($categoryInfo)){
 		<?php include_once($config['include_path'].'rightsidebar.php');?>
 	</main>
 	
-	<!-- Gum Gum -->
-	<?php if($articleInfoObj['article_id'] != 3978 ){?>
-		<script>ggv2id='64bad626';</script>
-	<?php }?>
-
 	<?php include_once($config['include_path'].'footer.php');?>
-	<?php include_once($config['include_path'].'bottomscripts.php');?>
+	
+
+    <?php include_once($config['include_path'].'bottomscripts.php');?>
+     <!-- NETSEER IN-IMAGE-->
+	 <script type="text/javascript">
+	netseer_tag_id="19129";
+	netseer_task="in-image";
+	netseer_inimage_render_mode="sync";
+	</script>
+	<script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		addthis.init();
 	})
 	</script>
+
 </body>
 </html>
 <?php } ?>

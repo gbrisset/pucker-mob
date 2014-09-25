@@ -61,7 +61,7 @@
       
        <section id="sub-sidebar-2" class="sidebar shadow-on-large-up">
          <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
-         <?php include_once($config['include_path'].'sistersite.php'); ?>
+         <?php //include_once($config['include_path'].'sistersite.php'); ?>
        </section>
 
        <div id="btf1-ad" class="ad-unit ad300"></div>
@@ -80,7 +80,7 @@
       
       <section id="sub-sidebar-2" class="sidebar shadow-on-large-up">
          <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
-         <?php include_once($config['include_path'].'sistersite.php'); ?>
+         <?php //include_once($config['include_path'].'sistersite.php'); ?>
       </section>
 
       <div id="btf2-ad" class="ad-unit ad300"></div>

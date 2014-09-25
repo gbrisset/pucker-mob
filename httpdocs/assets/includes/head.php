@@ -134,7 +134,15 @@
 			var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
 			})();
 		</script>-->
-	
+	 <!-- IF ARTICLE PAGE -->
+    <?php if(isset($articleInfo) && $articleInfo){ ?>
+    
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async></script>
+   
+    <?php }?>
+
+
 	<!-- MOBILE -->
 	<?php }else{ ?>
 		<!-- SHARETHROUNG -->

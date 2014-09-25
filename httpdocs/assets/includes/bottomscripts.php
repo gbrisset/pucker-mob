@@ -8,7 +8,7 @@
     <!-- GUM GUM 
     <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>-->
 
-    <!-- Vibrant in-text Media Ads -->
+      <!-- Vibrant in-text Media Ads -->
     <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70526"></script>
 
     <!-- TLV POP UNDER TAG 
@@ -51,10 +51,7 @@
     }
     </script>
 
-    <!-- QuDaBra 
-    <script type="text/javascript" >var qadserve_width  = "160";var qadserve_height = "600";var qadserve_pid = "bf101924-f70d-4cea-863c-cdff9a5a336f";var qadserve_direction = "left";var qadserve_from_top = 60;</script>
-    <script type="text/javascript"  src="http://mmrm.qadserve.com/qadserve_slider.min.js"></script>-->
-
+   
 <!-- MOBILE -->
 <?php }else{ ?>
     
@@ -64,48 +61,25 @@
     <!-- Distro Scale AD Tag -->
     <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
     
-    <!-- Q1 Media 
-    <script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script> -->
+    <!-- Q1 Media ON MultiPage for Mobile -->
+    <?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){ ?>
+       <!-- Q1 Media -->
+       <script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script>
+    <?php }else{?>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#async=1"></script>
+      <script type="text/javascript">
+        var addthis_config = addthis_config||{};
+        addthis_config.pubid = 'ra-53c4498040efc634';
+      </script>
 
+    <?php } ?>
+   
     <!-- Vibrant Media Ads -->
     <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70527"></script>
 <?php }?>
 
 <!-- DESKTOP & MOBILE SCRIPT -->
-
-<!-- IF ARTICLE PAGE -->
-  <?php if(isset($articleInfo) && $articleInfo){ ?>
-  <!-- PO.ST SOCIAL MEDIA ADS 
-  <script>
-    (function () {
-      var s = document.createElement('script'); 
-      s.type = 'text/javascript'; 
-      s.async = true; s
-      s.src = ('https:' == document.location.protocol ? 'https://s' : 'http://i') + '.po.st/share/script/post-widget.js';
-      var x = document.getElementsByTagName('script')[0];
-      x.parentNode.insertBefore(s, x);
-      })();
-      
-    var pwidget_config = {
-      publisherKey: 'vb2fp4ggidsu7tl0b82a',
-      defaults: {
-        sharePopups: true,
-          services: {
-            twitter: {
-            via: 'puckermob'
-          }
-        }
-      } 
-    };
-  </script>-->
-  <!-- Go to www.addthis.com/dashboard to customize your tools -->
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#async=1"></script>
-  <script type="text/javascript">
-    var addthis_config = addthis_config||{};
-    addthis_config.pubid = 'ra-53c4498040efc634';
-  </script>
-  
-  <?php }?>
 
 <!-- COMSCORE -->
 <script>

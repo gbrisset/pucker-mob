@@ -1262,6 +1262,75 @@ $fun: #f9651b;
 	color: #6ad98a;
 }
 
+/*READ MORE LINK MOBILE*/
+
+@media #{$mobile-only} {
+	.sidebar-box { 
+		float: left; 
+		width: 100%;
+		margin: 0 20px 0 0;
+	}
+		
+	.sidebar-box {
+		max-height: 70rem;
+		position: relative;
+		padding-top: 0.5rem;
+		padding-bottom: 2rem;
+		overflow: hidden;
+	}
+	.sidebar-box .read-more { 
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		margin: 0;
+		padding: 0rem 0;
+		padding-top: 0;
+	}
+
+	.sidebar-box .read-more .button{
+		background-color: #0f5215;
+		color: #fff !important;
+		width: 100%;
+		min-width: 320px;
+		text-transform: uppercase;
+		text-decoration: none !important;
+		font-weight: bold;
+		padding-bottom: 0.4rem;
+		padding-top: 0.5rem;
+		margin: 0 0 0rem;
+	}
+
+	.sidebar-box .read-more .fa-caret-down{
+		font-size: 2rem;
+		margin-left: 1rem;
+		margin-right: 1rem;
+		line-height: 0px;
+		position:absolute;
+		top:1rem;
+	}
+
+	.sidebar-box .read-more .caret-down-left{ left:0; }
+	.sidebar-box .read-more .caret-down-right{ right:0; }
+
+	.sidebar-box  #grad{
+		position: absolute;
+		bottom: 14px;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		margin: 0;
+		padding: 0rem 0;
+		height: 1px;
+		padding-top: 0;
+	
+		-webkit-box-shadow:0px 0px 100px 90px rgba(255, 255, 255, 0.9);
+		-moz-box-shadow:0px 0px 100px 90px rgba(255, 255, 255, 0.9);
+		box-shadow:	0px 0px 100px 90px rgba(255, 255, 255, 0.9);	
+	}
+}
+
 /*VIDEOS PAGE*/
 dl { margin-bottom: 0.5rem !important; }
 
@@ -1282,3 +1351,7 @@ dl { margin-bottom: 0.5rem !important; }
  .addthis_button_facebook_like{margin-top: 1rem !important; position: absolute !important; left: 65% !important;}
  .at4-jumboshare .at4-mobile .at4-share-btn span{ display:inline-block; }
  .at4-jumboshare a .label{ display:none ; }
+
+
+ /* ADBLADE ADS */
+ div.adblade-dyna div.zone div.adbladetitle{font-family: Oslo !important; text-transform: uppercase !important; color: #777 !important; font-size: 1.7rem !important; font-weight: normal !important; margin-bottom: 0.8rem !important;}

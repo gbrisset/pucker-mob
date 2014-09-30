@@ -189,7 +189,7 @@
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 						<input type="hidden" id="page_list_id" name="page_list_id" value="<?php echo $page_list->page_list_id; ?>" />
 						<input type="text" class="hidden" id="page_list_item_id" name="page_list_item_id" value="<?php echo $page_list_item->page_list_item_id; ?>" />
-						<div class="btn-wrapper delete-page-list-item">
+						<div class="btn-wrapper delete-page-list-item" style="z-index: 999;">
 							<button class="b-delete gradient-button red-gradient" name="submit" id="submit" type="submit" data-info="<?php echo $page_list_item->page_list_item_id; ?>">x</button>
 						</div>
 					</form>

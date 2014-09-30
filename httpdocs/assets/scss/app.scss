@@ -117,23 +117,26 @@ a{ outline: none !important; }
 	text-align: left;
 }
 
+.no-background{ background: none !important;}
+
 /*Arrows*/
 .arrow-left, .arrow-right{
-	background: url(http://puckermob.com/assets/img/sprites.png) no-repeat;
-
+	background-color: $text-type-color;
+	padding: 0.1rem 0.8rem;
+	font-size: 1.3rem;
+	text-transform: uppercase;
+	color: white;
+	font-family: Oslo;
+	color: white;
+	font-weight: bold;
 }
-
-.arrow-left{
-	background-position: 0 0;
-	width: 51px;
-	height: 52px;
+.arrow-left i, .arrow-right i {
+	font-size: 1.7rem;
+	margin: 0;
 }
+.arrow-left i{ float: left; padding: 0.16rem 0.5rem 0.1rem 0; }
+.arrow-right i{ float: right; padding: 0.16rem 0rem 0.1rem 0.5rem;}
 
-.arrow-right{
-	background-position: -61px 0;
-	width: 51px;
-	height: 52px;
-}
 
 .clear{
 	clear:both;
@@ -310,7 +313,7 @@ ul.inline-centered > li {
 	display: inline-block;
 }
 
-.inline-centered.vertical-centered span{ color: #6ad98a; }
+.inline-centered.vertical-centered span{ color: #000; }
 ul.vertical-centered {
 	list-style-type: none;
 	margin-left: 0;
@@ -323,6 +326,7 @@ ul.vertical-centered > li {
 }
 ul.vertical-centered > li > span {
 	font-size: 1.4rem;
+	margin: 0 0.8rem;
 }
 ul.vertical-centered {margin: 0;}
 footer > .margin-top > ul {
@@ -1077,7 +1081,7 @@ div.creative_container{ border:none !important; }
 }
 
 h5{
-	margin-top: -0.15rem;
+	/*margin-top: -0.15rem;*/
 }
 }
 

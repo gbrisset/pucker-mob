@@ -10,7 +10,7 @@
 	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 	$linkToACategory = $config['this_url'].$articles['cat_dir_name'];
 	$date = date("M d, Y", strtotime($articles['creation_date']));
-	$linkToImage = $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$articles['article_id'].'_tall.jpg';
+	$linkToImage = $config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
 
 	?>

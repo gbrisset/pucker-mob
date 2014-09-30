@@ -24,10 +24,10 @@
 				$body .= '<head></head>';
 				$body .= '<body>';
 					$body .= '<p>';
-						$body .= 'This is an email notification from simpledish.com!';
+						$body .= 'This is an email notification from puckermob.com!';
 					$body .= '</p>';
 					$body .= '<p>';
-						$body .= 'We\'re pleased to let you know that your recently uploaded recipe, '.$article['article_title'].', has been set to LIVE!';
+						$body .= 'We\'re pleased to let you know that your recently uploaded an article, '.$article['article_title'].', has been set to LIVE!';
 					$body .= '</p>';
 
 				$body .= '</body>';

@@ -4,7 +4,7 @@
 
 	$linkToArticle = $config['this_url'].$featuredArticle['cat_dir_name'].'/'.$featuredArticle["article_seo_title"];
 	$linkToACategory = $config['this_url'].$featuredArticle['cat_dir_name'];
-	$linkToImage = $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$featuredArticle['article_id'].'_tall.jpg';
+	$linkToImage = $config['image_url'].'articlesites/puckermob/large/'.$featuredArticle['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$featuredArticle['contributor_seo_name'];
 
 	if ( $detect->isMobile() ) { ?>

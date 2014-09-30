@@ -9,7 +9,7 @@
 				$recentArticleIndex = 1;
 				foreach ($recentArticles['articles'] as $article) {
 					if ($hasParent){
-						$linkToArticle = $config['this_url'].$parentCategorySEOName.'/'.$article['category_page_directory'].'/'.$article['article_seo_title'];
+						$linkToArticle = $config['this_url'].$parentCategorySEOName.'/puckermob/'.$article['article_seo_title'];
 					} else {
 						$linkToArticle = $config['this_url'].$article['category_page_directory'].'/'.$article['article_seo_title'];
 					}

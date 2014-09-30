@@ -105,7 +105,7 @@ if( $searchString ){
 							$link = $config['this_url'].$mpHelpers::linkToArticle($article['cat_dir_name']).$article['article_seo_title'];
 						}
 						$date = date("M d, Y", strtotime($article['creation_date']));
-						$linkToImage = $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$article['article_id'].'_tall.jpg';
+						$linkToImage = $config['image_url'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';
 						$linkToContributor = $config['this_url'].'contributors/'.$article['contributor_seo_name'];
 						?>
 						<article class="row" id="<?php echo 'article-'.$articleIndex;?>">

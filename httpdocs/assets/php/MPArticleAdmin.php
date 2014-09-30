@@ -779,6 +779,7 @@ class MPArticleAdmin{
 		$uploadDir = $data['uploadDirectory'];
 		$columnName = '';
 
+
 		// destination image dimensions
 		$desWidth = $data['desWidth'];
 		$desHeight = $data['desHeight']; 
@@ -864,16 +865,14 @@ class MPArticleAdmin{
 
 					break;
 			}
-			
+		//	var_dump(is_writable($uploadFile)); die;
 			if(move_uploaded_file($fileTempName, $uploadFile)){
 				
-				
-
-    	        if($data['imgType'] == 'contributor'){
+				if($data['imgType'] == 'contributor'){
     	        	$this->createNewImage($extension, $uploadFile, $iDestFileName, $src_x, $src_y, $desWidth, $desHeight, $src_w, $src_h);
         	    	return $this->updateContributorImageRecord($updateArr);
             	}elseif($data['imgType'] == 'article'){
-
+            		
             		$this->createArticleLargeImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
             		//$this->createArticlePreviewImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
 					$this->createArticleTallImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
@@ -884,7 +883,7 @@ class MPArticleAdmin{
             		
             	}
 			}
-
+			
 			return array_merge($this->returnStatus(500), ['hasError' => true], ['filename'=> $fileName]);
 		}
 	}
@@ -940,7 +939,7 @@ class MPArticleAdmin{
 	}
 
 	private function createArticleLargeImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
-		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/preview/'.$fileName;
+		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$fileName;
 
 		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  0, 0, 784, 431, $src_w, $src_h);
 	}

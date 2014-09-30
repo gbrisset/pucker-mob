@@ -11,7 +11,7 @@
 					$relatedArticle = '<article id="related-article-'.$realtedArticleIndex++.'">';
 						$relatedArticle .= '<div class="article-image">';
 							$relatedArticle .= '<a href="'.$config['this_url'].$article['category_page_directory'].'/'.$article['article_seo_title'].'">';
-								$relatedArticle .= '<img src="'.$config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/preview/'.$article['article_preview_img'].'" alt="'.$article['article_title'].' Preview Image" />';
+								$relatedArticle .= '<img src="'.$config['image_url'].'articlesites/puckermob/preview/'.$article['article_preview_img'].'" alt="'.$article['article_title'].' Preview Image" />';
 							$relatedArticle .= '</a>';
 						$relatedArticle .= '</div>';
 

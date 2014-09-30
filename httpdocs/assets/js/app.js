@@ -328,7 +328,7 @@ $(document).ready(function() {
 		}
 		if( adPage === 'articleslide'){
 			//Single Page Article ATFs 
-			inBodyAd.loadInArticleAd( 'article-caption', 2, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
+			//inBodyAd.loadInArticleAd( 'article-caption', 2, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 		}
 
 		//BTF1
@@ -484,11 +484,11 @@ var SocialShares = {
 	    		SocialShares.updateFBShare( count, article_id );
 	    	});
 	  	}
+	  }
 	}
-}
 	
 	// Listen to events	
-	if(page === 'article') {
+	if(page === 'article' || page === 'articleslide') {
 		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
 	}
 

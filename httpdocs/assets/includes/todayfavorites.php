@@ -14,7 +14,7 @@
 			} else {
 				$linkToArticle = $config['this_url'].$todaysFavorites['cat_dir_name'];
 			}
-			$linkToImage = $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/medium/'.$todaysFavorites['article_id'].'_tall.jpg';
+			$linkToImage = $config['image_url'].'articlesites/puckermob/medium/'.$todaysFavorites['article_id'].'_tall.jpg';
 		?>
 		<?php if($recentArticleIndex === 1 || $recentArticleIndex === 2 || $recentArticleIndex === 4 || $recentArticleIndex === 5) {$recentArticleIndex++;?>
 		<div class="small-6 mobile-12 medium-4 large-6 xlarge-4 columns half-padding">

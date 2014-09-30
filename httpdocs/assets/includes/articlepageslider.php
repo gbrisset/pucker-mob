@@ -4,11 +4,11 @@
 		<div id="article-slider" class="flexslider">
 			<ul class="bx-slider slides">
 				<li class="slide">
-			  		<img src="<?php echo  $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/tall/'.$articleInfoObj['article_id'].'_tall.jpg'; ?>" alt="<?php echo $articleInfoObj['article_title']?> Image" />
+			  		<img src="<?php echo  $config['image_url'].'articlesites/puckermob/tall/'.$articleInfoObj['article_id'].'_tall.jpg'; ?>" alt="<?php echo $articleInfoObj['article_title']?> Image" />
 			  	</li>
 				<?php foreach($articleImages as $image){?>
 					<li class="slide">
-				  		<img src="<?php echo  $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/tall/'.$image['article_img_name']; ?>" alt="<?php echo $articleInfoObj['article_title']?> Image" />
+				  		<img src="<?php echo  $config['image_url'].'articlesites/puckermob/tall/'.$image['article_img_name']; ?>" alt="<?php echo $articleInfoObj['article_title']?> Image" />
 				  	</li>  
 			    <?php }?>
 		   </ul>

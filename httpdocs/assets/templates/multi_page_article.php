@@ -17,8 +17,6 @@ $contributor_name = $articleInfoObj['contributor_name'];
 $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 
 ?>
-<!--<section id="article-top-bar" ><header>Puckermob exclusive slide show</header></section>-->
-
 <article id="sectioned-article-content" class="small-12 column <?php if($detect->isMobile()) echo " no-padding "; ?>">
 	<section class="small-12 column" id="article-summary">
 
@@ -47,6 +45,15 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</script>
 			</div>
 		</div>
+
+		<!-- Article SubTitle ( SLIDE ) 
+		<?php //if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
+			  //else{ echo '<div class="row">'; }
+		?> 
+			<section id="article-caption" class="columns small-12 ">
+				<h2 class=""><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
+			</section>
+		</div>-->
 
 		<!-- Article Content Image / Video -->
 		<div class="row">
@@ -83,10 +90,12 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		?> 
 			<section id="article-caption" class="columns small-12 ">
 				<h2 class=""><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
+				
+
 				<?php if ( $detect->isMobile() ) { ?>
 				<!-- GOOGLE AD UNIT MOBILE --> 
 
-				<div class="hide-for-print row half-padding padding-top" style="margin-bottom: 0.2rem;">
+				<div class="hide-for-print row half-padding padding-top" style="margin-bottom: 0.2rem; ">
 					<!--<div data-str-native-key="536c62e7" style="display: none;"></div>
 						<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>-->
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -97,6 +106,13 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					     data-ad-slot="6565492184"></ins>
 					<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 				</div>
+				<?php }else{ ?>
+				
+					<div class="hide-for-print row half-padding padding-top padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"></ins>
+						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+					</div>
 				<?php } ?>
 
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
@@ -117,24 +133,12 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</div>
 				<!--<hr style="margin: 1rem 0 1rem !important">-->
 
-				<?php }else{?>
+				<?php } //else{?>
 					<!-- GOOGLE ADS UNIT -->
 					
-					<div class="row">
-						<section class="columns small-12">
-							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-							<!-- PM 637x90 Bottom -->
-							<ins class="adsbygoogle"
-							     style="display:inline-block;width:637px;height:90px"
-							     data-ad-client="ca-pub-8978874786792646"
-							     data-ad-slot="3114328182"></ins>
-							<script>
-							(adsbygoogle = window.adsbygoogle || []).push({});
-							</script>
-						</section>
-					</div>
 					
-				<?php }?>
+					
+				<?php //}?>
 
 				<ul class="inline-centered vertical-centered">
 					<?php 
@@ -142,13 +146,13 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					$next_article = $mpArticle->get_next_with_list($articleInfoObj['article_id']); 
 					?>
 					<?php if($page > 1) { ?>
-					<li><a href="<?php echo $article_link.'?p='.($page - 1); ?>"><div class="arrow-left"></div></a></li>
+					<li><a href="<?php echo $article_link.'?p='.($page - 1); ?>"><div class="arrow-left"><i class="fa fa-caret-left"></i>PREV</div></a></li>
 					<?php } ?>
 					<li><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
 					<?php if($total_count > $page){ ?>
-					<li><a href="<?php echo $article_link.'?p='.($page + 1); ?>"><div class="arrow-right"></div></a></li>
+					<li><a href="<?php echo $article_link.'?p='.($page + 1); ?>"><div class="arrow-right">NEXT<i class="fa fa-caret-right"></i></div></a></li>
 					<?php } else if($next_article){ ?>
-					<li><a href="<?php echo $config['this_url'].$next_article['cat_dir_name'] .'/'.$next_article['article_seo_title'] ?>"><div class="arrow-right"></div></a></li>
+					<li><a href="<?php echo $config['this_url'].$next_article['cat_dir_name'] .'/'.$next_article['article_seo_title'] ?>"><div class="arrow-right">NEXT<i class="fa fa-caret-right"></i></div></a></li>
 
 					<?php } ?>
 				</ul>
@@ -181,6 +185,22 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</script>
 			</div>
 		</div>
+
+		<div class="row padding-top padding-bottom">
+
+						<section class="columns small-12">
+							<hr>
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- PM 637x90 Bottom -->
+							<ins class="adsbygoogle"
+							     style="display:inline-block;width:637px;height:90px"
+							     data-ad-client="ca-pub-8978874786792646"
+							     data-ad-slot="3114328182"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+						</section>
+					</div>
 		<?php }else{?>
 		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
 			<div class="hide-for-print">

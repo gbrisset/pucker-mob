@@ -68,7 +68,7 @@
 			<section id="articles-list">
 				<form class="search-form-admin" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<fieldset id="search-fieldset">
-							<input type="text" value="" placeholder="Search all of Simple Dish CMS" id="searchemailinput" name="searchemailinput">
+							<input type="text" value="" placeholder="Search all of Pucker Mob" id="searchemailinput" name="searchemailinput">
 							<button type="submit" id="searchsubmit" name="searchsubmit">SEARCH<i class="icon-search"></i></button>
 						</fieldset>
 				</form>
@@ -148,11 +148,11 @@
 					}else{
 				?>
 					<p class="not-found">
-						Sorry, no recipes were found!
+						Sorry, no articles were found!
 					</p>
 					<p class="not-found">
-						<span>Upload Recipes:</span>
-						Start adding your own recipes to our site clicking <a href="<?php echo $config['this_admin_url']?>articles/newrecipe/">HERE</a>.
+						<span>Upload Articles:</span>
+						Start adding your own articles to our site clicking <a href="<?php echo $config['this_admin_url']?>articles/newarticle/">HERE</a>.
 					</p>
 					
 					</p>

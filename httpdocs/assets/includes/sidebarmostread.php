@@ -19,7 +19,7 @@
 						$mostReadArticle = '<article>';
 							$mostReadArticle .= '<div class="article-image">';
 								$mostReadArticle .= '<a href="'.$linkToArticle."/".$article['article_seo_title'].'">';
-									$mostReadArticle .= '<img src="'.$config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/preview/'.$article['article_preview_img'].'" alt="'.$article['article_title'].' Preview Image" />';
+									$mostReadArticle .= '<img src="'.$config['image_url'].'articlesites/puckermob/preview/'.$article['article_preview_img'].'" alt="'.$article['article_title'].' Preview Image" />';
 								$mostReadArticle .= '</a>';
 							$mostReadArticle .= '</div>';
 							$articleDesc = (isset($article['article_desc']) && strlen($article['article_desc'])) ? $article['article_desc'] : $article['article_body'];

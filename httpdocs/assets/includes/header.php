@@ -48,3 +48,8 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
     </section>
   </nav>
 </div>
+<?php if($detect->isMobile() ){
+  /*  Highlight Article */
+  include_once($config['include_path'].'highlightarticle.php');
+}?>
+

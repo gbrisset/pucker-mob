@@ -55,20 +55,24 @@ if(!is_null($categoryInfo)){
 
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php'); ?>
-		<main id="main" class="row panel sidebar-on-right shadow-on-large-up" role="main">
+		<?php 
+			$style = '';
+			if( isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] == 4314 || $articleInfoObj['article_id'] == 3911){
+				$style = 'margin-top: 7rem !important;';
+			}
+		?>
+		<main id="main" class="row panel sidebar-on-right shadow-on-large-up" role="main" style="<?php echo $style; ?>">
+			
 			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 columns translate-fix sidebar-main-left">
 				<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
+			
+				<!-- ARTICLE CONTENT -->
 				<?php 
-				//if(isset($articleInfoObj['article_template_type']) && $articleInfoObj['article_template_type'] == 1){
-				//	include_once($config['template_path'].'recipe.php');
-				//}else{
 					if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
 						include_once($config['template_path'].'multi_page_article.php');
 					} else {
 						include_once($config['template_path'].'single_page_article.php');
 					}
-
-				//}
 				?>
 		<hr>
 		<?php include_once($config['include_path'].'similararticles.php');?>

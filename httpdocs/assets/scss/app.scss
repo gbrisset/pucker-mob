@@ -1368,3 +1368,9 @@ dl { margin-bottom: 0.5rem !important; }
 
 /*POPUP*/
 #myModal, .reveal-modal-bg{z-index: 999; }
+
+//HighLight Article
+.highlighted{ background: #FFE83A; padding: 0.5rem; margin-top: -0.8rem !important; margin-bottom: 1rem; box-shadow: 1px 1px 3px #ddd; top:4rem;} 
+.highlighted #span-div{ margin-right: 1rem;}
+.highlighted #span-div span{ font-size: 2rem; text-transform: uppercase; }
+.highlighted a{ color: #000; text-transform: capitalize;}

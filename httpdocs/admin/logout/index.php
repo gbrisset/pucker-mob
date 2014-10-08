@@ -13,17 +13,17 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
-	<div id="main-cont" class="main-cont-min">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<div class="admin-box" id="login-cont">
 			<header>
-				<h1><span>My Simple Dish</span></h1>
+				<h1><span>Spaghetti Mob</span></h1>
 			</header>
 
 			<div class="admin-form-cont" id="verify-cont">
 				<p>You've been successfully logged out.  You'll be redirected momentarily to the main site.  If not, click <a href="<?php echo $config['this_url']; ?>">Here</a></p>
 			</div>
 		</div>
-	</div>
+	</main>
 
 	<script>setTimeout(function(){window.location = "<?php echo $config['this_url']; ?>"}, 2000);</script>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

@@ -14,7 +14,7 @@
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
 	<link type="text/plain" rel="author" href="<?php echo $config['this_url']; ?>humans.txt" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/adminstyling.css">
+	<!--<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/adminstyling.css">-->
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/appadmin.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
 
@@ -53,5 +53,10 @@
 }
 
 </style>
-	<script src="<?php echo  $config['this_url']; ?>assets/js/lib/modernizr-2.5.3.min.js"></script>
+
+	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.js"></script>
+	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+
+
 </head>

@@ -30,3 +30,14 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face {
+  font-family: 'ModernPics';
+  src: url('../fonts/IconFonts/modernpics.eot');
+  src: url('../fonts/IconFonts/modernpics.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/IconFonts/modernpics.woff') format('woff'), 
+	   url('../fonts/IconFonts/modernpics.ttf') format('truetype'),
+	   url('../fonts/IconFonts/modernpics.svg#ModernPics') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}

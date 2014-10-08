@@ -869,7 +869,8 @@ class MPArticleAdmin{
 			if(move_uploaded_file($fileTempName, $uploadFile)){
 				
 				if($data['imgType'] == 'contributor'){
-    	        	$this->createNewImage($extension, $uploadFile, $iDestFileName, $src_x, $src_y, $desWidth, $desHeight, $src_w, $src_h);
+					$this->createContributorImage($extension, $uploadFile,  $iDestFileName, $updateArr['value'], $src_w, $src_h);
+
         	    	return $this->updateContributorImageRecord($updateArr);
             	}elseif($data['imgType'] == 'article'){
             		
@@ -931,6 +932,13 @@ class MPArticleAdmin{
     /* End Image Upload Functions */
 
 	
+	/* Controbutor Image Upload */
+	private function createContributorImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
+		$destPathToFile = $this->config['image_upload_dir'].'articlesites/contributors_redesign/'.$fileName;
+
+		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  90, 90, 140, 143, $src_w, $src_h);
+	
+	}
 	/* Article Preview Update Functions */
 	private function createArticlePreviewImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
 		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/preview/'.$fileName;

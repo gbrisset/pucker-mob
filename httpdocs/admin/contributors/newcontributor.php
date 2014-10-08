@@ -18,14 +18,14 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
+		<div id="content" class="columns small-9 large-11">
 			<section id="contributor-info">
-				<header class="section-bar">
-					<h2>Add New Contributor</h2>
-				</header>
+				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+					<h1 class="left">List Information</h1>
+				</section>
 
 				<form class="ajax-submit-form" id="contributor-add-form" name="contributor-add-form" action="<?php echo $config['this_admin_url']; ?>contributors/new" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -148,13 +148,13 @@
 								</script>
 							<?php } ?>
 
-							<button type="submit" id="submit" name="submit">Submit</button>
+							<button type="submit" id="submit" name="submit" class="radius">Submit</button>
 						</div>
 					</fieldset>
 				</form>
 			</section>
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	

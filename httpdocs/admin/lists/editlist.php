@@ -66,14 +66,15 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
+		
 		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
-
-				<header class="section-bar">
-					<h2>List Information</h2>
-				</header>
+				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+					<h1 class="left">List Information</h1>
+				</section>
+			
 				<form class="page-list-data-form" id="page-list-data-form" name="page-list-data-form" action="<?php echo $config['this_admin_url']; ?>lists/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="page_list_id" name="page_list_id" value="<?php echo $page_list->page_list_id; ?>" />
@@ -102,11 +103,11 @@
 				  	<div class="row">
 					    <div class="large-12 columns">
 					     	<div class="btn-wrapper list-button right-aligned" >
-								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? ' radius alert label ' : ' radius success label'; ?>" id="result">
 									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo $updateStatus['message']; ?>
 								</p>
 								
-								<button type="submit" id="submit" name="submit">SAVE</button>
+								<button type="submit" id="submit" name="submit" class="radius">SAVE</button>
 							</div>
 						</div>
 				  	</div>
@@ -118,48 +119,43 @@
 
 			<!--BEGIN SORT ORDER-->
 			<section>
-				<header class="section-bar">
-					<h2>Change order</h2>
-					<?php //var_dump($page_list_items); ?>
-				</header>	
+				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+					<h1 class="left">Change Order</h1>
+				</section>
+
 				<div id="articles-list">
 					<form id="page_list_item_order" action="<?php echo $config['this_admin_url']; ?>lists/edit/<?php echo $uri[2]; ?>" method="POST">
 						<ul id="sortable2" class="page-list-inline sortable grid">
-
-
-
-					<?php 
-					if(isset($page_list_items) && !empty($page_list_items)){
-						$list_slot = 1;
-						foreach($page_list_items as $page_list_item){
-							if (!empty($page_list_item->page_list_item_image)){
-									$imageUrl = $config['image_url'].'articlesites/puckermob/list/'.$page_list_item->page_list_item_image;
-								} else {
-									$imageUrl = $config['image_url'].'articlesites/puckermob/list/placeholder.png';
-								}
-					?>
-								<li draggable="true">
-									<input type="hidden" name="item_slot[]" value="<?php echo $page_list_item->page_list_item_id; ?>">
-									<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-									<img src="<?php echo $imageUrl; ?>" alt="<?php echo $page_list_item->page_list_item_title; ?> Preview Image" />
-									<p><?php echo $mpHelpers->truncate($page_list_item->page_list_item_title, 20); ?></p>
-								</li>
-								<?php $list_slot++; ?>					
-					<?php
-							}
-						} else {
-					?>
+						<?php 
+						if(isset($page_list_items) && !empty($page_list_items)){
+							$list_slot = 1;
+							foreach($page_list_items as $page_list_item){
+								if (!empty($page_list_item->page_list_item_image)){
+										$imageUrl = $config['image_url'].'articlesites/puckermob/list/'.$page_list_item->page_list_item_image;
+									} else {
+										$imageUrl = $config['image_url'].'articlesites/puckermob/list/placeholder.png';
+									}
+									?>
+									<li draggable="true">
+										<input type="hidden" name="item_slot[]" value="<?php echo $page_list_item->page_list_item_id; ?>">
+										<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+										<img src="<?php echo $imageUrl; ?>" alt="<?php echo $page_list_item->page_list_item_title; ?> Preview Image" />
+										<p><?php echo $mpHelpers->truncate($page_list_item->page_list_item_title, 20); ?></p>
+									</li>
+									<?php $list_slot++; ?>					
+							<?php }
+						} else { ?>
 							<p class="page-list-none">
 							<a href="<?php echo (isset($listUrl)) ? $listUrl : ''; ?>" class="orange-link" name="Add List Items" title="Add List Items">CLICK HERE</a> to add items to this list!
 							</p>
-					<?php } ?>
+						<?php } ?>
 						<fieldset>
 							<div class="btn-wrapper list-button right-aligned">
-								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'page_list_item_order') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result" style="color: #468847; text-align: left; text-transform: none; font-style: italic; padding: 5px 0;">
+								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'page_list_item_order') echo ($updateStatus['hasError'] == true) ? 'radius alert label' : 'radius success label'; ?>" id="result" style="">
 									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'page_list_item_order') echo $updateStatus['message']; ?>
 								</p>
 								
-								<button type="submit" id="submit" name="submit">Save List Order</button>
+								<button type="submit" id="submit" name="submit" class="radius">Save List Order</button>
 								<br />
 							</div>
 						</fieldset>
@@ -167,14 +163,13 @@
 						</ul>
 					</form>
 				</div>
-
 			</section>
 
 			<!-- ADD PAGE LIST SETTINGS -->
 			<section id="page-list-settings">
-				<header class="section-bar">
-					<h2>Add List Items</h2>
-				</header>
+				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+					<h1 class="left">Add List Items</h1>
+				</section>
 				<ul class="row no-padding">
 				<?php 
 					foreach($page_list_items as $page_list_item){
@@ -190,7 +185,7 @@
 						<input type="hidden" id="page_list_id" name="page_list_id" value="<?php echo $page_list->page_list_id; ?>" />
 						<input type="text" class="hidden" id="page_list_item_id" name="page_list_item_id" value="<?php echo $page_list_item->page_list_item_id; ?>" />
 						<div class="btn-wrapper delete-page-list-item" style="z-index: 999;">
-							<button class="b-delete gradient-button red-gradient" name="submit" id="submit" type="submit" data-info="<?php echo $page_list_item->page_list_item_id; ?>">x</button>
+							<button class="b-delete round gradient-button red-gradient" name="submit" id="submit" type="submit" data-info="<?php echo $page_list_item->page_list_item_id; ?>">x</button>
 						</div>
 					</form>
 
@@ -286,7 +281,7 @@
 								</p>
 							</div>
 							<div class="btn-wrapper list-button columns small-2">
-								<button type="submit" id="submit" name="submit">Save</button>
+								<button type="submit" id="submit" name="submit" class="radius">Save</button>
 							</div>
 						</fieldset>
 					</form>
@@ -388,7 +383,7 @@
 
 			</section>
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<div id='lightbox-cont'>

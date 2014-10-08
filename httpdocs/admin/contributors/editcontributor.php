@@ -67,60 +67,61 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
-			<!-- Image Sections -->
-			<section id="profile-inline-settings">
-					<header class="section-bar">
-						<h2>Profile Photo</h2>
-					</header>
-					
-					<fieldset id="add-an-image-fs">
-							<div class="image-steps image-sec">
-								<div id="image-container">
-								<?php 
+		<div id="content" class="columns small-9 large-11">
+			<div id="profile-inline-settings">
+				
+				<section class="section-bar left  border-bottom mobile-12 small-12">
+				<h1 class="left">Profile</h1>
+				</section>
+			
+				<!-- IMAGE SECTION -->
+				<div id="add-an-image-fs" class="padding-top padding-bottom left small-12 border-radius">
+					<div class="image-steps image-sec columns small-4 ">
+						<div id="image-container">
+						<?php 
 
-									if($contImageExists){
-										echo "<img src=\"".$contImageUrl."\" alt=\"".$userInfo['contributor_name']." Image"."\" />";
-								 	} else {
-										echo "<img src=\"".$config['image_url'].'articlesites/sharedimages/default_profile_contributor.png'."\" alt=\"Contributor Image\" style=\"width: 143px; height: 140px;\"/>";
-									} 
-									echo '<span><a id="change-art-image" href=""><i class="icon-picture"></i>Change Photo</a></span>';
-								?>
-								</div>
-							</div>
-							
-							<div class="image-steps">
-								<header class="section-bar">
-									<h2>Add an Image to your profile</h2>
-								</header>
-								<fieldset>
-							    	<div class="file-upload-container">
-								        <span>
-								        	<button name="image-file-link" id="image-file-link" type="button"><i class="icon-plus-sign"></i>Add Image</i></button>
-								        </span>
-								    </div>
-							        <div id="rules">
-							        	<span>Make sure the image selected:</span>
-							        	<ul>
-							        	<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
-		    							<li>Do not exceed a maximum size: 1 MB.</li>
-		    							<li>Has a minimun dimensions of  140 x 143</li>
-							        </div>
-						        </fieldset>
-						        
-						    </div>
-					</fieldset>
-					 <p id="error-img" class="error-img"></p>
-					<div class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
-						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
+						if($contImageExists){
+							echo "<img src=\"".$contImageUrl."\" alt=\"".$userInfo['contributor_name']." Image"."\" />";
+						} else {
+							echo "<img src=\"".$config['image_url'].'articlesites/sharedimages/default_profile_contributor.png'."\" alt=\"Contributor Image\" style=\"width: 143px; height: 140px;\"/>";
+						} 
+						echo '<span><a id="change-art-image" href=""><i class="icon-picture"></i>Change Photo</a></span>';
+						?>
+						</div>
 					</div>
-			</section>
+							
+					<div class="image-steps image-button-header">
+						<header class="section-bar">
+							<h2>Add an Image to your profile</h2>
+						</header>
+						<div class="file-upload-container">
+							<span>
+								<button name="image-file-link" id="image-file-link" type="button"><i class="icon-plus-sign"></i>Add Image</i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div id="rules" class="left columns small-12">
+					<span>Make sure the image selected:</span>
+					<ul class="padding-top">
+						<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
+		    			<li>Do not exceed a maximum size: 1 MB.</li>
+		    			<li>Has a minimun dimensions of  140 x 143</li>
+		    		</ul>
+				</div>
+				
+						        
+				<p id="error-img" class="error-img"></p>
+				<div class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
+					<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
+				</div>
+			</div>
 
 
-			<section id="contributor-info">
+			<div id="contributor-info">
 				<header class="section-bar">
 					<h2>Contributor Information</h2>
 				</header>
@@ -129,117 +130,121 @@
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="c_i" name="c_i" value="<?php echo $contributorInfo['contributor_id']; ?>" />
 
-					<fieldset>
-						<label for="contributor_name-s">Contributor Name<span>*</span> :</label>
-						<input type="text" name="contributor_name-s" id="contributor_name-s" placeholder="Please enter the contributor's name here." value="<?php if(isset($contributorInfo['contributor_name']))  echo $contributorInfo['contributor_name']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_name') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
+					<div class="row">
+					    <div class="columns">
+					      	<label for="contributor_name-s">Name<span>*</span> :
+							<input type="text" name="contributor_name-s" id="contributor_name-s" placeholder="Please enter the contributor's name here." value="<?php if(isset($contributorInfo['contributor_name']))  echo $contributorInfo['contributor_name']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_name') echo 'autofocus'; ?> />
+						</label>	
+						<!--<div class="tooltip">
 							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
 							<div class="tooltip-info">
 								<p>This is the contributor's name that will be visible throughout the network.</p>
 							</div>
+						</div>-->
 						</div>
-					</fieldset>
+					</div>
 
 					<?php if(!$content_provider){?>
-					<fieldset>
-						<label for="contributor_seo_name-s">Contributor SEO Name<span>*</span> :</label>
-						<input type="text" name="contributor_seo_name-s" id="contributor_seo_name-s" placeholder="Please enter the contributor's seo-formatted name here." value="<?php if(isset($contributorInfo['contributor_seo_name'])) echo $contributorInfo['contributor_seo_name']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_seo_name') echo 'autofocus'; ?> />
+					<div class="row">
+					    <div class="columns">
+					      	<label for="contributor_seo_name-s">SEO Name<span>*</span> :
+								<input type="text" name="contributor_seo_name-s" id="contributor_seo_name-s" placeholder="Please enter the contributor's seo-formatted name here." value="<?php if(isset($contributorInfo['contributor_seo_name'])) echo $contributorInfo['contributor_seo_name']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_seo_name') echo 'autofocus'; ?> />
+							</label>
+							<div class="tooltip">
+								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's name that will be used in URLs throughout the network.</p>
+								<div class="tooltip-info">
+									<p>This is the contributor's name that will be used in URLs throughout the network.</p>
+								</div>
 							</div>
 						</div>
-					</fieldset>
+					</div>
 					<?php }?>
 
-					<fieldset>
-						<label for="contributor_location-s">Contributor Location :</label>
-						<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="Please enter the contributor's location here." value="<?php if(isset($contributorInfo['contributor_location'])) echo $contributorInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
+					<div class="row">
+					    <div class="columns">
+					      	<label for="contributor_location-s">Location :
+								<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="Please enter the contributor's location here." value="<?php if(isset($contributorInfo['contributor_location'])) echo $contributorInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
+							</label>	
+						</div>
+					</div>
 
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
+					<div class="row">
+					    <div class="columns">
+					      	<label for="contributor_blog_link-s">Blog URL :
+								<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="Please enter the contributor's blog URL here." value="<?php if(isset($contributorInfo['contributor_blog_link'])) echo $contributorInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
+							</label>	
+							<div class="tooltip">
+								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
-							<div class="tooltip-info">
-								<p>This is the contributor's location that will be used throughout the network.</p>
+								<div class="tooltip-info">
+									<p>This is the URL for the contributor's blog page.  URLs must begin with http:// and end with a trailing slash.  Ex: http://www.example.com/</p>
+								</div>
 							</div>
 						</div>
-					</fieldset>
+					</div>
 
-					<fieldset>
-						<label for="contributor_blog_link-s">Contributor Blog URL :</label>
-						<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="Please enter the contributor's blog URL here." value="<?php if(isset($contributorInfo['contributor_blog_link'])) echo $contributorInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the URL for the contributor's blog page.  URLs must begin with http:// and end with a trailing slash.  Ex: http://www.example.com/</p>
-							</div>
+					<div class="row">
+					    <div class="columns">
+					      	<label for="contributor_email_address-e">Email Address :
+								<p class="disabled-field"><?php echo $contributorInfo['contributor_email_address']; ?></p>
+								<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($contributorInfo['contributor_email_address'])) echo $contributorInfo['contributor_email_address']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
+							</label>
 						</div>
-					</fieldset>
-
-					<fieldset>
-						<label for="contributor_email_address-e">Contributor Email Address :</label>
-						<p class="disabled-field"><?php echo $contributorInfo['contributor_email_address']; ?></p>
-						<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($contributorInfo['contributor_email_address'])) echo $contributorInfo['contributor_email_address']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
-					</fieldset>
+					</div>
 					
-					<fieldset>
-						<label for="contributor_twitter_handle-s">Contributor Twitter Handle :</label>
-						<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="Please enter the contributor's twitter handle here." value="<?php if(isset($contributorInfo['contributor_twitter_handle'])) echo $contributorInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
+					<div class="row">
+					    <div class="columns">
+					      	<label for="contributor_twitter_handle-s">Twitter Handle :
+								<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="Please enter the contributor's twitter handle here." value="<?php if(isset($contributorInfo['contributor_twitter_handle'])) echo $contributorInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
+							</label>	
+						</div>	
+					</div>
 
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
+					<div class="row">
+					    <div class="columns">
+					      	<label for="contributor_facebook_link-s">Facebook URL:
+								<input type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="Please enter the contributor's facebook url here." value="<?php if(isset($contributorInfo['contributor_facebook_link'])) echo $contributorInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
+							</label>		
+							<div class="tooltip">
+								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
-							<div class="tooltip-info">
-								<p>This is the contributor's twitter handle that will be used throughout the network.  Twitter handles must have an '@' symbol in front of it.</p>
+								<div class="tooltip-info">
+									<p>This is the contributor's facebook url that will be used throughout the network.</p>
+								</div>
 							</div>
 						</div>
-					</fieldset>
+					</div>					
 
-					<fieldset>
-						<label for="contributor_facebook_link-s">Contributor Facebook URL:</label>
-						<input type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="Please enter the contributor's facebook url here." value="<?php if(isset($contributorInfo['contributor_facebook_link'])) echo $contributorInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
+					<div class="row">
+					    <div class="columns">
+					      	<label for="contributor_bio-nf">Bio :</label>
+								<textarea class="elm-wysiwyg" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Please enter the contributor's bio here." ><?php if(isset($contributorInfo['contributor_bio'])) echo $contributorInfo['contributor_bio']; ?></textarea>
+							</label>	
+							<div class="tooltip">
+								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's facebook url that will be used throughout the network.</p>
+								<div class="tooltip-info">
+									<p>This is the contributor's bio that will be used throughout the network.  HTML is accepted.</p>
+								</div>
 							</div>
 						</div>
-					</fieldset>
-					
+					</div>
 
-					<fieldset>
-						<label for="contributor_bio-nf">Contributor Bio :</label>
-						<textarea class="elm-wysiwyg" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Please enter the contributor's bio here." ><?php if(isset($contributorInfo['contributor_bio'])) echo $contributorInfo['contributor_bio']; ?></textarea>
+					<div class="row">
+					    <div class="columns">
+					  		<div class="btn-wrapper">
+								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-info-form') echo ($updateStatus['hasError'] == true) ? 'radius alert label' : 'radius success label'; ?>" id="result">
+									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-info-form') echo $updateStatus['message']; ?>
+								</p>
 
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's bio that will be used throughout the network.  HTML is accepted.</p>
+								<button type="submit" id="submit" name="submit"  class="radius">Submit</button>
 							</div>
 						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="btn-wrapper">
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-info-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-								<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-info-form') echo $updateStatus['message']; ?>
-							</p>
-
-							<button type="submit" id="submit" name="submit">Submit</button>
-						</div>
-					</fieldset>
+					</div>
 				</form>
-			</section>
+			</div>
 			<br />
 
 			<?php if(!$content_provider){?>
@@ -254,18 +259,18 @@
 					
 					<fieldset>
 						<div class="btn-wrapper">
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-delete-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-delete-form') echo ($updateStatus['hasError'] == true) ? 'radius alert label' : 'raduis success label'; ?>" id="result">
 								<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-delete-form') echo $updateStatus['message']; ?>
 							</p>
 
-							<button type="submit" id="submit" name="submit">Delete Contributor</button>
+							<button type="submit" id="submit" name="submit" class="radius">Delete Contributor</button>
 						</div>
 					</fieldset>
 				</form>
 			</section>
 			<?php }?>
 		</div>
-	</div>
+	</main>
 
 		<div class="lightbox-shown" id="lightbox-cont2" style="display:none;">
 		<div class="overlay"></div>
@@ -300,9 +305,9 @@
 					        	<h2>Image Information:</h2>
 
 					        	<label>Name:</label> <p id="filenametext" name="filenametext"></p>
-					           	<label>Size:</label> <p id="filesizetext" name="filesizetext"></p>
+					           	<!--<label>Size:</label> <p id="filesizetext" name="filesizetext"></p>
 					        	<label>Type:</label><p id="filetype" name="filetype"></p>
-					        	<label>Dimension:</label><p id="filedim" name="filedim"></p>
+					        	<label>Dimension:</label><p id="filedim" name="filedim"></p>-->
 					        
 					        	<input type="hidden" id="filesize" name="filesize" />
 								<input type="hidden" id="w" name="w" />

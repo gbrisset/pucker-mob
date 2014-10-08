@@ -43,14 +43,15 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
+		<div id="content" class="columns small-9 large-11">
 			<section id="contributors-list">
-				<header class="section-bar">
-					<h2 class="left">Contributors</h2>
-
+				
+				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+					<h1 class="left">List Information</h1>
+				
 					<div id="right">
 						<div id="sort-by">
 							<input type="hidden" value="<?php echo $article_sort_by; ?>" id="sort-by-value" />
@@ -73,7 +74,7 @@
 							</ul>
 						</div>
 					</div>
-				</header>
+				</section>
 
 				<?php
 					foreach($articleContributors as $contributorInfo){
@@ -112,7 +113,7 @@
 
 			<?php  include_once($config['include_path_admin'].'pages.php');?>
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

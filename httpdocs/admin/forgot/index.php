@@ -14,12 +14,12 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont" class="main-cont-min">
-		<div class="admin-box" id="register-cont">
-			<header>
-				<h1><span>Forgot your password?</span></h1>
-			</header>
-
+		<main id="main-cont" class="row panel sidebar-on-right" role="main">
+		<fieldset class="admin-box mobile-12 small-6 auto-margin"> 
+			<legend>
+				<h1>Forgot your password?</h1>
+			</legend>
+   	
 			<div class="admin-form-cont" id="forgot-password-form-cont">
 
 				<form id="forgot-password-form" name="forgot-password-form" action="<?php echo $config['this_admin_url']; ?>forgot/" method="POST">
@@ -28,26 +28,32 @@
 					<?php } else { ?>
 						<p>Enter the email address associated with this account, below.</p>
 					<?php } ?>
-					<fieldset>
-						<input type="email" id="user_email-e" name="user_email-e" value="<?php if(isset($_POST['user_email-e'])) echo $_POST['user_email-e']; ?>" placeholder="Your Email" required <?php if(isset($emailStatus) && isset($emailStatus['field']) && $emailStatus['field'] == 'user_email') echo 'autofocus'; ?> />
-					</fieldset>
-					<fieldset>
-						<div class="btn-wrapper">
-							<?php if(!isset($emailStatus) || $emailStatus['hasError'] == true){ ?>
-								<button type="submit" id="submit" name="submit">Send Email</button>
-							<?php } else {?>
-								<!-- Erase this after testing -->
-							
-								<button type="submit" id="submit" name="submit">Send Email</button>
-							<?php } ?>
+					<div class="row">
+						<div class="large-12 columns">
+						    <label>Email 
+								<input type="email" id="user_email-e" name="user_email-e" value="<?php if(isset($_POST['user_email-e'])) echo $_POST['user_email-e']; ?>" placeholder="Your Email" required <?php if(isset($emailStatus) && isset($emailStatus['field']) && $emailStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+						    </label>
 						</div>
-					</fieldset>
-
-					<p id="bottom-link"><a href="<?php echo $config['this_admin_url']; ?>login/">Or log in here!</a></p>
+					</div>
+					
+					<div class="row">
+						<div class="large-12 columns">
+							<?php //if(!isset($emailStatus) || $emailStatus['hasError'] == true){ ?>
+								<button type="submit" id="submit" name="submit" class="expand button">Send Email</button>
+							<?php //} ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-12 columns">
+							<p id="bottom-link">
+								<a href="<?php echo $config['this_admin_url']; ?>login/">Or log in here!</a>
+							</p>
+						</div>
+					</div>
 				</form>
 			</div>
-		</div>
-	</div>
+		</fieldset>
+	</main>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

@@ -61,25 +61,25 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<section id="articles-list">
+			<section id="articles-list" class="row">
 				<form class="search-form-admin" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
-						<fieldset id="search-fieldset">
-							<input type="text" value="" placeholder="Search all of Pucker Mob" id="searchemailinput" name="searchemailinput">
-							<button type="submit" id="searchsubmit" name="searchsubmit">SEARCH<i class="icon-search"></i></button>
-						</fieldset>
+						<div id="search-fieldset" class="mobile-12 small-12">
+							<input type="text" value="" class="small-8 left" placeholder="Search all of Pucker Mob" id="searchemailinput" name="searchemailinput">
+							<button type="submit" id="searchsubmit" name="searchsubmit" class="small-4"  >SEARCH<i class="icon-search"></i></button>
+						</div>
 				</form>
 				
-				<header class="section-bar">
+				<section class="section-bar left  border-bottom mobile-12 small-12">
 					<h1 class="left">Articles</h1>
-					<div id="right">
+					<div id="right" class="small-9 padding-top right">
 						<div id="sort-by">
 							<input type="hidden" value="<?php echo $article_sort_by; ?>" id="sort-by-value" />
-							<label>Sort By: </label>
-							<ul>
+							<label class="left">Sort By: </label>
+							<ul class="right">
 								<?php
 									$dropDownOmits = [6];
 									foreach($mpArticleAdmin->dropDownInfo as $dropDownObj){
@@ -97,13 +97,13 @@
 							</ul>
 						</div>
 					</div>
-				</header>
+				</section>
  				<?php
 					if($articles){
 						foreach($articles as $articleInfo){
 
 							$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
-							$article = '<div class="admin-article" id="'.$articleInfo["article_id"].'">';
+							$article = '<div class="admin-article mobile-12 small-12" id="'.$articleInfo["article_id"].'">';
 							$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
 
 							$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/square/'.$articleInfo["article_id"].'_tall.'.$ext;
@@ -113,28 +113,28 @@
 								$imageUrl = $config['image_url'].'/articlesites/sharedimages/recipe_default_image.jpg';
 							}
 
-								$article .= '<div class="article-image">';
+								$article .= '<div class="article-image mobile-12 small-12 medium-2">';
 									$article .= '<a href="'.$articleUrl.'">';
 										$article .= '<img src="'.$imageUrl.'" alt="'.$articleInfo['article_title'].' Preview Image" />';
 									$article .= '</a>';
 								$article .= '</div>';
 
-							$article .= '<div class="article-info">';
+							$article .= '<div class="article-info mobile-12 small-12 medium-12">';
 								$article .= '<div class="article-status">';
 								(isset($articleInfo["article_status"])) ? $article .= MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : $article .= '';
 								$article .= '</div>';
 
 
 								$article .= '<h2><a href="'.$articleUrl.'">'.$articleInfo['article_title'].'</a></h2>';
-								$articleSnippet = utf8_encode(trim(strip_tags($articleInfo['article_desc'])));
-								$articleSnippet = (strlen($articleSnippet) > 100) ? substr($articleSnippet, 0, 100).'...' : $articleSnippet;
-								$article .= '<p>'.$articleSnippet.'</p>';
+								//$articleSnippet = utf8_encode(trim(strip_tags($articleInfo['article_desc'])));
+								//$articleSnippet = (strlen($articleSnippet) > 100) ? substr($articleSnippet, 0, 100).'...' : $articleSnippet;
+								//$article .= '<p>'.$articleSnippet.'</p>';
 								
 								$article .='<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="'.$config['this_admin_url'].'articles/index.php" method="POST">';
 									$article .='<input type="text" class="hidden" id="c_t" name="c_t" value="'.$_SESSION['csrf'].'" >';
 									$article .='<input type="text" class="hidden" id="article_id" name="article_id" value="'.$articleInfo['article_id'].'" />';
-									$article .='<a class="manage-links" href="'.$articleUrl.'" name="edit" id="edit"><i class="icon-edit"></i> Edit</a>';
-									$article .='<a class="manage-links" href="'.$articleUrl.'" class="b-delete" name="submit" id="submit"><i class="icon-remove"></i> Delete</a>';
+									$article .='<a class="manage-links" href="'.$articleUrl.'" name="edit" id="edit"><i class="fa fa-pencil-square-o"></i> Edit</a>';
+									$article .='<a class="manage-links" href="'.$articleUrl.'" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i> Delete</a>';
 								$article .='</form>';
 							$article .= '</div>';
 						echo $article;
@@ -161,7 +161,7 @@
 
 			<?php include_once($config['include_path_admin'].'pages.php'); ?>
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

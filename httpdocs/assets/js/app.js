@@ -27,6 +27,7 @@ var asideHeight = {
 	margin: parseInt(main.css("padding-bottom"))
 };
 
+//$('a.reveal-link').trigger('click');
 
 $(document).ready(function() {
 

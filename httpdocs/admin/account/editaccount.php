@@ -74,62 +74,60 @@
 
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
-			<!-- Image Sections -->
-			<section id="profile-inline-settings">
-					<header class="section-bar">
-						<h2>Profile Photo</h2>
-					</header>
-					
-					<fieldset id="add-an-image-fs">
-							<div class="image-steps image-sec">
-								<div id="image-container">
-								<?php 
-
-									if($contImageExists){
-										echo "<img src=\"".$contImageUrl."\" alt=\"".$userInfo['contributor_name']." Image"."\" />";
-								 	} else {
-										echo "<img src=\"".$config['image_url'].'articlesites/sharedimages/default_profile_contributor.png'."\" alt=\"Contributor Image\" style=\"width: 143px; height: 140px;\"/>";
-									} 
-									echo '<span><a id="change-art-image" href=""><i class="icon-picture"></i>Change Photo</a></span>';
-								?>
-								</div>
-							</div>
-							
-							<div class="image-steps">
-								<header class="section-bar">
-									<h2>Add an Image to your profile</h2>
-								</header>
-								<fieldset>
-							    	<div class="file-upload-container">
-								        <span>
-								        	<button name="image-file-link" id="image-file-link" type="button"><i class="icon-plus-sign"></i>Add Image</i></button>
-								        </span>
-								    </div>
-							        <div id="rules">
-							        	<span>Make sure the image selected:</span>
-							        	<ul>
-							        	<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
-		    							<li>Do not exceed a maximum size: 1 MB.</li>
-		    							<li>Has a minimun dimensions of  140 x 143</li>
-							        </div>
-						        </fieldset>
-						        
-						    </div>
-					</fieldset>
-					 <p id="error-img" class="error-img"></p>
-					<div class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
-						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
-					</div>
+		<div id="content" class="columns small-9 large-11">
+			<div id="profile-inline-settings">
+		
+			<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+				<h1 class="left">Profile</h1>
 			</section>
+			<!-- IMAGE SECTION -->
+				<div id="add-an-image-fs" class="padding-top padding-bottom left small-12 border-radius">
+					<div class="image-steps image-sec columns small-4 ">
+						<div id="image-container">
+						<?php 
+
+						if($contImageExists){
+							echo "<img src=\"".$contImageUrl."\" alt=\"".$userInfo['contributor_name']." Image"."\" />";
+						} else {
+							echo "<img src=\"".$config['image_url'].'articlesites/sharedimages/default_profile_contributor.png'."\" alt=\"Contributor Image\" style=\"width: 143px; height: 140px;\"/>";
+						} 
+						echo '<span><a id="change-art-image" href=""><i class="icon-picture"></i>Change Photo</a></span>';
+						?>
+						</div>
+					</div>
+							
+					<div class="image-steps image-button-header">
+						<header class="section-bar">
+							<h2>Add an Image to your profile</h2>
+						</header>
+						<div class="file-upload-container">
+							<span>
+								<button name="image-file-link" id="image-file-link" type="button"><i class="icon-plus-sign"></i>Add Image</i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div id="rules" class="left columns small-12">
+					<span>Make sure the image selected:</span>
+					<ul class="padding-top">
+						<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
+		    			<li>Do not exceed a maximum size: 1 MB.</li>
+		    			<li>Has a minimun dimensions of  140 x 143</li>
+		    		</ul>
+				</div>
+				<p id="error-img" class="error-img"></p>
+				<div class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
+					<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
+				</div>
+			</div>
 
 			<!-- Account Info -->		
 			<section id="account-settings">
-				<header class="section-bar">
-					<h2>My Profile</h2>
+				<header class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+					<h2>My Information</h2>
 				</header>
 
 				<form class="ajax-submit-form" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
@@ -315,7 +313,7 @@
 					<input type="text" class="hidden" id="pwd_change" name="pwd_change" value="false" >
 				</form>
 			</section>
-			<section>
+			<!--<section>
 				<fieldset class="multiple-forms">
 					<?php include_once($config['include_path_admin'].'preview_profile.php');  ?>
 					<div>
@@ -326,10 +324,10 @@
 						<button type="button" id="cont-preview" name="button" class="profile-preview">Preview Profile</button>
 					</div>
 				</fieldset>
-			</section>
+			</section>-->
 			<br />
 		</div>
-	</div>
+	</main>
 
 	<div class="lightbox-shown" id="lightbox-cont2" style="display:none;">
 		<div class="overlay"></div>
@@ -364,9 +362,9 @@
 					        	<h2>Image Information:</h2>
 
 					        	<label>Name:</label> <p id="filenametext" name="filenametext"></p>
-					           	<label>Size:</label> <p id="filesizetext" name="filesizetext"></p>
+					           	<!--<label>Size:</label> <p id="filesizetext" name="filesizetext"></p>
 					        	<label>Type:</label><p id="filetype" name="filetype"></p>
-					        	<label>Dimension:</label><p id="filedim" name="filedim"></p>
+					        	<label>Dimension:</label><p id="filedim" name="filedim"></p>-->
 					        
 					        	<input type="hidden" id="filesize" name="filesize" />
 								<input type="hidden" id="w" name="w" />

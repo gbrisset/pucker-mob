@@ -17,18 +17,17 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<section id="categories-list">
-				<header class="section-bar">
-					<h2>Contact Us</h2>
-				</header>
+			<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+				<h1 class="left">Contact Us</h1>
 			</section>
+				
 			<section id="contact-us-cont">
 				<p>Need help?</p>
-				<p>For site support, please contact us using the form below or email us at <a href="mailto:info@simpledish.com">info@simpledish.com</a>.</p>	
+				<p>For site support, please contact us using the form below or email us at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a>.</p>	
 				<form id="adv-contact-form" name="adv-contact-form" action="" method="POST">
 					<fieldset>
 						<label for="name">Your Name <span>*</span>:</label>
@@ -71,7 +70,7 @@
 				<section class="contact-info">
 					<div>
 						<h3>Info About Advertising Partnerships: </h3>
-						<p>Please email us at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a> or visit our advertising page at: <a href="http://www.simpledish.com/advertise.php" target="_blank">Advertise with Us!</a></p>
+						<p>Please email us at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a> or visit our advertising page at: <a href="http://www.puckermob.com/advertise.php" target="_blank">Advertise with Us!</a></p>
 					</div>
 					<div>
 						<h3>Our Brands: </h3>
@@ -79,18 +78,18 @@
 					</div>
 					<div>
 						<h3>Our Terms of Use: </h3>
-						<p>Read our the full End User Liscense Agreement: <a href="http://www.simpledish.com/policy.php" target="_blank">Terms of Use</a></p>
+						<p>Read our the full End User Liscense Agreement: <a href="http://www.puckermob.com/policy.php" target="_blank">Terms of Use</a></p>
 					</div>
 					<div>
 						<h3>Our Privacy Policy: </h3>
-						<p>Read our Privacy Policy: <a href="http://www.simpledish.com/policy.php#privacy" target="_blank">Privacy Policy</a>.</p>
+						<p>Read our Privacy Policy: <a href="http://www.puckermob.com/policy.php#privacy" target="_blank">Privacy Policy</a>.</p>
 					</div>
 				</section>
 			</section>
 			
 
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

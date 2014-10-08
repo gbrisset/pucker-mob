@@ -7,8 +7,8 @@
 var header = $('#header-cont');
 
 $(window).scroll(function(e){
-    if(header.offset() !== null){
-	    if(header.offset().top !== 0){
+    if(header.offset() !== null ){
+	    if(header.offset() && header.offset().top !== 0){
 	        if(!header.hasClass('shadow')){
 	            header.addClass('shadow');
 	        }

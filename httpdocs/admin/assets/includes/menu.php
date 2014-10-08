@@ -27,7 +27,7 @@
 					)
 				);
 				*/
-				if($adminController->user->checkPermission('user_permission_show_manage_categories')) 	echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'categories/', 'label' => 'Manage Categories', 'current' => (isset($uri[0]) && $uri[0] == 'categories' && isset($uri[1]) && (empty($uri[1]) || $uri[1] == 'edit')) ? 'current' : ''));
+				//if($adminController->user->checkPermission('user_permission_show_manage_categories')) 	echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'categories/', 'label' => 'Manage Categories', 'current' => (isset($uri[0]) && $uri[0] == 'categories' && isset($uri[1]) && (empty($uri[1]) || $uri[1] == 'edit')) ? 'current' : ''));
 
 					//echo $adminController->makeNavItemGroup($siteNavItem);
 				

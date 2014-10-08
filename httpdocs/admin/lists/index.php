@@ -65,15 +65,15 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
+			<section class="section-bar left  border-bottom mobile-12 small-12">
+				<h1 class="left">Lists</h1>
+			</section>
 			<section id="articles-list">
-				<div class="row">
-					<h1>Lists</h1>
-				</div>
-
+				
 				<?php
 					if(isset($page_lists) && $page_lists){
 						foreach($page_lists as $page_list){
@@ -110,31 +110,28 @@
 										}
 								echo $list;
 							}
-				?>
+							?>
+ 							<section class="manage-lists">
  							<form class="list-delete-form" id="list-delete-form" name="list-delete-form" action="<?php echo $config['this_admin_url']; ?>lists/index.php" method="POST">
 								<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 								<input type="text" class="hidden" id="page_list_id" name="page_list_id" value="<?php echo $page_list->page_list_id; ?>" />
-								<div class="btn-wrapper delete list-button">
-									<a href="<?php echo $listUrl; ?>" class="list-button"><button name="edit" id="edit" type="button">Edit</button></a>
-									<button class="b-delete" name="submit" id="submit" type="submit" data-info="<?php echo $page_list->page_list_id; ?>">Delete</button>
-								</div>
+								<a class="manage-links" href="<?php echo $listUrl; ?>" name="edit" id="edit"><i class="fa fa-pencil-square-o"></i> Edit</a>
+								<a class="manage-links" class="b-delete" name="submit" id="submit" data-info="<?php echo $page_list->page_list_id; ?>"><i class="fa fa-times"></i> Delete</a>
+								
+								<!--<div class="btn-wrapper delete list-button">
+									<a href="<?php echo $listUrl; ?>" class="list-button"><button class="radius" name="edit" id="edit" type="button">Edit</button></a>
+									<button class="b-delete radius" name="submit" id="submit" type="submit" data-info="<?php echo $page_list->page_list_id; ?>">Delete</button>
+								</div>-->
 							</form>
+						</section>
 						</div>
 
-<?php
-						} // end foreach
-
-					//	No lists have been created...	
-					} else { echo "<p>Sorry, no lists were found!</p>"; } 
-?>
-
-
-
+						<?php } } else { echo "<p>Sorry, no lists were found!</p>"; } ?>
 			</section>
 
 			<?php include_once($config['include_path_admin'].'pages.php'); ?>
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

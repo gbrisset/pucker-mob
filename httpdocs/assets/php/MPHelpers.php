@@ -209,6 +209,7 @@ class MPHelpers{
 	public function start_session(){
 		session_name('mpssess'); 
 		session_start();
+
 	}
 
 	public function getNextPermutation($i){

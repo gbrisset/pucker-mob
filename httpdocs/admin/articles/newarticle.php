@@ -26,50 +26,55 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
-				<header class="section-bar">
-					<h2>Add New Article</h2>
-				</header>
-
+				<section class="section-bar left  border-bottom mobile-12 small-12">
+					<h1 class="left">Add New Article</h1>
+				</section>
+				<section class="left  mobile-12 small-12 padding-top">
 				<form  id="article-add-form" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 
-					<fieldset>
-						<label for="article_title-s">Article Title<span>*</span> :</label>
-						<input type="text" name="article_title-s" id="article_title-s" placeholder="Please enter the article's title here." <?php echo ($content_provider) ? 'maxlength="40"' : ''; ?>   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the article's title that will be visible throughout the network.</p>
+					<div class="row">
+					    <div class="columns">
+					      	<label>Article Title<span>*</span> :
+								<input type="text" name="article_title-s" id="article_title-s" placeholder="Please enter the article's title here." <?php echo ($content_provider) ? 'maxlength="40"' : ''; ?>   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
+					 		</label>
+					    
+							<div class="tooltip">
+								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
+									<div class="tooltip-info">
+									<p>This is the article's title that will be visible throughout the network.</p>
+								</div>
 							</div>
 						</div>
-					</fieldset>
+					</div>	
 
 					<?php if(!$content_provider){?>
-					<fieldset>
-						<label for="article_seo_title-s">Article SEO Title<span>*</span> :</label>
-						<input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="Please enter the article's seo-formatted title here." value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+					<div class="row">
+					    <div class="columns">
+					      	<label>Article SEO Title<span>*</span> :
+								<input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="Please enter the article's seo-formatted title here." value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+					 		</label>
+					    
+							<div class="tooltip">
+								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the article's title that will be used in URLs throughout the network.</p>
+								<div class="tooltip-info">
+									<p>This is the article's title that will be used in URLs throughout the network.</p>
+								</div>
 							</div>
 						</div>
-					</fieldset>
+					</div>	
 					<?php }?>
-
-					<fieldset>
-						<label for="article_desc-s">Article Description<span>*</span> :</label>
+					<div class="row">
+					    <div class="columns">
+						<label for="article_desc-s">Article Description<span>*</span> :
 						<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Please enter the article's description here." maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
-
+						</label>
 						<div class="tooltip">
 							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
@@ -77,13 +82,15 @@
 								<p>This is a shorter description of the article that will appear throughout the site as a summy of the article.</p>
 							</div>
 						</div>
-					</fieldset>
+						</div>
+					</div>	
 
 					<?php if(!$content_provider){?>
-					<fieldset>
-						<label for="article_tags-s">Article Keywords :</label>
+					<div class="row">
+					    <div class="columns">
+						<label for="article_tags-s">Article Keywords :
 						<input type="text" name="article_tags-s" id="article_tags-s" placeholder="Please enter the article's tags here." value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />
-
+						</label>
 						<div class="tooltip">
 							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
 
@@ -91,40 +98,36 @@
 								<p>These are the keywords that will show up in search engines, social networks, etc for this article.  They should be separated with a comma.  Keywords are limited to 1500 characters.</p>
 							</div>
 						</div>
-					</fieldset>
+					</div>
+					</div>	
 					<?php }?>
 
-					<fieldset>
-						<label for="article_body-nf">Article Body<span>*</span> :</label>
-						<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="45" required placeholder="Please enter the article's body here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
-						<!--<div class="tooltip">
-							<img src="<?php //echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
+					<div class="row padding-bottom">
+					    <div class="columns">
+						<label for="article_body-nf">Article Body<span>*</span> :
+						<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="35" required placeholder="Please enter the article's body here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
+						</label>
+					</div>
+					</div>
 
-							<div class="tooltip-info">
-								<p>This is the main content of the article, formatted in HTML.</p>
-							</div>
-						</div>-->
-					</fieldset>
-
-<!--
-
-PAGE LIST
-
--->				
-					<fieldset>
-						<label for="page_list">Page List: </label>
+					<!-- PAGE LIST -->
+					<div class="row">
+					    <div class="columns">
+						<label for="page_list">Page List: 
 						<select name="page_list_id-nf" id="page_list_id-nf">
 							<option value="0">None</option>
-	<?php			
+						<?php			
 							$page_lists = PageList::get();
 							foreach($page_lists as $page_list){
 								echo "<option value='".$page_list->page_list_id."'  >";
 									echo $page_list->page_list_title;
 								echo "</option>";
 							}
-	?>
+						?>
 						</select>
-					</fieldset>	
+						</label>
+					</div>
+					</div>
 					
 
 					<?php
@@ -132,8 +135,9 @@ PAGE LIST
 						$allContributors = $adminController->getSiteObjectAll(array('queryString' => 'SELECT * FROM article_contributors ORDER BY contributor_name ASC'));
 						if($allContributors && count($allContributors)){
 					?>
-						<fieldset>
-							<label for="article_contributor">Article Contributor<span>*</span> :</label>
+						<div class="row">
+					    <div class="columns">
+							<label for="article_contributor">Article Contributor<span>*</span> :
 							<select name="article_contributor" id="article_contributor">
 								<option value="-1">None</option>
 								<?php
@@ -145,46 +149,27 @@ PAGE LIST
 									}
 								?>
 							</select>
-						</fieldset>
+						</label>
+						</div>
+					</div>
 					<?php } 
 				}else{ ?>
 					<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo['contributor_id']?>" />
 				<?php } ?>
 
-					<?php
-					if(!$content_provider){
-						$allVideos = $adminController->getSiteObjectAll(array('queryString' => 'SELECT * FROM syndication_videos ORDER BY syn_video_title ASC'));
-						if($allVideos && count($allVideos)){
-					?>
-						<fieldset>
-							<label for="article_video">Related Video<span>*</span> :</label>
-							<select name="article_video" id="article_video">
-								<option value="-1">None</option>
-								<?php
-									foreach($allVideos as $videoInfo){
-										$option = '<option value="'.$videoInfo['syn_video_id'].'"';
-										if($videoInfo['syn_video_id'] == $_POST['article_video']) $option .= ' selected="selected"';
-										$option .= '>'.$videoInfo['syn_video_title'].'</option>';
-										echo $option;
-									}
-								?>
-							</select>
-						</fieldset>
-					<?php } 
-				}?>
-
-
+					
 					<?php
 						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
 						if($allCategories && count($allCategories)){
 					?>
-						<fieldset>
-								<label class="checkbox-group-label-parent">Categories<span>*</span> :</label>
-								<p class="p-message">Categorize your article choosing up to 5 categories. </p>
+						<div class="row">
+					    <div class="columns">
+								<label class="checkbox-group-label-parent">Categories<span>*</span> : 
+								<span class="p-message">Categorize your article choosing up to 4 categories. </span>
 								<section class="checkbox-group-content">
 								<?php
 									foreach($allCategories as $category){ 
-										if(!$category['cat_is_brand']){
+										//if(!$category['cat_is_brand']){
 										$checkbox = '<div class="checkbox-group">';
 											$checkbox .= '<input type="checkbox" id="category-'.$category['cat_id'].'" name="article_categories[category-'.$category['cat_id'].']"';
 											if(isset($_POST['article_categories']) && isset($_POST['article_categories']['category-'.$category['cat_id']])){
@@ -195,17 +180,20 @@ PAGE LIST
 										$checkbox .= '</div>';
 										
 										echo $checkbox;
-										}
+										//}
 									}
 								?>
 							</section>
-							</fieldset>
+							</label>
+						</div>
+					</div>
 					<?php } ?>
 
 					
 					<input type="hidden" class="hidden" id="article_template_type-s" name="article_template_type-s" value="0" />
 
-					<fieldset>
+					<div class="row">
+					    <div class="columns">
 						<div class="btn-wrapper">
 							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-add-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
 								<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-add-form') echo $updateStatus['message']; ?>
@@ -219,13 +207,14 @@ PAGE LIST
 								</script>
 							<?php } ?>
 
-							<button type="submit" id="submit" name="submit">Save</button>
+							<button type="submit" id="submit" name="submit" class="radius">Save</button>
 						</div>
-					</fieldset>
+					</div></div>
 				</form>
+				</section>
 			</section>
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<div id='lightbox-cont'>

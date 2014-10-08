@@ -21,7 +21,8 @@ $bgColor: #ffffff;
 "foundation/components/type",
 "foundation/components/offcanvas",
 "foundation/components/visibility",
-"foundation/components/sub-nav";
+"foundation/components/sub-nav",
+"foundation/components/reveal";
 // Custom variables
 
 $sidebar-width: 300px;
@@ -37,6 +38,7 @@ $sidebar-border-color: $todays-favorites-border-color;
 $logo-width: rem-calc(175);
 $logo-height: rem-calc(48);
 
+$link-accent-color: #01b88a;
 $main-color: #6ad98a;
 $text-type-color: #01b88a;
 $header-padding: rem-calc(8);
@@ -1359,3 +1361,10 @@ dl { margin-bottom: 0.5rem !important; }
 
  /* ADBLADE ADS */
  div.adblade-dyna div.zone div.adbladetitle{font-family: Oslo !important; text-transform: uppercase !important; color: #777 !important; font-size: 1.7rem !important; font-weight: normal !important; margin-bottom: 0.8rem !important;}
+
+.auto-margin { margin: auto; }
+.hidden { display: none !important; visibility: hidden; }
+.border-bottom { border-bottom: 1px solid #ddd; }
+
+/*POPUP*/
+#myModal, .reveal-modal-bg{z-index: 999; }

@@ -41,13 +41,15 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-		<div id="main-cont">
+		<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
+		
 		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
-
-				<h1>List Information</h1>
-			
+				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+					<h1 class="left">Add List Article</h1>
+				</section>
+						
 				<div id="admin-add-new-list" class="row admin-add-new">
 					<div id="add-list-form" class="">
 						<form  class="non-ajax-submit-form" id="page-list-data-form" name="page-list-data-form" action="<?php echo $config['this_admin_url']; ?>lists/index.php" method="POST">
@@ -90,7 +92,7 @@
 				</div>
 			</section>
 		</div>
-	</div>
+	</main>
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>

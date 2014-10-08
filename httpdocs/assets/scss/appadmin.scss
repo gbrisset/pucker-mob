@@ -24,7 +24,8 @@ $bgColor: #ffffff;
 "foundation/components/dropdown",
 "foundation/components/dropdown-buttons",
 "foundation/components/tooltips",
-"foundation/components/labels";
+"foundation/components/labels",
+"foundation/components/tables";
 // Custom variables
 
 
@@ -412,3 +413,11 @@ form .gradient-button.red-gradient {background: -moz-linear-gradient(center top 
 #profile-inline-settings .image-button-header{ width:60%;}
 #profile-inline-settings #rules { padding-top: 1rem;}
 #profile-inline-settings #rules span{ font-size: 1.2rem;}
+
+//DASHBOARD
+#dashboard h2{ font-weight: bold; margin-bottom: 5rem;}
+#dashboard table{ background: #fff; border:none;}
+#dashboard table thead{background: #fff;}
+#dashboard table th{ text-align: center; font-size:1.05rem; font-weight: normal; padding: 0.5rem;}
+#dashboard table tr{ background: none; border-bottom: 1px solid #aaa;}
+#dashboard table tr.even, #dashboard table tr.alt, #dashboard table tr:nth-of-type(even){ background: none;}

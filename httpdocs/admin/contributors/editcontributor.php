@@ -220,7 +220,7 @@
 					<div class="row">
 					    <div class="columns">
 					      	<label for="contributor_bio-nf">Bio :</label>
-								<textarea class="elm-wysiwyg" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Please enter the contributor's bio here." ><?php if(isset($contributorInfo['contributor_bio'])) echo $contributorInfo['contributor_bio']; ?></textarea>
+								<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Please enter the contributor's bio here." ><?php if(isset($contributorInfo['contributor_bio'])) echo $contributorInfo['contributor_bio']; ?></textarea>
 							</label>	
 							<div class="tooltip">
 								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">

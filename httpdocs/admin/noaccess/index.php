@@ -12,23 +12,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
+	<script>function change(){ document.getElementById("month-form").submit(); }</script>
+	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
+		<div id="content" class="columns small-9 large-11">
 			<section id="categories-list">
 				<header class="section-bar">
 					<h2>Access Denied</h2>
 				</header>
 
-				<p>Sorry, it looks like you don't have permission to view the requested page.  If you feel this is an error, please contact support at <a href="mailto:info@simpledish.com">info@simpledish.com</a>.</p>
+				<p>Sorry, it looks like you don't have permission to view the requested page.  If you feel this is an error, please contact support at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a>.</p>
 			</section>
 		</div>
-	</div>
+	</main>
 
-	<?php include_once($config['include_path'].'footer.php');?>
+	<?php include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

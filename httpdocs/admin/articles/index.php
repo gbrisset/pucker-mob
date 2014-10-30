@@ -46,10 +46,14 @@
 		$userArticlesFilter = 'all';
 	}
 // 3. total record count ($total_count)	
+	// $total_count = $mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter);
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter));
+	
 	$pagination = new Pagination($page, $per_page, $total_count);
+	
 	$offset = $pagination->offset();
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset);
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -64,16 +68,29 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<section id="articles-list" class="row">
-				<form class="search-form-admin" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
+			<section class="row">
+				<h1 class="left small-5">View/Edit Articles</h1>
+				<form class="search-form-admin small-7" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<div id="search-fieldset" class="mobile-12 small-12">
-							<input type="text" value="" class="small-8 left" placeholder="Search all of Pucker Mob" id="searchemailinput" name="searchemailinput">
+							<input type="text" value="" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchemailinput">
 							<button type="submit" id="searchsubmit" name="searchsubmit" class="small-4"  >SEARCH<i class="icon-search"></i></button>
 						</div>
 				</form>
+				</section>
 				
-				<section class="section-bar left  border-bottom mobile-12 small-12">
-					<h1 class="left">Articles</h1>
+				<section class="from-other-sites-filter row">
+					    <div class="columns">
+					      <label>Show Articles From:
+					      <input style="margin-left: 2rem;" id="simpledish" disabled type="checkbox"><label for="simpledish">SimpleDish</label>
+						  <input id="puckermob" checked disabled type="checkbox"><label for="puckermob">PuckerMob</label>
+					      <input id="spaghettimob" disabled type="checkbox"><label for="spaghettimob">SpaghettiMob</label>
+					      </label>
+					    </div>`
+				</section>
+
+				<section id="articles-list" class="row">
+					<!--<section class="section-bar left  border-bottom mobile-12 small-12">
+					
 					<div id="right" class="small-9 padding-top right">
 						<div id="sort-by">
 							<input type="hidden" value="<?php echo $article_sort_by; ?>" id="sort-by-value" />
@@ -96,56 +113,74 @@
 							</ul>
 						</div>
 					</div>
-				</section>
+				</section>-->
  				<?php
 					if($articles){
-						foreach($articles as $articleInfo){
+						//if(isset($_GET['sort'])){
+							$sort = (isset($_GET['sort'])) ? $_GET['sort'] : '';
+						
+							if( $sort == 'az') $sortName = 'za'; else $sortName = 'az';
+							$sortDate = 'mr';
+							if( $sort == 2) $sortStatus = 3; else $sortStatus = 2;
+						//}
+						?>
+					<table>
+						<thead>
+						    <tr>
+						      <th class="mobile-6 small-6"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortName : '?sort='.$sortName;?>">Article Name</a></th>
+						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Date Added</a></th>
+						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>
+						      <th class="small-2">sites</th>
+						      <th>comments</th>
+						      <th></th>
+						    </tr>
+						 </thead>
+						 <tbody>
+						 <?php foreach($articles as $articleInfo){
 
 							$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
-							$article = '<div class="admin-article mobile-12 small-12" id="'.$articleInfo["article_id"].'">';
+							$article_id = $articleInfo["article_id"];
 							$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
-
 							$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/square/'.$articleInfo["article_id"].'_tall.'.$ext;
+							$article_title = $articleInfo['article_title'];
+							$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
+							$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
+							//$article_date_created =  $articleInfo['creation_date'];
+
 							if(file_exists($pathToImage)){
 								$imageUrl = $config['image_url'].'articlesites/puckermob/square/'.$articleInfo["article_id"].'_tall.'.$ext;
 							} else {
 								$imageUrl = $config['image_url'].'/articlesites/sharedimages/puckermob-default-image.jpg';
 							}
 
-								$article .= '<div class="article-image mobile-12 small-12 medium-2">';
-									$article .= '<a href="'.$articleUrl.'">';
-										$article .= '<img src="'.$imageUrl.'" alt="'.$articleInfo['article_title'].' Preview Image" />';
-									$article .= '</a>';
-								$article .= '</div>';
-
-							$article .= '<div class="article-info mobile-12 small-12 medium-12">';
-								$article .= '<div class="article-status">';
-								(isset($articleInfo["article_status"])) ? $article .= MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : $article .= '';
-								$article .= '</div>';
-
-
-								$article .= '<h2><a href="'.$articleUrl.'">'.$articleInfo['article_title'].'</a></h2>';
-								//$articleSnippet = utf8_encode(trim(strip_tags($articleInfo['article_desc'])));
-								//$articleSnippet = (strlen($articleSnippet) > 100) ? substr($articleSnippet, 0, 100).'...' : $articleSnippet;
-								//$article .= '<p>'.$articleSnippet.'</p>';
+							//$imageUrl = 'http://localhost:8888/projects/pucker-mob//subdomains/images/httpdocs/articlesites/puckermob/square/3855_tall.jpg';
+							?>
+								<tr id="<?php echo 'article-'.$article_id; ?>">
+								  	<td class="mobile-6 small-6">
+								  		<div class="article-image mobile-1 small-1">
+											<a href="'.$articleUrl.'">
+												<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
+											</a>
+										</div>
+										<h2><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 40); ?></a></h2>
+								  	</td>
+								  	<td class="small-2"><?php echo $article_date_created; ?></td>
+								  	<td class="small-2"><?php echo $article_status; ?></td>
+								  	<td class="small-2">PM</td>
+									<td>--</td>	
+									<td>
+										<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+											<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
+											<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
+											<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+										</form>
+									</td>							  			
+								</tr>
+						<?php }?>
+					    </tbody>
+					</table>
 								
-								$article .='<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="'.$config['this_admin_url'].'articles/index.php" method="POST">';
-									$article .='<input type="text" class="hidden" id="c_t" name="c_t" value="'.$_SESSION['csrf'].'" >';
-									$article .='<input type="text" class="hidden" id="article_id" name="article_id" value="'.$articleInfo['article_id'].'" />';
-									$article .='<a class="manage-links" href="'.$articleUrl.'" name="edit" id="edit"><i class="fa fa-pencil-square-o"></i> Edit</a>';
-									$article .='<a class="manage-links" href="'.$articleUrl.'" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i> Delete</a>';
-								$article .='</form>';
-							$article .= '</div>';
-						echo $article;
-				?>
-						</div>
-
-
-
-				<?php
-						}
-					}else{
-				?>
+					<?php }else{ ?>
 					<p class="not-found">
 						Sorry, no articles were found!
 					</p>
@@ -154,15 +189,14 @@
 						Start adding your own articles to our site clicking <a href="<?php echo $config['this_admin_url']?>articles/newarticle/">HERE</a>.
 					</p>
 					
-					</p>
-				<?php } ?>
+					<?php } ?>
 			</section>
 
 			<?php include_once($config['include_path_admin'].'pages.php'); ?>
 		</div>
 	</main>
 
-	<?php include_once($config['include_path'].'footer.php');?>
+	<?php include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

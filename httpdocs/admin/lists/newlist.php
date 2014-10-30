@@ -72,7 +72,7 @@
 					<div class="row">
 					    <div class="large-12 columns  padding-bottom">
 					      <label>Description
-								<textarea name="page_list_desc" id="page_list_desc" rows="10" placeholder="Please enter the list's description here." ></textarea>
+								<textarea class="mceEditor" name="page_list_desc" id="page_list_desc" rows="10" placeholder="Please enter the list's description here." ></textarea>
 					    </div>
 				  	</div>
 				  	<div class="row">

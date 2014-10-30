@@ -20,9 +20,17 @@ if(isset($_GET['sort'])){
 	}
 }
 
-$searchString = (isset($_POST['search']) && strlen($_POST['search'])) ? $_POST['search'] : false;
+$searchString = (isset($_POST['search']) && strlen($_POST['search'])) ? trim($_POST['search']) : false;
 
-if(!$searchString) $searchString = (isset($_GET['q']) && strlen($_GET['q'])) ? $_GET['q'] : false;
+	if(!$searchString) $searchString = (isset($_GET['q']) && strlen($_GET['q'])) ? trim($_GET['q']) : false;
+
+
+	if (empty( $searchString )) {
+	    $searchString  = false;
+	}
+ 
+	// sanitize search term
+	$searchString = htmlspecialchars(strip_tags($searchString));
 
 if( $searchString ){
 	$search = new Search( $config );

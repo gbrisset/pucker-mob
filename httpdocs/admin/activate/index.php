@@ -17,6 +17,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
+	<?php include_once($config['include_path_admin'].'header.php');?>
+
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 	<div class="admin-box" id="login-cont">
 		<header>
 			<img src="<?php echo $config['image_url'].'articlesites/logos/'.$mpArticle->data['article_page_logo']; ?>" alt="<?php echo $mpArticle->data['article_page_visible_name']; ?> Logo">
@@ -39,10 +42,10 @@
 			<?php } ?>
 		</div>
 	</div>
-	
+	</main>
 	<?php if(isset($activate['hasError']) && !$activate['hasError']){ ?>
 		<?php $_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time()); ?>
-		<script>setTimeout(function(){window.location = "<?php echo $config['this_admin_url']; ?>"}, 3000);</script>
+		<script>setTimeout(function(){window.location = "<?php echo $config['this_admin_url']; ?>"}, 2000);</script>
 	<?php } ?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>

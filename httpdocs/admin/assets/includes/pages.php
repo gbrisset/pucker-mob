@@ -8,21 +8,22 @@
 ?>
 	<section id="pages">
 		<ul>
+			<li>PAGE:</li>
                 	<?php 
 							if ($pagination->has_previous_page()) {
 								$query_array = array("page"=>$pagination->previous_page(), "sort"=>$order);//, "assoc_cat"=>$category, "visible"=>$visible);
 								$query_string = http_build_query($query_array);
 								echo "<li><a href='".$_SERVER['SCRIPT_NAME']."?page=1'> << </a></li>";
-								echo "<li><a href=\"".$_SERVER['SCRIPT_NAME']."?".$query_string;
-								echo "\" style=\"position:relative;\">";
-								echo " < </a></li>";
+								//echo "<li><a href=\"".$_SERVER['SCRIPT_NAME']."?".$query_string;
+								//echo "\" style=\"position:relative;\">";
+								//echo " < </a></li>";
 							}
 							for ($i=1; $i <= $pagination->total_pages(); $i++) {
 								$query_array = array("page"=>$i, "sort"=>$order);//, "assoc_cat"=>$category, "visible"=>$visible);
 								$query_string = http_build_query($query_array);
 								if ($i==$page) {
 									echo "<li class='current'><a href=".$_SERVER['SCRIPT_NAME']."?".$query_string.">{$i}</a></li>";
-								} else if ($i > $page+3 || $i < $page - 3) {
+								} else if ($i > $page+9 || $i < $page - 9) {
 									// echo ". . .";
 									// break;
 								} else {
@@ -35,10 +36,10 @@
 								$query_string = http_build_query($query_array);
 								echo "<li>. . .</li>";
 								echo "<li><a href='".$_SERVER['SCRIPT_NAME']."?page=".$totalPages."&sort=".$order." '>".$totalPages."</a></li>";
-								echo "<li><a href=\"".$_SERVER['SCRIPT_NAME']."?".$query_string;
-								echo "\" style=\"position:relative;\">";
-								echo " > </a></li>";
-								echo "<li><a href='".$_SERVER['SCRIPT_NAME']."?page=".$totalPages."'> >> </a></li>";
+								//echo "<li><a href=\"".$_SERVER['SCRIPT_NAME']."?".$query_string;
+								//echo "\" style=\"position:relative;\">";
+								//echo " > </a></li>";
+								//echo "<li><a href='".$_SERVER['SCRIPT_NAME']."?page=".$totalPages."'> >> </a></li>";
 							}
 					?>
 		</ul>

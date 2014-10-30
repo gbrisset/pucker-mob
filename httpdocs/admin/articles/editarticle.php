@@ -233,6 +233,9 @@
 									
 						<input type="radio" name="article_type-s" data-info="2" id="news" value="2"  <?php if($article['article_type'] == 2) echo "checked"; ?> />
 						<label for="" class="radio-label">News</label>
+
+						<input type="radio" name="article_type-s" data-info="0" id="staff" value="0"  <?php if($article['article_type'] == 0) echo "checked"; ?> />
+						<label for="" class="radio-label">Staff</label>
 						</div>
 					</div>
 					
@@ -399,6 +402,40 @@
 						<input type="text" name="article_poll_id-s" id="article_poll_id-s" value="<?php if(isset($article['article_poll_id'])) echo $article['article_poll_id']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_poll_id') echo 'autofocus'; ?> />
 					</label></div></div>
 					<?php }?>
+
+					<!-- IMAGE CREDITS -->
+					<div class="row">
+					    <div class="columns">
+							<label>Image Credits:
+								<input type="text" name="article_img_credits-s" id="article_img_credits-s" value="<?php if(isset($article['article_img_credits'])) echo $article['article_img_credits']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />
+								
+								<!--<textarea class="mceEditor-simple" name="article_img_credits-nf" id="article_img_credits-nf" rows="1" placeholder="" ><?php if(isset($article['article_img_credits'])) echo $article['article_img_credits']; ?></textarea>
+								-->
+							</label>
+						</div>
+					</div>
+					<!-- NOTES -->
+					<div class="row">
+					    <div class="columns">
+							<label>Notes:
+								<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" value="<?php if(isset($article['article_additional_comments'])) echo $article['article_additional_comments']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
+							</label>
+						</div>
+					</div>
+
+					<!-- Article Disclaimer -->
+					<div class="row">
+					    <div class="columns">
+						<label class="small-3 left">Article Disclaimer: </label>
+					
+						<input type="radio" name="article_disclaimer-s" id="disclaimer-yes" data-info="1"  value="1" <?php if($article['article_disclaimer'] == 1) echo "checked"; ?> />
+						<label for="" class="radio-label">Yes</label>
+									
+						<input type="radio" name="article_disclaimer-s" data-info="0" id="disclaimer-no" value="0"  <?php if($article['article_disclaimer'] == 0) echo "checked"; ?> />
+						<label for="" class="radio-label">No</label>
+						</div>
+					</div>
+					
 
 					<div class="row">
 					    <div class="columns">

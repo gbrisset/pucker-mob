@@ -161,9 +161,9 @@ class Dashboard{
 		$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_status, 
-		a.article_type, a.creation_date, nc.cat_id, article_rates.rate_by_article, article_rates.rate_by_share, 
+		a.article_type, a.creation_date, nc.cat_id, nc.cat_dir_name, article_rates.rate_by_article, article_rates.rate_by_share, 
 		facebook_shares, twitter_shares, pinterest_shares, google_shares, linkedin_shares, delicious_shares, 
-		stumbleupon_shares, month, year
+		stumbleupon_shares, month, year, date_updated
 		FROM articles as a
 		INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles, 
 				article_rates, social_media_records ) 

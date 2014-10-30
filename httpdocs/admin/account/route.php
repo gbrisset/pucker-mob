@@ -13,12 +13,6 @@
 			if(isset($uri[2]) && strlen($uri[2])) include_once('editaccount.php');
 			else $mpShared->get404();
 			break;
-		// case "newarticle":
-		// 	include_once('newarticle.php');
-		// 	break;
-		// case "newrecipe":
-		// 	include_once('newrecipe.php');
-		// 	break;
 		default:
 			$mpShared->get404();
 			break;	

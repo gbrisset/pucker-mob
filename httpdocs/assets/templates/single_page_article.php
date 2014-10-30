@@ -8,6 +8,8 @@ if (isset($articleInfoObj)) {
 	$date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
 	$contributor_name = $articleInfoObj['contributor_name'];
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
+	$article_img_credits = $articleInfoObj['article_img_credits'];
+	$article_notes = $articleInfoObj['article_additional_comments'];
 }
 ?>
 
@@ -100,6 +102,29 @@ if (isset($articleInfoObj)) {
 		?> 
 			<section id="article-content" class="small-12 column sidebar-box">
 				<p><?php echo $article_body; ?></p>
+				<!-- GOOGLE AD BOTTOM-->
+				<?php if(!$detect->isMobile()){?>
+				<div class="row padding-top padding-bottom">
+					<section class="columns small-12 padding-bottom">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- PM 637x90 Bottom -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:637px;height:90px"
+						     data-ad-client="ca-pub-8978874786792646"
+						     data-ad-slot="3114328182"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</section>
+				</div>
+				<?php }?>
+
+				<!-- IMAGE SOURCE -->
+				<p><?php echo $article_img_credits; ?></p>
+
+				<!-- NOTES -->
+				<p><?php echo $article_notes; ?></p>
+				
 				<?php if($detect->isMobile() && !$detect->isTablet()){?>
 				<div id="grad"></div>
 				<p class="read-more"><a href="#" class="button">

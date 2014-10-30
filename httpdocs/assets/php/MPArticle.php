@@ -1538,14 +1538,20 @@ protected function performQuery($opts){
 public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesFilter) {
 	$status_sql = " WHERE article_status IN (1, 2, 3) ";
 
-	$s = "SELECT count( DISTINCT articles.article_id) as simpledish_article_count 
-	FROM articles";
+	$s = "SELECT count( DISTINCT a.article_id) as simpledish_article_count 
+	FROM articles AS a
+	INNER JOIN ( article_categories AS a_c, categories AS nc, article_contributors, article_contributor_articles) 
+		ON a_c.article_id = a.article_id
+		AND a_c.cat_id = nc.cat_id
+		AND a.article_id = article_contributor_articles.article_id
+		AND article_contributors.contributor_id = article_contributor_articles.contributor_id ";
 	$s .= $status_sql;		
 	if ($userArticlesFilter != 'all'){
 		$s .=	"AND article_contributors.contributor_email_address =  '".$userArticlesFilter."'' ";
 	}
+
 	$queryParams = [
-			//':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)
+			':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)
 	];				
 	$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 	if ($q){
@@ -1581,7 +1587,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$status_sql = " WHERE article_status IN (1, 2, 3) ";
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status,
+	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date,
 	nc.cat_id
 	FROM articles as a
 	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles)
@@ -1599,7 +1605,9 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$s .= 	"LIMIT {$limit} 
 	OFFSET {$offset}";	
 	$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
+
 	$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+	
 	if ($q && isset($q[0])){
 			// If $q is an array of only one row (The set only contains one article), return it inside an array
 		return $q;

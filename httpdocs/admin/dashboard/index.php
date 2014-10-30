@@ -106,7 +106,10 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				  	<?php foreach( $articles as $article ){ 
+				  	<?php 
+
+				  		$date_updated = '';
+				  		foreach( $articles as $article ){ 
 
 				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
 				  		$month_created = date_format(date_create($article['creation_date']), 'n');
@@ -133,6 +136,7 @@
 				  		$linkedin_shares = $article['linkedin_shares'];
 				  		$delicious_shares = $article['delicious_shares'];
 				  		$stumbleupon_shares = $article['stumbleupon_shares'];
+				  		$date_updated = date_format(date_create($article['date_updated']), 'l, F jS Y \a\t h:i:s A');
 
 				  		//RATE BY ARTICLE 
 				  		$rate_by_article = 0;
@@ -150,17 +154,21 @@
 
 				  		//SHARE REVENU = SHARE RATE + RATE BY ARTICLE ( $10 or $5 )
 				  		$share_rev = $share_rate + $rate_by_article;
-
+				  		$total_shares += $total_shares_this_month;
+				  		$total_share_rate += $share_rate;
+				  		$total_article_rate += $rate_by_article;
 				  		$total += $share_rev;
+
+				  		$link_to_article = 'http://puckermob.com/'.$article["cat_dir_name"].'/'.$article["article_seo_title"];
 
 				  	?>
 				    <tr id="article-<?php echo $article['article_id']; ?>">
-				      <td class="article"><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></td>
+				      <td class="article"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
 				      <td><?php echo $creation_date;?></td>
-				      <td><?php echo $rate_by_article;?></td>
+				      <td><?php echo '$'.$rate_by_article;?></td>
 				      <td><?php echo $total_shares_this_month; ?></td>
 				      <td><?php echo $rate_by_share; ?></td>
-				      <td><?php echo $share_rate; ?></td>
+				      <td><?php echo '$'.$share_rate; ?></td>
 				      <td class="bold"><?php echo '$'.$share_rev; ?></td>
 				    </tr>
 
@@ -168,19 +176,27 @@
 				    <tr class="total">
 				    	<td class="bold">TOTAL</td>
 				    	<td></td>
+				    	<td class="bold"><?php echo '$'.$total_article_rate; ?></td>
+				    	<td class="bold"><?php echo $total_shares; ?></td>
 				    	<td></td>
-				    	<td></td>
-				    	<td></td>
-				    	<td></td>
+				    	<td class="bold"><?php echo '$'.$total_share_rate; ?></td>
 				    	<td class="bold"><?php echo '$'.$total; ?></td>
 				    </tr>
 				  </tbody>
 				</table>
 
-				<?php }else{ echo "No Records Found!.";} ?>
+				<?php }else{ ?>
+
+					<section class="columns">
+						<p class="notes bold">No Records Found!</p>
+					</section>
+				<?php } ?>
 			</section>
 			<section>
 				<p class="notes">*All payments will be made via PayPal within 60 days of month's end.</p>
+			</section>
+			<section>
+				<p class="time">Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>
 			</section>
 		</div>
 	</main>

@@ -13,6 +13,8 @@
 	        });
 	    },
 	    selector: "textarea",
+	    external_plugins: {"nanospell": "http://www.puckermob.com/assets/js/tinymce/nanospell/plugin.js"},
+		nanospell_server: "php",
 	    theme: "modern",
 	    plugins: [
 	        "jbimages advlist autolink lists link image charmap print preview anchor",
@@ -23,8 +25,11 @@
 	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview",
 	    relative_urls:false,
 	    init_instance_callback : function() { tinyMCE.activeEditor.getContent();}
+
+	   
 	});
 </script>
+
 <script src="<?php echo $config['this_url']; ?>assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>

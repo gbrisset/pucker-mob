@@ -97,7 +97,7 @@
 					<div class="row">
 					    <div class="large-12 columns  padding-bottom">
 					      <label>Description
-						  <textarea name="page_list_desc" id="page_list_desc" rows="5" required placeholder="Please enter the list's description here." ><?php if(isset($page_list->page_list_desc)) echo $page_list->page_list_desc; ?></textarea>					      </label>
+						  <textarea class="mceEditor" name="page_list_desc" id="page_list_desc" rows="5" required placeholder="Please enter the list's description here." ><?php if(isset($page_list->page_list_desc)) echo $page_list->page_list_desc; ?></textarea>					      </label>
 					    </div>
 				  	</div>
 				  	<div class="row">
@@ -207,7 +207,7 @@
 				  		<div class="row">
 						    <div class="small-12 columns">
 						      <label>Description:
-								<textarea class="" name="page_list_item_body" id="page_list_item_body" rows="10" required placeholder="Please enter the item's content here." ><?php if(isset($page_list_item->page_list_item_body)) echo $page_list_item->page_list_item_body; ?></textarea>
+								<textarea class="mceEditor" name="page_list_item_body" id="page_list_item_body" rows="10" required placeholder="Please enter the item's content here." ><?php if(isset($page_list_item->page_list_item_body)) echo $page_list_item->page_list_item_body; ?></textarea>
 							  </label>
 						    </div>
 				  		</div>
@@ -245,7 +245,10 @@
 							    <div class="small-11 columns">
 							      <label>Image Credit:
 									<input type="text" name="page_list_item_image_source" id="page_list_item_image_source" placeholder="Please enter the image's source." value="<?php if(isset($page_list_item->page_list_item_image_source)) echo htmlentities($page_list_item->page_list_item_image_source); ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_title') echo 'autofocus'; ?> />
-								  </label>
+								 	<!--
+								   <textarea class="mceEditor-simple" name="page_list_item_image_source" id="page_list_item_image_source" rows="1" placeholder="Please enter the image's source." ><?php if(isset($page_list_item->page_list_item_image_source)) echo htmlentities($page_list_item->page_list_item_image_source); ?></textarea>
+ 									-->
+								</label>
 							    </div>
 							    <div class="small-1 tooltip">
 									<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
@@ -254,6 +257,13 @@
 									</div>
 								</div>
 					  		</div>
+					  		<div class="row">
+							    <div class="small-11 columns">
+							      <label>Comments:
+									<input type="text" name="page_list_item_notes" id="page_list_item_notes" placeholder="Please enter Any comments Here" value="<?php if(isset($page_list_item->page_list_item_notes)) echo htmlentities($page_list_item->page_list_item_notes); ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_notes') echo 'autofocus'; ?> />
+								  </label>
+							    </div>
+							 </div>
 					  		<hr>
 						</div>
 
@@ -344,6 +354,14 @@
 									</div>
 								</div>
 					  		</div>
+					  		<hr>
+					  		<div class="row">
+							    <div class="small-11 columns">
+							      <label>Comments:
+										<input type="text" name="page_list_item_notes" id="page_list_item_notes" placeholder="Please enter your comments here" value=""  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'page_list_item_notes') echo 'autofocus'; ?> />
+								  </label>
+							    </div>
+							</div>
 					  		<hr>
 					
 							<!--Youtube -->	

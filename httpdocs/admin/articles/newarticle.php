@@ -117,6 +117,9 @@
 									
 							<input type="radio" name="article_type-s" data-info="2" id="news" value="2"  />
 							<label for="" class="radio-label">News</label>
+
+							<input type="radio" name="article_type-s" data-info="0" id="staff" value="0"  />
+							<label for="" class="radio-label">Staff</label>
 						</div>
 					</div>
 					<?php //}?>
@@ -212,6 +215,39 @@
 					
 					<input type="hidden" class="hidden" id="article_template_type-s" name="article_template_type-s" value="0" />
 
+				<div class="row">
+					<!-- IMAGE CREDITS -->
+					<div class="columns">
+					   	<label>Image Credits :
+							<input type="text" name="article_img_credits-s" id="article_img_credits-s" placeholder="Please enter the image credits here."  value="<?php if(isset($_POST['article_img_credits-s'])) echo $_POST['article_img_credits-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />
+						<!--
+						<textarea  class="mceEditor-simple" name="article_img_credits-nf" id="article_img_credits-nf" rows="1" required placeholder="Please enter the image credits here." ><?php if(isset($_POST['article_img_credits-nf'])) echo $_POST['article_img_credits-nf']; ?></textarea>
+					-->
+					</label>
+					</div>
+				</div>
+				<div class="row">
+					<!-- COMMENTS -->
+					<div class="columns">
+					   	<label>Notes:
+							<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="Please enter Additional Comments here."  value="<?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
+						</label>
+					</div>
+				</div>
+
+				<!-- Article Disclaimer  -->
+					<div class="row">
+					    <div class="columns">
+							<label class="small-3 left">Article Disclaimer: </label>
+							
+							<input type="radio" name="article_disclaimer-s" id="disclaimer-yes" data-info="1"  value="1"  />
+							<label for="" class="radio-label">Yes</label>
+									
+							<input type="radio" name="article_disclaimer-s" data-info="2" id="disclaimer-no" value="0" checked />
+							<label for="" class="radio-label">No</label>
+						</div>
+					</div>
+					
 					<div class="row">
 					    <div class="columns">
 						<div class="btn-wrapper">

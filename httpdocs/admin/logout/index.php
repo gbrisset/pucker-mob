@@ -16,16 +16,19 @@
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<div class="admin-box" id="login-cont">
 			<header>
-				<h1><span>Spaghetti Mob</span></h1>
+				<h1><span>Pucker Mob</span></h1>
 			</header>
 
 			<div class="admin-form-cont" id="verify-cont">
-				<p>You've been successfully logged out.  You'll be redirected momentarily to the main site.  If not, click <a href="<?php echo $config['this_url']; ?>">Here</a></p>
+				<p>You've been successfully logged out.  You'll be redirected momentarily to the main site.  
+					If not, click <a href="<?php echo $config['this_url']; ?>">Here</a></p>
+				<p>Or you can  <a href="http://www.puckermob.com/admin/login/">Log in to existing account here!</a></p>
+
 			</div>
 		</div>
 	</main>
 
-	<script>setTimeout(function(){window.location = "<?php echo $config['this_url']; ?>"}, 2000);</script>
+	<script>setTimeout(function(){window.location = "http://www.puckermob.com"}, 5000);</script>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

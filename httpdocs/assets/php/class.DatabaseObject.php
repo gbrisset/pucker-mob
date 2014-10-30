@@ -343,7 +343,7 @@ class DatabaseObject{
 		
 		//	We are not running the update on the database, so we do not need the table or column info
 		if(!is_uploaded_file($file['tmp_name'])) {
-			return array_merge($this->helpers->returnStatus(500), array('message' => '3-Sorry, no valid files were found.  Please try again.'));
+			return array_merge($this->returnStatus(500), array('message' => '3-Sorry, no valid files were found.  Please try again.'));
 		}
 
 		$fileName = explode('.', $file['name']);

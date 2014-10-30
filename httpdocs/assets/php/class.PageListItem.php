@@ -19,9 +19,10 @@ class PageListItem extends DatabaseObject{
 	public $page_list_item_image_source;
 	public $page_list_item_youtube_embed;
 	public $page_list_item_body;
+	public $page_list_item_notes;
 
 	//	Object Vars
-	protected static $db_fields = array('page_list_item_id', 'page_list_item_title', 'page_list_item_image', 'page_list_item_image_source', 'page_list_item_youtube_embed', 'page_list_item_body');
+	protected static $db_fields = array('page_list_item_id', 'page_list_item_title', 'page_list_item_image', 'page_list_item_image_source', 'page_list_item_youtube_embed', 'page_list_item_body','page_list_item_notes');
 	public $sort_order;
 	//	upload(): IMAGE_UPLOAD_DIR . $upload_dir_name . '/'
 	protected static $upload_dir_name = 'list';

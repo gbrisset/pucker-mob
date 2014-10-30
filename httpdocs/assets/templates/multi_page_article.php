@@ -92,7 +92,6 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<h2 class="" style="<?php // echo $h2style; ?>"><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
 			
 				<?php if ( $detect->isMobile() ) { ?>
-				
 				<!-- GOOGLE AD UNIT MOBILE --> 
 
 				<div class="hide-for-print row no-padding padding-top padding-bottom" style="margin-bottom: 0.2rem; ">
@@ -149,6 +148,17 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 						</section>
 					</div>
 				<?php }?>
+
+				<!-- SLIDE COMMENTS -->
+				<section class="row">
+					<p id="list_item_notes" class="columns small-12 " style="margin: 0.2rem 0 0.8rem 0;"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_notes)) ? $page_list_items->page_list_item_notes : ''); ?></p>
+				</section>
+
+				<!-- SLIDE IMAGE SOURCE-->
+				<section class="row">
+					<p id="photo-credit-text" class="columns small-12 " style="margin: 0.2rem 0 0.8rem 0;"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)) ? $page_list_items->page_list_item_image_source : ''); ?></p>
+				</section>	
+
 				<!-- Like us on FB --> 
 			
 			<div class="row hide-for-print like-us-fb">
@@ -184,7 +194,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					<?php if($total_count > $page){ ?>
 					<li  class="arrow-box right"><a href="<?php echo $article_link.'?p='.($page + 1); ?>"><div class="arrow-right"><?php echo $nexttext;?><i class="fa fa-caret-right"></i></div></a></li>
 					<?php } else if($next_article){ ?>
-					<li><a href="<?php echo $config['this_url'].$next_article['cat_dir_name'] .'/'.$next_article['article_seo_title'] ?>"><div class="arrow-right">NEXT<i class="fa fa-caret-right"></i></div></a></li>
+					<li class="arrow-box right"><a href="<?php echo $config['this_url'].$next_article['cat_dir_name'] .'/'.$next_article['article_seo_title'] ?>"><div class="arrow-right"><?php echo $nexttext;?><i class="fa fa-caret-right"></i></div></a></li>
 
 					<?php } ?>
 				</ul>

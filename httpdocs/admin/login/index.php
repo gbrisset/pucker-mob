@@ -5,6 +5,7 @@
 	
 	if(isset($_POST['submit'])) {
 		$loginStatus = $adminController->user->handleLogin($_POST);
+
 		if($loginStatus['hasError'] == true) {
 			//	Failure
 			$adminController->user->invalidateAllTokens();
@@ -13,6 +14,7 @@
 			$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 
 			$redirectString = $adminController->user->redirectAfterLogin();
+			
 			echo $redirectString;
 		}
 	} 

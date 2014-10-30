@@ -30,19 +30,21 @@ class MPAdminUserController extends MPArticleAdminController{
 	public function redirectAfterLogin(){
 		//	getUserInfo() doesn't require any arg - uses $_SESSION
 		$user = $this->getUserInfo();
+		
 		$config = $this->config;
 		if($user['user_type'] > 2){
 			//	Check if 1st login...
 			if($user['user_login_count'] <= 1){
 				//	Redirect to admin/ (first login)
-				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 1000);</script>";
+				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
 			} else {
 				//	Redirect to admin/articles/ (user_type: 3, 4)
-				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."articles/\"}, 1000);</script>";
+				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
+				//return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."articles/\"}, 1000);</script>";
 			}
 		} else {
 			//	Redirect to admin/	(user_type: 1, 2)
-			return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 1000);</script>";
+			return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
 		}
 	}
 
@@ -553,7 +555,7 @@ End password reset methods
 		//	If we're not working locally...
 		//	Prevent login in case of possible brute force attack.  If the user has tried to login more than 10 times in the last 15 minutes
 		if($this->config['host'] != 'localhost'){
-			if($loginAttempts >= 5) return array(
+			if($loginAttempts >= 50) return array(
 				'hasError' => true, 
 				'message' => "Sorry, looks like you've tried to log in too many times recently.  Wait a bit and try again!"
 			);

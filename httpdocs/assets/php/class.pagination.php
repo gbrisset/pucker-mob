@@ -50,11 +50,13 @@ class Pagination {
 		// page 1 has an offset of 0	(1-1) * 10
 		// page 2 has an offset of 10	(2-1) * 10
 		//		in other words, page 2 starts with item 21
+		
 		return ($this->current_page - 1) * $this->per_page;
 		
 	}
 
 	public function total_pages() {
+
 		return ceil($this->total_count/$this->per_page);	
 	}
 	

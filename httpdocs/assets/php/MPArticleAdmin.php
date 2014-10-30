@@ -63,19 +63,23 @@ class MPArticleAdmin{
 		switch ($status) {
 			case 1:
 				//	Live
-				return '<p class="live">LIVE</span></p>';
+				//return '<p class="live">LIVE</span></p>';
+				return 'LIVE';
 				break;
 			case 2:
 				//	Pending Review
-				return '<p class="pending">Pending Review</span></p>';
+				//return '<p class="pending">Pending Review</span></p>';
+				return 'PENDING';
 				break;
 			case 3:
 				//	Draft
-				return '<p class="draft">Draft</span></p>';
+				//return '<p class="draft">Draft</span></p>';
+				return 'DRAFT';
 				break;
 			default:
 				//	Draft
-				return '<p class="live">Draft</span></p>';
+				//return '<p class="live">Draft</span></p>';
+				return 'DRAFT';
 				break;
 		}
 	}

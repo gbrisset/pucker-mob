@@ -39,16 +39,21 @@
       
       <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
 
+      <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+      else{?>
       <div id="btf1-ad" class="ad-unit ad300 show-on-large-up"></div>
       <div id="atf1050-ad" class="ad-unit ad300 show-on-large-up"></div>
-      
+       <?php }?>
+
+
       <section id="sub-sidebar-2" class="sidebar shadow-on-large-up">
          <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
          <?php //include_once($config['include_path'].'sistersite.php'); ?>
       </section>
-
+ <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+      else{?>
       <div id="btf2-ad" class="ad-unit ad300"></div>
-
+<?php }?>
       <?php if( !isset($isHomepage) ){ ?>
       <section id="sub-sidebar-3" class="sidebar shadow-on-large-up show-on-large-up"  style="margin: 0.9375rem 0 !important;">
          <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners</h4></div>
@@ -57,7 +62,9 @@
        <div id="btf3-ad" class="ad-unit ad300"></div>
       <?php }else{ ?>
       
+      <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+      else{?>
       <div id="btf3-ad" style="margin-top: 1rem !important; " class="ad-unit ad300"></div>
-
+<?php }?>
     <?php } }?>
 </aside>

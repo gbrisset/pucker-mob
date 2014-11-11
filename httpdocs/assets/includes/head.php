@@ -119,7 +119,7 @@
 
 <?php if(!$detect->isMobile()){?>
 
- <?php if(isset($isHomepage) && $isHomePage ){?>
+ <?php if($isHomepage){?>
     <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 home -->
     <script type="text/javascript">
     if ((typeof(f466927)=='undefined' || f466927 > 0) ) {
@@ -145,8 +145,6 @@
     <!-- END AD TAG -->
   <?php }?>
 <?php }?>
-
-
 
 <!-- COMSCORE -->
 <script>
@@ -221,8 +219,8 @@
 		 <!-- IF ARTICLE PAGE -->
 	    <?php if(isset($articleInfo) && $articleInfo){ ?>
 	    	<?php if(!$promotedArticle ){?>
-	     	<!-- Puckermob Instory Connatix-->
-			<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='1f15e94f-843f-4d31-8940-4eb181b32d73'></script>
+	     	<!-- Puckermob Instory Connatix
+			<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='1f15e94f-843f-4d31-8940-4eb181b32d73'></script>-->
 		   <?php } ?>
 		    <?php }else{?> 
 		    	<!-- Puckermob - Homepage  Connatix -->

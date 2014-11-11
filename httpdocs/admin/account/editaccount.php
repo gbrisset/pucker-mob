@@ -1,7 +1,11 @@
 <?php
 	$userInfo = $adminController->user->data;
+
+	//if( $userInfo && isset($userInfo[0])) $userInfo = $adminController->user->data[0];
+	
 	//	If the user hasn't yet set an image, set $image = default_profile_image.png
 	$image = (isset($userInfo['contributor_image']) && $userInfo['contributor_image'] != "") ? $userInfo['contributor_image'] : 'default_profile_contributor.png';
+
 
 	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
 	if (isset($userInfo['contributor_id'])){
@@ -130,7 +134,7 @@
 					<h2>My Information</h2>
 				</header>
 
-				<form class="ajax-submit-form" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
+				<form class="ajax-submit-form clear" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
 					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
@@ -388,7 +392,7 @@
 		</div>
 	</div>
 
-	<?php include_once($config['include_path'].'footer.php');?>
+	<?php include_once($config['include_path_admin'].'footer.php');?>
 	<div id='lightbox-cont'>
 		<div class="overlay"></div>
 

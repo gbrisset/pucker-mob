@@ -44,8 +44,8 @@ class Dashboard{
 	}
 
 	//Verify if an article exist on the DB then decide if Update or Insert a new record on the social_media_records table
-	private function verifyArticleidonSocial( $articleId, $month ){
-			$s="SELECT article_id FROM social_media_records WHERE article_id = $articleId AND month = $month";
+	private function verifyArticleidonSocial( $articleId, $month, $cat ){
+			$s="SELECT article_id FROM social_media_records WHERE article_id = $articleId AND category = '".$cat."' AND month = $month";
 
 			$queryParams = [':articleID' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
 							':month' => filter_var($month, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT) ];
@@ -70,18 +70,16 @@ class Dashboard{
 	}
 
 	/* INSERT OR UPDATE RECORDS TO THE SOCIAL MEDIA TABLE */
-	public function updateSocialMediaShares( $counts, $articleId, $month ){
-	
+	public function updateSocialMediaShares( $counts, $articleId, $month, $cat ){
+	//var_dump($counts);
 			if( $articleId ){
+
 				$current_date = date('Y-m-d H:i:s', time());
 
 				if(!isset($counts)) return false;
 				
-				$prevData = $this->get_dashboardArticlesPrevMonth( $articleId , $month - 1 );
-				$idExist = $this->verifyArticleidonSocial( $articleId , $month );
-				//var_dump($prevData);
-				//echo "CURRENT DATA";
-				//	var_dump($counts);
+				$prevData = $this->get_dashboardArticlesPrevMonth( $articleId , $month - 1, $cat );
+				$idExist = $this->verifyArticleidonSocial( $articleId , $month, $cat );
 
 				$facebook_shares = abs($counts['Facebook']['share_count'] - $prevData['facebook_shares']);
 				$twitter_shares = abs($counts['Twitter'] - $prevData['twitter_shares']);
@@ -91,24 +89,23 @@ class Dashboard{
 				$stumbleupon_shares = abs($counts['StumbleUpon'] - $prevData['stumbleupon_shares']);
 				$linkedin_shares = abs($counts['LinkedIn'] - $prevData['linkedin_shares']);
 				$year = date('Y');
-	
+
 				if($idExist){
 
 					$s = " UPDATE social_media_records 
 					  	   SET facebook_shares = $facebook_shares, twitter_shares = $twitter_shares, 
 					           pinterest_shares = $pinterest_shares, google_shares = $google_shares, 
 					           delicious_shares = $delicious_shares, stumbleupon_shares = $stumbleupon_shares,
-					           linkedin_shares = $linkedin_shares, date_updated = $current_date 
-					        WHERE article_id = $articleId AND month = $month";
+					           linkedin_shares = $linkedin_shares, date_updated = '".$current_date."'  
+					        WHERE article_id = $articleId AND category = '".$cat."' AND month = '".$month."' ";
 				}else{
 					$s = " INSERT INTO social_media_records
-						   (`id`, `article_id`, `facebook_shares`, `twitter_shares`, `pinterest_shares`, `google_shares`,
+						   (`id`, `article_id`, `category`, `facebook_shares`, `twitter_shares`, `pinterest_shares`, `google_shares`,
 						    `linkedin_shares`, `delicious_shares`, `stumbleupon_shares`, `month`, `year`, `date_updated`) 
-						   VALUES (NULL, $articleId, $facebook_shares, $twitter_shares, $pinterest_shares, $google_shares, 
+						   VALUES (NULL, $articleId, '".$cat."', $facebook_shares, $twitter_shares, $pinterest_shares, $google_shares, 
 						   	$linkedin_shares, $delicious_shares, $stumbleupon_shares, $month, $year, now()) ";
 					
 					}
-		
 
 				$queryParams = [
 					':articleId' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
@@ -127,7 +124,6 @@ class Dashboard{
 				$q = $pdo->prepare($s);
 
 				$row = $q->execute($queryParams);
-
 				return $row; 
 			}else{
 				return false;
@@ -160,16 +156,16 @@ class Dashboard{
 		$status_sql = " WHERE article_status = 1 AND social_media_records.month = ".$month ." ";
 		$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+
 		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_status, 
-		a.article_type, a.creation_date, nc.cat_id, nc.cat_dir_name, article_rates.rate_by_article, article_rates.rate_by_share, 
+		a.article_type, a.creation_date,  article_rates.rate_by_article, article_rates.rate_by_share, 
 		facebook_shares, twitter_shares, pinterest_shares, google_shares, linkedin_shares, delicious_shares, 
-		stumbleupon_shares, month, year, date_updated
+		stumbleupon_shares, month, year, date_updated, category
 		FROM articles as a
-		INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles, 
+		INNER JOIN ( article_contributors, article_contributor_articles, 
 				article_rates, social_media_records ) 
-		ON a_c.article_id = a.article_id 
-		AND a_c.cat_id = nc.cat_id 
-		AND a.article_id = article_contributor_articles.article_id 
+		ON a.article_id = article_contributor_articles.article_id 
 		AND article_contributors.contributor_id = article_contributor_articles.contributor_id
 		AND a.article_type = article_rates.rate_id
 		AND a.article_id = social_media_records.article_id ";
@@ -178,7 +174,7 @@ class Dashboard{
 		if ($userArticlesFilter != 'all'){
 			$s .=	"AND article_contributors.contributor_email_address = :userArticlesFilter ";
 		}
-		$s .= " GROUP BY a.article_id ";
+		//$s .= " GROUP BY a.article_id ";
 		$s .= $order_sql;
 		$s .= 	"LIMIT {$limit} OFFSET {$offset}";	
 
@@ -198,9 +194,9 @@ class Dashboard{
 	}
 
 	// Get  Preview Month Article Social Media Information
-	public function get_dashboardArticlesPrevMonth( $article_id, $month ){
+	public function get_dashboardArticlesPrevMonth( $article_id, $month, $cat ){
 		
-		$s = "SELECT * FROM social_media_records where article_id = $article_id AND month = $month";
+		$s = "SELECT * FROM social_media_records where article_id = $article_id AND category = '".$cat."' AND month = $month";
 
 		$pdo = $this->con->openCon();
 		
@@ -217,6 +213,73 @@ class Dashboard{
 
 		return $row; 
 
+	}
+
+	public function socialMediaSharesReport($data){
+
+		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$contributor_id = $data['contributor'];
+
+
+		$s = "
+			SELECT
+			      article_contributor_articles.contributor_id, 
+			      article_contributors.contributor_name, 
+			      article_contributors.contributor_seo_name, 
+			      SUM(social_media_info.rate) as 'total_rate',
+			      SUM(social_media_info.total_shares) as 'total_shares', 
+			      '0.04' as 'share_rate',
+			      (SUM(social_media_info.total_shares)*0.04) as 'share_revenue',
+			      ((SUM(social_media_info.total_shares)*0.04) + SUM(social_media_info.rate)) as 'total_to_pay'
+			      
+			FROM  article_contributor_articles 
+
+			INNER JOIN ( article_contributors ) ON ( article_contributor_articles.contributor_id = article_contributors.contributor_id )
+			INNER JOIN ( 
+
+				SELECT 
+				social_media_records.article_id, social_media_records.category,  
+				social_media_records.month,  social_media_records.year,  
+				(SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) +  SUM(linkedin_shares)  +  SUM(delicious_shares) + SUM(stumbleupon_shares))  as 'total_shares', IF( DATE_FORMAT(articles.creation_date, '%m') !=  social_media_records.month, 0, article_rates.rate_by_article) as 'rate'
+				            
+				FROM social_media_records 
+
+				INNER JOIN ( articles, article_rates) 
+				ON (articles.article_id = social_media_records.article_id) 
+				AND ( articles.article_type = article_rates.rate_id)
+
+				WHERE social_media_records.month = '".$month."' and year = '".$year." '
+
+				GROUP BY social_media_records.article_id ) as social_media_info  
+
+			ON( article_contributor_articles.article_id = social_media_info.article_id ) ";
+
+			if(isset($contributor_id) && $contributor_id != 0) {
+				$s .= "	WHERE article_contributor_articles.contributor_id = '".$contributor_id."' ";
+			}
+
+			$s .=" GROUP BY article_contributor_articles.contributor_id 
+				   ORDER BY total_to_pay DESC ";
+
+		$queryParams = [ ];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		//var_dump($month, $year, $contributor_id, $s, $q);
+		if ($q && isset($q[0])){
+			return $q;
+		} else if ($q && !isset($q[0])){
+			$q = array($q);
+			return $q;
+		}else return false;
+
+	}
+
+	public function getSocialSharesAndContributors(){
+		$s=" SELECT social_media_records.*, article_contributors.contributor_id, article_contributors.contributor_name, article_contributors.contributor_seo_name FROM social_media_records 
+			 INNER JOIN ( article_contributors, article_contributor_articles) 
+			 ON ( article_contributor_articles.article_id = social_media_records.article_id) 
+			 AND ( article_contributors.contributor_id = article_contributor_articles.contributor_id ) ";
 	}
 
 }

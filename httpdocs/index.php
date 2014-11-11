@@ -2,6 +2,7 @@
 require_once('assets/php/config.php');
 $pageName = $mpArticle->data['article_page_name'];
 $isHomepage = true;
+$has_sponsored = $mpArticle->data['has_sponsored_by'];
 
 if ( $detect->isMobile() ) {?>
 <!DOCTYPE html>
@@ -27,6 +28,9 @@ if ( $detect->isMobile() ) {?>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="home">
+	<!-- Sponsored By Totally Her -->
+	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
+
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">

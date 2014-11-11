@@ -312,6 +312,9 @@ $(document).ready(function() {
 				flyatf: document.getElementById("flyatf-ad"),
 			}
 		};
+		var hasSponsored = $("#has-sponsored-by").val();
+		
+	//if( !smarties && (hasSponsored == undefined || hasSponsored == 0)){
 	if( !smarties ){
 		if(browser_width < 740) {
 			loadAd(select.ad.header, mobilead[adPage].header);
@@ -338,6 +341,7 @@ $(document).ready(function() {
 		if( adPage === 'article'){
 			//Single Page Article ATFs 
 			inBodyAd.loadInArticleAd( 'article-content', 2, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
+			//inBodyAd.loadInArticleAd( 'article-content', 5, 0, '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', 'p');
 		}
 		if( adPage === 'articleslide'){
 			//Single Page Article ATFs 
@@ -352,7 +356,9 @@ $(document).ready(function() {
 	}
 		//BTF3
 		if( page === 'home' ||  page === 'category'){
+			if(hasSponsored == undefined || hasSponsored == 0){
 			loadAd(select.ad.btf3, ad[adPage].btf3);
+			}
 		}
 
 		//ATF LEFT AND RIGHT FOR MULTI PAGE ARTICLES

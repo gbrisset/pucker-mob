@@ -109,12 +109,23 @@
 				  	<?php 
 
 				  		$date_updated = '';
+				  		$ids = array();
+
+				  		foreach( $articles as $article ){ 
+				  			$id = $article['article_id'];
+
+				  			array_push($ids, $id);
+
+				  		}
+				  		
+				  		$freqs = array_count_values($ids);
+
 				  		foreach( $articles as $article ){ 
 
 				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
 				  		$month_created = date_format(date_create($article['creation_date']), 'n');
-				  		
-				  		$prevMonthData = $dashboard->get_dashboardArticlesPrevMonth($article['article_id'], $month - 1);
+				  		$cat = $article['category'];
+				  		$prevMonthData = $dashboard->get_dashboardArticlesPrevMonth($article['article_id'], $month - 1, $cat);
 
 				  		/*Display just those articles when the shares has changed.*/
 				  		if( $prevMonthData ){
@@ -137,12 +148,16 @@
 				  		$delicious_shares = $article['delicious_shares'];
 				  		$stumbleupon_shares = $article['stumbleupon_shares'];
 				  		$date_updated = date_format(date_create($article['date_updated']), 'l, F jS Y \a\t h:i:s A');
+				  		$article_id = $article['article_id'];
 
+				  		//How many time the same article is listed.
+						$count = $freqs[$article_id];
+				  		
 				  		//RATE BY ARTICLE 
 				  		$rate_by_article = 0;
 				  		//var_dump($month_created, $current_month, $month);
 				  		if( $month_created == $month ){
-				  			$rate_by_article = $article['rate_by_article'];
+				  			$rate_by_article = $article['rate_by_article'] / $count;
 				  		}
 				  		$rate_by_share  = $article['rate_by_share'];
 				  		
@@ -152,14 +167,16 @@
 				  		//SHARE RATE  TOTAL SHARES * RATE BY ARTICLE (0.04)			   
 				  		$share_rate = $total_shares_this_month * $rate_by_share;
 
-				  		//SHARE REVENU = SHARE RATE + RATE BY ARTICLE ( $10 or $5 )
+				  		//SHARE REVENU = SHARE RATE + RATE BY ARTICLE ( $10 or $5 or $0)
 				  		$share_rev = $share_rate + $rate_by_article;
 				  		$total_shares += $total_shares_this_month;
 				  		$total_share_rate += $share_rate;
 				  		$total_article_rate += $rate_by_article;
 				  		$total += $share_rev;
 
-				  		$link_to_article = 'http://puckermob.com/'.$article["cat_dir_name"].'/'.$article["article_seo_title"];
+				  		$link_to_article = 'http://puckermob.com/'.$article["category"].'/'.$article["article_seo_title"];
+
+				  		if($month_created != $month && $share_rev == 0) continue; 
 
 				  	?>
 				    <tr id="article-<?php echo $article['article_id']; ?>">
@@ -192,11 +209,19 @@
 					</section>
 				<?php } ?>
 			</section>
+
 			<section>
-				<p class="notes">*All payments will be made via PayPal within 60 days of month's end.</p>
+				<p class="notes">
+					*Please note: In cases where your article shows a lower flat rate than what was originally quoted, 
+				your article has been placed in multiple categories, and the flat rate payment fee has simply 
+				been divided among them.
+				</p>
 			</section>
 			<section>
-				<p class="time">Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>
+				<p class="notes">*All payments will be made via PayPal the 15th of the month.</p>
+			</section>
+			<section>
+				<p class="time">*Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>
 			</section>
 		</div>
 	</main>

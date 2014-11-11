@@ -134,6 +134,8 @@
 				
 				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'dashboard/', 'label' => 'My Dashboard', 'current' => (isset($uri[1]) && $uri[1] == 'dashboard') ? 'current' : ''));
 	
+				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'reports', 'label' => 'Reports', 'current' => (isset($uri[1]) && $uri[1] == 'reports') ? 'current' : ''));
+
 				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].$userLink, 'label' => 'My Profile', 'current' => (isset($uri[1]) && $uri[1] == 'user') ? 'current' : ''));
 
 				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'contact/', 'label' => 'Contact Us', 'current' => (isset($uri[0]) && $uri[0] == 'contact') ? 'current' : '' ));

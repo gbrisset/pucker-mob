@@ -740,8 +740,10 @@ End password reset methods
 			if(isset($contributor_seo_name)) $contributor_seo_name = join(explode(' ', strtolower(preg_replace('/[^A-Za-z0-9- ]/', '', $contributor_seo_name))), '-');
 
 			$dupCheck = $this->mpArticle->getContributors(['contributorSEOName' => $contributor_seo_name] );
-		
-			if(count($dupCheck['contributors']) <= 0){
+			$dupCheckEmail = $this->mpArticle->getContributors(['contributorEmail' => $post['user_email-e'] ] );
+
+
+			if(count($dupCheck['contributors']) <= 0 && count($dupCheckEmail['contributors']) <= 0){
 				$contributor_id = $this->performUpdate(array(
 					'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."')",
 					'updateParams' => $params
@@ -787,7 +789,7 @@ End password reset methods
 		//$mail ->Port = 465;
 		$mail->Port = MAIL_PORT;
 		$mail->From = MAIL_USER;
-		$mail->FromName = 'Simpledish';
+		$mail->FromName = 'PuckerMob';
 		$mail->addAddress($opts['email'], $opts['username']);	// Add a recipient
 		//$mail->addAddress('ellen@example.com');						// Name is optional
 		$mail->addReplyTo(MAIL_USER, 'Information');
@@ -801,7 +803,7 @@ End password reset methods
 
 		$mail->Subject = $opts['subject'];
 		$mail->Body    = $body;
-		$mail->AltBody = 'Thank you for registering with simpledish.com!  Go to '.$options['hashUrl'].' to complete the registration process.';
+		$mail->AltBody = 'Thank you for registering with puckermob.com!  Go to '.$options['hashUrl'].' to complete the registration process.';
 
 		if(!$mail->send()) {
 		   //return 'Message could not be sent.';

@@ -6,8 +6,8 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
+      <?php if( isset($promotedArticle) && !$promotedArticle && !$has_sponsored){ ?>
 
    <!--[if !IE]>
   <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -22,10 +22,6 @@
     <?php } ?>
 
 
-<!-- GUM GUM 
-      <script>ggv2id='64bad626';</script>
-      <script src="http://g2.gumgum.com/javascripts/ggv2.js"></script>-->
-
   <!-- AdsNative.com -->
   <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>
 
@@ -35,8 +31,9 @@
   <!-- IS NOT VIDEO PAGE -->
     <?php if( !isset($isVideoPage) ){
       if (!$local){?>
-      <!-- WAHWAH RADIO PLAYER -->
+      <!-- WAHWAH RADIO PLAYER 
       <script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>
+      -->
       <!-- End WAHWAH Radio Player -->
       <?php } 
     } ?>
@@ -70,13 +67,13 @@
     </script>
   <?php } ?>
 
+   <?php } ?>
 
-   
 <!-- MOBILE -->
 <?php }else{ ?>
   <?php if( !$promotedArticle ){ ?>
-  <!-- SHARETHROUNG -->
-  <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+  <!-- SHARETHROUNG 
+  <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
 
   <!-- GUM GUM -->
   <script src="//g2.gumgum.com/javascripts/ad.js"></script>
@@ -104,6 +101,10 @@
 <!-- DESKTOP & MOBILE SCRIPT -->
 
 <?php if( !$promotedArticle ){ ?>
+
+ <!-- SHARETHROUNG -->
+  <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+  
 <!-- Nativo -->
 <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
 <?php }?>

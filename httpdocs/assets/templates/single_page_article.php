@@ -10,12 +10,20 @@ if (isset($articleInfoObj)) {
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 	$article_img_credits = $articleInfoObj['article_img_credits'];
 	$article_notes = $articleInfoObj['article_additional_comments'];
+	$article_disclaimer = $articleInfoObj['article_disclaimer'];
 }
 ?>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 <?php if($detect->isMobile()) echo " no-padding "; ?>">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	<section id="article-summary" class="small-12 column">
+		<?php if($article_disclaimer){?>
+		<div class="columns no-padding">
+			<p style="font-size:10pt; font-style: italic;">*The following article does not represent the viewpoints of PuckerMob, it's management or partners, but is solely 
+					the opinion of the contributor.</p>
+		</div>
+		<?php }?>
+		
 		<h1><?php echo $article_title; ?></h1>
 		
 		<div class="row">

@@ -12,10 +12,14 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$articleIndex++;
 	$quantity = 25;
 	$omitThis =  $featuredArticle['article_id'];
+
 	include_once($config['include_path'].'featured_article.php');
+	if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+		else{
 	echo '<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">';
 	echo '	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
 	echo '	</div>';
+}
 }
 
 $articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);

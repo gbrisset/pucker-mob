@@ -7,15 +7,15 @@
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
 	<script type="text/javascript">
 	tinymce.init({
-		setup: function (ed) {
-	        ed.on('init', function(args) {
-	            console.debug(args.target.id);
-	        });
-	    },
+		//setup: function (ed) {
+	    //    ed.on('init', function(args) {
+	       //     console.debug(args.target.id);
+	       // });
+	    //},
 	    selector: "textarea",
 	    external_plugins: {"nanospell": "http://www.puckermob.com/assets/js/tinymce/nanospell/plugin.js"},
-		nanospell_server: "php",
-	    theme: "modern",
+		//nanospell_server: "php",
+	   // theme: "modern",
 	    plugins: [
 	        "jbimages advlist autolink lists link image charmap print preview anchor",
 	        "searchreplace visualblocks code fullscreen",
@@ -23,8 +23,11 @@
 	    ],
 
 	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview",
-	    relative_urls:false,
-	    init_instance_callback : function() { tinyMCE.activeEditor.getContent();}
+	    //relative_urls:false,
+	    init_instance_callback : function() {
+	     tinyMCE.activeEditor.getContent();
+	//     console.log(tinyMCE.activeEditor.getContent());
+	 }
 
 	   
 	});

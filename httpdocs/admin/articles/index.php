@@ -85,7 +85,7 @@
 						  <input id="puckermob" checked disabled type="checkbox"><label for="puckermob">PuckerMob</label>
 					      <input id="spaghettimob" disabled type="checkbox"><label for="spaghettimob">SpaghettiMob</label>
 					      </label>
-					    </div>`
+					    </div>
 				</section>
 
 				<section id="articles-list" class="row">

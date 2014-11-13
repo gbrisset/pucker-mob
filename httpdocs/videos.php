@@ -85,7 +85,7 @@ if( isset($cat_name) ){
 		</section>
 		<?php } ?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
-			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 medium-12 large-11 columns translate-fix sidebar-main-left">
+			<section id="puc-articles" class="sidebar-right small-12 medium-12 large-11 columns translate-fix sidebar-main-left">
 					<section class="small-12 column padding-bottom padding-top">
 					  <div id="atfleft-ad" class="ad-unit ad300 show-on-large-up left"></div>
 					  <div id="atfright-ad" class="ad-unit ad300 show-on-large-up right"></div>

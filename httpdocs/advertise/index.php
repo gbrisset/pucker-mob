@@ -13,7 +13,7 @@
 <?php include_once($config['include_path'].'header_ad.php'); ?>
 
 <main id="main" class="row panel sidebar-on-right" role="main">
-		<section id="puc-articles" class="sidebar-right shadow-on-large-up mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left">
+		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left">
 <section class="small-12 columns sidebar-right">
 				<h1>Advertise with Us</h1>
 			

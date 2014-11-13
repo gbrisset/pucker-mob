@@ -43,7 +43,7 @@ if (isset($articleInfoObj)) {
  				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>-->
 				
 				
-				<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
+				<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
 				<!--<a href="#disqus_thread">0 Comments</a>-->
 				<!--<a href="#disqus-container" >
 					<i class="fa fa-comments-o fa-2x no-margin"></i>

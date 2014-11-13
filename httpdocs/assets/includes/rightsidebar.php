@@ -22,13 +22,13 @@
 
       <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
       
-       <section id="sub-sidebar-2" class="sidebar shadow-on-large-up">
+       <section id="sub-sidebar-2" class="sidebar">
          <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
        </section>
 
        <div id="btf1-ad" class="ad-unit ad300"></div>
        
-       <section id="sub-sidebar-3" class="sidebar shadow-on-large-up show-on-large-up"  style="margin: 0.9375rem 0 !important;">
+       <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
          <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners</h4></div>
          <?php include_once($config['include_path'].'widget.php'); ?>
        </section>
@@ -46,7 +46,7 @@
        <?php }?>
 
 
-      <section id="sub-sidebar-2" class="sidebar shadow-on-large-up">
+      <section id="sub-sidebar-2" class="sidebar">
          <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
          <?php //include_once($config['include_path'].'sistersite.php'); ?>
       </section>
@@ -55,7 +55,7 @@
       <div id="btf2-ad" class="ad-unit ad300"></div>
 <?php }?>
       <?php if( !isset($isHomepage) ){ ?>
-      <section id="sub-sidebar-3" class="sidebar shadow-on-large-up show-on-large-up"  style="margin: 0.9375rem 0 !important;">
+      <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
          <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners</h4></div>
          <?php include_once($config['include_path'].'widget.php'); ?>
       </section>

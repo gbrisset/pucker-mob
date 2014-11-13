@@ -89,8 +89,10 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 			  else{ echo '<div class="row">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}
 		?> 
 			<section id="article-caption" class="columns small-12 ">
-				<h2 class="" style="<?php // echo $h2style; ?>"><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
-			
+				<h2 class="" style="<?php // echo $h2style; ?>">
+					<?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?>
+				</h2>
+				
 				<?php if ( $detect->isMobile() ) { ?>
 				<!-- GOOGLE AD UNIT MOBILE --> 
 
@@ -107,10 +109,9 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</div>
 				<?php }else{ ?>
 				
-					<div class="hide-for-print row half-padding padding-top padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
-						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"></ins>
-						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+					<div class="hide-for-print row padding padding-top padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
+						<div data-str-native-key="58ad4c02" style="display: none;"></div>
+						<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 					</div>
 				<?php } ?>
 
@@ -145,6 +146,10 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 							<script>
 							(adsbygoogle = window.adsbygoogle || []).push({});
 							</script>
+						<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"></ins>
+						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
+				
 						</section>
 					</div>
 				<?php }?>

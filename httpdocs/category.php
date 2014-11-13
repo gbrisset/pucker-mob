@@ -44,7 +44,7 @@ if ( $detect->isMobile() ) {
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
-			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 columns translate-fix sidebar-main-left">
+			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
 			<?php include_once($config['include_path'].'articlelistmobile.php');?>
 			<?php //include_once($config['shared_include'].'pagination.php');?>
 			<section class="sidebar-right small-12 columns">

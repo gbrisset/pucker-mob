@@ -65,7 +65,7 @@ if( $searchString ){
 	<?php include_once($config['include_path'].'header.php');?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left">
+		<section id="puc-articles" class="sidebar-right small-11 columns translate-fix sidebar-main-left">
 			<section id="search-intro" class="small-12 columns sidebar-right">
 				<div class="row collapse">
 					<div class="small-8 small-push-1 columns">

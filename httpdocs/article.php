@@ -63,7 +63,7 @@ if(!is_null($categoryInfo)){
 		?>
 		<main id="main" class="row panel sidebar-on-right shadow-on-large-up" role="main" style="<?php echo $style; ?>">
 			
-			<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 columns translate-fix sidebar-main-left">
+			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
 				<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			
 				<!-- ARTICLE CONTENT -->

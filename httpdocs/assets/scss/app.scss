@@ -982,31 +982,44 @@ body{padding-top:0 !important;}
 	padding-left: 0;
     padding-right: 0;
 	h1{
-		font-size: 2.2rem;
-		margin-bottom: 1.2rem;
+		font-family: OswaldLight;
+		line-height: 1.4;
+		text-align: center;
 	}
+
 	@media #{$mobile-only} { 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.5rem; margin-bottom: 0; text-align: center; }
+		h1{ font-size: 1.5rem; margin-bottom: 0;}
 	}
 	@media #{$small-only}{ 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.5rem; margin-bottom: 0; text-align: center; }
+		h1{ font-size: 1.5rem; margin-bottom: 0;}
 	}
 	@media #{$medium-only}{ 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.5rem; margin-bottom: 0; text-align: center; }
+		h1{ font-size: 1.5rem; margin-bottom: 0; }
 	}
-}
+	@media #{$large-up}{ 
+		.span-category:after{  content: '|'; margin: 0 0.4rem; }
+		h1{ font-size: 2.5rem; margin: 0.8rem auto; width: 80%;}
+	}
 
-#category-name{ text-transform: uppercase; margin-top: 0 !important; }
+	}
 
-#email-comment{
-	margin-top:-0.25rem;
-	text-align:right;
+	.addthis_button_compact{ font-size: 1.3rem; text-transform: uppercase; color: #777; font-family: OswaldLight; padding-top: 1.4rem; position: absolute;}
+	
+	.social-media-container{
+		padding: 0 0rem 0 1rem;
+	}
 
-	a{	color: #01b88a;	padding-right: 0.4rem;	font-size:14px;	}
-}
+	#category-name{ text-transform: uppercase; margin-top: 0 !important; }
+
+	#email-comment{
+		margin-top:-0.25rem;
+		text-align:right;
+
+		a{	color: #01b88a;	padding-right: 0.4rem;	font-size:14px;	}
+	}
 
 #similar-results, #content-ad-around-the-web, #disqus-comments, #around-the-web{ 
 	padding-bottom: 0.8rem;
@@ -1374,16 +1387,26 @@ dl { margin-bottom: 0.5rem !important; }
  #at-share-dock{width: 101%; max-width: 101%;}
  .at4-toaster-outer .at4-recommended .at4-recommended-item .at4-recommended-item-caption h4{ height: 28px !important; }
  #at-jumboshare tr{display:inline-flex !important;}
+ #at-jumboshare tr td{border-right: none !important;}
  .addthis_jumbo_share{padding-bottom: 0.2rem !important;}
- .at4-jumboshare .at4-count{font-size: 2rem !important; line-height: 1.2 !important; font-family: arial !important; font-weight: bold !important;}
- .at4-jumboshare .at4-title{font-size: 1rem !important; line-height: 1.2 !important;}
+ .at4-jumboshare .at4-count{
+ /*font-size: 2rem !important; line-height: 1.2 !important; font-family: arial !important; font-weight: bold !important;*/
+ color: #777; display: inline-block; font-size: 2.5rem !important; font-family: OswaldLight !important; display:inline-block;
+ }
+ /*.at4-jumboshare .at4-title{font-size: 1rem !important; line-height: 1.2 !important;}*/
+  .at4-jumboshare .at4-title{color: #777; font-family: OswaldLight !important; font-size: 1.2rem !important; top: -0.4rem; display: inline-block;}
+
  .at4-jumboshare .at4-count-container{ padding-right: 0 !important;}
- .at4-jumboshare .at4-share-container{padding-top: 0.7rem !important; padding-left: 14px !important;}
- #email-comment{margin-top: 1.1rem !important}
+ .at4-jumboshare .at4-share-container{
+ /*padding-top: 0.7rem !important; padding-left: 14px !important;*/
+ display: none !important; visibility: hidden;}
+ #email-comment{/*margin-top: 1.1rem !important*/ float: right;}
  .at4-jumboshare .at4-share-btn{margin-right: 5px !important;}
  .addthis_button_facebook_like{margin-top: 1rem !important; position: absolute !important; left: 65% !important;}
  .at4-jumboshare .at4-mobile .at4-share-btn span{ display:inline-block; }
  .at4-jumboshare a .label{ display:none ; }
+ .addthis_button_facebook, .addthis_button_twitter, .addthis_button_compact, .disqus_container{ margin-right: 0.35rem !important}
+
 
 
  /* ADBLADE ADS */

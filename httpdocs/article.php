@@ -174,8 +174,8 @@ if(!is_null($categoryInfo)){
 			<hr>
 			<?php }?>
 		
-			<!-- Prev & Next Articles -->
-			<?php include_once($config['include_path'].'prevnextarticles.php'); ?>
+			<!-- Prev & Next Articles
+			<?php //include_once($config['include_path'].'prevnextarticles.php'); ?> -->
 
 			<!-- LIFT AD 
 			<div id="lift-ad">

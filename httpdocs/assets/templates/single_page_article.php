@@ -26,17 +26,30 @@ if (isset($articleInfoObj)) {
 		
 		<h1><?php echo $article_title; ?></h1>
 		
-		<div class="row">
-			
-			 	<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
- 				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
-			
-			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
-				<a href="#disqus_thread">0 Comments</a>
-				<a href="#disqus-container" >
-					<i class="fa fa-comments-o fa-2x no-margin"></i>
+		<div class="row social-media-container">
+				
+				<a class="addthis_button_facebook">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
+				</a> 
+				<a class="addthis_button_twitter">
+					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
+				</a> 
+				<a href="#disqus-container" class="disqus_container">
+					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
-				<script type="text/javascript">
+				<a class="addthis_button_compact"><span><i class="fa fa-plus"></i> More</span></a> 
+
+			 	<!--<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
+ 				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>-->
+				
+				
+				<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
+				<!--<a href="#disqus_thread">0 Comments</a>-->
+				<!--<a href="#disqus-container" >
+					<i class="fa fa-comments-o fa-2x no-margin"></i>
+				</a>-->
+				
+				<!--<script type="text/javascript">
 					/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 					var disqus_shortname = 'puckermob'; // required: replace example with your forum shortname
 
@@ -47,7 +60,8 @@ if (isset($articleInfoObj)) {
 						s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
 						(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
 					}());
-				</script>
+				</script>-->
+				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
 		<!-- Sponsore UNit -->

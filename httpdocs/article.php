@@ -52,6 +52,15 @@ if(!is_null($categoryInfo)){
 <?php }else{ ?>
 	<body id="article" class="mobile">
 <?php } ?>
+		<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1473110846264937&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php'); ?>
@@ -61,7 +70,7 @@ if(!is_null($categoryInfo)){
 				$style = 'margin-top: 7rem !important;';
 			}
 		?>
-		<main id="main" class="row panel sidebar-on-right shadow-on-large-up" role="main" style="<?php echo $style; ?>">
+		<main id="main" class="row panel sidebar-on-right" role="main" style="<?php echo $style; ?>">
 			
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
 				<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
@@ -127,7 +136,7 @@ if(!is_null($categoryInfo)){
 	<?php include_once($config['include_path'].'header_ad.php');?>
 
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<section id="puc-articles" class="sidebar-right shadow-on-large-up small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
+		<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			<?php 
 			if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){

@@ -73,7 +73,7 @@ if( isset($cat_name) ){
 			<h1><?php echo $categoryInfo['cat_name']; ?> Videos</h1>
 		</section>-->
 		<?php if($video){?>
-		<section id="" class="fullsize-section row panel shadow-on-large-up translate-fix">
+		<section id="" class="fullsize-section row panel translate-fix">
 			<dl class="sub-nav">
 			  <dt>Videos:</dt>
 			  <dd class="<?php echo $hottopicsClass; ?>"><a href="<?php echo $config['this_url'].'videos/hot-topics'; ?>">Hot Topics</a></dd>

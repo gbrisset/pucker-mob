@@ -1,6 +1,19 @@
+
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.min.js"></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<?php if(isset($articleInfo) && $articleInfo){ ?>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    if(addthis) addthis.init();
+  })
+  </script>
+  <?php }?>
+
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
 
 <!-- DESKTOP -->
@@ -65,6 +78,8 @@
       }
     }
     </script>
+
+
   <?php } ?>
 
    <?php } ?>
@@ -72,8 +87,7 @@
 <!-- MOBILE -->
 <?php }else{ ?>
   <?php if( !$promotedArticle ){ ?>
-  <!-- SHARETHROUNG 
-  <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
+  
 
   <!-- GUM GUM -->
   <script src="//g2.gumgum.com/javascripts/ad.js"></script>
@@ -100,14 +114,21 @@
 
 <!-- DESKTOP & MOBILE SCRIPT -->
 
-<?php if( !$promotedArticle ){ ?>
 
- <!-- SHARETHROUNG -->
+<?php if( !$promotedArticle ){ ?>
+<!-- SHARETHROUNG -->
   <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
-  
+   
 <!-- Nativo -->
 <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
 <?php }?>
+
+
+  <!-- TotallyHer comscore tags -->
+  <!-- Begin comScore Tag -->
+  <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
+  <!-- End comScore Tag -->
+  
 <!--Disqus Comment Box Implementation (Comments Counter)-->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

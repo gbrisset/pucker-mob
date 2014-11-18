@@ -8,7 +8,7 @@ if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articl
 }
 
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
-	<section id="popular-articles" class="sidebar shadow-on-large-up">
+	<section id="popular-articles" class="sidebar">
 		<div class="h4-container"><h4>Most Popular</h4></div>
 			<?php 
 				$articleNumber = 0;

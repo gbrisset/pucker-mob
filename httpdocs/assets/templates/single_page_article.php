@@ -17,16 +17,22 @@ if (isset($articleInfoObj)) {
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 <?php if($detect->isMobile()) echo " no-padding "; ?>">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	<section id="article-summary" class="small-12 column">
+		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>
 		<div class="columns no-padding">
-			<p style="font-size:10pt; font-style: italic;">*The following article does not represent the viewpoints of PuckerMob, it's management or partners, but is solely 
-					the opinion of the contributor.</p>
+			<p style="font-size:10pt; font-style: italic;">
+				*The following article does not represent the viewpoints of PuckerMob, it's management or 
+				partners, but is solely the opinion of the contributor.
+			</p>
 		</div>
 		<?php }?>
 		
-		<h1><?php echo $article_title; ?></h1>
+		<!-- TITLE -->
+		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
 		
-		<div class="row social-media-container">
+		<!-- SOCIAL DESKTOP -->
+		<?php //if(!$detect->isMobile()){?>
+		<div class="row social-media-container social-cont-1" style="margin-bottom: 0.5rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
 					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
@@ -37,33 +43,23 @@ if (isset($articleInfoObj)) {
 				<a href="#disqus-container" class="disqus_container">
 					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
-				<a class="addthis_button_compact"><span><i class="fa fa-plus"></i> More</span></a> 
+				
+				<a class="facebook_like">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
+				</a> 
 
-			 	<!--<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
- 				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>-->
 				
-				
-				<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
-				<!--<a href="#disqus_thread">0 Comments</a>-->
-				<!--<a href="#disqus-container" >
-					<i class="fa fa-comments-o fa-2x no-margin"></i>
-				</a>-->
-				
-				<!--<script type="text/javascript">
-					/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-					var disqus_shortname = 'puckermob'; // required: replace example with your forum shortname
+				<a class="addthis_button_facebook_like show-for-large-up  hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
+			
+				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-					/* * * DON'T EDIT BELOW THIS LINE * * */
-					(function () {
-						var s = document.createElement('script'); s.async = true;
-						s.type = 'text/javascript';
-						s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-						(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-					}());
-				</script>-->
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right;">
+				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
+		<?php //} ?>
+
 		<!-- Sponsore UNit -->
 		<?php if(!$detect->isMobile()){?>
 			<div class="padding-bottom" style="">
@@ -100,13 +96,18 @@ if (isset($articleInfoObj)) {
 			</div>
 		</div>
 		
-		<!-- GOOGLE AD UNIT MOBILE  -->
-		<?php if ( $detect->isMobile() ) {?>
-			<!-- SMARTIES -->
-			<?php if(!$promotedArticle){ ?>
-			<div class="hide-for-print row no-padding padding-top ads" style="margin-bottom: -1.5rem;">
+		<!-- Intro Copy SubTitle -->
+		<section class="row">
+			<h2></h2>
+		</section>
+		
+		<!-- GOOGLE AD UNIT MOBILE  
+		<?php //if ( $detect->isMobile() ) {?>
+			 SMARTIES 
+			<?php //if(!$promotedArticle){ ?>
+			<div class="hide-for-print row no-padding padding-top ads" style="margin-bottom: -1.5rem; text-align:center;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- PM-Mobile-320x50 -->
+			 PM-Mobile-320x50
 			<ins class="adsbygoogle"
 			     style="display:inline-block;width:320px;height:50px"
 			     data-ad-client="ca-pub-8978874786792646"
@@ -115,8 +116,9 @@ if (isset($articleInfoObj)) {
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 			</div>
-			<?php }?>
-		<?php }?>
+			<?php //}?>
+		<?php //}?>
+		-->
 
 		<!-- Article Content -->
 		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
@@ -124,9 +126,23 @@ if (isset($articleInfoObj)) {
 		?> 
 			<section id="article-content" class="small-12 column sidebar-box">
 				<p><?php echo $article_body; ?></p>
-				<!-- GOOGLE AD BOTTOM-->
+
+				<!-- IMAGE SOURCE -->
+				<p><?php echo $article_img_credits; ?></p>
+
+				<!-- NOTES -->
+				<p><?php echo $article_notes; ?></p>
+
+				<!-- ON DESKTOP --> 
 				<?php if(!$detect->isMobile()){?>
-				<div class="row padding-top padding-bottom">
+				<?php if(!$promotedArticle ){?>
+			     	<!-- Puckermob Instory Connatix -->
+			     	<style>#connatix{ padding:0 !important;} #connatix #article-summary{ border-bottom: 0 !important;}</style>
+					<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='1f15e94f-843f-4d31-8940-4eb181b32d73'></script>
+				<?php } ?>
+
+				<!-- GOOGLE AD BOTTOM-->
+				<div class="row padding-top padding-bottom clear">
 					<section class="columns small-12 padding-bottom">
 						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 						<!-- PM 637x90 Bottom -->
@@ -140,12 +156,6 @@ if (isset($articleInfoObj)) {
 					</section>
 				</div>
 				<?php }?>
-
-				<!-- IMAGE SOURCE -->
-				<p><?php echo $article_img_credits; ?></p>
-
-				<!-- NOTES -->
-				<p><?php echo $article_notes; ?></p>
 				
 				<?php if($detect->isMobile() && !$detect->isTablet()){?>
 				<div id="grad"></div>
@@ -155,31 +165,35 @@ if (isset($articleInfoObj)) {
 				<?php } ?>
 			</section>
 		</div>
+		
 		<?php if(!$detect->isMobile()){?>
 		<!-- Social Media Icons -->
-		<div class="row padding-bottom">
-			<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
- 			<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
-			
-			<div id ="email-comment" class="small-3 xxlarge-3 columns hide-for-print no-padding show-for-large-up" style="text-align: right;">
-				<a href="#disqus_thread">0 Comments</a>
-				<a href="#disqus-container" >
-					<i class="fa fa-comments-o fa-2x no-margin"></i>
+		<?php if(!$detect->isMobile()){?>
+		<div class="row social-media-container padding-bottom">
+				
+				<a class="addthis_button_facebook">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
+				</a> 
+				<a class="addthis_button_twitter">
+					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
+				</a> 
+				<a href="#disqus-container" class="disqus_container">
+					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
-				<script type="text/javascript">
-					/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-					var disqus_shortname = 'puckermob'; // required: replace example with your forum shortname
+				<a class="addthis_button_twitter">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Comments" />
+				</a> 
+				
+				<a class="addthis_button_compact"><span><i class="fa fa-plus"></i> More</span></a> 
 
-					/* * * DON'T EDIT BELOW THIS LINE * * */
-					(function () {
-						var s = document.createElement('script'); s.async = true;
-						s.type = 'text/javascript';
-						s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-						(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-					}());
-				</script>
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding show-on-medium-up" style="text-align: right;">
+				
+				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
+		<br>
+		<?php } ?>
+
 		<?php }else{ 
 			if(!$promotedArticle){ ?>
 			<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
@@ -189,10 +203,8 @@ if (isset($articleInfoObj)) {
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			</div>
 
-			
-
 			<!-- GOOGLE AD UNIT MOBILE  -->
-			<div class="hide-for-print row no-padding padding-top padding-bottom">
+			<div class="hide-for-print row no-padding padding-top padding-bottom" style="text-align:center;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 					<!-- PM-Mobile-300x250 Bottom -->
 					<ins class="adsbygoogle"

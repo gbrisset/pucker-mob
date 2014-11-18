@@ -14,8 +14,8 @@
 			#smarties img{ width:100% !important;}
 		</style>
    <?php } }else { 
-   	 if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-   	 	else{?>
+   	 //if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+   	 //	else{?>
 		<div id="header-ad" class="ad-unit hide-for-print"></div>
-<?php }  }?>
+<?php }  //}?>
 

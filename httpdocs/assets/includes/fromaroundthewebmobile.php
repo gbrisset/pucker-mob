@@ -1,4 +1,4 @@
-<section id="fromaroundtheweb" class="columns small-12 hide-for-print sidebar-right  no-padding ">
+<section id="fromaroundtheweb" class="columns small-12 hide-for-print sidebar-right  no-padding " style="padding-top: 1rem !important;">
 <!--<div id="contentad24356"></div>
 <script type="text/javascript">
     (function() {

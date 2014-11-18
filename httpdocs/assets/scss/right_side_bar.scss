@@ -5,7 +5,7 @@ background: #fff;
 border: 1px solid #ddd;
 
 .h4-container{
-background: none repeat scroll 0 0 #232323;
+background: none;
 padding-bottom: 0.08rem;
 }
 h4{
@@ -61,15 +61,17 @@ padding-top: 5px;
 		border-radius: 0;
 	}
 
-	.sidebar h4 {
+	.sidebar h4, .sidebar div h4 {
 		padding-top: 0.3rem ;
-		padding-bottom: 0.1rem;
+		padding-bottom: 0.2rem;
 		padding-left: $sidebar-header-padding;
 		margin: 0;
-		color: $main-color;
-		background-color: $topbar-bg-color;
-		font-size: 1rem;
-		border-bottom: 1px solid $main-color;
+		color: #222;
+		font-family: OswaldRegular, arial;
+		font-size: 1.3rem;
+		background-color:#fff;
+		border-bottom: none;
+		text-align: center;
 	}
 
 	.sidebar .todays-favorites {

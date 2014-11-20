@@ -46,7 +46,6 @@
 		$userArticlesFilter = 'all';
 	}
 // 3. total record count ($total_count)	
-	// $total_count = $mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter);
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter));
 	$pagination = new Pagination($page, $per_page, $total_count);
 	$offset = $pagination->offset();

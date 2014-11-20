@@ -45,13 +45,7 @@ if (isset($articleInfoObj)) {
 			<div class="padding-bottom" style="">
 				<div id="sponsor-ad"></div>
 			</div>
-			<?php }//else{
-				//if($article_id == 4024){?>
-				<!--<div class="padding-bottom" style="">
-					<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3347316/0/6374/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
-					</div>-->
-				<?php //}
-			//}?>
+			<?php } ?>
 
 		<!-- Article Image -->
 		<div class="row">
@@ -75,17 +69,16 @@ if (isset($articleInfoObj)) {
 		<!-- GOOGLE AD UNIT MOBILE  -->
 		<?php if ( $detect->isMobile() ) {?>
 		
-			<div class="hide-for-print row half-padding padding-top ads" style="margin-bottom: -1.5rem;">
-			<!--	<div data-str-native-key="536c62e7" style="display: none;"></div>
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>-->
+			<div class="hide-for-print row no-padding padding-top ads" style="margin-bottom: -1.5rem;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- PM Mobile 300x90 -->
+			<!-- PM-Mobile-320x50 -->
 			<ins class="adsbygoogle"
-			     style="display:inline-block;width:300px;height:90px"
+			     style="display:inline-block;width:320px;height:50px"
 			     data-ad-client="ca-pub-8978874786792646"
-			     data-ad-slot="6565492184"></ins>
-			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-			
+			     data-ad-slot="2412017386"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
 			</div>
 
 		<?php }?>
@@ -105,12 +98,12 @@ if (isset($articleInfoObj)) {
 			</section>
 		</div>
 		<?php if(!$detect->isMobile()){?>
-		<!-- GOOGLE ADS UNIT -->
+		<!-- GOOGLE ADS UNIT 
 		<div class="row">
 			<section class="columns small-12">
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<!-- PM 637x90 Bottom -->
-				<ins class="adsbygoogle"
+				<!--<ins class="adsbygoogle"
 				     style="display:inline-block;width:637px;height:90px"
 				     data-ad-client="ca-pub-8978874786792646"
 				     data-ad-slot="3114328182"></ins>
@@ -119,7 +112,7 @@ if (isset($articleInfoObj)) {
 				</script>
 			</section>
 		</div>
-		<hr>
+		<hr>-->
 		
 		<!-- Social Media Icons -->
 		<div class="row padding-bottom">
@@ -152,20 +145,19 @@ if (isset($articleInfoObj)) {
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			</div>
 
-			<hr style="margin: 1.5rem 0 0rem !important">
+			
 
 			<!-- GOOGLE AD UNIT MOBILE  -->
-			<div class="hide-for-print row half-padding padding-top padding-bottom">
+			<div class="hide-for-print row no-padding padding-top padding-bottom">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- PM 300x90 Bottom -->
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:300px;height:90px"
-			     data-ad-client="ca-pub-8978874786792646"
-			     data-ad-slot="6028938587"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
+					<!-- PM-Mobile-300x250 Bottom -->
+					<ins class="adsbygoogle"
+					     style="display:inline-block;width:300px;height:250px"
+					     data-ad-client="ca-pub-8978874786792646"
+					     data-ad-slot="6385741786"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
-			
 			</div>
 			
 		<?php }?>

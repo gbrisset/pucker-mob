@@ -869,7 +869,7 @@ class MPArticleAdmin{
 			if(move_uploaded_file($fileTempName, $uploadFile)){
 				
 				if($data['imgType'] == 'contributor'){
-					$this->createContributorImage($extension, $uploadFile,  $iDestFileName, $updateArr['value'], $src_w, $src_h);
+					$this->createContributorImage($extension, $uploadFile,  $iDestFileName, $updateArr['value'], $src_w, $src_h, $src_x, $src_y);
 
         	    	return $this->updateContributorImageRecord($updateArr);
             	}elseif($data['imgType'] == 'article'){
@@ -908,7 +908,26 @@ class MPArticleAdmin{
         }
 	}
 
-	private function createNewImage($extension, $uploadFile, $iDestFileName,  $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h){
+	private function createNewImageContributor($extension, $uploadFile, $iDestFileName,  $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h){
+            // create a new true color image
+
+            $vDstImg = @imagecreatetruecolor( $dst_w, $dst_h );
+            $vSrcImg = $this->getImageObj($extension, $uploadFile);
+    
+            // copy and resize part of an image with resampling
+            if( $vDstImg && $vSrcImg ){
+            	
+            	imagecopyresampled($vDstImg, $vSrcImg, 0, 0, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
+               	imagejpeg( $vDstImg, $iDestFileName, 100 );
+
+             	return  true;
+            }
+            else
+            	return ['hasError' => true, 'message' => 'Sorry, looks like something went wrong creating your image. Please try again or contact info@sequelmediagroup.com for assitance.'];
+
+    }
+    
+    private function createNewImage($extension, $uploadFile, $iDestFileName,  $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h){
             // create a new true color image
             $vDstImg = @imagecreatetruecolor( $dst_w, $dst_h );
 
@@ -927,16 +946,15 @@ class MPArticleAdmin{
 
             // output image to file
     }
-    
 
     /* End Image Upload Functions */
 
 	
 	/* Controbutor Image Upload */
-	private function createContributorImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
+	private function createContributorImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h, $src_x, $src_y){
 		$destPathToFile = $this->config['image_upload_dir'].'articlesites/contributors_redesign/'.$fileName;
 
-		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  90, 90, 140, 143, $src_w, $src_h);
+		return $this->createNewImageContributor($extension, $uploadFile, $destPathToFile,  $src_x, $src_y, 140, 143, $src_w, $src_h);
 	
 	}
 	/* Article Preview Update Functions */

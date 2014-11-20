@@ -32,7 +32,7 @@
           <ul class="no-bullet">
             <li><a href="<?php echo $config['this_url']; ?>style" class="style">Style</a></li>
             <li><a href="<?php echo $config['this_url']; ?>money" class="money">Money</a></li>
-            <li><a href="<?php echo $config['this_url']; ?>wellness" class="wellness">Wellness</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>lifestyle" class="wellness">Lifestyle</a></li>
             <li><a href="<?php echo $config['this_url']; ?>fun" class="fun">Fun</a></li>
           </ul>
         </div>

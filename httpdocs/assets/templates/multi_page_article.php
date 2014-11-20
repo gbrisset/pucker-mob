@@ -85,26 +85,34 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		
 
 		<!-- Content Article And Next / Prev Articles -->
-		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
-			  else{ echo '<div class="row">'; }
+		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; $h2style = '';}
+			  else{ echo '<div class="row">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}
 		?> 
 			<section id="article-caption" class="columns small-12 ">
-				<h2 class=""><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
-				
-
+				<h2 class="" style="<?php echo $h2style; ?>"><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
+			
 				<?php if ( $detect->isMobile() ) { ?>
 				<!-- GOOGLE AD UNIT MOBILE --> 
 
-				<div class="hide-for-print row half-padding padding-top" style="margin-bottom: 0.2rem; ">
+				<div class="hide-for-print row no-padding padding-top padding-bottom" style="margin-bottom: 0.2rem; ">
 					<!--<div data-str-native-key="536c62e7" style="display: none;"></div>
 						<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>-->
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
 					<!-- PM Mobile 300x90 -->
-					<ins class="adsbygoogle"
+					<!--<ins class="adsbygoogle"
 					     style="display:inline-block;width:300px;height:90px"
 					     data-ad-client="ca-pub-8978874786792646"
 					     data-ad-slot="6565492184"></ins>
-					<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+					<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- PM-Mobile-320x50 -->
+					<ins class="adsbygoogle"
+					     style="display:inline-block;width:320px;height:50px"
+					     data-ad-client="ca-pub-8978874786792646"
+					     data-ad-slot="2412017386"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
 				</div>
 				<?php }else{ ?>
 				
@@ -116,30 +124,24 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<?php } ?>
 
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
-				
-				<?php if ( $detect->isMobile() ) {?>
-				
-				<div class="hide-for-print row half-padding padding-top" style="margin-bottom: 0.2rem;">
+					<?php if ( $detect->isMobile() ) {?>
+				<section class="columns half-padding padding-bottom" style="margin-bottom:1.2rem;">
+				<hr style="border-top: 1px solid #ddd;">
+				</section>
+				<div class="hide-for-print columns no-padding " style="margin-bottom: 0.2rem;">
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- PM 300x90 Bottom -->
+					<!-- PM-Mobile-300x250 Bottom -->
 					<ins class="adsbygoogle"
-					     style="display:inline-block;width:300px;height:90px"
+					     style="display:inline-block;width:300px;height:250px"
 					     data-ad-client="ca-pub-8978874786792646"
-					     data-ad-slot="6028938587"></ins>
+					     data-ad-slot="6385741786"></ins>
 					<script>
 					(adsbygoogle = window.adsbygoogle || []).push({});
 					</script>
 
 				</div>
 				<!--<hr style="margin: 1rem 0 1rem !important">-->
-
-				<?php } //else{?>
-					<!-- GOOGLE ADS UNIT -->
-					
-					
-					
-				<?php //}?>
-
+<?php } ?>
 				<ul class="inline-centered vertical-centered">
 					<?php 
 				//	Get the next article, that is LIVE, that has a list attached
@@ -158,6 +160,8 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</ul>
 				<br>
 			</section>
+		
+				<?php //} ?>
 		</div>
 		<?php if(!$detect->isMobile()){?>
 		
@@ -210,8 +214,3 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<?php } ?>
 	</section>
 </article>
-
-<!--<section class="small-12 column padding-bottom padding-top">
-  <div id="atfleft-ad" class="ad-unit ad300 show-on-large-up left"></div>
-  <div id="atfright-ad" class="ad-unit ad300 show-on-large-up right"></div>
-</section>-->

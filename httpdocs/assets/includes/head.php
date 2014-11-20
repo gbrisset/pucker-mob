@@ -41,11 +41,12 @@
 	<link rel="dns-prefetch" href="//tcr.tynt.com" />
 	<link rel="dns-prefetch" href="//cdn-s.wahwahnetworks.com" />
 	<link rel="dns-prefetch" href="//mmrm.qadserve.com" />
+	<link rel="dns-prefetch" href="//cdn.connatix.com" />
 	
 	<?php } ?>
 	
 	<link rel="dns-prefetch" href="//go.disqus.com" />
-	<!--<link rel="dns-prefetch" href="//g2.gumgum.com" />-->
+	<link rel="dns-prefetch" href="//g2.gumgum.com" />
 	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
 	<link rel="prefetch prerender" href="http://www.puckermob.com" />
 	<link rel="dns-prefetch" href="//native.sharethrough.com" />
@@ -64,7 +65,10 @@
 
 	<?php if(isset($isArticle) && $isArticle && $articleInfoObj){ ?>
 		<link rel="canonical" href="<?php echo 'http://puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
-	<?php } ?>
+	<?php 
+		$promotedArticle = false; $tag = 'smarties';
+		if($articleInfoObj['article_id'] == 4349){ $promotedArticle = true; }
+	} ?>
 
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     
@@ -90,7 +94,7 @@
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />
 	<meta property="og:site_name" content="<?php echo $mpArticle->data['article_page_name']; ?>" />
 	<meta property="og:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
-	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo && isset($articleInfo['articles'][0])){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['articles'][0]['article_id'].'_tall.jpg';}else{echo $config['image_url'].'articlesites/featured/'.$mpArticle->data['featured_img'];}?>" />
+	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo && isset($articleInfo['articles'][0])){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['articles'][0]['article_id'].'_tall.jpg';}else{echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png';}?>" />
 	<?php if(isset($articleInfo) && $articleInfo){ ?>
 	<meta property="article:published_time" content="<?php if (isset($articleInfo['articles'][0])) echo date('Y-m-d\TH:i', strtotime($articleInfo['articles'][0]['creation_date'])); ?>" />
 	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
@@ -110,49 +114,102 @@
     	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
     	else echo $mpArticle->data['article_page_analytics'];
 	} ?>
-	
-	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.js"></script>
-	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
-	
-	<!-- DESKTOP -->
-	<?php if ( !$detect->isMobile() ) { ?>
-	<script>var trendingNowHeight = 0;</script>
-	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
 
+<!-- IF ARTICLE PAGE -->
+
+
+
+<!-- COMSCORE -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "18667744" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=18667744&cv=2.0&cj=1" />
+</noscript>
+<!-- End COMSCORE Tag -->
+
+<!-- Begin comScore Tag Totally Her-->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6036161" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; 
+    s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag Totally Her -->
+
+
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+  var _qevents = _qevents || [];
+
+  (function() {
+  var elem = document.createElement('script');
+  elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+  elem.async = true;
+  elem.type = "text/javascript";
+  var scpt = document.getElementsByTagName('script')[0];
+  scpt.parentNode.insertBefore(elem, scpt);
+  })();
+
+  _qevents.push({
+  qacct:"p-B2Jsd5NDNU3Qq"
+  });
+</script>
+
+<noscript>
+  <div style="display:none;">
+    <img src="//pixel.quantserve.com/pixel/p-B2Jsd5NDNU3Qq.gif" border="0" height="1" width="1" alt="Quantcast"/>
+  </div>
+</noscript>
+<!-- End Quantcast tag -->
+	
+<!--<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.js"></script>
+	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>-->
+	
+	<!-- DESKTOP 
+	<?php //if ( !$detect->isMobile() ) { ?>
+	<script>var trendingNowHeight = 0;</script>-->
+	<!--<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
+-->
 	<!--[if !IE]>
 	<script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
 	<![endif]-->
 	
-	<!--AD SUPPLY 
-		<script data-cfasync="false" type="text/javascript">
-			(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");
-			(function() {
-			var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-			s.src = "http://cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";
-			s.id = "infinity"; s.setAttribute("data-guid", "ce106c14-9ffe-4f0b-8cb8-c965d9d04213"); s.setAttribute("data-version", "async");
-			var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
-			})();
-		</script>-->
-	 <!-- IF ARTICLE PAGE -->
-    <?php if(isset($articleInfo) && $articleInfo){ ?>
-    
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async></script>
-   
-    <?php }?>
-
-
+		 <!-- IF ARTICLE PAGE -->
+	    <?php if(isset($articleInfo) && $articleInfo){ ?>
+	    	<?php if(!$promotedArticle ){?>
+	     	<!-- Puckermob Instory Connatix-->
+			<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='1f15e94f-843f-4d31-8940-4eb181b32d73'></script>
+		   <?php } ?>
+		    <?php }else{?> 
+		    	<!-- Puckermob - Homepage  Connatix -->
+	    	<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='c96b0114-247e-4afd-b363-d427f1016171'></script>
+	    <?php }?>
+	
 	<!-- MOBILE -->
-	<?php }else{ ?>
-		<!-- SHARETHROUNG -->
-   		<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
-	<?php } ?>
+	<?php //}else{ ?>
+		<!-- SHARETHROUNG 
+   		<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
+	<?php //} ?>
 	
 	<!-- DESKTOP & MOBILE SCRIPT -->
 	
-	<!-- Nativo -->
-	<script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
+	<!-- Nativo 
+	<script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
 
 </head>
  <?php flush(); ?>

@@ -26,10 +26,10 @@ if(!is_null($categoryInfo)){
 	if(isset($articleInfo['articles']) &&  $articleInfo['articles']){
 		$articleInfoObj = $articleInfo['articles'][0];
 
-		$pageName = $articleInfoObj['article_title'];//.' | '.$mpArticle->data['article_page_name'];
-		//if($articleInfoObj['article_id'] == 4024){
-		//	$pageName = strtoupper($articleInfoObj['article_title']).' | Sponsored by Smarties Candies';
-		//}
+		$pageName = $articleInfoObj['article_title'];
+		if($articleInfoObj['article_id'] == "4349"){
+			$pageName = strtoupper($articleInfoObj['article_title']).' | Sponsored by Smarties Candies';
+		}
 		$relatedArticles = $mpArticle->getArticles(['count' => 18, 'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['ids']]);
 		$articleImages = $mpArticle->getArticlesImages($articleInfoObj['article_id']);
 	}else {
@@ -57,7 +57,7 @@ if(!is_null($categoryInfo)){
 		<?php include_once($config['include_path'].'header_ad.php'); ?>
 		<?php 
 			$style = '';
-			if( isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] == 4314 || $articleInfoObj['article_id'] == 3911){
+			if( isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] == 4314 || $articleInfoObj['article_id'] == 4341){
 				$style = 'margin-top: 7rem !important;';
 			}
 		?>
@@ -74,25 +74,23 @@ if(!is_null($categoryInfo)){
 						include_once($config['template_path'].'single_page_article.php');
 					}
 				?>
+
+				<!-- SMARTIES PROMOTION -->
+			    <?php if( $promotedArticle ){?>
+			      <div class="padding-bottom  show-on-large-up">
+			        <!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
+			        <script language="javascript"><!--
+			        document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+			        //-->
+			        </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
+			        <!-- End of JavaScript Tag -->
+			      </div>
+			     <?php } ?>
 		<hr>
 		<?php include_once($config['include_path'].'similararticles.php');?>
-		<div id="btf1-ad" class="ad-unit hide-for-print ad300 ad250"></div>
-		<!-- BTF1 TAG HARDCODED 
-		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){?>
-			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273458/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
-		<?php } else{ ?>
-			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273453/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
-		<?php } ?> 
-		<hr>-->
-		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+		<div id="btf1-ad" class="ad-unit hide-for-print"></div>
+	<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
 		
-		<!--<div id="btf2-ad" class="ad-unit hide-for-print ad300 ad250"></div>
-		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){?>
-			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273460/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>	
-		<?php } else{ ?>
-			<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273457/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
-		<?php } ?> 
-		<hr>-->
 	</div>
 	<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
@@ -101,9 +99,13 @@ if(!is_null($categoryInfo)){
 </main>
 <?php include_once($config['include_path'].'footer.php');?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
-		addthis.init();
+		if(addthis) addthis.init();
 	})
 	</script>
 
@@ -130,19 +132,18 @@ if(!is_null($categoryInfo)){
 			<?php 
 			if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
 				include_once($config['template_path'].'multi_page_article.php');?>
-				<!-- Distro Scale AD Tag -->
-					<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
-			  	<!-- Begin comScore Tag -->	
-
+			
 			<?php } else {
 				include_once($config['template_path'].'single_page_article.php'); ?>
+				<?php if( !$promotedArticle ){ ?>
 				<!-- Distro Scale AD Tag -->
 					<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
 			  	<!-- Begin comScore Tag -->
+			  	<?php } ?>
 			<?php } ?>
 
 			<!--
-POPUP READY
+			POPUP READY
 			<a href="#" data-reveal-id="myModal" class="reveal-link">Click Me For A Modal</a>
 			<div id="myModal" class="reveal-modal" data-reveal>
 			  <h2>Awesome. I have it.</h2>
@@ -183,6 +184,7 @@ POPUP READY
 			<?php include_once($config['include_path'].'similararticles.php');?>
 			<hr>
 			
+			<?php if( !$promotedArticle ){ ?>
 			<!-- ADBLADE -->
 			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
@@ -219,6 +221,7 @@ POPUP READY
 
 			
 			<hr>
+			<?php }?>
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 			<hr>
@@ -229,22 +232,26 @@ POPUP READY
 		<?php include_once($config['include_path'].'rightsidebar.php');?>
 	</main>
 	
-	<?php include_once($config['include_path'].'footer.php');?>
 	
+	<?php include_once($config['include_path'].'footer.php');?>
+		
 
     <?php include_once($config['include_path'].'bottomscripts.php');?>
-     <!-- NETSEER IN-IMAGE-->
-	 <script type="text/javascript">
-	netseer_tag_id="19129";
-	netseer_task="in-image";
-	netseer_inimage_render_mode="sync";
-	</script>
-	<script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-	<script type="text/javascript">
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+
+    <script type="text/javascript">
 	$(document).ready(function(){
 		addthis.init();
 	})
 	</script>
+     <?php if( $promotedArticle ){ ?>
+    		<!-- SMARTIES -->
+			<script language="javascript">document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3366273/0/16/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+			</script>
+			<noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
+    <?php }?>
 
 </body>
 </html>

@@ -40,7 +40,7 @@ margin: $panel-padding 0 0 !important;
 padding: $todays-favorites-padding 0 2px;
 border-top: 0;
 
-h5 {margin-top: 0.2rem; margin-bottom: 0.2rem; font-size: 15px;  line-height: 1.2;}
+h5 {margin-top: 0.2rem; margin-bottom: 0.2rem; font-size: 15px;  line-height: 1.2; padding:4px;}
 }
 
 .connect-with-us{
@@ -73,16 +73,15 @@ padding-top: 5px;
 	}
 
 	.sidebar .todays-favorites {
-	border-top: 0; 
-	margin-bottom: 0; 
-	border-radius: 0; 
-	border-bottom: 2px solid #232323;
+		border-top: 0; 
+		margin-bottom: 0; 
+		border-radius: 0; 
+		//border-bottom: 2px solid #232323;
 
-	&:last-child(){
-	border-bottom: none;
-	}
+		.article-information{ border-bottom: 2px solid #232323; }
 	}
 }
+
 .sidebar h4 {
 		padding-top: 0.3rem ;
 		padding-bottom: 0.1rem;

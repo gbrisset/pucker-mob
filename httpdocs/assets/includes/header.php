@@ -39,7 +39,7 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
         <li><a href="<?php echo $config['this_url']; ?>relationships"  class="relationships" >Relationships</a></li>
         <li><a href="<?php echo $config['this_url']; ?>entertainment"  class="entertainment" >Entertainment</a></li>
         <li><a href="<?php echo $config['this_url']; ?>money"  class="money" >Money</a></li>
-        <li><a href="<?php echo $config['this_url']; ?>wellness"  class="wellness" >Wellness</a></li>
+        <li><a href="<?php echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
         <li><a href="<?php echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
         <?php if( !$detect->isMobile()){?>
         <li><a href="<?php echo $config['this_url']; ?>videos/hot-topics"  class="videos" >Videos</a></li>

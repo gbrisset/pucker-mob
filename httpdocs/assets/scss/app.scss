@@ -516,8 +516,6 @@ transition: all 0.3s ease-in-out;}
 #ingredients ul > p, #instructions ol > p {font-family: $header-font-family; margin-bottom: ($panel-padding/2); margin-top: ($panel-padding/2);}
 #recipe > #main > #medianet-ad {margin-bottom: $panel-padding;}
 #recipe-summary > .row > #recipe-rating > .label {display: inline-block;}
-#savings-center-ad {margin-bottom: $panel-padding; border: 1px solid $todays-favorites-border-color; border-radius: $sidebar-border-radius; margin: 0 auto;}
-#savings-center-ad img {padding: 0.1875rem;}
 #topbar-container {height: 1.8rem; width: 135px; background-color: white; float: right; margin-top: -0.4rem; margin-right: 3.7rem;}
 #topbar-search-contents {width: 100%; float: left; margin: 0 !important; height: 1.8rem !important; background-color: rgb(204,204,204); border: 1px solid rgb(204,204,204); box-shadow: none;}
 #topbar-search-submit {float: right; width: rem-calc(32); position: absolute; height: 1.8rem !important; padding: 0 !important;}
@@ -944,6 +942,22 @@ body{padding-top:0 !important;}
     padding: 1rem;
 }
 
+.todays-favorites .imageContainer { 
+    position: relative;
+    overflow: hidden;
+    height: 210px;
+    width: 279px;
+    padding-right: 0;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.todays-favorites  .imageCenterer {
+  height: inherit;width: 400px;left: 43%;top: 0;margin-left: -190px;
+}
+.todays-favorites  .imageCenterer img {
+  display: block;
+  margin: 0 auto;
+}
 .h1-large-article{ 	font-size: 1.8rem !important; }
 .h1-small-article{ font-size: 1.1rem !important; }
 
@@ -1360,8 +1374,13 @@ dl { margin-bottom: 0.5rem !important; }
 
 
  /* ADBLADE ADS */
- div.adblade-dyna div.zone div.adbladetitle{font-family: Oslo !important; text-transform: uppercase !important; color: #777 !important; font-size: 1.7rem !important; font-weight: normal !important; margin-bottom: 0.8rem !important;}
+ div.adblade-dyna div.zone div.adbladetitle{ font-family: Oslo !important; text-transform: uppercase !important; color: #777 !important; font-size: 1.7rem !important; font-weight: normal !important; margin-bottom: 0.8rem !important;}
+ 
+ div.adblade-dyna.zone-989 div.zone div.ad .description { font-size: 15px !important; font-family: "Oslo","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif !important; font-weight: normal !important; margin-top: 0.2rem;
+margin-bottom: 0.2rem; color: #333 !important; line-height: 1.2 !important;}
 
+div.adblade-dyna.zone-989 div.zone div.ad { border-bottom: 2px solid #232323; }
+div.adblade-dyna.zone-989 div.zone div.ad:last-child{ border-bottom:none;}
 .auto-margin { margin: auto; }
 .hidden { display: none !important; visibility: hidden; }
 .border-bottom { border-bottom: 1px solid #ddd; }

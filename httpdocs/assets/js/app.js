@@ -13,6 +13,11 @@ var URL = $(location).attr('href');
 var page = document.body.id;
 if(socialwidget.length > 0) socialwidget = socialwidget.height(); else socialwidget=0;
 
+var isIE11 = !!navigator.userAgent.match(/Trident.*rv\:11\./);
+if(isIE11){
+	main.css("display", "block");
+}
+
 var asideHeight = {
 	video: socialwidget,
 	atf: 0,
@@ -27,7 +32,6 @@ var asideHeight = {
 	margin: parseInt(main.css("padding-bottom"))
 };
 
-//$('a.reveal-link').trigger('click');
 
 $(document).ready(function() {
 
@@ -264,23 +268,25 @@ $(document).ready(function() {
 		// Single & Multi Article Pages
 		console.log(adPage);
 		if(adPage == 'article' || adPage == 'articleslide'){
-			loadAd(select.ad.btf1, mobilead[adPage].btf1);
+			//loadAd(select.ad.btf1, mobilead[adPage].btf1);
 			//loadAd(select.ad.btf2, mobilead[adPage].btf2);
 		}		
 
 		//Load and Insert a middle article in the article body
+		var article_id = Foundation.utils.S('#article_id').val();
 		if( adPage === 'article' ){
 			//Single Page Article ATFs 
-			inBodyAd.loadInArticleAd( 'article-content', 3, 0, mobilead[adPage].inarticle, 'p');	
+			if( article_id == 4314 ){
+				inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, 'p');	
+			}else if( article_id == 4341 ){
+				inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticle, 'p');	
+			}else{
+				inBodyAd.loadInArticleAd( 'article-content', 3, 0, mobilead[adPage].inarticle, 'p');	
+			}
 		}
 
 		if( adPage === 'articleslide'){
 			inBodyAd.loadInArticleAd( 'article-caption', 2, 0, mobilead[adPage].inarticle, 'p');	
-		}
-
-		//READ MORE ON ARTICLES
-		if(adPage == 'article' ){
-
 		}
 
 	
@@ -472,7 +478,7 @@ app.addPrefetchTags();
 //Social Shares Tracking FB Sharing Functionality
 var SocialShares = {
 	updateFBShare: function( count, article_id ){
-		$.post("http://www.puckermob.com/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
+		$.post("http://localhost:8888/projects/pucker-mob//httpdocs/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
 	},
 
 	fbEventHandler: function(evt) { 

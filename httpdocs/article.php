@@ -52,15 +52,6 @@ if(!is_null($categoryInfo)){
 <?php }else{ ?>
 	<body id="article" class="mobile">
 <?php } ?>
-		<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1473110846264937&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php'); ?>
@@ -97,7 +88,10 @@ if(!is_null($categoryInfo)){
 			     <?php } ?>
 		<hr>
 		<?php include_once($config['include_path'].'similararticles.php');?>
-		<div id="btf1-ad" class="ad-unit hide-for-print"></div>
+		<div class="ad-unit hide-for-print">
+			<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
+			<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
+		</div>
 	<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
 		
 	</div>
@@ -109,14 +103,7 @@ if(!is_null($categoryInfo)){
 <?php include_once($config['include_path'].'footer.php');?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
 
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		if(addthis) addthis.init();
-	})
-	</script>
 
 </body>
 </html>
@@ -170,7 +157,9 @@ if(!is_null($categoryInfo)){
 			
 			<?php }?>
 
+
 			<!-- Like us on FB --> 
+			<?php if(!$detect->isMobile()){?>
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
 			<div class="row hide-for-print like-us-fb">
 				<p class="columns small-2">Join the Mob!
@@ -181,6 +170,7 @@ if(!is_null($categoryInfo)){
 			</div>	 
 			
 			<hr>
+			<?php }?>
 			<?php }?>
 		
 			<!-- Prev & Next Articles

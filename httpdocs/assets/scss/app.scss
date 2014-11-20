@@ -1117,7 +1117,7 @@ div.creative_container{ border:none !important; }
 	p{ font-size: 0.8rem; padding-right: 0; margin-bottom: 0;}
 } 
 
-#article-content, #article-content p, #article-content p span, #article-content span, #article-content p font, #article-content font {
+#article-content, #article-content p, #article-content p span, #article-content p font, #article-content font {
 	font-family: $body-font-family !important;
 	font-size: 1.125rem;
 }
@@ -1452,10 +1452,8 @@ dl { margin-bottom: 0.5rem !important; }
  /*.addthis_button_facebook_like{margin-top: 1rem !important; position: absolute !important; left: 65% !important;}*/
  .at4-jumboshare .at4-mobile .at4-share-btn span{ display:inline-block; }
  .at4-jumboshare a .label{ display:none ; }
- .addthis_button_facebook, .addthis_button_twitter, .addthis_button_compact, .disqus_container{ margin-right: 0.35rem !important}
-.addthis_button_facebook_like.show-for-large-up.hide-for-medium.hide-for-large.hide-for-xlarge-down.at300b{
-	float:left;
-}
+ .addthis_button_facebook, .addthis_button_twitter, .addthis_button_compact, .disqus_container{ margin-right: 0.35rem !important; text-decoration: none !important;}
+
 @media #{$large-up} { 
 	.at4-jumboshare .at4-count{ line-height:1 !important; font-size: 2.5rem !important;}
 	.at4-jumboshare .at4-title{ top: -0.4rem; margin-right: 0.5rem; font-size: 1.2rem !important;}
@@ -1481,3 +1479,6 @@ div.adblade-dyna.zone-989 div.zone div.ad:last-child{ border-bottom:none;}
 .highlighted #span-div{ margin-right: 1rem;}
 .highlighted #span-div span{ font-size: 2rem; text-transform: uppercase; }
 .highlighted a{ color: #000; text-transform: capitalize;}
+
+
+@import "modal_box";

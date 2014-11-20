@@ -1,5 +1,5 @@
 <?php
-$padding = " no-padding ";
+$padding = " half-padding ";
 $paddingTop = " ";
 if($detect->isMobile()) $paddingTop = " padding-top bottom-border"; ?>
 

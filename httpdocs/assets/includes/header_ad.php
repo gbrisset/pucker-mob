@@ -13,9 +13,21 @@
 			#main{border: 4px solid rgb(82, 210, 115); border-top: 0; padding-top: 1rem;}
 			#smarties img{ width:100% !important;}
 		</style>
-   <?php } }else { 
-   	 //if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-   	 //	else{?>
-		<div id="header-ad" class="ad-unit hide-for-print"></div>
-<?php }  //}?>
+    <?php }else{?>
+    	<div class="hide-for-print row no-padding padding-top ads" style=" text-align:center; margin-top:3em; margin-bottom: -3rem;">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- PM-Mobile-320x50 -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:320px;height:50px"
+			     data-ad-client="ca-pub-8978874786792646"
+			     data-ad-slot="2412017386"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			</div>
+		
+    <?php } 
+}else { ?>
+	<div id="header-ad" class="ad-unit hide-for-print"></div>
+<?php }  ?>
 

@@ -1,7 +1,8 @@
 
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.min.js"></script>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.cookies.2.2.0.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <?php if(isset($articleInfo) && $articleInfo){ ?>
@@ -38,9 +39,9 @@
   <!-- AdsNative.com -->
   <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>
 
-  <!-- Vibrant in-text Media Ads -->
+  <!-- Vibrant in-text Media Ads 
   <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70526"></script>
- 
+  -->
   <!-- IS NOT VIDEO PAGE -->
     <?php if( !isset($isVideoPage) ){
       if (!$local){?>
@@ -95,9 +96,9 @@
   <!-- Distro Scale AD Tag -->
   <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
   
-   <!-- Vibrant Media Ads -->
+   <!-- Vibrant Media Ads 
    <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70527"></script>
-
+-->
 
   <?php }?>  
   

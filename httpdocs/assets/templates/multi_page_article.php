@@ -22,9 +22,8 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 
 		<h1 id="<?php echo $articleInfoObj['article_id']; ?>" style="margin-bottom: 0.5rem;"><?php echo $articleInfoObj['article_title']; ?></h1>
 
-		<!-- SOCIAL DESKTOP -->
-		<?php //if(!$detect->isMobile()){?>
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0.5rem; display:block !important;">
+			<!-- SOCIAL DESKTOP -->
+		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
 					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
@@ -35,16 +34,22 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<a href="#disqus-container" class="disqus_container">
 					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
-				
+
+				<!--<a class="facebook_like" href="">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
+				</a> -->
+				<a class="addthis_button_facebook_like  show-for-large-up" fb:like:send="true" ></a>
+
 				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right;">
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
 				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
-		<?php //} ?>
-
+		<div class="padding-bottom" style="">
+			</div>
+		
 		<!-- Article SubTitle ( SLIDE ) 
 		<?php //if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
 			  //else{ echo '<div class="row">'; }
@@ -55,7 +60,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		</div>-->
 
 		<!-- Article Content Image / Video -->
-		<div class="row">
+		<div class="row padding-top">
 			<?php if($page_list_items->page_list_item_image != '' && $page_list_items->page_list_item_youtube_embed == ''){ ?>
 
 			<section id="article-slide" class="columns small-12 half-padding-right-on-lg">
@@ -93,21 +98,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</h2>
 				
 				<?php if ( $detect->isMobile() ) { ?>
-				<!-- GOOGLE AD UNIT MOBILE  
-
-				<div class="hide-for-print row no-padding padding-top padding-bottom" style="margin-bottom: 0.2rem; text-align:center;">
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					 PM-Mobile-320x50 
-					<ins class="adsbygoogle"
-					     style="display:inline-block;width:320px;height:50px"
-					     data-ad-client="ca-pub-8978874786792646"
-					     data-ad-slot="2412017386"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-				</div>-->
 				<?php }else{ ?>
-				
 					<div class="hide-for-print row padding padding-top padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
 						<div data-str-native-key="58ad4c02" style="display: none;"></div>
 						<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
@@ -116,15 +107,39 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
 				
-				<!-- SLIDE COMMENTS -->
-				<section class="row">
-					<p id="list_item_notes" class="columns small-12 " style="margin: 0.2rem 0 0.8rem 0;"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_notes)) ? $page_list_items->page_list_item_notes : ''); ?></p>
-				</section>
+				<!-- Social Media Icons -->
+				<?php if(!$detect->isMobile()){?>
+				<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+				
+				<a class="addthis_button_facebook">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
+				</a> 
+				<a class="addthis_button_twitter">
+					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
+				</a> 
+				<a href="#disqus-container" class="disqus_container">
+					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
+				</a>
 
-				<!-- SLIDE IMAGE SOURCE-->
-				<section class="row">
-					<p id="photo-credit-text" class="columns small-12 " style="margin: 0.2rem 0 0.8rem 0;"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)) ? $page_list_items->page_list_item_image_source : ''); ?></p>
-				</section>	
+				<!--<a class="facebook_like" href="">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
+				</a> -->
+				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true" ></a>
+
+				<a class="addthis_button_compact show-on-medium-up" style="color: rgb(119, 119, 119) !important;"><span><i class="fa fa-plus"></i> More</span></a> 
+
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top:0 !important;">
+				
+				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
+			</div>
+		</div>
+			<br>
+			<?php if(!$promotedArticle ){?>
+				<div data-str-native-key="53caed05" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			<?php } ?>
+
+			<?php } ?>
 
 				<?php if ( $detect->isMobile() ) {?>
 				<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
@@ -147,12 +162,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</div>
 				<hr style="margin: 1rem 0 1rem !important">
 				<?php }else{ ?>
-				<?php if(!$promotedArticle ){?>
-			     	<!-- Puckermob Instory Connatix -->
-			     	<style>#connatix{ padding:0 !important;} #connatix #article-summary{ border-bottom: 0 !important;}</style>
-					<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='1f15e94f-843f-4d31-8940-4eb181b32d73'></script>
-				<?php } ?>
-
+				
 				<div class="row padding-top padding-bottom">
 
 						<section class="columns small-12 padding-bottom">
@@ -169,7 +179,21 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					</div>
 				<?php }?>
 
-				<!-- Like us on FB --> 
+				<!-- SLIDE IMAGE SOURCE-->
+				<?php if(isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)){?>
+				<section class="row">
+					<p id="photo-credit-text" class="columns small-12 " style="margin: 0.2rem 0 0.8rem 0; font-size: 1.3rem !important; font-style:italic;"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)) ? $page_list_items->page_list_item_image_source : ''); ?></p>
+				</section>
+				<?php }?>
+
+				<!-- SLIDE COMMENTS -->
+				<?php if(isset($page_list_items) && !empty($page_list_items->page_list_item_notes)){?>
+				<section class="row">
+					<p id="list_item_notes" class="columns small-12 " style="margin: 0.2rem 0 0.8rem 0;"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_notes)) ? $page_list_items->page_list_item_notes : ''); ?></p>
+				</section>
+				<?php }?>
+
+			<!-- Like us on FB --> 
 			<?php if(!$detect->isMobile()){?>
 			<div class="row hide-for-print like-us-fb">
 				<p class="columns mobile-4 small-4 medium-2" style="font-size:0.8rem !important;">Join the Mob!
@@ -208,35 +232,27 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 
 					<?php } ?>
 				</ul>
-				<hr style="margin: 0.7rem 0 1rem !important; border-top: 5px solid #000;" class="padding-bottom">
+				<hr style="margin: 0.7rem 0 0 !important;" class="">
 			</section>
 		
 				<?php //} ?>
 		</div>
-		<?php if(!$detect->isMobile()){?>
 		
-		<div class="row social-media-container" style="margin-bottom: 0.5rem;">
-				
-				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
-				</a> 
-				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
-				</a> 
-				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
-				</a>
-				
-				<a class="addthis_button_compact"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding show-on-medium-up" style="text-align: right;">
-				
-				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
-			</div>
-		</div>
-		
-		<?php }else{?>
-		
-		<?php } ?>
 	</section>
 </article>
+<?php if(!$detect->isMobile()){?>
+<style>
+		.addthis_button_facebook_like{
+			margin-top: -1rem !important;
+			position: relative !important;
+			left: 0 !important;
+			top: 0.2rem !important;
+			display: inline-block !important;
+			
+		}
+		.social-cont-1 .addthis_button_compact {
+		padding-top: 1rem;
+		padding-left: 0.3rem;
+		}
+		</style>
+<?php } ?>

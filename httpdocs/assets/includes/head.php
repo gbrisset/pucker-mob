@@ -39,9 +39,9 @@
 	<link rel="dns-prefetch" href="//cms.springboardplatform.com" />
 	<link rel="dns-prefetch" href="//c.jsrdn.com" />
 	<link rel="dns-prefetch" href="//tcr.tynt.com" />
-	<link rel="dns-prefetch" href="//cdn-s.wahwahnetworks.com" />
+	<!--<link rel="dns-prefetch" href="//cdn-s.wahwahnetworks.com" />-->
 	<link rel="dns-prefetch" href="//mmrm.qadserve.com" />
-	<link rel="dns-prefetch" href="//cdn.connatix.com" />
+	<!--<link rel="dns-prefetch" href="//cdn.connatix.com" />-->
 	
 	<?php } ?>
 	
@@ -133,6 +133,27 @@
 
   <?php }else{?>
 
+  	<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+  <!-- BEGIN Tynt Script -->
+
+<script type="text/javascript">
+
+if(document.location.protocol=='http:'){
+
+  var Tynt=Tynt||[];
+
+  Tynt.push('cRcCGMgEKr5jLJacwqm_6r');
+
+  (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/
+
+ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
+
+  }
+
+</script>
+
+<!-- END Tynt Script -->
+<?php } ?>
     <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 ros-->
     <script type="text/javascript">
     if ((typeof(f466927)=='undefined' || f466927 > 0) ) {

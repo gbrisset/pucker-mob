@@ -36,4 +36,3 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 		
 	</div>
 </section>
-<hr>

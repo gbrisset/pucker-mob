@@ -16,10 +16,16 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	include_once($config['include_path'].'featured_article.php');
 	if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
 		else{
-	echo '<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">';
-	echo '	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
-	echo '	</div>';
-}
+	//echo '<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">';
+	//echo '	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
+	//echo '	</div>';?>
+	<!-- ShareT -->
+		 	<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
+			<div data-str-native-key="6898172d" style="display: none;"></div>
+			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			</div>
+		<hr class="padding-top">
+<?php }
 }
 
 $articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
@@ -57,10 +63,10 @@ foreach ($articlesList['articles'] as $articles){
 		</div>
 		<hr class="padding-top">
 		
-		<!-- 3LIFT -->	
-		<!--<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
-			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>
-		</div>-->
+		<?php if($bigImageCounter == 1){?>
+		
+
+		<?php }?>
 	
 		<?php  } else{
 			
@@ -95,3 +101,6 @@ foreach ($articlesList['articles'] as $articles){
 </div>
 </div>
 <?php } ?>
+<style>
+.str-adunit.hosted-video.str-collapsed, .str-adunit.clickout.str-collapsed{border:none !important;}
+</style>

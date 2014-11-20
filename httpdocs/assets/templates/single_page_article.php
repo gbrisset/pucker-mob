@@ -31,8 +31,7 @@ if (isset($articleInfoObj)) {
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
 		
 		<!-- SOCIAL DESKTOP -->
-		<?php //if(!$detect->isMobile()){?>
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0.5rem; display:block !important;">
+		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
 					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
@@ -43,22 +42,19 @@ if (isset($articleInfoObj)) {
 				<a href="#disqus-container" class="disqus_container">
 					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
-				
-				<a class="facebook_like">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
-				</a> 
 
-				
-				<a class="addthis_button_facebook_like show-for-large-up  hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true"></a>
-			
+				<!--<a class="facebook_like" href="">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
+				</a> -->
+				<a class="addthis_button_facebook_like  show-for-large-up" fb:like:send="true" ></a>
+
 				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right;">
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
 				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
-		<?php //} ?>
 
 		<!-- Sponsore UNit -->
 		<?php if(!$detect->isMobile()){?>
@@ -79,7 +75,7 @@ if (isset($articleInfoObj)) {
 				</span>
 			</div>
 			<?php } ?>
-			<div id="article-image" class="small-12 columns half-padding-right-on-lg">
+			<div id="article-image" class="small-12 columns half-padding-right-on-lg padding-top">
 				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
 				<img src="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
@@ -96,10 +92,10 @@ if (isset($articleInfoObj)) {
 			</div>
 		</div>
 		
-		<!-- Intro Copy SubTitle -->
+		<!-- Intro Copy SubTitle
 		<section class="row">
 			<h2></h2>
-		</section>
+		</section> -->
 		
 		<!-- GOOGLE AD UNIT MOBILE  
 		<?php //if ( $detect->isMobile() ) {?>
@@ -127,21 +123,46 @@ if (isset($articleInfoObj)) {
 			<section id="article-content" class="small-12 column sidebar-box">
 				<p><?php echo $article_body; ?></p>
 
-				<!-- IMAGE SOURCE -->
-				<p><?php echo $article_img_credits; ?></p>
+		<!-- Social Media Icons -->
+		<!-- DESKTOP ONLY -->
+		<?php if(!$detect->isMobile()){?>
+		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+				
+				<a class="addthis_button_facebook">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
+				</a> 
+				<a class="addthis_button_twitter">
+					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
+				</a> 
+				<a href="#disqus-container" class="disqus_container">
+					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
+				</a>
 
-				<!-- NOTES -->
-				<p><?php echo $article_notes; ?></p>
+				<!--<a class="facebook_like" href="">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
+				</a> -->
+				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true" ></a>
 
-				<!-- ON DESKTOP --> 
-				<?php if(!$detect->isMobile()){?>
-				<?php if(!$promotedArticle ){?>
-			     	<!-- Puckermob Instory Connatix -->
-			     	<style>#connatix{ padding:0 !important;} #connatix #article-summary{ border-bottom: 0 !important;}</style>
-					<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='1f15e94f-843f-4d31-8940-4eb181b32d73'></script>
-				<?php } ?>
+				<a class="addthis_button_compact show-on-medium-up" style="color: rgb(119, 119, 119) !important;"><span><i class="fa fa-plus"></i> More</span></a> 
 
-				<!-- GOOGLE AD BOTTOM-->
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top:0 !important;">
+				
+				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
+			</div>
+		</div>
+
+		
+		<br>
+		<?php if(!$promotedArticle ){?>
+			<div data-str-native-key="53caed05" style="display: none;"></div>
+			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+		<?php } ?>
+
+		<?php } ?>
+
+		<!-- ON DESKTOP --> 
+		<?php if(!$detect->isMobile()){?>
+		<!-- GOOGLE AD BOTTOM-->
 				<div class="row padding-top padding-bottom clear">
 					<section class="columns small-12 padding-bottom">
 						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -155,8 +176,18 @@ if (isset($articleInfoObj)) {
 						</script>
 					</section>
 				</div>
-				<?php }?>
+		<?php }?>
 				
+		<!-- IMAGE SOURCE -->
+		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
+		<p class="padding-bottom" style="margin-bottom:0; font-size: 1.3rem !important; font-style:italic;"><?php echo $article_img_credits; ?></p>
+		<?php }?>
+
+		<!-- NOTES -->
+		<?php if( isset($article_img_credits) && !empty($article_notes)){?>
+		<p><?php echo $article_notes; ?></p>
+		<?php }?>
+
 				<?php if($detect->isMobile() && !$detect->isTablet()){?>
 				<div id="grad"></div>
 				<p class="read-more"><a href="#" class="button">
@@ -167,32 +198,7 @@ if (isset($articleInfoObj)) {
 		</div>
 		
 		<?php if(!$detect->isMobile()){?>
-		<!-- Social Media Icons -->
-		<?php if(!$detect->isMobile()){?>
-		<div class="row social-media-container padding-bottom">
-				
-				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
-				</a> 
-				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
-				</a> 
-				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
-				</a>
-				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Comments" />
-				</a> 
-				
-				<a class="addthis_button_compact"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding show-on-medium-up" style="text-align: right;">
-				
-				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
-			</div>
-		</div>
-		<br>
-		<?php } ?>
+		
 
 		<?php }else{ 
 			if(!$promotedArticle){ ?>
@@ -235,4 +241,19 @@ if (isset($articleInfoObj)) {
 	<?php } ?>
 	</section>
 </article>
-
+<?php if(!$detect->isMobile()){?>
+<style>
+		.addthis_button_facebook_like{
+			margin-top: -1rem !important;
+			position: relative !important;
+			left: 0 !important;
+			top: 0.2rem !important;
+			display: inline-block !important;
+			
+		}
+		.social-cont-1 .addthis_button_compact {
+		padding-top: 1rem;
+		padding-left: 0.3rem;
+		}
+		</style>
+<?php } ?>

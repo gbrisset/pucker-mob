@@ -10,9 +10,18 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
   }
 }
 ?>
+
+<header id="super-banner" class="hide-for-print show-for-large-up">
+  <div class="row">
+    <a href="https://www.change.org/p/tv-land-be-cos-reinstate-cosby-s-shows-don-t-prosecute-based-on-accusations" target="blank">
+      <img src="http://www.puckermob.com/assets/img/BeCos-Super-Nav.png">
+    </a>
+  </div>
+</header>
+ <!--
 <header id="top-banner" class="hide-for-print show-for-large-up">
   <div class="row">
-    <div id="header-social" class="small-6 columns half-padding-right">FOLLOW US 
+   <div id="header-social" class="small-6 columns half-padding-right">FOLLOW US 
       <a href="<?php echo $mpArticle->data['article_page_facebook_url'];?>" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a>
       <a href="<?php echo $mpArticle->data['article_page_twitter_url'];?>" target="_blank"><i class="fa fa-twitter fade-in-out"></i></a>
       <a href="<?php echo $mpArticle->data['article_page_pinterest_url'];?>" target="_blank"><i class="fa fa-pinterest fade-in-out"></i></a>
@@ -22,8 +31,10 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
       <input id="topbar-search-contents" type="search" placeholder="SEARCH">
       <button id="topbar-search-submit" class="alert button expand"><i class="fa fa-search"></i></button>
     </div>
+
+
   </div>
-</header>
+</header>-->
 
 <div id="nav-bar" class="sticky contain-to-grid hide-for-print">
   <nav class="top-bar" data-topbar="" data-options="scrolltop: false;">

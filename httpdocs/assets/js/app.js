@@ -144,7 +144,7 @@ $(document).ready(function() {
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));
 		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
 
-		totalHeight = 2766;
+		totalHeight = 2946;
 
 		if( page === 'home' || page === 'category' || page === 'distroscale'){
 			totalHeight+= 300;
@@ -165,7 +165,7 @@ $(document).ready(function() {
 		if(!$('body').hasClass('mobile')) {
 
 
-			totalHeight = 2746;
+			totalHeight = 2946;
 
 			if( page === 'home' || page === 'category' || page === 'distroscale'){
 				totalHeight+= 300;
@@ -185,7 +185,7 @@ $(document).ready(function() {
 		//main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2 /*+ (asideHeight.margin * 7) - 8*/));
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2));
 		
-		totalHeight = 2746;
+		totalHeight = 2946;
 
 		if( page === 'home' || page === 'category' || page === 'distroscale'){
 			totalHeight+= 300;
@@ -286,12 +286,16 @@ $(document).ready(function() {
 			}else if( article_id == 4341 ){
 				inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticle, 'p');	
 			}else{
-				inBodyAd.loadInArticleAd( 'article-content', 3, 0, mobilead[adPage].inarticle, 'p');	
+				inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticle, 'p');	
 			}
+
+			//inBodyAd.loadInArticleAd( 'article-content', 5, 0, '<script type="text/javascript" src="//cdn.connatix.com/min/connatix.renderer.infeed.min.js" data-connatix-token="1f15e94f-843f-4d31-8940-4eb181b32d73"><\/script>', 'p');
 		}
 
 		if( adPage === 'articleslide'){
 			inBodyAd.loadInArticleAd( 'article-caption', 2, 0, mobilead[adPage].inarticle, 'p');	
+			//inBodyAd.loadInArticleAd( 'article-caption', 6, 0, '<script type="text/javascript" src="//cdn.connatix.com/min/connatix.renderer.infeed.min.js" data-connatix-token="1f15e94f-843f-4d31-8940-4eb181b32d73"><\/script>', 'p');
+
 		}
 
 	}
@@ -611,15 +615,8 @@ if($('body').hasClass('mobile')) {
 	});
 }
 
-/*$(window).scroll( function(){
 
-	 if(isOnScreen($('#social-buttons')) ){
-		$('#at4-share').removeClass('social-show').addClass('at4-hide').fadeOut(200);
-	}else{
-		$('#at4-share').removeClass('at4-hide').addClass('social-show').fadeIn(slow);
-	}
 
-});*/
 
 });
 

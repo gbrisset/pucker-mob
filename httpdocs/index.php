@@ -18,16 +18,20 @@ if ( $detect->isMobile() ) {?>
 		include_once($config['include_path'].'articlelistmobile.php'); ?>
 		</section>
 	</main>
+
 	<?php include_once($config['include_path'].'footer.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
+	<!-- MODAL BOX POPUP -->
+	<?php include_once($config['include_path'].'modalbox.php'); ?>
 </body>
+
 </html>
 
 <?php } else { ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
-<body id="home">
+<body id="home" class="">
 	<!-- Sponsored By Totally Her -->
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
 
@@ -40,12 +44,14 @@ if ( $detect->isMobile() ) {?>
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
 	</main>
-
+	
 	<!-- GUM GUM In Screen 
 	<script type="text/javascript">ggv2id='56d76089';</script>-->
 
 	<?php include_once($config['include_path'].'footer.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
+	<!-- MODAL BOX POPUP -->
+	<?php include_once($config['include_path'].'modalbox.php'); ?>
 </body>
 </html>
 <?php }?>

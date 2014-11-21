@@ -25,9 +25,8 @@
 .modalDialog > div {
 	position: relative;
 	margin: 20% auto;
-	/*padding: 5px 20px 13px 20px;
-	background: #fff;*/
-
+	width: 95%;
+	
 	img{
 		-webkit-box-shadow: 10px 9px 8px -6px #222;
 		-moz-box-shadow: 10px 9px 8px -6px #222;
@@ -68,8 +67,8 @@
 }
 
 @media #{$large-up} { 
-	.modalDialog > div { width: 50%; max-width: 50rem; }
-	.modalDialog > div { margin: 4% auto;}
+	.modalDialog > div { width: 35%; max-width: 50rem; }
+	.modalDialog > div { margin: 6% auto;}
 }
 
 @media #{$medium-up} { 

@@ -37,8 +37,8 @@ if(!is_null($categoryInfo)){
 }else $mpShared->get404();
 if ( $detect->isMobile() ) {
 	?>
-	<!DOCTYPE html>
-	<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html class="no-js" lang="en">
 	<?php include_once($config['include_path'].'head.php');?>
 	<body id="category" class="mobile">
 		<?php include_once($config['include_path'].'header.php');?>
@@ -60,12 +60,17 @@ if ( $detect->isMobile() ) {
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
+
+		<!-- MODAL BOX POPUP -->
+		<?php include_once($config['include_path'].'modalbox.php'); ?>
 	</body>
-	</html>
-	<?php } else { ?>
-	<!DOCTYPE html>
-	<html class="no-js" lang="en">
-	<?php include_once($config['include_path'].'head.php');?>
+</html>
+	
+<?php } else { ?>
+	
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<?php include_once($config['include_path'].'head.php');?>
 	<body id="category">
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
@@ -86,8 +91,11 @@ if ( $detect->isMobile() ) {
 			</section>
 			<?php include_once($config['include_path'].'rightsidebar.php');?>
 		</main>
-			<?php include_once($config['include_path'].'footer.php');?>
-			<?php include_once($config['include_path'].'bottomscripts.php');?>
-		</body>
-		</html>
+		<?php include_once($config['include_path'].'footer.php');?>
+		<?php include_once($config['include_path'].'bottomscripts.php');?>
+
+		<!-- MODAL BOX POPUP -->
+		<?php include_once($config['include_path'].'modalbox.php'); ?>
+	</body>
+</html>
 		<?php } ?>

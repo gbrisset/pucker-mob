@@ -77,7 +77,7 @@ document.write('<div id="openModal" class="modalDialog">'+
 		'<div id="popup-content">'+
 			'<a href="#close" title="Close" class="close">X</a>'+
 			'<div class="modal-img">'+
-				'<a href="https://www.change.org/p/tv-land-be-cos-reinstate-cosby-s-shows-don-t-prosecute-based-on-accusations#" target="blank">'+
+				'<a href="http://www.puckermob.com/hot-topics/be-cos-accusations-dont-prove-guilt-sign-our-changeorg-petition-to-reinstate-cosbys-shows-on-nbc-netflix-and-tv-land">'+
 					'<img src="http://www.puckermob.com/assets/img/'+image+'" alt="Be Cos"/>'+
 				'</a>'+
 			'</div>'+

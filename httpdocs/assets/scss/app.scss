@@ -1386,7 +1386,7 @@ $fun: #f9651b;
 	}
 
 	.sidebar-box .read-more .button{
-		background-color: #0f5215;
+		background-color: #000;
 		color: #fff !important;
 		width: 100%;
 		min-width: 320px;
@@ -1482,3 +1482,77 @@ div.adblade-dyna.zone-989 div.zone div.ad:last-child{ border-bottom:none;}
 
 
 @import "modal_box";
+
+//TABLET
+@media #{$tablet-portrait}{
+	.top-bar>.title-area>.name{width: 80%; padding-top: 0.8rem;}
+	.top-bar-section>ul.left{margin-top: 0.5rem;}
+	.top-bar.expanded .title-area{background:none;}
+	.top-bar-section ul li{padding: 0.5rem 0 0.5rem 1.4rem !important;}
+
+	.hide-on-tablet{ display:none;}
+		#header-ad{margin-top: 4rem;}
+		#main{ margin-top:0.9375rem !important;}
+		#header-ad{margin-top: 4rem;}
+
+	.padding-top-tablet{ padding-top: 0.2rem !important; }
+	.padding-bottom-tablet{ padding-bottom: 0.2rem !important; }
+	.no-padding-tablet{ padding:o !important; }
+}
+
+@media #{$tablet-landscape}{
+		.top-bar>.title-area>.name{width: 80%; padding-top: 0.8rem;}
+		.top-bar-section>ul.left{margin-top: 10px;}
+		.top-bar-section ul li{ border-bottom:none; padding-left: 0.5rem !important;}
+		#super-banner{ display:none !important;}
+		.top-bar, .top-bar .name{height: 3.0625rem;}
+
+		.tablet-12 {
+		    @include grid-column(12);
+		    padding-bottom: $panel-padding / 2;
+		}
+
+		.tablet-11 {
+		    @include grid-column(11);
+		    padding-bottom: $panel-padding / 2;
+		}
+
+		.tablet-7 {
+			@include grid-column(7);
+			padding-left: 0 !important;
+			padding-right: $panel-padding / 2;
+		}
+
+		.tablet-6 {
+			@include grid-column(6);
+			padding-right: $panel-padding / 2;
+			padding-left: 0 !important;
+			min-height: 80px;
+		}
+
+		.tablet-5 {
+			@include grid-column(5);
+			padding-right: $panel-padding / 2;
+			padding-left: 0 !important;
+			min-height: 80px;
+		}
+
+		.padding-top-tablet{ padding-top: 0.2rem !important; }
+		.padding-bottom-tablet{ padding-bottom: 0.2rem !important; }
+
+		.half-padding {
+			padding-left: ($panel-padding / 2);
+			padding-right: ($panel-padding / 2);
+		}
+
+		#puc-articles{ width: 90.9% !important;}
+		#puc-articles .h1-small-article{ font-size: 1.05rem !important; }
+
+		.no-padding-tablet{ padding:o !important; }
+		.fixed-width-sidebar{ width: 296px;}
+
+		.hide-on-tablet{ display:none;}
+		#header-ad{margin-top: 4rem;}
+		#main{ margin-top:0.9375rem !important;}
+
+}

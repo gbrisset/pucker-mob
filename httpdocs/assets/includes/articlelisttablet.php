@@ -46,15 +46,15 @@ foreach ($articlesList['articles'] as $articles){
 		$bigImageCounter++; 
 		?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
-			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
+			<a class="mobile-12 tablet-12 small-12 medium-12 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 			</a>
-			<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 mobile-vertical-center padding-top">
-				<p class="left uppercase" >
+			<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 padding-top padding-top-tablet padding-bottom-tablet">
+				<p class="left uppercase " >
 					<span class="span-category <?php echo $articles['cat_dir_name']?>"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
-					<span class="span-date"><?php echo $date; ?></span>
+					<span class="span-date hide-on-tablet"><?php echo $date; ?></span>
 				</p>
-				<p class="right uppercase">
+				<p class="right uppercase hide-on-tablet">
 					<span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></span>
 				</p>
 				<a class="left clear-left" href="<?php echo $linkToArticle; ?>">
@@ -66,7 +66,7 @@ foreach ($articlesList['articles'] as $articles){
 		
 		<?php if($bigImageCounter == 1){?>
 		<?php }?>
-		
+
 		<?php  } else{
 			
 			$clearLeft='no-padding-right'; 
@@ -76,19 +76,19 @@ foreach ($articlesList['articles'] as $articles){
 			$linkToImage .= '?ggnoads';
 
 			?>
-			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?> ggnoads" id="<?php echo 'article-'.$articleIndex;?>">
-				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
+			<div class="articles columns mobile-12 tablet-6 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?> ggnoads" id="<?php echo 'article-'.$articleIndex;?>">
+				<a class="mobile-12 small-12 medium-12 large-12 xlarge-12 prefetch padding-bottom-tablet" href="<?php echo $linkToArticle; ?>">
 					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 				</a>
-				<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 mobile-vertical-center padding-top">
-					<p class="uppercase small-7 left small-font">
-						<span class="span-category <?php echo $articles['cat_dir_name']?>"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
-						<span class="span-date"><?php echo $date; ?></span>
+				<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 padding-top padding-top-tablet padding-bottom-tablet">
+					<p class="uppercase small-7 left small-font padding-top-tablet">
+						<span class="span-category <?php echo $articles['cat_dir_name']?> padding-bottom-tablet"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
+						<span class="span-date hide-on-tablet"><?php echo $date; ?></span>
 					</p>
-					<p class="right uppercase small-5 align-right small-font">
-						<span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></span>
+					<p class="right uppercase small-5 align-right small-font hide-on-tablet ">
+						<span class="span-author ">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $articles['contributor_name']; ?></a></span>
 					</p>
-					<a class="left clear-left" href="<?php echo $linkToArticle; ?>">
+					<a class="left clear-left padding-top-tablet" href="<?php echo $linkToArticle; ?>">
 						<h1 class="h1-small-article"><?php echo $articles['article_title']?></h1>
 					</a>
 				</div>

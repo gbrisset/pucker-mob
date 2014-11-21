@@ -45,13 +45,11 @@
 	$month = isset($_POST['month']) ? $_POST['month'] : $current_month;
 	//$year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 
-	$articles = $mpArticle->get_dashboardArtciles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month);
+	$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month);
 	
-
 	$contributor_name = $userData["contributor_name"];
+	$total = 0;
 
-
-	
 ?>
 <!DOCTYPE html>
 
@@ -61,9 +59,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
-	<script>function change(){
-	 document.getElementById("month-form").submit();
-	}</script>
+	<script>function change(){ document.getElementById("month-form").submit(); }</script>
+	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -71,34 +68,28 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			
-			<section class="" id="">
+			<section>
 				<h2 class="left">Contributor: <?php echo $contributor_name ; ?></h2>
 				<div>
 					<label>Month: 
 						<form id="month-form" method="post">
 					  	<select name='month' onchange = "change()">
-					  	<option value='0'>Select Month</option>
-					  	<?php 
-
-					  	/*$monthNum  = 3;
-							$dateObj   = DateTime::createFromFormat('!m', $monthNum);
-							$monthName = $dateObj->format('F'); // March
-						*/
-					  	
-					  	$index = 0;
-					  	if($current_year == 2014) $index = 10; 
-					  	for($m = $index; $m <= $current_month; $m++){
-					  		$dateObj   = DateTime::createFromFormat('!m', $m);
-					  		$monthName = $dateObj->format('F');
-					  		if($month == $m) $selected  = 'selected'; else $selected = '';
-					  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName." ".$current_year.'</option>';
-						}
-						?>
-					</select>
-					</form>
-				</label>
+					  		<option value='0'>Select Month</option>
+						  	<?php 
+						  	$index = 0;
+						  	if($current_year == 2014) $index = 10; 
+						  	for($m = $index; $m <= $current_month; $m++){
+						  		$dateObj   = DateTime::createFromFormat('!m', $m);
+						  		$monthName = $dateObj->format('F');
+						  		if($month == $m) $selected  = 'selected'; else $selected = '';
+						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName." ".$current_year.'</option>';
+							} ?>
+						</select>
+						</form>
+					</label>
 				</div>
 			</section>
+
 			<section id="dashboard" class="row">
 				<?php if(isset($articles) && $articles ){?>
 				<table>
@@ -110,11 +101,12 @@
 				      <th>Shares</th>
 				      <th>Share Rate</th>
 				      <th>Share Rev</th>
-				      <th>Total Rev</th>
+				      <th class="bold">Total Rev</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				  	<?php foreach( $articles as $article ){ 
+
 				  		$creation_date = date_format(date_create($article['creation_date']), 'd/m/y');
 				  		//Calculate shares / month
 				  		//if month == selected 
@@ -139,6 +131,8 @@
 				  		//SHARE REVENU = SHARE RATE + RATE BY ARTICLE ( $10 or $5 )
 				  		$share_rev = $share_rate + $rate_by_article;
 
+				  		$total += $share_rev;
+
 				  	?>
 				    <tr id="article-<?php echo $article['article_id']; ?>">
 				      <td><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 50); ?></td>
@@ -147,11 +141,15 @@
 				      <td><?php echo $total_shares_this_month; ?></td>
 				      <td><?php echo $rate_by_share; ?></td>
 				      <td><?php echo $share_rate; ?></td>
-				      <td><?php echo $share_rev; ?></td>
+				      <td class="bold"><?php echo '$'.$share_rev; ?></td>
 				    </tr>
 				    <?php }?>
 				  </tbody>
 				</table>
+
+				<div id="display_total">
+					<p>TOTAL <span class="right bold"><?php echo '$'.$total; ?></span></p>
+				</div>
 				<?php }else{ echo "No Records Found!.";} ?>
 			</section>
 			<section>

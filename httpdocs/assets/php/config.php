@@ -16,8 +16,8 @@ if($local)
 	define("MAIL_PORT", 25);
 	define("IMAGE_UPLOAD_DIR", dirname(dirname(dirname(dirname(__FILE__))))."/subdomains/images/httpdocs/articlesites/puckermob/");
 
-	//error_reporting(E_ALL);
-	//ini_set('display_errors', '1');
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
 
 	$localIp = 'localhost';
 	$directory = 'projects/pucker-mob/';
@@ -94,6 +94,8 @@ if($local)
 	require_once $config['assets_path'].'/class.phpmailer.php';	
 	require_once $config['assets_path'].'/class.pop3.php';	
 	require_once $config['assets_path'].'/class.smtp.php';	
+
+
 
 	require_once $config['assets_path'].'/mobile-detect.php';
 
@@ -193,6 +195,7 @@ if($local)
 	if(isset($admin) && $admin){
 		require_once dirname(__FILE__).'/MPArticleAdmin.php';
 		require_once dirname(__FILE__).'/MPArticleAdminController.php';
+		require_once dirname(__FILE__).'/class.Dashboard.php';
 	}
 
 	date_default_timezone_set('America/New_York');
@@ -210,7 +213,9 @@ $mpVideoShows = new MPVideoShows($config);
 if(isset($admin) && $admin){
 	$adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
 	$mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, $mpVideoShows, $adminController);
+	$dashboard = new Dashboard($config);
 }
+
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;

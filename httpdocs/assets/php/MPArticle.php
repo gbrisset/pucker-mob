@@ -1612,7 +1612,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	}
 }
 
-public function get_dashboardArtciles($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month) {
+public function get_dashboardArticles($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month) {
 
 	switch ($order) {
 		case 'az':

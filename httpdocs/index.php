@@ -1,6 +1,7 @@
 <?php
 require_once('assets/php/config.php');
 $pageName = $mpArticle->data['article_page_name'];
+$isHomepage = true;
 
 if ( $detect->isMobile() ) {?>
 <!DOCTYPE html>

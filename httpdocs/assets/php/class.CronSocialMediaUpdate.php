@@ -49,7 +49,7 @@ class CronSocialMediaInformation{
 			  FROM articles 
 			  INNER JOIN ( categories, article_categories )
 			  ON articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id
-			  WHERE article_status = 1 and articles.article_id = 3863";
+			  WHERE article_status = 1 ";
 
 		$q = $this->performQuery(['queryString' => $s]);
 

@@ -395,7 +395,7 @@ class MPArticleAdminController extends MPArticle{
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category for an article.'));
 		
 		//Check for prep and cook time and conver values enter by the user in minutes to insert into the db fields.
-		if(isset($post['article_prep_time_hr-s']) && isset($post['article_prep_time_min-s'])){
+		/*if(isset($post['article_prep_time_hr-s']) && isset($post['article_prep_time_min-s'])){
 			$prep_in_mins = ($post['article_prep_time_hr-s']*60) + $post['article_prep_time_min-s'];
 			$post['article_prep_time-s'] = $prep_in_mins;
 			unset($post['article_prep_time_hr-s']);
@@ -413,26 +413,26 @@ class MPArticleAdminController extends MPArticle{
 			unset($post['article_cook_time_min-s']);
 		}
 		//END
-
+*/
 		$unrequired = array(
 			'article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_body', 'article_keywords', 'article_ingredients', 'article_instructions', 'article_additional_comments'
 		);
 
 		/*Ingredients And Instructions*/
 		//Get the ingredients and instructions value and convert into a string object
-		$ingredients =  $this->helpers->getElementList($post, 'article_ingredients');
-		$instructions = $this->helpers->getElementList($post, 'article_instructions');
+		//$ingredients =  $this->helpers->getElementList($post, 'article_ingredients');
+		//$instructions = $this->helpers->getElementList($post, 'article_instructions');
 
 		//Clean the $post array and remove the ingredients and instructions to avoid conflic between fields
-		foreach( $post as $key => $val ){
-			if(strpos($key, 'article_ingredients') !== false || strpos($key, 'article_instructions') !== false){
-				unset($post[$key]);
-			} 
-		}
+		//foreach( $post as $key => $val ){
+			//if(strpos($key, 'article_ingredients') !== false || strpos($key, 'article_instructions') !== false){
+			//	unset($post[$key]);
+			//} 
+		//}
 
 		//Set the right key for ingredients and instructions value
-		$post['article_ingredients-nf'] = $ingredients;
-		$post['article_instructions-nf'] = $instructions;
+		//$post['article_ingredients-nf'] = $ingredients;
+		//$post['article_instructions-nf'] = $instructions;
 
 		/*END Ingredients And Instructions*/
 

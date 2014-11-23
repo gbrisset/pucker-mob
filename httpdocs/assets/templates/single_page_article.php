@@ -49,6 +49,16 @@ if (isset($articleInfoObj)) {
 
 		<!-- Article Image -->
 		<div class="row">
+			<!-- SMARTIES -->
+			<?php if($promotedArticle){ 
+				if($detect->isMobile()) $smartiesImagestyle = 'width:98%;'; else $smartiesImagestyle='';
+			?>
+			<div id="smarties-image" class="small-12 columns half-padding-right-on-lg">
+				<span style="position: absolute; right: 0.45rem; z-index: 999;" >
+					<img style="<?php echo $smartiesImagestyle; ?>" src="http://dev.puckermob.com/assets/img/sponsoredby-smarties.png">
+				</span>
+			</div>
+			<?php } ?>
 			<div id="article-image" class="small-12 columns half-padding-right-on-lg">
 				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
 				<img src="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
@@ -68,7 +78,8 @@ if (isset($articleInfoObj)) {
 		
 		<!-- GOOGLE AD UNIT MOBILE  -->
 		<?php if ( $detect->isMobile() ) {?>
-		
+			<!-- SMARTIES -->
+			<?php if(!$promotedArticle){ ?>
 			<div class="hide-for-print row no-padding padding-top ads" style="margin-bottom: -1.5rem;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- PM-Mobile-320x50 -->
@@ -80,7 +91,7 @@ if (isset($articleInfoObj)) {
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 			</div>
-
+			<?php }?>
 		<?php }?>
 
 		<!-- Article Content -->
@@ -98,22 +109,6 @@ if (isset($articleInfoObj)) {
 			</section>
 		</div>
 		<?php if(!$detect->isMobile()){?>
-		<!-- GOOGLE ADS UNIT 
-		<div class="row">
-			<section class="columns small-12">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- PM 637x90 Bottom -->
-				<!--<ins class="adsbygoogle"
-				     style="display:inline-block;width:637px;height:90px"
-				     data-ad-client="ca-pub-8978874786792646"
-				     data-ad-slot="3114328182"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</section>
-		</div>
-		<hr>-->
-		
 		<!-- Social Media Icons -->
 		<div class="row padding-bottom">
 			<div class="addthis_jumbo_share small-12 xxlarge-9 columns hide-for-print social-buttons-top half-padding-right"></div>
@@ -138,8 +133,10 @@ if (isset($articleInfoObj)) {
 				</script>
 			</div>
 		</div>
-		<?php }else{ ?>
+		<?php }else{ 
+			if(!$promotedArticle){ ?>
 			<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
+
 			<div class="hide-for-print padding-top ads">
 				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
@@ -160,10 +157,23 @@ if (isset($articleInfoObj)) {
 			</script>
 			</div>
 			
-		<?php }?>
+		<?php }else{?>
+		<div class="hide-for-print row half-padding padding-top padding-bottom">
+	    	<!-- SMARTIES PROMOTION -->
+	        <!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
+	        <script language="javascript"><!--
+	        document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+	        //-->
+	        </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
+	        <!-- End of JavaScript Tag -->
+	    </div>
+    	<?php } ?>
+	<?php } ?>
+	<?php if(!$promotedArticle){ ?>
 		<section class="nativo-ad">
 			<div class="nativo"></div> 
 		</section>
+	<?php } ?>
 	</section>
 </article>
 

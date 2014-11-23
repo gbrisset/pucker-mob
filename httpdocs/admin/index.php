@@ -1,85 +1,169 @@
 <?php
-	$new_visitor = false;
-	$username = "";
+	
 	$admin = true;
 	require_once('../assets/php/config.php');
-	if(!$adminController->user->getLoginStatus()) {
-		$adminController->redirectTo('login/');
-		$somevar = 0;
-	} else {
-		$adminController->user->data = $adminController->user->getUserInfo();
-
-		if($adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
-			$adminController->redirectTo('articles/');
-		}else{
-			$username = $adminController->user->data['user_name'];
-			$userLoginCount = $adminController->user->data['user_login_count'];
-			$contributor_email = $adminController->user->data['user_email'];
-			$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $contributor_email ])['contributors'];
-			//$adminController->redirectTo('contributors/edit/'.$contributorInfo[0]['contributor_seo_name']);
-		}
-
-	}
+	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 	
+	$userData = $adminController->user->data = $adminController->user->getUserInfo();
+
+	if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
+
+	// 1. the current page number ($current_page)
+	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+	
+// 2. records per page ($per_page)
+	$per_page = 30;
+	$limit=30;
+	$post_date = 'all';
+
+	$articleStatus = '1, 2, 3';
+
+	$userArticlesFilter = $userData['user_email'];
+	$order = '';
+	$filterLabel = 'Most Recent';
+// Sorting information
+	$article_sort_by = "mr";
+	if (isset($_GET['sort'])) {
+		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
+		$articleStatus = $sortingMethod['articleStatus'];
+		$filterLabel = $sortingMethod['filterLabel'];
+		$order = $sortingMethod['order'];
+		$article_sort_by = $_GET['sort'];
+	}
+	if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
+	if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
+	//if (isset($userData['user_permission_show_other_user_articles']) && $userData['user_permission_show_other_user_articles'] == 1){
+		//$userArticlesFilter = 'all';
+	//}
+// 3. total record count ($total_count)	
+	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter));
+	$pagination = new Pagination($page, $per_page, $total_count);
+	$offset = $pagination->offset();
+	$current_month = date('n');
+	$current_year = date('Y');
+
+	$month = isset($_POST['month']) ? $_POST['month'] : $current_month;
+	//$year = isset($_POST['year']) ? $_POST['year'] : $current_year;
+
+	$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month);
+	
+	$contributor_name = $userData["contributor_name"];
+	$contributor_id = $userData["contributor_id"];
+	$total = 0;
+
 ?>
 <!DOCTYPE html>
+
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
+	<script>function change(){ document.getElementById("month-form").submit(); }</script>
+	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
+		
+		<div id="content" class="columns small-9 large-11">
+			
+			<section>
+				<h2 class="left">Contributor: <?php echo $contributor_name ; ?></h2>
+				<div>
+					<label>Month: 
+						<form id="month-form" method="post">
+					  	<select name='month' onchange = "change()">
+					  		<option value='0'>Select Month</option>
+						  	<?php 
+						  	$index = 0;
+						  	if($current_year == 2014) $index = 10; 
+						  	for($m = $index; $m <= $current_month; $m++){
+						  		$dateObj   = DateTime::createFromFormat('!m', $m);
+						  		$monthName = $dateObj->format('F');
+						  		if($month == $m) $selected  = 'selected'; else $selected = '';
+						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName." ".$current_year.'</option>';
+							} ?>
+						</select>
+						</form>
+					</label>
+				</div>
+			</section>
 
-		<div id="content">
-			<section id="welcome-msg">
-				<h2>Welcome to My Simple Dish!</h2>
-				<p>Thank you for registering at simpledish.com. You can now build a profile and start sharing your own recipes with the Simple Dish community. Let's get started!</p>
-				
-				<section id="welcome-page">
-					<div class="welcome-desc">
-						<div id="icon-img">
-							<a href="">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/icon-contributor.jpg'?>" alt"Create Profile Image">
-							</a>
-						</div>
-						<div id="text-desc">
-							<p>
-								<span>Create Profile:</span> Build your <a href="<?php echo $config['this_admin_url'].'account/user/'.$username;?>">profile</a> by providing information about yourself to the Simple Dish community.
-							</p>
-						</div>
-					</div>
-					<div class="welcome-desc">
-						<div id="icon-img">
-							<a href="">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/icon-food.jpg'?>" alt"Upload Recipes Image">
-							</a>
-						</div>
-						<div id="text-desc">
-							<p>
-								<span>Upload Recipes:</span> Start adding your own <a href="<?php echo $config['this_admin_url'].'articles/newrecipe/'?>">recipes</a> to our site and share your original creations with other users.
-							</p>
-						</div>
-					</div>
-					<div class="welcome-desc">
-						<div id="icon-img">
-							<a href="">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/icon-recipe.jpg'?>" alt"Simple Dish">
-							</a>
-						</div>
-						<div id="text-desc">
-							<p>
-								<span>Browser Simple Dish:</span> Go back to <a href="http://simpledish.com">simpledish.com</a> to find more recipes and read articles on trending food topics.
-							</p>
-						</div>
-					</div>
-				</section>
+			<section id="dashboard" class="row">
+				<?php if(isset($articles) && $articles ){?>
+				<table>
+				  <thead>
+				    <tr>
+				      <th>Article Title</th>
+				      <th>Date Added</th>
+				      <th>Article Rate</th>
+				      <th>Shares</th>
+				      <th>Share Rate</th>
+				      <th>Share Rev</th>
+				      <th class="bold">Total Rev</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<?php foreach( $articles as $article ){ 
+
+				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
+				  		$month_created = date_format(date_create($article['creation_date']), 'n');
+				  		
+
+				  		//Calculate shares / month
+				  		//if month == selected 
+				  		$facebook_shares = $article['facebook_shares'];
+				  		$twitter_shares = $article['twitter_shares'];
+				  		$pinterest_shares = $article['pinterest_shares'];
+				  		$googleplus_shares = $article['google_shares'];
+				  		$linkedin_shares = $article['linkedin_shares'];
+				  		$delicious_shares = $article['delicious_shares'];
+				  		$stumbleupon_shares = $article['stumbleupon_shares'];
+
+				  		//RATE BY ARTICLE 
+				  		$rate_by_article = 0;
+				  		if( $month_created == $current_month ){
+				  			$rate_by_article = $article['rate_by_article'];
+				  		}
+				  		$rate_by_share  = $article['rate_by_share'];
+				  		
+				  		//TOTAL SHARES
+				  		$total_shares_this_month = $facebook_shares + $twitter_shares + $pinterest_shares + $googleplus_shares +
+				  								   $linkedin_shares + $delicious_shares + $stumbleupon_shares;
+				  		//SHARE RATE  TOTAL SHARES * RATE BY ARTICLE (0.04)			   
+				  		$share_rate = $total_shares_this_month * $rate_by_share;
+
+				  		//SHARE REVENU = SHARE RATE + RATE BY ARTICLE ( $10 or $5 )
+				  		$share_rev = $share_rate + $rate_by_article;
+
+				  		$total += $share_rev;
+
+				  	?>
+				    <tr id="article-<?php echo $article['article_id']; ?>">
+				      <td><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 50); ?></td>
+				      <td><?php echo $creation_date;?></td>
+				      <td><?php echo $rate_by_article;?></td>
+				      <td><?php echo $total_shares_this_month; ?></td>
+				      <td><?php echo $rate_by_share; ?></td>
+				      <td><?php echo $share_rate; ?></td>
+				      <td class="bold"><?php echo '$'.$share_rev; ?></td>
+				    </tr>
+				    <?php }?>
+				  </tbody>
+				</table>
+
+				<div id="display_total">
+					<p>TOTAL <span class="right bold"><?php echo '$'.$total; ?></span></p>
+				</div>
+				<?php }else{ echo "No Records Found!.";} ?>
+			</section>
+			<section>
+				<p class="notes">*All payments will be made via PayPal within 60 days of month's end.</p>
 			</section>
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php');?>

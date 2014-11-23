@@ -70,6 +70,7 @@
 						</div>
 					</div>	
 					<?php }?>
+
 					<div class="row">
 					    <div class="columns">
 						<label for="article_desc-s">Article Description<span>*</span> :
@@ -101,6 +102,25 @@
 					</div>
 					</div>	
 					<?php }?>
+
+
+					<!-- Article Type  -->
+					<div class="row">
+					    <div class="columns">
+							<label class="small-3 left">Article Type: </label>
+							<?php 
+							//$y_checked = ''; $n_checked = 'checked';
+
+							//if( $featuredArticle && $featuredArticle['article_id'] == $article['article_id']) { $y_checked = 'checked'; $n_checked = ''; } ?>
+							<input type="radio" name="article_type-s" id="opinion" data-info="1"  value="1" checked />
+							<label for="" class="radio-label">Opinion</label>
+									
+							<input type="radio" name="article_type-s" data-info="2" id="news" value="2"  />
+							<label for="" class="radio-label">News</label>
+						</div>
+					</div>
+					<?php //}?>
+
 
 					<div class="row padding-bottom">
 					    <div class="columns">
@@ -209,7 +229,8 @@
 
 							<button type="submit" id="submit" name="submit" class="radius">Save</button>
 						</div>
-					</div></div>
+					</div>
+				</div>
 				</form>
 				</section>
 			</section>

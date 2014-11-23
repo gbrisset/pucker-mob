@@ -223,6 +223,20 @@
 					</label></div></div>
 					
 
+					<!-- Article Type -->
+					<div class="row">
+					    <div class="columns">
+						<label class="small-3 left">Article Type: </label>
+						
+						<input type="radio" name="article_type-s" id="opinion" data-info="1"  value="1" <?php if($article['article_type'] == 1) echo "checked"; ?> />
+						<label for="" class="radio-label">Opinion</label>
+									
+						<input type="radio" name="article_type-s" data-info="2" id="news" value="2"  <?php if($article['article_type'] == 2) echo "checked"; ?> />
+						<label for="" class="radio-label">News</label>
+						</div>
+					</div>
+					
+
 					<div class="row padding-bottom">
 					    <div class="columns">
 						<label for="article_body-nf">Article Body:

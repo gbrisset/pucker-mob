@@ -132,13 +132,25 @@ a{ outline: none !important; }
 	color: white;
 	font-weight: bold;
 }
+
+
 .arrow-left i, .arrow-right i {
 	font-size: 1.7rem;
 	margin: 0;
 }
+
 .arrow-left i{ float: left; padding: 0.16rem 0.5rem 0.1rem 0; }
 .arrow-right i{ float: right; padding: 0.16rem 0rem 0.1rem 0.5rem;}
 
+@media #{$large-up} { 
+	.arrow-box{ width: 40%;} 
+	.num-page-margin-top{margin-top: 0.3rem;}
+	.num-page-right-style{ margin-left: 40%; margin-top: 0.2rem; }
+	.arrow-left, .arrow-right{ padding: 0.3rem 3rem;}
+	.arrow-left i, .arrow-right i {font-size: 2rem;}
+	.arrow-left i{ float: left; padding: 0.03rem 0.5rem 0.1rem 0; }
+	.arrow-right i{ float: right; padding: 0.03rem 0.5rem 0.1rem 0;}
+}
 
 .clear{
 	clear:both;
@@ -931,6 +943,7 @@ h5 {height: 65px; padding: 0;vertical-align: middle; display: table-cell; text-a
 /**************************** END MEDIUM ONLY ****************************/
 
 #main hr:last-child{ border:none;}
+#articleslide #main hr:last-child{ border-top:1px solid #ddd;}
 .clear-left{ clear:left; }
 body{padding-top:0 !important;}
 

@@ -15,6 +15,7 @@ if(socialwidget.length > 0) socialwidget = socialwidget.height(); else socialwid
 
 var isIE11 = !!navigator.userAgent.match(/Trident.*rv\:11\./);
 if(isIE11){
+	//smain.css("left", "0%");
 	main.css("display", "block");
 }
 
@@ -248,7 +249,10 @@ $(document).ready(function() {
 		}
 	}
 
-
+	//SMARTIES PROMOTION
+	var smarties = false;
+	if(	Foundation.utils.S('#article_id') && ( Foundation.utils.S('#article_id').val() ==  4349 || Foundation.utils.S('#article_id').val() ==  4399  || Foundation.utils.S('#article_id').val() ==  4396)) smarties = true;
+	
 	//Mobile
 	if($('body').hasClass('mobile')) {
 		var select = {
@@ -266,6 +270,7 @@ $(document).ready(function() {
 		//loadAd(select.ad.footer, mobilead[adPage].footer);
 		
 		// Single & Multi Article Pages
+	if( !smarties ){
 		console.log(adPage);
 		if(adPage == 'article' || adPage == 'articleslide'){
 			//loadAd(select.ad.btf1, mobilead[adPage].btf1);
@@ -289,7 +294,7 @@ $(document).ready(function() {
 			inBodyAd.loadInArticleAd( 'article-caption', 2, 0, mobilead[adPage].inarticle, 'p');	
 		}
 
-	
+	}
 
 	} else {
 		var select = {
@@ -307,6 +312,7 @@ $(document).ready(function() {
 				flyatf: document.getElementById("flyatf-ad"),
 			}
 		};
+	if( !smarties ){
 		if(browser_width < 740) {
 			loadAd(select.ad.header, mobilead[adPage].header);
 		} else {
@@ -343,14 +349,11 @@ $(document).ready(function() {
 
 		//BTF2
 		loadAd(select.ad.btf2, ad[adPage].btf2);
-
+	}
 		//BTF3
 		if( page === 'home' ||  page === 'category'){
 			loadAd(select.ad.btf3, ad[adPage].btf3);
 		}
-
-		//FLY ATF FROM 33ACROSS
-		//loadAd(select.ad.flyatf, ad[adPage].flyatf);
 
 		//ATF LEFT AND RIGHT FOR MULTI PAGE ARTICLES
 		if( document.body.id == "videos"){
@@ -478,7 +481,7 @@ app.addPrefetchTags();
 //Social Shares Tracking FB Sharing Functionality
 var SocialShares = {
 	updateFBShare: function( count, article_id ){
-		$.post("http://localhost:8888/projects/pucker-mob//httpdocs/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
+		$.post("http://www.puckermob.com/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
 	},
 
 	fbEventHandler: function(evt) { 
@@ -496,6 +499,8 @@ var SocialShares = {
 	
 	// Listen to events	
 	if(page === 'article' || page === 'articleslide') {
+		console.log('ADDTHIS');
+		console.log(addthis);
 		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
 	}
 
@@ -551,10 +556,13 @@ function addthisReady(evt) {
 //READ MORE 
 if($('body').hasClass('mobile')) {
 	var $el, $ps, $up, totalHeight;
-	
+	var parentOrgHeight = $('#article-content').outerHeight();
+	var wishDisplayHeight = parentOrgHeight * 0.55;
+	$('#article-content').height(wishDisplayHeight);
+
 	$(".sidebar-box .button").click(function() {
 				
-		// IE 7 doesn't even get this far. I didn't feel like dicking with it.
+		// IE 7 doesn't even get this far.
 								
 		totalHeight = 0
 			
@@ -574,7 +582,8 @@ if($('body').hasClass('mobile')) {
 				// Set height to prevent instant jumpdown when max height is removed
 				"height": $up.height(),
 				"max-height": 9999
-		 }).animate({
+		 });
+		$up.animate({
 				"height": "auto"
 		 },2000);
 					

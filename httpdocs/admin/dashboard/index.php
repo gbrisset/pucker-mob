@@ -1,7 +1,7 @@
 <?php
 	
 	$admin = true;
-	require_once('../assets/php/config.php');
+	require_once('../../assets/php/config.php');
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
@@ -32,9 +32,9 @@
 	}
 	if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
 	if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
-	if (isset($userData['user_permission_show_other_user_articles']) && $userData['user_permission_show_other_user_articles'] == 1){
-		$userArticlesFilter = 'all';
-	}
+	//if (isset($userData['user_permission_show_other_user_articles']) && $userData['user_permission_show_other_user_articles'] == 1){
+		//$userArticlesFilter = 'all';
+	//}
 // 3. total record count ($total_count)	
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter));
 	$pagination = new Pagination($page, $per_page, $total_count);
@@ -48,6 +48,7 @@
 	$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month);
 	
 	$contributor_name = $userData["contributor_name"];
+	$contributor_id = $userData["contributor_id"];
 	$total = 0;
 
 ?>
@@ -107,7 +108,10 @@
 				  <tbody>
 				  	<?php foreach( $articles as $article ){ 
 
-				  		$creation_date = date_format(date_create($article['creation_date']), 'd/m/y');
+				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
+				  		$month_created = date_format(date_create($article['creation_date']), 'n');
+				  		
+
 				  		//Calculate shares / month
 				  		//if month == selected 
 				  		$facebook_shares = $article['facebook_shares'];
@@ -119,7 +123,11 @@
 				  		$stumbleupon_shares = $article['stumbleupon_shares'];
 
 				  		//RATE BY ARTICLE 
-				  		$rate_by_article = $article['rate_by_article'];
+				  		$rate_by_article = 0;
+				  		//var_dump($month_created, $current_month, $month);
+				  		if( $month_created == $month ){
+				  			$rate_by_article = $article['rate_by_article'];
+				  		}
 				  		$rate_by_share  = $article['rate_by_share'];
 				  		
 				  		//TOTAL SHARES

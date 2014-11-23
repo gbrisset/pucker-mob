@@ -1,7 +1,7 @@
 <?php
 	if(isset($article) && $article != null){
 		//Article PREP && COOK TIME FORMAT CONV.
-		$time_prep_hr = 0;
+		/*$time_prep_hr = 0;
 		$time_cook_hr = 0;
 		$time_prep_min = 0;
 		$time_cook_min = 0;
@@ -50,7 +50,7 @@
 				$total_time_label = $time_total_min;
 				$total_time_prefix = "MINS";
 			}
-		}
+		}*/
 		//END Article PREP && COOK TIME FORMAT CONV.
 
 	$tallImageUrl = $config['image_url'].'articlesites/simpledish/tall/'.$article["article_id"].'_tall.jpg?'.time();
@@ -160,10 +160,10 @@
 						    	$preview_article .='<i class="icon-food"></i>';
 						    $preview_article .='</div>';
 						    $preview_article .='<div class="yield-cont">';
-						    		$article['article_yield'] = explode(" ", $article['article_yield'])[0];
-						    		if(isset($article['article_yield']) && strlen($article['article_yield'])){ 
-										$preview_article .='<span><header class="title">Yield</header><p class="value"><meta itemprop="recipeYield">'.$article["article_yield"].'</meta></p><p class="minutes">servings</p></span>'; 
-									}					       
+						    		//$article['article_yield'] = explode(" ", $article['article_yield'])[0];
+						    		//if(isset($article['article_yield']) && strlen($article['article_yield'])){ 
+									//	$preview_article .='<span><header class="title">Yield</header><p class="value"><meta itemprop="recipeYield">'.$article["article_yield"].'</meta></p><p class="minutes">servings</p></span>'; 
+									//}					       
 						    $preview_article .='</div>';
 						$preview_article .='</div>';
 					$preview_article .='</div>';

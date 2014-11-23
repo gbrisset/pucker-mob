@@ -151,15 +151,18 @@ if(!is_null($categoryInfo)){
 			  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
 			  <a class="close-reveal-modal">&#215;</a>
 			</div>-->
+			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
 			<hr>
+			<?php }?>
 			<!-- Setting the Poll -->			
 			<?php 
 			if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>
 			<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="<?php echo $articleInfoObj['article_poll_id']; ?>"></script>
-			<hr>
+			
 			<?php }?>
 
 			<!-- Like us on FB --> 
+			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
 			<div class="row hide-for-print like-us-fb">
 				<p class="columns small-2">Join the Mob!
 					<div class="columns small-9" >
@@ -167,8 +170,10 @@ if(!is_null($categoryInfo)){
 					</div>	 
 				</p>
 			</div>	 
+			
 			<hr>
-
+			<?php }?>
+		
 			<!-- Prev & Next Articles -->
 			<?php include_once($config['include_path'].'prevnextarticles.php'); ?>
 

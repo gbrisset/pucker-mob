@@ -67,7 +67,7 @@
 		<link rel="canonical" href="<?php echo 'http://puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
 	<?php 
 		$promotedArticle = false; $tag = 'smarties';
-		if($articleInfoObj['article_id'] == 4349){ $promotedArticle = true; }
+		if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }
 	} ?>
 
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
@@ -117,7 +117,34 @@
 
 <!-- IF ARTICLE PAGE -->
 
+<?php if(!$detect->isMobile()){?>
 
+ <?php if(isset($isHomepage) && $isHomePage ){?>
+    <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 home -->
+    <script type="text/javascript">
+    if ((typeof(f466927)=='undefined' || f466927 > 0) ) {
+      if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
+      document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;mtfInline=true;tile='+(gnm_tile++)+';ord='+gnm_ord+'?"></scr'+'ipt>');
+    }else{
+      //insert default static image here as default ad
+    }
+    </script>
+    <!-- END AD TAG -->
+
+  <?php }else{?>
+
+    <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 ros-->
+    <script type="text/javascript">
+    if ((typeof(f466927)=='undefined' || f466927 > 0) ) {
+      if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
+      document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=1000x1000;mtfInline=true;tile='+(gnm_tile++)+';ord='+gnm_ord+'?"></scr'+'ipt>');
+    }else{
+      //insert default static image here as default ad
+    }
+    </script>
+    <!-- END AD TAG -->
+  <?php }?>
+<?php }?>
 
 <!-- COMSCORE -->
 <script>

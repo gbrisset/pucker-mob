@@ -89,21 +89,13 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 			  else{ echo '<div class="row">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}
 		?> 
 			<section id="article-caption" class="columns small-12 ">
-				<h2 class="" style="<?php echo $h2style; ?>"><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
+				<h2 class="" style="<?php // echo $h2style; ?>"><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
 			
 				<?php if ( $detect->isMobile() ) { ?>
+				
 				<!-- GOOGLE AD UNIT MOBILE --> 
 
 				<div class="hide-for-print row no-padding padding-top padding-bottom" style="margin-bottom: 0.2rem; ">
-					<!--<div data-str-native-key="536c62e7" style="display: none;"></div>
-						<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>-->
-					<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-					<!-- PM Mobile 300x90 -->
-					<!--<ins class="adsbygoogle"
-					     style="display:inline-block;width:300px;height:90px"
-					     data-ad-client="ca-pub-8978874786792646"
-					     data-ad-slot="6565492184"></ins>
-					<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 					<!-- PM-Mobile-320x50 -->
 					<ins class="adsbygoogle"
@@ -124,9 +116,9 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<?php } ?>
 
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
-					<?php if ( $detect->isMobile() ) {?>
+				<?php if ( $detect->isMobile() ) {?>
 				<section class="columns half-padding padding-bottom" style="margin-bottom:1.2rem;">
-				<hr style="border-top: 1px solid #ddd;">
+					<hr style="border-top: 1px solid #ddd;">
 				</section>
 				<div class="hide-for-print columns no-padding " style="margin-bottom: 0.2rem;">
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -140,25 +132,63 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					</script>
 
 				</div>
-				<!--<hr style="margin: 1rem 0 1rem !important">-->
-<?php } ?>
+				<hr style="margin: 1rem 0 1rem !important">
+				<?php }else{ ?>
+				<div class="row padding-top padding-bottom">
+
+						<section class="columns small-12 padding-bottom">
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- PM 637x90 Bottom -->
+							<ins class="adsbygoogle"
+							     style="display:inline-block;width:637px;height:90px"
+							     data-ad-client="ca-pub-8978874786792646"
+							     data-ad-slot="3114328182"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+						</section>
+					</div>
+				<?php }?>
+				<!-- Like us on FB --> 
+			
+			<div class="row hide-for-print like-us-fb">
+				<p class="columns mobile-4 small-4 medium-2">Join the Mob!
+					<div class="columns mobile-8 small-8 medium-10 right" >
+						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
+					</div>	 
+				</p>
+			</div>	 
+					
+
+				<hr style="margin: 0.5rem 0 0.4rem !important">
+				<?php 
+				$prevtext = "PREV PAGE";
+				$nexttext = "NEXT PAGE";
+				if($detect->isMobile() || $detect->isTablet()){
+					$prevtext = "PREV";
+					$nexttext = "NEXT";
+				}?>
 				<ul class="inline-centered vertical-centered">
 					<?php 
 				//	Get the next article, that is LIVE, that has a list attached
 					$next_article = $mpArticle->get_next_with_list($articleInfoObj['article_id']); 
 					?>
 					<?php if($page > 1) { ?>
-					<li><a href="<?php echo $article_link.'?p='.($page - 1); ?>"><div class="arrow-left"><i class="fa fa-caret-left"></i>PREV</div></a></li>
-					<?php } ?>
-					<li><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
+					<li class="arrow-box left"><a href="<?php echo $article_link.'?p='.($page - 1); ?>"><div class="arrow-left"><i class="fa fa-caret-left"></i><?php echo $prevtext;?></div></a></li>
+					<li  class="num-page-margin-top "><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
+
+					<?php }else{ ?>
+						<li  class="num-page-margin-top num-page-right-style"><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
+					
+					<?php }?>
 					<?php if($total_count > $page){ ?>
-					<li><a href="<?php echo $article_link.'?p='.($page + 1); ?>"><div class="arrow-right">NEXT<i class="fa fa-caret-right"></i></div></a></li>
+					<li  class="arrow-box right"><a href="<?php echo $article_link.'?p='.($page + 1); ?>"><div class="arrow-right"><?php echo $nexttext;?><i class="fa fa-caret-right"></i></div></a></li>
 					<?php } else if($next_article){ ?>
 					<li><a href="<?php echo $config['this_url'].$next_article['cat_dir_name'] .'/'.$next_article['article_seo_title'] ?>"><div class="arrow-right">NEXT<i class="fa fa-caret-right"></i></div></a></li>
 
 					<?php } ?>
 				</ul>
-				<br>
+				<hr style="margin: 0.7rem 0 1rem !important; border-top:1px solid #ddd;" class="padding-bottom">
 			</section>
 		
 				<?php //} ?>
@@ -190,21 +220,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 			</div>
 		</div>
 
-		<div class="row padding-top padding-bottom">
-
-						<section class="columns small-12">
-							<hr>
-							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-							<!-- PM 637x90 Bottom -->
-							<ins class="adsbygoogle"
-							     style="display:inline-block;width:637px;height:90px"
-							     data-ad-client="ca-pub-8978874786792646"
-							     data-ad-slot="3114328182"></ins>
-							<script>
-							(adsbygoogle = window.adsbygoogle || []).push({});
-							</script>
-						</section>
-					</div>
+		
 		<?php }else{?>
 		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
 			<div class="hide-for-print">

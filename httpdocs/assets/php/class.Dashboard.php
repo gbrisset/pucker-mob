@@ -78,7 +78,7 @@ class Dashboard{
 				if(!isset($counts)) return false;
 				$prevData = $this->get_dashboardArticlesPrevMonth( $articleId , $month - 1 );
 				$idExist = $this->verifyArticleidonSocial( $articleId , $month );
-			var_dump($prevData);
+			
 				$facebook_shares = $counts['Facebook']['share_count'] - $prevData['facebook_shares'];
 				$twitter_shares = $counts['Twitter'] - $prevData['twitter_shares'];
 				$pinterest_shares = $counts['Pinterest'] - $prevData['pinterest_shares'];
@@ -87,7 +87,7 @@ class Dashboard{
 				$stumbleupon_shares = $counts['StumbleUpon'] - $prevData['stumbleupon_shares'];
 				$linkedin_shares = $counts['LinkedIn'] - $prevData['linkedin_shares'];
 				$year = date('Y');
-		var_dump($counts['Facebook']['share_count'],$prevData['facebook_shares'], $facebook_shares ); die;
+			
 				if($idExist){
 					$s = " UPDATE articles 
 					  	   SET facebook_shares = $facebook_shares, twitter_shares = $twitter_shares, 

@@ -109,7 +109,7 @@
 							if(file_exists($pathToImage)){
 								$imageUrl = $config['image_url'].'articlesites/puckermob/square/'.$articleInfo["article_id"].'_tall.'.$ext;
 							} else {
-								$imageUrl = $config['image_url'].'/articlesites/sharedimages/recipe_default_image.jpg';
+								$imageUrl = $config['image_url'].'/articlesites/sharedimages/puckermob-default-image.jpg';
 							}
 
 								$article .= '<div class="article-image mobile-12 small-12 medium-2">';

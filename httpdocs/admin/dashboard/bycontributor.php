@@ -4,9 +4,24 @@
 	require_once('../../assets/php/config.php');
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 	
-	$userData = $adminController->user->data = $adminController->user->getUserInfo();
+	$contributorInfo = $mpArticle->getContributors(['contributorSEOName' => $uri[2] ])['contributors'];
 
-	//if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
+	if(empty($contributorInfo)) $mpShared->get404();
+	$contributorInfo = $contributorInfo[0];
+	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
+	if (isset($contributorInfo['contributor_id'])){
+		if ( !($adminController->user->checkUserCanEditOthers('contributor', $contributorInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
+	} else {
+		$mpShared->get404();
+	}
+
+	//Verify if is a content provider user
+	$content_provider = false;
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 4){
+		$content_provider = true;
+	}
+
+	if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
 
 	// 1. the current page number ($current_page)
 	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -18,7 +33,7 @@
 
 	$articleStatus = '1, 2, 3';
 
-	$userArticlesFilter = $userData['user_email'];
+	$userArticlesFilter = $contributorInfo['contributor_email_address'];
 	$order = '';
 	$filterLabel = 'Most Recent';
 // Sorting information
@@ -47,8 +62,8 @@
 
 	$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month);
 	
-	$contributor_name = $userData["contributor_name"];
-	$contributor_id = $userData["contributor_id"];
+	$contributor_name = $contributorInfo["contributor_name"];
+	$contributor_id = $contributorInfo["contributor_id"];
 	$total = 0;
 
 ?>

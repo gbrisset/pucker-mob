@@ -76,31 +76,38 @@ class Dashboard{
 				$current_date = date('Y-m-d H:i:s', time());
 
 				if(!isset($counts)) return false;
+				
 				$prevData = $this->get_dashboardArticlesPrevMonth( $articleId , $month - 1 );
 				$idExist = $this->verifyArticleidonSocial( $articleId , $month );
-			
-				$facebook_shares = $counts['Facebook']['share_count'] - $prevData['facebook_shares'];
-				$twitter_shares = $counts['Twitter'] - $prevData['twitter_shares'];
-				$pinterest_shares = $counts['Pinterest'] - $prevData['pinterest_shares'];
-				$google_shares = $counts['GooglePlusOne'] - $prevData['google_shares'];
-				$delicious_shares = $counts['Delicious'] - $prevData['delicious_shares'];
-				$stumbleupon_shares = $counts['StumbleUpon'] - $prevData['stumbleupon_shares'];
-				$linkedin_shares = $counts['LinkedIn'] - $prevData['linkedin_shares'];
+				//var_dump($prevData);
+				//echo "CURRENT DATA";
+				//	var_dump($counts);
+
+				$facebook_shares = abs($counts['Facebook']['share_count'] - $prevData['facebook_shares']);
+				$twitter_shares = abs($counts['Twitter'] - $prevData['twitter_shares']);
+				$pinterest_shares = abs($counts['Pinterest'] - $prevData['pinterest_shares']);
+				$google_shares = abs($counts['GooglePlusOne'] - $prevData['google_shares']);
+				$delicious_shares = abs($counts['Delicious'] - $prevData['delicious_shares']);
+				$stumbleupon_shares = abs($counts['StumbleUpon'] - $prevData['stumbleupon_shares']);
+				$linkedin_shares = abs($counts['LinkedIn'] - $prevData['linkedin_shares']);
 				$year = date('Y');
-			
+	
 				if($idExist){
-					$s = " UPDATE articles 
+
+					$s = " UPDATE social_media_records 
 					  	   SET facebook_shares = $facebook_shares, twitter_shares = $twitter_shares, 
 					           pinterest_shares = $pinterest_shares, google_shares = $google_shares, 
 					           delicious_shares = $delicious_shares, stumbleupon_shares = $stumbleupon_shares,
-					           linkedin_shares = $linkedin_shares 
+					           linkedin_shares = $linkedin_shares, date_updated = $current_date 
 					        WHERE article_id = $articleId AND month = $month";
 				}else{
 					$s = " INSERT INTO social_media_records
 						   (`id`, `article_id`, `facebook_shares`, `twitter_shares`, `pinterest_shares`, `google_shares`,
-						    `linkedin_shares`, `delicious_shares`, `stumbleupon_shares`, `month`, `year`) 
-						   VALUES (NULL, $articleId, $facebook_shares, $twitter_shares, $pinterest_shares, $google_shares, $linkedin_shares, $delicious_shares, $stumbleupon_shares, $month, $year) ";
-				}
+						    `linkedin_shares`, `delicious_shares`, `stumbleupon_shares`, `month`, `year`, `date_updated`) 
+						   VALUES (NULL, $articleId, $facebook_shares, $twitter_shares, $pinterest_shares, $google_shares, 
+						   	$linkedin_shares, $delicious_shares, $stumbleupon_shares, $month, $year, now()) ";
+					
+					}
 		
 
 				$queryParams = [

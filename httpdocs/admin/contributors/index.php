@@ -88,24 +88,27 @@
 						} else {
 							$imageUrl = $config['image_url'].'/articlesites/sharedimages/default_profile_contributor.png';
 						}
-						
-						$contributor = '<div class="admin-contributor">';
-								$contributor .= '<div class="contributor-image">';
+						//$imageUrl = 'http://images.puckermob.com/articlesites/contributors_redesign/1081_contributor.jpg';
+						$contributor = '<div class="admin-contributor row clear padding-bottom">';
+								$contributor .= '<div class="contributor-image columns small-2">';
 									$contributor .= '<a href="'.$config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name'].'">';
 										$contributor .= '<img src="';
 										$contributor .= $imageUrl.'" alt="'.$contributorInfo['contributor_name'].' Image" />';
 									$contributor .= '</a>';
 								$contributor .= '</div>';
 							
-							$contributor .= '<div class="contributor-info">';
+							$contributor .= '<div class="contributor-info columns small-10">';
 								$contributor .= '<h2><a href="'.$config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name'].'">'.$contributorInfo['contributor_name'].'</a></h2>';
 								$bio = utf8_encode(trim(strip_tags($contributorInfo['contributor_bio'])));
 								$bio = (strlen($bio) > 90) ? substr($bio, 0, 90).'...' : $bio;
-								$contributor .= '<p>'.$bio.'</p>';
-								$contributor .= '<a href="'.$config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name'].'" id="edit"><i class="icon-edit"></i>Edit</a>';
+								//$contributor .= '<p>'.$bio.'</p>';
+								//$article .='<a class="manage-links" href="'.$articleUrl.'" name="edit" id="edit"><i class="fa fa-pencil-square-o"></i> Edit</a>';
+								//$article .='<a class="manage-links" href="'.$articleUrl.'" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i> Delete</a>';
+								$contributor .= '<a class="manage-links" href="'.$config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name'].'" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>';
+								$contributor .='<a class="manage-links" href="'.$config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'].'" ><i class="fa fa-bar-chart"></i> Dashboard</a>';
 							$contributor .= '</div>';
 
-						$contributor .= '</div>';
+						$contributor .= '</div><hr style="margin: 0.2rem 0 0.6rem 0;">';
 						echo $contributor;
 					}
 				?>

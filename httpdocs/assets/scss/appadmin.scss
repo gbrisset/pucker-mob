@@ -192,7 +192,7 @@ i {margin-left: 5px; margin-right: 5px;}
 a{ outer: none; }
 .panel{ border: none;}
 
-#main-cont{ margin-top: 7% !important;}
+#main-cont{ margin-top: 0; margin-bottom: 0; padding-top: 0; min-height: 50rem;}
 
 // Header / Navbar / TopBar
 /**********************************************************************************************************************************/
@@ -223,6 +223,7 @@ header {
   		margin-bottom: ($panel-padding/2); 
   		z-index: 9999999;
   		border-bottom: 1px solid $main-color;
+  		margin-bottom:0;
 }
 
 
@@ -270,14 +271,14 @@ button.expand, .button.expand{ background: #6ad98a; font-size: 1.2rem; text-tran
 label{ font-size: 1.1rem;}
 #bottom-link a { color: #0099FF;}
 button, .button{ background: #6ad98a; }
-#content{ min-height: 100%;}
+#content{ min-height: 100%; margin-top: 6% !important;}
 #topbar-search-submit{ margin-top: 0 !important; width: 2rem !important;}
 
 //Menu
-#nav-cont{ width: 20%; max-width: 175px; height: 100%; position: absolute; left: 0; z-index: 1; background: #FFF;}
-#nav-cont nav { width: 15rem; height: auto; margin: 0; background: #747371; }
+#nav-cont{ width: 15rem; height: 100%; position: absolute; left: -12rem; z-index: 1; background: #747371;}
+#nav-cont nav { width: 15rem; height: auto; margin: 0; background: #747371; padding-top:1rem; }
 #nav-cont nav ul { width: 100%; margin: 0; padding: 0; position: relative; list-style: none; }
-#nav-cont nav ul li, #nav-cont nav ul h2 { color: #eee; font: 1.2rem Oslo,arial,sans-serif; width: 100%; margin: 0; padding: 0.5em 0; position: relative; text-transform: capitalize; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; cursor: pointer;}
+#nav-cont nav ul li, #nav-cont nav ul h2 { color: #eee; font: 1.2rem Oslo,arial,sans-serif; width: 100%; margin: 0; padding: 0.5em 1rem; position: relative; text-transform: capitalize; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; cursor: pointer;}
 #nav-cont nav ul li:after{ border-bottom: 1px solid #888; box-shadow: 0px -1px 1px #666; bottom: 0;content: " ";height: 1px; left: 0; position: absolute; width: 100%; z-index: 0;}
 #nav-cont nav ul .parent:before{content: '>'; float: right; margin: 0.1em 1em 0 0; font: 1.3em/1em ModernPics; color: #DDD;}
 #nav-cont nav ul ul.shown{display: block; margin-bottom: 0.3em;}
@@ -297,7 +298,7 @@ button, .button{ background: #6ad98a; }
 
 
 //Content
-#main-cont #content { width: 81%; margin: 0 auto; padding-left: 95px; }
+#main-cont #content { width: 92%; margin: 0 auto; }
 #searchemailinput{ width: 66.66%; padding: 1.53rem; font-size: 1rem; text-transform: uppercase;}
 
 //SORT BY BAR
@@ -415,10 +416,23 @@ form .gradient-button.red-gradient {background: -moz-linear-gradient(center top 
 #profile-inline-settings #rules { padding-top: 1rem;}
 #profile-inline-settings #rules span{ font-size: 1.2rem;}
 
+//CONTRIBUTORS LIST
+.admin-contributor .contributor-info{ padding: 1rem 0; }
+.admin-contributor .contributor-info h2 a{ color: #222; }
+
 //DASHBOARD
+#dashboard{ margin-top:5%;}
 #dashboard h2{ font-weight: bold; margin-bottom: 5rem;}
 #dashboard table{ background: #fff; border:none;}
 #dashboard table thead{background: #fff;}
-#dashboard table th{ text-align: center; font-size:1.05rem; font-weight: normal; padding: 0.5rem;}
+#dashboard table th{ text-align: center; font-size:1.05rem; font-weight: normal; min-width: 7rem;}
 #dashboard table tr{ background: none; border-bottom: 1px solid #aaa;}
+#dashboard table tr.total { border-bottom:  none;}
+#dashboard table tr.total td{text-align: left; font-size: 1.2rem; padding-top:3rem;}
+#dashboard table tr.total td:last-child{ text-align:center;}
+#dashboard table td{ min-width: 7rem; text-align:center;}
+#dashboard table td.article{ text-align:left;}
 #dashboard table tr.even, #dashboard table tr.alt, #dashboard table tr:nth-of-type(even){ background: none;}
+.dd-month{ display: inline-block; text-align: right; }
+#month-form{ display:inline;}
+#month-form select{width: 12rem; text-transform: uppercase; text-align: center; font-size: 1rem; border: 1px solid #000;}

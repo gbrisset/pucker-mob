@@ -4,7 +4,7 @@
 ?>
 <!--<h1 class="main-header"><a href="<?php // echo $config['this_admin_url'].'articles/'?>">My Pucker Mob</a></h1>-->
 <div id="nav-cont" class="columns small-3 large-1 no-padding sticky hide-for-print fixed-content padding-top">
-	<nav id="nav-sidemenu" style="position: fixed;">
+	<nav id="nav-sidemenu">
 
 		<!-- 
 			
@@ -38,8 +38,9 @@
 				if($adminController->user->checkPermission('user_permission_show_add_article') ){
 					echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'articles/newarticle/', 'label' => 'Add New Article', 'current' => (isset($uri[0]) && $uri[0] == 'articles' && isset($uri[1]) && $uri[1] == 'new') ? 'current' : ''));
 				}
-				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'articles/', 'label' => 'View/Edit Articles', 'current' => (isset($uri[0]) && $uri[0] == 'articles' && isset($uri[1]) && (empty($uri[1]) || $uri[1] == 'edit')) ? 'current' : ''));
-
+				if($adminController->user->checkPermission('user_permission_show_view_article') ){
+					echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'articles/', 'label' => 'View/Edit Articles', 'current' => (isset($uri[0]) && $uri[0] == 'articles' && isset($uri[1]) && (empty($uri[1]) || $uri[1] == 'edit')) ? 'current' : ''));
+				}
 				/*
 				$siteNavItem = array(
 					'link' => $config['this_admin_url'].'articles/',
@@ -130,8 +131,9 @@
 
 				if($adminController->user->checkPermission('user_permission_show_manage_contributors')) echo $adminController->makeNavItemGroup($siteNavItem);
 				/* End Manage Contributors Menu Generation */
-
-				echo '<li class="empty-li"></li>';
+				if($adminController->user->checkPermission('user_permission_show_add_article') ){
+					echo '<li class="empty-li"></li>';
+				}
 				
 				echo $adminController->makeSingleNavItem(array('link' => $config['this_admin_url'].'dashboard/', 'label' => 'My Dashboard', 'current' => (isset($uri[1]) && $uri[1] == 'dashboard') ? 'current' : ''));
 	

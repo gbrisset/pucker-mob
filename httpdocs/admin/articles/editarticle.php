@@ -122,7 +122,7 @@
 									<img src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
 									<span><a id="change-art-image" href=""><i class="fa fa-file-image-o"></i>Change Photo</a></span>
 								<?php } else{ ?>
-									<img src="http://images.puckermob.com/articlesites/sharedimages/recipe_default_image.jpg" alt="Default Image" />
+									<img src="http://images.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg" alt="Default Image" />
 									<span><a id="change-art-image" href=""><i class="fa fa-file-image-o"></i>Change Photo</a></span>
 								<?php } ?>
 								</div>

@@ -7,22 +7,22 @@
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
 	<script type="text/javascript">
 	tinymce.init({
-		//setup: function (ed) {
-	    //    ed.on('init', function(args) {
-	       //     console.debug(args.target.id);
-	       // });
-	    //},
+		setup: function (ed) {
+			 ed.on('init', function(args) {
+	            console.debug(args.target.id);
+	        });
+	    },
 	    selector: "textarea",
-	    external_plugins: {"nanospell": "http://www.puckermob.com/assets/js/tinymce/nanospell/plugin.js"},
+	    //external_plugins: {"nanospell": "/assets/js/nanospell/plugin.js"},
 		//nanospell_server: "php",
-	   // theme: "modern",
+	    //theme: "modern",
 	    plugins: [
 	        "jbimages advlist autolink lists link image charmap print preview anchor",
 	        "searchreplace visualblocks code fullscreen",
-	        "insertdatetime media table contextmenu paste hr spellchecker "
+	        "insertdatetime media table contextmenu paste hr "
 	    ],
 
-	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview",
+	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview" ,
 	    //relative_urls:false,
 	    init_instance_callback : function() {
 	     tinyMCE.activeEditor.getContent();

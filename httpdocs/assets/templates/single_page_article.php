@@ -17,16 +17,6 @@ if (isset($articleInfoObj)) {
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 <?php if($detect->isMobile()) echo " no-padding "; ?>">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	<section id="article-summary" class="small-12 column">
-		<!-- DISCLAIMER -->
-		<?php if($article_disclaimer){?>
-		<div class="columns no-padding">
-			<p style="font-size:10pt; font-style: italic;">
-				*The following article does not represent the viewpoints of PuckerMob, it's management or 
-				partners, but is solely the opinion of the contributor.
-			</p>
-		</div>
-		<?php }?>
-		
 		<!-- TITLE -->
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
 		
@@ -39,14 +29,18 @@ if (isset($articleInfoObj)) {
 				<a class="addthis_button_twitter">
 					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
 				</a> 
+				<a class="addthis_button_pinterest_share">
+					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
+				</a>
 				<a href="#disqus-container" class="disqus_container">
 					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
+			
 
 				<!--<a class="facebook_like" href="">
 					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
 				</a> -->
-				<a class="addthis_button_facebook_like  show-for-large-up" fb:like:send="true" ></a>
+				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
 
 				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
@@ -58,9 +52,9 @@ if (isset($articleInfoObj)) {
 
 		<!-- Sponsore UNit -->
 		<?php if(!$detect->isMobile()){?>
-			<div class="padding-bottom" style="">
+			<!--<div class="padding-bottom" style="">
 				<div id="sponsor-ad"></div>
-			</div>
+			</div>-->
 			<?php } ?>
 
 		<!-- Article Image -->
@@ -91,30 +85,16 @@ if (isset($articleInfoObj)) {
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
 		</div>
-		
-		<!-- Intro Copy SubTitle
-		<section class="row">
-			<h2></h2>
-		</section> -->
-		
-		<!-- GOOGLE AD UNIT MOBILE  
-		<?php //if ( $detect->isMobile() ) {?>
-			 SMARTIES 
-			<?php //if(!$promotedArticle){ ?>
-			<div class="hide-for-print row no-padding padding-top ads" style="margin-bottom: -1.5rem; text-align:center;">
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			 PM-Mobile-320x50
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:320px;height:50px"
-			     data-ad-client="ca-pub-8978874786792646"
-			     data-ad-slot="2412017386"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-			</div>
-			<?php //}?>
-		<?php //}?>
-		-->
+	
+		<!-- DISCLAIMER -->
+		<?php if($article_disclaimer){?>
+		<div class="columns no-padding padding-top disclaimer">
+			<p>
+				*The following article does not represent the viewpoints of PuckerMob, it's management or 
+				partners, but is solely the opinion of the contributor.
+			</p>
+		</div>
+		<?php }?>
 
 		<!-- Article Content -->
 		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
@@ -134,18 +114,18 @@ if (isset($articleInfoObj)) {
 				<a class="addthis_button_twitter">
 					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
 				</a> 
+				<a class="addthis_button_pinterest_share">
+					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
+				</a>
 				<a href="#disqus-container" class="disqus_container">
 					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
+			
+				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
 
-				<!--<a class="facebook_like" href="">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
-				</a> -->
-				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true" ></a>
+				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-				<a class="addthis_button_compact show-on-medium-up" style="color: rgb(119, 119, 119) !important;"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top:0 !important;">
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
 				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
@@ -180,7 +160,7 @@ if (isset($articleInfoObj)) {
 				
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-		<p class="padding-bottom" style="margin-bottom:0; font-size: 1.3rem !important; font-style:italic;"><?php echo $article_img_credits; ?></p>
+		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
 		<?php }?>
 
 		<!-- NOTES -->
@@ -241,19 +221,3 @@ if (isset($articleInfoObj)) {
 	<?php } ?>
 	</section>
 </article>
-<?php if(!$detect->isMobile()){?>
-<style>
-		.addthis_button_facebook_like{
-			margin-top: -1rem !important;
-			position: relative !important;
-			left: 0 !important;
-			top: 0.2rem !important;
-			display: inline-block !important;
-			
-		}
-		.social-cont-1 .addthis_button_compact {
-		padding-top: 1rem;
-		padding-left: 0.3rem;
-		}
-		</style>
-<?php } ?>

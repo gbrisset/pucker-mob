@@ -11,10 +11,10 @@
   }
   ?>
 
-  <header id="super-banner" class="hide-for-print show-for-large-up">
+  <header id="super-banner" class="hide-for-print show-for-large-up" style="background:#000 !important;">
     <div class="row">
-      <a href="https://www.change.org/p/tv-land-be-cos-reinstate-cosby-s-shows-don-t-prosecute-based-on-accusations" target="blank">
-        <img src="http://www.puckermob.com/assets/img/BeCos-Super-Nav.png">
+      <a href="http://www.puckermob.com/hot-topics/the-11-most-hilarious-parts-about-obamas-ferguson-speech">
+        <img src="http://www.puckermob.com/assets/img/super_banner_obama.png">
       </a>
     </div>
   </header>

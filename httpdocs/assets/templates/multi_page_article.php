@@ -31,14 +31,14 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<a class="addthis_button_twitter">
 					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
 				</a> 
+				<a class="addthis_button_pinterest_share">
+					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
+				</a>
 				<a href="#disqus-container" class="disqus_container">
 					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
-
-				<!--<a class="facebook_like" href="">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
-				</a> -->
-				<a class="addthis_button_facebook_like  show-for-large-up" fb:like:send="true" ></a>
+			
+				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
 
 				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
@@ -117,18 +117,18 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<a class="addthis_button_twitter">
 					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
 				</a> 
+				<a class="addthis_button_pinterest_share">
+					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
+				</a>
 				<a href="#disqus-container" class="disqus_container">
 					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
+			
+				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
 
-				<!--<a class="facebook_like" href="">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
-				</a> -->
-				<a class="addthis_button_facebook_like show-for-large-up hide-for-medium hide-for-large hide-for-xlarge-down" fb:like:send="true" ></a>
+				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-				<a class="addthis_button_compact show-on-medium-up" style="color: rgb(119, 119, 119) !important;"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top:0 !important;">
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
 				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
@@ -182,7 +182,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<!-- SLIDE IMAGE SOURCE-->
 				<?php if(isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)){?>
 				<section class="row">
-					<p id="photo-credit-text" class="columns small-12 " style="margin: 0.2rem 0 0.8rem 0; font-size: 1.3rem !important; font-style:italic;"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)) ? $page_list_items->page_list_item_image_source : ''); ?></p>
+					<p id="photo-credit-text" class="columns small-12 image-source"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)) ? $page_list_items->page_list_item_image_source : ''); ?></p>
 				</section>
 				<?php }?>
 
@@ -240,19 +240,3 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		
 	</section>
 </article>
-<?php if(!$detect->isMobile()){?>
-<style>
-		.addthis_button_facebook_like{
-			margin-top: -1rem !important;
-			position: relative !important;
-			left: 0 !important;
-			top: 0.2rem !important;
-			display: inline-block !important;
-			
-		}
-		.social-cont-1 .addthis_button_compact {
-		padding-top: 1rem;
-		padding-left: 0.3rem;
-		}
-		</style>
-<?php } ?>

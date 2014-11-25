@@ -49,6 +49,10 @@
 	
 	$contributor_name = $userData["contributor_name"];
 	$contributor_id = $userData["contributor_id"];
+	$contributor_email = $userData["user_email"]; 
+
+	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
+
 	$total = 0;
 
 ?>
@@ -63,7 +67,19 @@
 	<script>function change(){ document.getElementById("month-form").submit(); }</script>
 	
 	<?php include_once($config['include_path_admin'].'header.php');?>
-
+	<div class="sub-menu row">
+		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
+		<h1 class="left">New Article</h1>
+	</div>
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+			<h1 class="left">New Article</h1>
+			<div class="right">
+			<p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
+				<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
+				<a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
+			</p>
+		</div>
+	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
@@ -155,10 +171,13 @@
 				  		
 				  		//RATE BY ARTICLE 
 				  		$rate_by_article = 0;
+
 				  		//var_dump($month_created, $current_month, $month);
-				  		if( $month_created == $month ){
-				  			$rate_by_article = $article['rate_by_article'] / $count;
+				  		if( $month_created == $month && $article['rate_by_article'] != 0){
+				  			if( $contributor_type > 2) $rate_by_article = $article['rate_by_article'] / $count;
+				  			else $rate_by_article = 0;
 				  		}
+
 				  		$rate_by_share  = $article['rate_by_share'];
 				  		
 				  		//TOTAL SHARES

@@ -16,6 +16,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
+	<?php include_once($config['include_path_admin'].'header.php');?>
+
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 	<div class="admin-box" id="login-cont">
 		<header>
 			<img src="<?php echo $config['image_url'].'articlesites/logos/'.$mpArticle->data['article_page_logo']; ?>" alt="<?php echo $mpArticle->data['article_page_visible_name']; ?> Logo">
@@ -27,6 +30,7 @@
 			<p class="<?php echo ($verify['hasError'] == true) ? "error" : "success"; ?>"><?php echo $verify['message']; ?></p>
 		</div>
 	</div>
+</main>
 	<?php if(!$verify['hasError']){ /*	Perform the redirect...	*/?>
 		<script>setTimeout(function(){window.location = "<?php echo $config['this_admin_url']; ?>"}, 3000);</script>
 	<?php } ?>

@@ -89,6 +89,14 @@ $(document).ready(function (){
 		$('#nav-cont').toggleClass('shown');
 	});
 
+	
+		$('#export').on('click', function(e){
+			e.preventDefault();
+			var ahref ="http://www.puckermob.com/admin/reports/getsocialcsvreport.php?month="+$('#month-option').val()+"&year="+$('#year-option').val()+"&contributor="+$('#contributor-option').val();
+			location.href = ahref;
+		});
+	
+
 	$('#nav-sidemenu .parent').click(function(e){
 		var subMenu = $(this).next();
 		if(body.is('.admin0, .admin1')){
@@ -1461,5 +1469,9 @@ $(document).ready(function (){
 
 	//$('.radio-input').SDRadioToggler('#image-inputs', '#you-tube-inputs');
 
+	$('#sub-menu-button').click(function(e){
+		$('#main-cont').toggleClass('active_submenu');
+		//$(this).hide();
+	});
 
 });

@@ -63,13 +63,26 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
-
+	<div class="sub-menu row">
+		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
+		<h1 class="left">View Articles</h1>
+	</div>
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+			<h1 class="left">View Articles</h1>
+			<div class="right">
+			<p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
+				<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
+				<a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
+			</p>
+		</div>
+	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<section class="row">
-				<h1 class="left small-5">View/Edit Articles</h1>
+			<section id="articles">
+			<section class="left  mobile-12 small-12 padding-top">
+				<section class="">
 				<form class="search-form-admin small-7" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<div id="search-fieldset" class="mobile-12 small-12">
 							<input type="text" value="" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchemailinput">
@@ -78,7 +91,7 @@
 				</form>
 				</section>
 				
-				<section class="from-other-sites-filter row">
+				<section class="from-other-sites-filter ">
 					    <div class="columns">
 					      <label>Show Articles From:
 					      <input style="margin-left: 2rem;" id="simpledish" disabled type="checkbox"><label for="simpledish">SimpleDish</label>
@@ -88,7 +101,7 @@
 					    </div>
 				</section>
 
-				<section id="articles-list" class="row">
+				<section id="articles-list" class="">
 					<!--<section class="section-bar left  border-bottom mobile-12 small-12">
 					
 					<div id="right" class="small-9 padding-top right">
@@ -131,7 +144,7 @@
 						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Date Added</a></th>
 						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>
 						      <th class="small-2">sites</th>
-						      <th>comments</th>
+						      <th>Shares</th>
 						      <th></th>
 						    </tr>
 						 </thead>
@@ -193,6 +206,9 @@
 			</section>
 
 			<?php include_once($config['include_path_admin'].'pages.php'); ?>
+		</section>
+		</section>
+
 		</div>
 	</main>
 

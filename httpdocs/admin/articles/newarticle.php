@@ -3,6 +3,7 @@
 	
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
+			
 			$updateStatus = $adminController->addArticle($_POST);
 			$updateStatus['arrayId'] = 'article-add-form';
 			if(isset($updateStatus['hasError']) && !$updateStatus['hasError']) $_POST = array();
@@ -10,12 +11,13 @@
 	}
 
 	//Verify if is a content provider user
-	$content_provider = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 4){
-		$content_provider = true;
+	$admin_user = false;
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
+		$admin_user = true;
 		$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 		$contributorInfo = $contributorInfo[0];
 	}
+	//var_dump($adminController->user->data);
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -25,35 +27,69 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
-
+	<div class="sub-menu row">
+		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
+		<h1 class="left">New Article</h1>
+	</div>
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+			<h1 class="left">New Article</h1>
+			<div class="right">
+			<p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
+				<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
+				<a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
+			</p>
+		</div>
+	</section>
+	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
+		<!-- SUB MENU ADMIN -->		
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
-				<section class="section-bar left  border-bottom mobile-12 small-12">
-					<h1 class="left">Add New Article</h1>
-				</section>
 				<section class="left  mobile-12 small-12 padding-top">
 				<form  id="article-add-form" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 
+					<div class="row buttons-container">
+						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
+						<button type="button" id="preview" name="preview" class="">PREVIEW</button>
+						<?php if($admin_user){?>
+							<button type="button" id="publish" name="publish" class="">PUBLISH</button>
+						<?php }?>
+					</div>
+					
+					<!-- ARTICLE TITLE -->
 					<div class="row">
 					    <div class="columns">
-					      	<label>Article Title<span>*</span> :
-								<input type="text" name="article_title-s" id="article_title-s" placeholder="Please enter the article's title here." <?php echo ($content_provider) ? 'maxlength="40"' : ''; ?>   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
-					 		</label>
-					    
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-									<div class="tooltip-info">
-									<p>This is the article's title that will be visible throughout the network.</p>
-								</div>
+					      	<input type="text" name="article_title-s" id="article_title-s" placeholder="enter article title here" <?php echo ($admin_user) ? 'maxlength="40"' : ''; ?>   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
+						</div>
+					</div>
+
+					<!-- ARTICLE CATEGORY -->
+					<?php
+						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
+						if($allCategories && count($allCategories)){
+					?>
+					<div class="row">
+					    <div class="columns">
+							<select id="categories" class="small-12 large-4 left">
+								<option value="0">SELECT CATEGORY</option>
+								<?php
+								foreach($allCategories as $category){ ?>
+								<option id="category-'.$category['cat_id'].'" value="<?php echo $category['cat_id']; ?>"><?php echo $category['cat_name']; ?></option>
+								<?php }?>
+							</select>
+							<div class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
+								<label>Choose one category that best specifies the genre of your article.</label>
+								<label>This is where your post will reside on the site.</label>
 							</div>
 						</div>
-					</div>	
+					</div>
+					<?php }?>
 
-					<?php if(!$content_provider){?>
+
+					<?php if($admin_user && false){?>
 					<div class="row">
 					    <div class="columns">
 					      	<label>Article SEO Title<span>*</span> :
@@ -71,47 +107,50 @@
 					</div>	
 					<?php }?>
 
+					<!-- KEYWORDS -->
 					<div class="row">
 					    <div class="columns">
-						<label for="article_desc-s">Article Description<span>*</span> :
-						<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Please enter the article's description here." maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
-						</label>
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is a shorter description of the article that will appear throughout the site as a summy of the article.</p>
+					    	<div class="small-12 label-wrapper">
+								<label>To help readers find your article, enter keywords that best describe your post content, 
+									seperated by commas.</label>
 							</div>
-						</div>
+					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter Keywords" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />
+							
 						</div>
 					</div>	
-
-					<?php if(!$content_provider){?>
+					
+					<!-- DESCRIPTION -->
 					<div class="row">
 					    <div class="columns">
-						<label for="article_tags-s">Article Keywords :
-						<input type="text" name="article_tags-s" id="article_tags-s" placeholder="Please enter the article's tags here." value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />
-						</label>
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
+					    	<input type="text" name="article_desc-s" id="article_desc-s" placeholder="enter article description" maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
+						</div>
+					</div>	
+					
+					<!-- IMAGE -->
+					<div class="row">
+					    <div class="columns">
+					    	<div id="img-container">
+					    		<label>Drag image here</label>
+					    		<label>or</label>
+					    		<input type="button" name="upload" id="upload" value="Upload Files" />
+					    		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
+					    	</div>
+					    </div>
+					</div>
 
-							<div class="tooltip-info">
-								<p>These are the keywords that will show up in search engines, social networks, etc for this article.  They should be separated with a comma.  Keywords are limited to 1500 characters.</p>
-							</div>
+					<!-- BODY -->
+					<div class="row padding-bottom">
+					    <div class="columns">
+							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
 						</div>
 					</div>
-					</div>	
-					<?php }?>
-
 
 					<!-- Article Type  -->
+					<?php if($admin_user){?>
 					<div class="row">
 					    <div class="columns">
-							<label class="small-3 left">Article Type: </label>
-							<?php 
-							//$y_checked = ''; $n_checked = 'checked';
-
-							//if( $featuredArticle && $featuredArticle['article_id'] == $article['article_id']) { $y_checked = 'checked'; $n_checked = ''; } ?>
+							<label class="small-12 large-3 left uppercase">Article Type: </label>
+							
 							<input type="radio" name="article_type-s" id="opinion" data-info="1"  value="1" checked />
 							<label for="" class="radio-label">Opinion</label>
 									
@@ -122,47 +161,36 @@
 							<label for="" class="radio-label">Staff</label>
 						</div>
 					</div>
-					<?php //}?>
-
-
-					<div class="row padding-bottom">
-					    <div class="columns">
-						<label for="article_body-nf">Article Body<span>*</span> :
-						<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="35" required placeholder="Please enter the article's body here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
-						</label>
-					</div>
-					</div>
+					<?php }?>
 
 					<!-- PAGE LIST -->
+					<?php if($admin_user){?>
 					<div class="row">
 					    <div class="columns">
-						<label for="page_list">Page List: 
-						<select name="page_list_id-nf" id="page_list_id-nf">
-							<option value="0">None</option>
-						<?php			
-							$page_lists = PageList::get();
-							foreach($page_lists as $page_list){
-								echo "<option value='".$page_list->page_list_id."'  >";
-									echo $page_list->page_list_title;
-								echo "</option>";
-							}
-						?>
-						</select>
-						</label>
+							<select name="page_list_id-nf" id="page_list_id-nf">
+								<option value="0">SELECT PAGE LIST</option>
+								<?php			
+									$page_lists = PageList::get();
+									foreach($page_lists as $page_list){
+										echo "<option value='".$page_list->page_list_id."'  >";
+											echo $page_list->page_list_title;
+										echo "</option>";
+									}
+								?>
+							</select>
+						</div>
 					</div>
-					</div>
+					<?php }?>
 					
-
-					<?php
-					if(!$content_provider){
+					<!-- CONTRIBUTORS -->
+					<?php if($admin_user){
 						$allContributors = $adminController->getSiteObjectAll(array('queryString' => 'SELECT * FROM article_contributors ORDER BY contributor_name ASC'));
 						if($allContributors && count($allContributors)){
 					?>
-						<div class="row">
+					<div class="row">
 					    <div class="columns">
-							<label for="article_contributor">Article Contributor<span>*</span> :
 							<select name="article_contributor" id="article_contributor">
-								<option value="-1">None</option>
+								<option value="-1">SELECT CONTRIBUTORS</option>
 								<?php
 									foreach($allContributors as $contributorInfo){
 										$option = '<option value="'.$contributorInfo['contributor_id'].'"';
@@ -172,7 +200,6 @@
 									}
 								?>
 							</select>
-						</label>
 						</div>
 					</div>
 					<?php } 
@@ -180,74 +207,39 @@
 					<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo['contributor_id']?>" />
 				<?php } ?>
 
-					
-					<?php
-						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
-						if($allCategories && count($allCategories)){
-					?>
-						<div class="row">
-					    <div class="columns">
-								<label class="checkbox-group-label-parent">Categories<span>*</span> : 
-								<span class="p-message">Categorize your article choosing up to 4 categories. </span>
-								<section class="checkbox-group-content">
-								<?php
-									foreach($allCategories as $category){ 
-										//if(!$category['cat_is_brand']){
-										$checkbox = '<div class="checkbox-group">';
-											$checkbox .= '<input type="checkbox" id="category-'.$category['cat_id'].'" name="article_categories[category-'.$category['cat_id'].']"';
-											if(isset($_POST['article_categories']) && isset($_POST['article_categories']['category-'.$category['cat_id']])){
-												$checkbox .= ' checked="checked"';
-											}
-											$checkbox .= ' />';
-											$checkbox .= '<label class="checkbox-label" for="category-'.$category['cat_id'].'">'.$category['cat_name'].'</label>';
-										$checkbox .= '</div>';
-										
-										echo $checkbox;
-										//}
-									}
-								?>
-							</section>
-							</label>
-						</div>
-					</div>
-					<?php } ?>
+				<!-- HIDDEN ARTICLE TEMPLATE TYPE - SINGLE -->
+				<input type="hidden" class="hidden" id="article_template_type-s" name="article_template_type-s" value="0" />
 
-					
-					<input type="hidden" class="hidden" id="article_template_type-s" name="article_template_type-s" value="0" />
-
+				<?php if($admin_user){?>
+				<!-- IMAGE CREDITS -->
 				<div class="row">
-					<!-- IMAGE CREDITS -->
 					<div class="columns">
-					   	<label>Image Credits :
-							<input type="text" name="article_img_credits-s" id="article_img_credits-s" placeholder="Please enter the image credits here."  value="<?php if(isset($_POST['article_img_credits-s'])) echo $_POST['article_img_credits-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />
-						<!--
-						<textarea  class="mceEditor-simple" name="article_img_credits-nf" id="article_img_credits-nf" rows="1" required placeholder="Please enter the image credits here." ><?php if(isset($_POST['article_img_credits-nf'])) echo $_POST['article_img_credits-nf']; ?></textarea>
-					-->
-					</label>
-					</div>
-				</div>
-				<div class="row">
-					<!-- COMMENTS -->
-					<div class="columns">
-					   	<label>Notes:
-							<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="Please enter Additional Comments here."  value="<?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
-						</label>
+				  		<input type="text" name="article_img_credits-s" id="article_img_credits-s" placeholder="enter image credits"  value="<?php if(isset($_POST['article_img_credits-s'])) echo $_POST['article_img_credits-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />
 					</div>
 				</div>
 
-				<!-- Article Disclaimer  -->
-					<div class="row">
-					    <div class="columns">
-							<label class="small-3 left">Article Disclaimer: </label>
-							
-							<input type="radio" name="article_disclaimer-s" id="disclaimer-yes" data-info="1"  value="1"  />
-							<label for="" class="radio-label">Yes</label>
-									
-							<input type="radio" name="article_disclaimer-s" data-info="2" id="disclaimer-no" value="0" checked />
-							<label for="" class="radio-label">No</label>
-						</div>
+				<!-- COMMENTS -->
+				<div class="row">
+					<div class="columns">
+					   	<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="enter Additional Comments"  value="<?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
 					</div>
-					
+				</div>
+
+				<!-- DISCLAIMER -->
+				<div class="row">
+				    <div class="columns">
+						<label class="small-12 large-3 left uppercase">Article Disclaimer: </label>
+						
+						<input type="radio" name="article_disclaimer-s" id="disclaimer-yes" data-info="1"  value="1"  />
+						<label for="" class="radio-label">Yes</label>
+								
+						<input type="radio" name="article_disclaimer-s" data-info="2" id="disclaimer-no" value="0" checked />
+						<label for="" class="radio-label">No</label>
+					</div>
+				</div>
+				<?php }?>	
+
+<!--
 					<div class="row">
 					    <div class="columns">
 						<div class="btn-wrapper">
@@ -266,7 +258,7 @@
 							<button type="submit" id="submit" name="submit" class="radius">Save</button>
 						</div>
 					</div>
-				</div>
+				</div>-->
 				</form>
 				</section>
 			</section>

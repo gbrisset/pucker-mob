@@ -84,12 +84,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
+	<script>function change(){ document.getElementById("month-form").submit(); }</script>
+	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<div id="main-cont">
+	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
-		<div id="content">
+		<div id="content" class="columns small-9 large-11">
 			<section id="articles-list">
 				<form class="search-form-admin" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<fieldset id="search-fieldset">
@@ -158,7 +160,7 @@
 
 			<?php include_once($config['include_path_admin'].'pages.php'); ?>
 		</div>
-	</div>
+	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

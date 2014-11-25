@@ -14,7 +14,7 @@
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
-		<div class="admin-box" id="login-cont">
+		<div class="admin-box mobile-12 small-6 auto-margin" id="login-cont">
 			<header>
 				<h1><span>Pucker Mob</span></h1>
 			</header>

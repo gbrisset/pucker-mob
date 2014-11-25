@@ -36,8 +36,13 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="welcome-msg">
-				<h2>Welcome to Pucker Mob!</h2>
-				<p>Thank you for registering at puckermob.com. Let's get started!</p>
+				<h2>Welcome to Sequel Media Group!</h2>
+				<p>Thank you for registering with Sequel Media Group!</p>
+				<p> We're excited to have you as a contributing writing for our publications. 
+					To view your earnings for the previous month, just click the Dashboard button on the left. </p>
+				<p>Please remember: The dashboard has just been launched, and will not calculate your social shares 
+					or earnings on those shares for the month of October.  Calculations of social shares and earnings 
+					on shares will begin on November 1, and will be updated weekly. </p>
 				
 				<section id="welcome-page">
 				</section>

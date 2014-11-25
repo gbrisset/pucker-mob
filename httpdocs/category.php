@@ -62,7 +62,7 @@ if ( $detect->isMobile() ) {
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
 
 		<!-- MODAL BOX POPUP -->
-		<?php include_once($config['include_path'].'modalbox.php'); ?>
+		<?php //include_once($config['include_path'].'modalbox.php'); ?>
 	</body>
 </html>
 	
@@ -95,7 +95,7 @@ if ( $detect->isMobile() ) {
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
 
 		<!-- MODAL BOX POPUP -->
-		<?php include_once($config['include_path'].'modalbox.php'); ?>
+		<?php //include_once($config['include_path'].'modalbox.php'); ?>
 	</body>
 </html>
 		<?php } ?>

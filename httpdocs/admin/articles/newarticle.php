@@ -6,6 +6,7 @@
 			
 			$updateStatus = $adminController->addArticle($_POST);
 			$updateStatus['arrayId'] = 'article-add-form';
+
 			if(isset($updateStatus['hasError']) && !$updateStatus['hasError']) $_POST = array();
 		}else $adminController->redirectTo('logout/');
 	}
@@ -62,7 +63,7 @@
 					<!-- ARTICLE TITLE -->
 					<div class="row">
 					    <div class="columns">
-					      	<input type="text" name="article_title-s" id="article_title-s" placeholder="enter article title here" <?php echo ($admin_user) ? 'maxlength="40"' : ''; ?>   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
+					      	<input type="text" name="article_title-s" id="article_title-s" placeholder="enter article title here" <?php echo ($admin_user) ? 'maxlength="40"' : ''; ?>   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'class="input-error"'; ?> />
 						</div>
 					</div>
 
@@ -73,11 +74,11 @@
 					?>
 					<div class="row">
 					    <div class="columns">
-							<select id="categories" class="small-12 large-4 left">
+							<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
 								<option value="0">SELECT CATEGORY</option>
 								<?php
 								foreach($allCategories as $category){ ?>
-								<option id="category-'.$category['cat_id'].'" value="<?php echo $category['cat_id']; ?>"><?php echo $category['cat_name']; ?></option>
+								<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>"><?php echo $category['cat_name']; ?></option>
 								<?php }?>
 							</select>
 							<div class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
@@ -167,7 +168,7 @@
 					<?php if($admin_user){?>
 					<div class="row">
 					    <div class="columns">
-							<select name="page_list_id-nf" id="page_list_id-nf">
+							<select name="page_list_id-nf" id="page_list_id-nf" class="small-12 large-4 left">
 								<option value="0">SELECT PAGE LIST</option>
 								<?php			
 									$page_lists = PageList::get();
@@ -189,7 +190,7 @@
 					?>
 					<div class="row">
 					    <div class="columns">
-							<select name="article_contributor" id="article_contributor">
+							<select name="article_contributor" id="article_contributor" class="small-12 large-5 left">
 								<option value="-1">SELECT CONTRIBUTORS</option>
 								<?php
 									foreach($allContributors as $contributorInfo){
@@ -266,15 +267,12 @@
 	</main>
 
 	<?php include_once($config['include_path'].'footer.php');?>
-	<div id='lightbox-cont'>
-		<div class="overlay"></div>
 
-		<div id="lightbox-content">
-			<button type='button' id="preview-close" class="close">X</button>
 
-			<div id="lightbox-preview-cont"></div>
-		</div>
-	</div>
+	<?php 
+		include_once($config['include_path_admin'].'showerrors.php');
+	?>
+	
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

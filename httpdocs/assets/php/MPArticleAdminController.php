@@ -391,50 +391,15 @@ class MPArticleAdminController extends MPArticle{
 	/* Begin Article Creation Functions */
 	
 	public function addArticle($post){ 
-		
-		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category for an article.'));
-		
-		//Check for prep and cook time and conver values enter by the user in minutes to insert into the db fields.
-		/*if(isset($post['article_prep_time_hr-s']) && isset($post['article_prep_time_min-s'])){
-			$prep_in_mins = ($post['article_prep_time_hr-s']*60) + $post['article_prep_time_min-s'];
-			$post['article_prep_time-s'] = $prep_in_mins;
-			unset($post['article_prep_time_hr-s']);
-			unset($post['article_prep_time_min-s']);
-		}
+		var_dump($post);
+		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'You must insert a title'));
+		if(!isset($post['article_categories']) || $post['article_title-s'] == "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
+		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'You must insert a Description'));
+		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
-		if(isset($post['article_cook_time_hr-s']) && isset($post['article_cook_time_min-s'])){
-			
-			//	If the user hasn't selected a cook time, $post['article_cook_time_min-s'] will be equal to '-', let's set it to 0...
-			if ($post['article_cook_time_min-s'] == '-') $post['article_cook_time_min-s'] = 0;
-			
-			$cook_in_mins = ($post['article_cook_time_hr-s']*60) + $post['article_cook_time_min-s'];
-			$post['article_cook_time-s'] = $cook_in_mins;
-			unset($post['article_cook_time_hr-s']);
-			unset($post['article_cook_time_min-s']);
-		}
-		//END
-*/
 		$unrequired = array(
-			'article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments'
+			'article_tags', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments'
 		);
-
-		/*Ingredients And Instructions*/
-		//Get the ingredients and instructions value and convert into a string object
-		//$ingredients =  $this->helpers->getElementList($post, 'article_ingredients');
-		//$instructions = $this->helpers->getElementList($post, 'article_instructions');
-
-		//Clean the $post array and remove the ingredients and instructions to avoid conflic between fields
-		//foreach( $post as $key => $val ){
-			//if(strpos($key, 'article_ingredients') !== false || strpos($key, 'article_instructions') !== false){
-			//	unset($post[$key]);
-			//} 
-		//}
-
-		//Set the right key for ingredients and instructions value
-		//$post['article_ingredients-nf'] = $ingredients;
-		//$post['article_instructions-nf'] = $instructions;
-
-		/*END Ingredients And Instructions*/
 
 		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
 	
@@ -452,7 +417,7 @@ class MPArticleAdminController extends MPArticle{
 			'queryParams' => array(':seoTitle' => $params[':article_seo_title'])
 		));
 
-		if($seoTitleCheck !== false) return array_merge($this->helpers->returnStatus(500), array('message' => 'This SEO Title is already in use.  Please try again with a new SEO title.', 'field' => 'article_seo_title'));
+		if($seoTitleCheck !== false) return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_title'));
 
 		//Insert article, get new article id
 		$articleId = $this->performUpdate(array(
@@ -490,8 +455,10 @@ class MPArticleAdminController extends MPArticle{
 		}
 		
 		//Add to each category
-		foreach($post['article_categories'] as $category => $on){
-			$categoryId = intval(str_replace('category-', '', $category));
+		if(isset($post['article_categories']) && $post['article_categories'] != 0){
+		//foreach($post['article_categories'] as $category => $on){
+			//$categoryId = intval(str_replace('category-', '', $category));
+			$categoryId = $post['article_categories'];
 			$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_categories SET article_id = :articleId, cat_id = :categoryPageId",
 				'updateParams' => array(':articleId' => $articleId, ':categoryPageId' => filter_var($categoryId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT))
@@ -508,13 +475,13 @@ class MPArticleAdminController extends MPArticle{
 		}
 		
 		//Add a related video
-		if(isset($post['article_video']) && $post['article_video'] != -1){
+		/*if(isset($post['article_video']) && $post['article_video'] != -1){
 			$videoId = intval(filter_var($post['article_video'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
 			$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_videos SET article_id = :articleId, syn_video_id = :videoId",
 				'updateParams' => array(':articleId' => $articleId, ':videoId' => $videoId)
 			));
-		}
+		}*/
 
 		$article_prev_content = $this->getPreviewRecipe(array('articleId' => $articleId ));
 		

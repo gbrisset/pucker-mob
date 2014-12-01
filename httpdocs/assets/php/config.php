@@ -55,7 +55,7 @@ if($local)
 		'this_admin_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs/admin/',
 	//	'syndication_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-syndication/',
 		'shared_url' => 'http://'.$localIp.':8888/'.$directory.'/',
-		'image_url' => 'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',
+		'image_url' => 'http://images.puckermob.com/',//'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',
 		
 		//'main_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-html/',
 		//'category_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-categories/',
@@ -208,7 +208,7 @@ $config['catid'] = $mpArticle->data['cat_id'];
 $mpShared = new MPShared($config);
 $mpHelpers = new MPHelpers();
 $uriHelper = new MPUriHelper( $config['this_url'] );
-$mpVideoShows = new MPVideoShows($config);
+//$mpVideoShows = new MPVideoShows($config);
 
 if(isset($admin) && $admin){
 	$adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));

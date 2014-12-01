@@ -1,0 +1,6 @@
+.close{ background: #000; right: -0.5rem; top: -0.5rem;}
+.close:hover{ color: #fff;}
+#popup-content div{  background: #fff; padding: 1rem; -web-kit-border-radius: 5px; -moz-border-radius:5px; border-radius: 5px;}
+.input-error{ background: rgba(255, 0, 0, 0.5); border-color: rgba(255, 0, 0, 0.8);}
+select:hover{background: #01b88a; color:#fff; }
+select{background-position: 96% center;}

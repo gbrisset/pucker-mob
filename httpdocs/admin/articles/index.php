@@ -69,12 +69,7 @@
 	</div>
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
 			<h1 class="left">View Articles</h1>
-			<div class="right">
-			<p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
-				<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
-				<a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
-			</p>
-		</div>
+			
 	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>

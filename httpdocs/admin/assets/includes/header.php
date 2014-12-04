@@ -19,9 +19,13 @@
         <a href="<?php echo $mpArticle->data['article_page_pinterest_url'];?>" target="_blank"><i class="fa fa-pinterest fade-in-out"></i></a>
         <a href="https://plus.google.com/b/112707727253651609975/112707727253651609975/posts" target="_blank" rel="publisher"><i class="fa fa-google-plus fade-in-out"></i></a>
       </div>
-      <div id="topbar-container">
-        <input id="topbar-search-contents" type="search" placeholder="SEARCH">
-        <button id="topbar-search-submit" class="alert button expand"><i class="fa fa-search"></i></button>
+      <div id="topbar-container-admin" class="right small-6">
+        <div class="right">
+        <p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
+          <img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
+          <a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
+        </p>
+      </div>
       </div>
 
 

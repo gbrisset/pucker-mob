@@ -22,22 +22,14 @@
 	</div>
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
 			<h1 class="left">CONTACT US</h1>
-			<div class="right">
-			<p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
-				<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
-				<a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
-			</p>
-		</div>
+		
 	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
-				<h1 class="left">Contact Us</h1>
-			</section>
 				
-			<section id="contact-us-cont">
+			<section id="articles" class="padding-bottom">
 				<p>Need help?</p>
 				<p>For site support, please contact us using the form below or email us at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a>.</p>	
 				<form id="adv-contact-form" name="adv-contact-form" action="" method="POST">

@@ -389,6 +389,24 @@ public function getArticlesImages($id = null){
 	return $r;
 }
 
+public function getContributorUserType( $email ){
+	$pdo = $this->con->openCon();
+	//$id = (is_null($id)) ? 1 : $id;
+	$q = $pdo->query("	SELECT user_type FROM users 
+		WHERE user_email = '".$email."' ");
+
+	if($q && $q->rowCount()){
+		$q->setFetchMode(PDO::FETCH_ASSOC);
+		while($row = $q->fetch()){
+			$r = $row["user_type"];
+		}
+		$q->closeCursor();
+	}else $r = '4';
+	$this->con->closeCon();
+	return $r;
+
+}
+
 public function getContributors($args = [], $attempts = 0){
 	$options = array_merge([
 		'pageId' => null,
@@ -1179,6 +1197,25 @@ $s .= 'AND parent.rgt ';
 
 	// }
 
+		
+		public function insertSubscribers($articleId, $email){
+
+			$s = "INSERT INTO subscribers
+			(article_id, email_address)
+			VALUES
+			(:articleId, '".$email."' )";
+
+			$queryParams = [
+			':articleId' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
+			];
+
+			$pdo = $this->con->openCon();
+			$q = $pdo->prepare($s);
+			$row = $q->execute($queryParams);
+
+			return $row ; 
+		}
+
 		public function updateViewCount($articleId){
 
 			$s = "INSERT INTO count
@@ -1597,6 +1634,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	AND article_contributors.contributor_id = article_contributor_articles.contributor_id ";
 				//	LEFT JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles)
 	$s .= $status_sql;
+
 	if ($userArticlesFilter != 'all'){
 		$s .=	"AND article_contributors.contributor_email_address = :userArticlesFilter ";
 	}

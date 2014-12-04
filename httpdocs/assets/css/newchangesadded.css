@@ -4,3 +4,13 @@
 .input-error{ background: rgba(255, 0, 0, 0.5); border-color: rgba(255, 0, 0, 0.8);}
 select:hover{background: #01b88a; color:#fff; }
 select{background-position: 96% center;}
+#nav-cont{bottom:0 !important;}
+#main-cont #content{ top: 0 !important;}
+#article-info, #articles{border:none !important; border-top: 1px solid #ddd !important;}
+.section-bar .right p img{width:1.5rem;}
+#month-form {display: inline-block;}
+#month-form select{ text-transform: uppercase; border:none; height: 1.95rem; margin: 0; position: Relative; top: 0.2rem; left: -0.7rem; padding-left: 1.5rem;}
+
+.dd-month{text-transform:uppercase;}
+.dd-month label{ display: inline-block; background: #747371; color: #fff;  font-size: 1rem; padding: 0.2rem 1rem; position: relative; top: 0.1rem;}
+#img-container{padding:0;}

@@ -69,10 +69,10 @@
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	<div class="sub-menu row">
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">New Article</h1>
+		<h1 class="left">VIEW EARNINGS</h1>
 	</div>
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
-			<h1 class="left">New Article</h1>
+			<h1 class="left">VIEW EARNINGS</h1>
 			<div class="right">
 			<p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
 				<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
@@ -85,11 +85,11 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			
-			<section>
-				<h2 class="left small-8">Contributor: <?php echo $contributor_name ; ?></h2>
-				<div class="small-4 dd-month">
-					<label>Month: 
-						<form id="month-form" method="post">
+			<section id="articles" class="padding-top">
+				<!--<h2 class="left small-7">Contributor: <?php echo $contributor_name ; ?></h2>-->
+				<div class="dd-month margin-top">
+					<label>SELECT MONTH: </label>
+					<form id="month-form" method="post">
 					  	<select name='month' onchange = "change()">
 					  		<option value='0'>Select Month</option>
 						  	<?php 
@@ -102,8 +102,8 @@
 						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName." ".$current_year.'</option>';
 							} ?>
 						</select>
-						</form>
-					</label>
+					</form>
+					
 				</div>
 			</section>
 

@@ -97,11 +97,17 @@ if (isset($articleInfoObj)) {
 		<?php }?>
 
 		<!-- Article Content -->
-		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
-			  else{ echo '<div class="row">'; }
+		<?php 
+		if ( $detect->isMobile() ) {  
+			echo '<div class="row" style="margin-top: -1rem;">';
+			echo '<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important;"> ';  
+		}else{ 
+			echo '<div class="row">';
+			echo '<section id="article-content" class="small-12 column sidebar-box">';
+		}
 		?> 
-			<section id="article-content" class="small-12 column sidebar-box">
-				<p><?php echo $article_body; ?></p>
+			
+		<p><?php echo $article_body; ?></p>
 
 		<!-- Social Media Icons -->
 		<!-- DESKTOP ONLY -->
@@ -125,15 +131,25 @@ if (isset($articleInfoObj)) {
 
 				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">
 				
-				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
+				<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
 			</div>
 		</div>
+		<?php }else{?>
+			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
+				<a class="addthis_button_facebook">
+					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
+				</a> 
+				<a class="addthis_button_twitter">
+					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
+				</a> 
+			</div>
+		<?php }?>
 
-		
+		<?php if(!$detect->isMobile()){?>
 		<br>
-		<?php if(!$promotedArticle ){?>
+		<?php if(!$promotedArticle  && $article_id != 4555){?>
 			<div data-str-native-key="53caed05" style="display: none;"></div>
 			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 		<?php } ?>

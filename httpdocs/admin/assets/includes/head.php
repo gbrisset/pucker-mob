@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/appadmin.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/newchangesadded.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
 
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/adminstylingie78.css">
@@ -58,6 +59,57 @@
 	<script type="text/javascript" src="http://www.puckermob.com/assets/js/modernizr-2.5.3.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+	<script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script>
+	<script>
+
+	var minImageWidth = 784,
+    minImageHeight = 431;
+
+	Dropzone.options.imageDrop = {
+	  acceptedFiles: "image/*",
+	  paramName: "file", // The name that will be used to transfer the file
+	  maxFilesize: 2, // MB
+	  //previewsContainer: ".dropzone-previews",
+	  thumbnailWidth: 784,
+	  thumbnailHeight: 431,
+	  previewsContainer: ".dropzone-previews",
+
+						 
+	  init: function() {
+	    this.on("addedfile", function() {
+		  if (this.files[1]!=null){
+		    this.removeFile(this.files[0]);
+
+		  } 
+
+		  $('#main-image').hide();
+		});
+
+		this.on("sending", function(file, xhr, formData) {
+  			formData.append("filesize", file.size); // Will send the filesize along with the file as POST data.
+		});
+
+		this.on("thumbnail", function(file) {
+	      // Do the dimension checks you want to do
+	      if (file.width < minImageWidth || file.height < minImageHeight) {
+	        file.rejectDimensions()
+	      }
+	      else {
+	        file.acceptDimensions();
+	      }
+	    });
+	 },
+
+	 accept: function(file, done) {
+    file.acceptDimensions = done;
+    file.rejectDimensions = function() { done("Invalid dimension."); };
+    // Of course you could also just put the `done` function in the file
+    // and call it either with or without error in the `thumbnail` event
+    // callback, but I think that this is cleaner.
+  }
+	};
+</script>
+
 
 
 </head>

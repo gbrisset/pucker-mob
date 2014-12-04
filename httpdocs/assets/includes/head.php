@@ -106,6 +106,10 @@
 	<style>	body {background: #fcf4de;} </style>
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/newchangestoadd.css" />
+	<!-- StyleSELECTOR.css -->
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/styleselector.css" media="screen" />
+
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -113,7 +117,18 @@
 	<?php if (!$local){
     	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
     	else echo $mpArticle->data['article_page_analytics'];
-	} ?>
+	} 
+
+$long_url = urlencode($mpHelpers->curPageURL());
+
+$bitly_login = 'puckermob';
+$bitly_apikey = 'R_0c1836a5ff2e45f8a3fe2d4ae9d8c03b';
+
+$bitly_response = json_decode(file_get_contents("http://api.bit.ly/v3/shorten?login={$bitly_login}&apiKey={$bitly_apikey}&longUrl={$long_url}&format=json"));
+
+$short_url = $bitly_response->data->url;
+
+	?>
 
 <!-- IF ARTICLE PAGE -->
 

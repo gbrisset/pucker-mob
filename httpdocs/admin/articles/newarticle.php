@@ -1,6 +1,22 @@
 <?php
 	if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
 	
+
+
+	if (!empty($_FILES)) {
+	     $ds          = DIRECTORY_SEPARATOR;  //1
+	 
+		$storeFolder = 'uploads';   //2
+	    $tempFile = $_FILES['file']['tmp_name'];          //3             
+	      
+	    $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
+	     
+	    $targetFile =  $targetPath. $_FILES['file']['name'];  //5
+	 
+	    move_uploaded_file($tempFile,$targetFile); //6
+	     
+	}
+	
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			
@@ -14,10 +30,13 @@
 	//Verify if is a content provider user
 	$admin_user = false;
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
-		$admin_user = true;
-		$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
-		$contributorInfo = $contributorInfo[0];
+		$admin_user = true;	
 	}
+
+	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
+	$contributorInfo = $contributorInfo[0];
+
+
 	//var_dump($adminController->user->data);
 ?>
 <!DOCTYPE html>
@@ -32,6 +51,8 @@
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
 		<h1 class="left">New Article</h1>
 	</div>
+
+	<!-- WELCOME MESSAGE -->
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
 			<h1 class="left">New Article</h1>
 			<div class="right">
@@ -112,11 +133,9 @@
 					<div class="row">
 					    <div class="columns">
 					    	<div class="small-12 label-wrapper">
-								<label>To help readers find your article, enter keywords that best describe your post content, 
-									seperated by commas.</label>
+								<label>Help readers find your article! Enter up to 10 keywords that best describe your article, separated by commas.</label>
 							</div>
-					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter Keywords" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />
-							
+					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter Keywords" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
 						</div>
 					</div>	
 					
@@ -127,22 +146,10 @@
 						</div>
 					</div>	
 					
-					<!-- IMAGE -->
-					<div class="row">
-					    <div class="columns">
-					    	<div id="img-container">
-					    		<label>Drag image here</label>
-					    		<label>or</label>
-					    		<input type="button" name="upload" id="upload" value="Upload Files" />
-					    		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
-					    	</div>
-					    </div>
-					</div>
-
 					<!-- BODY -->
 					<div class="row padding-bottom">
 					    <div class="columns">
-							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
+							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="START WRITING ARTICLE HERE." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
 						</div>
 					</div>
 
@@ -261,12 +268,17 @@
 					</div>
 				</div>-->
 				</form>
+				<!--<form action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" class="dropzone" method="POST" name="dropzoneForm" id="dropzoneForm" >
+				  <div class="fallback">
+				    <input name="file" type="file"  />
+				  </div>
+				</form>-->
 				</section>
 			</section>
 		</div>
-	</main>
+	</main>	
 
-	<?php include_once($config['include_path'].'footer.php');?>
+	<?php include_once($config['include_path_admin'].'footer.php');?>
 
 
 	<?php 
@@ -274,5 +286,6 @@
 	?>
 	
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
+
 </body>
 </html>

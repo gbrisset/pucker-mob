@@ -4,7 +4,6 @@
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
-	
 	if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
 	
 	if(isset($_POST['submit'])){
@@ -53,6 +52,7 @@
 	
 	$offset = $pagination->offset();
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset);
+	
 
 ?>
 <!DOCTYPE html>

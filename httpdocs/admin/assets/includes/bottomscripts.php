@@ -7,10 +7,43 @@
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
 	<script type="text/javascript">
 	tinymce.init({
+
 		setup: function (ed) {
-			 ed.on('init', function(args) {
-	            console.debug(args.target.id);
-	        });
+			var placeholder = $('#' + ed.id).attr('placeholder');
+			if (typeof placeholder !== 'undefined' && placeholder !== false) {
+				var is_default = false;
+
+				 ed.on('init', function(args) {
+		            // get the current content
+			        var cont = ed.getContent();
+
+			        // If its empty and we have a placeholder set the value
+			        if (cont.length === 0) {
+			          	ed.setContent(placeholder);
+			         	 // Get updated content
+			          	cont = placeholder;
+			        }
+
+			        // convert to plain text and compare strings
+			        is_default = (cont == placeholder);
+
+			        // nothing to do
+			        if (!is_default) {
+			          return;
+			        }
+
+
+		        }).on('focus', function() {
+		        // replace the default content on focus if the same as original placeholder
+			        if (is_default) {
+			          ed.setContent('');
+			        }
+		      	}).on('blur', function() {
+			        if (ed.getContent().length === 0) {
+			          ed.setContent(placeholder);
+			        }
+		      	});
+			}
 	    },
 	    selector: "textarea",
 	    //external_plugins: {"nanospell": "/assets/js/nanospell/plugin.js"},
@@ -29,13 +62,14 @@
 	//     console.log(tinyMCE.activeEditor.getContent());
 	 }
 
-	   
 	});
 </script>
 
 <script src="<?php echo $config['this_url']; ?>assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>
+
+
 
 <?php
 	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);

@@ -108,8 +108,9 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
 				
 				<!-- Social Media Icons -->
-				<?php if(!$detect->isMobile()){?>
-				<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+				
+			<?php if(!$detect->isMobile()){?>
+			<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
 					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
@@ -128,11 +129,52 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 
 				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">
 				
-				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
+					<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
+				</div>
 			</div>
-		</div>
+		<?php }else{?>
+			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
+				<a class="addthis_button_facebook">
+					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
+				</a> 
+				<a class="addthis_button_twitter">
+					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
+				</a> 
+			</div>
+		<?php }?>
+			<hr style="margin: 0.5rem 0 0.4rem !important">	
+			<?php 
+				$prevtext = "PREV PAGE";
+				$nexttext = "NEXT PAGE";
+				if($detect->isMobile() || $detect->isTablet()){
+					$prevtext = "PREV";
+					$nexttext = "NEXT";
+				}?>
+				<ul class="inline-centered vertical-centered">
+					<?php 
+				//	Get the next article, that is LIVE, that has a list attached
+					$next_article = $mpArticle->get_next_with_list($articleInfoObj['article_id']); 
+					?>
+					<?php if($page > 1) { ?>
+					<li class="arrow-box left"><a href="<?php echo $article_link.'?p='.($page - 1); ?>"><div class="arrow-left"><i class="fa fa-caret-left"></i><?php echo $prevtext;?></div></a></li>
+					<li  class="num-page-margin-top "><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
+
+					<?php }else{ ?>
+						<li  class="num-page-margin-top num-page-right-style"><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
+					
+					<?php }?>
+					<?php if($total_count > $page){ ?>
+					<li  class="arrow-box right"><a href="<?php echo $article_link.'?p='.($page + 1); ?>"><div class="arrow-right"><?php echo $nexttext;?><i class="fa fa-caret-right"></i></div></a></li>
+					<?php } else if($next_article){ ?>
+					<li class="arrow-box right"><a href="<?php echo $config['this_url'].$next_article['cat_dir_name'] .'/'.$next_article['article_seo_title'] ?>"><div class="arrow-right"><?php echo $nexttext;?><i class="fa fa-caret-right"></i></div></a></li>
+
+					<?php } ?>
+				</ul>
+				<hr style="margin: 0.7rem 0 0 !important;" class="">
+
+		<?php if(!$detect->isMobile()){?>
 			<br>
 			<?php if(!$promotedArticle ){?>
 				<div data-str-native-key="53caed05" style="display: none;"></div>
@@ -202,37 +244,10 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					</div>	 
 				</p>
 			</div>	 
-			<hr style="margin: 0.5rem 0 0.4rem !important">		
+				
 			<?php }?>
 				
-				<?php 
-				$prevtext = "PREV PAGE";
-				$nexttext = "NEXT PAGE";
-				if($detect->isMobile() || $detect->isTablet()){
-					$prevtext = "PREV";
-					$nexttext = "NEXT";
-				}?>
-				<ul class="inline-centered vertical-centered">
-					<?php 
-				//	Get the next article, that is LIVE, that has a list attached
-					$next_article = $mpArticle->get_next_with_list($articleInfoObj['article_id']); 
-					?>
-					<?php if($page > 1) { ?>
-					<li class="arrow-box left"><a href="<?php echo $article_link.'?p='.($page - 1); ?>"><div class="arrow-left"><i class="fa fa-caret-left"></i><?php echo $prevtext;?></div></a></li>
-					<li  class="num-page-margin-top "><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
-
-					<?php }else{ ?>
-						<li  class="num-page-margin-top num-page-right-style"><span><?php echo $page; ?> of <?php echo $total_count; ?></span></li>
-					
-					<?php }?>
-					<?php if($total_count > $page){ ?>
-					<li  class="arrow-box right"><a href="<?php echo $article_link.'?p='.($page + 1); ?>"><div class="arrow-right"><?php echo $nexttext;?><i class="fa fa-caret-right"></i></div></a></li>
-					<?php } else if($next_article){ ?>
-					<li class="arrow-box right"><a href="<?php echo $config['this_url'].$next_article['cat_dir_name'] .'/'.$next_article['article_seo_title'] ?>"><div class="arrow-right"><?php echo $nexttext;?><i class="fa fa-caret-right"></i></div></a></li>
-
-					<?php } ?>
-				</ul>
-				<hr style="margin: 0.7rem 0 0 !important;" class="">
+			
 			</section>
 		
 				<?php //} ?>

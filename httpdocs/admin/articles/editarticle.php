@@ -2,16 +2,17 @@
 	if(!$adminController->user->checkPermission('user_permission_show_edit_article')) $adminController->redirectTo('noaccess/');
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 	$article = $articleResultSet['articles'];
+
 	// If the article exists and has an id, check to see if this user has permissions to edit this article...
 	if (isset($article['article_id']) ){
+		$article_id = $article['article_id'];
 		if ( !($adminController->user->checkUserCanEditOthers('article', $article['article_id'])) ) $adminController->redirectTo('noaccess/');
 	} else {
 		$mpShared->get404();
 	}
-	require_once('../assets/php/notify-user-form.php');
+	//require_once('../assets/php/notify-user-form.php');
 
 	$articleCategories = $articleResultSet['categories'];
-	$isRecipe = false;
 	$tallExtension = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall');
 
 	if(!$tallExtension) $tallExtension = 'jpg';
@@ -20,13 +21,15 @@
 	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
 
 	//Verify if user is a content provider...
-	$content_provider = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 4){
-		$content_provider = true;
-
+	//Verify if is a content provider user
+	$admin_user = false;
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
+		$admin_user = true;
+		$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 		$contributor_email = $adminController->user->data['user_email'];
-		$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $contributor_email ])['contributors'][0];
+		$contributorInfo = $contributorInfo[0];
 	}
+	
 	//Verify if Article Image file exists.
 	$artImageDir =  $config['image_upload_dir'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';
 	$artImageExists = false;
@@ -45,6 +48,7 @@
 				case isset($_POST['article_title-s']):
 			
 					$updateStatus = $adminController->updateArticleInfo($_POST);
+
 					$updateStatus['arrayId'] = 'article-info-form';
 					break;
 				case isset($_FILES['article_post_tall_img']):
@@ -62,7 +66,9 @@
 					break;
 
 			}
-			$article = $adminController->getSingleArticle(array('seoTitle' => $uri[2]));
+			
+			$article = $adminController->getSingleArticle(array('seoTitle' => $_POST['article_seo_title-s']));
+
 		}else $adminController->redirectTo('logout/');
 	}
 
@@ -101,10 +107,12 @@
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	<div class="sub-menu row">
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">New Article</h1>
+		<h1 class="left">Edit Article</h1>
 	</div>
+
+	<!-- WELCOME MESSAGE -->
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
-			<h1 class="left">New Article</h1>
+			<h1 class="left">Edit Article</h1>
 			<div class="right">
 			<p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
 				<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
@@ -119,7 +127,7 @@
 		<div id="content" class="columns small-9 large-11">
 			
 			<!-- Image Sections -->
-			<section id="article-inline-settings">
+			<!--<section id="article-inline-settings">
 					<section class="section-bar left  border-bottom mobile-12 small-12">
 						<h1 class="left">Article Image</h1>
 						<div class="right">
@@ -159,7 +167,7 @@
 							        	<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
 		    							<li>Do not exceed a maximum size: 1 MB.</li>
 		    							<!--<li>Has a minimun dimensions of  405 x 415</li>-->
-							        </div>
+							     <!--   </div>
 						        </div></div>
 						        <span id="error-img" class="radius alert label error-img hidden"></span>
 						         
@@ -168,63 +176,84 @@
 					<div class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
 						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
 					</div>
-			</section>
+			</section>-->
 
-			<section id="article-info">
-				<section class="section-bar left  mobile-12 small-12">
-					<h2 class="border-bottom">Article Information</h2>
-				</header>
+			<section id="article-info" class="padding-top">
+				
+				<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
+					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 
+					<div class="dz-message" data-dz-message><div id="img-container">
+					    		<label>Drag image here</label>
+					    		<label>or</label>
+					    		<input type="button" name="upload" id="upload" value="Upload Files" />
+					    		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
+					    	</div></div>
+
+				</form>
+
+				<div class="dropzone-previews">
+					<?php if(file_exists($pathToTallImage)){?>
+					<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	?>
+						<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
+						<div class="dz-details">	
+						<img class="data-dz-thumbnail" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
+						</div></div>
+					<?php }  ?>
+				</div>
+				
 				<form  id="article-info-form" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 
+					
+					<!-- ARTICLE TITLE -->
 					<div class="row">
 					    <div class="columns">
-						<label for="article_title-s">Article Title<span>*</span> :
-						<input type="text" name="article_title-s" id="article_title-s" placeholder="ex: Chicken with Spinach and Zucchini Skillet" <?php echo ($content_provider) ? 'maxlength="40"' : ''; ?> value="<?php if(isset($article['article_title'])) echo $article['article_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
+							<input type="text" name="article_title-s" id="article_title-s" placeholder="ARTICLE TITLE" <?php echo (!$user_admin) ? 'maxlength="40"' : ''; ?> value="<?php if(isset($article['article_title'])) echo $article['article_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
+						</div>
+					</div>
 
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>Please provide a title for your article, 50 characters maximum</p>
+					<!-- ARTICLE CATEGORY -->
+					<?php
+						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
+						if($allCategories && count($allCategories)){
+					?>
+					<div class="row">
+					    <div class="columns">
+							<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
+								<option value="0">SELECT CATEGORY</option>
+								<?php 
+								foreach($allCategories as $category){ 
+									$selected = '';
+									if(isset($articleResultSet['categories'][0]) && $articleResultSet['categories'][0]['cat_id'] == $category['cat_id']) $selected = 'selected';
+									?>
+								<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>" <?php echo $selected; ?>><?php echo $category['cat_name']; ?></option>
+								<?php }?>
+							</select>
+							<div class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
+								<label>Choose one category that best specifies the genre of your article.</label>
+								<label>This is where your post will reside on the site.</label>
 							</div>
 						</div>
-					</label></div></div>
+					</div>
+					<?php }?>
 
-					<div class="row" style="<?php if($content_provider) echo 'display:none;'?>">
+					<?php if($admin_user){?>
+						<div class="row">
 					    <div class="columns">
-						<label for="article_seo_title-s">Article SEO Title<span>*</span> :
+						<label for="article_seo_title-s" class="uppercase">SEO Title</label>
 						<input type="text"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Please enter the article's seo-formatted title here." value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
 
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the article's title that will be used in URLs throughout the network.</p>
-							</div>
-						</div>
-					</label></div></div>
+					</div></div>
+					<?php }?>
 				
+					<!-- KEYWORDS -->
 					<div class="row">
 					    <div class="columns">
-						<label for="article_desc-s">Article Description<span>*</span> :
-						<input type="text" name="article_desc-s" id="article_desc-s" placeholder="ex: In cold weather, there’s no better way to warm up than with a comforting bowl of soup. This hearty soup is loaded with ..." maxlegth="150" value="<?php if(isset($article['article_desc'])) echo $article['article_desc']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>Please provide a short description introducing your article, 150 characters maximum. This description will appear underneath the title of your article on the search results page.</p>
-							</div>
-						</div>
-					</label></div></div>
-
-					<div class="row">
-					    <div class="columns">
-						<label for="article_tags-s">Article Keywords :
-						<input type="text" name="article_tags-s" id="article_tags-s" placeholder="ex: Meatless, Gluten-free, Detox, Antioxidant, All-Natural, One Pot, Chicken" value="<?php if(isset($article['article_tags'])) echo $article['article_tags']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />
+						<label for="article_tags-s" class="uppercase">Keywords</label>
+						<input type="text" name="article_tags-s" id="article_tags-s" placeholder="ARTICLE KEYWORDS" value="<?php if(isset($article['article_tags'])) echo $article['article_tags']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />
 
 						<div class="tooltip">
 							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
@@ -233,13 +262,30 @@
 								<p>Please enter keywords that will help people search for your article. Keywords should include terms that are relevant to your article like ingredients, categories and descriptive nouns.</p>
 							</div>
 						</div>
-					</label></div></div>
+					</div></div>
 					
-
-					<!-- Article Type -->
+					<!-- DESCRIPTION -->
 					<div class="row">
 					    <div class="columns">
-						<label class="small-3 left">Article Type: </label>
+						<label for="article_desc-s" class="uppercase">Description </label>
+							<input type="text" name="article_desc-s" id="article_desc-s" placeholder="ex: In cold weather, there’s no better way to warm up than with a comforting bowl of soup. This hearty soup is loaded with ..." maxlegth="150" value="<?php if(isset($article['article_desc'])) echo $article['article_desc']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
+						
+						</div>
+					</div>
+
+					<!-- BODY -->
+					<div class="row padding-bottom">
+					    <div class="columns">
+						<!--<label for="article_body-nf">Article Body:-->
+							<textarea class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+						<!--</label>-->
+						</div>
+					</div>
+				
+					<!-- TYPE -->
+					<div class="row">
+					    <div class="columns">
+						<label class="small-12 large-3 left uppercase">Article Type: </label>
 						
 						<input type="radio" name="article_type-s" id="opinion" data-info="1"  value="1" <?php if($article['article_type'] == 1) echo "checked"; ?> />
 						<label for="" class="radio-label">Opinion</label>
@@ -251,32 +297,9 @@
 						<label for="" class="radio-label">Staff</label>
 						</div>
 					</div>
-					
 
-					<div class="row padding-bottom">
-					    <div class="columns">
-						<label for="article_body-nf">Article Body:
-						<textarea class="mceEditor" name="article_body-nf" id="article_body-nf" rows="45" placeholder="Please enter the article's body here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
-					</label></div></div>
-				
-					<!-- PAGE LIST -->				
-					<div class="row">
-					    <div class="columns">
-						<label for="page_list">Page List: 
-						<select name="page_list_id-nf" id="page_list_id-nf">
-							<option value="0">None</option>
-							<?php			
-								$page_lists = PageList::get();
-								foreach($page_lists as $page_list){
-									echo "<option value='".$page_list->page_list_id."' ".(($page_list->page_list_id == $article['page_list_id']) ? 'selected=selected ': '') ."  >";
-										echo $page_list->page_list_title;
-									echo "</option>";
-								}
-							?>
-						</select>
-					</label></div></div>		
-
-					<!-- Article Status and Preview Section -->
+					<!-- Article Status -->
+					<?php if($admin_user){?>
 					<?php
 						$allStatuses = $adminController->getSiteObjectAll(array('table' => 'article_statuses'));
 						if($allStatuses && count($allStatuses)){
@@ -285,8 +308,8 @@
 					?>
 					<div class="row <?php if($content_provider) echo 'hide'; ?>">
 					    <div class="columns mobile-12 small-7">
-							<label for="article_status">Article Status<span>*</span> :
-							<select name="article_status" id="article_status" class = "status-select">
+							<label for="article_status" class="uppercase">Article Status</label>
+							<select name="article_status" id="article_status" class = "status-select small-6">
 							<?php
 								if(!$content_provider){ 
 									foreach($allStatuses as $statusInfo){
@@ -304,34 +327,43 @@
 								}
 							?>
 							</select>
-							</label>
 						</div>
-						<div class="columns mobile-12 small-5" style="margin-top: 2rem;">
-							
-							<?php include_once($config['include_path_admin'].'preview_email.php');  ?>
-							<?php 
-							echo '<div>';
-								$preview = '<div data-preview="'.$preview_profile.'" class="notify-preview-container">';
-								$preview .= '</div>';
-								echo $preview; 
-							echo '</div>';
-							if($adminController->user->data['user_type'] < 3){
-								echo '<div class="notify">Notify Contributor</div>';
-							}
-						?>
-						</div>
+					
 					</div>
+					<?php }?>
+
+					<!-- PAGE LIST -->
+					<?php if($admin_user){?>				
+					<div class="row">
+					    <div class="columns">
+						<label for="page_list" class="uppercase">Page List </label>
+						<select name="page_list_id-nf" id="page_list_id-nf" class="">
+							<option value="0">None</option>
+							<?php			
+								$page_lists = PageList::get();
+								foreach($page_lists as $page_list){
+									echo "<option value='".$page_list->page_list_id."' ".(($page_list->page_list_id == $article['page_list_id']) ? 'selected=selected ': '') ."  >";
+										echo $page_list->page_list_title;
+									echo "</option>";
+								}
+							?>
+						</select>
+					</div></div>
+
+					<?php }?>
+					
+					
 
 					<!-- Show Contributor List -->
 					<?php
-					if(!$content_provider){
+					if($admin_user){
 						$allContributors = $adminController->getSiteObjectAll(array('queryString' => 'SELECT * FROM article_contributors ORDER BY contributor_name ASC'));
 						if($allContributors && count($allContributors)){
 
 					?>
 						<div class="row">
 					    <div class="columns">
-							<label for="article_contributor">Article Contributor<span>*</span> :
+							<label for="article_contributor" class="uppercase">Article Contributor</label>
 							<select name="article_contributor" id="article_contributor">
 								<option value="-1">None</option>
 								<?php
@@ -345,54 +377,21 @@
 									}
 								?>
 							</select>
-						</label></div></div>
+						</div></div>
 
 					<?php }
 					}else{ ?>
 					<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo['contributor_id']?>" />
 					<?php } ?>
 
-					<!-- Show All Categories -->
-					<?php
-						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
-						if($allCategories && count($allCategories)){
-					?>
-
-						<div class="row">
-
-					    <div class="columns">
-							<label class="checkbox-group-label-parent">Categories<span>*</span> :
-							<span class="p-message">Categorize your article choosing up to 5 categories. </span>
-							<section class="checkbox-group-content">
-							<?php
-								foreach($allCategories as $arr){
-									$checkbox = '<div class="checkbox-group">';
-										$checkbox .= '<input type="checkbox" value="'.$arr['cat_id'].'" id="category-'.$arr['cat_id'].'" name="article_categories[category-'.$arr['cat_id'].']"';
-										if($articleResultSet['categories']){
-											foreach($articleResultSet['categories'] as $catArr){
-												if($arr['cat_id'] == $catArr['cat_id']){
-													$checkbox .= ' checked="checked"';
-													break;
-												}
-											}
-										}
-										$checkbox .= ' />';
-										$checkbox .= '<label class="checkbox-label" for="category-'.$arr['cat_id'].'">'.$arr['cat_name'].'</label>';
-									$checkbox .= '</div>';
-									echo $checkbox;
-								}
-							?>
-							</section>
-						</label></div></div>
-					<?php } ?>
-					
+						
 					<!-- Featured Article -->
-					<?php if(!$content_provider){ 
+					<?php if($admin_user){ 
 						$featuredArticle = $mpArticle->getFeaturedArticle( 1 );
 					?>
 					<div class="row">
 					    <div class="columns">
-						<label class="small-3 left">Feature this article: </label>
+						<label class="small-4 left uppercase">Feature this article: </label>
 						<?php 
 						$y_checked = ''; $n_checked = 'checked';
 
@@ -406,40 +405,35 @@
 					<?php }?>
 
 					<!-- Poll Script -->
-					<?php if(!$content_provider){ 
-					?>
+					<?php if($admin_user){?>
 
 					<div class="row">
 					    <div class="columns">
-						<label>Article Poll ID:
+						<label class="uppercase">Article Poll ID</label>
 						<input type="text" name="article_poll_id-s" id="article_poll_id-s" value="<?php if(isset($article['article_poll_id'])) echo $article['article_poll_id']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_poll_id') echo 'autofocus'; ?> />
-					</label></div></div>
-					<?php }?>
+					</div></div>
+					
 
 					<!-- IMAGE CREDITS -->
 					<div class="row">
 					    <div class="columns">
-							<label>Image Credits:
-								<input type="text" name="article_img_credits-s" id="article_img_credits-s" value="<?php if(isset($article['article_img_credits'])) echo $article['article_img_credits']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />
-								
-								<!--<textarea class="mceEditor-simple" name="article_img_credits-nf" id="article_img_credits-nf" rows="1" placeholder="" ><?php if(isset($article['article_img_credits'])) echo $article['article_img_credits']; ?></textarea>
-								-->
-							</label>
+							<label  class="uppercase">Image Credits</label>
+								<input type="text" name="article_img_credits-s" id="article_img_credits-s" value="<?php if(isset($article['article_img_credits'])) echo $article['article_img_credits']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />	
 						</div>
 					</div>
+					
 					<!-- NOTES -->
 					<div class="row">
 					    <div class="columns">
-							<label>Notes:
+							<label class="uppercase" >Notes</label>
 								<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" value="<?php if(isset($article['article_additional_comments'])) echo $article['article_additional_comments']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
-							</label>
 						</div>
 					</div>
 
 					<!-- Article Disclaimer -->
 					<div class="row">
 					    <div class="columns">
-						<label class="small-3 left">Article Disclaimer: </label>
+						<label class="small-3 left uppercase">Article Disclaimer </label>
 					
 						<input type="radio" name="article_disclaimer-s" id="disclaimer-yes" data-info="1"  value="1" <?php if($article['article_disclaimer'] == 1) echo "checked"; ?> />
 						<label for="" class="radio-label">Yes</label>
@@ -448,18 +442,17 @@
 						<label for="" class="radio-label">No</label>
 						</div>
 					</div>
-					
+					<?php }?>
 
-					<div class="row">
-					    <div class="columns">
-						<div class="btn-wrapper">
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo ($updateStatus['hasError'] == true) ? 'radius alert label' : 'radius success label'; ?>" id="result">
-								<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-info-form') echo $updateStatus['message']; ?>
-							</p>
-							
-							<button class="radius" type="submit" id="submit" name="submit">Save</button>
-						</div>
-					</div></div>
+
+					<div class="row buttons-container">
+						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
+						<button type="button" id="preview" name="preview" class="">PREVIEW</button>
+						<?php if($admin_user){?>
+							<button type="button" id="publish" name="publish" class="">PUBLISH</button>
+						<?php }?>
+					</div>
+					
 				</form>
 			</section>
 
@@ -478,7 +471,7 @@
 			</div>
 		</div>
 	</div>
-	<?php include_once($config['include_path'].'footer.php');?>
+	<?php include_once($config['include_path_admin'].'footer.php');?>
 	<div id='lightbox-cont'>
 		<div class="overlay"></div>
 

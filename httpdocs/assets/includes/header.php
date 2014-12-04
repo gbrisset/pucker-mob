@@ -10,14 +10,23 @@
     }
   }
   ?>
-
-  <header id="super-banner" class="hide-for-print show-for-large-up" style="background:#000 !important;">
+  <?php if($detect->isMobile()){?>
+   <header id="super-banner" class="hide-for-print" style="background:#9e0039 !important;margin-top: 3.2rem;margin-bottom: -3rem; text-align:center;">
     <div class="row">
-      <a href="http://www.puckermob.com/hot-topics/the-11-most-hilarious-parts-about-obamas-ferguson-speech">
-        <img src="http://www.puckermob.com/assets/img/super_banner_obama.png">
+      <a href="http://www.puckermob.com/lifestyle/why-being-an-outcast-was-the-best-thing-that-ever-happened-to-you">
+        <img src="http://www.puckermob.com/assets/img/super_banner_mobile.png">
       </a>
     </div>
   </header>
+  <?php }else{?>
+  <header id="super-banner" class="hide-for-print show-for-large-up" style="background:#9e0039 !important;">
+    <div class="row">
+      <a href="http://www.puckermob.com/lifestyle/why-being-an-outcast-was-the-best-thing-that-ever-happened-to-you">
+        <img src="http://www.puckermob.com/assets/img/super_banner_desktop.png">
+      </a>
+    </div>
+  </header>
+  <?php }?>
    <!--
   <header id="top-banner" class="hide-for-print show-for-large-up">
     <div class="row">

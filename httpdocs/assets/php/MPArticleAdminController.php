@@ -391,7 +391,7 @@ class MPArticleAdminController extends MPArticle{
 	/* Begin Article Creation Functions */
 	
 	public function addArticle($post){ 
-		var_dump($post);
+		
 		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'You must insert a title'));
 		if(!isset($post['article_categories']) || $post['article_title-s'] == "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
 		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'You must insert a Description'));
@@ -505,14 +505,15 @@ class MPArticleAdminController extends MPArticle{
 		if(isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_seo_title-s']));
 
 		//Clean the $post array and remove the ingredients and instructions to avoid conflic between fields
-		foreach( $post as $key => $val ){
-			if(strpos($key, 'article_ingredients') !== false || strpos($key, 'article_instructions') !== false){
-				unset($post[$key]);
-			} 
-		}
+		//foreach( $post as $key => $val ){
+		//	if(strpos($key, 'article_ingredients') !== false || strpos($key, 'article_instructions') !== false){
+		//		unset($post[$key]);
+		//	} 
+		//}
 
 		$params = $this->helpers->compileParams($post);
-		
+		$params[':article_seo_title'] = $post['article_seo_title-s'];
+
 		$seoTitleCheck = $this->performQuery(array(
 			'queryString' => 'SELECT * FROM articles WHERE article_seo_title = :seoTitle AND article_id != :articleId',
 			'queryParams' => array(':seoTitle' => $params[':article_seo_title'], ':articleId' => $post['a_i'])
@@ -535,14 +536,10 @@ class MPArticleAdminController extends MPArticle{
 			));
 
 		//Add to each category
-		foreach($post['article_categories'] as $category => $on){
-			$categoryId = intval(str_replace('category-', '', $category));
-			// $this->performUpdate(array(
-			// 	'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId AND cat_id = :categoryPageId",
-			// 	'updateParams' => array(':articleId' => $post['a_i'], ':categoryPageId' => filter_var($categoryId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT))
-			// ));
-
-			$this->performUpdate(array(
+		if(isset($post['article_categories']) && $post['article_categories'] != 0){
+		//foreach($post['article_categories'] as $category => $on){
+			$categoryId = $post['article_categories'];
+				$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_categories SET article_id = :articleId, cat_id = :categoryPageId",
 				'updateParams' => array(':articleId' => $post['a_i'], ':categoryPageId' => filter_var($categoryId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT))
 			));

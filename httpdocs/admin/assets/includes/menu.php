@@ -12,7 +12,9 @@
 				<a href="<?php echo $config['this_admin_url']; ?>articles/newarticle/">Add New Article</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'articles') && (isset($uri[1]) && $uri[1] == '')) ?  'current' :  '';?>">
+			<?php }?>
+			<?php if($adminController->user->checkPermission('user_permission_show_edit_article') ){?>
+			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'articles') && (isset($uri[1]) && $uri[1] == '' || $uri[1] == 'edit')) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url']; ?>articles/">View/Edit Articles</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
@@ -24,7 +26,7 @@
 				<a href="<?php echo $config['this_admin_url']; ?>lists/new/">Add New List</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'lists') &&  (isset($uri[1]) && $uri[1] == '')) ?  'current' :  '';?>">
+			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'lists') &&  (isset($uri[1]) && $uri[1] == '' || $uri[1] == 'edit')) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url']; ?>lists/">View/Edit Lists</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
@@ -49,7 +51,7 @@
 			<?php }?>
 
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'dashboard') ) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>dashboard/">My Dashboard</a>
+				<a href="<?php echo $config['this_admin_url']; ?>dashboard/">View earnings</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'account') ) ?  'current' :  '';?>">

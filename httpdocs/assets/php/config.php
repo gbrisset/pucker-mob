@@ -104,6 +104,7 @@ if($local)
 
 	if(isset($admin) && $admin){
 		require_once $config['assets_path'].'/MPArticleAdmin.php';
+		require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 		require_once $config['assets_path'].'/MPArticleAdminController.php';
 	}
 	
@@ -196,6 +197,7 @@ if($local)
 		require_once dirname(__FILE__).'/MPArticleAdmin.php';
 		require_once dirname(__FILE__).'/MPArticleAdminController.php';
 		require_once dirname(__FILE__).'/class.Dashboard.php';
+		require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
 	}
 
 	date_default_timezone_set('America/New_York');

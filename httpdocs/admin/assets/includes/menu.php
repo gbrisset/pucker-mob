@@ -43,6 +43,13 @@
 
 			<li class="empty-li"></li>
 
+			<?php if($adminController->user->checkPermission('user_permission_show_add_notifications')){?>
+			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'notifications') ) ?  'current' :  '';?>">
+				<a href="<?php echo $config['this_admin_url']; ?>notifications/">Notifications</a>
+				<i class="fa fa-caret-left"></i>
+			</li>
+			<?php }?>
+
 			<?php if($adminController->user->checkPermission('user_permission_show_add_contributor')){?>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'reports') ) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url']; ?>reports/">Get Report</a>

@@ -53,7 +53,7 @@ class ManageAdminDashboard{
 	}
 
 	public function getTopSharedMoblogs(){
-		$s = "SELECT 'flor', articles.article_id, articles.article_title, articles.article_seo_title, article_contributors.contributor_id,  article_contributors.contributor_name,  article_contributors.contributor_image,  social_media_records.date_updated, social_media_records.category, (SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares)) as 'total_shares'  
+		$s = "SELECT 'flor', articles.article_id, articles.article_title, articles.article_seo_title, article_contributors.contributor_id,  article_contributors.contributor_name,  article_contributors.contributor_image,  social_media_records.date_updated, articles.creation_date, social_media_records.category, (SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares)) as 'total_shares'  
 			  FROM social_media_records 
 			   INNER JOIN ( articles, article_contributors, article_contributor_articles ) 
 				ON social_media_records.article_id = articles.article_id AND article_contributor_articles.article_id = articles.article_id AND article_contributor_articles.contributor_id = article_contributors.contributor_id 

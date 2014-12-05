@@ -96,9 +96,9 @@
 		<div id="content" class="columns small-9 large-11">
 			
 			<section>
-				<h2 class="left small-8">Contributor: <?php echo $contributor_name ; ?></h2>
-				<div class="small-4 dd-month">
-					<label>Month: 
+				<h2 class="left small-12">Contributor: <?php echo $contributor_name ; ?></h2>
+				<div class="small-12 dd-month margin-top">
+					<label>Month: </label>
 						<form id="month-form" method="post">
 					  	<select name='month' id="month-option" onchange = "change()">
 					  		<option value='0'>Select Month</option>
@@ -113,7 +113,7 @@
 							} ?>
 						</select>
 						</form>
-					</label>
+					
 				</div>
 			</section>
 

@@ -112,7 +112,7 @@
 								//$article .='<a class="manage-links" href="'.$articleUrl.'" name="edit" id="edit"><i class="fa fa-pencil-square-o"></i> Edit</a>';
 								//$article .='<a class="manage-links" href="'.$articleUrl.'" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i> Delete</a>';
 								$contributor .= '<a class="manage-links" href="'.$config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name'].'" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>';
-								$contributor .='<a class="manage-links" href="'.$config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'].'" ><i class="fa fa-bar-chart"></i> Dashboard</a>';
+								$contributor .='<a class="manage-links" href="'.$config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'].'" ><i class="fa fa-bar-chart"></i> Earnings</a>';
 							$contributor .= '</div>';
 
 						$contributor .= '</div><hr style="margin: 0.2rem 0 0.6rem 0;">';

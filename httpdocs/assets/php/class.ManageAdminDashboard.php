@@ -45,15 +45,50 @@ class ManageAdminDashboard{
 	}
 
 	public function getWarningsMessages(){
+		$s = "SELECT *  
+			  FROM notification_center 
+			  WHERE notification_type = 0 ";
 
+		$q = $this->performQuery(['queryString' => $s]);
+
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}	
 	}
 
-	public function saveWarningsMessages(){
+	public function saveWarningsMessages($data){
+		$msg = $data['notification_msg'];
+		$status = $data['notification_live'];
 
+		if($msg === 'START WRITING HERE.') $msg = "";
+		
+		if($this->getWarningsMessages()) $action = "UPDATE";
+		else $action = "INSERT";
+
+		if($action == "UPDATE"){
+			$s = "UPDATE notification_center SET notification_msg = '".$msg."', notification_live = $status
+			WHERE notification_type = 0 ";
+		}else{
+			$s = "INSERT INTO notification_center ( notification_id, notification_type, notification_msg, notification_live)
+			VALUES ( NULL , 0, '".$msg."', $status); ";
+		}
+
+		$pdo = $this->con->openCon();
+		$q = $pdo->prepare($s);
+
+		$row = $q->execute($queryParams);
+		return $row; 
 	}
 
 	public function getTopSharedMoblogs(){
-		$s = "SELECT 'flor', articles.article_id, articles.article_title, articles.article_seo_title, article_contributors.contributor_id,  article_contributors.contributor_name,  article_contributors.contributor_image,  social_media_records.date_updated, articles.creation_date, social_media_records.category, (SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares)) as 'total_shares'  
+		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, article_contributors.contributor_id,  article_contributors.contributor_name,  article_contributors.contributor_image,  social_media_records.date_updated, articles.creation_date, social_media_records.category, (SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares)) as 'total_shares'  
 			  FROM social_media_records 
 			   INNER JOIN ( articles, article_contributors, article_contributor_articles ) 
 				ON social_media_records.article_id = articles.article_id AND article_contributor_articles.article_id = articles.article_id AND article_contributor_articles.contributor_id = article_contributors.contributor_id 
@@ -78,11 +113,47 @@ class ManageAdminDashboard{
 	
 
 	public function getAnnouncements(){
+		$s = "SELECT *  
+			  FROM notification_center 
+			  WHERE notification_type = 1 ";
 
+		$q = $this->performQuery(['queryString' => $s]);
+
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}	
 	}
 
-	public function saveAnnouncements(){
+	public function saveAnnouncements($data){
+		$msg = $data['notification_annoucement_msg'];
+		$status = $data['notification_annoucement_live'];
 
+		if($msg === 'START WRITING HERE.') $msg = "";
+		
+		if($this->getAnnouncements()) $action = "UPDATE";
+		else $action = "INSERT";
+
+		if($action == "UPDATE"){
+			$s = "UPDATE notification_center SET notification_msg = '".$msg."', notification_live = $status
+			WHERE notification_type = 1 ";
+		}else{
+			$s = "INSERT INTO notification_center ( notification_id, notification_type, notification_msg, notification_live)
+			VALUES ( NULL , 1, '".$msg."', $status); ";
+		}
+
+		$pdo = $this->con->openCon();
+		$q = $pdo->prepare($s);
+
+		$row = $q->execute($queryParams);
+		
+		return $row; 
 	}
 
 	public function getTrendingTopics(){

@@ -31,6 +31,9 @@
 		//Get Top 5 Shared Moblogs
 		$top_shares_articles = $ManageDashboard->getTopSharedMoblogs(); 
 
+		$warnings = $ManageDashboard->getWarningsMessages(); 
+		$annoucements = $ManageDashboard->getAnnouncements(); 
+
 	}
 	
 ?>
@@ -54,34 +57,35 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="articles">
-			<div id="warning-box" class="warning-box  mobile-12 small-12 margin-top ">
+			<?php if($warnings[0] && $warnings[0]['notification_live']){ ?>
+			<div id="warning-box" class="warning-box  mobile-12 small-12 margin-top " style="min-height:6.5rem;">
 				<div class="mobile-2 small-2 left">
 					<i class="fa fa-5x fa-exclamation-triangle"></i>
 				</div>
 				<div class="mobile-10 small-10 inline p-cont">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-						sed do eiusmod tempor incididunt ut labore et dolore 
-						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-						ullamco laboris nisi.
+						<?php echo $warnings[0]['notification_msg']; ?>
 					</p>
 				</div>
 			</div>
+			<?php }?>
 			
 			<div class="buttons-container dashboard mobile-12 small-12">
 				<?php if($articles_by_cont){?>
-				<select class="small-5" id="recent-articles" name="recent-articles">
+				<script>function change(){ window.location = $("#recent-articles").val(); }</script>
+
+				<select class="small-6" id="recent-articles" name="recent-articles" onchange = "change()">
 					<option value = "0">my recent articles</option>
 					<?php foreach( $articles_by_cont as $art ){
-						echo '<option value = "'.$art['article_id'].'">'.$art['article_title'].'</option>';
+
+						echo '<option value = "'.$config['this_url'].'admin/articles/edit/'.$art['article_seo_title'].'">'.$art['article_title'].'</option>';
 					}?>
-					
 				</select>
 				<?php }?>
 				<a href="<?php echo $config['this_url'].'admin/articles/';?>" id="viewall" name="viewall" class="a-buttons">VIEW ALL</a>
 				<a href="<?php echo $config['this_url'].'admin/articles/newarticle/';?>" id="addnew" name="addnew" class="a-buttons">ADD NEW</a>			
 			</div>
-			<div class="mobile-12 small-12">
+			<div class="columns mobile-12 small-12 no-padding">
 				<?php if(isset($top_shares_articles) && $top_shares_articles){?>
 				<section id="top-shares" class="top-shares small-6 left">
 					<h2>Top 5 Shared Moblogs</h2>
@@ -122,25 +126,18 @@
 				</section>
 				<?php }?>
 
-				<section id="announcements" class="announcements small-5 left">
+				<section id="announcements" class="announcements small-5 right">
+						<?php if($annoucements[0] && $annoucements[0]['notification_live']){ ?>
 						<div class="sub-announcements">
 							<h2>ANNOUNCEMENTS</h2>
 							<div class="box">
 								<p>
 									<span>FROM THE EDITOR:</span>
-									Lorem ipsum dolor sit amet, consectetur 
-									adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. 
-									Ut enim ad minim veniam, quis nostrud exercitation 
-									ullamco laboris nisi ut aliquip ex ea commodo consequat.
-									Duis aute irure dolor in reprehenderit in voluptate 
-									velit esse cillum dolore eu fugiat nulla pariatur. 
-
-									Excepteur sint occaecat cupidatat non proident, sunt 
-									in culpa qui officia deserunt mollit anim id est laborum
+									<?php echo $annoucements[0]['notification_msg']; ?>
 								</p>
 							</div>
 						</div>
+						<?php }?>
 						<div class="sub-announcements">
 							<h2>TRENDING TOPICS</h2>
 							<div class="box no-padding">

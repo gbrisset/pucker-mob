@@ -1474,4 +1474,27 @@ $(document).ready(function (){
 		//$(this).hide();
 	});
 
+
+	if($('#publish')){
+		$('#publish').on('click', function(e){
+		
+			$.ajax({
+			  type: "POST",
+			  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			  data: { status: '1', a_i: $('#a_i').val(), task:'update_status' }
+			}).done(function(data) {
+		
+			  location.reload();
+			});
+			 
+		});
+	}
+
+	if($('#upload-form-file')){
+	$('#upload-form-file').on('click', function(e){
+		e.preventDefault();
+		//$upload_b = $('')
+	});
+}
+
 });

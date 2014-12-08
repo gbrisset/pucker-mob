@@ -297,9 +297,10 @@
 					<?php if($admin_user){?>
 					<?php
 						$allStatuses = $adminController->getSiteObjectAll(array('table' => 'article_statuses'));
-						if($allStatuses && count($allStatuses)){
-							include_once($config['include_path_admin'].'previewarticle.php'); 
-						} 
+						//if($allStatuses && count($allStatuses)){
+							//include_once($config['include_path_admin'].'previewarticle.php'); 
+						//} 
+						
 					?>
 					<div class="row <?php if($content_provider) echo 'hide'; ?>">
 					    <div class="columns mobile-12 small-7">
@@ -441,10 +442,13 @@
 
 
 					<div class="row buttons-container">
-						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
+						<button type="submit" id="submit" name="submit" class="">SAVE</button>
 						<button type="button" id="preview" name="preview" class="">PREVIEW</button>
-						<?php if($admin_user){?>
-							<button type="button" id="publish" name="publish" class="">PUBLISH</button>
+						<?php if($admin_user){
+							$label = "PUBLISH";
+							if($article['article_status'] == 1) $label = "RE-PUBLISH";
+						?>
+							<button type="button" id="publish" name="publish" class=""><?php echo $label; ?></button>
 						<?php }?>
 					</div>
 					

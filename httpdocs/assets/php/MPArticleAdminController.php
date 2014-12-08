@@ -402,12 +402,18 @@ class MPArticleAdminController extends MPArticle{
 		);
 
 		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
-	
+		
 		$params = $this->helpers->compileParams($post);
 		$pairs = array_unique($this->helpers->compilePairs($post));
+		
 
 		$params[':article_seo_title'] = $post['article_seo_title-s'];
 
+
+		$pairs[] = "date_updated = :date_updated";
+		$params[':date_updated'] =  date("Y-m-d H:i:s");
+
+		//var_dump($pairs, $params); die;
 		$valid = $this->helpers->validateRequired($params, $unrequired);
 		if($valid !== true) return $valid;
 
@@ -622,6 +628,22 @@ class MPArticleAdminController extends MPArticle{
 
 		if($statusChange === true) return true;
 		return $statusChange;
+	}
+
+	public function republishArticle($data){
+		$articleId = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		//$articleStatus = filter_var($data['status'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$status = 1;
+		$currentDate = date("Y-m-d H:i:s");
+	//	var_dump($articleId, $currentDate);
+		$statusChange = $this->performUpdate(array(
+			'updateString' => "UPDATE articles SET article_status = ".$status.", date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
+		));
+
+		//var_dump("UPDATE articles SET date_updated = '".$currentDate."', article_status = 1 WHERE article_id = ".$articleId); die;
+
+		if($statusChange === true) return true;
+		return false;
 	}
 	/* End Article Updating Fucntion */
 

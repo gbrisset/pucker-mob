@@ -217,7 +217,7 @@ public function getArticles($args = [], $attempts = 0){
 
 				$whereClause = " WHERE article_contributors.contributor_id = :contributorId";
 				$orderClause = [
-					" ORDER BY articles.creation_date DESC, articles.article_id DESC",//Most Recent
+					" ORDER BY articles.date_updated DESC, articles.article_id DESC",//Most Recent
 					" ORDER BY articles.creation_date DESC, articles.article_id DESC",//Most Popular
 					" ORDER BY articles.creation_date DESC, articles.article_id DESC",//Most Visited
 					" ORDER BY articles.article_title ASC, articles.article_id DESC",//Alpha A-Z
@@ -229,7 +229,7 @@ public function getArticles($args = [], $attempts = 0){
 					$options['count'] = count($options['articleSEOTitles']);
 					$groupByClause = "";
 					$whereClause = " WHERE articles.article_seo_title IN ({articleTitles})";
-					$orderClause = " ORDER BY articles.creation_date DESC";
+					$orderClause = " ORDER BY articles.date_updated DESC";
 					$articleTitles = '';
 					foreach($options['articleSEOTitles'] as $title){
 						if(!empty($articleTitles)) $articleTitles .= ", ";
@@ -261,7 +261,7 @@ public function getArticles($args = [], $attempts = 0){
 						$whereClause = (is_null($options['pageId'])) ? " WHERE article_pages.article_page_id = :pageId" : " WHERE categories.cat_id = :pageId";
 						$queryParams = [':pageId' => filter_var((is_null($options['pageId'])) ? $this->config['articlepageid'] : $options['pageId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)];
 						$orderClause = [
-						" ORDER BY articles.creation_date DESC, articles.article_id DESC",//Most Recent
+						" ORDER BY articles.date_updated DESC, articles.article_id DESC",//Most Recent
 						" ORDER BY articles.creation_date DESC, articles.article_id DESC",//Most Popular
 						" ORDER BY articles.creation_date DESC, articles.article_id DESC",//Most Visited
 						" ORDER BY articles.article_title ASC, articles.article_id DESC",//Alpha A-Z

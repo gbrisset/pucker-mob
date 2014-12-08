@@ -124,7 +124,7 @@ $social-hover-darken-percent: -25%;
 	text-align: right;
 }
 .align-left{
-	text-align: left;
+	text-align: left !important;
 }
 
 .inline{display:inline;}
@@ -266,7 +266,7 @@ a.videos{display:none;}
 #nav-cont{ width: 15rem; height: auto; position: absolute; left: -16rem; z-index: 1; background: #747371; top: 0rem; padding-top: 0 !important;}
 #nav-cont nav { width: 15rem; height: auto; margin: 0; background: #747371; }
 #nav-cont nav ul { width: 100%; margin: 0; padding: 0; position: relative; list-style: none; }
-#nav-cont nav ul li, #nav-cont nav ul h2 { color: #eee; font: 1.2rem Oslo,arial,sans-serif; width: 100%; margin: 0; padding: 0.5em 1rem; position: relative; text-transform: uppercase; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; cursor: pointer;}
+#nav-cont nav ul li, #nav-cont nav ul h2 { color: #eee; font: 1.2rem Oslo,arial,sans-serif; width: 100%; margin: 0; padding: 0.5em 1rem; position: relative; text-transform: capitalize; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; cursor: pointer;}
 #nav-cont nav ul li:after{ border-bottom: 1px solid #888; box-shadow: 0px -1px 1px #666; bottom: 0;content: " ";height: 1px; left: 0; position: absolute; width: 100%; z-index: 0;}
 #nav-cont nav ul .parent:before{content: '>'; float: right; margin: 0.1em 1em 0 0; font: 1.3em/1em ModernPics; color: #DDD;}
 #nav-cont nav ul ul.shown{display: block; margin-bottom: 0.3em;}
@@ -395,7 +395,7 @@ select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family:
 
 #img-container{ margin-bottom: 1rem; background: #ddd; text-align: Center; padding: 6rem; }
 #img-container label{ font-size: 1.4rem; }
-input#upload { margin-bottom: 1rem; background: #eee; font-family: Oslo; border: 1px solid #bbb; color: #777; padding: 0.5rem 1.5rem; font-size: 1.2rem; }
+input#upload, .b-upload { margin-bottom: 1rem; background: #eee; font-family: Oslo; border: 1px solid #bbb; color: #777; padding: 0.5rem 1.5rem; font-size: 1.2rem; }
 
 .mini-fonts{ font-size: 0.8rem !important;}
 .placeholder{position: absolute; left: 1rem; top: 5rem; padding: 0.5rem; font-size: 1.2rem; text-transform: initial; color: rgba(0, 0, 0, 0.75);}
@@ -557,3 +557,27 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 .sub-announcements .box ul li{ list-style: none;}
 .sub-announcements .box.no-padding ul li{padding:0.7rem;}
 .sub-announcements .box ul li:nth-child(even){background:#fff !important;}
+
+
+/*BILLING INFORMATION PAGE*/
+.skip-step{ margin-top: 2rem;}
+.skip-step .a-buttons{ margin-left: 0; font-size: 1.1rem; padding: 0.3rem 0.4rem;}
+.billing-cont h2, .paypal-info h2{ color: #01b88a;}
+.billing-cont .billing-form-box{display: inline-block; background: #eee; padding: 1.5rem; }
+.billing-cont .billing-form-box .b-upload{ background: #fff;}
+.and{font-size: 1.5rem; padding: 0 1rem; color: #777;}
+.billing-cont .billing-form-box .image-wrapper{ padding-left:2rem; display: inline-flex; padding-top: 1rem;}
+.billing-cont .billing-form-box .instructions{ margin-top: 1rem;}
+.billing-cont .billing-form-box .instructions ul, .billing-cont .billing-form-box .instructions label{ font-size:0.8rem; margin-bottom: 0;}
+.paypal-info, .billing-cont{ margin-top:10%;}
+
+
+/*LOGIN*/
+.background-blue{background-color: #4CBFEB;}
+.admin-logout-content h1{ font-size: 3.5rem; color: #fff; text-align: center; font-family: OsloBold; margin-bottom: 1.5rem;}
+.admin-form-cont form input{margin: 0; padding-top: 1.5rem; padding-bottom: 1.5rem; text-transform: lowercase; box-shadow: none;}
+.admin-form-cont form  .a-gray-link {padding: 0.7rem 3rem; background: #ccc; font-size: 1.3rem; text-transform: UPPERCASE;  color: #fff;}
+.admin-form-cont form  button#submit{font-size: 1.3rem; text-transform: uppercase; padding: 0.6rem 3rem; }
+#bottom-link{ text-align: center; font-size: 1.2rem;}
+#bottom-link a{color: #fff;}
+.margin-top{ margin-top: 0.95rem !important;}

@@ -6,6 +6,12 @@
 <div id="nav-cont" class="columns small-3 large-1 no-padding sticky hide-for-print fixed-content padding-top">
 	<nav id="nav-sidemenu">
 		<ul>
+			<li class="<?php echo ($uri[0] == "" )?  'current' :  '';?>">
+				<a href="<?php echo $config['this_admin_url']; ?>">My Dashboard</a>
+				<i class="fa fa-caret-left"></i>
+			</li>
+
+			
 			<!-- SINGLE ARTICLES -->
 			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'articles') && (isset($uri[1]) && $uri[1] == 'newarticle')) ?  'current' :  '';?>">
@@ -59,6 +65,10 @@
 
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'dashboard') ) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url']; ?>dashboard/">View earnings</a>
+				<i class="fa fa-caret-left"></i>
+			</li>
+			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'billing') ) ?  'current' :  '';?>">
+				<a href="<?php echo $config['this_admin_url']; ?>billing/">billing information</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'account') ) ?  'current' :  '';?>">

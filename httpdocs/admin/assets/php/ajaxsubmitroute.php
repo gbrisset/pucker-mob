@@ -75,6 +75,14 @@
 				echo json_encode($adminController->updateUserInfo($_POST['formData']));
 				break;
 
+			case "account-password-form":
+				echo json_encode($adminController->updateUserPassword($_POST['formData']));
+				break;
+
+			case "account-bio-form":
+				echo json_encode($adminController->updateBioInfo($_POST['formData']));
+				break;
+
 			/* "Edit Category" Page */
 			case "category-info-form":
 				echo json_encode($mpArticleAdmin->updateCategoryInfo($_POST['formData']));

@@ -6,6 +6,26 @@
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
+	$billingInfo = $adminController->getBillingInformation($userData['user_id']);
+
+	if(isset($_POST['submit'])){
+		
+		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
+			
+		$pp_email = "";
+		if(isset($_POST['paypal-email'])) $pp_email= $_POST['paypal-email'];
+
+			$result = $adminController->editBillingInformation($_POST);
+			var_dump($result);
+		}else $adminController->redirectTo('logout/');
+	}
+
+	//Verify if is a content provider user
+	$admin_user = false;
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
+		$admin_user = true;	
+	}
+
 
 ?>
 
@@ -57,8 +77,8 @@
 								<span class="and">and</span>
 							</div>
 							<div>
-								<a href="Upload-form-link" class="b-upload" id="upload-form-file">Upload Completed Form</a>
-								<input type="file" class="hidden" id="upload-form" name="upload-form" />
+								<a href="#" class="b-upload" id="upload_form_file">Upload Completed Form</a>
+								<input type="file" class="hidden" id="upload_form" name="upload_form" />
 									<div class="small-12 instructions">
 									<label>Instructions</label>
 									<ul>
@@ -74,11 +94,14 @@
 				<section class="paypal-info">
 					<h2>Paypal Information</h2>
 					<div>
-						<form method="" action="" class="small-7" id="paypal-form">
+						<form  action="" method="POST" class="small-7" id="paypal-form" name="paypal-form">
+							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+							<input type="text" class="hidden" id="user_id" name="user_id" value="<?php  echo $userData['user_id']; ?>" >
+
 							<label>Paypal Email Address</label>
-							<input type="email" required id="paypal-email" name="paypal-email" placeholder="example@email.com">
+							<input type="email" required id="paypal-email" name="paypal-email" placeholder="example@email.com" value="<?php echo $billingInfo['paypal_email'];?>">
 							<div class="align-left buttons-container">
-								<button  type="submit">UPDATE</button>
+								<button  type="submit" name="submit" id="submit">UPDATE</button>
 							</div>
 						</form>
 					</div>
@@ -86,5 +109,8 @@
 			</section>
 		</div>
 	</main>
+	<?php include_once($config['include_path_admin'].'footer.php');?>
+	
+	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

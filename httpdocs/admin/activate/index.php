@@ -16,32 +16,30 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
-<body>
+<body class="background-blue">
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	<main id="main-cont" class="row panel sidebar-on-right" role="main">
-	<div class="admin-box" id="login-cont">
-		<header>
-			<img src="<?php echo $config['image_url'].'articlesites/logos/'.$mpArticle->data['article_page_logo']; ?>" alt="<?php echo $mpArticle->data['article_page_visible_name']; ?> Logo">
-		</header>
-
-		<div class="admin-form-cont" id="activate-cont">
+	<main id="main-cont" class="row panel sidebar-on-right background-blue" role="main">
+		<section id="verify-cont" class="admin-logout-content admin-box mobile-12 small-12 large-4 auto-margin">
+			
+			<div class="admin-box mobile-12 small-12 auto-margin" id="login-cont">
 			<?php
 				if(isset($activate)){
 			?>
-					<h1>Activate</h1>
-
+				<h1>Activate</h1>
+				<div class="white-box" id="activate-cont">					
 					<p class="<?php echo ($activate['hasError'] == true) ? "error" : "success"; ?>"><?php echo $activate['message']; ?></p>
+				</div>
 			<?php
 				}elseif(isset($resend)){
 			?>
-					<h1>Resend Activation Email</h1>
-
-					<p class=""></p>
+				<h1 style="font-size:2rem;">Resend Activation Email</h1>
+				<div class="white-box" id="activate-cont">	
 					<p class="<?php echo ($resend['hasError'] == true) ? "error" : "success"; ?>"><?php echo $resend['message']; ?></p>
+				</div>
 			<?php } ?>
-		</div>
-	</div>
+			</div>
+		</section>
 	</main>
 	<?php if(isset($activate['hasError']) && !$activate['hasError']){ ?>
 		<?php $_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time()); ?>

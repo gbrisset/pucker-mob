@@ -23,7 +23,7 @@
 			$updateStatus = $adminController->addArticle($_POST);
 			$updateStatus['arrayId'] = 'article-add-form';
 
-			if(isset($updateStatus['hasError']) && !$updateStatus['hasError']) $_POST = array();
+			//if(isset($updateStatus['hasError']) && !$updateStatus['hasError']) $_POST = array();
 		}else $adminController->redirectTo('logout/');
 	}
 
@@ -242,32 +242,8 @@
 				</div>
 				<?php }?>	
 
-<!--
-					<div class="row">
-					    <div class="columns">
-						<div class="btn-wrapper">
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-add-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-								<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-add-form') echo $updateStatus['message']; ?>
-							</p>
-
-							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-add-form' && $updateStatus['hasError'] !== true){ ?>
-								<script type="text/javascript">
-									setTimeout(function(){
-										window.location = "<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $updateStatus['articleInfo'][':article_seo_title']; ?>";
-									}, 2000);
-								</script>
-							<?php } ?>
-
-							<button type="submit" id="submit" name="submit" class="radius">Save</button>
-						</div>
-					</div>
-				</div>-->
 				</form>
-				<!--<form action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" class="dropzone" method="POST" name="dropzoneForm" id="dropzoneForm" >
-				  <div class="fallback">
-				    <input name="file" type="file"  />
-				  </div>
-				</form>-->
+				
 				</section>
 			</section>
 		</div>

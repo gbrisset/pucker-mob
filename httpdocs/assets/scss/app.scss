@@ -263,7 +263,7 @@ header {
 
 
 #header-ad {min-height: 50px;}
-#main {padding-top: 0;/* ($panel-padding/2);*/ margin-bottom: 0; background: none repeat scroll 0 0 rgba(0, 0, 0, 0); border: medium none; max-width: 62.5rem;}
+#main { text-align:left !important; padding-top: 0;/* ($panel-padding/2);*/ margin-bottom: 0; background: none repeat scroll 0 0 rgba(0, 0, 0, 0); border: medium none; max-width: 62.5rem;}
 .ad90 {height: 90px;}
 .mobile-ad90{height: auto;}
 .ad250 {height: 252px !important;}

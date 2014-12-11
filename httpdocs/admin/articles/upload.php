@@ -20,14 +20,15 @@ $ds          = DIRECTORY_SEPARATOR;  //1
  
 $storeFolder = 'uploads';   //2
 
+
 if (!empty($_FILES)) {
      $updateStatus = array_merge($mpArticleAdmin->uploadNewImage($_FILES, [
 						'allowedExtensions' => 'png,jpg,jpeg,gif',
 						'imgType' => 'article',
 						'uploadDirectory' => $config['image_upload_dir'].'articlesites/puckermob/large/',
-						'articleId' => 4331,
+						'articleId' => $_POST['a_i'],
 						'imgData' => $_POST,
-						'whereClause' => 'article_id = 4331',
+						'whereClause' => 'article_id = '.$_POST['a_i'],
 						'desWidth' => 784,
 						'desHeight' => 431
 					]), ['arrayId' => 'article-tall-image-upload-form']);

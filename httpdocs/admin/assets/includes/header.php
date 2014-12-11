@@ -21,10 +21,12 @@
       </div>
       <div id="topbar-container-admin" class="right small-6">
         <div class="right">
+          <?php if($loginActive){?>
         <p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
           <img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
           <a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
         </p>
+        <?php }?>
       </div>
       </div>
 

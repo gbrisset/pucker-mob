@@ -681,7 +681,53 @@ class MPArticleAdmin{
 		}
 		$this->con->closeCon();
 		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = preg_replace('/\{formname\}/', 'Contributor Information', $r['message']);
+		$r['message'] = preg_replace('/\{formname\}/', 'User Information', $r['message']);
+		return $r;
+	}
+
+	public function updateContributorPasswordInfo($post){
+		$params = $this->compileParams($post);
+		$pairs = $this->compilePairs($post);
+		$unrequired = [];
+
+		$valid = $this->validateRequired($params, $unrequired);
+		if($valid !== true) return $valid;
+
+		$pdo = $this->con->openCon();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$q = $pdo->prepare("UPDATE article_contributors SET ".join(', ', $pairs)." WHERE contributor_id = ".$post['c_i']);
+		try{
+			$q->execute($params);
+		}catch(PDOException $e){
+			$this->con->closeCon();
+			return array_merge($this->returnStatus(500), ['hasError' => true]);
+		}
+		$this->con->closeCon();
+		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
+		$r['message'] = preg_replace('/\{formname\}/', 'Password Information', $r['message']);
+		return $r;
+	}
+
+	public function updateContributorBioInfo($post){
+		$params = $this->compileParams($post);
+		$pairs = $this->compilePairs($post);
+		$unrequired = [];
+
+		$valid = $this->validateRequired($params, $unrequired);
+		if($valid !== true) return $valid;
+
+		$pdo = $this->con->openCon();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$q = $pdo->prepare("UPDATE article_contributors SET ".join(', ', $pairs)." WHERE contributor_id = ".$post['c_i']);
+		try{
+			$q->execute($params);
+		}catch(PDOException $e){
+			$this->con->closeCon();
+			return array_merge($this->returnStatus(500), ['hasError' => true]);
+		}
+		$this->con->closeCon();
+		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
+		$r['message'] = preg_replace('/\{formname\}/', 'Biography Information', $r['message']);
 		return $r;
 	}
 
@@ -775,6 +821,25 @@ class MPArticleAdmin{
 
 			return ['hasError' => true, 'message' => 'Sorry, no valid files were found.  Please try again.'];
 		}
+	}
+
+	public function uploadW2Form( $files, $data){
+		if ($files['file']['error'] !== UPLOAD_ERR_OK) {
+    		die("Upload failed with error " . $_FILES['file']['error']);
+		}
+		$finfo = finfo_open(FILEINFO_MIME_TYPE);
+		$mime = finfo_file($finfo, $files['file']['tmp_name']);
+		$ok = false;
+		var_dump($mime); die;
+		switch ($mime) {
+		   case 'image/jpeg':
+		   case 'application/pdf':
+		   //case etc....
+		        //$ok = true;
+		   default:
+		       die("Unknown/not permitted file type");
+		}
+		//move_uploaded_file(...);
 	}
 
 	public function uploadNewImage($files, $data){

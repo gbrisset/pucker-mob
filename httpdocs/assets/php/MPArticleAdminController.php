@@ -185,7 +185,7 @@ class MPArticleAdminController extends MPArticle{
 		else return $result;	
 	}
 
-	public function updatePlayerSettings($post){
+	/*public function updatePlayerSettings($post){
 		$post = array_merge(array(
 			'player_setting_debug-n' => (isset($post['player_setting_debug']) && $post['player_setting_debug'] == "player_setting_debug_on") ? 1 : 0,
 			'player_setting_autoplay-n' => (isset($post['player_setting_autoplay']) && $post['player_setting_autoplay'] == "player_setting_autoplay_on") ? 1 : 0,
@@ -205,7 +205,7 @@ class MPArticleAdminController extends MPArticle{
 		));
 		if($result === true) return array('hasError' => false, 'message' => 'Player settings updated successfully!');
 		else return $result;
-	}
+	}*/
 
 	public function updateSocialSettings($post){
 		$post = array_merge(array(
@@ -281,14 +281,66 @@ class MPArticleAdminController extends MPArticle{
 		else return $result;
 	}
 
-	public function updateUserInfo($post){
-		$current_password = filter_var($post['user_password_current-s'], FILTER_SANITIZE_URL);
-		$password_1 = filter_var($post['user_password1-s'], FILTER_SANITIZE_URL);
-		$password_2 = filter_var($post['user_password2-s'], FILTER_SANITIZE_URL);
+	/*MANAGE BILLING INFORMATION*/
+	public function editBillingInformation($data){
+		$email = filter_var($data['paypal-email'], FILTER_SANITIZE_EMAIL);
+		$user_id = filter_var($data['user_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 
-		unset($post['user_password_current-s']);
-		unset($post['user_password1-s']);
-		unset($post['user_password2-s']);
+		//Check if record exists
+		$recordExist = $this->performQuery(array(
+			'queryString' => 'SELECT * FROM user_billing_info WHERE user_id = :user_id',
+			'queryParams' => array(':user_id' => $user_id)
+		));
+
+		if(!empty($email) && $email){
+			if($recordExist){
+				$billing_record =  $this->performUpdate(array(
+				'updateString' => "UPDATE user_billing_info SET paypal_email = '".$email."' WHERE user_id = :userId",
+				'updateParams' => array(':userId' => $user_id)
+			));
+				$message = 'Email Updated Successfully';
+
+			}else{
+				$billing_record = $this->performUpdate(array(
+				'updateString' => "INSERT INTO  user_billing_info  SET paypal_email = ':paypalEmail', user_id = :userId",
+				'updateParams' => array(':paypalEmail'=>$email, ':userId' => $user_id,
+				'isInsert' => true)
+			));
+				
+				$message = "Email Added Successfully";
+			}
+			if($billing_record === false) return $this->helpers->returnStatus(500);
+			
+			return array_merge($this->helpers->returnStatus(200), array(
+				'userInfo' => $user_id,
+				'paypalEmail' => $email,
+				'message' => $message
+			));
+
+		}else return false;
+	}
+
+	public function getBillingInformation($user_id){
+		$user_id = filter_var($user_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$billingInfo = $this->performQuery(array(
+			'queryString' => 'SELECT * FROM user_billing_info WHERE user_id = :user_id',
+			'queryParams' => array(':user_id' => $user_id)
+		));
+
+		return $billingInfo;
+	}
+
+	/*END MANAGE BILLING INFORMATION*/
+
+
+	public function updateUserInfo($post){
+		//$current_password = filter_var($post['user_password_current-s'], FILTER_SANITIZE_URL);
+		//$password_1 = filter_var($post['user_password1-s'], FILTER_SANITIZE_URL);
+		//$password_2 = filter_var($post['user_password2-s'], FILTER_SANITIZE_URL);
+
+		//unset($post['user_password_current-s']);
+		//unset($post['user_password1-s']);
+		//unset($post['user_password2-s']);
 
 		$params = $this->helpers->compileParams($post);
 		
@@ -309,11 +361,11 @@ class MPArticleAdminController extends MPArticle{
 		} 
 
 		//	If the user has the password change form open, check to make sure they have filled out the pasword fields...
-		if( $post['pwd_change'] == "true" &&  ($current_password == "" || $password_1 == "" || $password_2 == "") ){
-			return array('hasError' => true, 'message' => "Oops!  You must fill out ALL of the password fields.");
-		}
+		//if( $post['pwd_change'] == "true" &&  ($current_password == "" || $password_1 == "" || $password_2 == "") ){
+		//	return array('hasError' => true, 'message' => "Oops!  You must fill out ALL of the password fields.");
+		//}
 
-		if ($post['pwd_change'] == "true"){
+		/*if ($post['pwd_change'] == "true"){
 			//	Handle the password change
 			//	Make sure the new passwords match...
 			if($password_1 != $password_2){
@@ -329,7 +381,7 @@ class MPArticleAdminController extends MPArticle{
 			$hashed_password = crypt($password_2, '$2a$12$' . $salt);
 			$params = array(":user_hashed_password" => $hashed_password) + $params;
 			$post = array("user_hashed_password-s" => $hashed_password) + $post;
-		} 
+		} */
 
 
 
@@ -345,7 +397,7 @@ class MPArticleAdminController extends MPArticle{
 		unset($user_post['contributor_twitter_handle-s']);
 		unset($user_post['contributor_facebook_link-s']);
 		unset($user_post['contributor_blog_link-s']);
-		unset($user_post['contributor_bio-nf']);
+		//unset($user_post['contributor_bio-nf']);
 		unset($user_post['contributor_id']);
 
 		$result = $this->updateSiteObject(array(
@@ -360,7 +412,7 @@ class MPArticleAdminController extends MPArticle{
 		$params[':contributor_twitter_handle'] = filter_var($params[':contributor_twitter_handle'], FILTER_SANITIZE_EMAIL);
 		$params[':contributor_facebook_link'] = filter_var($params[':contributor_facebook_link'], FILTER_SANITIZE_URL);
 		$params[':contributor_blog_link'] = filter_var($params[':contributor_blog_link'], FILTER_SANITIZE_URL);
-		$params[':contributor_bio'] = filter_var($params[':contributor_bio'], FILTER_SANITIZE_STRING);
+		//$params[':contributor_bio'] = filter_var($params[':contributor_bio'], FILTER_SANITIZE_STRING);
 
 		if ($result){
 			$result_cont = $this->updateSiteObject(array(
@@ -369,8 +421,7 @@ class MPArticleAdminController extends MPArticle{
 									contributor_location = '".$params[':contributor_location']."',
 									contributor_twitter_handle = '".$params[':contributor_twitter_handle']."', 
 									contributor_facebook_link = '".$params[':contributor_facebook_link']."', 
-									contributor_blog_link = '".$params[':contributor_blog_link']."',
-									contributor_bio = '".$params[':contributor_bio']."'
+									contributor_blog_link = '".$params[':contributor_blog_link']."'
 									
 									WHERE contributor_email_address = '".$this->user->data['user_email']."' 
 									AND contributor_id = ".$post['c_i'],
@@ -380,10 +431,92 @@ class MPArticleAdminController extends MPArticle{
 			));			
 		}
 
-		if($result_cont === true) return array('hasError' => false, 'message' => 'Your user profile has been successfully updated');
+		if($result_cont === true) return array('hasError' => false, 'message' => 'Your user information has been successfully updated');
 		else return $result;
 	}
 
+	public function updateUserPassword($post){
+		$current_password = filter_var($post['user_password_current-s'], FILTER_SANITIZE_URL);
+		$password_1 = filter_var($post['user_password1-s'], FILTER_SANITIZE_URL);
+		$password_2 = filter_var($post['user_password2-s'], FILTER_SANITIZE_URL);
+
+		unset($post['user_password_current-s']);
+		unset($post['user_password1-s']);
+		unset($post['user_password2-s']);
+
+		$params = $this->helpers->compileParams($post);
+		
+		$this->user->data = $this->user->getUserInfo();
+		$salt = $this->user->data['user_salt'];
+		
+		//	If the user has the password change form open, check to make sure they have filled out the pasword fields...
+		if( $post['pwd_change'] == "true" &&  ($current_password == "" || $password_1 == "" || $password_2 == "") ){
+			return array('hasError' => true, 'message' => "Oops!  You must fill out ALL of the password fields.");
+		}
+
+		if($password_1 != $password_2){
+			return array('hasError' => true, 'message' => "Oops!  Your passwords do not match.");
+		}
+
+		//	Make sure the current password is correct
+		if ($this->user->checkPassword($this->user->data['user_name'], $current_password) == false){
+			return array('hasError' => true, 'message' => 'You have not entered the current password correctly.');
+		}
+
+		//	Change the password
+		$hashed_password = crypt($password_2, '$2a$12$' . $salt);
+		$params = array(":user_hashed_password" => $hashed_password) + $params;
+		$post = array("user_hashed_password-s" => $hashed_password) + $post;
+
+		$user_post = $post;
+
+		$result = $this->updateSiteObject(array(
+			'updateString' => "UPDATE users SET {pairs} WHERE user_id = ".$this->user->data['user_id'],
+			'post' => $user_post,
+			'unrequired' => array('user_last_name', 'user_last_name', 'contributor_location', 'contributor_twitter_handle', 
+									'contributor_facebook_link', 'contributor_blog_link', 'contributor_bio')
+		));
+
+		if($result === true) return array('hasError' => false, 'message' => 'Your password has been successfully updated');
+		else return $result;
+	}
+
+	public function updateBioInfo($post){
+		
+		$params = $this->helpers->compileParams($post);
+		
+		$this->user->data = $this->user->getUserInfo();
+		$post['user_name-s'] = $this->user->data['user_name'];
+
+		//	If the emaill in post already exists...
+		$user_post = $post;
+		
+		unset($user_post['contributor_bio-nf']);
+		
+		$result = $this->updateSiteObject(array(
+			'updateString' => "UPDATE users SET {pairs} WHERE user_id = ".$this->user->data['user_id'],
+			'post' => $user_post,
+			'unrequired' => array('user_last_name', 'user_last_name', 'contributor_location', 'contributor_twitter_handle', 
+									'contributor_facebook_link', 'contributor_blog_link', 'contributor_bio')
+		));
+
+		$params[':contributor_bio'] = filter_var($params[':contributor_bio'], FILTER_SANITIZE_STRING);
+
+		if ($result){
+			$result_cont = $this->updateSiteObject(array(
+				'updateString' => "UPDATE article_contributors 
+									SET contributor_bio = '".$params[':contributor_bio']."'
+									WHERE contributor_email_address = '".$this->user->data['user_email']."' 
+									AND contributor_id = ".$post['c_i'],
+				'post' => $post,
+				'unrequired' => array('user_last_name', 'contributor_location', 'contributor_twitter_handle', 
+									'contributor_facebook_link', 'contributor_blog_link', 'contributor_bio')
+			));			
+		}
+
+		if($result_cont === true) return array('hasError' => false, 'message' => 'Your Bio has been successfully updated');
+		else return $result;
+	}
 	/* End Admin Controller Site Updating Functions */
 
 
@@ -465,6 +598,7 @@ class MPArticleAdminController extends MPArticle{
 		//foreach($post['article_categories'] as $category => $on){
 			//$categoryId = intval(str_replace('category-', '', $category));
 			$categoryId = $post['article_categories'];
+
 			$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_categories SET article_id = :articleId, cat_id = :categoryPageId",
 				'updateParams' => array(':articleId' => $articleId, ':categoryPageId' => filter_var($categoryId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT))
@@ -479,24 +613,16 @@ class MPArticleAdminController extends MPArticle{
 				'updateParams' => array(':articleId' => $articleId, ':contributorId' => $contributorId)
 			));
 		}
+		//var_dump($post, $post['article_contributor']); DIE;
 		
-		//Add a related video
-		/*if(isset($post['article_video']) && $post['article_video'] != -1){
-			$videoId = intval(filter_var($post['article_video'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO article_videos SET article_id = :articleId, syn_video_id = :videoId",
-				'updateParams' => array(':articleId' => $articleId, ':videoId' => $videoId)
-			));
-		}*/
-
-		$article_prev_content = $this->getPreviewRecipe(array('articleId' => $articleId ));
+		//$article_prev_content = $this->getPreviewRecipe(array('articleId' => $articleId ));
 		
 		//Return status
 		return array_merge($this->helpers->returnStatus(200), array(
 			'articleInfo' => $params,
 			'articleID' => $articleId,
 			'message' => 'Next Step: Add an Image.',
-			'article_prev_content' => $article_prev_content
+			'article_prev_content' => ''
 
 		));
 	}
@@ -505,6 +631,8 @@ class MPArticleAdminController extends MPArticle{
 
 	/* Begin Article Updating Fucntion */
 	public function updateArticleInfo($post){
+
+
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category for an article.'));
 		
 		//Check for same seo-name
@@ -516,9 +644,9 @@ class MPArticleAdminController extends MPArticle{
 		//		unset($post[$key]);
 		//	} 
 		//}
-
 		$params = $this->helpers->compileParams($post);
-		$params[':article_seo_title'] = $post['article_seo_title-s'];
+
+		//$params[':article_seo_title'] = $post['article_seo_title-s'];
 
 		$seoTitleCheck = $this->performQuery(array(
 			'queryString' => 'SELECT * FROM articles WHERE article_seo_title = :seoTitle AND article_id != :articleId',
@@ -584,15 +712,14 @@ class MPArticleAdminController extends MPArticle{
 			'post' => $post,
 			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments', 'article_poll_id')
 		));
-
-		$article_prev_content = $this->getPreviewRecipe(array('articleId' => $post['a_i']));
+		//$article_prev_content = $this->getPreviewRecipe(array('articleId' => $post['a_i']));
 		
 		if($result === true) {
 			$user = $this->user->getUserInfo();
 			if ($user['user_permission_show_global_settings']){
-				return array('hasError' => false, 'message' => 'Article information updated successfully!', 'article_prev_content' => $article_prev_content );
+				return array('hasError' => false, 'message' => 'Article information updated successfully!', 'article_prev_content' => '' );
 			} else {
-				return array('hasError' => false, 'message' => 'Your changes have been saved', 'article_prev_content' => $article_prev_content);				
+				return array('hasError' => false, 'message' => 'Your changes have been saved', 'article_prev_content' => '');				
 			}
 		}
 		else return $result;
@@ -720,7 +847,6 @@ class MPArticleAdminController extends MPArticle{
 	}
 
 	protected function performUpdate($opts){
-		
 		if (isset($opts['updatingDatabase']) && $opts['updatingDatabase'] == false ) { return true; }
 		$options = array_merge(array(
 			'updateString' => '',
@@ -734,6 +860,7 @@ class MPArticleAdminController extends MPArticle{
 
 		try{
 			$q->execute($options['updateParams']);
+
 		}catch(PDOException $e){
 			$r = false;
 		}

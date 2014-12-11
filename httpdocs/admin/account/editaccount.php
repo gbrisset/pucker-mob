@@ -6,7 +6,6 @@
 	//	If the user hasn't yet set an image, set $image = default_profile_image.png
 	$image = (isset($userInfo['contributor_image']) && $userInfo['contributor_image'] != "") ? $userInfo['contributor_image'] : 'default_profile_contributor.png';
 
-
 	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
 	if (isset($userInfo['contributor_id'])){
 		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
@@ -31,10 +30,9 @@
 	$contImageExists = false;
 
 	//	Verify if the usr has ever SELECTED an image
-	if(isset($image) && $image != 'default_profile_contributor.png'){
+	if(isset($image) /*&& $image != 'default_profile_contributor.png'*/){
 		$contImageExists = file_exists($contImageDir);
 	}
-
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
@@ -56,10 +54,10 @@
 					$userInfo = $adminController->user->getUserInfo();
 					$contImageUrl =  $config['image_url'].'articlesites/contributors_redesign/'.$userInfo['contributor_image']; ;
 					break;
-				case isset($_POST['user_email-e']):
-                    $updateStatus = $adminController->updateUserInfo($_POST);
-                    $adminController->user->data = $adminController->user->getUserInfo();
-                    break;
+				//case isset($_POST['user_email-e']):
+                 //   $updateStatus = $adminController->updateUserInfo($_POST);
+                  //  $adminController->user->data = $adminController->user->getUserInfo();
+                //    break;
 				case isset($_POST['c_i_d']):
 					$mpArticleAdmin->deleteuserInfo($_POST);
 					$adminController->redirectTo('contributors/');
@@ -75,20 +73,69 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
-
 	<?php include_once($config['include_path_admin'].'header.php');?>
+	<div class="sub-menu row">
+		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
+		<h1 class="left">My Profile</h1>
+	</div>
 
+	<!-- WELCOME MESSAGE -->
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+			<h1 class="left">My Profile</h1>	
+	</section>
+	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
+			
+			<section id="articles" class="padding-top">
+
+
 			<div id="profile-inline-settings">
 		
-			<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
-				<h1 class="left">Profile</h1>
+			<section class="mobile-12 small-12 margin-bottom">
+				<h2>Profile Photo</h2>
+				<div class="small-12 image-profile-box">
+				<?php if($contImageExists){ ?>
+					<img id="img-profile" class="left" src="<?php echo $contImageUrl; ?>" alt="User Image" />
+				<?php } else {?>
+					<img id="img-profile" class="left" src="<?php echo $config['this_admin_url'];?>/assets/img/avatars/avatars_1.png" alt="User Image" />
+				<?php }?>
+
+					<div class="small-9 left image-wrapper">
+						<div class="small-6">
+							<a href="#" class="b-upload select-avatar small-12" id="select-avatar">Save Avatar</a>
+							<div class="small-12 avatars">
+								<?php for($i = 1; $i<= 18; $i++){?>
+									<span class="avatar-span" id="avatar-image-<?php echo $i;?>" data-info="avatars_<?php echo $i;?>.png">
+										<img src="<?php echo $config['this_admin_url'].'assets/img/avatars/avatars_'.$i.'.png'; ?>" class="avatar-img" id="avatar_<?php echo $i;?>" />
+									</span> 
+								<?php }?>
+							</div>
+						</div>
+						<div style="width:4.2rem;">
+							<span class="and">or</span>
+						</div>
+						<div class="small-6">
+							<a href="#" class="b-upload small-12 upload-photo" id="upload_form_file">Upload Photo</a>
+							<input type="file" class="hidden" id="upload_form" name="upload_form" />
+								<div class="small-12 photo-instructions">
+								<label>Image Requeriments:</label>
+								<ul>
+									<li>Recommended Size: 140x143 px</li>
+									<li>.jpg, .jpeg, .gif, .png filetype </li>
+									<li>Do not exceed max size 1 MB</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
+			<!-- <section class="mobile-12 small-12 margin-bottom">
+			
 			<!-- IMAGE SECTION -->
-				<div id="add-an-image-fs" class="padding-top padding-bottom left small-12 border-radius">
+			<!--<div id="add-an-image-fs" class="padding-top padding-bottom left small-12 border-radius">
 					<div class="image-steps image-sec columns small-4 ">
 						<div id="image-container">
 						<?php 
@@ -126,210 +173,126 @@
 				<div class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
 					<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
 				</div>
-			</div>
+			</div>-->
 
-			<!-- Account Info -->		
-			<section id="account-settings">
-				<header class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
-					<h2>My Information</h2>
-				</header>
-
+			<!-- ACCOUNT INFORMATION -->		
+			<section id="row small-12 account-settings">
+				<h2>General Information</h2>
 				<form class="ajax-submit-form clear" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
 					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
 
-
-
-					<fieldset>
-						<label for="user_name-s">User Name :</label>
-						<p class="disabled-field"><?php echo $adminController->user->data['user_name']; ?></p>
-					</fieldset>
-
-
-					<fieldset>
-						<label for="user_first_name-s">First Name<span>*</span> :</label>
-						<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Please enter your first name here." value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's first name that will be visible throughout the Simple Dish website.</p>
-							</div>
-						</div>					
-					</fieldset>
-
-					<fieldset>
-						<label for="user_last_name-s">Last Name :</label>
-						<input type="text" name="user_last_name-s" id="user_last_name-s" placeholder="Please enter your last name here." value="<?php if(isset($adminController->user->data['user_last_name'])) echo $adminController->user->data['user_last_name']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_last_name') echo 'autofocus'; ?> />
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's last name that will be visible throughout the Simple Dish website.</p>
-							</div>
-						</div>	
-					</fieldset>
-
-
-
-					<fieldset>
-						<label for="contributor_bio-nf">Bio :</label>
-						<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Please enter the contributor's bio here." ><?php if(isset($userInfo['contributor_bio'])) echo $userInfo['contributor_bio']; ?></textarea>
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's bio that will be used throughout the network.  HTML is accepted.</p>
-							</div>
+					<div class="row">
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_display_name-s">Display Name</label>
+							<input type="text" name="user_display_name-s" id="user_display_name-s" placeholder="Display Name" value="<?php if(isset($userInfo['user_display_name'])) echo $userInfo['user_display_name']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_display_name') echo 'autofocus'; ?> />
 						</div>
-					</fieldset>
-
-
-
-					<fieldset>
-						<label for="contributor_blog_link-s">Blog URL :</label>
-						<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="http://yourblog.com" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the URL for the contributor's blog page.  URLs must begin with http:// and end with a trailing slash.  Ex: http://www.example.com/</p>
-							</div>
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="contributor_blog_link-s">Blog or Website URL</label>
+							<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="http://yourblog.com" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
 						</div>
-					</fieldset>
-
-
-					<fieldset>
-						<label for="contributor_facebook_link-s">Facebook URL:</label>
-						<input type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="http://facebook.com/yourprofile" value="<?php if(isset($userInfo['contributor_facebook_link'])) echo $userInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's facebook url that will be used throughout the network.</p>
-							</div>
-						</div>
-					</fieldset>
-
-
-
-					<fieldset>
-						<label for="contributor_twitter_handle-s">Twitter Handle :</label>
-						<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="@yourtwitterhandle" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's twitter handle that will be used throughout the network.  Twitter handles must have an '@' symbol in front of it.</p>
-							</div>
-						</div>
-					</fieldset>
-
-
-
-					<fieldset>
-						<label for="contributor_location-s">Location :</label>
-						<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="Please enter the contributor's location here." value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the contributor's location that will be used throughout the network.</p>
-							</div>
-						</div>
-					</fieldset>
-
-
-					<fieldset>
-						<div  class="btn-wrapper" style="text-align: left;">
-							<label>Password :</label>
-							<button type="button" id="field-toggler">Change Password</button>
-						</div>
-					</fieldset>
-
-					<div id="hidden-field-set" class="hidden">
-						<fieldset>
-							<label for="user_password_current-s">Current Password :</label>
-							<input type="password" name="user_password_current-s" id="user_password_current-s" placeholder="Enter your current password here." value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>Please enter the current password for this account.</p>
-								</div>
-							</div>							
-
-						</fieldset>
-
-						<fieldset>
-							<label for="user_password-s">New Password :</label>
-							<input type="password" name="user_password1-s" id="user_password1-s" placeholder="Enter your new password here." value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>Please enter a new password.</p>
-								</div>
-							</div>
-						</fieldset>
-	
-						<fieldset>
-							<label for="user_password-s">Retype New Password :</label>
-							<input type="password" name="user_password2-s" id="user_password2-s" placeholder="Retype your new password" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>Please re-enter your new password.</p>
-								</div>
-							</div>	
-						</fieldset>	
 					</div>
 
-					<fieldset>
-						<label for="user_email-e">Email Address<span>*</span> :</label>
-						<input type="email" name="user_email-e" id="user_email-e" placeholder="Please enter your email address here." value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>This is the email address associated with this account.</p>
-							</div>
-						</div>					
-					</fieldset>
-
-					<fieldset>
-						<div class="btn-wrapper">
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-								<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo $updateStatus['message']; ?>
-							</p>
-
-							<button type="submit" id="submit" name="submit">Save</button>
+					
+					<div class="row">
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_first_name-s">First Name</label>
+							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="First Name" value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
 						</div>
-					</fieldset>
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="contributor_facebook_link-s">Facebook URL</label>
+							<input type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="http://facebook.com/yourprofile" value="<?php if(isset($userInfo['contributor_facebook_link'])) echo $userInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
+						</div>
+					</div>
 
-					<input type="text" class="hidden" id="pwd_change" name="pwd_change" value="false" >
+					<div class="row">
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_last_name-s">Last Name</label>
+							<input type="text" name="user_last_name-s" id="user_last_name-s" placeholder="Please enter your last name here." value="<?php if(isset($adminController->user->data['user_last_name'])) echo $adminController->user->data['user_last_name']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_last_name') echo 'autofocus'; ?> />
+						</div>
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="contributor_twitter_handle-s">Twitter Handle </label>
+							<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="@yourtwitterhandle" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_email-e">Email Address</label>
+							<input type="email" name="user_email-e" id="user_email-e" placeholder="Please enter your email address here." value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+						</div>
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="contributor_location-s">Location</label>
+							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="your location" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
+						</div>
+					</div>
+					<div class="row buttons-container">
+						<button type="submit" id="submit" name="submit">Update</button>
+					</div>
 				</form>
-			</section>
-			<!--<section>
-				<fieldset class="multiple-forms">
-					<?php include_once($config['include_path_admin'].'preview_profile.php');  ?>
-					<div>
-						<div class="preview-container" data-preview="<?php echo $preview_profile; ?>"></div>
-					</div>
+				<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo $updateStatus['message']; ?>
+					</p>
+				</section>
 
-					<div class="main-buttons edit-recipe">
-						<button type="button" id="cont-preview" name="button" class="profile-preview">Preview Profile</button>
+				<!-- PASSWORD -->
+				<section class="small-12 margin-top">
+					<h2>Change Password</h2>
+					<form class="ajax-submit-form clear" id="account-password-form" name="account-password-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
+					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+					<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
+					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+
+					<div class="row">
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_password_current-s">Verify Current Password</label>
+							<input type="password" name="user_password_current-s" id="user_password_current-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
+						</div>
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_password-s">New Password</label>
+							<input type="password" name="user_password1-s" id="user_password1-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />		
+						</div>
 					</div>
-				</fieldset>
-			</section>-->
-			<br />
+					<div class="row">
+						<div class="columns mobile-12 small-12 large-6"></div>	
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_password-s">Retype New Password</label>
+							<input type="password" name="user_password2-s" id="user_password2-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
+						</div>
+					</div>
+					<div class="row buttons-container">
+						<button type="submit" id="submit" name="submit">Update</button>
+					</div>
+				</form>
+				<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo $updateStatus['message']; ?>
+					</p>
+				</section>
+
+				<!-- BRIOGRAPHY -->
+				<section class="small-12 margin-top">
+					<h2>Biography</h2>
+					<form class="ajax-submit-form clear" id="account-bio-form" name="account-bio-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
+					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+					<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
+					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+
+					<div class="row">
+						<div class="columns mobile-12 small-12 large-12">
+							<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($userInfo['contributor_bio'])) echo $userInfo['contributor_bio']; ?></textarea>
+						</div>
+					</div>
+					<div class="row buttons-container">
+						<button type="submit" id="submit" name="submit">Update</button>
+					</div>
+					</form>
+				</section>
+				<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-bio-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-bio-form') echo $updateStatus['message']; ?>
+					</p>
+				</div>
+			</section>
 		</div>
 	</main>
 
@@ -393,6 +356,7 @@
 	</div>
 
 	<?php include_once($config['include_path_admin'].'footer.php');?>
+
 	<div id='lightbox-cont'>
 		<div class="overlay"></div>
 
@@ -402,6 +366,9 @@
 			<div id="lightbox-preview-cont"></div>
 		</div>
 	</div>
+
+	
+
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

@@ -78,8 +78,8 @@ class MPAdminUserController extends MPArticleAdminController{
 		);
 		
 		$post = array_merge($postDefaults, $post);
-		$queryOptions = array(
-			'queryString' => "SELECT * FROM users 
+
+		/*SELECT * FROM users 
 							WHERE user_name != :userName 
 							AND 
 							(	user_email = :email 
@@ -87,12 +87,16 @@ class MPAdminUserController extends MPArticleAdminController{
 	     								( LOWER(user_first_name) = LOWER(:first) AND LOWER(user_last_name) = LOWER(:last) )
 									)
 							)
+							LIMIT 0, 1*/
+		$queryOptions = array(
+			'queryString' => "SELECT * FROM users 
+							WHERE user_email = :email 
 							LIMIT 0, 1",
 			'queryParams' => [
-				':userName' => filter_var(trim($post['user_name-s']), FILTER_SANITIZE_STRING, PDO::PARAM_STR),
-				':email' => filter_var(trim($post['user_email-e']), FILTER_SANITIZE_STRING, PDO::PARAM_STR),
-				':first' => filter_var(trim($post['user_first_name-s']), FILTER_SANITIZE_STRING, PDO::PARAM_STR),
-				':last' => filter_var(trim($post['user_last_name-s']), FILTER_SANITIZE_STRING, PDO::PARAM_STR)
+				//':userName' => filter_var(trim($post['user_name-s']), FILTER_SANITIZE_STRING, PDO::PARAM_STR),
+				':email' => filter_var(trim($post['user_email-e']), FILTER_SANITIZE_STRING, PDO::PARAM_STR)
+				//':first' => filter_var(trim($post['user_first_name-s']), FILTER_SANITIZE_STRING, PDO::PARAM_STR),
+				//':last' => filter_var(trim($post['user_last_name-s']), FILTER_SANITIZE_STRING, PDO::PARAM_STR)
 			],
 			'returnRowAsSingleArray' => true,
 			'bypassCache' => true
@@ -523,7 +527,7 @@ End password reset methods
 		if(!$user = $this->usernameExists($post['user_login_input'])) {
 			return array(
 			'hasError' => true, 
-			'message' => "Sorry, we couldn't find any users that matched your user name.  Please try again."
+			'message' => "Sorry, we couldn't find any email that matched yours.  Please try again."
 			);
 		}
 		$userInput = filter_var($post['user_login_input'], FILTER_SANITIZE_URL);
@@ -658,10 +662,18 @@ End password reset methods
 		//	Based on the post data, formulate the hashed password.
 		$salt = substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22);	
 
+		//	Make sure the password match
+		if($post['user_password-s'] == "" || $post['user_password_2-s'] == ""){
+			return array('hasError' => true, 'message' => "Oops!  You must fill out both password fields.");
+		}
+		if($post['user_password-s'] != $post['user_password_2-s']){
+			return array('hasError' => true, 'message' => "Oops!  Your passwords do not match.");
+		}
 		$hashed_password = crypt($post['user_password-s'], '$2a$12$' . $salt);
 		//	Unset the password in the past variable, so as not to save it to the db and compile it  in compilePairs()
 		
 		unset($post['user_password-s']);
+		unset($post['user_password_2-s']);
 
 		//	Make sure the email addresses match
 		if($post['user_email_1-e'] == "" || $post['user_email_2-e'] == ""){
@@ -687,13 +699,14 @@ End password reset methods
 		}	
 
 		$user = $this->userAlreadyExists($post);
+
 		if ($user['user_email'] == $post['user_email-e']){
 			return array('hasError' => true, 'message' => "Oops!  Looks like that email address is already in use.  Did you mean to login instead?  If so, you can do that <a href=\"".$this->config['this_admin_url'].'login/'."\"><u>here</u></a>.");
 		}
 
-		if (strtolower($user['user_first_name']) == strtolower($post['user_first_name-s']) && strtolower($user['user_last_name']) == strtolower($post['user_last_name-s'])){
-			return array('hasError' => true, 'message' => "That first and last name combination is taken, please choose another first and/or last name.");
-		}
+		//if (strtolower($user['user_first_name']) == strtolower($post['user_first_name-s']) && strtolower($user['user_last_name']) == strtolower($post['user_last_name-s'])){
+		//	return array('hasError' => true, 'message' => "That first and last name combination is taken, please choose another first and/or last name.");
+		//}
 
 		if (!isset($post['tos_agreed-s']) || $post['tos_agreed-s'] != 1){
 			return array('hasError' => true, 'message' => 'You must agree to our terms of service.');
@@ -724,7 +737,7 @@ End password reset methods
 		$values[] = ':user_salt';
 		$params[':user_salt'] = $salt;
 		$post['user_salt-nf'] = $salt;
-		
+
 		$s = "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")";
 		$result = $this->performUpdate(array(
 			'updateString' => "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")",
@@ -742,8 +755,16 @@ End password reset methods
 			$dupCheck = $this->mpArticle->getContributors(['contributorSEOName' => $contributor_seo_name] );
 			$dupCheckEmail = $this->mpArticle->getContributors(['contributorEmail' => $post['user_email-e'] ] );
 
+			if( count($dupCheck['contributors']) > 0){
+				  $rand = rand(1, 100000000);
+				  $contributor_seo_name = $contributor_seo_name.'-'.$rand;
+			}
 
-			if(count($dupCheck['contributors']) <= 0 && count($dupCheckEmail['contributors']) <= 0){
+			if( $dupCheckEmail ){
+
+			}
+			
+			if(count($dupCheckEmail['contributors']) <= 0){
 				$contributor_id = $this->performUpdate(array(
 					'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."')",
 					'updateParams' => $params
@@ -760,7 +781,7 @@ End password reset methods
 				'username' => $params[':user_name']
 			))) return $registerEmail;
 			$r = $this->helpers->returnStatus(200);
-			$r['message'] = "Thanks for registering.  You'll receive an email to confirm your account shortly.";
+			$r['message'] = "Please check your email for a verification link. If you do not receive the verification email within 10 minutes, check your spam folder.";
 			return $r;
 		}else return $this->helpers->returnStatus(500);
 	}	

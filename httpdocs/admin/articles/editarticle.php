@@ -1,5 +1,6 @@
 <?php
 	if(!$adminController->user->checkPermission('user_permission_show_edit_article')) $adminController->redirectTo('noaccess/');
+	
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 	$article = $articleResultSet['articles'];
 
@@ -25,10 +26,11 @@
 	$admin_user = false;
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
 		$admin_user = true;
+	}
 		$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 		$contributor_email = $adminController->user->data['user_email'];
 		$contributorInfo = $contributorInfo[0];
-	}
+	
 	
 	//Verify if Article Image file exists.
 	$artImageDir =  $config['image_upload_dir'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';
@@ -43,6 +45,7 @@
 
 	// SUMMIT FORM
 	if(isset($_POST['submit'])){
+
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
 				case isset($_POST['article_title-s']):
@@ -67,7 +70,9 @@
 
 			}
 			
-			$article = $adminController->getSingleArticle(array('seoTitle' => $_POST['article_seo_title-s']));
+			$article = $adminController->getSingleArticle(array('seoTitle' => $uri[2]));
+
+			//$article = $adminController->getSingleArticle(array('seoTitle' => $_POST['article_seo_title-s']));
 
 		}else $adminController->redirectTo('logout/');
 	}
@@ -91,7 +96,6 @@
 				$article_status = "Pending Review";
 		}
 	}
-
 	//Preview Article Content
 	//include_once($config['include_path_admin'].'preview.php');
 	
@@ -113,7 +117,6 @@
 	<!-- WELCOME MESSAGE -->
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
 			<h1 class="left">Edit Article</h1>
-		
 	</section>
 	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -202,7 +205,7 @@
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 
-					
+				
 					<!-- ARTICLE TITLE -->
 					<div class="row">
 					    <div class="columns">

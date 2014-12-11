@@ -1490,11 +1490,81 @@ $(document).ready(function (){
 		});
 	}
 
-	if($('#upload-form-file')){
-	$('#upload-form-file').on('click', function(e){
-		e.preventDefault();
-		//$upload_b = $('')
-	});
-}
+	/*if($('#upload_form_file')){
+		$('#upload_form_file').on('click', function(event){
+			event.preventDefault();
+			$('#upload_form').click();
+		});
 
+		$('#upload_form').on('change', uploadFiles);
+ 
+		// Grab the files and set them to our variable
+		function prepareUpload(event){
+		  files = event.target.files;
+		  console.log(files);
+
+		}
+
+		$('form').on('submit', uploadFiles);
+ 
+	function uploadFiles(event){
+	files = event.target.files;
+		  console.log(files);
+	  event.stopPropagation(); // Stop stuff happening
+	  event.preventDefault(); // Totally stop stuff happening
+	 
+	    // START A LOADING SPINNER HERE
+	 
+	    // Create a formdata object and add the files
+		var data = new FormData();
+		$.each(files, function(key, value)
+		{
+			data.append(key, value);
+		});
+	    
+	    $.ajax({
+	        url: 'http://localhost:8888/projects/pucker-mob//httpdocs/admin/billing/upload.php?files',
+	        type: 'POST',
+	        data: data,
+	        cache: false,
+	        dataType: 'json',
+	        processData: false, // Don't process the files
+	        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+	        success: function(data, textStatus, jqXHR)
+	        {
+	        	if(typeof data.error === 'undefined')
+	        	{
+	        		// Success so call function to process the form
+	        		//submitForm(event, data);
+	        		console.log(textStatus);
+	        	}
+	        	else
+	        	{
+	        		// Handle errors here
+	        	//	console.log('ERRORS: ' + data.error);
+	        	//}
+	        },
+	        error: function(jqXHR, textStatus, errorThrown)
+	        {
+	        	// Handle errors here
+	        	console.log('ERRORS: ' + textStatus);
+	        	// STOP LOADING SPINNER
+	        }
+	    });
+	}
+	}*/
+
+
+	if($('.avatar-span')){
+		$('.avatar-span').on('click', function(){
+			var img = $(this).attr('data-info'),
+			avatar_dir = "<?php echo $config['this_admin_url'].'assets/img/avatars/'; ?>",
+			new_img_src = avatar_dir+'/'+img,
+			img_profile = $('#img-profile');
+			$(img_profile).attr('src', new_img_src);
+			console.log(img, new_img_src);
+		});
+
+	
+	}
 });

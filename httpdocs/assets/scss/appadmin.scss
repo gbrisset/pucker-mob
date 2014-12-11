@@ -52,6 +52,7 @@ $stumbleupon-color: #f74425;
 $social-hover-darken-percent: -25%;
 #top-banner {height: 2rem;}
 
+*::-moz-selection{ color: #222; }
 
 // Helpers / Hover Effects
 /**********************************************************************************************************************************/
@@ -197,10 +198,11 @@ i {margin-left: 5px; margin-right: 5px;}
 a{ outer: none; }
 .panel{ border: none;}
 
-#main-cont{ margin-top: 0; margin-bottom: 0; padding-top: 0; min-height: 50rem; max-width: 62.5rem; padding-right:0;}
+#main-cont{ margin-top: 0; margin-bottom: 0; min-height: 50rem; max-width: 62.5rem; padding:0}
 
 @media #{$large-up} {
 	left:0rem;
+
 }
 // Header / Navbar / TopBar
 /**********************************************************************************************************************************/
@@ -306,11 +308,14 @@ a.videos{display:none;}
 .active_submenu{left:16rem;}
 
 @media #{$large-up} {
-	#main-cont #content { width: 100%; margin: 0 auto; padding-left: 15.2rem; top: 0.5rem;}
+	#main-cont #content { width: 100%; margin: 0 auto; padding-left: 16.2rem; top: 0.5rem;}
 	#article-info, #articles{ border: 1px solid #ddd; }
 }
 .panel>:first-child{ margin-top: auto; }
-.admin-box{ margin: 10% auto !important;}
+.admin-box{ margin: 4rem auto !important;}
+@media #{$large-up} {
+	.admin-box{ margin: 5% auto !important;}
+}
 
 //SEARCH FORM
 .search-form-admin{ display:inline-block; margin-top: 0;}
@@ -563,21 +568,51 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 .skip-step{ margin-top: 2rem;}
 .skip-step .a-buttons{ margin-left: 0; font-size: 1.1rem; padding: 0.3rem 0.4rem;}
 .billing-cont h2, .paypal-info h2{ color: #01b88a;}
-.billing-cont .billing-form-box{display: inline-block; background: #eee; padding: 1.5rem; }
-.billing-cont .billing-form-box .b-upload{ background: #fff;}
+.billing-cont .billing-form-box, .image-profile-box{display: inline-block; background: #eee; padding: 1.5rem; }
+.b-upload{ background: #fff;}
 .and{font-size: 1.5rem; padding: 0 1rem; color: #777;}
-.billing-cont .billing-form-box .image-wrapper{ padding-left:2rem; display: inline-flex; padding-top: 1rem;}
-.billing-cont .billing-form-box .instructions{ margin-top: 1rem;}
-.billing-cont .billing-form-box .instructions ul, .billing-cont .billing-form-box .instructions label{ font-size:0.8rem; margin-bottom: 0;}
+.image-wrapper{ padding-left:2rem; display: inline-flex; padding-top: 1rem;}
+.instructions{ margin-top: 1rem;}
+.instructions ul, .billing-cont .billing-form-box .instructions label{ font-size:0.8rem; margin-bottom: 0;}
 .paypal-info, .billing-cont{ margin-top:10%;}
 
 
 /*LOGIN*/
 .background-blue{background-color: #4CBFEB;}
 .admin-logout-content h1{ font-size: 3.5rem; color: #fff; text-align: center; font-family: OsloBold; margin-bottom: 1.5rem;}
-.admin-form-cont form input{margin: 0; padding-top: 1.5rem; padding-bottom: 1.5rem; text-transform: lowercase; box-shadow: none;}
-.admin-form-cont form  .a-gray-link {padding: 0.7rem 3rem; background: #ccc; font-size: 1.3rem; text-transform: UPPERCASE;  color: #fff;}
-.admin-form-cont form  button#submit{font-size: 1.3rem; text-transform: uppercase; padding: 0.6rem 3rem; }
+.admin-form-cont form input{margin: 0; padding-top: 1.5rem; padding-bottom: 1.5rem; text-transform: lowercase; box-shadow: none; }
+.admin-logout-content .admin-form-cont form input{border:none; border-bottom:1px solid #ddd;}
+.admin-logout-content .admin-form-cont .checkbox-label{ background:#fff; padding:0.5rem; font-size:0.7rem; }
+.admin-logout-content .admin-form-cont .checkbox-label a{ color: #222; border-bottom:1px solid #999;}
+.admin-form-cont form  .a-gray-link {padding: 0.7rem 2.5rem; background: #aaa; font-size: 1.2rem; text-transform: UPPERCASE;  color: #fff;}
+.a-green-link{ background:#01b88a;}
+.admin-form-cont form  button#submit{font-size: 1.2rem; text-transform: uppercase; padding: 0.6rem 2rem; }
+
 #bottom-link{ text-align: center; font-size: 1.2rem;}
 #bottom-link a{color: #fff;}
 .margin-top{ margin-top: 0.95rem !important;}
+.announcement-text{ color: #fff !important; text-align:center; width:80%; margin: 0 auto; margin-top:-0.5rem; margin-bottom: 0.5rem;}
+
+.error{ background: #FFBABA; padding: 0.5rem; color: red !important; border: 1px solid red; margin: 0.5rem 0;}
+.success-msg .a-green-link{padding: 0.7rem 2.5rem; background: #01b88a; font-size: 1.2rem; text-transform: UPPERCASE;  color: #fff;}
+.success-msg .success{ padding:2rem; background:#fff;}
+.white-box{ background:#fff; padding:2rem;}
+.white-box a{ color: #222 !important; border-bottom: 1px solid #aaa;}
+@media #{$large-up} {
+	.admin-form-cont form  .a-gray-link {padding: 0.7rem 3rem; background: #aaa; font-size: 1.2rem; text-transform: UPPERCASE;  color: #fff;}
+	.admin-form-cont form  button#submit{font-size: 1.2rem; text-transform: uppercase; padding: 0.6rem 2.5rem; }
+
+}
+
+
+input{text-transform: inherit !important; }
+/*ACCOUNT PAGE*/
+#profile-inline-settings section h2{ color:#01b88a; }
+#profile-inline-settings section div label{ font-size: 1rem; font-family:OsloBold, Oslo, arial; }
+.avatar-span img {max-width: 1.9rem; cursor: pointer;}
+.image-profile-box{padding:0.8rem;}
+.select-avatar, .upload-photo { display:inline-block; text-align:center; }
+.photo-instructions ul li{ font-size: 0.8rem;}
+.photo-instructions label{ font-size:0.8rem !important;}
+#profile-inline-settings  .and{font-size:2rem;}
+#profile-inline-settings .image-wrapper{ padding-top: 0;}

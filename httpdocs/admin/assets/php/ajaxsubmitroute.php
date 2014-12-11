@@ -5,6 +5,7 @@
 	parse_str($_POST['formData'], $_POST['formData']);
 		
 	if($adminController->checkCSRF($_POST['formData'])){  //CSRF token check!!!
+		
 		switch($_POST['formId']){
 			/* "Generic Settings" Page */
 			case "general-settings-form":
@@ -93,8 +94,15 @@
 			case "category-slideshow-article-form": //SlideShow Articles
 				echo json_encode( $mpArticleAdmin->insertCategorySlideshowArticles($_POST['formData']));
 				break;
+
 			case "category-slideshow-delete": //Delete Article Slideshow Functionality
 				echo json_encode( $mpArticleAdmin->deleteCatgorySlideshowArticles($_POST['formData']));	
+				break;
+
+			/*Billing Page*/
+			case: "paypal-form":
+
+				echo json_encode( $adminController->editBillingInformation($_POST['formData']));
 				break;
 
 			/*Edit Collection Page*/

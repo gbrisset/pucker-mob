@@ -134,7 +134,7 @@
 					<table>
 						<thead>
 						    <tr>
-						      <th class="mobile-6 small-6"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortName : '?sort='.$sortName;?>">Article Name</a></th>
+						      <th class="mobile-12 small-12"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortName : '?sort='.$sortName;?>">Article Name</a></th>
 						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Date Added</a></th>
 						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>
 						      <th class="small-2">sites</th>
@@ -155,7 +155,7 @@
 							//$article_date_created =  $articleInfo['creation_date'];
 
 							if(file_exists($pathToImage)){
-								$imageUrl = $config['image_url'].'articlesites/puckermob/square/'.$articleInfo["article_id"].'_tall.'.$ext;
+								$imageUrl = $config['image_url'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.'.$ext;
 							} else {
 								$imageUrl = $config['image_url'].'/articlesites/sharedimages/puckermob-default-image.jpg';
 							}
@@ -163,7 +163,7 @@
 							//$imageUrl = 'http://localhost:8888/projects/pucker-mob//subdomains/images/httpdocs/articlesites/puckermob/square/3855_tall.jpg';
 							?>
 								<tr id="<?php echo 'article-'.$article_id; ?>">
-								  	<td class="mobile-6 small-6">
+								  	<td class="mobile-12 small-12">
 								  		<div class="article-image mobile-1 small-1">
 											<a href="'.$articleUrl.'">
 												<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />

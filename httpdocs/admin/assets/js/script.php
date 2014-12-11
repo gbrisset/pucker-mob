@@ -670,7 +670,7 @@ $(document).ready(function (){
 				data_prev_element.attr('data-preview', data_prev);
 
 			}else{
-				$('#error-img').text('something went wrong. Please try again or contact info@simpledish.com.').addClass('error');
+				$('#error-img').text('something went wrong. Please try again or contact info@sequelmediagroup.com.').addClass('error');
 			}
 	
 		},
@@ -682,14 +682,15 @@ $(document).ready(function (){
 			d = new Date(),
 			filename = data.filename;
 			img_url = url+filename;
-			img = $('#image-container').children('img');
+			img = $('#img-profile');
 			
 			$('.preview-close').click();
 			if(!data.hasError){
 				$(img).attr('src', img_url+'?'+d.getMilliseconds());
-				$('#error-img').text('Image Updated Sucessful!').addClass('new-success').show();
+				$('#image-header-profile').attr('src', img_url+'?'+d.getMilliseconds());
+				$('#error-img').text('Image Updated Sucessful!').addClass('new-success').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );
 			}else{
-				$('#error-img').text('something went wrong. Please try again or contact info@simpledish.com.').addClass('error');
+				$('#error-img').text('something went wrong. Please try again or contact info@sequelmediagroup.com.').addClass('error');
 			}
 		},
 
@@ -1176,7 +1177,7 @@ $(document).ready(function (){
 	});
 
 
-	$('#article-preview-image-upload').mpImageUpload({
+	/*$('#article-preview-image-upload').mpImageUpload({
 		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articlepreview&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
 		onComplete : function(resp){
 			var uploadContainer = $('#article-preview-image-upload');
@@ -1205,7 +1206,7 @@ $(document).ready(function (){
 				$(this).fadeTo(250 , 1);
 			});
 		}
-	});
+	});*/
 
 	$('#article-wide-image-upload').mpImageUpload({
 		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articlewide&imgType=wide&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
@@ -1269,66 +1270,8 @@ $(document).ready(function (){
 				$(this).fadeTo(250 , 1);
 			});
 		}
-	});*/
-
-
-	$('#video-wide-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=videowide&imgType=wide&videoId=" + $(this).find('#video_id').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					$('#video-wide-image-upload .image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							$('#video-wide-image-upload form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=videowide&imgType=wide&videoId=" + $('#video-wide-image-upload').find('#video_id').val() + '&currentImage=' + $('#video-wide-image-upload').find('#currentImage').val();
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			$('#video-wide-image-upload #result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
 	});
 
-	$('#series-wide-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=serieswide&imgType=serieswide&seriesId=" + $(this).find('#series_id').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					$('#series-wide-image-upload .image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							$('#series-wide-image-upload form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=serieswide&imgType=serieswide&seriesId=" + $('#series-wide-image-upload').find('#series_id').val() + '&currentImage=' + $('#series-wide-image-upload').find('#currentImage').val();
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			$('#video-wide-image-upload #result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
 
 	$('#contributor_wide_img').mpImageCropUpload({
 		desWidth: 140,
@@ -1523,7 +1466,7 @@ $(document).ready(function (){
 		});
 	    
 	    $.ajax({
-	        url: 'http://localhost:8888/projects/pucker-mob//httpdocs/admin/billing/upload.php?files',
+	        url:  "<?php echo $config['this_admin_url']; ?>billing/upload.php?files",
 	        type: 'POST',
 	        data: data,
 	        cache: false,
@@ -1558,13 +1501,41 @@ $(document).ready(function (){
 	if($('.avatar-span')){
 		$('.avatar-span').on('click', function(){
 			var img = $(this).attr('data-info'),
-			avatar_dir = "<?php echo $config['this_admin_url'].'assets/img/avatars/'; ?>",
+			avatar_dir = "http://images.puckermob.com/articlesites/contributors_redesign",
 			new_img_src = avatar_dir+'/'+img,
 			img_profile = $('#img-profile');
 			$(img_profile).attr('src', new_img_src);
+			$(img_profile).attr('data-info', img);
 			console.log(img, new_img_src);
 		});
 
-	
 	}
+
+	$('.select-avatar').on('click', function(event){
+		var img_profile = $('#img-profile'),
+		img_name = $(img_profile).attr('data-info');
+
+		event.preventDefault();
+		$.ajax({
+			  type: "POST",
+			  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			  data: { image: img_name, c_i: $('#cont_i').val(), task:'update_avatar_img' }
+			}).done(function(data) {
+				if(data){
+					avatar_dir = "http://images.puckermob.com/articlesites/contributors_redesign",
+					new_img_src = avatar_dir+'/'+img_name;
+
+					$('#image-header-profile').attr('src', new_img_src);
+					$('#error-img').text('Image Updated Sucessful!').addClass('new-success').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );
+
+			 		//alert(data);
+			 	}else{
+			 		$('#error-img').text('something went wrong. Please try again or contact info@sequelmediagroup.com.').addClass('error').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );;
+			 	}
+			});
+
+
+
+	});
+
 });

@@ -75,7 +75,7 @@
 					</div>
 					<div class="row">
 						<div class="large-12 columns">
-							<input type="text" id="user_last_name-s" name="user_last_name-s" value="<?php if(isset($_POST['user_last_name-s'])) echo $_POST['user_last_name-s']; ?>" placeholder="password" <?php if(isset($registrationStatus) && isset($registrationStatus['field']) && $registrationStatus['field'] == 'user_last_name') echo 'autofocus'; ?> />
+							<input type="text" id="user_last_name-s" name="user_last_name-s" value="<?php if(isset($_POST['user_last_name-s'])) echo $_POST['user_last_name-s']; ?>" placeholder="last name" <?php if(isset($registrationStatus) && isset($registrationStatus['field']) && $registrationStatus['field'] == 'user_last_name') echo 'autofocus'; ?> />
 						</div>
 					</div>
 

@@ -47,36 +47,7 @@
   -o-border-radius: 0.5em;
   border-radius: 0.5em;
 }
-#lightbox-cont #lightbox-content .close, #lightbox-cont2 #lightbox-content .close {
-  font: 0.95em PTSansBold, arial, sans-serif;
-  color: white;
-  margin: -11px -8px 0 0;
-  padding: 4px 7px;
-  float: right;
-  margin-right: -1.9em;
-  margin-top: -1.75em;
-  border: none;
-  outline: none;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
-  border-radius: 25px;
-  background: -moz-linear-gradient(top, #6ca32c 0%, rgba(108, 163, 44, 0.65) 80%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6ca32c), color-stop(80%, rgba(108, 163, 44, 0.65)));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #6ca32c 0%, rgba(108, 163, 44, 0.65) 80%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #6ca32c 0%, rgba(108, 163, 44, 0.65) 80%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #6ca32c 0%, rgba(108, 163, 44, 0.65) 80%);
-  /* IE10+ */
-  background: linear-gradient(top, #6ca32c 0%, rgba(108, 163, 44, 0.65) 80%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6ca32c', endColorstr='rgba(108, 163, 44, 0.65)',GradientType=0 );
-  /* IE6-9 */
-}
+
 @media only screen and (min-width: 56.25em) {
   #lightbox-cont #lightbox-content, #lightbox-cont2 #lightbox-content {
     width: 40% !important;

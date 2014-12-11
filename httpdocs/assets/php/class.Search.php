@@ -18,7 +18,7 @@ class Search {
 		$this->value = $value;
 		$pdo = $this->con->openCon();
 
-				$queryString = "SELECT article.*, parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name
+				/*$queryString = "SELECT article.*, parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name
 						FROM categories AS cat, categories AS parent 
 
 						INNER JOIN ( 
@@ -47,6 +47,17 @@ class Search {
 			 
 				GROUP BY article.article_id 
 				ORDER BY  (article.article_title LIKE '%".$value."%') + (article.article_tags LIKE '%".$value."%') + (article.article_ingredients LIKE '%".$value."%')  desc";
+*/
+		$queryString = "SELECT articles.article_title, articles.creation_date, articles.article_seo_title, articles.article_id, contributor_name, 
+						contributor_seo_name, article_contributors.contributor_id, categories.cat_id, cat_dir_name, cat_name 
+						FROM articles 
+						INNER JOIN ( article_categories, categories, article_contributor_articles, article_contributors ) 
+						ON (articles.article_id =  article_categories.article_id 
+							AND article_categories.cat_id = categories.cat_id 
+							AND article_contributor_articles.article_id = articles.article_id 
+							AND article_contributors.contributor_id = article_contributor_articles.contributor_id) 
+						WHERE articles.article_status = 1 AND ( articles.article_title LIKE '%".$value."%' OR articles.article_tags LIKE '%".$value."%' ) 
+						GROUP BY articles.article_id ORDER BY articles.creation_date DESC";
 
 		$q = $pdo->query( $queryString );
 		$q->setFetchMode(PDO::FETCH_ASSOC);

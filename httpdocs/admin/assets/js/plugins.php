@@ -403,13 +403,13 @@ $.fn.mpValidate = function(opts){
 							},
 							function(data){
 								console.log(data);
-								
+								//alert(data);
 								data = JSON.parse(data);
 
 								options.callback(thisForm, data);
 
 								if(data.message) result.empty().append(data.message);
-								if(data.hasError !== undefined) result.addClass((!data.hasError) ? 'success' : 'error');
+								if(data.hasError !== undefined) result.addClass((!data.hasError) ? 'new-success' : 'error').slideDown('slow').delay(5000).slideUp('slow');
 								
 								submit.attr('disabled', false);
 							}
@@ -498,14 +498,14 @@ $.fn.mpImageCropUpload = function( opts, e ){
 		    // check for image type allowed
 		    var rFilter = /^(image\/jpeg|image\/jpg|image\/png|image\/gif)$/i;
 		    if (! rFilter.test(oFile.type)) {
-		        $('.error-img').html('Please select a valid image file (jpg, jpeg, gif and png are allowed)').removeClass('new-success').show();
+		        $('.error-img').text('Please select a valid image file (jpg, jpeg, gif and png are allowed)').removeClass('new-success').addClass('error').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );
 		        $('#lightbox-cont2').hide();
 		        return;
 		    }
 
 		    // check for file size
 		    if (oFile.size > 1 * 1024 * 1024) {
-		        $('.error-img').html('This image size exceed the max size ( 1MB ), please select an smaller image.').removeClass('new-success').show();
+		        $('.error-img').text('This image size exceed the max size ( 1MB ), please select an smaller image.').removeClass('new-success').addClass('error').slideDown( "slow" ).delay( 8000 ).slideUp( "slow" );
 		        $('#lightbox-cont2').hide();
 		        return;
 		    }

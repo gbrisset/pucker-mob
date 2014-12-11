@@ -100,7 +100,7 @@ if (isset($articleInfoObj)) {
 		<?php 
 		if ( $detect->isMobile() ) {  
 			echo '<div class="row" style="margin-top: -1rem;">';
-			echo '<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important;"> ';  
+			echo '<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; max-height: 100% !important; overflow: visible !important; "> ';  
 		}else{ 
 			echo '<div class="row">';
 			echo '<section id="article-content" class="small-12 column sidebar-box">';
@@ -185,10 +185,10 @@ if (isset($articleInfoObj)) {
 		<?php }?>
 
 				<?php if($detect->isMobile() && !$detect->isTablet()){?>
-				<div id="grad"></div>
+				<!--<div id="grad"></div>
 				<p class="read-more"><a href="#" class="button">
 					<i class="fa fa-caret-down caret-down-left"></i>Click To Read More<i class="fa fa-caret-down caret-down-right"></i></a>
-				</p>
+				</p>-->
 				<?php } ?>
 			</section>
 		</div>

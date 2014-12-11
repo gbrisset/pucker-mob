@@ -34,7 +34,7 @@
 <?php if ( !$detect->isMobile() ) { ?>
 
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
-      <?php if( isset($promotedArticle) && !$promotedArticle && !$has_sponsored){ ?>
+      <?php if(  !$promotedArticle && !$has_sponsored){ ?>
 
    <!--[if !IE]>
   <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -42,15 +42,17 @@
 
 <?php if( !$promotedArticle ){ ?>
 
- <!-- GUM GUM IN-IMAGE -->
+ <!-- GUM GUM IN-IMAGE 
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-    <script type="text/javascript">ggv2id='64bad626';</script>
-    <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
-    <?php } ?>
+    <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
+      <script type="text/javascript">ggv2id='64bad626';</script>
+      <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
+      <?php }?>
+    <?php } ?>-->
 
 
-  <!-- AdsNative.com -->
-  <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>
+  <!-- AdsNative.com 
+  <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>-->
 
   <!-- Vibrant in-text Media Ads 
   <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70526"></script>
@@ -58,9 +60,9 @@
   <!-- IS NOT VIDEO PAGE -->
     <?php if( !isset($isVideoPage) ){
       if (!$local){?>
-      <!-- WAHWAH RADIO PLAYER 
+      <!-- WAHWAH RADIO PLAYER -->
       <script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>
-      -->
+      
       <!-- End WAHWAH Radio Player -->
       <?php } 
     } ?>

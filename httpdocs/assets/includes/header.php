@@ -10,24 +10,24 @@
     }
   }
   ?>
-  <?php if($detect->isMobile()){?>
-   <header id="super-banner" class="hide-for-print" style="background:#9e0039 !important;margin-top: 3.2rem;margin-bottom: -3rem; text-align:center;">
+  <?php //if($detect->isMobile()){?>
+  <!-- <header id="super-banner" class="hide-for-print" style="background:#615147 !important;margin-top: 3.2rem;margin-bottom: -3rem; text-align:center;">
     <div class="row">
-      <a href="http://www.puckermob.com/lifestyle/why-being-an-outcast-was-the-best-thing-that-ever-happened-to-you">
+      <a href="http://www.puckermob.com/lifestyle/the-psychology-behind-your-mess-why-creative-geniuses-often-keep-a-messy-desk">
         <img src="http://www.puckermob.com/assets/img/super_banner_mobile.png">
       </a>
     </div>
-  </header>
-  <?php }else{?>
-  <header id="super-banner" class="hide-for-print show-for-large-up" style="background:#9e0039 !important;">
+  </header>-->
+  <?php //}else{?>
+  <!--<header id="super-banner" class="hide-for-print show-for-large-up" style="background:#615147 !important;">
     <div class="row">
-      <a href="http://www.puckermob.com/lifestyle/why-being-an-outcast-was-the-best-thing-that-ever-happened-to-you">
+      <a href="http://www.puckermob.com/lifestyle/the-psychology-behind-your-mess-why-creative-geniuses-often-keep-a-messy-desk">
         <img src="http://www.puckermob.com/assets/img/super_banner_desktop.png">
       </a>
     </div>
-  </header>
-  <?php }?>
-   <!--
+  </header>-->
+  <?php// }?>
+   
   <header id="top-banner" class="hide-for-print show-for-large-up">
     <div class="row">
      <div id="header-social" class="small-6 columns half-padding-right">FOLLOW US 
@@ -43,7 +43,7 @@
 
 
     </div>
-  </header>-->
+  </header>
 
   <div id="nav-bar" class="sticky contain-to-grid hide-for-print">
     <nav class="top-bar" data-topbar="" data-options="scrolltop: false;">

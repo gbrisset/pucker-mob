@@ -40,7 +40,7 @@ if( $searchString ){
 
 	$articles = $search->getArticles( $searchString );
 
-	$articlesPerPage = 10;
+	$articlesPerPage = 24;
 	$totalResults = $search->totalResults;
 	
 	$totalPages = ceil( $totalResults / $articlesPerPage);
@@ -75,8 +75,6 @@ if( $searchString ){
 						<button id="notfound-search-submit" class="button postfix alert"><i class="fa fa-search"></i>Search</button>
 					</div>
 				</div>
-
-
 
 				<?php if(!isset($searchString) || !$searchString){ ?>
 				<h1>Search</h1>
@@ -163,7 +161,7 @@ if( $searchString ){
 			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
 			<?php include_once($config['include_path'].'fromourpartners.php'); ?>
 			<?php include_once($config['include_path'].'aroundtheweb.php'); 
-		}?>
+			}?>
 	</section>
 	<?php if (!$detect->isMobile()) { 
 		include_once($config['include_path'].'rightsidebar.php');

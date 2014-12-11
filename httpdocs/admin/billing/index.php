@@ -7,7 +7,7 @@
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	$billingInfo = $adminController->getBillingInformation($userData['user_id']);
-
+	
 	if(isset($_POST['submit'])){
 		
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
@@ -16,16 +16,16 @@
 		if(isset($_POST['paypal-email'])) $pp_email= $_POST['paypal-email'];
 
 			$result = $adminController->editBillingInformation($_POST);
-			var_dump($result);
+			$billingInfo = $adminController->getBillingInformation($userData['user_id']);
 		}else $adminController->redirectTo('logout/');
 	}
 
 	//Verify if is a content provider user
+	$contributor_name = $adminController->user->data["contributor_name"];
 	$admin_user = false;
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
 		$admin_user = true;	
 	}
-
 
 ?>
 
@@ -52,10 +52,12 @@
 			
 			<section id="articles" class="padding-top">
 
+				<?php if(!$billingInfo['w2_live'] ){?>
 				<div class="skip-step">
 						<p class="small-12"><a href="" class="a-buttons">SKIP THIS STEP</a>
 						NOTE: you must return to this page later and complete billing info in order to be paid.</p>
 				</div>
+				<?php }?>
 				<section class="billing-cont">
 					<h2>W2 Tax Forms</h2>
 					<div class="small-12 billing-form-box">
@@ -77,7 +79,7 @@
 								<span class="and">and</span>
 							</div>
 							<div>
-								<a href="#" class="b-upload" id="upload_form_file">Upload Completed Form</a>
+								<a href="mailto:fguzman@sequelmediagroup.com?subject=W2 form (<?php echo $contributor_name; ?>)&body=Please add your completed form Here." class="b-upload" id="upload_form_file">Send Completed Form</a>
 								<input type="file" class="hidden" id="upload_form" name="upload_form" />
 									<div class="small-12 instructions">
 									<label>Instructions</label>
@@ -94,15 +96,24 @@
 				<section class="paypal-info">
 					<h2>Paypal Information</h2>
 					<div>
-						<form  action="" method="POST" class="small-7" id="paypal-form" name="paypal-form">
+						<form    method="POST" class="small-7" id="paypal-form" name="paypal-form">
 							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 							<input type="text" class="hidden" id="user_id" name="user_id" value="<?php  echo $userData['user_id']; ?>" >
 
 							<label>Paypal Email Address</label>
-							<input type="email" required id="paypal-email" name="paypal-email" placeholder="example@email.com" value="<?php echo $billingInfo['paypal_email'];?>">
-							<div class="align-left buttons-container">
-								<button  type="submit" name="submit" id="submit">UPDATE</button>
+							<input type="email" required id="paypal-email" name="paypal-email" placeholder="example@email.com" value="<?php echo $billingInfo['paypal_email']; ?>">
+							<div class="row buttons-container">
+							<div class="columns mobile-12 small-12 large-10">
+								<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'paypal-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
+								
+								<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'paypal-form') echo $updateStatus['message']; ?>
+								</p>
 							</div>
+							<div class="columns mobile-12 small-12 large-2">
+								<button type="submit" id="submit" name="submit">Update</button>
+							</div>
+						</div>
+
 						</form>
 					</div>
 				</section>

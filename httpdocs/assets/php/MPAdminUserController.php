@@ -601,6 +601,21 @@ End password reset methods
 		return $this->performQuery($options);
 	}
 
+	public function updateUserImage($data){
+		$contributorId = filter_var($data['c_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$contributorImg = filter_var(trim($data['image']), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$updateImage = $this->performUpdate(array(
+			'updateString' => "UPDATE article_contributors SET contributor_image = '".$contributorImg."'  WHERE contributor_id = ".$contributorId
+		));
+
+		if($updateImage === true) return true;
+		return false;
+	}
+	/* End Article Updating Fucntion */
+
+
+	
+
 
 /**
  * Returns all of the records of login attemts logged by $user in the last $timeFrame minutes.

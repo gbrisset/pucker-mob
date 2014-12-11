@@ -4,7 +4,7 @@
 	//if( $userInfo && isset($userInfo[0])) $userInfo = $adminController->user->data[0];
 	
 	//	If the user hasn't yet set an image, set $image = default_profile_image.png
-	$image = (isset($userInfo['contributor_image']) && $userInfo['contributor_image'] != "") ? $userInfo['contributor_image'] : 'default_profile_contributor.png';
+	$image = (isset($userInfo['contributor_image']) && $userInfo['contributor_image'] != "") ? $userInfo['contributor_image'] : 'pm_avatars_1.png';
 
 	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
 	if (isset($userInfo['contributor_id'])){
@@ -90,26 +90,21 @@
 		<div id="content" class="columns small-9 large-11">
 			
 			<section id="articles" class="padding-top">
-
-
 			<div id="profile-inline-settings">
 		
+			<!-- IMAGE SECTION -->
 			<section class="mobile-12 small-12 margin-bottom">
 				<h2>Profile Photo</h2>
 				<div class="small-12 image-profile-box">
-				<?php if($contImageExists){ ?>
 					<img id="img-profile" class="left" src="<?php echo $contImageUrl; ?>" alt="User Image" />
-				<?php } else {?>
-					<img id="img-profile" class="left" src="<?php echo $config['this_admin_url'];?>/assets/img/avatars/avatars_1.png" alt="User Image" />
-				<?php }?>
-
 					<div class="small-9 left image-wrapper">
 						<div class="small-6">
+							<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $userInfo['contributor_id']; ?>" />
 							<a href="#" class="b-upload select-avatar small-12" id="select-avatar">Save Avatar</a>
 							<div class="small-12 avatars">
 								<?php for($i = 1; $i<= 18; $i++){?>
-									<span class="avatar-span" id="avatar-image-<?php echo $i;?>" data-info="avatars_<?php echo $i;?>.png">
-										<img src="<?php echo $config['this_admin_url'].'assets/img/avatars/avatars_'.$i.'.png'; ?>" class="avatar-img" id="avatar_<?php echo $i;?>" />
+									<span class="avatar-span" id="avatar-image-<?php echo $i;?>" data-info="pm_avatars_<?php echo $i;?>.png">
+										<img src="http://images.puckermob.com/articlesites/contributors_redesign/<?php echo 'pm_avatars_'.$i.'.png'; ?>" class="avatar-img" id="pm_avatars_<?php echo $i;?>" />
 									</span> 
 								<?php }?>
 							</div>
@@ -118,7 +113,7 @@
 							<span class="and">or</span>
 						</div>
 						<div class="small-6">
-							<a href="#" class="b-upload small-12 upload-photo" id="upload_form_file">Upload Photo</a>
+							<a href="#" class="b-upload small-12 upload-photo" name="image-file-link" id="image-file-link">Upload Photo</a>
 							<input type="file" class="hidden" id="upload_form" name="upload_form" />
 								<div class="small-12 photo-instructions">
 								<label>Image Requeriments:</label>
@@ -131,10 +126,11 @@
 						</div>
 					</div>
 				</div>
+				<p id="error-img" class="error-img"></p>
 			</section>
 			<!-- <section class="mobile-12 small-12 margin-bottom">
 			
-			<!-- IMAGE SECTION -->
+			
 			<!--<div id="add-an-image-fs" class="padding-top padding-bottom left small-12 border-radius">
 					<div class="image-steps image-sec columns small-4 ">
 						<div id="image-container">
@@ -194,7 +190,6 @@
 						</div>
 					</div>
 
-					
 					<div class="row">
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="user_first_name-s">First Name</label>
@@ -228,12 +223,19 @@
 						</div>
 					</div>
 					<div class="row buttons-container">
-						<button type="submit" id="submit" name="submit">Update</button>
+						<div class="columns mobile-12 small-12 large-10">
+							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
+							
+							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo $updateStatus['message']; ?>
+							</p>
+						</div>
+						<div class="columns mobile-12 small-12 large-2">
+							<button type="submit" id="submit" name="submit">Update</button>
+						</div>
+					</div>
 					</div>
 				</form>
-				<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo $updateStatus['message']; ?>
-					</p>
+				
 				</section>
 
 				<!-- PASSWORD -->
@@ -262,16 +264,21 @@
 						</div>
 					</div>
 					<div class="row buttons-container">
-						<button type="submit" id="submit" name="submit">Update</button>
+						<div class="columns mobile-12 small-12 large-10">
+							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo $updateStatus['message']; ?>
+							</p>
+						</div>
+						<div class="columns mobile-12 small-12 large-2">
+							<button type="submit" id="submit" name="submit">Update</button>
+						</div>
 					</div>
 				</form>
-				<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo $updateStatus['message']; ?>
-					</p>
+				
 				</section>
 
 				<!-- BRIOGRAPHY -->
-				<section class="small-12 margin-top">
+				<section class="small-12 margin-top  padding-bottom">
 					<h2>Biography</h2>
 					<form class="ajax-submit-form clear" id="account-bio-form" name="account-bio-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -283,14 +290,21 @@
 							<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($userInfo['contributor_bio'])) echo $userInfo['contributor_bio']; ?></textarea>
 						</div>
 					</div>
+
 					<div class="row buttons-container">
-						<button type="submit" id="submit" name="submit">Update</button>
+						<div class="columns mobile-12 small-12 large-10">
+							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-bio-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-bio-form') echo $updateStatus['message']; ?>
+							</p>
+						</div>
+						<div class="columns mobile-12 small-12 large-2">
+							<button type="submit" id="submit" name="submit">Update</button>
+						</div>
 					</div>
+
 					</form>
 				</section>
-				<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-bio-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-bio-form') echo $updateStatus['message']; ?>
-					</p>
+				
 				</div>
 			</section>
 		</div>
@@ -311,43 +325,36 @@
 				        <input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
 
 				        
-				        <fieldset class="step2">
+				        <div class="step2">
 						   	<span>
-						       	<p>Please select a crop region</p>
+						       	<p>Please select region</p>
 						    </span>
 						    <span class="right preview-close">
-								<p>CLOSE<i class="icon-remove-sign" id="preview-close"></i></p>
+								<a href="#close" title="Close" id="preview-close" class="close">X</a>
 							</span>
-					    </fieldset>  
+					    </div>  
 					    
-					    <fieldset class="image-info">  	
+					    <div class="image-info">  	
 					        <img id="preview" alt="" src="" />
-					    </fieldset>
+					    </div>
 
-					    <fieldset class="image-info">
+					    <div class="image-info">
 					        <div class="info">
-					        	<h2>Image Information:</h2>
-
-					        	<label>Name:</label> <p id="filenametext" name="filenametext"></p>
-					           	<!--<label>Size:</label> <p id="filesizetext" name="filesizetext"></p>
-					        	<label>Type:</label><p id="filetype" name="filetype"></p>
-					        	<label>Dimension:</label><p id="filedim" name="filedim"></p>-->
-					        
 					        	<input type="hidden" id="filesize" name="filesize" />
 								<input type="hidden" id="w" name="w" />
 					            <input type="hidden" id="h" name="h" />
 					            <input type="hidden" id="dimHeight" name="dimHeight" />
 					            <input type="hidden" id="dimWidth" name="dimWidth" />
 					        </div>
-					 	</fieldset>
-					    <div class="file-upload-container">
+					 	</div>
+					    <div class="file-upload-container hidden">
 					    	<input type="file" name="contributor_wide_img" id="contributor_wide_img" class="upload-img-file account-file-input" />
 						</div>   
-					    <fieldset class="save-button">
+					    <div class="save-button left margin-top">
 							<div class="btn-wrapper">
 								<button type="submit" id="submit" name="submit" value="Save Image" class="ajax-submit-image">Save Image</button>
 							</div>
-						</fieldset>
+						</div>
 					</form>
 				</div>
 			</section>
@@ -361,7 +368,7 @@
 		<div class="overlay"></div>
 
 		<div id="lightbox-content" class="article-lightbox">
-			<button type='button' id="preview-close" class="close">X</button>
+			<a href="#close" title="Close" id="preview-close" class="close">X</a>
 
 			<div id="lightbox-preview-cont"></div>
 		</div>

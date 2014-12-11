@@ -23,7 +23,7 @@
         <div class="right">
           <?php if($loginActive){?>
         <p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
-          <img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
+          <img id="image-header-profile" src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
           <a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
         </p>
         <?php }?>

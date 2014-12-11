@@ -292,7 +292,7 @@ class MPArticleAdminController extends MPArticle{
 			'queryParams' => array(':user_id' => $user_id)
 		));
 
-		if(!empty($email) && $email){
+		//if(!empty($email) && $email){
 			if($recordExist){
 				$billing_record =  $this->performUpdate(array(
 				'updateString' => "UPDATE user_billing_info SET paypal_email = '".$email."' WHERE user_id = :userId",
@@ -302,22 +302,18 @@ class MPArticleAdminController extends MPArticle{
 
 			}else{
 				$billing_record = $this->performUpdate(array(
-				'updateString' => "INSERT INTO  user_billing_info  SET paypal_email = ':paypalEmail', user_id = :userId",
+				//'updateString' => "INSERT INTO  user_billing_info  SET paypal_email = ':paypalEmail', user_id = ':userId' ",
+				'updateString' => "INSERT INTO user_billing_info (paypal_email, user_id) VALUES ('".$email."', $user_id) ",
 				'updateParams' => array(':paypalEmail'=>$email, ':userId' => $user_id,
 				'isInsert' => true)
 			));
 				
 				$message = "Email Added Successfully";
 			}
-			if($billing_record === false) return $this->helpers->returnStatus(500);
 			
-			return array_merge($this->helpers->returnStatus(200), array(
-				'userInfo' => $user_id,
-				'paypalEmail' => $email,
-				'message' => $message
-			));
+			if($billing_record === true) return array('hasError' => false, 'message' => 'Your user information has been successfully updated');
+			else return $result;
 
-		}else return false;
 	}
 
 	public function getBillingInformation($user_id){
@@ -397,13 +393,14 @@ class MPArticleAdminController extends MPArticle{
 		unset($user_post['contributor_twitter_handle-s']);
 		unset($user_post['contributor_facebook_link-s']);
 		unset($user_post['contributor_blog_link-s']);
+
 		//unset($user_post['contributor_bio-nf']);
 		unset($user_post['contributor_id']);
 
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE users SET {pairs} WHERE user_id = ".$this->user->data['user_id'],
 			'post' => $user_post,
-			'unrequired' => array('user_last_name', 'user_last_name', 'contributor_location', 'contributor_twitter_handle', 
+			'unrequired' => array('user_first_name', 'user_last_name', 'user_display_name', 'contributor_location', 'contributor_twitter_handle', 
 									'contributor_facebook_link', 'contributor_blog_link', 'contributor_bio')
 		));
 
@@ -856,6 +853,8 @@ class MPArticleAdminController extends MPArticle{
 
 		$pdo = $this->con->openCon();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		//var_dump($options['updateString']); die;
 		$q = $pdo->prepare($options['updateString']);
 
 		try{

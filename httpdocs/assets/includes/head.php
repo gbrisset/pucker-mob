@@ -46,7 +46,7 @@
 	<?php } ?>
 	
 	<link rel="dns-prefetch" href="//go.disqus.com" />
-	<link rel="dns-prefetch" href="//g2.gumgum.com" />
+	<link rel="dns-prefetch" href="//route.carambo.la" />
 	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
 	<link rel="prefetch prerender" href="http://www.puckermob.com" />
 	<link rel="dns-prefetch" href="//native.sharethrough.com" />
@@ -117,18 +117,7 @@
 	<?php if (!$local){
     	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
     	else echo $mpArticle->data['article_page_analytics'];
-	} 
-
-$long_url = urlencode($mpHelpers->curPageURL());
-
-$bitly_login = 'puckermob';
-$bitly_apikey = 'R_0c1836a5ff2e45f8a3fe2d4ae9d8c03b';
-
-$bitly_response = json_decode(file_get_contents("http://api.bit.ly/v3/shorten?login={$bitly_login}&apiKey={$bitly_apikey}&longUrl={$long_url}&format=json"));
-
-$short_url = $bitly_response->data->url;
-
-	?>
+	} ?>
 
 <!-- IF ARTICLE PAGE -->
 
@@ -151,23 +140,30 @@ $short_url = $bitly_response->data->url;
   	<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
   <!-- BEGIN Tynt Script -->
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
-if(document.location.protocol=='http:'){
+	if(document.location.protocol=='http:'){
 
-  var Tynt=Tynt||[];
+	  var Tynt=Tynt||[];
 
-  Tynt.push('cRcCGMgEKr5jLJacwqm_6r');
+	  Tynt.push('cRcCGMgEKr5jLJacwqm_6r');
 
-  (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/
+	  (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/
 
-ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
+	ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
 
-  }
+	  }
 
-</script>
+	</script>
 
 <!-- END Tynt Script -->
+
+<!-- CARAMBOLA IN_IMAGE -->
+<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+    <?php //if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 && $articleInfoObj['article_id'] != 4725){?>
+<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 
+<?php }// }?>
+
 <?php } ?>
     <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 ros-->
     <script type="text/javascript">
@@ -253,16 +249,16 @@ ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefo
 	<![endif]-->
 	
 		 <!-- IF ARTICLE PAGE -->
-	    <?php if(isset($articleInfo) && $articleInfo){ ?>
-	    	<?php if(!$promotedArticle ){?>
+	    <?php //if(isset($articleInfo) && $articleInfo){ ?>
+	    	<?php //if(!$promotedArticle ){?>
 	     	<!-- Puckermob Instory Connatix
 			<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='1f15e94f-843f-4d31-8940-4eb181b32d73'></script>-->
-		   <?php } ?>
-		    <?php }else{?> 
+		   <?php //} ?>
+		    <?php //}else{?> 
 		    	<!-- Puckermob - Homepage  Connatix 
 	    	<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='c96b0114-247e-4afd-b363-d427f1016171'></script>
 	   		-->
-	    <?php }?>
+	    <?php //}?>
 	
 	<!-- MOBILE -->
 	<?php //}else{ ?>
@@ -274,6 +270,6 @@ ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefo
 	
 	<!-- Nativo 
 	<script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
-
+	
 </head>
  <?php flush(); ?>

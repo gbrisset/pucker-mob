@@ -351,14 +351,14 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 //#articles-list .admin-article .article-status .live { color: #27CE27; }
 
 //NEW DESIGN ARTICLE LIST
-#articles-list .article-image{ float:left; width: 2rem;}
+#articles-list .article-image{ float:left; width: 4rem; margin-right: 0.5rem;}
 #articles-list table{ border:none;}
 #articles-list table thead tr { border-bottom: 2px solid #bbb;}
 #articles-list table thead tr th{ font-size: 1.2rem; text-transform: uppercase; font-family: arial; padding-bottom: 0.2rem; text-align:center;}
 #articles-list table tr { border-bottom: 2px solid #ddd;}
 #articles-list table tr td { vertical-align: middle; padding: 0.4rem 0.5rem 0.4rem; text-align: center; font-size: 1rem;}
 #articles-list table tr td:first-child, #articles-list table thead tr th:first-child{ text-align: left;}
-#articles-list table tr td h2 { font-size: 1.2rem; padding: 0.5rem 0 0rem 2.5rem; margin-bottom: 0; margin-top: 0;}
+#articles-list table tr td h2 { font-size: 1.2rem; padding: 0; margin-bottom: 0; margin-top: 0;}
 #articles-list table tr td h2 a, #articles-list table tr th a{ color: #000; outline:none;}
 .article-delete-form{ margin:0;}
 .fa-times{ color: #FF0000; font-size: large;}
@@ -593,9 +593,12 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 .margin-top{ margin-top: 0.95rem !important;}
 .announcement-text{ color: #fff !important; text-align:center; width:80%; margin: 0 auto; margin-top:-0.5rem; margin-bottom: 0.5rem;}
 
-.error{ background: #FFBABA; padding: 0.5rem; color: red !important; border: 1px solid red; margin: 0.5rem 0;}
+.error{ background: #EEDFDF; padding: 0.5rem; color: #AA5551 !important; border: 1px solid #AA5551; margin: 0.5rem 0;}
+.new-success { background: #E3EDD9; padding: 0.5rem; color: #759459 !important;  border: 1px solid #759459; margin: 0.5rem 0;}
+
 .success-msg .a-green-link{padding: 0.7rem 2.5rem; background: #01b88a; font-size: 1.2rem; text-transform: UPPERCASE;  color: #fff;}
 .success-msg .success{ padding:2rem; background:#fff;}
+#result.error, #result.new-success{ margin: 0; text-align: left;}
 .white-box{ background:#fff; padding:2rem;}
 .white-box a{ color: #222 !important; border-bottom: 1px solid #aaa;}
 @media #{$large-up} {
@@ -610,9 +613,11 @@ input{text-transform: inherit !important; }
 #profile-inline-settings section h2{ color:#01b88a; }
 #profile-inline-settings section div label{ font-size: 1rem; font-family:OsloBold, Oslo, arial; }
 .avatar-span img {max-width: 1.9rem; cursor: pointer;}
-.image-profile-box{padding:0.8rem;}
+.image-profile-box{padding:1.2rem 0.8rem 0.8rem 0.8rem;}
 .select-avatar, .upload-photo { display:inline-block; text-align:center; }
 .photo-instructions ul li{ font-size: 0.8rem;}
 .photo-instructions label{ font-size:0.8rem !important;}
 #profile-inline-settings  .and{font-size:2rem;}
 #profile-inline-settings .image-wrapper{ padding-top: 0;}
+#contributor-wide-image-upload{}
+

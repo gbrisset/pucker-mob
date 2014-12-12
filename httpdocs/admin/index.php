@@ -28,8 +28,12 @@
 		//ARTICLES PER CONTRIBUTOR
 		$articles_by_cont = $mpArticle->get_filtered(100000, '', '', $userFilter, 0);
 	
-		//Get Top 5 Shared Moblogs
-		$top_shares_articles = $ManageDashboard->getTopSharedMoblogs(); 
+		//Get Top 10 Shared Moblogs
+		$current_month = date('n');
+		$current_year = date('Y');
+
+		$month = isset($_POST['month']) ? $_POST['month'] : $current_month;
+		$top_shares_articles = $ManageDashboard->getTopSharedMoblogs($month-1, $current_year ); 
 
 		$warnings = $ManageDashboard->getWarningsMessages(); 
 		$annoucements = $ManageDashboard->getAnnouncements(); 
@@ -57,6 +61,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="articles">
+				<!-- WARNINGS BOX -->
 			<?php if($warnings[0] && $warnings[0]['notification_live']){ ?>
 			<div id="warning-box" class="warning-box  mobile-12 small-12 margin-top " style="min-height:6.5rem;">
 				<div class="mobile-2 small-2 left">
@@ -69,125 +74,119 @@
 				</div>
 			</div>
 			<?php }?>
-			
-			<div class="buttons-container dashboard mobile-12 small-12">
-				<?php if($articles_by_cont){?>
-				<script>function change(){ window.location = $("#recent-articles").val(); }</script>
 
-				<select class="small-6" id="recent-articles" name="recent-articles" onchange = "change()">
-					<option value = "0">my recent articles</option>
-					<?php foreach( $articles_by_cont as $art ){
-
-						echo '<option value = "'.$config['this_url'].'admin/articles/edit/'.$art['article_seo_title'].'">'.$art['article_title'].'</option>';
-					}?>
-				</select>
-				<?php }?>
-				<a href="<?php echo $config['this_url'].'admin/articles/';?>" id="viewall" name="viewall" class="a-buttons">VIEW ALL</a>
-				<a href="<?php echo $config['this_url'].'admin/articles/newarticle/';?>" id="addnew" name="addnew" class="a-buttons">ADD NEW</a>			
+			<!-- ANNOUNCEMENTS BOX -->
+			<?php if($annoucements[0] && $annoucements[0]['notification_live']){ ?>
+			<div id="announcements" class="announcements-box  mobile-12 small-12" style="min-height:6.5rem;">
+				<div class="mobile-2 small-2 left">
+					<i class="fa fa-5x fa-comments"></i>
+				</div>
+				<div class="mobile-10 small-10 inline p-cont">
+					<p>
+						<?php echo $annoucements[0]['notification_msg']; ?>
+					</p>
+				</div>
 			</div>
-			<div class="columns mobile-12 small-12 no-padding">
+			<?php }?>
+			
+			<div class="columns mobile-12 small-12 no-padding padding-top margin-top">
 				<?php if(isset($top_shares_articles) && $top_shares_articles){?>
-				<section id="top-shares" class="top-shares small-6 left">
-					<h2>Top 5 Shared Moblogs</h2>
+				<section id="top-shares" class="top-shares small-8 left">
+					<h2>Top 10 MOST Shared Moblogs</h2>
+					<div class="month-container">
+						<select class="months" name="months">
+							<option value="0">THIS MONTH</option>
+						</select>
+					</div>
 					<div class="top-shared-articles">
-						<ol>
-						<?php foreach( $top_shares_articles as $article ){ //var_dump($article);
-
+						<table>
+							<thead><tr><td></td><td>TITLE</td><td>SHARES</td></tr></thead>
+							<tbody>
+						<?php 
+							$index = 0;
+							foreach( $top_shares_articles as $article ){ 
+							$index++;
 							$link_to_article = $config['this_url'].$article['category'].'/'.$article['article_seo_title'];
-							$date_created = date_create($article['creation_date']);
-							$date_created = $date_created->format('m/d/Y');
+
 							$article_id = $article['article_id'];
 							$url = "http://www.puckermob.com/".$article['category']."/".$article['article_seo_title'];
-							$apikey = "709226bb97515fd204f07c3d4bac38f78ba009eb";
-							$json = file_get_contents("http://free.sharedcount.com/?url=" . rawurlencode($url) . "&apikey=" . $apikey);
-			
-							$counts = json_decode($json, true);
-
-							$article['shares'] = $counts["StumbleUpon"] +  $counts["Facebook"]["share_count"] +  $counts["GooglePlusOne"] + $counts["Twitter"] +  $counts["Pinterest"] +  $counts["LinkedIn"] + $counts["Delicious"] ;
+							
+							$article['shares'] = 445454;
+							
 							$totalShares = $ManageDashboard->bd_nice_number($article['shares']);
 
 						?>
-						<li>
-							<article id="article-id-<?php echo $article['article_id'];?>" class="top-shared-cont">
-								<p>
-									<span class="shares"><?php echo  $totalShares; ?> Shares</span> |
-									<img src="http://images.puckermob.com/articlesites/contributors_redesign/<?php echo $article['contributor_image'];?>" alt="<?php echo $article['contributor_name'];?>" />
-									<a href="http://www.puckermob.com/contributors/<?php echo $article['contributor_seo_name'];?>" taget="_blank"><?php echo $article['contributor_name'];?></a>
-								</p>
+						<tr id="article-id-<?php echo $article['article_id'];?>" class="top-shared-cont">
+							<td class="index-article"><?php echo $index;?>.</td>
+							<td class="td-title">
 								<p class="article-link">
-									<a href="<?php echo $link_to_article; ?>" target=""><?php echo $mpHelpers->truncate($article['article_title'], 60);?></a>
-									<span class="date-created right"><?php echo $date_created ;?></spam>
-								</p>		
-							</article>
-						</li>
+									<a href="<?php echo $link_to_article; ?>"><?php echo $mpHelpers->truncate($article['article_title'], 30);?></a>
+								</p>
+							</td>
+							<td>
+								<p>
+									<span class="shares"><?php echo  $totalShares; ?></span>
+								</p>	
+							</td>
+						</tr>
 						<?php }?>
-						</ol>
+						</tbody>
+						</table>
+					</div>
+					<div class="contact-red-box small-11">
+						<ul>
+							<li><a href="#question?">Question?</a></li>
+							<li><a href="#commnets?">Comments?</a></li>
+							<li><a href="#ContactUs">Contact Us!</a></li>
+						</ul>
 					</div>
 				</section>
 				<?php }?>
 
-				<section id="announcements" class="announcements small-5 right">
-						<?php if($annoucements[0] && $annoucements[0]['notification_live']){ ?>
-						<div class="sub-announcements">
-							<h2>ANNOUNCEMENTS</h2>
-							<div class="box">
-								<p>
-									<span>FROM THE EDITOR:</span>
-									<?php echo $annoucements[0]['notification_msg']; ?>
-								</p>
-							</div>
+				<section id="earnings-section" class="earnings-section small-4 left">
+					<div class="last-month-earnings">
+						<h3>Last Month's earnings</h3>
+						<span class="earnings-value">$87.90</span>
+					</div>
+					<div class="total-earnings">
+						<h3>Total Earnings to Date</h3>
+						<span class="earnings-value">$649.90</span>
+					</div>
+					<div class="most-shared-writers">
+						<h3>Top 10 most shared writes this month ( + your rank )</h3>
+						<div class="rank-writers margin-top">
+							<ul>
+								<li>
+
+									<p class="writer-name"><span class="rank-position">1.</span>John Smith</p>
+									<p class="monthly-shares right">123,455</p>
+								</li>
+								<li>
+									<p class="writer-name"><span class="rank-position">2.</span>John Smith</p>
+									<p class="monthly-shares right">123,455</p>
+								</li>
+								<li>
+									<p class="writer-name"><span class="rank-position">3.</span>John Smith</p>
+									<p class="monthly-shares right">123,455</p>
+								</li>
+								<li>
+									<p class="writer-name"><span class="rank-position">4.</span>John Smith</p>
+									<p class="monthly-shares right">123,455</p>
+								</li>
+								<li>
+									<p class="writer-name"><span class="rank-position">5.</span>John Smith</p>
+									<p class="monthly-shares right">123,455</p>
+								</li>
+							
+								<li class="your-rank">
+									<p class="writer-name"><span class="rank-position">72.</span>Flor Guzman</p>
+									<p class="monthly-shares right">123,455</p>
+								</li>
+							</ul>
 						</div>
-						<?php }?>
-						<div class="sub-announcements">
-							<h2>TRENDING TOPICS</h2>
-							<div class="box no-padding">
-								<ul>
-									<li>
-										<p><span>Hot Topics:</span>
-											Lorem ipsum dolor sit amet, 
-											consectetur adipiscing elit, 
-											sed do eiusmod tempor aliquip.
-										</p> 
-									</li>
-									<li>
-										<p><span>Hot Topics:</span>
-											Lorem ipsum dolor sit amet, 
-											consectetur adipiscing elit, 
-											sed do eiusmod tempor aliquip.
-										</p> 
-									</li>
-									<li>
-										<p><span>Hot Topics:</span>
-											Lorem ipsum dolor sit amet, 
-											consectetur adipiscing elit, 
-											sed do eiusmod tempor aliquip.
-										</p> 
-									</li>
-									<li>
-										<p><span>Hot Topics:</span>
-											Lorem ipsum dolor sit amet, 
-											consectetur adipiscing elit, 
-											sed do eiusmod tempor aliquip.
-										</p> 
-									</li>
-									<li>
-										<p><span>Hot Topics:</span>
-											Lorem ipsum dolor sit amet, 
-											consectetur adipiscing elit, 
-											sed do eiusmod tempor aliquip.
-										</p> 
-									</li>
-									<li>
-										<p><span>Hot Topics:</span>
-											Lorem ipsum dolor sit amet, 
-											consectetur adipiscing elit, 
-											sed do eiusmod tempor aliquip.
-										</p> 
-									</li>
-								</ul>
-							</div>
-						</div>
+					</div>
 				</section>
+
 
 			</div>
 			</section>

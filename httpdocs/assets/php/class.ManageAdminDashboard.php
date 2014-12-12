@@ -87,7 +87,35 @@ class ManageAdminDashboard{
 		return $row; 
 	}
 
-	public function getTopSharedMoblogs(){
+	public function getTopSharedMoblogs($month, $year){
+
+		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, social_media_records.date_updated, articles.creation_date, social_media_records.category, (
+				SUM( facebook_shares ) + SUM( twitter_shares ) + SUM( pinterest_shares ) + SUM( google_shares ) + SUM( linkedin_shares ) + SUM( delicious_shares ) + SUM( stumbleupon_shares )
+				) AS 'total_shares'
+				FROM social_media_records
+			    INNER JOIN articles ON social_media_records.article_id = articles.article_id
+
+				WHERE articles.article_status = 1 AND social_media_records.month = ".$month." AND social_media_records.year = ".$year."
+				 GROUP BY social_media_records.id 
+				 ORDER BY total_shares DESC LIMIT 10";
+
+		$q = $this->performQuery(['queryString' => $s]);
+
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}
+	}
+
+	public function getTopSharedMoblogsBU(){
 		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, article_contributors.contributor_id,  article_contributors.contributor_name,  article_contributors.contributor_image,  social_media_records.date_updated, articles.creation_date, social_media_records.category, (SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares)) as 'total_shares'  
 			  FROM social_media_records 
 			   INNER JOIN ( articles, article_contributors, article_contributor_articles ) 

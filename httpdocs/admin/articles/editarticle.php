@@ -201,7 +201,7 @@
 					<?php }  ?>
 				</div>
 				
-				<form  id="article-info-form" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
+				<form  id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 
@@ -480,7 +480,9 @@
 		<div id="lightbox-content" class="article-lightbox">
 			<button type='button' id="preview-close" class="close">X</button>
 
-			<div id="lightbox-preview-cont"></div>
+			<div id="lightbox-preview-cont">
+				<?php //require_once($config['this_admin_url'].'assets/templates/article_template.php');?>
+			</div>
 		</div>
 	</div>
 

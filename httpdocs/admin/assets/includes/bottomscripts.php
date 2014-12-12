@@ -54,7 +54,7 @@
 	        "searchreplace visualblocks code fullscreen",
 	        "insertdatetime media table contextmenu paste hr "
 	    ],
-
+	    menubar : false,
 	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview" ,
 	    //relative_urls:false,
 	    init_instance_callback : function() {

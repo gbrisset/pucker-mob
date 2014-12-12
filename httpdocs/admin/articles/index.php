@@ -87,11 +87,11 @@
 				
 				<section class="from-other-sites-filter ">
 					    <div class="columns">
-					      <label>Show Articles From:
+					     <!-- <label>Show Articles From:
 					      <input style="margin-left: 2rem;" id="simpledish" disabled type="checkbox"><label for="simpledish">SimpleDish</label>
 						  <input id="puckermob" checked disabled type="checkbox"><label for="puckermob">PuckerMob</label>
 					      <input id="spaghettimob" disabled type="checkbox"><label for="spaghettimob">SpaghettiMob</label>
-					      </label>
+					      </label>-->
 					    </div>
 				</section>
 

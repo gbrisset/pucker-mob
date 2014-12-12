@@ -70,9 +70,9 @@
 
 					<div class="row buttons-container">
 						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
-						<button type="button" id="preview" name="preview" class="">PREVIEW</button>
+						<!--<button type="button" id="preview" name="preview" class="">PREVIEW</button>-->
 						<?php if($admin_user){?>
-							<button type="button" id="publish" name="publish" class="">PUBLISH</button>
+							<!--<button type="button" id="publish" name="publish" class="">PUBLISH</button>-->
 						<?php }?>
 					</div>
 					
@@ -241,6 +241,14 @@
 					</div>
 				</div>
 				<?php }?>	
+
+				<div class="row buttons-container">
+						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
+						<!--<button type="button" id="preview" name="preview" class="">PREVIEW</button>-->
+						<?php if($admin_user){?>
+							<!--<button type="button" id="publish" name="publish" class="">PUBLISH</button>-->
+						<?php }?>
+					</div>
 
 				</form>
 				

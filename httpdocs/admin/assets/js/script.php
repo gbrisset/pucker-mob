@@ -942,7 +942,7 @@ $(document).ready(function (){
 	
 
 	//Image Ajax Processor
-	$('#header-logo-image-upload').mpImageUpload({
+	/*$('#header-logo-image-upload').mpImageUpload({
 		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=headerlogo",
 		onComplete : function(resp){
 			if(!resp.hasError){
@@ -1025,7 +1025,7 @@ $(document).ready(function (){
 				$(this).fadeTo(250 , 1);
 			});
 		}
-	});
+	});*/
 
 	/*$('#contributor-wide-image-upload').mpImageUpload({
 		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=contributorwide&imgType=wide&contributorId=" + $(this).find('#contributor_id').val() + '&currentImage=' + $(this).find('#currentImage').val(),
@@ -1056,7 +1056,7 @@ $(document).ready(function (){
 		}
 	});*/
 
-	$('#sponsored-by-image-upload').mpImageUpload({
+	/*$('#sponsored-by-image-upload').mpImageUpload({
 		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=sponsoredBy&articlePageId=" + $(this).find('#c_p_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
 		onComplete : function(resp){
 			var uploadContainer = $('#sponsored-by-image-upload');
@@ -1114,7 +1114,7 @@ $(document).ready(function (){
 				$(this).fadeTo(250 , 1);
 			});
 		}
-	});
+	});*/
 
 	/*$('#article-inline-image-upload').mpImageUpload({
 		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articleinline&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
@@ -1177,7 +1177,7 @@ $(document).ready(function (){
 	});
 
 
-	/*$('#article-preview-image-upload').mpImageUpload({
+	$('#article-preview-image-upload').mpImageUpload({
 		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articlepreview&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
 		onComplete : function(resp){
 			var uploadContainer = $('#article-preview-image-upload');
@@ -1206,7 +1206,7 @@ $(document).ready(function (){
 				$(this).fadeTo(250 , 1);
 			});
 		}
-	});*/
+	});
 
 	$('#article-wide-image-upload').mpImageUpload({
 		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articlewide&imgType=wide&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
@@ -1270,7 +1270,7 @@ $(document).ready(function (){
 				$(this).fadeTo(250 , 1);
 			});
 		}
-	});
+	});*/
 
 
 	$('#contributor_wide_img').mpImageCropUpload({
@@ -1320,47 +1320,9 @@ $(document).ready(function (){
 	    });
 	});
 
-	//	Prep and cook time select/option toggler for the add recipe form
-	elementString = ["prep", "cook"];
 	
-	if($('#article_'+elementString[0]+'_time_hr-s') && $('#article_'+elementString[0]+'_time_hr-s').length){
-		for(var i=0; i < elementString.length; i++){
-
-			//	on the editarticle page, if hours were used in the db, make 0 an option for minutes
-			if ($('#article_'+elementString[i]+'_time_hr-s').find(":selected").val() > 0){
-				var noMinutesOption = $('#article_'+elementString[i]+'_time_min-s option[value=""]');
-				noMinutesOption.attr("value", "0");
-				noMinutesOption.html("0");
-			}
-			
-			//	When the select changes, pass in elementString to the data prop. of the event, and fire the handler...
-			$('#article_'+elementString[i]+'_time_hr-s').change({whichTime : elementString[i]}, function(event){
-				//	Access the event's data property
-				var whichTime = event.data.whichTime;
-
-				//	Get the currently selected option values and text...
-				hoursPrepValue = $(this).find(":selected").val();
-				hoursPrepText = $(this).find(":selected").text();	
-				minPrepValue = $('#article_'+whichTime+'_time_min-s').find(":selected").val();
-				minPrepText = $('#article_'+whichTime+'_time_min-s').find(":selected").text();
-
-				//	If the selected hour value > 0...
-				if (hoursPrepValue > 0){
-					//	Change the value and text of the 0 option to 0
-					var noMinutesOption = $('#article_'+whichTime+'_time_min-s option[value=""]');
-					noMinutesOption.attr("value", "0");
-					noMinutesOption.html("0");
-				} else {
-					//	The selected hours option is 0, update the minute's option 0 to orig values and html
-					var noMinutesOption = $('#article_'+whichTime+'_time_min-s option[value="0"]');
-					noMinutesOption.attr("value", "");
-					noMinutesOption.html("-");			
-				}
-			});
-		}
-	}
 	//	Account Settings Form Toggler
-	var fieldSet = document.getElementById("hidden-field-set");
+	/*var fieldSet = document.getElementById("hidden-field-set");
 	var toggleButton = document.getElementById("field-toggler");
 	var changePasswordHiddenField = document.getElementById("pwd_change");
 	if (toggleButton !== null){
@@ -1382,7 +1344,7 @@ $(document).ready(function (){
 				}		
 			}
 		}
-	}
+	}*/
 
 	//	Handle click of add new list item...
 	var addText = document.getElementById("large-add-text"),
@@ -1433,71 +1395,7 @@ $(document).ready(function (){
 		});
 	}
 
-	/*if($('#upload_form_file')){
-		$('#upload_form_file').on('click', function(event){
-			event.preventDefault();
-			$('#upload_form').click();
-		});
-
-		$('#upload_form').on('change', uploadFiles);
- 
-		// Grab the files and set them to our variable
-		function prepareUpload(event){
-		  files = event.target.files;
-		  console.log(files);
-
-		}
-
-		$('form').on('submit', uploadFiles);
- 
-	function uploadFiles(event){
-	files = event.target.files;
-		  console.log(files);
-	  event.stopPropagation(); // Stop stuff happening
-	  event.preventDefault(); // Totally stop stuff happening
-	 
-	    // START A LOADING SPINNER HERE
-	 
-	    // Create a formdata object and add the files
-		var data = new FormData();
-		$.each(files, function(key, value)
-		{
-			data.append(key, value);
-		});
-	    
-	    $.ajax({
-	        url:  "<?php echo $config['this_admin_url']; ?>billing/upload.php?files",
-	        type: 'POST',
-	        data: data,
-	        cache: false,
-	        dataType: 'json',
-	        processData: false, // Don't process the files
-	        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-	        success: function(data, textStatus, jqXHR)
-	        {
-	        	if(typeof data.error === 'undefined')
-	        	{
-	        		// Success so call function to process the form
-	        		//submitForm(event, data);
-	        		console.log(textStatus);
-	        	}
-	        	else
-	        	{
-	        		// Handle errors here
-	        	//	console.log('ERRORS: ' + data.error);
-	        	//}
-	        },
-	        error: function(jqXHR, textStatus, errorThrown)
-	        {
-	        	// Handle errors here
-	        	console.log('ERRORS: ' + textStatus);
-	        	// STOP LOADING SPINNER
-	        }
-	    });
-	}
-	}*/
-
-
+	
 	if($('.avatar-span')){
 		$('.avatar-span').on('click', function(){
 			var img = $(this).attr('data-info'),
@@ -1511,6 +1409,7 @@ $(document).ready(function (){
 
 	}
 
+	if($('.select-avatar')){
 	$('.select-avatar').on('click', function(event){
 		var img_profile = $('#img-profile'),
 		img_name = $(img_profile).attr('data-info');
@@ -1537,5 +1436,18 @@ $(document).ready(function (){
 
 
 	});
+}
+
+		
+		$('#preview').on('click', function(event){
+			//event.preventDefault();
+
+			//var lightbox = $('#lightbox-preview-cont');
+
+			//$(lightbox).parent().parent().show();
+
+
+		});
+	
 
 });

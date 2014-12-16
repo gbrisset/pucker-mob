@@ -1568,3 +1568,16 @@ strong{ font-weight: bold; font-family: OsloBold; line-height: inherit; }
 #article-content table{ width:100%; margin-top: 0.5rem; margin-bottom: 0.5rem;}
 #article-content table td{ padding: 0.5rem; vertical-align: middle;}
 #article-content table td p{ display: table-cell;}
+
+
+//ADBLADE MOBILE
+@media #{$mobile-only} {
+	div.adblade-dyna.zone-1035 {
+		border-top: 1px solid #ddd !important;
+		border-bottom: 1px solid #ddd !important;
+		padding-bottom: 0.5rem !important;
+		margin-bottom: 0.5rem !important;
+	}
+	div.adblade-dyna div.zone div.advlabel, div.adblade-dyna div.advlabel{ top: 10px !important;}
+	div.adblade-dyna.zone-1035 div.zone div.adbladetitle { margin: 0 !important; padding: 0  !important; }
+}

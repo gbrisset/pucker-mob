@@ -52,6 +52,16 @@ if(!is_null($categoryInfo)){
 <?php }else{ ?>
 	<body id="article" class="mobile">
 <?php } ?>
+		<!-- FACEBOOK COMMENTS BOX -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
 
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php'); ?>
@@ -97,14 +107,17 @@ if(!is_null($categoryInfo)){
 	</div>
 	<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
+	<!-- COMMENTS BOX -->
 	<?php include_once($config['include_path'].'disqus.php'); ?>
+	<hr>
+
 </section>
 </main>
 <?php include_once($config['include_path'].'footer.php');?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
 
 <!-- MODAL BOX POPUP -->
-<?php //include_once($config['include_path'].'modalbox.php'); ?>
+<?php if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
 
 
 </body>
@@ -120,7 +133,16 @@ if(!is_null($categoryInfo)){
 <?php }else{ ?>
 	<body id="article">
 <?php } ?>
-	
+	<!-- FACEBOOK COMMENTS BOX -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
 	<?php include_once($config['include_path'].'header.php');?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 
@@ -140,15 +162,7 @@ if(!is_null($categoryInfo)){
 			  	<?php } ?>
 			<?php } ?>
 
-			<!--
-			POPUP READY
-			<a href="#" data-reveal-id="myModal" class="reveal-link">Click Me For A Modal</a>
-			<div id="myModal" class="reveal-modal" data-reveal>
-			  <h2>Awesome. I have it.</h2>
-			  <p class="lead">Your couch.  It is mine.</p>
-			  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-			  <a class="close-reveal-modal">&#215;</a>
-			</div>-->
+			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
 			<hr>
 			<?php }?>
@@ -177,11 +191,6 @@ if(!is_null($categoryInfo)){
 		
 			<!-- Prev & Next Articles
 			<?php //include_once($config['include_path'].'prevnextarticles.php'); ?> -->
-
-			<!-- LIFT AD 
-			<div id="lift-ad">
-				<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-			</div>-->
 
 			<!-- Media Net
 			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div> -->
@@ -228,9 +237,8 @@ if(!is_null($categoryInfo)){
 			
 			<hr>
 			<?php }?>
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
-			<hr>
+			
+			
 			<!-- ABOUT THE AUTHOR -->
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
@@ -245,7 +253,11 @@ if(!is_null($categoryInfo)){
     <?php include_once($config['include_path'].'bottomscripts.php');?>
 
     <!-- MODAL BOX POPUP -->
-	<?php //include_once($config['include_path'].'modalbox.php'); ?>
+
+	<?php
+		 if($articleInfoObj['article_id'] == 4653 ) include_once($config['include_path'].'modalboxform.php'); 
+		 if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); 
+	?>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>

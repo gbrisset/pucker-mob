@@ -115,6 +115,20 @@ class ManageAdminDashboard{
 		}
 	}
 
+	public function getTopShareWritesRank($month){
+
+		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+		$s = "SELECT contributor_earnings.contributor_id, total_shares, contributor_name 
+			  FROM contributor_earnings 
+			  INNER JOIN article_contributors ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
+			  WHERE month = $month ORDER BY total_shares DESC ";
+
+		$q = $this->performQuery(['queryString' => $s]);
+
+		return $q;
+	}
+
 	public function getTopSharedMoblogsBU(){
 		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, article_contributors.contributor_id,  article_contributors.contributor_name,  article_contributors.contributor_image,  social_media_records.date_updated, articles.creation_date, social_media_records.category, (SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares)) as 'total_shares'  
 			  FROM social_media_records 
@@ -139,7 +153,17 @@ class ManageAdminDashboard{
 		}
 	}
 	
+	public function getLastMonthEarnings($contributor_id, $month){
 
+		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = date('Y');
+
+		$s = "SELECT total_earnings FROM contributor_earnings WHERE contributor_id = $contributor_id AND month = $month AND year = $year ";
+		$q = $this->performQuery(['queryString' => $s]);
+
+		return $q;
+	}
 	public function getAnnouncements(){
 		$s = "SELECT *  
 			  FROM notification_center 

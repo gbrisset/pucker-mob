@@ -85,11 +85,21 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
 		</div>
-
-		
-
+		<?php if($detect->isMobile()){ ?>
+		<div class="row">
+			<hr style="margin: 0 0.9rem !important;">
+			<div class="columns hide-for-print like-us-fb">
+				<p style ="color:#777" class="small-12 padding-top padding-bottom">LIKE US ON FACEBOOK
+					<div class="columns small-12 " style="margin-left:0 !important;">
+						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
+					</div>	 
+				</p>
+			</div>	
+		<hr style="margin: 0 0.9rem !important; border-bottom:1px solid #ddd !important; border-top:none; padding:0.4rem !important;">
+		</div>	 	
+		<?php }?>
 		<!-- Content Article And Next / Prev Articles -->
-		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; $h2style = '';}
+		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -0.2rem;">'; $h2style = '';}
 			  else{ echo '<div class="row">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}
 		?> 
 			<section id="article-caption" class="columns small-12 ">
@@ -107,44 +117,23 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
 				
-				<!-- Social Media Icons -->
-				
-			<?php if(!$detect->isMobile()){?>
-			<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-				
-				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
-				</a> 
-				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
-				</a> 
-				<a class="addthis_button_pinterest_share">
-					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
-				</a>
-				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
-				</a>
-			
-				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
+				<?php if($detect->isMobile()){?>
+				<!-- GOOGLE AD 300x150 -->
+				<div class="hide-for-print row padding padding-top padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
 
-				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">
-				
-					<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- PM Mobile 300x150 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:300px;height:150px"
+				     data-ad-client="ca-pub-8978874786792646"
+				     data-ad-slot="6986976583"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 				</div>
-			</div>
-		<?php }else{?>
-			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
-				<a class="addthis_button_facebook">
-					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
-				</a> 
-				<a class="addthis_button_twitter">
-					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
-				</a> 
-			</div>
-		<?php }?>
-			<hr style="margin: 0.5rem 0 0.4rem !important">	
+				<?php } ?>
+
+				<hr style="margin: 0.5rem 0 0.4rem !important">	
 			<?php 
 				$prevtext = "PREV PAGE";
 				$nexttext = "NEXT PAGE";
@@ -174,26 +163,68 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				</ul>
 				<hr style="margin: 0.7rem 0 0 !important;" class="">
 
+			<!-- Social Media Icons -->
+				
+			<?php if(!$detect->isMobile()){?>
+			<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+				
+				<a class="addthis_button_facebook">
+					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
+				</a> 
+				<a class="addthis_button_twitter">
+					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
+				</a> 
+				<a class="addthis_button_pinterest_share">
+					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
+				</a>
+				<a href="#disqus-container" class="disqus_container">
+					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
+				</a>
+			
+				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
+
+				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
+
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">
+				
+					<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
+				</div>
+			</div>
+		<?php }else{?>
+			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
+				<a class="addthis_button_facebook">
+					<label class="label-social-button-2-mobile" style="padding:1rem;"><i class="fa fa-facebook-square" ></i>SHARE</label>
+				</a> 
+				<a class="addthis_button_twitter">
+					<label class="label-social-button-2-mobile" style="padding:1rem;"><i class="fa fa-twitter"></i>TWEET</label>
+				</a> 
+			</div>
+		<?php }?>
+			<hr>
+
 		<?php if(!$detect->isMobile()){?>
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			
 			<br>
 			<?php if(!$promotedArticle ){?>
 				<div data-str-native-key="53caed05" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			<?php } ?>
 
-			<?php } ?>
+		<?php } ?>
 
-				<?php if ( $detect->isMobile() ) {?>
+		<?php if ( $detect->isMobile() ) {?>
 				<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
 				<div class="hide-for-print">
 					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 					<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 				</div>
-				<br>
+				<!--<br>
 				<div class="hide-for-print row clear" style="margin-bottom: 0.2rem; text-align: center;">
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
 					<!-- PM-Mobile-300x250 Bottom -->
-					<ins class="adsbygoogle"
+					<!--<ins class="adsbygoogle"
 					     style="display:inline-block;width:300px;height:250px"
 					     data-ad-client="ca-pub-8978874786792646"
 					     data-ad-slot="6385741786"></ins>
@@ -201,8 +232,11 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					(adsbygoogle = window.adsbygoogle || []).push({});
 					</script>
 
-				</div>
+				</div>-->
 				<hr style="margin: 1rem 0 1rem !important">
+				<!-- COMMENTS BOX -->
+				<?php include_once($config['include_path'].'disqus.php'); ?>
+
 				<?php }else{ ?>
 				
 				<div class="row padding-top padding-bottom">

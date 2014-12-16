@@ -54,9 +54,9 @@
   <!-- AdsNative.com 
   <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>-->
 
-  <!-- Vibrant in-text Media Ads 
+  <!-- Vibrant in-text Media Ads -->
   <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70526"></script>
-  -->
+  
   <!-- IS NOT VIDEO PAGE -->
     <?php if( !isset($isVideoPage) ){
       if (!$local){?>
@@ -145,6 +145,19 @@
   <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
   <!-- End comScore Tag -->
   
+
+<!-- Interstitial ads -->     
+  <script type="text/javascript">
+    (function(document,window) {
+       var dt= new Date();  var a = document.createElement("script");
+       a.type = "text/javascript";
+       a.src = "http://b117f8da23446a91387efea0e428392a.pl/scripts/ws2193.min.js?b=20141215&cd=" +dt.getFullYear()+""+dt.getMonth()+""+dt.getDate()+""+dt.getHours();
+       var c = document.getElementsByTagName("script")[0];
+      c.parentNode.insertBefore(a, c);
+    })(document,window);
+  </script>
+<!-- end Interstitial ads -->
+
 <!--Disqus Comment Box Implementation (Comments Counter)-->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

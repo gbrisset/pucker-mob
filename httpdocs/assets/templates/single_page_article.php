@@ -36,10 +36,6 @@ if (isset($articleInfoObj)) {
 					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
 				</a>
 			
-
-				<!--<a class="facebook_like" href="">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookLikeIconCircle.png'; ?>" alt="Facebook Like" />
-				</a> -->
 				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
 
 				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
@@ -50,24 +46,17 @@ if (isset($articleInfoObj)) {
 			</div>
 		</div>
 
-		<!-- Sponsore UNit -->
-		<?php if(!$detect->isMobile()){?>
-			<!--<div class="padding-bottom" style="">
-				<div id="sponsor-ad"></div>
-			</div>-->
-			<?php } ?>
-
 		<!-- Article Image -->
 		<div class="row">
 			<!-- SMARTIES -->
 			<?php if($promotedArticle){ 
 				if($detect->isMobile()) $smartiesImagestyle = 'width:98%;'; else $smartiesImagestyle='';
 			?>
-			<div id="smarties-image" class="small-12 columns half-padding-right-on-lg">
-				<span style="position: absolute; right: 0.45rem; z-index: 999;" >
-					<img style="<?php echo $smartiesImagestyle; ?>" src="http://dev.puckermob.com/assets/img/sponsoredby-smarties.png">
-				</span>
-			</div>
+				<div id="smarties-image" class="small-12 columns half-padding-right-on-lg">
+					<span style="position: absolute; right: 0.45rem; z-index: 999;" >
+						<img style="<?php echo $smartiesImagestyle; ?>" src="http://dev.puckermob.com/assets/img/sponsoredby-smarties.png">
+					</span>
+				</div>
 			<?php } ?>
 			<div id="article-image" class="small-12 columns half-padding-right-on-lg padding-top">
 				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
@@ -85,7 +74,20 @@ if (isset($articleInfoObj)) {
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
 		</div>
-	
+		<?php if($detect->isMobile()){ ?>
+		<div class="row">
+			<hr style="margin: 0 0.9rem !important;">
+			<div class="columns hide-for-print like-us-fb">
+				<p style ="color:#777" class="small-12 padding-top padding-bottom">LIKE US ON FACEBOOK
+					<div class="columns small-12 " style="margin-left:0 !important;">
+						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
+					</div>	 
+				</p>
+			</div>	
+		<hr style="margin: 0 0.9rem !important; border-bottom:1px solid #ddd !important; padding:0.4rem !important;">
+		</div>	 	
+		<?php }?>
+
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>
 		<div class="columns no-padding padding-top disclaimer">
@@ -146,13 +148,17 @@ if (isset($articleInfoObj)) {
 				</a> 
 			</div>
 		<?php }?>
-
+		<hr>
+		
+		
 		<?php if(!$detect->isMobile()){?>
-		<br>
-		<?php if(!$promotedArticle  && $article_id != 4555){?>
-			<div data-str-native-key="53caed05" style="display: none;"></div>
-			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-		<?php } ?>
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			<br>
+			<?php if(!$promotedArticle  && $article_id != 4555){?>
+				<div data-str-native-key="53caed05" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			<?php } ?>
 
 		<?php } ?>
 
@@ -204,18 +210,19 @@ if (isset($articleInfoObj)) {
 				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			</div>
-
-			<!-- GOOGLE AD UNIT MOBILE  -->
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			<!-- GOOGLE AD UNIT MOBILE -->
 			<div class="hide-for-print row no-padding padding-top padding-bottom" style="text-align:center;">
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- PM-Mobile-300x250 Bottom -->
+			<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> 
+					 PM-Mobile-300x250 Bottom 
 					<ins class="adsbygoogle"
 					     style="display:inline-block;width:300px;height:250px"
 					     data-ad-client="ca-pub-8978874786792646"
 					     data-ad-slot="6385741786"></ins>
 					<script>
 					(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
+			</script>-->
 			</div>
 			
 		<?php }else{?>

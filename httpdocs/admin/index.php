@@ -91,18 +91,8 @@
 				$writers_rank[$i]['contributor_name'] = $contributorName;
 				$writers_rank[$i]['shares'] = $shares;
 
-/*				if($your_rank == $i ){
-					$writers_rank[$your_rank]['position'] = $position;
-					$writers_rank[$your_rank]['class'] = "your-rank";
-					$writers_rank[$your_rank]['contributor_id'] = $your_id;
-					$writers_rank[$your_rank]['shares'] = $your_shares;
-				} */
 		    }
-		   // if (in_array($contributor_id, $ids)) {
-			//    var_dump(in_array("1110", $ids), $ids);
-			//}
-		    //var_dump((in_array('1110', $ids)) ;
-		    var_dump($is_in);
+
 			if( $is_in === 0 ){
 				$writers_rank[10]['position'] = $your_rank;
 				$writers_rank[10]['class'] = "your-rank";
@@ -113,7 +103,6 @@
 		}
 	
 	}
-	var_dump($contributor_id);
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->

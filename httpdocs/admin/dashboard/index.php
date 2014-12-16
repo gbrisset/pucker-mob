@@ -55,6 +55,22 @@
 
 	$total = 0;
 
+	$ManageDashboard = new ManageAdminDashboard( $config );
+
+	//WARNINGS
+	$warnings = $ManageDashboard->getWarningsMessages(); 
+
+	//LAST MONTH EARNINGS
+	$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1);
+	$last_month_earnings = 0;
+	if($last_month_earnings_info ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
+		
+	//TOTAL EARNINGS TO DATE
+	$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
+	$total_earnings_to_date = 0;
+	if($total_earnings_to_date_info ) $total_earnings_to_date = $total_earnings_to_date_info['total_earnings'];
+
+
 ?>
 <!DOCTYPE html>
 
@@ -81,7 +97,33 @@
 		<div id="content" class="columns small-9 large-11">
 			
 			<section id="articles" class="padding-top">
-				<!--<h2 class="left small-7">Contributor: <?php echo $contributor_name ; ?></h2>-->
+				<!-- WARNINGS BOX -->
+			<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
+			<div id="warning-box" class="warning-box  mobile-12 small-12 " style="min-height:6.5rem;">
+				<div class="mobile-2 small-2 left">
+					<i class="fa fa-5x fa-exclamation-triangle"></i>
+				</div>
+				<div class="mobile-10 small-10 inline p-cont">
+					<p>
+						<?php echo $warnings[0]['notification_msg']; ?>
+					</p>
+				</div>
+			</div>
+			<?php }?>
+			<div id="earnings-info" class="earnings-info mobile-12 small-12">
+				<div class="total-earnings left">
+					<h3>Month to Date</h3>
+					<span class="earnings-value"><?php echo '$'.$last_month_earnings; ?></span>
+				</div>
+				<div class="last-month-earnings left">
+					<h3>Last Month's earnings</h3>
+					<span class="earnings-value"><?php echo '$'.$last_month_earnings; ?></span>
+				</div>
+				<div class="total-earnings left">
+					<h3>Total Earnings to Date</h3>
+					<span class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></span>
+				</div>
+			</div>
 				<div class="dd-month margin-top">
 					<label>SELECT MONTH: </label>
 					<form id="month-form" method="post">

@@ -63,12 +63,19 @@
 	//LAST MONTH EARNINGS
 	$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1);
 	$last_month_earnings = 0;
-	if($last_month_earnings_info ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
+	if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
 		
 	//TOTAL EARNINGS TO DATE
-	$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
+	$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0);
 	$total_earnings_to_date = 0;
-	if($total_earnings_to_date_info ) $total_earnings_to_date = $total_earnings_to_date_info['total_earnings'];
+	if($total_earnings_to_date_info && $total_earnings_to_date_info['total_earnings'] && !empty($total_earnings_to_date_info['total_earnings']) ) $total_earnings_to_date = $last_month_earnings_info['total_earnings'];
+	//if($total_earnings_to_date_info ) $total_earnings_to_date = $total_earnings_to_date_info['total_earnings'];
+
+	//THIS MONTH EARNINGS
+	$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
+	$this_month_earnigs = 0;
+	if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
+	//if($this_month_earnigs_info ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
 
 
 ?>
@@ -113,7 +120,7 @@
 			<div id="earnings-info" class="earnings-info mobile-12 small-12">
 				<div class="total-earnings left">
 					<h3>Month to Date</h3>
-					<span class="earnings-value"><?php echo '$'.$last_month_earnings; ?></span>
+					<span class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></span>
 				</div>
 				<div class="last-month-earnings left">
 					<h3>Last Month's earnings</h3>
@@ -268,16 +275,16 @@
 
 			<section>
 				<p class="notes">
-					*Please note: In cases where your article shows a lower flat rate than what was originally quoted, 
+					Please note: In cases where your article shows a lower flat rate than what was originally quoted, 
 				your article has been placed in multiple categories, and the flat rate payment fee has simply 
 				been divided among them.
 				</p>
 			</section>
 			<section>
-				<p class="notes">*All payments will be made via PayPal the 15th of the month.</p>
+				<p class="notes">All payments will be made via PayPal the 15th of the month.</p>
 			</section>
 			<section>
-				<p class="time">*Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>
+				<p class="time">Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>
 			</section>
 		</div>
 	</main>

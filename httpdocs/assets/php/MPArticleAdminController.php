@@ -394,7 +394,7 @@ class MPArticleAdminController extends MPArticle{
 		unset($user_post['contributor_facebook_link-s']);
 		unset($user_post['contributor_blog_link-s']);
 
-		//unset($user_post['contributor_bio-nf']);
+		unset($user_post['contributor_bio-nf']);
 		unset($user_post['contributor_id']);
 
 		$result = $this->updateSiteObject(array(
@@ -409,8 +409,8 @@ class MPArticleAdminController extends MPArticle{
 		$params[':contributor_twitter_handle'] = filter_var($params[':contributor_twitter_handle'], FILTER_SANITIZE_EMAIL);
 		$params[':contributor_facebook_link'] = filter_var($params[':contributor_facebook_link'], FILTER_SANITIZE_URL);
 		$params[':contributor_blog_link'] = filter_var($params[':contributor_blog_link'], FILTER_SANITIZE_URL);
-		//$params[':contributor_bio'] = filter_var($params[':contributor_bio'], FILTER_SANITIZE_STRING);
-
+		$params[':contributor_bio'] = filter_var($params[':contributor_bio'], FILTER_SANITIZE_STRING);
+//contributor_bio = '".$params[':contributor_bio']."'
 		if ($result){
 			$result_cont = $this->updateSiteObject(array(
 				'updateString' => "UPDATE article_contributors 
@@ -418,7 +418,8 @@ class MPArticleAdminController extends MPArticle{
 									contributor_location = '".$params[':contributor_location']."',
 									contributor_twitter_handle = '".$params[':contributor_twitter_handle']."', 
 									contributor_facebook_link = '".$params[':contributor_facebook_link']."', 
-									contributor_blog_link = '".$params[':contributor_blog_link']."'
+									contributor_blog_link = '".$params[':contributor_blog_link']."',
+									contributor_bio = '".$params[':contributor_bio']."'
 									
 									WHERE contributor_email_address = '".$this->user->data['user_email']."' 
 									AND contributor_id = ".$post['c_i'],

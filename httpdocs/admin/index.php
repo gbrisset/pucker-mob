@@ -43,16 +43,25 @@
 		//LAST MONTH EARNINGS
 		$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1);
 		$last_month_earnings = 0;
-		if($last_month_earnings_info ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
-		
+		if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
+			
 		//TOTAL EARNINGS TO DATE
-		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
+		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0);
 		$total_earnings_to_date = 0;
-		if($total_earnings_to_date_info ) $total_earnings_to_date = $total_earnings_to_date_info['total_earnings'];
+		if($total_earnings_to_date_info && $total_earnings_to_date_info['total_earnings'] && !empty($total_earnings_to_date_info['total_earnings']) ) $total_earnings_to_date = $last_month_earnings_info['total_earnings'];
+		//if($total_earnings_to_date_info ) $total_earnings_to_date = $total_earnings_to_date_info['total_earnings'];
+
+		//THIS MONTH EARNINGS
+		$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
+		$this_month_earnigs = 0;
+		if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
+		//if($this_month_earnigs_info ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
+
+
 
 		//Top Shared Writers
 		
-		$writers_arr = $ManageDashboard->getTopShareWritesRank($current_month);
+		$writers_arr = $ManageDashboard->getTopShareWritesRank($current_month, $total_earnings_to_date);
 		$index = 0;
 		if($writers_arr){
 			$your_rank = 0;
@@ -159,7 +168,7 @@
 					<div class="month-container">
 						<form id="month-select" method="post">
 					  	<select name='month' onchange = "change()">
-					  		<option value='0'>Select Month</option>
+					  		<!--<option value='0'>Select Month</option>-->
 						  	<?php 
 						  	$index = 0;
 						  	if($current_year == 2014) $index = 10; 
@@ -167,7 +176,7 @@
 						  		$dateObj   = DateTime::createFromFormat('!m', $m);
 						  		$monthName = $dateObj->format('F');
 						  		if($month == $m) $selected  = 'selected'; else $selected = '';
-						  		if($m == $current_month)  $monthName = "THIS MONTH";
+						  		if($m == $current_month)  $monthName = "This Month";
 						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName.'</option>';
 							} ?>
 						</select>
@@ -212,7 +221,7 @@
 						<ul>
 							<li><a href="#question?">Question?</a></li>
 							<li><a href="#commnets?">Comments?</a></li>
-							<li><a href="#ContactUs">Contact Us!</a></li>
+							<li><a href="http://www.puckermob.com/admin/contact/">Contact Us!</a></li>
 						</ul>
 					</div>
 				</section>
@@ -229,11 +238,11 @@
 					</div>
 					<?php if($writers_rank){?>
 					<div class="most-shared-writers">
-						<h3>Top 10 most shared writes this month ( + your rank )</h3>
+						<h3>Top 10 most shared writers this month ( + your rank )</h3>
 						<div class="rank-writers margin-top">
 							<ul>
 								<?php 
-								foreach ($writers_rank as $writer){ //var_dump( $writer); ?>
+								foreach ($writers_rank as $writer){  ?>
 								<li class="<?php echo $writer['class']; ?>" id="contributor-<?php echo $writer['contributor_id'] ?>">
 									<p class="writer-name"><span class="rank-position"><?php echo $writer['position'] ?>.</span><?php echo $writer['contributor_name'] ?></p>
 									<p class="monthly-shares right"><?php echo $writer['shares'] ?></p>

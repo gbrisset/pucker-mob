@@ -18,7 +18,7 @@
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
 	<main id="main-cont" class="row panel sidebar-on-right background-blue" role="main">
-			<section id="register-cont" class="admin-logout-content admin-box mobile-12 small-12 large-4 auto-margin">
+			<section id="register-cont" class="admin-logout-content admin-box mobile-12 small-12 large-9 auto-margin">
 				<?php if(isset($registrationStatus) && $registrationStatus['hasError'] == false){ ?>
 					<h1>Almost Done!</h1>
 					<div id="register-form-cont" class="admin-form-cont success-msg">
@@ -32,8 +32,17 @@
 						</div>
 					</div>
 				<?php }else{ ?>
-				<h1>MOBlog</h1>
-				<p class="announcement-text">Write your own article and start making money through sharing</p>
+				<section class="columns small-6">
+					<h1 class="h1-smaller">MOBlog</h1>
+					<div class="message-registration">
+						<p class="right"><span class="large-registration-text light-blue">Like to Write?</span><span class="medium-registration-text light-blue">Earn money when you write for us!<span></p>
+						<img class="reg-arrow" src="http://images.puckermob.com/articlesites/sharedimages/registration_arrow.jpg" alt="arrow">
+						<span class="small-registration-text light-blue margin-top">Find out how</span>
+						<span class="small-registration-text light-blue">and get started today!</span>
+					</div>
+				</section>
+				
+   				<section class="columns small-6">
    				<div id="register-form-cont" class="admin-form-cont">
 					<form id="register-form" name="register-form" action="<?php echo $config['this_admin_url']; ?>register/" method="POST">
 					<?php if(isset($registrationStatus) && $registrationStatus['hasError'] == true){ ?>
@@ -42,7 +51,12 @@
 					</p>
 					<?php } ?>
 					
-					
+					<div class="row">
+						<div class="large-12 columns">
+						<h3>Register Now &amp; Get Started!</h3>
+						</div>
+					</div>
+				<div class="input-wrapper">	
 					<div class="row">
 						<div class="large-12 columns">
 							<input type="text" id="user_name-s" name="user_name-s" value="<?php if(isset($_POST['user_name-s'])) echo $_POST['user_name-s']; ?>" placeholder="user name" required <?php if(isset($registrationStatus) && isset($registrationStatus['field']) && $registrationStatus['field'] == 'user_name') echo 'autofocus'; ?> />
@@ -85,17 +99,21 @@
 							I have read, understand and agree to the <a href="<?php echo $config['this_url']; ?>policy.php" target="_blank"> MOBlog terms and conditions</a></label>
 						</div>
 					</div>
-					<div class="row margin-top">
+				</div>
+					<div class="row">
 						    <div class="large-12 columns">
 								<?php if(isset($loginStatus)){ ?><p class="<?php echo ($loginStatus['hasError'] == true) ? 'error' : 'success'; ?>"><?php echo $loginStatus['message']; ?></p><?php } ?>
-								<a href="<?php echo $config['this_admin_url']; ?>login/" class="right a-gray-link">login</a>
-								<button type="submit" id="submit" name="submit" class="button left a-green-link">Register</button>
+								<button type="submit" id="submit" name="submit" class="button left a-green-link small-12 ">Register</button>
 
 							</div>
 						</div>
 					
 					</form>
+					
+
 				</div>
+				<p class="login-link">Already registered?<a href="<?php echo $config['this_admin_url']; ?>login/">Click here to log in</a></p>
+				</section>
 				<?php }?>
 			</section>
 	</main>

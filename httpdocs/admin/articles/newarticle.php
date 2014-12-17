@@ -106,21 +106,13 @@
 					<?php }?>
 
 
-					<?php if($admin_user && false){?>
+					<?php if($admin_user){?>
 					<div class="row">
 					    <div class="columns">
 					      	<label>Article SEO Title<span>*</span> :
 								<input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="Please enter the article's seo-formatted title here." value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
 					 		</label>
-					    
-							<div class="tooltip">
-								<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-								<div class="tooltip-info">
-									<p>This is the article's title that will be used in URLs throughout the network.</p>
-								</div>
-							</div>
-						</div>
+					    </div>
 					</div>	
 					<?php }?>
 
@@ -244,11 +236,7 @@
 
 				<div class="row buttons-container">
 						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
-						<!--<button type="button" id="preview" name="preview" class="">PREVIEW</button>-->
-						<?php if($admin_user){?>
-							<!--<button type="button" id="publish" name="publish" class="">PUBLISH</button>-->
-						<?php }?>
-					</div>
+				</div>
 
 				</form>
 				

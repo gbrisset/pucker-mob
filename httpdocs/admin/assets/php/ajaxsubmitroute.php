@@ -80,9 +80,9 @@
 				echo json_encode($adminController->updateUserPassword($_POST['formData']));
 				break;
 
-			case "account-bio-form":
-				echo json_encode($adminController->updateBioInfo($_POST['formData']));
-				break;
+			//case "account-bio-form":
+			//	echo json_encode($adminController->updateBioInfo($_POST['formData']));
+			//	break;
 
 			/* "Edit Category" Page */
 			case "category-info-form":

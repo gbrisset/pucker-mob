@@ -502,7 +502,7 @@ form .gradient-button.red-gradient {background: -moz-linear-gradient(center top 
 #dashboard table tr.even, #dashboard table tr.alt, #dashboard table tr:nth-of-type(even){ background: none;}
 
 #month-form{display:inline;}
-#month-form select{width:12rem;text-transform:uppercase;text-align:center;font-size:1rem;border:1px solid #000;}
+#month-form select{width:12rem;text-transform:capitalize;text-align:center;font-size:1rem;border:1px solid #000;}
 .close{ background: #000; right: -0.5rem; top: -0.5rem;}
 .close:hover{ color: #fff;}
 #popup-content div{  background: #fff; padding: 1rem; -web-kit-border-radius: 5px; -moz-border-radius:5px; border-radius: 5px;}
@@ -514,10 +514,10 @@ select{background-position: 96% center;}
 #article-info, #articles{border:none !important; border-top: 1px solid #ddd !important;}
 .section-bar .right p img{width:1.5rem;}
 #month-form {display: inline-block;}
-#month-form select{ text-transform: uppercase; border:none; height: 1.95rem; margin: 0; position: Relative; top: 0.2rem; left: -0.7rem; padding-left: 1.5rem; background-size: 5rem; background-position: 120% center;}
+#month-form select{ text-transform: capitalize; border:none; height: 1.95rem; margin: 0; position: Relative; top: 0.2rem; left: -0.7rem; padding-left: 1.5rem; background-size: 5rem; background-position: 120% center;}
 
 .dd-month{display:inline-block; text-transform:uppercase;}
-.dd-month label{ display: inline-block; background: #747371; color: #fff;  font-size: 1rem; padding: 0.2rem 1rem; position: relative; top: 0.1rem;}
+.dd-month label{ display: inline-block; background: #747371; color: #fff;  font-size: 1rem; padding: 0.24rem 1rem; position: relative; top: 0.1rem;}
 #img-container{padding:0;}
 #topbar-container-admin{ margin-top: -0.34rem; }
 
@@ -652,8 +652,25 @@ input{text-transform: inherit !important; }
 #profile-inline-settings .image-wrapper{ padding-top: 0;}
 
 
+//REGISTER PAGE
+#register-form-cont{ background: #fff; padding:1rem;}
+.input-wrapper{border:1px solid #ddd; margin-bottom:0.5rem;}
+.message-registration span{ text-transform: uppercase; text-align: right; float: right; width: 60%; line-height: 1; font-family: OsloBold; }
+.large-registration-text{ font-size: 4rem;  }
+.medium-registration-text{ font-size: 1.7rem;}
+.small-registration-text{ font-size:0.8rem;}
+.light-blue{ color: #C8ECFC; }
+.reg-arrow{ width: 64%; float: right; margin-top: -18px; margin-right: -30px; }
+.h1-smaller{ font-size: 2rem !important;}
+#register-cont h1{ position:absolute;}
+#register-form  input{ padding-top: 1.2rem !important; padding-bottom: 1.2rem !important;}
+.login-link{ color: #fff !important; margin-top: 0.5rem; text-align:center;}
+.login-link a{ color: #fff; margin-left: 0.5rem;}
+
 .earnings-info{margin-top: 2rem; float:left; margin-bottom: 1.5rem;}
 .earnings-info div {display: inline-block;}
 .earnings-info h3{ font-size:1.2rem; text-transform: uppercase; color:#444;}
 .earnings-info .earnings-value{font-size: 3.3rem; font-family: OsloBold; color: #555; }
 .earnings-info .last-month-earnings{border-left: 1px solid #555; border-right: 1px solid #555; margin: 0 1rem; padding: 0 1rem;}
+
+.dropzone .dz-preview .dz-error-message, .dropzone-previews .dz-preview .dz-error-message{top: 40% !important; left: 20% !important; font-size: 1.5rem;}

@@ -54,8 +54,8 @@
 
 				<?php if(!$billingInfo['w2_live'] ){?>
 				<div class="skip-step">
-						<p class="small-12"><a href="" class="a-buttons">SKIP THIS STEP</a>
-						NOTE: you must return to this page later and complete billing info in order to be paid.</p>
+						<!--<p class="small-12"><a href="" class="a-buttons">SKIP THIS STEP</a>-->
+						<p class="small-12">NOTE: You must complete billing information in order to be paid</p>
 				</div>
 				<?php }?>
 				<section class="billing-cont">

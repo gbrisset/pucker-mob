@@ -296,7 +296,7 @@ class Dashboard{
 		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_status, 
 		a.article_type, a.creation_date,  article_rates.rate_by_article, article_rates.rate_by_share, 
 		facebook_shares, twitter_shares, pinterest_shares, google_shares, linkedin_shares, delicious_shares, 
-		stumbleupon_shares, month, year, date_updated, category
+		stumbleupon_shares, month, year, social_media_records.date_updated, category
 		FROM articles as a
 		INNER JOIN ( article_contributors, article_contributor_articles, 
 				article_rates, social_media_records ) 

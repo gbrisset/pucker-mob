@@ -222,6 +222,13 @@
 							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="your location" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
 						</div>
 					</div>
+					
+					<div class="row">
+						<div class="columns mobile-12 small-12 large-12">
+							<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($userInfo['contributor_bio'])) echo $userInfo['contributor_bio']; ?></textarea>
+						</div>
+					</div>
+					
 					<div class="row buttons-container">
 						<div class="columns mobile-12 small-12 large-10">
 							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
@@ -278,7 +285,7 @@
 				</section>
 
 				<!-- BRIOGRAPHY -->
-				<section class="small-12 margin-top  padding-bottom">
+				<!--<section class="small-12 margin-top  padding-bottom">
 					<h2>Biography</h2>
 					<form class="ajax-submit-form clear" id="account-bio-form" name="account-bio-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -303,7 +310,7 @@
 					</div>
 
 					</form>
-				</section>
+				</section>-->
 				
 				</div>
 			</section>

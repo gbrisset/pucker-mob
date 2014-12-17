@@ -238,13 +238,13 @@
 			</section>
 			<section>
 				<p class="notes">
-					*Please note: In cases where your article shows a lower flat rate than what was originally quoted, 
+					Please note: In cases where your article shows a lower flat rate than what was originally quoted, 
 				your article has been placed in multiple categories, and the flat rate payment fee has simply 
 				been divided among them.
 				</p>
 			</section>
 			<section>
-				<p class="notes">*All payments will be made via PayPal the 15th of the month.</p>
+				<p class="notes">All payments will be made via PayPal the 15th of the month.</p>
 			</section>
 			<section>
 				<p class="time">Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>

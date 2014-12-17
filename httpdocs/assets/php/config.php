@@ -55,8 +55,8 @@ if($local)
 		'this_admin_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs/admin/',
 	//	'syndication_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-syndication/',
 		'shared_url' => 'http://'.$localIp.':8888/'.$directory.'/',
-		'image_url' => 'http://images.puckermob.com/',//'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',
-		
+		'image_url' => 'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',
+		//'http://images.puckermob.com/',//
 		//'main_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-html/',
 		//'category_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-categories/',
 		//'pod_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-pods/',

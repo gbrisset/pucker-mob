@@ -85,17 +85,17 @@
 				</form>
 				</section>
 				
-				<section class="from-other-sites-filter ">
+				 <!--<section class="from-other-sites-filter ">
 					    <div class="columns">
-					     <!-- <label>Show Articles From:
+					     <label>Show Articles From:
 					      <input style="margin-left: 2rem;" id="simpledish" disabled type="checkbox"><label for="simpledish">SimpleDish</label>
 						  <input id="puckermob" checked disabled type="checkbox"><label for="puckermob">PuckerMob</label>
 					      <input id="spaghettimob" disabled type="checkbox"><label for="spaghettimob">SpaghettiMob</label>
-					      </label>-->
+					      </label>
 					    </div>
-				</section>
+				</section>-->
 
-				<section id="articles-list" class="">
+				<section id="articles-list" class="margin-top">
 					<!--<section class="section-bar left  border-bottom mobile-12 small-12">
 					
 					<div id="right" class="small-9 padding-top right">
@@ -165,7 +165,7 @@
 								<tr id="<?php echo 'article-'.$article_id; ?>">
 								  	<td class="mobile-12 small-12">
 								  		<div class="article-image mobile-1 small-1">
-											<a href="'.$articleUrl.'">
+											<a href="<?php echo $articleUrl; ?>">
 												<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 											</a>
 										</div>

@@ -26,7 +26,7 @@
 
 	//	Set the paths to the image
 	$contImageDir =  $config['image_upload_dir'].'articlesites/contributors_redesign/'.$image;
-	$contImageUrl =  $config['image_url'].'articlesites/contributors_redesign/'.$image; 
+	$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$image; 
 	$contImageExists = false;
 
 	//	Verify if the usr has ever SELECTED an image
@@ -52,7 +52,7 @@
 						'desHeight' => 143,
 					]), ['arrayId' => 'contributor-wide-image-upload-form']);
 					$userInfo = $adminController->user->getUserInfo();
-					$contImageUrl =  $config['image_url'].'articlesites/contributors_redesign/'.$userInfo['contributor_image']; ;
+					$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$userInfo['contributor_image']; ;
 					break;
 				//case isset($_POST['user_email-e']):
                  //   $updateStatus = $adminController->updateUserInfo($_POST);
@@ -97,8 +97,8 @@
 				<h2>Profile Photo</h2>
 				<div class="small-12 image-profile-box">
 					<img id="img-profile" class="left" src="<?php echo $contImageUrl; ?>" alt="User Image" />
-					<div class="small-9 left image-wrapper">
-						<div class="small-6">
+					<div class="small-10 left image-wrapper">
+						<div class="small-6 left div-images">
 							<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $userInfo['contributor_id']; ?>" />
 							<a href="#" class="b-upload select-avatar small-12" id="select-avatar">Save Avatar</a>
 							<div class="small-12 avatars">
@@ -109,10 +109,10 @@
 								<?php }?>
 							</div>
 						</div>
-						<div style="width:4.2rem;">
-							<span class="and">or</span>
+						<div style="width:4.2rem;" class="left">
+							<span class="and ">or</span>
 						</div>
-						<div class="small-6">
+						<div class="small-6 left div-file-upload">
 							<a href="#" class="b-upload small-12 upload-photo" name="image-file-link" id="image-file-link">Upload Photo</a>
 							<input type="file" class="hidden" id="upload_form" name="upload_form" />
 								<div class="small-12 photo-instructions">

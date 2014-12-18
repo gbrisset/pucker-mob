@@ -48,9 +48,12 @@
 		//TOTAL EARNINGS TO DATE
 		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0);
 		$total_earnings_to_date = 0;
-		if($total_earnings_to_date_info && $total_earnings_to_date_info['total_earnings'] && !empty($total_earnings_to_date_info['total_earnings']) ) $total_earnings_to_date = $last_month_earnings_info['total_earnings'];
-		//if($total_earnings_to_date_info ) $total_earnings_to_date = $total_earnings_to_date_info['total_earnings'];
-
+		if($total_earnings_to_date_info ){
+			foreach($total_earnings_to_date_info as $value){
+				$total_earnings_to_date += $value['total_earnings'];
+			}
+		} 
+	
 		//THIS MONTH EARNINGS
 		$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
 		$this_month_earnigs = 0;
@@ -165,7 +168,7 @@
 				<?php if(isset($top_shares_articles) && $top_shares_articles){?>
 				<section id="top-shares" class="top-shares small-8 left">
 					<h2>Top 10 MOST Shared Moblogs</h2>
-					<div class="month-container">
+					<div class="month-container small-styled-select">
 						<form id="month-select" method="post">
 					  	<select name='month' onchange = "change()">
 					  		<!--<option value='0'>Select Month</option>-->

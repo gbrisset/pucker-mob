@@ -90,13 +90,15 @@
 					?>
 					<div class="row">
 					    <div class="columns">
-							<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
-								<option value="0">SELECT CATEGORY</option>
-								<?php
-								foreach($allCategories as $category){ ?>
-								<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>"><?php echo $category['cat_name']; ?></option>
-								<?php }?>
-							</select>
+					    	<div class="small-styled-select left">
+								<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
+									<option value="0">Select Category</option>
+									<?php
+									foreach($allCategories as $category){ ?>
+									<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>"><?php echo $category['cat_name']; ?></option>
+									<?php }?>
+								</select>
+							</div>
 							<div class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
 								<label>Choose one category that best specifies the genre of your article.</label>
 								<label>This is where your post will reside on the site.</label>
@@ -109,10 +111,8 @@
 					<?php if($admin_user){?>
 					<div class="row">
 					    <div class="columns">
-					      	<label>Article SEO Title<span>*</span> :
-								<input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="Please enter the article's seo-formatted title here." value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
-					 		</label>
-					    </div>
+					      <input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+					 	</div>
 					</div>	
 					<?php }?>
 
@@ -120,9 +120,9 @@
 					<div class="row">
 					    <div class="columns">
 					    	<div class="small-12 label-wrapper">
-								<label>Help readers find your article! Enter up to 10 keywords that best describe your article, separated by commas.</label>
+								<label class="padding-top">Help readers find your article! Enter up to 10 keywords that best describe your article, separated by commas.</label>
 							</div>
-					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter Keywords" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
+					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="enter keywords" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
 						</div>
 					</div>	
 					
@@ -136,7 +136,7 @@
 					<!-- BODY -->
 					<div class="row padding-bottom">
 					    <div class="columns">
-							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="START WRITING ARTICLE HERE." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
+							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="start writing article here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
 						</div>
 					</div>
 
@@ -162,8 +162,9 @@
 					<?php if($admin_user){?>
 					<div class="row">
 					    <div class="columns">
+					    	<div class="small-styled-select">
 							<select name="page_list_id-nf" id="page_list_id-nf" class="small-12 large-4 left">
-								<option value="0">SELECT PAGE LIST</option>
+								<option value="0">Select Page List</option>
 								<?php			
 									$page_lists = PageList::get();
 									foreach($page_lists as $page_list){
@@ -173,6 +174,7 @@
 									}
 								?>
 							</select>
+						</div>
 						</div>
 					</div>
 					<?php }?>
@@ -184,8 +186,9 @@
 					?>
 					<div class="row">
 					    <div class="columns">
+					    	<div class="small-styled-select margin-top margin-bottom ">
 							<select name="article_contributor" id="article_contributor" class="small-12 large-5 left">
-								<option value="-1">SELECT CONTRIBUTORS</option>
+								<option value="-1">Select Contributors</option>
 								<?php
 									foreach($allContributors as $contributorInfo){
 										$option = '<option value="'.$contributorInfo['contributor_id'].'"';
@@ -195,6 +198,7 @@
 									}
 								?>
 							</select>
+						</div>
 						</div>
 					</div>
 					<?php } 
@@ -216,7 +220,7 @@
 				<!-- COMMENTS -->
 				<div class="row">
 					<div class="columns">
-					   	<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="enter Additional Comments"  value="<?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
+					   	<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="enter additional comments"  value="<?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
 					</div>
 				</div>
 

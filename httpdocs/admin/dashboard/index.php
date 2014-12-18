@@ -66,10 +66,13 @@
 	if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
 		
 	//TOTAL EARNINGS TO DATE
-	$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0);
-	$total_earnings_to_date = 0;
-	if($total_earnings_to_date_info && $total_earnings_to_date_info['total_earnings'] && !empty($total_earnings_to_date_info['total_earnings']) ) $total_earnings_to_date = $last_month_earnings_info['total_earnings'];
-	//if($total_earnings_to_date_info ) $total_earnings_to_date = $total_earnings_to_date_info['total_earnings'];
+		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0);
+		$total_earnings_to_date = 0;
+		if($total_earnings_to_date_info ){
+			foreach($total_earnings_to_date_info as $value){
+				$total_earnings_to_date += $value['total_earnings'];
+			}
+		} 
 
 	//THIS MONTH EARNINGS
 	$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
@@ -133,7 +136,8 @@
 			</div>
 				<div class="dd-month margin-top">
 					<label>SELECT MONTH: </label>
-					<form id="month-form" method="post">
+					<form id="month-form" method="post" class="small-styled-select xsmall-styled-select">
+						
 					  	<select name='month' onchange = "change()">
 					  		<option value='0'>Select Month</option>
 						  	<?php 
@@ -146,6 +150,7 @@
 						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName." ".$current_year.'</option>';
 							} ?>
 						</select>
+					
 					</form>
 					
 				</div>

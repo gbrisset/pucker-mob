@@ -220,6 +220,7 @@
 					?>
 					<div class="row">
 					    <div class="columns">
+					    	<div class="small-styled-select left ">
 							<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
 								<option value="0">SELECT CATEGORY</option>
 								<?php 
@@ -230,6 +231,7 @@
 								<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>" <?php echo $selected; ?>><?php echo $category['cat_name']; ?></option>
 								<?php }?>
 							</select>
+							</div>
 							<div class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
 								<label>Choose one category that best specifies the genre of your article.</label>
 								<label>This is where your post will reside on the site.</label>
@@ -242,7 +244,7 @@
 						<div class="row">
 					    <div class="columns">
 						<label for="article_seo_title-s" class="uppercase">SEO Title</label>
-						<input type="text"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Please enter the article's seo-formatted title here." value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+						<input type="text"  name="article_seo_title-s" id="article_seo_title-s" placeholder="enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
 
 					</div></div>
 					<?php }?>
@@ -251,22 +253,14 @@
 					<div class="row">
 					    <div class="columns">
 						<label for="article_tags-s" class="uppercase">Keywords</label>
-						<input type="text" name="article_tags-s" id="article_tags-s" placeholder="ARTICLE KEYWORDS" value="<?php if(isset($article['article_tags'])) echo $article['article_tags']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />
-
-						<div class="tooltip">
-							<img src="<?php echo $config['image_url'].'articlesites/sharedimages/admin/'; ?>tooltip.png" alt="Tooltip Icon">
-
-							<div class="tooltip-info">
-								<p>Please enter keywords that will help people search for your article. Keywords should include terms that are relevant to your article like ingredients, categories and descriptive nouns.</p>
-							</div>
-						</div>
+						<input type="text" name="article_tags-s" id="article_tags-s" placeholder="enter keywords" value="<?php if(isset($article['article_tags'])) echo $article['article_tags']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />
 					</div></div>
 					
 					<!-- DESCRIPTION -->
 					<div class="row">
 					    <div class="columns">
 						<label for="article_desc-s" class="uppercase">Description </label>
-							<input type="text" name="article_desc-s" id="article_desc-s" placeholder="ex: In cold weather, there’s no better way to warm up than with a comforting bowl of soup. This hearty soup is loaded with ..." maxlegth="150" value="<?php if(isset($article['article_desc'])) echo $article['article_desc']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
+							<input type="text" name="article_desc-s" id="article_desc-s" placeholder="enter description" maxlegth="150" value="<?php if(isset($article['article_desc'])) echo $article['article_desc']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
 						
 						</div>
 					</div>
@@ -274,9 +268,7 @@
 					<!-- BODY -->
 					<div class="row padding-bottom">
 					    <div class="columns">
-						<!--<label for="article_body-nf">Article Body:-->
-							<textarea class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
-						<!--</label>-->
+							<textarea class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="start writing article here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
 						</div>
 					</div>
 				
@@ -307,6 +299,7 @@
 					?>
 					<div class="row <?php if($content_provider) echo 'hide'; ?>">
 					    <div class="columns mobile-12 small-7">
+					    	<div class="small-styled-select margin-top ">
 							<label for="article_status" class="uppercase">Article Status</label>
 							<select name="article_status" id="article_status" class = "status-select small-6">
 							<?php
@@ -327,6 +320,7 @@
 							?>
 							</select>
 						</div>
+						</div>
 					
 					</div>
 					<?php }?>
@@ -335,6 +329,7 @@
 					<?php if($admin_user){?>				
 					<div class="row">
 					    <div class="columns">
+					    <div class="small-styled-select margin-top">
 						<label for="page_list" class="uppercase">Page List </label>
 						<select name="page_list_id-nf" id="page_list_id-nf" class="">
 							<option value="0">None</option>
@@ -347,6 +342,7 @@
 								}
 							?>
 						</select>
+					</div>
 					</div></div>
 
 					<?php }?>
@@ -362,6 +358,7 @@
 					?>
 						<div class="row">
 					    <div class="columns">
+					    	<div class="small-styled-select margin-top margin-bottom ">
 							<label for="article_contributor" class="uppercase">Article Contributor</label>
 							<select name="article_contributor" id="article_contributor">
 								<option value="-1">None</option>
@@ -375,7 +372,7 @@
 										echo $option;
 									}
 								?>
-							</select>
+							</select></div>
 						</div></div>
 
 					<?php }

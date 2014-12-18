@@ -51,8 +51,9 @@
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 
 						<div class="center small-10 left">
-						<label class="small-7 inline left">Date: 
-						
+							
+						<label class="small-7 inline left"> 
+						<div class="small-styled-select">Date:
 					  	<select class="small-6" name='month' id="month-option" required>
 					  		<option value='0'>Month</option>
 						  	<?php 
@@ -65,6 +66,8 @@
 						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName.'</option>';
 							} ?>
 						</select>
+						</div>
+						<div class="small-styled-select">
 						<select class="small-3" name='year' id="year-option" required>
 					  		<option value='0'>Year</option>
 						  	<?php 
@@ -75,9 +78,11 @@
 						  		echo '<option value="'.$y.'" '.$selected.' >'.$current_year.'</option>';
 							} ?>
 						</select>
-
+						</div>
 					</label>
+						
 					<label class="small-5 inline left">Contributor:
+						<div class="small-styled-select">
 						<select class="small-6" name='contributor' id="contributor-option" onchange = "">
 					  		<option value='0'>All</option>
 						  	<?php  
@@ -97,7 +102,9 @@
 							}
 							?>
 						</select>
+							</div>
 					</label>
+			
 				</div>
 				<div class="small-2 left">
 					    <div class="columns">

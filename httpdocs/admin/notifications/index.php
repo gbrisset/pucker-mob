@@ -60,7 +60,7 @@
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
 		<h1 class="left">Notification Center</h1>
 	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
 			<h1 class="left">Notification Center</h1>
 			
 	</section>

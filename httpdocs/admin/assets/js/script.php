@@ -1438,6 +1438,45 @@ $(document).ready(function (){
 	});
 }
 
+if($('#article_categories')){
+	$('#article_categories').on('change', function(event){
+		var value = $('#article_categories').val(),
+		label = '',
+		container = $('#category-description');
+		switch(value){
+
+			case '3':
+				//RELATIONSHIPS
+				label = "<label>Articles about love, sex, marriage, dating, friends and family.</label>";
+				break;
+			case '4':
+				//ENTERTAINMENT
+				label = "<label>Articles about movies, TV, books, sports, music and art. Includes Hollywood gossip, reviews, etc.</label>";
+				break;
+			case '5':
+				//MONEY
+				label = "<label>Articles about budgeting, saving, spending, career and entrepreneurship.</label>";
+				break;
+			case '6':
+				//LIFESTYLE
+				label = "<label>Articles about travel, school, fashion, going out, night life, living better,food, diet, health and spirituality.</label>";
+				break;
+			case '7':
+				//FUN
+				label = "<label>Viral and funny videos, memes, nostalgia, general interest/shocking news items.</label>";
+				break;
+			default:
+				label = "<label>Choose one category that best specifies the genre of your article. This is where your post will reside on the site.</label>";
+				break;
+
+		}
+		console.log(value);
+		//console.log(label);
+		$(container).html(label);
+
+	
+	});
+}
 		
 		$('#preview').on('click', function(event){
 			//event.preventDefault();

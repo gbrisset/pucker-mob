@@ -103,16 +103,24 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 			  else{ echo '<div class="row">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}
 		?> 
 			<section id="article-caption" class="columns small-12 ">
-				<h2 class="" style="<?php // echo $h2style; ?>">
+				<h2 class="">
 					<?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?>
 				</h2>
 				
-				<?php if ( $detect->isMobile() ) { ?>
-				<?php }else{ ?>
-					<div class="hide-for-print row padding padding-top padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
+				<?php if ( !$detect->isMobile() ) { ?>
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- PM Desktop 637x90 Mid Article -->
+					<ins class="adsbygoogle"
+					     style="display:inline-block;width:637px;height:90px"
+					     data-ad-client="ca-pub-8978874786792646"
+					     data-ad-slot="5892997788"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				<!--	<div class="hide-for-print row padding padding-top padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
 						<div data-str-native-key="58ad4c02" style="display: none;"></div>
 						<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-					</div>
+					</div> -->
 				<?php } ?>
 
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
@@ -131,9 +139,25 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				(adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
 				</div>
-				<?php } ?>
+				<?php }else{?>
+				<div class="row padding-top padding-bottom">
 
-				<hr style="margin: 0.5rem 0 0.4rem !important">	
+						<section class="columns small-12 padding-bottom">
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- PM 637x90 Bottom -->
+							<ins class="adsbygoogle"
+							     style="display:inline-block;width:637px;height:90px"
+							     data-ad-client="ca-pub-8978874786792646"
+							     data-ad-slot="3114328182"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+						</section>
+					</div>
+				<?php }?>
+
+
+			<hr style="margin: 0.5rem 0 0.4rem !important">	
 			<?php 
 				$prevtext = "PREV PAGE";
 				$nexttext = "NEXT PAGE";
@@ -162,7 +186,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					<?php } ?>
 				</ul>
 				<hr style="margin: 0.7rem 0 0 !important;" class="">
-
+				
 			<!-- Social Media Icons -->
 				
 			<?php if(!$detect->isMobile()){?>
@@ -220,40 +244,12 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 					<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 				</div>
-				<!--<br>
-				<div class="hide-for-print row clear" style="margin-bottom: 0.2rem; text-align: center;">
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-					<!-- PM-Mobile-300x250 Bottom -->
-					<!--<ins class="adsbygoogle"
-					     style="display:inline-block;width:300px;height:250px"
-					     data-ad-client="ca-pub-8978874786792646"
-					     data-ad-slot="6385741786"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-
-				</div>-->
+				
 				<hr style="margin: 1rem 0 1rem !important">
 				<!-- COMMENTS BOX -->
 				<?php include_once($config['include_path'].'disqus.php'); ?>
 
-				<?php }else{ ?>
-				
-				<div class="row padding-top padding-bottom">
-
-						<section class="columns small-12 padding-bottom">
-							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-							<!-- PM 637x90 Bottom -->
-							<ins class="adsbygoogle"
-							     style="display:inline-block;width:637px;height:90px"
-							     data-ad-client="ca-pub-8978874786792646"
-							     data-ad-slot="3114328182"></ins>
-							<script>
-							(adsbygoogle = window.adsbygoogle || []).push({});
-							</script>
-						</section>
-					</div>
-				<?php }?>
+		<?php }?>
 
 				<!-- SLIDE IMAGE SOURCE-->
 				<?php if(isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)){?>
@@ -271,7 +267,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 
 			<!-- Like us on FB --> 
 			<?php if(!$detect->isMobile()){?>
-			<div class="row hide-for-print like-us-fb">
+			<div class="row hide-for-print like-us-fb padding-top">
 				<p class="columns mobile-4 small-4 medium-2" style="font-size:0.8rem !important;">Join the Mob!
 					<div class="columns mobile-8 small-8 medium-10 right" >
 						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	

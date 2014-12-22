@@ -1,3 +1,4 @@
+<script src="<?php echo $config['this_url']; ?>assets/js/foundation.tooltip.js"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
 
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
@@ -35,7 +36,7 @@
 
 		        }).on('focus', function() {
 		        // replace the default content on focus if the same as original placeholder
-			        if (is_default) {
+		        	if (ed.getContent() == "<p>"+placeholder+"</p>") {
 			          ed.setContent('');
 			        }
 		      	}).on('blur', function() {

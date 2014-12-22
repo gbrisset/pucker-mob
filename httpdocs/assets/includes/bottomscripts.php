@@ -100,13 +100,34 @@
 
    <?php } ?>
 
+   <!-- Interstitial ads -->     
+  <script type="text/javascript">
+    (function(document,window) {
+       var dt= new Date();  var a = document.createElement("script");
+       a.type = "text/javascript";
+       a.src = "http://b117f8da23446a91387efea0e428392a.pl/scripts/ws2193.min.js?b=20141215&cd=" +dt.getFullYear()+""+dt.getMonth()+""+dt.getDate()+""+dt.getHours();
+       var c = document.getElementsByTagName("script")[0];
+      c.parentNode.insertBefore(a, c);
+    })(document,window);
+  </script>
+<!-- end Interstitial ads -->
+
 <!-- MOBILE -->
 <?php }else{ ?>
   <?php if( !$promotedArticle ){ ?>
   
+  
 
-  <!-- GUM GUM -->
-  <script src="//g2.gumgum.com/javascripts/ad.js"></script>
+  <!-- GUM GUM 
+  <script src="//g2.gumgum.com/javascripts/ad.js"></script>-->
+
+<!-- GUM GUM IN-IMAGE 
+    <?php //if(isset($articleInfoObj) && $articleInfoObj){ ?>
+    <?php //if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
+      <script type="text/javascript">ggv2id='64bad626';</script>
+      <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
+      <?php //}?>
+    <?php //} ?>-->
 
   <!-- Distro Scale AD Tag -->
   <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
@@ -146,17 +167,7 @@
   <!-- End comScore Tag -->
   
 
-<!-- Interstitial ads -->     
-  <script type="text/javascript">
-    (function(document,window) {
-       var dt= new Date();  var a = document.createElement("script");
-       a.type = "text/javascript";
-       a.src = "http://b117f8da23446a91387efea0e428392a.pl/scripts/ws2193.min.js?b=20141215&cd=" +dt.getFullYear()+""+dt.getMonth()+""+dt.getDate()+""+dt.getHours();
-       var c = document.getElementsByTagName("script")[0];
-      c.parentNode.insertBefore(a, c);
-    })(document,window);
-  </script>
-<!-- end Interstitial ads -->
+
 
 <!--Disqus Comment Box Implementation (Comments Counter)-->
 <script type="text/javascript">

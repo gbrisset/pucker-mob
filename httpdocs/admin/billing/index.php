@@ -42,7 +42,7 @@
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
 		<h1 class="left">Billing INFORMATION</h1>
 	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
 			<h1 class="left">Billing INFORMATION</h1>	
 	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -50,7 +50,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			
-			<section id="articles" class="padding-top">
+			<section id="articles">
 
 				<?php if(!$billingInfo['w2_live'] ){?>
 				<div class="skip-step">
@@ -69,9 +69,9 @@
 								<div class="small-12 instructions">
 									<label>Instructions</label>
 									<ul>
-										<li>instruction to note number 1</li>
-										<li>instruction to note number 1</li>
-										<li>instruction to note number 1</li>
+										<li>Download form</li>
+										<li>Fill out all appropriate lines</li>
+										<li>Print and sign</li>
 									</ul>
 								</div>
 							</div>
@@ -84,9 +84,9 @@
 									<div class="small-12 instructions">
 									<label>Instructions</label>
 									<ul>
-										<li>instruction to note number 1</li>
-										<li>instruction to note number 1</li>
-										<li>instruction to note number 1</li>
+										<li>Make sure form is signed</li>
+										<li>Scan</li>
+										<li>Upload</li>
 									</ul>
 								</div>
 							</div>

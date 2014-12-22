@@ -66,7 +66,7 @@
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
 		<h1 class="left">View Articles</h1>
 	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
 			<h1 class="left">View Articles</h1>
 			
 	</section>
@@ -75,7 +75,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="articles">
-			<section class="left  mobile-12 small-12 padding-top">
+			<section class="left  mobile-12 small-12">
 				<section class="">
 				<form class="search-form-admin small-7" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<div id="search-fieldset" class="mobile-12 small-12">
@@ -135,7 +135,7 @@
 						<thead>
 						    <tr>
 						      <th class="mobile-12 small-12"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortName : '?sort='.$sortName;?>">Article Name</a></th>
-						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Date Added</a></th>
+						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Added</a></th>
 						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>
 						      <th class="small-2">sites</th>
 						      <th>Shares</th>
@@ -176,11 +176,17 @@
 								  	<td class="small-2">PM</td>
 									<td>--</td>	
 									<td>
+										<?php if($articleInfo["article_status"] != 1 ){?>
 										<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
 											<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
 											<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
 											<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 										</form>
+										<?php }else{?>
+										<!-- REQUEST TO DELETE THIS ARTICLE -->
+										<!--<span data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">show on</span>-->
+										<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
+										<?php }?>
 									</td>							  			
 								</tr>
 						<?php }?>

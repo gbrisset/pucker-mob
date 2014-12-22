@@ -37,8 +37,8 @@
 					<div class="message-registration">
 						<p class="right"><span class="large-registration-text light-blue">Like to Write?</span><span class="medium-registration-text light-blue">Earn money when you write for us!<span></p>
 						<img class="reg-arrow" src="http://images.puckermob.com/articlesites/sharedimages/registration_arrow.jpg" alt="arrow">
-						<span class="small-registration-text light-blue margin-top">Find out how</span>
-						<span class="small-registration-text light-blue">and get started today!</span>
+						<a href="<?php echo $config['this_admin_url'].'howitworks.php'?>" target="blank"><span class="small-registration-text light-blue margin-top">Find out how</span>
+						<span class="small-registration-text light-blue">and get started today!</span></a>
 					</div>
 				</section>
 				

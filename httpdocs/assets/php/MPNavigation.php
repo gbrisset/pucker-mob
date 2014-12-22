@@ -299,6 +299,8 @@ class MPNavigation{
 		    categories 
 		WHERE lft>1
 		AND has_children = 0 
+		AND cat_id != 2 
+		AND cat_id != 8
 		ORDER BY 
 		    cat_name ASC");
 		$q->setFetchMode(PDO::FETCH_ASSOC);

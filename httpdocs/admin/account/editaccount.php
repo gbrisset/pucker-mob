@@ -80,7 +80,7 @@
 	</div>
 
 	<!-- WELCOME MESSAGE -->
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up hide">
 			<h1 class="left">My Profile</h1>	
 	</section>
 	
@@ -89,7 +89,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			
-			<section id="articles" class="padding-top">
+			<section id="articles" class="">
 			<div id="profile-inline-settings">
 		
 			<!-- IMAGE SECTION -->
@@ -237,7 +237,7 @@
 							</p>
 						</div>
 						<div class="columns mobile-12 small-12 large-2">
-							<button type="submit" id="submit" name="submit">Update</button>
+							<button type="submit" id="submit" name="submit">UPDATE</button>
 						</div>
 					</div>
 					</div>
@@ -277,7 +277,7 @@
 							</p>
 						</div>
 						<div class="columns mobile-12 small-12 large-2">
-							<button type="submit" id="submit" name="submit">Update</button>
+							<button type="submit" id="submit" name="submit">UPDATE</button>
 						</div>
 					</div>
 				</form>

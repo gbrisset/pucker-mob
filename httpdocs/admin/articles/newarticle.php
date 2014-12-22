@@ -53,7 +53,7 @@
 	</div>
 
 	<!-- WELCOME MESSAGE -->
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
 			<h1 class="left">New Article</h1>
 			
 	</section>
@@ -64,11 +64,11 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
-				<section class="left  mobile-12 small-12 padding-top">
+				<section class="left  mobile-12 small-12">
 				<form  id="article-add-form" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 
-					<div class="row buttons-container">
+					<div class="row buttons-container" style="padding-top: 0 !important;">
 						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
 						<!--<button type="button" id="preview" name="preview" class="">PREVIEW</button>-->
 						<?php if($admin_user){?>
@@ -79,7 +79,7 @@
 					<!-- ARTICLE TITLE -->
 					<div class="row">
 					    <div class="columns">
-					      	<input type="text" name="article_title-s" id="article_title-s" placeholder="enter article title here" <?php echo ($admin_user) ? 'maxlength="40"' : ''; ?>   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'class="input-error"'; ?> />
+					      	<input type="text" name="article_title-s" id="article_title-s" placeholder="Enter article title here"   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'class="input-error"'; ?> />
 						</div>
 					</div>
 
@@ -99,9 +99,8 @@
 									<?php }?>
 								</select>
 							</div>
-							<div class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
-								<label>Choose one category that best specifies the genre of your article.</label>
-								<label>This is where your post will reside on the site.</label>
+							<div id="category-description" class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
+								<label>Choose one category that best specifies the genre of your article.This is where your post will reside on the site.</label>
 							</div>
 						</div>
 					</div>
@@ -111,7 +110,7 @@
 					<?php if($admin_user){?>
 					<div class="row">
 					    <div class="columns">
-					      <input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+					      <input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
 					 	</div>
 					</div>	
 					<?php }?>
@@ -122,21 +121,21 @@
 					    	<div class="small-12 label-wrapper">
 								<label class="padding-top">Help readers find your article! Enter up to 10 keywords that best describe your article, separated by commas.</label>
 							</div>
-					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="enter keywords" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
+					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter keywords" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
 						</div>
 					</div>	
 					
 					<!-- DESCRIPTION -->
 					<div class="row">
 					    <div class="columns">
-					    	<input type="text" name="article_desc-s" id="article_desc-s" placeholder="enter article description" maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
+					    	<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Enter article description" maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
 						</div>
 					</div>	
 					
 					<!-- BODY -->
 					<div class="row padding-bottom">
 					    <div class="columns">
-							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="start writing article here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
+							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
 						</div>
 					</div>
 
@@ -213,14 +212,14 @@
 				<!-- IMAGE CREDITS -->
 				<div class="row">
 					<div class="columns">
-				  		<input type="text" name="article_img_credits-s" id="article_img_credits-s" placeholder="enter image credits"  value="<?php if(isset($_POST['article_img_credits-s'])) echo $_POST['article_img_credits-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />
+				  		<input type="text" name="article_img_credits-s" id="article_img_credits-s" placeholder="Enter image credits"  value="<?php if(isset($_POST['article_img_credits-s'])) echo $_POST['article_img_credits-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />
 					</div>
 				</div>
 
 				<!-- COMMENTS -->
 				<div class="row">
 					<div class="columns">
-					   	<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="enter additional comments"  value="<?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
+					   	<input type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="Enter additional comments"  value="<?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_additional_comments') echo 'autofocus'; ?> />
 					</div>
 				</div>
 

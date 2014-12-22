@@ -111,6 +111,24 @@ if (isset($articleInfoObj)) {
 			
 		<p><?php echo $article_body; ?></p>
 
+		<!-- ON DESKTOP --> 
+		<?php if(!$detect->isMobile()){?>
+		<!-- GOOGLE AD BOTTOM-->
+				<div class="row padding-top padding-bottom clear">
+					<section class="columns small-12 padding-bottom">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- PM 637x90 Bottom -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:637px;height:90px"
+						     data-ad-client="ca-pub-8978874786792646"
+						     data-ad-slot="3114328182"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</section>
+				</div>
+		<?php }?>
+		
 		<!-- Social Media Icons -->
 		<!-- DESKTOP ONLY -->
 		<?php if(!$detect->isMobile()){?>
@@ -148,9 +166,9 @@ if (isset($articleInfoObj)) {
 				</a> 
 			</div>
 		<?php }?>
+		
 		<hr>
-		
-		
+				
 		<?php if(!$detect->isMobile()){?>
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>
@@ -162,24 +180,6 @@ if (isset($articleInfoObj)) {
 
 		<?php } ?>
 
-		<!-- ON DESKTOP --> 
-		<?php if(!$detect->isMobile()){?>
-		<!-- GOOGLE AD BOTTOM-->
-				<div class="row padding-top padding-bottom clear">
-					<section class="columns small-12 padding-bottom">
-						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<!-- PM 637x90 Bottom -->
-						<ins class="adsbygoogle"
-						     style="display:inline-block;width:637px;height:90px"
-						     data-ad-client="ca-pub-8978874786792646"
-						     data-ad-slot="3114328182"></ins>
-						<script>
-						(adsbygoogle = window.adsbygoogle || []).push({});
-						</script>
-					</section>
-				</div>
-		<?php }?>
-				
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
@@ -214,15 +214,7 @@ if (isset($articleInfoObj)) {
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 			<!-- GOOGLE AD UNIT MOBILE -->
 			<div class="hide-for-print row no-padding padding-top padding-bottom" style="text-align:center;">
-			<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> 
-					 PM-Mobile-300x250 Bottom 
-					<ins class="adsbygoogle"
-					     style="display:inline-block;width:300px;height:250px"
-					     data-ad-client="ca-pub-8978874786792646"
-					     data-ad-slot="6385741786"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>-->
+		
 			</div>
 			
 		<?php }else{?>
@@ -238,7 +230,7 @@ if (isset($articleInfoObj)) {
     	<?php } ?>
 	<?php } ?>
 	<?php if(!$promotedArticle){ ?>
-		<section class="nativo-ad">
+		<section class="nativo-ad padding-top">
 			<div class="nativo"></div> 
 		</section>
 	<?php } ?>

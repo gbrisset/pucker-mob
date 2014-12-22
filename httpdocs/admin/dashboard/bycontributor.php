@@ -70,6 +70,31 @@
 
 	$total = 0;
 
+	$ManageDashboard = new ManageAdminDashboard( $config );
+
+	//WARNINGS
+	$warnings = $ManageDashboard->getWarningsMessages(); 
+
+	//LAST MONTH EARNINGS
+	$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1);
+	$last_month_earnings = 0;
+	if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
+		
+	//TOTAL EARNINGS TO DATE
+		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0);
+		$total_earnings_to_date = 0;
+		if($total_earnings_to_date_info ){
+			foreach($total_earnings_to_date_info as $value){
+				$total_earnings_to_date += $value['total_earnings'];
+			}
+		} 
+
+	//THIS MONTH EARNINGS
+	$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
+	$this_month_earnigs = 0;
+	if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
+	//if($this_month_earnigs_info ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
+
 ?>
 <!DOCTYPE html>
 
@@ -82,25 +107,52 @@
 	<script>function change(){ if($('#month-option').val() == 0) return; document.getElementById("month-form").submit(); }</script>
 	
 	<?php include_once($config['include_path_admin'].'header.php');?>
+	
+	<div class="sub-menu row">
+		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
+		<h1 class="left">VIEW EARNINGS</h1>
+	</div>
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
+			<h1 class="left">VIEW EARNINGS</h1>
+	</section>
 
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
-		<div class="sub-menu row">
-		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">New Article</h1>
-	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
-			<h1 class="left">New Article</h1>
-			
-	</section>
+		
 		<div id="content" class="columns small-9 large-11">
 			
-			<section>
-				<h2 class="left small-12">Contributor: <?php echo $contributor_name ; ?></h2>
-				<div class="small-12 dd-month margin-top">
-					<label>Month: </label>
-						<form id="month-form" method="post">
-					  	<select name='month' id="month-option" onchange = "change()">
+				<!-- WARNINGS BOX -->
+			<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
+			<div id="warning-box" class="warning-box mobile-12 small-12 " style="min-height:6.5rem;">
+				<div class="mobile-2 small-2 left">
+					<i class="fa fa-5x fa-exclamation-triangle"></i>
+				</div>
+				<div class="mobile-10 small-10 inline p-cont">
+					<p>
+						<?php echo $warnings[0]['notification_msg']; ?>
+					</p>
+				</div>
+			</div>
+			<?php }?>
+			<div id="earnings-info" class="earnings-info mobile-12 small-12">
+				<div class="total-earnings left">
+					<h3>Month to Date</h3>
+					<span class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></span>
+				</div>
+				<div class="last-month-earnings left">
+					<h3>Last Month's earnings</h3>
+					<span class="earnings-value"><?php echo '$'.$last_month_earnings; ?></span>
+				</div>
+				<div class="total-earnings left">
+					<h3>Total Earnings to Date</h3>
+					<span class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></span>
+				</div>
+			</div>
+				<div class="dd-month margin-top">
+					<label>SELECT MONTH: </label>
+					<form id="month-form" method="post" class="small-styled-select xsmall-styled-select">
+						
+					  	<select name='month' onchange = "change()">
 					  		<option value='0'>Select Month</option>
 						  	<?php 
 						  	$index = 0;
@@ -112,12 +164,13 @@
 						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName." ".$current_year.'</option>';
 							} ?>
 						</select>
-						</form>
+					
+					</form>
 					
 				</div>
 			</section>
 
-			<section id="dashboard" class="row">
+			<section id="dashboard" class="">
 				<?php if(isset($articles) && $articles ){?>
 				<table>
 				  <thead>
@@ -179,10 +232,10 @@
 				  		
 				  		//RATE BY ARTICLE 
 				  		$rate_by_article = 0;
+				  		
 				  		//var_dump($month_created, $current_month, $month);
-				  		if( $month_created == $month){
-				  			//var_dump($contributor_type);
-				  			if( $contributor_type === '3' || $contributor_type === '4') $rate_by_article = $article['rate_by_article'] / $count;
+				  		if( $month_created == $month && $article['rate_by_article'] != 0){
+				  			if( $contributor_type > 2) $rate_by_article = $article['rate_by_article'] / $count;
 				  			else $rate_by_article = 0;
 				  		}
 
@@ -203,8 +256,7 @@
 
 				  		$link_to_article = 'http://puckermob.com/'.$article["category"].'/'.$article["article_seo_title"];
 
-						//if($month_created != $month && $share_rev == 0) continue; 
-						if($share_rev == 0) continue; 
+						if($month_created != $month && $share_rev == 0) continue; 
 
 				  	?>
 				    <tr id="article-<?php echo $article['article_id']; ?>">

@@ -64,9 +64,9 @@
 				break;				
 
 			/* "Styling Settings" Page */
-			case "styling-settings-form":
-				echo json_encode($adminController->updateStylingSettings($_POST['formData']));
-				break;
+			//case "styling-settings-form":
+			//	echo json_encode($adminController->updateStylingSettings($_POST['formData']));
+			//	break;
 			case "featured-image-link-form":
 				echo json_encode($adminController->updateFeautredImageLink($_POST['formData']));
 				break;
@@ -79,10 +79,6 @@
 			case "account-password-form":
 				echo json_encode($adminController->updateUserPassword($_POST['formData']));
 				break;
-
-			//case "account-bio-form":
-			//	echo json_encode($adminController->updateBioInfo($_POST['formData']));
-			//	break;
 
 			/* "Edit Category" Page */
 			case "category-info-form":
@@ -98,10 +94,8 @@
 			case "category-slideshow-delete": //Delete Article Slideshow Functionality
 				echo json_encode( $mpArticleAdmin->deleteCatgorySlideshowArticles($_POST['formData']));	
 				break;
-
-			/*Billing Page*/
-			case: "paypal-form":
-
+				
+			case "paypal-form":
 				echo json_encode( $adminController->editBillingInformation($_POST['formData']));
 				break;
 
@@ -159,9 +153,6 @@
 				echo json_encode( $adminController->deleteArticleById($_POST['formData']));	
 				break;
 
-/***
-		Page lists
-***/
 			//Update PageList
 			case "page-list-data-form": 
 				$page_list = new PageList;
@@ -194,9 +185,6 @@
 				$page_list_item->delete_from_list($_POST['formData']);
 				echo json_encode( PageListItem::delete($_POST['formData']));
 				break;
-/***
-		End Page lists
-***/
 
 			/* Edit Video Media Page*/
 			case "video-add-form":

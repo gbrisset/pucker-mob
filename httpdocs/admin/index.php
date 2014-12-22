@@ -128,7 +128,7 @@
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
 		<h1 class="left">Welcome</h1>
 	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up padding-bottom">
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up padding-bottom hide margin-top">
 			<h1 class="left">DASHBOARD</h1>
 	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -138,7 +138,7 @@
 			<section id="articles">
 				<!-- WARNINGS BOX -->
 			<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
-			<div id="warning-box" class="warning-box  mobile-12 small-12 margin-top " style="min-height:6.5rem;">
+			<div id="warning-box" class="warning-box  mobile-12 small-12" style="min-height:6.5rem;">
 				<div class="mobile-2 small-2 left">
 					<i class="fa fa-5x fa-exclamation-triangle"></i>
 				</div>
@@ -222,8 +222,8 @@
 					</div>
 					<div class="contact-red-box small-11">
 						<ul>
-							<li><a href="#question?">Question?</a></li>
-							<li><a href="#commnets?">Comments?</a></li>
+							<li><a href="http://www.puckermob.com/admin/contact/">Question?</a></li>
+							<li><a href="http://www.puckermob.com/admin/contact/">Comments?</a></li>
 							<li><a href="http://www.puckermob.com/admin/contact/">Contact Us!</a></li>
 						</ul>
 					</div>
@@ -233,15 +233,15 @@
 				<section id="earnings-section" class="earnings-section small-4 left">
 					<div class="last-month-earnings">
 						<h3>Last Month's earnings</h3>
-						<span class="earnings-value"><?php echo '$'.$last_month_earnings; ?></span>
+						<span class="earnings-value"><?php echo money_format('%(#10n', $last_month_earnings); ?></span>
 					</div>
 					<div class="total-earnings">
 						<h3>Total Earnings to Date</h3>
-						<span class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></span>
+						<span class="earnings-value"><?php echo money_format('%(#10n', $total_earnings_to_date); ?></span>
 					</div>
 					<?php if($writers_rank){?>
 					<div class="most-shared-writers">
-						<h3>Top 10 most shared writers this month ( + your rank )</h3>
+						<h3>Top 10 most shared writers this month <br>(+ your rank)</h3>
 						<div class="rank-writers margin-top">
 							<ul>
 								<?php 
@@ -255,9 +255,7 @@
 						</div>
 					</div>
 					<?php }?>
-				</section>
-
-
+			</section>
 			</div>
 			</section>
 		</div>

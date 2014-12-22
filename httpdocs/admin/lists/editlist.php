@@ -71,7 +71,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
-				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
+				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom  hide">
 					<h1 class="left">List Information</h1>
 				</section>
 			

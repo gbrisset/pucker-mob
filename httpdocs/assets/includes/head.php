@@ -159,10 +159,13 @@
 <!-- END Tynt Script -->
 
 <!-- CARAMBOLA IN_IMAGE -->
-<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-    <?php //if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 && $articleInfoObj['article_id'] != 4725){?>
-<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 
-<?php }// }?>
+<?php if(isset($articleInfoObj) && $articleInfoObj){ 
+	$noCarambola = false;
+	if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653) $noCarambola = true;
+	if( isset($noCarambola) && !$noCarambola){ ?>
+		<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 	
+	<?php }
+ }?>
 
 <?php } ?>
     <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 ros-->

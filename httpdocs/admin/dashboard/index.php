@@ -97,7 +97,7 @@
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
 		<h1 class="left">VIEW EARNINGS</h1>
 	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up">
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
 			<h1 class="left">VIEW EARNINGS</h1>
 			
 	</section>
@@ -106,10 +106,10 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			
-			<section id="articles" class="padding-top">
+			<section id="articles" class="">
 				<!-- WARNINGS BOX -->
 			<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
-			<div id="warning-box" class="warning-box  mobile-12 small-12 " style="min-height:6.5rem;">
+			<div id="warning-box" class="warning-box mobile-12 small-12 " style="min-height:6.5rem;">
 				<div class="mobile-2 small-2 left">
 					<i class="fa fa-5x fa-exclamation-triangle"></i>
 				</div>
@@ -156,7 +156,7 @@
 				</div>
 			</section>
 
-			<section id="dashboard" class="row">
+			<section id="dashboard" class="">
 				<?php if(isset($articles) && $articles ){?>
 				<table>
 				  <thead>
@@ -172,7 +172,6 @@
 				  </thead>
 				  <tbody>
 				  	<?php 
-
 				  		$date_updated = '';
 				  		$ids = array();
 
@@ -184,7 +183,6 @@
 				  		}
 				  		
 				  		$freqs = array_count_values($ids);
-
 				  		foreach( $articles as $article ){ 
 
 				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
@@ -271,7 +269,6 @@
 				</table>
 
 				<?php }else{ ?>
-
 					<section class="columns">
 						<p class="notes bold">No Records Found!</p>
 					</section>

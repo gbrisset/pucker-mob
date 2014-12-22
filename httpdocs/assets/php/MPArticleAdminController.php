@@ -404,6 +404,7 @@ class MPArticleAdminController extends MPArticle{
 									'contributor_facebook_link', 'contributor_blog_link', 'contributor_bio')
 		));
 
+
 		$params[':user_email'] = filter_var($params[':user_email'], FILTER_SANITIZE_EMAIL);
 		$params[':contributor_location'] = filter_var($params[':contributor_location'], FILTER_SANITIZE_STRING);
 		$params[':contributor_twitter_handle'] = filter_var($params[':contributor_twitter_handle'], FILTER_SANITIZE_EMAIL);
@@ -411,6 +412,7 @@ class MPArticleAdminController extends MPArticle{
 		$params[':contributor_blog_link'] = filter_var($params[':contributor_blog_link'], FILTER_SANITIZE_URL);
 		$params[':contributor_bio'] = filter_var($params[':contributor_bio'], FILTER_SANITIZE_STRING);
 //contributor_bio = '".$params[':contributor_bio']."'
+		
 		if ($result){
 			$result_cont = $this->updateSiteObject(array(
 				'updateString' => "UPDATE article_contributors 

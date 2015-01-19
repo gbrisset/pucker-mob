@@ -48,8 +48,18 @@
       <script type="text/javascript">ggv2id='64bad626';</script>
       <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
       <?php }?>
-    <?php } ?>-->
-
+    <?php } ?>
+-->
+<!-- NETSEER AD IN-IMAGE-->
+<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+    <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
+    <script type="text/javascript">
+      netseer_tag_id="19129";
+      netseer_task="in-image";
+    </script>
+    <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+  <?php }?>
+<?php } ?>
 
   <!-- AdsNative.com 
   <script type="text/javascript" src="http://static.adsnative.com/static/js/render.v1.js"></script>-->
@@ -100,7 +110,7 @@
 
    <?php } ?>
 
-   <!-- Interstitial ads -->     
+   <!-- Interstitial ads   
   <script type="text/javascript">
     (function(document,window) {
        var dt= new Date();  var a = document.createElement("script");
@@ -109,7 +119,7 @@
        var c = document.getElementsByTagName("script")[0];
       c.parentNode.insertBefore(a, c);
     })(document,window);
-  </script>
+  </script>-->   
 <!-- end Interstitial ads -->
 
 <!-- MOBILE -->
@@ -122,12 +132,23 @@
   <script src="//g2.gumgum.com/javascripts/ad.js"></script>-->
 
 <!-- GUM GUM IN-IMAGE 
-    <?php //if(isset($articleInfoObj) && $articleInfoObj){ ?>
-    <?php //if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
+    <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+    <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
       <script type="text/javascript">ggv2id='64bad626';</script>
       <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
-      <?php //}?>
-    <?php //} ?>-->
+      <?php }?>
+    <?php } ?>
+-->
+<!-- NETSEER AD IN-IMAGE-->
+<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+    <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
+   <script type="text/javascript">
+    netseer_tag_id="20429";
+    netseer_task="in-image";
+   </script>
+   <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+  <?php }?>
+<?php } ?>
 
   <!-- Distro Scale AD Tag -->
   <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
@@ -150,6 +171,15 @@
 <?php }?>
 
 <!-- DESKTOP & MOBILE SCRIPT -->
+
+<script>
+  !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+  arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+  d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+  insertBefore(d,q)}(window,document,'script','_gs');
+
+  _gs('GSN-829786-N');
+</script>
 
 
 <?php if( !$promotedArticle ){ ?>

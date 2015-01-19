@@ -156,15 +156,29 @@
 				<div class="mobile-2 small-2 left">
 					<i class="fa fa-5x fa-comments"></i>
 				</div>
-				<div class="mobile-10 small-10 inline p-cont">
+				<div class="mobile-10 small-10 inline p-cont left">
 					<p>
 						<?php echo $annoucements[0]['notification_msg']; ?>
 					</p>
 				</div>
 			</div>
 			<?php }?>
-			
-			<div class="columns mobile-12 small-12 no-padding padding-top margin-top">
+			<div id="earnings-info" class="earnings-info mobile-12 small-12">
+				<div class="total-earnings left">
+					<h3>Month to Date</h3>
+					<span class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></span>
+				</div>
+				<div class="last-month-earnings left">
+					<h3>Last Month's earnings</h3>
+					<span class="earnings-value"><?php echo '$'.$last_month_earnings; ?></span>
+				</div>
+				<div class="total-earnings left">
+					<h3>Total Earnings to Date</h3>
+					<span class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></span>
+				</div>
+			</div>
+
+			<div class="columns mobile-12 small-12 no-padding padding-top margin-top margin-bottom">
 				<?php if(isset($top_shares_articles) && $top_shares_articles){?>
 				<section id="top-shares" class="top-shares small-8 left">
 					<h2>Top 10 MOST Shared Moblogs</h2>
@@ -220,25 +234,19 @@
 						</tbody>
 						</table>
 					</div>
-					<div class="contact-red-box small-11">
-						<ul>
-							<li><a href="http://www.puckermob.com/admin/contact/">Question?</a></li>
-							<li><a href="http://www.puckermob.com/admin/contact/">Comments?</a></li>
-							<li><a href="http://www.puckermob.com/admin/contact/">Contact Us!</a></li>
-						</ul>
-					</div>
+					
 				</section>
 				<?php }?>
 
-				<section id="earnings-section" class="earnings-section small-4 left">
-					<div class="last-month-earnings">
+				<section id="earnings-section" class="earnings-section small-4 left margin-top">
+					<!--<div class="last-month-earnings">
 						<h3>Last Month's earnings</h3>
 						<span class="earnings-value"><?php echo money_format('%(#10n', $last_month_earnings); ?></span>
 					</div>
 					<div class="total-earnings">
 						<h3>Total Earnings to Date</h3>
 						<span class="earnings-value"><?php echo money_format('%(#10n', $total_earnings_to_date); ?></span>
-					</div>
+					</div>-->
 					<?php if($writers_rank){?>
 					<div class="most-shared-writers">
 						<h3>Top 10 most shared writers this month <br>(+ your rank)</h3>
@@ -257,6 +265,9 @@
 					<?php }?>
 			</section>
 			</div>
+			<div class="contact-red-box small-12 columns no-padding">
+						<ul><li><a href="http://www.puckermob.com/admin/contact/">Question?     Comments?     Contact Us!</a></li></ul>
+					</div>
 			</section>
 		</div>
 	</main>

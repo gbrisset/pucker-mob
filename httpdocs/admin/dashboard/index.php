@@ -43,10 +43,11 @@
 	$current_year = date('Y');
 
 	$month = isset($_POST['month']) ? $_POST['month'] : $current_month;
-	//$year = isset($_POST['year']) ? $_POST['year'] : $current_year;
+	$year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 
-	$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month);
-	
+	$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
+	$dateupdated = $dashboard->get_dateUpdated($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
+
 	$contributor_name = $userData["contributor_name"];
 	$contributor_id = $userData["contributor_id"];
 	$contributor_email = $userData["user_email"]; 
@@ -61,12 +62,18 @@
 	$warnings = $ManageDashboard->getWarningsMessages(); 
 
 	//LAST MONTH EARNINGS
-	$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1);
+	$last_month = $current_month-1;
+	$last_year = $current_year;
+	if($current_month == 1){
+		 $last_month = 12;
+		 $last_year = $current_year - 1;
+	}
+	$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $last_month, $last_year );
 	$last_month_earnings = 0;
 	if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
 		
 	//TOTAL EARNINGS TO DATE
-		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0);
+		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0, 0);
 		$total_earnings_to_date = 0;
 		if($total_earnings_to_date_info ){
 			foreach($total_earnings_to_date_info as $value){
@@ -75,7 +82,7 @@
 		} 
 
 	//THIS MONTH EARNINGS
-	$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
+	$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month, $current_year);
 	$this_month_earnigs = 0;
 	if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
 	//if($this_month_earnigs_info ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
@@ -90,7 +97,12 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
-	<script>function change(){ document.getElementById("month-form").submit(); }</script>
+	<script>function change(){
+		var year  = $('#month option:selected').attr('data-info');  
+		$('#year').val(year);
+		document.getElementById("month-form").submit(); 
+	}
+	</script>
 	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	<div class="sub-menu row">
@@ -123,31 +135,33 @@
 			<div id="earnings-info" class="earnings-info mobile-12 small-12">
 				<div class="total-earnings left">
 					<h3>Month to Date</h3>
-					<span class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></span>
+					<span class="earnings-value"><?php echo money_format('%(#10n', $this_month_earnigs); ?></span>
 				</div>
 				<div class="last-month-earnings left">
 					<h3>Last Month's earnings</h3>
-					<span class="earnings-value"><?php echo '$'.$last_month_earnings; ?></span>
+					<span class="earnings-value"><?php echo money_format('%(#10n', $last_month_earnings); ?></span>
 				</div>
 				<div class="total-earnings left">
 					<h3>Total Earnings to Date</h3>
-					<span class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></span>
+					<span class="earnings-value"><?php echo money_format('%(#10n', $total_earnings_to_date); ?></span>
 				</div>
 			</div>
 				<div class="dd-month margin-top">
 					<label>SELECT MONTH: </label>
 					<form id="month-form" method="post" class="small-styled-select xsmall-styled-select">
-						
-					  	<select name='month' onchange = "change()">
+						<input type="hidden" value="<?php echo $year; ?>" id="year" name="year"/>
+					  	<select id="month" name='month' onchange = "change()">
 					  		<option value='0'>Select Month</option>
+					  		<option value='10' data-info="2014">October 2014</option>
+					  		<option value='11' data-info="2014">November 2014</option>
+					  		<option value='12' data-info="2014">December 2014</option>
 						  	<?php 
-						  	$index = 0;
-						  	if($current_year == 2014) $index = 10; 
+						  	$index = 1;
 						  	for($m = $index; $m <= $current_month; $m++){
 						  		$dateObj   = DateTime::createFromFormat('!m', $m);
 						  		$monthName = $dateObj->format('F');
 						  		if($month == $m) $selected  = 'selected'; else $selected = '';
-						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName." ".$current_year.'</option>';
+						  		echo '<option value="'.$m.'" '.$selected.' data-info="'.$current_year.'" >'.$monthName." ".$current_year.'</option>';
 							} ?>
 						</select>
 					
@@ -156,7 +170,7 @@
 				</div>
 			</section>
 
-			<section id="dashboard" class="">
+			<section id="dashboard" class="row">
 				<?php if(isset($articles) && $articles ){?>
 				<table>
 				  <thead>
@@ -172,6 +186,7 @@
 				  </thead>
 				  <tbody>
 				  	<?php 
+
 				  		$date_updated = '';
 				  		$ids = array();
 
@@ -183,12 +198,15 @@
 				  		}
 				  		
 				  		$freqs = array_count_values($ids);
+				  		//var_dump($articles);
+				  		$date_updated = date_format(date_create($dateupdated[0]['date_updated']), 'l, F jS Y \a\t h:i:s A');
+
 				  		foreach( $articles as $article ){ 
 
 				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
 				  		$month_created = date_format(date_create($article['creation_date']), 'n');
 				  		$cat = $article['category'];
-				  		$prevMonthData = $dashboard->get_dashboardArticlesPrevMonth($article['article_id'], $month - 1, $cat);
+				  		$prevMonthData = $dashboard->get_dashboardArticlesPrevMonth($article['article_id'], $last_month, $cat, $last_year);
 
 				  		/*Display just those articles when the shares has changed.*/
 				  		if( $prevMonthData ){
@@ -204,15 +222,16 @@
 				  		//Calculate shares / month
 				  		//if month == selected 
 				  		$facebook_shares = $article['facebook_shares'];
+				  		$facebook_likes = $article['facebook_likes'];
+				  		$facebook_comments = $article['facebook_comments'];
 				  		$twitter_shares = $article['twitter_shares'];
 				  		$pinterest_shares = $article['pinterest_shares'];
 				  		$googleplus_shares = $article['google_shares'];
 				  		$linkedin_shares = $article['linkedin_shares'];
 				  		$delicious_shares = $article['delicious_shares'];
 				  		$stumbleupon_shares = $article['stumbleupon_shares'];
-				  		$date_updated = date_format(date_create($article['date_updated']), 'l, F jS Y \a\t h:i:s A');
 				  		$article_id = $article['article_id'];
-
+				  		
 				  		//How many time the same article is listed.
 						$count = $freqs[$article_id];
 				  		
@@ -230,6 +249,9 @@
 				  		//TOTAL SHARES
 				  		$total_shares_this_month = $facebook_shares + $twitter_shares + $pinterest_shares + $googleplus_shares +
 				  								   $linkedin_shares + $delicious_shares + $stumbleupon_shares;
+
+
+				  		if($year != 2014 ) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
 				  		//SHARE RATE  TOTAL SHARES * RATE BY ARTICLE (0.04)			   
 				  		$share_rate = $total_shares_this_month * $rate_by_share;
 
@@ -269,6 +291,7 @@
 				</table>
 
 				<?php }else{ ?>
+
 					<section class="columns">
 						<p class="notes bold">No Records Found!</p>
 					</section>

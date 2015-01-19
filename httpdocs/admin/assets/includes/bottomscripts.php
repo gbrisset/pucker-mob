@@ -47,16 +47,17 @@
 			}
 	    },
 	    selector: "textarea",
-	    //external_plugins: {"nanospell": "/assets/js/nanospell/plugin.js"},
+	    //external_plugins: {"nanospell": "<?php echo $config['this_url']; ?>assets/js/nanospell/plugin.js"},
 		//nanospell_server: "php",
+		//nanospell_dictionary: "en_us",
 	    //theme: "modern",
 	    plugins: [
 	        "jbimages advlist autolink lists link image charmap print preview anchor",
 	        "searchreplace visualblocks code fullscreen",
 	        "insertdatetime media table contextmenu paste hr "
 	    ],
-	    menubar : false,
-	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview" ,
+	    menubar : "insert tools",
+	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview " ,
 	    //relative_urls:false,
 	    init_instance_callback : function() {
 	     tinyMCE.activeEditor.getContent();

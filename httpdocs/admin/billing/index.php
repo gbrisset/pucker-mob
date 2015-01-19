@@ -59,13 +59,13 @@
 				</div>
 				<?php }?>
 				<section class="billing-cont">
-					<h2>W2 Tax Forms</h2>
+					<h2>W9 Tax Forms</h2>
 					<div class="small-12 billing-form-box">
 
-						<img class="small-2 left" id="billing-img" src="http://www.puckermob.com/assets/img/Download-Form.png" alt="Upload W2 Form" />
+						<img class="small-2 left" id="billing-img" src="http://www.puckermob.com/assets/img/Download-Form.png" alt="Upload W9 Form" />
 						<div class="small-10 left image-wrapper">
 							<div class="left">
-								<a href="http://www.puckermob.com/assets/download/fw2.pdf" class="b-upload" download>Download Form</a>
+								<a href="http://www.puckermob.com/assets/download/fw9.pdf" class="b-upload" download>Download Form</a>
 								<div class="small-12 instructions">
 									<label>Instructions</label>
 									<ul>
@@ -79,7 +79,7 @@
 								<span class="and left">and</span>
 							</div>
 							<div class="left">
-								<a href="mailto:fguzman@sequelmediagroup.com?subject=W2 form (<?php echo $contributor_name; ?>)&body=Please add your completed form Here." class="b-upload" id="upload_form_file">Send Completed Form</a>
+								<a href="mailto:mpinedo@sequelmediagroup.com?subject=W9 form (<?php echo $contributor_name; ?>)&body=Please add your completed form Here." class="b-upload" id="upload_form_file">Send Completed Form</a>
 								<input type="file" class="hidden" id="upload_form" name="upload_form" />
 									<div class="small-12 instructions">
 									<label>Instructions</label>

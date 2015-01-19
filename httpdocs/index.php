@@ -50,7 +50,8 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 
 	<?php include_once($config['include_path'].'footer.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
-
+	<!-- MODAL BOX POPUP -->
+	<?php //include_once($config['include_path'].'modalbox.php'); ?>
 </body>
 </html>
 
@@ -76,8 +77,8 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 
 	<?php include_once($config['include_path'].'footer.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
-		<!-- MODAL BOX POPUP -->
-	<?php include_once($config['include_path'].'modalboxform.php'); ?>
+	<!-- MODAL BOX POPUP -->
+	<?php //include_once($config['include_path'].'modalbox.php'); ?>
 </body>
 </html>
 <?php }?>

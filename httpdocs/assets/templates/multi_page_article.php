@@ -121,6 +121,20 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 						<div data-str-native-key="58ad4c02" style="display: none;"></div>
 						<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 					</div> -->
+				<?php }else{ ?>
+				<!-- GOOGLE AD 300x150 -->
+				<div class="hide-for-print row padding padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
+
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- PM Mobile 300x150 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:300px;height:150px"
+				     data-ad-client="ca-pub-8978874786792646"
+				     data-ad-slot="6986976583"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+				</div>
 				<?php } ?>
 
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>

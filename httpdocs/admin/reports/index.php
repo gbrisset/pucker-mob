@@ -27,6 +27,8 @@
 		}else $adminController->redirectTo('logout/');
 	}
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -39,27 +41,34 @@
 <body>
 <?php include_once($config['include_path_admin'].'header.php');?>
 
+	<div class="sub-menu row">
+		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
+		<h1 class="left">View Articles</h1>
+	</div>
+	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
+			<h1 class="left">View Articles</h1>
+			
+	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
 
-			<fieldset>
-				<legend><h2>Social Media Shares </h2></legend>
-				<section>
+			<p>Get the Social Media Shares report for this month.</p>
+				<section id="articles'">
 						<form id="social-media-shares-form" method="post">
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 
-						<div class="center small-10 left">
+						<div class="center small-12 left">
 							
-						<label class="small-7 inline left"> 
-						<div class="small-styled-select">Date:
-					  	<select class="small-6" name='month' id="month-option" required>
+						<label class="small-7 inline left" style="text-align:left;"> 
+						<div class="inline" style="">Date:
+					  	<select class="small-6" name='month' id="month-option" required style="background-position: 90% 60%">
 					  		<option value='0'>Month</option>
 						  	<?php 
 						  	$index = 1;
 						  	//if($current_year == 2014) $index = 10; 
-						  	for($m = $index; $m <= $current_month; $m++){
+						  	for($m = $index; $m <= 12; $m++){
 						  		$dateObj   = DateTime::createFromFormat('!m', $m);
 						  		$monthName = $dateObj->format('F');
 						  		if($selected_month == $m) $selected  = 'selected'; else $selected = '';
@@ -67,23 +76,23 @@
 							} ?>
 						</select>
 						</div>
-						<div class="small-styled-select">
-						<select class="small-3" name='year' id="year-option" required>
+						<div class="inline">
+						<select class="small-3" name='year' id="year-option" required style="background-position: 90% 60%">
 					  		<option value='0'>Year</option>
 						  	<?php 
 						  	$index = 2014;
 
 						  	for($y = $index; $y <= $current_year; $y++){
-						  		if($current_year == $y) $selected  = 'selected'; else $selected = '';
-						  		echo '<option value="'.$y.'" '.$selected.' >'.$current_year.'</option>';
+						  		//if($current_year == $y) $selected  = 'selected'; else $selected = '';
+						  		echo '<option value="'.$y.'" '.$selected.' >'.$y.'</option>';
 							} ?>
 						</select>
 						</div>
 					</label>
 						
-					<label class="small-5 inline left">Contributor:
-						<div class="small-styled-select">
-						<select class="small-6" name='contributor' id="contributor-option" onchange = "">
+					<label class="small-5 inline left" style="text-align:left;">Contributor:
+						<div class="inline">
+						<select class="small-8" name='contributor' id="contributor-option" onchange = "">
 					  		<option value='0'>All</option>
 						  	<?php  
 						  	if(!$content_provider){
@@ -106,26 +115,22 @@
 					</label>
 			
 				</div>
-				<div class="small-2 left">
+				<div class="center small-12 left">
 					    <div class="columns">
-						<div class="btn-wrapper">
-							<button type="submit" id="submit" name="submit" class="radius">Search</button>
-							
+							<div class="btn-wrapper" style="text-align: center;">
+								<button type="submit" id="submit" name="submit" class="" style="padding: 0.5rem 1rem;text-transform: uppercase; margin-right: 1rem;">Search</button>
+								<a href="" id="export" name="export" style="text-transform: uppercase;">Download File<i class="fa fa-download"></i></a>
+							</div>
 						</div>
-
-					</div>
-				</div>
-				<div class="small-2 left">
-					<a href="" id="export" name="export">Download File<i class="fa fa-download"></i></a>
 				</div>
 				
 			</form>
 			
 			
 				</section>
-			</fieldset>
+			
 
-			<section id="dashboard" class="row">
+			<section id="dashboard" class=" clear">
 				<?php  if(isset($results) && $results ){?>
 					
 				<table>
@@ -181,11 +186,12 @@
 				   <tfoot>
 				  	<tr>
 				  		<td class="bold">TOTAL:</td>
-				  		<td><?php echo '$'.$total_rate;?></td>
+				  		<td><?php echo money_format('%(#10n', $total_rate);?></td>
 				  		<td><?php echo $total_shares;?></td>
 				  		<td></td>
-				  		<td><?php echo '$'.$total_rev;?></td>
-				  		<td><?php echo '$'.$total;?></td>
+				  		<td><?php echo money_format('%(#10n', $total_rev);?></td>
+				  		
+				  		<td><?php echo money_format('%(#10n', $total);?></td>
 				  	</tr>
 				  </tfoot>
 				</table>

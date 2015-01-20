@@ -14,8 +14,9 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$omitThis =  $featuredArticle['article_id'];
 
 	include_once($config['include_path'].'featured_article.php');
+
 if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-	else{
+else{
 	//echo '<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">';
 	//echo '	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
 	//echo '	</div>';?>
@@ -37,9 +38,13 @@ foreach ($articlesList['articles'] as $articles){
 
 	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 	$linkToACategory = $config['this_url'].$articles['cat_dir_name'];
-	$date = date("M d, Y", strtotime($articles['creation_date']));
+	$date = date("M d, Y", strtotime($articles['date_updated']));
 	$linkToImage = $config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
+	$cat_name = $articles['cat_dir_name'];
+	
+	//IGNORE MOBLOG ARTICLES
+	if( !$category_page && $cat_name === "moblog") continue;
 
 	if( $articleIndex % 7 == 0 ) { 
 		$articleIndex++;

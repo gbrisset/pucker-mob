@@ -129,6 +129,15 @@ return $r;
 }
 
 
+public function verifyArticleInCategory( $article_id, $cat_id ){
+
+	$s = " SELECT * FROM article_categories INNER JOIN ( categories ) ON ( article_categories.cat_id = categories.cat_id ) 
+		  WHERE article_categories.article_id = $article_id AND categories.cat_id = $cat_id ";
+
+
+	$q = $this->performQuery(['queryString' => $s]);
+	return $q;
+}
 
 public function getArticles($args = [], $attempts = 0){
 	$options = array_merge([
@@ -148,7 +157,6 @@ public function getArticles($args = [], $attempts = 0){
 	$innerJoinTables = [
 	'article_images',
 	'article_categories',
-			//'article_category_pages',
 	'categories',
 	'article_page_categories',
 	'article_pages',
@@ -323,6 +331,8 @@ $s .= $whereClause;
 $s .= $groupByClause;
 $s .= is_array($orderClause) ? isset($orderClause[$options['sortType'] - 1]) ? $orderClause[$options['sortType'] - 1] : $orderClause[0] : $orderClause;
 if($options['sortType'] !== 2 && $options['count'] !== -1) $s .= " LIMIT 0, ".$options['count'];
+
+//var_dump($s);
 $pdo = $this->con->openCon();
 
 $q = $pdo->prepare($s);
@@ -1695,6 +1705,7 @@ public function get_dashboardArticles($limit = 10, $order = '', $articleStatus =
 	AND a.article_id = article_contributor_articles.article_id 
 	AND article_contributors.contributor_id = article_contributor_articles.contributor_id
 	AND a.article_type = article_rates.rate_id
+
 	AND a.article_id = social_media_records.article_id ";
 
 	$s .= $status_sql;
@@ -1863,6 +1874,10 @@ public function getNextArticle( $article_id = null, $cat_id = 1){
 
 	return $q;
 
+}
+
+public function redirectTo($location = ''){
+		header('Location: '.$this->config['this_url'].$location);
 }
 
 

@@ -1,7 +1,5 @@
 <?php
 	if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
-	
-
 
 	if (!empty($_FILES)) {
 	     $ds          = DIRECTORY_SEPARATOR;  //1
@@ -45,6 +43,7 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
+<?php 	var_dump($blogger);?>
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	<div class="sub-menu row">
@@ -68,44 +67,13 @@
 				<form  id="article-add-form" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 
-					<div class="row buttons-container" style="padding-top: 0 !important;">
-						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
-						<!--<button type="button" id="preview" name="preview" class="">PREVIEW</button>-->
-						<?php if($admin_user){?>
-							<!--<button type="button" id="publish" name="publish" class="">PUBLISH</button>-->
-						<?php }?>
-					</div>
 					
 					<!-- ARTICLE TITLE -->
 					<div class="row">
 					    <div class="columns">
-					      	<input type="text" name="article_title-s" id="article_title-s" placeholder="Enter article title here"   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'class="input-error"'; ?> />
+					      	<input type="text" name="article_title-s" id="article_title-s" placeholder="Enter title here"   value="<?php if(isset($_POST['article_title-s'])) echo $_POST['article_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'class="input-error"'; ?> />
 						</div>
 					</div>
-
-					<!-- ARTICLE CATEGORY -->
-					<?php
-						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
-						if($allCategories && count($allCategories)){
-					?>
-					<div class="row">
-					    <div class="columns">
-					    	<div class="small-styled-select left">
-								<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
-									<option value="0">Select Category</option>
-									<?php
-									foreach($allCategories as $category){ ?>
-									<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>"><?php echo $category['cat_name']; ?></option>
-									<?php }?>
-								</select>
-							</div>
-							<div id="category-description" class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
-								<label>Choose one category that best specifies the genre of your article.This is where your post will reside on the site.</label>
-							</div>
-						</div>
-					</div>
-					<?php }?>
-
 
 					<?php if($admin_user){?>
 					<div class="row">
@@ -115,29 +83,63 @@
 					</div>	
 					<?php }?>
 
+
+					<!-- ARTICLE CATEGORY -->
+					<?php
+					if( $blogger ){?>
+						<input type="hidden"  name="article_categories" id="article_categories" value="9" />
+					<? }else{
+						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
+						if($allCategories && count($allCategories)){
+					?>
+						<div class="row">
+						    <div class="columns">
+						    	<div class="small-styled-select left">
+									<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
+										<option value="0">Select Category</option>
+										<?php
+										foreach($allCategories as $category){ 
+										if( $category['cat_id'] == 9 ) continue; ?>
+
+										<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>"><?php echo $category['cat_name']; ?></option>
+										<?php }?>
+									</select>
+								</div>
+								<div id="category-description" class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
+									<label>Choose one category that best specifies the genre of your article.This is where your post will reside on the site.</label>
+								</div>
+							</div>
+						</div>
+						<?php }
+					}?>
+
+
+					
+					<!-- BODY -->
+					<div class="row margin-bottom">
+					    <div class="columns">
+							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
+						</div>
+					</div>
+
 					<!-- KEYWORDS -->
 					<div class="row">
 					    <div class="columns">
-					    	<div class="small-12 label-wrapper">
+					    	<!--<div class="small-12 label-wrapper">
 								<label class="padding-top">Help readers find your article! Enter up to 10 keywords that best describe your article, separated by commas.</label>
-							</div>
-					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter keywords" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
+							</div>-->
+					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter keywords (Up To 10)" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
 						</div>
 					</div>	
 					
 					<!-- DESCRIPTION -->
 					<div class="row">
 					    <div class="columns">
-					    	<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Enter article description" maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
+					    	<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Enter description" maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
 						</div>
 					</div>	
 					
-					<!-- BODY -->
-					<div class="row padding-bottom">
-					    <div class="columns">
-							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
-						</div>
-					</div>
+					
 
 					<!-- Article Type  -->
 					<?php if($admin_user){?>
@@ -155,6 +157,8 @@
 							<label for="" class="radio-label">Staff</label>
 						</div>
 					</div>
+					<?php }else if($blogger){?>
+						<input type="hidden" name="article_type-s" data-info="0" id="staff" value="0" />
 					<?php }?>
 
 					<!-- PAGE LIST -->

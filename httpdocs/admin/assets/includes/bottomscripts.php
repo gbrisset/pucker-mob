@@ -1,10 +1,10 @@
-<script src="<?php echo $config['this_url']; ?>assets/js/foundation.tooltip.js"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
 
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
 <!--<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.js"></script>
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.link.js"></script>-->
 
+	
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
 	<script type="text/javascript">
 	tinymce.init({
@@ -67,6 +67,7 @@
 	});
 </script>
 
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.tooltipster.min.js"></script>
 <script src="<?php echo $config['this_url']; ?>assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>

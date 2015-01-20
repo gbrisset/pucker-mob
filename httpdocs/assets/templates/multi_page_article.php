@@ -12,7 +12,7 @@ $offset = $pagination->offset();
 $page_list_items = PageListItem::get_current($articleInfoObj['page_list_id'], $offset);
 
 $article_category = $articleInfoObj['cat_name'];
-$date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
+$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 $contributor_name = $articleInfoObj['contributor_name'];
 $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 
@@ -79,8 +79,12 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<div class="row">
 			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
 				<p class="left uppercase">
-					<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
-					<span class="span-date"><?php echo $date; ?></span>
+					<?php if($detect->isMobile()){ ?>
+						<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
+					<?php }else{?>
+						<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
+						<span class="span-date"><?php echo $date; ?></span>
+					<?php }?>
 				</p>
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
@@ -121,21 +125,24 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 						<div data-str-native-key="58ad4c02" style="display: none;"></div>
 						<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 					</div> -->
-				<?php }else{ ?>
-				<!-- GOOGLE AD 300x150 -->
-				<div class="hide-for-print row padding padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
+				<?php }else{ 
+					if($articleInfoObj['article_id'] != 5050 ){
+				?>
+					<!-- GOOGLE AD 300x150 -->
+					<div class="hide-for-print row padding padding-bottom" style="margin-bottom: 0.2rem; margin-top: 1rem;">
 
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- PM Mobile 300x150 -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:300px;height:150px"
-				     data-ad-client="ca-pub-8978874786792646"
-				     data-ad-slot="6986976583"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-				</div>
-				<?php } ?>
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- PM Mobile 300x150 -->
+					<ins class="adsbygoogle"
+					     style="display:inline-block;width:300px;height:150px"
+					     data-ad-client="ca-pub-8978874786792646"
+					     data-ad-slot="6986976583"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+					</div>
+					<?php } 
+				}?>
 
 				<?php echo ((isset($page_list_items)) ? ($page_list_items->page_list_item_body) : ''); ?>
 				

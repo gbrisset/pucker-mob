@@ -9,6 +9,7 @@
 	
 	$month = date('n');
 	$year = date('Y');
+	//$month = 11;
 	
 	$dashboard->updateContributorsEarnings( $month, $year );
 

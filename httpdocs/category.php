@@ -1,4 +1,5 @@
 <?php
+$category_page = true;
 $categoryInfo = null;
 foreach($MPNavigation->categories as $category){
 	if( isset($category['cat_dir_name'])&& !(isset($uri[1])) && isset($uri[0]) && ($category['cat_dir_name'] == $uri[0])  ){

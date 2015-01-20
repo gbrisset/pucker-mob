@@ -5,7 +5,7 @@ if (isset($articleInfoObj)) {
 	$article_id = $articleInfoObj['article_id'];
 	$article_body = $articleInfoObj['article_body'];
 	$article_category = $category['cat_dir_name'];
-	$date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
+	$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 	$contributor_name = $articleInfoObj['contributor_name'];
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 	$article_img_credits = $articleInfoObj['article_img_credits'];
@@ -68,8 +68,12 @@ if (isset($articleInfoObj)) {
 		<div class="row">
 			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
 				<p class="left uppercase">
-					<span class="span-category <?php echo $article_category; ?>"><?php echo $article_category; ?></span>
-					<span class="span-date"><?php echo $date; ?></span>
+					<?php if($detect->isMobile()){ ?>
+						<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
+					<?php }else{?>
+						<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
+						<span class="span-date"><?php echo $date; ?></span>
+					<?php }?>
 				</p>
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>

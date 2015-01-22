@@ -79,7 +79,7 @@
 								<span class="and left">and</span>
 							</div>
 							<div class="left">
-								<a href="mailto:fguzman@sequelmediagroup.com?subject=W2 form (<?php echo $contributor_name; ?>)&body=Please add your completed form Here." class="b-upload" id="upload_form_file">Send Completed Form</a>
+								<a href="mailto:mpinedo@sequelmediagroup.com?subject=W2 form (<?php echo $contributor_name; ?>)&body=Please add your completed form Here." class="b-upload" id="upload_form_file">Send Completed Form</a>
 								<input type="file" class="hidden" id="upload_form" name="upload_form" />
 									<div class="small-12 instructions">
 									<label>Instructions</label>

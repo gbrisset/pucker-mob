@@ -80,16 +80,25 @@
 ?>
 
 <script>
-	
-
 		$(function() {
 			$('#sortable2').sortable();
 
 		});
-	
-
 </script>
 
+<script>
+if($('#fb-login')){
+	$('#fb-login').on('click', function(e){
+		//var tos = $('#tos_agreed-s');
+		$('#tos_agreed-s').attr('checked', true);
+		$('#tos_agreed-s').attr('disabled', true);
+	    FB.login(function(response) {
+	//    console.log("FB.login");
+	  	  checkLoginState();
+	    }, {scope: 'public_profile,email'});
+	});
+}
+</script>
 
 <!--[if lt IE 7 ]>
 	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>

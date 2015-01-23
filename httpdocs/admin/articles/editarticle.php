@@ -217,7 +217,7 @@
 					<?php
 					if( $blogger ){?>
 						<input type="hidden"  name="article_categories" id="article_categories" value="9" />
-					<? }else{
+					<?php }else{
 						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
 						if($allCategories && count($allCategories)){
 					?>
@@ -230,7 +230,7 @@
 									foreach($allCategories as $category){ 
 										$selected = '';
 
-										if( $category['cat_id'] == 9 ) continue; 
+										if( $category['cat_id'] == 9 && !$admin_user) continue; 
 										if(isset($articleResultSet['categories'][0]) && $articleResultSet['categories'][0]['cat_id'] == $category['cat_id']) $selected = 'selected';
 										?>
 									<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>" <?php echo $selected; ?>><?php echo $category['cat_name']; ?></option>

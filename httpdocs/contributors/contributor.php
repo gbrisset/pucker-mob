@@ -27,6 +27,13 @@ if($contributorInfo['contributors']){
 	$omits = [];
 	
 	$contributorInfoObj = $contributorInfo['contributors'][0];
+	$contributor_image = $config['image_url'].'articlesites/contributors_redesign/'.$contributorInfoObj['contributor_image'];
+	
+	$fromFB = preg_match("/facebook/", $contributorInfoObj['contributor_image']);
+	if($fromFB){
+		$contributor_image = $contributorInfoObj['contributor_image'].'?type=large';
+	}
+	
 	$pageName = $contributorInfoObj['contributor_name'].' | '.$mpArticle->data['article_page_name'];
 
 	$articlesPerPage = 9;
@@ -50,11 +57,11 @@ if($contributorInfo['contributors']){
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<section id="puc-articles" class="sidebar-right small-11 columns translate-fix sidebar-main-left">
+		<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left">
 
 			<section id="contributor-intro" class="small-12 columns sidebar-right">
 				<h1>About <?php echo $contributorInfoObj['contributor_name']; ?></h1>
-				<p><img class="shadow contrib-image" src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'.$contributorInfoObj['contributor_image'];?>" alt="<?php echo $contributorInfoObj['contributor_name']; ?>" style="float: left;" /><?php echo trim(strip_tags($contributorInfoObj['contributor_bio'])); ?></p>
+				<p><img class="shadow contrib-image" src="<?php echo $contributor_image; ?>" alt="<?php echo $contributorInfoObj['contributor_name']; ?>" style="float: left;" /><?php echo trim(strip_tags($contributorInfoObj['contributor_bio'])); ?></p>
 				<div id="author-links">
 					<?php if(isset($contributorInfoObj['contributor_facebook_link']) && strlen($contributorInfoObj['contributor_facebook_link'])){ ?>
 					<a href="<?php echo $contributorInfoObj['contributor_facebook_link']; ?>" class="small button facebook" target="_blank">
@@ -87,7 +94,7 @@ if($contributorInfo['contributors']){
 					}
 
 					$articleDesc = (isset($article['article_desc']) && strlen($article['article_desc'])) ? $article['article_desc'] : $article['article_body'];
-					$linkToImage = $config['image_url'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';
+					$linkToImage = $config['image_url'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$article['article_id'].'_tall.jpg';
 					$date = date("M d, Y", strtotime($article['creation_date']));
 					$linkToContributor = $config['this_url'].'contributors/'.$article['contributor_seo_name'];
 					?>

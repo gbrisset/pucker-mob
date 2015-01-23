@@ -4,9 +4,11 @@
 	if($adminController->user->getLoginStatus()) $adminController->redirectTo('');
 	
 	if(isset($_POST['submit'])) {
-		//var_dump($_POST);
 		$registrationStatus = $adminController->user->doRegistration($_POST);
 	}
+
+	//FACEBOOK SETTINGS
+	require_once('../fb/fbfunctions.php');
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -39,6 +41,18 @@
 						<img class="reg-arrow" src="http://images.puckermob.com/articlesites/sharedimages/registration_arrow.jpg" alt="arrow">
 						<a href="<?php echo $config['this_admin_url'].'howitworks.php'?>" target="blank"><span class="small-registration-text light-blue margin-top">Find out how</span>
 						<span class="small-registration-text light-blue">and get started today!</span></a>
+				
+						<span class="medium-registration-text light-blue earning-money-txt padding-bottom">Earning money is easy:</span>
+							<ul class="right">
+								<li class="light-blue">Register and set up your account (it’s quick and painless)</li>
+								<li>Start writing original content on practically any topic you’d like </li>
+								<li>Share your articles with your social networks</li>
+								<li>Get paid based on how often your content is shared</li>
+							</ul>
+						
+						<span class="medium-registration-text light-blue earning-money-txt ">That’s all there is to it!</span>
+
+
 					</div>
 				</section>
 				
@@ -69,7 +83,7 @@
 					</div>
 					<div class="row">
 						<div class="large-12 columns">
-							<input type="email" id="user_email_2-e" name="user_email_2-e" value="<?php if(isset($_POST['user_email_2-e'])) echo $_POST['user_email_2-e']; ?>" placeholder="re-enter email address" required <?php if(isset($registrationStatus) && isset($registrationStatus['field']) && $registrationStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+							<input type="email" id="user_email_2-e" name="user_email_2-e" value="<?php if(isset($_POST['user_email_2-e'])) echo $_POST['user_email_2-e']; ?>" placeholder="re-enter email" required <?php if(isset($registrationStatus) && isset($registrationStatus['field']) && $registrationStatus['field'] == 'user_email') echo 'autofocus'; ?> />
 						</div>
 					</div>
 					<div class="row">
@@ -103,9 +117,26 @@
 					<div class="row">
 						    <div class="large-12 columns">
 								<?php if(isset($loginStatus)){ ?><p class="<?php echo ($loginStatus['hasError'] == true) ? 'error' : 'success'; ?>"><?php echo $loginStatus['message']; ?></p><?php } ?>
-								<button type="submit" id="submit" name="submit" class="button left a-green-link small-12 ">Register</button>
+								<button type="submit" id="submit" name="submit" class="button left a-green-link small-12">Register</button>
 
 							</div>
+							<div class="large-12 columns padding-top padding-bottom center">
+								<span class="or">or</span>
+							</div>
+							<div class="large-12 columns">
+								<div class="fb-login-button">
+									<img id="fb-login" src = "<?php echo $config['this_url'].'assets/img/fb_log_button_img.jpg'; ?>" alt="" />
+								</div>
+								<!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" size="xlarge">Log in with Facebook</fb:login-button>-->
+								<div class="margin-top facebook-txt">
+									<p class"padding-bottom">We'll never post anything to Facebook
+									without your permission.</p>
+
+									<p>By registering through Facebook, you acknowledge that 
+									you have read and agree with our Terms of Service.</p>
+								</div>
+							</div>
+
 						</div>
 					
 					</form>
@@ -118,5 +149,6 @@
 			</section>
 	</main>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
+
 </body>
 </html>

@@ -34,7 +34,6 @@
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributorInfo = $contributorInfo[0];
 
-
 	//var_dump($adminController->user->data);
 ?>
 <!DOCTYPE html>
@@ -43,7 +42,7 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
-<?php 	var_dump($blogger);?>
+
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	<div class="sub-menu row">
@@ -88,7 +87,7 @@
 					<?php
 					if( $blogger ){?>
 						<input type="hidden"  name="article_categories" id="article_categories" value="9" />
-					<? }else{
+					<?php }else{
 						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
 						if($allCategories && count($allCategories)){
 					?>
@@ -99,7 +98,7 @@
 										<option value="0">Select Category</option>
 										<?php
 										foreach($allCategories as $category){ 
-										if( $category['cat_id'] == 9 ) continue; ?>
+										if( $category['cat_id'] == 9 && !$admin_user) continue; ?>
 
 										<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>"><?php echo $category['cat_name']; ?></option>
 										<?php }?>

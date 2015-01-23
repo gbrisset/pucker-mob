@@ -526,7 +526,7 @@ class MPArticleAdminController extends MPArticle{
 	public function addArticle($post){ 
 		
 		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'You must insert a title'));
-		if(!isset($post['article_categories']) || $post['article_title-s'] == "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
+		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
 		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'You must insert a Description'));
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 

@@ -4,7 +4,8 @@ $pageName = 'Contributors | '.$mpArticle->data['article_page_name'];
 $sortId = 1;
 $articleContributors = $mpArticle->getContributors(['count' => -1, 'sortType' => $sortId]);
 
-$contributorsPerPage = 10;
+
+$contributorsPerPage = 15;
 $totalPages = ceil(count($articleContributors['contributors']) / $contributorsPerPage);
 if($totalPages > 1){
 	$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
@@ -14,6 +15,7 @@ if($totalPages > 1){
 	$pagesArray['url'] = $config['this_url'].'contributors/';
 	$pagesArray['pages'] = $mpHelpers->getPages($currentPage, $totalPages);
 }
+
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -22,15 +24,21 @@ if($totalPages > 1){
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<section id="puc-articles" class="sidebar-right  small-11 columns translate-fix sidebar-main-left">
+		<section id="puc-articles" class="sidebar-right shadow-on-large-up small-11 columns translate-fix sidebar-main-left">
 	<section id="contributors-list" class="small-12 columns sidebar-right">
 					<h1>Contributors</h1>
 					<?php
-					foreach($articleContributors['contributors'] as $contributor){?>
+					foreach($articleContributors['contributors'] as $contributor){
+						$contributor_img = $mpHelpers->stripUrls($contributor['article_page_full_url'], 'images').'articlesites/contributors_redesign/'.$contributor['contributor_image'];
+						$fromFB = preg_match("/facebook/", $contributor['contributor_image']);
+						if($fromFB){
+							$contributor_img = $contributor['contributor_image'].'?type=large';
+						}
+					?>
 					<div class="row">
 						<div class="columns small-4 medium-3 large-4 xlarge-3 half-padding-right">
 							<a href="<?php echo $config['this_url'].'contributors/'.$contributor['contributor_seo_name']; ?>"> 
-								<img class="shadow" alt="<?php echo $contributor['contributor_name']; ?>" src="<?php  echo $mpHelpers->stripUrls($contributor['article_page_full_url'], 'images').'articlesites/contributors_redesign/'.$contributor['contributor_image'];?>">
+								<img class="shadow" alt="<?php echo $contributor['contributor_name']; ?>" src="<?php  echo $contributor_img;?>">
 							</a>
 						</div>
 						<div class="columns small-8 medium-9 large-8 xlarge-9 half-padding-left">

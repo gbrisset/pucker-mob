@@ -79,15 +79,6 @@ class MPAdminUserController extends MPArticleAdminController{
 		
 		$post = array_merge($postDefaults, $post);
 
-		/*SELECT * FROM users 
-							WHERE user_name != :userName 
-							AND 
-							(	user_email = :email 
-								OR (
-	     								( LOWER(user_first_name) = LOWER(:first) AND LOWER(user_last_name) = LOWER(:last) )
-									)
-							)
-							LIMIT 0, 1*/
 		$queryOptions = array(
 			'queryString' => "SELECT * FROM users 
 							WHERE user_email = :email 
@@ -371,13 +362,13 @@ Password reset methods
 			//Otherwise should be Detroit
 			$tz = date_default_timezone_get();
 			date_default_timezone_set('America/New_York');
-//	If the password reset attempt is stale, set reset_valid of all this user's attempts to 0 and return hasError...
+	//	If the password reset attempt is stale, set reset_valid of all this user's attempts to 0 and return hasError...
 			if(!$this->helpers->compareTimes(time(), strtotime($user['reset_creation_time']), 15)) {
 				return array( 'hasError' => true, 'message' => "Sorry, your reset has expired.  You can login <a href=\"".$this->config['this_admin_url'].'login/'."\">HERE</a>." );
 			}
 			date_default_timezone_set($tz);
 
-//	Check and see if the user exists, and the user is verified...
+	//	Check and see if the user exists, and the user is verified...
 		if($user && $user['reset_valid'] == 1){
 			return array("hasError" => false, "message" => "Please enter your new password below.", "email" => $user['reset_user_email']);
 		} else {
@@ -545,9 +536,14 @@ End password reset methods
 		//Generate the session hash for this session
 		$sessionHash = $this->generateHash();
 
+		//Generate C_T value for FB USERS
+		if($post['user_facebook_id-s']){
+			$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
+		}
+
 		//Log the login hash in the browser to lock the session to just this browser
 		$_SESSION['login_hash'] = $sessionHash;
-
+		
 		//Check for user verification
 		if(!$user['user_verified']) return array(
 			'hasError' => true, 
@@ -566,7 +562,8 @@ End password reset methods
 		}	
 
 		$hash = $sessionHash;
-		
+	
+
 		//Log the user's login attempt in the database
 		if($loggedLogin = $this->logLoginAttempt($user, hash('sha256', $sessionHash.$this->salt)) === false) return $this->helpers->returnStatus(500);
 		
@@ -589,6 +586,7 @@ End password reset methods
 			);
 		}
 	}
+
 
 
 	public function usernameExists($userInput){
@@ -669,9 +667,9 @@ End password reset methods
 		return $this->performUpdate($options);
 	}
 
+/* End Login Functions */
 
-	/* End Login Functions */
-	/* Begin Registration Functions */
+/* Begin Registration Functions */
 	public function doRegistration($post){
 
 		//	Based on the post data, formulate the hashed password.
@@ -715,18 +713,23 @@ End password reset methods
 
 		$user = $this->userAlreadyExists($post);
 
-		if ($user['user_email'] == $post['user_email-e']){
-			return array('hasError' => true, 'message' => "Oops!  Looks like that email address is already in use.  Did you mean to login instead?  If so, you can do that <a href=\"".$this->config['this_admin_url'].'login/'."\"><u>here</u></a>.");
+		//IF USER EXISTS AND IS FROM FACEBOOK
+
+		if($user && $post['user_facebook_id-s']){
+			return $this->handleLogin($post);
 		}
 
-		//if (strtolower($user['user_first_name']) == strtolower($post['user_first_name-s']) && strtolower($user['user_last_name']) == strtolower($post['user_last_name-s'])){
-		//	return array('hasError' => true, 'message' => "That first and last name combination is taken, please choose another first and/or last name.");
-		//}
+		if(!$post['user_facebook_id-s']){
+			if ($user['user_email'] == $post['user_email-e']){
+				return array('hasError' => true, 'message' => "Oops!  Looks like that email address is already in use.  Did you mean to login instead?  If so, you can do that <a href=\"".$this->config['this_admin_url'].'login/'."\"><u>here</u></a>.");
+			}
+		}	
 
 		if (!isset($post['tos_agreed-s']) || $post['tos_agreed-s'] != 1){
 			return array('hasError' => true, 'message' => 'You must agree to our terms of service.');
 		}
-
+	
+		
 		$valid = $this->helpers->validateRequired($params, $unrequired);
 		if($valid !== true) return $valid;
 
@@ -775,32 +778,88 @@ End password reset methods
 				  $contributor_seo_name = $contributor_seo_name.'-'.$rand;
 			}
 
-			if( $dupCheckEmail ){
-
-			}
-			
 			if(count($dupCheckEmail['contributors']) <= 0){
-				$contributor_id = $this->performUpdate(array(
-					'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."')",
-					'updateParams' => $params
-				));
+				if($post['user_facebook_id-s']){
+					$contributor_image_fb = "http://graph.facebook.com/".$post['user_facebook_id-s']."/picture";
+					$contributor_facebook_link = $post['fb_user_link'];
+					
+					$contributor_id = $this->performUpdate(array(
+						'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address, contributor_image, contributor_facebook_link ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."', '".$contributor_image_fb."', '".$contributor_facebook_link."')",
+						'updateParams' => $params
+					));
+				}else{
+					$contributor_id = $this->performUpdate(array(
+						'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."')",
+						'updateParams' => $params
+					));
+				}
 			}
 			//End Adding Contributor Info
 
-			//	Send Email
-			if(!$registerEmail = $this->send_email(array(
-				'email' => $params[':user_email'],
-				'hashUrl' => $this->config['this_admin_url'].'activate/'.$verificationHash,
-				'action' => 'access',
-				'subject' => $this->mpArticle->data['article_page_visible_name']." Registration Email",
-				'username' => $params[':user_name']
-			))) return $registerEmail;
-			$r = $this->helpers->returnStatus(200);
-			$r['message'] = "Please check your email for a verification link. If you do not receive the verification email within 10 minutes, check your spam folder.";
-			return $r;
+			if($post['user_facebook_id-s']){
+				return $this->doUserActivation($verificationHash);
+				 //$this->handleLogin($post);
+			}else{
+				//	Send Email
+				if(!$registerEmail = $this->send_email(array(
+					'email' => $params[':user_email'],
+					'hashUrl' => $this->config['this_admin_url'].'activate/'.$verificationHash,
+					'action' => 'access',
+					'subject' => $this->mpArticle->data['article_page_visible_name']." Registration Email",
+					'username' => $params[':user_name']
+				))) return $registerEmail;
+				$r = $this->helpers->returnStatus(200);
+				$r['message'] = "Please check your email for a verification link. If you do not receive the verification email within 10 minutes, check your spam folder.";
+				return $r;
+			}
 		}else return $this->helpers->returnStatus(500);
 	}	
 
+	public function doRegistrationFromFB($post){
+		//	Based on the post data, formulate the hashed password.
+		//$salt = substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22);	
+		$fb_user_id = $post['user']['id'];
+		$fb_user_first_name = $post['user']['first_name'];
+		$fb_user_last_name = $post['user']['last_name'];
+		$fb_user_email = $post['user']['email'];
+		$fb_user_verified = $post['user']['verified'];
+		$fb_user_password = $fb_user_id;
+		$fb_user_link = $post['user']['link'];
+		$tos_agreed = "0";
+		if($fb_user_verified) $tos_agreed = "1";
+
+		$parts = explode("@", $fb_user_email);
+		$fb_user_name = str_replace("_", "-", $parts[0]);
+		
+		//BUILD POST ARRAY
+		$arr['user_name-s'] = $fb_user_name;
+		$arr['user_facebook_id-s'] = $fb_user_id;
+		$arr['user_password-s'] = $fb_user_password;
+		$arr['user_password_2-s'] = $fb_user_password;
+		$arr['user_email-e'] = $fb_user_email;
+		$arr['user_email_1-e'] = $fb_user_email;
+		$arr['user_email_2-e'] = $fb_user_email;
+		$arr['user_first_name-s'] = $fb_user_first_name;
+		$arr['user_last_name-s'] = $fb_user_last_name;
+		$arr['tos_agreed-s'] = $tos_agreed;
+		//$arr['user_verified-s'] = 1;
+		$arr['from_fb'] = true;
+		$arr['user_login_input'] = $fb_user_email;
+		$arr['user_login_password_input'] = $fb_user_password;
+		$arr['fb_user_link '] = $fb_user_link;
+		
+
+		$user = $this->userAlreadyExists($arr);
+
+		if($user){
+		//LOGIN
+			return $this->handleLogin($arr);
+		}
+		else{
+		//REGISTER USER
+			return $this->doRegistration($arr);
+		}
+	}
 
 	public function send_email($opts){
 		$options = array_merge(array(

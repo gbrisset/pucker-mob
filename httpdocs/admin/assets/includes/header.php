@@ -23,7 +23,11 @@
         <div class="right">
           <?php if($loginActive){?>
         <p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
+          <?php if($adminController->user->data['user_facebook_id'] && strlen($adminController->user->data['user_facebook_id']) > 0 ){?>
+          <img id="image-header-profile" src="<?php echo $adminController->user->data['contributor_image'];?>" >
+          <?php }else{?>
           <img id="image-header-profile" src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
+          <?php }?>
           <a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
         </p>
         <?php }?>

@@ -117,6 +117,6 @@
 
 </head>
 <?php 
-	$blogger == false;
+	$blogger = false;
 	if( $adminController->user->data['user_type'] == 3 ) $blogger = true;
 ?>

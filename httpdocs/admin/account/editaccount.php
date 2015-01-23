@@ -29,6 +29,13 @@
 	$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$image; 
 	$contImageExists = false;
 
+	$userfbid = $adminController->user->data['user_facebook_id'];
+	$fromFB = false;
+	if($userfbid && strlen($userfbid) > 0 ){
+		$fromFB = true;
+		$contImageUrl = $image.'?type=large'; 
+	}
+	
 	//	Verify if the usr has ever SELECTED an image
 	if(isset($image) /*&& $image != 'default_profile_contributor.png'*/){
 		$contImageExists = file_exists($contImageDir);
@@ -245,6 +252,7 @@
 				
 				</section>
 
+				<?php if( isset($fromFB) && !$fromFB){?>
 				<!-- PASSWORD -->
 				<section class="small-12 margin-top">
 					<h2>Change Password</h2>
@@ -280,10 +288,9 @@
 							<button type="submit" id="submit" name="submit">UPDATE</button>
 						</div>
 					</div>
-				</form>
-				
+					</form>
 				</section>
-
+				<?php }?>
 				<!-- BRIOGRAPHY -->
 				<!--<section class="small-12 margin-top  padding-bottom">
 					<h2>Biography</h2>

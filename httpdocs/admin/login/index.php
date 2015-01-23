@@ -18,6 +18,10 @@
 			echo $redirectString;
 		}
 	} 
+
+	//FACEBOOK SETTINGS
+	require_once('../fb/fbfunctions.php');
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -35,8 +39,7 @@
 					<form id="login-form" class="login-form" name="login-form" action="<?php echo $config['this_admin_url']; ?>login/" method="POST">
 						<div class="row">
 						    <div class="large-12 columns">
-						        <input type="text" id="user_login_input" name="user_login_input" value="<?php if(isset($loginStatus) && $loginStatus['hasError']) echo $_POST['user_login_input']; ?>" placeholder="email address" required autofocus/>
-						     
+						        <input type="text" id="user_login_input" name="user_login_input" value="<?php if(isset($loginStatus) && $loginStatus['hasError']) echo $_POST['user_login_input']; ?>" placeholder="email address" required autofocus/>     
 						    </div>
 						</div>
 						<div class="row">
@@ -55,17 +58,33 @@
 							</div>
 						</div>
 						<div class="row">
-						    <div class="large-12 columns">
+						    <div class="large-12 columns padding-top">
 								<p id="bottom-link">
 									
 									<a href="<?php echo $config['this_admin_url']; ?>forgot/" class="align-center">Forgot Password?</a>
 								</p>
 							</div>
 						</div>
+						<hr>
+						<div class="row margin-top">
+							<div class="large-12 columns">
+								<div class="fb-login-button ">
+									<img id="fb-login" src = "<?php echo $config['this_url'].'assets/img/fb_log_button_img.jpg'; ?>" alt="" />
+								</div>							
+							</div>
+						</div>
+						<div class="margin-top facebook-txt">
+									<p class"padding-bottom" style="color: #fff; ">We'll never post anything to Facebook
+									without your permission.</p>
+									
+									<p style="color: #fff; ">By registering through Facebook, you acknowledge that 
+									you have read and agree with our Terms of Service.</p>
+								</div>
 					</form>
 				</div>
 			</section>
 	</main>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
+	
 </body>
 </html>

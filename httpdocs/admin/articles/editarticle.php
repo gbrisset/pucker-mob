@@ -215,29 +215,35 @@
 
 					<!-- ARTICLE CATEGORY -->
 					<?php
+					if( $blogger ){?>
+						<input type="hidden"  name="article_categories" id="article_categories" value="9" />
+					<?php }else{
 						$allCategories = $MPNavigation->getAllCategoriesWithArticles();
 						if($allCategories && count($allCategories)){
 					?>
-					<div class="row">
-					    <div class="columns">
-					    	<div class="small-styled-select left ">
-							<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
-								<option value="0">SELECT CATEGORY</option>
-								<?php 
-								foreach($allCategories as $category){ 
-									$selected = '';
-									if(isset($articleResultSet['categories'][0]) && $articleResultSet['categories'][0]['cat_id'] == $category['cat_id']) $selected = 'selected';
-									?>
-								<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>" <?php echo $selected; ?>><?php echo $category['cat_name']; ?></option>
-								<?php }?>
-							</select>
-							</div>
-							<div id="category-description" class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
-								<label>Choose one category that best specifies the genre of your article.This is where your post will reside on the site.</label>
+						<div class="row">
+						    <div class="columns">
+						    	<div class="small-styled-select left ">
+								<select id="article_categories" name="article_categories" class="small-12 large-4 left" required>
+									<option value="0">SELECT CATEGORY</option>
+									<?php 
+									foreach($allCategories as $category){ 
+										$selected = '';
+
+										if( $category['cat_id'] == 9 && !$admin_user) continue; 
+										if(isset($articleResultSet['categories'][0]) && $articleResultSet['categories'][0]['cat_id'] == $category['cat_id']) $selected = 'selected';
+										?>
+									<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>" <?php echo $selected; ?>><?php echo $category['cat_name']; ?></option>
+									<?php }?>
+								</select>
+								</div>
+								<div id="category-description" class="small-12 large-8 label-wrapper right padding-left show-on-large-up">
+									<label>Choose one category that best specifies the genre of your article.This is where your post will reside on the site.</label>
+								</div>
 							</div>
 						</div>
-					</div>
-					<?php }?>
+						<?php }
+					}?>
 
 					<?php if($admin_user){?>
 						<div class="row">
@@ -247,6 +253,14 @@
 
 					</div></div>
 					<?php }?>
+				
+					
+					<!-- BODY -->
+					<div class="row margin-bottom">
+					    <div class="columns">
+							<textarea class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+						</div>
+					</div>
 				
 					<!-- KEYWORDS -->
 					<div class="row">
@@ -264,13 +278,6 @@
 						</div>
 					</div>
 
-					<!-- BODY -->
-					<div class="row padding-bottom">
-					    <div class="columns">
-							<textarea class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
-						</div>
-					</div>
-				
 					<!-- TYPE -->
 					<?php if($admin_user){?>
 					<div class="row">
@@ -287,9 +294,11 @@
 						<label for="" class="radio-label">Staff</label>
 						</div>
 					</div>
+					<?php }else if($blogger){?>
+						<input type="hidden" name="article_type-s" data-info="0" id="staff" value="0" />
 					<?php }?>
 					<!-- Article Status -->
-					<?php if($admin_user){?>
+					<?php if($admin_user ){?>
 					<?php
 						$allStatuses = $adminController->getSiteObjectAll(array('table' => 'article_statuses'));
 						//if($allStatuses && count($allStatuses)){
@@ -303,10 +312,10 @@
 							<label for="article_status" class="uppercase">Article Status</label>
 							<select name="article_status" id="article_status" class = "status-select small-6">
 							<?php
-								if(!$content_provider){ 
+								if(!$content_provider){
 									foreach($allStatuses as $statusInfo){
 										$option = '<option data-preview="'.preg_replace('/"/', '&quot;', $preview_article).'" value="'.$statusInfo['status_id'].'"';
-										
+										if( $statusInfo['status_id'] == 2 ) continue;
 										if($statusInfo['status_id'] == $article['article_status']) $option .= ' selected="selected"';
 										
 										$option .= '>'.$statusInfo['status_label'].'</option>';
@@ -442,13 +451,15 @@
 
 
 					<div class="row buttons-container">
-						<button type="submit" id="submit" name="submit" class="">UPDATE</button>
+						<button type="submit" id="submit" name="submit" class="">SAVE</button>
 						<button type="button" id="preview" name="preview" class="">PREVIEW</button>
-						<?php if($admin_user){
+						<?php if( $admin_user || $blogger ){
 							$label = "PUBLISH";
-							if($article['article_status'] == 1) $label = "RE-PUBLISH";
+							$val = 1;
+							if( $blogger  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
+							if( $admin_user  && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;}
 						?>
-							<button type="button" id="publish" name="publish" class=""><?php echo $label; ?></button>
+							<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish" class=""><?php echo $label; ?></button>
 						<?php }?>
 					</div>
 					

@@ -44,8 +44,8 @@ class Dashboard{
 	}
 
 	//Verify if an article exist on the DB then decide if Update or Insert a new record on the social_media_records table
-	private function verifyArticleidonSocial( $articleId, $month, $cat ){
-			$s="SELECT article_id FROM social_media_records WHERE article_id = $articleId AND category = '".$cat."' AND month = $month";
+	private function verifyArticleidonSocial( $articleId, $month, $cat, $year ){
+			$s="SELECT article_id FROM social_media_records WHERE article_id = $articleId AND category = '".$cat."' AND month = $month AND year = $year ";
 
 			$queryParams = [':articleID' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
 							':month' => filter_var($month, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT) ];
@@ -75,11 +75,19 @@ class Dashboard{
 			if( $articleId ){
 
 				$current_date = date('Y-m-d H:i:s', time());
+				$year = date('Y');
 
 				if(!isset($counts)) return false;
 				
-				$prevData = $this->get_dashboardArticlesPrevMonth( $articleId , $month-1, $cat );
-				$idExist = $this->verifyArticleidonSocial( $articleId , $month, $cat );
+				$prev_month = $month-1;
+				$prev_year = $year;
+				if($month == 1 ){
+					$prev_month = 12;
+					$prev_year = $year -1;
+				} 
+
+				$prevData = $this->get_dashboardArticlesPrevMonth( $articleId , $prev_month, $cat, $prev_year );
+				$idExist = $this->verifyArticleidonSocial( $articleId , $month, $cat, $year );
 
 				/*Original DATA from SharedCount*/
 				$facebook_shares_org =$counts['Facebook']['share_count'];
@@ -101,12 +109,13 @@ class Dashboard{
 				$delicious_shares = $counts['Delicious'];
 				$stumbleupon_shares = $counts['StumbleUpon'];
 				$linkedin_shares = $counts['LinkedIn'];
-				
+				//var_dump($facebook_comments_org );
 				if($prevData){
+
 					foreach($prevData as $prev ){
 						$facebook_shares = abs($facebook_shares - $prev['facebook_shares_org']);
 						$facebook_likes = abs($facebook_likes - $prev['facebook_likes_org']);
-						$facebook_comments = abs($facebook_comments - $prev['facebook_commets_org']);
+						$facebook_comments = abs($facebook_comments - $prev['facebook_comments_org']);
 						$twitter_shares = abs($twitter_shares - $prev['twitter_shares_org']);
 						$pinterest_shares = abs($pinterest_shares - $prev['pinterest_shares_org']);
 						$google_shares = abs($google_shares - $prev['google_shares_org']);
@@ -140,7 +149,7 @@ class Dashboard{
 					           stumbleupon_shares_org = $stumbleupon_shares_org,
 					           linkedin_shares_org = $linkedin_shares_org, 
 					           date_updated = '".$current_date."'  
-					        WHERE article_id = $articleId AND category = '".$cat."' AND month = '".$month."' ";
+					        WHERE article_id = $articleId AND category = '".$cat."' AND month = '".$month."' AND year = '".$year."' ";
 				}else{
 					$s = " INSERT INTO social_media_records
 						   (`id`, `article_id`, `category`, `facebook_shares`, `facebook_likes`, `facebook_comments`, `twitter_shares`, `pinterest_shares`, `google_shares`,
@@ -176,7 +185,7 @@ class Dashboard{
 	}
 
 
-	/*DELETE THIS */
+	/*DELETE THIS 
 	public function updateOriginalDataOctuber(){
 		$s = " UPDATE social_media_records 
 					  	   SET facebook_shares_org = facebook_shares, 
@@ -261,13 +270,13 @@ class Dashboard{
 		} else {
 			return false;
 		}
-	}
+	}*/
 	/*DELETE THIS */
 
 
 	//Return All Articles per month for each contributor
-	public function get_dashboardArticles( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month ) {
-
+	public function get_dashboardArticles( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month, $year) {
+//var_dump($month, $year, $userArticlesFilter);
 		switch ($order) {
 			case 'az':
 			$order_sql = " ORDER BY a.article_title ASC ";
@@ -288,14 +297,18 @@ class Dashboard{
 			break;
 		}
 
-		$status_sql = " WHERE article_status = 1 AND social_media_records.month = ".$month ." ";
+		$status_sql = " WHERE article_status = 1 AND social_media_records.month = ".$month ." AND social_media_records.year = ".$year ." ";
 		$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 
 
 		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_status, 
-		a.article_type, a.creation_date,  article_rates.rate_by_article, article_rates.rate_by_share, 
-		facebook_shares, twitter_shares, pinterest_shares, google_shares, linkedin_shares, delicious_shares, 
+		a.article_type, a.creation_date,  article_rates.rate_by_article, ";
+
+		if($year > 2014) $s.=" '0.01' as rate_by_share, ";
+		else $s .= " article_rates.rate_by_share, ";
+
+		$s .= "facebook_shares, facebook_likes, facebook_comments, twitter_shares, pinterest_shares, google_shares, linkedin_shares, delicious_shares, 
 		stumbleupon_shares, month, year, social_media_records.date_updated, category
 		FROM articles as a
 		INNER JOIN ( article_contributors, article_contributor_articles, 
@@ -311,11 +324,11 @@ class Dashboard{
 		}
 		//$s .= " GROUP BY a.article_id ";
 		$s .= $order_sql;
-		$s .= 	"LIMIT {$limit} OFFSET {$offset}";	
+		//$s .= 	"LIMIT {$limit} OFFSET {$offset}";	
 
 		$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-		
+		//var_dump($s);
 		if ($q && isset($q[0])){
 				// If $q is an array of only one row (The set only contains one article), return it inside an array
 			return $q;
@@ -328,10 +341,70 @@ class Dashboard{
 		}
 	}
 
+	public function get_dateUpdated( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month, $year) {
+//var_dump($month, $year, $userArticlesFilter);
+		switch ($order) {
+			case 'az':
+			$order_sql = " ORDER BY a.article_title ASC ";
+			break;
+			case 'za':
+			$order_sql = " ORDER BY a.article_title DESC ";
+			break;
+			default:
+			$order_sql = " ORDER BY a.article_id DESC ";
+			break;
+		}
+		switch($articleStatus) {
+			case '2':
+			$order_sql = " ORDER BY a.article_status = 2 DESC, a.article_id ASC ";
+			break;
+			case '3':
+			$order_sql = " ORDER BY a.article_status = 3 DESC, a.article_id ASC ";
+			break;
+		}
+
+		$status_sql = " WHERE article_status = 1 AND social_media_records.month = ".$month ." AND social_media_records.year = ".$year ." ";
+		$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+
+		$s = "SELECT social_media_records.date_updated
+		FROM articles as a
+		INNER JOIN ( article_contributors, article_contributor_articles, 
+				article_rates, social_media_records ) 
+		ON a.article_id = article_contributor_articles.article_id 
+		AND article_contributors.contributor_id = article_contributor_articles.contributor_id
+		AND a.article_type = article_rates.rate_id
+		AND a.article_id = social_media_records.article_id ";
+
+		$s .= $status_sql;
+		if ($userArticlesFilter != 'all'){
+			$s .=	"AND article_contributors.contributor_email_address = :userArticlesFilter ";
+		}
+		//$s .= " GROUP BY a.article_id ";
+		$s .= " ORDER BY social_media_records.date_updated DESC LIMIT 1 ";
+		//$s .= 	"LIMIT {$limit} OFFSET {$offset}";	
+
+		$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		//var_dump($s);
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}
+	}
+
+
 	// Get  Preview Month Article Social Media Information
-	public function get_dashboardArticlesPrevMonth( $article_id, $month, $cat ){
+	public function get_dashboardArticlesPrevMonth( $article_id, $month, $cat, $year ){
 		
-		$s = "SELECT * FROM social_media_records where article_id = $article_id AND category = '".$cat."' AND month = $month ";
+		$s = "SELECT * FROM social_media_records where article_id = $article_id AND category = '".$cat."' AND month = $month AND year = $year ";
 
 		$pdo = $this->con->openCon();
 		$queryParams = [];
@@ -425,7 +498,9 @@ class Dashboard{
 
 				$total_article_rate = 0;
 				$total_shares = 0;
-				$share_rate = 0.02;
+				$share_rate = 0.01;
+				if($year == 2014 ) $share_rate = 0.02;
+				
 				$total_share_rev = 0;
 				$total_earnings = 0;
 				
@@ -433,7 +508,7 @@ class Dashboard{
 					$earnings_info = $earnings_info[0];
 					$total_article_rate = $earnings_info["total_rate"]; //RATE PER ARTICLE 25/10
 					$total_shares = $earnings_info["total_shares"]; //NUMBER OF SHARES
-					$share_rate = $earnings_info['share_rate']; //0.02
+					$share_rate = $earnings_info['share_rate']; //0.02 IN 2015 will be 0.01
 					$total_share_rev = $earnings_info["share_revenue"];  //NUMBER OF SHARES * 0.02
 					$total_earnings = $earnings_info["total_to_pay"]; //TOTAL RATE PER ARTICLE + NUMBER OF SHARES * 0.02
 				}

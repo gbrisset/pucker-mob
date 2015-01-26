@@ -13,4 +13,8 @@
 		echo json_encode($adminController->user->updateUserImage($_POST));
 	}
 
+	//MANAGE FACEBOOK LOGIN / REGISTER
+	if($_POST['task'] == 'register_fb'){
+		echo json_encode($adminController->user->doRegistrationFromFB($_POST));
+	}
 ?>

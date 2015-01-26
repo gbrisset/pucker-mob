@@ -62,6 +62,7 @@
           <li><a href="<?php echo $config['this_url']; ?>money"  class="money" >Money</a></li>
           <li><a href="<?php echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
           <li><a href="<?php echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
+          <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >Moblog</a></li>
           <?php if( !$detect->isMobile()){?>
          <!-- <li><a href="<?php echo $config['this_url']; ?>videos/hot-topics"  class="videos" >Videos</a></li>-->
           <?php } ?>

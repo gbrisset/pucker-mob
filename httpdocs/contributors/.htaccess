@@ -1,3 +1,0 @@
-Options -Multiviews
-RewriteEngine On
-RewriteRule ^([^\.]+)$ contributor.php?c=$1

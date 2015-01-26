@@ -29,6 +29,13 @@
 	$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$image; 
 	$contImageExists = false;
 
+	$userfbid = $adminController->user->data['user_facebook_id'];
+	$fromFB = false;
+	if($userfbid && strlen($userfbid) > 0 ){
+		$fromFB = true;
+		$contImageUrl = $image.'?type=large'; 
+	}
+	
 	//	Verify if the usr has ever SELECTED an image
 	if(isset($image) /*&& $image != 'default_profile_contributor.png'*/){
 		$contImageExists = file_exists($contImageDir);
@@ -186,7 +193,7 @@
 						</div>
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_blog_link-s">Blog or Website URL</label>
-							<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="http://yourblog.com" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
+							<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
 						</div>
 					</div>
 
@@ -197,7 +204,7 @@
 						</div>
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_facebook_link-s">Facebook URL</label>
-							<input type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="http://facebook.com/yourprofile" value="<?php if(isset($userInfo['contributor_facebook_link'])) echo $userInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
+							<input type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="" value="<?php if(isset($userInfo['contributor_facebook_link'])) echo $userInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
 						</div>
 					</div>
 
@@ -208,18 +215,18 @@
 						</div>
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_twitter_handle-s">Twitter Handle </label>
-							<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="@yourtwitterhandle" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
+							<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="user_email-e">Email Address</label>
-							<input type="email" name="user_email-e" id="user_email-e" placeholder="Please enter your email address here." value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+							<input type="email" name="user_email-e" id="user_email-e" placeholder="" value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
 						</div>
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_location-s">Location</label>
-							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="your location" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
+							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
 						</div>
 					</div>
 					
@@ -245,6 +252,7 @@
 				
 				</section>
 
+				<?php if( isset($fromFB) && !$fromFB){?>
 				<!-- PASSWORD -->
 				<section class="small-12 margin-top">
 					<h2>Change Password</h2>
@@ -280,10 +288,9 @@
 							<button type="submit" id="submit" name="submit">UPDATE</button>
 						</div>
 					</div>
-				</form>
-				
+					</form>
 				</section>
-
+				<?php }?>
 				<!-- BRIOGRAPHY -->
 				<!--<section class="small-12 margin-top  padding-bottom">
 					<h2>Biography</h2>

@@ -53,6 +53,11 @@
 	$offset = $pagination->offset();
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset);
 	
+	$admin_user = false;
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
+		$admin_user = true;
+	}
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -137,8 +142,8 @@
 						      <th class="mobile-12 small-12"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortName : '?sort='.$sortName;?>">Article Name</a></th>
 						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Added</a></th>
 						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>
-						      <th class="small-2">sites</th>
-						      <th>Shares</th>
+						      <th class="small-2">COMM</th>
+						      <th>SHARES</th>
 						      <th></th>
 						    </tr>
 						 </thead>
@@ -173,19 +178,27 @@
 								  	</td>
 								  	<td class="small-2"><?php echo $article_date_created; ?></td>
 								  	<td class="small-2"><?php echo $article_status; ?></td>
-								  	<td class="small-2">PM</td>
-									<td>--</td>	
+								  	<td>--</td>
+								  	<td>--</td>	
+									<!-- REMOVE ARTICLE -->
 									<td>
-										<?php if($articleInfo["article_status"] != 1 ){?>
-										<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-											<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-											<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-											<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
-										</form>
+										<?php if($admin_user || $blogger ){?>
+											<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+												<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
+												<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
+												<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+											</form>
 										<?php }else{?>
-										<!-- REQUEST TO DELETE THIS ARTICLE -->
-										<!--<span data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">show on</span>-->
-										<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
+											<?php if($articleInfo["article_status"] != 1 ){?>
+											<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+												<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
+												<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
+												<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+											</form>
+											<?php }else{?>
+											<!-- REQUEST TO DELETE THIS ARTICLE -->
+											<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediagroup.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
+											<?php }?>
 										<?php }?>
 									</td>							  			
 								</tr>

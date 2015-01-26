@@ -163,7 +163,7 @@
 	$noCarambola = false;
 	if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653) $noCarambola = true;
 	if( isset($noCarambola) && !$noCarambola){ ?>
-		<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 	
+		<!--<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 	-->
 	<?php }
  }?>
 

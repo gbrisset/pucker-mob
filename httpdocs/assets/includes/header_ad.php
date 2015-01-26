@@ -1,4 +1,4 @@
-<?php if($detect->isMobile() && !$detect->isTablet()){
+<?php if($detect->isMobile()){
 
 	if($promotedArticle){ ?>
     	<!-- SMARTIES -->
@@ -24,14 +24,11 @@
 			<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
+
 			</div>
 		
     <?php } 
-}elseif($detect->isTablet()){?>
-<div id="header-ad" class="ad-unit hide-for-print">
-<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243108/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></script>
-</div>
-<?php }else { ?>
+}else { ?>
 	<div id="header-ad" class="ad-unit hide-for-print"></div>
 <?php }  ?>
 

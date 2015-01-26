@@ -519,7 +519,7 @@ $(document).ready(function (){
 
 		'article-delete-form': function(form, data){
 			var thisForm = $(form),
-			article_div = '#'+data.article_data;
+			article_div = '#article-'+data.article_data;
 
 			thisId = thisForm.attr('id');
 				$(article_div).remove();
@@ -1382,14 +1382,21 @@ $(document).ready(function (){
 
 	if($('#publish')){
 		$('#publish').on('click', function(e){
-		
+			var statusVal = $(this).attr('data-info');
 			$.ajax({
 			  type: "POST",
 			  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-			  data: { status: '1', a_i: $('#a_i').val(), task:'update_status' }
+			  data: { status: statusVal, a_i: $('#a_i').val(), task:'update_status' }
 			}).done(function(data) {
-		
-			  location.reload();
+
+				console.log(data);
+				if(data == "false" ){
+					alert("You need to Upload an Image in order to make this article Live!");
+				}else{
+					location.reload();
+				}
+				
+			  
 			});
 			 
 		});
@@ -1487,6 +1494,6 @@ if($('#article_categories')){
 
 
 		});
-	
+	$('.has-tooltip').tooltipster();
 
 });

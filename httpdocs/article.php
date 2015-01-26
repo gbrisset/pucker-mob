@@ -20,10 +20,20 @@ foreach($MPNavigation->categories as $category){
 }
 
 if(!is_null($categoryInfo)){
-	$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
-	$cat_name = $categoryInfo['cat_dir_name'];
 
-	if(isset($articleInfo['articles']) &&  $articleInfo['articles']){
+	$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
+	$cat_name = $articleInfo['articles'][0]['cat_dir_name'];
+
+	//ISSUE WITH WENDESDAY ARTICLE 
+	if( $articleInfo['articles'][0]['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
+		header('Location: http://www.puckermob.com/lifestyle/so-youd-like-to-be-a-phonesex-operator-a-helpful-quiz');
+		die;
+	}
+
+	//CHECK IF ARTICLES IN REGISTER UNDER THAT CATEGORY
+	$verifyInCat = $mpArticle->verifyArticleInCategory( $articleInfo['articles'][0]['article_id'], $categoryInfo['cat_id']);
+	
+	if(isset($articleInfo['articles']) &&  $articleInfo['articles'] && $verifyInCat ){
 		$articleInfoObj = $articleInfo['articles'][0];
 
 		$pageName = $articleInfoObj['article_title'];
@@ -38,6 +48,7 @@ if(!is_null($categoryInfo)){
 }else {
 	$mpShared->get404();
 }
+
 	$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
 	$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
 
@@ -195,16 +206,18 @@ if(!is_null($categoryInfo)){
 			<!-- Media Net
 			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div> -->
 
-			<!-- ALSO IN CATEGORY -->
-			<?php include_once($config['include_path'].'similararticles.php');?>
-			<hr>
-			
 			<?php if( !$promotedArticle ){ ?>
 			<!-- ADBLADE -->
 			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
 				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 			</section>
+			<hr>
+			<!-- ALSO IN CATEGORY -->
+			<?php include_once($config['include_path'].'similararticles.php');?>
+			
+			
+			
 		
 			<!-- AROUND THE WEB -->
 			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>

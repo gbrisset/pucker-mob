@@ -8,24 +8,23 @@
 	//1- Get All Articles Status = Live.
 	$articles = $cron->getArticles();
 	$month = date('n');
-	$apikey = "709226bb97515fd204f07c3d4bac38f78ba009eb";
+	$apikey = "69cfa5b227393e90b620098c7883a89e76626fbf";//"709226bb97515fd204f07c3d4bac38f78ba009eb";
 
 	//2- Get Social Media Information From SharedCount for each Article
 
 	foreach( $articles as $article ){
-		$cat = 'fun';//$article['cat_dir_name'];
+		$cat = $article['cat_dir_name'];
 		$url = "http://www.puckermob.com/".$cat."/".$article['article_seo_title'];
 		//$url = 'http://www.puckermob.com/fun/16-signs-that-youll-never-be-over-chipotle';
 
-		//$url = 'http://www.puckermob.com/lifestyle/7-easy-recipes-for-20somethings-who-cant-really-cook';
-
-		
-		$json = file_get_contents("http://free.sharedcount.com/?url=" . rawurlencode($url) . "&apikey=" . $apikey);
+		$url_to_get = "http://free.sharedcount.com/?url=" . rawurlencode($url) . "&apikey=" . $apikey;
+		$json = file_get_contents($url_to_get);
 		
 		$counts = json_decode($json, true);
-	
+		//echo $url."</br>";
+		
 		//3- Insert or Update Social Media Information [table=> social_media_records | condition=> article_id and month ]
-		$dashboard->updateSocialMediaShares($counts,  $article['article_id'], $month, $cat );
+		$dashboard->updateSocialMediaShares($counts,  $article['article_id'], $month, $cat);
 
 	}
 

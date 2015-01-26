@@ -261,7 +261,7 @@ header {
 button.expand, .button.expand{ background: #01b88a; font-size: 1.2rem; text-transform: uppercase; padding: 0.5rem;}
 label{ font-size: 1.1rem;}
 #bottom-link a { color: #0099FF;}
-button, .button{ background: #01b88a; }
+button, .button{ background: #000; }
 #content{ min-height: 100%; margin-top: 6% !important;}
 #topbar-search-submit{ margin-top: 0 !important; width: 2rem !important;}
 a.videos{display:none;}
@@ -271,6 +271,7 @@ a.videos{display:none;}
 #nav-cont nav ul { width: 100%; margin: 0; padding: 0; position: relative; list-style: none; }
 #nav-cont nav ul li, #nav-cont nav ul h2 { color: #000; font: 1.2rem Oslo,arial,sans-serif; width: 100%; margin: 0; padding: 0.5em 1rem; position: relative; text-transform: capitalize; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; cursor: pointer;}
 #nav-cont nav ul li:after{ border-bottom: 1px solid #ccc; box-shadow: 0px 0px 1px #fff; bottom: 0;content: " ";height: 1px; left: 0; position: absolute; width: 100%; z-index: 0;}
+
 #nav-cont nav ul .parent:before{content: '>'; float: right; margin: 0.1em 1em 0 0; font: 1.3em/1em ModernPics; color: #DDD;}
 #nav-cont nav ul ul.shown{display: block; margin-bottom: 0.3em;}
 #nav-cont nav ul ul{background: #aaa;}
@@ -347,7 +348,8 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 //padding: 0; position: relative;}
 //#articles-list .admin-article .article-info h2 a{ color: #0090D1; text-decoration: none; outline: none; cursor: pointer; }
 //form { width: 100%; margin: 0.5em auto 0; padding: 0; position: relative; }
-//.manage-links { color: #999999 !important; cursor: pointer; margin: 0 3em 0 0; outline: medium none; }
+//.manage-links { color: #999999 !important; cursor: pointer; margin: 0 3em 0 0; outline: medium none !important; }
+.manage-links { outline: medium none !important; }
 //.fa-times{ color: #FF0000;}
 //#articles-list .admin-article .article-status .live { color: #27CE27; }
 
@@ -410,7 +412,7 @@ input#upload, .b-upload { margin-bottom: 1rem; background: #eee; font-family: Os
 @media #{$large-up} {
 	.buttons-container button {padding: 0.5rem 1rem; margin-bottom: 0.8rem;}
 	.buttons-container{ text-align: right; padding-right: 1rem; padding-top: 0.4rem;}
-	input#article_title-s { padding: 0.2rem; font-size: 2rem; text-transform: capitalize; text-align: center;}
+	input#article_title-s { padding: 1.5rem; font-size: 2rem; text-transform: capitalize; text-align: center;}
 }
 
 select:hover{background-color:#01b88a; background-image:url("http://www.puckermob.com/assets/img/Down-Arrow.png");}
@@ -421,9 +423,12 @@ select:hover{background-color:#01b88a; background-image:url("http://www.puckermo
 
 //FORM SETTINGS
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{
-	font-size: 1.2rem;
+	font-size: 2rem;
 	text-transform: capitalize;
 	height:2.5rem;
+	padding:1.5rem;
+	text-align:center;
+	border-color: #777;
 }
 
 //EDIT ARTICLE
@@ -625,7 +630,7 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 .admin-logout-content .admin-form-cont .checkbox-label a{ color: #222; border-bottom:1px solid #999;}
 .admin-form-cont form  .a-gray-link {padding: 0.7rem 2.5rem; background: #aaa; font-size: 1.2rem; text-transform: UPPERCASE;  color: #fff;}
 .a-green-link{ background:#01b88a;}
-.admin-form-cont form  button#submit{font-size: 1.2rem; text-transform: uppercase; padding: 0.6rem 2rem; }
+.admin-form-cont form  button#submit{font-size: 1.2rem; text-transform: uppercase; padding: 0.6rem 2rem; background: #01b88a !important;}
 
 #bottom-link{ text-align: center; font-size: 1.2rem;}
 #bottom-link a{color: #fff;}
@@ -647,7 +652,27 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 }
 
 
-input{text-transform: inherit !important; }
+/*input{text-transform: inherit !important; }*/
+
+::-webkit-input-placeholder {
+  text-transform: uppercase;
+   color: #747371;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    text-transform: uppercase; 
+    color: #747371;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    text-transform: uppercase;
+     color: #747371;
+}
+
+:-ms-input-placeholder {  
+    text-transform: uppercase; 
+     color: #747371;
+}
 /*ACCOUNT PAGE*/
 #profile-inline-settings section h2{ color:#01b88a; }
 #profile-inline-settings section div label{ font-size: 1rem; font-family:OsloBold, Oslo, arial; }

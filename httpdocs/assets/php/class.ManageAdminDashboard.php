@@ -153,14 +153,15 @@ class ManageAdminDashboard{
 		}
 	}
 	
-	public function getLastMonthEarnings($contributor_id, $month){
+	public function getLastMonthEarnings($contributor_id, $month, $year){
 
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$year = date('Y');
+		//$year = date('Y');
 
-		$s = "SELECT total_earnings FROM contributor_earnings WHERE contributor_id = $contributor_id AND year = $year  ";
+		$s = "SELECT total_earnings FROM contributor_earnings WHERE contributor_id = $contributor_id ";
 
+		if($year != 0 ) $s .= " AND year = $year ";
 		if($month != 0 ) $s.= " AND month = $month ";
 
 		$q = $this->performQuery(['queryString' => $s]);

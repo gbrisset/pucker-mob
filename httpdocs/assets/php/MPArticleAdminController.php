@@ -526,7 +526,7 @@ class MPArticleAdminController extends MPArticle{
 	public function addArticle($post){ 
 		
 		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'You must insert a title'));
-		if(!isset($post['article_categories']) || $post['article_title-s'] == "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
+		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
 		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'You must insert a Description'));
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
@@ -760,14 +760,34 @@ class MPArticleAdminController extends MPArticle{
 	public function republishArticle($data){
 		$articleId = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		//$articleStatus = filter_var($data['status'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$status = 1;
-		$currentDate = date("Y-m-d H:i:s");
-	//	var_dump($articleId, $currentDate);
-		$statusChange = $this->performUpdate(array(
-			'updateString' => "UPDATE articles SET article_status = ".$status.", date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
-		));
+		
 
-		//var_dump("UPDATE articles SET date_updated = '".$currentDate."', article_status = 1 WHERE article_id = ".$articleId); die;
+		$status = $data['status'];
+		
+		$currentDate = date("Y-m-d H:i:s");
+	
+		//	Set the paths to the image
+		$image = $articleId.'_tall.jpg';
+		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+		$imageExists = false;
+		//	Verify if the usr has ever SELECTED an image
+		if(isset($image)){
+			$imageExists = file_exists($imageDir);
+		}
+		//var_dump( $image, $imageDir,  $imageExists);
+
+		if( $status === "3"){
+			$statusChange = $this->performUpdate(array(
+					'updateString' => "UPDATE articles SET article_status = 3, date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
+				));
+		}else if( $status === "1"){
+			if($imageExists){
+				$statusChange = $this->performUpdate(array(
+					'updateString' => "UPDATE articles SET article_status = 1, date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
+				));
+			}
+		}
+		
 
 		if($statusChange === true) return true;
 		return false;

@@ -12,369 +12,187 @@
 <?php include_once($config['include_path'].'header_ad.php'); ?>
 
 <main id="main" class="row panel sidebar-on-right" role="main">
-		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left">
+		<section id="puc-articles" class="sidebar-right shadow-on-large-up mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left">
 <section class="small-12 columns sidebar-right">
-				<h2>Puckermob.com Web Site and Application Terms and Conditions of Use</h2>
+<h2>Terms of Service</h2>
+<p class="bold">Effective as of: January 1, 2015</p>
+<p>USERS UNDER THE AGE OF 18 ARE NOT ALLOWED TO REGISTER TO ACCEPT PAYMENTS WITHOUT THE WRITTEN APPROVAL OF THE USERS’ PARENT OR LEGAL GUARDIAN. BY SIGNING UP FOR THIS SERVICE, YOU HEREBY ACKNOWLEDGE THAT YOU ARE AGE 18 OR OVER.
+</p>
+<p>THESE TERMS OF SERVICE PROVIDES THAT ALL DISPUTES WILL BE RESOLVED BY BINDING ARBITRATION AND NOT IN COURT OR BY JURY TRIAL. YOU ALSO AGREE TO RELINQUISH YOUR RIGHT TO PARTICIPATE AS A CLASS REPRESENTATIVE OR CLASS MEMBER ON ANY CLASS ACTION CLAIM YOU MAY HAVE AGAINST SEQUEL MEDIA INTERNATIONAL, LLC.
+</p>
+<p>By agreeing to the Terms of Service and Privacy Policy when signing up for an account with PuckerMob.com (a site wholly owned by Sequel Media International, LLC), or by using this Site, you have agreed to These Terms of Service and the Sequel Media International, LLC Privacy Policy hereby incorporated by reference, which details the ways in which we use personal information that belongs to or is related to you.
+</p>
+<p>These Terms of Service ("Terms") are between you and Sequel Media International, LLC (“Sequel Media International, LLC”, “we”, “us” or “our”) with regard to the PuckerMob.com website (defined below) (the “Site”). Please read them carefully. In addition, if you are registering to use services on the Site or accessed via the Site, you agree to be subject to any rules or guidelines applicable to such services, and such rules or guidelines will be incorporated by reference within these Terms of Service. If you do not agree to these Terms of Service, or you do not meet any eligibility requirements established by Sequel Media International, LLC for use of and access to the Site, you may not access, view, obtain services from, or otherwise use the Site.
+</p>
+<p>You agree to the terms and conditions of Sequel Media International, LLC Privacy POLICY (“PRIVACY POLICY”) hereby incorporated by reference, which details the ways in which we use personal information that belongs to or is related to you.
+</p>
 
-				<p>
-					The following terms and conditions (the "Terms and Conditions") govern your use of this web site or application provided to you by Sequel Media Group, LLC or one of its subsidiaries, and any content, features or functionality made available from or through this web site, including any subdomains thereof, or application (the "Web Site"). The Web Site is made available by Sequel Media Group, LLC or its subsidiaries ("we" or "us" or "our"), each of which have adopted these Terms and Conditions with regard to its web site. We may change the Terms and Conditions from time to time, at any time without notice to you, by posting such changes on the Web Site. BY USING THE WEB SITE, YOU ACCEPT AND AGREE TO THESE TERMS AND CONDITIONS AS APPLIED TO YOUR USE OF THE WEB SITE. If you do not agree to these Terms and Conditions, you may not access or otherwise use the Web Site.
-				</p>
+<h3>"SITE" DEFINED</h3>
+<p>The “Site” encompasses PuckerMob.com and any and all subdomains or affiliated landing pages, sites and mini-sites, and all associated web pages, including without limitation all content, materials, information, policies, modifications, updates, enhancements, revisions, new features, and or new web properties of such pages, along with all Site services provided through such websites and web pages. The purpose of the Site is to (a) provide users of the publicly accessible portion of the Site with access to certain content concerning PuckerMob.com, its products and services, and related information as a complementary service for entertainment, informational and educational purposes only, and (b) provide certain tools such as player pages to users of the password-protected portion of the Site (collectively, “Purpose”).
+</p>
 
-				<p>
-					<ol>
-						<li>
-							<h3>Proprietary Rights</h3>
-							<p>
-								As between you and us, we own, solely and exclusively, all rights, title and interest in and to the Web Site, all the content (including, for example, audio, photographs, illustrations, graphics, other visuals, video, copy, text, software, titles, shockwave files, etc.), code, data and materials thereon, the look and feel, design and organization of the Web Site, and the compilation of the content, code, data and materials on the Web Site, including but not limited to any copyrights, trademark rights, patent rights, database rights, moral rights, sui generis rights and other intellectual property and proprietary rights therein. Your use of the Web Site does not grant to you ownership of any content, code, data or materials you may access on or through the Web Site.
-							<p>
-						</li>	
-						<li>
-							<h3>Limited License</h3>
-							<p>
-								 You may access and view the content on the Web Site on your computer or other device and, unless otherwise indicated in these Terms and Conditions or on the Web Site, make single copies or prints of the content on the Web Site for your personal, internal use only. Unless otherwise specifically indicated in these Terms and Conditions or on the Web Site, use of the Web Site and the services offered on or through the Web Site, are only for your personal, non-commercial use.
-							</p>
-						</li>
+<h3>MODIFICATION OF THESE TERMS OF SERVICE AND THE SITE</h3>
+<p>You are responsible for regularly reviewing these Terms of Service. Sequel Media International, LLC has the right, but not the obligation, to correct any errors or omissions in any portion of the Site and these Terms of Service. Sequel Media International, LLC reserves the right, in its sole discretion, to change, modify, add, remove or terminate any portion of the Site or these Terms of Service, in whole or in part, at any time, without prior notice. All changes to these Terms of Service are effective immediately upon being posted to the Site. Your continued use of the Site following any changes to these Terms of Service will mean you accept these changes.
+</p>
 
-						<li>
-							<h3>Prohibited Use</h3>
-							<p>
-								 Unless otherwise specifically indicated in these Terms and Conditions or on the Web Site, any commercial or promotional distribution, publishing or exploitation of the Web Site, or any content, code, data or materials on the Web Site, is strictly prohibited unless you have received the express prior written permission from our authorized personnel or the otherwise applicable rights holder. Other than as expressly allowed herein or on the Web Site, you may not download, post, display, publish, copy, reproduce, distribute, transmit, modify, perform, broadcast, transfer, create derivative works from, sell or otherwise exploit any content, code, data or materials on or available through the Web Site. You further agree that you may not alter, edit, delete, remove, otherwise change the meaning or appearance of, or repurpose, any of the content, code, data, or other materials on or available through the Web Site, including, without limitation, the alteration or removal of any trademarks, trade names, logos, service marks, or any other proprietary content or proprietary rights notices. You acknowledge that you do not acquire any ownership rights by downloading or otherwise using any copyrighted material from or through the Web Site. If you make other use of the Web Site, or the content, code, data or materials thereon or available through the Web Site, except as otherwise provided above, you may violate copyright and other laws of the United States, other countries, as well as applicable state laws and may be subject to liability for such unauthorized use.	
-							</p>	
-						</li>
-						
-						<li>
-							<h3>Trademarks</h3>
-							<p>
-								 The trademarks, logos, service marks and trade names (collectively the "Trademarks") displayed on the Web Site or on content available through the Web Site are our registered and unregistered Trademarks and others and may not be used in connection with products and/or services that are not related to, associated with, or sponsored by their rights holders that are likely to cause customer confusion, or in any manner that disparages or discredits their rights holders. All Trademarks not owned by us that appear on the Web Site or on or through the Web Site's services, if any, are the property of their respective owners. Nothing contained on the Web Site should be construed as granting, by implication, estoppel, or otherwise, any license or right to use any Trademark displayed on the Web Site without our written permission or the third party that may own the applicable Trademark. Your misuse of the Trademarks displayed on the Web Site or on or through any of the Web Site's services is strictly prohibited.
-							</p>
-						</li>
-						<li>
-							<h3>User Information</h3>
-							<p>
-								In the course of your use of the Web Site and/or the services made available on or through the Web Site, you may be asked to provide certain personalized information to us (such information referred to hereinafter as "User Information"). Our information collection and use policies with respect to the privacy of such User Information are set forth in the Web Site's <a href="<?php echo $config['this_url']; ?>policy.php#privacy">Privacy Policy</a> which is incorporated herein by reference for all purposes. You acknowledge and agree that you are solely responsible for the accuracy and content of User Information.
-							</p>
-						</li>
+<h3>SITE USE</h3>
+<p>Compensation Policy for Revenue Program</p>
+<p>You may receive a portion of revenue (“Revenue Program”) by Sequel Media International, LLC in connection with authenticate genuine social interactions (“likes,” shares, comments, and views) on the Site by posting valid content. If you violate this Compensation Policy, Sequel Media International, LLC Terms of Service or Privacy Policy, we may, in our sole discretion, without notice, reduce or eliminate your compensation, terminate this Agreement, delete your content, and/or suspend or terminate your user account.</p>
+<p>By registering on our Site and posting content or interacting with Site content, you hereby represent, acknowledge, agree, and warrant that:</p>
 
-						<li>
-							<h3>Submitted Materials</h3>
-							<p>
-								 Unless specifically requested, we do not solicit nor do we wish to receive any confidential, secret or proprietary information or other material from you through the Web Site, by e-mail or in any other way. Any information, creative works, demos, ideas, suggestions, concepts, methods, systems, designs, plans, techniques or other materials submitted or sent to us (including, for example and without limitation, that which you submit or post to our chat rooms, message boards, survey responses, and/or our blogs, or send to us via e-mail) ("Submitted Materials") will be deemed not to be confidential or secret, and may be used by us in any manner consistent with the Web Site's <a href="<?php echo $config['this_url']; ?>policy.php#privacy">Privacy Policy</a>. By submitting or sending Submitted Materials to us, you: (i) represent and warrant that the Submitted Materials are original to you, that no other party has any rights thereto, and that any "moral rights" in Submitted Materials have been waived, and (ii) you grant us and our affiliates a royalty-free, unrestricted, worldwide, perpetual, irrevocable, non-exclusive and fully transferable, assignable and sublicensable right and license to use, copy, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, perform, display and incorporate in other works any Submitted Materials (in whole or part) in any form, media, or technology now known or later developed, including for promotional and/or commercial purposes. We cannot be responsible for maintaining any Submitted Material that you provide to us, and we may delete or destroy any such Submitted Material at any time.
-							</p>
-						</li>
-
-						<li>
-							<h3>Prohibited User Conduct</h3>
-							<p>
-								 You warrant and agree that, while using the Web Site and the various services, features and functionality offered on or through the Web Site, you shall not: (a) impersonate any person or entity or misrepresent your affiliation with any other person or entity; (b) insert your own or a third party's advertising, branding or other promotional content into any of the Web Site's content, materials or services (for example, without limitation, in an Embedded Video (as defined herein), RSS feed or a podcast received from us or otherwise through the Web Site), or, except as otherwise specifically authorized in these Terms and Conditions or on the Web Site use, redistribute, republish or exploit such content or service for any further commercial or promotional purposes; or (c) attempt to gain unauthorized access to other computer systems through the Web Site. You shall not: (i) engage in spidering, "screen scraping," "database scraping," harvesting of e-mail addresses, wireless addresses or other contact or personal information, or any other automatic means of obtaining lists of users or other information from or through the Web Site or the services offered on or through the Web Site, including without limitation any information residing on any server or database connected to the Web Site or the services offered on or through the Web Site; (ii) obtain or attempt to obtain unauthorized access to computer systems, materials or information through any means; (iii) use the Web Site or the services made available on or through the Web Site in any manner that could interrupt, damage, disable, overburden, or impair the Web Site or such services, including, without limitation, sending mass unsolicited messages or "flooding" servers with requests; (iv) use the Web Site or the Web Site's services or features in violation of our or any third party's intellectual property or other proprietary or legal rights; or (v) use the Web Site or the Web Site's services in violation of any applicable law. You further agree that you shall not attempt (or encourage or support anyone else's attempt) to circumvent, reverse engineer, decrypt, or otherwise alter or interfere with the Web Site or the Web Site's services, or any content thereof, or make any unauthorized use thereof. You agree that you shall not use the Web Site in any manner that could interfere with any other party's use and enjoyment of the Web Site or any of its services. You shall not obtain or attempt to obtain any materials or information through any means not intentionally made publicly available or provided for through the Web Site.
-							</p>
-						</li>
-
-						<li>
-							<h3>Public Forums</h3>
-							<p>
-								 We may, from time to time, make messaging services, chat services, bulletin boards, message boards, blogs, other forums and other such services available on or through the Web Site. In addition to any other rules or regulations that we may post in connection with a particular service, you agree that you shall not upload, post, transmit, distribute or otherwise publish through the Web Site or any service or feature made available on or through the Web Site, any materials which (i) restrict or inhibit any other user from using and enjoying the Web Site or the Web Site's services, (ii) are fraudulent, unlawful, threatening, abusive, harassing, libelous, defamatory, obscene, vulgar, offensive, pornographic, profane, sexually explicit or indecent, (iii) constitute or encourage conduct that would constitute a criminal offense, give rise to civil liability or otherwise violate any local, state, national or international law, (iv) violate, plagiarize or infringe the rights of third parties including, without limitation, copyright, trademark, trade secret, confidentiality, contract, patent, rights of privacy or publicity or any other proprietary right, (v) contain a virus, spyware, or other harmful component, (vi) contain embedded links, advertising, chain letters or pyramid schemes of any kind, or (vii) constitute or contain false or misleading indications of origin, endorsement or statements of fact. You further agree not to impersonate any other person or entity, whether actual or fictitious, including us or our personnel. You also may not offer to buy or sell any product or service on or through your comments submitted to our forums. You alone are responsible for the content and consequences of any of your activities.
-							</p>
-						</li>
-
-						<li>
-							<h3>Right to Monitor and Editorial Control</h3>
-							<p>
-								We reserve the right, but do not have an obligation, to monitor and/or review all materials posted to the Web Site or through the Web Site's services or features by users, and we are not responsible for any such materials posted by users. However, we reserve the right at all times to disclose any information as necessary to satisfy any law, regulation or government request, or to edit, refuse to post or to remove any information or materials, in whole or in part, that in our sole discretion are objectionable or in violation of this Terms of Use, our policies or applicable law. We may also impose limits on certain features of the forums or restrict your access to part or all of the forums without notice or penalty if we believe you are in breach of the guidelines set forth in this paragraph, our terms and conditions or applicable law, or for any other reason without notice or liability.
-							</p>
-						</li>
-
-						<li>
-							<h3>Private or Sensitive Information on Public Forums</h3>
-							<p>
-								It is important to remember that comments submitted to a forum may be recorded and stored in multiple places, both on our Web Site and elsewhere on the Internet, which are likely to be accessible for a long time and you have no control over who will read them eventually. It is therefore important that you are careful and selective about the personal information that you disclose about yourself and others, and in particular, you should not disclose sensitive, embarrassing, proprietary or confidential information in your comments to our public forums.
-							</p>
-						</li>
-
-						<li>
-							<h3>Linking to the Web Site</h3>
-							<p>
-								Unless otherwise specifically indicated in these Terms and Conditions or on the Web Site, you agree that: (i) if you include a link from any other web site to the Web Site, such link shall open in a new browser window and shall link to the full version of an HTML formatted page of this Web Site; (ii) you are not permitted to link directly to any image hosted on the Web Site or our services, such as using an "in-line" linking method to cause the image hosted by us to be displayed on another web site; and (iii) you agree not to download or use images hosted on this Web Site on another web site, for any purpose, including, without limitation, posting such images on another site. You agree not to link from any other web site to this Web Site in any manner such that the Web Site, or any page of the Web Site, is "framed," surrounded or obfuscated by any third party content, materials or branding. We reserve all of our rights under the law to insist that any link to the Web Site be discontinued, and to revoke your right to link to the Web Site from any other web site at any time upon written notice to you.
-							</p>
-						</li>
-
-						<li>
-							<h3>Indemnification</h3>
-							<p>
-								You agree to defend, indemnify and hold us and our affiliates and our affiliates' directors, officers, employees and agents harmless from any and all claims, liabilities, costs and expenses, including attorneys' fees, arising in any way from your use of the Web Site, your placement or transmission of any message, content, information, software or other materials through the Web Site, or your breach or violation of the law or of these Terms and Conditions. We reserve the right, at our own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you, and in such case, you agree to cooperate with our defense of such claim.
-							</p>
-						</li>
-
-						<li>
-							<h3>Orders for Products and Services</h3>
-							<p>
-								We may make certain products available to visitors and registrants of the Web Site. If you order any products, you hereby represent and warrant that you are 18 years old or older. You agree to pay in full the prices for any purchases you make either by credit/debit card concurrent with your online order or by other payment means acceptable to us. You agree to pay all applicable taxes. If payment is not received by us from your credit or debit card issuer or its agents, you agree to pay all amounts due upon demand by us. Certain products that you purchase and/or download on or through the Web Site may be subject to additional terms and conditions presented to you at the time of such purchase or download.
-							</p>
-						</li>
-
-						<li>
-							<h3>Third Party Web Sites</h3>
-							<p>
-								You may be able to link from the Web Site to third party web sites and third party web sites may link to the Web Site ("Linked Sites"). You acknowledge and agree that we have no responsibility for the information, content, products, services, advertising, code or other materials which may or may not be provided by or through Linked Sites, even if they are owned or run by affiliates of ours. Links to Linked Sites do not constitute an endorsement or sponsorship by us of such web sites or the information, content, products, services, advertising, code or other materials presented on or through such web sites. The inclusion of any link to such sites on our Site does not imply our endorsement, sponsorship, or recommendation of that site. Sequel Media Group, LLC disclaims any liability for links (1) from another web site to this Web Site and (2) to another web site from this Web Site. Sequel Media Group, LLC cannot guarantee the standards of any web site to which links are provided on this Web Site nor shall we be held responsible for the contents of such sites, or any subsequent links. We do not represent or warrant that the contents of any third party web site is accurate, compliant with state or federal law, or compliant with copyright or other intellectual property laws. Also, we are not responsible for or any form of transmission received from any linked web site. Any reliance on the contents of a third party web site is done at your own risk and you assume all responsibilities and consequences resulting from such reliance.
-							</p>
-						</li>
-
-						<li>
-							<h3>Embedded Video Links</h3>
-							<p>
-								Certain pages of the Web Site provide the functionality for you to "embed" videos appearing on the page on other web sites or blog pages (together with the Player, as defined herein, the "Embedded Video"). The functionality is provided by giving you the necessary HTML code to include on such page to make that Embedded Video appear. If you include the HTML on a web or blog page, the actual video stream for the Embedded Video will be served from our servers but the Embedded Video may be rendered to the visitor of that page as part of that page. If you elect to embed video on a page, you agree as follows: (i) you will not alter, in any respect, the Embedded Video (including without limitation the content, format, and length and advertising associated therewith) from how it is served from our servers; (ii) you will not facilitate access to the Embedded Video through any video player or other tool other than the video player that is provided by us when the Embedded Video appears (the "Player"); (iii) the Embedded Video may be used as part for commercial purposes, including on an advertising-supported page, provided that: (a) the Embedded Video shall not be included in, or used as part of, a service that sells access to video content; (b) you shall not insert advertising, sponsorship or promotional messages in, or immediately adjacent to, the Embedded Video or Player; and (c) to the extent you sell any advertising, sponsorship or promotional material to appear on the same page that includes the Embedded Video, the page includes other content not provided by us which is a sufficient basis for such sales. You may not block, inhibit, build upon or disable any portion of the Player, including without limitation links back to our site. You understand and agree that all measured metrics related to the access and viewing of the Embedded Video shall be credited to the Web Site Without limitation of any provision of these Terms of Use, we shall have no liability to you for any reason with respect to your use of Embedded Video and you agree to defend, indemnify and hold us and our affiliates and our affiliates' directors, officers, employees and agents harmless from any and all claims, liabilities, costs and expenses, including attorneys' fees, arising in any way from your use of the Embedded Video.
-							</p>
-						</li>
-
-						<li>
-							<h3>Copyright Agent</h3>
-							<p>
-								We respect the intellectual property rights of others, and require that the people who use the Web Site, or the services or features made available on or through the Web Site, do the same. If you believe that your work has been copied in a way that constitutes copyright infringement, please forward the following information to our Copyright Agent, designated as such pursuant to the Digital Millennium Copyright Act, 17 U.S.C. § 512(c)(2), named below: 
-							</p>
-							<ul>
-								<li>Your address, telephone number, and email address&#59;</li>
-								<li>A description of the copyrighted work that you claim has been infringed&#59;</li>
-								<li>A description of where the alleged infringing material is located&#59;</li>
-								<li>A statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law&#59;</li>
-								<li>An electronic or physical signature of the person authorized to act on behalf of the owner of the copyright interest &#59; and</li>
-								<li>A statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or are authorized to act on the copyright owner's behalf.</li>
-							</ul>
-							<p>
-								FOR COPYRIGHT NOTICES ONLY <br />info@sequelmediagroup.com
-							</p>
-						</li>
-
-						<li>
-							<h3>DISCLAIMER OF WARRANTIES</h3>
-							<p>
-								THE WEB SITE, INCLUDING, WITHOUT LIMITATION, ALL SERVICES, FEATURES, CONTENT, FUNCTIONS AND MATERIALS PROVIDED THROUGH THE WEB SITE, ARE PROVIDED "AS IS," "AS AVAILABLE," WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY WARRANTY FOR INFORMATION, DATA, DATA PROCESSING SERVICES, UPTIME OR UNINTERRUPTED ACCESS, ANY WARRANTIES CONCERNING THE AVAILABILITY, PLAYABILITY, DISPLAYABILITY, ACCURACY, PRECISION, CORRECTNESS, THOROUGHNESS, COMPLETENESS, USEFULNESS, OR CONTENT OF INFORMATION, AND ANY WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE, AND WE HEREBY DISCLAIM ANY AND ALL SUCH WARRANTIES, EXPRESS AND IMPLIED. WE DO NOT WARRANT THAT THE WEB SITE OR THE SERVICES, CONTENT, FUNCTIONS OR MATERIALS PROVIDED THROUGH THE WEB SITE WILL BE TIMELY, SECURE, UNINTERRUPTED OR ERROR FREE, OR THAT DEFECTS WILL BE CORRECTED. WE MAKE NO WARRANTY THAT THE WEB SITE OR THE PROVIDED SERVICES WILL MEET USERS' REQUIREMENTS. NO ADVICE, RESULTS OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED BY YOU FROM US OR THROUGH THE WEB SITE SHALL CREATE ANY WARRANTY NOT EXPRESSLY MADE HEREIN. WE AND OUR AFFILIATES ALSO ASSUME NO RESPONSIBILITY, AND SHALL NOT BE LIABLE FOR, ANY DAMAGES TO, OR VIRUSES THAT MAY INFECT, YOUR EQUIPMENT ON ACCOUNT OF YOUR ACCESS TO, USE OF, OR BROWSING IN THE WEB SITE OR YOUR DOWNLOADING OF ANY MATERIALS, DATA, TEXT, IMAGES, VIDEO CONTENT, OR AUDIO CONTENT FROM THE WEB SITE. IF YOU ARE DISSATISFIED WITH THE WEB SITE, YOUR SOLE REMEDY IS TO DISCONTINUE USING THE WEB SITE.
-WE TRY TO ENSURE THAT THE INFORMATION POSTED ON THE WEB SITE IS CORRECT AND UP-TO-DATE. WE RESERVE THE RIGHT TO CHANGE OR MAKE CORRECTIONS TO ANY OF THE INFORMATION PROVIDED ON THE WEB SITE AT ANY TIME AND WITHOUT ANY PRIOR WARNING. WE NEITHER ENDORSE NOR ARE RESPONSIBLE FOR THE ACCURACY OR RELIABILITY OF ANY OPINION, ADVICE OR STATEMENT ON THE WEB SITE, NOR FOR ANY OFFENSIVE, DEFAMATORY, OBSCENE, INDECENT, UNLAWFUL OR INFRINGING POSTING MADE THEREON BY ANYONE OTHER THAN OUR AUTHORIZED EMPLOYEE SPOKESPERSONS WHILE ACTING IN THEIR OFFICIAL CAPACITIES (INCLUDING, WITHOUT LIMITATION, OTHER USERS OF THE WEB SITE). IT IS YOUR RESPONSIBILITY TO EVALUATE THE ACCURACY, COMPLETENESS OR USEFULNESS OF ANY INFORMATION, OPINION, ADVICE OR OTHER CONTENT AVAILABLE THROUGH THE WEB SITE. PLEASE SEEK THE ADVICE OF PROFESSIONALS, AS APPROPRIATE, REGARDING THE EVALUATION OF ANY SPECIFIC INFORMATION, OPINION, ADVICE OR OTHER CONTENT, INCLUDING BUT NOT LIMITED TO CULINARY, HEALTH OR LIFESTYLE INFORMATION, OPINION, ADVICE OR OTHER CONTENT.
-WITHOUT LIMITATION OF THE ABOVE IN THIS SECTION, WE AND OUR AFFILIATES, SUPPLIERS AND LICENSORS MAKE NO WARRANTIES OR REPRESENTATIONS REGARDING ANY PRODUCTS OR SERVICES ORDERED OR PROVIDED VIA THE WEB SITE, AND HEREBY DISCLAIM, AND YOU HEREBY WAIVE, ANY AND ALL WARRANTIES AND REPRESENTATIONS MADE IN PRODUCT OR SERVICES LITERATURE, FREQUENTLY ASKED QUESTIONS DOCUMENTS AND OTHERWISE ON THE WEB SITE OR IN CORRESPONDENCE WITH US OR OUR AGENTS. ANY PRODUCTS AND SERVICES ORDERED OR PROVIDED VIA THE WEB SITE ARE PROVIDED BY US "AS IS," EXCEPT TO THE EXTENT, IF AT ALL, OTHERWISE SET FORTH IN A LICENSE OR SALE AGREEMENT SEPARATELY ENTERED INTO IN WRITING BETWEEN YOU AND US OR OUR LICENSOR OR SUPPLIER.
-							</p>
-						</li>
-
-						<li>
-							<h3>LIMITATION OF LIABILITY</h3>
-							<p>
-								IN NO EVENT, INCLUDING BUT NOT LIMITED TO NEGLIGENCE, SHALL WE, OUR AFFILIATES, OR ANY OF OUR DIRECTORS, OFFICERS, EMPLOYEES, AGENTS OR CONTENT OR SERVICE PROVIDERS (COLLECTIVELY, THE "PROTECTED ENTITIES") BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, EXEMPLARY OR PUNITIVE DAMAGES ARISING FROM, OR DIRECTLY OR INDIRECTLY RELATED TO, THE USE OF, OR THE INABILITY TO USE, THE WEB SITE OR THE CONTENT, FEATURES, MATERIALS AND FUNCTIONS RELATED THERETO, YOUR PROVISION OF INFORMATION VIA THE WEB SITE, LOST BUSINESS OR LOST SALES, EVEN IF SUCH PROTECTED ENTITY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES SO SOME OF THE ABOVE LIMITATIONS MAY NOT APPLY TO CERTAIN USERS. IN NO EVENT SHALL THE PROTECTED ENTITIES BE LIABLE FOR OR IN CONNECTION WITH ANY CONTENT POSTED, TRANSMITTED, EXCHANGED OR RECEIVED BY OR ON BEHALF OF ANY USER OR OTHER PERSON ON OR THROUGH THE WEB SITE. IN NO EVENT SHALL THE TOTAL AGGREGATE LIABILITY OF THE PROTECTED ENTITIES TO YOU FOR ALL DAMAGES, LOSSES, AND CAUSES OF ACTION (WHETHER IN CONTRACT OR TORT, INCLUDING, BUT NOT LIMITED TO, NEGLIGENCE OR OTHERWISE) ARISING FROM THE TERMS AND CONDITIONS OR YOUR USE OF THE WEB SITE EXCEED, IN THE AGGREGATE, THE AMOUNT, IF ANY, PAID BY YOU TO US FOR YOUR USE OF THE WEB SITE OR PURCHASE OF PRODUCTS VIA THE WEB SITE.
-							</p>
-						</li>
-
-						<li>
-							<h3>Applicable Laws</h3>
-							<p>
-								We control and operate the Web Site from our offices in the United States of America. We do not represent that materials on the Web Site are appropriate or available for use in other locations. Persons who choose to access the Web Site from other locations do so on their own initiative, and are responsible for compliance with local laws, if and to the extent local laws are applicable. All parties to these terms and conditions waive their respective rights to a trial by jury.
-							</p>
-						</li>
-
-						<li>
-							<h3>Termination</h3>
-							<p>
-								We may terminate, change, suspend or discontinue any aspect of the Web Site or the Web Site's services at any time. We may restrict, suspend or terminate your access to the Web Site and/or its services if we believe you are in breach of our terms and conditions or applicable law, or for any other reason without notice or liability. We maintain a policy that provides for the termination in appropriate circumstances of the Web Site use privileges of users who are repeat infringers of intellectual property rights.
-							</p>
-						</li>
-
-						<li>
-							<h3>Changes to Terms of Use</h3>
-							<p>
-								We reserve the right, at our sole discretion, to change, modify, add or remove any portion of the Terms and Conditions, in whole or in part, at any time. Changes in the Terms and Conditions will be effective when posted. Your continued use of the Web Site and/or the services made available on or through the Web Site after any changes to the Terms and Conditions are posted will be considered acceptance of those changes.
-							</p>
-						</li>												
-
-						<li>
-							<h3>Miscellaneous</h3>
-							<p>
-								The Terms and Conditions, and the relationship between you and us, shall be governed by the laws of the State of New York, United States of America. You agree that any cause of action that may arise under the Terms and Conditions shall be commenced and be heard in the appropriate court in the State of New York, County of New York, United States of America. You agree to submit to the personal and exclusive jurisdiction of the courts located within New York County in the State of New York. Our failure to exercise or enforce any right or provision of the Terms and Conditions shall not constitute a waiver of such right or provision. If any provision of the Terms and Conditions is found by a court of competent jurisdiction to be invalid, the parties nevertheless agree that the court should endeavor to give effect to the parties' intentions as reflected in the provision, and the other provisions of the Terms and Conditions remain in full force and effect.
-							</p>
-						</li>
-
-					</ol>
+<ol>
+<li>You agree to abide by the Sequel Media International, LLC Terms of Service and Privacy Policy.</li>
+<li>Sequel Media International, LLC is constantly changing and improving the Site and Revenue Program. We may add or remove functionalities, features or methods of calculations of the Revenue Program at any time, and we may suspend or stop the Revenue Program altogether.
+<li>We may modify the Compensation Policy, Terms of Service or Privacy Policy at any time and without notice. Any material modification to the Compensation Policy, Terms of Service or Privacy Policy will be posted on their respective pages. Material modifications will not apply retroactively and generally will become effective 14 days after they are posted. What constitutes “material” will be determined by Sequel Media International, LLC in its sole discretion. Changes addressing new functionality in the Revenue Program or changes made for legal reasons will be effective immediately. If you don’t agree to such modifications, you must stop participating in the Revenue Program.</li>
+<li>Posts must contain valid content to be eligible for the Revenue Program as follows:
+<ul>
+	<li>An eligible post must contain original text of at least 400 characters, be authored by you, and be written in the English language or include an English translation;</li>
+	<li>An eligible post containing an image must be accompanied by text of at least 400 characters and be your originally created image, or be suitably licensed to you, or uses images from any Sequel Media International, LLC’ photo and image library that may be provided;</li>
+	<li>An eligible post will not contain unsuitable content, including but not limited to, plagiarized or infringing text or images, falsified or misattributed content, obscene, pornographic, pseudo-pornographic, defamatory, bigoted or invasive content, will not incite others to commit violence, will not contain previously published materials, whether public domain or your previously published content, unless additional text of at least 400 characters is included in such post, will not contain the intellectual property of Sequel Media International, LLC or third parties, and will not violate the Site Restrictions section of the Terms of Service ; and</li>
+	<li>An eligible post will not contain content, falsified user information, referral or affiliate links to other Sites, or directly or indirectly generate likes, comments, or views of posts.</li>
+</ul>
+</li>
+<li>Social interactions with eligible posts must be authentic to be eligible for redemption of compensation under Revenue Program. Therefore you will not:
+	<ul>
+		<li>Abuse the Site’s likes/views/comment system by any means including but not limited to use of exchange groups, or utilizing code, tags, cookies, Traffic Exchange, bots, proxies, virtual private networks, or other forms of social or digital manipulation to generate non-authentic likes/views/comment on your posts; or</li>
+		<li>Use any automated, deceptive, fraudulent or other invalid means (including, but not limited to, click spam, robots, macro programs, and Internet agents) to encourage or require other users or any other persons, either with or without their knowledge, to like/view/comment on posts, by offering incentives or any other methods that are manipulative, deceptive, malicious or fraudulent.</li>
+	</ul>
+</li>
+<li>Earnings (if any) from eligible posts and social interactions shall not be redeemed until your Revenue Program account exceeds $50.00; however your compensation may be forfeited and your account terminated if such revenue was produced by ineligible posts and/or non-authentic social interactions (likes/views/comments).</li>
+<li>You are not an employee, partner, or agent of Sequel Media International, LLC and shall be solely responsible for any and all applicable taxes, excise, value added or other applicable taxes, tariffs or duties arising in connection with your use of the Site and shall fully comply with applicable federal, state, and local laws relating to your use of the Site and any revenue you receive hereunder.</li>
+</ol>
 
 
-					<p>Last updated: December 16th, 2013</p>
+<h3>Restrictions on Use</h3>
+<p>You agree to use the Site only as provided herein. We have the right to confiscate (and not pay out on) any account whose conduct violates our Restrictions on Use.</p>
 
-					<p>
-						Copyright
-						Contents on this site are copyright 2012-1014 by Sequel Media Group, LLC or its affiliates or licensors. Unauthorized distribution or reproduction is forbidden. If you have questions or wish to obtain more information from or about Sequel Media Group, please visit <a href="http://sequelmediagroup.com" target="_blank">sequelmediagroup.com</a>
-					</p>
+<p>Therefore you shall not:</p>
+<ul>
+<li>Access or attempt to access any other user’s account, or misrepresent or attempt to misrepresent your identity while using the Site, including misrepresentation as a Sequel Media International, LLC agent or representative, or misrepresentation stating or implying our endorsement of you or your product or activity.</li>
+<li>Transmit to the Site any content, or conduct yourself in any manner, that could be construed as defamatory, libelous, obscene, bigoted, hateful, racially offensive, vulgar, harassing, inflammatory, pornographic, violent, profane, threatening, unfair, inaccurate, deceptive or unlawful, or that could constitute or encourage conduct that would be considered a criminal offense or give rise to civil liability, whether under statute, common law or equitable principles, or otherwise violate any law.</li>
+<li>Post unsuitable account content such as posts or images that: are not your original material, merely contain images or less than 400 characters, are not written in English or lack an English translation, or contain referral or affiliate links to other websites. We do not pay on unsuitable content and posts containing unsuitable content will be removed in our sole discretion.</li>
+<li>Abuse the Site’s likes/views/comment system by any means including but not limited to use of exchange groups, or utilizing code, tags, cookies, Traffic Exchange, bots, proxies, virtual private network or other forms of social or digital manipulation to generate non-authentic likes/views/comment on your posts.</li>
+<li>Falsify or delete any author attributions, copyright notices or legal or other proper notices or proprietary designations or labels of the origin or source of software or other material contained in a file that is uploaded, or that is provided with Site materials or accessed through the Site.</li>
+<li>Conduct or forward surveys, contests, pyramid schemes or chain letters.</li>
+<li>Send any bulk commercial email, or send any unsolicited email to any party.</li>
+<li>Harvest or otherwise collect information about others, including e-mail addresses.</li>
+<li>Use the Site in any manner which could damage, disable, overburden, or impair the Site or interfere with any other party's use and enjoyment of the Site.</li>
+<li>Use the Site in any manner that could create a risk to a person’s safety or health, creates a risk to public safety or health, compromises national security, or interferes with an investigation by law enforcement.</li>
+<li>Obtain or attempt to obtain any materials or information through any means not intentionally made available or provided for through the Site.</li>
+<li>Violate any code of conduct or other guidelines which may be applicable to any particular Site services.</li>
+<li>Violate any applicable laws or regulations, including any intellectual property laws or regulations, or violate these Terms of Service.</li>
+<li>Upload files that contain viruses, corrupted files, or any other similar software or programs that may damage the operation of another's computer or of the Site server.</li>
+</ul>
 
-					<h2 id="privacy">Privacy Policy</h2>
-					<p>
-						Thank you for visiting PuckerMob.com, or using our mobile device applications (the "Apps") or other services (together with the Apps, the "Services"), Services within the network of Sequel Media Group, LLC and its subsidiaries, each of which have adopted this Privacy Policy. Your privacy is important to us. To better protect your privacy, we provide this notice explaining our information practices and the choices you can make about the way your information is collected and used by Sequel Media Group, LLC and its subsidiaries.
-					</p>
-					<p>
-						We use third-party advertising companies to serve ads when you visit our Web site. These companies may use aggregated information (not including your name, address, email address or telephone number) about your visits to this and other Web sites in order to provide advertisements about goods and services of interest to you. If you would like more information about this practice and to know your choices about not having this information used by these companies, please see:http://www.networkadvertising.org/managing/opt_out.asp
-					</p>
-					<p class="privacy-bold">	
-						The Information We Collect 
-					</p>
-					<p>
-						Through Sequel Media Group, LLC publications, websites, and other media, you can order publications and products; engage in various activities like entering contests or sweepstakes, playing games, taking quizzes, voting in polls or otherwise expressing an opinion; subscribe to one of our services, such as newsletters; or participate in one of our online forums or communities. Your personally identifiable information may be required to engage in these activities as well as to receive products and services that you may have requested. The types of personally identifiable information that may be collected at these pages and elsewhere include but are not limited to: name, address, gender, e-mail address, telephone number, fax number and credit or debit card information.
-					</p>
-					<p>
-						We may also collect information about your personal or professional interests and use of or opinions about various products, programs and services. For instance, we may ask you to identify your job or industry to qualify you for free business magazines.
-					</p>
-					<p>
-						At some Sequel Media Group, LLC sites and through certain promotions, you can submit information about other people. For example, you might submit a person's name, mailing and/or e-mail address to send a gift or electronic greeting card. The types of personally identifiable information that may be collected about other people at these pages include: recipient's name, address, e-mail address and telephone number.
-					</p>
-					<p>
-						We may also collect certain non-personally identifiable information when you visit our web pages or use our applications, such as the type of browser and operating system you are using, your IP address, your device identifiers, your Internet or wireless service provider, and location-based information.
-					</p>
+<h3>INFORMATION DISCLOSURE</h3>
+<p>Disclosure under Law</p>
+<p>Sequel Media International, LLC reserves the right at all times to disclose any information as necessary to satisfy any applicable law, regulation, legal process or governmental request, including personally identifiable information, or to edit, refuse to allow or to remove any information or materials, in whole or in part, in Sequel Media International, LLC’ sole discretion.</p>
+<p>Providing Correct Personal Information</p>
+<p>In the course of using the Site, you may be required to enter certain information, including without limitation personal information (collectively, “Information”). You represent and warrant that you will provide Sequel Media International, LLC with full, true and correct Information, and to update such Information on the Site promptly as reasonably necessary and as required by the Site.</p>
 
-					<p class="privacy-bold">	
-						How We Use the Information 
-					</p>
-					<p>
-						We may use the information you provide about yourself or others to fulfill requests for our publications, products or services, to respond to inquiries about offerings and to offer other products, programs or services that may be of interest.
-					</p>
-					<p>
-						We may combine information we receive with outside records and share such information with third parties for use on our behalf to enhance our ability to market to you those products or services that may be of interest to you.
-					</p>
-					<p>
-						We may disclose personally identifiable information that we receive from you and from third party sources to third parties whose practices are not covered by this privacy statement (e.g., other marketers, magazine publishers, retailers, participatory databases, and non-profit organizations) that want to market products or services to you.
-					</p>
-					<p>
-						When you request a magazine, service, or other product, we will forward the information you give us to the publisher or provider to the extent necessary to fulfill your request. They may contact you with special offers of possible interest.
-					</p>
-					<p>
-						We sometimes use this information to communicate with you, such as to notify you when you have won one of our contests or sweepstakes, when we make changes to subscriber agreements, to fulfill a request by you for an online newsletter, or to contact you about your account.
-					</p>
-					<p>
-						If you choose to submit content (e.g., a "letter to our editors" or an online review), we may publish your name, screen name and other information you have provided to us. You hereby consent to this.
-					</p>
-					<p>
-						The information we collect in connection with our online forums and communities is used to provide an interactive experience. We use this information to facilitate participation in these online forums and communities and, from time to time, to offer you products, programs, or services.
-					</p>
-					<p>
-						We sometimes use the non-personally identifiable information that we collect to improve the design and content of our publications and websites, and to enable us to customize your Internet experience. We also may use this information to analyze site usage, as well as to offer you products, programs, or services.
-					</p>
-					<p>
-						We will disclose information we maintain when required to do so by law, for example, in response to a court order or a subpoena. We also may disclose such information in response to a law enforcement agency's request.
-					</p>
-					<p>
-						Agents and contractors of Sequel Media Group, LLC that have access to personally identifiable information are required to protect this information in a manner that is consistent with this Privacy Policy by, for example, not using the information for any purpose other than to carry out the services they are performing for Sequel Media Group, LLC
-					</p>
-					<p>
-						We may transfer your personally identifiable information to other Sequel Media Group, LLC offices for internal management and administrative purposes on our behalf. Your personal data will be transferred to other Sequel Media Group, LLC offices where necessary for the performance or conclusion of our contractual obligations to you or for your benefit. To the extent not prohibited under applicable law, transfers and disclosures of personally identifiable information may also be made where necessary for the establishment, exercise, or defense of legal claims, to protect the rights and property of Sequel Media Group, LLC, our agents, customers, and others, including to enforce our agreements, policies, and terms of use; or to protect the personal safety of any person.
-					</p>
-					<p>
-						Please note that if Sequel Media Group, LLC or any of its subsidiaries or lines of business is merged, acquired, divested, financed, sold, disposed of or dissolved, including through merger of, consolidation, sale or divestiture of assets, the relevant customer database, including personally identifiable information we may possess about you, may, in whole or in part, be sold, disposed of, transferred, divested, or otherwise disclosed as part of that transaction or proceeding.
-					</p>
-					<p>
-						Although we take appropriate measures to safeguard against unauthorized disclosures of information, we cannot assure you that personally identifiable information that we collect will never be disclosed in a manner that is inconsistent with this Privacy Policy. Inadvertent disclosures may result, for example, when third parties misrepresent their identities in asking the site for access to personally identifiable information about themselves for purposes of correcting possible factual errors in the data.
-					</p>
+<h3>MATERIALS</h3>
+<p>License in Materials</p>
+<p>Sequel Media International, LLC does not claim ownership of any data, information (personal or otherwise) or other materials that you enter through the Site (collectively, "Materials"). There are two types of Materials: (a) Materials that are uploaded through the accounts of users of the password-protected portion of the Site for purposes specific to such user (collectively, “Account Materials”), and (b) Materials that are uploaded by users for purposes of general dissemination, such as postings to PuckerMob.com, or Feedback, defined below (collectively, “General Materials”). By transmitting, uploading, inputting, providing or submitting (collectively, “Submitting” or “Submit”) any Account Materials, you are granting Sequel Media International, LLC, its affiliated companies and sublicensees a non-exclusive, royalty-free, worldwide right to (i) post such materials for your access and use, (ii) provide your Account Materials to other users, (iii) use your Account Materials for marketing purposes and (iv) make those uses of Account Materials that are either identified at the time you provide such Account Materials or can reasonably be anticipated by you, all while your account with Sequel Media International, LLC remains open, and to archive such materials thereafter. By Submitting any General Materials, you are granting Sequel Media International, LLC, its affiliated companies and sublicensees a non-exclusive, royalty-free, perpetual, worldwide, irrevocable and fully sublicenseable license in and to such General Materials for use for any purpose, and confirming that such General Materials are non-confidential and non-proprietary. You hereby waive all rights to any claim against Sequel Media International, LLC Entities (defined below) and any Site users for any alleged or actual infringements of any proprietary rights, rights of privacy and publicity, moral rights, and rights of attribution in connection with Materials. In the event that you Submit to Sequel Media International, LLC any Account Materials for the purpose of making such materials generally accessible to other Site users, such as posting such materials on Sequel Media International, LLC’ blog, such materials will be deemed General Materials and you grant Sequel Media International, LLC a General Materials license in such materials.</p>
 
-					<p class="privacy-bold">	
-						Privacy Options
-					</p>
-					<p>
-						If you prefer not to receive traditional mail or other off-line promotions from this or any other Sequel Media Group, LLC property, or if you want to opt-out of any sharing of your personally identifiable offline information with third parties not owned by Sequel Media Group, LLC, please click <a href="mailto:info@sequelmediagroup.com?Subject=Unsubscribe%20me%20from%20your%20mailing%20list" target="_top">HERE</a>. 
-					</p>
-					<p>
-						If you prefer not to receive e-mail marketing from this or any other Sequel Media Group, LLC property, or if you want to opt-out of any sharing of your email address with third parties not owned by Sequel Media Group, LLC, please click <a href="mailto:info@sequelmediagroup.com?Subject=Unsubscribe%20me%20from%20your%20email%20list" target="_top">HERE</a>.
-					</p>
-					<p>
-						Sequel Media Group, LLC sites will not use or transfer personally identifiable information provided to us in ways unrelated to the ones described above without also providing you with an opportunity to opt out of these unrelated uses.
-					</p>
 
-					<p class="privacy-bold">	
-						Your California Privacy Rights: Notice to California Customers 
-					</p>
-					<p>
-						California's "Shine the Light" law, Civil Code section 1798.83, requires certain businesses to respond to requests from California customers asking about the businesses' practices related to disclosing personal information to third parties for the third parties' direct marketing purposes. Alternately, such businesses may have in place a policy not to disclose personal information of customers to third parties for the third parties' direct marketing purposes if the customer has exercised an option to opt-out of such information-sharing. As discussed above, if you wish to opt-out of our sharing of your information with third parties for the third parties' direct marketing purposes offline please click <a href="mailto:info@sequelmediagroup.com?Subject=Dont%20share%20my%20info%20with%203rd%20parties" target="_top">HERE</a>, or for email please click <a href="mailto:info@sequelmediagroup.com?Subject=Tell%20me%20more%20about%20third%20party%20sharing" target="_top">HERE</a>. To find out more about your opt-out rights, please contact us as described in the "How to Contact Us" section below.
-					</p>
+<p>Feedback</p>
+<p>If you provide Sequel Media International, LLC with Materials such as comments, bug reports, feedback or modifications proposed by you to Sequel Media International, LLC, the Site, or the goods and/or services provided through the Site (collectively, “Feedback”), then in addition to the license granted in all Materials, Sequel Media International, LLC will have the right to use such Feedback at Sequel Media International, LLC’ discretion, including but not limited to incorporating such Feedback into the Site and the right to assign, license or otherwise use such Feedback. You hereby give Sequel Media International, LLC a perpetual, irrevocable, non-exclusive license under all rights necessary to incorporate such Feedback and use such Feedback for any purpose. No compensation will be paid with respect to the use of your Materials.</p>
+<p>Your Responsibility for Materials and Sequel Media International, LLC’ Monitoring Rights</p>
+<p>You will be responsible for your own Materials and the consequences of transmitting those Materials. Sequel Media International, LLC has no obligation to monitor you or any other user’s use of the Site. Sequel Media International, LLC reserves the right to review and monitor your use of the Site, including without limitation your use of any user ID and/or password in accessing the Site and any Materials Submitted to or revised on the Site, and to remove any Materials that Sequel Media International, LLC believes in its sole discretion violate these Terms of Service. Sequel Media International, LLC reserves the right to restrict or terminate your access to the Site, including, without limitation, your access to any or all of the services provided thereunder or your ability to use any Site user ID and/or password, at any time without notice if we believe you have violated these Terms of Service or are likely to violate these Terms of Service. Your sole remedy against Sequel Media International, LLC in the event of a dispute arising out of these Terms of Service, the Site or your use thereof, is to terminate these Terms of Service by ceasing your use of the Site. In the event of termination of these Terms of Service, Sequel Media International, LLC may delete and/or store, in its discretion, Materials and data associated with your use of the Site. Sequel Media International, LLC may also change, suspend, or discontinue any aspect of the publicly available portion of the Site at any time, including the availability of any Site feature, database, or content. With regard to the password-protected portion of the Site, Sequel Media International, LLC will provide you with fifteen (15) days notice prior to materially changing, suspending or discontinuing any aspect of this portion of the Site.</p>
 
-					<p class="privacy-bold">	
-						Collection of Information by Third-Party Sites and Sponsors 
-					</p>
-					<p>
-						Some of our sites contain links to other sites whose information practices may be different than ours. Sequel Media Group, LLC also allows you to connect with other sites and services in order to share content and information. You should consult the other sites' and services' privacy notices, as we have no control over information that is submitted to, or collected by, these third parties or their use of your information.
-					</p>
-					<p>
-						Sequel Media Group, LLC sites sometimes may offer contests, sweepstakes, promotions, editorial features, or other activities or offerings that are sponsored or co-sponsored by or presented with identified third parties. By virtue of your participation in such activities or offerings, your IP address and the personally identifiable information that you voluntarily submit may be provided to both the Sequel Media Group, LLC site and the third parties. Sequel Media Group, LLC has no control over the third parties' use of this information.
-					</p>
-					<p>
-						Sequel Media Group, LLC sites may use reputable third parties to present or serve advertisements, including online behavioral advertisements, that you may see on the web pages and to conduct research about the advertisements. This privacy notice does not cover any use of information that such third parties may have collected from you (e.g., type of browser, operating system, domain name, day and time of visit, page(s) visited) or the methods used by the third-parties to collect that information (e.g., cookies, web beacons and clear gifs).
-					</p>
+<h3>USER REPRESENTATIONS AND WARRANTIES</h3>
+<p>By using or accessing the Site or Submitting your Materials, you (1) represent and warrant that you own or otherwise control all of the rights to your Materials necessary to grant the licenses granted in these Terms of Service, including, without limitation, all the rights necessary for you to Submit the Materials, and have all right, power and authority to enter into these Terms of Service and to fully perform hereunder, (2) represent and warrant that your use of the Site, Site content and/or Materials does not and will not violate or infringe any third party right, including but not limited to any third party intellectual property right, right of publicity or privacy, right of trade secret or confidentiality, or contractual right, or violate these Terms of Service, the Privacy Policy, the Compensation Policy, or any other agreement to which you are bound or any law, rule, regulation, order or judgment to which you are subject, (3) represent and warrant that you will comply with all applicable laws, contracts and/or agreements, at your sole expense and liability, in connection with your use of or access to the Site, (4) represent and warrant that you will only Submit and use Materials that may be used in accordance with the licenses you have granted herein and (5) agree that Sequel Media International, LLC shall not be liable to you or any third party for accepting or not accepting your Materials or for deleting or not deleting your Materials, in whole or in part.
 
-					<p class="privacy-bold">	
-						Cookies 
-					</p>
-					<p>
-						To enhance your experience on our Services, we may place "cookies" on your computer or device. Cookies are small text files that we place in your computer or device to store your preferences. Cookies, by themselves, do not tell us your e-mail address or other personal information unless you choose to provide this information to us by, for example, registering with one of our Services. Once you choose to provide us with personal information, this information may be linked to the data stored in the cookie. A cookie assigns a unique numerical identifier to your Web browser or device, and may enable us to recognize you as the same user who has used our Services, and relate your use of the Services to other information about you, such as your usage information and personal information.
-					</p>
-					<p>
-						We use cookies (and Local Shared Objects, HTML5, cache cookies, web beacons, or clear gifs, all described further below) to understand usage of the Services and to improve our content and offerings and to deliver advertisements that you might be interested in. For example, we may use cookies to personalize your experience on our Services (e.g., to recognize you by name when you return to our site, to save your password in password-protected areas, to enable shopping carts, or to tailor content or product and service offerings).
-					</p>
-					<p>
-						Most browsers automatically accept cookies. You can set your browser option so that you will not receive cookies and you can also delete existing cookies from your browser. However, you may find that some parts of the site will not function properly if you have refused cookies or similar tracking technologies and you should be aware that disabling cookies or similar tracking technologies might prevent you from accessing some of our content. However, your viewing of editorial content may be hampered. If you wish to block cookies, go to http://www.allaboutcookies.org/ to find out how, or check your browser’s instructions.
-					</p>
-					<p>
-						Local Shared Objects: Local shared objects, such as Flash cookies, also may be stored on your computer or device. Local shared objects operate a lot like cookies, but cannot be managed in the same way. Depending on how local shared objects are enabled on your computer or device, you may be able to manage them using software settings. For information on managing Flash cookies, for example, see http://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html.
-					</p>
-					<p>
-						HTML 5: HTML5, the language some Web sites are coded in, may be used to store information on your computer or device about your Service usage activities. This information may be retrieved by us to help us manage our Services, such as by giving us information about how our Services are being used by our visitors, how they can be improved, and to customize them for our users.
-					</p>
-					<p>
-						Cache Cookies: Cache cookies, such as eTags, may be used to identify your computer or device as the same computer or device that visited a Service or Services in the past.
-					</p>
-					<p>
-						Web Beacons: Our websites may also use small pieces of code called "web beacons" or "clear gifs" to collect anonymous and aggregate advertising metrics, such as counting page views, promotion views, or advertising responses. A web beacon is an electronic image called a single-pixel or clear GIF. Web beacons can recognize certain types of information, such as a user's cookie number, time and date of a page view, and description of the page where the web beacon is placed. These web beacons may be used to deliver cookies that conform to our cookie policy above.
-					</p>
-					<p>
-						These tracking technologies may be deployed by us and/or by our service providers or partners on our behalf. These technologies enable us to assign a unique number to you, and relate your Service usage information to other information about you, including your personal information. We may match information collected from you through different means or at different times, including both personal information and Service usage information, and use such information along with offline and online information obtained from other sources (including third parties) such as demographic information and updated contact information (where that information has been lawfully disclosed to us) for the purposes of learning more about you so we can provide you with relevant content.
-					</p>
+<h3>DISCLAIMERS</h3>
+<p>Forward Looking Statements</p>
+<p>The Site may contain forward looking statements that are subject to risks and uncertainties that might cause actual results to differ from those foreseen. We wish to caution you that these statements are only predictions and those actual events or results may differ materially. Sequel Media International, LLC assumes no obligation, and does not intend to update these forward-looking statements.</p>
 
-					<p class="privacy-bold">	
-						Our Commitment to Security
-					</p>
-					<p>
-						We have put in place appropriate administrative, technical, and physical safeguards to help prevent unauthorized access, maintain data security and correctly use the information we collect. No system can be completely secure, however, and we do not guarantee that unauthorized disclosures and access will not happen.
-					</p>
+<p>External Links or References</p>
+<p>The Site may contain links or references to other parties' sites, which links are provided as a convenience to you only. Please be aware that we cannot be and are not responsible for the privacy or other practices of any such outside sites (which sites are not part of the Site), and Sequel Media International, LLC expressly disclaims any and all liability related to such sites and sites relating thereto. Sequel Media International, LLC does not endorse, and is not responsible or liable for, directly or indirectly, any damage or loss caused or alleged to be caused by or in connection with any content, advertising, products or other information on or available from such linked sites or any link contained in a linked site. We encourage our users to consider this if they decide to visit such outside sites and to read the applicable privacy policies and terms of use of each such sites.</p>
 
-					<p class="privacy-bold">	
-						Accessing, Correcting, and Deleting Your Personal Information 
-					</p>
-					<p>
-						We will take reasonable steps to accurately record the personal information that you provide to us and any subsequent updates.
-					</p>
-					<p>
-						We encourage you to review, update, and correct the personal information that we maintain about you, and you may request that we delete personal information about you that is inaccurate, incomplete, or irrelevant for legitimate purposes, or are being processed in a way which infringes any applicable legal requirements, by contacting us as set out in the "How to Contact Us" section. At our election, instead of deleting such information, we may retain it with your comment or correction noted in our records. By contacting us, you may also object to our further use of your personal information if you have compelling legitimate grounds (this may involve closing your account). We may ask you to verify your identity and to provide other details before we are able to provide you with any information, correct any inaccuracies, or delete any information. Your right to review, update, correct, and delete your personal information may be limited, subject to the law or your jurisdiction: (i) if your requests are abusive or unreasonably excessive, (ii) where the rights or safety of another person or persons would be encroached upon, or (iii) if the information or material you request relates to existing or anticipated legal proceedings between you and us, or providing access to you would prejudice negotiations between us or an investigation of possible unlawful activity. Your right to review, update, correct and delete your information is subject to our records retention policies and applicable law, including any statutory retention requirements.
-					</p>
+<p>DISCLAIMER OF REPRESENTATIONS AND WARRANTIES</p>
+<p>YOU AGREE THAT YOUR USE OF THE SITE IS AT YOUR OWN RISK. EFFORTS BY SEQUEL MEDIA INTERNATIONAL, LLC TO MODIFY THE SITE SHALL NOT BE DEEMED A WAIVER OF THESE LIMITATIONS. THE SITE, INCLUDING ALL CONTENT, INFORMATION OR SERVICES PROVIDED THROUGH, OR IN CONJUNCTION WITH, THE SITE, IS PROVIDED "AS IS," AS A CONVENIENCE TO ALL USERS WITHOUT REPRESENTATION OR WARRANTY OF ANY KIND TO YOU OR ANY THIRD PARTY, INCLUDING, WITHOUT LIMITATION, ANY EXPRESS OR IMPLIED WARRANTIES (1) OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE, (2) OF INFORMATIONAL CONTENT OR ACCURACY, (3) OF NON-INFRINGEMENT, (4) OF QUIET ENJOYMENT, (5) OF TITLE, (6) THAT THE SITE WILL OPERATE IN AN ERROR FREE, TIMELY, SECURE, OR UNINTERRUPTED MANNER, IS CURRENT AND UP TO DATE AND ACCURATELY DESCRIBES SEQUEL MEDIA INTERNATIONAL, LLC’ PRODUCTS AND SERVICES, OR IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS, (7) THAT ANY DEFECTS OR ERRORS IN THE SITE WILL BE CORRECTED, OR (8) THAT THE SITE IS COMPATIBLE WITH ANY PARTICULAR HARDWARE OR SOFTWARE PLATFORM.</p>
+<p>DISCLAIMER OF LIABILITY</p>
+<p>IN NO EVENT SHALL SEQUEL MEDIA INTERNATIONAL, LLC AND ITS OFFICERS, DIRECTORS, AGENTS, EMPLOYEES, REPRESENTATIVES, INTERNAL OPERATING UNITS, AFFILIATES, SUBSIDIARIES, SUBLICENSEES, SUCCESSORS AND ASSIGNS, INDEPENDENT CONTRACTORS, AND RELATED PARTIES (COLLECTIVELY, WITH SEQUEL MEDIA INTERNATIONAL, LLC, THE “SEQUEL MEDIA INTERNATIONAL, LLC ENTITIES”) BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY LOSS OF PROFITS, LOSS OF USE, LOSS OF DATA, INTERRUPTION OF BUSINESS, OR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE USE OF THE SITE OR WITH THE DELAY OR INABILITY TO USE SAME, OR FOR ANY BREACH OF SECURITY ASSOCIATED WITH THE TRANSMISSION OF SENSITIVE INFORMATION THROUGH THE SITE, OR FOR ANY INFORMATION, PRODUCTS, AND SERVICES OBTAINED THROUGH OR VIEWED ON THE SITE, OR OTHERWISE ARISING OUT OF THE USE OF SAME, WHETHER BASED ON CONTRACT, TORT, STRICT LIABILITY, REGULATION, COMMON LAW PRECEDENT OR OTHERWISE, EVEN IF SEQUEL MEDIA INTERNATIONAL, LLC HAS BEEN ADVISED OF THE POSSIBILITY OF DAMAGES AND EVEN IF SUCH DAMAGES RESULT FROM SEQUEL MEDIA INTERNATIONAL, LLC’ NEGLIGENCE OR GROSS NEGLIGENCE. BECAUSE SOME STATES/JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, THE ABOVE LIMITATION MAY NOT APPLY TO YOU. IN SUCH STATES, LIABILITY OF SEQUEL MEDIA INTERNATIONAL, LLC ENTITIES SHALL BE LIMITED TO THE FULLEST EXTENT PERMITTED BY LAW. ADDITIONAL DISCLAIMERS APPEAR WITHIN THE BODY OF THE SITE AND ARE INCORPORATED HEREIN BY REFERENCE. TO THE EXTENT ANY SUCH DISCLAIMERS PLACE GREATER RESTRICTIONS ON YOUR USE OF THE SITE OR THE MATERIAL CONTAINED THEREIN, SUCH GREATER RESTRICTIONS SHALL APPLY. THIS INDEMNIFICATION SHALL APPLY TO THIRD PARTY CLAIMS AS WELL AS CLAIMS BETWEEN THE PARTIES.</p>
 
-					<p class="privacy-bold">	
-						Retention of Personal Information 
-					</p>
-					<p>
-						We will retain your personal information while you have an account with us and thereafter for as long as we need it for purposes not prohibited by applicable laws. Thereafter, we will either delete your personal information or de-identify it so that it is anonymous and not attributed to your identity. Your rights to request that we delete your personal information are set forth in the "Accessing, Correcting, and Deleting Your Personal Information" section above.
-					</p>
+<p>Indemnification</p>
+<p>You will indemnify, defend (or settle) and hold harmless Sequel Media International, LLC Entities from all claims, actions, proceedings, losses, settlements, judgments, liabilities, suits, damages, disputes or demands, including without limitation any proceeding, investigation or claim by a self-regulatory organization, state or federal securities agency or commission, and including reasonable attorneys fees and all other costs, fees, and expenses (collectively, “Claims”) against any of Sequel Media International, LLC Entities to the fullest extent permitted by law arising out of or in connection with (1) your conduct, provision of content or use of the Site, or such actions by any third party through you, (2) your violation of the rights of another person or party, (3) any Materials provided or made available by you, and (4) any breach or violation by you of your obligations under these Terms of Service, including without limitation any breach of your representations and warranties herein. You will not settle any indemnified claim without the prior written consent of Sequel Media International, LLC, such consent not to be unreasonably withheld. In connection with any Claims that may give rise to your indemnification obligations as set forth above, Sequel Media International, LLC Entities shall have the exclusive right, at their option, to defend, compromise and/or settle the suit, action or proceeding, and you shall be bound by the determination of any suit, action or proceeding so defended or any compromise or settlement so effected. The remedies provided in this Section are not exclusive of and do not limit any other remedies that may be available to Sequel Media International, LLC Entities pursuant to this Section.</p>
 
-					<p class="privacy-bold">	
-						Special Note for Parents 
-					</p>
-					<p>
-						The site you are visiting is one of the Sequel Media Group, LLC general audience sites and is not intended for use by children. For more information about our online privacy practices for children's sites, consult the privacy notice at the children's site in which you are interested.
-					</p>
+<h3>YOUR ACCOUNT</h3>
 
-					<p class="privacy-bold">	
-						Changes to this Privacy Policy 
-					</p>
-					<p>
-						This Privacy Policy may be changed by Sequel Media Group, LLC.  The revised Privacy Policy will be posted to this page so that you are aware of the information we collect, how we use it, and under what circumstances we may disclose it.
-					</p>
+<p>Payments</p>
+<p>We redeem funds you generate from the Site to you in the form of a PayPal deposit. You are solely responsible and shall pay all local, state, federal, and international assessments, duties, taxes or other levy on funds you generate from the Site under all applicable laws. Users under the age of 13 are not allowed to visit or otherwise use the Site. We do not knowingly create Sequel Media International, LLC accounts for such persons and will confiscate any such unauthorized accounts upon notice of the age of the user.</p>
+<p>Users under the age of 18 shall not register on Sequel Media International, LLC to accept payments without the written authorization of the user’s parent or legal guardian who shall submit supplemental information to the user’s account directing funds to be redeemed to the parent’s or guardian’s account. Unauthorized accounts shall be confiscated upon notice of the unauthorized account.</p>
 
-					<p class="privacy-bold">	
-						How to Contact Us 
-					</p>
-					<p>
-						If you have any questions or concerns about the Sequel Media Group, LLC Privacy Notice or its implementation, please contact us via email:  info@sequelmediagroup.com or click <a href="mailto:info@sequelmediagroup.com?Subject=Questions" target="_top">HERE</a>. 
-					</p>
-	<hr class="hr-hidden">
+<p>Security of Account and Password</p>
+<p>In the event you establish an account and receive or establish a password for such account, you are responsible for maintaining the confidentiality of your account and password, and for restricting access to your computer. You accept full responsibility and liability for all activities that occur under your account or password. Sequel Media International, LLC reserves the right to refuse service, terminate accounts, or remove content in its sole discretion. You represent and warrant that the information you supply during any registration or update process will be accurate and complete and that you will not (1) impersonate or misrepresent your association with any person or entity, including without limitation registering under the name of another person, or seek to conceal or misrepresent the origin of any content or information provided by you, (2) choose a user name that Sequel Media International, LLC in its sole discretion deems inappropriate, or (3) choose a user name for the purposes of deceiving or misleading Sequel Media International, LLC as to your true identity. You agree not to impersonate any other person.</p>
+
+<p>Notification of Unauthorized Use/Ceasing Access</p>
+<p>You shall notify Sequel Media International, LLC immediately of any unauthorized use or threat of unauthorized use of your account or the Site or of any other breach or potential breach of security known to you with respect to your account or the Site, including without limitation any loss or compromise of any password, and will cooperate with Sequel Media International, LLC in every reasonable way to help Sequel Media International, LLC prevent the further unauthorized use, threat of unauthorized use, disclosure or threat of disclosure regarding the Site, your account and/or your password. You agree that immediately upon termination of your right to use the Site or any password-protected portion of the Site, or upon any earlier demand by Sequel Media International, LLC at any time, you will cease all access and/or use of the Site or such password protected portion of the Site, and will not attempt to access and/or use same.</p>
+
+<h3>CONFIDENTIALITY</h3>
+<p>You acknowledge that by use of portions of the Site, you may use and you may acquire Sequel Media International, LLC Confidential Information. As used herein, “Confidential Information” means all confidential and/or proprietary information and trade secrets of Sequel Media International, LLC, whether or not memorialized, and in any form or media, regarding Sequel Media International, LLC or Sequel Media International, LLC’ business, including without limitation those relating to Sequel Media International, LLC’ intellectual property, technology, research and development, systems, software, business plans, business operations, strategies, financial information, technical information, customers, customer lists, suppliers, operating policies and procedures, and any third-party information that Sequel Media International, LLC is required to keep confidential where such information is not generally accessible without a password. “Confidential Information” includes any account passwords. You shall not at any time, directly or indirectly, for any purpose, use, copy or disclose to any other person or entity any Confidential Information, or permit others to do so, other than for the purposes expressly allowed hereunder. Sequel Media International, LLC may seek and obtain injunctive relief against the release or threatened release of Confidential Information, in addition to any other available legal remedies. You shall notify Sequel Media International, LLC immediately if you learn of any unauthorized possession or use of the Confidential Information and will promptly furnish all details of such possession or use to Sequel Media International, LLC.</p>
+
+<h3>COPYRIGHT AND OTHER INTELLECTUAL PROPERTY</h3>
+<p>Site Ownership</p>
+<p>The Site and all content, organization, graphics, design, compilation, magnetic translation, digital conversion, and other matters related to the Site (collectively, “Content”) are protected under applicable copyrights, trademarks, and other proprietary (including but not limited to intellectual property) rights pursuant to international conventions and U.S. and other laws. The Site and all Content is the property of Sequel Media International, LLC and/or third party licensors, and all right, title and interest in and to the Site and Content will remain with Sequel Media International, LLC or such third party licensors. Other product and company names mentioned herein may be the trademarks of their respective owners. You do not acquire ownership rights to the Site or any Content other than any rights in the Materials that you may have. You will abide by any and all additional copyright notices, information, or restrictions contained in any Content. You will not modify, adapt, translate, reverse engineer, decompile, or disassemble the Site or any Site content. You may only use the Site and the Content as expressly permitted herein, and any other use is prohibited. Any copying, republication, or redistribution of the Site or Site content, including by caching, framing, or similar means, is expressly prohibited without the prior written consent of Sequel Media International, LLC and/or the respective intellectual property rights holder identified in the subject content, which consent to be granted or withheld at the sole discretion of the rights holder.</p>
+<p>Copyright Infringement Claims</p>
+<p>Sequel Media International, LLC respects the intellectual property rights of others and expects our users to do the same. If you believe that your work has been copied in a way that constitutes copyright infringement, please provide Sequel Media International, LLC’ Designated Copyright Agent, identified below, with all information required by the Online Copyright Infringement Liability Limitation Act of the Digital Millennium Copyright Act (“DMCA”), 17 U.S.C. § 512, summarized as follows: (1) a physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed; (2) identification of the copyright work claimed to have been infringed, or, if multiple copyrighted works at a single online Site are covered by a single notification, a representative list of such works at that Site; (3) identification of the material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit us to locate the material; (4) information reasonably sufficient to permit us to contact the complaining party; (5) a statement that the complaining party has a good-faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law; (6) a statement that the information in the notification is accurate, and under penalty of perjury, that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed; and (7) any other materials or information as may be required under the DMCA as amended from time to time or by the U.S. Copyright Office.</p>
+<p>Copyright Agent</p>
+<p>Pursuant to the DMCA, written notification of claimed copyright infringement must be submitted to Sequel Media International, LLC Designated Copyright Agent using the following contact information:</p>
+
+
+<h3>SEQUEL MEDIA INTERNATIONAL, LLC DESIGNATED COPYRIGHT AGENT CONTACT INFO:</h3>
+<p>Email: copyright@sequelmediagroup.com</p>
+
+<p>ALL INQUIRIES NOT RELEVANT TO THE ABOVE PROCEDURE WILL RECEIVE NO RESPONSE.</p>
+
+<h3>DISPUTE RESOLUTION</h3>
+<p>MANDATORY BINDING ARBITRATION</p>
+<p>YOU AND SEQUEL MEDIA INTERNATIONAL, LLC EACH AGREE TO SUBMIT TO BINDING ARBITRATION IN THE EVENT OF A DISPUTE, CONTROVERSY OR CLAIM (EACH, A “DISPUTE”) ARISING OUT OF OR IN CONNECTION WITH THESE TERMS OF SERVICE OR THE BREACH, TERMINATION, ENFORCEMENT, INTERPRETATION OR VALIDITY THEREOF (INCLUDING THE DETERMINATION OF THE SCOPE OR APPLICABILITY OF THESE TERMS OF SERVICE TO ARBITRATE), YOUR OR SEQUEL MEDIA INTERNATIONAL, LLC’ RIGHTS AND OBLIGATIONS UNDER THESE TERMS OF SERVICE, THE SITE, THE USE OF THE SITE, AND/OR THE INFORMATION, SERVICES AND/OR PRODUCTS THAT MAY BE PROVIDED BY OR THROUGH OR IN CONNECTION WITH THE SITE. THE ARBITRATION WILL BE HELD IN NEW YORK, NY BEFORE ONE ARBITRATOR ON AN INDIVIDUAL BASIS AND NOT AS A CLASS ACTION. YOU EXPRESSLY WAIVE ANY RIGHT YOU MAY HAVE TO ARBITRATE A DISPUTE AS A CLASS ACTION. YOU ALSO EXPRESSLY WAIVE YOUR RIGHT TO A JURY TRIAL. THE ARBITRATION WILL BE ADMINISTERED BY JAMS (HTTP://WWW.JAMSADR.COM). YOU MAY OBTAIN A COPY OF THE RULES OF JAMS BY CONTACTING THE ORGANIZATION. YOU AND SEQUEL MEDIA INTERNATIONAL, LLC SHALL AGREE ON ONE ARBITRATOR TO CONDUCT THE ARBITRATION. IN THE EVENT THE PARTIES CANNOT AGREE ON AN ARBITRATOR, THE ARBITRATOR WILL BE SELECTED IN ACCORDANCE WITH THE JAMS RULES. EACH PARTY SHALL BE RESPONSIBLE FOR ITS OWN ATTORNEY, EXPERT AND OTHER FEES, UNLESS SUCH FEES ARE AWARDED BY THE ARBITRATOR TO THE PREVAILING PARTY. NOTWITHSTANDING ANYTHING TO THE CONTRARY IN THIS SECTION, TO THE EXTENT YOU HAVE IN ANY MANNER VIOLATED OR THREATENED TO VIOLATE SEQUEL MEDIA INTERNATIONAL, LLC’ INTELLECTUAL PROPERTY RIGHTS, SEQUEL MEDIA INTERNATIONAL, LLC MAY SEEK (AND YOU WILL NOT CONTEST) INJUNCTIVE OR OTHER APPROPRIATE RELIEF IN ANY STATE OR FEDERAL COURT IN SAN FRANCISCO, CALIFORNIA AND YOU CONSENT TO THE EXCLUSIVE JURISDICTION AND VENUE OF SUCH COURTS.</p>
+
+<p>ARBITRATION FINAL AND BINDING</p>
+<p>THE ARBITRATOR'S AWARD IS FINAL AND BINDING ON ALL PARTIES. THE FEDERAL ARBITRATION ACT, AND NOT ANY STATE LAW CONCERNING ARBITRATION, GOVERNS ALL ARBITRATION UNDER THIS CLAUSE. ANY COURT HAVING JURISDICTION MAY ENTER JUDGMENT ON THE ARBITRATOR'S AWARD. IF ANY PART OF THIS CLAUSE, OTHER THAN WAIVERS OF CLASS ACTION RIGHTS, IS DEEMED OR FOUND TO BE UNENFORCEABLE FOR ANY REASON, THE REMAINDER SHALL REMAIN ENFORCEABLE. NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, IF THE WAIVER OF CLASS ACTION RIGHTS CONTAINED HEREIN IS NOT ENFORCEABLE AS TO ANY PERSON OR PERSONS, SUCH NON-ENFORCEABILITY SHALL APPLY TO SUCH PERSON OR PERSONS ONLY, AND ALL OTHER PERSONS SHALL CONTINUE TO BE GOVERNED BY THE ARBITRATION CLAUSE.</p>
+
+<p>GIVING UP RIGHT OF CLASS ACTION</p>
+<p>THESE TERMS OF SERVICE PROVIDES THAT ALL DISPUTES WILL BE RESOLVED BY BINDING ARBITRATION AND NOT IN COURT OR BY JURY TRIAL. IF A DISPUTE IS ARBITRATED, YOU GIVE UP YOUR RIGHT TO PARTICIPATE AS A CLASS REPRESENTATIVE OR CLASS MEMBER ON ANY CLASS ACTION CLAIM YOU MAY HAVE AGAINST SEQUEL MEDIA INTERNATIONAL, LLC ENTITIES INCLUDING ANY RIGHT TO CLASS ARBITRATION OR ANY CONSOLIDATION OF INDIVIDUAL ARBITRATIONS. WITHOUT LIMITATION, THIS INCLUDES GIVING UP YOUR RIGHTS TO BRING OR PARTICIPATE IN A CLASS ACTION AS SET FORTH IN ANY STATE STATUTE.</p>
+
+<p>Choice of Law; Jurisdiction and Venue; Waiver of Jury Trial</p>
+<p>To the maximum extent permitted by law, these Terms of Service are governed by the laws of the United States of America and the State of New York, excluding any law or conflicts of law principle that would apply the law of another jurisdiction. To the extent a Dispute is not governed by the Arbitration Clause, you hereby consent to the exclusive jurisdiction and venue of courts in New York, NY in all disputes arising out of or relating to the use of the Site or under these Terms of Service; provided, however, that in the event Sequel Media International, LLC is sued or joined by a third party in any other court or in any other forum in respect of any matter which may give rise to a claim by Sequel Media International, LLC hereunder, you consent to the jurisdiction of such court or forum over any claim which may be asserted by Sequel Media International, LLC therein. You irrevocably consent to the exercise of personal jurisdiction by such courts in any such action. In addition, and notwithstanding the foregoing, you irrevocably waive, to the fullest extent permitted by law, any objection that you may now or hereafter have to the laying of the venue of any such suit, action or proceeding brought in any such court and any claim that any such suit, action or proceeding brought in any such court has been brought in an inconvenient forum. Final judgment in any such suit, action or proceeding brought in any such court shall be conclusive and binding upon you and may be enforced in any court in which you are subject to a jurisdiction by a suit upon such judgment. Use of the Site is unauthorized in any jurisdiction that does not give effect to all provisions of these Terms of Service, including without limitation this paragraph. To the extent a claim is not governed by the Arbitration Clause, Sequel Media International, LLC and you each hereby waive the right to a trial by jury in any court and in any suit, action or proceeding, whether in tort, contract, or otherwise, in which any such party is a party, as to any claim arising out of or in connection with these Terms of Service, your or Sequel Media International, LLC’ rights and obligations under these Terms of Service, the Site, use of the Site, and/or the services and/or products that may be provided by or through or in connection with the Site.</p>
+
+<h3>MISCELLANEOUS</h3>
+<p>Viewing, Accessing and Use Outside the United States</p>
+<p>If and when any products or services referenced on the Site become available, they will become available in the United States and may not become available elsewhere. Sequel Media International, LLC makes no claims that the Site or any products or services referenced therein may be lawfully viewed, accessed or used outside the United States. Access or use of the Site or any products or services referenced therein may not be legal by certain persons or in certain countries. If you access or use the Site from outside of the United States, you do so at your own risk and you are responsible for compliance with the laws of your jurisdiction.
+<p>No Joint Venture</p>
+<p>You agree that no joint venture, partnership, employment or agency relationship exists between you and Sequel Media International, LLC as a result of these Terms of Service or your use of the Site.</p>
+
+<p>Headings</p>
+<p>Section headings and other captions in these Terms of Service are used solely for the convenience of the parties, have no legal or contractual significance, and shall not be used in interpreting, construing or enforcing any of the provisions of these Terms of Service.</p>
+
+<p>Survival</p>
+<p>The provisions of the following sections shall survive any termination or expiration of these Terms of Service: Disclosure Under Law, Materials, User Representations and Warranties, Disclaimers, Indemnification, Confidentiality, Copyright and Other Intellectual Property, Dispute Resolution (Arbitration Clause), Choice of Law; Jurisdiction and Venue; Waiver of Jury Trial, and Miscellaneous.</p>
+
+<p>No Waiver</p>
+<p>The failure of Sequel Media International, LLC to enforce any provision of these Terms of Service will not be construed as a waiver or limitation of Sequel Media International, LLC’ right to subsequently enforce and compel strict compliance with that provision or any other provision of these Terms of Service.</p>
+
+<p>Assignment</p>
+<p>No assignment, delegation or other conveyance of these Terms of Service may be made by you (by operation of law or otherwise) without the prior written consent of Sequel Media International, LLC, to be given in its sole discretion. Sequel Media International, LLC may assign its rights and obligations hereunder to any other party.</p>
+
+<p>Statute of Limitations</p>
+<p>Any cause of action you may have with respect to your use of the Site must be commenced within one year after the claim or cause of action arises; thereafter, any such claim will be forever barred, without regard to any contrary legislation.</p>
+
+<p>Agreement Binding</p>
+<p>In the event that any provision of these Terms of Service is deemed to be unenforceable, said provision will be interpreted to reflect the original intent of the parties in accordance with applicable law, and the remainder of these Terms of Service will continue in full force and effect.</p>
+
+<p>Notices</p>
+<p>Notices to Sequel Media International, LLC under these Terms of Service shall be sufficient only if in writing and transmitted via personal delivery, delivered by a major commercial rapid delivery courier service, or mailed, postage or charges prepaid, by certified or registered mail, return receipt requested, to Sequel Media International, LLC, with such notices being effective as of the date of actual, confirmed receipt by Sequel Media International, LLC. Notices to you are deemed effective if sent to the email, mail address or other contact information provided by you, and are deemed effective upon the earlier of being confirmed received or one day after having been sent.</p>
+
+<p>Entire Agreement; Language of Agreement</p>
+<p>These Terms of Service contain the entire agreement between you and Sequel Media International, LLC with respect to the Site. It supersedes all prior or contemporaneous communications and proposals, whether electronic, oral or written, between the user and Sequel Media International, LLC with respect to the Site. Any rights not expressly granted herein are reserved. A printed version of these Terms of Service and of any notice given in electronic form shall be admissible in judicial or administrative proceedings based upon or relating to these Terms of Service to the same extent and subject to the same conditions as other business documents and records originally generated and maintained in printed form. It is the express wish of the parties that these Terms of Service and all related documents be drawn up in English.</p>
+
+<hr class="hr-hidden">
 </section>
-<?php if (!$detect->isMobile()) { ?>
-				<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
-				<?php include_once($config['include_path'].'fromourpartners.php'); ?>
-				<?php include_once($config['include_path'].'aroundtheweb.php'); 
-			}?>
+
 </section>
 <?php 
 	if ( !$detect->isMobile() ) { 

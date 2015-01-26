@@ -41,6 +41,12 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						$mostReadArticle .= '</a>';
 						$mostReadArticle .= '';
 						echo $mostReadArticle;
+
+						if($articleNumber == 2 ){
+							echo '<ins class="adbladeads" data-cid="8499-2270060688" data-host="web.adblade.com" data-tag-type="5" style="display:none"></ins>';
+							echo '<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>';
+							echo '<style>.adblade-ad.columns.todays-favorites.fade-in-out{background-color: antiquewhite;}</style>';
+						}
 					
 				}
 			?>

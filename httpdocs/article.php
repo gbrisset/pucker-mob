@@ -167,8 +167,8 @@ if(!is_null($categoryInfo)){
 			<?php } else {
 				include_once($config['template_path'].'single_page_article.php'); ?>
 				<?php if( !$promotedArticle ){ ?>
-				<!-- Distro Scale AD Tag -->
-					<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
+				<!-- Distro Scale AD Tag
+					<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script> -->
 			  	<!-- Begin comScore Tag -->
 			  	<?php } ?>
 			<?php } ?>
@@ -269,7 +269,7 @@ if(!is_null($categoryInfo)){
 
 	<?php
 		 if($articleInfoObj['article_id'] == 4653 ) include_once($config['include_path'].'modalboxform.php'); 
-		 if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); 
+		 else include_once($config['include_path'].'modalbox.php'); 
 	?>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->

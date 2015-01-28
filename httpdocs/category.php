@@ -1,5 +1,6 @@
 <?php
 $categoryInfo = null;
+$category_page = true;
 foreach($MPNavigation->categories as $category){
 	if( isset($category['cat_dir_name'])&& !(isset($uri[1])) && isset($uri[0]) && ($category['cat_dir_name'] == $uri[0])  ){
 		$categoryInfo = $category;
@@ -95,7 +96,7 @@ if ( $detect->isMobile() ) {
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
 
 		<!-- MODAL BOX POPUP -->
-		<?php //include_once($config['include_path'].'modalbox.php'); ?>
+		<?php include_once($config['include_path'].'modalbox.php'); ?>
 	</body>
 </html>
 		<?php } ?>

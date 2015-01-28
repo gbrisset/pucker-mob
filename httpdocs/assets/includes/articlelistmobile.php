@@ -34,7 +34,7 @@
 		$cat_name = $articles['cat_dir_name'];
 	
 		//IGNORE MOBLOG ARTICLES
-		if( !$category_page && $cat_name === "moblog") continue;
+		if( !isset($category_page) && $cat_name === "moblog") continue;
 
 		$articleIndex++; ?>
 

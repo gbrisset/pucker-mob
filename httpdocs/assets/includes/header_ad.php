@@ -1,6 +1,6 @@
 <?php if($detect->isMobile()){
 
-	if($promotedArticle){ ?>
+	if(isset($promotedArticle) && $promotedArticle){ ?>
     	<!-- SMARTIES -->
     	<div id="smarties" class="" style="margin-bottom: -4rem;margin-top: 3rem;">
 

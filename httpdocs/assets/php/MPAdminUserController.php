@@ -537,7 +537,7 @@ End password reset methods
 		$sessionHash = $this->generateHash();
 
 		//Generate C_T value for FB USERS
-		if($post['user_facebook_id-s']){
+		if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
 			$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 		}
 
@@ -676,30 +676,30 @@ End password reset methods
 		$salt = substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22);	
 
 		//	Make sure the password match
-		if($post['user_password-s'] == "" || $post['user_password_2-s'] == ""){
-			return array('hasError' => true, 'message' => "Oops!  You must fill out both password fields.");
+		if($post['user_password-s'] == "" /*|| $post['user_password_2-s'] == ""*/){
+			return array('hasError' => true, 'message' => "Oops!  You must fill out password fields.");
 		}
-		if($post['user_password-s'] != $post['user_password_2-s']){
+		/*if($post['user_password-s'] != $post['user_password_2-s']){
 			return array('hasError' => true, 'message' => "Oops!  Your passwords do not match.");
-		}
+		}*/
 		$hashed_password = crypt($post['user_password-s'], '$2a$12$' . $salt);
 		//	Unset the password in the past variable, so as not to save it to the db and compile it  in compilePairs()
 		
 		unset($post['user_password-s']);
-		unset($post['user_password_2-s']);
+		//unset($post['user_password_2-s']);
 
 		//	Make sure the email addresses match
-		if($post['user_email_1-e'] == "" || $post['user_email_2-e'] == ""){
-			return array('hasError' => true, 'message' => "Oops!  You must fill out both email fields.");
+		if($post['user_email_1-e'] == "" /*|| $post['user_email_2-e'] == ""*/){
+			return array('hasError' => true, 'message' => "Oops!  You must fill out the email field.");
 		}
-		if($post['user_email_1-e'] != $post['user_email_2-e']){
-			return array('hasError' => true, 'message' => "Oops!  Your email addresses do not match.");
-		}
+		//if($post['user_email_1-e'] != $post['user_email_2-e']){
+		//	return array('hasError' => true, 'message' => "Oops!  Your email addresses do not match.");
+		//}
 
 		//	Set the email post variable correctly
-		$post['user_email-e'] = $post['user_email_2-e'];
+		$post['user_email-e'] = $post['user_email_1-e'];
 		unset($post['user_email_1-e']);
-		unset($post['user_email_2-e']);
+	//	unset($post['user_email_2-e']);
 
 		$pairs = $this->helpers->compilePairs($post, true);
 		$params = $this->helpers->compileParams($post);
@@ -715,19 +715,19 @@ End password reset methods
 
 		//IF USER EXISTS AND IS FROM FACEBOOK
 
-		if($user && $post['user_facebook_id-s']){
+		if($user && ( isset($post['user_facebook_id-s']) && $post['user_facebook_id-s'])){
 			return $this->handleLogin($post);
 		}
 
-		if(!$post['user_facebook_id-s']){
+		if(isset($post['user_facebook_id-s']) && !$post['user_facebook_id-s']){
 			if ($user['user_email'] == $post['user_email-e']){
 				return array('hasError' => true, 'message' => "Oops!  Looks like that email address is already in use.  Did you mean to login instead?  If so, you can do that <a href=\"".$this->config['this_admin_url'].'login/'."\"><u>here</u></a>.");
 			}
 		}	
-
-		if (!isset($post['tos_agreed-s']) || $post['tos_agreed-s'] != 1){
-			return array('hasError' => true, 'message' => 'You must agree to our terms of service.');
-		}
+		$post['tos_agreed-s'] = 1;
+		//if (!isset($post['tos_agreed-s']) || $post['tos_agreed-s'] != 1){
+		//	return array('hasError' => true, 'message' => 'You must agree to our terms of service.');
+		//}
 	
 		
 		$valid = $this->helpers->validateRequired($params, $unrequired);
@@ -764,7 +764,7 @@ End password reset methods
 
 		if($result){
 			//Add Contributor Info
-			$contributor_name = $post['user_first_name-s'].' '.$post['user_last_name-s'];
+			$contributor_name = $post['user_first_name-s'];//.' '.$post['user_last_name-s'];
 			$email = $post['user_first_name-s'].' '.$post['user_email-e'];
 			$contributor_seo_name  = $this->helpers->generateName(array('input' => $contributor_name ));
 			
@@ -779,7 +779,7 @@ End password reset methods
 			}
 
 			if(count($dupCheckEmail['contributors']) <= 0){
-				if($post['user_facebook_id-s']){
+				if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
 					$contributor_image_fb = "http://graph.facebook.com/".$post['user_facebook_id-s']."/picture";
 					$contributor_facebook_link = $post['fb_user_link'];
 					
@@ -796,7 +796,7 @@ End password reset methods
 			}
 			//End Adding Contributor Info
 
-			if($post['user_facebook_id-s']){
+			if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
 				return $this->doUserActivation($verificationHash);
 				 //$this->handleLogin($post);
 			}else{

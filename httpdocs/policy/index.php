@@ -36,6 +36,7 @@
 </p>
 
 <h3>SITE USE</h3>
+<p>The following points regarding compensation apply to “Bloggers” only. “Freelance” writers maybe be compensated differently, and that compensation rate will be established separately. All other portions of this Terms of Service apply to all writers.</p>
 <p>Compensation Policy for Revenue Program</p>
 <p>You may receive a portion of revenue (“Revenue Program”) by Sequel Media International, LLC in connection with authenticate genuine social interactions (“likes,” shares, comments, and views) on the Site by posting valid content. If you violate this Compensation Policy, Sequel Media International, LLC Terms of Service or Privacy Policy, we may, in our sole discretion, without notice, reduce or eliminate your compensation, terminate this Agreement, delete your content, and/or suspend or terminate your user account.</p>
 <p>By registering on our Site and posting content or interacting with Site content, you hereby represent, acknowledge, agree, and warrant that:</p>

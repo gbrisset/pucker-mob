@@ -76,5 +76,6 @@
 }
 
 @media #{$mobile-only}{
-	.modalDialog>div img{ width: 100%;}
+	.modalDialog > div img{ width: 100%; max-width:320px;}
+	#popup-content{ max-width:320px; min-width:320px;}
 }

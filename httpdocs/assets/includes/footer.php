@@ -4,7 +4,7 @@
     <!--<div class="ad-unit hide-for-print mobile-ad90 padding-bottom" id="footer-ad">
       <div style="width:320px;height:50px;" data-gg-slot="514"></div>
     </div>-->
-    <?php if( !$promotedArticle ){ ?>
+    <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- PuckerMob Mobile -->
       <ins class="adsbygoogle"

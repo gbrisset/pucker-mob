@@ -70,14 +70,14 @@ var deleteParam = getParameterByName('delete');
 
 if(deleteParam && deleteParam.length > 0) delete_cookie(cookie_name);
 
-var image = '4702_popup.jpg';
-if($('body').hasClass('mobile'))  image = '4702_popup_mobile.jpg';
+var image = 'moblog_desk.jpg';
+if($('body').hasClass('mobile'))  image = 'moblog_mob.jpg';
 if(res != "seen") {
 document.write('<div id="openModal" class="modalDialog">'+
 		'<div id="popup-content">'+
 			'<a href="#close" title="Close" class="close">X</a>'+
 			'<div class="modal-img">'+
-				'<a href="http://www.puckermob.com/lifestyle/54-updated-things-you-can-score-with-your-student-id">'+
+				'<a href="http://www.puckermob.com/admin/register">'+
 					'<img src="http://www.puckermob.com/assets/img/modelboximg/'+image+'"/>'+
 				'</a>'+
 			'</div>'+

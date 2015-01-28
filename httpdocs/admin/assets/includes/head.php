@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/tooltipster.css" />
 
+
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/adminstylingie78.css">
 	<![endif]-->

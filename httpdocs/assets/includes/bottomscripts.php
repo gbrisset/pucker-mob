@@ -34,13 +34,13 @@
 <?php if ( !$detect->isMobile() ) { ?>
 
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
-      <?php if(  !$promotedArticle && !$has_sponsored){ ?>
+      <?php if(  isset($promotedArticle) && !$promotedArticle && isset($has_sponsored) && !$has_sponsored){ ?>
 
    <!--[if !IE]>
   <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
   <![endif]-->
 
-<?php if( !$promotedArticle ){ ?>
+<?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
 
  <!-- GUM GUM IN-IMAGE 
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
@@ -124,22 +124,22 @@
 
 <!-- MOBILE -->
 <?php }else{ ?>
-  <?php if( !$promotedArticle ){ ?>
+  <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
   
   
 
   <!-- GUM GUM 
   <script src="//g2.gumgum.com/javascripts/ad.js"></script>-->
 
-<!-- GUM GUM IN-IMAGE 
+<!-- GUM GUM IN-IMAGE -->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
       <script type="text/javascript">ggv2id='64bad626';</script>
       <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
       <?php }?>
     <?php } ?>
--->
-<!-- NETSEER AD IN-IMAGE-->
+
+<!-- NETSEER AD IN-IMAGE
 <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
    <script type="text/javascript">
@@ -150,8 +150,8 @@
   <?php }?>
 <?php } ?>
 
-  <!-- Distro Scale AD Tag -->
-  <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
+  <!-- Distro Scale AD Tag 
+  <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
   
    <!-- Vibrant Media Ads 
    <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70527"></script>
@@ -161,11 +161,11 @@
   
   <!-- Q1 Media ON MultiPage for Mobile -->
    <?php //if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){ ?>
-       <?php if( !$promotedArticle ){ ?>
-       <!-- Q1 Media -->
+       <?php //if( !$promotedArticle ){ ?>
+       <!-- Q1 Media 
        <script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script>
-       <style> #at-share-dock{ display:none !important; visibility: hidden !important;}  </style>
-   <?php } //}?>
+       <style> #at-share-dock{ display:none !important; visibility: hidden !important;}  </style>-->
+   <?php //} //}?>
 
   
 <?php }?>
@@ -182,7 +182,7 @@
 </script>
 
 
-<?php if( !$promotedArticle ){ ?>
+<?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
 <!-- SHARETHROUNG -->
   <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
    

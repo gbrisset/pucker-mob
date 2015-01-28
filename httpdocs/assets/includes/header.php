@@ -10,25 +10,24 @@
     }
   }
   ?>
-  <?php //if($detect->isMobile()){?>
-  <!-- <header id="super-banner" class="hide-for-print" style="background:#615147 !important;margin-top: 3.2rem;margin-bottom: -3rem; text-align:center;">
-    <div class="row">
-      <a href="http://www.puckermob.com/lifestyle/the-psychology-behind-your-mess-why-creative-geniuses-often-keep-a-messy-desk">
-        <img src="http://www.puckermob.com/assets/img/super_banner_mobile.png">
+  <?php if(!$detect->isMobile()){?>
+
+  <header id="super-banner" class="hide-for-print show-for-large-up" style="background:#f2ea0a !important; padding:0.8rem 0.5rem 0.4rem 0.5rem !important; text-align: center;">
+<div class="row">
+     <div id="header-social" class="small-9 columns half-padding-right" style="text-align:left;">      
+      <a href="http://www.puckermob.com/admin/register" style="color: #000;font-weight: bolder; font-family:OswaldRegular;">
+       JOIN THE MOB! EARN MONEY BLOGGING ON PUCKERMOB - REGISTER NOW!
       </a>
     </div>
-  </header>-->
-  <?php //}else{?>
-  <!--<header id="super-banner" class="hide-for-print show-for-large-up" style="background:#615147 !important;">
-    <div class="row">
-      <a href="http://www.puckermob.com/lifestyle/the-psychology-behind-your-mess-why-creative-geniuses-often-keep-a-messy-desk">
-        <img src="http://www.puckermob.com/assets/img/super_banner_desktop.png">
-      </a>
-    </div>
-  </header>-->
-  <?php// }?>
+    <div id="topbar-container">
+        <input id="topbar-search-contents" type="search" placeholder="SEARCH" style="color: #f2ea0a !important; border: 1px solid #f2ea0a; ">
+        <button id="topbar-search-submit" class="alert button expand" style="background-color: #f2ea0a;"><i class="fa fa-search"></i></button>
+      </div>
+      </div>
+  </header>
+  <?php }?>
    
-  <header id="top-banner" class="hide-for-print show-for-large-up">
+ <!-- <header id="top-banner" class="hide-for-print show-for-large-up">
     <div class="row">
      <div id="header-social" class="small-6 columns half-padding-right">FOLLOW US 
         <a href="<?php echo $mpArticle->data['article_page_facebook_url'];?>" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a>
@@ -43,7 +42,7 @@
 
 
     </div>
-  </header>
+  </header>-->
 
   <div id="nav-bar" class="sticky contain-to-grid hide-for-print">
     <nav class="top-bar" data-topbar="" data-options="scrolltop: false;">

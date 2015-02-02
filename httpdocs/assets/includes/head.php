@@ -63,12 +63,16 @@
 	<link rel="dns-prefetch" href="//ad-cdn.technoratimedia.com" />
 	<link rel="dns-prefetch" href="//1.sic.33across.com" />
 
-	<?php if(isset($isArticle) && $isArticle && $articleInfoObj){ ?>
+	<?php 
+	
+	$promotedArticle = false; $tag = 'smarties';
+
+	if(isset($isArticle) && $isArticle && $articleInfoObj){ ?>
 		<link rel="canonical" href="<?php echo 'http://puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
 	<?php 
-		$promotedArticle = false; $tag = 'smarties';
 		if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }
 	} ?>
+
 
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     
@@ -161,7 +165,7 @@
 <!-- CARAMBOLA IN_IMAGE -->
 <?php if(isset($articleInfoObj) && $articleInfoObj){ 
 	$noCarambola = false;
-	if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653) $noCarambola = true;
+	if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653 || $articleInfoObj['cat_dir_name'] == 'moblog' ) $noCarambola = true;
 	if( isset($noCarambola) && !$noCarambola){ ?>
 		<!--<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 	-->
 	<?php }

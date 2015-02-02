@@ -305,12 +305,10 @@ class Dashboard{
 		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_status, 
 		a.article_type, a.creation_date,  article_rates.rate_by_article, ";
 
-		if($year > 2014) $s.=" '0.01' as rate_by_share, ";
-		else $s .= " article_rates.rate_by_share, ";
-
-		$s .= "facebook_shares, facebook_likes, facebook_comments, twitter_shares, pinterest_shares, google_shares, linkedin_shares, delicious_shares, 
-		stumbleupon_shares, month, year, social_media_records.date_updated, category
-		FROM articles as a
+		$s .= " facebook_shares, facebook_likes, facebook_comments, twitter_shares, pinterest_shares, google_shares, linkedin_shares, delicious_shares, 
+		stumbleupon_shares, month, year, social_media_records.date_updated, category, ";
+		$s .="  ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) AS rate_by_share ";
+		$s .=" FROM articles as a
 		INNER JOIN ( article_contributors, article_contributor_articles, 
 				article_rates, social_media_records ) 
 		ON a.article_id = article_contributor_articles.article_id 
@@ -322,9 +320,7 @@ class Dashboard{
 		if ($userArticlesFilter != 'all'){
 			$s .=	"AND article_contributors.contributor_email_address = :userArticlesFilter ";
 		}
-		//$s .= " GROUP BY a.article_id ";
 		$s .= $order_sql;
-		//$s .= 	"LIMIT {$limit} OFFSET {$offset}";	
 
 		$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
@@ -426,27 +422,38 @@ class Dashboard{
 		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$contributor_id = $data['contributor'];
 
-
 		$s = "
 			SELECT
 			      article_contributor_articles.contributor_id, 
 			      article_contributors.contributor_name, 
 			      article_contributors.contributor_seo_name, 
+			      users.user_type,
 			      SUM(social_media_info.rate) as 'total_rate',
 			      SUM(social_media_info.total_shares) as 'total_shares', 
-			      '0.02' as 'share_rate',
-			      (SUM(social_media_info.total_shares)*0.02) as 'share_revenue',
-			      ((SUM(social_media_info.total_shares)*0.02) + SUM(social_media_info.rate)) as 'total_to_pay'
+			      ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) AS share_rate ,
+			      (SUM(social_media_info.total_shares) * ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) ) as 'share_revenue',
+			      ((SUM(social_media_info.total_shares)* ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) ) + SUM(social_media_info.rate)) as 'total_to_pay'
 			      
 			FROM  article_contributor_articles 
 
-			INNER JOIN ( article_contributors ) ON ( article_contributor_articles.contributor_id = article_contributors.contributor_id )
+			INNER JOIN ( article_contributors, users ) 
+				ON ( article_contributor_articles.contributor_id = article_contributors.contributor_id )
+				AND ( users.user_email = article_contributors.contributor_email_address)
 			INNER JOIN ( 
-
 				SELECT 
 				social_media_records.article_id, social_media_records.category,  
 				social_media_records.month,  social_media_records.year,  
-				(SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) +  SUM(linkedin_shares)  +  SUM(delicious_shares) + SUM(stumbleupon_shares))  as 'total_shares', IF( DATE_FORMAT(articles.creation_date, '%m') !=  social_media_records.month, 0, article_rates.rate_by_article) as 'rate'
+				(   SUM(facebook_shares) + 
+					SUM(facebook_likes) + 
+					SUM(facebook_comments) + 
+					SUM(twitter_shares) + 
+					SUM(pinterest_shares) + 
+					SUM(google_shares) +  
+					SUM(linkedin_shares)  +  
+					SUM(delicious_shares) + 
+					SUM(stumbleupon_shares)
+				)  as 'total_shares', 
+				IF( DATE_FORMAT(articles.creation_date, '%m') !=  social_media_records.month, 0, article_rates.rate_by_article) as 'rate'
 				            
 				FROM social_media_records 
 
@@ -495,12 +502,14 @@ class Dashboard{
 				$update_data = $this->getContributorEarnings($id, $month, $year);
 
 				$earnings_info = $this->socialMediaSharesReport($data);
+				//if($earnings_info['user_type'] !== 4){
+				//	$earnings_info['total_rate'] = 0;
+				//}
 
 				$total_article_rate = 0;
 				$total_shares = 0;
-				$share_rate = 0.01;
-				if($year == 2014 ) $share_rate = 0.02;
-				
+
+				$share_rate = 0.01;				
 				$total_share_rev = 0;
 				$total_earnings = 0;
 				
@@ -511,6 +520,11 @@ class Dashboard{
 					$share_rate = $earnings_info['share_rate']; //0.02 IN 2015 will be 0.01
 					$total_share_rev = $earnings_info["share_revenue"];  //NUMBER OF SHARES * 0.02
 					$total_earnings = $earnings_info["total_to_pay"]; //TOTAL RATE PER ARTICLE + NUMBER OF SHARES * 0.02
+				}
+
+
+				if($contributor['user_type'] != 4){
+					$total_earnings = $total_earnings - $total_article_rate;
 				}
 
 				if($update_data){
@@ -526,9 +540,8 @@ class Dashboard{
 						  (`id`, `contributor_id`, `month`, `year`, `total_article_rate`, `total_shares`, `share_rate`, 
 						  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`)
 						  VALUES (NULL, '".$id."', '".$month."', '".$year."', '".$total_article_rate."', '".$total_shares."', 
-						  	'0.02', '".$total_share_rev."', '".$total_earnings."', '0', '".$total_earnings."') ";
+						  	'".$share_rate."', '".$total_share_rev."', '".$total_earnings."', '0', '".$total_earnings."') ";
 				}
-
 				$queryParams = [ ];			
 				$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 
@@ -537,7 +550,8 @@ class Dashboard{
 	}
 
 	public function getContributorsList(){
-		$s = "SELECT contributor_id from article_contributors ";
+		$s = "SELECT contributor_id, user_type from article_contributors 
+		INNER JOIN users ON users.user_email = article_contributors.contributor_email_address ";
 
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s]);

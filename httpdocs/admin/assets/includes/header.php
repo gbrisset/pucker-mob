@@ -23,7 +23,7 @@
         <div class="right">
           <?php if($loginActive){?>
         <p class="">Welcome, <?php echo $adminController->user->data['user_email']; ?>
-          <?php if($adminController->user->data['user_facebook_id'] && strlen($adminController->user->data['user_facebook_id']) > 0 ){?>
+          <?php if(isset($adminController->user->data['user_facebook_id']) && $adminController->user->data['user_facebook_id'] && strlen($adminController->user->data['user_facebook_id']) > 0 ){?>
           <img id="image-header-profile" src="<?php echo $adminController->user->data['contributor_image'];?>" >
           <?php }else{?>
           <img id="image-header-profile" src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'. $adminController->user->data['contributor_image'];?>" >
@@ -55,6 +55,7 @@
           <li><a href="<?php echo $config['this_url']; ?>money"  class="money" >Money</a></li>
           <li><a href="<?php echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
           <li><a href="<?php echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
+           <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >Moblog</a></li>
           <?php if( !$detect->isMobile()){?>
           <!--<li><a href="<?php echo $config['this_url']; ?>videos/hot-topics"  class="videos" >Videos</a></li>-->
           <?php } ?>

@@ -14,9 +14,8 @@
            <h4 style="height: 1.4rem;"> </h4>
           <ul class="no-bullet">
             <li><a href="<?php echo $config['this_url']; ?>lifestyle" class="wellness">Lifestyle</a></li>
-            <?php //if( $detect->isMobile()){?>
-              <li><a href="<?php echo $config['this_url']; ?>fun" class="fun">Fun</a></li>
-            <?php //} ?>
+            <li><a href="<?php echo $config['this_url']; ?>fun" class="fun">Fun</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >Moblog</a></li>
           </ul>
         </div>
         <div id="footer-right" class="large-6 columns">

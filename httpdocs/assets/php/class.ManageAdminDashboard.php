@@ -88,18 +88,20 @@ class ManageAdminDashboard{
 	}
 
 	public function getTopSharedMoblogs($month, $year){
-
-		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-
+		if($month === 'all'){ $month = 0;}
+		
+		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);	
 		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, social_media_records.date_updated, articles.creation_date, social_media_records.category, (
 				SUM( facebook_shares ) + SUM( twitter_shares ) + SUM( pinterest_shares ) + SUM( google_shares ) + SUM( linkedin_shares ) + SUM( delicious_shares ) + SUM( stumbleupon_shares )
 				) AS 'total_shares'
 				FROM social_media_records
 			    INNER JOIN articles ON social_media_records.article_id = articles.article_id
 
-				WHERE articles.article_status = 1 AND social_media_records.month = ".$month." AND social_media_records.year = ".$year."
-				 GROUP BY social_media_records.id 
-				 ORDER BY total_shares DESC LIMIT 10";
+				WHERE articles.article_status = 1 ";
+		if( $month != 0 ){
+			$s.= " AND social_media_records.month = ".$month." AND social_media_records.year = ".$year;
+		}
+		$s.= " GROUP BY social_media_records.id ORDER BY total_shares DESC LIMIT 10";
 
 		$q = $this->performQuery(['queryString' => $s]);
 

@@ -12,7 +12,7 @@
 		} else {
 			//	Success
 			$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
-
+//var_dump($_SESSION); 
 			$redirectString = $adminController->user->redirectAfterLogin();
 			
 			echo $redirectString;
@@ -20,6 +20,10 @@
 	} 
 
 	//FACEBOOK SETTINGS
+
+	//if($_GET['server'] == true){
+	//	var_dump($_SERVER['SERVER_ADDR']); die;
+	//}
 	require_once('../fb/fbfunctions.php');
 
 ?>

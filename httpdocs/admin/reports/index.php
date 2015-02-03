@@ -5,10 +5,10 @@
 
 	//Verify if is a content provider user
 	$content_provider = false;
-
+	$staff = false;
 
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
-
+	
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 4){
 		$content_provider = true;
 	}
@@ -18,6 +18,7 @@
 	$current_month = date('n');
 	$current_year = date('Y');
 	$selected_month = isset($_POST['month']) ? $_POST['month'] : $current_month;
+	$selected_year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 	$selected_contributor = isset($_POST['contributor']) ? $_POST['contributor'] : 0;
 
 	if(isset($_POST['submit'])){
@@ -26,9 +27,6 @@
 			
 		}else $adminController->redirectTo('logout/');
 	}
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +65,6 @@
 					  		<option value='0'>Month</option>
 						  	<?php 
 						  	$index = 1;
-						  	//if($current_year == 2014) $index = 10; 
 						  	for($m = $index; $m <= 12; $m++){
 						  		$dateObj   = DateTime::createFromFormat('!m', $m);
 						  		$monthName = $dateObj->format('F');
@@ -81,9 +78,8 @@
 					  		<option value='0'>Year</option>
 						  	<?php 
 						  	$index = 2014;
-
 						  	for($y = $index; $y <= $current_year; $y++){
-						  		//if($current_year == $y) $selected  = 'selected'; else $selected = '';
+						  		if($selected_year == $y) $selected  = 'selected'; else $selected = '';
 						  		echo '<option value="'.$y.'" '.$selected.' >'.$y.'</option>';
 							} ?>
 						</select>
@@ -146,6 +142,7 @@
 				  </thead>
 				  <tbody>
 				  	<?php 
+
 				  		$total = 0;
 				  		$total_rate = 0;
 				  		$total_shares = 0;
@@ -153,24 +150,23 @@
 				  		foreach( $results as $contributor){ 
 				  		if( $contributor['total_to_pay'] == 0) continue;
 
+				  	
 				  		$contributor_type = isset($contributor['user_type']) ? $contributor['user_type'] : '4';
-				  		
-				  		if($contributor_type == 2 ){
+				  		if($contributor_type != 4 ){
 				  		 $contributor['total_to_pay'] = $contributor['total_to_pay'] - $contributor['total_rate'];
 				  		 $contributor['total_rate'] = 0;
 				  		}
 
 				  		$total = $total + $contributor['total_to_pay'];
-
 				  		
-				  						  		
 				  		$total_rate = $total_rate + $contributor['total_rate'];
 				  		$total_shares = $total_shares + $contributor['total_shares'];
 				  		$total_rev = $total_rev + $contributor['share_revenue'];
+
 				  	?>
 				  	<tr>
-					  	<td>
-					  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name']; ?>" target="blank">
+					  	<td id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
+					  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
 					  			<?php echo $contributor['contributor_name']; ?>
 					  		</a>
 					  	</td>

@@ -7,8 +7,8 @@
 	$dashboard = new Dashboard($config);
 	//1- Get All Articles Status = Live.
 	
-	$month = date('n');
-	$year = date('Y');
+	$month = 1;//date('n');
+	$year = 2015;//date('Y');
 	//$month = 11;
 	
 	$dashboard->updateContributorsEarnings( $month, $year );

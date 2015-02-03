@@ -871,7 +871,7 @@ class MPArticleAdmin{
 			$fileSize = $file['size'];
 			
 			$data['imgType'] = (isset($data['imgType'])) ? $data['imgType'] : '';
-			
+
 			switch($data['imgType']){
 				case 'contributor':
 					$fileName = explode('.', $file['name']);
@@ -948,6 +948,105 @@ class MPArticleAdmin{
 					$this->createArticleTallImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
 					$this->createArticleMediumImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
 					$this->createArticleSquareImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+            		
+            		return ['hasError' => false, 'message' => "", 'filename' => $uploadFile];
+            		
+            	}
+			}
+			
+			return array_merge($this->returnStatus(500), ['hasError' => true], ['filename'=> $fileName]);
+		}
+	}
+
+	public function uploadTempImage($files, $data){
+
+		$allowedExtensions = explode(',', $data['allowedExtensions']); //No leading periods
+		$uploadDir = $data['uploadDirectory'];
+		$columnName = '';
+
+
+		// destination image dimensions
+		$desWidth = $data['desWidth'];
+		$desHeight = $data['desHeight']; 
+
+		//Get New Values
+		if(isset($data['imgData'])){
+			$src_w = $data['imgData']['w'];
+			$src_h = $data['imgData']['h'];
+			$src_x = $data['imgData']['x1'];
+			$src_y = $data['imgData']['y1'];
+			$currentDimWidth = $data['imgData']['dimWidth'];
+			$currentDimHeight = $data['imgData']['dimHeight'];
+		}
+
+		foreach($files as $file){
+
+			$fileType = $file['type'];
+			$fileTempName = $file['tmp_name'];
+			$fileError = $file['error'];
+			$fileSize = $file['size'];
+			
+			$data['imgType'] = (isset($data['imgType'])) ? $data['imgType'] : '';
+
+			switch($data['imgType']){
+				case 'contributor':
+					$fileName = explode('.', $file['name']);
+					$extension = $fileName[count($fileName) - 1];
+					$fileName = $data['contributorId'].'_contributor.'.$extension;
+					$fileDestName = $fileName;
+					$columnName = 'contributor_image';
+					break;
+				case 'article':
+					$fileName = explode('.', $file['name']);
+					$extension = $fileName[count($fileName) - 1];
+					$fileName = $data['articleId'].'_tall'.'.'.$extension;
+					$fileDestName = $data['articleId'].'_tall.jpg';
+					$columnName = 'article_preview_img';
+					break;
+			}
+
+			//Validations
+			if($fileError) return ['hasError' => true, 'message' => 'Sorry, this file is not valid.  Please try again.'];
+			
+			//Validate Name
+			if(!$this->validateName([
+				'fileName' => $fileName, 'fileType' => $fileType, 'fileSize' => $fileSize, 'allowedExtensions' => $allowedExtensions
+			])) return ['hasError' => true, 'message' => 'Sorry, no valid files were found.  Please try again.'];
+
+			if(!is_uploaded_file($fileTempName) || empty($columnName)) return ['hasError' => true, 'message' => 'Sorry, no valid files were found.  Please try again.'];
+
+			$fileName = explode('.', $fileName); 
+			$extension = $fileName[count($fileName) - 1];
+			unset($fileName[count($fileName) - 1]);
+			$fileName = preg_replace('/[^A-Za-z0-9]/', '_', join($fileName, '')).'.'.$extension;
+		
+			$uploadFile = $uploadDir.basename($fileName);
+
+			// define a result image filename
+            $iDestFileName = $uploadDir.'/'.$fileDestName;
+
+			switch($data['imgType']){
+				case 'article':
+					//Update Record on Article Images Prev. Table
+					$updateArr = [
+						'table' => 'article_images',
+						'column' => $columnName,
+						'value' => $fileDestName,//'preview_'.$fileDestName,
+						'articleId' => $data['articleId'],
+						'label' => ucwords($data['imgType']).' Image'
+					];
+
+					break;
+			}
+
+			if(move_uploaded_file($fileTempName, $uploadFile)){
+				if($data['imgType'] == 'article'){
+            		
+            		$this->createArticleLargeImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+            		//$this->createArticlePreviewImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+					//$this->createArticleTallImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+					//$this->createArticleMediumImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+					//$this->createArticleSquareImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
             		
             		return ['hasError' => false, 'message' => "", 'filename' => $uploadFile];
             		

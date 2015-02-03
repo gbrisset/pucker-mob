@@ -221,7 +221,7 @@
 					<div class="row">
 					    <div class="columns">
 						<label for="article_desc-s" class="uppercase">Description </label>
-							<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Enter description" maxlegth="150" value="<?php if(isset($article['article_desc'])) echo $article['article_desc']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
+							<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Enter description" maxlegth="150" value="<?php if(isset($article['article_desc'])) echo $article['article_desc']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
 						
 						</div>
 					</div>

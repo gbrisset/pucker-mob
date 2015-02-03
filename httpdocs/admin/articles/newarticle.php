@@ -1,5 +1,5 @@
 <?php
-	if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
+if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
 
 	if (!empty($_FILES)) {
 	     $ds          = DIRECTORY_SEPARATOR;  //1
@@ -52,8 +52,7 @@
 
 	<!-- WELCOME MESSAGE -->
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
-			<h1 class="left">New Article</h1>
-			
+		<h1 class="left">New Article</h1>
 	</section>
 	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -62,10 +61,35 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="article-info">
-				<section class="left  mobile-12 small-12">
-				<form  id="article-add-form" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
+				<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
+					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
+					<div class="dz-message" data-dz-message>
+						<div id="img-container">
+					   		<label>Drag image here</label>
+					   		<label>or</label>
+					   		<input type="button" name="upload" id="upload" value="Upload Files" />
+					   		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
+					   	</div>
+					</div>
+				</form>
 
+				<div class="dropzone-previews">
+					<?php if(file_exists($pathToTallImage)){?>
+					<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';	?>
+					<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
+						<div class="dz-details">	
+							<img class="data-dz-thumbnail" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
+						</div>
+					</div>
+					<?php }  ?>
+				</div>
+				
+			
+				<form  id="article-add-form" class="margin-top" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
+					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 					
 					<!-- ARTICLE TITLE -->
 					<div class="row">
@@ -134,7 +158,7 @@
 					<!-- DESCRIPTION -->
 					<div class="row">
 					    <div class="columns">
-					    	<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Enter description" maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
+					    	<input type="text" name="article_desc-s" id="article_desc-s" placeholder="Enter description" maxlength="150"  value="<?php if(isset($_POST['article_desc-s'])) echo $_POST['article_desc-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_desc') echo 'autofocus'; ?> />
 						</div>
 					</div>	
 					
@@ -246,7 +270,6 @@
 
 				</form>
 				
-				</section>
 			</section>
 		</div>
 	</main>	

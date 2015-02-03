@@ -346,6 +346,7 @@ class MPArticleAdminController extends MPArticle{
 
 		//	If the emaill in post already exists...
 		if($foundUser = $this->user->userAlreadyExists($post)) {
+			
 			if ($foundUser['user_name'] != $post['user_name-s'] && $foundUser['user_email'] == $post['user_email-e']){
 				return array( 'hasError' => true, 'message' => "Oops!  Looks like that email address is already being used.");
 			}
@@ -670,6 +671,7 @@ class MPArticleAdminController extends MPArticle{
 			));
 
 		//Add to each category
+			//var_dump($post['article_categories']);
 		if(isset($post['article_categories']) && $post['article_categories'] != 0){
 		//foreach($post['article_categories'] as $category => $on){
 			$categoryId = $post['article_categories'];

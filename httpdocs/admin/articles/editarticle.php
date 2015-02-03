@@ -4,6 +4,8 @@
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 	$article = $articleResultSet['articles'];
 
+	if(empty($article)) $mpShared->get404();
+
 	// If the article exists and has an id, check to see if this user has permissions to edit this article...
 	if (isset($article['article_id']) ){
 		$article_id = $article['article_id'];
@@ -14,22 +16,21 @@
 	//require_once('../assets/php/notify-user-form.php');
 
 	$articleCategories = $articleResultSet['categories'];
-	$tallExtension = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall');
+	//$tallExtension = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall');
 
-	if(!$tallExtension) $tallExtension = 'jpg';
+	//if(!$tallExtension) $tallExtension = 'jpg';
 
 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
 	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
 
 	//Verify if user is a content provider...
-	//Verify if is a content provider user
 	$admin_user = false;
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
 		$admin_user = true;
 	}
-		$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
-		$contributor_email = $adminController->user->data['user_email'];
-		$contributorInfo = $contributorInfo[0];
+	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
+	$contributor_email = $adminController->user->data['user_email'];
+	$contributorInfo = $contributorInfo[0];
 	
 	
 	//Verify if Article Image file exists.
@@ -40,8 +41,7 @@
 		$artImageExists = file_exists($artImageDir);
 	}
 
-	$articleImages = $mpArticle->getArticlesImages($article['article_id']);	
-	if(empty($article)) $mpShared->get404();
+	//$articleImages = $mpArticle->getArticlesImages($article['article_id']);	
 
 	// SUMMIT FORM
 	if(isset($_POST['submit'])){
@@ -124,84 +124,32 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			
-			<!-- Image Sections -->
-			<!--<section id="article-inline-settings">
-					<section class="section-bar left  border-bottom mobile-12 small-12">
-						<h1 class="left">Article Image</h1>
-						<div class="right">
-							<p><span>Status: </span><?php echo $article_status; ?></p>
-						</div>
-					</section>
-					
-					<section id="add-an-image-fs" class="padding-top left">
-							<div class="image-steps image-sec">
-								<div id="image-container">
-							<?php if(file_exists($pathToTallImage)){?>
-							<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	?>
-									<img src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
-									<span><a id="change-art-image" href=""><i class="fa fa-file-image-o"></i>Change Photo</a></span>
-								<?php } else{ ?>
-									<img src="http://images.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg" alt="Default Image" />
-									<span><a id="change-art-image" href=""><i class="fa fa-file-image-o"></i>Change Photo</a></span>
-								<?php } ?>
-								</div>
-							</div>
-							
-							<div class="image-steps">
-								<header class="section-bar">
-									<h1>Add an Image to your article</h1>
-								</header>
-								
-								<div class="row">
-					    			<div class="columns">
-							    	<div class="file-upload-container">
-								        <span>
-								        	<button class="radius" name="image-file-link" id="image-file-link" type="button"><i class="icon-plus-sign"></i>Add Image</i></button>
-								        </span>
-								    </div>
-							        <div id="rules">
-							        	<span>Make sure the image selected:</span>
-							        	<ul>
-							        	<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
-		    							<li>Do not exceed a maximum size: 1 MB.</li>
-		    							<!--<li>Has a minimun dimensions of  405 x 415</li>-->
-							     <!--   </div>
-						        </div></div>
-						        <span id="error-img" class="radius alert label error-img hidden"></span>
-						         
-						    </div>
-					</section>
-					<div class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
-						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
-					</div>
-			</section>-->
-
 			<section id="article-info" class="">
-				
 				<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
-
-					<div class="dz-message" data-dz-message><div id="img-container">
-					    		<label>Drag image here</label>
-					    		<label>or</label>
-					    		<input type="button" name="upload" id="upload" value="Upload Files" />
-					    		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
-					    	</div></div>
-
+					<div class="dz-message" data-dz-message>
+						<div id="img-container">
+					   		<label>Drag image here</label>
+					   		<label>or</label>
+					   		<input type="button" name="upload" id="upload" value="Upload Files" />
+					   		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
+					   	</div>
+					</div>
 				</form>
 
 				<div class="dropzone-previews">
 					<?php if(file_exists($pathToTallImage)){?>
-					<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	?>
-						<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
+					<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';	?>
+					<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
 						<div class="dz-details">	
-						<img class="data-dz-thumbnail" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
-						</div></div>
+							<img class="data-dz-thumbnail" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
+						</div>
+					</div>
 					<?php }  ?>
 				</div>
 				
-				<form  id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
+				<form id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 

@@ -100,12 +100,13 @@ if($local)
 	require_once $config['assets_path'].'/mobile-detect.php';
 
 
-	if(isset($admin) && $admin) require_once $config['assets_path'].'/MPArticleAdmin.php';
+	//if(isset($admin) && $admin) require_once $config['assets_path'].'/MPArticleAdmin.php';
 
 	if(isset($admin) && $admin){
 		require_once $config['assets_path'].'/MPArticleAdmin.php';
 		require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 		require_once $config['assets_path'].'/MPArticleAdminController.php';
+		require_once $config['assets_path'].'/class.recaptchalib.php';
 	}
 	
 }else{
@@ -198,6 +199,8 @@ if($local)
 		require_once dirname(__FILE__).'/MPArticleAdminController.php';
 		require_once dirname(__FILE__).'/class.Dashboard.php';
 		require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
+		require_once $config['assets_path'].'/class.recaptchalib.php';
+
 	}
 
 	date_default_timezone_set('America/New_York');
@@ -221,6 +224,8 @@ if(isset($admin) && $admin){
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
+//recaptcha public key
+$publickey = "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b";
 
 /*
 Begin Dependancies/Soft Links:

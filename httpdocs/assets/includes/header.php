@@ -12,17 +12,22 @@
   ?>
   <?php if(!$detect->isMobile()){?>
 
-  <header id="super-banner" class="hide-for-print show-for-large-up" style="background:#f2ea0a !important; padding:0.8rem 0.5rem 0.4rem 0.5rem !important; text-align: center;">
-<div class="row">
-     <div id="header-social" class="small-9 columns half-padding-right" style="text-align:left;">      
-      <a href="http://www.puckermob.com/admin/register" style="color: #000;font-weight: bolder; font-family:OswaldRegular;">
-       JOIN THE MOB! EARN MONEY BLOGGING ON PUCKERMOB - REGISTER NOW!
+  <header id="super-banner" class="hide-for-print show-for-large-up" style="background:#1fa512 !important; padding:0.4rem 0.5rem 0.1rem 0.5rem !important; text-align: center;">
+<div class="row" style="height: 1.4rem;">
+     <div id="header-social" class="small-12 columns half-padding-right" style="text-align:left; font-family: OsloBold;">      
+     JOIN THE MOB! EARN MONEY BY BLOGGING ON PUCKERMOB. 
+      <a href="http://www.puckermob.com/admin/register" style="color: #f2ea0a !important;font-weight: bolder; font-family:OsloBold; margin-left: 8px; border-right: 2px solid #fff; padding-right: 5px;">
+       REGISTER NOW!
       </a>
+       <a href="http://www.puckermob.com/admin/login" style="color: #f2ea0a !important;font-weight: bolder; font-family:OsloBold; margin-left: 0; padding-left: 11px;">
+       LOG IN
+      </a>
+   
     </div>
-    <div id="topbar-container">
+    <!--<div id="topbar-container">
         <input id="topbar-search-contents" type="search" placeholder="SEARCH" style="color: #f2ea0a !important; border: 1px solid #f2ea0a; ">
         <button id="topbar-search-submit" class="alert button expand" style="background-color: #f2ea0a;"><i class="fa fa-search"></i></button>
-      </div>
+    </div>-->
       </div>
   </header>
   <?php }?>
@@ -69,7 +74,10 @@
       </section>
     </nav>
   </div>
-  <?php if($detect->isMobile() ){
+  <?php 
+  $has_sponsored = $mpArticle->data['has_sponsored_by'];
+
+  if($detect->isMobile() ){
     /*  Highlight Article */
     include_once($config['include_path'].'highlightarticle.php');
   }?>

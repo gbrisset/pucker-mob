@@ -139,7 +139,7 @@
       <?php }?>
     <?php } ?>
 
-<!-- NETSEER AD IN-IMAGE
+<!-- NETSEER AD IN-IMAGE -->
 <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
    <script type="text/javascript">

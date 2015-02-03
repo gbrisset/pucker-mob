@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/tooltipster.css" />
+	<!--<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/skroller.css">-->
 
 
 	<!--[if lt IE 9]>

@@ -3,6 +3,10 @@
 	$username = "";
 	$admin = true;
 	require_once('../assets/php/config.php');
+
+	//WELCOME POPUP SESSION VALUE
+	if(!isset($_SESSION['welcome-seen']) ) $_SESSION['welcome-seen'] = false;
+
 	if(!$adminController->user->getLoginStatus()) {
 		$adminController->redirectTo('login/');
 		$somevar = 0;
@@ -27,8 +31,11 @@
 		
 		$contributor_name = $userData["contributor_name"];
 		$month =  $current_month;
-		if(isset($_POST['month']) && $_POST['month']!= '0' ){
-			$month = $_POST['month'];
+		$sort_ever = $sort_month = '';
+		if(isset($_GET['month']) && $_GET['month']!= '0' ){
+			$month = $_GET['month'];
+			if($month == 'all') $sort_ever = 'underline';
+			if($month != 'all' && $month > 0) $sort_month = 'underline';
 		}
 
 		//Get Top 10 Shared Moblogs
@@ -41,21 +48,23 @@
 		$annoucements = $ManageDashboard->getAnnouncements(); 
  
 		//LAST MONTH EARNINGS
-		$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1);
+		$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1, $current_year);
 		$last_month_earnings = 0;
 		if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
 			
 		//TOTAL EARNINGS TO DATE
-		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0);
+		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0, 0);
 		$total_earnings_to_date = 0;
 		if($total_earnings_to_date_info ){
 			foreach($total_earnings_to_date_info as $value){
-				$total_earnings_to_date += $value['total_earnings'];
+				if(isset($value['total_earnings'])) $earnings = $value['total_earnings'];
+				else $earnings = $value;
+				$total_earnings_to_date += $earnings;
 			}
 		} 
 	
 		//THIS MONTH EARNINGS
-		$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month);
+		$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month, $current_year);
 		$this_month_earnigs = 0;
 		if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
 		//if($this_month_earnigs_info ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
@@ -66,12 +75,14 @@
 		
 		$writers_arr = $ManageDashboard->getTopShareWritesRank($current_month, $total_earnings_to_date);
 		$index = 0;
+		$your_cont_rank = array();
 		if($writers_arr){
 			$your_rank = 0;
 			$your_shares = 0;
 			$writers_rank = array();
 			$is_in = 0;
 			//$contributor_rank = array();
+
 			foreach( $writers_arr as $writer ){
 				
 				if($writer['contributor_id'] == $contributor_id ){
@@ -87,8 +98,13 @@
 				$class = "";
 				
 				if($your_rank == $i ){
+					$your_cont_rank['id'] = $writers_arr[$i]['contributor_id'];
+					$your_cont_rank['name'] = $writers_arr[$i]['contributor_name'];
+					$your_cont_rank['total_shares'] = $writers_arr[$i]['total_shares'];
+					$your_cont_rank['rank'] = $your_rank + 1;
 					$class = "your-rank";
 					$is_in = 1;
+					//continue;
 				}
 
 				$contributorId =$writers_arr[$i]['contributor_id'];
@@ -106,15 +122,19 @@
 		    }
 
 			if( $is_in === 0 ){
-				$writers_rank[10]['position'] = $your_rank;
-				$writers_rank[10]['class'] = "your-rank";
-				$writers_rank[10]['contributor_id'] = $your_id;
-				$writers_rank[10]['contributor_name'] = $contributor_name;
-				$writers_rank[10]['shares'] = $your_shares;
+				$your_cont_rank['rank'] = $your_rank;
+				$your_cont_rank['id'] = $your_id;
+				$your_cont_rank['name'] = $contributor_name;
+				$your_cont_rank['total_shares'] = $your_shares;
+
+
 			}
 		}
 	
 	}
+
+	$user_login_count = $adminController->user->data['user_login_count']; 
+	//var_dump($user_login_count);
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -136,145 +156,202 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="articles">
+				<!-- MONTHLY SHARE RATE -->
+				<div id="share-rate-box" class="mobile-12 small-12">
+					<div class="share-rate-txt left">
+						<p>Feb 2015 Social share rate: $0.03</p>
+					</div>
+					<div class="find-more-link right">
+						<p><a href="#" id="find-more-info">Find out how to make money with  moblogs</a></p>
+					</div>
+				</div>
 				<!-- WARNINGS BOX -->
-			<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
-			<div id="warning-box" class="warning-box  mobile-12 small-12" style="min-height:6.5rem;">
-				<div class="mobile-2 small-2 left">
-					<i class="fa fa-5x fa-exclamation-triangle"></i>
-				</div>
-				<div class="mobile-10 small-10 inline p-cont">
-					<p>
-						<?php echo $warnings[0]['notification_msg']; ?>
-					</p>
-				</div>
-			</div>
-			<?php }?>
-
-			<!-- ANNOUNCEMENTS BOX -->
-			<?php if(isset($annoucements) && $annoucements[0] && $annoucements[0]['notification_live']){ ?>
-			<div id="announcements" class="announcements-box  mobile-12 small-12" style="min-height:6.5rem;">
-				<div class="mobile-2 small-2 left">
-					<i class="fa fa-5x fa-comments"></i>
-				</div>
-				<div class="mobile-10 small-10 inline p-cont left">
-					<p>
-						<?php echo $annoucements[0]['notification_msg']; ?>
-					</p>
-				</div>
-			</div>
-			<?php }?>
-			<div id="earnings-info" class="earnings-info mobile-12 small-12">
-				<div class="total-earnings left">
-					<h3>Month to Date</h3>
-					<span class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></span>
-				</div>
-				<div class="last-month-earnings left">
-					<h3>Last Month's earnings</h3>
-					<span class="earnings-value"><?php echo '$'.$last_month_earnings; ?></span>
-				</div>
-				<div class="total-earnings left">
-					<h3>Total Earnings to Date</h3>
-					<span class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></span>
-				</div>
-			</div>
-
-			<div class="columns mobile-12 small-12 no-padding padding-top margin-top margin-bottom">
-				<?php if(isset($top_shares_articles) && $top_shares_articles){?>
-				<section id="top-shares" class="top-shares small-8 left">
-					<h2>Top 10 MOST Shared Moblogs</h2>
-					<div class="month-container small-styled-select">
-						<form id="month-select" method="post">
-					  	<select name='month' onchange = "change()">
-					  		<!--<option value='0'>Select Month</option>-->
-						  	<?php 
-						  	$index = 0;
-						  	if($current_year == 2014) $index = 10; 
-						  	for($m = $index; $m <= $current_month; $m++){
-						  		$dateObj   = DateTime::createFromFormat('!m', $m);
-						  		$monthName = $dateObj->format('F');
-						  		if($month == $m) $selected  = 'selected'; else $selected = '';
-						  		if($m == $current_month)  $monthName = "This Month";
-						  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName.'</option>';
-							} ?>
-						</select>
-					</form>
+				<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
+				<div id="warning-box" class="warning-box  mobile-12 small-12" style="min-height:6.5rem;">
+					<div id="warning-icon" class="">
+						<i class="fa fa-3x fa-exclamation-triangle"></i>
 					</div>
-					<div class="top-shared-articles">
-						<table>
-							<thead><tr><td></td><td>TITLE</td><td>SHARES</td></tr></thead>
-							<tbody>
-						<?php 
-							$index = 0; 
-							foreach( $top_shares_articles as $article ){ 
-							$index++;
-							$link_to_article = $config['this_url'].$article['category'].'/'.$article['article_seo_title'];
-
-							$article_id = $article['article_id'];
-							$url = "http://www.puckermob.com/".$article['category']."/".$article['article_seo_title'];
-							
-							//$article['shares'] = 445454;
-							
-							$totalShares = $ManageDashboard->bd_nice_number($article['total_shares']);
-
-						?>
-						<tr id="article-id-<?php echo $article['article_id'];?>" class="top-shared-cont">
-							<td class="index-article"><?php echo $index;?>.</td>
-							<td class="td-title">
-								<p class="article-link">
-									<a href="<?php echo $link_to_article; ?>"><?php echo $mpHelpers->truncate($article['article_title'], 30);?></a>
-								</p>
-							</td>
-							<td>
-								<p>
-									<span class="shares"><?php echo  $totalShares; ?></span>
-								</p>	
-							</td>
-						</tr>
-						<?php }?>
-						</tbody>
-						</table>
+					<div id="warning-txt" class="p-cont">
+						<p>
+							<?php echo $warnings[0]['notification_msg']; ?>
+						</p>
 					</div>
-					
-				</section>
+				</div>
 				<?php }?>
 
-				<section id="earnings-section" class="earnings-section small-4 left margin-top">
-					<!--<div class="last-month-earnings">
-						<h3>Last Month's earnings</h3>
-						<span class="earnings-value"><?php echo money_format('%(#10n', $last_month_earnings); ?></span>
+				<!-- ANNOUNCEMENTS BOX -->
+				<?php if(isset($annoucements) && $annoucements[0] && $annoucements[0]['notification_live']){ ?>
+				<div id="announcements" class="announcements-box  mobile-12 small-12" style="min-height:6.5rem;">
+					<div id="announcement-icon" class="">
+						<i class="fa fa-3x fa-comments"></i>
 					</div>
-					<div class="total-earnings">
-						<h3>Total Earnings to Date</h3>
-						<span class="earnings-value"><?php echo money_format('%(#10n', $total_earnings_to_date); ?></span>
-					</div>-->
-					<?php if($writers_rank){?>
-					<div class="most-shared-writers">
-						<h3>Top 10 most shared writers this month <br>(+ your rank)</h3>
-						<div class="rank-writers margin-top">
-							<ul>
-								<?php 
-								foreach ($writers_rank as $writer){  ?>
-								<li class="<?php echo $writer['class']; ?>" id="contributor-<?php echo $writer['contributor_id'] ?>">
-									<p class="writer-name"><span class="rank-position"><?php echo $writer['position'] ?>.</span><?php echo $writer['contributor_name'] ?></p>
-									<p class="monthly-shares right"><?php echo $writer['shares'] ?></p>
-								</li>
-								<?php }?>
-							</ul>
+					<div id="announcement-txt" class="p-cont">
+						<p>
+							<?php echo $annoucements[0]['notification_msg']; ?>
+						</p>
+					</div>
+				</div>
+				<?php }?>
+				
+				<!-- EARNINGS AT A GLANCE -->
+				<div id="earnings-info" class="earnings-info mobile-12 small-12">
+					<header>EARNINGS AT A GLANCE</header>
+					<div class="total-earnings left">
+						<h3>Month to Date</h3>
+						<p class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></p>
+					</div>
+					<div class="last-month-earnings left">
+						<h3>Last Month</h3>
+						<p class="earnings-value"><?php echo '$'.$last_month_earnings; ?></p>
+					</div>
+					<div class="total-earnings left">
+						<h3>Total to Date</h3>
+						<p class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></p>
+					</div>
+				</div>
+
+				<!-- TOP MOST SHARES MOBLOGS -->
+				<div id="top-shares" class="top-shares mobile-12 small-12 left">
+					<?php if(isset($top_shares_articles) && $top_shares_articles){?>
+						<header>Top 10 MOST Shared Moblogs
+							<div class="sort-by-month right"><a href="<?php echo $config['this_admin_url'].'?month='.$current_month; ?>" class="<?php echo $sort_month; ?>">This month</a><a href="#">  | </a> <a href="<?php echo $config['this_admin_url'].'?month=all'; ?>" class="<?php echo $sort_ever; ?>">ever</a> </div>
+						</header>
+						
+						<div class="top-shared-articles">
+							<table class="left" style="margin-right:0.2rem">
+								<thead><tr><td></td><td  style="width:80%;">TITLE</td><td>SHARES</td></tr></thead>
+								<tbody>
+							<?php 
+								$index = 0; 
+								foreach( $top_shares_articles as $article ){ 
+								$index++;
+								$link_to_article = $config['this_url'].$article['category'].'/'.$article['article_seo_title'];
+
+								$article_id = $article['article_id'];
+								$url = "http://www.puckermob.com/".$article['category']."/".$article['article_seo_title'];
+								
+								$totalShares = $ManageDashboard->bd_nice_number($article['total_shares']);
+
+							?>
+							<tr id="article-id-<?php echo $article['article_id'];?>" class="top-shared-cont">
+								<td class="index-article"><?php echo $index;?>.</td>
+								<td class="td-title">
+									<p class="article-link">
+										<a href="<?php echo $link_to_article; ?>"><?php echo $mpHelpers->truncate($article['article_title'], 30);?></a>
+									</p>
+								</td>
+								<td>
+									<p>
+										<span class="shares"><?php echo  $totalShares; ?></span>
+									</p>	
+								</td>
+							</tr>
+							
+							<?php if($index == 5){?>
+								</tbody>
+							</table>
+							<table class="right">
+								<thead><tr><td></td><td  style="width:80%;">TITLE</td><td>SHARES</td></tr></thead>
+								<tbody>
+							<?php }?>
+							<?php }?>
+							
+							</tbody>
+							</table>
 						</div>
-					</div>
+						
 					<?php }?>
-			</section>
-			</div>
-			<div class="contact-red-box small-12 columns no-padding">
-						<ul><li><a href="http://www.puckermob.com/admin/contact/">Question?     Comments?     Contact Us!</a></li></ul>
-					</div>
+				</div>
+				
+				<!-- Top 10 most shared writers this month -->
+				<div id="earnings-section" class="top-shares mobile-12 small-12 left">
+					<header>Top 10 most shared writers (+ your rank)
+						<!--<div class="sort-by-month right"><a href="<?php echo $config['this_admin_url'].'?month='.$current_month; ?>"> This month | </a> <a href="<?php echo $config['this_admin_url'].'?month=all'; ?>">ever</a> </div>-->
+					</header>
+					<?php if($writers_rank){?>
+					<div class="top-shared-articles">
+							<table class="left" style="margin-right:0.2rem">
+								<thead><tr><td></td><td style="width:80%;">NAME</td><td>SHARES</td></tr></thead>
+								<tbody>
+							<?php 
+								$index = 0; 
+								foreach ($writers_rank as $writer){  
+								$index++;
+								//$link_to_article = $config['this_url'].$article['category'].'/'.$article['article_seo_title'];
+
+								///$article_id = $article['article_id'];
+								//$url = "http://www.puckermob.com/".$article['category']."/".$article['article_seo_title'];
+								
+								$totalShares = $ManageDashboard->bd_nice_number($article['total_shares']);
+
+							?>
+							<tr id="id="contributor-<?php echo $writer['contributor_id'] ?>"" class="top-shared-cont">
+								<td class="index-article"><?php echo $index;?>.</td>
+								<td class="td-title">
+									<p class="writer-name article-link">
+										<?php echo $writer['contributor_name']; ?>
+									</p>
+								</td>
+								<td>
+									<p>
+										<span class="shares"><?php echo $ManageDashboard->bd_nice_number($writer['shares']); ?></span>
+									</p>	
+								</td>
+							</tr>
+							<?php if($index == 5){?>
+								</tbody>
+							</table>
+							<table class="right">
+								<thead><tr><td></td><td  style="width:80%;">NAME</td><td>SHARES</td></tr></thead>
+								<tbody>
+							<?php }?>
+							<?php }?>
+							
+							</tbody>
+							</table>
+						</div>
+						<div class="your-rank-box left">
+							<p><?php echo $your_cont_rank["rank"].'. '.$your_cont_rank["name"].' '.$ManageDashboard->bd_nice_number($your_cont_rank['total_shares']); ?></p>
+						</div>
+
+						<!--<div class="most-shared-writers">
+							<div class="rank-writers margin-top">
+								<ul>
+									<?php 
+									foreach ($writers_rank as $writer){  ?>
+									<li class="<?php echo $writer['class']; ?>" id="contributor-<?php echo $writer['contributor_id'] ?>">
+										<p class="writer-name"><span class="rank-position"><?php echo $writer['position'] ?>.</span><?php echo $writer['contributor_name'] ?></p>
+										<p class="monthly-shares right"><?php echo $writer['shares'] ?></p>
+									</li>
+									<?php }?>
+								</ul>
+							</div>
+						</div>-->
+					<?php }?>
+				
+				</div>
+				<!--<div class="contact-red-box small-12 columns no-padding">
+					<ul><li><a href="http://www.puckermob.com/admin/contact/">Question?     Comments?     Contact Us!</a></li></ul>
+				</div>-->
 			</section>
 		</div>
+		<?php 
+
+	include_once($config['include_path_admin'].'findouthowpopup.php');
+
+ 	if( (isset( $user_login_count ) && $user_login_count < 1) && $_SESSION['welcome-seen'] == false){	
+ 		include_once($config['include_path_admin'].'welcomepopup.php');
+ 	}?>
 	</main>
 
+ 	
 	<?php include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php');?>
-	<script>function change(){ document.getElementById("month-select").submit(); }</script>
+	<script>
+		function change(){ 
+			document.getElementById("month-select").submit(); 
+		}
+	</script>
 
 </body>
 </html>

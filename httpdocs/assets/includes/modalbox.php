@@ -9,14 +9,20 @@
  */
 function create_cookie(name, value, path) {
   var date = new Date();
-  date.setTime(date.getTime() + ( 9 * 24 * 60 * 60 * 1000));
-  var expires = date.toUTCString();
-  console.log('EXPIRES: '+expires);
-  document.cookie = name + '=' + value + ';' +
-                   'expires=' + expires + ';' +
-                   'path=' + path + ';';
-}
+  var exdays = 1;
+  var exdate = new Date();
+  exdate.setHours(exdate.getHours() + exdays);
+  var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+  document.cookie = name + "=" + c_value;
+ // date.setTime(date.getTime() + ( 9 * 24 * 60 * 60 * 1000));
+ // var expires = date.toUTCString();
+  console.log('EXPIRES: '+c_value);
+  //document.cookie = name + '=' + value + ';' +
+  //                 'expires=' + expires + ';' +
+  //                 'path=' + path + ';';
 
+//setcookie($cookie_name, $cookie_value, time() + (86400 * 30), '/'); // 86400 = 1 day
+}
 
 /**
  * Retrieve cookie with javascript
@@ -56,7 +62,7 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-var cookie_name = "beCos";
+var cookie_name = "moblog";
 
 var res = retrieve_cookie(cookie_name);
 if(res) {

@@ -43,6 +43,7 @@ if($local)
 
 		'include_path' => dirname(dirname(__FILE__)).'/includes/',
 		'include_path_admin' => dirname(dirname(dirname(__FILE__))).'/admin/assets/includes/',
+		'image_path_admin' => dirname(dirname(dirname(__FILE__))).'/admin/assets/img/',
 		'template_path' => dirname(dirname(__FILE__)).'/templates/',
 		'shared_include' => dirname(dirname(dirname(__FILE__))).'/assets/includes/',
 		'shared_css' => dirname(dirname(dirname(dirname(__FILE__)))).'/assets/css/',

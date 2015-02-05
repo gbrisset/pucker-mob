@@ -70,23 +70,20 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					   		<label>Drag image here</label>
 					   		<label>or</label>
 					   		<input type="button" name="upload" id="upload" value="Upload Files" />
+					   		<input type="button" name="search-lib" id="search-lib" value="Search Library" />
 					   		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
 					   	</div>
 					</div>
 				</form>
 
 				<div class="dropzone-previews">
-					<?php if(file_exists($pathToTallImage)){?>
-					<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';	?>
-					<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
+					<div id="main-image" class="dz-preview dz-image-preview dz-processing dz-success hidden">
 						<div class="dz-details">	
-							<img class="data-dz-thumbnail" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
+							<img class="data-dz-thumbnail" src=""  />
 						</div>
 					</div>
-					<?php }  ?>
 				</div>
-				
-			
+							
 				<form  id="article-add-form" class="margin-top" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
@@ -265,13 +262,14 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 				<?php }?>	
 
 				<div class="row buttons-container">
-						<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
+					<button type="submit" id="submit" name="submit" class="">SAVE DRAFT</button>
 				</div>
 
 				</form>
 				
 			</section>
 		</div>
+		<?php include_once($config['include_path_admin'].'articlelib.php');?>
 	</main>	
 
 	<?php include_once($config['include_path_admin'].'footer.php');?>

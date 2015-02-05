@@ -1813,7 +1813,7 @@ public function getUserInfo(){
 public function getFeaturedArticle( $cat_id = 1 ){
 	$cat_id = filter_var($cat_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$s = "
-		SELECT featured_article.article_id, articles.article_title, articles.article_seo_title, articles.creation_date, articles.article_status, 
+		SELECT featured_article.article_id, articles.article_title, articles.article_seo_title, articles.creation_date, articles.date_updated, articles.article_status, 
 		categories.cat_name, categories.cat_dir_name, 
 		article_contributors.contributor_name, article_contributors.contributor_seo_name  
 		FROM featured_article 

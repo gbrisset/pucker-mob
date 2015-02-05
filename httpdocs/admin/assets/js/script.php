@@ -1496,4 +1496,14 @@ if($('#article_categories')){
 		});
 	$('.has-tooltip').tooltipster();
 
+	if($('#search-lib')){
+		$('#search-lib').on('click', function(e){
+			e.preventDefault();
+			e.stopPropagation();
+
+		});
+
+		
+	}
+
 });

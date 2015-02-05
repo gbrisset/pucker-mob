@@ -9,9 +9,7 @@
 	foreach ($recentArticles['articles'] as $articles) {
 	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 	$linkToACategory = $config['this_url'].$articles['cat_dir_name'];
-	//$date = date("M d, Y", strtotime($articles['creation_date']));
-	$date = date("M d, Y", strtotime($articles['date_updated']));
-
+	$date = date("M d, Y", strtotime($articles['creation_date']));
 	$linkToImage = $config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
 
@@ -21,7 +19,7 @@
 		if ( $detect->isMobile() ) {  ?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-5 xlarge-5 half-padding-right left prefetch" href="<?php echo $linkToArticle; ?>">
-				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
+				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>' >
 			</a>
 			<div class="mobile-7 small-7 medium-7 large-7 xlarge-7 half-padding-left mobile-vertical-center vertical-align-center">
 				<p class="vertical-center">
@@ -51,7 +49,7 @@
 		$bigImageCounter++; 
 		?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
-			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
+			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>" >
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 				<?php if(isset($_GET['show']) && $_GET['show'] == 'type'){
 
@@ -91,7 +89,7 @@
 			?>
 			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?>" id="<?php echo 'article-'.$articleIndex;?>">
 				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
-					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
+					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>' style="width:100%; max-width: 322px; height:100%; max-height: 177px;">
 					<?php if(isset($_GET['show']) && $_GET['show'] == 'type'){
 						if($articles['page_list_id'] != 0) $type = 'MULTI'; else $type = 'SINGLE';
 					echo '<span style="position: absolute; top: 3.5rem; left: 5rem; font-size: 4rem;  color: #000; font-weight: bold; ">';

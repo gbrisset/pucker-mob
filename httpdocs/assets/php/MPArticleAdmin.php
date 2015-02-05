@@ -1057,6 +1057,36 @@ class MPArticleAdmin{
 		}
 	}
 
+	public function uploadTempImageFromLib($data, $hasId){
+		$allowedExtensions = explode(',', $data['allowedExtensions']); //No leading periods
+		if(!$hasId){
+			
+			$currentFileName = $data['imgName'];
+			$libraryDir = $data['libraryDirectory'];
+			$img_lib_path = $libraryDir.$currentFileName;
+			
+			$destDir = $data['uploadDirectory'];
+			$newfileName = $data['articleId'].'_tall.jpg'; 
+			$img_temp_path = $destDir.$newfileName;
+
+			if(	copy($img_lib_path, $img_temp_path) ) return ['hasError' => false, 'filename' => $newfileName, 'directory' => 'temp'];
+	       	else return ['hasError' => true, 'filename'=> $newfileName];
+	    }else{
+
+	    	$currentFileName = $data['imgName'];
+			$libraryDir = $data['libraryDirectory'];
+			$img_lib_path = $libraryDir.$currentFileName;
+			
+			$destDir = $data['uploadDirectory'];
+			$newfileName = $data['articleId'].'_tall.jpg'; 
+			$img_temp_path = $destDir.$newfileName;
+
+			if(	copy($img_lib_path, $img_temp_path) ) return ['hasError' => false, 'filename' => $newfileName, 'directory' => 'large'];
+	       	else return ['hasError' => true, 'filename'=> $newfileName];
+	    }
+	
+	}
+
 	public function uploadNewImageDropZone($files, $data){
 
 		$allowedExtensions = explode(',', $data['allowedExtensions']); //No leading periods

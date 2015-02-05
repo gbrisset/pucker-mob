@@ -133,6 +133,7 @@
 					   		<label>Drag image here</label>
 					   		<label>or</label>
 					   		<input type="button" name="upload" id="upload" value="Upload Files" />
+					   		<input type="button" name="search-lib" id="search-lib" value="Search Library" />
 					   		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
 					   	</div>
 					</div>
@@ -415,6 +416,7 @@
 			</section>
 
 		</div>
+		<?php include_once($config['include_path_admin'].'articlelib.php');?>
 	</main>
 	
 	<div class="lightbox-shown" id="lightbox-cont2" style="display:none;">

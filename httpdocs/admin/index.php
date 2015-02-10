@@ -160,9 +160,37 @@
 				<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
 						<p>Feb 2015 Social share rate: $0.03</p>
+						<p id="dd-shares-calc">Click to see how shares are calculated <i class="fa 2x fa-caret-down"></i></p>
 					</div>
 					<div class="find-more-link right">
 						<p><a href="#" id="find-more-info">Find out how to make money with  moblogs</a></p>
+					</div>
+				</div>
+				<div id="dd-shares-content" class="mobile-12 small-12">
+					<div>
+						<p>PLEASE NOTE: FACEBOOK “LIKES” AND COMMENTS DO NOT COUNT TOWARD THE “SHARE” TOTAL, 
+							AND ARE NOT CALCULATED INTO YOUR EARNINGS.</p>
+
+						<p><span style="color: #991B1C;">DO NOT</span> GO BY THE NUMBER OF SHARES SHOWN ON YOUR ARTICLE PAGES - THIS NUMBER INCLUDES 
+							FACEBOOK “LIKES” AND COMMENTS, AND DOES NOT REFLECT A TRUE ACCOUNTING OF SHARES.</p>  
+
+						<p>PLEASE VISIT THE ‘VIEW EARNINGS’ PAGE FOR A MORE ACCURATE ACCOUNTING OF SOCIAL SHARES.</p>
+
+						<p>Currently, earnings are based on the following calculation:</p>
+
+						<p>(Fixed monthly rate for social shares on certain networks) x (the percentage of viewers 
+							from the U.S. who have viewed your content)</p>	
+
+						<p>For example, let’s say that all of your articles together have received a total of 100,000 
+							social shares, and the current monthly rate is $.02/share. Let’s also assume that 80% of your 
+							viewers are from the U.S. your earnings would be the following:</p>
+
+						<p>100,000 x $.02 = $2,000 x 0.80 = $1,600</p>
+
+						<p>The pay rate changes each month, depending on a number of variables.</p>
+
+						<p>Social networks that are counted toward shared are: Facebook, Twitter, Pinterest, LinkedIn, 
+							StumbleUpon and Google+ </p>
 					</div>
 				</div>
 				<!-- WARNINGS BOX -->

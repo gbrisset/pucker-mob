@@ -24,10 +24,10 @@
       </a>
    
     </div>
-    <!--<div id="topbar-container">
-        <input id="topbar-search-contents" type="search" placeholder="SEARCH" style="color: #f2ea0a !important; border: 1px solid #f2ea0a; ">
-        <button id="topbar-search-submit" class="alert button expand" style="background-color: #f2ea0a;"><i class="fa fa-search"></i></button>
-    </div>-->
+    <div id="topbar-container">
+        <input id="topbar-search-contents" type="search" placeholder="SEARCH" style="color: #1fa512 !important; border: 1px solid #1fa512; ">
+        <button id="topbar-search-submit" class="alert button expand" style="background-color: #1fa512;"><i class="fa fa-search"></i></button>
+    </div>
       </div>
   </header>
   <?php }?>
@@ -67,9 +67,7 @@
           <li><a href="<?php echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
           <li><a href="<?php echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
           <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >MOBLOG</a></li>
-          <?php if( !$detect->isMobile()){?>
-         <!-- <li><a href="<?php echo $config['this_url']; ?>videos/hot-topics"  class="videos" >Videos</a></li>-->
-          <?php } ?>
+
         </ul>
       </section>
     </nav>

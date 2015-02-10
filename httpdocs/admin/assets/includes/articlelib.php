@@ -70,6 +70,7 @@ if($('#openModalLib')){
 				data = JSON.parse(data);
 				if(!data.hasError){
 					$('.data-dz-thumbnail').attr('src', "<?php echo $config['image_url'].'articlesites/puckermob/'?>"+data.directory+'/'+data.filename+'?'+random_val);
+					$('.dz-preview.dz-image-preview.dz-processing.dz-success').find('img').attr('src', "<?php echo $config['image_url'].'articlesites/puckermob/'?>"+data.directory+'/'+data.filename+'?'+random_val);
 					$('#main-image').removeClass('hidden');
 					$('body').removeClass('show-modal-box-lib');
 				}

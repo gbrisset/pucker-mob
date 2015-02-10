@@ -153,6 +153,11 @@ main {
 /* Slide 1 */
 
 
+#login #slide-1 .bcg, #forgot #slide-1 .bcg  {
+    background-image:url('../img/registration/login_p1.jpg');
+    background-position: right center;
+}
+
 #slide-1 .bcg {
     background-image:url('../img/registration/registration_p1.png');
     background-position: right center;

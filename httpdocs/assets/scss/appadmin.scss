@@ -770,6 +770,11 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 //DASHBOAD SELECT STYLING PAGE
 .month-container.small-styled-select{ width:96% !important;}
 .month-container.small-styled-select select{width:457px; background-position:100% 60%; background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+"); background-size:6rem;}
+#dd-shares-calc{ font-size: 1rem; color: #d7a6a6; margin-top: -4px;}
+#dd-shares-calc i{ font-size: 1.4rem; vertical-align: middle; }
+#dd-shares-content{ background-color: #f5efe8; padding: 1rem; border:1px solid #ddd; box-shadow: 1px 1px 1px 0px #ddd; position: absolute;
+z-index: 999; width: 33.57rem; display:none;}
+#dd-shares-content div p{ color: #000; font-family:OsloBold; line-height: 1.2;}
 
 //How it works page
 
@@ -785,6 +790,74 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 #adv-contact-form label{width:4.3rem; min-width:4rem; float:left; padding-top: 0.3rem;}
 #adv-contact-form input{width: 90% !important;}
 .message-label{ width:100% !important; float:none !important;}
+
+
+.dz-success-mark, .dz-error-mark, .dz-filename, .dz-size{  display:none !important;}
+
+.warning-box, .announcements-box { display: table; background: none !important;  -webkit-border-radius: 0px !important;  -moz-border-radius: 0px !important; -o-border-radius:0px !important; padding: 0 !important; }
+.warning-box .p-cont p, .announcements-box .p-cont p{ color: #000 !important; font-size: 0.85rem;}
+#warning-txt, #announcement-txt { display: table-cell; vertical-align: middle; background: #F6F4F5; border: 1px solid #ddd; padding: 2rem 1rem; margin-left: 0.2rem; }
+.warning-box .p-cont, .announcements-box .p-cont{margin-top:0 !important; float:left; }
+
+#warning-icon{ display: table-cell; vertical-align: middle; background: #991B1C; padding: 0.2rem;}
+.announcements-box .fa-comments{ color: #fff !important; }
+ #announcement-icon{ display: table-cell; vertical-align: middle; background: #47AC9A; padding: 0.2rem;}
+#warning-box, #announcements{ margin-top:0.3rem !important;}
+
+/*SOCAIL SHARE RATE*/
+#share-rate-box{ overflow: hidden; }
+.share-rate-txt, .find-more-link{background: #991B1C; height: 3.65rem;}
+.share-rate-txt{  width: 74%; }
+.find-more-link{ padding: 0.5rem; width: 25%; padding-top: 1rem;}
+.share-rate-txt p{ color: #fff; text-transform: uppercase; text-align: center; font-size: 1.4rem; font-weight: bolder; padding: 0; margin:0; }
+.find-more-link p{color: #fff; text-transform: uppercase; font-weight: bold; font-size: 0.8rem; text-align: center; margin: 0; line-height: 1.1;}
+.find-more-link p a{ outline:none; color:#fff;}
+
+/*Earnings Info*/
+.earnings-info{ margin-top:0.3rem !important; margin-bottom: 0 !important;}
+#earnings-info header, #top-shares header, #earnings-section header, #dashboard header{  text-transform: uppercase; background: #000; padding: 0.4rem 0.6rem 0.3rem 0.6rem; font-weight: bolder;}
+.earnings-info div{ background:  #F6F4F5; border: 1px solid #ddd !important; margin:0.1rem 0; padding: 0.4rem 2rem !important; width:33%;}
+.earnings-info .earnings-value{font-size: 2.5rem !important; font-family: OsloBold; color: #666 !important; font-weight: bolder; text-align: center; margin:0; line-height: 1;}
+.earnings-info h3 { font-size: 0.9rem !important; text-transform: uppercase; color: #666 !important; font-family: OsloBold !important; font-weight: bolder; text-align: center; }
+.earnings-info .last-month-earnings{ margin: 0.1rem 0.2rem !important;}
+#earnings-section{margin-top:0.3rem;}
+
+/*MOST SHARES ARTICLES*/
+#top-shares{overflow:hidden; width:100% !important; margin-right:0 !important; padding-top: 0!important; margin-top:0.2rem; border-right:none;}
+.sort-by-month a{ color:#fff; outline:none; cursor:pointer; font-size: 0.8rem;}
+.top-shared-articles{width:100% !important; padding-top:0;}
+.top-shared-articles table{width: 49.7% !important; border: 1px solid #ddd; margin-top: 0.2rem; margin-bottom: 0;}
+.top-shared-articles table tbody tr{ background: #DDD;}
+.top-shared-articles table tbody tr td{line-height: 1 !important; padding: 0.4rem 0 0 0.5rem  !important;}
+#top-shares .top-shared-cont .article-link a{ font-size:0.9rem !important;}
+.top-shared-articles .index-article{ font-size: 0.9rem !important; color: #777; top: 0.3rem !important;}
+.top-shared-articles p{ text-align: center;}
+#top-shares .top-shared-cont .shares{font-size: 1rem !important;}
+.article-link{text-align: left !important;}
+
+.your-rank-box{width: 100%; overflow: hidden; height: 2rem; background: #47AC9A; margin: 0.2rem 0; text-align: center; margin-top:0.2rem;}
+.your-rank-box p{margin: 0; font-family: osloBold; color: #fff; padding-top: 0.3rem;}
+.underline{ border-bottom: 1px solid #fff;}
+
+
+/*EARNINGS PAGE*/
+#dashboard{ clear: both; overflow: hidden;}
+#month-form select { background-color: #000 !important; font-size: 0.8rem !important; margin: 0 !important; height: auto; top: -6px !important; text-transform: uppercase;  background-size: 15px 10px; background-position: 95% 50%; width: 8rem !important;}
+.dd-field-month{width: 90%; margin: 0; display: inline-flex; font-size: 0.8rem; color: #fff !important;}
+#month-form { display: inline; margin-left: -1.4rem; padding: 0rem; margin: 0 !important;}
+#dashboard table td{min-width: 6rem !important;}
+#dashboard table th{ min-width:6rem !important; font-size: 1rem;}
+
+.show-modal-box2 .modalDialog {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.mozilla  .hsContent input[type="text"], .hsContent input[type="password"], .hsContent input[type="email"] { height: 2rem; }
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea
+{ text-transform: none !important;}
+
 @import "admin/browser_specifics_styling";
 
 

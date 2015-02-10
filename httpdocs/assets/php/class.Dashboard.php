@@ -71,7 +71,7 @@ class Dashboard{
 
 	/* INSERT OR UPDATE RECORDS TO THE SOCIAL MEDIA TABLE */
 	public function updateSocialMediaShares( $counts, $articleId, $month, $cat ){
-	
+	//var_dump($counts, $articleId, $month, $cat ); die;
 			if( $articleId ){
 
 				$current_date = date('Y-m-d H:i:s', time());

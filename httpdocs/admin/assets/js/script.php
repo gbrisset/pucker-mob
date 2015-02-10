@@ -1496,14 +1496,23 @@ if($('#article_categories')){
 		});
 	$('.has-tooltip').tooltipster();
 
+//LIBRARY PHOTOS
 	if($('#search-lib')){
 		$('#search-lib').on('click', function(e){
 			e.preventDefault();
 			e.stopPropagation();
 
-		});
-
-		
+		});	
 	}
+
+//CLICK TO SEE HOW SHARES ARE CALCULATED
+
+if($('#dd-shares-calc')){
+	$('#dd-shares-calc').on('click', function(e){
+		e.stopPropagation();
+		$('#dd-shares-content').slideToggle('slow');
+
+	});
+}
 
 });

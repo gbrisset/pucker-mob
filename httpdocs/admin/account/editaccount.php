@@ -135,48 +135,7 @@
 				</div>
 				<p id="error-img" class="error-img"></p>
 			</section>
-			<!-- <section class="mobile-12 small-12 margin-bottom">
 			
-			
-			<!--<div id="add-an-image-fs" class="padding-top padding-bottom left small-12 border-radius">
-					<div class="image-steps image-sec columns small-4 ">
-						<div id="image-container">
-						<?php 
-
-						if($contImageExists){
-							echo "<img src=\"".$contImageUrl."\" alt=\"".$userInfo['contributor_name']." Image"."\" />";
-						} else {
-							echo "<img src=\"".$config['image_url'].'articlesites/sharedimages/default_profile_contributor.png'."\" alt=\"Contributor Image\" style=\"width: 143px; height: 140px;\"/>";
-						} 
-						echo '<span><a id="change-art-image" href=""><i class="icon-picture"></i>Change Photo</a></span>';
-						?>
-						</div>
-					</div>
-							
-					<div class="image-steps image-button-header">
-						<header class="section-bar">
-							<h2>Add an Image to your profile</h2>
-						</header>
-						<div class="file-upload-container">
-							<span>
-								<button name="image-file-link" id="image-file-link" type="button"><i class="icon-plus-sign"></i>Add Image</i></button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div id="rules" class="left columns small-12">
-					<span>Make sure the image selected:</span>
-					<ul class="padding-top">
-						<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
-		    			<li>Do not exceed a maximum size: 1 MB.</li>
-		    			<li>Has a minimun dimensions of  140 x 143</li>
-		    		</ul>
-				</div>
-				<p id="error-img" class="error-img"></p>
-				<div class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
-					<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
-				</div>
-			</div>-->
 
 			<!-- ACCOUNT INFORMATION -->		
 			<section id="row small-12 account-settings">
@@ -188,9 +147,13 @@
 
 					<div class="row">
 						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_first_name-s">Your Name</label>
+							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
+						</div>
+						<!--<div class="columns mobile-12 small-12 large-6">
 							<label for="user_display_name-s">Display Name</label>
 							<input type="text" name="user_display_name-s" id="user_display_name-s" placeholder="Display Name" value="<?php if(isset($userInfo['user_display_name'])) echo $userInfo['user_display_name']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_display_name') echo 'autofocus'; ?> />
-						</div>
+						</div>-->
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_blog_link-s">Blog or Website URL</label>
 							<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
@@ -198,9 +161,13 @@
 					</div>
 
 					<div class="row">
-						<div class="columns mobile-12 small-12 large-6">
+						<!--<div class="columns mobile-12 small-12 large-6">
 							<label for="user_first_name-s">First Name</label>
 							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="First Name" value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
+						</div>-->
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="user_email-e">Email Address</label>
+							<input type="email" name="user_email-e" id="user_email-e" placeholder="" value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
 						</div>
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_facebook_link-s">Facebook URL</label>
@@ -209,9 +176,13 @@
 					</div>
 
 					<div class="row">
-						<div class="columns mobile-12 small-12 large-6">
+						<!--<div class="columns mobile-12 small-12 large-6">
 							<label for="user_last_name-s">Last Name</label>
 							<input type="text" name="user_last_name-s" id="user_last_name-s" placeholder="Please enter your last name here." value="<?php if(isset($adminController->user->data['user_last_name'])) echo $adminController->user->data['user_last_name']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_last_name') echo 'autofocus'; ?> />
+						</div>-->
+						<div class="columns mobile-12 small-12 large-6">
+							<label for="contributor_location-s">Location</label>
+							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
 						</div>
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_twitter_handle-s">Twitter Handle </label>
@@ -219,16 +190,6 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="user_email-e">Email Address</label>
-							<input type="email" name="user_email-e" id="user_email-e" placeholder="" value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
-						</div>
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="contributor_location-s">Location</label>
-							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
-						</div>
-					</div>
 					
 					<div class="row">
 						<div class="columns mobile-12 small-12 large-12">

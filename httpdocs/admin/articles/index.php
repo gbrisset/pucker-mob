@@ -153,14 +153,14 @@
 							$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
 							$article_id = $articleInfo["article_id"];
 							$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
-							$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/square/'.$articleInfo["article_id"].'_tall.'.$ext;
+							$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
 							$article_title = $articleInfo['article_title'];
 							$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
 							$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
 							//$article_date_created =  $articleInfo['creation_date'];
 
 							if(file_exists($pathToImage)){
-								$imageUrl = $config['image_url'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.'.$ext;
+								$imageUrl = $config['image_url'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
 							} else {
 								$imageUrl = $config['image_url'].'/articlesites/sharedimages/puckermob-default-image.jpg';
 							}

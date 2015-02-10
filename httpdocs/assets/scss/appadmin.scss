@@ -409,7 +409,7 @@ select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family:
 
 #img-container{ margin-bottom: 1rem; background: #ddd; text-align: Center; padding: 6rem; }
 #img-container label{ font-size: 1.4rem; }
-input#upload, .b-upload { margin-bottom: 1rem; background: #eee; font-family: Oslo; border: 1px solid #bbb; color: #777; padding: 0.5rem 1.5rem; font-size: 1.2rem; }
+input#upload, .b-upload, input#search-lib { margin-bottom: 1rem; background: #eee; font-family: Oslo; border: 1px solid #bbb; color: #777; padding: 0.5rem 1.5rem; font-size: 1.2rem; }
 
 .mini-fonts{ font-size: 0.8rem !important;}
 .placeholder{position: absolute; left: 1rem; top: 5rem; padding: 0.5rem; font-size: 1.2rem; text-transform: initial; color: rgba(0, 0, 0, 0.75);}
@@ -786,5 +786,6 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 #adv-contact-form input{width: 90% !important;}
 .message-label{ width:100% !important; float:none !important;}
 @import "admin/browser_specifics_styling";
+
 
 

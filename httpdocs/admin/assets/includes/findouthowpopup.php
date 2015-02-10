@@ -1,6 +1,7 @@
 
-<div id="openModal" class="modalDialog" >
-	<div id="popup-content" style="width:60% !important; min-width: 35rem; margin: 4% auto !important;">
+
+<div id="openModal2" class="modalDialog" >
+	<div id="popup-content" style="width:55% !important; min-width: 35rem; margin: 2% auto !important;">
 			<a href="#close" title="Close" class="close">X</a>
 			<div class="modal-img" style="background: none; padding: 0;">
 				<a href="#">
@@ -12,13 +13,14 @@
 
 <script>
 
-if($('#openModal')){
+if($('#openModal2')){
 
 	$('.close').click(function(e){
 		$('body').removeClass('show-modal-box');
 	});
 
-	$('#openModal').click(function(e){
+
+	$('#openModal2').click(function(e){
 		$('body').removeClass('show-modal-box');
 	});
 

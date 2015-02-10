@@ -734,8 +734,10 @@ public function getMostRecentArticleList( $articleID = null ){
 	//	$queryString .= " AND articles.article_id != ".$articleID;
 	}
 
+
 	$queryString .= " GROUP BY articles.article_id ORDER BY  articles.fb_shares DESC LIMIT 7 ";
-//var_dump($queryString); die;
+
+
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;
 }

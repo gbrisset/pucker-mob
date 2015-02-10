@@ -1,6 +1,6 @@
 <?php 
 	
-	$date = date("M d, Y", strtotime($featuredArticle['creation_date']));
+	$date = date("M d, Y", strtotime($featuredArticle['date_updated']));
 
 	$linkToArticle = $config['this_url'].$featuredArticle['cat_dir_name'].'/'.$featuredArticle["article_seo_title"];
 	$linkToACategory = $config['this_url'].$featuredArticle['cat_dir_name'];

@@ -338,7 +338,6 @@ class Dashboard{
 	}
 
 	public function get_dateUpdated( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month, $year) {
-//var_dump($month, $year, $userArticlesFilter);
 		switch ($order) {
 			case 'az':
 			$order_sql = " ORDER BY a.article_title ASC ";
@@ -427,6 +426,7 @@ class Dashboard{
 			      article_contributor_articles.contributor_id, 
 			      article_contributors.contributor_name, 
 			      article_contributors.contributor_seo_name, 
+			      user_billing_info.paypal_email,
 			      users.user_type,
 			      SUM(social_media_info.rate) as 'total_rate',
 			      SUM(social_media_info.total_shares) as 'total_shares', 
@@ -436,17 +436,23 @@ class Dashboard{
 			      
 			FROM  article_contributor_articles 
 
-			INNER JOIN ( article_contributors, users ) 
+			INNER JOIN ( article_contributors, users) 
 				ON ( article_contributor_articles.contributor_id = article_contributors.contributor_id )
 				AND ( users.user_email = article_contributors.contributor_email_address)
+				
+			LEFT JOIN ( user_billing_info ) ON (users.user_id = user_billing_info.user_id)
 			INNER JOIN ( 
 				SELECT 
 				social_media_records.article_id, social_media_records.category,  
 				social_media_records.month,  social_media_records.year,  
-				(   SUM(facebook_shares) + 
-					SUM(facebook_likes) + 
-					SUM(facebook_comments) + 
-					SUM(twitter_shares) + 
+				(   SUM(facebook_shares) + ";
+					
+				if( $month == 1 && $year ==  2015 ){
+				$s .= "SUM(facebook_likes) + 
+					SUM(facebook_comments) + ";
+				}
+
+				$s .= "	SUM(twitter_shares) + 
 					SUM(pinterest_shares) + 
 					SUM(google_shares) +  
 					SUM(linkedin_shares)  +  

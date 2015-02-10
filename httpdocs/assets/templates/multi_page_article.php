@@ -12,7 +12,10 @@ $offset = $pagination->offset();
 $page_list_items = PageListItem::get_current($articleInfoObj['page_list_id'], $offset);
 
 $article_category = $articleInfoObj['cat_name'];
-$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
+
+if($articleInfoObj['date_updated'] == "0000-00-00 00:00:00") $date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
+else $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
+
 $contributor_name = $articleInfoObj['contributor_name'];
 $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 
@@ -244,18 +247,52 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					<label class="label-social-button-2-mobile" style="padding:1rem;"><i class="fa fa-twitter"></i>TWEET</label>
 				</a> 
 			</div>
+			<div id='__kx_ad_821'></div>
+			<script type="text/javascript" language="javascript">
+			var __kx_ad_slots = __kx_ad_slots || [];
+
+			(function () {
+				var slot = 821;
+				var h = false;
+				__kx_ad_slots.push(slot);
+				if (typeof __kx_ad_start == 'function') {
+					__kx_ad_start();
+				} else {
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.async = true;
+					s.src = 'http://cdn.kixer.com/ad/load.js';
+					s.onload = s.onreadystatechange = function(){
+						if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+							h = true;
+							s.onload = s.onreadystatechange = null;
+							__kx_ad_start();
+						}
+					};
+					var x = document.getElementsByTagName('script')[0];
+					x.parentNode.insertBefore(s, x);
+				}
+			})();
+			</script>
+			<!-- End Below Article -->
 		<?php }?>
 			<hr>
 
 		<?php if(!$detect->isMobile()){?>
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
+		<!-- ADBLADE-->
+			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
+				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
+				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
+			</section>
 			
-			<br>
+		
 			<?php if(!$promotedArticle ){?>
 				<div data-str-native-key="53caed05" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			<?php } ?>
+			
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
 
 		<?php } ?>
 
@@ -265,7 +302,8 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 					<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 				</div>
-				
+			<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+			
 				<hr style="margin: 1rem 0 1rem !important">
 				<!-- COMMENTS BOX -->
 				<?php include_once($config['include_path'].'disqus.php'); ?>

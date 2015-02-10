@@ -6,12 +6,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/google/google-api-php-client.git",
-            "reference": "c49bd6c2e9304cbfc58f42716ea0a817551778fb"
+            "reference": "b16c6e2be3a574cd04f1b5d806bab0747e3671a0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/c49bd6c2e9304cbfc58f42716ea0a817551778fb",
-            "reference": "c49bd6c2e9304cbfc58f42716ea0a817551778fb",
+            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/b16c6e2be3a574cd04f1b5d806bab0747e3671a0",
+            "reference": "b16c6e2be3a574cd04f1b5d806bab0747e3671a0",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
         "require-dev": {
             "phpunit/phpunit": "3.7.*"
         },
-        "time": "2015-02-10 00:36:10",
+        "time": "2015-02-10 11:37:48",
         "type": "library",
         "extra": {
             "branch-alias": {

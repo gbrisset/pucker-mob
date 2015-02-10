@@ -292,24 +292,39 @@ console.log(page);
 		//SINGLE PAGE ARTICLE
 		if( adPage === 'article' ){
 			var li_parent = $('#article-content').find('ol');
+			var p_length = $('#article-content').children('p').length;
+			var li_length = $(li_parent).find('li').length;
+			var isListArticle = false;
+
 			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
 			
-			if($('#article-content').find('ol').find('li').length > 1 || $('#article-content').find('ul').find('li').length > 1){
-				var li_length = $(li_parent).find('li').length;
+			if(li_length > p_length){
+				isListArticle = true;
+			}
+			console.log("IS LIST ARTICLE? "+isListArticle);
+			console.log("P: "+p_length+" L: "+li_length);
 			
+			if(isListArticle){
+				var ads_insertions = Math.round(li_length / 3) ;
+				var first_ad = 1,
+					second_ad = first_ad + ads_insertions,
+					third_ad = second_ad + ads_insertions;
+				
 				//Google AD 300x150
-				inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlegoogle, 'li');	
+				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlegoogle, 'li');	
+				
 				//SHARETHROUG
-				if(li_length >= 12 ) if(article_id != 4314 && article_id != 4341) inBodyAd.loadInArticleAd( 'article-content', 12, 0, mobilead[adPage].inarticle, 'li');
+				if(article_id != 4314 && article_id != 4341) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'li');
+				
 				//ADBLADE
-				if(li_length >= 22 ) inBodyAd.loadInArticleAd( 'article-content', 22, 0, mobilead[adPage].inarticleadblade, 'li');
-				//MoPub
-				//if(li_length >= 10 ) inBodyAd.loadInArticleAd( 'article-content', 10, 0, mobilead[adPage].inarticlemopub, 'li');		
-
+				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticleadblade, 'li');
 			}else{
-				var p_length = $('#article-content').children('p').length;
+				var ads_insertions = Math.round(p_length / 3) ;
+				var first_ad = 1,
+					second_ad = first_ad + ads_insertions,
+					third_ad = second_ad + ads_insertions;
 				//Google AD 300x150
-				inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlegoogle , 'p');		
+				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlegoogle , 'p');		
 				//SHARETHROUG
 				if( article_id == 4314 ){
 					inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, 'p');	
@@ -320,9 +335,6 @@ console.log(page);
 				}
 				//ADBLADE
 				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticleadblade, 'p');	
-				//MoPub
-				//if(p_length >= 10) inBodyAd.loadInArticleAd( 'article-content', 10, 0, mobilead[adPage].inarticlemopub, 'p');	
-
 			}
 		}
 

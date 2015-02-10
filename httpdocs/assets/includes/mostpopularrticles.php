@@ -7,6 +7,10 @@ if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articl
 	$mostReadArticlesList = $mpArticle->getMostRecentArticleList();
 }
 
+if(isset($_GET['error']) && $_GET['error'] == true){
+	var_dump($mostReadArticlesList);
+}
+
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 	<section id="popular-articles" class="sidebar">
 		<div class="h4-container"><h4>Most Popular</h4></div>
@@ -20,12 +24,12 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						$linkToCategory = $config['this_url'].$article['cat_dir_name'];
 						$articleUrl = $linkToCategory.'/'.$article['article_seo_title'];
 						$linkToContributor = $config['this_url'].'/contributors/'.$article['contributor_seo_name'];
-						$date = date("M d, Y", strtotime($article['creation_date']));
+						//$date = date("M d, Y", strtotime($article['creation_date']));
 				
 						$articleNumber++;
 						$articleUrl = $config['this_url'].$article['cat_dir_name'].'/'.$article['article_seo_title'];
 						$mostReadArticle = '';
-						$mostReadArticle .= '<a class="prefetch" href="'.$articleUrl.'">';
+						$mostReadArticle .= '<a id="article-'.$articleNumber.'" class="prefetch" href="'.$articleUrl.'">';
 							$mostReadArticle .= '<div class="columns todays-favorites fade-in-out">';
 								$mostReadArticle .= '<div class="row imageContainer" data-equalizer="">';
 									$mostReadArticle .= '<div class="small-12 columns imageCenterer" data-equalizer-watch>';
@@ -42,10 +46,8 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						$mostReadArticle .= '';
 						echo $mostReadArticle;
 
-						if($articleNumber == 2 ){
-							echo '<ins class="adbladeads" data-cid="8499-2270060688" data-host="web.adblade.com" data-tag-type="5" style="display:none"></ins>';
-							echo '<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>';
-							echo '<style>.adblade-ad.columns.todays-favorites.fade-in-out{background-color: antiquewhite;}</style>';
+						if($articleNumber == 6 ){
+							echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_right"></script>';
 						}
 					
 				}

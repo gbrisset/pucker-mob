@@ -1,16 +1,22 @@
 <?php
 // Initialize variables
-if (isset($articleInfoObj)) {
+if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_title = $articleInfoObj['article_title'];;
 	$article_id = $articleInfoObj['article_id'];
 	$article_body = $articleInfoObj['article_body'];
 	$article_category = $category['cat_dir_name'];
-	$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
-	$contributor_name = $articleInfoObj['contributor_name'];
+	if(!isset($articleInfoObj['date_updated']) || $articleInfoObj['date_updated'] == "0000-00-00 00:00:00") $date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
+	else $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
+
+	$contributor_name = '';
+	if(isset($articleInfoObj['contributor_name']) && $articleInfoObj['contributor_name']) $contributor_name = $articleInfoObj['contributor_name'];
+	//$contributor_name = $articleInfoObj['contributor_name'];
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 	$article_img_credits = $articleInfoObj['article_img_credits'];
 	$article_notes = $articleInfoObj['article_additional_comments'];
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
+
+	//if($article_id == 4765 ) var_dump($articleInfoObj['date_updated']);
 }
 ?>
 
@@ -169,19 +175,55 @@ if (isset($articleInfoObj)) {
 					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
 				</a> 
 			</div>
+			<!-- Start Below Article -->
+			<div id='__kx_ad_821'></div>
+			<script type="text/javascript" language="javascript">
+			var __kx_ad_slots = __kx_ad_slots || [];
+
+			(function () {
+				var slot = 821;
+				var h = false;
+				__kx_ad_slots.push(slot);
+				if (typeof __kx_ad_start == 'function') {
+					__kx_ad_start();
+				} else {
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.async = true;
+					s.src = 'http://cdn.kixer.com/ad/load.js';
+					s.onload = s.onreadystatechange = function(){
+						if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+							h = true;
+							s.onload = s.onreadystatechange = null;
+							__kx_ad_start();
+						}
+					};
+					var x = document.getElementsByTagName('script')[0];
+					x.parentNode.insertBefore(s, x);
+				}
+			})();
+			</script>
+			<!-- End Below Article -->
 		<?php }?>
 		
 		<hr>
 				
 		<?php if(!$detect->isMobile()){?>
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
-			<br>
+			<!-- ADBLADE-->
+			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
+				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
+				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
+			</section>
+			<hr>
 			<?php if(!$promotedArticle  && $article_id != 4555){?>
 				<div data-str-native-key="53caed05" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			<?php } ?>
 
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			<br>
+			
 		<?php } ?>
 
 		<!-- IMAGE SOURCE -->
@@ -214,6 +256,9 @@ if (isset($articleInfoObj)) {
 				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			</div>
+			<hr>
+			<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+			<hr>
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 			<!-- GOOGLE AD UNIT MOBILE -->

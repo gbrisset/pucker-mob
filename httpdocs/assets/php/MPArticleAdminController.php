@@ -346,6 +346,7 @@ class MPArticleAdminController extends MPArticle{
 
 		//	If the emaill in post already exists...
 		if($foundUser = $this->user->userAlreadyExists($post)) {
+			
 			if ($foundUser['user_name'] != $post['user_name-s'] && $foundUser['user_email'] == $post['user_email-e']){
 				return array( 'hasError' => true, 'message' => "Oops!  Looks like that email address is already being used.");
 			}
@@ -527,11 +528,11 @@ class MPArticleAdminController extends MPArticle{
 		
 		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'You must insert a title'));
 		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
-		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'You must insert a Description'));
+		//if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'You must insert a Description'));
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
 		$unrequired = array(
-			'article_tags', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments'
+			'article_tags', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments', 'article_desc'
 		);
 
 		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
@@ -613,8 +614,28 @@ class MPArticleAdminController extends MPArticle{
 				'updateParams' => array(':articleId' => $articleId, ':contributorId' => $contributorId)
 			));
 		}
-		//var_dump($post, $post['article_contributor']); DIE;
 		
+		//MOVE and rename image from the temp folder if exists.
+			$img_temp = 'temp_u_'.$_POST['u_i'].'_'.substr($_POST['c_t'], 0, 7).'_tall.jpg';
+			$img_temp_path =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$img_temp;
+
+			$img_name = $articleId.'_tall.jpg';
+			$img_path = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_name;
+
+			$imageExists = false;
+			//	Verify if the usr has ever SELECTED an image
+			if(isset($img_temp)){
+				$imageExists = file_exists($img_temp_path);
+			}
+			//var_dump($img_temp, $img_temp_dir,$img_name, $imgDir, $imageExists  ); die;
+
+			if($imageExists){
+				copy($img_temp_path, $img_path);
+				unlink($img_temp_path);
+				unlink($this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_temp);
+			}
+		//END
+
 		//$article_prev_content = $this->getPreviewRecipe(array('articleId' => $articleId ));
 		
 		//Return status
@@ -623,16 +644,12 @@ class MPArticleAdminController extends MPArticle{
 			'articleID' => $articleId,
 			'message' => 'Next Step: Add an Image.',
 			'article_prev_content' => ''
-
 		));
 	}
 	/* End Article Creation Functions */
 
-
 	/* Begin Article Updating Fucntion */
 	public function updateArticleInfo($post){
-
-
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category for an article.'));
 		
 		//Check for same seo-name
@@ -670,6 +687,7 @@ class MPArticleAdminController extends MPArticle{
 			));
 
 		//Add to each category
+			//var_dump($post['article_categories']);
 		if(isset($post['article_categories']) && $post['article_categories'] != 0){
 		//foreach($post['article_categories'] as $category => $on){
 			$categoryId = $post['article_categories'];

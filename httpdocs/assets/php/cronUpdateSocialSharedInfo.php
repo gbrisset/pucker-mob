@@ -8,6 +8,7 @@
 	//1- Get All Articles Status = Live.
 	$articles = $cron->getArticles();
 	$month = date('n');
+	$year = date('Y');
 	$apikey = "69cfa5b227393e90b620098c7883a89e76626fbf";//"709226bb97515fd204f07c3d4bac38f78ba009eb";
 
 	//2- Get Social Media Information From SharedCount for each Article
@@ -27,6 +28,10 @@
 		$dashboard->updateSocialMediaShares($counts,  $article['article_id'], $month, $cat);
 
 	}
+
+	//UPDATE CONTRIBUTOR EARNINGS TABLE
+	$dashboard->updateContributorsEarnings( $month, $year );
+
 
 	//4- End ;)
 ?>

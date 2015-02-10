@@ -537,9 +537,9 @@ End password reset methods
 		$sessionHash = $this->generateHash();
 
 		//Generate C_T value for FB USERS
-		if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
-			$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
-		}
+		//if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
+		$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
+		//}
 
 		//Log the login hash in the browser to lock the session to just this browser
 		$_SESSION['login_hash'] = $sessionHash;
@@ -592,6 +592,16 @@ End password reset methods
 	public function usernameExists($userInput){
 		$options = array(
 			'queryString' => "SELECT * FROM users WHERE user_name = :userInput OR user_email = :userInput LIMIT 0, 1",
+			'queryParams' => array(':userInput' => filter_var(trim($userInput), FILTER_SANITIZE_STRING, PDO::PARAM_STR)),
+			'returnRowAsSingleArray' => true,
+			'bypassCache' => true
+		);
+		return $this->performQuery($options);
+	}
+
+	public function userEmailExists($userInput){
+		$options = array(
+			'queryString' => "SELECT * FROM users WHERE user_email = :userInput LIMIT 0, 1",
 			'queryParams' => array(':userInput' => filter_var(trim($userInput), FILTER_SANITIZE_STRING, PDO::PARAM_STR)),
 			'returnRowAsSingleArray' => true,
 			'bypassCache' => true
@@ -705,11 +715,21 @@ End password reset methods
 		$params = $this->helpers->compileParams($post);
 		$unrequired = array('user_last_name');
 		
-		$username = $post['user_name-s'];
+		//$username = $post['user_name-s'];
+
+		//USER NAME
+		$username = $this->helpers->generateName(array('input' => $post['user_first_name-s']));
+		$username = join(explode(' ', strtolower(preg_replace('/[^A-Za-z0-9- ]/', '', $username))), '-');
 
 		if ($this->usernameExists($username)){
-			return array('hasError' => true, 'message' => "Oops!  Looks like that username is already taken.  Did you mean to login instead?  If so, you can do that <a href=\"".$this->config['this_admin_url'].'login/'."\"><u>here</u></a>.");
+			$rand = rand(1, 100000000);
+			$username = $username.'-'.$rand;
 		}	
+		$post['user_name-s'] = $username;
+
+		//if ($this->userEmailExists($post['user_email-e'])){
+		//	return array('hasError' => true, 'message' => "Oops!  Looks like that Email is already taken.  Did you mean to login instead?  If so, you can do that <a href=\"".$this->config['this_admin_url'].'login/'."\"><u>here</u></a>.");
+		//}	
 
 		$user = $this->userAlreadyExists($post);
 
@@ -719,16 +739,11 @@ End password reset methods
 			return $this->handleLogin($post);
 		}
 
-		if(isset($post['user_facebook_id-s']) && !$post['user_facebook_id-s']){
+		if(!isset($post['user_facebook_id-s'])){
 			if ($user['user_email'] == $post['user_email-e']){
 				return array('hasError' => true, 'message' => "Oops!  Looks like that email address is already in use.  Did you mean to login instead?  If so, you can do that <a href=\"".$this->config['this_admin_url'].'login/'."\"><u>here</u></a>.");
 			}
 		}	
-		$post['tos_agreed-s'] = 1;
-		//if (!isset($post['tos_agreed-s']) || $post['tos_agreed-s'] != 1){
-		//	return array('hasError' => true, 'message' => 'You must agree to our terms of service.');
-		//}
-	
 		
 		$valid = $this->helpers->validateRequired($params, $unrequired);
 		if($valid !== true) return $valid;
@@ -746,6 +761,7 @@ End password reset methods
 		$values[] = ':user_verification_code';
 		$params[':user_verification_code'] = $verificationHash;
 		$post['user_verification_code-nf'] = $verificationHash;
+
 		$keys[] = 'user_hashed_password';
 		$values[] = ':user_hashed_password';
 		$params[':user_hashed_password'] = $hashed_password;
@@ -755,6 +771,16 @@ End password reset methods
 		$values[] = ':user_salt';
 		$params[':user_salt'] = $salt;
 		$post['user_salt-nf'] = $salt;
+
+		$keys[] = 'user_name';
+		$values[] = ':user_name';
+		$params[':user_name'] = $username;
+		$post['user_name-nf'] = $username;
+
+		$keys[] = 'tos_agreed';
+		$values[] = ':tos_agreed';
+		$params[':tos_agreed'] = 1;
+		$post['tos_agreed-s'] = 1;
 
 		$s = "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")";
 		$result = $this->performUpdate(array(
@@ -796,10 +822,11 @@ End password reset methods
 			}
 			//End Adding Contributor Info
 
-			if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
+			//if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
+				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 				return $this->doUserActivation($verificationHash);
 				 //$this->handleLogin($post);
-			}else{
+			/*}else{
 				//	Send Email
 				if(!$registerEmail = $this->send_email(array(
 					'email' => $params[':user_email'],
@@ -811,7 +838,7 @@ End password reset methods
 				$r = $this->helpers->returnStatus(200);
 				$r['message'] = "Please check your email for a verification link. If you do not receive the verification email within 10 minutes, check your spam folder.";
 				return $r;
-			}
+			}*/
 		}else return $this->helpers->returnStatus(500);
 	}	
 
@@ -948,7 +975,7 @@ End password reset methods
 		if($user){
 			if($user['user_verified'] == 1){
 				$r = $this->helpers->returnStatus(200);
-				$r['message'] = "Thanks for verifying.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>.";
+				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>.";
 				return $r;
 			}
 
@@ -966,7 +993,7 @@ End password reset methods
 
 			if($q){
 				$r = $this->helpers->returnStatus(200);
-				$r['message'] = "Thanks for verifying.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>.";
+				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>.";
 				return $r;
 			}else return $this->helpers->returnStatus(500);
 		}else return $this->helpers->returnStatus(500);

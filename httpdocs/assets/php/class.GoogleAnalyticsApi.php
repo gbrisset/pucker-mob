@@ -9,8 +9,7 @@
    */
 
 require_once dirname(__FILE__).'/Connector.php';
-
-require_once ('../vendor/autoload.php');
+require_once dirname(dirname(__FILE__)).'/vendor/autoload.php';
 
 class GoogleAnalyticsApi{
 
@@ -29,7 +28,7 @@ class GoogleAnalyticsApi{
 		$this->serviceClientId = '381980412538-c1qc3h4dh2chs14fu639pkfptppkvjd1.apps.googleusercontent.com';
 		$this->serviceAccountName = '381980412538-c1qc3h4dh2chs14fu639pkfptppkvjd1@developer.gserviceaccount.com';
 		$this->scopes = array('https://www.googleapis.com/auth/analytics.readonly');
-		$this->p12FilePath = '../vendor/puckermob-c7106c003a34.p12';
+		$this->p12FilePath = dirname(dirname(__FILE__)).'/vendor/puckermob-c7106c003a34.p12';
 	}
 
 	public function getViewId(){
@@ -37,7 +36,7 @@ class GoogleAnalyticsApi{
 	}
 
 	public function connect_to_client(){
-		$this->$client = new Google_Client();
+		$this->client = new Google_Client();
 
 		$this->client->setClientId($this->serviceClientId);
 		$this->client->setApplicationName("puckermob");
@@ -51,7 +50,9 @@ class GoogleAnalyticsApi{
 
 		$googleAssertionCredentials = new Google_Auth_AssertionCredentials( $this->serviceAccountName,  $this->scopes, $key );
 
-		$client->setAssertionCredentials($this->googleAssertionCredentials);
+		$this->client->setAssertionCredentials($googleAssertionCredentials);
+
+		return $this->client;
 
 	}
 

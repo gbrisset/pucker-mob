@@ -94,20 +94,7 @@ class GoogleAnalyticsData{
 			return $result;
 		}
 		return false;
-		/*
-			$total_page_views = $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
-				  'filters'=>'ga:pagePath=='.$path,
-				));
 
-				$total_page_views_by_country = $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
-				  'filters'=>'ga:country==United States;ga:pagePath=='.$path,
-				));
-
-				$allCountries = $total_page_views->getRows()[0];
-				if(isset($allCountries[0]) && $allCountries[0]) $allCountries = $allCountries[0];
-				$USA = $total_page_views_by_country->getRows()[0];
-				if(isset($USA[0]) && $USA[0]) $USA = $USA[0];
-		*/
 	}
 
 	public function getPercentageValue($val1, $val2){

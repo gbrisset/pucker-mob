@@ -71,7 +71,7 @@ class Dashboard{
 
 	/* INSERT OR UPDATE RECORDS TO THE SOCIAL MEDIA TABLE */
 	public function updateSocialMediaShares( $counts, $articleId, $month, $cat ){
-	//var_dump($counts, $articleId, $month, $cat ); die;
+	
 			if( $articleId ){
 
 				$current_date = date('Y-m-d H:i:s', time());
@@ -304,10 +304,14 @@ class Dashboard{
 
 		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_status, 
 		a.article_type, a.creation_date,  article_rates.rate_by_article, ";
-
+		//FROM SOCIAL SHARES TABLE
 		$s .= " facebook_shares, facebook_likes, facebook_comments, twitter_shares, pinterest_shares, google_shares, linkedin_shares, delicious_shares, 
-		stumbleupon_shares, month, year, social_media_records.date_updated, category, ";
-		$s .="  ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) AS rate_by_share ";
+		stumbleupon_shares, social_media_records.month, social_media_records.year, social_media_records.date_updated, category, ";
+		//FROM SHARE RATE TABLE
+		$s .="  ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) AS rate_by_share, ";
+		//FROM GOOGLE ANALYTICS DATA TABLE
+		$s .=" ga.pageviews, ga.usa_pageviews, ga.pct_pageviews ";		
+		
 		$s .=" FROM articles as a
 		INNER JOIN ( article_contributors, article_contributor_articles, 
 				article_rates, social_media_records ) 
@@ -316,10 +320,17 @@ class Dashboard{
 		AND a.article_type = article_rates.rate_id
 		AND a.article_id = social_media_records.article_id ";
 
+		//LEFT JOIN WITH GOOGLE ANALYTICS DATA
+		$s .=" LEFT JOIN (select * from google_analytics_data 
+						where google_analytics_data.month = ".$month." and google_analytics_data.year = ".$year.") 
+						as ga 
+				ON(a.article_id = ga.article_id) ";
+		
 		$s .= $status_sql;
 		if ($userArticlesFilter != 'all'){
 			$s .=	"AND article_contributors.contributor_email_address = :userArticlesFilter ";
 		}
+
 		$s .= $order_sql;
 
 		$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
@@ -431,8 +442,9 @@ class Dashboard{
 			      SUM(social_media_info.rate) as 'total_rate',
 			      SUM(social_media_info.total_shares) as 'total_shares', 
 			      ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) AS share_rate ,
-			      (SUM(social_media_info.total_shares) * ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) ) as 'share_revenue',
-			      ((SUM(social_media_info.total_shares)* ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) ) + SUM(social_media_info.rate)) as 'total_to_pay'
+			      (SUM(social_media_info.US_traffic) * ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) ) as 'share_revenue', 
+			      SUM(social_media_info.US_traffic) as 'US_Traffic',
+			      ((SUM(social_media_info.US_traffic) * ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) ) + SUM(social_media_info.rate)) as 'total_to_pay'
 			      
 			FROM  article_contributor_articles 
 
@@ -459,16 +471,24 @@ class Dashboard{
 					SUM(delicious_shares) + 
 					SUM(stumbleupon_shares)
 				)  as 'total_shares', 
-				IF( DATE_FORMAT(articles.creation_date, '%m') !=  social_media_records.month, 0, article_rates.rate_by_article) as 'rate'
-				            
-				FROM social_media_records 
+				IF( DATE_FORMAT(articles.creation_date, '%m') !=  social_media_records.month, 0, article_rates.rate_by_article) as 'rate', ";
+				if( $month > 1 && $year >=  2015 ){
+					$s .= "( ( SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares) ) * (ga.pct_pageviews/100)) as US_traffic, 
+					ga.pageviews, ga.usa_pageviews, ga.pct_pageviews ";
+				}else{
+					$s .= "( SUM(facebook_shares) +  SUM(facebook_likes) + 
+					SUM(facebook_comments) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares) ) as US_traffic ";
+				}        
+				$s .= " FROM social_media_records 
 
 				INNER JOIN ( articles, article_rates) 
 				ON (articles.article_id = social_media_records.article_id) 
-				AND ( articles.article_type = article_rates.rate_id)
+				AND ( articles.article_type = article_rates.rate_id) ";
 
-				WHERE social_media_records.month = '".$month."' and year = '".$year." '
-
+				if( $month > 1 && $year ==  2015 ){
+					$s .= "LEFT JOIN (SELECT * FROM google_analytics_data WHERE google_analytics_data.year = ".$year." and google_analytics_data.month = ".$month." ) as ga ON ga.article_id = social_media_records.article_id ";
+				}
+				$s .= "WHERE social_media_records.month = '".$month."' and social_media_records.year = '".$year."'
 				GROUP BY social_media_records.article_id ) as social_media_info  
 
 			ON( article_contributor_articles.article_id = social_media_info.article_id ) ";

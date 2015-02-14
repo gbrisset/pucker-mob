@@ -86,6 +86,13 @@
 				<a href="<?php echo $config['this_admin_url']; ?>contact/">Contact Us</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
+
+			<li class="empty-li"></li>
+			
+			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'delete') ) ?  'current' :  '';?>">
+				<a href="#" id="delete-account">Delete Account</a>
+				<i class="fa fa-caret-left"></i>
+			</li>
 		</ul>
 	</nav>
 </div>

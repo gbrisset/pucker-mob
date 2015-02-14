@@ -686,37 +686,30 @@ End password reset methods
 		$salt = substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22);	
 
 		//	Make sure the password match
-		if($post['user_password-s'] == "" /*|| $post['user_password_2-s'] == ""*/){
+		if(empty($post['user_password-s'])){
 			return array('hasError' => true, 'message' => "Oops!  You must fill out password fields.");
 		}
-		/*if($post['user_password-s'] != $post['user_password_2-s']){
-			return array('hasError' => true, 'message' => "Oops!  Your passwords do not match.");
-		}*/
+		
 		$hashed_password = crypt($post['user_password-s'], '$2a$12$' . $salt);
 		//	Unset the password in the past variable, so as not to save it to the db and compile it  in compilePairs()
 		
 		unset($post['user_password-s']);
-		//unset($post['user_password_2-s']);
+		unset($post['user_password_2-s']);
 
 		//	Make sure the email addresses match
-		if($post['user_email_1-e'] == "" /*|| $post['user_email_2-e'] == ""*/){
+		if(empty($post['user_email_1-e'])){
 			return array('hasError' => true, 'message' => "Oops!  You must fill out the email field.");
 		}
-		//if($post['user_email_1-e'] != $post['user_email_2-e']){
-		//	return array('hasError' => true, 'message' => "Oops!  Your email addresses do not match.");
-		//}
-
+		
 		//	Set the email post variable correctly
 		$post['user_email-e'] = $post['user_email_1-e'];
 		unset($post['user_email_1-e']);
-	//	unset($post['user_email_2-e']);
+
 
 		$pairs = $this->helpers->compilePairs($post, true);
 		$params = $this->helpers->compileParams($post);
 		$unrequired = array('user_last_name');
 		
-		//$username = $post['user_name-s'];
-
 		//USER NAME
 		$username = $this->helpers->generateName(array('input' => $post['user_first_name-s']));
 		$username = join(explode(' ', strtolower(preg_replace('/[^A-Za-z0-9- ]/', '', $username))), '-');
@@ -726,15 +719,10 @@ End password reset methods
 			$username = $username.'-'.$rand;
 		}	
 		$post['user_name-s'] = $username;
-
-		//if ($this->userEmailExists($post['user_email-e'])){
-		//	return array('hasError' => true, 'message' => "Oops!  Looks like that Email is already taken.  Did you mean to login instead?  If so, you can do that <a href=\"".$this->config['this_admin_url'].'login/'."\"><u>here</u></a>.");
-		//}	
-
+		unset($post['user_name-s']);
 		$user = $this->userAlreadyExists($post);
 
 		//IF USER EXISTS AND IS FROM FACEBOOK
-
 		if($user && ( isset($post['user_facebook_id-s']) && $post['user_facebook_id-s'])){
 			return $this->handleLogin($post);
 		}
@@ -772,15 +760,15 @@ End password reset methods
 		$params[':user_salt'] = $salt;
 		$post['user_salt-nf'] = $salt;
 
-		$keys[] = 'user_name';
-		$values[] = ':user_name';
-		$params[':user_name'] = $username;
-		$post['user_name-nf'] = $username;
+		//$keys[] = 'user_name';
+		//$values[] = ':user_name';
+		//$params[':user_name'] = $username;
+		//$post['user_name-nf'] = $username;
 
-		$keys[] = 'tos_agreed';
-		$values[] = ':tos_agreed';
-		$params[':tos_agreed'] = 1;
-		$post['tos_agreed-s'] = 1;
+		//$keys[] = 'tos_agreed';
+		//$values[] = ':tos_agreed';
+		//$params[':tos_agreed'] = 1;
+		//$post['tos_agreed-s'] = 1;
 
 		$s = "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")";
 		$result = $this->performUpdate(array(
@@ -865,7 +853,7 @@ End password reset methods
 		$arr['user_password_2-s'] = $fb_user_password;
 		$arr['user_email-e'] = $fb_user_email;
 		$arr['user_email_1-e'] = $fb_user_email;
-		$arr['user_email_2-e'] = $fb_user_email;
+		//$arr['user_email_2-e'] = $fb_user_email;
 		$arr['user_first_name-s'] = $fb_user_first_name;
 		$arr['user_last_name-s'] = $fb_user_last_name;
 		$arr['tos_agreed-s'] = $tos_agreed;
@@ -875,7 +863,6 @@ End password reset methods
 		$arr['user_login_password_input'] = $fb_user_password;
 		$arr['fb_user_link '] = $fb_user_link;
 		
-
 		$user = $this->userAlreadyExists($arr);
 
 		if($user){
@@ -963,10 +950,11 @@ End password reset methods
 
 
 	public function doUserActivation($hash){
+
 		if(!isset($hash)) return $this->helpers->returnStatus(500);
 
 		$user = $this->performQuery(array(
-			'queryString' => 'SELECT * FROM users WHERE user_verification_code = :user_verification_code LIMIT 0, 1',
+			'queryString' => 'SELECT * FROM users WHERE user_verification_code = :user_verification_code LIMIT 1',
 			'queryParams' => array(':user_verification_code' => filter_var($hash, FILTER_SANITIZE_STRING, PDO::PARAM_STR)),
 			'returnRowAsSingleArray' => true,
 			'bypassCache' => true

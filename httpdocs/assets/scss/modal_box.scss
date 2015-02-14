@@ -1,7 +1,9 @@
 
 
-.modalDialog, 
-.modalDialogLib {
+.modalDialog,
+.modalDialogFindOut, 
+.modalDialogLib, 
+.modalDialogDeleteAccount {
 	position: fixed;
 	font-family: Arial, Helvetica, sans-serif;
 	top: 0;
@@ -19,14 +21,18 @@
 }
 
 .show-modal-box .modalDialog, 
-.show-modal-box-lib .modalDialogLib {
+.show-modal-box-find-out .modalDialogFindOut,
+.show-modal-box-lib .modalDialogLib,
+.show-modal-delete-box .modalDialogDeleteAccount {
 	opacity:1;
 	pointer-events: auto;
 }
 
 
 .modalDialog > div, 
-.modalDialogLib > div {
+.modalDialogLib > div,
+.modalDialogFindOut > div,
+.modalDialogDeleteAccount > div {
 	position: relative;
 	margin: 20% auto;
 	width: 95%;
@@ -38,9 +44,7 @@
 		-webkit-border-radius: 6px;
 		-moz-border-radius: 6px;
 		border-radius: 6px;
-
 	}
-	
 }
 
 .close {
@@ -72,9 +76,9 @@
 
 @media #{$large-up} { 
 	.modalDialog > div, 
-	.modalDialogLib > div  { width: 35%; max-width: 50rem; }
-	.modalDialog > div, 
-	.modalDialogLib > div { margin: 6% auto;}
+	.modalDialogLib > div,
+	.modalDialogFindOut > div,
+	.modalDialogDeleteAccount > div { width: 35%; max-width: 50rem; margin: 6% auto; }
 }
 
 @media #{$medium-up} { 
@@ -83,7 +87,9 @@
 
 @media #{$mobile-only}{
 	.modalDialog > div img, 
-	.modalDialogLib > div img{ width: 100%; max-width:320px;}
+	.modalDialogLib > div img,
+	.modalDialogFindOut > div img,
+	.modalDialogDeleteAccount  > div img{ width: 100%; max-width:320px;}
 	#popup-content{ max-width:320px; min-width:320px;}
 }
 

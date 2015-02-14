@@ -105,6 +105,8 @@
 	$this_month_earnigs = 0;
 	if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
 
+	$show_art_rate = false;
+	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 ?>
 
 <!DOCTYPE html>
@@ -222,16 +224,16 @@
 				<table>
 				  <thead>
 				    <tr>
-				      <th>Article Title</th>
+				      <th class="align-left">Article Title</th>
 				      <th>Date Added</th>
-				      <?php if(!$blogger){?>
+				       <?php if( $show_art_rate ){?>
 				     	<th>Article Rate</th>
 				      <?php }?>
 				      <th>Shares</th>
 				      <th>Share Rate</th>
 				      <th>Share Rev</th>
-				      <!--<th>% U.S. Traffic</th>-->
-				      <th class="bold">Total Rev</th>
+				      <th>% U.S. Traffic</th>
+				      <th class="bold align-right">Total Rev</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -288,7 +290,6 @@
 				  		//RATE BY ARTICLE 
 				  		$rate_by_article = 0;
 
-				  		//var_dump($month_created, $current_month, $month);
 				  		if( $month_created == $month && $article['rate_by_article'] != 0){
 				  			if( $contributor_type > 2) $rate_by_article = $article['rate_by_article'] / $count;
 				  			else $rate_by_article = 0;
@@ -300,13 +301,32 @@
 				  		$total_shares_this_month = $facebook_shares + $twitter_shares + $pinterest_shares + $googleplus_shares +
 				  								   $linkedin_shares + $delicious_shares + $stumbleupon_shares;
 
-
-				  		if($year != 2014 ) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
+				  		$us_pct_traffic = 0;
+				  		$us_traffic = 0;
+				  		if(!empty($article['pct_pageviews']) && $article['pct_pageviews'] != 0){
+				  			$us_pct_traffic = $article['pct_pageviews']/100;	
+				  			$us_traffic = 	$article['pct_pageviews'];	
+				  		}	
+				  		
+				  		if($year == 2015 && $month <= 1 || $year < 2015 ){
+				  			$us_pct_traffic = 100;
+				  			$us_traffic = 100;
+				  		}		   
+				  		
+				  		if($year == 2015 && $month == 1) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
 				  		//SHARE RATE  TOTAL SHARES * RATE BY ARTICLE (0.04)			   
+				  		
 				  		$share_rate = $total_shares_this_month * $rate_by_share;
 
-				  		//SHARE REVENU = SHARE RATE + RATE BY ARTICLE ( $10 or $5 or $0)
-				  		$share_rev = $share_rate + $rate_by_article;
+				  		//ARTICLE RATE WILL BE SHOW ONLY ON PREVIEWS MONTH Jan and 2014 months
+				  		$share_rev = 0;
+				  		if( $show_art_rate ){
+							$share_rev += $rate_by_article;
+				  		}
+				  		if($year == 2015 && $month > 1) $share_rev += ($share_rate * $us_pct_traffic);
+				  		else  $share_rev += ($share_rate * 1);
+				  							  		
+				  			
 				  		$total_shares += $total_shares_this_month;
 				  		$total_share_rate += $share_rate;
 				  		$total_article_rate += $rate_by_article;
@@ -319,36 +339,35 @@
 				  	?>
 				    <tr id="article-<?php echo $article['article_id']; ?>">
 
-				      <td class="article"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
+				      <td class="article align-left"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
 				      <td><?php echo $creation_date;?></td>
-				      <?php if(!$blogger){?>
+				      <?php if( $show_art_rate ){?>
 				      	<td><?php echo '$'.$rate_by_article;?></td>
 				      <?php }?>
-				      <td><?php echo $total_shares_this_month; ?></td>
+				      <td class=""><?php echo number_format($total_shares_this_month, 0, '.', ','); ?></td>
 				      <td><?php echo $rate_by_share; ?></td>
-				      <td><?php echo '$'.$share_rate; ?></td>
-				      <!--<td></td>-->
-				      <td class="bold"><?php echo '$'.$share_rev; ?></td>
+				      <td class=""><?php echo '$'.number_format($share_rate, 2, '.', ','); ?></td>
+				      <td ><?php echo round($us_traffic, 2).'%'; ?></td>
+				      <td class="bold align-right"><?php echo '$'.number_format($share_rev, 2, '.', ','); ?></td>
 				    </tr>
 
 				    <?php }?>
 				    <tr class="total">
 				    	<td class="bold">TOTAL</td>
 				    	<td></td>
-				    	<?php if(!$blogger){?>
-				    		<td class="bold"><?php echo '$'.$total_article_rate; ?></td>
+				    	<?php if($show_art_rate ){?>
+				    		<td class="bold"><?php echo '$'.number_format($total_article_rate, 2, '.', ','); ?></td>
 				    	<?php }?>
-				    	<td class="bold"><?php echo $total_shares; ?></td>
+				    	<td class="bold"><?php echo number_format($total_shares, 0, '.', ','); ?></td>
 				    	<td></td>
-				    	<td class="bold"><?php echo '$'.$total_share_rate; ?></td>
-				    	<!--<td></td>-->
-				    	<td class="bold"><?php echo '$'.$total; ?></td>
+				    	<td class="bold"><?php echo '$'.number_format($total_share_rate, 2, '.', ','); ?></td>
+				    	<td></td>
+				    	<td class="bold align-right"><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
 				    </tr>
 				  </tbody>
 				</table>
 
 				<?php }else{ ?>
-
 					<section class="columns">
 						<p class="notes bold">No Records Found!</p>
 					</section>
@@ -357,9 +376,6 @@
 
 			<section>
 				<p class="notes">
-					Please note: In cases where your article shows a lower flat rate than what was originally quoted, 
-				your article has been placed in multiple categories, and the flat rate payment fee has simply 
-				been divided among them.
 				</p>
 			</section>
 			<section>

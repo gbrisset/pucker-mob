@@ -750,6 +750,105 @@ class MPArticleAdmin{
 		return $r;
 	}
 
+	private function getArticleList($contributor_id){
+
+		$pdo = $this->con->openCon();
+		$q = $pdo->query("SELECT article_id FROM article_contributor_articles WHERE contributor_id = ".$contributor_id);
+		if($q && $q->rowCount()){
+			$q->setFetchMode(PDO::FETCH_ASSOC);
+			while($row = $q->fetch()){
+				$r[] = $row;
+			}
+			$q->closeCursor();
+		}else $r = serialize($pdo->errorInfo());
+		$this->con->closeCon();
+		return $r;
+	}
+
+	public function deleteArticles($ids){
+
+		if( isset($ids) && $ids){
+			$params = [];
+			$pairs = [];
+			$unrequired = [];
+			$pairs[] = "article_id = :article_id";
+			
+			foreach($ids as $article){
+				$articleId = $article['article_id'];
+				
+				$articleId = intval(filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
+
+				$params[':article_id'] = (strlen(preg_replace('/[^0-9]/', '', $articleId))) ? preg_replace('/[^0-9]/', '', $articleId) : 0;
+
+				if(isset($articleId) && !empty($articleId) && $articleId!= 0 ){
+					$tablesArray = ['articles', 'article_images', 'article_ratings', 'article_categories', 'article_contributor_articles', 'article_videos'];
+					
+					$pdo = $this->con->openCon();
+					$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+					foreach ($tablesArray as $table){
+						$q = $pdo->prepare("DELETE FROM {$table} WHERE article_id = :article_id");
+						
+						try{
+							$q->execute($params);
+						}catch(PDOException $e){
+							$this->con->closeCon();
+							return array_merge($this->returnStatus(500), ['hasError' => true]);
+						}
+
+					}
+
+					$this->con->closeCon();
+				}
+			}
+			$r['message'] = "Article deleted successfully!";
+			$r = array_merge($this->returnStatus(200), ['hasError' => false]);
+			$r['article_data'] =  '';
+			
+			return $r;
+
+		} else {
+			return array_merge($this->helpers->returnStatus(500), array('message' => 'The article_id is not set. The article was not deleted.'));
+		}
+
+	}
+
+	public function deleteUserAccount($post){
+		$params = $this->compileParams($post);
+		$user_id = intval(filter_var($post['u_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
+		$contributor_id = intval(filter_var($post['c_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
+		
+		$user_id = (strlen(preg_replace('/[^0-9]/', '', $user_id))) ? preg_replace('/[^0-9]/', '', $user_id) : 0;
+		
+		$articles = $this->getArticleList($contributor_id);
+		
+		$pdo = $this->con->openCon();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$q = $pdo->prepare("DELETE FROM users WHERE user_id = ".$user_id);
+				
+		if(isset($user_id) && $user_id ){
+			try{
+				$user = $q->execute($params);
+
+				if($user){
+					$this->deleteContributorInfo($post);
+					$this->deleteArticles($articles);
+				}else{
+					return array_merge($this->returnStatus(500), ['hasError' => true, 'message'=>"Error Deleting Account!"]);
+				}
+			}catch(PDOException $e){
+				$this->con->closeCon();
+				return array_merge($this->returnStatus(500), ['hasError' => true]);
+			}
+		}
+		
+		$this->con->closeCon();
+		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
+		$r['message'] = "Account deleted successfully!";
+		
+		return $r;
+	}
+
 	private function updateContributorImageRecord($args){
 		
 		if(!isset($args['table']) || !isset($args['column']) || !isset($args['value']) || !isset($args['contributorId'])) return array_merge($this->returnStatus(500), ['hasError' => true]);

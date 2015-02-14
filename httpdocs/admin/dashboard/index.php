@@ -283,7 +283,9 @@
 				  								   $linkedin_shares + $delicious_shares + $stumbleupon_shares;
 
 
-				  		if($year != 2014 ) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
+				  		//if($year != 2014 ) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
+				  		if($year == 2015 && $month == 1) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
+
 				  		//SHARE RATE  TOTAL SHARES * RATE BY ARTICLE (0.04)			   
 				  		$share_rate = $total_shares_this_month * $rate_by_share;
 

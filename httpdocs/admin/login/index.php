@@ -84,7 +84,7 @@
 					   		
 					   		<div class="">
 							    <div class="">
-									<?php if(isset($loginStatus)){ ?><p class="<?php echo ($loginStatus['hasError'] == true) ? 'error' : 'success'; ?>"><?php echo $loginStatus['message']; ?></p><?php } ?>
+									<!--<?php if(isset($loginStatus)){ ?><p class="<?php echo ($loginStatus['hasError'] == true) ? 'error' : 'success'; ?>"><?php echo $loginStatus['message']; ?></p><?php } ?>-->
 									<button type="submit" id="submit" name="submit" class="button left small-12">Log In</button>
 								</div>
 								<div class="">

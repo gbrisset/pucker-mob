@@ -97,7 +97,6 @@
 							
 									foreach($allContributors as $contributorInfo){
 										if($selected_contributor == $contributorInfo['contributor_id']) $selected  = 'selected'; else $selected = '';
-										//var_dump($selected_contributor,  $contributorInfo['contributor_id']);
 										$option = '<option value="'.$contributorInfo['contributor_id'].'" '.$selected.' >';
 										$option .= $contributorInfo['contributor_name'];
 										$option .= '</option>';
@@ -119,25 +118,22 @@
 							</div>
 						</div>
 				</div>
-				
 			</form>
-			
-			
-				</section>
-			
-
+			</section>
 			<section id="dashboard" class=" clear">
 				<?php  if(isset($results) && $results ){?>
 					
 				<table>
 				  <thead>
 				    <tr>
-				      <th>Contributor Name</th>
-				      <th>Total Article Rate</th>
-				      <th>Total Shares</th>
+				      <th class="align-left" >Name</th>
+				      <th>Article Rate</th>
+				      <th>Shares</th>
+				      <th>U.S. Viewers</th>
 				      <th>Rate By Share</th>
 				      <th>Share Rev</th>
-				      <th class="bold">Total To Pay</th>
+				      
+				      <th class="bold align-right">Total To Pay</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -147,6 +143,8 @@
 				  		$total_rate = 0;
 				  		$total_shares = 0;
 				  		$total_rev = 0;
+
+				  		
 				  		foreach( $results as $contributor){ 
 				  		if( $contributor['total_to_pay'] == 0) continue;
 
@@ -158,36 +156,47 @@
 				  		}
 
 				  		$total = $total + $contributor['total_to_pay'];
-				  		
+				  		$us_viewers = $contributor['US_Traffic'];
+				  		$total_us_viewers = $total_us_viewers  + $us_viewers;
 				  		$total_rate = $total_rate + $contributor['total_rate'];
 				  		$total_shares = $total_shares + $contributor['total_shares'];
 				  		$total_rev = $total_rev + $contributor['share_revenue'];
-
+				  	
+		
 				  	?>
 				  	<tr>
-					  	<td id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
+					  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
 					  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
 					  			<?php echo $contributor['contributor_name']; ?>
 					  		</a>
+					  		<label>
+					  		<?php echo $contributor['paypal_email'];?>
+					  	</label>
+					  		
 					  	</td>
-					  	<td><?php echo '$'.$contributor['total_rate']; ?></td>
-					  	<td><?php echo $contributor['total_shares']; ?></td>
+					  	<td><?php echo '$'.number_format($contributor['total_rate'], 0, '.', ','); ?></td>
+					  	<td><?php echo number_format($contributor['total_shares'], 0, '.', ','); ?></td>
+					  	<td><?php echo number_format($us_viewers, 2, '.', ','); ?></td>
 					  	<td><?php echo '$'.$contributor['share_rate']; ?></td>
-					  	<td><?php echo '$'.$contributor['share_revenue']; ?></td>
-					  	<td class="bold"><?php echo '$'.$contributor['total_to_pay']; ?></td>
+					  	<td><?php echo '$'.number_format($contributor['share_revenue'], 2, '.', ','); ?></td>
+					  	
+					  	<td class="bold align-right"><?php echo '$'.number_format($contributor['total_to_pay'], 2, '.', ','); ?></td>
 					</tr>
-					<?php }?>
+					<?php 
+
+				}?>
 					
 				  </tbody>
 				   <tfoot>
 				  	<tr>
 				  		<td class="bold">TOTAL:</td>
-				  		<td><?php echo money_format('%(#10n', $total_rate);?></td>
-				  		<td><?php echo $total_shares;?></td>
+				  		<td><?php echo '$'.number_format($total_rate, 2, '.', ','); ?></td>
+				  		<td><?php echo number_format($total_shares, 0, '.', ','); ?></td>
+				  		<td><?php echo number_format($total_us_viewers, 2, '.', ','); ?></td>
 				  		<td></td>
-				  		<td><?php echo money_format('%(#10n', $total_rev);?></td>
-				  		
-				  		<td><?php echo money_format('%(#10n', $total);?></td>
+				  		<td><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
+				  	
+				  		<td><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
 				  	</tr>
 				  </tfoot>
 				</table>

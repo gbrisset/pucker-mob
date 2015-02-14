@@ -437,6 +437,16 @@ $(document).ready(function (){
 			}, 2000);
 		},
 
+		'user-account-delete-form' : function(form, data){
+			var thisForm = $(form), 
+			statusCode = data.statusCode;
+		
+			if(statusCode == 200) {
+				window.location = "<?php echo $config['this_admin_url']; ?>delete/";
+			}
+		
+		},
+
 		'video-add-form' : function(form, data){
 			setTimeout(function(){
 				window.location = "<?php echo $config['this_admin_url']; ?>media/edit/" + data['videoDetails'][':syn_video_filename'];

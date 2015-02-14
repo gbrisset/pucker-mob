@@ -1,3 +1,5 @@
+   <!-- DELETE ACCOUNT POPUP -->
+   <?php include_once($config['include_path_admin'].'deleteaccountpu.php'); ?>
     <footer class="hide-for-print">
       <div class="row">
        <div class="small-5 large-2 columns category-colors">

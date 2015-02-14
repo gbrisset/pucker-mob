@@ -303,6 +303,11 @@
 			
 			//End SlideShow functionalities
 
+			//USER ACCOUNT
+			/* "Delete User Account from DB" */
+			case "user-account-delete-form":
+				echo json_encode($mpArticleAdmin->deleteUserAccount($_POST['formData']));
+				break;
 			default:
 				echo json_encode($adminController->helpers->returnStatus(500));
 				break;

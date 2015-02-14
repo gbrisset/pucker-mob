@@ -1,7 +1,7 @@
 
 <?php
 /**
-   * List
+   * Google Analytics API Class Connection
    * 
    * This Class manage the google analytics api functions
    * 

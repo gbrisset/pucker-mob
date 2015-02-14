@@ -728,7 +728,7 @@ class MPArticleAdminController extends MPArticle{
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
 			'post' => $post,
-			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments', 'article_poll_id')
+			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments', 'article_poll_id', 'article_desc')
 		));
 		//$article_prev_content = $this->getPreviewRecipe(array('articleId' => $post['a_i']));
 		

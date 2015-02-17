@@ -69,8 +69,6 @@
 	$contributor_name = $contributorInfo["contributor_name"];
 	$contributor_id = $contributorInfo["contributor_id"];
 	$contributor_email = $contributorInfo["contributor_email_address"]; 
-
-
 	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
 
 	$total = 0;
@@ -142,9 +140,37 @@
 				<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
 						<p>Feb 2015 Social share rate: $0.03</p>
+						<p id="dd-shares-calc">Click to see how shares are calculated <i class="fa 2x fa-caret-down"></i></p>
 					</div>
 					<div class="find-more-link right">
 						<p><a href="#" id="find-more-info">Find out how to make money with  moblogs</a></p>
+					</div>
+				</div>
+				<div id="dd-shares-content" class="mobile-12 small-12">
+					<div>
+						<p>PLEASE NOTE: FACEBOOK “LIKES” AND COMMENTS DO NOT COUNT TOWARD THE “SHARE” TOTAL, 
+							AND ARE NOT CALCULATED INTO YOUR EARNINGS.</p>
+
+						<p><span style="color: #991B1C;">DO NOT</span> GO BY THE NUMBER OF SHARES SHOWN ON YOUR ARTICLE PAGES - THIS NUMBER INCLUDES 
+							FACEBOOK “LIKES” AND COMMENTS, AND DOES NOT REFLECT A TRUE ACCOUNTING OF SHARES.</p>  
+
+						<p>PLEASE VISIT THE ‘VIEW EARNINGS’ PAGE FOR A MORE ACCURATE ACCOUNTING OF SOCIAL SHARES.</p>
+
+						<p>Currently, earnings are based on the following calculation:</p>
+
+						<p>(Fixed monthly rate for social shares on certain networks) x (the percentage of viewers 
+							from the U.S. who have viewed your content)</p>	
+
+						<p>For example, let’s say that all of your articles together have received a total of 100,000 
+							social shares, and the current monthly rate is $.02/share. Let’s also assume that 80% of your 
+							viewers are from the U.S. your earnings would be the following:</p>
+
+						<p>100,000 x $.02 = $2,000 x 0.80 = $1,600</p>
+
+						<p>The pay rate changes each month, depending on a number of variables.</p>
+
+						<p>Social networks that are counted toward shared are: Facebook, Twitter, Pinterest, LinkedIn, 
+							StumbleUpon and Google+ </p>
 					</div>
 				</div>
 				<!-- WARNINGS BOX -->
@@ -166,15 +192,15 @@
 					<header>EARNINGS AT A GLANCE</header>
 					<div class="total-earnings left">
 						<h3>Month to Date</h3>
-						<p class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p>
 					</div>
 					<div class="last-month-earnings left">
 						<h3>Last Month</h3>
-						<p class="earnings-value"><?php echo '$'.$last_month_earnings; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($last_month_earnings, 2, '.', ','); ?></p>
 					</div>
 					<div class="total-earnings left">
 						<h3>Total to Date</h3>
-						<p class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
 					</div>
 				</div>
 			</section>
@@ -238,10 +264,8 @@
 				  </thead>
 				  <tbody>
 				  	<?php 
-
-				  		
+				  		$date_updated = '';
 				  		$ids = array();
-
 				  		foreach( $articles as $article ){ 
 				  			$id = $article['article_id'];
 				  			array_push($ids, $id);
@@ -256,11 +280,10 @@
 				  		$month_created = date_format(date_create($article['creation_date']), 'n');
 				  		$cat = $article['category'];
 				  		$prevMonthData = $dashboard->get_dashboardArticlesPrevMonth($article['article_id'], $last_month, $cat, $last_year);
+				  		
 				  		/*Display just those articles when the shares has changed.*/
 				  		if( isset($prevMonthData) && $prevMonthData ){
-				    
-
-				  			if( $article['facebook_shares'] != $prevMonthData['facebook_shares'] ||
+				    		if( $article['facebook_shares'] != $prevMonthData['facebook_shares'] ||
 				  				$article['facebook_likes'] != $prevMonthData['facebook_likes'] ||
 				  				$article['facebook_comments'] != $prevMonthData['facebook_comments'] ||
 				  				$article['twitter_shares'] != $prevMonthData['twitter_shares'] ||
@@ -314,8 +337,8 @@
 				  		}		   
 				  		
 				  		if($year == 2015 && $month == 1) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
-				  		//SHARE RATE  TOTAL SHARES * RATE BY ARTICLE (0.04)			   
 				  		
+				  		//SHARE RATE  TOTAL SHARES * RATE BY ARTICLE (0.04)			   
 				  		$share_rate = $total_shares_this_month * $rate_by_share;
 
 				  		//ARTICLE RATE WILL BE SHOW ONLY ON PREVIEWS MONTH Jan and 2014 months
@@ -338,7 +361,6 @@
 
 				  	?>
 				    <tr id="article-<?php echo $article['article_id']; ?>">
-
 				      <td class="article align-left"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
 				      <td><?php echo $creation_date;?></td>
 				      <?php if( $show_art_rate ){?>
@@ -375,15 +397,18 @@
 			</section>
 
 			<section>
-				<p class="notes">
-				</p>
-			</section>
-			<section>
-				<p class="notes">All payments will be made via PayPal the 15th of the month.</p>
-			</section>
-			<section>
 				<p class="time">Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>
 			</section>
+
+			<section>
+				<p class="notes">All payments will be made approximately 45 days after the completion of the current month.</p>
+			</section>
+			
+			<section>
+				<p class="notes">Please note that earnings must meet a minimum threshold of $25 for payment to process. Earnings that have not met this threshold will be carried over to the next pay period.	
+				</p>
+			</section>
+			
 		</div>
 		<?php  include_once($config['include_path_admin'].'findouthowpopup.php'); ?>
 	</main>

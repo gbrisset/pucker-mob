@@ -51,7 +51,6 @@
 	$contributor_name = $userData["contributor_name"];
 	$contributor_id = $userData["contributor_id"];
 	$contributor_email = $userData["user_email"]; 
-
 	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
 
 	$total = 0;
@@ -86,7 +85,8 @@
 	$this_month_earnigs = 0;
 	if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
 
-
+	$show_art_rate = false;
+	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 ?>
 <!DOCTYPE html>
 
@@ -122,9 +122,37 @@
 				<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
 						<p>Feb 2015 Social share rate: $0.03</p>
+						<p id="dd-shares-calc">Click to see how shares are calculated <i class="fa 2x fa-caret-down"></i></p>
 					</div>
 					<div class="find-more-link right">
 						<p><a href="#" id="find-more-info">Find out how to make money with  moblogs</a></p>
+					</div>
+				</div>
+				<div id="dd-shares-content" class="mobile-12 small-12">
+					<div>
+						<p>PLEASE NOTE: FACEBOOK “LIKES” AND COMMENTS DO NOT COUNT TOWARD THE “SHARE” TOTAL, 
+							AND ARE NOT CALCULATED INTO YOUR EARNINGS.</p>
+
+						<p><span style="color: #991B1C;">DO NOT</span> GO BY THE NUMBER OF SHARES SHOWN ON YOUR ARTICLE PAGES - THIS NUMBER INCLUDES 
+							FACEBOOK “LIKES” AND COMMENTS, AND DOES NOT REFLECT A TRUE ACCOUNTING OF SHARES.</p>  
+
+						<p>PLEASE VISIT THE ‘VIEW EARNINGS’ PAGE FOR A MORE ACCURATE ACCOUNTING OF SOCIAL SHARES.</p>
+
+						<p>Currently, earnings are based on the following calculation:</p>
+
+						<p>(Fixed monthly rate for social shares on certain networks) x (the percentage of viewers 
+							from the U.S. who have viewed your content)</p>	
+
+						<p>For example, let’s say that all of your articles together have received a total of 100,000 
+							social shares, and the current monthly rate is $.02/share. Let’s also assume that 80% of your 
+							viewers are from the U.S. your earnings would be the following:</p>
+
+						<p>100,000 x $.02 = $2,000 x 0.80 = $1,600</p>
+
+						<p>The pay rate changes each month, depending on a number of variables.</p>
+
+						<p>Social networks that are counted toward shared are: Facebook, Twitter, Pinterest, LinkedIn, 
+							StumbleUpon and Google+ </p>
 					</div>
 				</div>
 				<!-- WARNINGS BOX -->
@@ -146,15 +174,15 @@
 					<header>EARNINGS AT A GLANCE</header>
 					<div class="total-earnings left">
 						<h3>Month to Date</h3>
-						<p class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p>
 					</div>
 					<div class="last-month-earnings left">
 						<h3>Last Month</h3>
-						<p class="earnings-value"><?php echo '$'.$last_month_earnings; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($last_month_earnings, 2, '.', ','); ?></p>
 					</div>
 					<div class="total-earnings left">
 						<h3>Total to Date</h3>
-						<p class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
 					</div>
 				</div>
 			</section>
@@ -202,33 +230,28 @@
 				<table>
 				  <thead>
 				    <tr>
-				      <th>Article Title</th>
+				      <th class="align-left">Article Title</th>
 				      <th>Date Added</th>
-				      <?php if(!$blogger){?>
+				       <?php if( $show_art_rate ){?>
 				     	<th>Article Rate</th>
 				      <?php }?>
 				      <th>Shares</th>
 				      <th>Share Rate</th>
 				      <th>Share Rev</th>
-				      <!--<th>% U.S. Traffic</th>-->
-				      <th class="bold">Total Rev</th>
+				      <th>% U.S. Traffic</th>
+				      <th class="bold align-right">Total Rev</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				  	<?php 
-
 				  		$date_updated = '';
 				  		$ids = array();
-
 				  		foreach( $articles as $article ){ 
 				  			$id = $article['article_id'];
-
 				  			array_push($ids, $id);
-
 				  		}
 				  		
 				  		$freqs = array_count_values($ids);
-				  		//var_dump($articles);
 				  		$date_updated = date_format(date_create($dateupdated[0]['date_updated']), 'l, F jS Y \a\t h:i:s A');
 
 				  		foreach( $articles as $article ){ 
@@ -239,7 +262,7 @@
 				  		$prevMonthData = $dashboard->get_dashboardArticlesPrevMonth($article['article_id'], $last_month, $cat, $last_year);
 
 				  		/*Display just those articles when the shares has changed.*/
-				  		if( $prevMonthData ){
+				  		if( isset($prevMonthData) && $prevMonthData ){
 				  			if( $article['facebook_shares'] != $prevMonthData['facebook_shares'] ||
 				  				$article['facebook_likes'] != $prevMonthData['facebook_likes'] ||
 				  				$article['facebook_comments'] != $prevMonthData['facebook_comments'] ||
@@ -270,7 +293,6 @@
 				  		//RATE BY ARTICLE 
 				  		$rate_by_article = 0;
 
-				  		//var_dump($month_created, $current_month, $month);
 				  		if( $month_created == $month && $article['rate_by_article'] != 0){
 				  			if( $contributor_type > 2) $rate_by_article = $article['rate_by_article'] / $count;
 				  			else $rate_by_article = 0;
@@ -282,15 +304,33 @@
 				  		$total_shares_this_month = $facebook_shares + $twitter_shares + $pinterest_shares + $googleplus_shares +
 				  								   $linkedin_shares + $delicious_shares + $stumbleupon_shares;
 
+				  		$us_pct_traffic = 0;
+				  		$us_traffic = 0;
+				  		if(!empty($article['pct_pageviews']) && $article['pct_pageviews'] != 0){
+				  			$us_pct_traffic = $article['pct_pageviews']/100;	
+				  			$us_traffic = 	$article['pct_pageviews'];	
+				  		}	
 
-				  		//if($year != 2014 ) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
+				  		if($year == 2015 && $month <= 1 || $year < 2015 ){
+				  			$us_pct_traffic = 100;
+				  			$us_traffic = 100;
+				  		}	
+
 				  		if($year == 2015 && $month == 1) $total_shares_this_month = $total_shares_this_month + $facebook_likes + $facebook_comments;
 
 				  		//SHARE RATE  TOTAL SHARES * RATE BY ARTICLE (0.04)			   
 				  		$share_rate = $total_shares_this_month * $rate_by_share;
 
-				  		//SHARE REVENU = SHARE RATE + RATE BY ARTICLE ( $10 or $5 or $0)
-				  		$share_rev = $share_rate + $rate_by_article;
+				  		//ARTICLE RATE WILL BE SHOW ONLY ON PREVIEWS MONTH Jan and 2014 months
+				  		$share_rev = 0;
+				  		if( $show_art_rate ){
+							$share_rev += $rate_by_article;
+				  		}
+
+				  		if($year == 2015 && $month > 1) $share_rev += ($share_rate * $us_pct_traffic);
+				  		else  $share_rev += ($share_rate * 1);
+
+//				  		$share_rev = $share_rate + $rate_by_article;
 				  		$total_shares += $total_shares_this_month;
 				  		$total_share_rate += $share_rate;
 				  		$total_article_rate += $rate_by_article;
@@ -302,30 +342,30 @@
 
 				  	?>
 				    <tr id="article-<?php echo $article['article_id']; ?>">
-				      <td class="article"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
+				      <td class="article align-left"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
 				      <td><?php echo $creation_date;?></td>
-				      <?php if(!$blogger){?>
+				      <?php if( $show_art_rate ){?>
 				      	<td><?php echo '$'.$rate_by_article;?></td>
 				      <?php }?>
-				      <td><?php echo $total_shares_this_month; ?></td>
+				      <td class=""><?php echo number_format($total_shares_this_month, 0, '.', ','); ?></td>
 				      <td><?php echo $rate_by_share; ?></td>
-				      <td><?php echo '$'.$share_rate; ?></td>
-				      <!--<td></td>-->
-				      <td class="bold"><?php echo '$'.$share_rev; ?></td>
+				      <td class=""><?php echo '$'.number_format($share_rate, 2, '.', ','); ?></td>
+				      <td ><?php echo round($us_traffic, 2).'%'; ?></td>
+				      <td class="bold align-right"><?php echo '$'.number_format($share_rev, 2, '.', ','); ?></td>
 				    </tr>
 
 				    <?php }?>
 				    <tr class="total">
 				    	<td class="bold">TOTAL</td>
 				    	<td></td>
-				    	<?php if(!$blogger){?>
-				    		<td class="bold"><?php echo '$'.$total_article_rate; ?></td>
+				    	<?php if($show_art_rate ){?>
+				    		<td class="bold"><?php echo '$'.number_format($total_article_rate, 2, '.', ','); ?></td>
 				    	<?php }?>
-				    	<td class="bold"><?php echo $total_shares; ?></td>
+				    	<td class="bold"><?php echo number_format($total_shares, 0, '.', ','); ?></td>
 				    	<td></td>
-				    	<td class="bold"><?php echo '$'.$total_share_rate; ?></td>
-				    	<!--<td></td>-->
-				    	<td class="bold"><?php echo '$'.$total; ?></td>
+				    	<td class="bold"><?php echo '$'.number_format($total_share_rate, 2, '.', ','); ?></td>
+				    	<td></td>
+				    	<td class="bold align-right"><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
 				    </tr>
 				  </tbody>
 				</table>
@@ -339,17 +379,16 @@
 			</section>
 
 			<section>
-				<p class="notes">
-					Please note: In cases where your article shows a lower flat rate than what was originally quoted, 
-				your article has been placed in multiple categories, and the flat rate payment fee has simply 
-				been divided among them.
-				</p>
-			</section>
-			<section>
-				<p class="notes">All payments will be made via PayPal the 15th of the month.</p>
-			</section>
-			<section>
 				<p class="time">Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>
+			</section>
+
+			<section>
+				<p class="notes">All payments will be made approximately 45 days after the completion of the current month.</p>
+			</section>
+			
+			<section>
+				<p class="notes">Please note that earnings must meet a minimum threshold of $25 for payment to process. Earnings that have not met this threshold will be carried over to the next pay period.	
+				</p>
 			</section>
 		</div>
 		<?php 	include_once($config['include_path_admin'].'findouthowpopup.php');

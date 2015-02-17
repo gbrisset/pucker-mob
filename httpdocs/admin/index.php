@@ -226,15 +226,15 @@
 					<header>EARNINGS AT A GLANCE</header>
 					<div class="total-earnings left">
 						<h3>Month to Date</h3>
-						<p class="earnings-value"><?php echo '$'.$this_month_earnigs; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p>
 					</div>
 					<div class="last-month-earnings left">
 						<h3>Last Month</h3>
-						<p class="earnings-value"><?php echo '$'.$last_month_earnings; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($last_month_earnings, 2, '.', ','); ?></p>
 					</div>
 					<div class="total-earnings left">
 						<h3>Total to Date</h3>
-						<p class="earnings-value"><?php echo '$'.$total_earnings_to_date; ?></p>
+						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
 					</div>
 				</div>
 

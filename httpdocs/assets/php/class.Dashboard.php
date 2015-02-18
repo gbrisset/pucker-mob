@@ -438,6 +438,7 @@ class Dashboard{
 			      article_contributors.contributor_name, 
 			      article_contributors.contributor_seo_name, 
 			      user_billing_info.paypal_email,
+			      user_billing_info.w9_live,
 			      users.user_type,
 			      SUM(social_media_info.rate) as 'total_rate',
 			      SUM(social_media_info.total_shares) as 'total_shares', 
@@ -499,7 +500,7 @@ class Dashboard{
 
 			$s .=" GROUP BY article_contributor_articles.contributor_id 
 				   ORDER BY total_to_pay DESC ";
-
+//var_dump($s); die;
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 

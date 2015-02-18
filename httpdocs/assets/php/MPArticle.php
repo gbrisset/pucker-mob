@@ -714,11 +714,11 @@ return $q;
 }*/
 public function getMostRecentArticleList( $articleID = null ){
 	
-	$length_day = 86400; //Length of a day is constant ( 24*60*60)
-	$current_date = time();
-	$yesterday = $current_date - $length_day;
+	//$length_day = 86400; //Length of a day is constant ( 24*60*60)
+	//$current_date = time();
+	//$yesterday = $current_date - $length_day;
 
-	$queryString = "SELECT articles.article_id as a_id, articles.article_title, 
+	/*$queryString = "SELECT articles.article_id as a_id, articles.article_title, 
 	articles.article_seo_title, articles.creation_date, articles.article_status, 
 	articles.page_list_id, categories.cat_name, categories.cat_dir_name, 
 	article_contributors.contributor_name, article_contributors.contributor_seo_name 
@@ -729,13 +729,14 @@ public function getMostRecentArticleList( $articleID = null ){
 		AND articles.article_id = article_contributor_articles.article_id
 		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
 	WHERE articles.article_status = 1 AND articles.page_list_id = 0 AND articles.fb_shares_update BETWEEN '".date('Y-m-d H:i:s', $yesterday)."' AND '".date('Y-m-d H:i:s', $current_date)."' ";
-
-	if( isset( $articleID ) && $articleID ){
+*/
+	$queryString = " SELECT google_analytics_most_viewed_articles.*, articles.article_id  from google_analytics_most_viewed_articles INNER JOIN articles ON (article_seo_title = seo_title)  ORDER BY pageviews DESC; ";
+	//if( isset( $articleID ) && $articleID ){
 	//	$queryString .= " AND articles.article_id != ".$articleID;
-	}
+	//}
 
 
-	$queryString .= " GROUP BY articles.article_id ORDER BY  articles.fb_shares DESC LIMIT 7 ";
+	//$queryString .= " GROUP BY articles.article_id ORDER BY  articles.fb_shares DESC LIMIT 7 ";
 
 
 	$q = $this->performQuery(['queryString' => $queryString]);

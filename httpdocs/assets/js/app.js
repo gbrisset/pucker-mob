@@ -486,7 +486,6 @@ var facebook_button = Foundation.utils.S('#facebook-button');
 var twitter_button = Foundation.utils.S('#twitter-button');
 var pinterest_button = Foundation.utils.S('#pinterest-button');
 var google_plus_button = Foundation.utils.S('#google-plus-button');
-var stumbleupon_button = Foundation.utils.S('#stumbleupon-button');
 var email_button = Foundation.utils.S('#email-button');
 var share_title = Foundation.utils.S('meta[property="og:title"]').attr('content');
 var share_url = Foundation.utils.S('meta[property="og:url"]').attr('content');
@@ -524,13 +523,54 @@ var notfound_search_submit = Foundation.utils.S('#notfound-search-submit');
  		share_popup_width = 500;
  		window.open('https://plus.google.com/share?url=' + encodeURIComponent(share_url), 'Google+', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
  	});
- 	stumbleupon_button.click(function () {
- 		share_popup_height = 716;
- 		share_popup_width = 1024;
- 		window.open('http://www.stumbleupon.com/submit?url=' + encodeURIComponent(share_url), 'StumbleUpon', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
- 	});
- 	email_button.click(function() {alert("Email"); });
- 	
+
+ 	$.sharedCount = function(url, fn) {
+	    url = encodeURIComponent(url || location.href);
+	    var domain = "http://free.sharedcount.com/"; /* SET DOMAIN */
+	    var apikey = "709226bb97515fd204f07c3d4bac38f78ba009eb" /*API KEY HERE*/
+	    var arg = {
+	      data: {
+	        url : url,
+	        apikey : apikey
+	      },
+	        url: domain,
+	        cache: true,
+	        dataType: "json"
+	    };
+	    if ('withCredentials' in new XMLHttpRequest) {
+	        arg.success = fn;
+	    }
+	    else {
+	        var cb = "sc_" + url.replace(/\W/g, '');
+	        window[cb] = fn;
+	        arg.jsonpCallback = cb;
+	        arg.dataType += "p";
+	    }
+	    return jQuery.ajax(arg);
+	};
+
+ 	function kFormatter(num) {
+    	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
+	}
+
+    $.sharedCount(location.href, function(data){
+        console.log(data);
+
+        var total_shares = 0;
+        if(data){
+        	total_shares = data.Twitter + data.Facebook['share_count'] + data.GooglePlusOne + data.Pinterest +
+ 							data.Delicious + data.LinkedIn + data.StumbleUpon;
+ 		}
+
+ 		console.log(total_shares);
+        //$("#shares_counter").each(function(e){
+
+        	$(".shares_counter").text(kFormatter(total_shares));
+        //});
+
+
+	});
+
  	//Prefetch Links
  	var app = {
     // returns an array of each url to prefetch
@@ -578,11 +618,11 @@ var SocialShares = {
 	}
 	
 	// Listen to events	
-	if(page === 'article' || page === 'articleslide') {
-		console.log('ADDTHIS');
-		console.log(addthis);
-		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-	}
+	//if(page === 'article' || page === 'articleslide') {
+		//console.log('ADDTHIS');
+		//console.log(addthis);
+		//addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
+	//}
 
 
 //Scroll Window 

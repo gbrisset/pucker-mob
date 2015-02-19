@@ -647,11 +647,9 @@ img.darken-border:hover {
 	-webkit-box-shadow: 0 rem-calc(1) rem-calc(5) rem-calc(1) darken($shadow-color, $image-darken-hover-percent);
 	box-shadow:         0 rem-calc(1) rem-calc(5) rem-calc(1) darken($shadow-color, $image-darken-hover-percent);
 }
-<<<<<<< HEAD
+
 iframe {max-width: auto; display: inherit;}
-=======
-/*iframe {max-width: 100%; display: inherit;}*/
->>>>>>> fdf9ce38b61e8867f7c508012700f8492f45ce9d
+
 img {display: inherit;}
 .contrib-image {margin-right: $panel-padding;}
 #contributor-intro > p {margin-bottom: 0;}
@@ -1438,7 +1436,7 @@ dl { margin-bottom: 0.5rem !important; }
 /* ADDTHIS STYLING */
  .at4-hide{opacity:0 !important; display: none !important;}
  .social-show{opacity:1 !important; display: inline !important;}
-<<<<<<< HEAD
+
  /*.fb-like.fb_iframe_widget{margin-top:1.2rem;}*/
  .fb-like.fb_iframe_widget{top:0.5rem;}
  #shares_count{ position:absolute; right:0; top:1.5rem; display:inline !important;}
@@ -1447,21 +1445,13 @@ dl { margin-bottom: 0.5rem !important; }
  #at-jumboshare tr{display:inline-flex !important;}
  #at-jumboshare tr td{border-right: none !important;}
  .addthis_jumbo_share{padding-top: 0.5rem !important;}*/
-=======
- .fb-like.fb_iframe_widget{ display:none; margin-top:1.2rem; top:0.25rem;}
- /*#at-share-dock{width: 101%; max-width: 101%;}*/
- /*.at4-toaster-outer .at4-recommended .at4-recommended-item .at4-recommended-item-caption h4{ height: 28px !important; }
- #at-jumboshare tr{display:inline-flex !important;}
- #at-jumboshare tr td{border-right: none !important;}
- .addthis_jumbo_share{padding-top: 0.5rem !important;}*/
- 
->>>>>>> fdf9ce38b61e8867f7c508012700f8492f45ce9d
+
  .at4-jumboshare .at4-count{ color: #777; display: inline !important; font-size: 1.7rem !important; font-family: OswaldLight !important; line-height:0.5 !important; }
  
  .at4-jumboshare .at4-title{color: #777; font-family: OswaldLight !important; font-size: 1rem !important; top: -0.2rem; display: inline; margin-left: 0.5rem; margin-right: 0.8rem;}
   .at4-jumboshare table{ float:right;}
 
-<<<<<<< HEAD
+
  .at4-jumboshare .at4-count-container{ padding-right: 0 !important; border-right: none !important;}
  .at4-jumboshare .at4-share-container{display: none !important; visibility: hidden;}
  #email-comment{ float: right; margin-top: 0.5rem !important;}
@@ -1472,21 +1462,7 @@ dl { margin-bottom: 0.5rem !important; }
  .addthis_button_facebook_like{ margin-top: -1rem !important; position: relative !important; left: 0 !important; top: 0.2rem !important; }
  .social-cont-1 .addthis_button_compact { padding-top: 1.5rem; padding-left: 0.3rem; }*/
  
-=======
- /*.at4-jumboshare .at4-count-container{ padding-right: 0 !important; border-right: none !important;}
- .at4-jumboshare .at4-share-container{display: none !important; visibility: hidden;}*/
- 
- /*.at4-jumboshare .at4-share-btn{margin-right: 5px !important;}
- .at4-jumboshare .at4-mobile .at4-share-btn span{ display:inline-block; }
- .at4-jumboshare a .label{ display:none ; }*/
- #shares_count{ display:inline; position:absolute; right:0; top:1.5rem;}
- #email-comment{ float: right; margin-top: 0.5rem !important;}
 
- /*.addthis_button_facebook, .addthis_button_twitter, .addthis_button_compact, .disqus_container, .addthis_button_pinterest_share{ margin-right: 0 !important; text-decoration: none !important;}
- .addthis_button_facebook_like{ margin-top: -1rem !important; position: relative !important; left: 0 !important; top: 0.2rem !important; }
- .social-cont-1 .addthis_button_compact { padding-top: 1.5rem; padding-left: 0.3rem; }*/
- .social_button{ text-decoration:none !important; outline:none !important;}
->>>>>>> fdf9ce38b61e8867f7c508012700f8492f45ce9d
 @media #{$large-up} { 
 	.at4-jumboshare .at4-count{ line-height:1 !important; font-size: 2.5rem !important;}
 	.at4-jumboshare .at4-title{ top: -0.4rem; position: relative; margin-right: 0.5rem; font-size: 1.2rem !important;}

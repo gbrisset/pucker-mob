@@ -142,21 +142,15 @@
   <?php }else{?>
 
   	<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-  <!-- BEGIN Tynt Script -->
+  <!-- BEGIN Tynt Script 
 
 	<script type="text/javascript">
-
 	if(document.location.protocol=='http:'){
-
 	  var Tynt=Tynt||[];
-
 	  Tynt.push('cRcCGMgEKr5jLJacwqm_6r');
-
 	  (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
-
-	  }
-
-	</script>
+    }
+	</script>-->
 
 <!-- END Tynt Script -->
 
@@ -170,7 +164,7 @@
  }?>
 
 <?php } ?>
-    <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 ros-->
+    <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 ros
     <script type="text/javascript">
     if ((typeof(f466927)=='undefined' || f466927 > 0) ) {
       if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
@@ -178,7 +172,7 @@
     }else{
       //insert default static image here as default ad
     }
-    </script>
+    </script>-->
     <!-- END AD TAG -->
   <?php }?>
 <?php }?>
@@ -238,43 +232,10 @@
     <img src="//pixel.quantserve.com/pixel/p-B2Jsd5NDNU3Qq.gif" border="0" height="1" width="1" alt="Quantcast"/>
   </div>
 </noscript>
-<!-- End Quantcast tag -->
-	
-<!--<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.js"></script>
-	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>-->
-	
-	<!-- DESKTOP 
-	<?php //if ( !$detect->isMobile() ) { ?>
-	<script>var trendingNowHeight = 0;</script>-->
-	<!--<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
--->
-	<!--[if !IE]>
-	<script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
-	<![endif]-->
-	
-		 <!-- IF ARTICLE PAGE -->
-	    <?php //if(isset($articleInfo) && $articleInfo){ ?>
-	    	<?php //if(!$promotedArticle ){?>
-	     	<!-- Puckermob Instory Connatix
-			<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='1f15e94f-843f-4d31-8940-4eb181b32d73'></script>-->
-		   <?php //} ?>
-		    <?php //}else{?> 
-		    	<!-- Puckermob - Homepage  Connatix 
-	    	<script type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='c96b0114-247e-4afd-b363-d427f1016171'></script>
-	   		-->
-	    <?php //}?>
-	
-	<!-- MOBILE -->
-	<?php //}else{ ?>
-		<!-- SHARETHROUNG 
-   		<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
-	<?php //} ?>
-	
-	<!-- DESKTOP & MOBILE SCRIPT -->
-	
-	<!-- Nativo 
-	<script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
+
+<!-- Distro Scale AD Tag 
+<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
+<!-- Begin comScore Tag -->
 	
 </head>
  <?php flush(); ?>

@@ -376,7 +376,7 @@ console.log(page);
 		} else {
 			loadAd(select.ad.header, ad[adPage].header);
 			loadAd(select.ad.footer, ad[adPage].footer);
-			if(adPage === 'category' && page != 'writeforus') {
+			if(adPage === 'category') {
 				loadAd(select.ad.medianet, ad.medianet.article);
 			}
 		}
@@ -419,7 +419,6 @@ console.log(page);
 		if( adPage === 'articleslide'){
 			//inBodyAd.loadInArticleAd( 'article-caption', 2, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 			inBodyAd.loadInArticleAd( 'article-caption', 4, 0, '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', 'p');
-				
 		}
 
 		//BTF1
@@ -486,7 +485,6 @@ var facebook_button = Foundation.utils.S('#facebook-button');
 var twitter_button = Foundation.utils.S('#twitter-button');
 var pinterest_button = Foundation.utils.S('#pinterest-button');
 var google_plus_button = Foundation.utils.S('#google-plus-button');
-var stumbleupon_button = Foundation.utils.S('#stumbleupon-button');
 var email_button = Foundation.utils.S('#email-button');
 var share_title = Foundation.utils.S('meta[property="og:title"]').attr('content');
 var share_url = Foundation.utils.S('meta[property="og:url"]').attr('content');
@@ -524,120 +522,20 @@ var notfound_search_submit = Foundation.utils.S('#notfound-search-submit');
  		share_popup_width = 500;
  		window.open('https://plus.google.com/share?url=' + encodeURIComponent(share_url), 'Google+', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
  	});
- 	stumbleupon_button.click(function () {
- 		share_popup_height = 716;
- 		share_popup_width = 1024;
- 		window.open('http://www.stumbleupon.com/submit?url=' + encodeURIComponent(share_url), 'StumbleUpon', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
- 	});
- 	email_button.click(function() {alert("Email"); });
- 	
- 	console.log('FACEBOOK SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR FACEBOOK");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS FACEBOOK");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
- 	
- 	console.log('LINKEDIN SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://www.linkedin.com/countserv/count/share?url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR LINKEDIN");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS LINKEDIN");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
 
 
- 	console.log('PINTEREST SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://widgets.pinterest.com/v1/urls/count.json?source=6&url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR PINTEREST");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS PINTEREST");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
+ 	function kFormatter(num) {
+    	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
+	}
 
- 	
- 	
- 	console.log('stumbleupon SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://www.stumbleupon.com/services/1.01/badge.getinfo?url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR stumbleupon");
-            console.log(textStatus);
-        },
-        success: function (msg) {
-        	console.log("SUCCESS stumbleupon");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
-
- 	console.log('DELICIOUS SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://feeds.delicious.com/v2/json/urlinfo/data?url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR DELICIOUS");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS DELICIOUS");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
- 	
- 	console.log('TWITTER SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://cdn.api.twitter.com/1/urls/count.json?url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR TWITTER");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS TWITTER");
-            console.log(msg);
-        }
-    });
-    console.log("================");
-
- 	
- 	
+	//Get Total Shares For an Article
+	$.get(
+		"http://localhost:8888/projects/pucker-mob//httpdocs/assets/ajax/ajaxManageData.php", 
+		{"url" : location.href, "articleId" : Foundation.utils.S('#article_id').val()}, 
+		function(shares) {
+			$(".shares_counter").text(kFormatter(shares));
+		} 
+	);
 
  	//Prefetch Links
  	var app = {
@@ -686,11 +584,11 @@ var SocialShares = {
 	}
 	
 	// Listen to events	
-	if(page === 'article' || page === 'articleslide') {
-		console.log('ADDTHIS');
-		console.log(addthis);
-		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-	}
+	//if(page === 'article' || page === 'articleslide') {
+		//console.log('ADDTHIS');
+		//console.log(addthis);
+		//addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
+	//}
 
 
 //Scroll Window 

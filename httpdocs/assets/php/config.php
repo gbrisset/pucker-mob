@@ -16,8 +16,8 @@ if($local)
 	define("MAIL_PORT", 25);
 	define("IMAGE_UPLOAD_DIR", dirname(dirname(dirname(dirname(__FILE__))))."/subdomains/images/httpdocs/articlesites/puckermob/");
 
-	//error_reporting(E_ALL);
-	//ini_set('display_errors', '1');
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
 
 	$localIp = 'localhost';
 	$directory = 'projects/pucker-mob/';

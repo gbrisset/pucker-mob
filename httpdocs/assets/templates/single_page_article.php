@@ -26,7 +26,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- TITLE -->
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
 		
-		<!-- SOCIAL DESKTOP -->
+		<!-- SOCIAL DESKTOP 
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
@@ -50,8 +50,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
-		</div>
-
+		</div>-->
+<?php include($config['include_path'].'socialbuttonsarticles.php'); ?>
 		<!-- Article Image -->
 		<div class="row">
 			<!-- SMARTIES -->
@@ -141,8 +141,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<!-- Social Media Icons -->
 		<!-- DESKTOP ONLY -->
-		<?php if(!$detect->isMobile()){?>
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+		<?php if(!$detect->isMobile()){
+			include($config['include_path'].'socialbuttonsarticles.php');
+		?>
+		<!--<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
 					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
@@ -165,16 +167,19 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
 			</div>
-		</div>
-		<?php }else{?>
-			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
+		</div>-->
+
+		<?php }else{
+			include($config['include_path'].'socialbuttonsmobile.php');
+		?>
+			<!--<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
 				<a class="addthis_button_facebook">
 					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
 				</a> 
 				<a class="addthis_button_twitter">
 					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
 				</a> 
-			</div>
+			</div>-->
 			<!-- Start Below Article -->
 			<div id='__kx_ad_821'></div>
 			<script type="text/javascript" language="javascript">
@@ -209,8 +214,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<hr>
 				
 		<?php if(!$detect->isMobile()){?>
-		
-			
 			<!-- ADBLADE-->
 			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>

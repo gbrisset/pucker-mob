@@ -25,33 +25,9 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 
 		<h1 id="<?php echo $articleInfoObj['article_id']; ?>" style="margin-bottom: 0.5rem;"><?php echo $articleInfoObj['article_title']; ?></h1>
 
-			<!-- SOCIAL DESKTOP -->
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-				
-				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
-				</a> 
-				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
-				</a> 
-				<a class="addthis_button_pinterest_share">
-					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
-				</a>
-				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
-				</a>
-			
-				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
-
-				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
-				
-				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
-			</div>
-		</div>
-		<div class="padding-bottom" style="">
-			</div>
+		<!-- SOCIAL DESKTOP -->
+		<?php include($config['include_path'].'socialbuttonsarticles.php'); ?>
+		<div class="padding-bottom" style=""></div>
 		
 		<!-- Article SubTitle ( SLIDE ) 
 		<?php //if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
@@ -213,40 +189,13 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				
 			<!-- Social Media Icons -->
 				
+			<?php if(!$detect->isMobile()){
+				include($config['include_path'].'socialbuttonsarticles.php');
+			}else{
+				include($config['include_path'].'socialbuttonsmobile.php');
+			}?>
+
 			<?php if(!$detect->isMobile()){?>
-			<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-				
-				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
-				</a> 
-				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
-				</a> 
-				<a class="addthis_button_pinterest_share">
-					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
-				</a>
-				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
-				</a>
-			
-				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
-
-				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">
-				
-					<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
-				</div>
-			</div>
-		<?php }else{?>
-			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
-				<a class="addthis_button_facebook">
-					<label class="label-social-button-2-mobile" style="padding:1rem;"><i class="fa fa-facebook-square" ></i>SHARE</label>
-				</a> 
-				<a class="addthis_button_twitter">
-					<label class="label-social-button-2-mobile" style="padding:1rem;"><i class="fa fa-twitter"></i>TWEET</label>
-				</a> 
-			</div>
 			<div id='__kx_ad_821'></div>
 			<script type="text/javascript" language="javascript">
 			var __kx_ad_slots = __kx_ad_slots || [];
@@ -276,7 +225,8 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 			</script>
 			<!-- End Below Article -->
 		<?php }?>
-			<hr>
+		
+		<hr>
 
 		<?php if(!$detect->isMobile()){?>
 		<!-- ADBLADE-->
@@ -284,16 +234,15 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
 				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 			</section>
-			<hr>
-
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
 			
-			<br>
+		
 			<?php if(!$promotedArticle ){?>
 				<div data-str-native-key="53caed05" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			<?php } ?>
+			
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
 
 		<?php } ?>
 

@@ -54,10 +54,10 @@
 	    plugins: [
 	        "jbimages advlist autolink lists link image charmap print preview anchor",
 	        "searchreplace visualblocks code fullscreen",
-	        "insertdatetime media table contextmenu paste hr "
+	        "insertdatetime media table contextmenu paste hr spellchecker"
 	    ],
 	    menubar : "insert tools",
-	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview " ,
+	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview spellchecker" ,
 	    //relative_urls:false,
 	    init_instance_callback : function() {
 	     tinyMCE.activeEditor.getContent();

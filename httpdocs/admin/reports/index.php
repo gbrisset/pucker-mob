@@ -162,7 +162,6 @@
 				  		$total_shares = $total_shares + $contributor['total_shares'];
 				  		$total_rev = $total_rev + $contributor['share_revenue'];
 				  	
-		
 				  	?>
 				  	<tr>
 					  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
@@ -171,6 +170,7 @@
 					  		</a>
 					  		<label>
 					  		<?php echo $contributor['paypal_email'];?>
+					  		<?php if($contributor['w9_live'] === '1') echo "<br><strong style='color:green;' >W9 Form Sent!</strong>"?>
 					  	</label>
 					  		
 					  	</td>

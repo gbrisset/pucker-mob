@@ -113,7 +113,7 @@ if(!is_null($categoryInfo)){
 			<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
 			<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
 		</div>
-	<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+	
 		
 	</div>
 	<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
@@ -167,9 +167,7 @@ if(!is_null($categoryInfo)){
 			<?php } else {
 				include_once($config['template_path'].'single_page_article.php'); ?>
 				<?php if( !$promotedArticle ){ ?>
-				<!-- Distro Scale AD Tag
-					<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script> -->
-			  	<!-- Begin comScore Tag -->
+				
 			  	<?php } ?>
 			<?php } ?>
 
@@ -207,12 +205,12 @@ if(!is_null($categoryInfo)){
 			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div> -->
 
 			<?php if( !$promotedArticle ){ ?>
-			<!-- ADBLADE -->
+			<!-- ADBLADE 
 			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
 				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 			</section>
-			<hr>
+			<hr>-->
 			<!-- ALSO IN CATEGORY -->
 			<?php include_once($config['include_path'].'similararticles.php');?>
 			
@@ -269,7 +267,7 @@ if(!is_null($categoryInfo)){
 
 	<?php
 		 if($articleInfoObj['article_id'] == 4653 ) include_once($config['include_path'].'modalboxform.php'); 
-		 else include_once($config['include_path'].'modalbox.php'); 
+		// else include_once($config['include_path'].'modalbox.php'); 
 	?>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->

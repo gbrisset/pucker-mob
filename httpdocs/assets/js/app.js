@@ -376,7 +376,7 @@ console.log(page);
 		} else {
 			loadAd(select.ad.header, ad[adPage].header);
 			loadAd(select.ad.footer, ad[adPage].footer);
-			if(adPage === 'category') {
+			if(adPage === 'category' && page != 'writeforus') {
 				loadAd(select.ad.medianet, ad.medianet.article);
 			}
 		}
@@ -531,6 +531,46 @@ var notfound_search_submit = Foundation.utils.S('#notfound-search-submit');
  	});
  	email_button.click(function() {alert("Email"); });
  	
+ 	$.getJSON( "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls="+location.href, function(data) {
+ 			console.log("FACEBOOK SHARES");
+			console.log(data);
+			console.log("================");
+
+		});
+
+ 	$.getJSON("http://cdn.api.twitter.com/1/urls/count.json?url="+location.href, function(data){
+ 		console.log('TWITTER SHARES');
+ 		console.log(data);
+ 		console.log("================");
+ 	});
+
+ 	$.getJSON("http://www.linkedin.com/countserv/count/share?url="+location.href, function(data){
+ 		console.log('LINKEDIN SHARES');
+ 		console.log(data);
+ 		console.log("================");
+ 	});
+
+ 	$.getJSON("http://api.pinterest.com/v1/urls/count.json?callback=pm&url="+location.href, function(data){
+ 		console.log('PINTEREST SHARES');
+ 		console.log(data);
+ 		console.log("================");
+ 	});
+
+ 	$.getJSON("http://www.stumbleupon.com/services/1.01/badge.getinfo?url="+location.href, function(data){
+ 		console.log('stumbleupon SHARES');
+ 		console.log(data);
+ 		console.log("================");
+ 	});
+
+ 	$.getJSON("http://feeds.delicious.com/v2/json/urlinfo/data?url="+location.href, function(data){
+ 		console.log('DELICIOUS SHARES');
+ 		console.log(data);
+ 		console.log("================");
+ 	});
+
+ 	
+ 	
+
  	//Prefetch Links
  	var app = {
     // returns an array of each url to prefetch

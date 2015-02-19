@@ -26,7 +26,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- TITLE -->
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
 		
-		<!-- SOCIAL DESKTOP -->
+		<!-- SOCIAL DESKTOP 
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
@@ -51,7 +51,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
-
+	-->
+	<?php include_once($config['include_path'].'socialbuttonsarticles.php'); ?>
 		<!-- Article Image -->
 		<div class="row">
 			<!-- SMARTIES -->

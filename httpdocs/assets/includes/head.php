@@ -152,9 +152,7 @@
 
 	  Tynt.push('cRcCGMgEKr5jLJacwqm_6r');
 
-	  (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/
-
-	ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
+	  (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
 
 	  }
 

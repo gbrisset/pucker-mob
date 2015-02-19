@@ -875,6 +875,38 @@ End password reset methods
 		}
 	}
 
+	public function updateUserBillingW9($data){
+		$user_id = filter_var($data['user_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$w9_live = $data['w9_sent'];
+		
+		//Check if record exists
+		$recordExist = $this->performQuery(array(
+			'queryString' => 'SELECT * FROM user_billing_info WHERE user_id = :user_id',
+			'queryParams' => array(':user_id' => $user_id)
+		));
+
+			if($recordExist){
+				$billing_record =  $this->performUpdate(array(
+				'updateString' => "UPDATE user_billing_info SET w9_live = ".$w9_live." WHERE user_id = :userId",
+				'updateParams' => array(':userId' => $user_id)
+			));
+				$message = 'Updated Successfully';
+
+			}else{
+				$billing_record = $this->performUpdate(array(
+				'updateString' => "INSERT INTO user_billing_info (paypal_email, user_id, w9_live ) VALUES ('', ".$user_id.", ".$w9_live.") ",
+				'updateParams' => array(':w9_live'=>$w9_live, ':userId' => $user_id,
+				'isInsert' => true)
+			));
+				
+				$message = "Added Successfully";
+			}
+			
+			if($billing_record === true) return array('hasError' => false, 'message' => 'Your user information has been successfully updated');
+			else return $result;
+
+	}
+
 	public function send_email($opts){
 		$options = array_merge(array(
 			'email' => '',

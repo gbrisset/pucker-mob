@@ -17,4 +17,8 @@
 	if($_POST['task'] == 'register_fb'){
 		echo json_encode($adminController->user->doRegistrationFromFB($_POST));
 	}
+
+	if($_POST['task'] == 'update_w9_sent'){
+		echo json_encode($adminController->user->updateUserBillingW9($_POST));
+	}
 ?>

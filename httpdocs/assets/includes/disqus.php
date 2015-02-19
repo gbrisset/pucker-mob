@@ -2,7 +2,7 @@
    
 <h2 id="disqus-container">We'd love to hear what you have to say!</h2>
 
- <div id="disqus_thread"></div>
+ <!--<div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'puckermob'; // required: replace example with your forum shortname
@@ -16,6 +16,12 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+-->
+<?php if($detect->isMobile()){?>
+    <div class="fb-comments" data-href="<?php echo $article_link; ?>" data-width:"320" data-numposts="5" data-colorscheme="light"></div>
+<?php }else{?>
+<div class="fb-comments" data-href="<?php echo $article_link; ?>" data-width="650" data-numposts="5" data-colorscheme="light"></div>
+<?php }?>
 
 
 </section>

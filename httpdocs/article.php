@@ -270,14 +270,14 @@ if(!is_null($categoryInfo)){
 		// else include_once($config['include_path'].'modalbox.php'); 
 	?>
 
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<!-- Go to www.addthis.com/dashboard to customize your tools 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 
     <script type="text/javascript">
 	$(document).ready(function(){
 		addthis.init();
 	})
-	</script>
+	</script>-->
      <?php if( $promotedArticle ){ ?>
     		<!-- SMARTIES -->
 			<script language="javascript">document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3366273/0/16/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');

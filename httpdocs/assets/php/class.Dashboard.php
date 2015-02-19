@@ -500,7 +500,7 @@ class Dashboard{
 
 			$s .=" GROUP BY article_contributor_articles.contributor_id 
 				   ORDER BY total_to_pay DESC ";
-
+//var_dump($s); die;
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 

@@ -4,7 +4,6 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
 
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
 <?php if(isset($articleInfo) && $articleInfo){ ?>
 
  <!-- [ === Select Text to Share Javascript file === ] -->
@@ -19,13 +18,13 @@
      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     <!-- [ === /end of TOOLTIP === ] This is it ! ;-) -->
 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+<!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 
 <script type="text/javascript">
   $(document).ready(function(){
     if(addthis) addthis.init();
   })
-  </script>
+  </script>-->
   <?php }?>
 
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>

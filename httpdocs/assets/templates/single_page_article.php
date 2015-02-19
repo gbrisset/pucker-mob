@@ -26,7 +26,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- TITLE -->
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
 		
-		<!-- SOCIAL DESKTOP 
+		<!-- SOCIAL DESKTOP -->
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
@@ -51,8 +51,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
-	-->
-	<?php include_once($config['include_path'].'socialbuttonsarticles.php'); ?>
+
 		<!-- Article Image -->
 		<div class="row">
 			<!-- SMARTIES -->
@@ -210,6 +209,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<hr>
 				
 		<?php if(!$detect->isMobile()){?>
+		
+			
 			<!-- ADBLADE-->
 			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>

@@ -107,10 +107,42 @@ class GoogleAnalyticsData{
 			$this->con->closeCon();
 
 			return $row;
-
 	}
 	
+	public function removeGoogleAnalyticsMostViewArticles(){
 
+		$remove = "DELETE  FROM google_analytics_most_viewed_articles;";
+		$queryParams = [];
+
+		$pdo = $this->con->openCon();
+				
+		$rem = $pdo->prepare($remove);
+		$wasremoved = $rem->execute($queryParams);
+		return $wasremoved; 
+	}
+	public function saveGoogleAnalyticsMostViewArticles( $data ){
+		if(!empty($data) && $data){
+			foreach($data as $article){
+				$pageviews =  $article['pageviews'];
+				$title= $article['title'];
+				$url= $article['url'];
+				$seo = $article['seo_title'];
+				$insert = " INSERT INTO google_analytics_most_viewed_articles
+							   (`pageviews`, `title`, `url`, `seo_title`) 
+							   VALUES ( $pageviews, '".$title."', '".$url."', '".$seo."') ";
+				$queryParams = [];
+
+				$pdo = $this->con->openCon();
+					
+				$ins = $pdo->prepare($insert);
+
+				$row = $ins->execute($queryParams);
+			}
+			return true; 
+		}else{
+			return false;
+		}
+	}
 	public function saveGoogleAnalyticsInformation( $data, $month, $year ){
 		if(!empty($data) && $data){
 				
@@ -199,7 +231,43 @@ class GoogleAnalyticsData{
 			return $result;
 		}
 		return false;
+	}	
+	public function queryGoogleAnalyticsInformation( $analyticsObj, $startDate, $endDate, $optParams=[] ){
+		$params = array_merge([
+			'filters' => '',
+			'dimensions' => '',
+			'segment' => '',
+			'sort' => '',
+			//'index' => 1,
+			'max-results' => '10000'
+			], $optParams);
+		/*$params = [
+			'dimensions' => 'ga:pagePath,ga:pageTitle',
+			'sort' => 'ga:pageviews',
+			'max-results' => '7'
+		];*/
 
+		
+		try{
+			$analytics = $analyticsObj->data_ga->get($this->viewId, $startDate, $endDate,  $this->metrics, array(
+				'dimensions'=> 'ga:pagePath,ga:pageTitle',
+				'sort' => '-ga:pageviews',
+				'max-results' => '7',
+				'start-index' => 1
+				) );
+		}catch (apiServiceException $e) {
+		    // Handle API service exceptions.
+		    $error = $e->getMessage();
+		  }
+
+		if($analytics){ 
+			$result = $analytics->getRows();
+			
+			//if(isset($result[0]) && $result[0]) $result = $result[0];
+
+			return $result;
+		}
+		return false;
 	}
 
 	public function getPercentageValue($val1, $val2){

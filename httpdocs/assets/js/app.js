@@ -531,42 +531,110 @@ var notfound_search_submit = Foundation.utils.S('#notfound-search-submit');
  	});
  	email_button.click(function() {alert("Email"); });
  	
- 	$.getJSON( "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls="+location.href, function(data) {
- 			console.log("FACEBOOK SHARES");
-			console.log(data);
-			console.log("================");
+ 	console.log('FACEBOOK SHARES');
+ 	$.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls="+location.href,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("ERROR FACEBOOK");
+            console.log(jqXHR)
+        },
+        success: function (msg) {
+        	console.log("SUCCESS FACEBOOK");
+            console.log(msg);
+        }
+    });
+ 	console.log("================");
+ 	
+ 	console.log('LINKEDIN SHARES');
+ 	$.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://www.linkedin.com/countserv/count/share?url="+location.href,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("ERROR LINKEDIN");
+            console.log(jqXHR)
+        },
+        success: function (msg) {
+        	console.log("SUCCESS LINKEDIN");
+            console.log(msg);
+        }
+    });
+ 	console.log("================");
 
-		});
 
- 	$.getJSON("http://cdn.api.twitter.com/1/urls/count.json?url="+location.href, function(data){
- 		console.log('TWITTER SHARES');
- 		console.log(data);
- 		console.log("================");
- 	});
+ 	console.log('PINTEREST SHARES');
+ 	$.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://widgets.pinterest.com/v1/urls/count.json?source=6&url="+location.href,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("ERROR PINTEREST");
+            console.log(jqXHR)
+        },
+        success: function (msg) {
+        	console.log("SUCCESS PINTEREST");
+            console.log(msg);
+        }
+    });
+ 	console.log("================");
 
- 	$.getJSON("http://www.linkedin.com/countserv/count/share?url="+location.href, function(data){
- 		console.log('LINKEDIN SHARES');
- 		console.log(data);
- 		console.log("================");
- 	});
+ 	
+ 	
+ 	console.log('stumbleupon SHARES');
+ 	$.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://www.stumbleupon.com/services/1.01/badge.getinfo?url="+location.href,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("ERROR stumbleupon");
+            console.log(textStatus);
+        },
+        success: function (msg) {
+        	console.log("SUCCESS stumbleupon");
+            console.log(msg);
+        }
+    });
+ 	console.log("================");
 
- 	$.getJSON("http://api.pinterest.com/v1/urls/count.json?callback=pm&url="+location.href, function(data){
- 		console.log('PINTEREST SHARES');
- 		console.log(data);
- 		console.log("================");
- 	});
-
- 	$.getJSON("http://www.stumbleupon.com/services/1.01/badge.getinfo?url="+location.href, function(data){
- 		console.log('stumbleupon SHARES');
- 		console.log(data);
- 		console.log("================");
- 	});
-
- 	$.getJSON("http://feeds.delicious.com/v2/json/urlinfo/data?url="+location.href, function(data){
- 		console.log('DELICIOUS SHARES');
- 		console.log(data);
- 		console.log("================");
- 	});
+ 	console.log('DELICIOUS SHARES');
+ 	$.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://feeds.delicious.com/v2/json/urlinfo/data?url="+location.href,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("ERROR DELICIOUS");
+            console.log(jqXHR)
+        },
+        success: function (msg) {
+        	console.log("SUCCESS DELICIOUS");
+            console.log(msg);
+        }
+    });
+ 	console.log("================");
+ 	
+ 	console.log('TWITTER SHARES');
+ 	$.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://cdn.api.twitter.com/1/urls/count.json?url="+location.href,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("ERROR TWITTER");
+            console.log(jqXHR)
+        },
+        success: function (msg) {
+        	console.log("SUCCESS TWITTER");
+            console.log(msg);
+        }
+    });
+    console.log("================");
 
  	
  	

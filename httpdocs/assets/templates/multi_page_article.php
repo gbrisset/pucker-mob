@@ -284,15 +284,16 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
 				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 			</section>
+			<hr>
+
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
 			
-		
+			<br>
 			<?php if(!$promotedArticle ){?>
 				<div data-str-native-key="53caed05" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			<?php } ?>
-			
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
 
 		<?php } ?>
 

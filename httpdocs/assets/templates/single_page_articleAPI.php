@@ -26,7 +26,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- TITLE -->
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
 		
-		<!-- SOCIAL DESKTOP -->
+		<!-- SOCIAL DESKTOP 
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
@@ -50,8 +50,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
-		</div>
-<?php //include($config['include_path'].'socialbuttonsarticles.php'); ?>
+		</div>-->
+<?php include($config['include_path'].'socialbuttonsarticles.php'); ?>
 		<!-- Article Image -->
 		<div class="row">
 			<!-- SMARTIES -->
@@ -142,9 +142,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- Social Media Icons -->
 		<!-- DESKTOP ONLY -->
 		<?php if(!$detect->isMobile()){
-			//include($config['include_path'].'socialbuttonsarticles.php');
+			include($config['include_path'].'socialbuttonsarticles.php');
 		?>
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+		<!--<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
 					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
@@ -167,19 +167,19 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
 			</div>
-		</div>
+		</div>-->
 
 		<?php }else{
-			//include($config['include_path'].'socialbuttonsmobile.php');
+			include($config['include_path'].'socialbuttonsmobile.php');
 		?>
-			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
+			<!--<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
 				<a class="addthis_button_facebook">
 					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
 				</a> 
 				<a class="addthis_button_twitter">
 					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
 				</a> 
-			</div>
+			</div>-->
 			<!-- Start Below Article -->
 			<div id='__kx_ad_821'></div>
 			<script type="text/javascript" language="javascript">

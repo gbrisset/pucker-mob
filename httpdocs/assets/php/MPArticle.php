@@ -1793,6 +1793,15 @@ public function count_all_videos() {
 	return array_shift($q);
 }
 
+public function getUserList(){
+	$options = array(
+		'queryString' => "SELECT * FROM users WHERE user_type = 3",
+		'queryParams' => array(),
+		'returnRowAsSingleArray' => true,
+		'bypassCache' => true
+	);
+	return $this->performQuery($options);
+}
 public function getUserInfo(){
 	if(!isset($_SESSION['user_id'])) return false;
 	$options = array(

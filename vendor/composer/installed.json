@@ -1,46 +1,41 @@
 [
     {
-        "name": "google/apiclient",
+        "name": "drewm/mailchimp-api",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/google/google-api-php-client.git",
-            "reference": "b16c6e2be3a574cd04f1b5d806bab0747e3671a0"
+            "url": "https://github.com/drewm/mailchimp-api.git",
+            "reference": "b17c0fa6188f4b993ee8bd18460c0872a4944677"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/b16c6e2be3a574cd04f1b5d806bab0747e3671a0",
-            "reference": "b16c6e2be3a574cd04f1b5d806bab0747e3671a0",
+            "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/b17c0fa6188f4b993ee8bd18460c0872a4944677",
+            "reference": "b17c0fa6188f4b993ee8bd18460c0872a4944677",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.2.1"
+            "php": ">=5.3"
         },
-        "require-dev": {
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2015-02-10 11:37:48",
+        "time": "2015-01-05 17:18:13",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1.x-dev"
-            }
-        },
         "installation-source": "source",
         "autoload": {
-            "classmap": [
-                "src/"
-            ]
+            "psr-0": {
+                "Drewm": "src/"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "Apache-2.0"
+            "MIT"
         ],
-        "description": "Client library for Google APIs",
-        "homepage": "http://developers.google.com/api-client-library/php",
-        "keywords": [
-            "google"
-        ]
+        "authors": [
+            {
+                "name": "Drew McLellan",
+                "homepage": "http://allinthehead.com/"
+            }
+        ],
+        "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
+        "homepage": "https://github.com/drewm/mailchimp-api"
     }
 ]

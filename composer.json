@@ -1,5 +1,7 @@
 {
     "require": {
-        "google/apiclient": "dev-master"
+       "google/apiclient": "dev-master",
+      "drewm/mailchimp-api": "dev-master"
+
     }
 }

@@ -26,31 +26,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<h1 id="<?php echo $articleInfoObj['article_id']; ?>" style="margin-bottom: 0.5rem;"><?php echo $articleInfoObj['article_title']; ?></h1>
 
 		<!-- SOCIAL DESKTOP -->
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-				
-				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
-				</a> 
-				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
-				</a> 
-				<a class="addthis_button_pinterest_share">
-					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
-				</a>
-				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
-				</a>
-			
-				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
-
-				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
-				
-				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
-			</div>
-		</div>
-		<?php //include($config['include_path'].'socialbuttonsarticles.php'); ?>
+		<?php include($config['include_path'].'socialbuttonsarticles.php'); ?>
 		<div class="padding-bottom" style=""></div>
 		
 		<!-- Article SubTitle ( SLIDE ) 
@@ -213,48 +189,11 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				
 			<!-- Social Media Icons -->
 				
-			<!-- Social Media Icons -->
-		<!-- DESKTOP ONLY -->
-		<?php if(!$detect->isMobile()){
-			//include($config['include_path'].'socialbuttonsarticles.php');
-		?>
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-				
-				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
-				</a> 
-				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
-				</a> 
-				<a class="addthis_button_pinterest_share">
-					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
-				</a>
-				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
-				</a>
-			
-				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
-
-				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">
-				
-				<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
-			</div>
-		</div>
-
-		<?php }else{
-			//include($config['include_path'].'socialbuttonsmobile.php');
-		?>
-			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
-				<a class="addthis_button_facebook">
-					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
-				</a> 
-				<a class="addthis_button_twitter">
-					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
-				</a> 
-			</div><?php }
-		?>
+			<?php if(!$detect->isMobile()){
+				include($config['include_path'].'socialbuttonsarticles.php');
+			}else{
+				include($config['include_path'].'socialbuttonsmobile.php');
+			}?>
 
 			<?php if(!$detect->isMobile()){?>
 			<div id='__kx_ad_821'></div>

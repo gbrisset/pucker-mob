@@ -5,6 +5,7 @@ class MPAdminUserController extends MPArticleAdminController{
 	protected $con;
 	protected $mpArticle;
 	public $helpers;
+	private $Mailchimp;
 	
 	public $data;
 
@@ -18,7 +19,7 @@ class MPAdminUserController extends MPArticleAdminController{
 		$this->data = false;
 
 		$this->helpers = new AdminControllerHelpers(array('config' => $this->config));
-		
+		$this->MailChimp = new  Mailchimp( MAIL_CHIMP_API );
 		$this->salt = 'w?LO4?}1l!EZLFBri,5KGek>41t<q|wH_1D`DWA<f~K-]GIo$.2yR:Y9a&k|4-RQ';
 	}
 
@@ -777,6 +778,10 @@ End password reset methods
 		));
 
 		if($result){
+		
+			//ADD USER TO MAILCHIMP LIST
+			$this->registerInMailChimpList($post);
+
 			//Add Contributor Info
 			$contributor_name = $post['user_first_name-s'];//.' '.$post['user_last_name-s'];
 			$email = $post['user_first_name-s'].' '.$post['user_email-e'];
@@ -840,7 +845,7 @@ End password reset methods
 		$fb_user_verified = $post['user']['verified'];
 		$fb_user_password = $fb_user_id;
 		$fb_user_link = $post['user']['link'];
-		$tos_agreed = "0";
+		$tos_agreed = "1";
 		if($fb_user_verified) $tos_agreed = "1";
 
 		$parts = explode("@", $fb_user_email);
@@ -907,6 +912,30 @@ End password reset methods
 
 	}
 
+	public function registerInMailChimpList($post){
+		if($post){
+			$email = $post['user_email-e'];
+			$fullname = $post['user_first_name-s'];
+			$nameArr = explode(" ", $fullname);
+			$name = $lastname = '';
+	
+			if(count($nameArr) > 0 ){
+				$name = $nameArr[0];
+				$lastname = $nameArr[1];
+			}
+
+			$result = $this->MailChimp->call('lists/subscribe', array(
+        		'id'                => MAIL_CHIMP_SUBS_LIST,
+                'email'             => array('email'=> $email),
+                'merge_vars'        => array('FNAME'=>$name, 'LNAME'=>$lastname),
+                'double_optin'      => false,
+                'update_existing'   => true,
+                'replace_interests' => false,
+                'send_welcome'      => false,
+            ));
+
+		}else return array_merge($this->helpers->returnStatus(500), array('hasError' => true));
+	}
 	public function send_email($opts){
 		$options = array_merge(array(
 			'email' => '',
@@ -956,9 +985,7 @@ End password reset methods
 
 		//	return 'Message has been sent';
 		return true;
-
 	}
-
 
 	public function sendEmail($opts){
 		$options = array_merge(array(
@@ -979,7 +1006,6 @@ End password reset methods
 		if(!$mailSent = mail($options['email'], $options['subject'], $body, $headers)) return array_merge($this->helpers->returnStatus(500), array('hasError' => true));
 		return true;
 	}
-
 
 	public function doUserActivation($hash){
 

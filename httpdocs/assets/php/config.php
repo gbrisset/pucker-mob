@@ -191,7 +191,7 @@ if($local)
 		require_once dirname(__FILE__).'/MPArticleAdminController.php';
 		require_once dirname(__FILE__).'/class.Dashboard.php';
 		require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
-		require_once $config['assets_path'].'/class.recaptchalib.php';
+		require_once dirname(__FILE__).'/class.recaptchalib.php';
 
 	}
 
@@ -218,7 +218,8 @@ if(isset($admin) && $admin){
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
 //recaptcha public key
-$publickey = "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b";
+define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");
+define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 
 /*
 Begin Dependancies/Soft Links:

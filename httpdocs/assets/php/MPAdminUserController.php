@@ -686,6 +686,23 @@ End password reset methods
 		//	Based on the post data, formulate the hashed password.
 		$salt = substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22);	
 
+		//RECAPTCHA GOOGLE VALIDATION
+		// The response from reCAPTCHA
+		$resp = null;
+		$error = null;
+		$reCaptcha = new ReCaptcha( RECAPTCHASECRETKEY );
+		
+		// Was there a reCAPTCHA response?
+		if ($post["g-recaptcha-response"] && !empty($post["g-recaptcha-response"])) {
+		    $resp = $reCaptcha->verifyResponse( $_SERVER["REMOTE_ADDR"], $post["g-recaptcha-response"]);
+			
+			if ($resp != null && !$resp->success) return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
+ 			
+		}else return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
+
+		$recaptcha = $post['g-recaptcha-response'];
+		unset($post['g-recaptcha-response']);
+
 		//	Make sure the password match
 		if(empty($post['user_password-s'])){
 			return array('hasError' => true, 'message' => "Oops!  You must fill out password fields.");
@@ -706,11 +723,11 @@ End password reset methods
 		$post['user_email-e'] = $post['user_email_1-e'];
 		unset($post['user_email_1-e']);
 
-
 		$pairs = $this->helpers->compilePairs($post, true);
 		$params = $this->helpers->compileParams($post);
+		//var_dump($post); die;
 		$unrequired = array('user_last_name');
-		
+
 		//USER NAME
 		$username = $this->helpers->generateName(array('input' => $post['user_first_name-s']));
 		$username = join(explode(' ', strtolower(preg_replace('/[^A-Za-z0-9- ]/', '', $username))), '-');

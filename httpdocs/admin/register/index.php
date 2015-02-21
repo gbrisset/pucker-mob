@@ -111,7 +111,10 @@ $(document).ready(function() {
 							<input type="password" id="user_password-s" name="user_password-s" value="<?php if(isset($_POST['user_password-s'])) echo $_POST['user_password-s']; ?>" placeholder="password" required <?php if(isset($registrationStatus) && isset($registrationStatus['field']) && $registrationStatus['field'] == 'password') echo 'autofocus'; ?> />
 				   			<!--<input type="text" id="user_name-s" name="user_name-s" value="<?php if(isset($_POST['user_name-s'])) echo $_POST['user_name-s']; ?>" placeholder="username" required <?php if(isset($registrationStatus) && isset($registrationStatus['field']) && $registrationStatus['field'] == 'user_name') echo 'autofocus'; ?> />-->
 							<input type="text" id="user_first_name-s" name="user_first_name-s" value="<?php if(isset($_POST['user_first_name-s'])) echo $_POST['user_first_name-s']; ?>" placeholder="your name" required <?php if(isset($registrationStatus) && isset($registrationStatus['field']) && $registrationStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
-
+							
+							<div class="g-recaptcha" style="margin-left:-7px; " data-sitekey="<?php echo RECAPTCHAPUBLICKEY; ?>"></div>
+					        <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en"></script>
+				   			
 				   			<p class="registration-akn">By registering, you acknowledge that you have read and agree with our Terms of Service.</p>
 					   		<div class="">
 							    <div class="">
@@ -121,7 +124,6 @@ $(document).ready(function() {
 								<div class="">
 									<span class="or">or</span>
 								</div>
-
 								<div>
 									<div class="fb-login-button">
 										<img id="fb-login" src = "<?php echo $config['this_url'].'assets/img/fb_log_button_img.jpg'; ?>" alt="" />

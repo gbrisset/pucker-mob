@@ -1430,7 +1430,39 @@ class MPArticleAdmin{
 	}
 	/* End Article Preview Update Functions */
 	
+	/*BEGIN MANAGING IMAGES ON LIBRARY*/
+	public function getImagesCategories(){
+		$pdo = $this->con->openCon();
+		$q = $pdo->query("SELECT * FROM image_library INNER JOIN (category_library) ON (category_library.seo_name = image_library.category) GROUP BY category ");
+		if($q && $q->rowCount()){
+			$q->setFetchMode(PDO::FETCH_ASSOC);
+			while($row = $q->fetch()){
+				$r[] = $row;
+			}
+			$q->closeCursor();
+		}else $r = serialize($pdo->errorInfo());
+		$this->con->closeCon();
+		return $r;
+	}
 
+
+	public function getImagesPerCategory($data){
+
+		$pdo = $this->con->openCon();
+		$q = $pdo->query("SELECT * FROM image_library WHERE category = '".$data['category']."' ");
+		if($q && $q->rowCount()){
+			$q->setFetchMode(PDO::FETCH_ASSOC);
+			while($row = $q->fetch()){
+				$r[] = $row;
+			}
+			$q->closeCursor();
+		}else $r = serialize($pdo->errorInfo());
+		$this->con->closeCon();
+	
+		return $r;
+	}
+	/*END MANAGING IMAGES ON LIBRARY*/
+	
 	/*Begin Video Add Function*/
 	public function addVideoMediaInfo($post){
 		$params = $this->compileParams($post);

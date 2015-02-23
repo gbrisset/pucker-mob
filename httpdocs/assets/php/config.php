@@ -16,18 +16,21 @@ if($local)
 	define("MAIL_PORT", 25);
 	define("IMAGE_UPLOAD_DIR", dirname(dirname(dirname(dirname(__FILE__))))."/subdomains/images/httpdocs/articlesites/puckermob/");
 
-	/*MAIL CHIMP SETTINGS*/
+		/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
-	define("MAIL_CHIMP_SUBS_LIST", "0578baf5ad");
-
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
+	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0");	
+	//error_reporting(E_ALL);
+	//ini_set('display_errors', '1');
 
 	$localIp = 'localhost';
 	$directory = 'projects/pucker-mob/';
 	
 	$config = array(
+		//'ispod' => 0,
+		//'networkid' => 0,
+		//'catid' => 0,
 		'articlepageid' => 1,
+		//'legacypodurl' => 1,
 		
 		'host' => 'localhost',
 		'user' => 'root',
@@ -54,13 +57,22 @@ if($local)
 		
 		'this_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs/',
 		'this_admin_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs/admin/',
+	//	'syndication_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-syndication/',
 		'shared_url' => 'http://'.$localIp.':8888/'.$directory.'/',
-		'image_url' => 'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',				
+		'image_url' => 'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',
+		//'http://images.puckermob.com/',//
+		//'main_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-html/',
+		//'category_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-categories/',
+		//'pod_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-pods/',
+		//'mininetwork_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-mininetworks/'		
+				
 	);
 
-	$config['memcacheprefix'] = 'puckermob_'.$config['articlepageid'];
-	$config['cp_url'] = 'http://'.$localIp.'/'.$directory.'/subdomains/cp/httpdocs/';
 	
+	$config['memcacheprefix'] = 'puckermob_'.$config['articlepageid'];
+
+
+	$config['cp_url'] = 'http://'.$localIp.'/'.$directory.'/subdomains/cp/httpdocs/';
 	require_once $config['assets_path'].'/MPShared.php';
 	require_once $config['assets_path'].'/class.Connector.php';
 	require_once $config['assets_path'].'/class.DatabaseObject.php';
@@ -75,6 +87,7 @@ if($local)
 	require_once $config['assets_path'].'/MPUriHelper.php';
 
 	require_once $config['assets_path'].'/class.pagination.php';
+	//require_once dirname($config['shared_include']).'/php/class.Search.php';
 	require_once $config['assets_path'].'/class.askTheChef.php';
 
 	require_once $config['assets_path'].'/class.PageList.php';	
@@ -85,11 +98,16 @@ if($local)
 	require_once $config['assets_path'].'/class.phpmailer.php';	
 	require_once $config['assets_path'].'/class.pop3.php';	
 	require_once $config['assets_path'].'/class.smtp.php';	
+
+
+
 	require_once $config['assets_path'].'/mobile-detect.php';
 
 	/*MAIL CHIMP CLASSES*/
 	require_once $config['assets_path'].'/MailChimp.php';
 	require_once $config['assets_path'].'/Mailchimp/Lists.php';
+
+	//if(isset($admin) && $admin) require_once $config['assets_path'].'/MPArticleAdmin.php';
 
 	if(isset($admin) && $admin){
 		require_once $config['assets_path'].'/MPArticleAdmin.php';
@@ -110,9 +128,9 @@ if($local)
 	define("DB_SERVER", "192.168.0.1");
 	define("DB_USER", "seq_db_user");
 	define("DB_PASS", "#!14sd2dbFgMr#");
-	define("DB_NAME", "simpledish");	
+	define("DB_NAME", "simpledish");		
 
-	/*MAIL CHIMP SETTINGS*/
+		/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
 	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0");	
 
@@ -147,6 +165,11 @@ if($local)
 		'this_url' => 'http://www.puckermob.com/',
 		'this_admin_url' => 'http://www.puckermob.com/admin/',
 		'image_url' => 'http://images.puckermob.com/',
+		
+		//'main_url' => 'http://www.mypodstudios.com/',
+		////'category_url' => '',
+		//'pod_url' => '',
+		//'mininetwork_url' => '',
 		
 	);
 	$config['memcacheprefix'] = '_'.$config['articlepageid'];
@@ -186,12 +209,13 @@ if($local)
 	require_once dirname(__FILE__).'/MailChimp.php';
 	require_once dirname(__FILE__).'/Mailchimp/Lists.php';
 
+
 	if(isset($admin) && $admin){
 		require_once dirname(__FILE__).'/MPArticleAdmin.php';
 		require_once dirname(__FILE__).'/MPArticleAdminController.php';
 		require_once dirname(__FILE__).'/class.Dashboard.php';
 		require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
-		require_once dirname(__FILE__).'/class.recaptchalib.php';
+		require_once $config['assets_path'].'/class.recaptchalib.php';
 
 	}
 
@@ -205,8 +229,8 @@ $config['catid'] = $mpArticle->data['cat_id'];
 $mpShared = new MPShared($config);
 $mpHelpers = new MPHelpers();
 $uriHelper = new MPUriHelper( $config['this_url'] );
+//$mpVideoShows = new MPVideoShows($config);
 $MailChimp = new Mailchimp( MAIL_CHIMP_API );
-//$MailChimpLists = new Mailchimp_Lists( $MailChimp );
 
 if(isset($admin) && $admin){
 	$adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
@@ -217,6 +241,8 @@ if(isset($admin) && $admin){
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
+
+
 //recaptcha public key
 define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");
 define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");

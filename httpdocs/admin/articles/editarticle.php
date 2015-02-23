@@ -144,7 +144,7 @@
 					<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';	?>
 					<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
 						<div class="dz-details">	
-							<img class="data-dz-thumbnail" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
+							<img class="data-dz-thumbnail" style="width:100%;" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
 						</div>
 					</div>
 					<?php }  ?>
@@ -153,8 +153,8 @@
 				<form id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
+					<input type="hidden" id="creation_date" name="creation_date" value="<?php echo $article['creation_date']; ?>" />
 
-				
 					<!-- ARTICLE TITLE -->
 					<div class="row">
 					    <div class="columns">
@@ -325,19 +325,24 @@
 
 										$option = '<option value="'.$contributorsInfo['contributor_id'].'"';
 										if( $article['contributor_id']  && $contributorsInfo['contributor_id'] == $article['contributor_id'] ) $option .= ' selected="selected"';
-										else if($article['contributor']['contributor_id'] && $contributorsInfo['contributor_id'] == $article['contributor']['contributor_id'])  $option .= ' selected="selected"';
+										else if($article['contributor']['contributor_id'] && $contributorsInfo['contributor_id'] == $article['contributor']['contributor_id']){  $contributor_name = $contributorsInfo['contributor_name']; $option .= ' selected="selected"'; }
 										$option .= '>'.$contributorsInfo['contributor_name'].'</option>';
 										echo $option;
 									}
 								?>
-							</select></div>
+							</select>
+						</div>
+						<input type="hidden" value="<?php echo $contributor_name; ?>" id="contributor-name" />
+
 						</div></div>
 
 					<?php }
-					}else{ ?>
+					}else{ 	?>
+					<input type="hidden" value="<?php echo $contributorInfo['contributor_name']; ?>" id="contributor-name" />
 					<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo['contributor_id']?>" />
 					<?php } ?>
 
+					
 						
 					<!-- Featured Article -->
 					<?php if($admin_user){ 
@@ -431,19 +436,11 @@
 			</div>
 		</div>
 	</div>
-	<?php include_once($config['include_path_admin'].'footer.php');?>
-	<div id='lightbox-cont'>
-		<div class="overlay"></div>
-
-		<div id="lightbox-content" class="article-lightbox">
-			<button type='button' id="preview-close" class="close">X</button>
-
-			<div id="lightbox-preview-cont">
-				<?php //require_once($config['this_admin_url'].'assets/templates/article_template.php');?>
-			</div>
-		</div>
-	</div>
-
+	<!--FOOTER-->
+	<?php include_once($config['include_path_admin'].'footer.php'); ?>
+	<!-- ARTICLE PREV TEMPLATE -->
+	<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>
+	<!-- BOTTOMSCRIPTS -->
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

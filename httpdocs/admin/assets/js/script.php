@@ -1514,14 +1514,78 @@ if($('#article_categories')){
 
 		});	
 	}
+$('.step-2').hide();
+$('.img_categories').click(function(e){
+	var elm = $(this),
+	category = elm.attr('data-info');
+	console.log(category);
+	$.ajax({
+		type: "POST",
+		url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+		data: { category: category, a_i: $('#a_i').val(), task:'get_category_images' }
+	}).done(function(data) {
+		$('.step-1').hide();
+		$('.step-2').show();
+		
+		var images = $.parseJSON(data),
+		html = '',
+		div = $('<div />'),
+		container = $('.article-imgs-container');
+		
+		for(var i = 0; i < images.length; i++){
+			var img_id = 'art-img-'+images[i].id,
+			dataInfo = images[i].img_name,
+			src = "http://www.puckermob.com/admin/assets/img/articles/"+dataInfo;
+			html = '<div class="small-4 div-images-holder"><img id="'+img_id+'" data-info="'+dataInfo+'" class="article-img-preset" src="'+src+'" alt="'+dataInfo+'"></div>';
+			$(container).append(html);
+		}
+		
+		$(div).appendTo(container);
+	});
+});	
+
 
 //CLICK TO SEE HOW SHARES ARE CALCULATED
-
 if($('#dd-shares-calc')){
 	$('#dd-shares-calc').on('click', function(e){
 		e.stopPropagation();
 		$('#dd-shares-content').slideToggle('slow');
 
+	});
+}
+
+/*PREVIEW BUTTON*/
+
+if($('#preview')){
+	$('#preview').click(function(e){
+		e.preventDefault();
+		var preview = $(this),
+		prev_box = $('#preview-article'),
+		title = $('#article_title-s').val(),
+		body = $('#article_body-nf').text(),
+		contributor = $('#contributor-name').val(),
+		category = $('#article_categories option:selected').text(),
+		date =  new Date($('#creation_date').val()),
+		template = $(prev_box).html(),
+		id = $('#a_i').val(),
+		day = date.getDate(),
+		month = date.getMonth(),
+		year = date.getFullYear();
+
+		$('.close').click(function(e){
+			$('body').removeClass('show-modal-box-prev-art');
+		});
+
+		$('#article-title').text(title);
+		$('#article-content').html(body);
+		$('#article-category').text(category).addClass(category);
+		
+		$('#article-author').text(contributor);
+		
+	  $('#article-date').text(month+'-'+day+'-'+year);
+		$('#article_img').attr('src', 'http://images.puckermob.com/articlesites/puckermob/large/'+id+'_tall.jpg');
+		$('body').addClass('show-modal-box-prev-art');
+	
 	});
 }
 

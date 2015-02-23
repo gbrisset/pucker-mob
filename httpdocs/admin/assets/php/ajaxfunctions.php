@@ -21,4 +21,8 @@
 	if($_POST['task'] == 'update_w9_sent'){
 		echo json_encode($adminController->user->updateUserBillingW9($_POST));
 	}
+
+	if($_POST['task'] == 'get_category_images'){
+		echo json_encode($mpArticleAdmin->getImagesPerCategory($_POST));
+	}
 ?>

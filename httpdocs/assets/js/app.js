@@ -119,6 +119,7 @@ console.log(page);
 			inarticleadblade: '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>',
 			inarticlegoogle:'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 			inarticlemopub:'<script type="text/javascript">mopub_ad_unit = "97dd84c12ded49899e4c7636a63773ac"; mopub_ad_width = 300; mopub_ad_height = 250; mopub_keywords = "custom keywords";<\/script><script src="http://ads.mopub.com/js/client/mopub.js"><\/script>',
+			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',			
 		},
 		category: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273103/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -133,7 +134,7 @@ console.log(page);
 			inarticleadblade: '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>',
 			inarticlegoogle:'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 			inarticlemopub:'<script type="text/javascript">mopub_ad_unit = "97dd84c12ded49899e4c7636a63773ac"; mopub_ad_width = 300; mopub_ad_height = 250; mopub_keywords = "custom keywords";<\/script><script src="http://ads.mopub.com/js/client/mopub.js"><\/script>',
-
+			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',	
 		},
 		distroscale: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273456/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -150,7 +151,7 @@ console.log(page);
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));
 		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
 
-		totalHeight = 3938;
+		totalHeight = 4800;//3938;
 
 		//if( page === 'home' || page === 'category' || page === 'distroscale'){
 			//totalHeight+= 300;
@@ -171,7 +172,7 @@ console.log(page);
 		if(!$('body').hasClass('mobile')) {
 
 
-			totalHeight = 3938;
+			totalHeight = 4800;//3938;
 
 			//if( page === 'home' || page === 'category' || page === 'distroscale'){
 				//totalHeight+= 300;
@@ -191,7 +192,7 @@ console.log(page);
 		//main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2 /*+ (asideHeight.margin * 7) - 8*/));
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2));
 		
-		totalHeight = 3938;
+		totalHeight = 4800;//3938;
 
 		//if( page === 'home' || page === 'category' || page === 'distroscale'){
 			//totalHeight+= 300;
@@ -281,10 +282,10 @@ console.log(page);
 		// Single & Multi Article Pages
 	if( !smarties ){
 		console.log(adPage);
-		if(adPage == 'article' || adPage == 'articleslide'){
+		//if(adPage == 'article' || adPage == 'articleslide'){
 			//loadAd(select.ad.btf1, mobilead[adPage].btf1);
 			//loadAd(select.ad.btf2, mobilead[adPage].btf2);
-		}		
+		//}		
 
 		//Load and Insert a middle article in the article body
 		var article_id = Foundation.utils.S('#article_id').val();
@@ -317,7 +318,8 @@ console.log(page);
 				if(article_id != 4314 && article_id != 4341) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'li');
 				
 				//ADBLADE
-				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticleadblade, 'li');
+				//inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticleadblade, 'li');
+				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticlenativo, 'li');
 			}else{
 				var ads_insertions = Math.round(p_length / 3) ;
 				var first_ad = 1,
@@ -334,7 +336,8 @@ console.log(page);
 					if(p_length >= 5) inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, 'p');	
 				}
 				//ADBLADE
-				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticleadblade, 'p');	
+				//if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticleadblade, 'p');	
+				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticlenativo, 'p');	
 			}
 		}
 
@@ -755,6 +758,7 @@ function isOnScreen( element ) {
 			//$(".shares_counter").text(kFormatter(shares));
 		} 
 	);
+
 
 //READ MORE 
 /*if($('body').hasClass('mobile')) {

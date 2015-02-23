@@ -3,7 +3,8 @@
 .modalDialog,
 .modalDialogFindOut, 
 .modalDialogLib, 
-.modalDialogDeleteAccount {
+.modalDialogDeleteAccount,
+.modalDialogpPreviewArticle {
 	position: fixed;
 	font-family: Arial, Helvetica, sans-serif;
 	top: 0;
@@ -19,20 +20,23 @@
 	pointer-events: none;
 	padding:  1rem;
 }
+.modalDialogpPreviewArticle {
+	overflow: scroll;
+}
 
 .show-modal-box .modalDialog, 
 .show-modal-box-find-out .modalDialogFindOut,
 .show-modal-box-lib .modalDialogLib,
-.show-modal-delete-box .modalDialogDeleteAccount {
+.show-modal-delete-box .modalDialogDeleteAccount,
+.show-modal-box-prev-art .modalDialogpPreviewArticle {
 	opacity:1;
 	pointer-events: auto;
 }
 
-
 .modalDialog > div, 
 .modalDialogLib > div,
 .modalDialogFindOut > div,
-.modalDialogDeleteAccount > div {
+.modalDialogDeleteAccount > div{
 	position: relative;
 	margin: 20% auto;
 	width: 95%;
@@ -47,6 +51,11 @@
 	}
 }
 
+.modalDialogpPreviewArticle > div{
+	position: relative;
+	margin: 20% auto;
+	width: 95%;
+}
 .close {
 	background: none;
 	color: #FFFFFF;
@@ -78,7 +87,8 @@
 	.modalDialog > div, 
 	.modalDialogLib > div,
 	.modalDialogFindOut > div,
-	.modalDialogDeleteAccount > div { width: 35%; max-width: 50rem; margin: 6% auto; }
+	.modalDialogDeleteAccount > div,
+	.modalDialogpPreviewArticle > div { width: 35%; max-width: 50rem; margin: 6% auto; }
 }
 
 @media #{$medium-up} { 

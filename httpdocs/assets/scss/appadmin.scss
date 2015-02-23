@@ -130,6 +130,7 @@ $social-hover-darken-percent: -25%;
 }
 
 .inline{display:inline;}
+.inline-block{display: inline-block;}
 
 
 //Floats & Clears
@@ -884,6 +885,35 @@ form#user-account-delete-form {
 	.buttons-wrapper{ text-align:center; }
 	.no-delete{margin-right:0.8rem;}
 }
+
+.half-padding-right-on-lg {
+	padding-right: 0.46875rem;
+}
+.padding-top {
+padding-top: 0.46875rem !important;
+}
+.no-vertical-padding{padding-bottom: 0 !important; padding-top: 0 !important;}
+
+/*ARTICLE PREVIEW CONTENT*/
+#preview-article{
+	.close{z-index:999;}
+	#article-summary{background:#fff;}
+	#popup-content div{-web-kit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;}
+}
+
+/*CATEGORY LIBRARY*/
+.step-2{ display:none;}
+.lib_cat_img{
+	padding: 0.5rem !important;
+	img{ border-radius:0 !important; -moz-border-radius:0 !important; -webkit-border-radius:0 !important; box-shadow:none !important; -webkit-box-shadow:none !important; -moz-box-shadow:none !important; }
+}
+.lib_cat_desc{
+	h1{ text-transform: uppercase;}
+}
+.img_categories{ border:1px solid #eee; margin:0.5rem 0;  border-radius:0 !important; -moz-border-radius:0 !important; -webkit-border-radius:0 !important; cursor: pointer;}
+.more-coming{ text-align: center; margin: 3rem 0 2rem 0; }
+.more-coming h1{text-transform: uppercase;}
+.dz-details img{ width: 100%;}
 
 @import "admin/browser_specifics_styling";
 

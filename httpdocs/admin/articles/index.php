@@ -20,11 +20,22 @@
 	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 	
 // 2. records per page ($per_page)
-	$per_page = 15;
-	$limit=15;
+	$per_page = 20;
+	$limit=20;
 	$post_date = 'all';
 
 	$articleStatus = '1, 2, 3';
+
+	$artType = 'all';
+	$allCurrent = 'current';
+	$writersCurrent = $bloggersCurrent = '';
+	if($_GET['artype']){
+		$allCurrent = '';
+		$artType = $_GET['artype'];
+		if($arType == 'bloggers') $bloggersCurrent = 'current';
+		else $writersCurrent = 'current';
+	}
+
 
 	$userArticlesFilter = $userData['user_email'];
 	$order = '';
@@ -46,12 +57,12 @@
 	}
 // 3. total record count ($total_count)	
 	// $total_count = $mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter);
-	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter));
+	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter, $artType));
 	
 	$pagination = new Pagination($page, $per_page, $total_count);
 	
 	$offset = $pagination->offset();
-	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset);
+	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
 	
 	$admin_user = false;
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
@@ -99,6 +110,17 @@
 					      </label>
 					    </div>
 				</section>-->
+				<?php if($admin_user){?>
+					<section class="from-diff-users-filter ">
+					    <div class="columns">
+					     <label>Show Articles From:
+					     	<a class="<?php echo $allCurrent; ?>" href="<?php echo $config['this_admin_url'].'articles/'; ?>">All</a> | 
+						 	<a class="<?php echo $writersCurrent; ?>" href="<?php echo $config['this_admin_url'].'articles/?artype=writers'; ?>">Writers</a> |
+						 	<a class="<?php echo $bloggersCurrent; ?>" href="<?php echo $config['this_admin_url'].'articles/?artype=bloggers'; ?>">Bloggers</a>
+					     </label>
+					    </div>
+				</section>
+				<?php }?>
 
 				<section id="articles-list" class="margin-top">
 					<!--<section class="section-bar left  border-bottom mobile-12 small-12">

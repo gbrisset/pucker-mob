@@ -1585,7 +1585,7 @@ protected function performQuery($opts){
 }
 
 
-public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesFilter) {
+public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesFilter, $articleType = 'all') {
 	$status_sql = " WHERE article_status IN (1, 2, 3) ";
 
 	$s = "SELECT count( DISTINCT a.article_id) as simpledish_article_count 
@@ -1597,7 +1597,12 @@ public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesF
 		AND article_contributors.contributor_id = article_contributor_articles.contributor_id ";
 	$s .= $status_sql;		
 	if ($userArticlesFilter != 'all'){
-		$s .=	"AND article_contributors.contributor_email_address =  '".$userArticlesFilter."'' ";
+		$s .=	" AND article_contributors.contributor_email_address =  '".$userArticlesFilter."'' ";
+	}
+
+	if ($articleType != 'all'){
+		if($articleType == 'bloggers') 	$s .=	" AND a_c.cat_id =  9 ";
+		if($articleType == 'writers' ) 	$s .=	" AND a_c.cat_id !=  9 ";
 	}
 
 	$queryParams = [
@@ -1609,11 +1614,7 @@ public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesF
 	}
 }
 
-public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset) {
-		// $category_arry = explode(' ',trim($assoc_cat));
-		// $first_category = $category_arry[0]; // will print Test			
-		// $SQL_like_category = '%'.$first_category.'%';			
-
+public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $articleType = 'all' ) {
 	switch ($order) {
 		case 'az':
 		$order_sql = " ORDER BY a.article_title ASC ";
@@ -1633,7 +1634,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 		$order_sql = " ORDER BY a.article_status = 3 DESC, a.article_id ASC ";
 		break;
 	}
-
+var_dump($articleType);
 	$status_sql = " WHERE article_status IN (1, 2, 3) ";
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
@@ -1651,6 +1652,12 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	if ($userArticlesFilter != 'all'){
 		$s .=	"AND article_contributors.contributor_email_address = :userArticlesFilter ";
 	}
+
+	if ($articleType != 'all'){
+		if($articleType == 'bloggers') 	$s .=	" AND a_c.cat_id = 9 ";
+		if($articleType == 'writers' ) 	$s .=	" AND a_c.cat_id != 9 ";
+	}
+
 	$s .= " GROUP BY a.article_id ";
 	$s .= $order_sql;
 	$s .= 	"LIMIT {$limit} 

@@ -373,6 +373,9 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 .article-delete-form{ margin:0;}
 .fa-times{ color: #FF0000; font-size: large;}
 .from-other-sites-filter{ padding-top:2rem; padding-bottom: 1rem;} 
+.from-diff-users-filter{ padding-top:2rem; padding-bottom: 1rem;} 
+.from-diff-users-filter a{ outline:none; display:inline-block; color: #222; text-transform: uppercase; }
+.from-diff-users-filter a.current{ color: #00baef; }
 
 
 //PAGES

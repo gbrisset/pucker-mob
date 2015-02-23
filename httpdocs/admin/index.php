@@ -241,7 +241,7 @@
 				<!-- TOP MOST SHARES MOBLOGS -->
 				<div id="top-shares" class="top-shares mobile-12 small-12 left">
 					<?php if(isset($top_shares_articles) && $top_shares_articles){?>
-						<header>Top 10 MOST Shared Moblogs
+						<header>Top 10 MOST Shared Articles
 							<div class="sort-by-month right"><a href="<?php echo $config['this_admin_url'].'?month='.$current_month; ?>" class="<?php echo $sort_month; ?>">This month</a><a href="#">  | </a> <a href="<?php echo $config['this_admin_url'].'?month=all'; ?>" class="<?php echo $sort_ever; ?>">ever</a> </div>
 						</header>
 						

@@ -67,11 +67,11 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 					<div class="dz-message" data-dz-message>
 						<div id="img-container">
-					   		<label>Drag image here</label>
+					   		<label class="padding-top">Drag image here</label>
 					   		<label>or</label>
 					   		<input type="button" name="upload" id="upload" value="Upload Files" />
-					   		<input type="button" name="search-lib" id="search-lib" value="Search Library" />
-					   		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
+					   		<input type="button" name="search-lib" id="search-lib" value="Photo Library" style="color: #fff; background-color: #000;"/>
+					   		<label class="mini-fonts padding-bottom">Recommended size: 784x431 pixels</label>
 					   	</div>
 					</div>
 				</form>

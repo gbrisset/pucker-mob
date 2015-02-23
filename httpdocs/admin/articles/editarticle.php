@@ -130,11 +130,11 @@
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 					<div class="dz-message" data-dz-message>
 						<div id="img-container">
-					   		<label>Drag image here</label>
+					   		<label class="padding-top">Drag image here</label>
 					   		<label>or</label>
 					   		<input type="button" name="upload" id="upload" value="Upload Files" />
-					   		<input type="button" name="search-lib" id="search-lib" value="Search Library" />
-					   		<label class="mini-fonts">Recommended size: 784x431 pixels</label>
+					   		<input type="button" name="search-lib" id="search-lib" value="Photo Library" style="color: #fff; background-color: #000;"/>
+					   		<label class="mini-fonts padding-bottom">Recommended size: 784x431 pixels</label>
 					   	</div>
 					</div>
 				</form>

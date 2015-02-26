@@ -75,4 +75,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 	<div id="follow-the-author-bg" class="columns small-2 no-padding margin-top margin-bottom">
 		<a class="follow-author" id="follow-author" href="">Follow this author</a>
 	</div>
+	<div class="small-12">
+		<p id="author-action-message"></p>
+	</div>
 </section>

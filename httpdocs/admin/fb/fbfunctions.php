@@ -1,6 +1,6 @@
 <?php
   //Header("content-type: application/x-javascript");
-  require_once('../../assets/php/config.php');
+  //require_once('../../assets/php/config.php');
 ?>
 <script>
 

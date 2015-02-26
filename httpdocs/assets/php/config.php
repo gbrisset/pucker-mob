@@ -108,12 +108,13 @@ if($local)
 	require_once $config['assets_path'].'/Mailchimp/Lists.php';
 
 	//if(isset($admin) && $admin) require_once $config['assets_path'].'/MPArticleAdmin.php';
-
+	require_once $config['assets_path'].'/MPArticleAdmin.php';
+	require_once $config['assets_path'].'/MPArticleAdminController.php';
+	require_once $config['assets_path'].'/class.recaptchalib.php';
 	if(isset($admin) && $admin){
-		require_once $config['assets_path'].'/MPArticleAdmin.php';
+		
 		require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
-		require_once $config['assets_path'].'/MPArticleAdminController.php';
-		require_once $config['assets_path'].'/class.recaptchalib.php';
+		
 	}
 	
 }else{
@@ -231,7 +232,8 @@ $mpHelpers = new MPHelpers();
 $uriHelper = new MPUriHelper( $config['this_url'] );
 //$mpVideoShows = new MPVideoShows($config);
 $MailChimp = new Mailchimp( MAIL_CHIMP_API );
-
+$adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
+$mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, null, $adminController);
 if(isset($admin) && $admin){
 	$adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
 	$mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, null, $adminController);

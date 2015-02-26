@@ -825,5 +825,30 @@ $('#login-link').click(function(e){
 	$('#login-box').show();
 });
 
+
+$('.ajax-form-submit').click(function(e){
+	var dataString = '';	
+	var form = $(this).parent('form'),
+	task = $(form).attr('data-info-task');
+	//if($(form).attr('data-info-task') == 'login-reader') {
+	//	dataString['user_login_input'] = $('#email').val();
+	//	dataString['password'] = $('#password').val();
+	//}
+
+	if(task === 'register-reader'){
+		$(form).dynamicRegisterContent();
+	}else if(task === 'login-reader'){
+		$(form).dynamicLoginContent();
+	}
+});
+
+
+if($('#fb-login')){
+	$('#fb-login').on('click', function(e){
+	    FB.login(function(response) {
+	  	  checkLoginState();
+	    }, {scope: 'public_profile,email'});
+	});
+}
 });
 

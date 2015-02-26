@@ -52,6 +52,7 @@ if(!is_null($categoryInfo)){
 	$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
 	$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
 
+	include_once('admin/fb/fbfunctions.php');
 ?>
 <?php if ( $detect->isMobile() ) { ?>
 <!DOCTYPE html>

@@ -516,12 +516,15 @@ End password reset methods
 	public function handleLogin($post){
 		//Check if user-input matches any users on file
 		//	get the user with the username given in the post
+
 		if(!$user = $this->usernameExists($post['user_login_input'])) {
 			return array(
 			'hasError' => true, 
-			'message' => "Sorry, we couldn't find any email that matched yours.  Please try again."
+			'message' => "Sorry, but can't find you in our system. Please try again, or register."
 			);
 		}
+
+
 		$userInput = filter_var($post['user_login_input'], FILTER_SANITIZE_URL);
 		$password = filter_var($post['user_login_password_input'], FILTER_SANITIZE_URL);
 		$salt = $this->find_salt($userInput);
@@ -597,6 +600,7 @@ End password reset methods
 			'returnRowAsSingleArray' => true,
 			'bypassCache' => true
 		);
+		
 		return $this->performQuery($options);
 	}
 
@@ -682,7 +686,23 @@ End password reset methods
 
 /* Begin Registration Functions */
 	public function doRegistration($post){
-//var_dump($post); die;
+
+		$isReader = false;
+		if(isset($post['isReader']) && $post['isReader']) $isReader = true;
+
+		if($isReader){
+			$post["g-recaptcha-response"] = $post["recaptcha"];
+			unset($post["recaptcha"]);
+			$post['user_password-s'] = $post['user_password'];
+			unset($post["user_password"]);
+			$post['user_email_1-e'] = $post['user_email'];
+			unset($post["user_email"]);
+			unset($post["task"]);
+			$post['user_first_name-s'] = $post['name'];
+			unset($post["name"]);
+			$post['user_type'] = 5;
+		}
+
 		//	Based on the post data, formulate the hashed password.
 		$salt = substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22);	
 
@@ -693,7 +713,7 @@ End password reset methods
 		$reCaptcha = new ReCaptcha( RECAPTCHASECRETKEY );
 		
 		// Was there a reCAPTCHA response?
-		if ($post["g-recaptcha-response"] && !empty($post["g-recaptcha-response"])) {
+		if($post["g-recaptcha-response"] && !empty($post["g-recaptcha-response"])) {
 		    $resp = $reCaptcha->verifyResponse( $_SERVER["REMOTE_ADDR"], $post["g-recaptcha-response"]);
 			
 			if ($resp != null && !$resp->success) return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
@@ -703,9 +723,6 @@ End password reset methods
 		$recaptcha = $post['g-recaptcha-response'];
 		unset($post['g-recaptcha-response']);
 
-		$isReader = false;
-		if(isset($post['isReader']) && $post['isReader'] ) $isReader = true;
-		unset($post['isReader']);
 		//	Make sure the password match
 		if(empty($post['user_password-s'])){
 			return array('hasError' => true, 'message' => "Oops!  You must fill out password fields.");
@@ -728,7 +745,7 @@ End password reset methods
 
 		$pairs = $this->helpers->compilePairs($post, true);
 		$params = $this->helpers->compileParams($post);
-		//var_dump($post); die;
+	
 		$unrequired = array('user_last_name');
 
 		//USER NAME
@@ -781,78 +798,61 @@ End password reset methods
 		$params[':user_salt'] = $salt;
 		$post['user_salt-nf'] = $salt;
 
-		$keys[] = 'user_type';
-		$values[] = ':user_type';
-		$params[':user_type'] = 5;
-		$post['user_type-nf'] = 5;
-
-		//$keys[] = 'tos_agreed';
-		//$values[] = ':tos_agreed';
-		//$params[':tos_agreed'] = 1;
-		//$post['tos_agreed-s'] = 1;
-
+		
+		$keys[] = 'user_name';
+		$values[] = ':user_name';
+		$params[':user_name'] = $username;
+		$post['user_name-nf'] = $username;
+var_dump($keys, $values, $params);
 		$s = "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")";
 		$result = $this->performUpdate(array(
 			'updateString' => "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")",
 			'updateParams' => $params
 		));
-var_dump($s); die;
+
+	
 		if($result){
-		
-			//ADD USER TO MAILCHIMP LIST
-			$this->registerInMailChimpList($post);
+			if(!$isReader){
+				//ADD USER TO MAILCHIMP LIST
+				$this->registerInMailChimpList($post);
 
-			//Add Contributor Info
-			$contributor_name = $post['user_first_name-s'];//.' '.$post['user_last_name-s'];
-			$email = $post['user_first_name-s'].' '.$post['user_email-e'];
-			$contributor_seo_name  = $this->helpers->generateName(array('input' => $contributor_name ));
-			
-			if(isset($contributor_seo_name)) $contributor_seo_name = join(explode(' ', strtolower(preg_replace('/[^A-Za-z0-9- ]/', '', $contributor_seo_name))), '-');
+				//Add Contributor Info
+				$contributor_name = $post['user_first_name-s'];//.' '.$post['user_last_name-s'];
+				$email = $post['user_first_name-s'].' '.$post['user_email-e'];
+				$contributor_seo_name  = $this->helpers->generateName(array('input' => $contributor_name ));
+				
+				if(isset($contributor_seo_name)) $contributor_seo_name = join(explode(' ', strtolower(preg_replace('/[^A-Za-z0-9- ]/', '', $contributor_seo_name))), '-');
 
-			$dupCheck = $this->mpArticle->getContributors(['contributorSEOName' => $contributor_seo_name] );
-			$dupCheckEmail = $this->mpArticle->getContributors(['contributorEmail' => $post['user_email-e'] ] );
+				$dupCheck = $this->mpArticle->getContributors(['contributorSEOName' => $contributor_seo_name] );
+				$dupCheckEmail = $this->mpArticle->getContributors(['contributorEmail' => $post['user_email-e'] ] );
 
-			if( count($dupCheck['contributors']) > 0){
-				  $rand = rand(1, 100000000);
-				  $contributor_seo_name = $contributor_seo_name.'-'.$rand;
-			}
-
-			if(count($dupCheckEmail['contributors']) <= 0){
-				if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
-					$contributor_image_fb = "http://graph.facebook.com/".$post['user_facebook_id-s']."/picture";
-					$contributor_facebook_link = $post['fb_user_link'];
-					
-					$contributor_id = $this->performUpdate(array(
-						'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address, contributor_image, contributor_facebook_link ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."', '".$contributor_image_fb."', '".$contributor_facebook_link."')",
-						'updateParams' => $params
-					));
-				}else{
-					$contributor_id = $this->performUpdate(array(
-						'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."')",
-						'updateParams' => $params
-					));
+				if( count($dupCheck['contributors']) > 0){
+					  $rand = rand(1, 100000000);
+					  $contributor_seo_name = $contributor_seo_name.'-'.$rand;
 				}
-			}
-			//End Adding Contributor Info
 
-			//if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
+				if(count($dupCheckEmail['contributors']) <= 0){
+					if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
+						$contributor_image_fb = "http://graph.facebook.com/".$post['user_facebook_id-s']."/picture";
+						$contributor_facebook_link = $post['fb_user_link'];
+						
+						$contributor_id = $this->performUpdate(array(
+							'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address, contributor_image, contributor_facebook_link ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."', '".$contributor_image_fb."', '".$contributor_facebook_link."')",
+							'updateParams' => $params
+						));
+					}else{
+						$contributor_id = $this->performUpdate(array(
+							'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."')",
+							'updateParams' => $params
+						));
+					}
+				}
+
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 				return $this->doUserActivation($verificationHash);
-				 //$this->handleLogin($post);
-			/*}else{
-				//	Send Email
-				if(!$registerEmail = $this->send_email(array(
-					'email' => $params[':user_email'],
-					'hashUrl' => $this->config['this_admin_url'].'activate/'.$verificationHash,
-					'action' => 'access',
-					'subject' => $this->mpArticle->data['article_page_visible_name']." Registration Email",
-					'username' => $params[':user_name']
-				))) return $registerEmail;
-				$r = $this->helpers->returnStatus(200);
-				$r['message'] = "Please check your email for a verification link. If you do not receive the verification email within 10 minutes, check your spam folder.";
-				return $r;
-			}*/
+			}else{ return array('hasError' =>false, 'message'=>"You Have been Register Successfully! "); }
 		}else return $this->helpers->returnStatus(500);
+	
 	}	
 
 	public function doRegistrationFromFB($post){
@@ -899,6 +899,42 @@ var_dump($s); die;
 			return $this->doRegistration($arr);
 		}
 	}
+
+	//FOLLOW AUTHOR
+	public function followAnAuthor($data){
+		$email = filter_var(trim($data['user_login_input']), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$authorId = $data['author_id'];
+		
+		$exist = $this->thisfollowerexist($email, $authorId);
+		
+		if( !$exist ){
+		
+			$result = $this->performUpdate(array(
+				'updateString' => "INSERT INTO readers_authors (reader_email, author_id) VALUES ( '".$email."', ".$authorId.") "
+			));
+
+			if($result) return array('hasError' => false, 'message' => "Awesome! You're successfully following this writer. Check your e-mail for regular updates on their work.");
+
+		}else{
+			return array('hasError' => false, 'message' => "Wow! You must really like this writer  - you're already following them! Check out your  <a href='http://www.puckermob.com/admin/following/'>DASHBOARD</a> to see more of their work.");
+		}
+
+		return false;
+	}
+
+	public function thisfollowerexist( $userInput, $uthor_id){
+		$options = array(
+			'queryString' => "SELECT * FROM readers_authors WHERE reader_email = :userInput && author_id = :authorId LIMIT 0, 1",
+			'queryParams' => array(':userInput' => filter_var(trim($userInput), FILTER_SANITIZE_STRING, PDO::PARAM_STR),
+									':authorId' => filter_var($uthor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
+							)
+		);
+	
+		$result = $this->performQuery($options);
+	
+		return $result;
+	}
+	//FOLLOW AUTHOR
 
 	public function updateUserBillingW9($data){
 		$user_id = filter_var($data['user_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);

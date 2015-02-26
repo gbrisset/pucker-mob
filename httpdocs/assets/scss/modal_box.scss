@@ -120,3 +120,152 @@
 	border:3px solid #1fa512;
 }
 
+
+/*FOLLOW READER*/
+.login-register-content{ 
+	width: 46% !important; max-width: 41rem !important;
+
+	.modal-input{
+		z-index: 99998 !important;
+		
+	}
+	.close{
+		right: -5.5rem;
+		top: -0.5rem;
+		background: #000;
+		width: 28px;
+		height: 28px;
+		position: absolute;
+		font: 100% OsloBold,arial;
+		z-index: 99999;
+	}
+	.close:hover {background:#fff; color: #000; border:2px solid #000;}
+}
+#register-box{
+	display:none;
+}
+
+#register-box, #login-box{
+	background: #eee;
+	header{
+		background: #fff;
+		color: #000;
+		font-size: 2rem;
+		text-align: CENTER;
+		padding-top: 1rem;
+		padding-bottom: 0.8rem;
+
+		span{font-family:OsloBold; }
+	}
+	section h1{
+		text-align: center;
+		text-transform: uppercase;
+		color: #007900;
+		font-size: 1.3rem;
+		margin-top: 0.5rem;
+		margin-bottom: 0;
+	}
+
+	section p{
+		text-transform: uppercase;
+		text-align: CENTER;
+		font-size: 12px;
+	}
+
+	section div{ width: 100%; padding:0 1rem;}
+	#left-content, #right-content{
+		width:48%;
+
+		h3{
+			text-transform: uppercase;
+			font-size: 0.8rem;
+			font-family: OsloBold;
+			text-align: center;
+			margin-bottom: 0;
+		}
+		form{
+			text-align: center;
+			input{ background: transparent; width:100%; padding:0; margin:0; min-height:1rem; border: none; box-shadow: none; border-bottom: 1px solid #aaa; font-family: OsloBold; font-size:1rem; text-align:Center; line-height: 3;} 
+			button{
+				color: #fff;
+				background: #CCC62A !important;
+				width: 100%;
+				padding: 0.3rem  !important;
+				font-size: 1rem !important;
+				font-family: Oslobold;
+				text-transform: uppercase !important;
+				margin-top: 0.5rem;
+				min-height:1rem !important;
+			}
+		}
+
+		::-webkit-input-placeholder {
+		  text-transform: uppercase;
+		   color: #bbb;
+		   font-size:1rem;
+		}
+
+		:-moz-placeholder { /* Firefox 18- */
+		    text-transform: uppercase; 
+		    color: #bbb;
+		     font-size:1rem;
+		}
+
+		::-moz-placeholder {  /* Firefox 19+ */
+		    text-transform: uppercase;
+		     color: #bbb;
+		     font-size:1rem;
+		}
+
+		:-ms-input-placeholder {  
+		    text-transform: uppercase; 
+		     color: #bbb;
+		      font-size:1rem;
+		}
+
+
+	}
+
+	#right-content{
+		width: 43%;
+		padding: 0 1rem 0 0 ;
+		p{
+			color: #007900;
+			font-size: 1.1rem;
+			line-height: 1.2;
+			margin-bottom:0;
+		}
+		a{ 
+			width: 100%;
+			color: #007900;
+		}
+		.fb-login-button{
+			padding: 0;
+			margin: 1.5rem 0;
+
+
+			img{
+			 border-radius:0 !important; 
+			 box-shadow:none;
+			 cursor: pointer;
+			}
+		}
+	}
+
+	.or{
+		width: 1rem;
+		border-left: 1px solid #aaa;
+		min-height: 9.4rem;
+		margin: 0 1rem;
+		padding: 0;
+
+		span{
+			background: #eee;
+			padding: 0.6rem 0;
+			margin-left: -0.8rem;
+			line-height: 9rem;
+		}
+	}
+}
+
+

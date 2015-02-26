@@ -274,6 +274,31 @@ class Dashboard{
 	/*DELETE THIS */
 
 
+	public function get_articlesbypageviews( $contributor_id, $month, $year ){
+		$month = 2;
+		$s = "SELECT * FROM  google_analytics_data 
+				INNER JOIN ( article_contributor_articles, articles ) 
+				ON ( article_contributor_articles.article_id = google_analytics_data.article_id )
+				AND ( articles.article_id = google_analytics_data.article_id )
+				WHERE google_analytics_data.month = ".$month." AND  google_analytics_data.year = ".$year;
+
+			if( isset($contributor_id) && $contributor_id != 0){
+				$s.= " AND article_contributor_articles.contributor_id = 1148";//.$contributor_id;
+			}
+		$queryParams = [];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		//var_dump($q);
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}
+	}
 	//Return All Articles per month for each contributor
 	public function get_dashboardArticles( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month, $year) {
 //var_dump($month, $year, $userArticlesFilter);

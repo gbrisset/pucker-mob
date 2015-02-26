@@ -51,13 +51,16 @@ class GoogleAnalyticsData{
 
 
 	public function getArticles(){
+		$month = date('n');
+		$year = date('Y');
+		
 		$arr = [];
 		$s = "SELECT social_media_records.*, articles.article_seo_title 
 			  FROM  social_media_records
 			  INNER JOIN ( articles )
 			  ON articles.article_id = social_media_records.article_id 
-			  WHERE  social_media_records.month = 2 AND social_media_records.year = 2015 
-			  ORDER BY id DESC Limit 10";
+			  WHERE  social_media_records.month = ".$month." AND social_media_records.year = ".$year."  
+			   AND articles.article_status = 1  GROUP BY articles.article_id ORDER BY id DESC ";
 
 		$q = $this->performQuery(['queryString' => $s]);
 		
@@ -150,21 +153,22 @@ class GoogleAnalyticsData{
 				$pageviews =  $data['pageviews'];
 				$usa_pageviews= $data['usa_pageviews'];
 				$pct_pageviews= $data['pct_pageviews'];
-
+				$current_date = date('Y-m-d H:i:s', time());
 				$idExist = $this->verifyArticleid( $articleId , $month, $year );
 
 				if($idExist){
 					$s = " UPDATE  google_analytics_data 
 					  	   SET pageviews = $pageviews, 
 					  	   	   usa_pageviews = $usa_pageviews, 
-					  	   	   pct_pageviews = $pct_pageviews, 
+					  	   	   pct_pageviews = $pct_pageviews ,
+					  	   	   updated_date = '".$current_date ."'  
 					        WHERE article_id = $articleId AND month = '".$month."' AND year = '".$year."' ";
 				}else{
 					$s = " INSERT INTO google_analytics_data
 						   (`article_id`, `pageviews`, `usa_pageviews`, `pct_pageviews`,  `month`, `year`) 
 						   VALUES (:articleId, $pageviews, $usa_pageviews, $pct_pageviews,  $month, $year) ";
 					}
-
+//var_dump($s);
 				$queryParams = [
 					':articleId' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
 				];

@@ -63,13 +63,18 @@
 		$year = $_GET['year'];
 	}
 	
-	$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
-	$dateupdated = $dashboard->get_dateUpdated($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
-
 	$contributor_name = $contributorInfo["contributor_name"];
 	$contributor_id = $contributorInfo["contributor_id"];
 	$contributor_email = $contributorInfo["contributor_email_address"]; 
 	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
+
+	if( $year < 2015 || ( $year == 2015 && $month <= 2)){
+		$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
+		$dateupdated = $dashboard->get_dateUpdated($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
+
+	}else{
+		$articles = $dashboard->get_articlesbypageviews($contributor_id, $month, $year);
+	}
 
 	$total = 0;
 

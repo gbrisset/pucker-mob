@@ -15,10 +15,10 @@ $client = $GoogleAnalyticsApi->connect_to_client();
 $analytics = new Google_Service_Analytics($client);
 $endDate = date('Y-m-d');
 $startDate = date('Y-m').'-01';
-$month= date('m');
+$month= date('n');
 $year = date('Y');
 $arrArticle = $GoogleAnalyticsData->getArticles();
-
+//var_dump(count($arrArticle), $year, $month); die;
 ?>
 <html>
 
@@ -56,6 +56,8 @@ $arrArticle = $GoogleAnalyticsData->getArticles();
 					'usa_pageviews' => $usa_pageviews,
 					'pct_pageviews' =>  $pctValue
 				];
+
+				//var_dump($data);
  
 				$GoogleAnalyticsData->saveGoogleAnalyticsInformation($data, $month, $year);
 

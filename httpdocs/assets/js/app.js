@@ -804,8 +804,26 @@ function isOnScreen( element ) {
 	});
 }*/
 
+$('#follow-author').click(function(e){
+	e.preventDefault();
+	$('body').addClass('show-modal-box');
+});
 
+$('.close').click(function(e){
+	$('body').removeClass('show-modal-box');
+});
 
+$('#register-link').click(function(e){
+	e.preventDefault();
+	$('#login-box').hide();
+	$('#register-box').show();
+});
+
+$('#login-link').click(function(e){
+	e.preventDefault();
+	$('#register-box').hide();
+	$('#login-box').show();
+});
 
 });
 

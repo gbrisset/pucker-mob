@@ -682,7 +682,7 @@ End password reset methods
 
 /* Begin Registration Functions */
 	public function doRegistration($post){
-
+//var_dump($post); die;
 		//	Based on the post data, formulate the hashed password.
 		$salt = substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22);	
 
@@ -703,6 +703,9 @@ End password reset methods
 		$recaptcha = $post['g-recaptcha-response'];
 		unset($post['g-recaptcha-response']);
 
+		$isReader = false;
+		if(isset($post['isReader']) && $post['isReader'] ) $isReader = true;
+		unset($post['isReader']);
 		//	Make sure the password match
 		if(empty($post['user_password-s'])){
 			return array('hasError' => true, 'message' => "Oops!  You must fill out password fields.");
@@ -778,10 +781,10 @@ End password reset methods
 		$params[':user_salt'] = $salt;
 		$post['user_salt-nf'] = $salt;
 
-		//$keys[] = 'user_name';
-		//$values[] = ':user_name';
-		//$params[':user_name'] = $username;
-		//$post['user_name-nf'] = $username;
+		$keys[] = 'user_type';
+		$values[] = ':user_type';
+		$params[':user_type'] = 5;
+		$post['user_type-nf'] = 5;
 
 		//$keys[] = 'tos_agreed';
 		//$values[] = ':tos_agreed';
@@ -793,7 +796,7 @@ End password reset methods
 			'updateString' => "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")",
 			'updateParams' => $params
 		));
-
+var_dump($s); die;
 		if($result){
 		
 			//ADD USER TO MAILCHIMP LIST

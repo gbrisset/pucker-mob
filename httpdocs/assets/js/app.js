@@ -843,12 +843,5 @@ $('.ajax-form-submit').click(function(e){
 });
 
 
-if($('#fb-login')){
-	$('#fb-login').on('click', function(e){
-	    FB.login(function(response) {
-	  	  checkLoginState();
-	    }, {scope: 'public_profile,email'});
-	});
-}
 });
 

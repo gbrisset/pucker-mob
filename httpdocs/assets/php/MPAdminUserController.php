@@ -578,10 +578,12 @@ End password reset methods
 			'returnRowAsSingleArray' => true,
 			'bypassCache' => true
 		);
+
 		$q = $this->performQuery($options);
 		if($q && count($q)){
 			$this->updateNumberOfLogins($user);
 			$verificationResult = $this->doVerification($hash);
+		
 			return $verificationResult;
 		} else {
 			return array(
@@ -690,7 +692,7 @@ End password reset methods
 		$isReader = false;
 		if(isset($post['isReader']) && $post['isReader']) $isReader = true;
 
-		if($isReader){
+		if($isReader && !isset($post['user_facebook_id-s'])){
 			$post["g-recaptcha-response"] = $post["recaptcha"];
 			unset($post["recaptcha"]);
 			$post['user_password-s'] = $post['user_password'];
@@ -700,7 +702,7 @@ End password reset methods
 			unset($post["task"]);
 			$post['user_first_name-s'] = $post['name'];
 			unset($post["name"]);
-			$post['user_type'] = 5;
+			$post['user_type-s'] = 5;
 		}
 
 		//	Based on the post data, formulate the hashed password.
@@ -711,7 +713,7 @@ End password reset methods
 		$resp = null;
 		$error = null;
 		$reCaptcha = new ReCaptcha( RECAPTCHASECRETKEY );
-		
+
 		// Was there a reCAPTCHA response?
 		if($post["g-recaptcha-response"] && !empty($post["g-recaptcha-response"])) {
 		    $resp = $reCaptcha->verifyResponse( $_SERVER["REMOTE_ADDR"], $post["g-recaptcha-response"]);
@@ -803,7 +805,7 @@ End password reset methods
 		$values[] = ':user_name';
 		$params[':user_name'] = $username;
 		$post['user_name-nf'] = $username;
-var_dump($keys, $values, $params);
+
 		$s = "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")";
 		$result = $this->performUpdate(array(
 			'updateString' => "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")",
@@ -850,7 +852,11 @@ var_dump($keys, $values, $params);
 
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 				return $this->doUserActivation($verificationHash);
-			}else{ return array('hasError' =>false, 'message'=>"You Have been Register Successfully! "); }
+			}else{ 
+				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
+				return $this->doUserActivation($verificationHash);
+				//return array('hasError' =>false, 'message'=>"You Have been Register Successfully! "); 
+			}
 		}else return $this->helpers->returnStatus(500);
 	
 	}	
@@ -889,7 +895,7 @@ var_dump($keys, $values, $params);
 		$arr['fb_user_link '] = $fb_user_link;
 		
 		$user = $this->userAlreadyExists($arr);
-
+	
 		if($user){
 		//LOGIN
 			return $this->handleLogin($arr);
@@ -901,9 +907,10 @@ var_dump($keys, $values, $params);
 	}
 
 	//FOLLOW AUTHOR
-	public function followAnAuthor($data){
-		$email = filter_var(trim($data['user_login_input']), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$authorId = $data['author_id'];
+	public function followAnAuthor($reader_email, $author_id){
+
+		$email = filter_var(trim($reader_email), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$authorId = $author_id;
 		
 		$exist = $this->thisfollowerexist($email, $authorId);
 		

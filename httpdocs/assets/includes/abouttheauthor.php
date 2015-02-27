@@ -45,7 +45,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 <?php }else{?>
 	<section id="about-the-author" class="columns small-12 hide-for-print no-padding">
 <?php }?>
-	<div id="about-the-author-bg" class="columns small-10 no-padding margin-top margin-bottom">
+	<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
 		<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 1rem;">
 			<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>">
 				<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/1103_contributor.png';//$config['image_url'].'articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" />
@@ -72,10 +72,10 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			</div>
 		</div>
 	</div>
-	<div id="follow-the-author-bg" class="columns small-2 no-padding margin-top margin-bottom">
+	<div id="follow-the-author-bg" class="columns small-2 no-padding margin-top">
 		<a class="follow-author" id="follow-author" href="">Follow this author</a>
 	</div>
-	<div class="small-12">
+	<div class="small-12 columns">
 		<p id="author-action-message"></p>
 	</div>
 </section>

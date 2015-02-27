@@ -1594,3 +1594,24 @@ strong{ font-weight: bold; font-family: OsloBold; line-height: inherit; }
 	div.adblade-dyna.zone-1035 div.zone div.adbladetitle { margin: 0 !important; padding: 0  !important; }
 }
 
+.top-header-logout, .hide-header{ display:none !important;}
+.show-header{ display:inherit !important;}
+#topbar-container-admin {
+	 margin-top: -0.34rem; 
+}
+#topbar-container-admin div p {
+	display: inline-block;
+	position: relative;
+	margin: 0;
+}
+#topbar-container-admin div p img {
+width: 1.5rem;
+margin: 0 1.5rem 0 1rem;
+}
+#topbar-container-admin div p a {
+color: #fff;
+text-transform: uppercase;
+position: Relative;
+top: 0.15rem;
+}
+.my-account-header-link{ text-transform:uppercase; color:#fff;}

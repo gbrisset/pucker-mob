@@ -29,6 +29,7 @@
         		<div class="small-12">
         			<div id="left-content" class="left">
         				<h3>Login With E-mail:</h3>
+                        <input type="hidden" name="isreader" id="isreader" value="1" />
         				<form class="ajax-form" data-info-task="login-reader" id="login-form" name="login-form"  method="POST" action="<?php echo $config['this_url']; ?>">
         					<input type="hidden" name="author-id" id="author-id" value="<?php echo $articleInfoObj['contributor_id']; ?>" />
                             <input type="email" placeholder="EMAIL" id="email" name="user_login_input" value="<?php if(isset($loginStatus) && $loginStatus['hasError']) echo $_POST['user_login_input']; ?>"  required  autofocus  />
@@ -61,8 +62,10 @@
         		<div class="small-12">
         			<div id="left-content" class="left">
         				<h3>Register With E-mail:</h3>
+                        <input type="hidden" name="isreader" id="isreader" value="1" />
         				<form class="ajax-form" id="register-form" name="register-form" method="POST" data-info-task="register-reader" action="<?php echo $config['this_url']; ?>">
                             <input type="hidden" name="author-id" id="author-id" value="<?php echo $articleInfoObj['contributor_id']; ?>" />
+
                             <input type="email" placeholder="EMAIL" id="email" name="user_email_1-e" required />
         					<input type="password" placeholder="PASSWORD" id="password"  name="user_password-s" required />
         					<input type="text" placeholder="Your name" id="name" name="name" required />

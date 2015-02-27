@@ -3,8 +3,6 @@
   //require_once('../../assets/php/config.php');
 ?>
 <script>
-
-
 //$facebook = new Facebook(array(
 //	'appId' => '1380320725609568',
 //	'secret' => '1660831cfa198d28dcfc1748454e4ca7'
@@ -47,7 +45,7 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '781998645209691',
+    appId      : '1380320725609568',//'781998645209691',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -95,16 +93,33 @@
  }
 
   function registerUser(response){
+    var isreader = false, author_id = 0;
+    if($('#isreader').length > 0){
+      isreader = true;
+      author_id = $('body').find('#author-id').val();
+    }
+
       $.ajax({
         type: "POST",
         url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-        data: { user: response, task:'register_fb'}
+        data: { user: response, task:'register_fb', isReader:isreader, author_id : author_id}
       }).done(function(data) {
         if(data){
           data = JSON.parse(data);
-           console.log(data);
-          if(!data['hasError']){
-            setTimeout(function() {window.location = "<?php echo $config['this_admin_url']; ?>";}, 200);
+          
+          if( isreader ){
+            if( !data['hasError'] ){
+              $('#author-action-message').html(data['message']).attr('style', 'color:green; text-transform: inherit;');
+              $('body').removeClass('show-modal-box');
+              $('.top-header-login').hide();
+              $('.top-header-logout').show();
+            }else{
+                $('#register-result').html(data['message']).attr('style', 'color:red; text-transform: inherit;');
+            }
+          }else{
+            if(!data['hasError']){
+             setTimeout(function() {window.location = "<?php echo $config['this_admin_url']; ?>";}, 200);
+          }
         }
       }
     });

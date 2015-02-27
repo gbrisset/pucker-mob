@@ -11,9 +11,39 @@
   }
   ?>
   <?php if(!$detect->isMobile()){?>
+  <?php 
+  $login_header = ' hide-header ';
+  $logout_header = ' show-header ';
+  if($loginActive){
+      $login_header = ' show-header ';
+      $logout_header = ' hide-header ';
+  }
 
-  <header id="super-banner" class="hide-for-print show-for-large-up" style="background:#1fa512 !important; padding:0.4rem 0.5rem 0.1rem 0.5rem !important; text-align: center;">
-<div class="row" style="height: 1.4rem;">
+ ?>
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>">
+    <div class="row">
+       <div id="header-social" class="small-6 columns half-padding-right">
+          <a class="my-account-header-link" href="<?php echo $config['this_admin_url']; ?>">My Account</a>
+       </div>
+      <div id="topbar-container-admin" class="right small-6">
+        <div class="right">
+          <?php //if($loginActive){?>
+            <p class="">Welcome, <?php echo $user_info['user_email']; ?>
+          <?php if(isset($user_info['user_facebook_id']) && $user_info['user_facebook_id'] && strlen($user_info['user_facebook_id']) > 0 ){?>
+          <img id="image-header-profile" src="<?php echo $user_info['contributor_image'];?>" >
+          <?php }else{?>
+          <img id="image-header-profile" src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'. $user_info['contributor_image'];?>" >
+          <?php }?>
+          <a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
+        </p>
+        <?php //}?>
+      </div>
+      </div>
+    </div>
+  </header>
+  
+  <header id="super-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="background:#1fa512 !important; padding:0.4rem 0.5rem 0.1rem 0.5rem !important; text-align: center;">
+  <div class="row" style="height: 1.4rem;">
      <div id="header-social" class="small-12 columns half-padding-right" style="text-align:left; font-family: OsloBold;">      
      JOIN THE MOB! EARN MONEY BY BLOGGING ON PUCKERMOB. 
       <a href="http://www.puckermob.com/admin/register" style="color: #f2ea0a !important;font-weight: bolder; font-family:OsloBold; margin-left: 8px; border-right: 2px solid #fff; padding-right: 5px;">
@@ -28,8 +58,9 @@
         <input id="topbar-search-contents" type="search" placeholder="SEARCH" style="color: #1fa512 !important; border: 1px solid #1fa512; ">
         <button id="topbar-search-submit" class="alert button expand" style="background-color: #1fa512;"><i class="fa fa-search"></i></button>
     </div>
-      </div>
+    </div>
   </header>
+   
   <?php }?>
    
  <!-- <header id="top-banner" class="hide-for-print show-for-large-up">

@@ -15,7 +15,19 @@
 
 	//MANAGE FACEBOOK LOGIN / REGISTER
 	if($_POST['task'] == 'register_fb'){
-		echo json_encode($adminController->user->doRegistrationFromFB($_POST));
+		if( isset($_POST['isReader']) ){
+			$reader_email = $_POST['user']['email']; 
+			$author_id = $_POST['author_id'];	
+			$result = $adminController->user->doRegistrationFromFB($_POST);
+			
+			if(!$result['hasError']){
+				echo json_encode($adminController->user->followAnAuthor($reader_email, $author_id));
+			}else{
+				echo json_encode($result);
+			}
+		}else{
+			echo json_encode($adminController->user->doRegistrationFromFB($_POST));
+		}
 	}
 
 	if($_POST['task'] == 'update_w9_sent'){

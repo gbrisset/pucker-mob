@@ -273,17 +273,30 @@ class Dashboard{
 	}*/
 	/*DELETE THIS */
 
+	public function get_current_rate(){
+		$month = date('n');
+		$year = date('Y');
+
+		$s=" SELECT * FROM shares_rate WHERE month = $month AND year = $year LIMIT 1";
+		$queryParams = [];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		
+		if($q) return $q['rate'];
+		else return false;
+	}
 
 	public function get_articlesbypageviews( $contributor_id, $month, $year ){
-		$month = 2;
+		//$month = 2;
 		$s = "SELECT * FROM  google_analytics_data 
-				INNER JOIN ( article_contributor_articles, articles ) 
+				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
 				ON ( article_contributor_articles.article_id = google_analytics_data.article_id )
 				AND ( articles.article_id = google_analytics_data.article_id )
+				AND ( article_categories.article_id = google_analytics_data.article_id )
+				AND (categories.cat_id = article_categories.cat_id )
 				WHERE google_analytics_data.month = ".$month." AND  google_analytics_data.year = ".$year;
 
 			if( isset($contributor_id) && $contributor_id != 0){
-				$s.= " AND article_contributor_articles.contributor_id = 1148";//.$contributor_id;
+				$s.= " AND article_contributor_articles.contributor_id = ".$contributor_id;
 			}
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
@@ -525,7 +538,7 @@ class Dashboard{
 
 			$s .=" GROUP BY article_contributor_articles.contributor_id 
 				   ORDER BY total_to_pay DESC ";
-//var_dump($s); die;
+var_dump($s); die;
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 

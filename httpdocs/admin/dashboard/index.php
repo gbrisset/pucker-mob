@@ -53,6 +53,18 @@
 	$contributor_email = $userData["user_email"]; 
 	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
 
+	$newCalc = true;
+	if( $year < 2015 || ( $year == 2015 && $month <= 2)){
+		$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
+		$dateupdated = $dashboard->get_dateUpdated($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
+		$newCalc = false;
+	}else{
+		//IS MARCH AND UP
+		$articles = $dashboard->get_articlesbypageviews($contributor_id, $month, $year);
+	}
+
+	$rate = $dashboard->get_current_rate();
+
 	$total = 0;
 
 	$ManageDashboard = new ManageAdminDashboard( $config );
@@ -121,8 +133,8 @@
 			<!-- MONTHLY SHARE RATE -->
 				<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
-						<p>Feb 2015 Social share rate: $0.03</p>
-						<p id="dd-shares-calc">Click to see how shares are calculated <i class="fa 2x fa-caret-down"></i></p>
+						<p>MARCH CPM RATE (BASED ON U.S. VISITORS): <?php echo '$'.number_format($rate, 2, '.', ','); ?></p>
+						<p id="dd-shares-calc">CLICK TO LEARN MORE ABOUT CPM RATES <i class="fa 2x fa-caret-down"></i></p>
 					</div>
 					<div class="find-more-link right">
 						<p><a href="#" id="find-more-info">Find out how to make money with  moblogs</a></p>
@@ -130,29 +142,10 @@
 				</div>
 				<div id="dd-shares-content" class="mobile-12 small-12">
 					<div>
-						<p>PLEASE NOTE: FACEBOOK “LIKES” AND COMMENTS DO NOT COUNT TOWARD THE “SHARE” TOTAL, 
-							AND ARE NOT CALCULATED INTO YOUR EARNINGS.</p>
-
-						<p><span style="color: #991B1C;">DO NOT</span> GO BY THE NUMBER OF SHARES SHOWN ON YOUR ARTICLE PAGES - THIS NUMBER INCLUDES 
-							FACEBOOK “LIKES” AND COMMENTS, AND DOES NOT REFLECT A TRUE ACCOUNTING OF SHARES.</p>  
-
-						<p>PLEASE VISIT THE ‘VIEW EARNINGS’ PAGE FOR A MORE ACCURATE ACCOUNTING OF SOCIAL SHARES.</p>
-
-						<p>Currently, earnings are based on the following calculation:</p>
-
-						<p>(Fixed monthly rate for social shares on certain networks) x (the percentage of viewers 
-							from the U.S. who have viewed your content)</p>	
-
-						<p>For example, let’s say that all of your articles together have received a total of 100,000 
-							social shares, and the current monthly rate is $.02/share. Let’s also assume that 80% of your 
-							viewers are from the U.S. your earnings would be the following:</p>
-
-						<p>100,000 x $.02 = $2,000 x 0.80 = $1,600</p>
-
-						<p>The pay rate changes each month, depending on a number of variables.</p>
-
-						<p>Social networks that are counted toward shared are: Facebook, Twitter, Pinterest, LinkedIn, 
-							StumbleUpon and Google+ </p>
+						<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies 
+								generate revenue. So the rate we're paying this month is that amount you'll earn for every 
+								thousand U.S. visitors that read your content.
+							</p>
 					</div>
 				</div>
 				<!-- WARNINGS BOX -->
@@ -229,6 +222,15 @@
 				<?php if(isset($articles) && $articles ){?>
 				<table>
 				  <thead>
+				  	<?php if($newCalc){?>
+					  	<tr>
+					      <th class="align-left">Article Title</th>
+					      <th>Date Added</th>
+					      <th>US Pageviews</th>
+					      <th>Rate</th>
+					      <th class="bold align-right">Total Rev</th>
+					    </tr>
+				  	<?php }else{?>
 				    <tr>
 				      <th class="align-left">Article Title</th>
 				      <th>Date Added</th>
@@ -241,6 +243,7 @@
 				      <th>% U.S. Traffic</th>
 				      <th class="bold align-right">Total Rev</th>
 				    </tr>
+				     <?php }?>
 				  </thead>
 				  <tbody>
 				  	<?php 
@@ -254,6 +257,7 @@
 				  		$freqs = array_count_values($ids);
 				  		$date_updated = date_format(date_create($dateupdated[0]['date_updated']), 'l, F jS Y \a\t h:i:s A');
 
+				  		if( !$newCalc ){
 				  		foreach( $articles as $article ){ 
 
 				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
@@ -367,6 +371,47 @@
 				    	<td></td>
 				    	<td class="bold align-right"><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
 				    </tr>
+				    <?php }else{
+				    	$total_page_views = 0;
+				  		$us_page_views = 0;
+				  		$total_rev = 0;
+				  		$total_us_page_views = 0;
+				  		$total = 0;
+				  		
+				  		foreach( $articles as $article ){ 
+
+				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
+				  		$month_created = date_format(date_create($article['creation_date']), 'n');
+				  		$cat = $article['cat_dir_name'];
+				  		$link_to_article = 'http://puckermob.com/'.$cat.'/'.$article["article_seo_title"];
+
+				  		$total_page_views = $article['pageviews'];
+				  		$us_page_views = $article['usa_pageviews'];
+				  		$pct_pageviews = $article['pct_pageviews'];
+				  		
+				  		if( $us_page_views > 0){
+				  			$total_rev = ($us_page_views/1000) * $rate;
+				  		}
+				  		$total += $total_rev;
+				  		$total_us_page_views += $us_page_views;
+				  		
+				  		?>
+					  	 <tr id="article-<?php echo $article['article_id']; ?>">
+					      <td class="article align-left"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
+					      <td><?php echo $creation_date;?></td>
+					      <td class=""><?php echo number_format($us_page_views, 0, '.', ','); ?></td>
+					      <td class=""><?php echo '$'.number_format($rate, 2, '.', ','); ?></td>
+					      <td class="bold align-right"><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
+					    </tr>
+				  	<?php } ?>
+				  		<tr class="total">
+					    	<td class="bold">TOTAL</td>
+					    	<td></td>
+					    	<td class="bold"><?php echo number_format($total_us_page_views, 0, '.', ','); ?></td>
+					    	<td class="bold"><?php echo '$'.number_format($rate, 2, '.', ','); ?></td>
+					    	<td class="bold align-right"><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
+				    	</tr>
+				  	<?php }?>
 				  </tbody>
 				</table>
 

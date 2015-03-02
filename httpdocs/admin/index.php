@@ -23,6 +23,7 @@
 			$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $contributor_email ])['contributors'];
 		}
 
+		$rate = $dashboard->get_current_rate();
 		$ManageDashboard = new ManageAdminDashboard( $config );
 
 		$current_month = date('n');
@@ -159,8 +160,8 @@
 				<!-- MONTHLY SHARE RATE -->
 				<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
-						<p>Feb 2015 Social share rate: $0.03</p>
-						<p id="dd-shares-calc">Click to see how shares are calculated <i class="fa 2x fa-caret-down"></i></p>
+						<p>March CPM Rate (Based on U.S. Visitors): <?php echo '$'.number_format($rate, 2, '.', ','); ?></p>
+						<p id="dd-shares-calc">Click to Learn More About CPM Rates <i class="fa 2x fa-caret-down"></i></p>
 					</div>
 					<div class="find-more-link right">
 						<p><a href="#" id="find-more-info">Find out how to make money with  moblogs</a></p>
@@ -168,7 +169,7 @@
 				</div>
 				<div id="dd-shares-content" class="mobile-12 small-12">
 					<div>
-						<p>PLEASE NOTE: FACEBOOK “LIKES” AND COMMENTS DO NOT COUNT TOWARD THE “SHARE” TOTAL, 
+						<!--<p>PLEASE NOTE: FACEBOOK “LIKES” AND COMMENTS DO NOT COUNT TOWARD THE “SHARE” TOTAL, 
 							AND ARE NOT CALCULATED INTO YOUR EARNINGS.</p>
 
 						<p><span style="color: #991B1C;">DO NOT</span> GO BY THE NUMBER OF SHARES SHOWN ON YOUR ARTICLE PAGES - THIS NUMBER INCLUDES 
@@ -190,7 +191,10 @@
 						<p>The pay rate changes each month, depending on a number of variables.</p>
 
 						<p>Social networks that are counted toward shared are: Facebook, Twitter, Pinterest, LinkedIn, 
-							StumbleUpon and Google+ </p>
+							StumbleUpon and Google+ </p>-->
+							<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies calculate revenue. 
+								So the rate we're paying this month 
+								is that amount you'll earn for every thousand U.S. visitors that read your content.</p>
 					</div>
 				</div>
 				<!-- WARNINGS BOX -->

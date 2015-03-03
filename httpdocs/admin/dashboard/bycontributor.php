@@ -58,7 +58,7 @@
 	$month = isset($_POST['month']) ? $_POST['month'] : $current_month;
 	$year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 
-	if(!$_POST['month'] && isset($_GET['month'])){
+	if(!isset($_POST['month']) && isset($_GET['month'])){
 		$month = $_GET['month'];
 		$year = $_GET['year'];
 	}
@@ -76,6 +76,7 @@
 	}else{
 		//IS MARCH AND UP
 		$articles = $dashboard->get_articlesbypageviews($contributor_id, $month, $year);
+		$dateupdated = date();
 	}
 
 	$rate = $dashboard->get_current_rate();

@@ -120,11 +120,12 @@ class ManageAdminDashboard{
 	public function getTopShareWritesRank($month){
 
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = date('Y');
 
-		$s = "SELECT contributor_earnings.contributor_id, total_shares, contributor_name 
+		$s = "SELECT * 
 			  FROM contributor_earnings 
 			  INNER JOIN article_contributors ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
-			  WHERE month = $month ORDER BY total_shares DESC ";
+			  WHERE month = $month AND year = $year ORDER BY total_us_pageviews DESC ";
 
 		$q = $this->performQuery(['queryString' => $s]);
 

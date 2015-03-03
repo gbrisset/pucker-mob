@@ -286,6 +286,7 @@ class Dashboard{
 	}
 
 	public function get_articlesbypageviews( $contributor_id, $month, $year ){
+
 		//$month = 2;
 		$s = "SELECT * FROM  google_analytics_data 
 				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
@@ -444,7 +445,6 @@ class Dashboard{
 		}
 	}
 
-
 	// Get  Preview Month Article Social Media Information
 	public function get_dashboardArticlesPrevMonth( $article_id, $month, $cat, $year ){
 		
@@ -538,7 +538,7 @@ class Dashboard{
 
 			$s .=" GROUP BY article_contributor_articles.contributor_id 
 				   ORDER BY total_to_pay DESC ";
-var_dump($s); die;
+
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 
@@ -549,6 +549,68 @@ var_dump($s); die;
 			return $q;
 		}else return false;
 
+	}
+
+	public function pageviewsReport( $month, $year ){
+		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year = filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	
+		$contributors = $this->getContributorsList();
+
+		if($contributors){
+			foreach($contributors as $contributor){
+				$id = $contributor['contributor_id'];
+				$update_data = $this->getContributorEarnings($id, $month, $year);
+
+				$earnings_info = $this->get_articlesbypageviews( $id, $month, $year);
+			
+				$total_article_rate = 0;
+				$total_shares = 0;
+
+				$share_rate = $this->get_current_rate();				
+				$total_share_rev = 0;
+				
+				$total_us_pageviews = 0;
+				$total_earnings = 0;
+
+
+				if($earnings_info && $earnings_info[0]){
+					foreach ($earnings_info as $earnings) {
+						
+						$total_us_pageviews += $earnings['usa_pageviews']; 
+					}
+				}
+
+				$total_earnings = ($total_us_pageviews/1000) * $share_rate;
+				
+				if($contributor['user_type'] != 4){
+					$total_earnings = $total_earnings - $total_article_rate;
+				}
+
+				if($update_data){
+					$s = "UPDATE contributor_earnings 
+							SET total_article_rate = $total_article_rate,
+							    total_shares = $total_shares,
+							    share_rate = $share_rate,
+							    total_share_rev = $total_share_rev,
+							    total_earnings = $total_earnings,
+							    total_us_pageviews = $total_us_pageviews
+						WHERE contributor_id = $id AND month = $month AND year = $year ";
+				}else{
+					$s = "INSERT INTO contributor_earnings
+						  (`id`, `contributor_id`, `month`, `year`, `total_article_rate`, `total_shares`, `share_rate`, `total_us_pageviews`,  
+						  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`)
+						  VALUES (NULL, '".$id."', '".$month."', '".$year."', '".$total_article_rate."', '".$total_shares."', 
+						  	'".$total_shares."', '".$total_us_pageviews."', '".$share_rate."', '".$total_earnings."', '0', '".$total_earnings."') ";
+				}
+
+				$queryParams = [ ];			
+				$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+			}
+		}
+
+		
 	}
 
 	public function updateContributorsEarnings( $month, $year){
@@ -567,9 +629,8 @@ var_dump($s); die;
 				$update_data = $this->getContributorEarnings($id, $month, $year);
 
 				$earnings_info = $this->socialMediaSharesReport($data);
-				//if($earnings_info['user_type'] !== 4){
-				//	$earnings_info['total_rate'] = 0;
-				//}
+
+				//var_dump($earnings_info);
 
 				$total_article_rate = 0;
 				$total_shares = 0;
@@ -582,8 +643,8 @@ var_dump($s); die;
 					$earnings_info = $earnings_info[0];
 					$total_article_rate = $earnings_info["total_rate"]; //RATE PER ARTICLE 25/10
 					$total_shares = $earnings_info["total_shares"]; //NUMBER OF SHARES
-					$share_rate = $earnings_info['share_rate']; //0.02 IN 2015 will be 0.01
-					$total_share_rev = $earnings_info["share_revenue"];  //NUMBER OF SHARES * 0.02
+					$share_rate = $earnings_info['share_rate']; 
+					$total_share_rev = $earnings_info["share_revenue"]; 
 					$total_earnings = $earnings_info["total_to_pay"]; //TOTAL RATE PER ARTICLE + NUMBER OF SHARES * 0.02
 				}
 

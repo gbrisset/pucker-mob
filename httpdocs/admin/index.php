@@ -70,11 +70,9 @@
 		if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
 		//if($this_month_earnigs_info ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
 
-
-
 		//Top Shared Writers
 		
-		$writers_arr = $ManageDashboard->getTopShareWritesRank($current_month, $total_earnings_to_date);
+		$writers_arr = $ManageDashboard->getTopShareWritesRank($current_month);
 		$index = 0;
 		$your_cont_rank = array();
 		if($writers_arr){
@@ -88,7 +86,7 @@
 				
 				if($writer['contributor_id'] == $contributor_id ){
 					$your_rank = $index;
-					$your_shares = $writer['total_shares'];
+					$your_shares = $writer['total_us_pageviews'];
 					$your_id = $writer['contributor_id'];
 				}
 				$index ++;
@@ -101,7 +99,7 @@
 				if($your_rank == $i ){
 					$your_cont_rank['id'] = $writers_arr[$i]['contributor_id'];
 					$your_cont_rank['name'] = $writers_arr[$i]['contributor_name'];
-					$your_cont_rank['total_shares'] = $writers_arr[$i]['total_shares'];
+					$your_cont_rank['total_shares'] = $writers_arr[$i]['total_us_pageviews'];//;$writers_arr[$i]['total_shares'];
 					$your_cont_rank['rank'] = $your_rank + 1;
 					$class = "your-rank";
 					$is_in = 1;
@@ -110,7 +108,7 @@
 
 				$contributorId =$writers_arr[$i]['contributor_id'];
 				$contributorName = $writers_arr[$i]['contributor_name'];
-				$shares = $writers_arr[$i]['total_shares'];
+				$shares = $writers_arr[$i]['total_us_pageviews'];//$writers_arr[$i]['total_shares'];
 
 				$ids[] = $contributorId;
 				
@@ -297,23 +295,17 @@
 				
 				<!-- Top 10 most shared writers this month -->
 				<div id="earnings-section" class="top-shares mobile-12 small-12 left">
-					<header>Top 10 most shared writers (+ your rank)
-						<!--<div class="sort-by-month right"><a href="<?php echo $config['this_admin_url'].'?month='.$current_month; ?>"> This month | </a> <a href="<?php echo $config['this_admin_url'].'?month=all'; ?>">ever</a> </div>-->
-					</header>
+					<header>TOP 10 MOST POPULAR WRITERS (BASED ON U.S. AUDIENCES)</header>
 					<?php if($writers_rank){?>
 					<div class="top-shared-articles">
 							<table class="left" style="margin-right:0.2rem">
-								<thead><tr><td></td><td style="width:80%;">NAME</td><td>SHARES</td></tr></thead>
+								<thead><tr><td></td><td style="width:80%;">NAME</td><td>PAGEVIEWS</td></tr></thead>
 								<tbody>
 							<?php 
 								$index = 0; 
 								foreach ($writers_rank as $writer){  
-								$index++;
-								//$link_to_article = $config['this_url'].$article['category'].'/'.$article['article_seo_title'];
 
-								///$article_id = $article['article_id'];
-								//$url = "http://www.puckermob.com/".$article['category']."/".$article['article_seo_title'];
-								
+								$index++;
 								$totalShares = $ManageDashboard->bd_nice_number($article['total_shares']);
 
 							?>
@@ -334,7 +326,7 @@
 								</tbody>
 							</table>
 							<table class="right">
-								<thead><tr><td></td><td  style="width:80%;">NAME</td><td>SHARES</td></tr></thead>
+								<thead><tr><td></td><td  style="width:80%;">NAME</td><td>PAGEVIEWS</td></tr></thead>
 								<tbody>
 							<?php }?>
 							<?php }?>
@@ -346,25 +338,9 @@
 							<p><?php echo $your_cont_rank["rank"].'. '.$your_cont_rank["name"].' '.$ManageDashboard->bd_nice_number($your_cont_rank['total_shares']); ?></p>
 						</div>
 
-						<!--<div class="most-shared-writers">
-							<div class="rank-writers margin-top">
-								<ul>
-									<?php 
-									foreach ($writers_rank as $writer){  ?>
-									<li class="<?php echo $writer['class']; ?>" id="contributor-<?php echo $writer['contributor_id'] ?>">
-										<p class="writer-name"><span class="rank-position"><?php echo $writer['position'] ?>.</span><?php echo $writer['contributor_name'] ?></p>
-										<p class="monthly-shares right"><?php echo $writer['shares'] ?></p>
-									</li>
-									<?php }?>
-								</ul>
-							</div>
-						</div>-->
 					<?php }?>
 				
 				</div>
-				<!--<div class="contact-red-box small-12 columns no-padding">
-					<ul><li><a href="http://www.puckermob.com/admin/contact/">Question?     Comments?     Contact Us!</a></li></ul>
-				</div>-->
 			</section>
 		</div>
 		<?php 

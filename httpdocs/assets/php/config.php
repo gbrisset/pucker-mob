@@ -19,8 +19,8 @@ if($local)
 		/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
 	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0");	
-	//error_reporting(E_ALL);
-	//ini_set('display_errors', '1');
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
 
 	$localIp = 'localhost';
 	$directory = 'projects/pucker-mob/';
@@ -111,10 +111,11 @@ if($local)
 	require_once $config['assets_path'].'/MPArticleAdmin.php';
 	require_once $config['assets_path'].'/MPArticleAdminController.php';
 	require_once $config['assets_path'].'/class.recaptchalib.php';
+	require_once $config['assets_path'].'/class.FollowAuthor.php';
+	require_once $config['assets_path'].'/class.Dashboard.php';
+
 	if(isset($admin) && $admin){
-		
 		require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
-		
 	}
 	
 }else{
@@ -209,7 +210,7 @@ if($local)
 	/*MAIL CHIMP CLASSES*/
 	require_once dirname(__FILE__).'/MailChimp.php';
 	require_once dirname(__FILE__).'/Mailchimp/Lists.php';
-
+	require_once dirname(__FILE__).'/class.FollowAuthor.php';
 
 	if(isset($admin) && $admin){
 		require_once dirname(__FILE__).'/MPArticleAdmin.php';
@@ -239,7 +240,7 @@ if(isset($admin) && $admin){
 	$mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, null, $adminController);
 	$dashboard = new Dashboard($config);
 }
-
+$follow = new FollowAuthor($config);
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;

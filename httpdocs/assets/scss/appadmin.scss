@@ -822,6 +822,7 @@ z-index: 999; width: 33.57rem; display:none;}
 /*Earnings Info*/
 .earnings-info{ margin-top:0.3rem !important; margin-bottom: 0 !important;}
 #earnings-info header, #top-shares header, #earnings-section header, #dashboard header{  text-transform: uppercase; background: #000; padding: 0.4rem 0.6rem 0.3rem 0.6rem; font-weight: bolder;}
+
 .earnings-info div{ background:  #F6F4F5; border: 1px solid #ddd !important; margin:0.1rem 0; padding: 0.4rem 2rem !important; width:33%;}
 .earnings-info .earnings-value{font-size: 2.5rem !important; font-family: OsloBold; color: #666 !important; font-weight: bolder; text-align: center; margin:0; line-height: 1;}
 .earnings-info h3 { font-size: 0.9rem !important; text-transform: uppercase; color: #666 !important; font-family: OsloBold !important; font-weight: bolder; text-align: center; }
@@ -917,6 +918,77 @@ padding-top: 0.46875rem !important;
 .more-coming{ text-align: center; margin: 3rem 0 2rem 0; }
 .more-coming h1{text-transform: uppercase;}
 .dz-details img{ width: 100%;}
+
+
+/*FOLLOWING AUTHORS*/
+#following-header{margin-top: 0 !important;}
+#following-header header{ padding:0.7rem; text-transform: uppercase; background: #000 !important; font-weight: bolder;}
+.following-img{ width: 100%; -webkit-border-radius: 50px; -moz-border-radius: 50px; -o-border-radius: 50px; border-radius: 50px; min-width: 80px; max-width: 5rem;}
+.following-name{clear: both; font-size: 1.3rem; font-family: OsloBold; text-align: CENTER; padding-top: 0.5rem;}
+#following-content{
+	#about-the-author{
+		border: 1px solid #bbb;
+		margin-top: 0.5rem;
+		display: inline-flex;
+	}
+	#following-author-articles{
+		padding:0 1.5rem;
+		width: 90%;
+		h2{ font-size: 1rem; text-transform: uppercase; font-family: OsloBold; }
+	}
+}
+.author-recent-articles{
+	.article-div{ margin:1rem 0;}
+	
+	h1{ font-size: 1.2rem; text-transform: capitalize !important; line-height: 1.2;}
+}
+.author-read-more{
+		position: absolute;
+		right: 1rem;
+		text-transform: uppercase;
+		bottom: 1rem;
+
+		a{ color: #777; }
+	}
+.author-links{
+	bottom: 0;
+	position: absolute;
+	margin: 1rem 0;
+	width: 15%;
+
+	a{
+		width: 100%;
+		display: inline-block;
+		text-transform: uppercase !important;
+		text-align: CENTER;
+		color: #777;
+		line-height: 2;
+	}
+}
+#most-followd-authors{
+	padding: 1rem 0;
+  	clear: both;
+	
+  	h1{ font-size: 1.5rem; text-transform: uppercase;}
+	ul{ margin: 0; list-style: none;}
+	ul li{
+		background: #ddd;
+  		padding: 0.4rem;
+	}
+	ul li a{
+		text-transform: capitalize;
+		color: #222;
+		font-size: 1.2rem;
+	}
+	ul li:nth-child(even){
+		background:#fff;
+	}
+}
+
+.border-right{
+	border-right: 1px solid #bbb;
+}
+.vertical-align-center{ height: 85px; display: table-cell !important; vertical-align: middle;}
 
 @import "admin/browser_specifics_styling";
 

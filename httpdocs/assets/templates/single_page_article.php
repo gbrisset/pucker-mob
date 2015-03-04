@@ -84,6 +84,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
 		</div>
+		<!-- ABOUT THE AUTHOR -->
+			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+
 		<?php if($detect->isMobile()){ ?>
 		<div class="row">
 			<hr style="margin: 0 0.9rem !important;">

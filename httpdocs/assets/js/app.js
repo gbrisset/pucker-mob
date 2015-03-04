@@ -392,30 +392,76 @@ console.log(page);
 		//Load and Insert a middle article in the article body
 
 		//SINGLE PAGE ARTICLE
-
 		if( adPage === 'article'){
-			//GOOGLE AD
-			inBodyAd.loadInArticleAd( 'article-content', 1, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 			var li_parent = $('#article-content').find('ol');
+			var p_length = $('#article-content').children('p').length;
+			var li_length = $(li_parent).find('li').length;
+			var isListArticle = false;
+
 			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
 			
-			if($('#article-content').find('ol').find('li').length > 1 || $('#article-content').find('ul').find('li').length > 1){
-				var li_length = $(li_parent).find('li').length;
+			if(li_length > p_length){
+				isListArticle = true;
+			}
+			console.log("IS LIST ARTICLE? "+isListArticle);
+			console.log("P: "+p_length+" L: "+li_length);
+
+			if(isListArticle){
+				var ads_insertions = Math.round(li_length / 3) ;
+				var first_ad = 1,
+					second_ad = first_ad + ads_insertions,
+					third_ad = second_ad + ads_insertions;
+				
+				//Google AD
+				console.log('GOOGLE AD');
+				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'li');	
+
+				//IN-ARTICLE CARAMBOLA 
+				if($('span.span-category.moblog').length == 0) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, ad[adPage].inarticlecarambola, 'li');
+
+				//SHARETHROUGH
+				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, ad[adPage].inarticlesharet, 'li');
+				
+				}else{
+				var ads_insertions = Math.round(p_length / 3) ;
+				var first_ad = 1,
+					second_ad = first_ad + ads_insertions,
+					third_ad = second_ad + ads_insertions;
+				
+				//Google AD
+				console.log('GOOGLE AD');
+				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 				
 				//IN-ARTICLE CARAMBOLA 
-				if($('span.span-category.moblog').length == 0) inBodyAd.loadInArticleAd( 'article-content', 3, 0, ad[adPage].inarticlecarambola, 'li');
+				if($('span.span-category.moblog').length == 0)  inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, ad[adPage].inarticlecarambola, 'p');
 
 				//SHARETHROUGH
-				inBodyAd.loadInArticleAd( 'article-content', 13, 0, ad[adPage].inarticlesharet, 'li');
-
-			}else{
-				//IN-ARTICLE CARAMBOLA 
-				if($('span.span-category.moblog').length == 0)  inBodyAd.loadInArticleAd( 'article-content', 3, 0, ad[adPage].inarticlecarambola, 'p');
-
-				//SHARETHROUGH
-				inBodyAd.loadInArticleAd( 'article-content', 5, 0, ad[adPage].inarticlesharet, 'p');
-		
+				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, ad[adPage].inarticlesharet, 'p');
+				
 			}
+
+			//GOOGLE AD
+			//inBodyAd.loadInArticleAd( 'article-content', 1, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
+			//var li_parent = $('#article-content').find('ol');
+			//if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
+			
+			//if($('#article-content').find('ol').find('li').length > 1 || $('#article-content').find('ul').find('li').length > 1){
+				//var li_length = $(li_parent).find('li').length;
+				
+				//IN-ARTICLE CARAMBOLA 
+			//	if($('span.span-category.moblog').length == 0) inBodyAd.loadInArticleAd( 'article-content', 3, 0, ad[adPage].inarticlecarambola, 'li');
+
+				//SHARETHROUGH
+			//	inBodyAd.loadInArticleAd( 'article-content', 13, 0, ad[adPage].inarticlesharet, 'li');
+
+			//}else{
+				//IN-ARTICLE CARAMBOLA 
+				//if($('span.span-category.moblog').length == 0)  inBodyAd.loadInArticleAd( 'article-content', 3, 0, ad[adPage].inarticlecarambola, 'p');
+
+				//SHARETHROUGH
+				//inBodyAd.loadInArticleAd( 'article-content', 5, 0, ad[adPage].inarticlesharet, 'p');
+		
+			//}
 		}
 
 		//MULTIPAGE ARTICLES
@@ -806,7 +852,32 @@ function isOnScreen( element ) {
 
 $('#follow-author').click(function(e){
 	e.preventDefault();
-	$('body').addClass('show-modal-box');
+
+	if( $('#ss_user_id').val() == 0 ){
+		$('body').addClass('show-modal-box');
+	}else{
+		 var author_id = $('#ss_author_id').val(),
+		 user_email = $('#ss_user_email').val();
+
+		if( author_id != '0' && user_email != ''){
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: { task: 'follow-author', user_email: user_email, author_id: author_id},
+            url: "http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajaxmultifunctions.php",
+            
+            success: function (msg) {
+                if(msg['hasError']) $('#login-result').html(msg['message']).attr('style', 'color:red; text-transform: inherit;');
+                else{
+                    $('#author-action-message').html(msg['message']).attr('style', 'color:green; text-transform: inherit;');
+                    $('body').removeClass('show-modal-box');
+                    $('.top-header-login').attr('style', 'display:none !important');
+                    $('.top-header-logout').attr('style', 'display:inherit !important');
+                }
+            }
+     	});
+    	}
+	}
 });
 
 $('.close').click(function(e){

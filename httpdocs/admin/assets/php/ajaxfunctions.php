@@ -37,4 +37,10 @@
 	if($_POST['task'] == 'get_category_images'){
 		echo json_encode($mpArticleAdmin->getImagesPerCategory($_POST));
 	}
+
+	if($_POST['task'] == 'unfollow-author'){
+		$author_id = $_POST['author_id'];
+		$reader_email = $_POST['reader_email'];
+		echo json_encode($follow->unfollowAuthor($author_id, $reader_email));
+	}
 ?>

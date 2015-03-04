@@ -117,7 +117,7 @@ class ManageAdminDashboard{
 		}
 	}
 
-	public function getTopShareWritesRank($month){
+	public function getTopShareWritesRank($month, $limit = 1000000){
 
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = date('Y');
@@ -125,7 +125,7 @@ class ManageAdminDashboard{
 		$s = "SELECT * 
 			  FROM contributor_earnings 
 			  INNER JOIN article_contributors ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
-			  WHERE month = $month AND year = $year ORDER BY total_us_pageviews DESC ";
+			  WHERE month = $month AND year = $year ORDER BY total_us_pageviews DESC LIMIT ".$limit;
 
 		$q = $this->performQuery(['queryString' => $s]);
 

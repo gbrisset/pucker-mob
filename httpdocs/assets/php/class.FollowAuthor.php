@@ -124,9 +124,18 @@ class FollowAuthor{
 
 	}
 
-	public function mostSharedWriters(){
+	public function unfollowAuthor( $author_id, $reader_email){
+		$author_id = filter_var($author_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$reader_email = filter_var($reader_email, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
+		$s = "DELETE FROM readers_authors WHERE author_id = $author_id AND reader_email = '".$reader_email."' ";
+
+		$queryParams = [ ];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if ($q) return true;
+		else return false;
 
 	}
-
 }
 ?>

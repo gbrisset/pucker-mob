@@ -252,7 +252,7 @@ if(!is_null($categoryInfo)){
 			
 			
 			<!-- ABOUT THE AUTHOR -->
-			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+			<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
 
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php');?>

@@ -6,8 +6,6 @@
 	if(isset($_POST) && count($_POST) > 0 ) $data = $_POST;
 	elseif(isset($_GET) && count($_GET) > 0 ) $data = $_GET; 
 
-
-
 	switch($data['task']){
 		case 'login-reader': 
 			$reader_email = $data['user_login_input']; 
@@ -29,6 +27,12 @@
 			}else{
 				echo json_encode($register);
 			}
+		break;
+		case 'follow-author':
+			$reader_email = $data['user_email']; 
+			$author_id = $data['author_id'];
+
+			echo json_encode($adminController->user->followAnAuthor($reader_email, $author_id));
 		break;
 
 		default:

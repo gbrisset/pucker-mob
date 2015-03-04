@@ -39,6 +39,13 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 <?php 
 	$bio = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_bio"])));
 	$name = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_name"])));
+	$ss_user_id=0;
+	$ss_user_email = '';
+	$userInfo =  $adminController->user->getUserInfo();
+	if(isset($_SESSION) && isset($_SESSION['user_id'])) $ss_user_id = $_SESSION['user_id'];
+
+	if($userInfo) $ss_user_email = $userInfo['user_email']; 
+	//var_dump($adminController->user->getUserInfo());
 ?>
 <?php if($detect->isMobile() ){?>
 	<section id="about-the-author" class="columns small-12 hide-for-print half-padding">
@@ -48,12 +55,15 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 	<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
 		<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 1rem;">
 			<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>">
-				<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/1103_contributor.png';//$config['image_url'].'articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" />
+				<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" />
 			</a>
 		</div>
 		<div class="author-info columns no-padding">
+			<input type="hidden" id="ss_user_id" value="<?php echo $ss_user_id; ?>" />
+			<input type="hidden" id="ss_user_email" value="<?php echo $ss_user_email; ?>" />
+			<input type="hidden" id="ss_author_id" value="<?php echo $articleInfoObj['contributor_id']?>" />
 			<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
-			<p class="author-on-mobile-small"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 25); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
+			<p class="author-on-mobile-small"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 20); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
 			<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
 			<div id="author-links">
 						<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>

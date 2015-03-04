@@ -42,6 +42,9 @@
 		//MOST FOLLOWED CONTRIBUTOR
 		$most_followed = $follow->mostFollowedWriters(5);
 
+		//MOST POPULAR AUTHORS
+		$most_popular = $ManageDashboard->getTopShareWritesRank($current_month, 5);
+
 	}
 
 ?>
@@ -65,12 +68,13 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="articles">
+				<input type="hidden" value="<?php echo  $reader_email; ?>" id="reader_email" />
 				<div id="following-header" class="following-header mobile-12 small-12">
 					<header>YOU ARE FOLLOWING: </header>
 				</div>
 				<div id="following-content" class="following-content">
 					<?php foreach( $authors as $author ){?>
-					<div id="about-the-author" class="columns">
+					<div id="about-the-author" data-info="<?php echo $author['contributor_id']?>" class="columns">
 						<div class="border-right" style="max-width: 8rem;">
 							<div  style="min-width: 70px; margin-right: 1rem; text-align:center;">
 								<a href="<?php echo $config['this_url'].'contributors/'.$author['contributor_seo_name']; ?>">
@@ -79,8 +83,9 @@
 								<h1 class="following-name"><?php echo $author['contributor_name']?></h1>
 							</div>
 							<div class="author-links" style="margin-right:1rem;">
-								<a href="">READ BIO</a>
-								<a href="">Unfollow</a>
+								<a href="http://www.puckermob.com/contributors/<?php echo $author['contributor_seo_name']; ?>">READ BIO</a>
+								<a href="" id="unfollow-author">Unfollow</a>
+								<input type="hidden">
 							</div>
 						</div>
 						<div class="" id="following-author-articles">
@@ -100,7 +105,7 @@
 								</div>
 								<?php }?>
 							</div>
-							<label class="author-read-more"><a href="">Read more</a></label>
+							<label class="author-read-more"><a href="http://www.puckermob.com/contributors/<?php echo $author['contributor_seo_name']; ?>">Read more</a></label>
 						</div>
 					</div>
 					<?php }?>
@@ -108,28 +113,28 @@
 			</section>
 
 			<!-- MOST FOLLOWED AUTHORS -->
+			<?php if($most_followed){?>
 			<section id="most-followd-authors" class="columns small-6">
 				<h1>Most Followed Writers:</h1>
-				<?php if($most_followed){?>
 				<ul> 
 				<?php foreach($most_followed as $followed){ 
 					echo '<li id="'.$followed["contributor_id"].'"><a href="http://www.puckermob.com/contributors/'.$followed['contributor_seo_name'].'" target="_blank" >'.$followed['contributor_name'].'</a></li>';
 				 } ?>
 				</ul>
-				<?php }?>
 			</section>
+			<?php }?>
 
 			<!-- MOST POPULAR AUTHORS -->
+			<?php if($most_popular){?>
 			<section id="most-followd-authors" class="columns small-6">
 				<h1>Most Popular Writers:</h1>
-				<?php if($most_popular){?>
 				<ul> 
 				<?php foreach($most_popular as $popular){ 
 					echo '<li id="'.$popular["contributor_id"].'"><a href="http://www.puckermob.com/contributors/'.$popular['contributor_seo_name'].'" target="_blank" >'.$popular['contributor_name'].'</a></li>';
 				 } ?>
 				</ul>
-				<?php }?>
 			</section>
+			<?php }?>
 		</div>
 	</main>
 	

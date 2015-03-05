@@ -88,8 +88,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
 		<?php if($detect->isMobile()){ ?>
-		<div class="row">
-			<hr style="margin: 0 0.9rem !important;">
+		<div class="row clear">
+			<!--<hr style="margin: 0 0.9rem !important;">-->
 			<div class="columns hide-for-print like-us-fb">
 				<p style ="color:#777" class="small-12 padding-top padding-bottom">LIKE US ON FACEBOOK
 					<div class="columns small-12 " style="margin-left:0 !important;">
@@ -114,10 +114,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- Article Content -->
 		<?php 
 		if ( $detect->isMobile() ) {  
-			echo '<div class="row" style="margin-top: -1rem;">';
-			echo '<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; max-height: 100% !important; overflow: visible !important; "> ';  
+			echo '<div class="row clear" style="margin-top: -1rem;">';
+			echo '<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; overflow: visible !important; "> ';  
 		}else{ 
-			echo '<div class="row">';
+			echo '<div class="row clear">';
 			echo '<section id="article-content" class="small-12 column sidebar-box">';
 		}
 		?> 

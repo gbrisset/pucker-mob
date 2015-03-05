@@ -92,9 +92,12 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
 		</div>
+		<!-- ABOUT THE AUTHOR -->
+		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+		
 		<?php if($detect->isMobile()){ ?>
 		<div class="row">
-			<hr style="margin: 0 0.9rem !important;">
+			<!--<hr style="margin: 0 0.9rem !important;">-->
 			<div class="columns hide-for-print like-us-fb">
 				<p style ="color:#777" class="small-12 padding-top padding-bottom">LIKE US ON FACEBOOK
 					<div class="columns small-12 " style="margin-left:0 !important;">
@@ -107,9 +110,9 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<?php }?>
 		<!-- Content Article And Next / Prev Articles -->
 		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -0.2rem;">'; $h2style = '';}
-			  else{ echo '<div class="row">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}
+			  else{ echo '<div class="row clear">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}
 		?> 
-			<section id="article-caption" class="columns small-12 ">
+			<section id="article-caption" class="columns small-12 clear">
 				<h2 class="">
 					<?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?>
 				</h2>

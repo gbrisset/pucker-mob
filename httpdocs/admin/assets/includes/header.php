@@ -33,8 +33,6 @@
         <?php }?>
       </div>
       </div>
-
-
     </div>
   </header>
 

@@ -2,7 +2,7 @@ $.fn.dynamicLoginContent = function(){
     return this.each(function(){
         var self = $(this),
         task = $(self).attr('data-info-task'),
-        url = "http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajaxmultifunctions.php";
+        url = "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php";
         //data = $(self).serialize();
       //  console.log(task,data);
         var email =  $(self).find('input#email').val(),
@@ -34,7 +34,7 @@ $.fn.dynamicRegisterContent = function(){
     return this.each(function(){
         var self = $(this),
         task = $(self).attr('data-info-task'),
-        url = "http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajaxmultifunctions.php";
+        url = "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php";
 
         var email =  $(self).find('input#email').val(),
         password = $(self).find('input#password').val(),

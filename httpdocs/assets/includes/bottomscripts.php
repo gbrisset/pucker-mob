@@ -132,13 +132,13 @@
   <!-- GUM GUM 
   <script src="//g2.gumgum.com/javascripts/ad.js"></script>-->
 
-<!-- GUM GUM IN-IMAGE -->
+<!-- GUM GUM IN-IMAGE 
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
       <script type="text/javascript">ggv2id='64bad626';</script>
       <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
       <?php }?>
-    <?php } ?>
+    <?php } ?>-->
 
 <!-- NETSEER AD IN-IMAGE -->
 <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
@@ -225,6 +225,9 @@
   <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
   <!-- End comScore Tag -->
 
+
+<!-- POPUNDERS -->
+<script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
 
 <!--Disqus Comment Box Implementation (Comments Counter)-->
 <script type="text/javascript">

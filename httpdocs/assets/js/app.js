@@ -119,7 +119,10 @@ console.log(page);
 			inarticleadblade: '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>',
 			inarticlegoogle:'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 			inarticlemopub:'<script type="text/javascript">mopub_ad_unit = "97dd84c12ded49899e4c7636a63773ac"; mopub_ad_width = 300; mopub_ad_height = 250; mopub_keywords = "custom keywords";<\/script><script src="http://ads.mopub.com/js/client/mopub.js"><\/script>',
-			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',			
+			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',	
+			//inarticlebranovate: '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>',
+			//inarticlebranovate: '<div id="119xpg4yi2pn8"></div><script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=js&divid=119xpg4yi2pn8" type="text/javascript"></script><noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>',
+			inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>'
 		},
 		category: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273103/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -134,7 +137,11 @@ console.log(page);
 			inarticleadblade: '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>',
 			inarticlegoogle:'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 			inarticlemopub:'<script type="text/javascript">mopub_ad_unit = "97dd84c12ded49899e4c7636a63773ac"; mopub_ad_width = 300; mopub_ad_height = 250; mopub_keywords = "custom keywords";<\/script><script src="http://ads.mopub.com/js/client/mopub.js"><\/script>',
-			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',	
+			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',
+			//inarticlebranovate: '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>',
+			//inarticlebranovate: '<div id="119xpg4yi2pn8"></div><script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=js&divid=119xpg4yi2pn8" type="text/javascript"></script><noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>',
+			inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>'
+
 		},
 		distroscale: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273456/0/3055/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -227,6 +234,8 @@ console.log(page);
 			var div = $('<'+elm+'></'+elm+'>')
 			div.addClass(elClass);
 			div.attr('id', id);
+			console.log('TARGET: '+target.context.localName);
+			if($('body').hasClass('mobile') && target.context.localName === 'li')  div.attr('style', 'margin-left: -1.4rem; padding-left: 0rem !important;');
 
 			$(target).after(div);
 		},
@@ -275,19 +284,9 @@ console.log(page);
 			}
 		};
 
-		//Header Footer 300x50 ATFs
-		//loadAd(select.ad.header, mobilead[adPage].header);
-		//loadAd(select.ad.footer, mobilead[adPage].footer);
-		
 		// Single & Multi Article Pages
 	if( !smarties ){
 		console.log(adPage);
-		//if(adPage == 'article' || adPage == 'articleslide'){
-			//loadAd(select.ad.btf1, mobilead[adPage].btf1);
-			//loadAd(select.ad.btf2, mobilead[adPage].btf2);
-		//}		
-
-		//Load and Insert a middle article in the article body
 		var article_id = Foundation.utils.S('#article_id').val();
 
 		//SINGLE PAGE ARTICLE
@@ -308,36 +307,46 @@ console.log(page);
 			if(isListArticle){
 				var ads_insertions = Math.round(li_length / 3) ;
 				var first_ad = 1,
-					second_ad = first_ad + ads_insertions,
-					third_ad = second_ad + ads_insertions;
+					second_ad = 2,//first_ad + ads_insertions,
+					third_ad = 6;//second_ad + ads_insertions;
 				
 				//Google AD 300x150
-				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlegoogle, 'li');	
+				console.log('BRANOVATE');
+				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlebranovate, 'p');	
 				
 				//SHARETHROUG
-				if(article_id != 4314 && article_id != 4341) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'li');
+				console.log('SHARETHROUG');
+				if(article_id != 4314 && article_id != 4341){
+					inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'li');
+					/*inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, '<div id="119xpg4hcMh0p"><\/div>
+<script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=js&divid=119xpg4hcMh0p" type="text/javascript"><\/script>
+<noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe><\/noscript>', 'li');
+			*/		
+				} 
 				
 				//ADBLADE
 				//inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticleadblade, 'li');
-				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticlenativo, 'li');
+
+				console.log('NATIVO');
+				inBodyAd.loadInArticleAd( 'article-content', 6, 0, mobilead[adPage].inarticlenativo, 'li');
 			}else{
 				var ads_insertions = Math.round(p_length / 3) ;
-				var first_ad = 1,
+				var first_ad = 2,
 					second_ad = first_ad + ads_insertions,
 					third_ad = second_ad + ads_insertions;
 				//Google AD 300x150
-				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlegoogle , 'p');		
+				inBodyAd.loadInArticleAd( 'article-content', 1, 0, mobilead[adPage].inarticlebranovate , 'p');		
 				//SHARETHROUG
 				if( article_id == 4314 ){
 					inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, 'p');	
 				}else if( article_id == 4341 ){
 					inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticle, 'p');	
 				}else{
-					if(p_length >= 5) inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, 'p');	
+					if(p_length >= 5) inBodyAd.loadInArticleAd( 'article-content', 6, 0, mobilead[adPage].inarticle, 'p');	
 				}
 				//ADBLADE
 				//if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticleadblade, 'p');	
-				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticlenativo, 'p');	
+				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticlenativo, 'p');	
 			}
 		}
 
@@ -404,17 +413,17 @@ console.log(page);
 				isListArticle = true;
 			}
 			console.log("IS LIST ARTICLE? "+isListArticle);
-			console.log("P: "+p_length+" L: "+li_length);
+			//console.log("P: "+p_length+" L: "+li_length);
 
 			if(isListArticle){
 				var ads_insertions = Math.round(li_length / 3) ;
 				var first_ad = 1,
-					second_ad = first_ad + ads_insertions,
-					third_ad = second_ad + ads_insertions;
+					second_ad = 2,//first_ad + ads_insertions,
+					third_ad = 6;//second_ad + ads_insertions;
 				
 				//Google AD
 				console.log('GOOGLE AD');
-				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'li');	
+				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 
 				//IN-ARTICLE CARAMBOLA 
 				if($('span.span-category.moblog').length == 0) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, ad[adPage].inarticlecarambola, 'li');
@@ -424,9 +433,9 @@ console.log(page);
 				
 				}else{
 				var ads_insertions = Math.round(p_length / 3) ;
-				var first_ad = 1,
-					second_ad = first_ad + ads_insertions,
-					third_ad = second_ad + ads_insertions;
+				var first_ad = 2,
+					second_ad = 4,//first_ad + ads_insertions,
+					third_ad = 6;//second_ad + ads_insertions;
 				
 				//Google AD
 				console.log('GOOGLE AD');
@@ -864,7 +873,7 @@ $('#follow-author').click(function(e){
             type: 'POST',
             dataType: 'json',
             data: { task: 'follow-author', user_email: user_email, author_id: author_id},
-            url: "http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajaxmultifunctions.php",
+            url: "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php",
             
             success: function (msg) {
                 if(msg['hasError']) $('#login-result').html(msg['message']).attr('style', 'color:red; text-transform: inherit;');

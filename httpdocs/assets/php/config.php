@@ -211,10 +211,10 @@ if($local)
 	require_once dirname(__FILE__).'/MailChimp.php';
 	require_once dirname(__FILE__).'/Mailchimp/Lists.php';
 	require_once dirname(__FILE__).'/class.FollowAuthor.php';
-
+	require_once dirname(__FILE__).'/MPArticleAdmin.php';
+	require_once dirname(__FILE__).'/MPArticleAdminController.php';
 	if(isset($admin) && $admin){
-		require_once dirname(__FILE__).'/MPArticleAdmin.php';
-		require_once dirname(__FILE__).'/MPArticleAdminController.php';
+
 		require_once dirname(__FILE__).'/class.Dashboard.php';
 		require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
 		require_once $config['assets_path'].'/class.recaptchalib.php';

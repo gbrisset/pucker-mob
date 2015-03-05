@@ -73,6 +73,7 @@
 					<header>YOU ARE FOLLOWING: </header>
 				</div>
 				<div id="following-content" class="following-content">
+					<?php if(isset($authors) && $authors){?>
 					<?php foreach( $authors as $author ){?>
 					<div id="about-the-author" data-info="<?php echo $author['contributor_id']?>" class="columns">
 						<div class="border-right" style="max-width: 8rem;">
@@ -108,6 +109,9 @@
 							<label class="author-read-more"><a href="http://www.puckermob.com/contributors/<?php echo $author['contributor_seo_name']; ?>">Read more</a></label>
 						</div>
 					</div>
+					<?php }?>
+					<?php }else{?>
+					<p class="columns margin-top">You are not following any author!</p>
 					<?php }?>
 				</div>
 			</section>

@@ -117,7 +117,7 @@ if(!is_null($categoryInfo)){
 	
 		
 	</div>
-	<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+	<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
 
 	<!-- COMMENTS BOX -->
 	<?php include_once($config['include_path'].'disqus.php'); ?>

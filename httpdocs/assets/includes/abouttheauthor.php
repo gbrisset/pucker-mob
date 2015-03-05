@@ -63,7 +63,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<input type="hidden" id="ss_user_email" value="<?php echo $ss_user_email; ?>" />
 			<input type="hidden" id="ss_author_id" value="<?php echo $articleInfoObj['contributor_id']?>" />
 			<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
-			<p class="author-on-mobile-small"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 20); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
+			<p class="author-on-mobile-small"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 40); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
 			<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
 			<div id="author-links">
 						<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>
@@ -82,10 +82,10 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			</div>
 		</div>
 	</div>
-	<div id="follow-the-author-bg" class="columns small-2 no-padding margin-top">
+	<div id="follow-the-author-bg" class="columns small-2 no-padding margin-top author-on-medium-up">
 		<a class="follow-author" id="follow-author" href="">Follow this author</a>
 	</div>
-	<div class="small-12 columns">
+	<div class="small-12 columns author-on-medium-up">
 		<p id="author-action-message"></p>
 	</div>
 </section>

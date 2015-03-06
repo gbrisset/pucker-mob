@@ -5,10 +5,18 @@
   if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
     $user_info = $mpArticle->getUserInfo();
     $user_first_name = "";
+    $user_type = 5;
+   
     if(isset($user_info) && $user_info){
       $user_first_name = $user_info["user_first_name"]; 
+      $user_type = $user_info["user_type"];
+    }
+
+    if($user_type == 5){
+      $user_info = $follow->getReaderInfo();
     }
   }
+  //var_dump($user_type , $user_info['user_email']);
   ?>
   <?php if(!$detect->isMobile()){?>
   <?php 
@@ -23,20 +31,22 @@
   <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>">
     <div class="row">
        <div id="header-social" class="small-6 columns half-padding-right">
-          <a class="my-account-header-link" href="<?php echo $config['this_admin_url']; ?>">My Account</a>
+        <?php if($user_type == 5){?>
+           <a class="my-account-header-link" href="<?php echo $config['this_admin_url'].'following/'; ?>">My Account</a>
+        <?php }else {?>
+          <a class="my-account-header-link" href="<?php echo $config['this_admin_url'].'following/'; ?>">My Account</a>
+          <?php }?>
        </div>
       <div id="topbar-container-admin" class="right small-6">
         <div class="right">
-          <?php //if($loginActive){?>
-            <p class="">Welcome, <?php echo $user_info['user_email']; ?>
-          <?php if(isset($user_info['user_facebook_id']) && $user_info['user_facebook_id'] && strlen($user_info['user_facebook_id']) > 0 ){?>
+          <p class="welcome-email"><span>Welcome, <?php echo $user_info['user_email']; ?></span>
+          <!--<?php //if(isset($user_info['user_facebook_id']) && $user_info['user_facebook_id'] && strlen($user_info['user_facebook_id']) > 0 ){?>
           <img id="image-header-profile" src="<?php echo $user_info['contributor_image'];?>" >
-          <?php }else{?>
+          <?php //}else{?>
           <img id="image-header-profile" src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'. $user_info['contributor_image'];?>" >
-          <?php }?>
+          <?php //}?>-->
           <a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
-        </p>
-        <?php //}?>
+          </p>
       </div>
       </div>
     </div>

@@ -1589,22 +1589,23 @@ if($('#preview')){
 	});
 }
 
-$('#unfollow-author').on('click', function(e){
-	e.preventDefault();
+$('.unfollow-author').each( function(){
+	$(this).on('click', function(e){
+		e.preventDefault();
 
-	var parent = $(this).parents('#about-the-author'),
-	author_id = $(parent).attr('data-info'),
-	reader_email = $('#reader_email').val();
+		var parent = $(this).parents('#about-the-author'),
+		author_id = $(parent).attr('data-info'),
+		reader_email = $('#reader_email').val();
 
-	$.ajax({
-		type: "POST",
-		url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-		data: { author_id: author_id, reader_email: reader_email, task:'unfollow-author' }
-			}).done(function(data) {
-				if(data){
-					$(parent).remove();
-				}
-			});
-
-});
+		$.ajax({
+			type: "POST",
+			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			data: { author_id: author_id, reader_email: reader_email, task:'unfollow-author' }
+		}).done(function(data) {
+			if(data){
+				$(parent).remove();
+			}
+		});
+	});
+});	
 });

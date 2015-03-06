@@ -10,6 +10,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 	$contributor_name = '';
 	if(isset($articleInfoObj['contributor_name']) && $articleInfoObj['contributor_name']) $contributor_name = $articleInfoObj['contributor_name'];
+	$contributor_id = 0;
+	if(isset($articleInfoObj['contributor_id']) && $articleInfoObj['contributor_id']) $contributor_id = $articleInfoObj['contributor_id'];
+
 	//$contributor_name = $articleInfoObj['contributor_name'];
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 	$article_img_credits = $articleInfoObj['article_img_credits'];

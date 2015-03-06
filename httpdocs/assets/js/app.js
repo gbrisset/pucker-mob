@@ -331,22 +331,22 @@ console.log(page);
 				inBodyAd.loadInArticleAd( 'article-content', 6, 0, mobilead[adPage].inarticlenativo, 'li');
 			}else{
 				var ads_insertions = Math.round(p_length / 3) ;
-				var first_ad = 2,
-					second_ad = first_ad + ads_insertions,
-					third_ad = second_ad + ads_insertions;
+				var first_ad = 1,
+					second_ad = 3,//first_ad + ads_insertions,
+					third_ad = 5; //second_ad + ads_insertions;
 				//Google AD 300x150
-				inBodyAd.loadInArticleAd( 'article-content', 1, 0, mobilead[adPage].inarticlebranovate , 'p');		
+				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlebranovate , 'p');		
 				//SHARETHROUG
 				if( article_id == 4314 ){
-					inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, 'p');	
+					inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticle, 'p');	
 				}else if( article_id == 4341 ){
 					inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticle, 'p');	
 				}else{
-					if(p_length >= 5) inBodyAd.loadInArticleAd( 'article-content', 6, 0, mobilead[adPage].inarticle, 'p');	
+					if(p_length >= 5) inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticle, 'p');	
 				}
 				//ADBLADE
 				//if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticleadblade, 'p');	
-				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticlenativo, 'p');	
+				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticlenativo, 'p');	
 			}
 		}
 
@@ -433,9 +433,9 @@ console.log(page);
 				
 				}else{
 				var ads_insertions = Math.round(p_length / 3) ;
-				var first_ad = 2,
-					second_ad = 4,//first_ad + ads_insertions,
-					third_ad = 6;//second_ad + ads_insertions;
+				var first_ad = 1,
+					second_ad = 3,//first_ad + ads_insertions,
+					third_ad = 5;//second_ad + ads_insertions;
 				
 				//Google AD
 				console.log('GOOGLE AD');
@@ -448,29 +448,6 @@ console.log(page);
 				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, ad[adPage].inarticlesharet, 'p');
 				
 			}
-
-			//GOOGLE AD
-			//inBodyAd.loadInArticleAd( 'article-content', 1, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
-			//var li_parent = $('#article-content').find('ol');
-			//if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
-			
-			//if($('#article-content').find('ol').find('li').length > 1 || $('#article-content').find('ul').find('li').length > 1){
-				//var li_length = $(li_parent).find('li').length;
-				
-				//IN-ARTICLE CARAMBOLA 
-			//	if($('span.span-category.moblog').length == 0) inBodyAd.loadInArticleAd( 'article-content', 3, 0, ad[adPage].inarticlecarambola, 'li');
-
-				//SHARETHROUGH
-			//	inBodyAd.loadInArticleAd( 'article-content', 13, 0, ad[adPage].inarticlesharet, 'li');
-
-			//}else{
-				//IN-ARTICLE CARAMBOLA 
-				//if($('span.span-category.moblog').length == 0)  inBodyAd.loadInArticleAd( 'article-content', 3, 0, ad[adPage].inarticlecarambola, 'p');
-
-				//SHARETHROUGH
-				//inBodyAd.loadInArticleAd( 'article-content', 5, 0, ad[adPage].inarticlesharet, 'p');
-		
-			//}
 		}
 
 		//MULTIPAGE ARTICLES
@@ -862,7 +839,7 @@ function isOnScreen( element ) {
 $('#follow-author').click(function(e){
 	e.preventDefault();
 
-	if( $('#ss_user_id').val() == 0 ){
+	if( $('#ss_user_email').val().length < 1  ){
 		$('body').addClass('show-modal-box');
 	}else{
 		 var author_id = $('#ss_author_id').val(),
@@ -873,15 +850,25 @@ $('#follow-author').click(function(e){
             type: 'POST',
             dataType: 'json',
             data: { task: 'follow-author', user_email: user_email, author_id: author_id},
-            url: "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php",
-            
+            //url: "http://localhost:8888/projects/pucker-mob//httpdocs/assets/ajax/ajaxmultifunctions.php",
+            url: "http://dev.puckermob.com/assets/ajax/ajaxmultifunctions.php",
             success: function (msg) {
                 if(msg['hasError']) $('#login-result').html(msg['message']).attr('style', 'color:red; text-transform: inherit;');
                 else{
-                    $('#author-action-message').html(msg['message']).attr('style', 'color:green; text-transform: inherit;');
+                	var email = msg['email'],
+                	container = $('#follow-the-author-bg');
+                	$('#ss_user_email').val(msg);
+
+                	$(container).html('<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>');
                     $('body').removeClass('show-modal-box');
+                    $('.top-header-logout').find('.welcome-email span').html('Welcome, '+email);
+                    $('.top-header-logout').find('#image-header-profile').attr('src', msg['user_img']);
                     $('.top-header-login').attr('style', 'display:none !important');
                     $('.top-header-logout').attr('style', 'display:inherit !important');
+                    $('#follow-msg').html(msg['message']);
+                    $('#my-account-header-link').attr('href', 'http://www.puckermob.com/admin/following/');
+                	$('body').addClass('show-modal-box-follow');
+                   
                 }
             }
      	});
@@ -891,6 +878,7 @@ $('#follow-author').click(function(e){
 
 $('.close').click(function(e){
 	$('body').removeClass('show-modal-box');
+	$('body').removeClass('show-modal-box-follow');
 });
 
 $('#register-link').click(function(e){
@@ -907,6 +895,7 @@ $('#login-link').click(function(e){
 
 
 $('.ajax-form-submit').click(function(e){
+	e.preventDefault();
 	var dataString = '';	
 	var form = $(this).parent('form'),
 	task = $(form).attr('data-info-task');

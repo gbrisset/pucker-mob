@@ -16,7 +16,11 @@ $article_category = $articleInfoObj['cat_name'];
 if($articleInfoObj['date_updated'] == "0000-00-00 00:00:00") $date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
 else $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 
-$contributor_name = $articleInfoObj['contributor_name'];
+$contributor_name = '';
+if(isset($articleInfoObj['contributor_name']) && $articleInfoObj['contributor_name']) $contributor_name = $articleInfoObj['contributor_name'];
+
+$contributor_id = 0;
+if(isset($articleInfoObj['contributor_id']) && $articleInfoObj['contributor_id']) $contributor_id = $articleInfoObj['contributor_id'];
 $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 
 ?>

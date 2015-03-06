@@ -3,59 +3,32 @@
 $class = " column small-12 hide-for-print sidebar-right  no-padding ";
 if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right no-padding "; ?>
 
-<!--<section id="about-the-author" class="<?php echo $class; ?>">
-	<div id="about-the-author-bg" class="columns small-12">
-		<?php 
-		$bio = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_bio"])));
-		$name = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_name"])));
-		?>
-		<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>">
-			<img src="<?php echo $config['image_url'].'articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" />
-		</a>
-		<h4>Written By <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
-		
-		<?php if(!$detect->isMobile()){ ?>
-		<p>
-			<?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 200); 
-		}?> 
-			<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a>
-		</p> 
-			<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>
-			<a href="<?php echo $articleInfoObj['contributor_facebook_link']; ?>" class="social-link" target="_blank">Facebook</a>
-			<?php } ?>
-			<?php if(isset($articleInfoObj['contributor_twitter_handle']) && strlen($articleInfoObj['contributor_twitter_handle'])){ ?>
-			<a href="http://www.twitter.com/<?php echo $articleInfoObj['contributor_twitter_handle']; ?>" class="social-link" target="_blank">Twitter</a>
-			<?php } ?>
-			<?php if(isset($articleInfoObj['contributor_blog_link']) && strlen($articleInfoObj['contributor_blog_link'])){ ?>
-			<a href="<?php echo $articleInfoObj['contributor_blog_link']; ?>" class="social-link" target="_blank">Visit 
-				<?php echo explode(' ', $articleInfoObj['contributor_name'])[0]; ?>'s Website
-			</a>
-			<?php } 
-		?>
-		
-		
-	</div>
-</section>-->
 <?php 
 	$bio = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_bio"])));
 	$name = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_name"])));
 	$ss_user_id=0;
 	$ss_user_email = '';
 	$userInfo =  $adminController->user->getUserInfo();
+	if(!isset($userInfo) && !$userInfo) $userInfo = $follow->getReaderInfo();
 	if(isset($_SESSION) && isset($_SESSION['user_id'])) $ss_user_id = $_SESSION['user_id'];
 
-	if($userInfo) $ss_user_email = $userInfo['user_email']; 
+	if($userInfo) $ss_user_email = $userInfo['user_email'];
+
+	$following_this_author = $follow->isFollowingThisAuthor($userInfo['user_email'], $contributor_id);
+
 	//var_dump($adminController->user->getUserInfo());
+	
 ?>
+<div class="row">
 <?php if($detect->isMobile() ){?>
 	<section id="about-the-author" class="columns small-12 hide-for-print half-padding">
 <?php }else{?>
-	<section id="about-the-author" class="columns small-12 hide-for-print no-padding">
+	<section id="about-the-author" class="columns small-12 hide-for-print">
 <?php }?>
 	<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
 		<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 1rem;">
 			<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>">
-				<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" />
+				<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" style="max-height: 91px;"/>
 			</a>
 		</div>
 		<div class="author-info columns no-padding">
@@ -70,7 +43,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 							<a href="<?php echo $articleInfoObj['contributor_facebook_link']; ?>" class="button small facebook" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
 						<?php } ?>
 						<?php if(isset($articleInfoObj['contributor_twitter_handle']) && strlen($articleInfoObj['contributor_twitter_handle'])){ ?>
-							<a href="http://www.twitter.com/<?php echo $articleInfoObj['contributor_twitter_handle']; ?>" class="button small twitter" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>
+							<!--<a href="http://www.twitter.com/<?php echo $articleInfoObj['contributor_twitter_handle']; ?>" class="button small twitter" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>-->
 						<?php } ?>
 						<?php if(isset($articleInfoObj['contributor_blog_link']) && strlen($articleInfoObj['contributor_blog_link'])){ ?>
 							<a href="<?php echo $articleInfoObj['contributor_blog_link']; ?>" class="button small hide-on-small-and-mobile" target="_blank">
@@ -83,9 +56,15 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 		</div>
 	</div>
 	<div id="follow-the-author-bg" class="columns small-2 no-padding margin-top author-on-medium-up">
-		<a class="follow-author" id="follow-author" href="">Follow this author</a>
+		<?php if( $following_this_author ){?>
+			<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>
+		<?php }else{?>
+			<a class="follow-author" id="follow-author" >Follow this author</a>
+		<?php }?>
 	</div>
-	<div class="small-12 columns author-on-medium-up">
+	<!--<div class="small-12 columns author-on-medium-up">
 		<p id="author-action-message"></p>
-	</div>
-</section>
+	</div>-->
+	</section>
+</div>
+

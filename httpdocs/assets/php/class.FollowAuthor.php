@@ -84,6 +84,22 @@ class FollowAuthor{
 
 	}
 
+	public function isFollowingThisAuthor( $reader_email, $contributor_id ){
+		$reader_email = filter_var($reader_email, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$s =" SELECT * FROM readers_authors 
+			  WHERE reader_email = '".$reader_email."' AND author_id = ".$contributor_id; 
+
+		$queryParams = [ ];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if ($q){
+			return true;
+		} else  return false;
+
+	}
+
+
 	public function getArticlesPerAuthor( $author_id ){
 		$author_id = filter_var($author_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$s =" SELECT * FROM article_contributor_articles 

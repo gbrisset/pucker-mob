@@ -271,6 +271,18 @@ if(!is_null($categoryInfo)){
 		// else include_once($config['include_path'].'modalbox.php'); 
 	?>
 
+	<div id="openModal" class="modalDialogFollow">
+	<div id="popup-content" class="follow-msg-content">
+		<a href="#close" title="Close" class="close">X</a>
+		<div class="small-12" id="follow-box">
+			<header>PUCKERMOB</header>
+        	<section>
+        		<h1>Your are following this author!</h1>
+				<p id="follow-msg" class="follow-msg" ></p>
+			</section>
+		</div>
+	</div>
+	</div>
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 

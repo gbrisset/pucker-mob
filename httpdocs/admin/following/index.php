@@ -77,7 +77,7 @@
 					<?php foreach( $authors as $author ){?>
 					<div id="about-the-author" data-info="<?php echo $author['contributor_id']?>" class="columns">
 						<div class="border-right" style="max-width: 8rem;">
-							<div  style="min-width: 70px; margin-right: 1rem; text-align:center;">
+							<div  style="min-width: 70px; margin-right: 1rem; text-align:center;margin-top: 0.5rem;">
 								<a href="<?php echo $config['this_url'].'contributors/'.$author['contributor_seo_name']; ?>">
 									<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$author['contributor_image']; ?>" alt="<?php echo $author['contributor_name']?>" class="following-img"/>
 								</a>
@@ -85,7 +85,7 @@
 							</div>
 							<div class="author-links" style="margin-right:1rem;">
 								<a href="http://www.puckermob.com/contributors/<?php echo $author['contributor_seo_name']; ?>">READ BIO</a>
-								<a href="" id="unfollow-author">Unfollow</a>
+								<a href="" class="unfollow-author" id="unfollow-author">Unfollow</a>
 								<input type="hidden">
 							</div>
 						</div>
@@ -131,7 +131,7 @@
 			<!-- MOST POPULAR AUTHORS -->
 			<?php if($most_popular){?>
 			<section id="most-followd-authors" class="columns small-6">
-				<h1>Most Popular Writers:</h1>
+				<h1>Most READ Writers:</h1>
 				<ul> 
 				<?php foreach($most_popular as $popular){ 
 					echo '<li id="'.$popular["contributor_id"].'"><a href="http://www.puckermob.com/contributors/'.$popular['contributor_seo_name'].'" target="_blank" >'.$popular['contributor_name'].'</a></li>';

@@ -913,17 +913,25 @@ End password reset methods
 		$authorId = $author_id;
 		
 		$exist = $this->thisfollowerexist($email, $authorId);
-		
+		$user_info = $this->getUserInfo();
+
+		if(isset($user_info['user_facebook_id']) && $user_info['user_facebook_id'] && strlen($user_info['user_facebook_id']) > 0 ){
+			$contributor_img = $user_info['contributor_image'];
+		}else{
+			$contributor_img = 'http://images.puckermob.com/articlesites/contributors_redesign/'. $user_info['contributor_image'];
+		}
+		//var_dump($user_info);
 		if( !$exist ){
 		
 			$result = $this->performUpdate(array(
 				'updateString' => "INSERT INTO readers_authors (reader_email, author_id) VALUES ( '".$email."', ".$authorId.") "
 			));
 
-			if($result) return array('hasError' => false, 'message' => "Awesome! You're successfully following this writer. Check your e-mail for regular updates on their work.");
+			
+			if($result) return array('hasError' => false, 'email'=> $email, 'user_img'=>$contributor_img, 'message' => "Awesome! You're successfully following this writer. Check your e-mail for regular updates on their work.");
 
 		}else{
-			return array('hasError' => false, 'message' => "Wow! You must really like this writer  - you're already following them! Check out your  <a href='http://www.puckermob.com/admin/following/'>DASHBOARD</a> to see more of their work.");
+			return array('hasError' => false, 'email'=> $email, 'user_img'=>$contributor_img, 'message' => "Wow! You must really like this writer  - you're already following them! Check out your  <a href='http://www.puckermob.com/admin/following/'>DASHBOARD</a> to see more of their work.");
 		}
 
 		return false;

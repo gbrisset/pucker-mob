@@ -90,6 +90,7 @@
         		</div>
         	</section>
         </div>
-    </diV>
+    </div>
+   
 </div>
 		

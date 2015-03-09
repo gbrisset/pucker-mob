@@ -54,7 +54,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
-<?php //include($config['include_path'].'socialbuttonsarticles.php'); ?>
+		<?php //include($config['include_path'].'socialbuttonsarticles.php'); ?>
 		<!-- Article Image -->
 		<div class="row">
 			<!-- SMARTIES -->
@@ -73,26 +73,33 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</div>
 		</div>
 
+		<!-- ABOUT THE AUTHOR -->
+		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+
 		<!-- Category, Date And Author Information -->
+		<?php if($detect->isMobile()){ ?>
 		<div class="row">
-			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
+			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 ">
 				<p class="left uppercase">
-					<?php if($detect->isMobile()){ ?>
-						<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
-					<?php }else{?>
-						<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
-						<span class="span-date"><?php echo $date; ?></span>
-					<?php }?>
+					<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
 				</p>
-				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
 			</div>
 		</div>
-		<!-- ABOUT THE AUTHOR -->
-			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
-
-		<?php if($detect->isMobile()){ ?>
-		<div class="row clear">
-			<!--<hr style="margin: 0 0.9rem !important;">-->
+		<?php }else{?>
+		<div class="row">
+			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
+				<p class="left uppercase">
+					<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
+					<span class="span-date"><?php echo $date; ?></span>
+				</p>
+				<!--<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>-->
+			</div>
+		</div>
+		<?php }?>
+		
+		<?php //if($detect->isMobile()){ ?>
+		<!--<div class="row clear">
+		
 			<div class="columns hide-for-print like-us-fb">
 				<p style ="color:#777" class="small-12 padding-top padding-bottom">LIKE US ON FACEBOOK
 					<div class="columns small-12 " style="margin-left:0 !important;">
@@ -101,8 +108,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</p>
 			</div>	
 		<hr style="margin: 0 0.9rem !important; border-bottom:1px solid #ddd !important; padding:0.4rem !important;">
-		</div>	 	
-		<?php }?>
+		</div>	--> 	
+		<?php //}?>
 
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>

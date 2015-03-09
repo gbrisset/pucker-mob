@@ -2,10 +2,8 @@ $.fn.dynamicLoginContent = function(){
     return this.each(function(){
         var self = $(this),
         task = $(self).attr('data-info-task'),
-        //url = "http://localhost:8888/projects/pucker-mob//httpdocs/assets/ajax/ajaxmultifunctions.php";
-        url = "http://dev.puckermob.com/assets/ajax/ajaxmultifunctions.php";
-        //data = $(self).serialize();
-      //  console.log(task,data);
+        url = "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php";
+      
         var email =  $(self).find('input#email').val(),
         password = $(self).find('input#password').val(),
         author_id = $(self).find('#author-id').val();
@@ -44,8 +42,7 @@ $.fn.dynamicRegisterContent = function(){
     return this.each(function(){
         var self = $(this),
         task = $(self).attr('data-info-task'),
-        //url = "http://localhost:8888/projects/pucker-mob//httpdocs/assets/ajax/ajaxmultifunctions.php";
-        url = "http://dev.puckermob.com/assets/ajax/ajaxmultifunctions.php";
+        url = "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php";
        
         var email =  $(self).find('input#email').val(),
         password = $(self).find('input#password').val(),
@@ -65,7 +62,7 @@ $.fn.dynamicRegisterContent = function(){
                 else{
                    var email = msg['email'],
                     container = $('#follow-the-author-bg');
-                    $('#ss_user_email').val(msg);
+                    $('#ss_user_email').val( msg['email'] );
 
                     $(container).html('<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>');
                     $('body').removeClass('show-modal-box');

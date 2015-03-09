@@ -781,7 +781,7 @@ function isOnScreen( element ) {
 	}
 
 	//Get Total Shares For an Article
-	$.get(
+	/*$.get(
 		"http://www.puckermob.com/assets/ajax/ajaxManageData.php", 
 		{"url" : location.href, "articleId" : Foundation.utils.S('#article_id').val()}, 
 		function(shares) {
@@ -789,7 +789,7 @@ function isOnScreen( element ) {
 			console.log(shares);
 			//$(".shares_counter").text(kFormatter(shares));
 		} 
-	);
+	);*/
 
 
 //READ MORE 
@@ -851,13 +851,13 @@ $('#follow-author').click(function(e){
             dataType: 'json',
             data: { task: 'follow-author', user_email: user_email, author_id: author_id},
             //url: "http://localhost:8888/projects/pucker-mob//httpdocs/assets/ajax/ajaxmultifunctions.php",
-            url: "http://dev.puckermob.com/assets/ajax/ajaxmultifunctions.php",
+            url: "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php",
             success: function (msg) {
                 if(msg['hasError']) $('#login-result').html(msg['message']).attr('style', 'color:red; text-transform: inherit;');
                 else{
                 	var email = msg['email'],
                 	container = $('#follow-the-author-bg');
-                	$('#ss_user_email').val(msg);
+                	$('#ss_user_email').val(email);
 
                 	$(container).html('<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>');
                     $('body').removeClass('show-modal-box');

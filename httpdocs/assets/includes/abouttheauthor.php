@@ -9,7 +9,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 	$ss_user_id=0;
 	$ss_user_email = '';
 	$userInfo =  $adminController->user->getUserInfo();
-	if(!isset($userInfo) && !$userInfo) $userInfo = $follow->getReaderInfo();
+	if(!isset($userInfo) || !$userInfo) $userInfo = $follow->getReaderInfo();
 	if(isset($_SESSION) && isset($_SESSION['user_id'])) $ss_user_id = $_SESSION['user_id'];
 
 	if($userInfo) $ss_user_email = $userInfo['user_email'];
@@ -21,12 +21,15 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 ?>
 <div class="row">
 <?php if($detect->isMobile() ){?>
-	<section id="about-the-author" class="columns small-12 hide-for-print half-padding">
+	<section id="about-the-author" class="small-12 hide-for-print padding">
+		<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
+		<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 0rem;">
 <?php }else{?>
 	<section id="about-the-author" class="columns small-12 hide-for-print">
-<?php }?>
-	<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
+		<div id="about-the-author-bg" class="columns small-10 no-padding">
 		<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 1rem;">
+<?php }?>
+	
 			<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>">
 				<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" style="max-height: 91px;"/>
 			</a>
@@ -36,7 +39,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<input type="hidden" id="ss_user_email" value="<?php echo $ss_user_email; ?>" />
 			<input type="hidden" id="ss_author_id" value="<?php echo $articleInfoObj['contributor_id']?>" />
 			<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
-			<p class="author-on-mobile-small"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 40); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
+			<!--<p class="author-on-mobile-small hide-on-small-and-mobile"><?php //echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 40); ?> <a href="<?php //echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p>--> 
 			<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
 			<div id="author-links">
 						<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>
@@ -55,7 +58,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			</div>
 		</div>
 	</div>
-	<div id="follow-the-author-bg" class="columns small-2 no-padding margin-top author-on-medium-up">
+	<div id="follow-the-author-bg" class="columns small-2 no-padding author-on-medium-up">
 		<?php if( $following_this_author ){?>
 			<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>
 		<?php }else{?>

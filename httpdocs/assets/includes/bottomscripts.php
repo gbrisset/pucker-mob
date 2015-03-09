@@ -27,9 +27,9 @@
   })
   </script>
   <?php }?>
-
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" async ></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
+
 
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>

@@ -45,7 +45,7 @@
           <?php //}else{?>
           <img id="image-header-profile" src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'. $user_info['contributor_image'];?>" >
           <?php //}?>-->
-          <a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
+          <a href="<?php echo $config['this_admin_url']; ?>/logout/">| Sign Out</a>
           </p>
       </div>
       </div>

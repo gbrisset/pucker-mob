@@ -82,26 +82,33 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 			</section>
 		</div>
 		
-		<!-- Category, Date And Author Information -->
-		<div class="row">
-			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 padding-top half-padding-right-on-lg">
-				<p class="left uppercase">
-					<?php if($detect->isMobile()){ ?>
-						<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
-					<?php }else{?>
-						<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
-						<span class="span-date"><?php echo $date; ?></span>
-					<?php }?>
-				</p>
-				<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>
-			</div>
-		</div>
 		<!-- ABOUT THE AUTHOR -->
 		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
-		
+
+		<!-- Category, Date And Author Information -->
 		<?php if($detect->isMobile()){ ?>
 		<div class="row">
-			<!--<hr style="margin: 0 0.9rem !important;">-->
+			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 ">
+				<p class="left uppercase">
+					<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
+				</p>
+			</div>
+		</div>
+		<?php }else{?>
+		<div class="row">
+			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
+				<p class="left uppercase">
+					<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
+					<span class="span-date"><?php echo $date; ?></span>
+				</p>
+				<!--<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>-->
+			</div>
+		</div>
+		<?php }?>
+		
+		<?php //if($detect->isMobile()){ ?>
+		<!--<div class="row clear">
+		
 			<div class="columns hide-for-print like-us-fb">
 				<p style ="color:#777" class="small-12 padding-top padding-bottom">LIKE US ON FACEBOOK
 					<div class="columns small-12 " style="margin-left:0 !important;">
@@ -109,9 +116,10 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					</div>	 
 				</p>
 			</div>	
-		<hr style="margin: 0 0.9rem !important; border-bottom:1px solid #ddd !important; border-top:none; padding:0.4rem !important;">
-		</div>	 	
-		<?php }?>
+		<hr style="margin: 0 0.9rem !important; border-bottom:1px solid #ddd !important; padding:0.4rem !important;">
+		</div>	--> 	
+		<?php //}?>
+		
 		<!-- Content Article And Next / Prev Articles -->
 		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -0.2rem;">'; $h2style = '';}
 			  else{ echo '<div class="row clear">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}

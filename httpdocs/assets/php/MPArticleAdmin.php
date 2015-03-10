@@ -1323,9 +1323,9 @@ class MPArticleAdmin{
 
 	private function createNewImageContributor($extension, $uploadFile, $iDestFileName,  $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h){
             // create a new true color image
-
-            $vDstImg = @imagecreatetruecolor( $dst_w, $dst_h );
+			$dst_w = $dst_h =150;
             $vSrcImg = $this->getImageObj($extension, $uploadFile);
+            $vDstImg = @imagecreatetruecolor( $dst_w, $dst_h );
     
             // copy and resize part of an image with resampling
             if( $vDstImg && $vSrcImg ){

@@ -50,8 +50,8 @@ $params = [
 						$arr['seo_title'] = $seo;
 
 						$arrArticles[] = $arr;
-						//echo "THIS IS ARTICLE ".$title." WITH #PAGEVIEWS ".$pageviews;
-						//echo "<br>";
+						echo "THIS IS ARTICLE ".$title." WITH #PAGEVIEWS ".$pageviews;
+						echo "<br>";
 					}
 
 				}

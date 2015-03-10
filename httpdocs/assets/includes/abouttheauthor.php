@@ -6,6 +6,8 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 <?php 
 	$bio = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_bio"])));
 	$name = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_name"])));
+	$image_name = 'pm_avatars_1.png';
+	if( !empty($articleInfoObj['contributor_image']) ) $image_name = $articleInfoObj['contributor_image'];
 	$ss_user_id=0;
 	$ss_user_email = '';
 	$userInfo =  $adminController->user->getUserInfo();
@@ -31,7 +33,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 <?php }?>
 	
 			<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>">
-				<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$articleInfoObj['contributor_image'];?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" style="max-height: 91px;"/>
+				<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" style="max-height: 91px;"/>
 			</a>
 		</div>
 		<div class="author-info columns no-padding">

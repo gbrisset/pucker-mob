@@ -50,7 +50,7 @@
 		?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>" >
-				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
+				<img style="width: 784px;max-height: 431px;" src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 				<?php if(isset($_GET['show']) && $_GET['show'] == 'type'){
 
 					echo '<span style="position: absolute; top: 6.5rem; left: 8rem; font-size: 8rem;  color: #000; font-weight: bold; ">';

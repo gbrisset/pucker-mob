@@ -298,6 +298,8 @@ if(!is_null($categoryInfo)){
 			<noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
     <?php }?>
 
+   	<!-- MODAL BOX FOLLOWERS POPUP -->
+	<?php include_once($config['include_path'].'modal_box_followers.php'); ?>
 </body>
 </html>
 <?php } ?>

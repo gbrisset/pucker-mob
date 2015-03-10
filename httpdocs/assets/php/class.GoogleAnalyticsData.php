@@ -128,15 +128,16 @@ class GoogleAnalyticsData{
 			foreach($data as $article){
 				$pageviews =  $article['pageviews'];
 				$title= $article['title'];
+
 				$url= $article['url'];
 				$seo = $article['seo_title'];
 				$insert = " INSERT INTO google_analytics_most_viewed_articles
 							   (`pageviews`, `title`, `url`, `seo_title`) 
-							   VALUES ( $pageviews, '".$title."', '".$url."', '".$seo."') ";
+							   VALUES ( $pageviews, '".addslashes($title)."', '".$url."', '".$seo."') ";
 				$queryParams = [];
 
 				$pdo = $this->con->openCon();
-					
+				//var_dump($insert);	
 				$ins = $pdo->prepare($insert);
 
 				$row = $ins->execute($queryParams);

@@ -77,8 +77,9 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 
 	<?php include_once($config['include_path'].'footer.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
-	<!-- MODAL BOX POPUP -->
-	<?php //include_once($config['include_path'].'modalbox.php'); ?>
+
+	<!-- MODAL BOX FOLLOWERS POPUP -->
+	<?php include_once($config['include_path'].'modal_box_followers.php'); ?>
 </body>
 </html>
 <?php }?>

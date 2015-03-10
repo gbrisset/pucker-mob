@@ -1,11 +1,10 @@
-
-
 .modalDialog,
 .modalDialogFindOut, 
 .modalDialogLib, 
 .modalDialogDeleteAccount,
 .modalDialogpPreviewArticle,
-.modalDialogFollow {
+.modalDialogFollow,
+.modalDialogFollowPopUp {
 	position: fixed;
 	font-family: Arial, Helvetica, sans-serif;
 	top: 0;
@@ -30,7 +29,8 @@
 .show-modal-box-lib .modalDialogLib,
 .show-modal-delete-box .modalDialogDeleteAccount,
 .show-modal-box-prev-art .modalDialogpPreviewArticle,
-.show-modal-box-follow .modalDialogFollow {
+.show-modal-box-follow .modalDialogFollow,
+.show-modal-box-follow-popup .modalDialogFollowPopUp {
 	opacity:1;
 	pointer-events: auto;
 }
@@ -39,7 +39,8 @@
 .modalDialogLib > div,
 .modalDialogFindOut > div,
 .modalDialogDeleteAccount > div,
-.modalDialogFollow div{
+.modalDialogFollow div,
+.modalDialogFollowPopUp div{
 	position: relative;
 	margin: 20% auto;
 	width: 95%;
@@ -54,6 +55,15 @@
 	}
 }
 
+#openModalFollowPopUp .close{
+		top: -0.5rem;
+		background: #000;
+		width: 28px;
+		height: 28px;
+		position: absolute;
+		font: 100% OsloBold,arial;
+		z-index: 99999;
+	}
 .modalDialogpPreviewArticle > div{
 	position: relative;
 	margin: 20% auto;
@@ -92,7 +102,8 @@
 	.modalDialogFindOut > div,
 	.modalDialogDeleteAccount > div,
 	.modalDialogpPreviewArticle > div,
-	.modalDialogFollow > div { width: 35%; max-width: 50rem; margin: 6% auto; }
+	.modalDialogFollow > div, 
+	.modalDialogFollowPopUp > div { width: 35%; max-width: 50rem; margin: 6% auto; }
 }
 
 @media #{$medium-up} { 

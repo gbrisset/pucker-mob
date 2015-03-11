@@ -20,7 +20,7 @@ $.fn.dynamicLoginContent = function(){
                 else{
                     var email = msg['email'],
                     container = $('#follow-the-author-bg');
-                    $('#ss_user_email').val(msg);
+                    $('#ss_user_email').val(email);
 
                     $(container).html('<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>');
                     $('body').removeClass('show-modal-box');

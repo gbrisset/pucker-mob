@@ -15,11 +15,12 @@
 
 	//MANAGE FACEBOOK LOGIN / REGISTER
 	if($_POST['task'] == 'register_fb'){
+		//var_dump($_POST); die;
 		if( isset($_POST['isReader']) ){
 			$reader_email = $_POST['user']['email']; 
 			$author_id = $_POST['author_id'];	
 			$result = $adminController->user->doRegistrationFromFB($_POST);
-			
+			//var_dump($result, $reader_email); die;
 			if(!$result['hasError']){
 				echo json_encode($adminController->user->followAnAuthor($reader_email, $author_id));
 			}else{

@@ -58,7 +58,9 @@
 	    ],
 	    menubar : "insert tools",
 	    toolbar: "insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link  hr |  jbimages | preview spellchecker" ,
-	    //relative_urls:false,
+
+    	spellchecker_rpc_url: 'spellchecker.php',
+    	//spellchecker_language: 'sv_SE',
 	    init_instance_callback : function() {
 	     tinyMCE.activeEditor.getContent();
 	//     console.log(tinyMCE.activeEditor.getContent());
@@ -90,8 +92,8 @@
 if($('#fb-login')){
 	$('#fb-login').on('click', function(e){
 		//var tos = $('#tos_agreed-s');
-		$('#tos_agreed-s').attr('checked', true);
-		$('#tos_agreed-s').attr('disabled', true);
+		//$('#tos_agreed-s').attr('checked', true);
+		//$('#tos_agreed-s').attr('disabled', true);
 	    FB.login(function(response) {
 	//    console.log("FB.login");
 	  	  checkLoginState();
@@ -99,7 +101,8 @@ if($('#fb-login')){
 	});
 }
 </script>
-
+<!-- PURE CHAT WINDOW-->
+<script type='text/javascript'>(function () { var done = false;var script = document.createElement('script');script.async = true;script.type = 'text/javascript';script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';document.getElementsByTagName('HEAD').item(0).appendChild(script);script.onreadystatechange = script.onload = function (e) {if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {var w = new PCWidget({ c: '5485ade1-6085-4dc8-8d90-4b9ad158adce', f: true });done = true;}};})();</script>
 <!--[if lt IE 7 ]>
 	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 	<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>

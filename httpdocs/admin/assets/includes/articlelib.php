@@ -8,7 +8,7 @@
 
 ?>
 <div id="openModalLib" class="modalDialogLib" >
-	<div id="popup-content" style="width:40% !important; min-width: 35rem; margin: 1% auto !important;">
+	<div id="popup-content" style="width:40% !important; min-width: 20rem; margin: 1% auto !important;">
 		<a href="#close" title="Close" class="close">X</a>
 		<form name="images-lib" id="images-library-form" method="POST" action="" class="ajax-submit-form clear">
 		
@@ -39,7 +39,7 @@
 		
 		<div class="step-2">
 		<header id="header-images">Select an image and click insert</header>
-		<div class="modal-img article-imgs-container" id="article-preset-img" style="background: #fff; padding: 0;"></div>
+		<div class="modal-img article-imgs-container" id="article-preset-img" style="background: #fff; padding: 0; overflow: scroll; height: 22rem;"></div>
 		<input type="hidden" id="image_value" name="image_value" value="" />
 		<input type="hidden" id="library" name="library" value="library" />
 		<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />

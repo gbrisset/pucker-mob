@@ -929,7 +929,7 @@ class MPArticleAdmin{
 		$finfo = finfo_open(FILEINFO_MIME_TYPE);
 		$mime = finfo_file($finfo, $files['file']['tmp_name']);
 		$ok = false;
-		var_dump($mime); die;
+		//var_dump($mime); die;
 		switch ($mime) {
 		   case 'image/jpeg':
 		   case 'application/pdf':
@@ -1323,9 +1323,9 @@ class MPArticleAdmin{
 
 	private function createNewImageContributor($extension, $uploadFile, $iDestFileName,  $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h){
             // create a new true color image
-			$dst_w = $dst_h =150;
-            $vSrcImg = $this->getImageObj($extension, $uploadFile);
+
             $vDstImg = @imagecreatetruecolor( $dst_w, $dst_h );
+            $vSrcImg = $this->getImageObj($extension, $uploadFile);
     
             // copy and resize part of an image with resampling
             if( $vDstImg && $vSrcImg ){
@@ -1653,7 +1653,7 @@ class MPArticleAdmin{
 	
 		try{
 			$q->execute($params);
-		}catch(PDOException $e){var_dump($e);
+		}catch(PDOException $e){//var_dump($e);
 			$this->con->closeCon();
 			return array_merge($this->returnStatus(500), ['hasError' => true]);
 		}

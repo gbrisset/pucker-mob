@@ -1,5 +1,9 @@
 <?php
 // Initialize variables
+$article_body = $article_title = $article_category = $article_disclaimer = $article_img_credits = $article_notes = $linkToContributor = '';
+$article_id =0;
+$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
+
 if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_title = $articleInfoObj['article_title'];;
 	$article_id = $articleInfoObj['article_id'];
@@ -131,9 +135,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			echo '<section id="article-content" class="small-12 column sidebar-box">';
 		}
 		?> 
-			
+		
 		<p><?php echo $article_body; ?></p>
 
+		<?php if($detect->isMobile()){?>
+			<!-- BRANOVATE -->
+			<!-- BEGIN JS TAG - puckermob.com 300x250 < - DO NOT MODIFY -->
+			<div class="" style="background-color:#000; min-height: 15.5rem;">
+				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+			</div>
+			<!-- END TAG -->
+		<?php }?>
 		<!-- ON DESKTOP --> 
 		<?php if(!$detect->isMobile()){?>
 		<!-- GOOGLE AD BOTTOM-->

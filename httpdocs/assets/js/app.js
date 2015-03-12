@@ -307,46 +307,42 @@ console.log(page);
 			if(isListArticle){
 				var ads_insertions = Math.round(li_length / 3) ;
 				var first_ad = 1,
-					second_ad = 2,//first_ad + ads_insertions,
+					second_ad = 3,//first_ad + ads_insertions,
 					third_ad = 6;//second_ad + ads_insertions;
 				
 				//Google AD 300x150
-				console.log('BRANOVATE');
-				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlebranovate, 'p');	
+				//console.log('Google');
+				//inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlebranovate, 'p');	
 				
 				//SHARETHROUG
 				console.log('SHARETHROUG');
 				if(article_id != 4314 && article_id != 4341){
 					inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'li');
-					/*inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, '<div id="119xpg4hcMh0p"><\/div>
-<script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=js&divid=119xpg4hcMh0p" type="text/javascript"><\/script>
-<noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe><\/noscript>', 'li');
-			*/		
 				} 
 				
 				//ADBLADE
 				//inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticleadblade, 'li');
 
 				console.log('NATIVO');
-				inBodyAd.loadInArticleAd( 'article-content', 6, 0, mobilead[adPage].inarticlenativo, 'li');
+				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlenativo, 'li');
 			}else{
 				var ads_insertions = Math.round(p_length / 3) ;
 				var first_ad = 1,
 					second_ad = 3,//first_ad + ads_insertions,
 					third_ad = 5; //second_ad + ads_insertions;
 				//Google AD 300x150
-				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlebranovate , 'p');		
+				//inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlebranovate , 'p');		
 				//SHARETHROUG
 				if( article_id == 4314 ){
-					inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticle, 'p');	
+					inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'p');	
 				}else if( article_id == 4341 ){
 					inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticle, 'p');	
 				}else{
-					if(p_length >= 5) inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticle, 'p');	
+					if(p_length >= 5) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'p');	
 				}
 				//ADBLADE
 				//if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticleadblade, 'p');	
-				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticlenativo, 'p');	
+				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlenativo, 'p');	
 			}
 		}
 

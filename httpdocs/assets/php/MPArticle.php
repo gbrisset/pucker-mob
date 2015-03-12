@@ -1381,9 +1381,9 @@ $s .= 'AND parent.rgt ';
 			AND nc.cat_id = {$catId} 
 			GROUP BY articles.article_id 
 
-			ORDER BY articles.article_id DESC 
+			ORDER BY articles.date_updated DESC 
 			";
-
+//	ORDER BY articles.article_id DESC 
 			$queryParams = [ ];
 			$pdo = $this->con->openCon();
 			$q = $pdo->prepare($s);
@@ -1516,8 +1516,8 @@ if ( $options['pageId'] == 3 || $options['pageId'] == 4 || $options['pageId'] ==
 }
 
 $s .= 'GROUP BY article.article_id ';
-
-$s .= 'ORDER BY article.article_id DESC';
+$s .= 'ORDER BY article.date_updated DESC';
+//$s .= 'ORDER BY article.article_id DESC';
 $queryParams = [
 ':pageId' => filter_var($options['pageId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
 ];
@@ -1634,7 +1634,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 		$order_sql = " ORDER BY a.article_status = 3 DESC, a.article_id ASC ";
 		break;
 	}
-var_dump($articleType);
+
 	$status_sql = " WHERE article_status IN (1, 2, 3) ";
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);

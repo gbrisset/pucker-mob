@@ -285,6 +285,15 @@ class Dashboard{
 		else return false;
 	}
 
+	public function get_monthly_rate( $month, $year ){
+		$s=" SELECT * FROM shares_rate WHERE month = $month AND year = $year LIMIT 1";
+		$queryParams = [];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		
+		if($q) return $q['rate'];
+		else return false;
+	}
+
 	public function get_articlesbypageviews( $contributor_id, $month, $year ){
 
 		//$month = 2;
@@ -313,6 +322,37 @@ class Dashboard{
 			return false;
 		}
 	}
+
+	public function get_articlesbypageviews_new( $contributor_id, $month, $year ){
+
+		//$month = 2;
+		$s = "SELECT * FROM  google_analytics_data_new 
+				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
+				ON ( article_contributor_articles.article_id = google_analytics_data_new.article_id )
+				AND ( articles.article_id = google_analytics_data_new.article_id )
+				AND ( article_categories.article_id = google_analytics_data_new.article_id )
+				AND (categories.cat_id = article_categories.cat_id )
+				WHERE google_analytics_data_new.month = ".$month." AND  google_analytics_data_new.year = ".$year;
+
+			if( isset($contributor_id) && $contributor_id != 0){
+				$s.= " AND article_contributor_articles.contributor_id = ".$contributor_id;
+			}
+			$s.= " ORDER BY google_analytics_data_new.usa_pageviews DESC ";
+		$queryParams = [];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		//var_dump($q);
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}
+	}
+
 	//Return All Articles per month for each contributor
 	public function get_dashboardArticles( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month, $year) {
 //var_dump($month, $year, $userArticlesFilter);
@@ -445,6 +485,7 @@ class Dashboard{
 		}
 	}
 
+
 	// Get  Preview Month Article Social Media Information
 	public function get_dashboardArticlesPrevMonth( $article_id, $month, $cat, $year ){
 		
@@ -464,34 +505,66 @@ class Dashboard{
 		return $row; 
 	}
 
+
+	public function getPageViewsUSReport($data){
+		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$contributor_id = $data['contributor'];
+
+		$s = "SELECT contributor_earnings.*, article_contributors.contributor_name, 
+		     article_contributors.contributor_seo_name, user_billing_info.paypal_email,
+		     user_billing_info.w9_live,
+		     users.user_type FROM contributor_earnings
+		INNER JOIN (article_contributors, users) 
+		ON contributor_earnings.contributor_id = article_contributors.contributor_id 
+		AND article_contributors.contributor_email_address = users.user_email 
+		LEFT JOIN (user_billing_info)
+		ON( users.user_id = user_billing_info.user_id)
+		WHERE contributor_earnings.month = $month AND contributor_earnings.year = $year AND  total_earnings > 0.5 ";
+
+		if(isset($contributor_id) && $contributor_id != 0) {
+		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
+		}
+
+		$s .=" ORDER BY total_us_pageviews DESC ";
+
+		$queryParams = [ ];
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if ($q && isset($q[0])){
+		return $q;
+		} else if ($q && !isset($q[0])){
+		$q = array($q);
+		return $q;
+		}else return false;
+
+	}
 	public function socialMediaSharesReport($data){
 
 		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$contributor_id = $data['contributor'];
-
+		$share_rate = $this->get_monthly_rate( $month, $year);
 		$s = "
 			SELECT
 			      article_contributor_articles.contributor_id, 
 			      article_contributors.contributor_name, 
 			      article_contributors.contributor_seo_name, 
-			      user_billing_info.paypal_email,
-			      user_billing_info.w9_live,
+			     
 			      users.user_type,
 			      SUM(social_media_info.rate) as 'total_rate',
 			      SUM(social_media_info.total_shares) as 'total_shares', 
-			      ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) AS share_rate ,
-			      (SUM(social_media_info.US_traffic) * ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) ) as 'share_revenue', 
+			      $share_rate AS share_rate ,
+			      (SUM(social_media_info.US_traffic) * $share_rate ) as 'share_revenue', 
 			      SUM(social_media_info.US_traffic) as 'US_Traffic',
-			      ((SUM(social_media_info.US_traffic) * ( SELECT rate FROM shares_rate WHERE shares_rate.month = ".$month." AND shares_rate.year = ".$year." ) ) + SUM(social_media_info.rate)) as 'total_to_pay'
+			      ((SUM(social_media_info.US_traffic) * $share_rate ) + SUM(social_media_info.rate)) as 'total_to_pay'
 			      
 			FROM  article_contributor_articles 
 
 			INNER JOIN ( article_contributors, users) 
 				ON ( article_contributor_articles.contributor_id = article_contributors.contributor_id )
 				AND ( users.user_email = article_contributors.contributor_email_address)
-				
-			LEFT JOIN ( user_billing_info ) ON (users.user_id = user_billing_info.user_id)
+			
 			INNER JOIN ( 
 				SELECT 
 				social_media_records.article_id, social_media_records.category,  
@@ -522,7 +595,8 @@ class Dashboard{
 
 				INNER JOIN ( articles, article_rates) 
 				ON (articles.article_id = social_media_records.article_id) 
-				AND ( articles.article_type = article_rates.rate_id) ";
+				AND ( articles.article_type = article_rates.rate_id) 
+				";
 
 				if( $month > 1 && $year ==  2015 ){
 					$s .= "LEFT JOIN (SELECT * FROM google_analytics_data WHERE google_analytics_data.year = ".$year." and google_analytics_data.month = ".$month." ) as ga ON ga.article_id = social_media_records.article_id ";
@@ -530,15 +604,18 @@ class Dashboard{
 				$s .= "WHERE social_media_records.month = '".$month."' and social_media_records.year = '".$year."'
 				GROUP BY social_media_records.article_id ) as social_media_info  
 
-			ON( article_contributor_articles.article_id = social_media_info.article_id ) ";
-
+			ON( article_contributor_articles.article_id = social_media_info.article_id ) 
+			";
+//LEFT JOIN ( user_billing_info ) ON (users.user_id = user_billing_info.user_id) 
 			if(isset($contributor_id) && $contributor_id != 0) {
 				$s .= "	WHERE article_contributor_articles.contributor_id = '".$contributor_id."' ";
 			}
 
 			$s .=" GROUP BY article_contributor_articles.contributor_id 
-				   ORDER BY total_to_pay DESC ";
+				   ORDER BY share_revenue DESC ";
 
+
+//var_dump($s); die;
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 
@@ -548,6 +625,8 @@ class Dashboard{
 			$q = array($q);
 			return $q;
 		}else return false;
+
+
 
 	}
 
@@ -562,7 +641,7 @@ class Dashboard{
 				$id = $contributor['contributor_id'];
 				$update_data = $this->getContributorEarnings($id, $month, $year);
 
-				$earnings_info = $this->get_articlesbypageviews( $id, $month, $year);
+				$earnings_info = $this->get_articlesbypageviews_new( $id, $month, $year);
 			
 				$total_article_rate = 0;
 				$total_shares = 0;
@@ -650,6 +729,10 @@ class Dashboard{
 
 
 				if($contributor['user_type'] != 4){
+					$total_earnings = $total_earnings - $total_article_rate;
+				}
+
+				if($month >= 2 && $year >=2015){
 					$total_earnings = $total_earnings - $total_article_rate;
 				}
 

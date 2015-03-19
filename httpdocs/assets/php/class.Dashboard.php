@@ -505,6 +505,40 @@ class Dashboard{
 		return $row; 
 	}
 
+
+	public function getPageViewsUSReport($data){
+		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$contributor_id = $data['contributor'];
+
+		$s = "SELECT contributor_earnings.*, article_contributors.contributor_name, 
+		     article_contributors.contributor_seo_name, user_billing_info.paypal_email,
+		     user_billing_info.w9_live,
+		     users.user_type FROM contributor_earnings
+		INNER JOIN (article_contributors, users) 
+		ON contributor_earnings.contributor_id = article_contributors.contributor_id 
+		AND article_contributors.contributor_email_address = users.user_email 
+		LEFT JOIN (user_billing_info)
+		ON( users.user_id = user_billing_info.user_id)
+		WHERE contributor_earnings.month = $month AND contributor_earnings.year = $year AND  total_earnings > 0.5 ";
+
+		if(isset($contributor_id) && $contributor_id != 0) {
+		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
+		}
+
+		$s .=" ORDER BY total_us_pageviews DESC ";
+
+		$queryParams = [ ];
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if ($q && isset($q[0])){
+		return $q;
+		} else if ($q && !isset($q[0])){
+		$q = array($q);
+		return $q;
+		}else return false;
+
+	}
 	public function socialMediaSharesReport($data){
 
 		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);

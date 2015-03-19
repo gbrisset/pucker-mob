@@ -58,7 +58,7 @@
 	$month = isset($_POST['month']) ? $_POST['month'] : $current_month;
 	$year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 
-	if(!isset($_POST['month']) && isset($_GET['month'])){
+	if(!$_POST['month'] && isset($_GET['month'])){
 		$month = $_GET['month'];
 		$year = $_GET['year'];
 	}
@@ -75,8 +75,7 @@
 		$newCalc = false;
 	}else{
 		//IS MARCH AND UP
-		$articles = $dashboard->get_articlesbypageviews($contributor_id, $month, $year);
-		$dateupdated = date();
+		$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
 	}
 
 	$rate = $dashboard->get_current_rate();
@@ -98,6 +97,7 @@
 	$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $last_month, $last_year );
 	$last_month_earnings = 0;
 	if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
+	if( $last_month_earnings < 0 ) $last_month_earnings = 0;	
 		
 	//TOTAL EARNINGS TO DATE
 		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0, 0);

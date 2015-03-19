@@ -285,8 +285,6 @@ class MPArticleAdminController extends MPArticle{
 	public function editBillingInformation($data){
 		$email = filter_var($data['paypal-email'], FILTER_SANITIZE_EMAIL);
 		$user_id = filter_var($data['user_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$w9_live = 0;
-		if( isset($data['w9-live']) && !empty($data['w9-live']) && $data['w9-live'] != 0 ) $w9_live = 1;
 
 		//Check if record exists
 		$recordExist = $this->performQuery(array(
@@ -297,7 +295,7 @@ class MPArticleAdminController extends MPArticle{
 		//if(!empty($email) && $email){
 			if($recordExist){
 				$billing_record =  $this->performUpdate(array(
-				'updateString' => "UPDATE user_billing_info SET paypal_email = '".$email."', w9_live = ".$w9_live." WHERE user_id = :userId",
+				'updateString' => "UPDATE user_billing_info SET paypal_email = '".$email."' WHERE user_id = :userId",
 				'updateParams' => array(':userId' => $user_id)
 			));
 				$message = 'Email Updated Successfully';
@@ -305,7 +303,7 @@ class MPArticleAdminController extends MPArticle{
 			}else{
 				$billing_record = $this->performUpdate(array(
 				//'updateString' => "INSERT INTO  user_billing_info  SET paypal_email = ':paypalEmail', user_id = ':userId' ",
-				'updateString' => "INSERT INTO user_billing_info (paypal_email, user_id, w9_live ) VALUES ('".$email."', $user_id, $w9_live) ",
+				'updateString' => "INSERT INTO user_billing_info (paypal_email, user_id) VALUES ('".$email."', $user_id) ",
 				'updateParams' => array(':paypalEmail'=>$email, ':userId' => $user_id,
 				'isInsert' => true)
 			));
@@ -689,9 +687,7 @@ class MPArticleAdminController extends MPArticle{
 			));
 
 		//Add to each category
-			//var_dump($post['article_categories']);
 		if(isset($post['article_categories']) && $post['article_categories'] != 0){
-		//foreach($post['article_categories'] as $category => $on){
 			$categoryId = $post['article_categories'];
 				$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_categories SET article_id = :articleId, cat_id = :categoryPageId",
@@ -717,6 +713,25 @@ class MPArticleAdminController extends MPArticle{
 			));
 		}
 
+		//Add Realted Articles if any
+		$this->performUpdate(array('updateString' => 'DELETE FROM related_articles WHERE main_article_id = '.$post['a_i'] ));
+		$related_article_1 = $related_article_2 = $related_article_3 = -1;
+		if(isset($post['related_article_1']) && $post['related_article_1'] != '-1' ) $related_article_1 = $post['related_article_1'];
+		if(isset($post['related_article_2']) && $post['related_article_2'] != '-1' ) $related_article_2 = $post['related_article_2'];
+		if(isset($post['related_article_3']) && $post['related_article_3'] != '-1' ) $related_article_3 = $post['related_article_3'];
+
+		$this->performUpdate(array(
+			'updateString' => "INSERT INTO related_articles SET  main_article_id = :articleId,  related_article_id_1= :related_article_1, 
+			 related_article_id_2 = :related_article_2, related_article_id_3 = :related_article_3 ",
+			'updateParams' => array(
+				':articleId' => $post['a_i'], 
+				':related_article_1'=>$related_article_1,
+				':related_article_2'=>$related_article_2,
+				':related_article_3'=>$related_article_3 
+			)
+		));
+		
+		
 		//Update Feature Article
 		if(isset($post['feature_article']) && $post['feature_article'] > 0){
 			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article '));

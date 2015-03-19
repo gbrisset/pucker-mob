@@ -23,7 +23,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_notes = $articleInfoObj['article_additional_comments'];
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
 
-	//if($article_id == 4765 ) var_dump($articleInfoObj['date_updated']);
+	$related_articles = $mpArticle->getRelatedToArticle( $article_id );
 }
 ?>
 
@@ -138,21 +138,45 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<p><?php echo $article_body; ?></p>
 
+		<!-- RELATED ARTICLES -->
+		<?php 
+		$related = []; //var_dump($related_articles);
+		if(isset($related_articles) && $related_articles && 
+			($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
+			$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
+			$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
+			$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
+		?>
+		<div class="row small-12 clear related-articles-box half-padding">
+			<hr>
+			<div class="rel-articles-wrapper">
+			<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
+			<ul>
+				<?php if( $related['related_article_id_1']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php }?>
+				<?php if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php }?>
+				<?php if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></li><?php }?>
+			</ul>
+			</div>
+			<hr>
+		</div>
+		<?php }?>
+		<!-- END RELATED ARTICLES -->
+
 		<?php if($detect->isMobile()){?>
 			<!-- BRANOVATE -->
 			<!-- BEGIN JS TAG - puckermob.com 300x250 < - DO NOT MODIFY -->
-			<div class="" style="background-color:#000; min-height: 15.5rem;">
+			<div class="clear" style="background-color:#000; min-height: 15.5rem;">
 				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
 			</div>
 			<!-- END TAG -->
 		<?php }?>
 		<!-- ON DESKTOP --> 
-		<?php if(!$detect->isMobile()){?>
-		<!-- GOOGLE AD BOTTOM-->
+		<?php //if(!$detect->isMobile()){?>
+		<!-- GOOGLE AD BOTTOM
 				<div class="row padding-top padding-bottom clear">
 					<section class="columns small-12 padding-bottom">
-						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<!-- PM 637x90 Bottom -->
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+						<!-- PM 637x90 Bottom 
 						<ins class="adsbygoogle"
 						     style="display:inline-block;width:637px;height:90px"
 						     data-ad-client="ca-pub-8978874786792646"
@@ -161,14 +185,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						(adsbygoogle = window.adsbygoogle || []).push({});
 						</script>
 					</section>
-				</div>
-		<?php }?>
+				</div>-->
+
+		<?php //}?>
 		
 		<!-- Social Media Icons -->
 		<!-- DESKTOP ONLY -->
-		<?php if(!$detect->isMobile()){
-			//include($config['include_path'].'socialbuttonsarticles.php');
-		?>
+		<?php if(!$detect->isMobile()){  //include($config['include_path'].'socialbuttonsarticles.php'); ?>
+
+		<div class="row clear" >
+			<!-- Place in body part -->
+			<div id="ingageunit"></div>
+			<!-- Place in body part -->
+		</div>
+		
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
@@ -188,12 +218,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 				<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">
-				
+			 	<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">	
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
-			</div>
+				</div>
 		</div>
 
+		
 		<?php }else{
 			//include($config['include_path'].'socialbuttonsmobile.php');
 		?>
@@ -205,6 +235,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
 				</a> 
 			</div>
+			
+			
+			<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+			<hr>
 			<!-- Start Below Article -->
 			<div id='__kx_ad_821'></div>
 			<script type="text/javascript" language="javascript">
@@ -286,8 +320,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			</div>
-			<hr>
-			<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+			
 			<hr>
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>

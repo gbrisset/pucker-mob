@@ -1616,3 +1616,14 @@ position: Relative;
 top: 0.15rem;
 }
 .my-account-header-link{ text-transform:uppercase; color:#fff;}
+
+.related-articles-box{
+	h3{ color: #006633; font-weight: bold; }
+	ul{ margin: 0 !important; list-style: none; }
+	.related_to_this_article{ margin: 0 !important; }
+	i{ margin-right: 12px; font-size: 1.7rem; position: relative; top: 2px; }
+	a{ color: #000 !important; text-decoration: none !important; font-size: 1.3rem !important; font-weight: bold !important; }
+	hr {   border: 1px solid #ddd !important; }
+	.rel-articles-wrapper{ padding: 0.7em 0 0.1rem 0; }
+
+}

@@ -52,7 +52,8 @@
 		$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1, $current_year);
 		$last_month_earnings = 0;
 		if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
-			
+		if( $last_month_earnings < 0 ) $last_month_earnings = 0;	
+		
 		//TOTAL EARNINGS TO DATE
 		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0, 0);
 		$total_earnings_to_date = 0;

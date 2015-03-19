@@ -150,10 +150,6 @@
 							<label for="user_first_name-s">Your Name</label>
 							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
 						</div>
-						<!--<div class="columns mobile-12 small-12 large-6">
-							<label for="user_display_name-s">Display Name</label>
-							<input type="text" name="user_display_name-s" id="user_display_name-s" placeholder="Display Name" value="<?php if(isset($userInfo['user_display_name'])) echo $userInfo['user_display_name']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_display_name') echo 'autofocus'; ?> />
-						</div>-->
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_blog_link-s">Blog or Website URL</label>
 							<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
@@ -161,10 +157,6 @@
 					</div>
 
 					<div class="row">
-						<!--<div class="columns mobile-12 small-12 large-6">
-							<label for="user_first_name-s">First Name</label>
-							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="First Name" value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
-						</div>-->
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="user_email-e">Email Address</label>
 							<input type="email" name="user_email-e" id="user_email-e" placeholder="" value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
@@ -176,10 +168,6 @@
 					</div>
 
 					<div class="row">
-						<!--<div class="columns mobile-12 small-12 large-6">
-							<label for="user_last_name-s">Last Name</label>
-							<input type="text" name="user_last_name-s" id="user_last_name-s" placeholder="Please enter your last name here." value="<?php if(isset($adminController->user->data['user_last_name'])) echo $adminController->user->data['user_last_name']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_last_name') echo 'autofocus'; ?> />
-						</div>-->
 						<div class="columns mobile-12 small-12 large-6">
 							<label for="contributor_location-s">Location</label>
 							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
@@ -287,7 +275,7 @@
 
 	<div class="lightbox-shown" id="lightbox-cont2" style="display:none;">
 		<div class="overlay"></div>
-		<div id="lightbox-content" class="article-lightbox article-lightbox-img-uploader">
+		<div id="lightbox-content" style="width:50% !important; top:1rem !important; position:absolute !important; " class="article-lightbox article-lightbox-img-uploader">
 			
 			<div id="lightbox-preview-cont">
 			<section id="update-article-image">

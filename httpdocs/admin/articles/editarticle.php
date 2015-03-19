@@ -13,13 +13,9 @@
 	} else {
 		$mpShared->get404();
 	}
-	//require_once('../assets/php/notify-user-form.php');
-
+	
 	$articleCategories = $articleResultSet['categories'];
-	//$tallExtension = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall');
-
-	//if(!$tallExtension) $tallExtension = 'jpg';
-
+	
 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
 	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
 
@@ -41,15 +37,16 @@
 		$artImageExists = file_exists($artImageDir);
 	}
 
-	//$articleImages = $mpArticle->getArticlesImages($article['article_id']);	
+	//GET ALL ARTICLES 
+	$allarticles = $mpArticle->getAllLiveArticles();
 
+	$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
 	// SUMMIT FORM
 	if(isset($_POST['submit'])){
 
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
 				case isset($_POST['article_title-s']):
-			
 					$updateStatus = $adminController->updateArticleInfo($_POST);
 
 					$updateStatus['arrayId'] = 'article-info-form';
@@ -314,27 +311,27 @@
 						if($allContributors && count($allContributors)){
 
 					?>
-						<div class="row">
+					<div class="row">
 					    <div class="columns">
 					    	<div class="small-styled-select margin-top margin-bottom ">
-							<label for="article_contributor" class="uppercase">Article Contributor</label>
-							<select name="article_contributor" id="article_contributor">
-								<option value="-1">None</option>
-								<?php
-									foreach($allContributors as $contributorsInfo){
+								<label for="article_contributor" class="uppercase">Contributor</label>
+								<select name="article_contributor" id="article_contributor">
+									<option value="-1">None</option>
+									<?php
+										foreach($allContributors as $contributorsInfo){
 
-										$option = '<option value="'.$contributorsInfo['contributor_id'].'"';
-										if( $article['contributor_id']  && $contributorsInfo['contributor_id'] == $article['contributor_id'] ) $option .= ' selected="selected"';
-										else if($article['contributor']['contributor_id'] && $contributorsInfo['contributor_id'] == $article['contributor']['contributor_id']){  $contributor_name = $contributorsInfo['contributor_name']; $option .= ' selected="selected"'; }
-										$option .= '>'.$contributorsInfo['contributor_name'].'</option>';
-										echo $option;
-									}
-								?>
-							</select>
+											$option = '<option value="'.$contributorsInfo['contributor_id'].'"';
+											if( $article['contributor_id']  && $contributorsInfo['contributor_id'] == $article['contributor_id'] ) $option .= ' selected="selected"';
+											else if($article['contributor']['contributor_id'] && $contributorsInfo['contributor_id'] == $article['contributor']['contributor_id']){  $contributor_name = $contributorsInfo['contributor_name']; $option .= ' selected="selected"'; }
+											$option .= '>'.$contributorsInfo['contributor_name'].'</option>';
+											echo $option;
+										}
+									?>
+								</select>
+							</div>
+							<input type="hidden" value="<?php echo $contributor_name; ?>" id="contributor-name" />
 						</div>
-						<input type="hidden" value="<?php echo $contributor_name; ?>" id="contributor-name" />
-
-						</div></div>
+					</div>
 
 					<?php }
 					}else{ 	?>
@@ -401,7 +398,51 @@
 						<label for="" class="radio-label">No</label>
 						</div>
 					</div>
+					
+					<!-- RELATED ARTICLES -->
+					<div class="row">
+					    <div class="columns">
+					    	<div class="margin-top margin-bottom ">
+								<label for="article_contributor" class="uppercase">Related Article(s):</label>
+								<select name="related_article_1" id="related_article_1"  class="related_articles">
+									<option value="-1">Choose an article</option>
+									<?php
+										foreach($allarticles as $related_articles){
+											$option = '<option value="'.$related_articles['article_id'].'" ';
+											if( $related_to_this_article['related_article_id_1']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_1'] ) $option .= ' selected="selected"';
+											$option .= '>'.$related_articles['article_title'].'</option>';
+											echo $option;
+										}
+									?>
+								</select>
+								<select name="related_article_2" id="related_article_2" class="related_articles">
+									<option value="-1">Choose an article</option>
+									<?php
+										foreach($allarticles as $related_articles){
+											$option = '<option value="'.$related_articles['article_id'].'"';
+											if( $related_to_this_article['related_article_id_2']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_2'] ) $option .= ' selected="selected"';
+											$option .= '>'.$related_articles['article_title'].'</option>';
+											echo $option;
+										}
+									?>
+								</select>
+								<select name="related_article_3" id="related_article_3" class="related_articles" >
+									<option value="-1">Choose an article</option>
+									<?php
+										foreach($allarticles as $related_articles){
+											$option = '<option value="'.$related_articles['article_id'].'" ';
+											if( $related_to_this_article['related_article_id_3']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_3'] ) $option .= ' selected="selected"';
+											$option .= '>'.$related_articles['article_title'].'</option>';
+											echo $option;
+										}
+									?>
+								</select>
+							</div>
+						</div>
+					</div>
+
 					<?php }?>
+
 
 
 					<div class="row buttons-container">

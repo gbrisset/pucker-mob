@@ -469,10 +469,10 @@ End password reset methods
 				date_default_timezone_set('America/New_York');
 			}
 		
-			// if(!$this->helpers->compareTimes(time(), strtotime($q['user_login_creation_date']), 15)) return array(
-			// 	'hasError' => true, 
-			// 	'message' => "Sorry, your session has expired.  Please try again <a href=\"".$this->config['this_admin_url'].'login/'."\">here</a>."
-			// );
+			 if(!$this->helpers->compareTimes(time(), strtotime($q['user_login_creation_date']), 120)) return array(
+			 	'hasError' => true, 
+			 	'message' => "Sorry, your session has expired.  Please try again <a href=\"".$this->config['this_admin_url'].'login/'."\">here</a>."
+			 );
 			date_default_timezone_set($tz);
 			
 // //Invalidate all user tokens

@@ -34,7 +34,7 @@
 	}
 
 	//UPDATE CONTRIBUTOR EARNINGS TABLE
-	$dashboard->updateContributorsEarnings( $month, $year );
+	//$dashboard->updateContributorsEarnings( $month, $year );
 
 
 	//4- End ;)

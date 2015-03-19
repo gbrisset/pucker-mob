@@ -60,7 +60,7 @@
 		$newCalc = false;
 	}else{
 		//IS MARCH AND UP
-		$articles = $dashboard->get_articlesbypageviews($contributor_id, $month, $year);
+		$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
 	}
 
 	$rate = $dashboard->get_current_rate();

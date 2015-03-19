@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+//error_reporting(E_ALL);
+//ini_set('display_errors', '1');
 
 require 'config.php';
 require 'class.GoogleAnalyticsApi.php';
@@ -72,4 +72,9 @@ $arrArticle = $GoogleAnalyticsData->getArticles();
 			</tbody>
 		</table>
 	</body>
+	<?php 
+
+	  //UPDATE CONTRIBUTOR EARNINGS TABLE
+	   $dashboard->updateContributorsEarnings( $month, $year );	
+	?>
 </html>

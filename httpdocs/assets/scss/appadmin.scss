@@ -461,7 +461,7 @@ form fieldset { width: 98%; margin: 0.5em auto; padding: 0;border: none; }
 #article-tall-image-upload-form .info p { font: 0.925em/1.2em OsloRegular,arial,sans-serif;margin: 0.5em 0.7em;padding: 0;}
 #article-tall-image-upload #article_post_tall_img { opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter: alpha(opacity=0);cursor: pointer;float: left;height: 2em;top: 5px;width: 5em;z-index: 20;}
 #article-tall-image-upload-form span.preview-close { cursor: pointer;}
-form span.preview-close p {text-align: right;width: 100%;}
+form span.preview-close p {text-align: right;width: 100%;margin:0 !important;}
 @media #{$large-up}{
 	.checkbox-group { margin-top: 0.25em; width: 30%; }
 }
@@ -990,6 +990,17 @@ width: 48%;
 	border-right: 1px solid #bbb;
 }
 .vertical-align-center{ height: 85px; display: table-cell !important; vertical-align: middle;}
+
+.related_articles, select.related_articles:hover{
+  background-position-x: 99%;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.75);
+  background-repeat: no-repeat;
+  min-height: 2.5rem;
+  background-size: 5rem;
+  background-position: 103% center;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+) !important;
+}
 
 @import "admin/browser_specifics_styling";
 

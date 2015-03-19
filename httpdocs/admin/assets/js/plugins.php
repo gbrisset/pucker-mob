@@ -563,9 +563,7 @@ $.fn.mpImageCropUpload = function( opts, e ){
 		                onChange: updateInfo,
 		                onSelect: updateInfo,
 		                onRelease: clearInfo,
-		                setSelect: [ 140, 143, 140, 143 ],
-		                boxWidth: 650, 
-		                boxHeight: 650
+		                setSelect: [ 200, 200, 0, 0 ]
 		            }, function(){
 		                // use the Jcrop API to get the real image size
 		                var bounds = this.getBounds();

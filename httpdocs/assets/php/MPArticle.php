@@ -139,6 +139,42 @@ public function verifyArticleInCategory( $article_id, $cat_id ){
 	return $q;
 }
 
+public function getAllLiveArticles(){
+	$s = "SELECT articles.article_id, article_title, article_seo_title, cat_dir_name  
+	FROM articles 
+	INNER JOIN (categories, article_categories) 
+	ON ( articles.article_id = article_categories.article_id )
+	AND (article_categories.cat_id = categories.cat_id )
+	WHERE articles.article_status = 1 
+	ORDER BY articles.article_id DESC ";
+
+	$q = $this->performQuery(['queryString' => $s]);
+	return $q;
+
+}
+
+public function getRelatedToArticle( $article_id ){
+	$article_id = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	$s = "SELECT related_article_id_1, related_article_id_2, related_article_id_3 
+	FROM related_articles 
+	WHERE main_article_id = $article_id LIMIT 1 ";
+	
+	$q = $this->performQuery(['queryString' => $s]);
+	return $q;
+}
+
+public function getRelatedToArticleInfo( $article_id ){
+	$article_id = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	$s = "SELECT articles.article_id, article_title, article_seo_title, categories.cat_id, categories.cat_dir_name  
+	FROM articles 
+	INNER JOIN ( categories, article_categories )
+	ON( articles.article_id = article_categories.article_id )
+	AND ( article_categories.cat_id = categories.cat_id ) 
+	WHERE articles.article_id = $article_id LIMIT 1 ";
+	 
+	$q = $this->performQuery(['queryString' => $s]);
+	return $q;
+}
 public function getArticles($args = [], $attempts = 0){
 	$options = array_merge([
 		'pageId' => null, 

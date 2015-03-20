@@ -1376,7 +1376,7 @@ $(document).ready(function (){
 	}
 	
 	$('input[name="collections_name-s"]').SDSeoTitleAutoComplete("collections_seoname-s");
-	$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
+	//$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
 	$('input[name="page_list_title"]').SDSeoTitleAutoComplete("page_list_seo_title", "seo_title_updated");
 
 	$('.toggle-link').SDToggler('#add-list-form');

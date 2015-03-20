@@ -195,7 +195,7 @@
 						<div class="row">
 					    <div class="columns">
 						<label for="article_seo_title-s" class="uppercase">SEO Title</label>
-						<input type="text"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+						<input type="text" disabled  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
 
 					</div></div>
 					<?php }?>
@@ -436,7 +436,7 @@
 									<input type="textbox" id="related_article_textbox_2" class="related_article_textbox small-3" name="related_article_textbox_2" />
 									<i class="fa fa-search"></i>
 								</div>
-								
+
 								<div class="related_articles_box">
 									<select name="related_article_3" id="related_article_3" class="related_articles small-8" >
 										<option value="-1">Choose an article</option>
@@ -456,6 +456,27 @@
 						</div>
 					</div>
 
+					<!-- ADVERTISING OVERRIDE (IN-STREAM) -->
+					<div class="row advertising-override">
+						<div class="columns advertising-box small-12">
+							<h3>Mobile Advertising Override (in-Stream)</h3>
+							<div class="advertising-providers">
+								<label>Google
+									<select id="google-ad">
+										<option value="0">OFF</option>
+										<option value="1">1</option>
+									</select>
+								</label>
+							</div>
+						</div>
+
+						<div class="columns advertising-box small-12">
+							<h3>Desktop Advertising Override (in-Stream)</h3>
+
+						</div>
+
+
+					</div>
 					<?php }?>
 
 

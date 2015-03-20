@@ -280,6 +280,10 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 	?>
 	
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
+	<script>
+	$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
+	
+	</script>
 
 </body>
 </html>

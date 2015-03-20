@@ -404,39 +404,54 @@
 					    <div class="columns">
 					    	<div class="margin-top margin-bottom ">
 								<label for="article_contributor" class="uppercase">Related Article(s):</label>
-								<select name="related_article_1" id="related_article_1"  class="related_articles">
-									<option value="-1">Choose an article</option>
-									<?php
-										foreach($allarticles as $related_articles){
-											$option = '<option value="'.$related_articles['article_id'].'" ';
-											if( $related_to_this_article['related_article_id_1']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_1'] ) $option .= ' selected="selected"';
-											$option .= '>'.$related_articles['article_title'].'</option>';
-											echo $option;
-										}
-									?>
-								</select>
-								<select name="related_article_2" id="related_article_2" class="related_articles">
-									<option value="-1">Choose an article</option>
-									<?php
-										foreach($allarticles as $related_articles){
-											$option = '<option value="'.$related_articles['article_id'].'"';
-											if( $related_to_this_article['related_article_id_2']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_2'] ) $option .= ' selected="selected"';
-											$option .= '>'.$related_articles['article_title'].'</option>';
-											echo $option;
-										}
-									?>
-								</select>
-								<select name="related_article_3" id="related_article_3" class="related_articles" >
-									<option value="-1">Choose an article</option>
-									<?php
-										foreach($allarticles as $related_articles){
-											$option = '<option value="'.$related_articles['article_id'].'" ';
-											if( $related_to_this_article['related_article_id_3']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_3'] ) $option .= ' selected="selected"';
-											$option .= '>'.$related_articles['article_title'].'</option>';
-											echo $option;
-										}
-									?>
-								</select>
+								
+								<div class="related_articles_box">
+									<select name="related_article_1" id="related_article_1"  class="related_articles small-8">
+										<option value="-1">Choose an article</option>
+										<?php
+											foreach($allarticles as $related_articles){
+												$option = '<option value="'.$related_articles['article_id'].'" ';
+												if( $related_to_this_article['related_article_id_1']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_1'] ) $option .= ' selected="selected"';
+												$option .= '>'.$related_articles['article_title'].'</option>';
+												echo $option;
+											}
+										?>
+									</select>
+									<input type="textbox" id="related_article_textbox_1" class="related_article_textbox small-3" name="related_article_textbox_1" />
+									<i class="fa fa-search"></i>
+								</div>
+								
+								<div class="related_articles_box">
+								<select name="related_article_2" id="related_article_2" class="related_articles small-8">
+										<option value="-1">Choose an article</option>
+										<?php
+											foreach($allarticles as $related_articles){
+												$option = '<option value="'.$related_articles['article_id'].'"';
+												if( $related_to_this_article['related_article_id_2']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_2'] ) $option .= ' selected="selected"';
+												$option .= '>'.$related_articles['article_title'].'</option>';
+												echo $option;
+											}
+										?>
+									</select>
+									<input type="textbox" id="related_article_textbox_2" class="related_article_textbox small-3" name="related_article_textbox_2" />
+									<i class="fa fa-search"></i>
+								</div>
+								
+								<div class="related_articles_box">
+									<select name="related_article_3" id="related_article_3" class="related_articles small-8" >
+										<option value="-1">Choose an article</option>
+										<?php
+											foreach($allarticles as $related_articles){
+												$option = '<option value="'.$related_articles['article_id'].'" ';
+												if( $related_to_this_article['related_article_id_3']  && $related_articles['article_id'] == $related_to_this_article['related_article_id_3'] ) $option .= ' selected="selected"';
+												$option .= '>'.$related_articles['article_title'].'</option>';
+												echo $option;
+											}
+										?>
+									</select>
+									<input type="textbox" id="related_article_textbox_3" class="related_article_textbox small-3" name="related_article_textbox_3" />
+									<i class="fa fa-search"></i>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -478,10 +493,17 @@
 		</div>
 	</div>
 	<!--FOOTER-->
+	
 	<?php include_once($config['include_path_admin'].'footer.php'); ?>
 	<!-- ARTICLE PREV TEMPLATE -->
 	<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>
 	<!-- BOTTOMSCRIPTS -->
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
+
+	<script>
+		$('#related_article_1').filterByText($('#related_article_textbox_1'), false);
+		$('#related_article_2').filterByText($('#related_article_textbox_2'), false);
+		$('#related_article_3').filterByText($('#related_article_textbox_3'), false);
+	</script>
 </body>
 </html>

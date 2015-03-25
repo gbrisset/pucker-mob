@@ -24,6 +24,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
 
 	$related_articles = $mpArticle->getRelatedToArticle( $article_id );
+
+
 }
 ?>
 

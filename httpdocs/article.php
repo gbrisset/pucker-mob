@@ -86,6 +86,7 @@ if(!is_null($categoryInfo)){
 				$style = 'margin-top: 7rem !important;';
 			}
 		?>
+		
 		<main id="main" class="row panel sidebar-on-right" role="main" style="<?php echo $style; ?>">
 			
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
@@ -161,7 +162,11 @@ if(!is_null($categoryInfo)){
 	<?php include_once($config['include_path'].'header.php');?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 
+
 	<main id="main" class="row panel sidebar-on-right" role="main">
+		<!-- LEFT SIDE BAR -->
+		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
+		
 		<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			<?php 

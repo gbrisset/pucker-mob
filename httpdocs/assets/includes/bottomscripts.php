@@ -3,6 +3,7 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation/foundation.tooltip.min.js"></script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <?php if(isset($articleInfo) && $articleInfo){ ?>

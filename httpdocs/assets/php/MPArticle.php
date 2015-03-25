@@ -175,6 +175,29 @@ public function getRelatedToArticleInfo( $article_id ){
 	$q = $this->performQuery(['queryString' => $s]);
 	return $q;
 }
+
+public function getMoBlogsArticles( $current_article_id = 0){
+
+	if( $current_article_id != 0 ) 
+		$current_article_id = filter_var($current_article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	
+	$s = "SELECT * FROM articles 
+		INNER JOIN (article_categories) 
+		ON ( articles.article_id = article_categories.article_id ) 
+		WHERE articles.article_status = 1 AND article_categories.cat_id = 9 ";
+
+	if( $current_article_id != 0 ) {
+		$s .= " AND articles.article_id != $current_article_id ";
+	}
+	 
+	$s .= " ORDER BY articles.date_updated DESC LIMIT 25 ";
+
+	$q = $this->performQuery(['queryString' => $s]);
+		
+	return $q;
+
+}
+
 public function getArticles($args = [], $attempts = 0){
 	$options = array_merge([
 		'pageId' => null, 

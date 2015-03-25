@@ -54,6 +54,8 @@
 					$updateStatus = $adminController->updateArticleInfo($_POST);
 
 					$updateStatus['arrayId'] = 'article-info-form';
+
+
 					break;
 				case isset($_FILES['article_post_tall_img']):
 					$updateStatus = array_merge($mpArticleAdmin->uploadNewImage($_FILES, [
@@ -73,6 +75,13 @@
 			
 			$article = $adminController->getSingleArticle(array('seoTitle' => $uri[2]));
 
+			$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
+
+
+			//Article ADs
+			$article_ads = $mpArticleAdmin->getArticleAds($article);
+			if($article_ads && isset($article_ads[0])) $article_ads = $article_ads[0];
+			
 			//$article = $adminController->getSingleArticle(array('seoTitle' => $_POST['article_seo_title-s']));
 
 		}else $adminController->redirectTo('logout/');
@@ -631,7 +640,7 @@
 									?>	
 								</select>
 							</div>
-							
+					
 							
 							<div class="advertising-providers">
 								<label>ShareThrough</label>

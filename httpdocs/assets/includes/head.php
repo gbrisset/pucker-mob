@@ -114,6 +114,7 @@
 	<!-- StyleSELECTOR.css -->
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/styleselector.css" media="screen" />
 
+	<style>.ad320{ height: auto !important; }</style>
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -141,27 +142,44 @@
 
   <?php }else{?>
 
-  	<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-  <!-- BEGIN Tynt Script 
+<!-- Place in head part widget:puck002 -->
+<script type="text/javascript">
+ 
+	var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
+ 
+	function sbElementCheck() {
+ 
+		var targetedElement = document.getElementById('ingageunit');
+		if(targetedElement) {
+			clearInterval(sbElementInterval);
+			(function(d) {
+				var js, s = d.getElementsByTagName('script')[0];
+				js = d.createElement('script');
+				js.async = true;
+				js.onload = function(e) {
+					SbInGageWidget.init({
+						partnerId : 5087,
+						widgetId : 'puck002',
+						cmsPath : 'http://cms.springboardplatform.com'
+					});
+				}
+				js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
+				s.parentNode.insertBefore(js, s);
+			})(window.document);
+		}
+	}
+</script>
 
-	<script type="text/javascript">
-	if(document.location.protocol=='http:'){
-	  var Tynt=Tynt||[];
-	  Tynt.push('cRcCGMgEKr5jLJacwqm_6r');
-	  (function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/ati.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})();
-    }
-	</script>-->
-
-<!-- END Tynt Script -->
+<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
 <!-- CARAMBOLA IN_IMAGE -->
-<?php if(isset($articleInfoObj) && $articleInfoObj){ 
-	$noCarambola = false;
-	if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653 || $articleInfoObj['cat_dir_name'] == 'moblog' ) $noCarambola = true;
-	if( isset($noCarambola) && !$noCarambola){ ?>
+<?php //if(isset($articleInfoObj) && $articleInfoObj){ 
+	//$noCarambola = false;
+	//if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653 || $articleInfoObj['cat_dir_name'] == 'moblog' ) $noCarambola = true;
+	//if( isset($noCarambola) && !$noCarambola){ ?>
 		<!--<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 	-->
-	<?php }
- }?>
+	<?php //}
+// }?>
 
 <?php } ?>
     <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 ros
@@ -236,6 +254,7 @@
 <!-- Distro Scale AD Tag 
 <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
 <!-- Begin comScore Tag -->
+
 	
 </head>
  <?php flush(); ?>

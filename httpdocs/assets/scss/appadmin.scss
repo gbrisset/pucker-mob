@@ -1020,6 +1020,17 @@ width: 48%;
   font-size: 1.2rem;
 }
 
+/*ADS OVERRIDE*/
+.advertising-providers label{ width: 7rem; display: inline-block; }
+.advertising-providers select{
+	width:69%;
+	text-transform: uppercase;
+	font-size: medium;
+}
+.advertising-box hr{ margin:0;}
+.advertising-box h3{   margin-bottom: 0.2rem; }
+.advertising-box .h3-ads{font-weight: bold; margin: 2rem 0 1rem 0;}
+
 @import "admin/browser_specifics_styling";
 
 

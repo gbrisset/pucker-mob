@@ -1463,6 +1463,26 @@ class MPArticleAdmin{
 	}
 	/*END MANAGING IMAGES ON LIBRARY*/
 	
+
+	public function getArticleAds($data){
+
+		$article_id = filter_var($data['article_id'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT );
+
+		$pdo = $this->con->openCon();
+		$q = $pdo->query("SELECT * FROM article_ads WHERE article_id = ".$article_id);
+		
+		if($q && $q->rowCount()){
+			$q->setFetchMode(PDO::FETCH_ASSOC);
+			while($row = $q->fetch()){
+				$r[] = $row;
+			}
+			$q->closeCursor();
+		}else $r = false;
+		$this->con->closeCon();
+
+		return $r;
+
+	}
 	/*Begin Video Add Function*/
 	public function addVideoMediaInfo($post){
 		$params = $this->compileParams($post);

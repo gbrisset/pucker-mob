@@ -16,6 +16,10 @@
 	
 	$articleCategories = $articleResultSet['categories'];
 	
+	//Article ADs
+	$article_ads = $mpArticleAdmin->getArticleAds($article);
+	if($article_ads && isset($article_ads[0])) $article_ads = $article_ads[0];
+
 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
 	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
 
@@ -104,7 +108,7 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
-<body>
+<body id="editarticle">
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	<div class="sub-menu row">
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
@@ -456,30 +460,247 @@
 						</div>
 					</div>
 
+					<?php if($adminController->user->data['user_type'] == 1){?>
 					<!-- ADVERTISING OVERRIDE (IN-STREAM) -->
 					<div class="row advertising-override">
 						<div class="columns advertising-box small-12">
-							<h3>Mobile Advertising Override (in-Stream)</h3>
+							<h3 class="uppercase">Advertising Override (in-Stream)</h3>
+							<hr>
+						</div>
+						<div class="columns advertising-box small-6">
+							
+							<h3 class="uppercase h3-ads">Mobile</h3>
+							
 							<div class="advertising-providers">
-								<label>Google
-									<select id="google-ad">
-										<option value="0">OFF</option>
-										<option value="1">1</option>
-									</select>
-								</label>
+								<label>Google</label>
+								
+								<select id="google-mobile-ad" name="google_mobile_ad" class="related_articles">
+									<?php if(!$article_ads || $article_ads['mobile_google'] == -1){
+									 		echo '<option value="-1" selected >OFF</option>';
+										  }else{ 
+										  	echo '<option value="-1">OFF</option>';
+										  }
+									?>
+									<?php 
+										for($i = 0; $i<=26; $i++){
+											if($i == 0){ 
+												if( $article_ads && $article_ads['mobile_google'] == 0 )
+													echo '<option value="'.$i.'" selected >Top of Article</option>';
+												else 
+													echo '<option value="'.$i.'" >Top of Article</option>';
+
+											}elseif($i > 25){
+												if( $article_ads && $article_ads['mobile_google'] == 999 ) 
+													echo '<option value="999" selected >End of Article</option>';
+												else 
+													echo '<option value="999">End of Article</option>';
+											}else {
+												if( $article_ads && $article_ads['mobile_google'] == $i ) 
+													echo '<option value="'.$i.'" selected >After Item '.$i.'</option>';
+												else 
+													echo '<option value="'.$i.'" >After Item '.$i.'</option>';
+											}
+										}
+									?>
+								</select>
+							</div>
+							
+							<div class="advertising-providers">
+								<label>Nativo</label>
+								<select id="nativo-mobile-ad" name="nativo_mobile_ad" class="related_articles">
+								 <?php if(!$article_ads || $article_ads['mobile_nativo'] == -1){
+									 		echo '<option value="-1" selected >OFF</option>';
+										  }else{ 
+										  	echo '<option value="-1">OFF</option>';
+										  }
+									?>
+									<?php 
+										for($i = 0; $i<=26; $i++){
+											if($i == 0){ 
+												if($article_ads &&  $article_ads['mobile_nativo'] == 0 )
+													echo '<option value="'.$i.'" selected >Top of Article</option>';
+												else 
+													echo '<option value="'.$i.'" >Top of Article</option>';
+
+											}elseif($i > 25){
+												if( $article_ads && $article_ads['mobile_nativo'] == 999 ) 
+													echo '<option value="999" selected >End of Article</option>';
+												else 
+													echo '<option value="999">End of Article</option>';
+											}else {
+												if( $article_ads && $article_ads['mobile_nativo'] == $i ) 
+													echo '<option value="'.$i.'" selected >After Item '.$i.'</option>';
+												else 
+													echo '<option value="'.$i.'" >After Item '.$i.'</option>';
+											}
+										}
+									?>	
+								</select>
+							</div>
+						
+							<div class="advertising-providers">
+								<label>ShareThrough</label>
+								<select id="sharethrough-mobile-ad" name="sharethrough_mobile_ad" class="related_articles">
+									<?php if(!$article_ads || $article_ads['mobile_sharethrough'] == -1){
+									 		echo '<option value="-1" selected >OFF</option>';
+										  }else{ 
+										  	echo '<option value="-1">OFF</option>';
+										  }
+									
+										for($i = 0; $i<=26; $i++){
+											if($i == 0){ 
+												if( $article_ads && $article_ads['mobile_sharethrough'] == 0 )
+													echo '<option value="'.$i.'" selected >Top of Article</option>';
+												else 
+													echo '<option value="'.$i.'" >Top of Article</option>';
+
+											}elseif($i > 25){
+												if( $article_ads && $article_ads['mobile_sharethrough'] == 999 ) 
+													echo '<option value="999" selected >End of Article</option>';
+												else 
+													echo '<option value="999">End of Article</option>';
+											}else {
+												if( $article_ads && $article_ads['mobile_sharethrough'] == $i ) 
+													echo '<option value="'.$i.'" selected >After Item '.$i.'</option>';
+												else 
+													echo '<option value="'.$i.'" >After Item '.$i.'</option>';
+											}
+										}
+									?>	
+								</select>
+							</div>
+
+							
+							<div class="advertising-providers">
+								<label>Branovate</label>
+								<select id="branovate-mobile-ad" name="branovate_mobile_ad" class="related_articles">
+								<?php if(!$article_ads || $article_ads['mobile_branovate'] == -1){
+								 		echo '<option value="-1" selected >OFF</option>';
+									  }else{ 
+									  	echo '<option value="-1">OFF</option>';
+									  }
+									
+									//if($i == 0){ 
+									if( $article_ads && $article_ads['mobile_branovate'] == 0 )
+										echo '<option value="0" selected >Top of Article</option>';
+									else 
+										echo '<option value="0" >Top of Article</option>';
+
+									if( $article_ads && $article_ads['mobile_branovate'] == 999 ) 
+										echo '<option value="999" selected >End of Article</option>';
+									else 
+										echo '<option value="999">End of Article</option>';
+								
+										
+									?>	
+								</select>
 							</div>
 						</div>
 
-						<div class="columns advertising-box small-12">
-							<h3>Desktop Advertising Override (in-Stream)</h3>
+						<div class="columns advertising-box small-6">
+							<h3 class="uppercase h3-ads">Desktop</h3>
+							
+							<div class="advertising-providers">
+								<label>Google</label>
+								<select id="google-desk-ad" name="google_desk_ad" class="related_articles">
+									<?php if(!$article_ads || $article_ads['desk_google'] == -1){
+									 		echo '<option value="-1" selected >OFF</option>';
+										  }else{ 
+										  	echo '<option value="-1">OFF</option>';
+										  }
+									
+										for($i = 0; $i<=26; $i++){
+											if($i == 0){ 
+												if( $article_ads && $article_ads['desk_google'] == 0 )
+													echo '<option value="'.$i.'" selected >Top of Article</option>';
+												else 
+													echo '<option value="'.$i.'" >Top of Article</option>';
 
+											}elseif($i > 25){
+												if( $article_ads && $article_ads['desk_google'] == 999 ) 
+													echo '<option value="999" selected >End of Article</option>';
+												else 
+													echo '<option value="999">End of Article</option>';
+											}else {
+												if( $article_ads && $article_ads['desk_google'] == $i ) 
+													echo '<option value="'.$i.'" selected >After Item '.$i.'</option>';
+												else 
+													echo '<option value="'.$i.'" >After Item '.$i.'</option>';
+											}
+										}
+									?>	
+								</select>
+							</div>
+							
+							
+							<div class="advertising-providers">
+								<label>ShareThrough</label>
+								<select id="sharethrough-desk-ad" name="sharethrough_desk_ad" class="related_articles">
+									<?php if(!$article_ads || $article_ads['desk_sharethrough'] == -1){
+									 		echo '<option value="-1" selected >OFF</option>';
+										  }else{ 
+										  	echo '<option value="-1">OFF</option>';
+										  }
+									
+										for($i = 0; $i<=26; $i++){
+											if($i == 0){ 
+												if( $article_ads && $article_ads['desk_sharethrough'] == 0 )
+													echo '<option value="'.$i.'" selected >Top of Article</option>';
+												else 
+													echo '<option value="'.$i.'" >Top of Article</option>';
+
+											}elseif($i > 25){
+												if( $article_ads && $article_ads['desk_sharethrough'] == 999 ) 
+													echo '<option value="999" selected >End of Article</option>';
+												else 
+													echo '<option value="999">End of Article</option>';
+											}else {
+												if( $article_ads && $article_ads['desk_sharethrough'] == $i ) 
+													echo '<option value="'.$i.'" selected >After Item '.$i.'</option>';
+												else 
+													echo '<option value="'.$i.'" >After Item '.$i.'</option>';
+											}
+										}
+									?>
+								</select>
+							</div>
+						
+							<div class="advertising-providers">
+								<label>Carambola</label>
+								<select id="carambola-desk-ad" name="carambola_desk_ad" class="related_articles">
+									<?php if(!$article_ads || $article_ads['desk_carambola'] == -1){
+									 		echo '<option value="-1" selected >OFF</option>';
+										  }else{ 
+										  	echo '<option value="-1">OFF</option>';
+										  }
+									
+										for($i = 0; $i<=26; $i++){
+											if($i == 0){ 
+												if($article_ads && $article_ads['desk_carambola'] == 0 )
+													echo '<option value="'.$i.'" selected >Top of Article</option>';
+												else 
+													echo '<option value="'.$i.'" >Top of Article</option>';
+
+											}elseif($i > 25){
+												if( $article_ads && $article_ads['desk_carambola'] == 999 ) 
+													echo '<option value="999" selected >End of Article</option>';
+												else 
+													echo '<option value="999">End of Article</option>';
+											}else {
+												if( $article_ads && $article_ads['desk_carambola'] == $i ) 
+													echo '<option value="'.$i.'" selected >After Item '.$i.'</option>';
+												else 
+													echo '<option value="'.$i.'" >After Item '.$i.'</option>';
+											}
+										}
+									?>
+								</select>
+							</div>
+							
 						</div>
-
-
 					</div>
 					<?php }?>
-
-
+					<?php }?>
 
 					<div class="row buttons-container">
 						<button type="submit" id="submit" name="submit" class="">SAVE</button>

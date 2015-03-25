@@ -1607,5 +1607,64 @@ $('.unfollow-author').each( function(){
 			}
 		});
 	});
-});	
+});
+
+if(document.body.id == 'editarticle'){
+	
+	var body = $('#article_body-nf').text();
+	var li_parent = $(body).find('ol');
+	var p_length = $(body).children('p').length;
+	var li_length = $(li_parent).find('li').length;
+	var isListArticle = false;
+	var article_id = $('#a_i').val();
+
+	if($(li_parent) && $(li_parent).length == 0 ) li_parent = $(body).find('ul');
+	if(li_length > p_length){
+		isListArticle = true;
+	}
+
+	$.ajax({
+		type: "POST",
+		url:  'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php',
+		data: { article_id: article_id, task:'article_ads' },
+		success: function (data) {
+			if(data == 'false'){
+				$('select[name="nativo_mobile_ad"]').find('option[value="1"]').attr("selected",true);
+				$('select[name="sharethrough_mobile_ad"]').find('option[value="3"]').attr("selected",true);
+				$('select[name="carambola_mobile_ad"]').find('option[value="-1"]').attr("selected",true);
+				$('select[name="branovate_mobile_ad"]').find('option[value="999"]').attr("selected",true);
+				$('select[name="google_mobile_ad"]').find('option[value="-1"]').attr("selected",true);
+				
+				$('select[name="google_desk_ad"]').find('option[value="-1"]').attr("selected",true);
+				$('select[name="nativo_desk_ad"]').find('option[value="-1"]').attr("selected",true);
+				
+				$('select[name="sharethrough_desk_ad"]').find('option[value="3"]').attr("selected",true);
+				
+				if(isListArticle){ 
+					$('select[name="carambola_desk_ad"]').find('option[value="2"]').attr("selected",true);
+					$('select[name="sharethrough_desk_ad"]').find('option[value="6"]').attr("selected",true);
+				}else {
+					$('select[name="carambola_desk_ad"]').find('option[value="3"]').attr("selected",true);
+					$('select[name="sharethrough_desk_ad"]').find('option[value="5"]').attr("selected",true);
+				}
+
+				$('select[name="branovate_desk_ad"]').find('option[value="-1"]').attr("selected",true);
+			}
+		},
+		async:   false
+	});
+	//SET DEFAULT VALUES DEPENDING ON ARTICLE BASE TYPE LI/P
+	if(isListArticle){
+		google_position = -1;
+		nativo_position = 1; 
+		sharethrough_position = 3;
+		carambola_position = -1;
+		tag = 'li';
+	}else{
+		google_position = -1;
+		nativo_position = 1; 
+		sharethrough_position = 3;
+		carambola_position = -1;
+	}
+}	
 });

@@ -648,6 +648,54 @@ class MPArticleAdminController extends MPArticle{
 	}
 	/* End Article Creation Functions */
 
+	public function updateArticleAdsInfo($post){
+
+		$google_mobile_ad = $post['google_mobile_ad'];
+		$nativo_mobile_ad = $post['nativo_mobile_ad'];
+		$sharethrough_mobile_ad = $post['sharethrough_mobile_ad'];
+		$carambola_mobile_ad = $post['carambola_mobile_ad'];
+		$branovate_mobile_ad = $post['branovate_mobile_ad'];
+		$google_desk_ad = $post['google_desk_ad'];
+		$nativo_desk_ad = $post['nativo_desk_ad'];
+		$sharethrough_desk_ad = $post['sharethrough_desk_ad'];
+		$carambola_desk_ad = $post['carambola_desk_ad'];
+		$branovate_desk_ad = $post['branovate_desk_ad'];
+
+//var_dump($post); die;
+		//Check if article already has ads set
+		$ads = $this->performQuery( array(
+			'queryString' => 'SELECT * FROM article_ads WHERE article_id = :articleId',
+			'queryParams' => array(':articleId' => $post['a_i'])
+		) );
+
+		if($ads !== false){
+			$this->performUpdate(array(
+				'updateString' => "UPDATE article_ads SET  
+				mobile_google = $google_mobile_ad, 
+				mobile_nativo = $nativo_mobile_ad, 
+				mobile_sharethrough = $sharethrough_mobile_ad, 
+				mobile_branovate = $branovate_mobile_ad, 
+				desk_google = $google_desk_ad, 
+				desk_sharethrough = $sharethrough_desk_ad, 
+				desk_carambola = $carambola_desk_ad
+				WHERE article_id = :articleId",
+				'updateParams' => array(':articleId' => $post['a_i'])
+			));
+		}else{
+			$this->performUpdate(array(
+				'updateString' => "INSERT INTO article_ads SET article_id = :articleId, 
+				mobile_google = $google_mobile_ad, 
+				mobile_nativo = $nativo_mobile_ad, 
+				mobile_sharethrough = $sharethrough_mobile_ad, 
+				mobile_branovate = $branovate_mobile_ad, 
+				desk_google = $google_desk_ad, 
+				desk_sharethrough = $sharethrough_desk_ad, 
+				desk_carambola = $carambola_desk_ad",
+				'updateParams' => array(':articleId' => $post['a_i'])
+			));
+		}
+
+	}
 	/* Begin Article Updating Fucntion */
 	public function updateArticleInfo($post){
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category for an article.'));
@@ -681,10 +729,10 @@ class MPArticleAdminController extends MPArticle{
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_videos WHERE article_id = '.$post['a_i']));
 		
 
-			$this->performUpdate(array(
-				'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId",
-				'updateParams' => array(':articleId' => $post['a_i'])
-			));
+		$this->performUpdate(array(
+			'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId",
+			'updateParams' => array(':articleId' => $post['a_i'])
+		));
 
 		//Add to each category
 		if(isset($post['article_categories']) && $post['article_categories'] != 0){
@@ -741,6 +789,9 @@ class MPArticleAdminController extends MPArticle{
 				'updateParams' => array(':articleId' => $post['a_i'])
 			));
 		}
+
+		//UPDATE / INSERT ARTICLE ADS SETTINGS
+		$this->updateArticleAdsInfo($post);
 
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],

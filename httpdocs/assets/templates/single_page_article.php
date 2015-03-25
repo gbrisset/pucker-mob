@@ -136,7 +136,22 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		}
 		?> 
 		
+		<?php  //BRANOVATE ABOVE ARTICLE 
+		if ( $detect->isMobile() ) {   
+			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
+				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+		<?php }
+		} ?> 
+		
 		<p><?php echo $article_body; ?></p>
+
+		<?php //BELOW ARTICLE BODY
+		if ( $detect->isMobile() ) {   
+			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
+				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+		<?php }
+		} ?> 
+
 
 		<!-- RELATED ARTICLES -->
 		<?php 

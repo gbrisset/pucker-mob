@@ -37,6 +37,9 @@ if(!is_null($categoryInfo)){
 		$articleInfoObj = $articleInfo['articles'][0];
 
 		$pageName = $articleInfoObj['article_title'];
+		//get Article ADS info
+		$article_ads = $mpArticleAdmin->getArticleAds($articleInfoObj);
+
 		if($articleInfoObj['article_id'] == "4349"){
 			$pageName = strtoupper($articleInfoObj['article_title']).' | Sponsored by Smarties Candies';
 		}

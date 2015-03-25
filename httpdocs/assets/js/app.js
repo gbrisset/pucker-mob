@@ -272,7 +272,6 @@ console.log(page);
 	var smarties = false;
 	if(	Foundation.utils.S('#article_id') && ( Foundation.utils.S('#article_id').val() ==  4349 || Foundation.utils.S('#article_id').val() ==  4399  || Foundation.utils.S('#article_id').val() ==  4396)) smarties = true;
 	
-	//Mobile
 	if($('body').hasClass('mobile')) {
 		var select = {
 			ad: {
@@ -284,9 +283,8 @@ console.log(page);
 			}
 		};
 
-		// Single & Multi Article Pages
+	// Single & Multi Article Pages
 	if( !smarties ){
-		console.log(adPage);
 		var article_id = Foundation.utils.S('#article_id').val();
 
 		//SINGLE PAGE ARTICLE
@@ -296,54 +294,103 @@ console.log(page);
 			var li_length = $(li_parent).find('li').length;
 			var isListArticle = false;
 
+			var google_position = -1, 
+			nativo_position = -1, 
+			sharethrough_position = -1,
+			carambola_position = -1,
+			tag = 'p';
+
 			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
-			
 			if(li_length > p_length){
 				isListArticle = true;
 			}
-			console.log("IS LIST ARTICLE? "+isListArticle);
-			console.log("P: "+p_length+" L: "+li_length);
-			
+
+			//SET DEFAULT VALUES DEPENDING ON ARTICLE BASE TYPE LI/P
 			if(isListArticle){
-				var ads_insertions = Math.round(li_length / 3) ;
-				var first_ad = 1,
-					second_ad = 3,//first_ad + ads_insertions,
-					third_ad = 6;//second_ad + ads_insertions;
+				google_position = -1;
+				nativo_position = 1; 
+				sharethrough_position = 3;
+				carambola_position = -1;
+				tag = 'li';
+			}else{
+				google_position = -1;
+				nativo_position = 1; 
+				sharethrough_position = 3;
+				carambola_position = -1;
+			}
+
+			$.ajax({
+				type: "POST",
+				url:  'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php',
+				data: { article_id: article_id, task:'article_ads' },
+				success: function (data) {
+					if(data != 'false'){
+						var info = $.parseJSON(data);
+						google_position  = parseInt(info[0].mobile_google);
+						nativo_position = parseInt(info[0].mobile_nativo);
+						sharethrough_position  = parseInt(info[0].mobile_sharethrough);
+						//carambola_position = info[0].mobile_carambola;
+
+						//set defaults
+						//$('select[name="options"]').find('option[value="3"]').attr("selected",true);
+
+					}
+				},
+				async:   false
+			});
+
+			console.log("IS LIST ARTICLE? "+isListArticle);
+			
+			//SHARETHROUG
+			inBodyAd.loadInArticleAd( 'article-content', sharethrough_position, 0, mobilead[adPage].inarticle, tag);	
+
+			//NATIVO
+			inBodyAd.loadInArticleAd( 'article-content', nativo_position, 0, mobilead[adPage].inarticlenativo, tag);
+			
+
+			//NATIVO
+			//if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlenativo, 'p');	
+		
+			//if(isListArticle){
+				//var ads_insertions = Math.round(li_length / 3) ;
+				/*var first_ad = 1,
+					second_ad = 3,
+					third_ad = 6;*/
 				
 				//Google AD 300x150
 				//console.log('Google');
 				//inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlebranovate, 'p');	
 				
 				//SHARETHROUG
-				console.log('SHARETHROUG');
-				if(article_id != 4314 && article_id != 4341){
-					inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'li');
-				} 
+				//if(article_id != 4314 && article_id != 4341){
+					//inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'li');
+				//} 
 				
 				//ADBLADE
 				//inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, mobilead[adPage].inarticleadblade, 'li');
 
-				console.log('NATIVO');
-				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlenativo, 'li');
-			}else{
+			/*}else{
 				var ads_insertions = Math.round(p_length / 3) ;
 				var first_ad = 1,
 					second_ad = 3,//first_ad + ads_insertions,
-					third_ad = 5; //second_ad + ads_insertions;
+					third_ad = 5; //second_ad + ads_insertions;*/
 				//Google AD 300x150
 				//inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlebranovate , 'p');		
-				//SHARETHROUG
-				if( article_id == 4314 ){
-					inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'p');	
-				}else if( article_id == 4341 ){
-					inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticle, 'p');	
-				}else{
-					if(p_length >= 5) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'p');	
-				}
+				
+				
+				//if( article_id == 4314 ){
+				//	inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'p');	
+				//}else if( article_id == 4341 ){
+				//	inBodyAd.loadInArticleAd( 'article-content', 4, 0, mobilead[adPage].inarticle, 'p');	
+				//}else{
+					//if(p_length >= 5) 
+					//	inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, mobilead[adPage].inarticle, 'p');	
+				//}
+
 				//ADBLADE
 				//if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticleadblade, 'p');	
-				if(p_length >= 8) inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, mobilead[adPage].inarticlenativo, 'p');	
-			}
+				
+			//}
 		}
 
 		//MULTIPAGE ARTICLE
@@ -358,7 +405,8 @@ console.log(page);
 
 	}
 
-	} else {
+} else {
+		
 		var select = {
 			ad: {
 				header: document.getElementById("header-ad"),
@@ -402,47 +450,64 @@ console.log(page);
 			var p_length = $('#article-content').children('p').length;
 			var li_length = $(li_parent).find('li').length;
 			var isListArticle = false;
+			
+			var google_position = -1, 
+			nativo_position = -1, 
+			sharethrough_position = -1,
+			carambola_position = -1,
+			tag = 'p';
 
 			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
-			
 			if(li_length > p_length){
 				isListArticle = true;
 			}
-			console.log("IS LIST ARTICLE? "+isListArticle);
-			//console.log("P: "+p_length+" L: "+li_length);
 
+			//SET DEFAULT VALUES DEPENDING ON ARTICLE BASE TYPE LI/P
 			if(isListArticle){
-				var ads_insertions = Math.round(li_length / 3) ;
-				var first_ad = 1,
-					second_ad = 2,//first_ad + ads_insertions,
-					third_ad = 6;//second_ad + ads_insertions;
-				
-				//Google AD
-				console.log('GOOGLE AD');
-				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
+				google_position = -1;
+				nativo_position = -1; 
+				sharethrough_position = 6;
+				carambola_position = 2;
+				tag = 'li';
+			}else{
+				google_position = -1;
+				nativo_position = -1; 
+				sharethrough_position = 5;
+				carambola_position = 3;
+			}
 
-				//IN-ARTICLE CARAMBOLA 
-				if($('span.span-category.moblog').length == 0) inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, ad[adPage].inarticlecarambola, 'li');
+			$.ajax({
+				type: "POST",
+				url:  'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php',
+				data: { article_id: article_id, task:'article_ads' },
+				success: function (data) {
+					if(data != 'false'){
+						var info = $.parseJSON(data);
+						//console.log(info.desk_google);
+						google_position  = parseInt(info[0].desk_google);
+						//nativo_position = parseInt(info[0].desk_nativo);
+						sharethrough_position  = parseInt(info[0].desk_sharethrough);
+						carambola_position = parseInt(info[0].desk_carambola);
+					}
+				},
+				async:   false
+			});
 
-				//SHARETHROUGH
-				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, ad[adPage].inarticlesharet, 'li');
-				
-				}else{
-				var ads_insertions = Math.round(p_length / 3) ;
-				var first_ad = 1,
-					second_ad = 3,//first_ad + ads_insertions,
-					third_ad = 5;//second_ad + ads_insertions;
-				
-				//Google AD
-				console.log('GOOGLE AD');
-				inBodyAd.loadInArticleAd( 'article-content', first_ad, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
-				
-				//IN-ARTICLE CARAMBOLA 
-				if($('span.span-category.moblog').length == 0)  inBodyAd.loadInArticleAd( 'article-content', second_ad, 0, ad[adPage].inarticlecarambola, 'p');
+			console.log("IS LIST ARTICLE? "+isListArticle);
 
-				//SHARETHROUGH
-				inBodyAd.loadInArticleAd( 'article-content', third_ad, 0, ad[adPage].inarticlesharet, 'p');
-				
+			//Google AD
+			if(google_position && google_position != -1){
+				inBodyAd.loadInArticleAd( 'article-content', google_position, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', tag);	
+			}
+
+			//CARAMBOLA 
+			if(carambola_position && carambola_position != -1){
+				if($('span.span-category.moblog').length == 0) inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);
+			}
+
+			//SHARETHROUGH
+			if(sharethrough_position && sharethrough_position != -1){
+				inBodyAd.loadInArticleAd( 'article-content', sharethrough_position, 0, ad[adPage].inarticlesharet, tag);
 			}
 		}
 
@@ -459,23 +524,17 @@ console.log(page);
 		//BTF2
 		loadAd(select.ad.btf2, ad[adPage].btf2);
 	}
-		//BTF3
-		if( page === 'home' ||  page === 'category'){
-			if(hasSponsored == undefined || hasSponsored == 0){
-			loadAd(select.ad.btf3, ad[adPage].btf3);
-			}
+	//BTF3
+	if( page === 'home' ||  page === 'category'){
+		if(hasSponsored == undefined || hasSponsored == 0){
+		loadAd(select.ad.btf3, ad[adPage].btf3);
 		}
-
-		//ATF LEFT AND RIGHT FOR MULTI PAGE ARTICLES
-		if( document.body.id == "videos"){
-			loadAd(select.ad.atfleft, ad['articleslide'].atfleft);
-			loadAd(select.ad.atfright, ad['articleslide'].atfright);
-		}
-
-		$(window).resize(function() {
-			resizeMainOnResize();
-		});
 	}
+
+	$(window).resize(function() {
+		resizeMainOnResize();
+	});
+}
 
 	// If is Desktop
 	if(!$('body').hasClass('mobile')) {

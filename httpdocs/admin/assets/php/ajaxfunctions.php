@@ -44,4 +44,9 @@
 		$reader_email = $_POST['reader_email'];
 		echo json_encode($follow->unfollowAuthor($author_id, $reader_email));
 	}
+
+	if($_POST['task'] == 'article_ads'){
+		
+		echo json_encode($mpArticleAdmin->getArticleAds($_POST));
+	}
 ?>

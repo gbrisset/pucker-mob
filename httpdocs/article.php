@@ -79,7 +79,7 @@ if(!is_null($categoryInfo)){
 
 
 		<?php include_once($config['include_path'].'header.php');?>
-		<?php include_once($config['include_path'].'header_ad.php'); ?>
+		<?php //include_once($config['include_path'].'header_ad.php'); ?>
 		<?php 
 			$style = '';
 			if( isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] == 4314 || $articleInfoObj['article_id'] == 4341){

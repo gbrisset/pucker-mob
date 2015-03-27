@@ -17,7 +17,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$contributor_id = 0;
 	if(isset($articleInfoObj['contributor_id']) && $articleInfoObj['contributor_id']) $contributor_id = $articleInfoObj['contributor_id'];
 
-	//$contributor_name = $articleInfoObj['contributor_name'];
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 	$article_img_credits = $articleInfoObj['article_img_credits'];
 	$article_notes = $articleInfoObj['article_additional_comments'];
@@ -27,7 +26,206 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 }
 ?>
 
-<article id="article-<?php echo $article_id; ?>" class="columns small-12 <?php if($detect->isMobile()) echo " no-padding "; ?>">
+<?php if($detect->isMobile()){?>
+<article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
+	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
+	
+	<section id="article-summary" class="small-12 column">
+		<!-- Article Image -->
+		<div class="row">
+			<!-- SMARTIES -->
+			<?php if($promotedArticle){ 
+				if($detect->isMobile()) $smartiesImagestyle = 'width:98%;'; else $smartiesImagestyle='';
+			?>
+				<div id="smarties-image" class="small-12 columns">
+					<span style="position: absolute; right: 0.45rem; z-index: 999;" >
+						<img style="<?php echo $smartiesImagestyle; ?>" src="http://www.puckermob.com/assets/img/sponsoredby-smarties.png">
+					</span>
+				</div>
+			<?php } ?>
+			<div id="article-image" class="small-12 columns no-padding">
+				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
+				<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+			</div>
+		</div>
+		
+		<!-- TITLE -->
+		<h1 style="margin: 0.5rem 0;"><?php echo $article_title; ?></h1>
+		
+		<section id="article-content">
+			<!-- Social Media Icons -->
+			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
+				<a class="addthis_button_facebook">
+					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
+				</a> 
+				<a class="addthis_button_twitter">
+					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
+				</a> 
+			</div>
+		</section>
+		
+		<!-- ABOUT THE AUTHOR -->
+		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+
+		<!-- Category, Date And Author Information -->
+		<div class="row">
+			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 ">
+				<p class="left uppercase">
+					<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
+				</p>
+			</div>
+		</div>
+		
+		
+		<!-- DISCLAIMER -->
+		<?php if($article_disclaimer){?>
+		<div class="columns no-padding padding-top disclaimer">
+			<p>
+				*The following article does not represent the viewpoints of PuckerMob, it's management or 
+				partners, but is solely the opinion of the contributor.
+			</p>
+		</div>
+		<?php }?>
+
+		<!-- Article Content -->
+		<div class="row clear" style="margin-top: -1rem;">
+		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; overflow: visible !important; "> 
+		
+		<?php  //BRANOVATE ABOVE ARTICLE 
+			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
+				<div class="clear" style="background-color:#000; min-height: 15.5rem;">
+				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+				</div>
+		<?php } ?> 
+		
+		<!-- ARTICLE BODY -->
+		<p><?php echo $article_body; ?></p>
+
+		<?php // BRANOVATE BELOW ARTICLE BODY
+		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
+			<div class="clear" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
+			<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+			</div>
+		<?php } ?> 
+
+
+		<!-- RELATED ARTICLES -->
+		<?php 
+		$related = []; //var_dump($related_articles);
+		if(isset($related_articles) && $related_articles && 
+			($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
+			$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
+			$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
+			$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
+		?>
+		<div class="row small-12 clear related-articles-box half-padding">
+			<hr>
+			<div class="rel-articles-wrapper">
+			<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
+			<ul>
+				<?php if( $related['related_article_id_1']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php }?>
+				<?php if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php }?>
+				<?php if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></li><?php }?>
+			</ul>
+			</div>
+			<hr>
+		</div>
+		<?php }?>
+
+		
+		
+		<!-- FROM AROUND THE WEB -->	
+		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+		
+		<hr>
+		
+		<!-- KIXER -->
+		<!-- Start Below Article -->
+			<div id='__kx_ad_821'></div>
+			<script type="text/javascript" language="javascript">
+			var __kx_ad_slots = __kx_ad_slots || [];
+
+			(function () {
+				var slot = 821;
+				var h = false;
+				__kx_ad_slots.push(slot);
+				if (typeof __kx_ad_start == 'function') {
+					__kx_ad_start();
+				} else {
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.async = true;
+					s.src = 'http://cdn.kixer.com/ad/load.js';
+					s.onload = s.onreadystatechange = function(){
+						if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+							h = true;
+							s.onload = s.onreadystatechange = null;
+							__kx_ad_start();
+						}
+					};
+					var x = document.getElementsByTagName('script')[0];
+					x.parentNode.insertBefore(s, x);
+				}
+			})();
+			</script>
+		<!-- End Below Article -->
+		
+		<hr>
+				
+		<!-- IMAGE SOURCE -->
+		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
+		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
+		<?php }?>
+
+		<!-- NOTES -->
+		<?php if( isset($article_img_credits) && !empty($article_notes)){?>
+		<p><?php echo $article_notes; ?></p>
+		<?php }?>
+
+		</section>
+	</div>
+	
+	<!--  SHARETHROUGH 2 -->
+	<?php  
+		if(!$promotedArticle){ ?>
+			<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
+
+			<div class="hide-for-print padding-top ads">
+				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			</div>
+			
+			<hr>
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			<!-- GOOGLE AD UNIT MOBILE -->
+			<div class="hide-for-print row no-padding padding-top padding-bottom" style="text-align:center;">
+		
+			</div>
+			
+	<?php }else{?>
+		<div class="hide-for-print row half-padding padding-top padding-bottom">
+	    	<!-- SMARTIES PROMOTION -->
+	        <!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
+	        <script language="javascript"><!--
+	        document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+	        //-->
+	        </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
+	        <!-- End of JavaScript Tag -->
+	    </div>
+    <?php } ?>
+
+	<?php if(!$promotedArticle){ ?>
+		<section class="nativo-ad padding-top">
+			<div class="nativo"></div> 
+		</section>
+	<?php } ?>
+	</section>
+</article>
+
+<?php }else{?>
+
+<article id="article-<?php echo $article_id; ?>" class="columns small-12 ">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	<section id="article-summary" class="small-12 column">
 		<!-- TITLE -->
@@ -59,6 +257,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</div>
 		</div>
 		<?php //include($config['include_path'].'socialbuttonsarticles.php'); ?>
+		
 		<!-- Article Image -->
 		<div class="row">
 			<!-- SMARTIES -->
@@ -73,48 +272,23 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php } ?>
 			<div id="article-image" class="small-12 columns half-padding-right-on-lg padding-top">
 				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
-				<img src="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+				<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
 		</div>
-
+		
 		<!-- ABOUT THE AUTHOR -->
 		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
 		<!-- Category, Date And Author Information -->
-		<?php if($detect->isMobile()){ ?>
-		<div class="row">
-			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 ">
-				<p class="left uppercase">
-					<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
-				</p>
-			</div>
-		</div>
-		<?php }else{?>
 		<div class="row">
 			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
 				<p class="left uppercase">
 					<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
-				<!--<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>-->
 			</div>
 		</div>
-		<?php }?>
 		
-		<?php //if($detect->isMobile()){ ?>
-		<!--<div class="row clear">
-		
-			<div class="columns hide-for-print like-us-fb">
-				<p style ="color:#777" class="small-12 padding-top padding-bottom">LIKE US ON FACEBOOK
-					<div class="columns small-12 " style="margin-left:0 !important;">
-						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
-					</div>	 
-				</p>
-			</div>	
-		<hr style="margin: 0 0.9rem !important; border-bottom:1px solid #ddd !important; padding:0.4rem !important;">
-		</div>	--> 	
-		<?php //}?>
-
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>
 		<div class="columns no-padding padding-top disclaimer">
@@ -125,41 +299,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 		<?php }?>
 
-		<!-- Article Content -->
-		<?php 
-		if ( $detect->isMobile() ) {  
-			echo '<div class="row clear" style="margin-top: -1rem;">';
-			echo '<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; overflow: visible !important; "> ';  
-		}else{ 
-			echo '<div class="row clear">';
-			echo '<section id="article-content" class="small-12 column sidebar-box">';
-		}
-		?> 
+	<!-- Article Content -->
+	<div class="row clear">
+		<section id="article-content" class="small-12 column sidebar-box">
 		
-		<?php  //BRANOVATE ABOVE ARTICLE 
-		if ( $detect->isMobile() ) {   
-			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-				<div class="clear" style="background-color:#000; min-height: 15.5rem;">
-				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-				</div>
-		<?php }
-		} ?> 
-		
+		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
-
-		<?php //BELOW ARTICLE BODY
-		if ( $detect->isMobile() ) {   
-			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
-				<div class="clear" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
-				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-				</div>
-		<?php }
-		} ?> 
-
 
 		<!-- RELATED ARTICLES -->
 		<?php 
-		$related = []; //var_dump($related_articles);
+		$related = []; 
 		if(isset($related_articles) && $related_articles && 
 			($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
 			$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
@@ -179,16 +328,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<hr>
 		</div>
 		<?php }?>
-		<!-- END RELATED ARTICLES -->
-
-		<?php if($detect->isMobile()){?>
-			<!-- BRANOVATE -->
-			<!-- BEGIN JS TAG - puckermob.com 300x250 < - DO NOT MODIFY 
-			<div class="clear" style="background-color:#000; min-height: 15.5rem;">
-				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-			</div>-->
-			<!-- END TAG -->
-		<?php }?>
+	
 		<!-- ON DESKTOP --> 
 		<?php //if(!$detect->isMobile()){?>
 		<!-- GOOGLE AD BOTTOM
@@ -208,16 +348,14 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<?php //}?>
 		
-		<!-- Social Media Icons -->
-		<!-- DESKTOP ONLY -->
-		<?php if(!$detect->isMobile()){  //include($config['include_path'].'socialbuttonsarticles.php'); ?>
-
+		<!-- ingageunit -->
 		<div class="row clear" >
 			<!-- Place in body part -->
 			<div id="ingageunit"></div>
 			<!-- Place in body part -->
 		</div>
 		
+		<!-- Social Media Icons -->
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
@@ -242,73 +380,25 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 		</div>
 
-		
-		<?php }else{
-			//include($config['include_path'].'socialbuttonsmobile.php');
-		?>
-			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
-				<a class="addthis_button_facebook">
-					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
-				</a> 
-				<a class="addthis_button_twitter">
-					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
-				</a> 
-			</div>
-			
-			
-			<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
-			<hr>
-			<!-- Start Below Article -->
-			<div id='__kx_ad_821'></div>
-			<script type="text/javascript" language="javascript">
-			var __kx_ad_slots = __kx_ad_slots || [];
-
-			(function () {
-				var slot = 821;
-				var h = false;
-				__kx_ad_slots.push(slot);
-				if (typeof __kx_ad_start == 'function') {
-					__kx_ad_start();
-				} else {
-					var s = document.createElement('script');
-					s.type = 'text/javascript';
-					s.async = true;
-					s.src = 'http://cdn.kixer.com/ad/load.js';
-					s.onload = s.onreadystatechange = function(){
-						if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-							h = true;
-							s.onload = s.onreadystatechange = null;
-							__kx_ad_start();
-						}
-					};
-					var x = document.getElementsByTagName('script')[0];
-					x.parentNode.insertBefore(s, x);
-				}
-			})();
-			</script>
-			<!-- End Below Article -->
-		<?php }?>
-		
 		<hr>
 				
-		<?php if(!$detect->isMobile()){?>
-			<!-- ADBLADE-->
-			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
-				<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
-				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
-			</section>
-			<hr>
-			<?php if(!$promotedArticle  && $article_id != 4555){?>
-				<div data-str-native-key="53caed05" style="display: none;"></div>
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-			<?php } ?>
+		<!-- ADBLADE-->
+		<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
+			<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
+			<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
+		</section>
+		<hr>
 
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
-			<br>
-			
+		<!-- SHARETHROUGN 2ND UNIT -->
+		<?php if(!$promotedArticle  && $article_id != 4555){?>
+			<div data-str-native-key="53caed05" style="display: none;"></div>
+			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 		<?php } ?>
 
+		<!-- COMMENTS BOX -->
+		<?php include_once($config['include_path'].'disqus.php'); ?>
+		<br>
+		
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
@@ -319,51 +409,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<p><?php echo $article_notes; ?></p>
 		<?php }?>
 
-				<?php if($detect->isMobile() && !$detect->isTablet()){?>
-				<!--<div id="grad"></div>
-				<p class="read-more"><a href="#" class="button">
-					<i class="fa fa-caret-down caret-down-left"></i>Click To Read More<i class="fa fa-caret-down caret-down-right"></i></a>
-				</p>-->
-				<?php } ?>
-			</section>
-		</div>
+		</section>
+	</div>
 		
-		<?php if(!$detect->isMobile()){?>
-		
-
-		<?php }else{ 
-			if(!$promotedArticle){ ?>
-			<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
-
-			<div class="hide-for-print padding-top ads">
-				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-			</div>
-			
-			<hr>
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
-			<!-- GOOGLE AD UNIT MOBILE -->
-			<div class="hide-for-print row no-padding padding-top padding-bottom" style="text-align:center;">
-		
-			</div>
-			
-		<?php }else{?>
-		<div class="hide-for-print row half-padding padding-top padding-bottom">
-	    	<!-- SMARTIES PROMOTION -->
-	        <!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
-	        <script language="javascript"><!--
-	        document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
-	        //-->
-	        </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
-	        <!-- End of JavaScript Tag -->
-	    </div>
-    	<?php } ?>
-	<?php } ?>
 	<?php if(!$promotedArticle){ ?>
 		<section class="nativo-ad padding-top">
 			<div class="nativo"></div> 
 		</section>
 	<?php } ?>
+	
 	</section>
 </article>
+
+<?php } ?>

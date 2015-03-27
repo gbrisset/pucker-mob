@@ -803,6 +803,10 @@ var SocialShares = {
 	if(page === 'article' || page === 'articleslide') {
 		console.log('ADDTHIS');
 		console.log(addthis);
+		addthis.sharecounters.getShareCounts('facebook', function(obj) {        
+		    console.log("IN");
+		    console.log(obj);
+		});
 		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
 	}
 

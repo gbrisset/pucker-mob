@@ -387,7 +387,7 @@ a > h5 {
 .panel {border-color: white;}
 @media only screen and (min-width: 740px) {
 	#header-ad {min-height: 90px; max-width: 970px; }
-	#main {margin-top: ($panel-padding /2); }
+	#main {margin-top: 3.1rem !important; }
 }
 .nr_rc_link {width: 100%;display: table; padding: 10px 10px 10px 10px; border: 1px solid #dddddd; background-color: #fafafa; border-top: 0; -webkit-transition: all 0.3s ease-in-out;
 -moz-transition: all 0.3s ease-in-out;
@@ -934,7 +934,7 @@ box-shadow: 0px 0px 4px 1px #bbb; margin-bottom: 0.46875rem; z-index: 9999999; b
 @media #{$small-only} {
 	#nav-bar {position: fixed; top: 0; left: 0;}
 	#header-ad {margin-top: ($topbar-height + ($panel-padding/2) - 1);}
-	#main {margin-top: ($panel-padding + 3) !important;}
+	#main {margin-top: 3.1rem !important}
 	.show-on-large-up {
 		visibility: hidden;
 		display:none;
@@ -1020,11 +1020,11 @@ body{padding-top:0 !important;}
 
 	@media #{$mobile-only} { 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.5rem; margin-bottom: 0;}
+		h1{ font-size: 1.4rem; margin-bottom: 0;}
 	}
 	@media #{$small-only}{ 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.5rem; margin-bottom: 0;}
+		h1{ font-size: 1.4rem; margin-bottom: 0;}
 	}
 	@media #{$medium-only}{ 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }

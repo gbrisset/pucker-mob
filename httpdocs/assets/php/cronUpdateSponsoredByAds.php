@@ -9,6 +9,8 @@
 	$value = 0;
 	if( $hasSponsored == 0) $value = 1;
 	
-	//var_dump($cron->updateSponsoredByAds($value));
+	//var_dump($hasSponsored);
+	
+	$cron->updateSponsoredByAds($value);
 
 ?>

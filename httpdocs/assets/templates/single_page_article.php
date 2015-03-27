@@ -24,8 +24,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
 
 	$related_articles = $mpArticle->getRelatedToArticle( $article_id );
-
-
 }
 ?>
 
@@ -141,7 +139,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php  //BRANOVATE ABOVE ARTICLE 
 		if ( $detect->isMobile() ) {   
 			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
+				<div class="clear" style="background-color:#000; min-height: 15.5rem;">
 				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+				</div>
 		<?php }
 		} ?> 
 		
@@ -150,7 +150,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php //BELOW ARTICLE BODY
 		if ( $detect->isMobile() ) {   
 			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
+				<div class="clear" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
 				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+				</div>
 		<?php }
 		} ?> 
 
@@ -181,10 +183,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<?php if($detect->isMobile()){?>
 			<!-- BRANOVATE -->
-			<!-- BEGIN JS TAG - puckermob.com 300x250 < - DO NOT MODIFY -->
+			<!-- BEGIN JS TAG - puckermob.com 300x250 < - DO NOT MODIFY 
 			<div class="clear" style="background-color:#000; min-height: 15.5rem;">
 				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-			</div>
+			</div>-->
 			<!-- END TAG -->
 		<?php }?>
 		<!-- ON DESKTOP --> 

@@ -157,7 +157,8 @@ class MPArticleAdmin{
 		$options = array_merge([
 			'sortType' => 1,
 			'limit' => 10,
-			'offset' => 0
+			'offset' => 0,
+			'condition' => ''
 		], $args);
 
 		$orderClause = [
@@ -168,6 +169,8 @@ class MPArticleAdmin{
 			" ORDER BY article_contributors.contributor_name DESC, article_contributors.contributor_id DESC"//Alpha Z-A
 		];
 		$s = "SELECT * FROM article_contributors";
+
+		if($options['condition']) $s.=" WHERE ".$options['condition'];
 
 		$s .= is_array($orderClause) ? isset($orderClause[$options['sortType'] - 1]) ? $orderClause[$options['sortType'] - 1] : $orderClause[0] : $orderClause;
 		$s .= " LIMIT ". $options['limit'] ." OFFSET ".$options['offset'];

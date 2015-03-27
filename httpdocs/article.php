@@ -307,7 +307,7 @@ if(!is_null($categoryInfo)){
     <?php }?>
 
    	<!-- MODAL BOX FOLLOWERS POPUP -->
-	<?php include_once($config['include_path'].'modal_box_followers.php'); ?>
+	<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
 </body>
 </html>
 <?php } ?>

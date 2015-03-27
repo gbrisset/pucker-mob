@@ -65,5 +65,11 @@ class CronSocialMediaInformation{
 		}
 		
 	}
+
+	public function updateSponsoredByAds( $value ){
+		$s='UPDATE article_page_ads SET has_sponsored_by = '.$value.' WHERE article_page_ads.article_page_id = 1 ';
+
+		$q = $this->performQuery(['queryString' => $s]);
+	}
 }
 ?>

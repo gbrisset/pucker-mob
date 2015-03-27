@@ -506,8 +506,13 @@ form .gradient-button.red-gradient {background: -moz-linear-gradient(center top 
 #profile-inline-settings #rules span{ font-size: 1.2rem;}
 
 //CONTRIBUTORS LIST
-.admin-contributor .contributor-info{ padding: 1rem 0; }
-.admin-contributor .contributor-info h2 a{ color: #222; }
+.admin-contributor-label { border-bottom: 1px solid #ddd; margin-bottom: 0.5rem; padding-bottom: 0; margin-top: 2rem; }
+.admin-contributor .contributor-info{ padding: 0; }
+.admin-contributor .contributor-info h2 a{ color: #222; font-size:1.2rem;}
+.admin-contributor .contributor-links{ margin-top:0.5rem; text-align: right;}
+.admin-contributor .contributor-links a{ color:#000; margin: 0.5rem 1rem;}
+.admin-contributor .contributor-table-label { text-transform: uppercase; font-family: OsloBold; padding: 0; text-align: center;}
+.admin-contributor .contributor-info > p  {margin-bottom: 0; margin-top: 0.45rem;  text-align: center;}
 
 //DASHBOARD
 #dashboard{ margin-top:5%;}

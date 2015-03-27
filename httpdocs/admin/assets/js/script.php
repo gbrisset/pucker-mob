@@ -1631,24 +1631,24 @@ if(document.body.id == 'editarticle'){
 			if(data == 'false'){
 				$('select[name="nativo_mobile_ad"]').find('option[value="1"]').attr("selected",true);
 				$('select[name="sharethrough_mobile_ad"]').find('option[value="3"]').attr("selected",true);
-				$('select[name="carambola_mobile_ad"]').find('option[value="-1"]').attr("selected",true);
+				//$('select[name="carambola_mobile_ad"]').find('option[value="-1"]').attr("selected",true);
 				$('select[name="branovate_mobile_ad"]').find('option[value="999"]').attr("selected",true);
 				$('select[name="google_mobile_ad"]').find('option[value="-1"]').attr("selected",true);
 				
 				$('select[name="google_desk_ad"]').find('option[value="-1"]').attr("selected",true);
-				$('select[name="nativo_desk_ad"]').find('option[value="-1"]').attr("selected",true);
+				//$('select[name="nativo_desk_ad"]').find('option[value="-1"]').attr("selected",true);
 				
-				$('select[name="sharethrough_desk_ad"]').find('option[value="3"]').attr("selected",true);
+				$('select[name="sharethrough_desk_ad"]').find('option[value="5"]').attr("selected",true);
 				
 				if(isListArticle){ 
-					$('select[name="carambola_desk_ad"]').find('option[value="2"]').attr("selected",true);
-					$('select[name="sharethrough_desk_ad"]').find('option[value="6"]').attr("selected",true);
+					$('select[name="carambola_desk_ad"]').find('option[value="6"]').attr("selected",true);
+					$('select[name="sharethrough_desk_ad"]').find('option[value="2"]').attr("selected",true);
 				}else {
-					$('select[name="carambola_desk_ad"]').find('option[value="3"]').attr("selected",true);
-					$('select[name="sharethrough_desk_ad"]').find('option[value="5"]').attr("selected",true);
+					$('select[name="carambola_desk_ad"]').find('option[value="5"]').attr("selected",true);
+					$('select[name="sharethrough_desk_ad"]').find('option[value="3"]').attr("selected",true);
 				}
 
-				$('select[name="branovate_desk_ad"]').find('option[value="-1"]').attr("selected",true);
+				//$('select[name="branovate_desk_ad"]').find('option[value="-1"]').attr("selected",true);
 			}
 		},
 		async:   false

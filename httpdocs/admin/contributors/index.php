@@ -10,6 +10,15 @@
 
 	$sortId = $mpShared->getSort(isset($_GET['sort']) ? $_GET['sort'] : '');
 
+	$byname = '';
+	$bynewest = 'current';
+
+	if(isset($_GET['sort'])){
+		$bynewest = '';
+		if($_GET['sort'] == 'mr') $bynewest = 'current';
+		else $byname = 'current';
+	}
+
 	$article_sort_by = "mr";
 	if(isset($_GET['sort'])) $article_sort_by = $_GET['sort'];
 	
@@ -32,7 +41,16 @@
 		$total_count = $mpArticle->count_all_contributors();
 		$pagination = new Pagination($page, $per_page, $total_count);
 		$offset = $pagination->offset();
-		$articleContributors = $mpArticleAdmin->getAllContributors(['sortType' => $sortId, 'limit' => $limit, 'offset' => $offset]);
+		
+
+		if(isset($_POST['searchcontributorinput']) && !empty($_POST['searchcontributorinput'])){
+			$articleContributors = $mpArticleAdmin->getAllContributors(['sortType' => $sortId, 'limit' => 1000000, 'offset' => $offset, 'condition'=>" contributor_name like '%".$_POST['searchcontributorinput']."%'"]);
+		
+		}else{
+			$articleContributors = $mpArticleAdmin->getAllContributors(['sortType' => $sortId, 'limit' => $limit, 'offset' => $offset]);
+		}
+
+		$ManageDashboard = new ManageAdminDashboard( $config );
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -55,77 +73,88 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="contributors-list">
-				
-				<section class="section-bar left  border-bottom mobile-12 small-12 margin-bottom">
-					<h1 class="left">List Information</h1>
-				
+				<section class="">
+					<form class=" small-12" id="header-search" action="<?php echo $config['this_admin_url'].'contributors/';?>" method="POST">
+							<div id="search-fieldset" class="mobile-12 small-12">
+								<input type="text" value="" style="width: 82%;" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchcontributorinput">
+								<button type="submit" id="searchsubmit" name="searchcontributor" class="small-2"  >SEARCH<i class="icon-search"></i></button>
+							</div>
+					</form>
+				</section>
+				<section class="section-bar left mobile-12 small-12 margin-bottom">
 					<div id="right">
-						<div id="sort-by">
+						<div id="sort-by-contr" class="from-diff-users-filter  no-vertical-padding">
 							<input type="hidden" value="<?php echo $article_sort_by; ?>" id="sort-by-value" />
-							<label>Sort By: </label>
-							<ul>
-								<?php
-									$dropDownOmits = [2, 3, 4, 5];
-									foreach($mpArticleAdmin->dropDownInfo as $dropDownObj){
-										if(in_array($dropDownObj['id'], $dropDownOmits)) continue;
-										$li = '<li>';
-											$li .= '<a data-info="'.$dropDownObj['shortname'].'" href="'.$config['this_admin_url'].'contributors/';
-											$li .= ($page > 1) ? '?p='.$page.'&sort='.$dropDownObj['shortname'] : '?sort='.$dropDownObj['shortname'];
-											$li .= '">';
-												$li .= $dropDownObj['label'];
-											$li .= '</a>';
-										$li .= '</li>';
-										echo $li;
-									}
-								?>
-							</ul>
+							<label>Sort By:
+						     	<a class="<?php echo $bynewest; ?> " href="<?php echo $config['this_admin_url'].'contributors/?sort=mr'; ?>">Newest</a> |
+							 	<a class="<?php echo $byname; ?> " href="<?php echo $config['this_admin_url'].'contributors/?sort=az'; ?>">Name</a>
+					     	</label>
 						</div>
 					</div>
 				</section>
-
+				<div class="admin-contributor left small-12 padding-bottom admin-contributor-label">
+					<label class="contributor-image contributor-table-label columns small-3" >Writer Name</label>
+					<label class="contributor-info contributor-table-label columns small-2">PageViews</label>
+					<label class="contributor-info contributor-table-label columns small-2">Earnings</label>
+					<label class="contributor-info contributor-table-label columns small-5"></label>
+				</div>
+				
 				<?php
 					foreach($articleContributors as $contributorInfo){
 						$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/contributors_redesign/'.$contributorInfo['contributor_image']);
 						$pathToImage = $config['image_upload_dir'].'articlesites/contributors_redesign/'.$contributorInfo["contributor_id"].'_contributor.'.$ext;
 
 						if(file_exists($pathToImage)){
-							$imageUrl = $config['image_url'].'articlesites/contributors_redesign/'.$contributorInfo["contributor_id"].'_contributor.'.$ext;
+							$imageUrl = 'http://images.puckermob.com/articlesites/contributors_redesign/'.$contributorInfo['contributor_id'].'_contributor.jpg';
+							//http://images.puckermob.com/articlesites/contributors_redesign/2431_contributor.jpg
 						} elseif(!empty($contributorInfo['contributor_image']) && !file_exists($pathToImage)){
-							$imageUrl = '';
+							if(count(explode('graph.facebook.com', $contributorInfo['contributor_image'])) > 1 )
+								$imageUrl = $contributorInfo['contributor_image'];
+							else
+								$imageUrl = 'http://images.puckermob.com/articlesites/contributors_redesign/'.$contributorInfo['contributor_image'];
 						} else {
-							$imageUrl = $config['image_url'].'/articlesites/sharedimages/default_profile_contributor.png';
-						}
-						//$imageUrl = 'http://images.puckermob.com/articlesites/contributors_redesign/1081_contributor.jpg';
-						$contributor = '<div class="admin-contributor row clear padding-bottom">';
-								$contributor .= '<div class="contributor-image columns small-2">';
-									$contributor .= '<a href="'.$config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name'].'">';
-										$contributor .= '<img src="';
-										$contributor .= $imageUrl.'" alt="'.$contributorInfo['contributor_name'].' Image" />';
-									$contributor .= '</a>';
-								$contributor .= '</div>';
-							
-							$contributor .= '<div class="contributor-info columns small-10">';
-								$contributor .= '<h2><a href="'.$config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name'].'">'.$contributorInfo['contributor_name'].'</a></h2>';
-								$bio = utf8_encode(trim(strip_tags($contributorInfo['contributor_bio'])));
-								$bio = (strlen($bio) > 90) ? substr($bio, 0, 90).'...' : $bio;
-								//$contributor .= '<p>'.$bio.'</p>';
-								//$article .='<a class="manage-links" href="'.$articleUrl.'" name="edit" id="edit"><i class="fa fa-pencil-square-o"></i> Edit</a>';
-								//$article .='<a class="manage-links" href="'.$articleUrl.'" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i> Delete</a>';
-								$contributor .= '<a class="manage-links" href="'.$config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name'].'" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>';
-								$contributor .='<a class="manage-links" href="'.$config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'].'" ><i class="fa fa-bar-chart"></i> Earnings</a>';
-							$contributor .= '</div>';
+							$imageUrl = 'http://images.puckermob.com/articlesites/contributors_redesign/pm_avatars_1.png';
+						} 
 
-						$contributor .= '</div><hr style="margin: 0.2rem 0 0.6rem 0;">';
-						echo $contributor;
-					}
-				?>
+						$earnings = $ManageDashboard->getContributorEarningsInfo($contributorInfo['contributor_id']);
+					
+
+						?>
+											
+						<div class="admin-contributor row clear padding-bottom">
+							<div class="contributor-image columns small-1">
+								<a href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']?>" >
+									<img src="<?php echo $imageUrl; ?>" alt="<?php echo $contributorInfo['contributor_name']; ?>" />
+								</a>
+							</div>
+							<div class="contributor-info columns small-2">
+								<h2 class="left">
+									<a href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']; ?>">
+										<?php echo $contributorInfo['contributor_name'];?>
+									</a>
+								</h2>
+							</div>
+							<div class="contributor-info columns small-2">
+								<p><?php echo number_format($earnings['total_us_pageviews'], 0, '.', ','); ?></p>
+							</div>
+							<div class="contributor-info columns small-2">
+								<p><?php echo '$'.number_format($earnings['total_earnings'], 2, '.', ','); ?></p>
+							</div>
+							<div class="contributor-links right small-5" >
+								<a class="manage-links" href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>
+								<a class="manage-links" href="<?php echo $config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i> Earnings</a>
+							</div>
+
+						</div><hr style="margin: 0.2rem 0 0.6rem 0;">
+					<?php } ?>
 			</section>
 
 			<?php  include_once($config['include_path_admin'].'pages.php');?>
 		</div>
 	</main>
-
+		
 	<?php include_once($config['include_path'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
+
 </body>
 </html>

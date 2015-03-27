@@ -81,7 +81,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
 
 	<!-- MODAL BOX FOLLOWERS POPUP -->
-	<?php include_once($config['include_path'].'modal_box_followers.php'); ?>
+	<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
 </body>
 </html>
 <?php }?>

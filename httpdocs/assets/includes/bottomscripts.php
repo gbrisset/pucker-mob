@@ -3,7 +3,6 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation/foundation.tooltip.min.js"></script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <?php if(isset($articleInfo) && $articleInfo){ ?>
@@ -73,8 +72,8 @@
   <!-- IS NOT VIDEO PAGE -->
     <?php //if( !isset($isVideoPage) ){
       if (!$local){?>
-      <!-- WAHWAH RADIO PLAYER -->
-      <script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>
+      <!-- WAHWAH RADIO PLAYER 
+      <script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>-->
       
       <!-- End WAHWAH Radio Player -->
       <?php } 

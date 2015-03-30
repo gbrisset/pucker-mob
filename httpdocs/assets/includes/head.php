@@ -128,7 +128,9 @@
 
 <?php if(!$detect->isMobile()){?>
 
- <?php if(isset($isHomepage) && $isHomepage && $has_sponsored){?>
+ <?php 
+ 	//var_dump($isHomepage);
+ 	if(isset($isHomepage) && $isHomepage && $has_sponsored){?>
     <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 home -->
     <script type="text/javascript">
     if ((typeof(f466927)=='undefined' || f466927 > 0) ) {

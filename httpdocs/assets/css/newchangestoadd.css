@@ -1,8 +1,8 @@
-.label-social-button-2-mobile{ padding: 0.5rem 1.5rem; -webkit-border-radius: 3px;  -moz-box-border-radius:3px; border-radius:3px; font-size: 1.1rem; display: inline-block; color: #fff;  width: 47%;}
-.addthis_button_facebook .label-social-button-2-mobile{ background-color: #3B5998; color: #fff; display: inline-block; }
-.addthis_button_facebook .label-social-button-2-mobile .fa-facebook-square{margin-right: 9%; font-size: 1.5rem;  margin-top: 3px;}
-.addthis_button_twitter .label-social-button-2-mobile{ margin-right:0.9rem; float: right;  background-color: #00ACED;  }
-.addthis_button_twitter .label-social-button-2-mobile .fa-twitter{  margin-right: 9%; font-size: 1.5rem;   margin-top: 3px; }
+.label-social-button-2-mobile{   width: 100%; font-family: Oslo !important; padding: 0.75rem 0.95rem 0.75rem 0.7rem; -webkit-border-radius: 3px;  -moz-box-border-radius:3px; border-radius:3px; font-size: 0.9rem; display: inline-block; color: #fff;}
+.addthis_button_facebook .label-social-button-2-mobile{ background-color: #3B5998; color: #fff; display: inline; }
+.addthis_button_facebook .label-social-button-2-mobile .fa-facebook-square{margin-right: 9%; font-size: 1.1rem;}
+.addthis_button_twitter .label-social-button-2-mobile{display:inline; margin-right:0.9rem;  background-color: #00ACED;  }
+.addthis_button_twitter .label-social-button-2-mobile .fa-twitter{  margin-right: 9%; font-size: 1.1rem;   margin-top: 3px;   display: inline;}
 #popup-content{min-width: 36rem; max-width: 36rem;}
 #popup-content .modal-input{ z-index: 99999;position: absolute;top: 38%;left: 12%; }
 #popup-content .modal-results{ z-index: 99999;position: absolute;top: 49%;left: 12%;  }

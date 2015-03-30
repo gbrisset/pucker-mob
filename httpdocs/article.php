@@ -100,7 +100,7 @@ if(!is_null($categoryInfo)){
 						include_once($config['template_path'].'single_page_article.php');
 					}
 				?>
-
+		
 				<!-- SMARTIES PROMOTION -->
 			    <?php if( $promotedArticle ){?>
 			      <div class="padding-bottom  show-on-large-up">
@@ -112,22 +112,22 @@ if(!is_null($categoryInfo)){
 			        <!-- End of JavaScript Tag -->
 			      </div>
 			     <?php } ?>
-		<hr>
-		<?php include_once($config['include_path'].'similararticles.php');?>
-		<div class="ad-unit hide-for-print">
-			<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
-			<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
-		</div>
-	
-		
-	</div>
-	<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
+				<hr>
+				<?php include_once($config['include_path'].'similararticles.php');?>
+				<div class="ad-unit hide-for-print">
+					<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
+					<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
+				</div>
+			
+				
+			</div>
+			<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
 
-	<!-- COMMENTS BOX -->
-	<?php include_once($config['include_path'].'disqus.php'); ?>
-	<hr>
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			<hr>
 
-</section>
+			</section>
 </main>
 <?php include_once($config['include_path'].'footer.php');?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
@@ -164,8 +164,7 @@ if(!is_null($categoryInfo)){
 
 
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<!-- LEFT SIDE BAR -->
-		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
+		
 		
 		<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
@@ -264,6 +263,8 @@ if(!is_null($categoryInfo)){
 
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php');?>
+		<!-- LEFT SIDE BAR -->
+		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
 	</main>
 	
 	

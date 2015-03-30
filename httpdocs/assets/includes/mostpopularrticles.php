@@ -19,7 +19,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 				foreach($mostReadArticlesList as $article){
 						//$linkToCategory = $config['this_url'].$article['cat_dir_name'];
 						//$articleUrl = $linkToCategory.'/'.$article['article_seo_title'];
-						$articleUrl = $config['this_url'].$article['url'];
+						$articleUrl = 'http://www.puckermob.com'.$article['url'];
 						//$linkToContributor = $config['this_url'].'/contributors/'.$article['contributor_seo_name'];
 						//$date = date("M d, Y", strtotime($article['creation_date']));
 				
@@ -46,7 +46,9 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						echo $mostReadArticle;
 
 						if($articleNumber == 6 ){
-							echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_right"></script>';
+							if($has_sponsored && $isHomepage ){ }else{
+								echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_right"></script>';
+							
 						?>
 							<!-- NTENT ADS -->
 							<div class="columns todays-favorites fade-in-out">
@@ -85,7 +87,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 							</style>
 							</div>
 							<!-- END NTENT ADS -->
-						<?php }
+						<?php } }
 					
 				}
 			?>

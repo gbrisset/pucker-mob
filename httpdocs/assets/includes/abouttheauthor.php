@@ -41,14 +41,16 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<input type="hidden" id="ss_user_email" value="<?php echo $ss_user_email; ?>" />
 			<input type="hidden" id="ss_author_id" value="<?php echo $articleInfoObj['contributor_id']?>" />
 			<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
-			<!--<p class="author-on-mobile-small hide-on-small-and-mobile"><?php //echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 40); ?> <a href="<?php //echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p>--> 
-			<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
+			<?php if($detect->isMobile()){?>
+				<p><label>Filed Under: <?php echo $article_category; ?></label><label><i class="fa fa-circle"></i> <?php echo $date; ?></label></p>
+			<?php }else{?>
+				<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
+			<?php } ?>
 			<div id="author-links">
 						<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>
 							<a href="<?php echo $articleInfoObj['contributor_facebook_link']; ?>" class="button small facebook" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
 						<?php } ?>
 						<?php if(isset($articleInfoObj['contributor_twitter_handle']) && strlen($articleInfoObj['contributor_twitter_handle'])){ ?>
-							<!--<a href="http://www.twitter.com/<?php echo $articleInfoObj['contributor_twitter_handle']; ?>" class="button small twitter" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>-->
 						<?php } ?>
 						<?php if(isset($articleInfoObj['contributor_blog_link']) && strlen($articleInfoObj['contributor_blog_link'])){ ?>
 							<a href="<?php echo $articleInfoObj['contributor_blog_link']; ?>" class="button small hide-on-small-and-mobile" target="_blank">
@@ -67,9 +69,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<a class="follow-author" id="follow-author" >Follow this author</a>
 		<?php }?>
 	</div>
-	<!--<div class="small-12 columns author-on-medium-up">
-		<p id="author-action-message"></p>
-	</div>-->
+	
 	</section>
 </div>
 

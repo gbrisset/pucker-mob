@@ -65,13 +65,18 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
-	<main id="main" class="row panel sidebar-on-right" role="main">
-		<!-- LEFT SIDE BAR -->
-		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
+	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 60rem !important; '?>">
+		
+
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper">
 			<?php include_once($config['include_path'].'articleslist.php'); ?>
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
+
+		<!-- LEFT SIDE BAR -->
+		<?php if(!$has_sponsored){
+			include_once($config['include_path'].'left_side_bar.php');
+		}?>
 	</main>
 	
 	<!-- GUM GUM In Screen 

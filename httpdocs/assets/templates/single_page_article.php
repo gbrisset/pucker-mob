@@ -52,31 +52,27 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- TITLE -->
 		<h1 style="margin: 0.5rem 0;"><?php echo $article_title; ?></h1>
 		
+		<!-- SOCIAL DESKTOP -->
+		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+			
+		</div>
+		</div>
 		<section id="article-content">
 			<!-- Social Media Icons -->
-			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
-				<a class="addthis_button_facebook">
+			<div class="row social-media-container  padding-bottom" style=" display:block !important;">
+				<a class="addthis_button_facebook small-4 left">
 					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
 				</a> 
-				<a class="addthis_button_twitter">
+				<a class="addthis_button_twitter  small-4 left">
 					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
 				</a> 
+				<div class="addthis_jumbo_share  small-4 left hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
 			</div>
 		</section>
 		
 		<!-- ABOUT THE AUTHOR -->
 		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
-		<!-- Category, Date And Author Information -->
-		<div class="row">
-			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 ">
-				<p class="left uppercase">
-					<span class="span-date" style="margin-left:0 !important;"><?php echo $date; ?></span>
-				</p>
-			</div>
-		</div>
-		
-		
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>
 		<div class="columns no-padding padding-top disclaimer">
@@ -111,16 +107,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- RELATED ARTICLES -->
 		<?php 
-		$related = []; //var_dump($related_articles);
+		$related = [];
 		if(isset($related_articles) && $related_articles && 
 			($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
 			$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
 			$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
 			$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
 		?>
-		<div class="row small-12 clear related-articles-box half-padding">
+		<div class="row small-12 clear related-articles-box padding">
 			<hr>
-			<div class="rel-articles-wrapper">
+			<div class="rel-articles-wrapper remember-to-share">
 			<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
 			<ul>
 				<?php if( $related['related_article_id_1']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php }?>
@@ -128,20 +124,29 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<?php if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></li><?php }?>
 			</ul>
 			</div>
-			<hr>
+	
 		</div>
 		<?php }?>
 
-		
-		
+		<div class="remember-to-share padding-top row padding">
+			<h3>PLEASE REMEMBER TO SHARE</h3>
+		</div>
+		<section id="separator-section" class="row no-padding"></section>
+
+		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
+		<?php if(!$promotedArticle){ ?>
+			<div class="hide-for-print padding-top ads">
+				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			</div>
+		<?php }?>
+
 		<!-- FROM AROUND THE WEB -->	
 		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
-		
-		<hr>
-		
+	
 		<!-- KIXER -->
 		<!-- Start Below Article -->
-			<div id='__kx_ad_821'></div>
+			<div id='__kx_ad_821' class="padding-top clear"></div>
 			<script type="text/javascript" language="javascript">
 			var __kx_ad_slots = __kx_ad_slots || [];
 
@@ -170,7 +175,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</script>
 		<!-- End Below Article -->
 		
-		<hr>
+		<hr class="padding-top">
 				
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
@@ -185,19 +190,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</section>
 	</div>
 	
-	<!--  SHARETHROUGH 2 -->
+	
+	<!-- COMMENTS BOX -->
+	<?php include_once($config['include_path'].'disqus.php'); ?>
+	
 	<?php  
-		if(!$promotedArticle){ ?>
-			<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
-
-			<div class="hide-for-print padding-top ads">
-				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-			</div>
-			
-			<hr>
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
+		if(!$promotedArticle){ ?>	
 			<!-- GOOGLE AD UNIT MOBILE -->
 			<div class="hide-for-print row no-padding padding-top padding-bottom" style="text-align:center;">
 		

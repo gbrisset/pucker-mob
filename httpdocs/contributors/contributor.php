@@ -186,6 +186,8 @@ if($contributorInfo['contributors']){
 	</section>
 	<?php if (!$detect->isMobile()) { 
 		include_once($config['include_path'].'rightsidebar.php');
+
+		include_once($config['include_path'].'left_side_bar.php');
 	} ?>
 </main>
 <?php include_once($config['include_path'].'footer.php'); ?>

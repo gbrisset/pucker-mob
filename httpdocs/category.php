@@ -76,8 +76,7 @@ if ( $detect->isMobile() ) {
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right" role="main">
-			<!-- LEFT SIDE BAR -->
-		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
+		
 			<section id="puc-articles" class="sidebar-right small-12 medium-12 large-11 columns translate-fix sidebar-main-left">
 					<h1 id="category-name" class="h1-large-article"><?php echo $categoryInfo['cat_name']; ?></h1>
 			
@@ -92,7 +91,11 @@ if ( $detect->isMobile() ) {
 					<!--<hr>-->
 					<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
 			</section>
-			<?php include_once($config['include_path'].'rightsidebar.php');?>
+			<?php 
+				include_once($config['include_path'].'rightsidebar.php');
+
+				include_once($config['include_path'].'left_side_bar.php');
+			?>
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>

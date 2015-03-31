@@ -53,22 +53,19 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<h1 style="margin: 0.5rem 0;"><?php echo $article_title; ?></h1>
 		
 		<!-- SOCIAL DESKTOP -->
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-			
-		</div>
-		</div>
+
 		<section id="article-content">
 			<!-- Social Media Icons -->
 			<div class="row social-media-container  padding-bottom" style=" display:block !important;">
 				<a class="addthis_button_facebook small-4 left">
-					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
+					<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
 				</a> 
-				<a class="addthis_button_twitter  small-4 left">
-					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
+				<a class="addthis_button_twitter  small-2 left">
+					<label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
 				</a> 
-				<div class="addthis_jumbo_share  small-4 left hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
+				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
 			</div>
-		</section>
+		
 		
 		<!-- ABOUT THE AUTHOR -->
 		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>

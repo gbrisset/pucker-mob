@@ -86,7 +86,7 @@ if(!is_null($categoryInfo)){
 				$style = 'margin-top: 7rem !important;';
 			}
 		?>
-		
+			<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
 		<main id="main" class="row panel sidebar-on-right" role="main" style="<?php echo $style; ?>">
 			
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
@@ -263,6 +263,7 @@ if(!is_null($categoryInfo)){
 
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php');?>
+
 		<!-- LEFT SIDE BAR -->
 		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
 	</main>

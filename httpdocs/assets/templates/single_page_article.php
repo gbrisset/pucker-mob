@@ -32,7 +32,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 	<section id="article-summary" class="small-12 column">
 		<!-- Article Image -->
-		<div class="row">
+		<div class="row no-margin-with-tap">
 			<!-- SMARTIES -->
 			<?php if($promotedArticle){ 
 				if($detect->isMobile()) $smartiesImagestyle = 'width:98%;'; else $smartiesImagestyle='';
@@ -275,7 +275,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
 		<!-- Category, Date And Author Information -->
-		<div class="row">
+		<div class="row padding-bottom">
 			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
 				<p class="left uppercase">
 					<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
@@ -296,7 +296,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 	<!-- Article Content -->
 	<div class="row clear">
-		<section id="article-content" class="small-12 column sidebar-box">
+		<section id="article-content" class="small-12 column sidebar-box padding-top">
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>

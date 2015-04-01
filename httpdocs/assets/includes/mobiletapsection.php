@@ -1,9 +1,9 @@
 <?php 
 	//GET ARTICLES TO SHOW
 	//Newest
-	if(!isset($articlesList)){
-		$articlesList = $mpArticle->getArticles(['count' => 20, 'omit' => [ 0 ]]);
-	}
+	//if(!isset($articlesList)){
+	//	$articlesList = $mpArticle->getArticles(['count' => 19, 'omit' => [ 0 ]]);
+	//}
 
 	//MOST POPULAR
 	$mostReadArticlesList = $mpArticle->getMostRecentArticleList();
@@ -29,6 +29,7 @@ nav.menu{
   	padding: 0.2rem;
   	width: 97%;
   	margin-bottom: 0.3rem;
+  	float:left !important;
 }
 .content-wrapper ul{
    list-style-type: none;
@@ -88,6 +89,7 @@ button.toggle-slide-left{
   border-bottom-right-radius: 5px;
   width: 5rem;
   border-bottom-left-radius: 5px;
+  font-family: OsloBold;
 
 
 }
@@ -111,7 +113,7 @@ nav.slide-menu-left:after {
   background: #127055;
   bottom: 0;
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 7px;
@@ -130,17 +132,18 @@ body.sml-open .toggle-slide-left {
 	left: 0;
 }
 
+.tap-articles{   margin-bottom: 3rem; }
 
 </style>
-
+<div class="small-12">
 <nav class="menu slide-menu-left small-12" id="tap-section" >
 	<div class="content-wrapper columns small-12 padding-top">
 		<ul id="menu-options">
-			<li><a id="newest" class="current">Newest</a></li>
-			<li><a id="mostpopular">Most Popular</a></li>
+			<!--<li><a id="newest" class="current">Newest</a></li>-->
+			<li><a id="mostpopular" class="current">Most Popular</a></li>
 			<li><a id="blogs">Blogs</a></li>
 		</ul>
-		<div class="columns small-12 no-padding padding-top tap-articles" data-info="newest">
+		<!--<div class="columns small-12 no-padding padding-top tap-articles" data-info="newest">
 			<?php foreach( $articlesList['articles'] as $article ){
 				$linkToArticle = $config['this_url'].$article['cat_dir_name'].'/'.$article["article_seo_title"];
 			?>
@@ -155,32 +158,66 @@ body.sml-open .toggle-slide-left {
 					</div>
 				</article>
 				<?php }?>
-		</div>
+		</div>-->
 	
 
-	<div class="columns small-12 no-padding padding-top tap-articles  hide" data-info="mostpopular">
-			<?php foreach( $mostReadArticlesList as $article ){
-				$linkToArticle = $config['this_url'].$article['cat_dir_name'].'/'.$article["article_seo_title"];
+	<div class="columns small-12 no-padding padding-top tap-articles " data-info="mostpopular">
+			<?php 
+			$index = 0;
+			foreach( $mostReadArticlesList as $article ){
+				
+				$linkToArticle = $config['this_url'].$article['url'];
+
+				if($index == 3 ){?>
+					<div class="small-12 clear padding-top padding-bottom" style="text-align:center;">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- PM Mobile 300x250 (2) -->
+					<ins class="adsbygoogle"
+					     style="display:inline-block;width:300px;height:250px"
+					     data-ad-client="ca-pub-8978874786792646"
+					     data-ad-slot="8035205382"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</div>
+				<?php }
 			?>
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">
 					<div class="article-image small-6 left">
 						<a href="<?php echo $linkToArticle; ?>">
-							<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id']?>_tall.jpg" alt="<?php echo $article['article_title']; ?>" />
+							<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id']?>_tall.jpg" alt="<?php echo $article['title']; ?>" />
 						</a>
 					</div>
 					<div class="article-title small-6 left">
-						<h1><a href="<?php echo $linkToArticle; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 35); ?></a></h1>
+						<h1><a href="<?php echo $linkToArticle; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article['title'])), 35); ?></a></h1>
 					</div>
 				</article>
-				<?php }?>
+				<?php 
+				$index ++;
+			}?>
 
 		</div>
 
 
 	<div class="columns small-12 no-padding padding-top tap-articles hide" data-info="blogs">
-			<?php foreach( $moblog_articles as $article ){
-				$linkToArticle = $config['this_url'].$article['cat_dir_name'].'/'.$article["article_seo_title"];
-			?>
+			<?php 
+			$index = 0;
+			foreach( $moblog_articles as $article ){
+				$linkToArticle = $config['this_url'].'moblog/'.$article["article_seo_title"];
+				if($index == 3 ){?>
+					<div class="small-12 clear padding-top padding-bottom" style="text-align:center;">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- PM Mobile 300x250 (2) -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:300px;height:250px"
+						     data-ad-client="ca-pub-8978874786792646"
+						     data-ad-slot="8035205382"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				<?php }
+				?>
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">
 					<div class="article-image small-6 left">
 						<a href="<?php echo $linkToArticle; ?>">
@@ -191,10 +228,13 @@ body.sml-open .toggle-slide-left {
 						<h1><a href="<?php echo $linkToArticle; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 35); ?></a></h1>
 					</div>
 				</article>
-				<?php }?>
+				<?php 
+				$index ++;
+			}?>
 
 		</div>
 	</div>
 	 
 </nav>
  <button class="nav-toggler toggle-slide-left rotate ">TAP</button>
+</div>

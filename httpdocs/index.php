@@ -11,6 +11,10 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 <body id="home" class="mobile">
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
+
+	<!-- MOBILE LEFT TAP -->
+	<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
+		
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-11 columns translate-fix sidebar-main-left">
 			<?php 
@@ -38,6 +42,10 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
+
+	<!-- MOBILE LEFT TAP -->
+	<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
+		
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<section id="puc-articles" class="sidebar-right  mobile-11 tablet-11 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper">
 			<?php include_once($config['include_path'].'articleslist.php'); ?>

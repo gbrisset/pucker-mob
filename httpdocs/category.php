@@ -44,6 +44,10 @@ if ( $detect->isMobile() ) {
 	<body id="category" class="mobile">
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
+		
+		<!-- MOBILE LEFT TAP -->
+		<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
+		
 		<main id="main" class="row panel sidebar-on-right" role="main">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
 			<?php include_once($config['include_path'].'articlelistmobile.php');?>

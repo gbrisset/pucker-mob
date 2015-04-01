@@ -1,5 +1,5 @@
 
-<div class = "row half-padding">
+<div class = "row padding">
 	<?php 
 
 	$articleIndex = 0;

@@ -177,7 +177,7 @@ console.log(page);
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 +  asideHeight.btf2 ));
 		//main.css("min-height", (asideHeight.video + asideHeight.atf + asideHeight.popular + asideHeight.connect + asideHeight.btf1 + asideHeight.trending + asideHeight.btf2 + (asideHeight.margin * 7) - 8));
 
-		totalHeight = 4800;//3938;
+		totalHeight = 5400;//3938;
 
 		//if( page === 'home' || page === 'category' || page === 'distroscale'){
 			//totalHeight+= 300;
@@ -201,7 +201,7 @@ console.log(page);
 
 		if(!$('body').hasClass('mobile')) {
 
-			totalHeight = 4800;//3938;
+			totalHeight = 5400;//3938;
 
 			//if( page === 'home' || page === 'category' || page === 'distroscale'){
 				//totalHeight+= 300;
@@ -223,7 +223,7 @@ console.log(page);
 		//main.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2 /*+ (asideHeight.margin * 7) - 8*/));
 		//leftSide.css("min-height", (asideHeight.popular + asideHeight.atf  + asideHeight.subsidebar +  asideHeight.subsidebar3 + asideHeight.btf1 +  asideHeight.btf2));
 		
-		totalHeight = 4800;//3938;
+		totalHeight = 5400;//3938;
 
 		//if( page === 'home' || page === 'category' || page === 'distroscale'){
 			//totalHeight+= 300;
@@ -610,14 +610,14 @@ console.log(page);
 
 var body = document.body;
 	
-	/* slide menu left */
-	if( $( ".toggle-slide-left" ).length > 0){
-     	$( ".toggle-slide-left" ).on( "click", function(){
-		    $(body).toggleClass("sml-open");
-		    $(this).toggleClass("open-menu");
+/* slide menu left */
+if( $( ".toggle-slide-left" ).length > 0){
+    $( ".toggle-slide-left" ).on( "click", function(){
+		$(body).toggleClass("sml-open");
+		$(this).toggleClass("open-menu");
 
-    	} );
-	}
+    } );
+}
 
 
 $('#menu-options li').on('click', function(e){
@@ -629,7 +629,9 @@ $('#menu-options li').on('click', function(e){
 	var div_cont = $('.slide-menu-left').find("[data-info='" + this_a + "']");
 
 	$('.tap-articles').hide();
+	$('#menu-options').find('a').removeClass('current');
 	$(div_cont).show();
+	$('#'+this_a).addClass('current');
 
 });	
 

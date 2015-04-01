@@ -901,6 +901,8 @@ h5 {height: 65px; padding: 0;vertical-align: middle; display: table-cell; text-a
 #todays-favorites, #recipe-collections, #top-food-articles {margin-bottom: -$panel-padding;}
 
 #puc-articles{
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
 	 h1{ padding: 0; font-size: 1.2rem; margin-top: 0; }
 	.span-category:after{ margin: 0; content: '' }
 	.span-category{font-size: 0.7rem; }
@@ -912,6 +914,7 @@ h5 {height: 65px; padding: 0;vertical-align: middle; display: table-cell; text-a
 	.h1-small-article{ font-size: 0.9rem !important; }
 }
 
+#article-content ol, #article-content ul{ margin-left: 2rem; }
 .top-bar.expanded .title-area{ -moz-box-shadow: 0px 0px 4px 1px #bbb; -webkit-box-shadow: 0px 0px 4px 1px #bbb;
 box-shadow: 0px 0px 4px 1px #bbb; margin-bottom: 0.46875rem; z-index: 9999999; border-bottom: 1px solid #bbb; background-color: #e1ddde !important; }
 
@@ -1026,11 +1029,11 @@ body{padding-top:0 !important;}
 
 	@media #{$mobile-only} { 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.4rem; margin-bottom: 0;}
+		h1{ font-size: 1.5rem; margin-bottom: 0;}
 	}
 	@media #{$small-only}{ 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.4rem; margin-bottom: 0;}
+		h1{ font-size: 1.5rem; margin-bottom: 0;}
 	}
 	@media #{$medium-only}{ 
 		.span-category:after{  content: '|'; margin: 0 0.4rem; }
@@ -1448,7 +1451,7 @@ $fun: #f9651b;
 		box-shadow:	0px 0px 100px 90px rgba(255, 255, 255, 0.9);	
 	}
 
-	 .at4-jumboshare .at4-count-container{ padding-top: 0.7rem !important;}
+	 .at4-jumboshare .at4-count-container{ padding-top: 0.4rem !important;}
 }
 
 /*VIDEOS PAGE*/
@@ -1604,8 +1607,8 @@ strong{ font-weight: bold; font-family: OsloBold; line-height: inherit; }
 
 //ADBLADE MOBILE
 @media #{$mobile-only} {
-.at4-jumboshare .at4-count{ color: #777; display: inline !important; font-size: 2.2rem !important; font-family: OswaldLight !important; line-height:0.5 !important; }
-.at4-jumboshare .at4-title{   top: -0.4rem; font-size: 1.2rem !important;}
+.at4-jumboshare .at4-count{ color: #777; display: inline !important; font-size: 1.9rem !important; font-family: OswaldLight !important; line-height:0.5 !important; }
+.at4-jumboshare .at4-title{   top: -0.4rem; font-size: 1rem !important;}
  .addthis_jumbo_share{ padding-top:0 !important; position:relative; }
 
 
@@ -1853,4 +1856,4 @@ input#email:-ms-input-placeholder {  color: #222;  }
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
-::selection { background: green;}
+.no-margin-with-tap{ margin-left: -1.5rem !important; margin-right: -1.5rem !important; }

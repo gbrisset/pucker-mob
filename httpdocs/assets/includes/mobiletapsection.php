@@ -6,7 +6,7 @@
 	//}
 
 	//MOST POPULAR
-	$mostReadArticlesList = $mpArticle->getMostRecentArticleList();
+	$mostReadArticlesList = $mpArticle->getMostRecentArticleListMobile();
 
 	//var_dump($mostReadArticlesList ); die;
 	//BLOGS
@@ -63,7 +63,7 @@ nav.menu a {
 nav.menu a.current{ color: #127055;}
 
 .article-title h1{
-	  font-size: 1.1rem;
+	  font-size: 0.9rem;
 	  height: 5rem;
 	  display: table-cell;
 	  vertical-align: middle;
@@ -190,7 +190,7 @@ body.sml-open .toggle-slide-left {
 						</a>
 					</div>
 					<div class="article-title small-6 left">
-						<h1><a href="<?php echo $linkToArticle; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article['title'])), 35); ?></a></h1>
+						<h1><a href="<?php echo $linkToArticle; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article['title'])), 55); ?></a></h1>
 					</div>
 				</article>
 				<?php 
@@ -226,7 +226,7 @@ body.sml-open .toggle-slide-left {
 						</a>
 					</div>
 					<div class="article-title small-6 left">
-						<h1><a href="<?php echo $linkToArticle; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 35); ?></a></h1>
+						<h1><a href="<?php echo $linkToArticle; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 55); ?></a></h1>
 					</div>
 				</article>
 				<?php 

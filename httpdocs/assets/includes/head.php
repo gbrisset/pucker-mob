@@ -253,8 +253,8 @@
   </div>
 </noscript>
 
-<!-- Distro Scale AD Tag 
-<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
+<!-- Distro Scale AD Tag -->
+<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
 <!-- Begin comScore Tag -->
 
 	

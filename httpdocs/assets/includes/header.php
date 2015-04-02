@@ -6,53 +6,109 @@
     $user_info = $mpArticle->getUserInfo();
     $user_first_name = "";
     $user_type = 5;
+    $contributor_id = 0;
    
     if(isset($user_info) && $user_info){
       $user_first_name = $user_info["user_first_name"]; 
       $user_type = $user_info["user_type"];
+      $contributor_id = $user_info["contributor_id"];
     }
 
     if($user_type == 5){
       $user_info = $follow->getReaderInfo();
     }
   }
-  //var_dump($user_type , $user_info['user_email']);
-  ?>
-  <?php if(!$detect->isMobile()){?>
-  <?php 
+
+ if(!$detect->isMobile()){
+
   $login_header = ' hide-header ';
   $logout_header = ' show-header ';
+  $current_month = date('n');
+  $current_year = date('Y');
+ 
+
   if($loginActive){
       $login_header = ' show-header ';
       $logout_header = ' hide-header ';
   }
 
+  $this_month_earnigs = 0;
+  if($loginActive){
+
+    $ManageDashboard = new ManageAdminDashboard( $config );
+    //THIS MONTH EARNINGS
+    $this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month, $current_year);
+    if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
+  
+    //WARNINGS
+    $warnings = $ManageDashboard->getWarningsMessages(); 
+
+    
+    //Top Shared Writers
+    $writers_arr = $ManageDashboard->getTopShareWritesRankHeader($current_month);
+    $your_rank = 0;
+   
+    foreach ($writers_arr as $writer) {
+       
+       if($writer['contributor_id'] == $contributor_id ){
+          break;
+       }
+       $your_rank++;
+     } 
+ 
+ 
+  }
+
  ?>
   <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>">
-    <div class="row">
-       <div id="header-social" class="small-6 columns half-padding-right">
+    <div class="row" style="max-width: 69.5rem;">
+      <div id="header-social" class="small-12 columns no-padding">
         <?php if($user_type == 5){?>
            <a class="my-account-header-link" href="<?php echo $config['this_admin_url'].'following/'; ?>">My Account</a>
         <?php }else {?>
-          <a class="my-account-header-link" href="<?php echo $config['this_admin_url'].'following/'; ?>">My Account</a>
-          <?php }?>
-       </div>
-      <div id="topbar-container-admin" class="right small-6">
+          <ul>
+            <li> <a class="my-account-header-link" href="<?php echo $config['this_admin_url'].'/'; ?>">My Dashboard</a></li>
+            <li class="empty-list"></li>
+            <li> <p class="earnings-this-month">Earnings (this month): <?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p></li>
+            <li class="empty-list"></li>
+            <li> <p>Your rank: <?php echo $your_rank; ?></p> </li>
+            <?php if( $warnings && $warnings[0]['notification_live']){?>
+            <li class="warning">
+              <i class="fa fa-exclamation-triangle" id="warning-icon"></i>
+              <div id="dd-shares-content" class="mobile-12 small-12">
+                <div>
+                    <p><?php echo $warnings[0]['notification_msg']?></p>
+                </div>
+              </div>
+            </li>
+            <?php }?>
+            <li><a  class="my-account-header-link" href="<?php echo $config['this_admin_url']; ?>/logout/">LOG OUT </a></li>
+            <li></li>
+            <li class="right">
+              <div id="topbar-container">
+                <input id="topbar-search-contents" type="search" placeholder="SEARCH">
+                <button id="topbar-search-submit" class="alert button expand" style="background-color: #10580d;"><i class="fa fa-search"></i></button>
+              </div>
+            </li>
+          </ul>
+        <?php }?>
+    </div>
+      <!-- <div id="topbar-container-admin" class="right small-6">
         <div class="right">
-          <p class="welcome-email"><span>Welcome, <?php echo $user_info['user_email']; ?></span>
-          <!--<?php //if(isset($user_info['user_facebook_id']) && $user_info['user_facebook_id'] && strlen($user_info['user_facebook_id']) > 0 ){?>
-          <img id="image-header-profile" src="<?php echo $user_info['contributor_image'];?>" >
+          <p class="welcome-email"><span>Welcome, <?php //echo $user_info['user_email']; ?></span>
+         <?php //if(isset($user_info['user_facebook_id']) && $user_info['user_facebook_id'] && strlen($user_info['user_facebook_id']) > 0 ){?>
+          <img id="image-header-profile" src="<?php //echo $user_info['contributor_image'];?>" >
           <?php //}else{?>
-          <img id="image-header-profile" src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'. $user_info['contributor_image'];?>" >
-          <?php //}?>-->
-          <a href="<?php echo $config['this_admin_url']; ?>/logout/">| Sign Out</a>
+          <img id="image-header-profile" src="<?php// echo 'http://images.puckermob.com/articlesites/contributors_redesign/'. $user_info['contributor_image'];?>" >
+          <?php //}?>
+          <a href="<?php //echo $config['this_admin_url']; ?>/logout/">| Sign Out</a>
           </p>
       </div>
-      </div>
+      </div>-->
     </div>
   </header>
   
-  <header id="super-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="background:#1fa512 !important; padding:0.4rem 0.5rem 0.1rem 0.5rem !important; text-align: center;">
+  <header id="super-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="background:#10580d !important; padding:0.4rem 0.5rem 0.1rem 0.5rem !important; text-align: center;">
   <div class="row" style="height: 1.4rem;">
      <div id="header-social" class="small-12 columns half-padding-right" style="text-align:left; font-family: OsloBold;">      
      JOIN THE MOB! EARN MONEY BY BLOGGING ON PUCKERMOB. 
@@ -65,8 +121,8 @@
    
     </div>
     <div id="topbar-container">
-        <input id="topbar-search-contents" type="search" placeholder="SEARCH" style="color: #1fa512 !important; border: 1px solid #1fa512; ">
-        <button id="topbar-search-submit" class="alert button expand" style="background-color: #1fa512;"><i class="fa fa-search"></i></button>
+        <input id="topbar-search-contents" type="search" placeholder="SEARCH" style="">
+        <button id="topbar-search-submit" class="alert button expand" style="background-color: #10580d;"><i class="fa fa-search"></i></button>
     </div>
     </div>
   </header>

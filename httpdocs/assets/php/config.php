@@ -26,23 +26,12 @@ if($local)
 	$directory = 'projects/pucker-mob/';
 	
 	$config = array(
-		//'ispod' => 0,
-		//'networkid' => 0,
-		//'catid' => 0,
 		'articlepageid' => 1,
-		//'legacypodurl' => 1,
-		
+
 		'host' => 'localhost',
 		'user' => 'root',
 		'pass' => 'root',
 		'main_db' => 'pucker_mob',
-
-		 /*Syndication DB Connection*/
-        //'syn_host' => 'localhost',
-		//'syn_user' => 'root',
-       // 'syn_pass' => 'root',
-       // 'syn_main_db' => 'pucker_mob',
-        /*End of Syndication DB Connection*/
 
 		'include_path' => dirname(dirname(__FILE__)).'/includes/',
 		'include_path_admin' => dirname(dirname(dirname(__FILE__))).'/admin/assets/includes/',
@@ -57,20 +46,13 @@ if($local)
 		
 		'this_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs/',
 		'this_admin_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs/admin/',
-	//	'syndication_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-syndication/',
 		'shared_url' => 'http://'.$localIp.':8888/'.$directory.'/',
 		'image_url' => 'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',
-		//'http://images.puckermob.com/',//
-		//'main_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-html/',
-		//'category_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-categories/',
-		//'pod_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-pods/',
-		//'mininetwork_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs-mininetworks/'		
 				
 	);
 
 	
 	$config['memcacheprefix'] = 'puckermob_'.$config['articlepageid'];
-
 
 	$config['cp_url'] = 'http://'.$localIp.'/'.$directory.'/subdomains/cp/httpdocs/';
 	require_once $config['assets_path'].'/MPShared.php';
@@ -98,25 +80,22 @@ if($local)
 	require_once $config['assets_path'].'/class.phpmailer.php';	
 	require_once $config['assets_path'].'/class.pop3.php';	
 	require_once $config['assets_path'].'/class.smtp.php';	
-
-
-
 	require_once $config['assets_path'].'/mobile-detect.php';
 
 	/*MAIL CHIMP CLASSES*/
 	require_once $config['assets_path'].'/MailChimp.php';
 	require_once $config['assets_path'].'/Mailchimp/Lists.php';
 
-	//if(isset($admin) && $admin) require_once $config['assets_path'].'/MPArticleAdmin.php';
 	require_once $config['assets_path'].'/MPArticleAdmin.php';
 	require_once $config['assets_path'].'/MPArticleAdminController.php';
 	require_once $config['assets_path'].'/class.recaptchalib.php';
 	require_once $config['assets_path'].'/class.FollowAuthor.php';
 	require_once $config['assets_path'].'/class.Dashboard.php';
+	require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 
-	if(isset($admin) && $admin){
-		require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
-	}
+	//if(isset($admin) && $admin){
+		//require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
+	//}
 	
 }else{
 
@@ -132,7 +111,7 @@ if($local)
 	define("DB_PASS", "#!14sd2dbFgMr#");
 	define("DB_NAME", "simpledish");		
 
-		/*MAIL CHIMP SETTINGS*/
+	/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
 	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0");	
 
@@ -148,13 +127,6 @@ if($local)
 		'pass' => '#!14sd2dbFgMr#',
 		'main_db' => 'simpledish_network',	
 
-		/*Syndication DB Connection*/
-        'syn_host' => '192.168.0.1',
-		'syn_user' => 'seq_db_user',
-        'syn_pass' => '#!13sd2dbFgMr#',
-        'syn_main_db' => 'mypod_network',
-        /*End of Syndication DB Connection*/
-		
 		'include_path' => dirname(dirname(__FILE__)).'/includes/',
 		'include_path_admin' => dirname(dirname(dirname(__FILE__))).'/admin/assets/includes/',
 		'template_path' => dirname(dirname(__FILE__)).'/templates/',
@@ -167,13 +139,8 @@ if($local)
 		'this_url' => 'http://www.puckermob.com/',
 		'this_admin_url' => 'http://www.puckermob.com/admin/',
 		'image_url' => 'http://images.puckermob.com/',
-		
-		//'main_url' => 'http://www.mypodstudios.com/',
-		////'category_url' => '',
-		//'pod_url' => '',
-		//'mininetwork_url' => '',
-		
 	);
+
 	$config['memcacheprefix'] = '_'.$config['articlepageid'];
 
 	$config['shared_url'] = $config['this_url'];
@@ -204,7 +171,6 @@ if($local)
 	require_once dirname(__FILE__).'/MPVideoShows.php';
 
 	require_once dirname(__FILE__).'/mobile-detect.php';
-
 	require_once dirname(__FILE__).'/class.Search.php';
 
 	/*MAIL CHIMP CLASSES*/
@@ -213,11 +179,14 @@ if($local)
 	require_once dirname(__FILE__).'/class.FollowAuthor.php';
 	require_once dirname(__FILE__).'/MPArticleAdmin.php';
 	require_once dirname(__FILE__).'/MPArticleAdminController.php';
+	require_once dirname(__FILE__).'/class.Dashboard.php';
+	require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
+	
 	if(isset($admin) && $admin){
 
-		require_once dirname(__FILE__).'/class.Dashboard.php';
-		require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
-		require_once $config['assets_path'].'/class.recaptchalib.php';
+	//	require_once dirname(__FILE__).'/class.Dashboard.php';
+	//	require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
+	//	require_once $config['assets_path'].'/class.recaptchalib.php';
 
 	}
 
@@ -235,11 +204,11 @@ $uriHelper = new MPUriHelper( $config['this_url'] );
 $MailChimp = new Mailchimp( MAIL_CHIMP_API );
 $adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
 $mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, null, $adminController);
-if(isset($admin) && $admin){
+//if(isset($admin) && $admin){
 	$adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
 	$mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, null, $adminController);
 	$dashboard = new Dashboard($config);
-}
+//}
 $follow = new FollowAuthor($config);
 
 $mpHelpers->start_session();

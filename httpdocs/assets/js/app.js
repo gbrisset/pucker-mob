@@ -1030,6 +1030,13 @@ $('.ajax-form-submit').click(function(e){
 	}
 });
 
+if($('#warning-icon')){
+	$('#warning-icon').on('click', function(e){
+		e.stopPropagation();
+		$('#dd-shares-content').slideToggle('slow');
+
+	});
+}
 
 
 });

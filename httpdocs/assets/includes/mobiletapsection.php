@@ -85,7 +85,7 @@ button.toggle-slide-left{
   padding: 0.1rem !important;
   background: #127055;
   padding: 0;
-  z-index: 999;
+  z-index: 1000202;
   border-bottom-right-radius: 5px;
   width: 5rem;
   border-bottom-left-radius: 5px;
@@ -126,6 +126,7 @@ nav.slide-menu-left {
 body.sml-open nav.menu{ background:#fff;}
 body.sml-open nav.slide-menu-left {
     left: 0;
+      z-index: 1000202;
 }
 
 body.sml-open .toggle-slide-left {
@@ -169,9 +170,9 @@ body.sml-open .toggle-slide-left {
 				$linkToArticle = $config['this_url'].$article['url'];
 
 				if($index == 3 ){?>
-					<div class="small-12 clear padding-top padding-bottom" style="text-align:center;">
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- PM Mobile 300x250 (2) -->
+					<!--<div class="columns padding-top padding-bottom" style="text-align:center;">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+					<!-- PM Mobile 300x250 (2) 
 					<ins class="adsbygoogle"
 					     style="display:inline-block;width:300px;height:250px"
 					     data-ad-client="ca-pub-8978874786792646"
@@ -179,7 +180,7 @@ body.sml-open .toggle-slide-left {
 					<script>
 					(adsbygoogle = window.adsbygoogle || []).push({});
 					</script>
-				</div>
+				</div>-->
 				<?php }
 			?>
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">
@@ -205,9 +206,9 @@ body.sml-open .toggle-slide-left {
 			foreach( $moblog_articles as $article ){
 				$linkToArticle = $config['this_url'].'moblog/'.$article["article_seo_title"];
 				if($index == 3 ){?>
-					<div class="small-12 clear padding-top padding-bottom" style="text-align:center;">
-						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<!-- PM Mobile 300x250 (2) -->
+					<!--<div class="small-12 clear padding-top padding-bottom" style="text-align:center;">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+						<!-- PM Mobile 300x250 (2) 
 						<ins class="adsbygoogle"
 						     style="display:inline-block;width:300px;height:250px"
 						     data-ad-client="ca-pub-8978874786792646"
@@ -215,7 +216,7 @@ body.sml-open .toggle-slide-left {
 						<script>
 						(adsbygoogle = window.adsbygoogle || []).push({});
 						</script>
-					</div>
+					</div>-->	
 				<?php }
 				?>
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">

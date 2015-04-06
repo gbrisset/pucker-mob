@@ -96,7 +96,7 @@
 					<label class="contributor-image contributor-table-label columns small-3" >Writer Name</label>
 					<label class="contributor-info contributor-table-label columns small-3">Email</label>
 					<label class="contributor-info contributor-table-label columns small-2">PageViews</label>
-					<label class="contributor-info contributor-table-label columns small-5"></label>
+					<label class="contributor-info contributor-table-label columns small-4"></label>
 				</div>
 				
 				<?php
@@ -142,7 +142,7 @@
 							<!--<div class="contributor-info columns small-2">
 								<p><?php //echo '$'.number_format($earnings['total_earnings'], 2, '.', ','); ?></p>
 							</div>-->
-							<div class="contributor-links right small-5" >
+							<div class="contributor-links right small-4" >
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i> Earnings</a>
 							</div>

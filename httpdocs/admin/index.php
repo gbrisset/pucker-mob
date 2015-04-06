@@ -32,11 +32,12 @@
 		
 		$contributor_name = $userData["contributor_name"];
 		$month =  $current_month;
-		$sort_ever = $sort_month = '';
+		$sort_ever = '';
+		$sort_month = 'underline';
 		if(isset($_GET['month']) && $_GET['month']!= '0' ){
 			$month = $_GET['month'];
-			if($month == 'all') $sort_ever = 'underline';
-			if($month != 'all' && $month > 0) $sort_month = 'underline';
+			if($month == 'all'){ $sort_ever = 'underline'; $sort_month = '';}
+			if($month != 'all' && $month > 0){ $sort_month = 'underline'; $sort_ever = '';};
 		}
 
 		//Get Top 10 Shared Moblogs
@@ -91,7 +92,7 @@
 				}
 				$index ++;
 			}
-			$index = 0;	
+			$total = 0;	
 			for($i= 0; $i< count($writers_arr) -1; $i++){
 				$position = $i + 1;
 				$class = "";
@@ -100,12 +101,12 @@
 					$your_cont_rank['id'] = $writers_arr[$i]['contributor_id'];
 					$your_cont_rank['name'] = $writers_arr[$i]['contributor_name'];
 					$your_cont_rank['total_shares'] = $writers_arr[$i]['total_us_pageviews'];//;$writers_arr[$i]['total_shares'];
-					$your_cont_rank['rank'] = $your_rank + 1;
+					$your_cont_rank['rank'] = $your_rank;
 					$class = "your-rank";
 					$is_in = 1;
 				}
 	
-				if( $index == 10) break;
+				if( $total == 10) break;
 				if( $writers_arr[$i]['user_type'] == 6 || $writers_arr[$i]['user_type'] == 1 ) continue;
 
 				$contributorId =$writers_arr[$i]['contributor_id'];
@@ -120,7 +121,7 @@
 				$writers_rank[$i]['contributor_name'] = $contributorName;
 				$writers_rank[$i]['shares'] = $shares;
 
-				if($index < 10 ) $index++;
+				if($total < 10 ) $total++;
 
 		    }
 
@@ -179,7 +180,7 @@
 				</div>
 				<!-- WARNINGS BOX -->
 				<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
-				<div id="warning-box" class="warning-box  mobile-12 small-12" style="min-height:6.5rem;">
+				<div id="warning-box" class="warning-box  mobile-12 small-12" style="">
 					<div id="warning-icon" class="">
 						<i class="fa fa-3x fa-exclamation-triangle"></i>
 					</div>
@@ -193,7 +194,7 @@
 
 				<!-- ANNOUNCEMENTS BOX -->
 				<?php if(isset($annoucements) && $annoucements[0] && $annoucements[0]['notification_live']){ ?>
-				<div id="announcements" class="announcements-box  mobile-12 small-12" style="min-height:6.5rem;">
+				<div id="announcements" class="announcements-box  mobile-12 small-12" style="MARGIN-BOTTOM: 1rem;">
 					<div id="announcement-icon" class="">
 						<i class="fa fa-3x fa-comments"></i>
 					</div>
@@ -228,7 +229,10 @@
 				<div id="top-shares" class="top-shares mobile-12 small-12 left">
 					<?php if(isset($top_shares_articles) && $top_shares_articles){?>
 						<header>Top 10 Most Popular Articles
-							<div class="sort-by-month right"><a href="<?php echo $config['this_admin_url'].'?month='.$current_month; ?>" class="<?php echo $sort_month; ?>">This month</a><a href="#">  | </a> <a href="<?php echo $config['this_admin_url'].'?month=all'; ?>" class="<?php echo $sort_ever; ?>">ever</a> </div>
+							<div class="sort-by-month right">
+								<a href="<?php echo $config['this_admin_url'].'?month='.$current_month; ?>" class="<?php echo $sort_month; ?>">This month</a>
+								<a href="#">  | </a> <a href="<?php echo $config['this_admin_url'].'?month=all'; ?>" class="<?php echo $sort_ever; ?>">ever</a> 
+							</div>
 						</header>
 						
 						<div class="top-shared-articles">
@@ -251,7 +255,7 @@
 								<td class="index-article"><?php echo $index;?>.</td>
 								<td class="td-title">
 									<p class="article-link">
-										<a href="<?php echo $link_to_article; ?>"><?php echo $mpHelpers->truncate($article['article_title'], 30);?></a>
+										<a href="<?php echo $link_to_article; ?>"><?php echo $mpHelpers->truncate($article['article_title'], 45);?></a>
 									</p>
 								</td>
 								<td>
@@ -279,7 +283,7 @@
 				
 				<!-- Top 10 most shared writers this month -->
 				<div id="earnings-section" class="top-shares mobile-12 small-12 left">
-					<header>TOP 10 MOST POPULAR WRITERS (BASED ON U.S. AUDIENCES)</header>
+					<header>MOST POPULAR MOBloggers</header>
 					<?php if($writers_rank){?>
 					<div class="top-shared-articles">
 							<table class="left" style="margin-right:0.2rem">
@@ -319,7 +323,7 @@
 							</table>
 						</div>
 						<div class="your-rank-box left">
-							<p><?php echo $your_cont_rank["rank"].'. '.$your_cont_rank["name"].' '.$ManageDashboard->bd_nice_number($your_cont_rank['total_shares']); ?></p>
+							<p><?php echo $your_cont_rank["rank"].'. '.$your_cont_rank["name"].', PAGEVIEWS: '.$ManageDashboard->bd_nice_number($your_cont_rank['total_shares']); ?></p>
 						</div>
 
 					<?php }?>

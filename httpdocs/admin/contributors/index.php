@@ -94,8 +94,8 @@
 				</section>
 				<div class="admin-contributor left small-12 padding-bottom admin-contributor-label">
 					<label class="contributor-image contributor-table-label columns small-3" >Writer Name</label>
+					<label class="contributor-info contributor-table-label columns small-3">Email</label>
 					<label class="contributor-info contributor-table-label columns small-2">PageViews</label>
-					<label class="contributor-info contributor-table-label columns small-2">Earnings</label>
 					<label class="contributor-info contributor-table-label columns small-5"></label>
 				</div>
 				
@@ -118,7 +118,6 @@
 
 						$earnings = $ManageDashboard->getContributorEarningsInfo($contributorInfo['contributor_id']);
 					
-
 						?>
 											
 						<div class="admin-contributor row clear padding-bottom">
@@ -134,12 +133,15 @@
 									</a>
 								</h2>
 							</div>
+							<div class="contributor-info columns small-3">
+								<p><?php echo $contributorInfo['contributor_email_address'] ?></p>
+							</div>
 							<div class="contributor-info columns small-2">
 								<p><?php echo number_format($earnings['total_us_pageviews'], 0, '.', ','); ?></p>
 							</div>
-							<div class="contributor-info columns small-2">
-								<p><?php echo '$'.number_format($earnings['total_earnings'], 2, '.', ','); ?></p>
-							</div>
+							<!--<div class="contributor-info columns small-2">
+								<p><?php //echo '$'.number_format($earnings['total_earnings'], 2, '.', ','); ?></p>
+							</div>-->
 							<div class="contributor-links right small-5" >
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i> Earnings</a>

@@ -142,6 +142,10 @@
     </script>
     <!-- END AD TAG -->
 
+    <!-- Distro Scale AD Tag 
+<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
+<!-- Begin comScore Tag -->
+
   <?php }else{?>
 
 <!-- Place in head part widget:puck002 -->
@@ -253,9 +257,7 @@
   </div>
 </noscript>
 
-<!-- Distro Scale AD Tag -->
-<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>
-<!-- Begin comScore Tag -->
+
 
 	
 </head>

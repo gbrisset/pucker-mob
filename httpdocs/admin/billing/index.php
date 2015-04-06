@@ -86,7 +86,7 @@
 									<ul>
 										<li>Make sure form is signed</li>
 										<li>Scan</li>
-										<li>Send!</li>
+										<li>Send to taxes@sequelmediagroup.com</li>
 									</ul>
 								</div>
 							</div>

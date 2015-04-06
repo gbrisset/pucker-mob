@@ -158,11 +158,10 @@ a{ outline: none !important; }
 	.arrow-left i, .arrow-right i {font-size: 2rem;}
 	.arrow-left i{ float: left; padding: 0.03rem 0.5rem 0.1rem 0; }
 	.arrow-right i{ float: right; padding: 0.03rem 0.5rem 0.1rem 0;}
+	.top-bar>.title-area>.name{padding-left:0 !important;}
 }
 
-.clear{
-	clear:both;
-}
+.clear{ clear:both; }
 
 /*Social Media Styles*/
 .twitter, .twitter:focus {background-color: $twitter-color;}
@@ -205,11 +204,14 @@ header {
 }
 #ac_19640 .ac_container:nth-child(4n) {display: none;}
 #_ci_widget_div_31931 ul li:last-child {display: none;}
+#header-social .fa-twitter{ margin-right:0; }
 #header-social .fa-twitter:hover, .fa-twitter-square:hover {color: $twitter-color;}
+#header-social .fa-facebook{ margin-right:1rem;}
 #header-social .fa-facebook:hover, .fa-facebook-square:hover {color: $facebook-color;}
 #header-social .fa-google-plus:hover, .fa-google-plus-square:hover {color: $google-plus-color;}
 #header-social .fa-pinterest:hover, .fa-pinterest-square:hover {color: $pinterest-color;}
-#header-social i {color: $header-font-color;}
+#header-social .fa-info-circle{ font-size:1.8rem; top:-4px;   margin: 0;}
+#header-social i {color: #fff; font-size: 1.3rem; margin-left: 0;   position: relative;}
 
 #header-login {font-family: $heading-font-family; text-align: right;}
 
@@ -534,14 +536,14 @@ footer .category-colors ul li a{ color: #fff !important;}
 #top-nav-buttons ul {margin-bottom: 0;}
 
 #topbar-container {height: 1.8rem; width: 160px; background-color: white; float: right; margin-top: -0.34rem; margin-right: 1.7rem;}
-#topbar-search-contents {width: 100%; float: left; margin: 0 !important; height: 1.8rem !important;  background: #709B6E; color: #fff; border: none !important; font-size: 1.2rem; padding-top: 0.6rem;}
+#topbar-search-contents, #topbar-search-contents-login {width: 100%; float: left; margin: 0 !important; height: 1.8rem !important;  background: #709B6E; color: #fff; border: none !important; font-size: 1.2rem; padding-top: 0.6rem;}
 
-input#topbar-search-contents::-webkit-input-placeholder { color: #fff; }
-input#topbar-search-contents:-moz-placeholder { /* Firefox 18- */ color: #fff; }
-input#topbar-search-contents::-moz-placeholder {  /* Firefox 19+ */ color: #fff;  }
-input#topbar-search-contents:-ms-input-placeholder {  color: #fff;  }
+input.topbar-search-contents::-webkit-input-placeholder { color: #10580d; font-size:1rem; padding-top:3px; }
+input.topbar-search-contents:-moz-placeholder { /* Firefox 18- */ color: #10580d; font-size:1rem; padding-top:3px; }
+input.topbar-search-contents::-moz-placeholder {  /* Firefox 19+ */ color: #10580d;  font-size:1rem; padding-top:3px; }
+input.topbar-search-contents:-ms-input-placeholder {  color: #10580d; font-size:1rem; padding-top:3px; }
 
-#topbar-search-submit {float: right; width: rem-calc(32); position: absolute; height: 1.8rem !important; padding: 0 !important; background-color: #000; }
+#topbar-search-submit, #topbar-search-submit-login {float: right; width: rem-calc(32); position: absolute; height: 1.8rem !important; padding: 0 !important; background-color: #000; }
 #connect-with-us .button, #connect-with-us input {margin-bottom: ($panel-padding/2);}
 #todays-favorites .todays-favorites {text-align: center;}
 .hr-hidden {display: none !important;}
@@ -1866,7 +1868,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .no-margin-with-tap{ margin-left: -1.5rem !important; margin-right: -1.5rem !important; }
 
 /*HEADER LOGIN*/
-.top-header-logout{
+.top-header-logout, .top-header-login{
 	background: #10580d;
 
 	#header-social{
@@ -1883,10 +1885,8 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 			  float:left;
 		  }
 
-		  li:after{
-			 
-		  }
-
+		  	li.registration-link a{ border-right: 1px solid #fff; padding: 0 15px 0 5px; top: -1px;  position:relative;}
+			li.login-link a{  padding-left: 15px; top: -1px; position:relative;}
 		}
 		.empty-list{
 			border-right: 1px solid #559855;

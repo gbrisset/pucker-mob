@@ -20,8 +20,8 @@ $startDate = $prev_date;
 $endDate = $prev_date;
 $params = [
 			'dimensions' => 'ga:pagePath,ga:pageTitle',
-			'sort' => 'ga:pageviews',
-			'max-results' => '7'
+			'sort' => '-ga:pageviews',
+			'max-results' => '20'
 		];
 ?>
 <html>
@@ -31,8 +31,9 @@ $params = [
 </head>
 	<body>
 			<?php
-			
+
 				$articles = $GoogleAnalyticsData->queryGoogleAnalyticsInformation($analytics, $startDate, $endDate, $params);
+				//var_dump($articles); die;
 				$arrArticles = [];
 				if($articles){
 					foreach( $articles as $article){
@@ -55,8 +56,7 @@ $params = [
 					}
 
 				}
-
-				//var_dump($arrArticles); 
+				
 				$GoogleAnalyticsData->removeGoogleAnalyticsMostViewArticles();
 				$insert = $GoogleAnalyticsData->saveGoogleAnalyticsMostViewArticles($arrArticles);
 				

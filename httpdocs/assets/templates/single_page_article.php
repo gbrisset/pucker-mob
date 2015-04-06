@@ -27,6 +27,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 ?>
 
 <?php if($detect->isMobile()){?>
+<style>
+	#branovate-ad div{
+		margin-left:-13px;
+	}
+</style>
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	
@@ -86,7 +91,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<?php  //BRANOVATE ABOVE ARTICLE 
 			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-				<div class="clear" style="background-color:#000; min-height: 15.5rem;">
+				<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem;">
 				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
 				</div>
 		<?php } ?> 
@@ -96,7 +101,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<?php // BRANOVATE BELOW ARTICLE BODY
 		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
-			<div class="clear" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
+			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
 			<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
 			</div>
 		<?php } ?> 
@@ -137,6 +142,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			</div>
 		<?php }?>
+
+		<?php if(!$promotedArticle){ ?>
+		<section class="nativo-ad padding-top">
+			<div class="nativo"></div> 
+		</section>
+	<?php } ?>
 
 		<!-- FROM AROUND THE WEB -->	
 		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
@@ -210,11 +221,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	    </div>
     <?php } ?>
 
-	<?php if(!$promotedArticle){ ?>
-		<section class="nativo-ad padding-top">
-			<div class="nativo"></div> 
-		</section>
-	<?php } ?>
+	
 	</section>
 </article>
 

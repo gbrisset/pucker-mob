@@ -273,8 +273,8 @@ class Dashboard{
 	}*/
 	/*DELETE THIS */
 
-	public function get_current_rate(){
-		$month = date('n');
+	public function get_current_rate( $month = 0 ){
+		if($month == 0 ) $month = date('n');
 		$year = date('Y');
 
 		$s=" SELECT * FROM shares_rate WHERE month = $month AND year = $year LIMIT 1";

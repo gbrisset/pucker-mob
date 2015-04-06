@@ -161,7 +161,6 @@ body.sml-open .toggle-slide-left {
 				<?php }?>
 		</div>-->
 	
-
 	<div class="columns small-12 no-padding padding-top tap-articles " data-info="mostpopular">
 			<?php 
 			$index = 0;
@@ -170,17 +169,18 @@ body.sml-open .toggle-slide-left {
 				$linkToArticle = $config['this_url'].$article['url'];
 
 				if($index == 3 ){?>
-					<!--<div class="columns padding-top padding-bottom" style="text-align:center;">
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-					<!-- PM Mobile 300x250 (2) 
-					<ins class="adsbygoogle"
-					     style="display:inline-block;width:300px;height:250px"
-					     data-ad-client="ca-pub-8978874786792646"
-					     data-ad-slot="8035205382"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-				</div>-->
+					<div class="columns padding-top padding-bottom" style="text-align:center;">
+								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+					<!-- PM Tap 234x60 -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:234px;height:60px"
+						     data-ad-client="ca-pub-8978874786792646"
+						     data-ad-slot="3014419783"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+				</div>
 				<?php }
 			?>
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">
@@ -206,17 +206,18 @@ body.sml-open .toggle-slide-left {
 			foreach( $moblog_articles as $article ){
 				$linkToArticle = $config['this_url'].'moblog/'.$article["article_seo_title"];
 				if($index == 3 ){?>
-					<!--<div class="small-12 clear padding-top padding-bottom" style="text-align:center;">
-						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-						<!-- PM Mobile 300x250 (2) 
+					<div class="small-12 clear padding-top padding-bottom" style="text-align:center;">
+								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+						<!-- PM Tap 234x60 -->
 						<ins class="adsbygoogle"
-						     style="display:inline-block;width:300px;height:250px"
+						     style="display:inline-block;width:234px;height:60px"
 						     data-ad-client="ca-pub-8978874786792646"
-						     data-ad-slot="8035205382"></ins>
+						     data-ad-slot="3014419783"></ins>
 						<script>
 						(adsbygoogle = window.adsbygoogle || []).push({});
 						</script>
-					</div>-->	
+					</div>	
 				<?php }
 				?>
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">

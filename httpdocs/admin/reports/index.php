@@ -34,6 +34,7 @@
 			}
 		}else $adminController->redirectTo('logout/');
 	}
+
 ?>
 
 <!DOCTYPE html>
@@ -152,7 +153,8 @@
 					  		$total_rev = 0;
 
 					  		foreach( $results as $contributor){ 
-					  			
+					  	
+					  		//if( $contributor['user_type'] != '6' || $contributor['user_type'] != '1' ){
 					  		if( $contributor['total_to_pay'] == 0) continue;
 
 					  	
@@ -190,7 +192,7 @@
 						  	<td class="bold align-right"><?php echo '$'.number_format($contributor['total_to_pay'], 2, '.', ','); ?></td>
 						</tr>
 						<?php 
-
+						//}
 					}?>
 						
 					  </tbody>
@@ -230,16 +232,29 @@
 					  		$all_total = 0;
 
 					  		foreach( $results as $contributor){
-
 					  			$total_rate = $contributor['share_rate'];
 					  			$total_us_viewers = $contributor["total_us_pageviews"];
 					  			$total_us_viewers_by_thousands = $total_us_viewers / 1000;
-					  			$total_rev = $contributor['total_earnings'];
+					  			
+								$no_cover_in_house = false;
+
+					  			if( $contributor['user_type'] == '6' || $contributor['user_type'] == '1' ){
+							  		if( $selected_month > 3 && $selected_year >= 2015 ){
+							  			 $total_rev = 0;
+  										 $no_cover_in_house = true;
+							  		}else{
+							  			$total_rev = $contributor['total_earnings'];
+							  		}
+						  		}else{
+						  			$total_rev = $contributor['total_earnings'];
+						  		}
+
 					  			$all_us_viewers += $total_us_viewers;
 					  			$all_us_viwers_by_thousand += $total_us_viewers_by_thousands;
 					  			$all_total += $total_rev; 
 					  			$all_rate = $total_rate;
 					  		?>	
+					  		<?php if(!$no_cover_in_house ){?>
 							<tr>
 							  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
 							  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
@@ -255,7 +270,7 @@
 							  	<td><?php echo '$'.$total_rate; ?></td>
 							  	<td class="bold align-right"><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
 							</tr>
-					  	<?php } ?>
+					  	<?php  }  }?>
 					  	
 					  </tbody>
 					  <tfoot>

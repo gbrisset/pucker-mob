@@ -68,6 +68,7 @@
 	$contributor_email = $contributorInfo["contributor_email_address"]; 
 	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
 
+	//$contributor_type = 6;
 	$newCalc = true;
 	if( $year < 2015 || ( $year == 2015 && $month <= 2)){
 		$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
@@ -138,7 +139,7 @@
 		<h1 class="left">VIEW EARNINGS</h1>
 	</div>
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
-			<h1 class="left">VIEW EARNINGS</h1>
+		<h1 class="left">VIEW EARNINGS</h1>
 	</section>
 
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -146,7 +147,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<section id="articles">
-			<!-- MONTHLY SHARE RATE -->
+				<!-- MONTHLY SHARE RATE -->
 				<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
 						<p>April CPM RATE (BASED ON U.S. VISITORS): <?php echo '$'.number_format($rate, 2, '.', ','); ?></p>
@@ -158,35 +159,13 @@
 				</div>
 				<div id="dd-shares-content" class="mobile-12 small-12">
 					<div>
-						<!--<p>PLEASE NOTE: FACEBOOK “LIKES” AND COMMENTS DO NOT COUNT TOWARD THE “SHARE” TOTAL, 
-							AND ARE NOT CALCULATED INTO YOUR EARNINGS.</p>
-
-						<p><span style="color: #991B1C;">DO NOT</span> GO BY THE NUMBER OF SHARES SHOWN ON YOUR ARTICLE PAGES - THIS NUMBER INCLUDES 
-							FACEBOOK “LIKES” AND COMMENTS, AND DOES NOT REFLECT A TRUE ACCOUNTING OF SHARES.</p>  
-
-						<p>PLEASE VISIT THE ‘VIEW EARNINGS’ PAGE FOR A MORE ACCURATE ACCOUNTING OF SOCIAL SHARES.</p>
-
-						<p>Currently, earnings are based on the following calculation:</p>
-
-						<p>(Fixed monthly rate for social shares on certain networks) x (the percentage of viewers 
-							from the U.S. who have viewed your content)</p>	
-
-						<p>For example, let’s say that all of your articles together have received a total of 100,000 
-							social shares, and the current monthly rate is $.02/share. Let’s also assume that 80% of your 
-							viewers are from the U.S. your earnings would be the following:</p>
-
-						<p>100,000 x $.02 = $2,000 x 0.80 = $1,600</p>
-
-						<p>The pay rate changes each month, depending on a number of variables.</p>
-
-						<p>Social networks that are counted toward shared are: Facebook, Twitter, Pinterest, LinkedIn, 
-							StumbleUpon and Google+ </p>-->
-							<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies 
-								generate revenue. So the rate we're paying this month is that amount you'll earn for every 
-								thousand U.S. visitors that read your content.
-							</p>
+						<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies 
+							generate revenue. So the rate we're paying this month is that amount you'll earn for every 
+							thousand U.S. visitors that read your content.
+						</p>
 					</div>
 				</div>
+				
 				<!-- WARNINGS BOX -->
 				<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
 				<div id="warning-box" class="warning-box  mobile-12 small-12" style="min-height:6.5rem;">
@@ -202,6 +181,7 @@
 				<?php }?>
 
 				<!-- EARNINGS AT A GLANCE -->
+				<?php if( $contributor_type != 6 && $contributor_type != 1){ ?>
 				<div id="earnings-info" class="earnings-info mobile-12 small-12 margin-bottom">
 					<header>EARNINGS AT A GLANCE</header>
 					<div class="total-earnings left">
@@ -217,6 +197,7 @@
 						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
 					</div>
 				</div>
+				<?php }?>
 			</section>
 
 			<section id="dashboard">
@@ -255,7 +236,8 @@
 							} ?>
 						</select>
 					
-					</form> </label>
+					</form> 
+				</label>
 					</div>
 				</header>
 				<?php 
@@ -372,7 +354,7 @@
 							$share_rev += $rate_by_article;
 				  		}
 				  		if($year == 2015 && $month > 1) $share_rev += ($share_rate * $us_pct_traffic);
-				  		else  $share_rev += ($share_rate * 1);
+				  		else $share_rev += ($share_rate * 1);
 				  							  		
 				  			
 				  		$total_shares += $total_shares_this_month;
@@ -430,10 +412,22 @@
 				  		$total_page_views = $article['pageviews'];
 				  		$us_page_views = $article['usa_pageviews'];
 				  		$pct_pageviews = $article['pct_pageviews'];
-				  		
-				  		if( $us_page_views > 0){
-				  			$total_rev = ($us_page_views/1000) * $rate;
+				  
+				  		if( $contributor_type == 6 || $contributor_type == 1 ){
+					  		if( $month > 3 && $year >= 2015 ){
+					  			 $total_rev = 0;
+					  		}else{
+					  			if( $us_page_views > 0 ){
+				  					$total_rev = ($us_page_views/1000) * $rate;
+				  				}
+					  		}
+				  		}else{
+				  			if( $us_page_views > 0 ){
+				  				$total_rev = ($us_page_views/1000) * $rate;
+				  			}
 				  		}
+				  		
+				  		
 				  		$total += $total_rev;
 				  		$total_us_page_views += $us_page_views;
 				  		

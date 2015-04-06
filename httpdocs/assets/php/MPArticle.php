@@ -773,8 +773,8 @@ return $q;
 }*/
 public function getMostRecentArticleList( $articleID = null ){
 	
-	$queryString = " SELECT google_analytics_most_viewed_articles.*, articles.article_id  from google_analytics_most_viewed_articles INNER JOIN articles ON (article_seo_title = seo_title)  ORDER BY pageviews DESC; ";
-
+	$queryString = " SELECT google_analytics_most_viewed_articles.*, articles.article_id  from google_analytics_most_viewed_articles INNER JOIN articles ON (article_seo_title = seo_title)  ORDER BY pageviews DESC LIMIT 7; ";
+	
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;
 }

@@ -38,17 +38,34 @@ $(document).ready(function() {
 console.log(page);
 
 
-	function resizeContentByscreenSize(){
+function resizeContentByscreenSize(){
 		//HIDE LEFT SIDE BAR WHEN BROWSER IS LESS THAT 1030 px.
 		if( $(window).width() < 1090 && $(window).width() > 1030 ){
 			 $('#left-aside').hide();
-			 $('#aside').attr('style', 'right:2%;');
+			 //$('#aside').attr('style', 'right:2%;');
+			if(page === 'home'){
+				if( $("#has-sponsored-by").val() == '0') $('#aside').attr('style', 'right:2%;');
+				else $('#aside').attr('style', 'right:0;');
+			}else{
+				$('#aside').attr('style', 'right:2%;');
+			}
 		}else if( $(window).width() < 1030 ){
 			 $('#left-aside').hide();
-			 $('#aside').attr('style', 'right:1%;');
+			// if($("#has-sponsored-by").val() == '0') $('#aside').attr('style', 'right:1%;');
+			if(page === 'home'){
+				if( $("#has-sponsored-by").val() == '0') $('#aside').attr('style', 'right:1%;');
+				else $('#aside').attr('style', 'right:0;');
+			}else{
+				$('#aside').attr('style', 'right:1%;');
+			}
 		}else {
 			$('#left-aside').show();
-			$('#aside').attr('style', 'right:103px;');
+			if(page === 'home'){
+				if( $("#has-sponsored-by").val() == '0') $('#aside').attr('style', 'right:103px;');
+				else $('#aside').attr('style', 'right:0;');
+			}else{
+				$('#aside').attr('style', 'right:103px;');
+			}
 		}
 
 	}
@@ -268,7 +285,7 @@ console.log(page);
 		loadInArticleAd: function( content, position, iframe, ad, elm ){
 
 			if(elm == 'li') var tag = $('#'+content).find(elm);
-			else var tag = $('#'+content).children(elm);
+			else var tag = $('#'+content).find(elm);
 
 			var index = 0,
 			totalTag= $(tag).length,
@@ -365,12 +382,17 @@ console.log(page);
 				async:   false
 			});
 
-			if( tag == 'p'){ sharethrough_position = sharethrough_position + 1; nativo_position = nativo_position + 1;}
+			if( tag == 'p'){ 
+				sharethrough_position = sharethrough_position + 1; 
+				nativo_position = nativo_position + 1;
+			}
 
 			//SHARETHROUG
 			inBodyAd.loadInArticleAd( 'article-content', sharethrough_position, 0, mobilead[adPage].inarticle, tag);	
 
 			//NATIVO
+			console.log("NATIVO: ");
+			console.log(nativo_position);
 			inBodyAd.loadInArticleAd( 'article-content', nativo_position, 0, mobilead[adPage].inarticlenativo, tag);
 			
 			
@@ -649,16 +671,32 @@ var share_popup_width;
 var share_popup_height;
 var topbar_search_contents = Foundation.utils.S('#topbar-search-contents');
 var topbar_search_submit = Foundation.utils.S('#topbar-search-submit');
+var topbar_search_contents_login = Foundation.utils.S('#topbar-search-contents-login');
+var topbar_search_submit_login = Foundation.utils.S('#topbar-search-submit-login');
 var notfound_search_contents = Foundation.utils.S('#notfound-search-contents');
 var notfound_search_submit = Foundation.utils.S('#notfound-search-submit');
-	// Search handlers
-	topbar_search_submit.click(function() {window.location.href = base_url+'/search/?q='+topbar_search_contents.val();});
-	topbar_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+topbar_search_contents.val();}});
-	notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
-	notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
+	
+// Search handlers
+topbar_search_submit.click(function() {
+	var url = base_url+'/search/?q='+topbar_search_contents.val();
+	window.location.href = url;
+});
 
- 	// Sharing popups
- 	facebook_button.click(function () {
+topbar_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+topbar_search_contents.val();}});
+
+// Search handlers
+topbar_search_submit_login.click(function() {
+	var url = base_url+'/search/?q='+topbar_search_contents_login.val();
+	window.location.href = url;
+});
+topbar_search_contents_login.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+topbar_search_contents_login.val();}});
+
+
+notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
+notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
+
+ // Sharing popups
+ /*	facebook_button.click(function () {
  		share_popup_width = 650;
  		share_popup_height = 380;
  		window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(share_url), 'Facebook', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
@@ -684,7 +722,7 @@ var notfound_search_submit = Foundation.utils.S('#notfound-search-submit');
  		window.open('http://www.stumbleupon.com/submit?url=' + encodeURIComponent(share_url), 'StumbleUpon', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
  	});
  	email_button.click(function() {alert("Email"); });
- 	
+ 	*/
  	/*console.log('FACEBOOK SHARES');
  	$.ajax({
         type: 'GET',
@@ -990,8 +1028,9 @@ $('#follow-author').click(function(e){
                     $('.top-header-logout').attr('style', 'display:inherit !important');
                     $('#follow-msg').html(msg['message']);
                     $('#my-account-header-link').attr('href', 'http://www.puckermob.com/admin/following/');
+                    $('.hide-for-readers').addClass('hide');
                 	$('body').addClass('show-modal-box-follow');
-                   
+                	$('.hide-for-readers').css('display', 'none');                 
                 }
             }
      	});

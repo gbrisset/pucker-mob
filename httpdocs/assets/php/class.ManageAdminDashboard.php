@@ -122,11 +122,14 @@ class ManageAdminDashboard{
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = date('Y');
 
-		$s = "SELECT * 
+		$s = "SELECT contributor_earnings.*, article_contributors.*, users.user_type 
 			  FROM contributor_earnings 
-			  INNER JOIN article_contributors ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
-			  WHERE month = $month AND year = $year ORDER BY total_us_pageviews DESC LIMIT ".$limit;
-
+			  INNER JOIN ( article_contributors, users) 
+			  	ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
+			  	AND ( article_contributors.contributor_email_address = users.user_email)
+			  WHERE month = $month AND year = $year  
+			  ORDER BY total_us_pageviews DESC LIMIT ".$limit;
+//AND users.user_type IN (2, 3, 4, 5)
 		$q = $this->performQuery(['queryString' => $s]);
 
 		return $q;

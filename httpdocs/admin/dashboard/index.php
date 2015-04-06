@@ -163,6 +163,7 @@
 				<?php }?>
 
 				<!-- EARNINGS AT A GLANCE -->
+				<?php if( $contributor_type != 6 && $contributor_type != 1){ ?>
 				<div id="earnings-info" class="earnings-info mobile-12 small-12 margin-bottom">
 					<header>EARNINGS AT A GLANCE</header>
 					<div class="total-earnings left">
@@ -178,6 +179,7 @@
 						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
 					</div>
 				</div>
+				<?php }?>
 			</section>
 
 			<section id="dashboard">
@@ -389,9 +391,23 @@
 				  		$us_page_views = $article['usa_pageviews'];
 				  		$pct_pageviews = $article['pct_pageviews'];
 				  		
-				  		if( $us_page_views > 0){
-				  			$total_rev = ($us_page_views/1000) * $rate;
+				  		if( $contributor_type == 6 || $contributor_type == 1 ){
+					  		if( $month > 3 && $year >= 2015 ){
+					  			 $total_rev = 0;
+					  		}else{
+					  			if( $us_page_views > 0 ){
+				  					$total_rev = ($us_page_views/1000) * $rate;
+				  				}
+					  		}
+				  		}else{
+				  			if( $us_page_views > 0 ){
+				  				$total_rev = ($us_page_views/1000) * $rate;
+				  			}
 				  		}
+
+				  		//if( $us_page_views > 0){
+				  		//	$total_rev = ($us_page_views/1000) * $rate;
+				  		//}
 				  		$total += $total_rev;
 				  		$total_us_page_views += $us_page_views;
 				  		

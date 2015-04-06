@@ -81,8 +81,7 @@
 			$your_shares = 0;
 			$writers_rank = array();
 			$is_in = 0;
-			//$contributor_rank = array();
-
+		
 			foreach( $writers_arr as $writer ){
 				
 				if($writer['contributor_id'] == $contributor_id ){
@@ -92,8 +91,8 @@
 				}
 				$index ++;
 			}
-
-			for($i= 0; $i<10; $i++){
+			$index = 0;	
+			for($i= 0; $i< count($writers_arr) -1; $i++){
 				$position = $i + 1;
 				$class = "";
 				
@@ -104,8 +103,10 @@
 					$your_cont_rank['rank'] = $your_rank + 1;
 					$class = "your-rank";
 					$is_in = 1;
-					//continue;
 				}
+	
+				if( $index == 10) break;
+				if( $writers_arr[$i]['user_type'] == 6 || $writers_arr[$i]['user_type'] == 1 ) continue;
 
 				$contributorId =$writers_arr[$i]['contributor_id'];
 				$contributorName = $writers_arr[$i]['contributor_name'];
@@ -118,6 +119,8 @@
 				$writers_rank[$i]['contributor_id'] = $contributorId;
 				$writers_rank[$i]['contributor_name'] = $contributorName;
 				$writers_rank[$i]['shares'] = $shares;
+
+				if($index < 10 ) $index++;
 
 		    }
 
@@ -168,32 +171,10 @@
 				</div>
 				<div id="dd-shares-content" class="mobile-12 small-12">
 					<div>
-						<!--<p>PLEASE NOTE: FACEBOOK “LIKES” AND COMMENTS DO NOT COUNT TOWARD THE “SHARE” TOTAL, 
-							AND ARE NOT CALCULATED INTO YOUR EARNINGS.</p>
-
-						<p><span style="color: #991B1C;">DO NOT</span> GO BY THE NUMBER OF SHARES SHOWN ON YOUR ARTICLE PAGES - THIS NUMBER INCLUDES 
-							FACEBOOK “LIKES” AND COMMENTS, AND DOES NOT REFLECT A TRUE ACCOUNTING OF SHARES.</p>  
-
-						<p>PLEASE VISIT THE ‘VIEW EARNINGS’ PAGE FOR A MORE ACCURATE ACCOUNTING OF SOCIAL SHARES.</p>
-
-						<p>Currently, earnings are based on the following calculation:</p>
-
-						<p>(Fixed monthly rate for social shares on certain networks) x (the percentage of viewers 
-							from the U.S. who have viewed your content)</p>	
-
-						<p>For example, let’s say that all of your articles together have received a total of 100,000 
-							social shares, and the current monthly rate is $.02/share. Let’s also assume that 80% of your 
-							viewers are from the U.S. your earnings would be the following:</p>
-
-						<p>100,000 x $.02 = $2,000 x 0.80 = $1,600</p>
-
-						<p>The pay rate changes each month, depending on a number of variables.</p>
-
-						<p>Social networks that are counted toward shared are: Facebook, Twitter, Pinterest, LinkedIn, 
-							StumbleUpon and Google+ </p>-->
-							<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies calculate revenue. 
-								So the rate we're paying this month 
-								is that amount you'll earn for every thousand U.S. visitors that read your content.</p>
+						<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies calculate revenue. 
+							So the rate we're paying this month 
+							is that amount you'll earn for every thousand U.S. visitors that read your content.
+						</p>
 					</div>
 				</div>
 				<!-- WARNINGS BOX -->
@@ -225,6 +206,7 @@
 				<?php }?>
 				
 				<!-- EARNINGS AT A GLANCE -->
+				<?php if($userData['user_type'] != 6 && $userData['user_type'] != 1){?>
 				<div id="earnings-info" class="earnings-info mobile-12 small-12">
 					<header>EARNINGS AT A GLANCE</header>
 					<div class="total-earnings left">
@@ -240,11 +222,12 @@
 						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
 					</div>
 				</div>
+				<?php }?>
 
 				<!-- TOP MOST SHARES MOBLOGS -->
 				<div id="top-shares" class="top-shares mobile-12 small-12 left">
 					<?php if(isset($top_shares_articles) && $top_shares_articles){?>
-						<header>Top 10 MOST Shared Articles
+						<header>Top 10 Most Popular Articles
 							<div class="sort-by-month right"><a href="<?php echo $config['this_admin_url'].'?month='.$current_month; ?>" class="<?php echo $sort_month; ?>">This month</a><a href="#">  | </a> <a href="<?php echo $config['this_admin_url'].'?month=all'; ?>" class="<?php echo $sort_ever; ?>">ever</a> </div>
 						</header>
 						

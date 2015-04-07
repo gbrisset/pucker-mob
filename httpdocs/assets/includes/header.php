@@ -80,8 +80,10 @@
         <?php }else {?>
           <ul>
             <li> <a class="my-account-header-link" id="my-account-header-link" href="<?php echo $config['this_admin_url'].'/'; ?>">My Dashboard</a></li>
-            <li class="empty-list "></li>
-            <li class="hide-for-readers"> <p class="earnings-this-month">Earnings (this month): <?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p></li>
+            <?php if($user_type != 6 && $user_type != 1){?>
+              <li class="empty-list "></li>
+              <li class="hide-for-readers"> <p class="earnings-this-month">Earnings (this month): <?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p></li>
+            <?php }?>
             <li class="empty-list hide-for-readers"></li>
             <li class="hide-for-readers"> <p>Your rank: <?php echo $your_rank; ?></p> </li>
             <?php if( $warnings && $warnings[0]['notification_live']){?>

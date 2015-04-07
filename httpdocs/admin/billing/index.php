@@ -49,7 +49,9 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			
+			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
+				<header>Billing INFORMATION</header>
+			</div>	
 			<section id="articles">
 
 				<?php if(!$billingInfo['w2_live'] ){?>

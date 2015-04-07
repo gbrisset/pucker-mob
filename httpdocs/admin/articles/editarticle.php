@@ -25,7 +25,7 @@
 
 	//Verify if user is a content provider...
 	$admin_user = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2 ||  $adminController->user->data['user_type'] == 6){
 		$admin_user = true;
 	}
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
@@ -124,15 +124,13 @@
 		<h1 class="left">Edit Article</h1>
 	</div>
 
-	<!-- WELCOME MESSAGE -->
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up hide">
-			<h1 class="left">Edit Article</h1>
-	</section>
-	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
+			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
+				<header>Edit Article</header>
+			</div>
 			
 			<section id="article-info" class="">
 				<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
@@ -144,7 +142,7 @@
 					   		<label>or</label>
 					   		<input type="button" name="upload" id="upload" value="Upload Files" />
 					   		<input type="button" name="search-lib" id="search-lib" value="Photo Library" style="color: #fff; background-color: #000;"/>
-					   		<label class="mini-fonts padding-bottom">Recommended size: 784x431 pixels</label>
+					   		<label class="mini-fonts padding-bottom">Size: 784x431 pixels</label>
 					   	</div>
 					</div>
 				</form>

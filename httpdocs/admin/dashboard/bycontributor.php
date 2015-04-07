@@ -146,6 +146,9 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
+			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
+				<header>View EARNINGS By CONTRIBUTORS</header>
+			</div>
 			<section id="articles">
 				<!-- MONTHLY SHARE RATE -->
 				<div id="share-rate-box" class="mobile-12 small-12">

@@ -520,7 +520,7 @@ footer .category-colors ul li a{ color: #fff !important;}
 		-webkit-box-shadow: 0px 0px 4px 1px #bbb;
   		box-shadow:         0px 0px 4px 1px #bbb; */
   		margin-bottom: ($panel-padding/2); 
-  		z-index: 9999999;
+  		z-index: 10002;
   		border-bottom: 1px solid #bbb;
   		background-color: #e1ddde !important;
 }
@@ -839,9 +839,9 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 
 /**************************** MOBILE ONLY ****************************/
 @media #{$mobile-only} {
-#nav-bar {position: fixed; top: 0; left: 0; }
+#nav-bar {position: fixed; top: 0; left: 0; z-index:1000203; }
 #header-ad {margin-top: ($topbar-height + ($panel-padding/2) - 1);}
-.top-bar{ height: 3.0625rem; overflow: auto; line-height: 3.0625rem;} 
+.top-bar{ height: 3.0625rem; overflow: hidden; line-height: 3.0625rem;} 
 .top-bar .name{ height: 3.0625rem; }
 .top-bar>.title-area>.name{width: 50%; padding-top: 0.8rem;}
 
@@ -948,7 +948,7 @@ box-shadow: 0px 0px 4px 1px #bbb; margin-bottom: 0.46875rem; z-index: 9999999; b
 /**************************** SMALL ONLY ****************************/
 
 @media #{$small-only} {
-	#nav-bar {position: fixed; top: 0; left: 0;}
+	#nav-bar {position: fixed; top: 0; left: 0; z-index:1000203;}
 	#header-ad {margin-top: ($topbar-height + ($panel-padding/2) - 1);}
 	#main {margin-top: 3.1rem !important}
 	.show-on-large-up {
@@ -956,7 +956,7 @@ box-shadow: 0px 0px 4px 1px #bbb; margin-bottom: 0.46875rem; z-index: 9999999; b
 		display:none;
 	}
 	.show-on-medium-up{ visibility: hidden; display:none; }
-	.top-bar{ height: 3.0625rem; overflow: auto; line-height: 3.0625rem;}
+	.top-bar{ height: 3.0625rem; overflow: hidden; line-height: 3.0625rem;}
 	.top-bar .name{ height: 3.0625rem; }
 	.top-bar>.title-area>.name{width: 50%; padding-top: 0.68rem;}
 	#social-buttons{ margin-left: 0.35rem;}
@@ -970,7 +970,7 @@ box-shadow: 0px 0px 4px 1px #bbb; margin-bottom: 0.46875rem; z-index: 9999999; b
 /**************************** MEDIUM ONLY ****************************/
 
 @media #{$medium-only} {
-	#nav-bar {position: fixed; top: 0; left: 0;}
+	#nav-bar {position: fixed; top: 0; left: 0; z-index:1000203;}
 	#header-ad {margin-top: 3.53125rem;}
 	.show-on-large-up {
 		visibility: hidden;

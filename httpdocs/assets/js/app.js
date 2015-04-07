@@ -299,7 +299,7 @@ function resizeContentByscreenSize(){
 					if( index === position ){
 
 						if($('body').hasClass('mobile')) {
-							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print padding' );
+							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print padding  margin-bottom' );
 						}else{
 							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print padding margin-bottom' );
 						}

@@ -198,8 +198,16 @@
     }
     </script>-->
     <!-- END AD TAG -->
+
+
   <?php }?>
-<?php }?>
+
+
+<?php }else{?>
+ <!-- Nativo -->
+  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
+<?php }
+?>
 
 <!-- COMSCORE -->
 <script>

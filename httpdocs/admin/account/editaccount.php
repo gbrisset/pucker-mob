@@ -87,188 +87,170 @@
 	</div>
 
 	<!-- WELCOME MESSAGE -->
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up hide">
-			<h1 class="left">My Profile</h1>	
-	</section>
+	
 	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
 			
-			<section id="articles" class="">
-			<div id="profile-inline-settings">
-		
-			<!-- IMAGE SECTION -->
-			<section class="mobile-12 small-12 margin-bottom">
-				<h2>Profile Photo</h2>
-				<div class="small-12 image-profile-box">
-					<img id="img-profile" class="left" src="<?php echo $contImageUrl; ?>" alt="User Image" />
-					<div class="small-10 left image-wrapper">
-						<div class="small-6 left div-images">
-							<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $userInfo['contributor_id']; ?>" />
-							<a href="#" class="b-upload select-avatar small-12" id="select-avatar">Save Avatar</a>
-							<div class="small-12 avatars">
-								<?php for($i = 1; $i<= 18; $i++){?>
-									<span class="avatar-span" id="avatar-image-<?php echo $i;?>" data-info="pm_avatars_<?php echo $i;?>.png">
-										<img src="http://images.puckermob.com/articlesites/contributors_redesign/<?php echo 'pm_avatars_'.$i.'.png'; ?>" class="avatar-img" id="pm_avatars_<?php echo $i;?>" />
-									</span> 
-								<?php }?>
-							</div>
-						</div>
-						<div style="width:4.2rem;" class="left">
-							<span class="and ">or</span>
-						</div>
-						<div class="small-6 left div-file-upload">
-							<a href="#" class="b-upload small-12 upload-photo" name="image-file-link" id="image-file-link">Upload Photo</a>
-							<input type="file" class="hidden" id="upload_form" name="upload_form" />
-								<div class="small-12 photo-instructions">
-								<label>Image Requeriments:</label>
-								<ul>
-									<li>Recommended Size: 140x143 px</li>
-									<li>.jpg, .jpeg, .gif, .png filetype </li>
-									<li>Do not exceed max size 1 MB</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+			<div id="following-header" class="following-header mobile-12 small-12">
+					<header>MY PROFILE</header>
+			</div>
+			<div id="announcements" class="announcements-box  mobile-12 small-12" style="MARGIN-BOTTOM: 1rem;">
+				<div id="announcement-icon" class="">
+					<i class="fa fa-3x fa-comments"></i>
 				</div>
-				<p id="error-img" class="error-img"></p>
-			</section>
+				<div id="announcement-txt" class="p-cont">
+					<p style="font-size:1rem;"><strong>Did you know:</strong> Readers like to get to know the authors behind the articles. Articles with completed user profiles, including a photograph, are nearly 4x more likely to get read and shared!</p>
+				</div>
+			</div>
 			
-
-			<!-- ACCOUNT INFORMATION -->		
-			<section id="row small-12 account-settings">
-				<h2>General Information</h2>
-				<form class="ajax-submit-form clear" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
-					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-					<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
-					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
-
-					<div class="row">
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="user_first_name-s">Your Name</label>
-							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
+			<section id="articles" class="">
+			
+			<div id="profile-inline-settings">
+			
+				<!-- IMAGE SECTION -->
+				<section class="mobile-12 small-12 margin-bottom margin-top">
+						<h2>Profile Photo</h2>
+						<div class="small-12 image-profile-box">
+							<img id="img-profile" class="left" src="<?php echo $contImageUrl; ?>" alt="User Image" />
+							<div class="small-10 left image-wrapper">
+								<div class="small-6 left div-images">
+									<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $userInfo['contributor_id']; ?>" />
+									<a href="#" class="b-upload select-avatar small-12" id="select-avatar">Save Avatar</a>
+									<div class="small-12 avatars">
+										<?php for($i = 1; $i<= 18; $i++){?>
+											<span class="avatar-span" id="avatar-image-<?php echo $i;?>" data-info="pm_avatars_<?php echo $i;?>.png">
+												<img src="http://images.puckermob.com/articlesites/contributors_redesign/<?php echo 'pm_avatars_'.$i.'.png'; ?>" class="avatar-img" id="pm_avatars_<?php echo $i;?>" />
+											</span> 
+										<?php }?>
+									</div>
+								</div>
+								<div style="width:4.2rem;" class="left">
+									<span class="and ">or</span>
+								</div>
+								<div class="small-6 left div-file-upload">
+									<a href="#" class="b-upload small-12 upload-photo" name="image-file-link" id="image-file-link">Upload Photo</a>
+									<input type="file" class="hidden" id="upload_form" name="upload_form" />
+										<div class="small-12 photo-instructions">
+										<label>Image Requeriments:</label>
+										<ul>
+											<li>Recommended Size: 140x143 px</li>
+											<li>.jpg, .jpeg, .gif, .png filetype </li>
+											<li>Do not exceed max size 1 MB</li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="contributor_blog_link-s">Blog or Website URL</label>
-							<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="user_email-e">Email Address</label>
-							<input type="email" name="user_email-e" id="user_email-e" placeholder="" value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
-						</div>
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="contributor_facebook_link-s">Facebook URL</label>
-							<input type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="" value="<?php if(isset($userInfo['contributor_facebook_link'])) echo $userInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="contributor_location-s">Location</label>
-							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
-						</div>
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="contributor_twitter_handle-s">Twitter Handle </label>
-							<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
-						</div>
-					</div>
-
+						<p id="error-img" class="error-img"></p>
+				</section>
 					
-					<div class="row">
-						<div class="columns mobile-12 small-12 large-12">
-							<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($userInfo['contributor_bio'])) echo $userInfo['contributor_bio']; ?></textarea>
-						</div>
-					</div>
-					
-					<div class="row buttons-container">
-						<div class="columns mobile-12 small-12 large-10">
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
+
+				<!-- ACCOUNT INFORMATION -->		
+				<section id="row small-12 account-settings">
+					<h2>General Information</h2>
+					<form class="ajax-submit-form clear" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
+							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+							<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
+							<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+
+							<div class="row">
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="user_first_name-s">Your Name</label>
+									<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
+								</div>
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="contributor_blog_link-s">Blog or Website URL</label>
+									<input type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="user_email-e">Email Address</label>
+									<input type="email" name="user_email-e" id="user_email-e" placeholder="" value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+								</div>
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="contributor_facebook_link-s">Facebook URL</label>
+									<input type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="" value="<?php if(isset($userInfo['contributor_facebook_link'])) echo $userInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="contributor_location-s">Location</label>
+									<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
+								</div>
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="contributor_twitter_handle-s">Twitter Handle </label>
+									<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
+								</div>
+							</div>
+
 							
-							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo $updateStatus['message']; ?>
-							</p>
-						</div>
-						<div class="columns mobile-12 small-12 large-2">
-							<button type="submit" id="submit" name="submit">UPDATE</button>
-						</div>
-					</div>
-					</div>
-				</form>
-				
+							<div class="row">
+								<div class="columns mobile-12 small-12 large-12">
+									<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($userInfo['contributor_bio'])) echo $userInfo['contributor_bio']; ?></textarea>
+								</div>
+							</div>
+							
+							<div class="row buttons-container">
+								<div class="columns mobile-12 small-12 large-10">
+									<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
+									
+									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo $updateStatus['message']; ?>
+									</p>
+								</div>
+								<div class="columns mobile-12 small-12 large-2">
+									<button type="submit" id="submit" name="submit">UPDATE</button>
+								</div>
+							</div>
+						
+					</form>
 				</section>
 
 				<?php if( isset($fromFB) && !$fromFB){?>
 				<!-- PASSWORD -->
-				<section class="small-12 margin-top">
-					<h2>Change Password</h2>
-					<form class="ajax-submit-form clear" id="account-password-form" name="account-password-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
-					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-					<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
-					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+				<section class="small-12 account-settings margin-top">
+							<h2>Change Password</h2>
+							<form class="ajax-submit-form clear" id="account-password-form" name="account-password-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
+							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+							<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
+							<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
 
-					<div class="row">
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="user_password_current-s">Verify Current Password</label>
-							<input type="password" name="user_password_current-s" id="user_password_current-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
-						</div>
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="user_password-s">New Password</label>
-							<input type="password" name="user_password1-s" id="user_password1-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />		
-						</div>
-					</div>
-					<div class="row">
-						<div class="columns mobile-12 small-12 large-6"></div>	
-						<div class="columns mobile-12 small-12 large-6">
-							<label for="user_password-s">Retype New Password</label>
-							<input type="password" name="user_password2-s" id="user_password2-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
-						</div>
-					</div>
-					<div class="row buttons-container">
-						<div class="columns mobile-12 small-12 large-10">
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo $updateStatus['message']; ?>
-							</p>
-						</div>
-						<div class="columns mobile-12 small-12 large-2">
-							<button type="submit" id="submit" name="submit">UPDATE</button>
-						</div>
-					</div>
-					</form>
+							<div class="row">
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="user_password_current-s">Verify Current Password</label>
+									<input type="password" name="user_password_current-s" id="user_password_current-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
+								</div>
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="user_password-s">New Password</label>
+									<input type="password" name="user_password1-s" id="user_password1-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />		
+								</div>
+							</div>
+							<div class="row">
+								<div class="columns mobile-12 small-12 large-6"></div>	
+								<div class="columns mobile-12 small-12 large-6">
+									<label for="user_password-s">Retype New Password</label>
+									<input type="password" name="user_password2-s" id="user_password2-s" placeholder="" value="" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_hashed_password') echo 'autofocus'; ?> />
+								</div>
+							</div>
+							<div class="row buttons-container">
+								<div class="columns mobile-12 small-12 large-10">
+									<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
+									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-password-form') echo $updateStatus['message']; ?>
+									</p>
+								</div>
+								<div class="columns mobile-12 small-12 large-2">
+									<button type="submit" id="submit" name="submit">UPDATE</button>
+								</div>
+							</div>
+							</form>
 				</section>
 				<?php }?>
-				<!-- BRIOGRAPHY -->
-				<!--<section class="small-12 margin-top  padding-bottom">
-					<h2>Biography</h2>
-					<form class="ajax-submit-form clear" id="account-bio-form" name="account-bio-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
-					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-					<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
-					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
-
-					<div class="row">
-						<div class="columns mobile-12 small-12 large-12">
-							<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($userInfo['contributor_bio'])) echo $userInfo['contributor_bio']; ?></textarea>
-						</div>
-					</div>
-
-					<div class="row buttons-container">
-						<div class="columns mobile-12 small-12 large-10">
-							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-bio-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'success'; ?>" id="result">
-							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-bio-form') echo $updateStatus['message']; ?>
-							</p>
-						</div>
-						<div class="columns mobile-12 small-12 large-2">
-							<button type="submit" id="submit" name="submit">Update</button>
-						</div>
-					</div>
-
-					</form>
-				</section>-->
-				
-				</div>
+			</div>
 			</section>
 		</div>
 	</main>

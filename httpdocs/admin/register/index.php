@@ -90,9 +90,13 @@ $(document).ready(function() {
 						<div id="register-form-cont-new" class="admin-form-cont success-msg">
 							<div class="row">
 								<p class="">
-									<?php echo $registrationStatus['message']; ?>
+									<?php 
+										$url = $config['this_admin_url'].'account/user/'.$registrationStatus['username'];
+										//echo $url;
+										echo $registrationStatus['message']; 
+									?>
 								</p>
-								<script>setTimeout(function(){window.location = "<?php echo $config['this_admin_url']; ?>"}, 3000);</script>
+								<script>setTimeout(function(){window.location = "<?php echo $url; ?>"}, 3000);</script>
 
 							</div>
 						</div>

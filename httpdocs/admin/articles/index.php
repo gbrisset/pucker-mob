@@ -31,9 +31,10 @@
 	$writersCurrent = $bloggersCurrent = '';
 	if($_GET['artype']){
 		$allCurrent = '';
-		$artType = $_GET['artype'];
-		if($arType == 'bloggers') $bloggersCurrent = 'current';
-		else $writersCurrent = 'current';
+		$artType = $_GET["artype"];
+		//var_dump($artType);
+		if($artType === "bloggers") $bloggersCurrent = 'current';
+		elseif($artType === "writers")  $writersCurrent = 'current';
 	}
 
 
@@ -82,36 +83,26 @@
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
 		<h1 class="left">View Articles</h1>
 	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
-			<h1 class="left">View Articles</h1>
-			
-	</section>
+	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
+			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
+				<header>View Articles</header>
+			</div>
 			<section id="articles">
 			<section class="left  mobile-12 small-12">
 				<section class="">
-				<form class="search-form-admin small-7" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
+				<form class="search-form-admin small-7 right margin-bottom" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<div id="search-fieldset" class="mobile-12 small-12">
 							<input type="text" value="" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchemailinput">
 							<button type="submit" id="searchsubmit" name="searchsubmit" class="small-4"  >SEARCH<i class="icon-search"></i></button>
 						</div>
 				</form>
 				</section>
-				
-				 <!--<section class="from-other-sites-filter ">
-					    <div class="columns">
-					     <label>Show Articles From:
-					      <input style="margin-left: 2rem;" id="simpledish" disabled type="checkbox"><label for="simpledish">SimpleDish</label>
-						  <input id="puckermob" checked disabled type="checkbox"><label for="puckermob">PuckerMob</label>
-					      <input id="spaghettimob" disabled type="checkbox"><label for="spaghettimob">SpaghettiMob</label>
-					      </label>
-					    </div>
-				</section>-->
 				<?php if($admin_user){?>
-					<section class="from-diff-users-filter ">
+					<section class="from-diff-users-filter clear">
 					    <div class="columns">
 					     <label>Show Articles From:
 					     	<a class="<?php echo $allCurrent; ?>" href="<?php echo $config['this_admin_url'].'articles/'; ?>">All</a> | 
@@ -122,7 +113,7 @@
 				</section>
 				<?php }?>
 
-				<section id="articles-list" class="margin-top">
+				<section id="articles-list" class="margin-top clear">
 					<!--<section class="section-bar left  border-bottom mobile-12 small-12">
 					
 					<div id="right" class="small-9 padding-top right">

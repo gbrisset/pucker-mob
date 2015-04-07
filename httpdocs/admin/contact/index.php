@@ -30,9 +30,11 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-				
+			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
+				<header>Contact Us</header>
+			</div>	
 			<section id="articles" class="padding-bottom">
-				<h2 class="">Need help?</h2>
+				<!--<h2 class="">Need help?</h2>-->
 				<p>For site support, please contact us using the form below or email us at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a>.</p>	
 				<form id="adv-contact-form" name="adv-contact-form" action="" method="POST">
 					 <div class="row">

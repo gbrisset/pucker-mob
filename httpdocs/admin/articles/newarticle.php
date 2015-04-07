@@ -50,16 +50,14 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 		<h1 class="left">New Article</h1>
 	</div>
 
-	<!-- WELCOME MESSAGE -->
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
-		<h1 class="left">New Article</h1>
-	</section>
-	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<!-- SUB MENU ADMIN -->		
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
+			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
+					<header>Add New Article</header>
+			</div>
 			<section id="article-info">
 				<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -71,7 +69,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					   		<label>or</label>
 					   		<input type="button" name="upload" id="upload" value="Upload Files" />
 					   		<input type="button" name="search-lib" id="search-lib" value="Photo Library" style="color: #fff; background-color: #000;"/>
-					   		<label class="mini-fonts padding-bottom">Recommended size: 784x431 pixels</label>
+					   		<label class="mini-fonts padding-bottom">Size: 784x431 pixels</label>
 					   	</div>
 					</div>
 				</form>

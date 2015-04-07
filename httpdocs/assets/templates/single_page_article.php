@@ -59,7 +59,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<!-- SOCIAL DESKTOP -->
 
-		<section id="article-content">
+		<section id="article-content-2">
 			<!-- Social Media Icons -->
 			<div class="row social-media-container  padding-bottom" style=" display:block !important;">
 				<a class="addthis_button_facebook small-4 left">

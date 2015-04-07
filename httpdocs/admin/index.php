@@ -150,15 +150,15 @@
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	<div class="sub-menu row">
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">Welcome</h1>
+		<h1 class="left">My DASHBOARD</h1>
 	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up padding-bottom hide margin-top">
-			<h1 class="left">DASHBOARD</h1>
-	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
+			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
+					<header>MY DASHBOARD</header>
+			</div>
 			<section id="articles">
 				<!-- MONTHLY SHARE RATE -->
 				<div id="share-rate-box" class="mobile-12 small-12">

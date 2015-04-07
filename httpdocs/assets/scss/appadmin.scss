@@ -206,7 +206,7 @@ i {margin-left: 5px; margin-right: 5px;}
 a{ outer: none; }
 .panel{ border: none;}
 
-#main-cont{ margin-top: 2%; margin-bottom: 0; min-height: 50rem; max-width: 69rem; padding:0}
+#main-cont{ margin-top: 2%; margin-bottom: 0; min-height: 60.2rem; max-width: 69rem; padding:0}
 
 @media #{$large-up} {
 	left:0rem;
@@ -278,6 +278,7 @@ a.videos{display:none;}
 #nav-cont nav ul { width: 100%; margin: 0; padding: 0; position: relative; list-style: none; }
 #nav-cont nav ul li, #nav-cont nav ul h2 { color: #000; font: 1.2rem Oslo,arial,sans-serif; width: 100%; margin: 0; padding: 0.5em 1rem; position: relative; text-transform: capitalize; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; cursor: pointer;}
 #nav-cont nav ul li:after{ border-bottom: 1px solid #ccc; box-shadow: 0px 0px 1px #fff; bottom: 0;content: " ";height: 1px; left: 0; position: absolute; width: 100%; z-index: 0;}
+#nav-cont nav ul li:last-child:after{border-bottom:none; box-shadow: none; }
 
 #nav-cont nav ul .parent:before{content: '>'; float: right; margin: 0.1em 1em 0 0; font: 1.3em/1em ModernPics; color: #DDD;}
 #nav-cont nav ul ul.shown{display: block; margin-bottom: 0.3em;}
@@ -329,7 +330,7 @@ a.videos{display:none;}
 //SEARCH FORM
 .search-form-admin{ display:inline-block; margin-top: 0;}
 #searchemailinput{ width: 66.66%; padding: 1.3rem; font-size: 1rem; text-transform: uppercase;  margin-bottom: 0;}
-#searchsubmit{ padding: 0.8rem; margin-bottom: 0;}
+#searchsubmit{ padding: 0.85rem; margin-bottom: 0;}
 
 //SORT BY BAR
 #main-cont section .section-bar #right #sort-by ul{ list-style: none outside none; margin: 0; padding: 0; width: auto; padding-top: 0.3rem;}
@@ -717,7 +718,8 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 }
 }
 /*ACCOUNT PAGE*/
-#profile-inline-settings section h2{ color:#01b88a; }
+#profile-inline-settings section h2{   font-size: 1.4rem;
+  text-transform: uppercase; }
 #profile-inline-settings section div label{ font-size: 1rem; font-family:OsloBold, Oslo, arial; }
 .avatar-span img {max-width: 1.9rem; cursor: pointer;}
 .image-profile-box{padding:1.2rem 0.8rem 0.8rem 0.8rem;}

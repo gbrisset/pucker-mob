@@ -33,20 +33,21 @@ class MPAdminUserController extends MPArticleAdminController{
 		$user = $this->getUserInfo();
 		
 		$config = $this->config;
-		if($user['user_type'] > 2){
+		//if( $user['user_type'] > 2  &&  $user['user_type'] < 6 ){
 			//	Check if 1st login...
-			if($user['user_login_count'] <= 1){
-				//	Redirect to admin/ (first login)
-				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
+			if($user['user_login_count'] < 1){
+				$url = $config['this_admin_url']."account/user/".$user['user_name'];
+				//	Redirect to My Profile/ (first login)
+				return "<script>setTimeout(function(){window.location = \"".$url."\"}, 10);</script>";
 			} else {
 				//	Redirect to admin/articles/ (user_type: 3, 4)
 				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
 				//return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."articles/\"}, 1000);</script>";
 			}
-		} else {
-			//	Redirect to admin/	(user_type: 1, 2)
-			return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
-		}
+		//} else {
+			//	Redirect to admin/	(user_type: 1, 2, 6)
+			//return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
+		//}
 	}
 
 
@@ -1111,6 +1112,7 @@ End password reset methods
 			if($q){
 				$r = $this->helpers->returnStatus(200);
 				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>.";
+				$r['username'] = $user['user_name'];
 				return $r;
 			}else return $this->helpers->returnStatus(500);
 		}else return $this->helpers->returnStatus(500);

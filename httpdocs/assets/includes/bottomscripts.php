@@ -127,7 +127,7 @@
 <!-- MOBILE -->
 <?php }else{ ?>
 
-
+  
   <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
   
   
@@ -152,6 +152,9 @@
    </script>
    <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
   <?php }?>
+
+ 
+
 <?php } ?>
 
   <!-- Distro Scale AD Tag 
@@ -159,7 +162,7 @@
   
    <!-- Vibrant Media Ads 
    <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70527"></script>
--->
+    -->
 
   <?php }?>  
   
@@ -218,8 +221,7 @@
 <!-- SHARETHROUNG -->
   <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
    
-<!-- Nativo -->
-<script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
+
 <?php }?>
 
 

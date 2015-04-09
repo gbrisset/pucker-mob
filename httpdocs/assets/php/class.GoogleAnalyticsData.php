@@ -356,7 +356,7 @@ class GoogleAnalyticsData{
 			$analytics = $analyticsObj->data_ga->get($this->viewId, $startDate, $endDate,  $this->metrics, array(
 				'dimensions'=> 'ga:pagePath,ga:pageTitle',
 				'sort' => '-ga:pageviews',
-				'max-results' => '7',
+				'max-results' => '20',
 				'start-index' => 1
 				) );
 		}catch (apiServiceException $e) {

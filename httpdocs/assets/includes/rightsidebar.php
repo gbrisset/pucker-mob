@@ -70,8 +70,8 @@
 
       <section id="sub-sidebar-2" class="sidebar">
          <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
-         <?php //include_once($config['include_path'].'sistersite.php'); ?>
       </section>
+
  <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
       else{?>
       <div id="btf2-ad" class="ad-unit ad300"></div>

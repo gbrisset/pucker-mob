@@ -170,8 +170,7 @@ body.sml-open .toggle-slide-left {
 
 				if($index == 3 ){?>
 					<div class="columns padding-top padding-bottom" style="text-align:center;">
-								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 					<!-- PM Tap 234x60 -->
 						<ins class="adsbygoogle"
 						     style="display:inline-block;width:234px;height:60px"

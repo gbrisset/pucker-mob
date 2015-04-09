@@ -1,4 +1,5 @@
 <head>
+
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
 	<meta http-equiv="x-dns-prefetch-control" content="on">
@@ -76,7 +77,7 @@
 
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
 	<?php 
@@ -204,8 +205,7 @@
 
 
 <?php }else{?>
- <!-- Nativo -->
-  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
+
 <?php }
 ?>
 
@@ -266,7 +266,9 @@
 </noscript>
 
 
-
-	
+ 
+	<!-- Nativo -->
+  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
+  	
 </head>
  <?php flush(); ?>

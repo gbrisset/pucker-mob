@@ -31,6 +31,7 @@ $.fn.dynamicLoginContent = function(){
                     $('#follow-msg').html(msg['message']);
                     $('#my-account-header-link').attr('href', 'http://www.puckermob.com/admin/following/');
                     $('body').addClass('show-modal-box-follow');
+                     $('.hide-for-readers').css('display', 'none');
                 }
             }
      });
@@ -73,6 +74,8 @@ $.fn.dynamicRegisterContent = function(){
                     $('#follow-msg').html(msg['message']);
                     $('#my-account-header-link').attr('href', 'http://www.puckermob.com/admin/following/');
                     $('body').addClass('show-modal-box-follow');
+                    $('.hide-for-readers').css('display', 'none');
+
                 }
             }
         });

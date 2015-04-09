@@ -16,6 +16,7 @@
         }
     } 
 
+    if( isset($articleInfoObj) &&  $articleInfoObj){
  ?>
  <div id="openModal" class="modalDialog">
 	<div id="popup-content" class="login-register-content">
@@ -45,6 +46,7 @@
         			<div id="right-content" class="right">
         				<h3>Login with social:</h3>
         				<div class="fb-login-button">
+                            <input type="hidden" id="isReader" name="isReader" value="true"/>
 							<img id="fb-login" src = "<?php echo $config['this_url'].'assets/img/fb_log_button_img.jpg'; ?>" alt="fb loggin button" />
 						</div>
         				<p>NEW TO PUCKERMOB</p>
@@ -82,6 +84,7 @@
         			<div id="right-content" class="right">
         				<h3>Register with social:</h3>
         				<div class="fb-login-button">
+                            <input type="hidden" id="isReader" name="isReader" value="true"/>
 							<img id="fb-login" src = "<?php echo $config['this_url'].'assets/img/fb_log_button_img.jpg'; ?>" alt="fb loggin button" />
 						</div>
 							<p>Already registered?</p>
@@ -93,4 +96,5 @@
     </div>
    
 </div>
+<?php }?>
 		

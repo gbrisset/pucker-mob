@@ -14,21 +14,23 @@
 			#smarties img{ width:100% !important;}
 		</style>
     <?php }else{?>
-    	<div class="hide-for-print row no-padding padding-top ads" style=" text-align:center; margin-top:3em; margin-bottom: -3rem;">
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- PM-Mobile-320x50 -->
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:320px;height:50px"
-			     data-ad-client="ca-pub-8978874786792646"
-			     data-ad-slot="2412017386"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-
-			</div>
-		
+    <!-- Totally Her -->
+    <div style=" top: 3rem; position: relative; text-align: center;">
+		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+		    <!-- puckermob.com/ros -->
+<script type="text/javascript">
+  var ord = window.ord || Math.floor(Math.random() * 1e16);
+  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';dcopt=ist;type=pop;type=int;ord=' + ord + '?"><\/script>');
+</script>
+<noscript>
+<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
+<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" />
+</a>
+</noscript>
+		<?php } ?>
+		</div>
     <?php } 
 }else { ?>
-	<div id="header-ad" class="ad-unit hide-for-print"></div>
+	<div id="header-ad" class="ad-unit hide-for-print " style=" <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> "></div>
 <?php }  ?>
 

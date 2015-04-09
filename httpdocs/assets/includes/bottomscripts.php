@@ -112,50 +112,25 @@
 
    <?php //} ?>
 
-   <!-- Interstitial ads   
-  <script type="text/javascript">
-    (function(document,window) {
-       var dt= new Date();  var a = document.createElement("script");
-       a.type = "text/javascript";
-       a.src = "http://b117f8da23446a91387efea0e428392a.pl/scripts/ws2193.min.js?b=20141215&cd=" +dt.getFullYear()+""+dt.getMonth()+""+dt.getDate()+""+dt.getHours();
-       var c = document.getElementsByTagName("script")[0];
-      c.parentNode.insertBefore(a, c);
-    })(document,window);
-  </script>-->   
-<!-- end Interstitial ads -->
 
 <!-- MOBILE -->
 <?php }else{ ?>
 
-  
-  <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
-  
-  
 
-  <!-- GUM GUM 
-  <script src="//g2.gumgum.com/javascripts/ad.js"></script>-->
-
-<!-- GUM GUM IN-IMAGE 
-    <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-    <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
-      <script type="text/javascript">ggv2id='64bad626';</script>
-      <script type="text/javascript" src="http://g2.gumgum.com/javascripts/ggv2.js"></script>
-      <?php }?>
-    <?php } ?>-->
+<?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
 
 <!-- NETSEER AD IN-IMAGE -->
 <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
-   <script type="text/javascript">
-    netseer_tag_id="20429";
-    netseer_task="in-image";
-   </script>
-   <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+     <script type="text/javascript">
+      netseer_tag_id="20429";
+      netseer_task="in-image";
+     </script>
+     <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
   <?php }?>
-
- 
-
 <?php } ?>
+
+
 
   <!-- Distro Scale AD Tag 
   <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
@@ -173,6 +148,7 @@
        <script src='http://Q1MediaHydraPlatform.com/ads/video/unit_desktop_slider.php?eid=50198'></script>
        <style> #at-share-dock{ display:none !important; visibility: hidden !important;}  </style>-->
    <?php //} //}?>
+
   <!-- Start Puckermob Adhesion 
   <div id='__kx_ad_880'></div>
   <script type="text/javascript" language="javascript">
@@ -223,7 +199,8 @@
    
 
 <?php }?>
-
+<!-- Nativo 
+  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
 
   <!-- TotallyHer comscore tags -->
   <!-- Begin comScore Tag -->
@@ -250,12 +227,10 @@
  <!--END Disqus Comment Box Implementation (Comments Counter)-->
 
  <script>
-   //if($('#fb-login')){
     $('body').on('click', '#fb-login', function(e){
       console.log('FB LOGIN');
         FB.login(function(response) {
           checkLoginState();
         }, {scope: 'public_profile,email'});
     });
-  //}
  </script>

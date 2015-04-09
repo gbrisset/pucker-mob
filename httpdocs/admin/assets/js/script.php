@@ -1629,8 +1629,8 @@ if(document.body.id == 'editarticle'){
 		data: { article_id: article_id, task:'article_ads' },
 		success: function (data) {
 			if(data == 'false'){
-				$('select[name="nativo_mobile_ad"]').find('option[value="1"]').attr("selected",true);
-				$('select[name="sharethrough_mobile_ad"]').find('option[value="3"]').attr("selected",true);
+				$('select[name="nativo_mobile_ad"]').find('option[value="5"]').attr("selected",true);
+				$('select[name="sharethrough_mobile_ad"]').find('option[value="2"]').attr("selected",true);
 				//$('select[name="carambola_mobile_ad"]').find('option[value="-1"]').attr("selected",true);
 				$('select[name="branovate_mobile_ad"]').find('option[value="999"]').attr("selected",true);
 				$('select[name="google_mobile_ad"]').find('option[value="-1"]').attr("selected",true);

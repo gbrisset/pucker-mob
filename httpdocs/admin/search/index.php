@@ -11,6 +11,30 @@
 
 	if(!$searchString) $searchString = (isset($_GET['q']) && strlen($_GET['q'])) ? $_GET['q'] : false;
 
+	/*if( $searchString ){
+		$search = new Search( $config );
+
+		$pageName = "Search Results For: ".$searchString.' | '.$mpArticle->data['article_page_name'];
+		$searchString = filter_var($searchString, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		
+		$articles = $search->getArticles( $searchString );
+
+		$articlesPerPage = 10;
+		$totalResults = $search->totalResults;
+		$totalPages = ceil( $totalResults / $articlesPerPage);
+
+		if($totalPages > 1){
+			$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
+		
+			if($currentPage > $totalPages) $currentPage = 1;
+			$offset = ($currentPage - 1) * $articlesPerPage;
+			$articles['articles'] = array_slice($articles['articles'], $offset, $articlesPerPage);
+			
+			$pagesArray['url'] = $config['this_url'].'admin/search/?q='.$searchString;
+			$pagesArray['pages'] = $mpHelpers->getPages($currentPage, $totalPages);
+		}
+	}*/
+
 	// Sorting information
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
@@ -71,7 +95,7 @@
 			<section id="articles-list">
 				<form class="search-form-admin" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<fieldset id="search-fieldset">
-							<input type="text" value="" placeholder="Search all" id="searchemailinput" name="searchemailinput">
+							<input type="text" value="" placeholder="Search all of Simple Dish CMS" id="searchemailinput" name="searchemailinput">
 							<button type="submit" id="searchsubmit" name="searchsubmit">SEARCH<i class="icon-search"></i></button>
 						</fieldset>
 				</form>

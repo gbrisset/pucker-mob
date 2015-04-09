@@ -42,13 +42,13 @@
 			if( $contributor['total_to_pay'] == 0) continue;
 			
 			$contributor_type = isset($contributor['user_type']) ? $contributor['user_type'] : '4';
-			if($contributor_type != 4 ){
-		  		 $contributor['total_to_pay'] = $contributor['total_to_pay'] - $contributor['total_rate'];
-		  		 $contributor['total_rate'] = 0;
+				  		
+			if($contributor_type == 2 ){
+				$contributor['total_to_pay'] = $contributor['total_to_pay'] - $contributor['total_rate'];
+				$contributor['total_rate'] = 0;
 			}
 
 			$total = $total + $contributor['total_to_pay'];
-				  		
 			$total_rate = $total_rate + $contributor['total_rate'];
 			$total_shares = $total_shares + $contributor['total_shares'];
 			$total_rev = $total_rev + $contributor['share_revenue'];

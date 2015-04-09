@@ -133,8 +133,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="remember-to-share padding-top row padding">
 			<h3>PLEASE REMEMBER TO SHARE</h3>
 		</div>
+		
 		<section id="separator-section" class="row no-padding"></section>
 
+		<!-- FROM AROUND THE WEB -->	
+		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+		
 		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
 		<?php if(!$promotedArticle){ ?>
 			<div class="hide-for-print padding-top ads">
@@ -148,9 +152,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<div class="nativo"></div> 
 		</section>
 	<?php } ?>
-
-		<!-- FROM AROUND THE WEB -->	
-		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
 	
 		<!-- KIXER -->
 		<!-- Start Below Article -->
@@ -415,7 +416,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	</div>
 		
 	<?php if(!$promotedArticle){ ?>
-		<section class="nativo-ad padding-top">
+		<section class="nativo-ad padding-top clear">
 			<div class="nativo"></div> 
 		</section>
 	<?php } ?>

@@ -184,7 +184,7 @@
 				<?php }?>
 
 				<!-- EARNINGS AT A GLANCE -->
-				<?php if( $contributor_type != 6 && $contributor_type != 1){ ?>
+				<?php if( $contributor_type != 6 && $contributor_type != 1 && $contributor_type != 7 ){ ?>
 				<div id="earnings-info" class="earnings-info mobile-12 small-12 margin-bottom">
 					<header>EARNINGS AT A GLANCE</header>
 					<div class="total-earnings left">
@@ -416,7 +416,7 @@
 				  		$us_page_views = $article['usa_pageviews'];
 				  		$pct_pageviews = $article['pct_pageviews'];
 				  
-				  		if( $contributor_type == 6 || $contributor_type == 1 ){
+				  		if( $contributor_type == 6 || $contributor_type == 1 || $contributor_type == 7 ){
 					  		if( $month > 3 && $year >= 2015 ){
 					  			 $total_rev = 0;
 					  		}else{

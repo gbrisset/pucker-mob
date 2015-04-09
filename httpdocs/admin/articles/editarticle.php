@@ -25,9 +25,15 @@
 
 	//Verify if user is a content provider...
 	$admin_user = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2 ||  $adminController->user->data['user_type'] == 6){
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2  || $adminController->user->data['user_type'] == 6){
 		$admin_user = true;
 	}
+
+	$externalWriter = false;
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 7 ){
+		$externalWriter = true;
+	}
+
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributor_email = $adminController->user->data['user_email'];
 	$contributorInfo = $contributorInfo[0];
@@ -255,7 +261,7 @@
 						<input type="hidden" name="article_type-s" data-info="0" id="staff" value="0" />
 					<?php }?>
 					<!-- Article Status -->
-					<?php if($admin_user ){?>
+					<?php if($admin_user  || $externalWriter){?>
 					<?php
 						$allStatuses = $adminController->getSiteObjectAll(array('table' => 'article_statuses'));
 						//if($allStatuses && count($allStatuses)){
@@ -712,7 +718,7 @@
 					<div class="row buttons-container">
 						<button type="submit" id="submit" name="submit" class="">SAVE</button>
 						<button type="button" id="preview" name="preview" class="">PREVIEW</button>
-						<?php if( $admin_user || $blogger ){
+						<?php if( $admin_user || $blogger || $externalWriter ){
 							$label = "PUBLISH";
 							$val = 1;
 							if( $blogger  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}

@@ -36,7 +36,7 @@ if($contributorInfo['contributors']){
 	
 	$pageName = $contributorInfoObj['contributor_name'].' | '.$mpArticle->data['article_page_name'];
 
-	$articlesPerPage = 15;
+	$articlesPerPage = 24;
 
 	$totalPages = ceil(count($contributorInfo['articles']['articles']) / $articlesPerPage);
 	if($totalPages > 1){
@@ -178,11 +178,11 @@ if($contributorInfo['contributors']){
 			</section>
 			<?php } ?>
 			<?php include_once($config['include_path'].'pagination.php');?>
-			<?php if (!$detect->isMobile()) { ?>
-			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
-			<?php include_once($config['include_path'].'fromourpartners.php'); ?>
-			<?php include_once($config['include_path'].'aroundtheweb.php'); 
-		}?>
+			<?php //if (!$detect->isMobile()) { ?>
+			<!--<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>-->
+			<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
+			<?php //include_once($config['include_path'].'aroundtheweb.php'); 
+		//}?>
 	</section>
 	<?php if (!$detect->isMobile()) { 
 		include_once($config['include_path'].'rightsidebar.php');

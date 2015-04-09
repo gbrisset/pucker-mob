@@ -81,7 +81,7 @@ if($('body').hasClass('mobile'))  image = 'moblog_mob.jpg';
 if(res != "seen") {
 document.write('<div id="openModal" class="modalDialog">'+
 		'<div id="popup-content">'+
-			'<a href="#close" title="Close" class="close">X</a>'+
+			'<a href="" title="Close" class="close">X</a>'+
 			'<div class="modal-img">'+
 				'<a href="http://www.puckermob.com/admin/register">'+
 					'<img src="http://www.puckermob.com/assets/img/modelboximg/'+image+'"/>'+

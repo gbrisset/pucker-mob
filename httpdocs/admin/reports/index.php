@@ -238,7 +238,7 @@
 					  			
 								$no_cover_in_house = false;
 
-					  			if( $contributor['user_type'] == '6' || $contributor['user_type'] == '1' ){
+					  			if( $contributor['user_type'] == '6' || $contributor['user_type'] == '1' || $contributor['user_type'] == '7' ){
 							  		if( $selected_month > 3 && $selected_year >= 2015 ){
 							  			 $total_rev = 0;
   										 $no_cover_in_house = true;
@@ -265,7 +265,7 @@
 							  		<?php if($contributor['w9_live'] === '1') echo "<br><strong style='color:green;' >W9 Form Sent!</strong>"?>
 							  	</label>
 							  	</td>
-							  	<td><?php echo number_format($total_us_viewers, 2, '.', ','); ?></td>
+							  	<td><?php echo number_format($total_us_viewers, 0, '.', ','); ?></td>
 							  	<td><?php echo number_format($total_us_viewers_by_thousands, 2, '.', ','); ?></td>
 							  	<td><?php echo '$'.$total_rate; ?></td>
 							  	<td class="bold align-right"><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
@@ -276,7 +276,7 @@
 					  <tfoot>
 					  	<tr>
 					  		<td class="align-left bold">TOTAL:</td>
-					  		<td><?php echo '$'.number_format($all_us_viewers, 2, '.', ','); ?></td>
+					  		<td><?php echo number_format($all_us_viewers, 0, '.', ','); ?></td>
 					  		<td><?php echo number_format($all_us_viwers_by_thousand, 2, '.', ','); ?></td>
 					  		<td><?php echo '$'.$total_rate; ?></td>
 					  		<td class="bold align-right"><?php echo '$'.number_format($all_total, 2, '.', ','); ?></td>

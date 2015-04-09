@@ -107,7 +107,7 @@
 				}
 	
 				if( $total == 10) break;
-				if( $writers_arr[$i]['user_type'] == 6 || $writers_arr[$i]['user_type'] == 1 ) continue;
+				if( $writers_arr[$i]['user_type'] == 6 || $writers_arr[$i]['user_type'] == 1 || $writers_arr[$i]['user_type'] == 7 ) continue;
 
 				$contributorId =$writers_arr[$i]['contributor_id'];
 				$contributorName = $writers_arr[$i]['contributor_name'];
@@ -207,7 +207,7 @@
 				<?php }?>
 				
 				<!-- EARNINGS AT A GLANCE -->
-				<?php if($userData['user_type'] != 6 && $userData['user_type'] != 1){?>
+				<?php if($userData['user_type'] != 6 && $userData['user_type'] != 1 && $userData['user_type'] != 7){?>
 				<div id="earnings-info" class="earnings-info mobile-12 small-12">
 					<header>EARNINGS AT A GLANCE</header>
 					<div class="total-earnings left">

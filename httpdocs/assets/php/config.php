@@ -16,11 +16,11 @@ if($local)
 	define("MAIL_PORT", 25);
 	define("IMAGE_UPLOAD_DIR", dirname(dirname(dirname(dirname(__FILE__))))."/subdomains/images/httpdocs/articlesites/puckermob/");
 
-		/*MAIL CHIMP SETTINGS*/
+	/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
 	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0");	
-	//error_reporting(E_ALL);
-	//ini_set('display_errors', '1');
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
 
 	$localIp = 'localhost';
 	$directory = 'projects/pucker-mob/';

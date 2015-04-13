@@ -1639,6 +1639,7 @@ public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesF
 }
 
 public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $articleType = 'all' ) {
+	
 	switch ($order) {
 		case 'az':
 		$order_sql = " ORDER BY a.article_title ASC ";
@@ -1646,16 +1647,19 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 		case 'za':
 		$order_sql = " ORDER BY a.article_title DESC ";
 		break;
-		default:
-		$order_sql = " ORDER BY a.article_id DESC ";
-		break;
+		//default:
+		//$order_sql = " ORDER BY a.article_id DESC ";
+		//break;
 	}
 	switch($articleStatus) {
-		case '2':
-		$order_sql = " ORDER BY a.article_status = 2 DESC, a.article_id ASC ";
+		case '1':
+		$order_sql = " ORDER BY a.article_status = 1 DESC, a.article_id DESC ";
 		break;
 		case '3':
-		$order_sql = " ORDER BY a.article_status = 3 DESC, a.article_id ASC ";
+		$order_sql = " ORDER BY a.article_status = 3 DESC, a.article_id DESC ";
+		break;
+		default:
+		$order_sql = " ORDER BY a.article_status = 1 DESC, a.article_id DESC ";
 		break;
 	}
 
@@ -1663,7 +1667,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date,
-	nc.cat_id
+	nc.cat_id, (select sum(usa_pageviews) from google_analytics_data_new where google_analytics_data_new.article_id = a.article_id GROUP BY google_analytics_data_new.article_id) as us_traffic
 	FROM articles as a
 	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles)
 	ON a_c.article_id = a.article_id
@@ -1681,11 +1685,11 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 		if($articleType == 'bloggers') 	$s .=	" AND a_c.cat_id = 9 ";
 		if($articleType == 'writers' ) 	$s .=	" AND a_c.cat_id != 9 ";
 	}
-
 	$s .= " GROUP BY a.article_id ";
 	$s .= $order_sql;
 	$s .= 	"LIMIT {$limit} 
 	OFFSET {$offset}";	
+
 	$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
 
 	$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);

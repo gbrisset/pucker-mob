@@ -26,15 +26,20 @@
 
 	$articleStatus = '1, 2, 3';
 
-	$artType = 'all';
+	$artType = '';
 	$allCurrent = 'current';
 	$writersCurrent = $bloggersCurrent = '';
-	if($_GET['artype']){
+	if(  isset($_GET['artype']) && $_GET['artype']){
 		$allCurrent = '';
 		$artType = $_GET["artype"];
 		//var_dump($artType);
 		if($artType === "bloggers") $bloggersCurrent = 'current';
 		elseif($artType === "writers")  $writersCurrent = 'current';
+	}
+
+	$sts = '';
+	if(isset($_GET['sts']) && $_GET['sts']){
+		$sts = '?sts='.$_GET['sts'];
 	}
 
 
@@ -63,6 +68,7 @@
 	$pagination = new Pagination($page, $per_page, $total_count);
 	
 	$offset = $pagination->offset();
+
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
 	
 	$admin_user = false;
@@ -101,63 +107,66 @@
 						</div>
 				</form>
 				</section>
+				 <?php 
+					    	$sort = (isset($_GET['sort'])) ? $_GET['sort'] : '';
+					    	$liveClass = '';
+					    	$draftClass = '';
+					    	$sortStatus = 1;
+							if( $sort == 1){
+								$sortStatus = 3; 
+								$liveClass = 'current';
+								$draftClass = '';
+								
+							} elseif( $sort == 3) {
+								$sortStatus = 1;
+								$liveClass = '';
+								$draftClass = 'current';
+								
+							}
+					    ?>
 				<?php if($admin_user){?>
 					<section class="from-diff-users-filter clear">
-					    <div class="columns">
+					    <div class="columns left small-9">
 					     <label>Show Articles From:
-					     	<a class="<?php echo $allCurrent; ?>" href="<?php echo $config['this_admin_url'].'articles/'; ?>">All</a> | 
-						 	<a class="<?php echo $writersCurrent; ?>" href="<?php echo $config['this_admin_url'].'articles/?artype=writers'; ?>">Writers</a> |
-						 	<a class="<?php echo $bloggersCurrent; ?>" href="<?php echo $config['this_admin_url'].'articles/?artype=bloggers'; ?>">Bloggers</a>
+					     	<?php
+					     		$userType_URL = $config['this_admin_url'].'articles/';
+
+					     		if($page > 1){
+					     			$userType_URL .= '?page='.$page;
+					     		}else $userType_URL .= '?page=1';
+
+					     		$order='';
+					     		if (!isset($sortingMethod['order']) || strlen($sortingMethod['order']) == 0){
+									if (isset($sortingMethod)) $order = $sortingMethod['articleStatus'];
+								}
+					     	?>
+					     	<a class="<?php echo $allCurrent; ?>" href="<?php echo $userType_URL.'&sort='.$order.'&artype=' ?>">All</a> | 
+						 	<a class="<?php echo $writersCurrent; ?>" href="<?php echo $userType_URL.'&sort='.$order.'&artype=writers'; ?>">Writers</a> |
+						 	<a class="<?php echo $bloggersCurrent; ?>" href="<?php echo $userType_URL.'&sort='.$order.'&artype=bloggers'; ?>">Bloggers</a>
+					     </label>
+					    </div>
+					   
+					    <div class="columns left small-3 no-padding align-right">
+					     <label>Status:
+					     	<a class="<?php echo $liveClass; ?>" href="<?php  echo $userType_URL.'&sort=1&artype='.$artType; ?>">Live</a> | 
+						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a>
 					     </label>
 					    </div>
 				</section>
 				<?php }?>
 
 				<section id="articles-list" class="margin-top clear">
-					<!--<section class="section-bar left  border-bottom mobile-12 small-12">
-					
-					<div id="right" class="small-9 padding-top right">
-						<div id="sort-by">
-							<input type="hidden" value="<?php echo $article_sort_by; ?>" id="sort-by-value" />
-							<label class="left">Sort By: </label>
-							<ul class="right">
-								<?php
-									$dropDownOmits = [6];
-									foreach($mpArticleAdmin->dropDownInfo as $dropDownObj){
-										if(in_array($dropDownObj['id'], $dropDownOmits)) continue;
-										$li = '<li>';
-											$li .= '<a data-info="'.$dropDownObj['shortname'].'" href="'.$config['this_admin_url'].'articles/';
-											$li .= ($page > 1) ? '?p='.$page.'&sort='.$dropDownObj['shortname'] : '?sort='.$dropDownObj['shortname'];
-											$li .= '">';
-												$li .= $dropDownObj['label'];
-											$li .= '</a>';
-										$li .= '</li>';
-										echo $li;
-									}
-								?>
-							</ul>
-						</div>
-					</div>
-				</section>-->
+				
  				<?php
-					if($articles){
-						//if(isset($_GET['sort'])){
-							$sort = (isset($_GET['sort'])) ? $_GET['sort'] : '';
-						
-							if( $sort == 'az') $sortName = 'za'; else $sortName = 'az';
-							$sortDate = 'mr';
-							if( $sort == 2) $sortStatus = 3; else $sortStatus = 2;
-						//}
-						?>
-					<table>
+					if($articles){ ?>
+					<table class="columns small-12 no-padding">
 						<thead>
 						    <tr>
-						      <th class="mobile-12 small-12"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortName : '?sort='.$sortName;?>">Article Name</a></th>
-						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Added</a></th>
-						      <th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>
-						      <th class="small-2">COMM</th>
-						      <th>SHARES</th>
-						      <th></th>
+						      <th class="columns  mobile-12 small-12 medium-7"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortName : '?sort='.$sortName;?>">Article Name</a></th>
+						      <th class="columns  small-2"><a href="<?php //echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Added</a></th>
+						      <!--<th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>-->
+						      <th  class="columns small-2">U.S. VIEWS</th>
+						      <th   class="columns small-1"></th>
 						    </tr>
 						 </thead>
 						 <tbody>
@@ -170,31 +179,30 @@
 							$article_title = $articleInfo['article_title'];
 							$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
 							$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
-							//$article_date_created =  $articleInfo['creation_date'];
-
+							$article_us_traffic = $articleInfo['us_traffic'];
+						
 							if(file_exists($pathToImage)){
-								$imageUrl = $config['image_url'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
+								$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
 							} else {
-								$imageUrl = $config['image_url'].'/articlesites/sharedimages/puckermob-default-image.jpg';
+								$imageUrl = 'http://images.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
 							}
 
-							//$imageUrl = 'http://localhost:8888/projects/pucker-mob//subdomains/images/httpdocs/articlesites/puckermob/square/3855_tall.jpg';
+						//	$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/6225_tall.jpg';
 							?>
-								<tr id="<?php echo 'article-'.$article_id; ?>">
-								  	<td class="mobile-12 small-12">
+								<tr id="<?php echo 'article-'.$article_id; ?>" class="columns small-12 no-padding">
+								  	<td class="columns mobile-12 small-12  medium-7">
 								  		<div class="article-image mobile-1 small-1">
 											<a href="<?php echo $articleUrl; ?>">
 												<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 											</a>
 										</div>
-										<h2><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 40); ?></a></h2>
+										<h2><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 43); ?></a></h2>
 								  	</td>
-								  	<td class="small-2"><?php echo $article_date_created; ?></td>
-								  	<td class="small-2"><?php echo $article_status; ?></td>
-								  	<td>--</td>
-								  	<td>--</td>	
+								  	<td class="columns  small-2 padding-top-center"><?php echo $article_date_created; ?></td>
+								  	<!--<td class="small-2"><?php echo $article_status; ?></td>-->
+								  	<td  class="columns  small-2 padding-top-center"><?php if(!empty($article_us_traffic)) echo $article_us_traffic; else echo '0'; ?></td>	
 									<!-- REMOVE ARTICLE -->
-									<td>
+									<td   class="columns small-1 padding-top-center">
 										<?php if($admin_user || $blogger ){?>
 											<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
 												<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >

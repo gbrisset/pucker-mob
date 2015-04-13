@@ -37,7 +37,8 @@ $params = [
 				$arrArticles = [];
 				if($articles){
 					foreach( $articles as $article){
-						
+						var_dump($article);
+						echo '<br>';
 						$title = $article[1];
 						$path = $article[0];
 						$pageviews = $article[2];

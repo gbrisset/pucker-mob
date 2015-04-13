@@ -369,7 +369,8 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 #articles-list table tr { border-bottom: 2px solid #ddd;}
 #articles-list table tr td { vertical-align: middle; padding: 0.4rem 0.5rem 0.4rem; text-align: center; font-size: 1rem;}
 #articles-list table tr td:first-child, #articles-list table thead tr th:first-child{ text-align: left;}
-#articles-list table tr td h2 { font-size: 1.2rem; padding: 0; margin-bottom: 0; margin-top: 0;}
+#articles-list table tr td h2 { font-size: 1.2rem; padding: 0; margin-bottom: 0; margin-top: 0; padding-top:0.5rem;}
+#articles-list table tr td.padding-top-center{ padding-top:1.05rem; }
 #articles-list table tr td h2 a, #articles-list table tr th a{ color: #000; outline:none;}
 .article-delete-form{ margin:0;}
 .fa-times{ color: #FF0000; font-size: large;}

@@ -69,7 +69,7 @@
   );
 }
 
-isaFan();
+//isaFan();
 
   // Now that we've initialized the JavaScript SDK, we call 
   // FB.getLoginStatus().  This function gets the state of the

@@ -87,25 +87,48 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- Article Content -->
 		<div class="row clear" style="margin-top: -1rem;">
-		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; overflow: visible !important; "> 
+		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; "> 
 		
 		<?php  //BRANOVATE ABOVE ARTICLE 
-			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-				<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem;">
-				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-				</div>
-		<?php } ?> 
+			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){
+				if(isset($_COOKIE['country']) && $_COOKIE['country'] == 'US'){ ?>
+					<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem;">
+					<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+					</div>
+				<?php }else{ ?>
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- PM Israel Mobile 3: 300x250 -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:300px;height:250px"
+						     data-ad-client="ca-pub-8978874786792646"
+						     data-ad-slot="5497417787"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				<?php }
+			} ?> 
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
 
 		<?php // BRANOVATE BELOW ARTICLE BODY
-		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
-			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
-			<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-			</div>
-		<?php } ?> 
-
+		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){
+			if(isset($_COOKIE['country']) && $_COOKIE['country'] == 'US'){ ?>
+				<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
+				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+				</div>
+			<?php }else{ ?>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- PM Israel Mobile 3: 300x250 -->
+					<ins class="adsbygoogle"
+					     style="display:inline-block;width:300px;height:250px"
+					     data-ad-client="ca-pub-8978874786792646"
+					     data-ad-slot="5497417787"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			<?php }
+		} ?> 	
 
 		<!-- RELATED ARTICLES -->
 		<?php 
@@ -133,7 +156,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="remember-to-share padding-top row padding">
 			<h3>PLEASE REMEMBER TO SHARE</h3>
 		</div>
-		
+
 		<section id="separator-section" class="row no-padding"></section>
 
 		<!-- FROM AROUND THE WEB -->	
@@ -195,8 +218,14 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php if( isset($article_img_credits) && !empty($article_notes)){?>
 		<p><?php echo $article_notes; ?></p>
 		<?php }?>
-
+		
+			<div id="grad"></div>
+			<p class="read-more"><a href="#" class="button">
+				<i class="fa fa-caret-down caret-down-left"></i>Click To Read More<i class="fa fa-caret-down caret-down-right"></i></a>
+			</p>
+		
 		</section>
+
 	</div>
 	
 	

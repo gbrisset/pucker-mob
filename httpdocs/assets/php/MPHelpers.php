@@ -109,9 +109,7 @@ class MPHelpers{
 
 	public function getEmails(){
 		$emails = "fguzman@sequelmediagroup.com";
-		//$emails .= ", msost@mypodstudios.com";
-		//$emails .= ", jmiletsky@mypodstudios.com";
-		//$emails .= ", ptuthill@mypodstudios.com";
+
 		return $emails;
 	}
 
@@ -251,6 +249,17 @@ class MPHelpers{
 			return $link;
 		}
 
+	}
+
+
+	public function geotargeting(){
+		$ip = $_SERVER [ 'REMOTE_ADDR' ]; 
+		
+		if( !isset( $_COOKIE['country'] ) ) {
+			$country = file_get_contents ( 'http://api.hostip.info/country.php?ip=' . $ip ); 
+			setcookie('country', $country, time()+60*60*24*30); //A YEAR
+		}
+		
 	}
 
 

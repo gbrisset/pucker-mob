@@ -213,7 +213,7 @@ $follow = new FollowAuthor($config);
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
-
+$mpHelpers->geotargeting();
 
 //recaptcha public key
 define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");

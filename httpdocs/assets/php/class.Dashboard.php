@@ -178,100 +178,14 @@ class Dashboard{
 				$q = $pdo->prepare($s);
 
 				$row = $q->execute($queryParams);
+
+				$this->con->closeCon();
+
 				return $row; 
 			}else{
 				return false;
 		}
 	}
-
-
-	/*DELETE THIS 
-	public function updateOriginalDataOctuber(){
-		$s = " UPDATE social_media_records 
-					  	   SET facebook_shares_org = facebook_shares, 
-					  	   	   twitter_shares_org = twitter_shares, 
-					           pinterest_shares_org = pinterest_shares, 
-					           google_shares_org = google_shares, 
-					           delicious_shares_org = delicious_shares,
-					           stumbleupon_shares_org = stumbleupon_shares,
-					           linkedin_shares_org = linkedin_shares
-					        WHERE  month = 10 ";
-		$queryParams = [];
-		$pdo = $this->con->openCon();
-
-		$q = $pdo->prepare($s);
-
-		$row = $q->execute($queryParams);
-		return $row; 
-	}
-
-	public function updateOriginalDataNovember(){
-
-		$ids = $this->getArticleIDS();
-
-		foreach($ids as $article ){
-			$facebook_shares = 0;
-			$twitter_shares = 0;
-			$pinterest_shares = 0;
-			$google_shares = 0;
-			$delicious_shares = 0;
-			$stumbleupon_shares = 0;
-			$linkedin_shares = 0;
-
-			$prevData = $this->get_dashboardArticlesPrevMonth( $article['article_id'] , 10, $article['category'] );
-			
-			if($prevData){
-				$prevData = $prevData[0];
-				$facebook_shares = $prevData['facebook_shares'];
-				$twitter_shares = $prevData['twitter_shares'];
-				$pinterest_shares = $prevData['pinterest_shares'];
-				$google_shares = $prevData['google_shares'];
-				$delicious_shares = $prevData['delicious_shares'];
-				$stumbleupon_shares = $prevData['stumbleupon_shares'];
-				$linkedin_shares = $prevData['linkedin_shares'];
-			}
-			
-				$s = " UPDATE social_media_records 
-					  	   SET facebook_shares_org = facebook_shares + $facebook_shares, 
-					  	   	   twitter_shares_org = twitter_shares + $twitter_shares, 
-					           pinterest_shares_org = pinterest_shares + $pinterest_shares, 
-					           google_shares_org = google_shares + $google_shares, 
-					           delicious_shares_org = delicious_shares + $delicious_shares,
-					           stumbleupon_shares_org = stumbleupon_shares + $stumbleupon_shares,
-					           linkedin_shares_org = linkedin_shares + $linkedin_shares 
-					         WHERE month = 11 AND article_id = ".$article['article_id']." AND category = '".$article['category']."' ";
-				$queryParams = [];
-
-				$pdo = $this->con->openCon();
-
-				$q = $pdo->prepare($s);
-
-				$q->execute($queryParams);
-	
-				//}
-		}
-
-
-	}
-
-	public function getArticleIDS(){
-		$s = "select article_id, category from social_media_records where month = 11";
-
-		$queryParams = [];
-		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-		
-		if ($q && isset($q[0])){
-				// If $q is an array of only one row (The set only contains one article), return it inside an array
-			return $q;
-		} else if ($q && !isset($q[0])){
-				// If $q is an array of rows, return it as normal
-			$q = array($q);
-			return $q;
-		} else {
-			return false;
-		}
-	}*/
-	/*DELETE THIS */
 
 	public function get_current_rate( $month = 0 ){
 		if($month == 0 ) $month = date('n');
@@ -355,7 +269,7 @@ class Dashboard{
 
 	//Return All Articles per month for each contributor
 	public function get_dashboardArticles( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month, $year) {
-//var_dump($month, $year, $userArticlesFilter);
+
 		switch ($order) {
 			case 'az':
 			$order_sql = " ORDER BY a.article_title ASC ";
@@ -606,7 +520,7 @@ class Dashboard{
 
 			ON( article_contributor_articles.article_id = social_media_info.article_id ) 
 			";
-//LEFT JOIN ( user_billing_info ) ON (users.user_id = user_billing_info.user_id) 
+			//LEFT JOIN ( user_billing_info ) ON (users.user_id = user_billing_info.user_id) 
 			if(isset($contributor_id) && $contributor_id != 0) {
 				$s .= "	WHERE article_contributor_articles.contributor_id = '".$contributor_id."' ";
 			}
@@ -615,7 +529,7 @@ class Dashboard{
 				   ORDER BY share_revenue DESC ";
 
 
-//var_dump($s); die;
+
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 

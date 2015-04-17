@@ -30,6 +30,8 @@ class MPNavigation{
 						);
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$categorySet = $q->fetchAll();
+		$this->con->closeCon();
+
 		return $categorySet;
 	}
 	public function getFeaturedArticle($catID){
@@ -37,6 +39,7 @@ class MPNavigation{
 		$q = $pdo->query("SELECT article_title, cat_dir_name, article_seo_title, article_id FROM articles INNER JOIN categories ON articles.article_id = categories.cat_dropdown_article_id WHERE categories.cat_id = {$catID}");
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$recipeDetails = $q->fetch();
+		$this->con->closeCon();
 		return $recipeDetails;
 	}
 	public function getFeaturedArticleCategorySlug($articleID){
@@ -44,6 +47,7 @@ class MPNavigation{
 		$q = $pdo->query("SELECT cat_dir_name FROM categories INNER JOIN article_categories ON categories.cat_id = article_categories.cat_id WHERE article_categories.article_id = {$articleID} LIMIT 1");
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$categorySlug = $q->fetch();
+		$this->con->closeCon();
 		return $categorySlug;
 	}
 	public function getCategoryInfoById($catId){
@@ -59,6 +63,7 @@ class MPNavigation{
 						);
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$categorySet = $q->fetchAll();
+		$this->con->closeCon();
 		return array_shift($categorySet);
 	}
 
@@ -76,6 +81,8 @@ class MPNavigation{
 						);
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$categorySet = $q->fetchAll();
+
+		$this->con->closeCon();
 		return $categorySet;
 	}
 
@@ -103,6 +110,9 @@ class MPNavigation{
 						);
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$articleSet = $q->fetch();
+
+		$this->con->closeCon();
+		
 		return $articleSet;		
 	}
 

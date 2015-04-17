@@ -13,7 +13,7 @@
 	if(isset($articles['date_updated'])) $date = date("M d, Y", strtotime($articles['date_updated']));
 	
 	
-	$linkToImage = $config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
+	$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
 
 	?>

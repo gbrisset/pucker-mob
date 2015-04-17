@@ -1419,7 +1419,7 @@ $fun: #f9651b;
 	}
 
 	.sidebar-box .read-more .button{
-		background-color: #000;
+		background-color: #127055;
 		color: #fff !important;
 		width: 100%;
 		min-width: 320px;
@@ -1913,6 +1913,20 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 }
 
+.second-section{
+	  background: #eee;
+	  padding: 1rem 0.5rem;
+	  position: relative;
+	  z-index: 2;
+}
+#second-popular-articles{}
+.second-popular-articles-cont{ padding: 1rem; background: #fff; border: 1px solid #bbb;
+  margin: 0.5rem 1rem; }
+.second-popular-article-title{  background: #eee; padding: 0 1rem;}
+.second-popular-article-title h2{  font-size: 1.2rem;  line-height: 1.4rem;  font-family: OswaldLight;  font-weight: bold; color: #222 !important;}
+.second-popular-article-title h2 a {color: #222 !important;}
+
+.hide-this{ display:none !important; }
 #dd-shares-content {	
   background-color: #fff;
   padding: 1rem;

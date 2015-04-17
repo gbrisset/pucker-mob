@@ -182,8 +182,12 @@ class GoogleAnalyticsData{
 				
 		$rem = $pdo->prepare($remove);
 		$wasremoved = $rem->execute($queryParams);
+
+		$this->con->closeCon();
+
 		return $wasremoved; 
 	}
+
 	public function saveGoogleAnalyticsMostViewArticles( $data ){
 		if(!empty($data) && $data){
 			foreach($data as $article){
@@ -202,6 +206,8 @@ class GoogleAnalyticsData{
 				$ins = $pdo->prepare($insert);
 
 				$row = $ins->execute($queryParams);
+
+				$this->con->closeCon();
 			}
 			return true; 
 		}else{
@@ -230,7 +236,7 @@ class GoogleAnalyticsData{
 						   (`article_id`, `pageviews`, `usa_pageviews`, `pct_pageviews`,  `month`, `year`) 
 						   VALUES (:articleId, $pageviews, $usa_pageviews, $pct_pageviews,  $month, $year) ";
 					}
-//var_dump($s);
+
 				$queryParams = [
 					':articleId' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
 				];
@@ -239,6 +245,8 @@ class GoogleAnalyticsData{
 				$q = $pdo->prepare($s);
 
 				$row = $q->execute($queryParams);
+
+				$this->con->closeCon();
 				return $row; 
 			}else{
 				return false;
@@ -276,6 +284,9 @@ class GoogleAnalyticsData{
 				$q = $pdo->prepare($s);
 
 				$row = $q->execute($queryParams);
+
+				$this->con->closeCon();
+				
 				return $row; 
 			}else{
 				return false;

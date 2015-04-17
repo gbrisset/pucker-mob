@@ -1638,14 +1638,14 @@ if(document.body.id == 'editarticle'){
 				$('select[name="google_desk_ad"]').find('option[value="-1"]').attr("selected",true);
 				//$('select[name="nativo_desk_ad"]').find('option[value="-1"]').attr("selected",true);
 				
-				$('select[name="sharethrough_desk_ad"]').find('option[value="5"]').attr("selected",true);
+				//$('select[name="sharethrough_desk_ad"]').find('option[value="5"]').attr("selected",true);
 				
 				if(isListArticle){ 
 					$('select[name="carambola_desk_ad"]').find('option[value="6"]').attr("selected",true);
 					$('select[name="sharethrough_desk_ad"]').find('option[value="2"]').attr("selected",true);
 				}else {
 					$('select[name="carambola_desk_ad"]').find('option[value="5"]').attr("selected",true);
-					$('select[name="sharethrough_desk_ad"]').find('option[value="3"]').attr("selected",true);
+					$('select[name="sharethrough_desk_ad"]').find('option[value="2"]').attr("selected",true);
 				}
 
 				//$('select[name="branovate_desk_ad"]').find('option[value="-1"]').attr("selected",true);

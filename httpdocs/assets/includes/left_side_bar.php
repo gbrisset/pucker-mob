@@ -14,7 +14,7 @@
 
 		<div class="left-side-img-content">
 			<a class="tooltips" href="<?php echo $article_url; ?>" >
-				<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id']; ?>_tall.jpg" alt="<?php echo $article['article_title']; ?>" style="width:80px; height:43px;" />
+				<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id']; ?>_tall.jpg" alt="<?php echo $article['article_title']; ?>" style="width:80px; height:43px;" />
 				<span><?php echo $article['article_title']; ?></span>
 			</a>
 		</div>

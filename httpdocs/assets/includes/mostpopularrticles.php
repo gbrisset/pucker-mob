@@ -31,7 +31,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 								$mostReadArticle .= '<div class="row imageContainer" data-equalizer="">';
 									$mostReadArticle .= '<div class="small-12 columns imageCenterer" data-equalizer-watch>';
 										//$mostReadArticle .= '<img src="'.$config['image_url'].'articlesites/puckermob/large/'.$article['a_id'].'_tall.jpg" alt="'.$article['article_title'].'" />';
-										$mostReadArticle .= '<img src="'.$config['image_url'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg" alt="'.$article['title'].'" />';
+										$mostReadArticle .= '<img src="http://cdn.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg" alt="'.$article['title'].'" />';
 
 									$mostReadArticle .= '</div>';
 								$mostReadArticle .= '</div>';

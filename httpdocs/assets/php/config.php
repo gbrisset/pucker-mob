@@ -2,6 +2,8 @@
 $local = 1;
 $version = "";
 
+header('Cache-Control: max-age=3600');
+
 if($local)
 {
 	define("DB_SERVER", "localhost");

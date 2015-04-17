@@ -185,7 +185,7 @@ body.sml-open .toggle-slide-left {
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">
 					<div class="article-image small-6 left">
 						<a href="<?php echo $linkToArticle; ?>">
-							<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id']?>_tall.jpg" alt="<?php echo $article['title']; ?>" />
+							<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id']?>_tall.jpg" alt="<?php echo $article['title']; ?>" />
 						</a>
 					</div>
 					<div class="article-title small-6 left">
@@ -222,7 +222,7 @@ body.sml-open .toggle-slide-left {
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">
 					<div class="article-image small-6 left">
 						<a href="<?php echo $linkToArticle; ?>">
-							<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id']?>_tall.jpg" alt="<?php echo $article['article_title']; ?>" />
+							<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id']?>_tall.jpg" alt="<?php echo $article['article_title']; ?>" />
 						</a>
 					</div>
 					<div class="article-title small-6 left">

@@ -89,19 +89,19 @@ if(!is_null($categoryInfo)){
 		<!-- MOBILE LEFT TAP -->
 		<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
-		<main id="main" class="row panel sidebar-on-right" role="main" style="<?php echo $style; ?>">
+	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php echo $style; ?>">
 			
-			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
-				<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
+		<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
+			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			
-				<!-- ARTICLE CONTENT -->
-				<?php 
-					if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
-						include_once($config['template_path'].'multi_page_article.php');
-					} else {
-						include_once($config['template_path'].'single_page_article.php');
-					}
-				?>
+			<!-- ARTICLE CONTENT -->
+			<?php 
+				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
+					include_once($config['template_path'].'multi_page_article.php');
+				} else {
+					include_once($config['template_path'].'single_page_article.php');
+				}
+			?>
 		
 				<!-- SMARTIES PROMOTION -->
 			    <?php if( $promotedArticle ){?>
@@ -114,29 +114,55 @@ if(!is_null($categoryInfo)){
 			        <!-- End of JavaScript Tag -->
 			      </div>
 			     <?php } ?>
+			
+			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
 				<hr>
 				<?php include_once($config['include_path'].'similararticles.php');?>
-				<div class="ad-unit hide-for-print">
+
+				<div class="ad-unit hide-for-print clear padding-top">
 					<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
 					<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
 				</div>
+			<?php } ?>	
+			
+			
 			
 				
+			<!--</div>-->
+			
+			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
+				<!-- COMMENTS BOX -->
+				<?php include_once($config['include_path'].'disqus.php'); ?>
+				<hr>
+			<?php }?>
+		
+		</section>
+		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
+		<section class="clear second-section">
+		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
+			<?php if(!$promotedArticle){ ?>
+				<div class="hide-for-print margin-top ads">
+					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+					<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+				</div>
+			<?php }?>
+
+			<!-- 10  MOST RECENT ARTICLES ADDED -->
+			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
+
+			<div class="ad-unit hide-for-print clear padding-top">
+				<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
+				<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
 			</div>
-			<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
+		<?php }?>
+	</section>
 
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
-			<hr>
-
-			</section>
-</main>
+	</main>
 <?php include_once($config['include_path'].'footer.php');?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
 
 <!-- MODAL BOX POPUP -->
 <?php if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
-
 
 </body>
 </html>

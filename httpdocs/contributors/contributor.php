@@ -133,7 +133,7 @@ if($contributorInfo['contributors']){
 					}
 
 					$articleDesc = (isset($article['article_desc']) && strlen($article['article_desc'])) ? $article['article_desc'] : $article['article_body'];
-					$linkToImage = 'http://images.puckermob.com/articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$article['article_id'].'_tall.jpg';
+					$linkToImage = 'http://cdn.puckermob.com/articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$article['article_id'].'_tall.jpg';
 					$date = date("M d, Y", strtotime($article['creation_date']));
 					$linkToContributor = $config['this_url'].'contributors/'.$article['contributor_seo_name'];
 					?>

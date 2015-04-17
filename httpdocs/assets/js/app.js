@@ -219,6 +219,57 @@ function resizeContentByscreenSize(){
 		}
 	};
 
+	/*$('.facebook-comments-button').on('click', function(e){
+		e.preventDefault();
+
+		$(this).css('background', '#000');
+		$('.fb-comments').removeClass('hide-this').slideToggle();
+
+	});*/
+
+	//READ MORE 
+if($('body').hasClass('mobile')) {
+	var $el, $ps, $up, totalHeight;
+	var parentOrgHeight = $('#article-content').outerHeight();
+	var wishDisplayHeight = parentOrgHeight * 0.55;
+	$('#article-content').height(wishDisplayHeight);
+
+	$(".sidebar-box .button").click(function(e) {
+		e.preventDefault();		
+		// IE 7 doesn't even get this far.
+								
+		totalHeight = 0
+			
+		$el = $(this);
+		$p  = $el.parent();
+		$up = $p.parent();
+		$children = $up.children();
+		$shTAdHeight = $('.inarticle-ad').outerHeight();
+		
+		$children.each(function(){
+			totalHeight += $(this).outerHeight();
+		});
+		
+		totalHeight +=  $shTAdHeight;
+										
+		$up.css({
+				// Set height to prevent instant jumpdown when max height is removed
+				"height": $up.height(),
+				"max-height": 9999
+		 });
+		$up.animate({
+				"height": "auto"
+		 },2000);
+					
+		// fade out read-more
+		$p.fadeOut();
+		$('#grad').fadeOut();
+						
+		// prevent jump-down
+		return false;
+						
+	});
+}
 
 	Foundation.utils.image_loaded(Foundation.utils.S('#aside img'), function(){
 		asideHeight.popular = poparticles.height();
@@ -426,18 +477,21 @@ function resizeContentByscreenSize(){
 			//inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, tag);	
 
 			//NATIVO
-			if( country && country == 'US'){
+			if( country && country == 'US'  || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativo, tag);
 			}else{
 				inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativoothercountry, tag);
 			}
 
 			//SHARETHROUG
-			if( country && country == 'US'){
+			if( country && country == 'US' || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, tag);	
 			}else{	
 				inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
 			}
+
+			//KIXER
+			inBodyAd.loadInArticleAd( 'article-content', 7, 0, 	"<div id='__kx_ad_1073'></div><script type='text/javascript' language='javascript'>var kx_ad_slots = kx_ad_slots || []; (function () { var slot = 1073; var h = false;__kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') {__kx_ad_start();} else { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); }}; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);}})();</script>", tag);
 
 			//GOOGLE TEST
 			//inBodyAd.loadInArticleAd( 'article-content', nativo_position, 0, mobilead[adPage].inarticlegoogletest, tag);
@@ -565,11 +619,11 @@ function resizeContentByscreenSize(){
 			//	inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);
 			//}
 			if(carambola_position && carambola_position != -1){
-				if( country && country == 'US'){
+				//if( country && country == 'US'){
 					inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);
-				}else{
-					inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambolaothercountry, tag);
-				}
+				//}else{
+				//	inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambolaothercountry, tag);
+				//}
 			}
 
 			//SHARETHROUGH
@@ -971,51 +1025,6 @@ function isOnScreen( element ) {
 	);*/
 
 
-
-
-//READ MORE 
-if($('body').hasClass('mobile')) {
-	var $el, $ps, $up, totalHeight;
-	var parentOrgHeight = $('#article-content').outerHeight();
-	var wishDisplayHeight = parentOrgHeight * 0.5;
-	$('#article-content').height(wishDisplayHeight);
-
-	$(".sidebar-box .button").click(function() {
-				
-		// IE 7 doesn't even get this far.
-								
-		totalHeight = 0
-			
-		$el = $(this);
-		$p  = $el.parent();
-		$up = $p.parent();
-		$children = $up.children();
-		$shTAdHeight = $('.inarticle-ad').outerHeight();
-		
-		$children.each(function(){
-			totalHeight += $(this).outerHeight();
-		});
-		
-		totalHeight +=  $shTAdHeight;
-										
-		$up.css({
-				// Set height to prevent instant jumpdown when max height is removed
-				"height": $up.height(),
-				"max-height": 9999
-		 });
-		$up.animate({
-				"height": "auto"
-		 },2000);
-					
-		// fade out read-more
-		$p.fadeOut();
-		$('#grad').fadeOut();
-						
-		// prevent jump-down
-		return false;
-						
-	});
-}
 
 
 $('#follow-author').click(function(e){

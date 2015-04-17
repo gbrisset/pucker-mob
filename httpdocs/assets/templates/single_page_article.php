@@ -50,7 +50,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php } ?>
 			<div id="article-image" class="small-12 columns no-padding">
 				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
-				<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
 		</div>
 		
@@ -58,7 +58,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<h1 style="margin: 0.5rem 0;"><?php echo $article_title; ?></h1>
 		
 		<!-- SOCIAL DESKTOP -->
-
 		<section id="article-content-2">
 			<!-- Social Media Icons -->
 			<div class="row social-media-container  padding-bottom" style=" display:block !important;">
@@ -70,7 +69,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</a> 
 				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
 			</div>
-		
 		
 		<!-- ABOUT THE AUTHOR -->
 		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
@@ -87,48 +85,26 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- Article Content -->
 		<div class="row clear" style="margin-top: -1rem;">
+		
 		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; "> 
 		
 		<?php  //BRANOVATE ABOVE ARTICLE 
-			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){
-				if(isset($_COOKIE['country']) && $_COOKIE['country'] == 'US'){ ?>
-					<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem;">
-					<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-					</div>
-				<?php }else{ ?>
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<!-- PM Israel Mobile 3: 300x250 -->
-						<ins class="adsbygoogle"
-						     style="display:inline-block;width:300px;height:250px"
-						     data-ad-client="ca-pub-8978874786792646"
-						     data-ad-slot="5497417787"></ins>
-						<script>
-						(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-				<?php }
-			} ?> 
+			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
+				<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem;">
+				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+				</div>
+		<?php } ?> 
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
 
 		<?php // BRANOVATE BELOW ARTICLE BODY
-		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){
-			if(isset($_COOKIE['country']) && $_COOKIE['country'] == 'US'){ ?>
-				<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
-				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-				</div>
-			<?php }else{ ?>
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- PM Israel Mobile 3: 300x250 -->
-					<ins class="adsbygoogle"
-					     style="display:inline-block;width:300px;height:250px"
-					     data-ad-client="ca-pub-8978874786792646"
-					     data-ad-slot="5497417787"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			<?php }
-		} ?> 	
+		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
+			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
+			<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+			</div>
+		<?php } ?> 
+
 
 		<!-- RELATED ARTICLES -->
 		<?php 
@@ -156,28 +132,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="remember-to-share padding-top row padding">
 			<h3>PLEASE REMEMBER TO SHARE</h3>
 		</div>
-
-		<section id="separator-section" class="row no-padding"></section>
-
-		<!-- FROM AROUND THE WEB -->	
-		<?php include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
 		
-		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
-		<?php if(!$promotedArticle){ ?>
-			<div class="hide-for-print padding-top ads">
-				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-			</div>
-		<?php }?>
-
-		<?php if(!$promotedArticle){ ?>
-		<section class="nativo-ad padding-top">
-			<div class="nativo"></div> 
-		</section>
-	<?php } ?>
-	
+		
+		<!-- FROM AROUND THE WEB -->	
+		<?php //include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
+		
 		<!-- KIXER -->
-		<!-- Start Below Article -->
+		<!-- Start Below Article 
 			<div id='__kx_ad_821' class="padding-top clear"></div>
 			<script type="text/javascript" language="javascript">
 			var __kx_ad_slots = __kx_ad_slots || [];
@@ -204,11 +165,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					x.parentNode.insertBefore(s, x);
 				}
 			})();
-			</script>
+			</script>-->
 		<!-- End Below Article -->
 		
-		<hr class="padding-top">
-				
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
@@ -218,41 +177,49 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php if( isset($article_img_credits) && !empty($article_notes)){?>
 		<p><?php echo $article_notes; ?></p>
 		<?php }?>
-		
-			<div id="grad"></div>
-			<p class="read-more"><a href="#" class="button">
-				<i class="fa fa-caret-down caret-down-left"></i>Click To Read More<i class="fa fa-caret-down caret-down-right"></i></a>
-			</p>
-		
-		</section>
 
+		<!-- COMMENTS BOX -->
+		<?php include_once($config['include_path'].'disqus.php'); ?>
+
+		<!-- READ MORE MOBILE -->
+		<div id="grad"></div>
+		<p class="read-more" style="margin-bottom:0 !important;"><a href="#" class="button">CONTINUE READING</a></p>
+
+		<section id="separator-section" class="row no-padding"></section>
+
+		
+
+		</section>
 	</div>
 	
-	
-	<!-- COMMENTS BOX -->
-	<?php include_once($config['include_path'].'disqus.php'); ?>
-	
-	<?php  
-		if(!$promotedArticle){ ?>	
-			<!-- GOOGLE AD UNIT MOBILE -->
-			<div class="hide-for-print row no-padding padding-top padding-bottom" style="text-align:center;">
-		
-			</div>
-			
-	<?php }else{?>
+	<!-- SMARTIES PROMOTION -->
+	<?php  if($promotedArticle){ ?>	
 		<div class="hide-for-print row half-padding padding-top padding-bottom">
-	    	<!-- SMARTIES PROMOTION -->
-	        <!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
-	        <script language="javascript"><!--
-	        document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
-	        //-->
-	        </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
-	        <!-- End of JavaScript Tag -->
-	    </div>
+		    	
+		<!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
+		<script language="javascript"><!--
+		        document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+		//-->
+		</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
+		<!-- End of JavaScript Tag -->
+		</div>
     <?php } ?>
-
 	
 	</section>
+	
+	<!--<section class="">-->
+	<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
+		<!--<?php if(!$promotedArticle){ ?>
+			<div class="hide-for-print margin-top ads">
+				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			</div>
+		<?php }?>-->
+
+		<!-- 10  MOST RECENT ARTICLES ADDED -->
+		<?php //include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
+<!--	</section> -->
+
 </article>
 
 <?php }else{?>
@@ -304,7 +271,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php } ?>
 			<div id="article-image" class="small-12 columns half-padding-right-on-lg padding-top">
 				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
-				<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
 		</div>
 		

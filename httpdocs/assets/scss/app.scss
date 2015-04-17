@@ -1914,17 +1914,20 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
 .second-section{
-	  background: #eee;
-	  padding: 1rem 0.5rem;
-	  position: relative;
-	  z-index: 2;
+  background: #eee;
+  position: relative;
+  top: -15px;
+  border-top: 1px solid #bbb;
+  padding-top:1.5rem;
+  float:left;
 }
 #second-popular-articles{}
-.second-popular-articles-cont{ padding: 1rem; background: #fff; border: 1px solid #bbb;
-  margin: 0.5rem 1rem; }
+.second-popular-articles-cont{ padding: 0.7rem; background: #fff; border: 1px solid #bbb;
+  margin: 0.25rem 1rem; }
 .second-popular-article-title{  background: #eee; padding: 0 1rem;}
 .second-popular-article-title h2{  font-size: 1.2rem;  line-height: 1.4rem;  font-family: OswaldLight;  font-weight: bold; color: #222 !important;}
 .second-popular-article-title h2 a {color: #222 !important;}
+.second-article-date span{   position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; }
 
 .hide-this{ display:none !important; }
 #dd-shares-content {	
@@ -1937,4 +1940,14 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   width: 33.57rem;
   display: none;
   color: #000;
+}
+
+.medium-index{
+	z-index:15 !important;
+}
+.high-index{
+	z-index:100002 !important;
+}
+.low-index{
+	z-index:2 !important;
 }

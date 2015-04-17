@@ -91,7 +91,7 @@ if(!is_null($categoryInfo)){
 		
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php echo $style; ?>">
 			
-		<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
+		<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			
 			<!-- ARTICLE CONTENT -->
@@ -138,10 +138,11 @@ if(!is_null($categoryInfo)){
 		
 		</section>
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
-		<section class="clear second-section">
+		
+		<section class="clear second-section low-index">
 		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
 			<?php if(!$promotedArticle){ ?>
-				<div class="hide-for-print margin-top ads">
+				<div class="columns hide-for-print padding-top ads">
 					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 					<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 				</div>
@@ -150,7 +151,7 @@ if(!is_null($categoryInfo)){
 			<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
-			<div class="ad-unit hide-for-print clear padding-top">
+			<div class="columns ad-unit hide-for-print clear padding padding-top align-center">
 				<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
 				<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
 			</div>
@@ -192,32 +193,26 @@ if(!is_null($categoryInfo)){
 
 
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		
-		
+			
 		<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			<?php 
 			if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
-				include_once($config['template_path'].'multi_page_article.php');?>
-			
-			<?php } else {
-				include_once($config['template_path'].'single_page_article.php'); ?>
-				<?php if( !$promotedArticle ){ ?>
-				
-			  	<?php } ?>
-			<?php } ?>
+				include_once($config['template_path'].'multi_page_article.php');
+			 } else {
+				include_once($config['template_path'].'single_page_article.php'); 
+			} ?>
 
 			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
 			<hr>
 			<?php }?>
+			
 			<!-- Setting the Poll -->			
 			<?php 
 			if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>
-			<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="<?php echo $articleInfoObj['article_poll_id']; ?>"></script>
-			
+				<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="<?php echo $articleInfoObj['article_poll_id']; ?>"></script>
 			<?php }?>
-
 
 			<!-- Like us on FB --> 
 			<?php if(!$detect->isMobile()){?>
@@ -233,7 +228,9 @@ if(!is_null($categoryInfo)){
 			<hr>
 			<?php }?>
 			<?php }?>
-		
+			<!-- ALSO IN CATEGORY -->
+			<?php include_once($config['include_path'].'similararticles.php');?>
+			
 			<!-- Prev & Next Articles
 			<?php //include_once($config['include_path'].'prevnextarticles.php'); ?> -->
 
@@ -247,11 +244,9 @@ if(!is_null($categoryInfo)){
 				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 			</section>
 			<hr>-->
-			<!-- ALSO IN CATEGORY -->
-			<?php include_once($config['include_path'].'similararticles.php');?>
 			
 			
-			
+					
 		
 			<!-- AROUND THE WEB -->
 			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
@@ -285,10 +280,6 @@ if(!is_null($categoryInfo)){
 			<hr>
 			<?php }?>
 			
-			
-			<!-- ABOUT THE AUTHOR -->
-			<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
-
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php');?>
 

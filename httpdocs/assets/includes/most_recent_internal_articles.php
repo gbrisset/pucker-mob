@@ -4,7 +4,6 @@ if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articl
 	$recentArticles = $mpArticle->getLast10Articles( $articleInfoObj['article_id'] );
 }
 
-
 if( isset($recentArticles) && $recentArticles ){ ?>
 	<section id="second-popular-articles" class="columns small-12 no-padding">
 	<?php 
@@ -15,7 +14,7 @@ if( isset($recentArticles) && $recentArticles ){ ?>
 		}
 
 		foreach($recentArticles as $article){	
-			$articleUrl = 'http://www.puckermob.com'.$article['cat_dir_name'].'/'.$article['article_seo_title'];
+			$articleUrl = 'http://www.puckermob.com/'.$article['cat_dir_name'].'/'.$article['article_seo_title'];
 			$imgurl = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';	
 			$articletitle = $article['article_title'];	
 			$date = date("M d, Y", strtotime($article['date_updated']));
@@ -43,12 +42,12 @@ if( isset($recentArticles) && $recentArticles ){ ?>
 			</div>
 		</div>
 		
-		<?php if($articleNumber == 3 ){ 
+		<?php if($articleNumber == 2 ){ 
 		 if(!$promotedArticle){ ?>
 		  <!-- NATIVO 2ND AD -->
-			<section class="nativo-ad padding-top">
+			<div class="columns small-11 nativo-ad">
 				<div class="nativo"></div> 
-			</section>
+			</div>
 		<?php } 
 		 }
 					

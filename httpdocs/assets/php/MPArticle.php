@@ -775,7 +775,7 @@ public function getLast10Articles( $articleID ){
 	FROM articles INNER JOIN ( categories, article_categories ) 
 	ON ( articles.article_id = article_categories.article_id )
 	AND ( article_categories.cat_id = categories.cat_id )
-	WHERE articles.article_id != $articleID 
+	WHERE articles.article_status = 1 AND articles.article_id != $articleID AND article_categories.cat_id != 9 
 	ORDER BY articles.article_id DESC 
 	LIMIT 10 ";
 

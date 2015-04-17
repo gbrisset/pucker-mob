@@ -185,10 +185,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div id="grad"></div>
 		<p class="read-more" style="margin-bottom:0 !important;"><a href="#" class="button">CONTINUE READING</a></p>
 
-		<section id="separator-section" class="row no-padding"></section>
-
+		<!--<section id="separator-section" class="row no-padding"></section>-->
 		
-
 		</section>
 	</div>
 	

@@ -22,7 +22,7 @@ if( isset($recentArticles) && $recentArticles ){ ?>
 			$mostReadArticle = '';
 		?>
 		
-		<div class="columns small-11 second-popular-articles-cont" id="<?php echo 'article-'.$articleNumber; ?>">
+		<div class="columns small-11 second-popular-articles-cont article-id" id="<?php echo 'article-'.$articleNumber; ?>"  data-info-url="<?php echo $articleUrl; ?>" >
 			<div class="row imageContainer" id="<?php echo 'article-'.$articleNumber; ?>">
 				<div class="small-12 columns imageCenterer">
 					<a  class="prefetch" href="<?php echo $articleUrl; ?>" >
@@ -37,8 +37,9 @@ if( isset($recentArticles) && $recentArticles ){ ?>
 				    </a>
 				</h2>
 			</div>
-			<div class="second-article-date">
-				<span ><?php echo $date; ?></span>
+			<div class="second-article-date small-12 clear">
+				<label class="small-6" ><?php echo $date; ?></label>
+				<label class="small-6 span-shares-holder"></label>
 			</div>
 		</div>
 		

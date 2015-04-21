@@ -1268,6 +1268,28 @@ public function getFeatured($args = []){
 			return $s; 
 		}
 
+		public function getSocialMediaShares( $limit ){
+
+			$query = "SELECT article_id , 
+							( facebook_shares_org + facebook_likes_org + twitter_shares_org + pinterest_shares_org + 
+							  google_shares_org + linkedin_shares_org + stumbleupon_shares_org ) as total 
+					  FROM `social_media_records` 
+					  GROUP BY article_id 
+					  ORDER BY article_id 
+					  DESC ";
+		
+			if(isset($limit) && $limit > 0 ) $query .= " LIMIT $limit ";
+
+			$queryParams = [];
+			$q = $this->performQuery(['queryString' => $query, 'queryParams' => $queryParams]);
+	
+			if ($q ){
+				return $q;
+			} else {
+				return false;
+			}		
+		}
+
 		//NOT IN USE ON PUCKERMOB
 		public function updateFBShares($count, $article_id){
 			if( $count == 0 ) $count = 1;

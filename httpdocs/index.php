@@ -8,12 +8,12 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
-<body id="home" class="mobile">
+<body id="home" class="mobile background-eee">
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
 
 	<!-- MOBILE LEFT TAP -->
-	<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
+	<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-11 columns translate-fix sidebar-main-left">

@@ -1,9 +1,10 @@
 <aside id="left-aside" class="fixed-width-sidebar column no-padding hide-for-print show-on-large-up">
 	<?php 
 	//MOBLOGS ARTICLES
-	$moblog_articles = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );
 
-	//var_dump($moblog_articles);
+	if( isset($articleInfoObj) && $articleInfoObj) $moblog_articles = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );
+	else $moblog_articles = $mpArticle->getMoBlogsArticles(  );
+
 	?>
 	<div class="div-left-cont">
 

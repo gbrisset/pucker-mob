@@ -1,0 +1,11 @@
+#second-popular-articles h3{ font-family: OswaldRegular;}
+.second-article-date label {
+  position: relative;
+  text-transform: uppercase;
+  top: 5px;
+  font-size: 0.8rem;
+  color: #aaa;
+  width: 49%;
+}
+
+.second-article-date .span-shares-holder{ text-align: right;}

@@ -1,11 +1,12 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', '1');
+//var_dump($_SERVER);
+
 
 require 'config.php';
 require 'class.GoogleAnalyticsApi.php';
 require 'class.GoogleAnalyticsData.php';
-
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 $GoogleAnalyticsApi = new GoogleAnalyticsApi($config);
 $GoogleAnalyticsData = new GoogleAnalyticsData($config);
 
@@ -19,13 +20,13 @@ $month= date('n');
 $year = date('Y');
 $arrArticle = $GoogleAnalyticsData->getArticlesNew();
 
-				$articles_pageviews_from_ga = $analytics->data_ga->get('ga:88041867', '2015-03-01', '2015-03-31', 'ga:pageviews', array(
+				$articles_pageviews_from_ga = $analytics->data_ga->get('ga:88041867', $startDate, $endDate, 'ga:pageviews', array(
 				  		'dimensions'=> 'ga:pagePath,ga:pageTitle',
 				  		'filters'=>'ga:country!=United States',
 				  		'sort'=> '-ga:pageviews'
 				));
 
-				$articles_pageviews_from_ga_USA = $analytics->data_ga->get('ga:88041867', '2015-03-01', '2015-03-31', 'ga:pageviews', array(
+				$articles_pageviews_from_ga_USA = $analytics->data_ga->get('ga:88041867', $startDate, $endDate, 'ga:pageviews', array(
 				  		'dimensions'=> 'ga:pagePath,ga:pageTitle',
 				  		'filters'=>'ga:country==United States',
 				  		'sort'=> '-ga:pageviews'

@@ -1,5 +1,5 @@
-
-<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/modernizr.min.js"></script>
+<?php //echo $config['this_url']; ?>
+<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/modernizr-2.5.3.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/foundation.min.js"></script>
@@ -35,7 +35,7 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-  <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/iframeResizer.min.js"></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
       <?php //if(  isset($promotedArticle) && !$promotedArticle && isset($has_sponsored) && !$has_sponsored){ ?>
 
    <!--[if !IE]>
@@ -121,13 +121,12 @@
 <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
 
 <!-- INFO LINK -->
-<?php if (!$local){?>
 <script type="text/javascript">
   var infolinks_pid = 2431692;
   var infolinks_wsid = 0;
 </script>
 <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
-<?php }?>
+
 
 <!-- NETSEER AD IN-IMAGE -->
 <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>

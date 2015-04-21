@@ -98,14 +98,19 @@ function resizeContentByscreenSize(){
 	var ad = {
 
 		home: {
-			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243108/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243109/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247637/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243108/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243109/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247637/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf3: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247638/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214360/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285623/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
-
+			//footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214360/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285623/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+			header: '',
+			atf: '',
+			btf1: '',
+			btf2: '',
+			//btf3: '',
+			footer: ''
 		},
 		category: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243116/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
@@ -114,18 +119,18 @@ function resizeContentByscreenSize(){
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247639/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf3: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247640/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214368/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285606/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
+			//flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285606/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
 
 		},
 		articleslide: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273034/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273028/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			atfleft:'<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273032/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			atfright:'<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273029/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//atfleft:'<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273032/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//atfright:'<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273029/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273031/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273030/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273033/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285630/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285630/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			inarticlesharet: '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 			inarticlecarambola: '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>',
 			inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3403405783"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
@@ -138,7 +143,7 @@ function resizeContentByscreenSize(){
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243115/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247641/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243113/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285586/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
+			//flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285586/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			inarticlesharet: '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 			inarticlecarambola: '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>',
 		    inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3403405783"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
@@ -198,16 +203,14 @@ function resizeContentByscreenSize(){
 			inarticle: '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 			inarticleadblade: '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>',
 			inarticlegoogle:'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
+			inarticlegoogletest: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6120722987"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',	
 			inarticlemopub:'<script type="text/javascript">mopub_ad_unit = "97dd84c12ded49899e4c7636a63773ac"; mopub_ad_width = 300; mopub_ad_height = 250; mopub_keywords = "custom keywords";<\/script><script src="http://ads.mopub.com/js/client/mopub.js"><\/script>',
 			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',
-			inarticlegoogletest: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:234px;height:60px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3014419783"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',	
 
 			//inarticlebranovate: '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>',
 			//inarticlebranovate: '<div id="119xpg4yi2pn8"></div><script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=js&divid=119xpg4yi2pn8" type="text/javascript"></script><noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>',
 			inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
-			inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 			inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
-			inarticlenativoothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1067218180" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 			
 
 		},
@@ -218,14 +221,20 @@ function resizeContentByscreenSize(){
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273455/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 		}
 	};
-
-	/*$('.facebook-comments-button').on('click', function(e){
-		e.preventDefault();
-
+	$('#fb-comments-box').slideUp('slow');
+	$('.facebook-comments-button').on('click', function(e){
 		$(this).css('background', '#000');
-		$('.fb-comments').removeClass('hide-this').slideToggle();
 
-	});*/
+		if( $('#fb-comments-box').hasClass('hide-this')){
+			$('#fb-comments-box').removeClass('hide-this').addClass('show-this');
+			$('#fb-comments-box').css('display', 'inline-height');
+		}else{
+			$('#fb-comments-box').removeClass('show-this').addClass('hide-this');
+			$('#fb-comments-box').css('display', 'none');
+		}
+
+
+	});
 
 	//READ MORE 
 if($('body').hasClass('mobile')) {
@@ -518,10 +527,10 @@ $('#menu-options li').on('click', function(e){
 			}
 
 			//KIXER
-			inBodyAd.loadInArticleAd( 'article-content', 7, 0, 	"<div id='__kx_ad_1073'></div><script type='text/javascript' language='javascript'>var kx_ad_slots = kx_ad_slots || []; (function () { var slot = 1073; var h = false;__kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') {__kx_ad_start();} else { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); }}; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);}})();</script>", tag);
+			//inBodyAd.loadInArticleAd( 'article-content', 7, 0, 	"<div id='__kx_ad_1073'></div><script type='text/javascript' language='javascript'>var kx_ad_slots = kx_ad_slots || []; (function () { var slot = 1073; var h = false;__kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') {__kx_ad_start();} else { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); }}; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);}})();</script>", tag);
 
-			//GOOGLE TEST
-			//inBodyAd.loadInArticleAd( 'article-content', nativo_position, 0, mobilead[adPage].inarticlegoogletest, tag);
+			//GOOGLE 2nd ad
+			inBodyAd.loadInArticleAd( 'article-content', 7, 0, mobilead[adPage].inarticlegoogletest, tag);
 			
 		}
 
@@ -537,8 +546,8 @@ $('#menu-options li').on('click', function(e){
 
 	}
 
-	console.log("BROWSER WIDTH: ");
-		console.log($(window).width());
+//		console.log("BROWSER WIDTH: ");
+//		console.log($(window).width());
 
 		//HIDE LEFT SIDE BAR WHEN BROWSER IS LESS THAT 1030 px.
 		if( $(window).width() < 1050 ) $('#left-aside').hide();
@@ -550,15 +559,15 @@ $('#menu-options li').on('click', function(e){
 			ad: {
 				header: document.getElementById("header-ad"),
 				atf: document.getElementById("atf-ad"),
-				atfleft: document.getElementById("atfleft-ad"),
-				atfright: document.getElementById("atfright-ad"),
+				//atfleft: document.getElementById("atfleft-ad"),
+				//atfright: document.getElementById("atfright-ad"),
 				btf1: document.getElementById("btf1-ad"),
 				btf2: document.getElementById("btf2-ad"),
 				btf3: document.getElementById("btf3-ad"),
 				footer: document.getElementById("footer-ad"),
 				lift: document.getElementById("lift-ad"),
 				medianet: document.getElementById("medianet-ad"),
-				flyatf: document.getElementById("flyatf-ad"),
+				//flyatf: document.getElementById("flyatf-ad"),
 			}
 		};
 		var hasSponsored = $("#has-sponsored-by").val();
@@ -569,8 +578,8 @@ $('#menu-options li').on('click', function(e){
 		if(browser_width < 740) {
 			loadAd(select.ad.header, mobilead[adPage].header);
 		} else {
-			loadAd(select.ad.header, ad[adPage].header);
-			loadAd(select.ad.footer, ad[adPage].footer);
+			//loadAd(select.ad.header, ad[adPage].header);
+		    //	loadAd(select.ad.footer, ad[adPage].footer);
 			if(adPage === 'category' && page != 'writeforus') {
 				loadAd(select.ad.medianet, ad.medianet.article);
 			}
@@ -578,7 +587,7 @@ $('#menu-options li').on('click', function(e){
 
 		if( page === 'article' ||  page === 'articleslide'){
 			//ATF//
-			loadAd(select.ad.atf, ad[adPage].atf);
+		//	loadAd(select.ad.atf, ad[adPage].atf);
 		}
 
 		//Load and Insert a middle article in the article body
@@ -635,22 +644,15 @@ $('#menu-options li').on('click', function(e){
 			console.log("IS LIST ARTICLE? "+isListArticle);
 
 			if( tag == 'p'){ sharethrough_position = sharethrough_position + 1; nativo_position = nativo_position + 1; google_position = google_position + 1;}
+			
 			//Google AD
 			if(google_position && google_position != -1){
 				inBodyAd.loadInArticleAd( 'article-content', google_position, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', tag);	
 			}
 
-			//CARAMBOLA 
-			//if(carambola_position && carambola_position != -1){
-				/*if($('span.span-category.moblog').length == 0) */
-			//	inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);
-			//}
+			//CARAMBOLA
 			if(carambola_position && carambola_position != -1){
-				//if( country && country == 'US'){
 					inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);
-				//}else{
-				//	inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambolaothercountry, tag);
-				//}
 			}
 
 			//SHARETHROUGH
@@ -661,11 +663,6 @@ $('#menu-options li').on('click', function(e){
 					inBodyAd.loadInArticleAd( 'article-content', sharethrough_position, 0, ad[adPage].inarticlesharetothercountry, tag);
 				}
 			}
-
-			//SHARETHROUGH
-			//if(sharethrough_position && sharethrough_position != -1){
-			//	inBodyAd.loadInArticleAd( 'article-content', sharethrough_position, 0, ad[adPage].inarticlesharet, tag);
-			//}
 		}
 
 		//MULTIPAGE ARTICLES
@@ -676,17 +673,17 @@ $('#menu-options li').on('click', function(e){
 		}
 
 		//BTF1
-		loadAd(select.ad.btf1, ad[adPage].btf1);
+		//loadAd(select.ad.btf1, ad[adPage].btf1);
 
 		//BTF2
-		loadAd(select.ad.btf2, ad[adPage].btf2);
+		//loadAd(select.ad.btf2, ad[adPage].btf2);
 	}
 	//BTF3
-	if( page === 'home' ||  page === 'category'){
-		if(hasSponsored == undefined || hasSponsored == 0){
-		loadAd(select.ad.btf3, ad[adPage].btf3);
-		}
-	}
+	//	if( page === 'home' ||  page === 'category'){
+			//if(hasSponsored == undefined || hasSponsored == 0){
+			//loadAd(select.ad.btf3, ad[adPage].btf3);
+			//}
+	//	}
 
 	$(window).resize(function() {
 
@@ -707,15 +704,15 @@ $('#menu-options li').on('click', function(e){
 				var container = select.ad[label];
 
 				var classToAdd = 'ad-unit hide-for-print';
-				if((label === 'atf' || label === 'atfleft' || label === 'atfright') && messageData.height > 500) {
-					if( (label === 'atf' || label === 'atfleft' || label === 'atfright') && messageData.height < 700) {
+				if((label === 'atf') && messageData.height > 500) {
+					if( (label === 'atf') && messageData.height < 700) {
 						classToAdd += ' ad300 ad600'; asideHeight[label] = 600 + asideHeight.margin; resizeMainOnAdLoad();
 					}
 					else { classToAdd += ' ad300 ad1050'; asideHeight[label] = 1050 + asideHeight.margin; resizeMainOnAdLoad();}
 				}
 				else if(label === 'atf' || label === 'btf1' || label === 'btf2' || label === 'btf3') { classToAdd += ' ad300 ad250'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
-				else if(label === 'atfleft') { classToAdd += ' ad300 ad250 left'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
-				else if( label === 'atfright') { classToAdd += ' ad300 ad250 right'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
+				//else if(label === 'atfleft') { classToAdd += ' ad300 ad250 left'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
+				//else if( label === 'atfright') { classToAdd += ' ad300 ad250 right'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
 				else if(label === 'header' || label === 'footer') {
 					if(label === 'footer' || (label === 'header' && messageData.height < 110 && messageData.height > 80)) {classToAdd += ' ad90';}
 					else if(label === 'header' && messageData.height < 80) {Foundation.utils.S("#header-ad").css("min-height", messageData.height);}					
@@ -795,112 +792,54 @@ notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.locat
  	});
  	email_button.click(function() {alert("Email"); });
  	*/
- 	/*console.log('FACEBOOK SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR FACEBOOK");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS FACEBOOK");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
- 	
- 	console.log('LINKEDIN SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://www.linkedin.com/countserv/count/share?url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR LINKEDIN");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS LINKEDIN");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
 
+ 	function getTotalShares( url, elm ){
+ 		
+ 		var span_shares_holder = $(elm).find('.span-shares-holder');
+ 		var this_count = 0;
+ 		var fn_callback = null ;
+		var service = {
+		  "facebook": "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=",
+		  "twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
+		  "pinterest": "http://widgets.pinterest.com/v1/urls/count.json?source=6&url=",
+		  "linkedint": "http://www.linkedin.com/countserv/count/share?url="
+		};
+ 		
+ 		$.each( service, function( key, value ) {
+		 // console.log( key + ": " + value );
+		  var api_url = value+url;
+		  
+		  if(key == "facebook"){
+		  	var fn_callback = function(obj){
+			  	this_count = this_count + obj[0]['total_count'];
+			 }
+		  }else{
+		  	var fn_callback = function(obj){
+			  	this_count = this_count + obj['count'];
+			 }
+		  }
 
- 	console.log('PINTEREST SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://widgets.pinterest.com/v1/urls/count.json?source=6&url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR PINTEREST");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS PINTEREST");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
+		 $.ajax({ type: 'GET',  dataType: 'jsonp',  data: {}, url: api_url, 
+			  	success: fn_callback,
+			  	async: false, cache: false
+		  	}).then(function(){
+		  		span_shares_holder.text(kFormatter(this_count)+' SHARES');
+		  		console.log(this_count);
+		  	});
+		  
+ 	});
+ 
+ 	}
 
+ 	$('.article-id').each( function( i ){
+ 		//console.log(i);
+ 		
+	 	var url = $(this).attr('data-info-url');
+	 	getTotalShares( url, $(this) );
+	 	//console.log(url);
+ 	});
  	
- 	
- 	console.log('stumbleupon SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://www.stumbleupon.com/services/1.01/badge.getinfo?url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR stumbleupon");
-            console.log(textStatus);
-        },
-        success: function (msg) {
-        	console.log("SUCCESS stumbleupon");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
-
- 	console.log('DELICIOUS SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://feeds.delicious.com/v2/json/urlinfo/data?url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR DELICIOUS");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS DELICIOUS");
-            console.log(msg);
-        }
-    });
- 	console.log("================");
- 	
- 	console.log('TWITTER SHARES');
- 	$.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://cdn.api.twitter.com/1/urls/count.json?url="+location.href,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("ERROR TWITTER");
-            console.log(jqXHR)
-        },
-        success: function (msg) {
-        	console.log("SUCCESS TWITTER");
-            console.log(msg);
-        }
-    });
-    console.log("================");
-*/
- 	
+ 
  	
 
  	//Prefetch Links
@@ -909,6 +848,7 @@ notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.locat
     prefetchLinks: function(){
         // returns an array of each a.prefetch link's href
         var hrefs = $("a.prefetch").map(function(index, domElement){
+        	return $(this).attr("href");
         	return $(this).attr("href");
         });
         // returns the array of hrefs without duplicates

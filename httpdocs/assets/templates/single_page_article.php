@@ -129,11 +129,22 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 		<?php }?>
 
+		<!-- IMAGE SOURCE -->
+		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
+		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
+		<?php }?>
+
+		<!-- NOTES -->
+		<?php if( isset($article_img_credits) && !empty($article_notes)){?>
+		<p><?php echo $article_notes; ?></p>
+		<?php }?>
+
 		<div class="remember-to-share padding-top row padding">
 			<h3>PLEASE REMEMBER TO SHARE</h3>
 		</div>
 		
 		
+
 		<!-- FROM AROUND THE WEB -->	
 		<?php //include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
 		
@@ -168,16 +179,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</script>-->
 		<!-- End Below Article -->
 		
-		<!-- IMAGE SOURCE -->
-		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
-		<?php }?>
+	
 
-		<!-- NOTES -->
-		<?php if( isset($article_img_credits) && !empty($article_notes)){?>
-		<p><?php echo $article_notes; ?></p>
-		<?php }?>
-
+		<section id="separator-section" class="row no-padding"></section>
+		
 		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 
@@ -187,6 +192,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!--<section id="separator-section" class="row no-padding"></section>-->
 		
+
 		</section>
 	</div>
 	

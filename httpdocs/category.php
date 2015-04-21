@@ -36,17 +36,16 @@ if(!is_null($categoryInfo)){
 		$pagesArray['pages'] = $mpHelpers->getPages($currentPage, $totalPages);
 	}
 }else $mpShared->get404();
-if ( $detect->isMobile() ) {
-	?>
+if ( $detect->isMobile() ) { ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 	<?php include_once($config['include_path'].'head.php');?>
-	<body id="category" class="mobile">
+	<body id="category" class="mobile background-eee">
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		
 		<!-- MOBILE LEFT TAP -->
-		<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
+		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
 		<main id="main" class="row panel sidebar-on-right" role="main">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">

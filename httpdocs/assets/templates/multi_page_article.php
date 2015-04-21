@@ -30,18 +30,6 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<h1 id="<?php echo $articleInfoObj['article_id']; ?>" style="margin-bottom: 0.5rem;"><?php echo $articleInfoObj['article_title']; ?></h1>
 
 		<!-- SOCIAL DESKTOP -->
-		<?php if($detect->isMobile()){?>
-		<!-- Social Media Icons -->
-			<div class="row social-media-container  padding-bottom" style=" display:block !important;">
-				<a class="addthis_button_facebook small-4 left">
-					<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
-				</a> 
-				<a class="addthis_button_twitter  small-2 left">
-					<label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
-				</a> 
-				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
-			</div>
-		<?php }else{?>
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
@@ -66,8 +54,17 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
-		<?php }?>
+		<?php //include($config['include_path'].'socialbuttonsarticles.php'); ?>
 		<div class="padding-bottom" style=""></div>
+		
+		<!-- Article SubTitle ( SLIDE ) 
+		<?php //if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
+			  //else{ echo '<div class="row">'; }
+		?> 
+			<section id="article-caption" class="columns small-12 ">
+				<h2 class=""><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
+			</section>
+		</div>-->
 
 		<!-- Article Content Image / Video -->
 		<div class="row padding-top">
@@ -109,7 +106,20 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		</div>
 		<?php }?>
 		
-			
+		<?php //if($detect->isMobile()){ ?>
+		<!--<div class="row clear">
+		
+			<div class="columns hide-for-print like-us-fb">
+				<p style ="color:#777" class="small-12 padding-top padding-bottom">LIKE US ON FACEBOOK
+					<div class="columns small-12 " style="margin-left:0 !important;">
+						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
+					</div>	 
+				</p>
+			</div>	
+		<hr style="margin: 0 0.9rem !important; border-bottom:1px solid #ddd !important; padding:0.4rem !important;">
+		</div>	--> 	
+		<?php //}?>
+		
 		<!-- Content Article And Next / Prev Articles -->
 		<?php if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -0.2rem;">'; $h2style = '';}
 			  else{ echo '<div class="row clear">'; $h2style  = 'color: white; background: none repeat scroll 0% 0% rgb(0, 0, 0); padding: 0.4rem 0.5rem;';}
@@ -251,16 +261,14 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<?php }else{
 			//include($config['include_path'].'socialbuttonsmobile.php');
 		?>
-			<div class="row social-media-container  padding-bottom" style=" display:block !important;">
-				<a class="addthis_button_facebook small-4 left">
-					<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
+			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
+				<a class="addthis_button_facebook">
+					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
 				</a> 
-				<a class="addthis_button_twitter  small-2 left">
-					<label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
+				<a class="addthis_button_twitter">
+					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
 				</a> 
-				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
-			</div>
-			<?php }
+			</div><?php }
 		?>
 
 			<?php if(!$detect->isMobile()){?>
@@ -360,5 +368,5 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<?php //} ?>
 		</div>
 		
-	
+	</section>
 </article>

@@ -2,26 +2,33 @@
 	
 	$date = date("M d, Y", strtotime($featuredArticle['date_updated']));
 
-	$linkToArticle = $config['this_url'].$featuredArticle['cat_dir_name'].'/'.$featuredArticle["article_seo_title"];
-	$linkToACategory = $config['this_url'].$featuredArticle['cat_dir_name'];
+	$linkToArticle = 'http://www.puckermob.com/'.$featuredArticle['cat_dir_name'].'/'.$featuredArticle["article_seo_title"];
+	//$linkToACategory = $config['this_url'].$featuredArticle['cat_dir_name'];
 	$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$featuredArticle['article_id'].'_tall.jpg';
-	$linkToContributor = $config['this_url'].'contributors/'.$featuredArticle['contributor_seo_name'];
+	//$linkToContributor = $config['this_url'].'contributors/'.$featuredArticle['contributor_seo_name'];
 
 	if ( $detect->isMobile() ) { ?>
 
-	<div class="columns mobile-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
-				<a class="mobile-12 no-padding" href="<?php echo $linkToArticle; ?>">
-					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $featuredArticle['article_title']?>'>
-				</a>
-				<div class="mobile-12 no-padding-mobile">
-					<p class="mobile-12 no-padding uppercase" >
-						<span class="span-category <?php echo $featuredArticle['cat_dir_name']?>"><a href="<?php echo $linkToACategory; ?>" ><?php echo $featuredArticle['cat_name']?></a></span>
-					</p>
-					<a class="left clear-left" href="<?php echo $linkToArticle; ?>">
-						<h1 class="no-margin-mobile"><?php echo $featuredArticle['article_title']?></h1>
+		<div class="columns small-12 second-popular-articles-cont article-id" id="<?php echo 'article-'.$articleIndex; ?>" data-info-url="<?php echo $linkToArticle; ?>">
+			<div class="row imageContainer" id="<?php echo 'article-'.$articleIndex; ?>">
+				<div class="small-12 columns imageCenterer">
+					<a  class="" href="<?php echo $linkToArticle; ?>" >
+						<img src="<?php echo $linkToImage; ?>" alt="<?php echo  $featuredArticle['article_title']; ?>" />
 					</a>
 				</div>
+			</div>				
+			<div class="small-12 columns second-popular-article-title">
+				<h2 class="left small-12 padding-top">
+					<a  class="" href="<?php echo $linkToArticle; ?>" >
+					<?php echo $featuredArticle['article_title']; ?>
+				    </a>
+				</h2>
 			</div>
+			<div class="second-article-date small-12 clear">
+				<label class="small-6" ><?php echo $date; ?></label>
+				<label class="small-6 span-shares-holder"></label>
+			</div>
+		</div>
 
 <?php } else {?>
 <div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="article-featured-1">
@@ -41,6 +48,5 @@
 		</a>
 	</div>
 </div>
-
-<?php } ?>
 <hr class="padding-top">
+<?php } ?>

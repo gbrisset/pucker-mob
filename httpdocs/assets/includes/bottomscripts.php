@@ -1,8 +1,8 @@
-<?php //echo $config['this_url']; ?>
-<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/modernizr-2.5.3.min.js"></script>
-<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
-<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/foundation.min.js"></script>
+
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.cookies.2.2.0.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
 
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -80,33 +80,6 @@
       <?php } 
     //} ?>
 
-    <!-- Spring Board ADs (VIDEO ON CATGORIES)
-    <script type="text/javascript">
-
-    var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
-
-    function sbElementCheck() {
-
-      var targetedElement = document.getElementById('ingageunit');
-      if(targetedElement) {
-        clearInterval(sbElementInterval);
-        (function(d) {
-          var js, s = d.getElementsByTagName('script')[0];
-          js = d.createElement('script');
-          js.async = true;
-          js.onload = function(e) {
-            SbInGageWidget.init({
-              partnerId : 3809,
-              widgetId : 'spld002',
-              cmsPath : 'http://cms.springboardplatform.com'
-            });
-          }
-          js.src = "http://cdn.springboardplatform.com/storage/js/ingage/apingage.min.js";
-          s.parentNode.insertBefore(js, s);
-        })(window.document);
-      }
-    }
-    </script>-->
 
 
   <?php //} ?>

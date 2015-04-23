@@ -115,14 +115,57 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
 			$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
 		?>
-		<div class="row small-12 clear related-articles-box padding">
+		<div class="row small-12 clear related-articles-box half-padding">
 			<hr>
 			<div class="rel-articles-wrapper remember-to-share">
 			<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
 			<ul>
-				<?php if( $related['related_article_id_1']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php }?>
-				<?php if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php }?>
-				<?php if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></li><?php }?>
+			<?php if( $related['related_article_id_1']['info'] ) {?>
+			<li class="related_to_this_article content-wrapper left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+				<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
+					<div class="article-image small-5 left">
+						<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
+							<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
+						</a>
+					</div>
+					<div class="article-title small-7 left">
+						<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></h1>
+					</div>
+				</article>
+			</li>
+			<?php }?>
+			<?php if( $related['related_article_id_2']['info'] ) {?>
+			<li class="related_to_this_article content-wrapper left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+				<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
+					<div class="article-image small-5 left">
+						<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
+							<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
+						</a>
+					</div>
+					<div class="article-title small-7 left">
+						<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></h1>
+					</div>
+				</article>
+			</li>
+			<?php }?>
+			<?php if( $related['related_article_id_3']['info'] ) {?>
+			<li class="related_to_this_article content-wrapper left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+				<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
+					<div class="article-image small-5 left">
+						<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">
+							<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
+						</a>
+					</div>
+					<div class="article-title small-7 left">
+						<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></h1>
+					</div>
+				</article>
+			</li>
+			<?php }?>
+				<!--<?php //if( $related['related_article_id_1']['info'] ) {?><li class="related_to_this_article" id="<?php //echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php // echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php // echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php// }?>
+				<?php //if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php //echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php // echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php //echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php //}?>
+				<?php // if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php //echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php // echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php //echo $related['related_article_id_3']['info']['article_title']; ?></a></li><?php //}?>
+			-->
 			</ul>
 			</div>
 	
@@ -139,7 +182,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<p><?php echo $article_notes; ?></p>
 		<?php }?>
 
-		<div class="remember-to-share padding-top row padding">
+		<div class="remember-to-share padding-top row half-padding">
 			<h3>PLEASE REMEMBER TO SHARE</h3>
 		</div>
 		
@@ -178,7 +221,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			})();
 			</script>-->
 		<!-- End Below Article -->
-		
 	
 
 		<section id="separator-section" class="row no-padding"></section>
@@ -188,7 +230,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- READ MORE MOBILE -->
 		<div id="grad"></div>
-		<p class="read-more" style="margin-bottom:0 !important;"><a href="#" class="button">CONTINUE READING</a></p>
+		<p class="read-more" style="margin-bottom:0 !important;"><a href="" class="button">CONTINUE READING</a></p>
 
 		<!--<section id="separator-section" class="row no-padding"></section>-->
 		

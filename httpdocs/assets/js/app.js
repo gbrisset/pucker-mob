@@ -35,8 +35,50 @@ var asideHeight = {
 
 
 $(document).ready(function() {
-console.log(page);
+//console.log(page);
 
+//READ MORE 
+if($('body').hasClass('mobile')) {
+	var $el, $ps, $up, totalHeight;
+	var parentOrgHeight = $('#article-content').outerHeight();
+	var wishDisplayHeight = parentOrgHeight * 0.75;
+	$('#article-content').height(wishDisplayHeight);
+
+	$(".sidebar-box .button").click(function(e) {
+		e.preventDefault();		
+		// IE 7 doesn't even get this far.
+								
+		totalHeight = 0
+			
+		$el = $(this);
+		$p  = $el.parent();
+		$up = $p.parent();
+		$children = $up.children();
+		$shTAdHeight = $('.inarticle-ad').outerHeight();
+		
+		$children.each(function(){
+			totalHeight += $(this).outerHeight();
+		});
+		
+		totalHeight +=  $shTAdHeight;
+										
+		$up.css({
+				"height": $up.height(),
+				"max-height": 9999
+		 });
+		$up.animate({
+				"height": "auto"
+		 },2000);
+					
+		// fade out read-more
+		$p.fadeOut();
+		$('#grad').fadeOut();
+						
+		// prevent jump-down
+		return false;
+						
+	});
+}
 
 function resizeContentByscreenSize(){
 		//HIDE LEFT SIDE BAR WHEN BROWSER IS LESS THAT 1030 px.
@@ -221,64 +263,26 @@ function resizeContentByscreenSize(){
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273455/0/1014/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 		}
 	};
-	$('#fb-comments-box').slideUp('slow');
-	$('.facebook-comments-button').on('click', function(e){
-		$(this).css('background', '#000');
 
-		if( $('#fb-comments-box').hasClass('hide-this')){
-			$('#fb-comments-box').removeClass('hide-this').addClass('show-this');
-			$('#fb-comments-box').css('display', 'inline-height');
+	//$('#disqus-comments').hide();
+	$('.facebook-comments-button').on('click', function(e){
+		//$(this).css('background', '#000');
+
+		//$('#disqus-comments').toggleClass('hide-this');
+		//$('#disqus-comments').slideToggle('slow');
+
+		if( $('#disqus-comments').hasClass('hide')){
+			$('#disqus-comments').removeClass('hide');
+			$('#disqus-comments').slideDown(500);
+			//$('#arrow-tag').removeClass('fa-caret-down').addClass('fa-caret-up"');
 		}else{
-			$('#fb-comments-box').removeClass('show-this').addClass('hide-this');
-			$('#fb-comments-box').css('display', 'none');
+			$('#disqus-comments').addClass('hide');
+			$('#disqus-comments').slideUp(500);
+			//$('#arrow-tag').removeClass('fa-caret-up').addClass('fa-caret-down"');
 		}
 
 
 	});
-
-	//READ MORE 
-if($('body').hasClass('mobile')) {
-	var $el, $ps, $up, totalHeight;
-	var parentOrgHeight = $('#article-content').outerHeight();
-	var wishDisplayHeight = parentOrgHeight * 0.55;
-	$('#article-content').height(wishDisplayHeight);
-
-	$(".sidebar-box .button").click(function(e) {
-		e.preventDefault();		
-		// IE 7 doesn't even get this far.
-								
-		totalHeight = 0
-			
-		$el = $(this);
-		$p  = $el.parent();
-		$up = $p.parent();
-		$children = $up.children();
-		$shTAdHeight = $('.inarticle-ad').outerHeight();
-		
-		$children.each(function(){
-			totalHeight += $(this).outerHeight();
-		});
-		
-		totalHeight +=  $shTAdHeight;
-										
-		$up.css({
-				// Set height to prevent instant jumpdown when max height is removed
-				"height": $up.height(),
-				"max-height": 9999
-		 });
-		$up.animate({
-				"height": "auto"
-		 },2000);
-					
-		// fade out read-more
-		$p.fadeOut();
-		$('#grad').fadeOut();
-						
-		// prevent jump-down
-		return false;
-						
-	});
-}
 
 var body = document.body;
 	
@@ -546,9 +550,6 @@ $('#menu-options li').on('click', function(e){
 
 	}
 
-//		console.log("BROWSER WIDTH: ");
-//		console.log($(window).width());
-
 		//HIDE LEFT SIDE BAR WHEN BROWSER IS LESS THAT 1030 px.
 		if( $(window).width() < 1050 ) $('#left-aside').hide();
 		else $('#left-aside').show();
@@ -760,44 +761,16 @@ topbar_search_submit_login.click(function() {
 });
 topbar_search_contents_login.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+topbar_search_contents_login.val();}});
 
-
 notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
 notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
 
- // Sharing popups
- /*	facebook_button.click(function () {
- 		share_popup_width = 650;
- 		share_popup_height = 380;
- 		window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(share_url), 'Facebook', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
- 	});
- 	twitter_button.click(function () {
- 		share_popup_width = 680;
- 		share_popup_height = 450;
- 		window.open('http://twitter.com/share?url=' + encodeURIComponent(share_url) + '&text=' + encodeURIComponent(share_title) + '&', 'Twitter', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
- 	});
- 	pinterest_button.click(function () {
- 		share_popup_width = 760;
- 		share_popup_height = 350;
- 		window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(share_url) + '&media=' + encodeURIComponent(share_image) + '&description=' + encodeURIComponent(share_title), 'Pinterest', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
- 	});
- 	google_plus_button.click(function () {
- 		share_popup_height = 500;
- 		share_popup_width = 500;
- 		window.open('https://plus.google.com/share?url=' + encodeURIComponent(share_url), 'Google+', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
- 	});
- 	stumbleupon_button.click(function () {
- 		share_popup_height = 716;
- 		share_popup_width = 1024;
- 		window.open('http://www.stumbleupon.com/submit?url=' + encodeURIComponent(share_url), 'StumbleUpon', 'top='+ ((screen.height / 2) - (share_popup_height / 2)) +',left='+ ((screen.width / 2) - (share_popup_width / 2)) +',height=' + share_popup_height + ',width=' + share_popup_width + ',toolbar=0,location=0,menubar=0,directories=0,scrollbars=0');
- 	});
- 	email_button.click(function() {alert("Email"); });
- 	*/
-
+ 	/*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
  	function getTotalShares( url, elm ){
  		
  		var span_shares_holder = $(elm).find('.span-shares-holder');
  		var this_count = 0;
  		var fn_callback = null ;
+ 		var label =  " SHARES";
 		var service = {
 		  "facebook": "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=",
 		  "twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
@@ -823,7 +796,10 @@ notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.locat
 			  	success: fn_callback,
 			  	async: false, cache: false
 		  	}).then(function(){
-		  		span_shares_holder.text(kFormatter(this_count)+' SHARES');
+		  		var label =  " SHARES";
+		  		if(this_count == 1) label = " SHARE";
+		  			
+		  		span_shares_holder.text(kFormatter(this_count)+label);
 		  		console.log(this_count);
 		  	});
 		  
@@ -832,11 +808,8 @@ notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.locat
  	}
 
  	$('.article-id').each( function( i ){
- 		//console.log(i);
- 		
-	 	var url = $(this).attr('data-info-url');
+ 		var url = $(this).attr('data-info-url');
 	 	getTotalShares( url, $(this) );
-	 	//console.log(url);
  	});
  	
  
@@ -949,23 +922,9 @@ function isOnScreen( element ) {
 		}
 	}
 
-	function kFormatter(num) {
-    	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
-	}
-
-	//Get Total Shares For an Article
-	/*$.get(
-		"http://www.puckermob.com/assets/ajax/ajaxManageData.php", 
-		{"url" : location.href, "articleId" : Foundation.utils.S('#article_id').val()}, 
-		function(shares) {
-			console.log("SHARES FROM ME");
-			console.log(shares);
-			//$(".shares_counter").text(kFormatter(shares));
-		} 
-	);*/
-
-
-
+function kFormatter(num) {
+  	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
+}
 
 $('#follow-author').click(function(e){
 	e.preventDefault();

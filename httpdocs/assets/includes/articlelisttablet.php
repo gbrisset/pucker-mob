@@ -43,7 +43,7 @@ foreach ($articlesList['articles'] as $articles){
 	$cat_name = $articles['cat_dir_name'];
 	
 	//IGNORE MOBLOG ARTICLES
-	if( !$category_page && $cat_name === "moblog") continue;
+	if( !isset($category_page) && $cat_name === "moblog") continue;
 
 	if( $articleIndex % 7 == 0 ) { 
 		$articleIndex++;
@@ -68,8 +68,8 @@ foreach ($articlesList['articles'] as $articles){
 		</div>
 		<?php if( $articleIndex < $totalArticles )?> <hr class="padding-top">
 		
-		<?php if($bigImageCounter == 1){?>
-		<?php }?>
+		<?php //if($bigImageCounter == 1){?>
+		<?php //}?>
 
 		<?php  } else{
 			

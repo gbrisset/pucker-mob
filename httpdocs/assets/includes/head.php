@@ -189,16 +189,7 @@
 // }?>
 
 <?php } ?>
-    <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 ros
-    <script type="text/javascript">
-    if ((typeof(f466927)=='undefined' || f466927 > 0) ) {
-      if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
-      document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=1000x1000;mtfInline=true;tile='+(gnm_tile++)+';ord='+gnm_ord+'?"></scr'+'ipt>');
-    }else{
-      //insert default static image here as default ad
-    }
-    </script>-->
-    <!-- END AD TAG -->
+ 
 
 
   <?php }?>

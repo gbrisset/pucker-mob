@@ -291,7 +291,7 @@ header {
 #legal-links > ul.inline-centered {margin-bottom: 0;}
 body#home #main h2 {
 	color: $primary-color;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 }
 
 i {margin-left: 5px; margin-right: 5px;}
@@ -1102,6 +1102,7 @@ body{padding-top:0 !important;}
 #similar-results h2 span { color: $main-color; }
 #similar-results h2{margin-bottom: 1rem;}
 #similar-results h5{ height: auto; margin: 0; padding: 0.3rem 0;}
+#similar-results a{text-decoration:none;}
 
 @media #{$large-up} {
 	#similar-results, #content-ad-around-the-web, #disqus-comments, #around-the-web{ 
@@ -1913,23 +1914,31 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 }
 
+.background-eee{  background: #eee; }
 .second-section{
   background: #eee;
   position: relative;
   top: -15px;
   border-top: 1px solid #bbb;
   padding-top:1.5rem;
-  float:left;
+  overflow:hidden;
 }
-#second-popular-articles{}
-.second-popular-articles-cont{ padding: 0.7rem; background: #fff; border: 1px solid #bbb;
+#second-popular-articles h3 {
+  color: #01B586; font-family: OswaldLight; font-size: 1.4rem !important; margin-bottom: 0.1rem;
+}
+.second-popular-articles-cont{ padding: 0.7rem; background: #fff; border: 1px solid #ddd;
   margin: 0.25rem 1rem; }
 .second-popular-article-title{  background: #eee; padding: 0 1rem;}
 .second-popular-article-title h2{  font-size: 1.2rem;  line-height: 1.4rem;  font-family: OswaldLight;  font-weight: bold; color: #222 !important;}
 .second-popular-article-title h2 a {color: #222 !important;}
 .second-article-date span{   position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; }
 
-.hide-this{ display:none !important; }
+body#home, body#category{
+	.second-popular-articles-cont{ margin: 0.25rem 0;}
+}
+
+.hide-this{ display:none !important;}
+.show-this{ display:inline-block !important;}
 #dd-shares-content {	
   background-color: #fff;
   padding: 1rem;

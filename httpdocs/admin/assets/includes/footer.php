@@ -50,6 +50,3 @@
       </div>
       </div>
     </footer>
-
-    <!-- 33ACROSS AD SERVER 
-    <div id="flyatf-ad"></div>-->

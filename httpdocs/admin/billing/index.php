@@ -8,15 +8,21 @@
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	$billingInfo = $adminController->getBillingInformation($userData['user_id']);
 	
+	$w9_live = 0;
+	if( isset($billingInfo['w9_live']) && $billingInfo['w9_live']) $w9_live = $billingInfo['w9_live'];
+	
 	if(isset($_POST['submit'])){
 		
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			
 		$pp_email = "";
 		if(isset($_POST['paypal-email'])) $pp_email= $_POST['paypal-email'];
+			if(isset($_POST['w9_live']) && $_POST['w9_live'] == 'on') $_POST['w9_live'] = 1;
+			else $_POST['w9_live'] = 0;
 
 			$result = $adminController->editBillingInformation($_POST);
 			$billingInfo = $adminController->getBillingInformation($userData['user_id']);
+			$w9_live = $billingInfo['w9_live'];
 		}else $adminController->redirectTo('logout/');
 	}
 
@@ -54,7 +60,7 @@
 			</div>	
 			<section id="articles">
 
-				<?php if(!$billingInfo['w2_live'] ){?>
+				<?php if(!$billingInfo['w9_live'] ){?>
 				<div class="skip-step">
 						<!--<p class="small-12"><a href="" class="a-buttons">SKIP THIS STEP</a>-->
 						<p class="small-12">NOTE: You must complete billing information in order to be paid</p>
@@ -103,7 +109,7 @@
 							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 							<input type="text" class="hidden" id="user_id" name="user_id" value="<?php  echo $userData['user_id']; ?>" >
 							
-							<input type="checkbox" name="w9-live" id="w9-live" value="<?php echo $billingInfo['w9_live']; ?>" <?php if($billingInfo['w9_live'] && $billingInfo['w9_live'] == 1) echo 'checked'; ?>><label>Yes, I have completed and uploaded my W9 form.</label>
+							<input type="checkbox" name="w9_live" id="w9-live" <?php if($w9_live && $w9_live == 1) echo 'checked'; ?>><label>Yes, I have completed and uploaded my W9 form.</label>
 							
 							<h2>Paypal Information</h2>
 							<label>Paypal Email Address</label>

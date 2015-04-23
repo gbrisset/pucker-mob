@@ -48,7 +48,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					</span>
 				</div>
 			<?php } ?>
-			<div id="article-image" class="small-12 columns no-padding">
+			<div id="article-image" class="small-12 columns no-padding margin-top">
 				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
 				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
@@ -90,9 +90,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<?php  //BRANOVATE ABOVE ARTICLE 
 			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-				<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem;">
-				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-				</div>
+			   <div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>
 		<?php } ?> 
 		
 		<!-- ARTICLE BODY -->
@@ -100,8 +98,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<?php // BRANOVATE BELOW ARTICLE BODY
 		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
-			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem;">
-			<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;">
 			</div>
 		<?php } ?> 
 

@@ -97,7 +97,9 @@ $.fn.SDSeoTitleAutoComplete = function(seoTitleInputName, hiddenInput){
 	$(this).keyup(function () { 
 		var title= $(this).val();
 		title = title.replace(/[^0-9a-zA-Z_\s]/g, '');
+		title = title.trim();
 		title = title.toLowerCase().replace(/ /g, '-');
+
 		$('input[name="'+seoTitleInputName+'"]').val(title);
 
 		//	Change the value of the hiddenInput field to true, so we know to perform 

@@ -3,7 +3,7 @@
     <?php if ( $detect->isMobile() ) { ?>
 
     <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
-   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- PuckerMob Mobile -->
       <ins class="adsbygoogle"
            style="display:inline-block;width:320px;height:50px"
@@ -18,7 +18,7 @@
        if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
         else{?>
           <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-             <div id="footer-ad" class="ad-unit hide-for-print " style="max-width: 970px; margin: 0 auto;">
+             <div id="footer-ad" class="ad-unit hide-for-print " style="max-width: 46rem; margin: 0 auto;">
                 <!-- puckermob.com/ros_btf -->
                 <script type="text/javascript">
                   var ord = window.ord || Math.floor(Math.random() * 1e16);
@@ -32,7 +32,7 @@
                 </noscript>
               </div>
            <?php }else{?>
-            <div id="footer-ad" class="ad-unit">
+            <div id="footer-ad" class="ad-unit"  style="max-width: 46rem; margin: 0 auto;">
               <!-- puckermob.com/home_BTF -->
               <script type="text/javascript">
                var ord = window.ord || Math.floor(Math.random() * 1e16);

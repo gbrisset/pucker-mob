@@ -53,7 +53,18 @@
          <?php include_once($config['include_path'].'widget.php'); ?>
        </section>
         
-       <div id="btf2-ad" class="ad-unit ad300" style="height:auto;"></div>
+       <div id="btf2-ad" class="ad-unit ad300" style="height:auto;">
+          <!-- puckermob.com/ros_btf2 -->
+          <script type="text/javascript">
+            var ord = window.ord || Math.floor(Math.random() * 1e16);
+            document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros_btf2;sect=ros_btf2;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=' + ord + '?"><\/script>');
+          </script>
+          <noscript>
+          <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros_btf2;sect=ros_btf2;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?">
+          <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros_btf2;sect=ros_btf2;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?" width="300" height="250" />
+          </a>
+          </noscript>
+       </div>
 
     <?php }else{ ?>
       
@@ -92,24 +103,45 @@
              </script>
               <noscript>
                 <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home_BTF;sect=home_BTF;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-                <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home_BTF;sect=home_BTF;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="300" height="250" />
+                  <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home_BTF;sect=home_BTF;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="300" height="250" />
                 </a>
               </noscript>
             </div>
       <?php }?>
+
       <?php if( !isset($isHomepage) ){ ?>
-      <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
-         <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners</h4></div>
-         <?php include_once($config['include_path'].'widget.php'); ?>
-      </section>
+        <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
+           <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners</h4></div>
+           <?php include_once($config['include_path'].'widget.php'); ?>
+        </section>
        <div id="btf3-ad" class="ad-unit ad300"  style="height: auto;">
-        <!-- MISSING THIS ONE -->
+        <!-- puckermob.com/home_btf3 -->
+        <script type="text/javascript">
+          var ord = window.ord || Math.floor(Math.random() * 1e16);
+          document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=' + ord + '?"><\/script>');
+        </script>
+        <noscript>
+        <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?">
+          <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?" width="300" height="250" />
+        </a>
+        </noscript>
        </div>
       <?php }else{ ?>
-      
-      <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-      else{?>
-        <div id="btf3-ad" style="margin-top: 1rem !important; " class="ad-unit ad300"  style="height: auto;"> <!-- MISSING THIS ONE --></div>
-      <?php }?>
-  <?php } }?>
+        <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+        else{?>
+          <div id="btf3-ad" style="margin-top: 1rem !important; " class="ad-unit ad300"  style="height: auto;">
+              <!-- puckermob.com/home_btf3 -->
+              <script type="text/javascript">
+                var ord = window.ord || Math.floor(Math.random() * 1e16);
+                document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=' + ord + '?"><\/script>');
+              </script>
+              <noscript>
+              <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?">
+                <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?" width="300" height="250" />
+              </a>
+              </noscript>
+          </div>
+        <?php }?>
+    <?php } 
+  }?>
 </aside>

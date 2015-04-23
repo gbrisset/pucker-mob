@@ -3,6 +3,24 @@ $categoryInfo = null;
 $isArticle = true;
 $articleInfoObj = array();
 
+//ISSUE WITH ANNA ARTICLE
+	$current_url = $_SERVER['SCRIPT_URI'];
+	if($current_url == "http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for"){
+		header('Location: http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for-');
+		die;
+	}
+	if($current_url == "http://www.puckermob.com/fun/21-things-only-antsy-people-do"){
+		header('Location: http://www.puckermob.com/fun/21-things-only-antsy-people-do-');
+		die;
+	}
+	if($current_url == "http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol"){
+		header('Location: http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-');
+		die;
+	}
+
+	//http://www.puckermob.com/fun/21-things-only-antsy-people-do-
+	//http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-
+
 foreach($MPNavigation->categories as $category){
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
 			// uri[2] not set, cat has no parent
@@ -29,6 +47,8 @@ if(!is_null($categoryInfo)){
 		header('Location: http://www.puckermob.com/lifestyle/so-youd-like-to-be-a-phonesex-operator-a-helpful-quiz');
 		die;
 	}
+
+	
 
 	//CHECK IF ARTICLES IN REGISTER UNDER THAT CATEGORY
 	$verifyInCat = $mpArticle->verifyArticleInCategory( $articleInfo['articles'][0]['article_id'], $categoryInfo['cat_id']);
@@ -118,17 +138,8 @@ if(!is_null($categoryInfo)){
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
 				<hr>
 				<?php include_once($config['include_path'].'similararticles.php');?>
-
-				<div class="ad-unit hide-for-print clear padding-top">
-					<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
-					<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
-				</div>
+	
 			<?php } ?>	
-			
-			
-			
-				
-			<!--</div>-->
 			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
 				<!-- COMMENTS BOX -->
@@ -151,10 +162,6 @@ if(!is_null($categoryInfo)){
 			<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
-			<div class="columns ad-unit hide-for-print clear padding padding-top align-center">
-				<script id="mNCC" language="javascript">  medianet_width='320';  medianet_height= '50';  medianet_crid='492803586';  </script> 
-				<script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script> 
-			</div>
 		<?php }?>
 	</section>
 

@@ -130,75 +130,66 @@
 <?php if(!$detect->isMobile()){?>
 
  <?php 
- 	//var_dump($isHomepage);
  	if(isset($isHomepage) && $isHomepage && $has_sponsored){?>
-    <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 home -->
-    <script type="text/javascript">
-    if ((typeof(f466927)=='undefined' || f466927 > 0) ) {
-      if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
-      document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;mtfInline=true;tile='+(gnm_tile++)+';ord='+gnm_ord+'?"></scr'+'ipt>');
-    }else{
-      //insert default static image here as default ad
-    }
-    </script>
-    <!-- END AD TAG -->
+	    <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 home -->
+	    <script type="text/javascript">
+	    if ((typeof(f466927)=='undefined' || f466927 > 0) ) {
+	      if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
+	      document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;mtfInline=true;tile='+(gnm_tile++)+';ord='+gnm_ord+'?"></scr'+'ipt>');
+	    }else{
+	      //insert default static image here as default ad
+	    }
+	    </script>
+	    <!-- END AD TAG -->
 
-    <!-- Distro Scale AD Tag 
-<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
-<!-- Begin comScore Tag -->
+	    <!-- Distro Scale AD Tag 
+		<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
+		<!-- Begin comScore Tag -->
+  	<?php }else{?>
 
-  <?php }else{?>
-
-<!-- Place in head part widget:puck002 -->
-<script type="text/javascript">
- 
-	var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
- 
-	function sbElementCheck() {
- 
-		var targetedElement = document.getElementById('ingageunit');
-		if(targetedElement) {
-			clearInterval(sbElementInterval);
-			(function(d) {
-				var js, s = d.getElementsByTagName('script')[0];
-				js = d.createElement('script');
-				js.async = true;
-				js.onload = function(e) {
-					SbInGageWidget.init({
-						partnerId : 5087,
-						widgetId : 'puck002',
-						cmsPath : 'http://cms.springboardplatform.com'
-					});
-				}
-				js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
-				s.parentNode.insertBefore(js, s);
-			})(window.document);
+	<!-- Place in head part widget:puck002 -->
+	<script type="text/javascript">
+	 
+		var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
+	 
+		function sbElementCheck() {
+	 
+			var targetedElement = document.getElementById('ingageunit');
+			if(targetedElement) {
+				clearInterval(sbElementInterval);
+				(function(d) {
+					var js, s = d.getElementsByTagName('script')[0];
+					js = d.createElement('script');
+					js.async = true;
+					js.onload = function(e) {
+						SbInGageWidget.init({
+							partnerId : 5087,
+							widgetId : 'puck002',
+							cmsPath : 'http://cms.springboardplatform.com'
+						});
+					}
+					js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
+					s.parentNode.insertBefore(js, s);
+				})(window.document);
+			}
 		}
-	}
-</script>
+	</script>
 
-<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+	<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
-<!-- CARAMBOLA IN_IMAGE -->
-<?php //if(isset($articleInfoObj) && $articleInfoObj){ 
-	//$noCarambola = false;
-	//if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653 || $articleInfoObj['cat_dir_name'] == 'moblog' ) $noCarambola = true;
-	//if( isset($noCarambola) && !$noCarambola){ ?>
-		<!--<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 	-->
-	<?php //}
-// }?>
+	<!-- CARAMBOLA IN_IMAGE -->
+	<?php //if(isset($articleInfoObj) && $articleInfoObj){ 
+		//$noCarambola = false;
+		//if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653 || $articleInfoObj['cat_dir_name'] == 'moblog' ) $noCarambola = true;
+		//if( isset($noCarambola) && !$noCarambola){ ?>
+			<!--<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 	-->
+		<?php //}
+	// }?>
 
+	<?php } ?>
+
+	<?php }?>
 <?php } ?>
- 
-
-
-  <?php }?>
-
-
-<?php }else{?>
-
-<?php }
-?>
 
 <!-- COMSCORE -->
 <script>
@@ -231,7 +222,6 @@
 </noscript>
 <!-- End comScore Tag Totally Her -->
 
-
 <!-- Quantcast Tag -->
 <script type="text/javascript">
   var _qevents = _qevents || [];
@@ -255,11 +245,6 @@
     <img src="//pixel.quantserve.com/pixel/p-B2Jsd5NDNU3Qq.gif" border="0" height="1" width="1" alt="Quantcast"/>
   </div>
 </noscript>
-
-
- 
-	<!-- Nativo -->
-  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
-  	
+	
 </head>
  <?php flush(); ?>

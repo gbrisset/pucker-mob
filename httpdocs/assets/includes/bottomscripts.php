@@ -1,33 +1,9 @@
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/modernizr.min.js"></script>
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.cookies.2.2.0.min.js"></script>
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/modernizr.min.js"></script>
+<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
+<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/foundation.min.js"></script>
 
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<?php if(isset($articleInfo) && $articleInfo){ ?>
-
- <!-- [ === Select Text to Share Javascript file === ] -->
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/selectshare.js"></script>
-
-    <!-- [ === TOOLTIP init === ] -->
-    <script>var twitterAccount = "Puckermob";</script><!-- [ <-- NOTE: YOUR TWITTER ACCOUNT GOES HERE ! (without "@" !) ] -->
-    <div class="shareTooltip" id="shareTooltip">
-         <div class="tooltipContainer"><a id="sendToTwitter" href="" class="sharingLink twitter"><span></span></a></div>
-     </div>
-     <!-- Twitter code to open a new dialog window -->
-     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <!-- [ === /end of TOOLTIP === ] This is it ! ;-) -->
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    if(addthis) addthis.init();
-  })
-  </script>
-  <?php }?>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
 
@@ -35,7 +11,7 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
+  <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/iframeResizer.min.js"></script>
       <?php //if(  isset($promotedArticle) && !$promotedArticle && isset($has_sponsored) && !$has_sponsored){ ?>
 
    <!--[if !IE]>
@@ -165,6 +141,31 @@
 
 <!-- DESKTOP & MOBILE SCRIPT -->
 
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<?php if(isset($articleInfo) && $articleInfo){ ?>
+
+ <!-- [ === Select Text to Share Javascript file === ] -->
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/selectshare.js"></script>
+
+    <!-- [ === TOOLTIP init === ] -->
+    <script>var twitterAccount = "Puckermob";</script><!-- [ <-- NOTE: YOUR TWITTER ACCOUNT GOES HERE ! (without "@" !) ] -->
+    <div class="shareTooltip" id="shareTooltip">
+         <div class="tooltipContainer"><a id="sendToTwitter" href="" class="sharingLink twitter"><span></span></a></div>
+     </div>
+     <!-- Twitter code to open a new dialog window -->
+     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!-- [ === /end of TOOLTIP === ] This is it ! ;-) -->
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    if(addthis) addthis.init();
+  })
+  </script>
+  <?php }?>
+  
 <script>
   !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
   arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];

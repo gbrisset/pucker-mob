@@ -48,7 +48,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					</span>
 				</div>
 			<?php } ?>
-			<div id="article-image" class="small-12 columns no-padding margin-top">
+			<div id="article-image" class="small-12 columns no-padding">
 				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
 				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
@@ -171,13 +171,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
+		<p class="padding-bottom image-source" style="font-size: 10pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
 		<?php }?>
 
-		<!-- NOTES -->
-		<?php if( isset($article_img_credits) && !empty($article_notes)){?>
-		<p><?php echo $article_notes; ?></p>
-		<?php }?>
+		<!-- NOTES 
+		<?php //if( isset($article_img_credits) && !empty($article_notes)){?>
+		<p><?php //echo $article_notes; ?></p>
+		<?php //}?>-->
 
 		<div class="remember-to-share padding-top row half-padding">
 			<h3>PLEASE REMEMBER TO SHARE</h3>
@@ -443,13 +443,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-		<p class="padding-bottom image-source" style="font-size: 10pt !important"><?php echo $article_img_credits; ?></p>
+		<p class="padding-bottom image-source" style="font-size: 10pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
 		<?php }?>
 
-		<!-- NOTES -->
-		<?php if( isset($article_img_credits) && !empty($article_notes)){?>
-		<p><?php echo $article_notes; ?></p>
-		<?php }?>
+		<!-- NOTES 
+		<?php //if( isset($article_img_credits) && !empty($article_notes)){?>
+		<p><?php //echo $article_notes; ?></p>
+		<?php //}?>-->
 
 		</section>
 	</div>

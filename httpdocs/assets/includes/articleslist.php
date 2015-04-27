@@ -42,7 +42,7 @@ foreach ($articlesList['articles'] as $articles){
 	$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
 	$cat_name = $articles['cat_dir_name'];
-	
+	var_dump($cat_name);
 	//IGNORE MOBLOG ARTICLES
 	if( !isset($category_page) && $cat_name === "moblog") continue;
 

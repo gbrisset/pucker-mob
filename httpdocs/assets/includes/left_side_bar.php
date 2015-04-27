@@ -9,7 +9,7 @@
 
 		<h3>RECENT MOBLOGS</h3>
 		<?php foreach( $moblog_articles as $article ){
-			$article_url = $config['this_url'].'/moblog/'.$article['article_seo_title'];
+			$article_url = $config['this_url'].'moblog/'.$article['article_seo_title'];
 		?>
 
 		<div class="left-side-img-content">

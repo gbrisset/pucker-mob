@@ -6,6 +6,7 @@
 
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 
 
 <!-- DESKTOP -->
@@ -182,8 +183,8 @@
    
 
 <?php }?>
-<!-- Nativo 
-  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
+<!-- Nativo -->
+  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
 
   <!-- TotallyHer comscore tags -->
   <!-- Begin comScore Tag -->

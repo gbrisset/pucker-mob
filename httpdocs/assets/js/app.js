@@ -230,9 +230,9 @@ function resizeContentByscreenSize(){
 			//inarticlebranovate: '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>',
 			//inarticlebranovate: '<div id="119xpg4yi2pn8"></div><script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=js&divid=119xpg4yi2pn8" type="text/javascript"></script><noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>',
 			inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
-			inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
+			//inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 			inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
-			inarticlenativoothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1067218180" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
+			//inarticlenativoothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1067218180" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 			inarticlegoogle2: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1986084582"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 
 		},
@@ -248,7 +248,7 @@ function resizeContentByscreenSize(){
 			inarticle: '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 			inarticleadblade: '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>',
 			inarticlegoogle:'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
-			inarticlegoogletest: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6120722987"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',	
+			inarticlegoogle3: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6120722987"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',	
 			inarticlegoogle2: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1986084582"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 			inarticlemopub:'<script type="text/javascript">mopub_ad_unit = "97dd84c12ded49899e4c7636a63773ac"; mopub_ad_width = 300; mopub_ad_height = 250; mopub_keywords = "custom keywords";<\/script><script src="http://ads.mopub.com/js/client/mopub.js"><\/script>',
 			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',
@@ -287,6 +287,19 @@ function resizeContentByscreenSize(){
 
 
 	});
+
+//SCROLL DOWN
+$('#articlelist-wrapper').scrollPagination({
+
+	nop     : 10, // The number of posts per scroll to be loaded
+	offset  : 10, // Initial offset, begins at 0 in this case
+	error   : 'No More Articles!', // When the user reaches the end this is the message that is
+		                            // displayed. You can change this if you want.
+	delay   : 300, // When you scroll down the posts will load after a delayed amount of time.
+		               // This is mainly for usability concerns. You can alter this as you see fit
+	scroll  : true // The main bit, if set to false posts will not load as the user scrolls. 
+		               // but will still load if the user clicks.
+});
 
 var body = document.body;
 	
@@ -422,7 +435,7 @@ $('#menu-options li').on('click', function(e){
 			div.addClass(elClass);
 			div.attr('id', id);
 			//console.log('TARGET: '+target.context.localName);
-			if($('body').hasClass('mobile') && target.context.localName === 'li')  div.css('width', window.outerWidth).css('text-align', 'left').css('left', '-15');//div.attr('style', 'margin-left: -1.4rem; padding-left: 0rem !important;');
+			//if($('body').hasClass('mobile') && target.context.localName === 'li')  div.attr('style', 'margin-left: -1.4rem; padding-left: 0rem !important;');
 
 			$(target).after(div);
 		},
@@ -443,16 +456,15 @@ $('#menu-options li').on('click', function(e){
 					if( index === position ){
 
 						if($('body').hasClass('mobile')) {
-							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding  margin-bottom ' );
+							if(elm == 'li') this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding  margin-bottom ad-centering' );
+							else this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding  margin-bottom ad-unit' );
 						}else{
-							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding margin-bottom ' );
+							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding margin-bottom ad-unit' );
 						}
 						if(iframe) loadAd(document.getElementById('inarticle'+index+'-ad'), ad);	
 						else this_obj.inserDivAdTag(document.getElementById('inarticle'+index+'-ad'), ad);
 					}
 				});
-
-
 			}
 		}
 	}
@@ -535,7 +547,7 @@ $('#menu-options li').on('click', function(e){
 			}
 
 			//NATIVO
-			//inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativo, tag);
+			inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativo, tag);
 
 			//SHARETHROUG
 			//inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, tag);	
@@ -549,7 +561,7 @@ $('#menu-options li').on('click', function(e){
 
 
 			//GOOGLE 2nd ad
-			inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlegoogle2, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlegoogle2, tag);
 
 			//SHARETHROUG
 			if( country && country == 'US' || country == 'XX'){
@@ -562,12 +574,9 @@ $('#menu-options li').on('click', function(e){
 			//inBodyAd.loadInArticleAd( 'article-content', 7, 0, 	"<div id='__kx_ad_1073'></div><script type='text/javascript' language='javascript'>var kx_ad_slots = kx_ad_slots || []; (function () { var slot = 1073; var h = false;__kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') {__kx_ad_start();} else { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); }}; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);}})();</script>", tag);
 
 			//GOOGLE 3rd ad
-			inBodyAd.loadInArticleAd( 'article-content', 7, 0, mobilead[adPage].inarticlegoogletest, tag);
+			inBodyAd.loadInArticleAd( 'article-content', 7, 0, mobilead[adPage].inarticlegoogle3, tag);
 
 
-			//$('.inarticle-ad').each( function(e){
-			//	$(this).css('width', window.outerWidth()).css('text-align', 'left');
-			//});
 
 			
 		}
@@ -834,21 +843,19 @@ notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.locat
 		  		if(this_count == 1) label = " SHARE";
 		  			
 		  		span_shares_holder.text(kFormatter(this_count)+label);
-		  		//console.log(this_count);
+		  		
 		  	});
 		  
  	});
  
  	}
 
- 	$('.article-id').each( function( i ){
+ 	$.each($('.article-id'),  function( i ){
  		var url = $(this).attr('data-info-url');
 	 	getTotalShares( url, $(this) );
  	});
- 	
- 
- 	
 
+ 	
  	//Prefetch Links
  	var app = {
     // returns an array of each url to prefetch

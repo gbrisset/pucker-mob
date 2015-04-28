@@ -198,6 +198,42 @@ public function getMoBlogsArticles( $current_article_id = 0){
 
 }
 
+public function getMobileArticleList( $args = [], $attempts = 0 ){
+	$options = array_merge([
+		'pageId' => null, 
+		'count' => 12, 
+		'sortType' =>1, //1 == Most Recent, 2 == Most Popular, 3 == Most Visited, 4 == A-Z, 5 == Z-A
+		'featured'=> false, 
+		'featureType' =>1, //1 == Sidebar, 2 == On-Page
+		'contributorId' => null, 
+		'omit'=> false,
+		'articleId' => null, 
+		'articleTitles' => [],
+		'articleSEOTitle' => '',
+		'articleSEOTitles' =>[],
+		'articleStatus' => 1,
+		'limit' => '',
+		'offset' => ''
+	], $args);
+
+	$s = " SELECT *, articles.creation_date, articles.article_id 
+		   FROM articles 
+		   INNER JOIN ( article_categories, categories ) 
+		   ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id ) 
+		   WHERE  articles.article_status = 1 AND categories.cat_id != 9 ";
+
+	if( isset( $options['omit'] )  &&  $options['omit']) {
+		$s .= " AND articles.article_id != ". $options['omit'] ;
+	}
+	
+	$s .= " ORDER BY articles.date_updated DESC, articles.article_id DESC 
+		   LIMIT ".$options['limit']." OFFSET ".$options['offset'];
+//var_dump($s);	
+	$q = $this->performQuery(['queryString' => $s]);
+		
+	return $q;	   
+}
+
 public function getArticles($args = [], $attempts = 0){
 	$options = array_merge([
 		'pageId' => null, 

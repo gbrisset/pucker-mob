@@ -1993,3 +1993,6 @@ body#home, body#category{
 .low-index{
 	z-index:2 !important;
 }
+
+.loading-bar{ text-align: center; }
+.loading-bar img{  width: 15%; display: inline-block; margin: 0.5rem;}

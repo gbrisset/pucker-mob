@@ -28,6 +28,7 @@ if($local)
 	$directory = 'projects/pucker-mob/';
 	
 	$config = array(
+		'page_id' => 1,
 		'articlepageid' => 1,
 
 		'host' => 'localhost',
@@ -121,6 +122,7 @@ if($local)
 		'ispod' => 0,
 		'networkid' => 0,
 		'catid' => 0,
+		'page_id' => 1,
 		'articlepageid' => 1,
 		'legacypodurl' => 1,
 		

@@ -3,16 +3,21 @@ require_once('../php/config.php');
 require_once('../php/class.SocialMediaManage.php');
 
 $socialMediaManage = new SocialMediaManage($config);
-$cat_id = 1;
+
 $featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$omitThis =  $featuredArticle['article_id'];
 }
 
+$cat_id = is_numeric($_POST['pageid']) ? $_POST['pageid'] : 1;
 $offset = is_numeric($_POST['offset']) ? $_POST['offset'] : 0;
 $postnumbers = is_numeric($_POST['number']) ? $_POST['number'] : 10;
 
-$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis ] );
+if( $cat_id == 1){
+	$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis ] );
+}else{
+	$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset'=>$offset, 'omit' => $omitThis , 'pageId' => $cat_id]);
+}
 
 foreach( $articlesList as $articles ){
 	$linkToArticle = 'http://www.puckermob.com/'.$articles['cat_dir_name'].'/'.$articles["article_seo_title"];

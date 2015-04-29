@@ -26,14 +26,14 @@ if( isset($recentArticles) && $recentArticles ){ ?>
 		<div class="columns small-11 second-popular-articles-cont article-id" id="<?php echo 'article-'.$articleNumber; ?>"  data-info-url="<?php echo $articleUrl; ?>" >
 			<div class="row imageContainer" id="<?php echo 'article-'.$articleNumber; ?>">
 				<div class="small-12 columns imageCenterer">
-					<a  class="prefetch" href="<?php echo $articleUrl; ?>" >
+					<a  class="" href="<?php echo $articleUrl; ?>" >
 						<img src="<?php echo $imgurl; ?>" alt="<?php echo $articletitle; ?>" />
 					</a>
 				</div>
 			</div>				
 			<div class="small-12 columns second-popular-article-title">
 				<h2 class="left small-12 padding-top">
-					<a  class="prefetch" href="<?php echo $articleUrl; ?>" >
+					<a  class="" href="<?php echo $articleUrl; ?>" >
 					<?php echo $mpHelpers->truncate($articletitle, 80); ?>
 				    </a>
 				</h2>

@@ -220,7 +220,13 @@ public function getMobileArticleList( $args = [], $attempts = 0 ){
 		   FROM articles 
 		   INNER JOIN ( article_categories, categories ) 
 		   ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id ) 
-		   WHERE  articles.article_status = 1 AND categories.cat_id != 9 ";
+		   WHERE  articles.article_status = 1 ";
+
+	if( isset( $options['pageId'] )  &&  $options['pageId']) {
+		$s .= " AND categories.cat_id = ". $options['pageId'] ;
+	}else{
+		$s .= " AND categories.cat_id != 9 ";
+	}
 
 	if( isset( $options['omit'] )  &&  $options['omit']) {
 		$s .= " AND articles.article_id != ". $options['omit'] ;
@@ -228,7 +234,7 @@ public function getMobileArticleList( $args = [], $attempts = 0 ){
 	
 	$s .= " ORDER BY articles.date_updated DESC, articles.article_id DESC 
 		   LIMIT ".$options['limit']." OFFSET ".$options['offset'];
-//var_dump($s);	
+
 	$q = $this->performQuery(['queryString' => $s]);
 		
 	return $q;	   

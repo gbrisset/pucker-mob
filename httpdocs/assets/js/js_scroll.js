@@ -5,7 +5,7 @@
 		var settings = { 
 			nop     : 10, // The number of posts per scroll to be loaded
 			offset  : 0, // Initial offset, begins at 0 in this case
-			error   : 'No More Posts!', // When the user reaches the end this is the message that is
+			error   : 'No More Articles!', // When the user reaches the end this is the message that is
 			                            // displayed. You can change this if you want.
 			delay   : 500, // When you scroll down the posts will load after a delayed amount of time.
 			               // This is mainly for usability concerns. You can alter this as you see fit
@@ -29,7 +29,7 @@
 			                  // so we don't run it multiple times
 			
 			// Custom messages based on settings
-			if($settings.scroll == true) $initmessage = 'Scroll for more or click here';
+			if($settings.scroll == true) $initmessage = 'Scroll for more';
 			else $initmessage = 'Click for more';
 			
 			// Append custom messages and extra UI
@@ -50,7 +50,7 @@
 				  "facebook": "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=",
 				  "twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
 				  "pinterest": "http://widgets.pinterest.com/v1/urls/count.json?source=6&url=",
-				  "linkedint": "http://www.linkedin.com/countserv/count/share?url="
+				 // "linkedint": "http://www.linkedin.com/countserv/count/share?url="
 				};
 		 		
 		 		$.each( service, function( key, value ) {
@@ -73,9 +73,7 @@
 				  	}).then(function(){
 				  		var label =  " SHARES";
 				  		if(this_count == 1) label = " SHARE";
-				  			
 				  		span_shares_holder.text(kFormatter(this_count)+label);
-				  		//console.log(this_count);
 				  	});
 				  
 		 	});
@@ -85,11 +83,14 @@
 			function getData() {
 				
 				// Post data to ajax.php
-				$.post('http://dev.puckermob.com/assets/ajax/ajax.php', {
+				var cat_id = $('#cat_id').attr('value');
+				$.post('http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajax.php', {
+				//$.post('http://www.puckermob.com/assets/ajax/ajax.php', {
 						
 					action        : 'scrollpagination',
 				    number        : $settings.nop,
 				    offset        : offset,
+				    pageid		  : cat_id,
 					    
 				}, function(data) {
 						
@@ -138,7 +139,7 @@
 						busy = true;
 						
 						// Tell the user we're loading posts
-						$this.find('.loading-bar').html('<img src="http://dev.puckermob.com/assets/img/ajax-loader.gif" />');
+						$this.find('.loading-bar').html('<img src="http://www.puckermob.com/assets/img/ajax-loader.gif" />');
 						
 						// Run the function to fetch the data inside a delay
 						// This is useful if you have content in a footer you

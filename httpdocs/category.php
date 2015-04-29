@@ -17,6 +17,10 @@ if(!is_null($categoryInfo)){
 	$pageName = $categoryInfo['cat_name'].' | '.$mpArticle->data['article_page_name'];
 	$parentCategorySEOName = ($categoryInfo['parent_dir_name']);
 
+	//var_dump(	$config['page_id']);
+	//$config['page_id']= $categoryInfo['cat_id'];
+	//var_dump(	$config['page_id']);
+	
 	$articlesList = $mpArticle->getMostRecentByCatId(['pageId' => $categoryInfo['cat_id']]);
 	$recentArticles = $articlesList;
 	$articlesPerPage = 24;
@@ -49,8 +53,9 @@ if ( $detect->isMobile() ) { ?>
 		
 		<main id="main" class="row panel sidebar-on-right" role="main">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">
+			<input type="hidden" id="cat_id" value="<?php echo  $categoryInfo['cat_id']; ?>" />
 			<?php include_once($config['include_path'].'articlelistmobile.php');?>
-			<?php //include_once($config['shared_include'].'pagination.php');?>
+
 			<section class="sidebar-right small-12 columns">
 				<hr>
 			</section>

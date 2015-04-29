@@ -171,17 +171,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-		<p class="padding-bottom image-source" style="font-size: 10pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
+		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
 		<?php }?>
 
 		<!-- NOTES 
 		<?php //if( isset($article_img_credits) && !empty($article_notes)){?>
 		<p><?php //echo $article_notes; ?></p>
-		<?php //}?>-->
+		<?php //}?>
 
 		<div class="remember-to-share padding-top row half-padding">
 			<h3>PLEASE REMEMBER TO SHARE</h3>
-		</div>
+		</div>-->
 		
 		
 

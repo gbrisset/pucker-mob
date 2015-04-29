@@ -22,8 +22,10 @@
 	if( $cat_id == 1){
 		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis ]);
 		//selse $articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
+	}else{
+		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id]);
 	}
-	//var_dump($articlesList );
+
 	foreach ($articlesList as $articles){
 
 		$linkToArticle = 'http://www.puckermob.com/'.$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
@@ -31,13 +33,8 @@
 		$article_id = $articles['article_id'];
 		$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';//$config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
 		$totalShares = isset( $shares_arr[$article_id] ) ? $shares_arr[$article_id] : 1 ;
-
-		//$sharesValue = ( $totalShares > 0 ) ? $mpHelpers->bd_nice_number($totalShares) : 0 ;
-		
-		//$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
 		$cat_name = $articles['cat_dir_name'];
-		//$linkToACategory = $config['this_url'].$articles['cat_dir_name'];
-		
+	
 		//IGNORE MOBLOG ARTICLES
 		if( !isset($category_page) && $cat_name === "moblog") continue;
 

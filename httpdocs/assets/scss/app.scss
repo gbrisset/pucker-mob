@@ -952,7 +952,7 @@ h5 {height: 65px; padding: 0;vertical-align: middle; display: table-cell; text-a
 	.h1-small-article{ font-size: 0.9rem !important; }
 }
 
-#article-content ol, #article-content ul{ margin-left: 2rem; }
+#article-content ol, #article-content ul{ margin-left: 0; }
 .top-bar.expanded .title-area{ /*-moz-box-shadow: 0px 0px 4px 1px #bbb; -webkit-box-shadow: 0px 0px 4px 1px #bbb;
 box-shadow: 0px 0px 4px 1px #bbb;*/ margin-bottom: 0; z-index: 9999999; border-bottom: 1px solid #bbb; background-color: #fff !important; }
 
@@ -1186,7 +1186,7 @@ div.creative_container{ border:none !important; }
 }
 
 
-#article-content li{ margin: 0.6rem 6px }
+#article-content li{ margin: 0.6rem 30px }
 #article-content hr{ border-bottom: 1px solid #dddddd !important; }
 
 #article-content a { color: #006633; text-decoration: underline;}

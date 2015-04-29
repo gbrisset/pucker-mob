@@ -142,18 +142,11 @@ function resizeContentByscreenSize(){
 	var ad = {
 
 		home: {
-			//header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243108/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214359/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243109/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247637/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf3: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247638/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214360/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285623/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
 			header: '',
 			atf: '',
 			btf1: '',
 			btf2: '',
-			//btf3: '',
 			footer: ''
 		},
 		category: {
@@ -163,18 +156,13 @@ function resizeContentByscreenSize(){
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247639/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf3: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247640/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3214368/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285606/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>'
-
 		},
 		articleslide: {
 			header: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273034/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			atf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273028/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//atfleft:'<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273032/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//atfright:'<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273029/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273031/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273030/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3273033/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285630/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			inarticlesharet: '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 			inarticlecarambola: '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>',
 			inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3403405783"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
@@ -187,7 +175,6 @@ function resizeContentByscreenSize(){
 			btf1: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243115/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			btf2: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3247641/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			footer: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243113/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
-			//flyatf: '<script language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3285586/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"><\/script>',
 			inarticlesharet: '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 			inarticlecarambola: '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>',
 		    inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3403405783"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
@@ -227,12 +214,8 @@ function resizeContentByscreenSize(){
 			inarticlegoogle:'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 			inarticlemopub:'<script type="text/javascript">mopub_ad_unit = "97dd84c12ded49899e4c7636a63773ac"; mopub_ad_width = 300; mopub_ad_height = 250; mopub_keywords = "custom keywords";<\/script><script src="http://ads.mopub.com/js/client/mopub.js"><\/script>',
 			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',	
-			//inarticlebranovate: '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>',
-			//inarticlebranovate: '<div id="119xpg4yi2pn8"></div><script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=js&divid=119xpg4yi2pn8" type="text/javascript"></script><noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>',
 			inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
-			//inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 			inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
-			//inarticlenativoothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1067218180" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 			inarticlegoogle2: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1986084582"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 
 		},
@@ -252,9 +235,6 @@ function resizeContentByscreenSize(){
 			inarticlegoogle2: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1986084582"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 			inarticlemopub:'<script type="text/javascript">mopub_ad_unit = "97dd84c12ded49899e4c7636a63773ac"; mopub_ad_width = 300; mopub_ad_height = 250; mopub_keywords = "custom keywords";<\/script><script src="http://ads.mopub.com/js/client/mopub.js"><\/script>',
 			inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',
-
-			//inarticlebranovate: '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>',
-			//inarticlebranovate: '<div id="119xpg4yi2pn8"></div><script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=js&divid=119xpg4yi2pn8" type="text/javascript"></script><noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=4&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>',
 			inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 			inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
 			
@@ -268,24 +248,14 @@ function resizeContentByscreenSize(){
 		}
 	};
 
-	//$('#disqus-comments').hide();
 	$('.facebook-comments-button').on('click', function(e){
-		//$(this).css('background', '#000');
-
-		//$('#disqus-comments').toggleClass('hide-this');
-		//$('#disqus-comments').slideToggle('slow');
-
 		if( $('#disqus-comments').hasClass('hide')){
 			$('#disqus-comments').removeClass('hide');
 			$('#disqus-comments').slideDown(500);
-			//$('#arrow-tag').removeClass('fa-caret-down').addClass('fa-caret-up"');
 		}else{
 			$('#disqus-comments').addClass('hide');
 			$('#disqus-comments').slideUp(500);
-			//$('#arrow-tag').removeClass('fa-caret-up').addClass('fa-caret-down"');
 		}
-
-
 	});
 
 //SCROLL DOWN
@@ -300,6 +270,21 @@ $('#articlelist-wrapper').scrollPagination({
 	scroll  : true // The main bit, if set to false posts will not load as the user scrolls. 
 		               // but will still load if the user clicks.
 });
+
+//SCROLL DOWN
+if(page == 'article'){
+	$('#second-popular-articles').scrollPagination({
+
+		nop     : 10, // The number of posts per scroll to be loaded
+		offset  : 10, // Initial offset, begins at 0 in this case
+		error   : 'No More Articles!', // When the user reaches the end this is the message that is
+			                            // displayed. You can change this if you want.
+		delay   : 300, // When you scroll down the posts will load after a delayed amount of time.
+			               // This is mainly for usability concerns. You can alter this as you see fit
+		scroll  : true // The main bit, if set to false posts will not load as the user scrolls. 
+			               // but will still load if the user clicks.
+	});
+}
 
 var body = document.body;
 	
@@ -348,9 +333,6 @@ $('#menu-options li').on('click', function(e){
 
 	function resizeMainOnResize() {
 
-		//console.log("BROWSER WIDTH: ");
-		//console.log($(window).width());
-
 		resizeContentByscreenSize();
 
 		asideHeight.trending = trendingNowHeight;
@@ -359,12 +341,7 @@ $('#menu-options li').on('click', function(e){
 		if(!$('body').hasClass('mobile')) {
 
 			totalHeight = 5400;//3938;
-
-			//if( page === 'home' || page === 'category' || page === 'distroscale'){
-				//totalHeight+= 300;
-			//}
 			if( page == "videos") totalHeight += 80;
-			
 			leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 
@@ -382,9 +359,6 @@ $('#menu-options li').on('click', function(e){
 		
 		totalHeight = 5400;//3938;
 
-		//if( page === 'home' || page === 'category' || page === 'distroscale'){
-			//totalHeight+= 300;
-		//}
 		if( page == "videos") totalHeight += 80;
 		if(!$('body').hasClass('mobile')) {
 			leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
@@ -397,7 +371,6 @@ $('#menu-options li').on('click', function(e){
 		if(target != null ){
 		var iframe = document.createElement('iframe');
 		iframe.id=target.id + '-iframe';
-		//console.log(target);
 		iframe.className="ad-unit hide-for-print";
 		iframe.scrolling="no";
 		iframe.height="0";
@@ -434,9 +407,6 @@ $('#menu-options li').on('click', function(e){
 			var div = $('<'+elm+'></'+elm+'>')
 			div.addClass(elClass);
 			div.attr('id', id);
-			//console.log('TARGET: '+target.context.localName);
-			//if($('body').hasClass('mobile') && target.context.localName === 'li')  div.attr('style', 'margin-left: -1.4rem; padding-left: 0rem !important;');
-
 			$(target).after(div);
 		},
 		loadInArticleAd: function( content, position, iframe, ad, elm ){
@@ -456,8 +426,8 @@ $('#menu-options li').on('click', function(e){
 					if( index === position ){
 
 						if($('body').hasClass('mobile')) {
-							if(elm == 'li') this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding  margin-bottom ad-centering' );
-							else this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding  margin-bottom ad-unit' );
+							if(elm == 'li') this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', ' inarticle-ad ad-unit hide-for-print' );
+							else this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'inarticle-ad ad-unit hide-for-print' );
 						}else{
 							this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding margin-bottom ad-unit' );
 						}
@@ -531,11 +501,7 @@ $('#menu-options li').on('click', function(e){
 						google_position  = parseInt(info[0].mobile_google);
 						nativo_position = 5;//parseInt(info[0].mobile_nativo);
 						sharethrough_position  = 2;//parseInt(info[0].mobile_sharethrough);
-						//carambola_position = info[0].mobile_carambola;
-
-						//set defaults
-						//$('select[name="options"]').find('option[value="3"]').attr("selected",true);
-
+					
 					}
 				},
 				async:   false
@@ -570,14 +536,10 @@ $('#menu-options li').on('click', function(e){
 				inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
 			}
 
-			//KIXER
-			//inBodyAd.loadInArticleAd( 'article-content', 7, 0, 	"<div id='__kx_ad_1073'></div><script type='text/javascript' language='javascript'>var kx_ad_slots = kx_ad_slots || []; (function () { var slot = 1073; var h = false;__kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') {__kx_ad_start();} else { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); }}; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);}})();</script>", tag);
-
 			//GOOGLE 3rd ad
 			inBodyAd.loadInArticleAd( 'article-content', 7, 0, mobilead[adPage].inarticlegoogle3, tag);
 
-
-
+			//inBodyAd.loadInArticleAd( 'article-content', 7, 0, "<iframe src='http://cas.criteo.com/delivery/afr.php?zoneid=230896' framespacing='0' frameborder='no' scrolling='no' width='300' height='460'><a href='http://cas.criteo.com/delivery/ck.php?cb=INSERT_RANDOM_NUMBER' target='_blank'><img src='http://cas.criteo.com/delivery/avw.php?zoneid=230896' border='0' alt='' /></a></iframe>", tag);
 			
 		}
 
@@ -603,39 +565,27 @@ $('#menu-options li').on('click', function(e){
 			ad: {
 				header: document.getElementById("header-ad"),
 				atf: document.getElementById("atf-ad"),
-				//atfleft: document.getElementById("atfleft-ad"),
-				//atfright: document.getElementById("atfright-ad"),
 				btf1: document.getElementById("btf1-ad"),
 				btf2: document.getElementById("btf2-ad"),
 				btf3: document.getElementById("btf3-ad"),
 				footer: document.getElementById("footer-ad"),
 				lift: document.getElementById("lift-ad"),
 				medianet: document.getElementById("medianet-ad"),
-				//flyatf: document.getElementById("flyatf-ad"),
 			}
 		};
 		var hasSponsored = $("#has-sponsored-by").val();
 		var article_id = Foundation.utils.S('#article_id').val();
 		
-	//if( !smarties && (hasSponsored == undefined || hasSponsored == 0)){
 	if( !smarties ){
 		if(browser_width < 740) {
 			loadAd(select.ad.header, mobilead[adPage].header);
 		} else {
-			//loadAd(select.ad.header, ad[adPage].header);
-		    //	loadAd(select.ad.footer, ad[adPage].footer);
 			if(adPage === 'category' && page != 'writeforus') {
 				loadAd(select.ad.medianet, ad.medianet.article);
 			}
 		}
 
-		if( page === 'article' ||  page === 'articleslide'){
-			//ATF//
-		//	loadAd(select.ad.atf, ad[adPage].atf);
-		}
-
 		//Load and Insert a middle article in the article body
-
 		//SINGLE PAGE ARTICLE
 		if( adPage === 'article'){
 			var li_parent = $('#article-content').find('ol');
@@ -675,9 +625,7 @@ $('#menu-options li').on('click', function(e){
 				success: function (data) {
 					if(data != 'false'){
 						var info = $.parseJSON(data);
-						//console.log(info.desk_google);
 						google_position  = parseInt(info[0].desk_google);
-						//nativo_position = parseInt(info[0].desk_nativo);
 						sharethrough_position  = parseInt(info[0].desk_sharethrough);
 						carambola_position = parseInt(info[0].desk_carambola);
 					}
@@ -715,22 +663,8 @@ $('#menu-options li').on('click', function(e){
 			inBodyAd.loadInArticleAd( 'article-caption', 4, 0, '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', 'p');
 				
 		}
-
-		//BTF1
-		//loadAd(select.ad.btf1, ad[adPage].btf1);
-
-		//BTF2
-		//loadAd(select.ad.btf2, ad[adPage].btf2);
 	}
-	//BTF3
-	//	if( page === 'home' ||  page === 'category'){
-			//if(hasSponsored == undefined || hasSponsored == 0){
-			//loadAd(select.ad.btf3, ad[adPage].btf3);
-			//}
-	//	}
-
 	$(window).resize(function() {
-
 		resizeMainOnResize();
 	});
 }
@@ -755,8 +689,6 @@ $('#menu-options li').on('click', function(e){
 					else { classToAdd += ' ad300 ad1050'; asideHeight[label] = 1050 + asideHeight.margin; resizeMainOnAdLoad();}
 				}
 				else if(label === 'atf' || label === 'btf1' || label === 'btf2' || label === 'btf3') { classToAdd += ' ad300 ad250'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
-				//else if(label === 'atfleft') { classToAdd += ' ad300 ad250 left'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
-				//else if( label === 'atfright') { classToAdd += ' ad300 ad250 right'; asideHeight[label] = 251 + asideHeight.margin; resizeMainOnAdLoad();}
 				else if(label === 'header' || label === 'footer') {
 					if(label === 'footer' || (label === 'header' && messageData.height < 110 && messageData.height > 80)) {classToAdd += ' ad90';}
 					else if(label === 'header' && messageData.height < 80) {Foundation.utils.S("#header-ad").css("min-height", messageData.height);}					
@@ -953,15 +885,13 @@ function isOnScreen( element ) {
 
 }
 
-	/* Every time the window is scrolled ... */
-	// Alert a message when the AddThis API is ready
-	function addthisReady(evt) {
+function addthisReady(evt) {
 		if(isOnScreen($('#social-buttons'))){
 			$('#at4-share').removeClass('social-show').addClass('at4-hide');
 		}else{
 			$('#at4-share').removeClass('at4-hide').addClass('social-show');
 		}
-	}
+}
 
 function kFormatter(num) {
   	return num > 999 ? (num/1000).toFixed(1) + 'k' : num

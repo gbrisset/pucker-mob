@@ -1,11 +1,9 @@
     
     <div class="clear padding-bottom" style="text-align: center;">
     <?php if ( $detect->isMobile() ) { ?>
-    <!--<div class="ad-unit hide-for-print mobile-ad90 padding-bottom" id="footer-ad">
-      <div style="width:320px;height:50px;" data-gg-slot="514"></div>
-    </div>-->
+
     <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
-   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- PuckerMob Mobile -->
       <ins class="adsbygoogle"
            style="display:inline-block;width:320px;height:50px"
@@ -15,10 +13,39 @@
       (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
       <?php } ?>
+
     <?php }else{ 
        if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
         else{?>
-          <div id="footer-ad" class="ad-unit"></div>
+          <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+             <div id="footer-ad" class="ad-unit hide-for-print " style="max-width: 46rem; margin: 0 auto;">
+                <!-- puckermob.com/ros_btf -->
+                <script type="text/javascript">
+                  var ord = window.ord || Math.floor(Math.random() * 1e16);
+                  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros_btf;sz=728x90;dcopt=ist;type=pop;type=int;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
+                </script>
+
+                <noscript>
+                  <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros_btf;sz=728x90;ord=[timestamp]?">
+                    <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros_btf;sz=728x90;ord=[timestamp]?" width="728" height="90" />
+                  </a>
+                </noscript>
+              </div>
+           <?php }else{?>
+            <div id="footer-ad" class="ad-unit"  style="max-width: 46rem; margin: 0 auto;">
+              <!-- puckermob.com/home_BTF -->
+              <script type="text/javascript">
+               var ord = window.ord || Math.floor(Math.random() * 1e16);
+                document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home_BTF;sect=home_BTF;sz=728x90;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
+              </script>
+
+              <noscript>
+                <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home_BTF;sect=home_BTF;sz=728x90;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
+                  <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home_BTF;sect=home_BTF;sz=728x90;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="728" height="90" />
+                </a>
+              </noscript>
+          </div>
+           <?php }?>
     <?php }
     } ?>
      </div>
@@ -84,6 +111,3 @@
       </div>
       </div>
     </footer>
-
-    <!-- 33ACROSS AD SERVER 
-    <div id="flyatf-ad"></div>-->

@@ -1,3 +1,4 @@
+/*04/21/2015*/
 #second-popular-articles h3{ font-family: OswaldRegular;}
 .second-article-date label {
   position: relative;
@@ -9,3 +10,36 @@
 }
 
 .second-article-date .span-shares-holder{ text-align: right;}
+
+/*04/22/2015*/  
+#disqus-comments{display:none;}
+.facebook-comments-button {  padding: 0.5rem 1rem;  background-color: #3B5998 !important; width: 100%;}
+.facebook-comments-button label{
+	width: 100%;
+  	position: relative;
+  	font-size: 0.95rem;
+  	font-family: OsloBold;
+  	color: #fff;
+  	height: 20px;
+  	top: -2px;
+  	padding: 0.2rem 1rem;
+}
+#arrow-tag{
+	font-size: 2rem; position: relative; margin-left: 1rem; top: 5px;
+}
+
+@media only screen and (min-width: 740px) {#header-ad{min-height:90px;max-width: 46rem;}}
+@media only screen and (max-width: 33.75rem){
+.related-articles-box a {
+  color: #000 !important;
+  text-decoration: none !important;
+  font-size: 0.85rem !important;
+  font-weight: normal !important;
+  display: table-cell;
+  height: 70px;
+  padding: 0;
+  vertical-align: middle;
+  margin: 0;
+  line-height: 1.25;
+  text-align: left;
+}

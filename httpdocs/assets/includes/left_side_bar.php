@@ -1,16 +1,15 @@
 <aside id="left-aside" class="fixed-width-sidebar column no-padding hide-for-print show-on-large-up">
 	<?php 
 	//MOBLOGS ARTICLES
+	$moblog_articles = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );
 
-	if( isset($articleInfoObj) && $articleInfoObj) $moblog_articles = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );
-	else $moblog_articles = $mpArticle->getMoBlogsArticles(  );
-
+	//var_dump($moblog_articles);
 	?>
 	<div class="div-left-cont">
 
 		<h3>RECENT MOBLOGS</h3>
 		<?php foreach( $moblog_articles as $article ){
-			$article_url = $config['this_url'].'/moblog/'.$article['article_seo_title'];
+			$article_url = $config['this_url'].'moblog/'.$article['article_seo_title'];
 		?>
 
 		<div class="left-side-img-content">

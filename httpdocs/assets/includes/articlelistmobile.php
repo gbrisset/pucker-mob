@@ -1,9 +1,9 @@
 
-<div class = "row no-padding padding-top">
+<div class = "row no-padding padding-top" id="articlelist-wrapper">
 	<?php 
 
 	$articleIndex = 0;
-	$quantity = 24;
+	$quantity = 10;
 	$omitThis = 0;
 	$cat_id = $mpArticle->data['cat_id'];
 	if(isset($categoryInfo) &&  $categoryInfo){
@@ -13,18 +13,19 @@
 	$featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 	if( $featuredArticle && $featuredArticle['article_status'] == 1){
 		$articleIndex++;
-		$quantity = 24;
+		$quantity = 11	;
 		$omitThis =  $featuredArticle['article_id'];
 		include_once($config['include_path'].'featured_article.php');
 	}
 
 	// If is HomePage Get new article List
 	if( $cat_id == 1){
-		$articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
+		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis ]);
+		//selse $articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
 	}
-	
-	foreach ($articlesList['articles'] as $articles){
-//$config['this_url']
+	//var_dump($articlesList );
+	foreach ($articlesList as $articles){
+
 		$linkToArticle = 'http://www.puckermob.com/'.$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 		$date = date("M d, Y", strtotime($articles['date_updated']));
 		$article_id = $articles['article_id'];
@@ -71,7 +72,6 @@
 			</div>
 		</div>
 		
-		
 		<?php if( $articleIndex == 4 ){ ?>
 		<div class="columns mobile-12 no-padding">
 			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
@@ -79,15 +79,7 @@
 		</div>
 		
 		<?php } 
-
-		//if( $articleIndex % 7 == 0 ) { ?>
-		<!-- 3LIFT 
-		
-			<div id="lift-ad">
-				<script src="http://ib.3lift.com/ttj?inv_code=puckermob_mobile_feed"></script> 
-			</div> -->
-		<?php //}
 	}
 ?>
-
+<div id="article-list" class="small-12 clear margin-top"></div>
 </div>

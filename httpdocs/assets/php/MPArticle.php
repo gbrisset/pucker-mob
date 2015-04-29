@@ -198,6 +198,42 @@ public function getMoBlogsArticles( $current_article_id = 0){
 
 }
 
+public function getMobileArticleList( $args = [], $attempts = 0 ){
+	$options = array_merge([
+		'pageId' => null, 
+		'count' => 12, 
+		'sortType' =>1, //1 == Most Recent, 2 == Most Popular, 3 == Most Visited, 4 == A-Z, 5 == Z-A
+		'featured'=> false, 
+		'featureType' =>1, //1 == Sidebar, 2 == On-Page
+		'contributorId' => null, 
+		'omit'=> false,
+		'articleId' => null, 
+		'articleTitles' => [],
+		'articleSEOTitle' => '',
+		'articleSEOTitles' =>[],
+		'articleStatus' => 1,
+		'limit' => '',
+		'offset' => ''
+	], $args);
+
+	$s = " SELECT *, articles.creation_date, articles.article_id 
+		   FROM articles 
+		   INNER JOIN ( article_categories, categories ) 
+		   ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id ) 
+		   WHERE  articles.article_status = 1 AND categories.cat_id != 9 ";
+
+	if( isset( $options['omit'] )  &&  $options['omit']) {
+		$s .= " AND articles.article_id != ". $options['omit'] ;
+	}
+	
+	$s .= " ORDER BY articles.date_updated DESC, articles.article_id DESC 
+		   LIMIT ".$options['limit']." OFFSET ".$options['offset'];
+//var_dump($s);	
+	$q = $this->performQuery(['queryString' => $s]);
+		
+	return $q;	   
+}
+
 public function getArticles($args = [], $attempts = 0){
 	$options = array_merge([
 		'pageId' => null, 
@@ -403,15 +439,17 @@ public function getArticles($args = [], $attempts = 0){
 
 		while($row = $q->fetch()){
 			if(!in_array($row['article_id'], $r['ids'])){
-				$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating, count(article_ratings.rating) AS reviews FROM article_ratings INNER JOIN (articles) ON (articles.article_id = article_ratings.article_id) WHERE articles.article_id = ".$row['article_id']);
-				$parent_category = $pdo->query("SELECT cat_name as parent_category_name, cat_dir_name as parent_category_page_directory FROM categories WHERE cat_id = ".$row['parent_category_id']);
+				//$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating, count(article_ratings.rating) AS reviews FROM article_ratings INNER JOIN (articles) ON (articles.article_id = article_ratings.article_id) WHERE articles.article_id = ".$row['article_id']);
+				//$parent_category = $pdo->query("SELECT cat_name as parent_category_name, cat_dir_name as parent_category_page_directory FROM categories WHERE cat_id = ".$row['parent_category_id']);
 
 				$parentArray = [];
 				$ratingArray = [];
-				if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
-				if($parent_category && $parent_category->rowCount()) $parentArray = $parent_category->fetch(PDO::FETCH_ASSOC);
+				//if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
+				//if($parent_category && $parent_category->rowCount()) $parentArray = $parent_category->fetch(PDO::FETCH_ASSOC);
 
-				$row = array_merge($row, $parentArray);
+				//$row = array_merge($row, $parentArray);
+
+				//var_dump($row);
 				$r['ids'][] =$row['article_id'];
 				$r['articles'][] = array_merge($row, $ratingArray);
 			}
@@ -1266,28 +1304,6 @@ public function getFeatured($args = []){
 			$this->con->closeCon();
 			
 			return $s; 
-		}
-
-		public function getSocialMediaShares( $limit ){
-
-			$query = "SELECT article_id , 
-							( facebook_shares_org + facebook_likes_org + twitter_shares_org + pinterest_shares_org + 
-							  google_shares_org + linkedin_shares_org + stumbleupon_shares_org ) as total 
-					  FROM `social_media_records` 
-					  GROUP BY article_id 
-					  ORDER BY article_id 
-					  DESC ";
-		
-			if(isset($limit) && $limit > 0 ) $query .= " LIMIT $limit ";
-
-			$queryParams = [];
-			$q = $this->performQuery(['queryString' => $query, 'queryParams' => $queryParams]);
-	
-			if ($q ){
-				return $q;
-			} else {
-				return false;
-			}		
 		}
 
 		//NOT IN USE ON PUCKERMOB

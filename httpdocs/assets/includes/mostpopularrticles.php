@@ -47,7 +47,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 
 						if($articleNumber == 6 ){
 							if($has_sponsored && $isHomepage ){ }else{
-								echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_right"></script>';
+							//	echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_right"></script>';
 							
 						?>
 							<!-- NTENT ADS -->

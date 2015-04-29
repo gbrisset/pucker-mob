@@ -1334,7 +1334,7 @@ class MPArticleAdmin{
             if( $vDstImg && $vSrcImg ){
             	
             	imagecopyresampled($vDstImg, $vSrcImg, 0, 0, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
-               	imagejpeg( $vDstImg, $iDestFileName, 100 );
+               	imagejpeg( $vDstImg, $iDestFileName, 75 );
 
              	return  true;
             }
@@ -1353,7 +1353,7 @@ class MPArticleAdmin{
             // copy and resize part of an image with resampling
             if( $vDstImg && $vSrcImg ){
             	imagecopyresampled($vDstImg, $vSrcImg, 0, 0, (int)$src_x, (int)$src_y, (int)$dst_w, (int)$dst_h, (int)$src_w, 431);
-               	imagejpeg( $vDstImg, $iDestFileName, 100 );
+               	imagejpeg( $vDstImg, $iDestFileName, 85 );
 
              	return  true;
             }

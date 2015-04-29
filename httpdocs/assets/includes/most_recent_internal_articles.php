@@ -6,6 +6,7 @@ if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articl
 
 if( isset($recentArticles) && $recentArticles ){ ?>
 	<section id="second-popular-articles" class="columns small-12 no-padding">
+		<h3 class="column small-12 margin-top">NEW ON PUCKERMOB</h3>
 	<?php 
 		$articleNumber = 0;
 		$articleTotalNumber = 0;

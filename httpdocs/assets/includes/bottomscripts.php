@@ -1,41 +1,18 @@
-<?php //echo $config['this_url']; ?>
-<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/modernizr-2.5.3.min.js"></script>
+
+<script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/modernizr.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/foundation.min.js"></script>
 
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<?php if(isset($articleInfo) && $articleInfo){ ?>
-
- <!-- [ === Select Text to Share Javascript file === ] -->
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/selectshare.js"></script>
-
-    <!-- [ === TOOLTIP init === ] -->
-    <script>var twitterAccount = "Puckermob";</script><!-- [ <-- NOTE: YOUR TWITTER ACCOUNT GOES HERE ! (without "@" !) ] -->
-    <div class="shareTooltip" id="shareTooltip">
-         <div class="tooltipContainer"><a id="sendToTwitter" href="" class="sharingLink twitter"><span></span></a></div>
-     </div>
-     <!-- Twitter code to open a new dialog window -->
-     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <!-- [ === /end of TOOLTIP === ] This is it ! ;-) -->
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    if(addthis) addthis.init();
-  })
-  </script>
-  <?php }?>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 
 
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/iframeResizer.min.js"></script>
+ <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/iframeResizer.min.js"></script>
       <?php //if(  isset($promotedArticle) && !$promotedArticle && isset($has_sponsored) && !$has_sponsored){ ?>
 
    <!--[if !IE]>
@@ -80,33 +57,6 @@
       <?php } 
     //} ?>
 
-    <!-- Spring Board ADs (VIDEO ON CATGORIES)
-    <script type="text/javascript">
-
-    var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
-
-    function sbElementCheck() {
-
-      var targetedElement = document.getElementById('ingageunit');
-      if(targetedElement) {
-        clearInterval(sbElementInterval);
-        (function(d) {
-          var js, s = d.getElementsByTagName('script')[0];
-          js = d.createElement('script');
-          js.async = true;
-          js.onload = function(e) {
-            SbInGageWidget.init({
-              partnerId : 3809,
-              widgetId : 'spld002',
-              cmsPath : 'http://cms.springboardplatform.com'
-            });
-          }
-          js.src = "http://cdn.springboardplatform.com/storage/js/ingage/apingage.min.js";
-          s.parentNode.insertBefore(js, s);
-        })(window.document);
-      }
-    }
-    </script>-->
 
 
   <?php //} ?>
@@ -192,6 +142,31 @@
 
 <!-- DESKTOP & MOBILE SCRIPT -->
 
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<?php if(isset($articleInfo) && $articleInfo){ ?>
+
+ <!-- [ === Select Text to Share Javascript file === ] -->
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/selectshare.js"></script>
+
+    <!-- [ === TOOLTIP init === ] -->
+    <script>var twitterAccount = "Puckermob";</script><!-- [ <-- NOTE: YOUR TWITTER ACCOUNT GOES HERE ! (without "@" !) ] -->
+    <div class="shareTooltip" id="shareTooltip">
+         <div class="tooltipContainer"><a id="sendToTwitter" href="" class="sharingLink twitter"><span></span></a></div>
+     </div>
+     <!-- Twitter code to open a new dialog window -->
+     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!-- [ === /end of TOOLTIP === ] This is it ! ;-) -->
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    if(addthis) addthis.init();
+  })
+  </script>
+  <?php }?>
+  
 <script>
   !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
   arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
@@ -208,8 +183,8 @@
    
 
 <?php }?>
-<!-- Nativo 
-  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
+<!-- Nativo -->
+  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>
 
   <!-- TotallyHer comscore tags -->
   <!-- Begin comScore Tag -->
@@ -220,7 +195,7 @@
 <!-- POPUNDERS -->
 <script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
 
-<!--Disqus Comment Box Implementation (Comments Counter)-->
+<!--Disqus Comment Box Implementation (Comments Counter)
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'puckermob'; // required: replace example with your forum shortname
@@ -232,8 +207,8 @@
         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
-  </script>
- <!--END Disqus Comment Box Implementation (Comments Counter)-->
+  </script>-->
+ <!--END Disqus Comment Box Implementation (Comments Counter)
 
  <script>
    //if($('#fb-login')){
@@ -244,4 +219,4 @@
         }, {scope: 'public_profile,email'});
     });
   //}
- </script>
+ </script>-->

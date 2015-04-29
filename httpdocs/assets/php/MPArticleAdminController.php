@@ -285,7 +285,9 @@ class MPArticleAdminController extends MPArticle{
 	public function editBillingInformation($data){
 		$email = filter_var($data['paypal-email'], FILTER_SANITIZE_EMAIL);
 		$user_id = filter_var($data['user_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-
+		$w9_live = filter_var($data['w9_live'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		
+		
 		//Check if record exists
 		$recordExist = $this->performQuery(array(
 			'queryString' => 'SELECT * FROM user_billing_info WHERE user_id = :user_id',
@@ -295,7 +297,7 @@ class MPArticleAdminController extends MPArticle{
 		//if(!empty($email) && $email){
 			if($recordExist){
 				$billing_record =  $this->performUpdate(array(
-				'updateString' => "UPDATE user_billing_info SET paypal_email = '".$email."' WHERE user_id = :userId",
+				'updateString' => "UPDATE user_billing_info SET paypal_email = '".$email."', w9_live = ".$w9_live." WHERE user_id = :userId ",
 				'updateParams' => array(':userId' => $user_id)
 			));
 				$message = 'Email Updated Successfully';
@@ -303,7 +305,7 @@ class MPArticleAdminController extends MPArticle{
 			}else{
 				$billing_record = $this->performUpdate(array(
 				//'updateString' => "INSERT INTO  user_billing_info  SET paypal_email = ':paypalEmail', user_id = ':userId' ",
-				'updateString' => "INSERT INTO user_billing_info (paypal_email, user_id) VALUES ('".$email."', $user_id) ",
+				'updateString' => "INSERT INTO user_billing_info (paypal_email, user_id, w9_live) VALUES ('".$email."', $user_id, $w9_live) ",
 				'updateParams' => array(':paypalEmail'=>$email, ':userId' => $user_id,
 				'isInsert' => true)
 			));

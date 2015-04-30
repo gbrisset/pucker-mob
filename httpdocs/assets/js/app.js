@@ -262,7 +262,7 @@ function resizeContentByscreenSize(){
 $('#articlelist-wrapper').scrollPagination({
 
 	nop     : 10, // The number of posts per scroll to be loaded
-	offset  : 10, // Initial offset, begins at 0 in this case
+	offset  : 11, // Initial offset, begins at 0 in this case
 	error   : 'No More Articles!', // When the user reaches the end this is the message that is
 		                            // displayed. You can change this if you want.
 	delay   : 300, // When you scroll down the posts will load after a delayed amount of time.
@@ -270,21 +270,6 @@ $('#articlelist-wrapper').scrollPagination({
 	scroll  : true // The main bit, if set to false posts will not load as the user scrolls. 
 		               // but will still load if the user clicks.
 });
-
-//SCROLL DOWN
-if(page == 'article'){
-	$('#second-popular-articles').scrollPagination({
-
-		nop     : 10, // The number of posts per scroll to be loaded
-		offset  : 10, // Initial offset, begins at 0 in this case
-		error   : 'No More Articles!', // When the user reaches the end this is the message that is
-			                            // displayed. You can change this if you want.
-		delay   : 300, // When you scroll down the posts will load after a delayed amount of time.
-			               // This is mainly for usability concerns. You can alter this as you see fit
-		scroll  : true // The main bit, if set to false posts will not load as the user scrolls. 
-			               // but will still load if the user clicks.
-	});
-}
 
 var body = document.body;
 	
@@ -642,11 +627,6 @@ $('#menu-options li').on('click', function(e){
 				inBodyAd.loadInArticleAd( 'article-content', google_position, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', tag);	
 			}
 
-			//CARAMBOLA
-			if(carambola_position && carambola_position != -1){
-					inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);
-			}
-
 			//SHARETHROUGH
 			if(sharethrough_position && sharethrough_position != -1){
 				if( country && country == 'US'){
@@ -655,6 +635,13 @@ $('#menu-options li').on('click', function(e){
 					inBodyAd.loadInArticleAd( 'article-content', sharethrough_position, 0, ad[adPage].inarticlesharetothercountry, tag);
 				}
 			}
+			
+			//CARAMBOLA
+			if(carambola_position && carambola_position != -1){
+					inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);
+			}
+
+			
 		}
 
 		//MULTIPAGE ARTICLES
@@ -663,8 +650,22 @@ $('#menu-options li').on('click', function(e){
 			inBodyAd.loadInArticleAd( 'article-caption', 4, 0, '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', 'p');
 				
 		}
+
+		//BTF1
+		//loadAd(select.ad.btf1, ad[adPage].btf1);
+
+		//BTF2
+		//loadAd(select.ad.btf2, ad[adPage].btf2);
 	}
+	//BTF3
+	//	if( page === 'home' ||  page === 'category'){
+			//if(hasSponsored == undefined || hasSponsored == 0){
+			//loadAd(select.ad.btf3, ad[adPage].btf3);
+			//}
+	//	}
+
 	$(window).resize(function() {
+
 		resizeMainOnResize();
 	});
 }
@@ -885,13 +886,15 @@ function isOnScreen( element ) {
 
 }
 
-function addthisReady(evt) {
+	/* Every time the window is scrolled ... */
+	// Alert a message when the AddThis API is ready
+	function addthisReady(evt) {
 		if(isOnScreen($('#social-buttons'))){
 			$('#at4-share').removeClass('social-show').addClass('at4-hide');
 		}else{
 			$('#at4-share').removeClass('at4-hide').addClass('social-show');
 		}
-}
+	}
 
 function kFormatter(num) {
   	return num > 999 ? (num/1000).toFixed(1) + 'k' : num

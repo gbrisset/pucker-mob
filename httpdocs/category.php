@@ -15,8 +15,8 @@ foreach($MPNavigation->categories as $category){
 if(!is_null($categoryInfo)){
 	$cat_name = $categoryInfo['cat_dir_name'];
 	$pageName = $categoryInfo['cat_name'].' | '.$mpArticle->data['article_page_name'];
-	$parentCategorySEOName = ($categoryInfo['parent_dir_name']);
-
+	//$parentCategorySEOName = ($categoryInfo['parent_dir_name']);
+//var_dump($parentCategorySEOName);
 	//var_dump(	$config['page_id']);
 	//$config['page_id']= $categoryInfo['cat_id'];
 	//var_dump(	$config['page_id']);
@@ -24,21 +24,21 @@ if(!is_null($categoryInfo)){
 	$articlesList = $mpArticle->getMostRecentByCatId(['pageId' => $categoryInfo['cat_id']]);
 	$recentArticles = $articlesList;
 	$articlesPerPage = 24;
-	$totalPages = ceil(count($articlesList['articles']) / $articlesPerPage);
-	if($totalPages > 1){
-		$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
-		if($currentPage > $totalPages) $currentPage = 1;
-		$offset = ($currentPage - 1) * $articlesPerPage;
-		$articlesList['articles'] = array_slice($articlesList['articles'], $offset, $articlesPerPage);
-		if ($hasParent){
-			$parentCategorySEOName = $categoryInfo['parent_dir_name'];
-			$parentCategoryVisibleName = $categoryInfo['parent_name'];
-			$pagesArray['url'] = $config['this_url'].$parentCategorySEOName.'/'.$categoryInfo['cat_dir_name'];
-		} else {
-			$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
-		}
-		$pagesArray['pages'] = $mpHelpers->getPages($currentPage, $totalPages);
-	}
+	//$totalPages = ceil(count($articlesList['articles']) / $articlesPerPage);
+	//if($totalPages > 1){
+		//$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
+		//if($currentPage > $totalPages) $currentPage = 1;
+		//$offset = ($currentPage - 1) * $articlesPerPage;
+		//$articlesList['articles'] = array_slice($articlesList['articles'], $offset, $articlesPerPage);
+		//if ($hasParent){
+		//	$parentCategorySEOName = $categoryInfo['parent_dir_name'];
+		//	$parentCategoryVisibleName = $categoryInfo['parent_name'];
+		//	$pagesArray['url'] = $config['this_url'].$parentCategorySEOName.'/'.$categoryInfo['cat_dir_name'];
+		//} else {
+		//	$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
+		//}
+		//$pagesArray['pages'] = $mpHelpers->getPages($currentPage, $totalPages);
+	//}
 }else $mpShared->get404();
 if ( $detect->isMobile() ) { ?>
 <!DOCTYPE html>
@@ -89,15 +89,14 @@ if ( $detect->isMobile() ) { ?>
 					<h1 id="category-name" class="h1-large-article"><?php echo $categoryInfo['cat_name']; ?></h1>
 			
 					<?php include_once($config['include_path'].'categoryresults.php');?>
-					<?php //include_once($config['shared_include'].'pagination.php');?>
+
 					<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
 					<section class="hide-for-print ">
 						<div id="ingageunit" class="hide-for-print"></div>
 					</section>
 					<hr>
 					<?php include_once($config['include_path'].'fromourpartners.php'); ?>
-					<!--<hr>-->
-					<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
+
 			</section>
 			<?php 
 				include_once($config['include_path'].'rightsidebar.php');

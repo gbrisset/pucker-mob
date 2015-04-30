@@ -67,8 +67,8 @@ class MPNavigation{
 		return array_shift($categorySet);
 	}
 
-	private function getLinkToCategoryByCatId($catId){
-				$pdo = $this->con->openCon();
+private function getLinkToCategoryByCatId($catId){
+	$pdo = $this->con->openCon();
 		$q = $pdo->query("SELECT parent.* 
 							FROM categories AS cat,
 							        categories AS parent
@@ -263,7 +263,7 @@ class MPNavigation{
         return $result;
     }
 
-	 public function getNavigationPageLinks($id = null){
+	public function getNavigationPageLinks($id = null){
 		$pdo = $this->con->openCon();
 		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;
 		$q = $pdo->query("SELECT * FROM article_page_navigation_links INNER JOIN (article_pages_navigation_links) ON (article_page_navigation_links.navigation_link_id = article_pages_navigation_links.article_link_id) WHERE article_pages_navigation_links.article_page_id = $id ORDER BY article_pages_navigation_links.article_link_order DESC");
@@ -279,27 +279,6 @@ class MPNavigation{
 		return $r;
 	}
 	 
-
-	// private function getSubCategories($id=null){ 
-	// 	$pdo = $this->con->openCon();
-	// 	$id = (is_null($id)) ? 1 : $id;
-	// 	$q = $pdo->query("SELECT *, category_page_name, category_page_visible_name, category_page_directory 
-	// 						FROM article_category_pages
-	// 						INNER JOIN (article_page_main_categories) 
-	// 						ON (article_page_main_categories.child_category_id =  article_category_pages.category_page_id)
-	// 						WHERE parent_category_id = $id
-	// 						ORDER BY parent_child_rel_id ASC");
-	// 	$q->setFetchMode(PDO::FETCH_ASSOC);
-	// 	if($q && $q->rowCount()){
-	// 		while($row = $q->fetch()){
-	// 			$r[] = $row;
-	// 		}
-	// 		$q->closeCursor();
-	// 	}else $r = false;
-	// 	$this->con->closeCon();
-	// 	return $r;
-	// }
-
 	public function getAllCategoriesWithArticles(){
 		$pdo = $this->con->openCon();
 
@@ -328,47 +307,7 @@ class MPNavigation{
 	private function getArticlePageMainCategories(){ 
 		$pdo = $this->con->openCon();
 		// Get all categories that are either 'stand-alone' or 'parents', but not the homepage (id = -1)
-		$q = $pdo->query("SELECT 
-   *,
-   (SELECT 
-      cat_id
-    FROM 
-       categories AS t2
-    WHERE 
-       t2.lft  < t1.lft AND 
-       t2.rgt > t1.rgt
-    ORDER BY 
-       t2.rgt-t1.rgt ASC 
-    LIMIT 
-       1) AS parent_id, 
-   (SELECT 
-      cat_name
-    FROM 
-       categories AS t2
-    WHERE 
-       t2.lft  < t1.lft AND 
-       t2.rgt > t1.rgt
-    ORDER BY 
-       t2.rgt-t1.rgt ASC 
-    LIMIT 
-       1) AS parent_name,
-   (SELECT 
-      cat_dir_name
-    FROM 
-       categories AS t2
-    WHERE 
-       t2.lft  < t1.lft AND 
-       t2.rgt > t1.rgt
-    ORDER BY 
-       t2.rgt-t1.rgt ASC 
-    LIMIT 
-       1) AS parent_dir_name
-
-FROM 
-    categories AS t1
-WHERE lft>1
-ORDER BY 
-    rgt-lft DESC");
+		$q = $pdo->query("SELECT *, '1' as parent_id FROM categories WHERE lft>1 ORDER BY rgt-lft DESC");
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		if($q && $q->rowCount()){
 			while($row = $q->fetch()){
@@ -376,7 +315,6 @@ ORDER BY
 			}
 
 			foreach($r as $cat){
-				//$cat['subcategories'] = $this->getSubCategories($cat['cat_id']);
 				if ($cat['parent_id'] == 1){
 					$categories[] = $cat;
 				}	
@@ -391,7 +329,8 @@ ORDER BY
 
 		$pdo = $this->con->openCon();
 		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;
-		$q = $pdo->query("SELECT 
+		 $q = $pdo->query("SELECT * FROM categories WHERE lft>1 ");
+		/*$q = $pdo->query("SELECT 
 						   *,
 						   (SELECT 
 						      cat_id
@@ -431,7 +370,7 @@ ORDER BY
 						    categories AS t1
 						WHERE lft>1
 						ORDER BY 
-						    rgt-lft DESC");
+						    rgt-lft DESC");*/
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		if($q && $q->rowCount()){
 			while($row = $q->fetch()){

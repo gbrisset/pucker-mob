@@ -159,10 +159,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</article>
 			</li>
 			<?php }?>
-				<!--<?php //if( $related['related_article_id_1']['info'] ) {?><li class="related_to_this_article" id="<?php //echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php // echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php // echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php// }?>
-				<?php //if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php //echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php // echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php //echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php //}?>
-				<?php // if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php //echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php // echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php //echo $related['related_article_id_3']['info']['article_title']; ?></a></li><?php //}?>
-			-->
 			</ul>
 			</div>
 	
@@ -173,20 +169,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
 		<?php }?>
-
-		<!-- NOTES 
-		<?php //if( isset($article_img_credits) && !empty($article_notes)){?>
-		<p><?php //echo $article_notes; ?></p>
-		<?php //}?>
-
-		<div class="remember-to-share padding-top row half-padding">
-			<h3>PLEASE REMEMBER TO SHARE</h3>
-		</div>-->
-		
-		
-
-		<!-- FROM AROUND THE WEB -->	
-		<?php //include_once($config['include_path'].'fromaroundthewebmobile.php'); ?>
 		
 		<!-- KIXER -->
 		<!-- Start Below Article 
@@ -228,9 +210,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- READ MORE MOBILE -->
 		<div id="grad"></div>
 		<p class="read-more" style="margin-bottom:0 !important;"><a href="" class="button">CONTINUE READING</a></p>
-
-		<!--<section id="separator-section" class="row no-padding"></section>-->
-		
 
 		</section>
 	</div>
@@ -277,16 +256,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
+					<img src="http://cdn-assets.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
 				</a> 
 				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
+					<img src="http://cdn-assets.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
 				</a> 
 				<a class="addthis_button_pinterest_share">
-					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
+					<img src="http://cdn-assets.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
 				</a>
 				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
+					<img src="http://cdn-assets.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
 				</a>
 			
 				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
@@ -401,16 +380,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
 				<a class="addthis_button_facebook">
-					<img src="<?php echo $config['this_url'].'assets/img/FacebookIconCircle3.png'; ?>" alt="Facebook" />
+					<img src="http://cdn-assets.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
 				</a> 
 				<a class="addthis_button_twitter">
-					<img src="<?php echo $config['this_url'].'assets/img/TwitterIconCircle.png'; ?>" alt="Twitter" />
+					<img src="http://cdn-assets.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
 				</a> 
 				<a class="addthis_button_pinterest_share">
-					<img src="<?php echo $config['this_url'].'assets/img/Pinterest-Icon-Circle.png'; ?>" alt="Pinterest" />
+					<img src="http://cdn-assets.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
 				</a>
 				<a href="#disqus-container" class="disqus_container">
-					<img src="<?php echo $config['this_url'].'assets/img/CommentsIconCircle.png'; ?>" alt="Comments" />
+					<img src="http://cdn-assets.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
 				</a>
 			
 				<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>

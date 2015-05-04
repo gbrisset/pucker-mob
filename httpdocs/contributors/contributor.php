@@ -18,7 +18,7 @@ if(isset($_GET['sort'])){
 	}
 }
 $contributorInfo = $mpArticle->getContributors(['contributorSEOName' => $_GET['c'], 'sortType' => $sortId]);
-$mostReadArticles = $mpArticle->getArticles(['count' => 5, 'sortType' => 2]);
+//$mostReadArticles = $mpArticle->getArticles(['count' => 5, 'sortType' => 2]);
 
 // Dish of the Day the same on every page
 $featuredArticle = $mpArticle->getFeatured(['featureType' => 2, 'articleCount' => 1, 'pageId' => 1]);

@@ -1,8 +1,9 @@
 <?php
+
+header("Cache-Control: max-age=86400"); //30days (60sec * 60min * 24hours * 1day)
+
 $local = 1;
 $version = "";
-
-header('Cache-Control: max-age=3600');
 
 if($local)
 {

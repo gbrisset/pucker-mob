@@ -202,7 +202,7 @@ class GoogleAnalyticsData{
 				$queryParams = [];
 
 				$pdo = $this->con->openCon();
-				//var_dump($insert);	
+			
 				$ins = $pdo->prepare($insert);
 
 				$row = $ins->execute($queryParams);

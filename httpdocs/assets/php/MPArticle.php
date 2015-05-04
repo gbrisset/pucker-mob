@@ -20,7 +20,7 @@ class MPArticle{
 		//$this->memcache = new MPMemcache($this->config);
 	}
 
-private function getArticlePageInfo($id = 1){
+/*private function getArticlePageInfo($id = 1){
 		$pdo = $this->con->openCon();
 		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;
 		$pageQueryString = "SELECT * FROM article_pages "; 
@@ -35,6 +35,31 @@ private function getArticlePageInfo($id = 1){
 
 			$pageQueryString .= "LEFT JOIN (syndication_sites) ";
 			$pageQueryString .= "ON (syndication_sites.syn_api_key = article_page_player_settings.player_setting_api_key) ";
+
+			$pageQueryString .= "WHERE article_pages.article_page_id = 1 ";
+
+			$pageQueryString .= "LIMIT 0, 1 ";
+			$q = $pdo->query($pageQueryString);
+			if($q && $q->rowCount()){
+				$q->setFetchMode(PDO::FETCH_ASSOC); 
+				$row = $q->fetch();
+				$r = $row;
+				$q->closeCursor();
+			}else $r = false;
+			$this->con->closeCon();
+
+		return $r;
+}*/
+private function getArticlePageInfo($id = 1){
+		$pdo = $this->con->openCon();
+		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;
+		$pageQueryString = "SELECT * FROM article_pages "; 
+
+		$pageQueryString .= "INNER JOIN (article_page_ads, article_page_images, article_page_styling, article_page_social_settings )";
+		$pageQueryString .= "ON (article_pages.article_page_id = article_page_ads.article_page_id ";
+			$pageQueryString .= "AND article_pages.article_page_id = article_page_images.article_page_id "; 
+			$pageQueryString .= "AND article_pages.article_page_id = article_page_styling.article_page_id "; 
+			$pageQueryString .= "AND article_pages.article_page_id = article_page_social_settings.article_page_id) "; 
 
 			$pageQueryString .= "WHERE article_pages.article_page_id = 1 ";
 
@@ -115,9 +140,9 @@ public function getSearchResultsByNamesArray($args = []){
 		$r = ['ids' => [],'articles' => []];
 		while($row = $q->fetch()){
 			if(!in_array($row['article_id'], $r['ids'])){
-				$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating, count(article_ratings.rating) AS reviews FROM article_ratings INNER JOIN (articles) ON (articles.article_id = article_ratings.article_id) WHERE articles.article_id = ".$row['article_id']);
+				//$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating, count(article_ratings.rating) AS reviews FROM article_ratings INNER JOIN (articles) ON (articles.article_id = article_ratings.article_id) WHERE articles.article_id = ".$row['article_id']);
 				$ratingArray = [];
-				if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
+				//if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
 				$r['ids'][] =$row['article_id'];
 				$r['articles'][] = array_merge($row, $ratingArray);
 			}
@@ -238,6 +263,69 @@ public function getMobileArticleList( $args = [], $attempts = 0 ){
 	$q = $this->performQuery(['queryString' => $s]);
 		
 	return $q;	   
+}
+
+public function getArticlesList( $args = [] ){
+	$options = array_merge([
+		'pageId' => null, 
+		'contributorId' => null, 
+		'omit'=> [],
+		'articleId' => null, 
+		'articleTitles' => [],
+		'articleSEOTitle' => '',
+		'articleSEOTitles' =>[],
+		'limit' => '',
+		'offset' => 0
+	], $args);
+
+	$s = " SELECT articles.article_id, articles.creation_date, articles.date_updated, articles.article_title, articles.article_seo_title, categories.cat_id, categories.cat_name, categories.cat_dir_name, 
+	article_contributors.contributor_id, article_contributors.contributor_seo_name, article_contributors.contributor_name, article_contributors.contributor_image 
+		   FROM articles 
+		   INNER JOIN ( article_categories, categories, article_contributor_articles, article_contributors ) 
+		   	ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id 
+		   	AND article_contributor_articles.article_id = articles.article_id AND article_contributors.contributor_id = article_contributor_articles.contributor_id ) 
+		   WHERE  articles.article_status = 1 ";
+
+	if( isset( $options['pageId'] )  &&  $options['pageId']) {
+		$s .= " AND categories.cat_id = ". $options['pageId'] ;
+	}else{
+		$s .= " AND categories.cat_id != 9 ";
+	}
+
+	if( isset( $options['omit'] )  &&  $options['omit']) {
+		$s .= " AND articles.article_id != ". $options['omit'] ;
+	}
+	
+	$s .= " ORDER BY articles.date_updated DESC, articles.article_id DESC ";
+
+	if( isset( $options['limit'] )  &&  $options['limit']) {
+		$s .= "  LIMIT ". $options['limit'] ." OFFSET ".$options['offset'];
+	}
+
+	$q = $this->performQuery(['queryString' => $s]);
+		
+	return $q;	   
+}
+
+public function getSingleArticleInfo(  $args = [] ){
+	$options = array_merge([
+		'pageId' => null, 
+		'articleId' => null, 
+		'articleTitles' => [],
+		'articleSEOTitle' => ''
+	], $args);
+	
+	$s = "SELECT * FROM articles  
+		INNER JOIN ( article_contributor_articles, article_contributors ) 
+		ON (article_contributor_articles.article_id = articles.article_id ) AND ( article_contributors.contributor_id = article_contributor_articles.contributor_id )
+		WHERE (articles.article_id = :articleId OR articles.article_seo_title = :articleSEOTitle ) LIMIT 1 ";
+	$queryParams = [
+		':articleId' => filter_var($options['articleId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
+		':articleSEOTitle' => filter_var($options['articleSEOTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR)
+	];
+
+	$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+	return $q;
 }
 
 public function getArticles($args = [], $attempts = 0){
@@ -517,7 +605,6 @@ public function getContributorUserType( $email ){
 	}else $r = '4';
 	$this->con->closeCon();
 	return $r;
-
 }
 
 public function getContributors($args = [], $attempts = 0){
@@ -635,61 +722,62 @@ public function getContributors($args = [], $attempts = 0){
 							if($i++ < count($options['omit']) - 1) $whereClause .= ", ";
 						}
 						$whereClause .= ")";
-	}
-	$s .= $whereClause;
-	$s .= is_array($orderClause) ? isset($orderClause[$options['sortType'] - 1]) ? $orderClause[$options['sortType'] - 1] : $orderClause[0] : $orderClause;
-	if($options['count'] !== -1) $s .= " LIMIT 0, ".$options['count'];
-	$pdo = $this->con->openCon();
-	$q = $pdo->prepare($s);
+		}
+		$s .= $whereClause;
+		$s .= is_array($orderClause) ? isset($orderClause[$options['sortType'] - 1]) ? $orderClause[$options['sortType'] - 1] : $orderClause[0] : $orderClause;
+		if($options['count'] !== -1) $s .= " LIMIT 0, ".$options['count'];
+		$pdo = $this->con->openCon();
+		$q = $pdo->prepare($s);
 
-	$q->execute($queryParams); 
-	if($q){
-		$q->setFetchMode(PDO::FETCH_ASSOC);
-		$r = ['ids' => [], 'contributors' => [], 'articles' => []];
-		while($row = $q->fetch()){
-			if(!in_array($row['contributor_id'], $r['ids'])){
-				$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating FROM article_contributor_articles INNER JOIN(articles, article_ratings) ON (article_contributor_articles.article_id = articles.article_id AND articles.article_id = article_ratings.article_id) WHERE article_contributor_articles.contributor_id = ".$row['contributor_id']);
-				$ratingArray = [];
-				if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
-				$r['ids'][] =$row['contributor_id'];
-				$r['contributors'][] = array_merge($row, $ratingArray);
+		$q->execute($queryParams); 
+			if($q){
+				$q->setFetchMode(PDO::FETCH_ASSOC);
+				$r = ['ids' => [], 'contributors' => [], 'articles' => []];
+				while($row = $q->fetch()){
+					if(!in_array($row['contributor_id'], $r['ids'])){
+						$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating FROM article_contributor_articles INNER JOIN(articles, article_ratings) ON (article_contributor_articles.article_id = articles.article_id AND articles.article_id = article_ratings.article_id) WHERE article_contributor_articles.contributor_id = ".$row['contributor_id']);
+						$ratingArray = [];
+						if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
+					$r['ids'][] =$row['contributor_id'];
+					$r['contributors'][] = array_merge($row, $ratingArray);
 
-				switch($articlesType){
-					case 'featured':
-					$r['articles'] = $this->getArticles(['count' => 3, 'contributorId' =>$row['contributor_id']]);
-					break;
-					case 'single':
-					$r['articles'] = $this->getArticles(['count' => -1, 'sortType' => $options['sortType'], 'contributorId' =>$row['contributor_id']]);
-					break;
-					default:
-					$r['articles'] = false;
-					break;
+					switch($articlesType){
+						case 'featured':
+						$r['articles'] = $this->getArticles(['count' => 3, 'contributorId' =>$row['contributor_id']]);
+						break;
+						case 'single':
+						$r['articles'] = $this->getArticles(['count' => -1, 'sortType' => $options['sortType'], 'contributorId' =>$row['contributor_id']]);
+						break;
+						default:
+						$r['articles'] = false;
+						break;
+					}
 				}
 			}
-		}
-		if($options['sortType'] == 2){
-			$r['contributors'] = $this->subValSort($r['contributors']);
-			$r['ids'] = [];
-			foreach($r['contributors'] as $contributor){
-				$r['ids'][] = $contributor['contributor_id'];	
+			if($options['sortType'] == 2){
+				$r['contributors'] = $this->subValSort($r['contributors']);
+				$r['ids'] = [];
+				foreach($r['contributors'] as $contributor){
+					$r['ids'][] = $contributor['contributor_id'];	
+				}
 			}
-		}
-		if(count($r['contributors']) < $options['count'] && $attempts < 3 && $options['featured']){
-			$options['count'] = $options['count'] - count($r['contributors']);
-			$options['pageId'] = null;
-			$recursive = $this->getContributors($options, ++$attempts);
-			if(is_array($recursive)){
-				$r['contributors'] = array_merge($r['contributors'], $recursive['contributors']);
-				$r['articles'] = array_merge($r['articles'], $recursive['articles']);
-				$r['ids'] = array_merge($r['ids'], $recursive['ids']);
+			if(count($r['contributors']) < $options['count'] && $attempts < 3 && $options['featured']){
+				$options['count'] = $options['count'] - count($r['contributors']);
+				$options['pageId'] = null;
+				$recursive = $this->getContributors($options, ++$attempts);
+				if(is_array($recursive)){
+					$r['contributors'] = array_merge($r['contributors'], $recursive['contributors']);
+					$r['articles'] = array_merge($r['articles'], $recursive['articles']);
+					$r['ids'] = array_merge($r['ids'], $recursive['ids']);
+				}
 			}
-		}
-		$this->con->closeCon();
-	}else $r = false;
+			$this->con->closeCon();
+		}else $r = false;
 
-	return $r;
+		return $r;
 }
 
+//NOT IN USE 
 public function getSyndicationVideos($args = []){
 	$options = array_merge([
 		'videoFileName' => ''
@@ -726,7 +814,7 @@ public function recordArticleRating($id = null, $vote = null){
 }
 
 private function subValSort($a, $type = 'high', $value = 'rating'){
-	$b = [];
+	$b = []; var_dump($a);
 	foreach($a as $k=>$v){
 		$b[$k] = strtolower($v[$value]);
 	}
@@ -743,73 +831,6 @@ public function reloadSiteData(){
 	$this->data = $this->getArticlePageInfo();
 	$this->categories = $MPNavigation->categories;
 }
-
-
-public function getAvailableByCategory($catId){
-	$queryString = "SELECT article.*, parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name 
-
-	FROM categories AS cat, categories AS parent 
-
-	INNER JOIN ( SELECT articles.article_id as a_id, articles.article_title as article_title, articles.article_seo_title, articles.article_status, categories.*, article_images.* 
-		FROM articles
-		INNER JOIN ( article_images) 
-		ON articles.article_id = article_images.article_id 
-
-		LEFT JOIN (article_categories, categories) 
-		ON articles.article_id=article_categories.article_id 
-		AND article_categories.cat_id=categories.cat_id ";
-		// If the category is a diet recipe, then show all available diet recipes...not just that one....	
-		if ($catId >= 13 && $catId <= 18){							
-			/* WHERE article_categories.cat_id IN (5, 7, 8, 9, 11, 13, 14, 15, 17, 18, 19) */
-			$queryString .=			"WHERE article_categories.cat_id IN (13, 14, 15, 16, 17, 18) 
-			AND articles.article_status = 1 ";
-		} else {
-
-			$queryString .=				"WHERE article_categories.cat_id = {$catId} 
-			AND articles.article_status = 1 ";
-		}
-
-		$queryString .= ") as article  
-
-		WHERE (parent.lft > 1
-			AND article.lft BETWEEN (parent.lft+1) 
-			AND (parent.rgt -1))
-
-		OR (article.cat_id IN (115, 3))
-
-		AND cat.cat_id = article.cat_id 
-		GROUP BY article.a_id 
-		ORDER BY article.article_title
-		";
-
-	$q = $this->performQuery(['queryString' => $queryString]);
-	return $q;
-
-}
-
-/*public function getMostRecentArticleList( $articleID = null ){
-	
-	$queryString = "SELECT articles.article_id as a_id, articles.article_title, 
-	articles.article_seo_title, articles.creation_date, articles.article_status, 
-	articles.page_list_id, categories.cat_name, categories.cat_dir_name, 
-	article_contributors.contributor_name, article_contributors.contributor_seo_name 
-	FROM articles
-	INNER JOIN ( article_categories, categories, article_contributors, article_contributor_articles )
-	ON articles.article_id=article_categories.article_id 
-		AND article_categories.cat_id=categories.cat_id
-		AND articles.article_id = article_contributor_articles.article_id
-		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
-	WHERE articles.article_status = 1 ";
-
-	if( isset( $articleID ) && $articleID ){
-		$queryString .= " AND articles.article_id != ".$articleID;
-	}
-
-	$queryString .= " GROUP BY articles.article_id ORDER BY articles.creation_date DESC LIMIT 26,3 ";
-
-	$q = $this->performQuery(['queryString' => $queryString]);
-	return $q;
-}*/
 
 public function getLast10Articles( $articleID ){
 
@@ -848,6 +869,9 @@ public function getMostRecentArticleListMobile( ){
 	return $q;
 }
 
+
+//NOT IN USER 
+/*
 public function getTodaysFavorites(){
 	$queryString = "SELECT article.*, parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name 
 
@@ -863,7 +887,6 @@ public function getTodaysFavorites(){
 		ON articles.article_id=article_categories.article_id 
 		AND article_categories.cat_id=categories.cat_id 
 
-		/* WHERE article_categories.cat_id IN (5, 7, 8, 9, 11, 13, 14, 15, 17, 18, 19) */
 		WHERE (
 			(article_categories.cat_id = 9 AND slot = 1 ) OR
 			(article_categories.cat_id = 8 AND slot = 2 ) OR 
@@ -994,10 +1017,7 @@ public function extractRecipeBodyDataToDBField($fieldName, $pattern){
 	$qString =  (($qString));
 
 	echo htmlspecialchars($qString);
-
 }
-
-
 private function parseStringCommasIntoArray($dataset){
 	foreach ($dataset as $row) {
 		$id = $row['article_id'];
@@ -1024,7 +1044,6 @@ public function extractIdAndCommaSeparatedCategories(){
 		$parsedSet = $this->parseStringCommasIntoArray($q);
 	}
 }
-
 
 public function getMostViewed($args = []){
 	$options = array_merge([
@@ -1103,7 +1122,8 @@ public function getMostViewed($args = []){
 	$this->con->closeCon();
 	return $r;		
 }
-
+*/
+//NOT SURE OF THIS ONE
 public function getFeatured($args = []){
 	$options = array_merge([
 		'pageId' => 1, 
@@ -1613,14 +1633,6 @@ public function getFeatured($args = []){
 			return $r;
 }
 
-public function getFoodFightArticle($foodfight_seo_name){
-	$s = "SELECT *
-	FROM foodfight as a
-	WHERE foodfight_seo_name = '$foodfight_seo_name'";
-	$q = $this->performQuery(['queryString' => $s]);
-	return $q;
-}
-
 protected function performQuery($opts){
 	$options = array_merge(array(
 		'queryString' => '',
@@ -1629,7 +1641,6 @@ protected function performQuery($opts){
 		'bypassCache' => false,
 			'returnCount' => false  //	true: performQuery will only return a count of rows
 			), $opts);
-		//$cachedData = $this->memcache->getData($options['queryString']);
 	$cachedData = false;
 	if($cachedData === false || $options['bypassCache'] === true){
 		$pdo = $this->con->openCon();
@@ -1642,18 +1653,15 @@ protected function performQuery($opts){
 			}
 		}else $r = false;
 		if($options['returnRowAsSingleArray'] === true && $r && count($r) == 1) $r = $r[0];
-			//if($r !== false) $storedData = $this->memcache->setData($options['queryString'], $r);
 		$this->con->closeCon();
 
 		if($options['returnCount'] === true){
-				//	Return a count of the rows returned by the query
 			return $q->rowCount();
 		}
 
 		return $r;
 	}else return $cachedData;
 }
-
 
 public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesFilter, $articleType = 'all') {
 	$status_sql = " WHERE article_status IN (1, 2, 3) ";
@@ -1708,7 +1716,6 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 		$order_sql = " ORDER BY a.article_status = 1 DESC, a.article_id DESC ";
 		break;
 	}
-//, (select sum(usa_pageviews) from google_analytics_data_new where google_analytics_data_new.article_id = a.article_id GROUP BY google_analytics_data_new.article_id) as us_traffic
 	
 	$status_sql = " WHERE article_status IN (1, 2, 3) ";
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
@@ -1720,7 +1727,6 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	AND a_c.cat_id = nc.cat_id
 	AND a.article_id = article_contributor_articles.article_id
 	AND article_contributors.contributor_id = article_contributor_articles.contributor_id ";
-				//	LEFT JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles)
 	$s .= $status_sql;
 
 	if ($userArticlesFilter != 'all'){
@@ -1814,26 +1820,15 @@ public function get_dashboardArticles($limit = 10, $order = '', $articleStatus =
 	}
 }
 
-
 /**
- *		
+ *	
  *	Returns the next LIVE article that has a page list associated with it
  *	
  *	@param 	int 		$current_article_id 	The current article_id
  *	@return array 		The dataset
  */	
 public function get_next_with_list($current_article_id){
-	/*$s = "SELECT * FROM articles
-	WHERE article_id < {$current_article_id}
-	AND page_list_id >0
-	AND article_status = 1
-
-	ORDER BY article_id DESC
-
-	LIMIT 1";
-	$q = $this->performQuery(['queryString' => $s]);
-	return ($q);*/
-
+	
 	$s = "SELECT articles.article_id, articles.article_title, 
 	articles.article_seo_title, articles.creation_date, articles.article_status, 
 	articles.page_list_id, categories.cat_name, categories.cat_dir_name
@@ -1855,20 +1850,10 @@ public function get_next_with_list($current_article_id){
 
 }
 
-
 public function count_all_contributors() {
 
 	$s = "SELECT count( DISTINCT contributor_id) as simpledish_contributor_count
 	FROM article_contributors";
-	$q = $this->performQuery(['queryString' => $s]);
-
-	return array_shift($q);
-
-}
-
-public function count_all_videos() {
-
-	$s = "SELECT count(*) as total_videos FROM syndication_videos";
 	$q = $this->performQuery(['queryString' => $s]);
 
 	return array_shift($q);
@@ -1883,6 +1868,7 @@ public function getUserList(){
 	);
 	return $this->performQuery($options);
 }
+
 public function getUserInfo(){
 	if(!isset($_SESSION['user_id'])) return false;
 	$options = array(
@@ -1924,9 +1910,7 @@ public function getFeaturedArticle( $cat_id = 1 ){
 	return $q;
 }
 
-
 /***** Article Page ( Get prev. and next article from the current article in the same category ) ********/
-
 public function getPrevArticle( $article_id = null, $cat_id = 1){
 	$article_id = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$cat_id = filter_var($cat_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
@@ -1968,7 +1952,6 @@ public function getNextArticle( $article_id = null, $cat_id = 1){
 	return $q;
 
 }
-
 
 public function redirectTo($location = ''){
 		header('Location: '.$this->config['this_url'].$location);

@@ -6,19 +6,15 @@
 	
 	$cat_id = $mpArticle->data['cat_id'];
 	
-	foreach ($recentArticles['articles'] as $articles) {
-	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
-	$linkToACategory = $config['this_url'].$articles['cat_dir_name'];
-	$date = date("M d, Y", strtotime($articles['creation_date']));
-	if(isset($articles['date_updated'])) $date = date("M d, Y", strtotime($articles['date_updated']));
-	
-	
-	$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
-	$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
+	foreach ($recentArticles as $articles) {	
+		$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
+		$linkToACategory = $config['this_url'].$articles['cat_dir_name'];
+		$date = date("M d, Y", strtotime($articles['creation_date']));
+		$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
+		$linkToContributor = $config['this_url'].'contributors/'.$articles['contributor_seo_name'];
 
-	?>
-		<?php 
-		
+		if(isset($articles['date_updated'])) $date = date("M d, Y", strtotime($articles['date_updated']));
+	
 		if ( $detect->isMobile() ) {  ?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-5 xlarge-5 half-padding-right left prefetch" href="<?php echo $linkToArticle; ?>">
@@ -41,15 +37,11 @@
 			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 			<div data-str-native-key="6b53e139" style="display: none;"></div>
 		<?php }
-		$articleIndex++;
-
-		}
-
-		else{ 
-			
-		if( $articleIndex % 7 == 0 ) { 
-		$articleIndex++;
-		$bigImageCounter++; 
+			$articleIndex++;
+		}else{ 
+			if( $articleIndex % 7 == 0 ) { 
+			$articleIndex++;
+			$bigImageCounter++; 
 		?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
 			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>" >
@@ -117,17 +109,9 @@
 			if( $smallImageCounter % 2 == 0 ) echo '<hr class="padding-top">';
 		} ?> 
 	</div>
-	<?php 
-$articleIndex++; 
-
+	<?php  $articleIndex++;  } ?>
+</div>
+</div>
+	
+<?php }
 } ?>
-</div>
-</div>
-<!--</article>
-<hr />-->
-
-
-		
-	<?php }?>
-
-	<?php } ?>

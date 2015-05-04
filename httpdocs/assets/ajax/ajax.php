@@ -11,7 +11,7 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 
 $cat_id = is_numeric($_POST['pageid']) ? $_POST['pageid'] : 1;
 $offset = is_numeric($_POST['offset']) ? $_POST['offset'] : 0;
-$postnumbers = is_numeric($_POST['number']) ? $_POST['number'] : 10;
+$postnumbers = is_numeric($_POST['number']) ? $_POST['number'] : 11;
 
 if( $cat_id == 1){
 	$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis ] );

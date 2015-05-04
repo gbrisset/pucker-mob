@@ -67,8 +67,8 @@ class MPNavigation{
 		return array_shift($categorySet);
 	}
 
-private function getLinkToCategoryByCatId($catId){
-	$pdo = $this->con->openCon();
+	private function getLinkToCategoryByCatId($catId){
+		$pdo = $this->con->openCon();
 		$q = $pdo->query("SELECT parent.* 
 							FROM categories AS cat,
 							        categories AS parent
@@ -303,7 +303,69 @@ private function getLinkToCategoryByCatId($catId){
 		return $r;
 	}
 
-// begin outdated methods
+// begin outdated methods 
+	/*private function getArticlePageMainCategories(){ 
+		$pdo = $this->con->openCon();
+		// Get all categories that are either 'stand-alone' or 'parents', but not the homepage (id = -1)
+		$q = $pdo->query("SELECT 
+	   *,
+	   (SELECT 
+	      cat_id
+	    FROM 
+	       categories AS t2
+	    WHERE 
+	       t2.lft  < t1.lft AND 
+	       t2.rgt > t1.rgt
+	    ORDER BY 
+	       t2.rgt-t1.rgt ASC 
+	    LIMIT 
+	       1) AS parent_id, 
+	   (SELECT 
+	      cat_name
+	    FROM 
+	       categories AS t2
+	    WHERE 
+	       t2.lft  < t1.lft AND 
+	       t2.rgt > t1.rgt
+	    ORDER BY 
+	       t2.rgt-t1.rgt ASC 
+	    LIMIT 
+	       1) AS parent_name,
+	   (SELECT 
+	      cat_dir_name
+	    FROM 
+	       categories AS t2
+	    WHERE 
+	       t2.lft  < t1.lft AND 
+	       t2.rgt > t1.rgt
+	    ORDER BY 
+	       t2.rgt-t1.rgt ASC 
+	    LIMIT 
+	       1) AS parent_dir_name
+
+		FROM 
+		    categories AS t1
+		WHERE lft>1
+		ORDER BY 
+		    rgt-lft DESC");
+				$q->setFetchMode(PDO::FETCH_ASSOC);
+				if($q && $q->rowCount()){
+					while($row = $q->fetch()){
+						$r[] = $row;
+					}
+
+					foreach($r as $cat){
+						//$cat['subcategories'] = $this->getSubCategories($cat['cat_id']);
+						if ($cat['parent_id'] == 1){
+							$categories[] = $cat;
+						}	
+					}
+					$q->closeCursor();
+				}else $categories = false;
+			$this->con->closeCon();
+			return $categories;
+	}*/
+
 	private function getArticlePageMainCategories(){ 
 		$pdo = $this->con->openCon();
 		// Get all categories that are either 'stand-alone' or 'parents', but not the homepage (id = -1)
@@ -329,7 +391,7 @@ private function getLinkToCategoryByCatId($catId){
 
 		$pdo = $this->con->openCon();
 		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;
-		 $q = $pdo->query("SELECT * FROM categories WHERE lft>1 ");
+		$q = $pdo->query("SELECT * FROM categories WHERE lft>1 ");
 		/*$q = $pdo->query("SELECT 
 						   *,
 						   (SELECT 
@@ -371,6 +433,7 @@ private function getLinkToCategoryByCatId($catId){
 						WHERE lft>1
 						ORDER BY 
 						    rgt-lft DESC");*/
+
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		if($q && $q->rowCount()){
 			while($row = $q->fetch()){

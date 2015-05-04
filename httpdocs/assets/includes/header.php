@@ -2,7 +2,7 @@
 
   $loginActive = isset($_SESSION['login_hash']) || isset($_SESSION['user_id']);
   $has_sponsored = $mpArticle->data['has_sponsored_by'];
-
+  $user_type = 5;
   if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
     $user_info = $mpArticle->getUserInfo();
     $user_first_name = "";
@@ -20,13 +20,14 @@
     }
   }
 
-if(!$detect->isMobile()){
+ if(!$detect->isMobile()){
 
   $login_header = ' hide-header ';
   $logout_header = ' show-header ';
   $current_month = date('n');
   $current_year = date('Y');
  
+
   if($loginActive){
       $login_header = ' show-header ';
       $logout_header = ' hide-header ';
@@ -36,29 +37,26 @@ if(!$detect->isMobile()){
   $your_rank = 0;
   if($loginActive){
 
-  $ManageDashboard = new ManageAdminDashboard( $config );
-
-  //THIS MONTH EARNINGS
-  $this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month, $current_year);
-  if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
+    $ManageDashboard = new ManageAdminDashboard( $config );
+    //THIS MONTH EARNINGS
+    $this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month, $current_year);
+    if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
   
-  //WARNINGS
-  $warnings = $ManageDashboard->getWarningsMessages(); 
+    //WARNINGS
+    $warnings = $ManageDashboard->getWarningsMessages(); 
 
-    
-  //Top Shared Writers
-  $writers_arr = $ManageDashboard->getTopShareWritesRankHeader($current_month);
-  foreach ($writers_arr as $writer) {
-    if($writer['contributor_id'] == $contributor_id ){
-        break;
-    }
-    $your_rank++;
-  } 
+    //Top Shared Writers
+    $writers_arr = $ManageDashboard->getTopShareWritesRankHeader($current_month);
+    if(isset($writers_arr) && $writers_arr){
+      foreach ($writers_arr as $writer) {
+         if($writer['contributor_id'] == $contributor_id ){ break; }
+         $your_rank++;
+      }
+    } 
+  }
 
-}
-
-?>
- <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>">
+ ?>
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>">
     <div class="row" style="max-width: 69.5rem;">
       <div id="header-social" class="small-12 columns no-padding">
         <?php if($user_type == 5){?>
@@ -105,9 +103,9 @@ if(!$detect->isMobile()){
         <?php }?>
     </div>
   </div>
-</header>
-
-<header id="top-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>">
+  </header>
+  
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>">
   <div class="row" style="max-width: 69.5rem;">
       <div id="header-social" class="small-12 columns no-padding">
         <ul>
@@ -131,51 +129,13 @@ if(!$detect->isMobile()){
         </ul>
     </div>
     </div>
-</header>
-<?php } ?>
+  </header>
    
- <!-- <header id="top-banner" class="hide-for-print show-for-large-up">
-    <div class="row">
-     <div id="header-social" class="small-6 columns half-padding-right">FOLLOW US 
-        <a href="<?php //echo $mpArticle->data['article_page_facebook_url'];?>" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a>
-        <a href="<?php //echo $mpArticle->data['article_page_twitter_url'];?>" target="_blank"><i class="fa fa-twitter fade-in-out"></i></a>
-        <a href="<?php //echo $mpArticle->data['article_page_pinterest_url'];?>" target="_blank"><i class="fa fa-pinterest fade-in-out"></i></a>
-        <a href="https://plus.google.com/b/112707727253651609975/112707727253651609975/posts" target="_blank" rel="publisher"><i class="fa fa-google-plus fade-in-out"></i></a>
-      </div>
-      <div id="topbar-container">
-        <input id="topbar-search-contents" type="search" placeholder="SEARCH">
-        <button id="topbar-search-submit" class="alert button expand"><i class="fa fa-search"></i></button>
-      </div>
-    </div>
-  </header>-->
-
-  <?php if($detect->isMobile()){
-    if(isset($isArticle) && $isArticle ){?>
-    <div class="top-header-ad row">
-        <!-- puckermob.com/ros -->
-        <script type="text/javascript">
-          var ord = window.ord || Math.floor(Math.random() * 1e16);
-          document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';dcopt=ist;type=pop;type=int;ord=' + ord + '?"><\/script>');
-        </script>
-        <noscript>
-        <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-        <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" />
-        </a>
-        </noscript>
-      </div>
-    <?php }else{?>
-        <!-- puckermob.com/home -->
-        <script type="text/javascript">
-          var ord = window.ord || Math.floor(Math.random() * 1e16);
-          document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';dcopt=ist;type=pop;type=int;ord=' + ord + '?"><\/script>');
-        </script>
-        <noscript>
-        <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-        <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" />
-        </a>
-        </noscript>
-    <?php }
-  }?>
+  <?php }?>
+   
+   <?php if($detect->isMobile()){?>
+    <div id="mobile-top-header-ad" class="top-header-ad row"></div>
+  <?php }?>
 
   <?php if(!$detect->isMobile()){?>
     <div id="nav-bar" class="contain-to-grid hide-for-print">
@@ -183,7 +143,8 @@ if(!$detect->isMobile()){
    <div id="nav-bar" class="contain-to-grid hide-for-print column no-padding">
   <?php }?>
   
-    <nav class="top-bar" data-topbar="" data-options="scrolltop: false;">
+  
+  <nav class="top-bar" data-topbar="" data-options="scrolltop: false;">
       <ul class="title-area">
         <li class="name" style="<?php if( $has_sponsored && $isHomepage ) echo 'margin-left: 10px;' ?>">
           <a href="<?php echo $config['this_url']; ?>">
@@ -204,8 +165,9 @@ if(!$detect->isMobile()){
       </section>
     </nav>
   </div>
-  
   <?php 
+
+
   if($detect->isMobile() ){
     /*  Highlight Article */
     include_once($config['include_path'].'highlightarticle.php');

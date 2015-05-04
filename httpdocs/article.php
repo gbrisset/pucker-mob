@@ -3,8 +3,8 @@ $categoryInfo = null;
 $isArticle = true;
 $articleInfoObj = array();
 
-//ISSUE WITH ANNA ARTICLE
-	$current_url = $_SERVER['SCRIPT_URI'];
+	//ISSUE WITH ANNA ARTICLE
+	$current_url = isset($_SERVER['SCRIPT_URI']) ? $_SERVER['SCRIPT_URI'] : '';
 	if($current_url == "http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for"){
 		header('Location: http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for-');
 		die;
@@ -18,18 +18,13 @@ $articleInfoObj = array();
 		die;
 	}
 
-	//http://www.puckermob.com/fun/21-things-only-antsy-people-do-
-	//http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-
-
 foreach($MPNavigation->categories as $category){
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
-			// uri[2] not set, cat has no parent
 		$categoryInfo = $category;
 		$articleTitle = explode('&', preg_replace('/[?]/', '&', $uri[1]))[0];
 		$hasParent = false;
 		break;
 	} else if(isset($category['cat_dir_name']) && (isset($uri[2])) && ($category['cat_dir_name'] == $uri[1]) ){
-			// uri[2] set! cat has parent!
 		$categoryInfo = $category;
 		$articleTitle = explode('&', preg_replace('/[?]/', '&', $uri[2]))[0];
 		$hasParent = true;
@@ -38,23 +33,24 @@ foreach($MPNavigation->categories as $category){
 }
 
 if(!is_null($categoryInfo)){
-
-	$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
-	$cat_name = $articleInfo['articles'][0]['cat_dir_name'];
+	$articleInfo = $mpArticle->getSingleArticleInfo(['articleSEOTitle' => $articleTitle]);
+	//$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
+	//$cat_name = $articleInfo['articles'][0]['cat_dir_name'];
 
 	//ISSUE WITH WENDESDAY ARTICLE 
-	if( $articleInfo['articles'][0]['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
+	if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
 		header('Location: http://www.puckermob.com/lifestyle/so-youd-like-to-be-a-phonesex-operator-a-helpful-quiz');
 		die;
 	}
 
-	
-
 	//CHECK IF ARTICLES IN REGISTER UNDER THAT CATEGORY
-	$verifyInCat = $mpArticle->verifyArticleInCategory( $articleInfo['articles'][0]['article_id'], $categoryInfo['cat_id']);
+	$verifyInCat = $mpArticle->verifyArticleInCategory( $articleInfo['article_id'], $categoryInfo['cat_id']);
 	
-	if(isset($articleInfo['articles']) &&  $articleInfo['articles'] && $verifyInCat ){
-		$articleInfoObj = $articleInfo['articles'][0];
+	if(isset($articleInfo) &&  $articleInfo && $verifyInCat ){
+	//if(isset($articleInfo['articles']) &&  $articleInfo['articles'] && $verifyInCat ){
+		//$articleInfoObj = $articleInfo['articles'][0];
+		$articleInfoObj = $articleInfo;
+
 
 		$pageName = $articleInfoObj['article_title'];
 		//get Article ADS info
@@ -63,8 +59,9 @@ if(!is_null($categoryInfo)){
 		if($articleInfoObj['article_id'] == "4349"){
 			$pageName = strtoupper($articleInfoObj['article_title']).' | Sponsored by Smarties Candies';
 		}
-		$relatedArticles = $mpArticle->getArticles(['count' => 18, 'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['ids']]);
-		$articleImages = $mpArticle->getArticlesImages($articleInfoObj['article_id']);
+		$relatedArticles = $mpArticle->getArticlesList([ 'limit'=> 6,  'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['article_id']]);
+		//$relatedArticles = $mpArticle->getArticles(['count' => 18, 'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['ids']]);
+		//$articleImages = $mpArticle->getArticlesImages($articleInfoObj['article_id']);
 	}else {
 		$mpShared->get404();
 	}
@@ -75,7 +72,7 @@ if(!is_null($categoryInfo)){
 	$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
 	$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
 
-	include_once('admin/fb/fbfunctions.php');
+//	include_once('admin/fb/fbfunctions.php');
 ?>
 <?php if ( $detect->isMobile() ) { ?>
 <!DOCTYPE html>
@@ -87,19 +84,7 @@ if(!is_null($categoryInfo)){
 <?php }else{ ?>
 	<body id="article" class="mobile">
 <?php } ?>
-		<!-- FACEBOOK COMMENTS BOX -->
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-
-
 		<?php include_once($config['include_path'].'header.php');?>
-		<?php //include_once($config['include_path'].'header_ad.php'); ?>
 		<?php 
 			$style = '';
 			if( isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] == 4314 || $articleInfoObj['article_id'] == 4341){
@@ -110,7 +95,6 @@ if(!is_null($categoryInfo)){
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php echo $style; ?>">
-			
 		<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			
@@ -123,22 +107,21 @@ if(!is_null($categoryInfo)){
 				}
 			?>
 		
-				<!-- SMARTIES PROMOTION -->
-			    <?php if( $promotedArticle ){?>
-			      <div class="padding-bottom  show-on-large-up">
-			        <!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
+			<!-- SMARTIES PROMOTION -->
+			<?php if( $promotedArticle ){?>
+			    <div class="padding-bottom  show-on-large-up">
+			       <!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
 			        <script language="javascript"><!--
 			        document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
 			        //-->
 			        </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
 			        <!-- End of JavaScript Tag -->
-			      </div>
-			     <?php } ?>
+			    </div>
+			<?php } ?>
 			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
 				<hr>
 				<?php include_once($config['include_path'].'similararticles.php');?>
-	
 			<?php } ?>	
 			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
@@ -163,15 +146,26 @@ if(!is_null($categoryInfo)){
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
 		<?php }?>
-	</section>
-
+		</section>
 	</main>
+
+<?php include_once('admin/fb/fbfunctions.php'); ?>
 <?php include_once($config['include_path'].'footer.php');?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
 
 <!-- MODAL BOX POPUP -->
 <?php if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
 
+<!-- FACEBOOK COMMENTS BOX -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		
 </body>
 </html>
 
@@ -185,22 +179,10 @@ if(!is_null($categoryInfo)){
 <?php }else{ ?>
 	<body id="article">
 <?php } ?>
-	<!-- FACEBOOK COMMENTS BOX -->
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-
 	<?php include_once($config['include_path'].'header.php');?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 
-
 	<main id="main" class="row panel sidebar-on-right" role="main">
-			
 		<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			<?php 
@@ -238,12 +220,6 @@ if(!is_null($categoryInfo)){
 			<!-- ALSO IN CATEGORY -->
 			<?php include_once($config['include_path'].'similararticles.php');?>
 			
-			<!-- Prev & Next Articles
-			<?php //include_once($config['include_path'].'prevnextarticles.php'); ?> -->
-
-			<!-- Media Net
-			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div> -->
-
 			<?php if( !$promotedArticle ){ ?>
 			<!-- ADBLADE 
 			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
@@ -252,9 +228,6 @@ if(!is_null($categoryInfo)){
 			</section>
 			<hr>-->
 			
-			
-					
-		
 			<!-- AROUND THE WEB -->
 			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
 			<hr>
@@ -282,8 +255,6 @@ if(!is_null($categoryInfo)){
 			    })();
 			</script>
 			
-
-			
 			<hr>
 			<?php }?>
 			
@@ -294,11 +265,11 @@ if(!is_null($categoryInfo)){
 		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
 	</main>
 	
-	
-	<?php include_once($config['include_path'].'footer.php');?>
-		
-
-    <?php include_once($config['include_path'].'bottomscripts.php');?>
+	<?php 
+		include_once('admin/fb/fbfunctions.php'); 
+		include_once($config['include_path'].'footer.php');
+    	include_once($config['include_path'].'bottomscripts.php');
+    ?>
 
     <!-- MODAL BOX POPUP -->
 	<?php
@@ -319,19 +290,28 @@ if(!is_null($categoryInfo)){
 		</div>
 	</div>
 	</div>
+	<!-- FACEBOOK COMMENTS BOX -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-
     <script type="text/javascript">
 	$(document).ready(function(){
 		addthis.init();
 	})
 	</script>
-     <?php if( $promotedArticle ){ ?>
-    		<!-- SMARTIES -->
-			<script language="javascript">document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3366273/0/16/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
-			</script>
-			<noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
+    <?php if( $promotedArticle ){ ?>
+    	<!-- SMARTIES -->
+		<script language="javascript">document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3366273/0/16/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+		</script>
+		<noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
     <?php }?>
 
    	<!-- MODAL BOX FOLLOWERS POPUP -->

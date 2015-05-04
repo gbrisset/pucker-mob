@@ -3,7 +3,7 @@
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
 	<meta http-equiv="x-dns-prefetch-control" content="on">
-	<link rel="dns-prefetch" href="//images.puckermob.com" />
+	<!--<link rel="dns-prefetch" href="//images.puckermob.com" />
 	<link rel="dns-prefetch" href="//www.google-analytics.com" />
 	<link rel="dns-prefetch" href="//ad.doubleclick.net" />
 	<link rel="dns-prefetch" href="//cdn.assets.craveonline.com" />
@@ -39,14 +39,14 @@
 	<link rel="dns-prefetch" href="//mob.adnxs.com" />
 	<link rel="dns-prefetch" href="//cms.springboardplatform.com" />
 	<link rel="dns-prefetch" href="//c.jsrdn.com" />
-	<link rel="dns-prefetch" href="//tcr.tynt.com" />
-	<!--<link rel="dns-prefetch" href="//cdn-s.wahwahnetworks.com" />-->
-	<link rel="dns-prefetch" href="//mmrm.qadserve.com" />
+	<link rel="dns-prefetch" href="//tcr.tynt.com" />-->
+	<!--<link rel="dns-prefetch" href="//cdn-s.wahwahnetworks.com" />
+	<link rel="dns-prefetch" href="//mmrm.qadserve.com" />-->
 	<!--<link rel="dns-prefetch" href="//cdn.connatix.com" />-->
 	
 	<?php } ?>
 	
-	<link rel="dns-prefetch" href="//go.disqus.com" />
+	<!--<link rel="dns-prefetch" href="//go.disqus.com" />
 	<link rel="dns-prefetch" href="//route.carambo.la" />
 	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
 	<link rel="prefetch prerender" href="http://www.puckermob.com" />
@@ -62,7 +62,7 @@
 	<link rel="dns-prefetch" href="//cdn.adnxs.com" />
 	<link rel="dns-prefetch" href="//c.betrad.com" />
 	<link rel="dns-prefetch" href="//ad-cdn.technoratimedia.com" />
-	<link rel="dns-prefetch" href="//1.sic.33across.com" />
+	<link rel="dns-prefetch" href="//1.sic.33across.com" />-->
 
 	<?php 
 	
@@ -132,16 +132,16 @@
  <?php 
  	//var_dump($isHomepage);
  	if(isset($isHomepage) && $isHomepage && $has_sponsored){?>
-    <!-- BEGIN GN Ad Tag for Pucker Mob 1000x1000 home -->
-    <script type="text/javascript">
-    if ((typeof(f466927)=='undefined' || f466927 > 0) ) {
-      if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
-      document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;mtfInline=true;tile='+(gnm_tile++)+';ord='+gnm_ord+'?"></scr'+'ipt>');
-    }else{
-      //insert default static image here as default ad
-    }
-    </script>
-    <!-- END AD TAG -->
+    <!-- puckermob.com/home -->
+		<script type="text/javascript">
+		  var ord = window.ord || Math.floor(Math.random() * 1e16);
+		  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
+		</script>
+		<noscript>
+		<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
+		<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="1000" height="1000" />
+		</a>
+		</noscript>
 
     <!-- Distro Scale AD Tag 
 <script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
@@ -149,7 +149,7 @@
 
   <?php }else{?>
 
-<!-- Place in head part widget:puck002 -->
+<!-- Place in head part widget:puck002 
 <script type="text/javascript">
  
 	var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
@@ -175,7 +175,7 @@
 			})(window.document);
 		}
 	}
-</script>
+</script>-->
 
 <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 

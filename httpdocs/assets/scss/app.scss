@@ -1135,10 +1135,28 @@ body{padding-top:0 !important;}
 #similar-results h5{ height: auto; margin: 0; padding: 0.3rem 0;}
 #similar-results a{text-decoration:none;}
 
+#disqus-comments{display:none;}
+.facebook-comments-button {  padding: 0.5rem 1rem;  background-color: #3B5998 !important; width: 100%;}
+.facebook-comments-button label{
+	width: 100%;
+  	position: relative;
+  	font-size: 0.95rem;
+  	font-family: OsloBold;
+  	color: #fff;
+  	height: 20px;
+  	top: -2px;
+  	padding: 0.2rem 1rem;
+}
+
+#arrow-tag{
+	font-size: 2rem; position: relative; margin-left: 1rem; top: 5px;
+}
+
 @media #{$large-up} {
 	#similar-results, #content-ad-around-the-web, #disqus-comments, #around-the-web{ 
 		h2{ color: #777; font-size: 1.7rem; text-transform: uppercase;}
 	}
+	#disqus-comments{display:inline-block;}
 }
 
 div.creative_container{ border:none !important; }
@@ -1899,7 +1917,7 @@ input#email:-ms-input-placeholder {  color: #222;  }
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
-.no-margin-with-tap{ margin-left: -1.5rem !important; margin-right: -1.5rem !important; }
+.no-margin-with-tap{ margin-left: -1.3rem !important; margin-right: -1.3rem !important; }
 
 /*HEADER LOGIN*/
 .top-header-logout, .top-header-login{
@@ -1956,15 +1974,14 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   padding-top:1.5rem;
   overflow:hidden;
 }
-#second-popular-articles h3 {
-  color: #01B586; font-family: OswaldLight; font-size: 1.4rem !important; margin-bottom: 0.1rem;
-}
-.second-popular-articles-cont{ padding: 0.7rem; background: #fff; border: 1px solid #ddd;
-  margin: 0.25rem 1rem; }
+#second-popular-articles h3 { color: #01B586; font-family: OswaldRegular; font-size: 1.4rem !important; margin-bottom: 0.1rem; }
+.second-popular-articles-cont{ padding: 0.7rem; background: #fff; border: 1px solid #ddd; margin: 0.25rem 1rem; }
 .second-popular-article-title{  background: #eee; padding: 0 1rem;}
 .second-popular-article-title h2{  font-size: 1.2rem;  line-height: 1.4rem;  font-family: OswaldLight;  font-weight: bold; color: #222 !important;}
 .second-popular-article-title h2 a {color: #222 !important;}
 .second-article-date span{   position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; }
+.second-article-date label { position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; width: 49%; }
+.second-article-date .span-shares-holder{ text-align: right;}
 
 body#home, body#category{
 	.second-popular-articles-cont{ margin: 0.25rem 0;}

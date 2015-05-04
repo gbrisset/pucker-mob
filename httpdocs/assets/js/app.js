@@ -498,7 +498,7 @@ $('#menu-options li').on('click', function(e){
 			}
 
 			//NATIVO
-			inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativo, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativo, tag);
 
 			//SHARETHROUG
 			//inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, tag);	
@@ -512,7 +512,7 @@ $('#menu-options li').on('click', function(e){
 
 
 			//GOOGLE 2nd ad
-			//inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlegoogle2, tag);
+			inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlegoogle2, tag);
 
 			//SHARETHROUG
 			if( country && country == 'US' || country == 'XX'){
@@ -984,6 +984,29 @@ if($('body').hasClass('mobile') && adPage === 'article'){
 	setTimeout(function() {
 		loadBranovateAd(select.ad.branovate, '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
 	}, 2000);
+}
+
+
+if($('body').hasClass('mobile')){
+	var mobile_header_ad_loader = $('#mobile-header-ad-loader').find('#get-content');
+	setTimeout(function(){
+		mobile_header_ad_loader.appendTo($('#mobile-top-header-ad'));
+		$('#mobile-header-ad-loader').remove();
+	}, 100 );
+}else{
+	var header_ad_loaded = $('#header-ad-loader').find('#get-content');
+	setTimeout(function(){
+		header_ad_loaded.appendTo($('#header-ad'));
+		$('#header-ad-loader').remove();
+	}, 100 );
+
+	var atf_ad_loaded = $('#atf-ad-loaded').find('#get-content');
+	if(adPage == 'article'){
+		setTimeout(function(){
+			atf_ad_loaded.appendTo($('#atf-ad'));
+			$('#atf-ad-loaded').remove();
+		}, 100 );
+	}
 }
 
 });

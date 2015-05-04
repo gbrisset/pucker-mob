@@ -16,10 +16,7 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	include_once($config['include_path'].'featured_article.php');
 
 if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-else{
-	//echo '<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">';
-	//echo '	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
-	//echo '	</div>';?>
+else{ ?>
 	<!-- ShareT -->
 	<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
 		<div data-str-native-key="6898172d" style="display: none;"></div>
@@ -51,7 +48,7 @@ foreach ($articlesList['articles'] as $articles){
 		$bigImageCounter++; 
 		?>
 		<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
-			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
+			<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 " href="<?php echo $linkToArticle; ?>">
 				<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 				<?php if(isset($_GET['show']) && $_GET['show'] == 'type'){
 						if($articles['page_list_id'] != 0) $type = 'MULTI'; else $type = 'SINGLE';
@@ -84,9 +81,7 @@ foreach ($articlesList['articles'] as $articles){
 			if( $smallImageCounter == 0 || $smallImageCounter % 2 == 0) $clearLeft = 'clear-left no-padding-left';
 			$smallImageCounter++;
 			$articleIndex++; 
-			$linkToImage .= '?ggnoads';
-
-			?>
+		?>
 			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?> ggnoads" id="<?php echo 'article-'.$articleIndex;?>">
 				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
 					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>

@@ -209,12 +209,19 @@
 					}?>
 
 					<?php if($admin_user){?>
-						<div class="row">
+					<div class="row">
 					    <div class="columns">
-						<label for="article_seo_title-s" class="uppercase">SEO Title</label>
-						<input type="text" disabled  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
-
-					</div></div>
+							<label for="article_seo_title-s" class="uppercase">SEO Title</label>
+							<input type="text" disabled  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+						</div>
+					</div>
+					<?php }else{?>
+					<div class="row">
+					    <div class="columns">
+							<label for="article_seo_title-s" class="uppercase">SEO Title</label>
+							<input type="text" disabled  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+						</div>
+					</div>
 					<?php }?>
 				
 					
@@ -754,7 +761,10 @@
 	<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>
 	<!-- BOTTOMSCRIPTS -->
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
-
+	<script>
+		$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
+	</script>
+	
 	<script>
 		$('#related_article_1').filterByText($('#related_article_textbox_1'), false);
 		$('#related_article_2').filterByText($('#related_article_textbox_2'), false);

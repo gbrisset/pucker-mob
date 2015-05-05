@@ -199,6 +199,7 @@
 
 <?php }
 ?>
+<?php if (!$local){?>
 
 <!-- COMSCORE -->
 <script>
@@ -255,7 +256,7 @@
     <img src="//pixel.quantserve.com/pixel/p-B2Jsd5NDNU3Qq.gif" border="0" height="1" width="1" alt="Quantcast"/>
   </div>
 </noscript>
-
+<?php }?>
 <!-- Nativo 
  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
   	

@@ -3,7 +3,7 @@
 <?php if($detect->isMobile()){?>
     <button class="facebook-comments-button show margin-top"><label> LEAVE & READ COMMENTS</label></button>
 
-	<section id="disqus-comments" class="sidebar-right small-12 columns hide-for-print no-padding margin-bottom"> 
+	<section id="disqus-comments" class="sidebar-right small-12 columns hide-for-print no-padding margin-bottom hide"> 
     	<div class="fb-comments" id="fb-comments-box" data-href="<?php echo $article_link; ?>" data-width:"320" data-numposts="5" data-colorscheme="light"></div>
     </section>
 <?php }else{?>

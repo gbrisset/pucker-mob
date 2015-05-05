@@ -226,17 +226,8 @@ public function getMoBlogsArticles( $current_article_id = 0){
 public function getMobileArticleList( $args = [], $attempts = 0 ){
 	$options = array_merge([
 		'pageId' => null, 
-		'count' => 12, 
-		'sortType' =>1, //1 == Most Recent, 2 == Most Popular, 3 == Most Visited, 4 == A-Z, 5 == Z-A
-		'featured'=> false, 
-		'featureType' =>1, //1 == Sidebar, 2 == On-Page
-		'contributorId' => null, 
 		'omit'=> false,
 		'articleId' => null, 
-		'articleTitles' => [],
-		'articleSEOTitle' => '',
-		'articleSEOTitles' =>[],
-		'articleStatus' => 1,
 		'limit' => '',
 		'offset' => ''
 	], $args);
@@ -832,7 +823,7 @@ public function reloadSiteData(){
 	$this->categories = $MPNavigation->categories;
 }
 
-public function getLast10Articles( $articleID ){
+public function getLast10Articles( $articleID, $offset = 0 ){
 
 	$articleID = filter_var($articleID, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	
@@ -843,6 +834,13 @@ public function getLast10Articles( $articleID ){
 	WHERE articles.article_status = 1 AND articles.article_id != $articleID AND article_categories.cat_id != 9 
 	ORDER BY articles.article_id DESC 
 	LIMIT 10 ";
+
+	if( isset($offset) && $offset ){
+		$s .= " OFFSET $offset ";
+	}
+
+	//var_dump($s);
+
 
 	$q = $this->performQuery(['queryString' => $s]);
 	

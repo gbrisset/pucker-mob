@@ -15,10 +15,7 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 
 	include_once($config['include_path'].'featured_article.php');
 if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-	else{
-	//echo '<div id="lift-ad" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">';
-	//echo '	<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
-	//echo '	</div>';?>
+	else{ ?>
 	<!-- ShareT -->
 	<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
 		<div data-str-native-key="6898172d" style="display: none;"></div>
@@ -28,12 +25,12 @@ if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
 	<?php }
 }
 
-$articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
-
+//$articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
+$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis ]);
 /* Article List */
-$totalArticles = count($articlesList['articles'] );
+$totalArticles = count($articlesList );
 
-foreach ($articlesList['articles'] as $articles){
+foreach ($articlesList as $articles){
 
 	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 	$linkToACategory = $config['this_url'].$articles['cat_dir_name'];

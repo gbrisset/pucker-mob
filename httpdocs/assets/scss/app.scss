@@ -845,14 +845,14 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 #ac_21632 {margin: 0 auto !important;}
 
 
-.span-category{ color: $text-type-color; text-transform: uppercase; font-size:0.65rem;}
+.span-category{ color: $text-type-color; text-transform: uppercase; font-size:0.6rem;}
 .span-date, .span-author{ color: #464646; font-size:0.7rem;}
 .span-author a{ color: #464646;}
 .span-category:after{ content: '|'; margin: 0 0 0 0.4rem; color: #464646;}
 
 .small-font{
-	.span-date { font-size:0.65rem;}
-	.span-author{ font-size:0.65rem;}
+	.span-date { font-size:0.6rem;}
+	.span-author{ font-size:0.6rem;}
 }
 
 #puc-articles{ 
@@ -865,7 +865,7 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 
 /**************************** MOBILE ONLY ****************************/
 @media #{$mobile-only} {
-#nav-bar {position: relative !important; top: 0px !important; left: 0; z-index:1000203; margin-bottom: 0; background-color: #eee !important; border-bottom: 1px solid #bbb; }
+#nav-bar {position: relative !important; top: 0px !important; left: 0; z-index:999; margin-bottom: 0; background-color: #eee !important; border-bottom: 1px solid #bbb; }
 #header-ad {margin-top: ($topbar-height + ($panel-padding/2) - 1);}
 .top-bar{ height: 3.0625rem; overflow: hidden; line-height: 3.0625rem;} 
 .top-bar .name{ height: 3.0625rem; }
@@ -979,7 +979,7 @@ box-shadow: 0px 0px 4px 1px #bbb;*/ margin-bottom: 0; z-index: 9999999; border-b
 /**************************** SMALL ONLY ****************************/
 
 @media #{$small-only} {
-	#nav-bar {position: absolute; top: 0; left: 0; z-index:1000203;  margin-bottom: 0; background-color: #eee !important; border-bottom: 1px solid #bbb;}
+	#nav-bar {position: absolute; top: 0; left: 0; z-index:999;  margin-bottom: 0; background-color: #eee !important; border-bottom: 1px solid #bbb;}
 	#header-ad {margin-top: ($topbar-height + ($panel-padding/2) - 1);}
 	#main {margin-top: 0.1rem !important}
 	.show-on-large-up {
@@ -1975,6 +1975,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   overflow:hidden;
 }
 #second-popular-articles h3 { color: #01B586; font-family: OswaldRegular; font-size: 1.4rem !important; margin-bottom: 0.1rem; }
+#second-popular-articles .content{ width: 91.666667%; position:relative; clear:both; }
 .second-popular-articles-cont{ padding: 0.7rem; background: #fff; border: 1px solid #ddd; margin: 0.25rem 1rem; }
 .second-popular-article-title{  background: #eee; padding: 0 1rem;}
 .second-popular-article-title h2{  font-size: 1.2rem;  line-height: 1.4rem;  font-family: OswaldLight;  font-weight: bold; color: #222 !important;}

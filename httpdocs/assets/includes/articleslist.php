@@ -1,3 +1,4 @@
+
 <!-- Featured Article -->
 <?php 
 $articleIndex = 0;
@@ -26,12 +27,12 @@ else{ ?>
 	<?php }
 }
 
-$articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
+$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis ]);
 
 /* Article List */
-$totalArticles = count($articlesList['articles'] );
+$totalArticles = count($articlesList );
 
-foreach ($articlesList['articles'] as $articles){
+foreach ($articlesList as $articles){
 
 	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 	$linkToACategory = $config['this_url'].$articles['cat_dir_name'];
@@ -83,7 +84,7 @@ foreach ($articlesList['articles'] as $articles){
 			$articleIndex++; 
 		?>
 			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?> ggnoads" id="<?php echo 'article-'.$articleIndex;?>">
-				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
+				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 " href="<?php echo $linkToArticle; ?>">
 					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
 					<?php if(isset($_GET['show']) && $_GET['show'] == 'type'){
 						if($articles['page_list_id'] != 0) $type = 'MULTI'; else $type = 'SINGLE';

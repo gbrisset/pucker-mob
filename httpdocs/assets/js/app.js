@@ -35,10 +35,8 @@ var asideHeight = {
 
 
 $(document).ready(function() {
-//console.log(page);
 
 //READ MORE 
-
 if($('body').hasClass('mobile')) {
 	var $el, $ps, $up, totalHeight;
 	var parentOrgHeight = $('#article-content').outerHeight();
@@ -260,43 +258,62 @@ function resizeContentByscreenSize(){
 
 //SCROLL DOWN
 $('#articlelist-wrapper').scrollPagination({
-
-	nop     : 10, // The number of posts per scroll to be loaded
-	offset  : 11, // Initial offset, begins at 0 in this case
-	error   : 'No More Articles!', // When the user reaches the end this is the message that is
-		                            // displayed. You can change this if you want.
-	delay   : 300, // When you scroll down the posts will load after a delayed amount of time.
-		               // This is mainly for usability concerns. You can alter this as you see fit
-	scroll  : true // The main bit, if set to false posts will not load as the user scrolls. 
-		               // but will still load if the user clicks.
+	nop     : 10,
+	offset  : 10, 
+	error   : 'No More Articles!',
+	delay   : 300,
+	scroll  : true, 
+    page    : 1
 });
+/*
+$('#articlelist-wrapper-desk').scrollPaginationDesktop({
 
-var body = document.body;
-	
-/* slide menu left */
-if( $( ".toggle-slide-left" ).length > 0){
-    $( ".toggle-slide-left" ).on( "click", function(){
-		$(body).toggleClass("sml-open");
-		$(this).toggleClass("open-menu");
-
-    } );
+	nop     : 20,
+	offset  : 20, 
+	error   : 'No More Articles!',
+	delay   : 300,
+	scroll  : true, 
+    page    : 1
+});
+*/
+//SCROLL DOWN MOST POPULAR ARTICLES
+if(page == 'article'){
+	$('#second-popular-articles').scrollPagination({
+		nop     : 10,
+		offset  : 10,
+		error   : 'No More Articles!',
+		delay   : 300, 
+		scroll  : true,
+		page    : 2 
+	});
 }
 
+	var body = document.body;
+//BEGIN LEFT TAB BAR MOBILE 
+	/* slide menu left */
+	if( $( ".toggle-slide-left" ).length > 0){
+	    $( ".toggle-slide-left" ).on( "click", function(){
+			$(body).toggleClass("sml-open");
+			$(this).toggleClass("open-menu");
 
-$('#menu-options li').on('click', function(e){
-	e.preventDefault();
+	    } );
+	}
 
-	var this_li = $(this);
-	var this_a = $(this_li).find('a').attr('id');
+	$('#menu-options li').on('click', function(e){
+		e.preventDefault();
 
-	var div_cont = $('.slide-menu-left').find("[data-info='" + this_a + "']");
+		var this_li = $(this);
+		var this_a = $(this_li).find('a').attr('id');
 
-	$('.tap-articles').hide();
-	$('#menu-options').find('a').removeClass('current');
-	$(div_cont).show();
-	$('#'+this_a).addClass('current');
+		var div_cont = $('.slide-menu-left').find("[data-info='" + this_a + "']");
 
-});	
+		$('.tap-articles').hide();
+		$('#menu-options').find('a').removeClass('current');
+		$(div_cont).show();
+		$('#'+this_a).addClass('current');
+
+	});	
+//END LEFT TAB BAR MOBILE 
 
 	Foundation.utils.image_loaded(Foundation.utils.S('#aside img'), function(){
 		asideHeight.popular = poparticles.height();
@@ -522,10 +539,9 @@ $('#menu-options li').on('click', function(e){
 			}
 
 			//GOOGLE 3rd ad
-			inBodyAd.loadInArticleAd( 'article-content', 7, 0, mobilead[adPage].inarticlegoogle3, tag);
-
-			//inBodyAd.loadInArticleAd( 'article-content', 7, 0, "<iframe src='http://cas.criteo.com/delivery/afr.php?zoneid=230896' framespacing='0' frameborder='no' scrolling='no' width='300' height='460'><a href='http://cas.criteo.com/delivery/ck.php?cb=INSERT_RANDOM_NUMBER' target='_blank'><img src='http://cas.criteo.com/delivery/avw.php?zoneid=230896' border='0' alt='' /></a></iframe>", tag);
-			
+			//inBodyAd.loadInArticleAd( 'article-content', 7, 0, mobilead[adPage].inarticlegoogle3, tag);
+			//CRITEO
+			inBodyAd.loadInArticleAd( 'article-content', 7, 0, "<iframe src='http://cas.criteo.com/delivery/afr.php?zoneid=232904' framespacing='0' frameborder='no' scrolling='no' width='300' height='300'><a href='http://cas.criteo.com/delivery/ck.php?cb=INSERT_RANDOM_NUMBER' target='_blank'><img src='http://cas.criteo.com/delivery/avw.php?zoneid=232904' border='0' alt='' /></a></iframe>", tag);
 		}
 
 		//MULTIPAGE ARTICLE
@@ -640,8 +656,6 @@ $('#menu-options li').on('click', function(e){
 			if(carambola_position && carambola_position != -1){
 					inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);
 			}
-
-			
 		}
 
 		//MULTIPAGE ARTICLES
@@ -650,22 +664,9 @@ $('#menu-options li').on('click', function(e){
 			inBodyAd.loadInArticleAd( 'article-caption', 4, 0, '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', 'p');
 				
 		}
-
-		//BTF1
-		//loadAd(select.ad.btf1, ad[adPage].btf1);
-
-		//BTF2
-		//loadAd(select.ad.btf2, ad[adPage].btf2);
 	}
-	//BTF3
-	//	if( page === 'home' ||  page === 'category'){
-			//if(hasSponsored == undefined || hasSponsored == 0){
-			//loadAd(select.ad.btf3, ad[adPage].btf3);
-			//}
-	//	}
 
 	$(window).resize(function() {
-
 		resizeMainOnResize();
 	});
 }
@@ -740,7 +741,7 @@ topbar_search_contents_login.keypress(function(e) {if(e.keyCode == 13) {window.l
 notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
 notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
 
- 	/*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
+/* BEGIN GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
  	function getTotalShares( url, elm ){
  		
  		var span_shares_holder = $(elm).find('.span-shares-holder');
@@ -783,11 +784,13 @@ notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.locat
  
  	}
 
+
  	$.each($('.article-id'),  function( i ){
  		var url = $(this).attr('data-info-url');
 	 	getTotalShares( url, $(this) );
  	});
 
+/*END GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
  	
  	//Prefetch Links
  	var app = {
@@ -825,9 +828,7 @@ var SocialShares = {
 
 	fbEventHandler: function(evt) { 
 		if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
-			//console.log(evt.data.service);
 	     	   addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-	    		//console.log(obj.count);
 	    		var count = obj.count;
 	    		var article_id = Foundation.utils.S('#article_id').val();
 	    		SocialShares.updateFBShare( count, article_id );
@@ -837,15 +838,10 @@ var SocialShares = {
 	}
 	
 	// Listen to events	
-	if(page === 'article' || page === 'articleslide') {
-		//console.log('ADDTHIS');
-		//console.log(addthis);
-		addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-		    //console.log("IN");
-		    //console.log(obj);
-		});
-		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-	}
+if(page === 'article' || page === 'articleslide') {
+	addthis.sharecounters.getShareCounts('facebook', function(obj) { });
+	addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
+}
 
 
 //Scroll Window 
@@ -900,6 +896,7 @@ function kFormatter(num) {
   	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
 }
 
+//BEGIN REGISTER OR LOGIN READER
 $('#follow-author').click(function(e){
 	e.preventDefault();
 
@@ -958,7 +955,6 @@ $('#login-link').click(function(e){
 	$('#login-box').show();
 });
 
-
 $('.ajax-form-submit').click(function(e){
 	e.preventDefault();
 	var dataString = '';	
@@ -971,7 +967,9 @@ $('.ajax-form-submit').click(function(e){
 		$(form).dynamicLoginContent();
 	}
 });
+//END REGISTER OR LOGIN READER
 
+//WARNING SLIDE DOWN MESSAGE HEADER
 if($('#warning-icon')){
 	$('#warning-icon').on('click', function(e){
 		e.stopPropagation();
@@ -979,6 +977,7 @@ if($('#warning-icon')){
 
 	});
 }
+
 //BRANOVATE AD MOBILE
 if($('body').hasClass('mobile') && adPage === 'article'){
 	setTimeout(function() {
@@ -986,7 +985,7 @@ if($('body').hasClass('mobile') && adPage === 'article'){
 	}, 2000);
 }
 
-
+//ADD ADS BELOW FOOTER THEM MOVE IT TO THEIR POSITION
 if($('body').hasClass('mobile')){
 	var mobile_header_ad_loader = $('#mobile-header-ad-loader').find('#get-content');
 	setTimeout(function(){

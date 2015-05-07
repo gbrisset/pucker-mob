@@ -1334,7 +1334,7 @@ class MPArticleAdmin{
             if( $vDstImg && $vSrcImg ){
             	
             	imagecopyresampled($vDstImg, $vSrcImg, 0, 0, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
-               	imagejpeg( $vDstImg, $iDestFileName, 75 );
+               	imagejpeg( $vDstImg, $iDestFileName, 85 );
 
              	return  true;
             }

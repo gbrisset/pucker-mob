@@ -170,38 +170,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
 		<?php }?>
 		
-		<!-- KIXER -->
-		<!-- Start Below Article 
-			<div id='__kx_ad_821' class="padding-top clear"></div>
-			<script type="text/javascript" language="javascript">
-			var __kx_ad_slots = __kx_ad_slots || [];
-
-			(function () {
-				var slot = 821;
-				var h = false;
-				__kx_ad_slots.push(slot);
-				if (typeof __kx_ad_start == 'function') {
-					__kx_ad_start();
-				} else {
-					var s = document.createElement('script');
-					s.type = 'text/javascript';
-					s.async = true;
-					s.src = 'http://cdn.kixer.com/ad/load.js';
-					s.onload = s.onreadystatechange = function(){
-						if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-							h = true;
-							s.onload = s.onreadystatechange = null;
-							__kx_ad_start();
-						}
-					};
-					var x = document.getElementsByTagName('script')[0];
-					x.parentNode.insertBefore(s, x);
-				}
-			})();
-			</script>-->
-		<!-- End Below Article -->
-	
-
 		<section id="separator-section" class="row no-padding"></section>
 		
 		<!-- COMMENTS BOX -->
@@ -229,18 +197,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 	</section>
 	
-	<!--<section class="">-->
-	<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
-		<!--<?php if(!$promotedArticle){ ?>
-			<div class="hide-for-print margin-top ads">
-				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-			</div>
-		<?php }?>-->
-
-		<!-- 10  MOST RECENT ARTICLES ADDED -->
-		<?php //include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
-<!--	</section> -->
+	
 
 </article>
 

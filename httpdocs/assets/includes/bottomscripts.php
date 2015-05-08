@@ -45,47 +45,50 @@
 
   <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
 
-
+  
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-      <!-- NETSEER AD IN-IMAGE -->
       <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
+
+      <!-- NETSEER AD IN-IMAGE -->
        <script type="text/javascript">
         netseer_tag_id="20429";
         netseer_task="in-image";
        </script>
        <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+  
     <?php }?>
-    
-    <!-- KIXER -->
+  
+    <!-- KIXER ADHESION -->
     <!-- Start Puckermob Adhesion -->
     <div id='__kx_ad_880'></div>
     <script type="text/javascript" language="javascript">
-    var __kx_ad_slots = __kx_ad_slots || [];
+      var __kx_ad_slots = __kx_ad_slots || [];
 
-    (function () {
-      var slot = 880;
-      var h = false;
-      __kx_ad_slots.push(slot);
-      if (typeof __kx_ad_start == 'function') {
-        __kx_ad_start();
-      } else {
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = '//cdn.kixer.com/ad/load.js';
-        s.onload = s.onreadystatechange = function(){
-          if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-            h = true;
-            s.onload = s.onreadystatechange = null;
-            __kx_ad_start();
-          }
-        };
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(s, x);
-      }
-    })();
+      (function () {
+        var slot = 880;
+        var h = false;
+        __kx_ad_slots.push(slot);
+        if (typeof __kx_ad_start == 'function') {
+          __kx_ad_start();
+        } else {
+          var s = document.createElement('script');
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = '//cdn.kixer.com/ad/load.js';
+          s.onload = s.onreadystatechange = function(){
+            if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+              h = true;
+              s.onload = s.onreadystatechange = null;
+              __kx_ad_start();
+            }
+          };
+          var x = document.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+        }
+      })();
     </script>
     <!-- End Puckermob Adhesion -->
+ 
   <?php } ?>
 
   <!-- INFO LINK -->
@@ -95,9 +98,9 @@
   </script>
   <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
 
-  <!-- POPUNDERS -->
+  <!-- POPUNDERS 
   <script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
-
+-->
   <!-- Vibrant Media Ads 
     <script type="text/javascript" src="http://puckermob.us.intellitxt.com/intellitxt/front.asp?ipid=70527"></script>
   -->

@@ -1245,13 +1245,16 @@ public function getFeatured($args = []){
 			ON articles.article_id = article_contributor_articles.article_id 
 			AND article_contributor_articles.contributor_id = article_contributors.contributor_id 
 
+			LEFT JOIN article_moblogs_featured
+			ON articles.article_id = article_moblogs_featured.article_id
+
 			LEFT JOIN article_images
 			ON articles.article_id = article_images.article_id
 
 			WHERE articles.article_seo_title = :articleSEOTitle
 			GROUP BY articles.article_id 
 			ORDER BY articles.article_id DESC LIMIT 1';
-
+var_dump($s);
 			$queryParams = [
 			':articleSEOTitle' => filter_var($options['articleSEOTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR)
 			];

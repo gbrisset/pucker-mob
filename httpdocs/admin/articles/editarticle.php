@@ -384,6 +384,21 @@
 					</div></div>
 					<?php }?>
 
+					<!-- Featured Article on Homepage -->
+					<?php  var_dump($article); if($admin_user){?>
+					<div class="row">
+					    <div class="columns">
+						<label class="small-4 left uppercase">Show in HomePage </label>
+					
+						<input type="radio" name="featured_hp-s" id="featured_hp-yes" data-info="1"  value="1" <?php if($article['article_featured_hp'] == 1) echo "checked"; ?> />
+						<label for="" class="radio-label">Yes</label>
+									
+						<input type="radio" name="featured_hp--s" data-info="0" id="featured_hp-no" value="0"  <?php if($article['article_featured_hp'] == 0) echo "checked"; ?> />
+						<label for="" class="radio-label">No</label>
+						</div>
+					</div>
+					<?php } ?>
+
 					<!-- Poll Script -->
 					<?php if($admin_user){?>
 
@@ -410,6 +425,7 @@
 						</div>
 					</div>
 
+					
 					<!-- Article Disclaimer -->
 					<div class="row">
 					    <div class="columns">

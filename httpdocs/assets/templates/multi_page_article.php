@@ -26,7 +26,7 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 ?>
 <article id="sectioned-article-content" class="small-12 column <?php if($detect->isMobile()) echo " no-padding "; ?>">
 	<section class="small-12 column" id="article-summary">
-
+		<?php if(!$detect->isMobile()){?>
 		<h1 id="<?php echo $articleInfoObj['article_id']; ?>" style="margin-bottom: 0.5rem;"><?php echo $articleInfoObj['article_title']; ?></h1>
 
 		<!-- SOCIAL DESKTOP -->
@@ -54,18 +54,8 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
-		<?php //include($config['include_path'].'socialbuttonsarticles.php'); ?>
 		<div class="padding-bottom" style=""></div>
 		
-		<!-- Article SubTitle ( SLIDE ) 
-		<?php //if ( $detect->isMobile() ) {  echo '<div class="row" style="margin-top: -1rem;">'; }
-			  //else{ echo '<div class="row">'; }
-		?> 
-			<section id="article-caption" class="columns small-12 ">
-				<h2 class=""><?php echo ((isset($page_list_items)) ? $page_list_items->page_list_item_title : ''); ?></h2>
-			</section>
-		</div>-->
-
 		<!-- Article Content Image / Video -->
 		<div class="row padding-top">
 			<?php if($page_list_items->page_list_item_image != '' && $page_list_items->page_list_item_youtube_embed == ''){ ?>
@@ -78,9 +68,52 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 					echo $page_list_items->page_list_item_youtube_embed;
 					echo "</div>";
 				} ?>
-				<p style="display: none;" id="photo-credit-text"><?php echo ((isset($page_list_items) && !empty($page_list_items->page_list_item_image_source)) ? $page_list_items->page_list_item_image_source : '<br />'); ?></p>
 			</section>
 		</div>
+		<?php }else{?>
+			<!-- Article Image -->
+		<div class="row no-margin-with-tap">
+			<!-- SMARTIES -->
+			<?php if($promotedArticle){ 
+				if($detect->isMobile()) $smartiesImagestyle = 'width:98%;'; else $smartiesImagestyle='';
+			?>
+				<div id="smarties-image" class="small-12 columns">
+					<span style="position: absolute; right: 0.45rem; z-index: 999;" >
+						<img style="<?php echo $smartiesImagestyle; ?>" src="http://www.puckermob.com/assets/img/sponsoredby-smarties.png">
+					</span>
+				</div>
+			<?php } ?>
+			<?php if($page_list_items->page_list_item_image != '' && $page_list_items->page_list_item_youtube_embed == ''){ ?>
+			<section id="article-image" class="small-12 columns no-padding">
+			<!--<section id="article-slide" class="columns small-12 half-padding-right-on-lg">-->
+				<img class="wait-for-me" src="<?php echo $config['image_url'] ?>articlesites/puckermob/list/<?php echo (isset($page_list_items) ? $page_list_items->page_list_item_image : 'placeholder.png'); ?>" alt="<?php echo (isset($page_list_items) ? $page_list_items->page_list_item_title : ''); ?>">
+				<?php } elseif($page_list_items->page_list_item_youtube_embed != '') { 
+				//	YouTube Embed
+					echo '<section id="article-slide" class="columns small-12"><div class="flex-video">';
+					echo $page_list_items->page_list_item_youtube_embed;
+					echo "</div>";
+				} ?>
+			<!--</section>-->
+			</div>
+			
+		</div>
+		
+		<!-- TITLE -->
+		<h1 style="margin: 0.5rem 0;"><?php echo $article_title; ?></h1>
+		
+		<!-- SOCIAL DESKTOP -->
+		<section id="article-content-2">
+			<!-- Social Media Icons -->
+			<div class="row social-media-container  padding-bottom" style=" display:block !important;">
+				<a class="addthis_button_facebook small-4 left">
+					<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
+				</a> 
+				<a class="addthis_button_twitter  small-2 left">
+					<label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
+				</a> 
+				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
+			</div>
+		<?php }?>
 		
 		<!-- ABOUT THE AUTHOR -->
 		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
@@ -261,14 +294,14 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<?php }else{
 			//include($config['include_path'].'socialbuttonsmobile.php');
 		?>
-			<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
+			<!--<div class="row social-media-container  padding-bottom" style="margin-bottom: 1rem; display:block !important;">
 				<a class="addthis_button_facebook">
 					<label class="label-social-button-2-mobile"><i class="fa fa-facebook-square" ></i>SHARE</label>
 				</a> 
 				<a class="addthis_button_twitter">
 					<label class="label-social-button-2-mobile"><i class="fa fa-twitter"></i>TWEET</label>
 				</a> 
-			</div><?php }
+			</div>--><?php }
 		?>
 
 			<?php if(!$detect->isMobile()){?>

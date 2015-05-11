@@ -20,7 +20,7 @@ if(isset($_GET['sort'])){
 	}
 }
 
-$searchString = (isset($_POST['search']) && strlen($_POST['search'])) ? trim($_POST['search']) : false;
+	$searchString = (isset($_POST['search']) && strlen($_POST['search'])) ? trim($_POST['search']) : false;
 
 	if(!$searchString) $searchString = (isset($_GET['q']) && strlen($_GET['q'])) ? trim($_GET['q']) : false;
 
@@ -40,7 +40,7 @@ if( $searchString ){
 
 	$articles = $search->getArticles( $searchString );
 
-	$articlesPerPage = 24;
+	$articlesPerPage = 10;
 	$totalResults = $search->totalResults;
 	
 	$totalPages = ceil( $totalResults / $articlesPerPage);

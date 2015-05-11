@@ -8,7 +8,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_title = $articleInfoObj['article_title'];;
 	$article_id = $articleInfoObj['article_id'];
 	$article_body = $articleInfoObj['article_body'];
-	$article_category = $category['cat_dir_name'];
+	$article_category = $category['cat_name'];
 	if(!isset($articleInfoObj['date_updated']) || $articleInfoObj['date_updated'] == "0000-00-00 00:00:00") $date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
 	else $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 
@@ -49,7 +49,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			<?php } ?>
 			<div id="article-image" class="small-12 columns no-padding">
-				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
 				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
 		</div>
@@ -197,7 +196,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 	</section>
 	
-	
 
 </article>
 
@@ -249,7 +247,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			<?php } ?>
 			<div id="article-image" class="small-12 columns half-padding-right-on-lg padding-top">
-				<meta property="" itemprop="photo" content="<?php echo $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" />
 				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
 		</div>

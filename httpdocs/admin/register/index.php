@@ -59,7 +59,7 @@ $(document).ready(function() {
 			    	<h2>Earn money by writing</h2>
 			    	
 			    	<div class="hsContent dark-bg">
-						<p>Welcome to MOBlog by PuckerMob! We're happy that you're interested in joining the mob, and making money by writing a blog on our site. </p>
+						<p>Welcome to The Mob by PuckerMob! We're happy that you're interested in joining the mob, and making money by writing a blog on our site. </p>
 
 						<p>We're still working on the mobile version, which will be launched shortly. In the meantime, please register and get started writing on a desktop computer or laptop. Thanks!</p>
 			    	</div>
@@ -72,7 +72,7 @@ $(document).ready(function() {
 		        		</ul>
 		        	</div>
 		        	<div class="full-width dark-bg next-step active">
-		        		<h2><a href="#slide-2">What is MobLog?</a></h2>
+		        		<h2><a href="#slide-2">What is The Mob?</a></h2>
 		        	</div>
 		        </div>
 		        
@@ -154,7 +154,7 @@ $(document).ready(function() {
 		        		</ul>
 		        	</div>
 		        	<div class="full-width dark-bg next-step active">
-		        		<h2><a href="#slide-2">What is MobLog?</a></h2>
+		        		<h2><a href="#slide-2">What is The Mob?</a></h2>
 		        	</div>
 		        </div>
 		        
@@ -169,7 +169,7 @@ $(document).ready(function() {
 				    <img id="moblog-img" src = "<?php echo $config['this_url'].'assets/img/registration/MOBLOG.png'; ?>" alt="moglog" />
 			    
 			    	<div class="hsContent">
-				    	<p>It's pretty  simple: MOBlog is a tool that lets you make money by blogging on our site</p>
+				    	<p>It's pretty  simple: The Mob is a tool that lets you make money by blogging on our site</p>
 				    	<p>You can write what you want, when you want. </p>
 				    	<p>Be creative.</p>
 				    	<p>Express an opinion.</p>

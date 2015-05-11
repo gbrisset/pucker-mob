@@ -1,4 +1,6 @@
 <?php
+
+
 	$admin = true;
 	require_once('../../assets/php/config.php');
 	if($adminController->user->getLoginStatus()) $adminController->redirectTo('');
@@ -10,11 +12,14 @@
 			//	Failure
 			$adminController->user->invalidateAllTokens();
 		} else {
+
 			//	Success
 			$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 			$redirectString = $adminController->user->redirectAfterLogin();
 			
 			echo $redirectString;
+
+			file_put_contents($file, $redirectString.PHP_EOL);
 		}
 	} 
 
@@ -41,7 +46,7 @@
 			    	<h2>Earn money by writing</h2>
 			    	
 			    	<div class="hsContent dark-bg">
-						<p>Welcome to MOBlog by PuckerMob! We're happy that you're interested in joining the mob, and making money by writing a blog on our site. </p>
+						<p>Welcome to The Mob by PuckerMob! We're happy that you're interested in joining the mob, and making money by writing a blog on our site. </p>
 
 						<p>We're still working on the mobile version, which will be launched shortly. In the meantime, please register and get started writing on a desktop computer or laptop. Thanks!</p>
 			    	</div>
@@ -54,7 +59,7 @@
 		        		</ul>
 		        	</div>
 		        	<div class="full-width dark-bg next-step active">
-		        		<h2><a href="#slide-2">What is MobLog?</a></h2>
+		        		<h2><a href="#slide-2">What is The Mob?</a></h2>
 		        	</div>
 		        </div>
 		    </div>

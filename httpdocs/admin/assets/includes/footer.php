@@ -17,7 +17,7 @@
           <ul class="no-bullet">
             <li><a href="<?php echo $config['this_url']; ?>lifestyle" class="wellness">Lifestyle</a></li>
             <li><a href="<?php echo $config['this_url']; ?>fun" class="fun">Fun</a></li>
-            <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >Moblog</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >The Mob</a></li>
           </ul>
         </div>
         <div id="footer-right" class="large-6 columns">
@@ -50,3 +50,6 @@
       </div>
       </div>
     </footer>
+
+    <!-- 33ACROSS AD SERVER 
+    <div id="flyatf-ad"></div>-->

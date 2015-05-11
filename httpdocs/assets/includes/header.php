@@ -1,8 +1,9 @@
   <?php
 
   $loginActive = isset($_SESSION['login_hash']) || isset($_SESSION['user_id']);
-  $has_sponsored = $mpArticle->data['has_sponsored_by'];
-  $user_type = 5;
+
+    $has_sponsored = $mpArticle->data['has_sponsored_by'];
+ $user_type = 5;
   if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
     $user_info = $mpArticle->getUserInfo();
     $user_first_name = "";
@@ -45,22 +46,28 @@
     //WARNINGS
     $warnings = $ManageDashboard->getWarningsMessages(); 
 
+    
     //Top Shared Writers
     $writers_arr = $ManageDashboard->getTopShareWritesRankHeader($current_month);
-    if(isset($writers_arr) && $writers_arr){
-      foreach ($writers_arr as $writer) {
-         if($writer['contributor_id'] == $contributor_id ){ break; }
-         $your_rank++;
-      }
-    } 
+    
+   
+    foreach ($writers_arr as $writer) {
+       
+       if($writer['contributor_id'] == $contributor_id ){
+          break;
+       }
+       $your_rank++;
+     } 
+ 
+ 
   }
 
  ?>
-  <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>">
-    <div class="row" style="max-width: 69.5rem;">
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
+    <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">
         <?php if($user_type == 5){?>
-          <ul>
+          <ul style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; ?>">
               <li><a class="my-account-header-link" id="my-account-header-link" href="<?php echo $config['this_admin_url'].'following/'; ?>">My Account</a></li>
               <li class="empty-list "></li>
               <li><a  class="my-account-header-link" href="<?php echo $config['this_admin_url']; ?>/logout/">LOG OUT </a></li>
@@ -73,8 +80,8 @@
               </li>
             </ul>
         <?php }else {?>
-          <ul>
-            <li style="<?php if( $has_sponsored && $isHomepage ) echo 'margin-left: 10px;' ?>"> <a class="my-account-header-link" id="my-account-header-link" href="<?php echo $config['this_admin_url'].'/'; ?>">My Dashboard</a></li>
+          <ul style="<?php if($has_sponsored && $isHomepage) echo 'min-width: 56rem !important'; ?>">
+            <li style="margin-left: 1px;"> <a class="my-account-header-link" id="my-account-header-link" href="<?php echo $config['this_admin_url'].'/'; ?>">My Dashboard</a></li>
             <?php if($user_type != 6 && $user_type != 1 && $user_type != 7){?>
               <li class="empty-list "></li>
               <li class="hide-for-readers"> <p class="earnings-this-month">Earnings (this month): <?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p></li>
@@ -94,8 +101,8 @@
             <li><a  class="my-account-header-link" href="<?php echo $config['this_admin_url']; ?>/logout/">LOG OUT </a></li>
             <li></li>
             <li class="right">
-              <div id="topbar-container"  style="<?php if( $has_sponsored && $isHomepage ) echo 'margin-right: 8.7rem;' ?>">
-                <input id="topbar-search-contents-login" class="topbar-search-contents" type="search" placeholder="SEARCH">
+              <div id="topbar-container">
+                <input id="topbar-search-contents-login"  value="" class="topbar-search-contents" type="search" placeholder="SEARCH">
                 <button id="topbar-search-submit-login" class="alert button expand" style="background-color: #10580d;"><i class="fa fa-search"></i></button>
               </div>
             </li>
@@ -105,11 +112,11 @@
   </div>
   </header>
   
-  <header id="top-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>">
-  <div class="row" style="max-width: 69.5rem;">
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
+  <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">
-        <ul>
-            <li style="<?php if( $has_sponsored && $isHomepage ) echo 'margin-left: 10px;' ?>"> <a class="my-account-header-link" href="https://www.facebook.com/puckermob" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a></li>
+        <ul style="<?php if($has_sponsored && $isHomepage) echo 'min-width: 56rem !important'; ?>">
+            <li style="margin-left: 1px;"> <a class="my-account-header-link" href="https://www.facebook.com/puckermob" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a></li>
             <li> <a class="my-account-header-link" href="https://twitter.com/Puckermob" target="_blank"><i class="fa fa-twitter fade-in-out"></i></a></li>
             <li class="empty-list "></li>
             <!--<li id="info-icon"><i class="fa fa-info-circle"></i></li>
@@ -121,8 +128,8 @@
               <a class="my-account-header-link" href="http://www.puckermob.com/admin/login">LOGIN</a>
             </li>
             <li class="right">
-              <div id="topbar-container"  style="<?php if( $has_sponsored && $isHomepage ) echo 'margin-right: 8.7rem;' ?>">
-                <input id="topbar-search-contents" class="topbar-search-contents" type="search" placeholder="SEARCH">
+              <div id="topbar-container">
+                <input id="topbar-search-contents" value="" class="topbar-search-contents" type="search" placeholder="SEARCH">
                 <button id="topbar-search-submit" class="alert button expand" style="background-color: #10580d;"><i class="fa fa-search"></i></button>
               </div>
             </li>
@@ -138,15 +145,15 @@
   <?php }?>
 
   <?php if(!$detect->isMobile()){?>
-    <div id="nav-bar" class="contain-to-grid hide-for-print">
+    <div id="nav-bar" class="contain-to-grid hide-for-print" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>">
   <?php }else{?>
    <div id="nav-bar" class="contain-to-grid hide-for-print column no-padding">
   <?php }?>
   
   
-  <nav class="top-bar" data-topbar="" data-options="scrolltop: false;">
+    <nav class="top-bar" data-topbar="" data-options="scrolltop: false;"  style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important; '?>">
       <ul class="title-area">
-        <li class="name" style="<?php if( $has_sponsored && $isHomepage ) echo 'margin-left: 10px;' ?>">
+        <li class="name">
           <a href="<?php echo $config['this_url']; ?>">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMsAAAAdCAMAAAAzQmgzAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFAAAAIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8g8D4fWgAAABB0Uk5TABAgMEBQYHCAj5+vv8/f7yMagooAAAROSURBVFjD3ZhJluwoDEUFlo2MMbz9r7YGdAJ3kTX8TPIkJgQX9RD9S2OTMjZbZqzIvGRT/5nNBwDh2EyZ4eG7E1mIiEWPcStWy9vXPnhaQryHiBR827H+UERE1jYb0IbPNAyMsgNCJ5HU1qdyCFHfyQM+T+oxbZWk7m8AgMf9IgDFt8ab3xEp6cdSDxpFRCQkIC1fLEsEknfM7A4Ap5lZKgoJMOslIIiI+LP9kogB6KuoU43F+OFS4nLDAmzTQR0QzTvLBqBdjT2AZWJpKCSzFKJQT2gP4FAHhx2XKRZzAgDOXSSrNS2dJYVQdJ3sdOlb5ntmWVIXRUS0xcnGfDvjKwvRUc+fWbxaZQEAe5cIhKXYNwAk01hCdu+2XjtDxPHGYuKIQmRHlq3bzgeLBZxi0YrJNlUkriMpJ7TbGheFmWVHfGMRYL0LhZVFo3ywULWiNbP0DwaaJU5K4x4qlJ/FEl00S97/icWkyUknlgHlV5YS7pK+A6R6zBXFh9V1VzjFEm5Y/Ktetge1FJYR5YPFaJa9BSIiSsAZ6jG9/tLVdqOX+Dd/8Uj0zDKhfLBICYEkAEwqZymRcmssCYAZhfhqZJ2Fq64Ui3uPY7HFqBuWGeWdZQXOblIkaCqPQGw2Y7unE+m0oFmMSzV4NBYj5XaeWIZkPLFcUEgAbmNkWX1PEzsAsu2OGYCQLyyM655LDcAlv8QhV+a8f3zm/ReWmC6FiFxKGF0uBTu4rUexuQDAZGU9sDR9aPn+Wo8ZemdxTyxDQm6ToY1pK78MSb5bvM1/Ncv6CwvOchMphBBCr5P/h15wcip1xKu/eGYWHYEpZM8J2eSLfr70clQmETlCakE9XJLGM8v+aGOGlp/j2KIduoSs7NGm3LmUWMW47snK90UV0v5PLOdDqvxzftH1Qw2/EUimxjNRcfechDgUW9cFaIndv7Psl1h/zfu/xeTY0kmzfgdgq3lmrSznXEPnqWVioT3/4JaFp5/vZd69sdCua6c3lq1LalmitHiu2hGPFYs2sUgzy/rEYqe6odUbUTvtDYvqXj5yZdCV+6HK4zzdWCyqFrRa5MLinlgojlNbFbfOlzSzkO/yX1m4+XQ7kVWJoscvj9ELfa9DNUvIyDcsMhiZ6dZ9zJWeTCzmbCt+7MX6iY7ex3QWm1ryaP2ym24hT8fbOEZGt4/m6FHHnGOM9Hlv1SN3mM9e7JgyCGNonLtr1eRqXdSdGQDPzLzusXZANyy09heP9dSGZU4glpcds8WSHvXbhanVzEf/Ij2DSHcFpvnOC8ylXJny/rWv7C6SAITDhzQFErMDwBkkhF62DG9K9U1gfFPimaU0dprFMtOVhThqQUK3LDs9spBtLzmB5y9pfqwaWCrMB0tpMG4rLhXdcgFfaZK3dMNy7mV64eU2aRgeHjOHGO9ExHVGO4qwzJbIsh4mb6WlMVsiU79NO/Akch13LGuYmdnSPzj+AyWmaBwhuQUYAAAAAElFTkSuQmCC" alt="PuckerMob Logo">
            </a>
@@ -154,13 +161,18 @@
        <li class="toggle-topbar menu-icon"><a href="#"></a></li>
       </ul>
       <section class="top-bar-section category-colors">
-        <ul class="left">
-          <li><a href="<?php echo $config['this_url']; ?>relationships"  class="relationships" >Relationships</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>entertainment"  class="entertainment" >Entertainment</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>money"  class="money" >Money</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >MOBLOG</a></li>
+        <?php if(!$detect->isMobile()){?>
+           <ul class="left" style="margin-left: 245px;">
+        <?php }else{?>
+           <ul class="left">
+        <?php }?>
+       
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>relationships"  class="relationships" >Relationships</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>entertainment"  class="entertainment" >Entertainment</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>money"  class="money" >Money</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >THE MOB</a></li>
         </ul>
       </section>
     </nav>

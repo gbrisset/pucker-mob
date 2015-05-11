@@ -96,6 +96,7 @@ if($local)
 	require_once $config['assets_path'].'/class.FollowAuthor.php';
 	require_once $config['assets_path'].'/class.Dashboard.php';
 	require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
+	require_once $config['assets_path'].'/class.FacebookDebugger.php';
 
 	//if(isset($admin) && $admin){
 		//require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
@@ -186,6 +187,7 @@ if($local)
 	require_once dirname(__FILE__).'/MPArticleAdminController.php';
 	require_once dirname(__FILE__).'/class.Dashboard.php';
 	require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
+	require_once dirname(__FILE__).'/class.FacebookDebugger.php';
 	
 	if(isset($admin) && $admin){
 

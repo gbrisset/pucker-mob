@@ -50,6 +50,10 @@ class MPArticle{
 
 		return $r;
 }*/
+
+public function getAllArticles($limit){
+
+}
 private function getArticlePageInfo($id = 1){
 		$pdo = $this->con->openCon();
 		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;
@@ -216,6 +220,21 @@ public function getMoBlogsArticles( $current_article_id = 0){
 	}
 	 
 	$s .= " ORDER BY articles.date_updated DESC LIMIT 40 ";
+
+	$q = $this->performQuery(['queryString' => $s]);
+		
+	return $q;
+
+}
+
+public function getMoBlogsArticlesFB( $current_article_id = 0){
+
+	$s = "SELECT * FROM articles 
+		INNER JOIN (article_categories) 
+		ON ( articles.article_id = article_categories.article_id ) 
+		WHERE articles.article_status = 1 AND article_categories.cat_id = 9 ";
+
+	$s .= " ORDER BY articles.date_updated DESC ";
 
 	$q = $this->performQuery(['queryString' => $s]);
 		

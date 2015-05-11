@@ -157,7 +157,7 @@
 						<p id="dd-shares-calc">CLICK TO LEARN MORE ABOUT CPM RATES <i class="fa 2x fa-caret-down"></i></p>
 					</div>
 					<div class="find-more-link right">
-						<p><a href="#" id="find-more-info">Find out how to make money with  moblogs</a></p>
+						<p><a href="#" id="find-more-info">Find out how to make money with The Mob</a></p>
 					</div>
 				</div>
 				<div id="dd-shares-content" class="mobile-12 small-12">

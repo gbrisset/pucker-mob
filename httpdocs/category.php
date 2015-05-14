@@ -17,7 +17,7 @@ if(!is_null($categoryInfo)){
 	$pageName = $categoryInfo['cat_name'].' | '.$mpArticle->data['article_page_name'];
 	
 	//$articlesList = $mpArticle->getMostRecentByCatId(['pageId' => $categoryInfo['cat_id']]);
-	$articlesList = $mpArticle->getArticlesList(['pageId' => $categoryInfo['cat_id']]);
+	$articlesList = $mpArticle->getArticlesList(['pageId' => $categoryInfo['cat_id'], 'withMobLogs'=> false ]);
 	$recentArticles = $articlesList;
 }else $mpShared->get404();
 if ( $detect->isMobile() ) { ?>

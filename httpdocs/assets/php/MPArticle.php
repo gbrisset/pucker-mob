@@ -285,21 +285,26 @@ public function getArticlesList( $args = [] ){
 		'articleSEOTitle' => '',
 		'articleSEOTitles' =>[],
 		'limit' => '',
-		'offset' => 0
+		'offset' => 0,
+		'withMobLogs' => false
 	], $args);
 
 	$s = " SELECT articles.article_id, articles.creation_date, articles.date_updated, articles.article_title, articles.article_seo_title, categories.cat_id, categories.cat_name, categories.cat_dir_name, 
-	article_contributors.contributor_id, article_contributors.contributor_seo_name, article_contributors.contributor_name, article_contributors.contributor_image 
+	article_contributors.contributor_id, article_contributors.contributor_seo_name, article_contributors.contributor_name, article_contributors.contributor_image, article_moblogs_featured.article_featured_hp 
 		   FROM articles 
 		   INNER JOIN ( article_categories, categories, article_contributor_articles, article_contributors ) 
 		   	ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id 
-		   	AND article_contributor_articles.article_id = articles.article_id AND article_contributors.contributor_id = article_contributor_articles.contributor_id ) 
-		   WHERE  articles.article_status = 1 ";
+		   	AND article_contributor_articles.article_id = articles.article_id AND article_contributors.contributor_id = article_contributor_articles.contributor_id ) ";
+		   
+			if( $options['withMobLogs'] == true ){
+				$s .= " LEFT JOIN article_moblogs_featured ON ( article_moblogs_featured.article_id = articles.article_id ) ";
+			}
+		  $s .= " WHERE  articles.article_status = 1 ";
 
 	if( isset( $options['pageId'] )  &&  $options['pageId']) {
 		$s .= " AND categories.cat_id = ". $options['pageId'] ;
 	}else{
-		$s .= " AND categories.cat_id != 9 ";
+		$s .= " AND categories.cat_id != 9 OR article_moblogs_featured.article_featured_hp = 1 ";
 	}
 
 	if( isset( $options['omit'] )  &&  $options['omit']) {
@@ -311,7 +316,7 @@ public function getArticlesList( $args = [] ){
 	if( isset( $options['limit'] )  &&  $options['limit']) {
 		$s .= "  LIMIT ". $options['limit'] ." OFFSET ".$options['offset'];
 	}
-
+var_dump($s);
 	$q = $this->performQuery(['queryString' => $s]);
 		
 	return $q;	   
@@ -1257,7 +1262,8 @@ public function getFeatured($args = []){
 			], $args);
 
 			$s = 'SELECT articles.*, article_contributors.contributor_id, article_contributors.contributor_name, article_contributors.contributor_email_address, article_contributors.contributor_image, 
-			article_images.article_preview_img, article_images.article_post_img
+			article_images.article_preview_img, article_images.article_post_img, article_moblogs_featured.article_cat,  article_moblogs_featured.article_featured_hp  
+			
 			FROM articles 
 
 			LEFT JOIN ( article_contributor_articles, article_contributors) 
@@ -1273,7 +1279,7 @@ public function getFeatured($args = []){
 			WHERE articles.article_seo_title = :articleSEOTitle
 			GROUP BY articles.article_id 
 			ORDER BY articles.article_id DESC LIMIT 1';
-var_dump($s);
+
 			$queryParams = [
 			':articleSEOTitle' => filter_var($options['articleSEOTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR)
 			];

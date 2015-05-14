@@ -27,7 +27,8 @@ else{ ?>
 	<?php }
 }
 
-$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis ]);
+$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true ]);
+
 
 /* Article List */
 $totalArticles = count($articlesList );
@@ -42,7 +43,7 @@ foreach ($articlesList as $articles){
 	$cat_name = $articles['cat_dir_name'];
 	
 	//IGNORE MOBLOG ARTICLES
-	if( !isset($category_page) && $cat_name === "moblog") continue;
+	if( !isset($category_page) && $cat_name === "moblog" && $articles['article_featured_hp'] != 1) continue;
 
 	if( $articleIndex % 7 == 0 ) { 
 		$articleIndex++;

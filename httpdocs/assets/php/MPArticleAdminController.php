@@ -108,7 +108,9 @@ class MPArticleAdminController extends MPArticle{
 			'articleId' => -1
 		), $opts);
 
-		$sql = "SELECT *, a.article_id FROM articles as a LEFT JOIN (article_images as ai, article_statuses as astatus) ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id) WHERE a.article_seo_title = :seoTitle OR a.article_id = :articleId";
+		$sql = "SELECT a.*, a.article_id, ai.*, astatus.*, article_moblogs_featured.article_featured_hp FROM articles as a LEFT JOIN (article_images as ai, article_statuses as astatus, article_moblogs_featured) 
+			ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id AND article_moblogs_featured.article_id = a.article_id ) 
+			WHERE a.article_seo_title = :seoTitle OR a.article_id = :articleId";
 		$params = array(
 			'seoTitle' => filter_var($options['seoTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR),
 			'articleId' => filter_var($options['articleId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
@@ -131,9 +133,9 @@ class MPArticleAdminController extends MPArticle{
 			'queryString' => 'SELECT * FROM article_contributor_articles as aca INNER JOIN (article_contributors as ac) ON (aca.contributor_id = ac.contributor_id) WHERE aca.article_id = '.$article['article_id']
 		));
 
-		$article['video'] = $this->performQuery(array(
-			'queryString' => 'SELECT * FROM article_videos as av INNER JOIN (syndication_videos as sv) ON (av.syn_video_id = sv.syn_video_id) WHERE av.article_id = '.$article['article_id']
-		));
+		//$article['video'] = $this->performQuery(array(
+		//	'queryString' => 'SELECT * FROM article_videos as av INNER JOIN (syndication_videos as sv) ON (av.syn_video_id = sv.syn_video_id) WHERE av.article_id = '.$article['article_id']
+		//));
 		return $article;
 	}
 	/* End Admin Controller Get Information Functions */
@@ -705,15 +707,7 @@ class MPArticleAdminController extends MPArticle{
 		//Check for same seo-name
 		if(isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_seo_title-s']));
 
-		//Clean the $post array and remove the ingredients and instructions to avoid conflic between fields
-		//foreach( $post as $key => $val ){
-		//	if(strpos($key, 'article_ingredients') !== false || strpos($key, 'article_instructions') !== false){
-		//		unset($post[$key]);
-		//	} 
-		//}
 		$params = $this->helpers->compileParams($post);
-
-		//$params[':article_seo_title'] = $post['article_seo_title-s'];
 
 		$seoTitleCheck = $this->performQuery(array(
 			'queryString' => 'SELECT * FROM articles WHERE article_seo_title = :seoTitle AND article_id != :articleId',
@@ -729,7 +723,6 @@ class MPArticleAdminController extends MPArticle{
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_categories WHERE article_id = '.$post['a_i']));
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_contributor_articles WHERE article_id = '.$post['a_i']));
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_videos WHERE article_id = '.$post['a_i']));
-		
 
 		$this->performUpdate(array(
 			'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId",
@@ -792,15 +785,30 @@ class MPArticleAdminController extends MPArticle{
 			));
 		}
 
+		//Show in homepage moblog article
+
+		
+		if(isset($post['featured_hp']) ){
+			$this->performUpdate(array('updateString' => 'DELETE FROM article_moblogs_featured WHERE article_id = '.$post['a_i']));
+			$featureArticleHp = intval(filter_var($post['featured_hp'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
+			$featureArticleId = intval(filter_var($post['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
+
+			$this->performUpdate(array(
+				'updateString' => "INSERT INTO article_moblogs_featured SET  article_id = :articleId, article_cat = 'moblog', article_featured_hp = :articleHPFeature ",
+				'updateParams' => array(':articleId' => $featureArticleId, ':articleHPFeature'=> $featureArticleHp )
+			));
+		}
+
 		//UPDATE / INSERT ARTICLE ADS SETTINGS
 		$this->updateArticleAdsInfo($post);
 
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
 			'post' => $post,
-			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments', 'article_poll_id', 'article_desc')
+			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 
+				'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments', 
+				'article_poll_id', 'article_desc', 'featured_hp')
 		));
-		//$article_prev_content = $this->getPreviewRecipe(array('articleId' => $post['a_i']));
 		
 		if($result === true) {
 			$user = $this->user->getUserInfo();

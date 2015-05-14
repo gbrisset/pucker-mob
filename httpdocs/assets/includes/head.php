@@ -2,69 +2,8 @@
 
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
-	<meta http-equiv="x-dns-prefetch-control" content="on">
-	<!--<link rel="dns-prefetch" href="//images.puckermob.com" />
-	<link rel="dns-prefetch" href="//www.google-analytics.com" />
-	<link rel="dns-prefetch" href="//ad.doubleclick.net" />
-	<link rel="dns-prefetch" href="//cdn.assets.craveonline.com" />
-	<link rel="dns-prefetch" href="//b.scorecardresearch.com" />
-	<link rel="dns-prefetch" href="//s7.addthis.com" />
-	<link rel="dns-prefetch" href="//widget.crowdignite.com" />
-	<link rel="dns-prefetch" href="//ib.3lift.com" />
-	<link rel="dns-prefetch" href="//contextual.media.net" />
-	<link rel="dns-prefetch" href="//loadus.exelator.com" />
-	<link rel="dns-prefetch" href="//adserve.postrelease.com" />
-	<link rel="dns-prefetch" href="//cdn.crowdignite.com" />
-	<link rel="dns-prefetch" href="//cdn1.crowdignite.com" />
-	<link rel="dns-prefetch" href="//tags.bluekai.com" />
-	<link rel="dns-prefetch" href="//www.bkrtx.com" />
-	<link rel="dns-prefetch" href="//cdn.engine.4dsply.com" />
-	<link rel="dns-prefetch" href="//engine.4dsply.com" />
-	<link rel="dns-prefetch" href="//pixel.quantserve.com" />
-	<link rel="dns-prefetch" href="//qsearch.media.net" />
-	<link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
-	<link rel="dns-prefetch" href="//ads.pubmatic.com" />
-	<link rel="dns-prefetch" href="//ib.adnxs.com" />
-	<link rel="dns-prefetch" href="//fei.pro-market.net" />
-	<link rel="dns-prefetch" href="//mycdn.media.net" />
-	<link rel="dns-prefetch" href="//disqus.com" />
-	<link rel="dns-prefetch" href="//ib.3lift.com" />
-	<link rel="dns-prefetch" href="//uac.advertising.com" />
-	<link rel="dns-prefetch" href="//static.adsafeprotected.com" />
-	<link rel="dns-prefetch" href="//fw.adsafeprotected.com" />
-	<link rel="dns-prefetch" href="//ds.serving-sys.com" />
-
-	<link rel="dns-prefetch" href="//adserver.adtechus.com" />
-	<link rel="dns-prefetch" href="//api.adsnative.com" />
-	<link rel="dns-prefetch" href="//mob.adnxs.com" />
-	<link rel="dns-prefetch" href="//cms.springboardplatform.com" />
-	<link rel="dns-prefetch" href="//c.jsrdn.com" />
-	<link rel="dns-prefetch" href="//tcr.tynt.com" />-->
-	<!--<link rel="dns-prefetch" href="//cdn-s.wahwahnetworks.com" />
-	<link rel="dns-prefetch" href="//mmrm.qadserve.com" />-->
-	<!--<link rel="dns-prefetch" href="//cdn.connatix.com" />-->
-	
-	<?php } ?>
-	
-	<!--<link rel="dns-prefetch" href="//go.disqus.com" />
-	<link rel="dns-prefetch" href="//route.carambo.la" />
-	<link rel="dns-prefetch" href="//puckermob.disqus.com" />
-	<link rel="prefetch prerender" href="http://www.puckermob.com" />
-	<link rel="dns-prefetch" href="//native.sharethrough.com" />
-	<link rel="dns-prefetch" href="//c.jsrdn.com/" />
-
-	<link rel="dns-prefetch" href="//uat-net.technoratimedia.com" />
-	<link rel="dns-prefetch" href="//static.adsnative.com" />
-	<link rel="dns-prefetch" href="//sic-akamai.33across.com" />
-	<link rel="dns-prefetch" href="//googletagservices.com" />
-	<link rel="dns-prefetch" href="//dynamic.3lift.com" />
-	<link rel="dns-prefetch" href="//cdn.amgdgt.com" />
-	<link rel="dns-prefetch" href="//cdn.adnxs.com" />
-	<link rel="dns-prefetch" href="//c.betrad.com" />
-	<link rel="dns-prefetch" href="//ad-cdn.technoratimedia.com" />
-	<link rel="dns-prefetch" href="//1.sic.33across.com" />-->
-
-	<?php 
+		<meta http-equiv="x-dns-prefetch-control" content="on" />
+	<?php }
 	
 	$promotedArticle = false; $tag = 'smarties';
 
@@ -78,7 +17,7 @@
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     
     <meta content='width=device-width, initial-scale=1' name='viewport'/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<?php 
 		$headDesc = '';

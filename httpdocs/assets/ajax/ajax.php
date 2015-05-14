@@ -6,16 +6,18 @@ $offset = is_numeric($_POST['offset']) ? $_POST['offset'] : 0;
 $postnumbers = is_numeric($_POST['number']) ? $_POST['number'] : 11;
 $page = isset( $_POST['page'] ) ? $_POST['page'] : 1;
 
+$omitThis = '';
 $featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$omitThis =  $featuredArticle['article_id'];
 }
 
-if($page == 1 ){
-	if( $cat_id == 1){
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis ] );
+if( isset($page) ){
+
+	if( $cat_id == 1 ){
+		$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis,  'withMobLogs'=> true ] );
 	}else{
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset'=>$offset, 'omit' => $omitThis , 'pageId' => $cat_id]);
+		$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset'=>$offset, 'omit' => $omitThis , 'pageId' => $cat_id,  'withMobLogs'=> false ]);
 	}
 }else{
 	/*FROM ARTICLE PAGE*/

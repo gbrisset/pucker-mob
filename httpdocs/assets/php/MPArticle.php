@@ -248,23 +248,35 @@ public function getMobileArticleList( $args = [], $attempts = 0 ){
 		'omit'=> false,
 		'articleId' => null, 
 		'limit' => '',
-		'offset' => ''
+		'offset' => '',
+		'withMobLogs' => false
 	], $args);
 
-	$s = " SELECT *, articles.creation_date, articles.article_id 
-		   FROM articles 
-		   INNER JOIN ( article_categories, categories ) 
-		   ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id ) 
-		   WHERE  articles.article_status = 1 ";
+	$s = " SELECT *, articles.creation_date, articles.article_id ";
+
+	if( $options['withMobLogs'] == true ){
+		$s .= ", article_moblogs_featured.article_featured_hp ";
+	}
+
+	$s .= " FROM articles ";
+	$s .= " INNER JOIN ( article_categories, categories ) 
+		   ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id ) ";
+	
+	if( $options['withMobLogs'] == true ){
+		$s .= " LEFT JOIN article_moblogs_featured ON ( article_moblogs_featured.article_id = articles.article_id ) ";
+	}
+
+	$s .= " WHERE  articles.article_status = 1 ";
+
+
+	if( isset( $options['omit'] )  &&  $options['omit']) {
+		$s .= " AND articles.article_id != ". $options['omit'] ;
+	}
 
 	if( isset( $options['pageId'] )  &&  $options['pageId']) {
 		$s .= " AND categories.cat_id = ". $options['pageId'] ;
 	}else{
-		$s .= " AND categories.cat_id != 9 ";
-	}
-
-	if( isset( $options['omit'] )  &&  $options['omit']) {
-		$s .= " AND articles.article_id != ". $options['omit'] ;
+		$s .= " AND categories.cat_id != 9 OR article_moblogs_featured.article_featured_hp = 1 ";
 	}
 	
 	$s .= " ORDER BY articles.date_updated DESC, articles.article_id DESC 
@@ -290,16 +302,26 @@ public function getArticlesList( $args = [] ){
 	], $args);
 
 	$s = " SELECT articles.article_id, articles.creation_date, articles.date_updated, articles.article_title, articles.article_seo_title, categories.cat_id, categories.cat_name, categories.cat_dir_name, 
-	article_contributors.contributor_id, article_contributors.contributor_seo_name, article_contributors.contributor_name, article_contributors.contributor_image, article_moblogs_featured.article_featured_hp 
-		   FROM articles 
+	article_contributors.contributor_id, article_contributors.contributor_seo_name, article_contributors.contributor_name, article_contributors.contributor_image ";
+
+	if( $options['withMobLogs'] == true ){
+		$s .= ", article_moblogs_featured.article_featured_hp ";
+	}
+	
+	$s .= " FROM articles 
 		   INNER JOIN ( article_categories, categories, article_contributor_articles, article_contributors ) 
 		   	ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id 
 		   	AND article_contributor_articles.article_id = articles.article_id AND article_contributors.contributor_id = article_contributor_articles.contributor_id ) ";
 		   
-			if( $options['withMobLogs'] == true ){
-				$s .= " LEFT JOIN article_moblogs_featured ON ( article_moblogs_featured.article_id = articles.article_id ) ";
-			}
-		  $s .= " WHERE  articles.article_status = 1 ";
+	if( $options['withMobLogs'] == true ){
+		$s .= " LEFT JOIN article_moblogs_featured ON ( article_moblogs_featured.article_id = articles.article_id ) ";
+	}
+	
+	$s .= " WHERE  articles.article_status = 1 ";
+
+	if( isset( $options['omit'] )  &&  $options['omit']) {
+		$s .= " AND articles.article_id != ". $options['omit'] ;
+	}
 
 	if( isset( $options['pageId'] )  &&  $options['pageId']) {
 		$s .= " AND categories.cat_id = ". $options['pageId'] ;
@@ -307,16 +329,12 @@ public function getArticlesList( $args = [] ){
 		$s .= " AND categories.cat_id != 9 OR article_moblogs_featured.article_featured_hp = 1 ";
 	}
 
-	if( isset( $options['omit'] )  &&  $options['omit']) {
-		$s .= " AND articles.article_id != ". $options['omit'] ;
-	}
-	
 	$s .= " ORDER BY articles.date_updated DESC, articles.article_id DESC ";
 
 	if( isset( $options['limit'] )  &&  $options['limit']) {
 		$s .= "  LIMIT ". $options['limit'] ." OFFSET ".$options['offset'];
 	}
-var_dump($s);
+
 	$q = $this->performQuery(['queryString' => $s]);
 		
 	return $q;	   
@@ -829,7 +847,7 @@ public function recordArticleRating($id = null, $vote = null){
 }
 
 private function subValSort($a, $type = 'high', $value = 'rating'){
-	$b = []; var_dump($a);
+	$b = [];
 	foreach($a as $k=>$v){
 		$b[$k] = strtolower($v[$value]);
 	}

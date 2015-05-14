@@ -162,9 +162,9 @@
 					<table class="columns small-12 no-padding">
 						<thead>
 						    <tr>
-						      <th class="columns  mobile-12 small-12 medium-7"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortName : '?sort='.$sortName;?>">Article Name</a></th>
+						      <th class="columns  mobile-12 small-12 medium-7">Article Name</th>
 						      <th class="columns  small-2"><a href="<?php //echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Added</a></th>
-						      <!--<th class="small-2"><a href="<?php echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>-->
+						      <!--<th class="small-2"><a href="<?php //echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>-->
 						      <th  class="columns small-2">U.S. VIEWS</th>
 						      <th   class="columns small-1"></th>
 						    </tr>

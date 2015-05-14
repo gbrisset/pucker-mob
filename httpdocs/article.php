@@ -47,8 +47,6 @@ if(!is_null($categoryInfo)){
 	$verifyInCat = $mpArticle->verifyArticleInCategory( $articleInfo['article_id'], $categoryInfo['cat_id']);
 	
 	if(isset($articleInfo) &&  $articleInfo && $verifyInCat ){
-	//if(isset($articleInfo['articles']) &&  $articleInfo['articles'] && $verifyInCat ){
-		//$articleInfoObj = $articleInfo['articles'][0];
 		$articleInfoObj = $articleInfo;
 
 
@@ -60,8 +58,9 @@ if(!is_null($categoryInfo)){
 			$pageName = strtoupper($articleInfoObj['article_title']).' | Sponsored by Smarties Candies';
 		}
 		$relatedArticles = $mpArticle->getArticlesList([ 'limit'=> 6,  'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['article_id']]);
-		//$relatedArticles = $mpArticle->getArticles(['count' => 18, 'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['ids']]);
-		//$articleImages = $mpArticle->getArticlesImages($articleInfoObj['article_id']);
+		
+		$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
+		$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
 	}else {
 		$mpShared->get404();
 	}
@@ -69,10 +68,8 @@ if(!is_null($categoryInfo)){
 	$mpShared->get404();
 }
 
-	$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
-	$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
-
 //	include_once('admin/fb/fbfunctions.php');
+
 ?>
 <?php if ( $detect->isMobile() ) { ?>
 <!DOCTYPE html>

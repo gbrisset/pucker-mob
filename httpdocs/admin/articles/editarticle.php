@@ -274,15 +274,16 @@
 						//} 
 						
 					?>
-					<div class="row <?php if($content_provider) echo 'hide'; ?>">
+					<div class="row <?php if(isset($content_provider) && $content_provider ) echo 'hide'; ?>">
 					    <div class="columns mobile-12 small-7">
 					    	<div class="small-styled-select margin-top ">
 							<label for="article_status" class="uppercase">Article Status</label>
 							<select name="article_status" id="article_status" class = "status-select small-6">
 							<?php
-								if(!$content_provider){
+								if(!isset($content_provider)){
 									foreach($allStatuses as $statusInfo){
-										$option = '<option data-preview="'.preg_replace('/"/', '&quot;', $preview_article).'" value="'.$statusInfo['status_id'].'"';
+										//'.preg_replace('/"/', '&quot;', $preview_article).'
+										$option = '<option data-preview="" value="'.$statusInfo['status_id'].'"';
 										if( $statusInfo['status_id'] == 2 ) continue;
 										if($statusInfo['status_id'] == $article['article_status']) $option .= ' selected="selected"';
 										
@@ -341,10 +342,11 @@
 									<option value="-1">None</option>
 									<?php
 										foreach($allContributors as $contributorsInfo){
-
+											$contributor_name = $contributorsInfo['contributor_name'];
+											
 											$option = '<option value="'.$contributorsInfo['contributor_id'].'"';
 											if( $article['contributor_id']  && $contributorsInfo['contributor_id'] == $article['contributor_id'] ) $option .= ' selected="selected"';
-											else if($article['contributor']['contributor_id'] && $contributorsInfo['contributor_id'] == $article['contributor']['contributor_id']){  $contributor_name = $contributorsInfo['contributor_name']; $option .= ' selected="selected"'; }
+											else if($article['contributor_id'] && $contributorsInfo['contributor_id'] == $article['contributor_id']){  $contributor_name = $contributorsInfo['contributor_name']; $option .= ' selected="selected"'; }
 											$option .= '>'.$contributorsInfo['contributor_name'].'</option>';
 											echo $option;
 										}
@@ -361,8 +363,6 @@
 					<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo['contributor_id']?>" />
 					<?php } ?>
 
-					
-						
 					<!-- Featured Article -->
 					<?php if($admin_user){ 
 						$featuredArticle = $mpArticle->getFeaturedArticle( 1 );

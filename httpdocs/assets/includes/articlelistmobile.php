@@ -20,10 +20,10 @@
 
 	// If is HomePage Get new article List
 	if( $cat_id == 1){
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis ]);
+		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis, 'withMobLogs'=> true ]);
 		//selse $articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
 	}else{
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id]);
+		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id, 'withMobLogs'=> false ] );
 	}
 
 	foreach ($articlesList as $articles){
@@ -36,7 +36,7 @@
 		$cat_name = $articles['cat_dir_name'];
 	
 		//IGNORE MOBLOG ARTICLES
-		if( !isset($category_page) && $cat_name === "moblog") continue;
+		if( !isset($category_page) && $cat_name === "moblog" && $articles['article_featured_hp'] != 1) continue;
 
 		$articleIndex++; ?>
 

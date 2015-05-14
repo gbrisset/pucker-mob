@@ -1,11 +1,11 @@
 <?php
 
-header("Cache-Control: max-age=86400"); //30days (60sec * 60min * 24hours * 1day)
+//header("Cache-Control: max-age=86400"); //30days (60sec * 60min * 24hours * 1day)
 
 $local = 1;
 $version = "";
-error_reporting(E_ALL);
-	ini_set('display_errors', '1');
+//error_reporting(E_ALL);
+//	ini_set('display_errors', '1');
 if($local)
 {
 	define("DB_SERVER", "localhost");
@@ -23,8 +23,6 @@ if($local)
 	/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
 	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0");	
-	//error_reporting(E_ALL);
-	//ini_set('display_errors', '1');
 
 	$localIp = 'localhost';
 	$directory = 'projects/pucker-mob/';

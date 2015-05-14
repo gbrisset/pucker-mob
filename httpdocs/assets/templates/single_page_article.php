@@ -9,6 +9,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_id = $articleInfoObj['article_id'];
 	$article_body = $articleInfoObj['article_body'];
 	$article_category = $category['cat_name'];
+	$article_category_dir = $category['cat_dir_name'];
 	if(!isset($articleInfoObj['date_updated']) || $articleInfoObj['date_updated'] == "0000-00-00 00:00:00") $date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
 	else $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 
@@ -258,7 +259,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="row padding-bottom">
 			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
 				<p class="left uppercase">
-					<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
+					<span class="span-category <?php echo $article_category_dir; ?>"><?php echo $article_category; ?></span>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
 			</div>

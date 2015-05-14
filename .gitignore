@@ -1,3 +1,4 @@
 subdomains/images/httpdocs/articlesites/puckermob/
 .DS_Store
 .sass-cache/
+subdomains/images/httpdocs/*

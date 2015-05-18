@@ -44,7 +44,7 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
-<body>
+<body id="reports">
 <?php include_once($config['include_path_admin'].'header.php');?>
 
 	<div class="sub-menu row">
@@ -179,8 +179,8 @@
 						  		</a>
 						  		<label>
 						  		<?php echo $contributor['paypal_email'];?>
-						  		<?php if($contributor['w9_live'] === '1') echo "<br><strong style='color:green;' >W9 Form Sent!</strong>"?>
-						  	</label>
+						  		<?php if(isset($contributor['w9_live']) && $contributor['w9_live'] === '1') echo "<br><strong style='color:green;' >W9 Form Sent!</strong>"?>
+						  		</label>
 						  		
 						  	</td>
 						  	<td><?php echo '$'.number_format($contributor['total_rate'], 0, '.', ','); ?></td>
@@ -199,7 +199,7 @@
 					   <tfoot>
 					  	<tr>
 					  		<td class="bold">TOTAL:</td>
-					  		<td><?php echo '$'.number_format($total_rate, 2, '.', ','); ?></td>
+					  		<td ><?php echo '$'.number_format($total_rate, 2, '.', ','); ?></td>
 					  		<td><?php echo number_format($total_shares, 0, '.', ','); ?></td>
 					  		<td><?php echo number_format($total_us_viewers, 2, '.', ','); ?></td>
 					  		<td></td>
@@ -214,10 +214,12 @@
 					  <thead>
 					    <tr>
 					      <th class="align-left" >Name</th>
-					      <th>U.S. Viewers</th>
-					      <th>U.S. Viewers / 1000</th>
-					      <th>Rate</th>
-					      <th class="bold align-right">Total To Pay</th>
+					      <!--<th>U.S. Views</th>-->
+					      <th class="bold">U.S. Views | 1K</th>
+					      <th class="bold">Rate</th>
+					      <th class="bold">Total-Month</th>
+					      <th class="bold">Total To Pay</th>
+  				       	  <th class="bold">Paid</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -230,6 +232,7 @@
 					  		$all_us_viewers = 0;
 					  		$all_us_viwers_by_thousand = 0;
 					  		$all_total = 0;
+					  		$all_total_to_pay = 0;
 
 					  		foreach( $results as $contributor){
 					  			$total_rate = $contributor['share_rate'];
@@ -239,36 +242,43 @@
 								$no_cover_in_house = false;
 
 					  			if( $contributor['user_type'] == '6' || $contributor['user_type'] == '1' || $contributor['user_type'] == '7' ){
-							  		if( $selected_month > 3 && $selected_year >= 2015 ){
+							  		if( $selected_month > 2 && $selected_year >= 2015 ){
 							  			 $total_rev = 0;
+							  			 $total_to_pay  = 0;
   										 $no_cover_in_house = true;
 							  		}else{
 							  			$total_rev = $contributor['total_earnings'];
+							  			$total_to_pay = $contributor['to_be_pay'];
 							  		}
 						  		}else{
 						  			$total_rev = $contributor['total_earnings'];
+						  			$total_to_pay = $contributor['to_be_pay'];
 						  		}
 
 					  			$all_us_viewers += $total_us_viewers;
 					  			$all_us_viwers_by_thousand += $total_us_viewers_by_thousands;
 					  			$all_total += $total_rev; 
 					  			$all_rate = $total_rate;
+					  			$all_total_to_pay += $total_to_pay;
+
 					  		?>	
 					  		<?php if(!$no_cover_in_house ){?>
-							<tr>
+							<tr style="<?php if($total_to_pay > 25 ) echo "background-color: #FFFFCC;"?>">
 							  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
 							  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
-							  			<?php echo $contributor['contributor_name']; ?>
+							  			<?php echo $contributor['contributor_name']; ?><?php if($contributor['w9_live'] === '1') echo "<strong style='color:green;  margin-left: 5px;' >(W9 <i class='fa fa-check' style='margin-left:0; margin-right: 0;'></i>)</strong>"?>
 							  		</a>
 							  		<label>
 							  		<?php echo $contributor['paypal_email'];?>
-							  		<?php if($contributor['w9_live'] === '1') echo "<br><strong style='color:green;' >W9 Form Sent!</strong>"?>
+							  		
 							  	</label>
 							  	</td>
-							  	<td><?php echo number_format($total_us_viewers, 0, '.', ','); ?></td>
+							  	<!--<td><?php //echo number_format($total_us_viewers, 0, '.', ','); ?></td>-->
 							  	<td><?php echo number_format($total_us_viewers_by_thousands, 2, '.', ','); ?></td>
 							  	<td><?php echo '$'.$total_rate; ?></td>
-							  	<td class="bold align-right"><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
+							  	<td ><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
+							  	<td class="bold"><?php echo '$'.number_format($total_to_pay, 2, '.', ','); ?></td>
+							  	<td><input type="checkbox" id="input-<?php echo $contributor['contributor_id']; ?>" month-info="<?php echo $contributor['month']; ?>" year-info="<?php echo $contributor['year']; ?>" contributor-info="<?php echo $contributor['contributor_id']; ?>" class="paid-checkbox" /></td>
 							</tr>
 					  	<?php  }  }?>
 					  	
@@ -276,10 +286,12 @@
 					  <tfoot>
 					  	<tr>
 					  		<td class="align-left bold">TOTAL:</td>
-					  		<td><?php echo number_format($all_us_viewers, 0, '.', ','); ?></td>
+					  		<!--<td><?php //echo number_format($all_us_viewers, 0, '.', ','); ?></td>-->
 					  		<td><?php echo number_format($all_us_viwers_by_thousand, 2, '.', ','); ?></td>
 					  		<td><?php echo '$'.$total_rate; ?></td>
-					  		<td class="bold align-right"><?php echo '$'.number_format($all_total, 2, '.', ','); ?></td>
+					  		<td class=""><?php echo '$'.number_format($all_total, 2, '.', ','); ?></td>
+					  		<td class="bold"><?php echo '$'.number_format($all_total_to_pay, 2, '.', ','); ?></td>
+					  		<td></td>
 					  		
 					  	</tr>
 					  </tfoot>

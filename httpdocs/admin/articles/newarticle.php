@@ -31,11 +31,6 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 		$admin_user = true;	
 	}
 
-	$externalWriter = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 7 ){
-		$externalWriter = true;
-	}
-
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributorInfo = $contributorInfo[0];
 
@@ -107,7 +102,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<?php }else{?>
 					<div class="row">
 					    <div class="columns">
-					      <input  type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+					      <input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
 					 	</div>
 					</div>	
 					<?php }?>
@@ -290,7 +285,8 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 	
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 	<script>
-		$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
+	$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
+	
 	</script>
 
 </body>

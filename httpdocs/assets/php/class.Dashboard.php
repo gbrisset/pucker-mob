@@ -548,12 +548,20 @@ class Dashboard{
 		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$year = filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 	
+		$prev_month = $month;
+		$prev_year = $year;
+		if($prev_month == 1){
+			$prev_month = 12;
+			$prev_year = $year - 1;
+		}else $prev_month = $month - 1;
+
 		$contributors = $this->getContributorsList();
 
 		if($contributors){
 			foreach($contributors as $contributor){
 				$id = $contributor['contributor_id'];
 				$update_data = $this->getContributorEarnings($id, $month, $year);
+				$prev_month_data = $this->getContributorEarnings($id, $prev_month, $prev_year);
 
 				$earnings_info = $this->get_articlesbypageviews_new( $id, $month, $year);
 			
@@ -565,17 +573,23 @@ class Dashboard{
 				
 				$total_us_pageviews = 0;
 				$total_earnings = 0;
-
-
+	            $total_to_be_pay = 0;
+				
 				if($earnings_info && $earnings_info[0]){
 					foreach ($earnings_info as $earnings) {
-						
 						$total_us_pageviews += $earnings['usa_pageviews']; 
 					}
 				}
 
 				$total_earnings = ($total_us_pageviews/1000) * $share_rate;
-				
+				$total_to_be_pay = $total_earnings;
+
+				if( isset($prev_month_data) && $prev_month_data ){
+					if($prev_month_data['paid'] == 0){
+						$total_to_be_pay = $total_earnings + $prev_month_data[0]['to_be_pay'];
+					}
+				} 
+
 				if($contributor['user_type'] != 4){
 					$total_earnings = $total_earnings - $total_article_rate;
 				}
@@ -587,7 +601,8 @@ class Dashboard{
 							    share_rate = $share_rate,
 							    total_share_rev = $total_share_rev,
 							    total_earnings = $total_earnings,
-							    total_us_pageviews = $total_us_pageviews
+							    total_us_pageviews = $total_us_pageviews,
+							    to_be_pay = $total_to_be_pay 
 						WHERE contributor_id = $id AND month = $month AND year = $year ";
 				}else{
 					$s = "INSERT INTO contributor_earnings

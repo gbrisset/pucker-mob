@@ -1667,4 +1667,26 @@ if(document.body.id == 'editarticle'){
 		carambola_position = -1;
 	}
 }	
+
+$('.paid-checkbox').click( function(e){
+	e.preventDefault();
+	var current_cb = $(this), year = $(current_cb).attr('year-info'), month = $(current_cb).attr('month-info'), contributor_id = $(current_cb).attr('contributor-info'),
+	task = 'pay_contributors', paid = $(current_cb).is(':checked');
+
+	//var url = 'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php';
+	var url = 'http://localhost:8888/projects/pucker-mob//httpdocs/admin/assets/php/ajaxfunctions.php';
+	console.log(year);
+	console.log(month);
+	console.log(contributor_id);
+	$.ajax({
+		type: "POST",
+		url:  url,
+		data: { contributor_id: contributor_id, task: 'pay_contributors', year: year, month:month, 'paid':  paid},
+		success: function (data) {
+			console.log(data);
+		}
+	});
+
+});
+
 });

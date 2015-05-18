@@ -117,7 +117,7 @@ $social-hover-darken-percent: -25%;
 	margin:0 !important;
 }
 
-.bold{ font-weight: bold;}
+.bold{ font-weight: bold !important; font-family:OsloBold; }
 
 //Align
 /**********************************************************************************************************************************/
@@ -860,7 +860,7 @@ z-index: 999; width: 33.57rem; display:none;}
 .dd-field-month{width: 90%; margin: 0; display: inline-flex; font-size: 0.8rem; color: #fff !important;}
 #month-form { display: inline; margin-left: -1.4rem; padding: 0rem; margin: 0 !important;}
 #dashboard table td{min-width: 6rem !important;}
-#dashboard table th{ min-width:6rem !important; font-size: 1.2rem;}
+#dashboard table th{ min-width:6rem !important; font-size: 1.05rem;}
 
 .show-modal-box2 .modalDialog {
 	opacity:1;

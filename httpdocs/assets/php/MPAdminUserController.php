@@ -984,6 +984,30 @@ End password reset methods
 
 	}
 
+	public function setContributorEarningsPaid($data){
+
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$paid = $data['paid'];
+		$month = filter_var($data['month'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = filter_var($data['year'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		//Check if record exists
+
+		$recordExist = $this->performUpdate(array(
+			'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
+			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
+		));
+
+		if($recordExist){
+			$payment_record =  $this->performUpdate(array(
+				'updateString' => "UPDATE contributor_earnings SET paid = ".$paid." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
+				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
+			));
+		}
+			
+		return $payment_record ;
+
+	}
+
 	public function registerInMailChimpList($post){
 		if($post){
 			$email = $post['user_email-e'];

@@ -49,4 +49,8 @@
 		
 		echo json_encode($mpArticleAdmin->getArticleAds($_POST));
 	}
+
+	if($_POST['task'] == 'pay_contributors'){
+		echo json_encode($adminController->user->setContributorEarningsPaid($_POST));
+	}
 ?>

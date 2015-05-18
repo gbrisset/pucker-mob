@@ -26,10 +26,11 @@
 	    <?php }?>
 		</div>
 	</div>
-	<div id="mobile-instream-criteo-ad-loader" class="hide">
+
+	<!--<div id="mobile-instream-criteo-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
-		<?php if(isset($isArticle) && $isArticle ){?>
-			<script type='text/javascript'>
+		<?php //if(isset($isArticle) && $isArticle ){?>
+			<script type='text/javascript'>-->
 			<!--//<![CDATA[
 			   document.MAX_ct0 ='';
 			   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
@@ -46,17 +47,18 @@
 			   }
 			   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
 			   document.write ("'></scr"+"ipt>");
-			//]]>--></script>
-		<?php } ?>
+			//]]>--><!--</script>
+		<?php //} ?>
 		</div>
-	</div>
+	</div>-->
+
 	<div id="mobile-instream-connatix-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
 		<?php if(isset($isArticle) && $isArticle ){?>
 		<!-- /73970039/connatix_test -->
-		<div id='div-gpt-ad-1431705140845-0' style='height:250px; width:300px;'>
+		<div id='div-gpt-ad-1431974009855-0' style='height:250px; width:300px;'>
 		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1431705140845-0'); });
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1431974009855-0'); });
 		</script>
 		</div>
 		<?php } ?>

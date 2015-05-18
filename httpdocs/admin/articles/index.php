@@ -76,6 +76,11 @@
 		$admin_user = true;
 	}
 
+	$inhouse_writer = false;
+	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 6 ){
+		$inhouse_writer = true;
+	}
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -124,7 +129,7 @@
 								
 							}
 					    ?>
-				<?php if($admin_user){?>
+					<?php if($admin_user || $inhouse_writer){?>
 					<section class="from-diff-users-filter clear">
 					    <div class="columns left small-9">
 					     <label>Show Articles From:

@@ -37,7 +37,7 @@
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributor_email = $adminController->user->data['user_email'];
 	$contributorInfo = $contributorInfo[0];
-	
+	$article_id = $article['article_id'];
 	
 	//Verify if Article Image file exists.
 	$artImageDir =  $config['image_upload_dir'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';
@@ -81,7 +81,7 @@
 			//$article = $adminController->getSingleArticle(array('seoTitle' => $uri[2]));
 			$article = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 			$article = $article['articles'];
-
+//var_dump($article );
 			$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
 
 			//Article ADs
@@ -155,7 +155,7 @@
 
 				<div class="dropzone-previews">
 					<?php if(file_exists($pathToTallImage)){?>
-					<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';	?>
+					<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg';	?>
 					<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
 						<div class="dz-details">	
 							<img class="data-dz-thumbnail" style="width:100%;" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
@@ -347,7 +347,7 @@
 											$contributor_name = $contributorsInfo['contributor_name'];
 											
 											$option = '<option value="'.$contributorsInfo['contributor_id'].'"';
-											if( $article['contributor_id']  && $contributorsInfo['contributor_id'] == $article['contributor_id'] ) $option .= ' selected="selected"';
+											if( isset($article['contributor_id'])  && $contributorsInfo['contributor_id'] == $article['contributor_id'] ) $option .= ' selected="selected"';
 											else if($article['contributor_id'] && $contributorsInfo['contributor_id'] == $article['contributor_id']){  $contributor_name = $contributorsInfo['contributor_name']; $option .= ' selected="selected"'; }
 											$option .= '>'.$contributorsInfo['contributor_name'].'</option>';
 											echo $option;

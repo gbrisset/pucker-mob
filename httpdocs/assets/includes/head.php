@@ -88,7 +88,7 @@
 
   <?php }else{?>
 
-<!-- Place in head part widget:puck002 
+<!-- Place in head part widget:puck002 -->
 <script type="text/javascript">
  
 	var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
@@ -114,7 +114,7 @@
 			})(window.document);
 		}
 	}
-</script>-->
+</script>
 
 <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
@@ -198,6 +198,26 @@
 <?php }?>
 <!-- Nativo 
  <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
-  	
+  
+  <!-- CONNATIX -->
+  <script type='text/javascript' src='//cdn.connatix.com/min/connatix.handler.dfp.min.js'></script>
+  <script type='text/javascript'>
+  (function() {
+    var useSSL = 'https:' == document.location.protocol;
+    var src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+  })();
+ </script>
+
+<script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/73970039/connatix_test', [300, 250], 'div-gpt-ad-1431705140845-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().enableSyncRendering();
+    googletag.enableServices();
+  });
+</script>
+
 </head>
  <?php flush(); ?>

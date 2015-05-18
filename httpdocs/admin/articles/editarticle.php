@@ -78,7 +78,9 @@
 
 			}
 			
-			$article = $adminController->getSingleArticle(array('seoTitle' => $uri[2]));
+			//$article = $adminController->getSingleArticle(array('seoTitle' => $uri[2]));
+			$article = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
+			$article = $article['articles'];
 
 			$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
 

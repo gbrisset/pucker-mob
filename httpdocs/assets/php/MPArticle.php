@@ -205,6 +205,7 @@ public function getRelatedToArticleInfo( $article_id ){
 	return $q;
 }
 
+
 public function getMoBlogsArticles( $current_article_id = 0){
 
 	if( $current_article_id != 0 ) 

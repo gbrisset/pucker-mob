@@ -108,9 +108,15 @@ class MPArticleAdminController extends MPArticle{
 			'articleId' => -1
 		), $opts);
 
-		$sql = "SELECT a.*, a.article_id, ai.*, astatus.*, article_moblogs_featured.article_featured_hp FROM articles as a LEFT JOIN (article_images as ai, article_statuses as astatus, article_moblogs_featured) 
-			ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id AND article_moblogs_featured.article_id = a.article_id ) 
+
+		$sql = "SELECT *, a.article_id FROM articles as a 
+			LEFT JOIN (article_images as ai, article_statuses as astatus, article_moblogs_featured as af) 
+			ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id AND af.article_id = a.article_id ) 
 			WHERE a.article_seo_title = :seoTitle OR a.article_id = :articleId";
+		
+		//$sql = "SELECT a.*, a.article_id, ai.*, astatus.*, article_moblogs_featured.article_featured_hp FROM articles as a LEFT JOIN (article_images as ai, article_statuses as astatus, article_moblogs_featured) 
+		//	ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id AND article_moblogs_featured.article_id = a.article_id ) 
+		//	WHERE a.article_seo_title = :seoTitle OR a.article_id = :articleId";
 		$params = array(
 			'seoTitle' => filter_var($options['seoTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR),
 			'articleId' => filter_var($options['articleId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)

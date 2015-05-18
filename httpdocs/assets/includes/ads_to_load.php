@@ -50,6 +50,18 @@
 		<?php } ?>
 		</div>
 	</div>
+	<div id="mobile-instream-connatix-ad-loader" class="hide">
+		<div id="get-content" style="text-align:center;">
+		<?php if(isset($isArticle) && $isArticle ){?>
+		<!-- /73970039/connatix_test -->
+		<div id='div-gpt-ad-1431705140845-0' style='height:250px; width:300px;'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1431705140845-0'); });
+		</script>
+		</div>
+		<?php } ?>
+		</div>
+	</div>
 <?php }else { ?>
 	<div id="header-ad-loader" class="hide">
       	<div id="get-content">

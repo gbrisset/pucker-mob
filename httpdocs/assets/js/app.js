@@ -541,22 +541,24 @@ $('#menu-options li').on('click', function(e){
 			//inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, tag);	
 
 			//NATIVO
-			//if( country && country == 'US'  || country == 'XX'){
-				//inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativo, tag);
-			//}else{
-				//inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativoothercountry, tag);
-			//}
+			/*if( country && country == 'US'  || country == 'XX'){
+				inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativo, tag);
+			}else{
+				inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlenativoothercountry, tag);
+			}*/
 
 
 			//GOOGLE 2nd ad
 			inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlegoogle2, tag);
 
 			//SHARETHROUG
-			if( country && country == 'US' || country == 'XX'){
+			/*if( country && country == 'US' || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, tag);	
 			}else{	
 				inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
-			}
+			}*/
+
+            inBodyAd.loadInArticleAd( 'article-content', 5, 0, "<div id='mobile-instream-connatix-ad'></div>", tag);
 
 			//GOOGLE 3rd ad
 			//inBodyAd.loadInArticleAd( 'article-content', 7, 0, mobilead[adPage].inarticlegoogle3, tag);
@@ -564,7 +566,6 @@ $('#menu-options li').on('click', function(e){
 			//CRITEO
 			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<iframe src='http://cas.criteo.com/delivery/afr.php?zoneid=235635' framespacing='0' frameborder='no' scrolling='no' width='300' height='250'><a href='http://cas.criteo.com/delivery/ck.php?cb=INSERT_RANDOM_NUMBER' target='_blank'><img src='http://cas.criteo.com/delivery/avw.php?zoneid=235635' border='0' alt='' \/><\/a><\/iframe>", tag);
 			inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<div id='mobile-instream-criteo-ad'></div>", tag);
-			
 		}
 
 		//MULTIPAGE ARTICLE
@@ -1033,6 +1034,7 @@ if($('body').hasClass('mobile') && adPage === 'article'){
 
 
 if($('body').hasClass('mobile')){
+	
 	var mobile_header_ad_loader = $('#mobile-header-ad-loader').find('#get-content');
 	setTimeout(function(){
 		mobile_header_ad_loader.appendTo($('#mobile-top-header-ad'));
@@ -1045,6 +1047,14 @@ if($('body').hasClass('mobile')){
 		mobile_instream_criteo_ad_loader.appendTo($('#mobile-instream-criteo-ad'));
 		$('#mobile-instream-criteo-ad-loader').remove();
 	}, 100 );
+
+	//CONNATIX IN STREAM ARTICLES
+	var mobile_instream_connatix_ad_loader = $('#mobile-instream-connatix-ad-loader').find('#get-content');
+	setTimeout(function(){
+		mobile_instream_connatix_ad_loader.appendTo($('#mobile-instream-connatix-ad'));
+		$('#mobile-instream-connatix-ad-loader').remove();
+	}, 100 );
+
 }else{
 	var header_ad_loaded = $('#header-ad-loader').find('#get-content');
 	setTimeout(function(){

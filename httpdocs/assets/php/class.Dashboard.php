@@ -562,7 +562,7 @@ class Dashboard{
 				$id = $contributor['contributor_id'];
 				$update_data = $this->getContributorEarnings($id, $month, $year);
 				$prev_month_data = $this->getContributorEarnings($id, $prev_month, $prev_year);
-
+			
 				$earnings_info = $this->get_articlesbypageviews_new( $id, $month, $year);
 			
 				$total_article_rate = 0;
@@ -584,9 +584,11 @@ class Dashboard{
 				$total_earnings = ($total_us_pageviews/1000) * $share_rate;
 				$total_to_be_pay = $total_earnings;
 
+
+
 				if( isset($prev_month_data) && $prev_month_data ){
-					if($prev_month_data['paid'] == 0){
-						$total_to_be_pay = $total_earnings + $prev_month_data[0]['to_be_pay'];
+					if($prev_month_data[0]['paid'] == 0){
+						$total_to_be_pay = $total_to_be_pay + $prev_month_data[0]['to_be_pay'];
 					}
 				} 
 

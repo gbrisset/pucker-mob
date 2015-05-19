@@ -1675,15 +1675,19 @@ $('.paid-checkbox').click( function(e){
 
 	//var url = 'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php';
 	var url = 'http://localhost:8888/projects/pucker-mob//httpdocs/admin/assets/php/ajaxfunctions.php';
-	console.log(year);
-	console.log(month);
-	console.log(contributor_id);
+
 	$.ajax({
 		type: "POST",
 		url:  url,
 		data: { contributor_id: contributor_id, task: 'pay_contributors', year: year, month:month, 'paid':  paid},
 		success: function (data) {
-			console.log(data);
+		console.log(data);
+			if(data == 'true'){
+				if( paid == true )
+					$(current_cb).prop('checked', true);
+				else 
+					$(current_cb).prop('checked', false);
+			}
 		}
 	});
 

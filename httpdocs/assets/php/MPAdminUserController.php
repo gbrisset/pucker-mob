@@ -992,7 +992,19 @@ End password reset methods
 		$year = filter_var($data['year'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		//Check if record exists
 
-		$recordExist = $this->performUpdate(array(
+		$next_month = $month;
+		$next_year = $year;
+		if($next_month == 12){
+			$next_month = 1;
+			$next_year = $year + 1;
+		}else $next_month = $month + 1;
+		
+		$nextMonthrecord = $this->performQuery(array(
+			'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
+			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $next_month, ':year' => $next_year )
+		));
+
+		$recordExist = $this->performQuery(array(
 			'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
 			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
 		));
@@ -1001,6 +1013,19 @@ End password reset methods
 			$payment_record =  $this->performUpdate(array(
 				'updateString' => "UPDATE contributor_earnings SET paid = ".$paid." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
 				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
+			));
+		}
+		if( $nextMonthrecord && $payment_record ){
+			if($paid == "true" ){
+				$to_be_pay_next_month = $nextMonthrecord['total_earnings']; 
+				//var_dump("se pago");
+			}else{
+				//var_dump("no se pago");
+				$to_be_pay_next_month = abs($nextMonthrecord['total_earnings'] + $recordExist['total_earnings']);
+			}
+			$payment_record_next_month =  $this->performUpdate(array(
+				'updateString' => "UPDATE contributor_earnings SET to_be_pay = ".$to_be_pay_next_month." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
+				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $next_month, ':year' => $next_year )
 			));
 		}
 			

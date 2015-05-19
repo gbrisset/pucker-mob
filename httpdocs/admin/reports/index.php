@@ -145,58 +145,58 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					  	<?php 
+						  	<?php 
 
-					  		$total = 0;
-					  		$total_rate = 0;
-					  		$total_shares = 0;
-					  		$total_rev = 0;
+						  		$total = 0;
+						  		$total_rate = 0;
+						  		$total_shares = 0;
+						  		$total_rev = 0;
 
-					  		foreach( $results as $contributor){ 
-					  	
-					  		//if( $contributor['user_type'] != '6' || $contributor['user_type'] != '1' ){
-					  		if( $contributor['total_to_pay'] == 0) continue;
-
-					  	
-					  		$contributor_type = isset($contributor['user_type']) ? $contributor['user_type'] : '4';
-					  		if($contributor_type != 4 ){
-					  		 $contributor['total_to_pay'] = $contributor['total_to_pay'] - $contributor['total_rate'];
-					  		 $contributor['total_rate'] = 0;
-					  		}
-
-					  		$total = $total + $contributor['total_to_pay'];
-					  		$us_viewers = $contributor['US_Traffic'];
-					  		$total_us_viewers = $total_us_viewers  + $us_viewers;
-					  		$total_rate = $total_rate + $contributor['total_rate'];
-					  		$total_shares = $total_shares + $contributor['total_shares'];
-					  		$total_rev = $total_rev + $contributor['share_revenue'];
-					  	
-					  	?>
-					  	<tr>
-						  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
-						  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
-						  			<?php echo $contributor['contributor_name']; ?>
-						  		</a>
-						  		<label>
-						  		<?php echo $contributor['paypal_email'];?>
-						  		<?php if(isset($contributor['w9_live']) && $contributor['w9_live'] === '1') echo "<br><strong style='color:green;' >W9 Form Sent!</strong>"?>
-						  		</label>
-						  		
-						  	</td>
-						  	<td><?php echo '$'.number_format($contributor['total_rate'], 0, '.', ','); ?></td>
-						  	<td><?php echo number_format($contributor['total_shares'], 0, '.', ','); ?></td>
-						  	<td><?php echo number_format($us_viewers, 2, '.', ','); ?></td>
-						  	<td><?php echo '$'.$contributor['share_rate']; ?></td>
-						  	<td><?php echo '$'.number_format($contributor['share_revenue'], 2, '.', ','); ?></td>
+						  		foreach( $results as $contributor){ 
 						  	
-						  	<td class="bold align-right"><?php echo '$'.number_format($contributor['total_to_pay'], 2, '.', ','); ?></td>
-						</tr>
-						<?php 
-						//}
-					}?>
+						  		//if( $contributor['user_type'] != '6' || $contributor['user_type'] != '1' ){
+						  		if( $contributor['total_to_pay'] == 0) continue;
+
+						  	
+						  		$contributor_type = isset($contributor['user_type']) ? $contributor['user_type'] : '4';
+						  		if($contributor_type != 4 ){
+						  		 $contributor['total_to_pay'] = $contributor['total_to_pay'] - $contributor['total_rate'];
+						  		 $contributor['total_rate'] = 0;
+						  		}
+
+						  		$total = $total + $contributor['total_to_pay'];
+						  		$us_viewers = $contributor['US_Traffic'];
+						  		$total_us_viewers = $total_us_viewers  + $us_viewers;
+						  		$total_rate = $total_rate + $contributor['total_rate'];
+						  		$total_shares = $total_shares + $contributor['total_shares'];
+						  		$total_rev = $total_rev + $contributor['share_revenue'];
+						  	
+						  	?>
+						  	<tr>
+							  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
+							  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
+							  			<?php echo $contributor['contributor_name']; ?>
+							  		</a>
+							  		<label>
+							  		<?php echo $contributor['paypal_email'];?>
+							  		<?php if(isset($contributor['w9_live']) && $contributor['w9_live'] === '1') echo "<br><strong style='color:green;' >W9 Form Sent!</strong>"?>
+							  		</label>
+							  		
+							  	</td>
+							  	<td><?php echo '$'.number_format($contributor['total_rate'], 0, '.', ','); ?></td>
+							  	<td><?php echo number_format($contributor['total_shares'], 0, '.', ','); ?></td>
+							  	<td><?php echo number_format($us_viewers, 2, '.', ','); ?></td>
+							  	<td><?php echo '$'.$contributor['share_rate']; ?></td>
+							  	<td><?php echo '$'.number_format($contributor['share_revenue'], 2, '.', ','); ?></td>
+							  	
+							  	<td class="bold align-right"><?php echo '$'.number_format($contributor['total_to_pay'], 2, '.', ','); ?></td>
+							</tr>
+							<?php 
+							//}
+							}?>
 						
 					  </tbody>
-					   <tfoot>
+					  <tfoot>
 					  	<tr>
 					  		<td class="bold">TOTAL:</td>
 					  		<td ><?php echo '$'.number_format($total_rate, 2, '.', ','); ?></td>
@@ -254,6 +254,11 @@
 						  			$total_rev = $contributor['total_earnings'];
 						  			$total_to_pay = $contributor['to_be_pay'];
 						  		}
+						  		$paid = $contributor['paid'];
+						  		$paid_cb = '';
+						  		if($paid == 1){
+						  			$paid_cb = 'checked=true';
+						  		}
 
 					  			$all_us_viewers += $total_us_viewers;
 					  			$all_us_viwers_by_thousand += $total_us_viewers_by_thousands;
@@ -278,7 +283,7 @@
 							  	<td><?php echo '$'.$total_rate; ?></td>
 							  	<td ><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
 							  	<td class="bold"><?php echo '$'.number_format($total_to_pay, 2, '.', ','); ?></td>
-							  	<td><input type="checkbox" id="input-<?php echo $contributor['contributor_id']; ?>" month-info="<?php echo $contributor['month']; ?>" year-info="<?php echo $contributor['year']; ?>" contributor-info="<?php echo $contributor['contributor_id']; ?>" class="paid-checkbox" /></td>
+							  	<td><input type="checkbox" id="input-<?php echo $contributor['contributor_id']; ?>" month-info="<?php echo $contributor['month']; ?>" year-info="<?php echo $contributor['year']; ?>" contributor-info="<?php echo $contributor['contributor_id']; ?>" <?php echo $paid_cb; ?> class="paid-checkbox" /></td>
 							</tr>
 					  	<?php  }  }?>
 					  	

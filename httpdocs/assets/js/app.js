@@ -1042,14 +1042,21 @@ if($('body').hasClass('mobile')){
 	}, 100 );
 
 	if(adPage == 'article'){
-		//CRITEO IN STREAM ARTICLES
+	//CRITEO IN STREAM ARTICLES
 	/*	var mobile_instream_criteo_ad_loader = $('#mobile-instream-criteo-ad-loader').find('#get-content');
 		setTimeout(function(){
 			mobile_instream_criteo_ad_loader.appendTo($('#mobile-instream-criteo-ad'));
 			$('#mobile-instream-criteo-ad-loader').remove();
 		}, 100 );
 	*/
-		//CONNATIX IN STREAM ARTICLES
+
+	//CPI Campaign 
+	/*	var mobile_instream_cpi_ad_loader = $('#mobile-instream-cpi-ad-loader').find('#get-content');
+		setTimeout(function(){
+			mobile_instream_cpi_ad_loader.appendTo($('#mobile-instream-cpi-ad'));
+			$('#mobile-instream-cpi-ad-loader').remove();
+		}, 100 );*/
+	//CONNATIX IN STREAM ARTICLES
 		var mobile_instream_connatix_ad_loader = $('#mobile-instream-connatix-ad-loader').find('#get-content');
 		setTimeout(function(){
 			mobile_instream_connatix_ad_loader.appendTo($('#mobile-instream-connatix-ad'));

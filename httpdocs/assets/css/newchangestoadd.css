@@ -28,7 +28,7 @@
 	font-size: 2rem; position: relative; margin-left: 1rem; top: 5px;
 }
 
-@media only screen and (min-width: 740px) {#header-ad{min-height:90px;max-width: 46rem;}}
+@media only screen and (min-width: 740px) { #article #header-ad{min-height:90px;max-width: 46rem;}}
 @media only screen and (max-width: 33.75rem){
 .related-articles-box a {
   color: #000 !important;

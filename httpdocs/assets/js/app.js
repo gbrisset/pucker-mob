@@ -492,7 +492,8 @@ $('#menu-options li').on('click', function(e){
 			nativo_position = -1, 
 			sharethrough_position = -1,
 			carambola_position = -1,
-			tag = 'p';
+			tag = 'p',
+			first_p = 2;
 
 			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
 			if(li_length > p_length){
@@ -506,11 +507,13 @@ $('#menu-options li').on('click', function(e){
 				sharethrough_position = 2;
 				carambola_position = -1;
 				tag = 'li';
+				first_p = 2;
 			}else{
 				google_position = -1;
 				nativo_position =5; 
 				sharethrough_position = 2;
 				carambola_position = -1;
+				first_p = 3;
 			}
 
 			$.ajax({
@@ -549,7 +552,11 @@ $('#menu-options li').on('click', function(e){
 
 
 			//GOOGLE 2nd ad
-			inBodyAd.loadInArticleAd( 'article-content', 2, 0, mobilead[adPage].inarticlegoogle2, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
+
+			//NATIVE ADS Mobile CPC 1 
+			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, "<div id='mobile-instream-native-ad'></div>", tag);
+
 
 			//SHARETHROUG
 			//if( country && country == 'US' || country == 'XX'){
@@ -568,10 +575,10 @@ $('#menu-options li').on('click', function(e){
 			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<div id='mobile-instream-criteo-ad'></div>", tag);
 
 			//CPI CAMPAING
-			inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<div id='mobile-instream-cpi-ad'></div>", tag);
+			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<div id='mobile-instream-cpi-ad'></div>", tag);
 
 			//ADBLADE IN STREAM
-			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+			inBodyAd.loadInArticleAd( 'article-content', 8, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
 		}
 
 		//MULTIPAGE ARTICLE
@@ -1064,13 +1071,20 @@ if($('body').hasClass('mobile')){
 	}, 200 );
 	
 	//CPI Campaign 
-	
+	/*
 	var mobile_instream_cpi_ad_loader = $('#mobile-instream-cpi-ad-loader').find('#get-content');
 	setTimeout(function(){
 		mobile_instream_cpi_ad_loader.appendTo($('#mobile-instream-cpi-ad'));
 		$('#mobile-instream-cpi-ad-loader').remove();
-	}, 100 );
+	}, 100 );/*/
 
+	//CPC NATIVE ADS
+	var mobile_instream_native_ad_loader = $('#mobile-instream-native-ad-loader').find('#get-content');
+	setTimeout(function(){
+		mobile_instream_native_ad_loader.appendTo($('#mobile-instream-native-ad'));
+		$('#mobile-instream-native-ad-loader').remove();
+	}, 100 );
+	
 	}
 }else{
 	var header_ad_loaded = $('#header-ad-loader').find('#get-content');

@@ -197,7 +197,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 	</section>
 	
-
+<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-25d23e16843e41b4dc9f157751b998a785a894bf.js" async=""></script>
 </article>
 
 <?php }else{?>

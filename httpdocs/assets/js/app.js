@@ -561,11 +561,17 @@ $('#menu-options li').on('click', function(e){
 			inBodyAd.loadInArticleAd( 'article-content', 5, 0, "<div id='mobile-instream-connatix-ad'></div>", tag);
 
 			//GOOGLE 3rd ad
-			inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticlegoogle3, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, mobilead[adPage].inarticlegoogle3, tag);
 			
 			//CRITEO
 			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<iframe src='http://cas.criteo.com/delivery/afr.php?zoneid=235635' framespacing='0' frameborder='no' scrolling='no' width='300' height='250'><a href='http://cas.criteo.com/delivery/ck.php?cb=INSERT_RANDOM_NUMBER' target='_blank'><img src='http://cas.criteo.com/delivery/avw.php?zoneid=235635' border='0' alt='' \/><\/a><\/iframe>", tag);
 			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<div id='mobile-instream-criteo-ad'></div>", tag);
+
+			//CPI CAMPAING
+			inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<div id='mobile-instream-cpi-ad'></div>", tag);
+
+			//ADBLADE IN STREAM
+			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
 		}
 
 		//MULTIPAGE ARTICLE
@@ -1050,18 +1056,21 @@ if($('body').hasClass('mobile')){
 		}, 100 );
 	*/
 
-	//CPI Campaign 
-	/*	var mobile_instream_cpi_ad_loader = $('#mobile-instream-cpi-ad-loader').find('#get-content');
-		setTimeout(function(){
-			mobile_instream_cpi_ad_loader.appendTo($('#mobile-instream-cpi-ad'));
-			$('#mobile-instream-cpi-ad-loader').remove();
-		}, 100 );*/
 	//CONNATIX IN STREAM ARTICLES
-		var mobile_instream_connatix_ad_loader = $('#mobile-instream-connatix-ad-loader').find('#get-content');
-		setTimeout(function(){
-			mobile_instream_connatix_ad_loader.appendTo($('#mobile-instream-connatix-ad'));
-			$('#mobile-instream-connatix-ad-loader').remove();
-		}, 100 );
+	var mobile_instream_connatix_ad_loader = $('#mobile-instream-connatix-ad-loader').find('#get-content');
+	setTimeout(function(){
+		mobile_instream_connatix_ad_loader.appendTo($('#mobile-instream-connatix-ad'));
+		$('#mobile-instream-connatix-ad-loader').remove();
+	}, 200 );
+	
+	//CPI Campaign 
+	
+	var mobile_instream_cpi_ad_loader = $('#mobile-instream-cpi-ad-loader').find('#get-content');
+	setTimeout(function(){
+		mobile_instream_cpi_ad_loader.appendTo($('#mobile-instream-cpi-ad'));
+		$('#mobile-instream-cpi-ad-loader').remove();
+	}, 100 );
+
 	}
 }else{
 	var header_ad_loaded = $('#header-ad-loader').find('#get-content');

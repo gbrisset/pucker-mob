@@ -51,17 +51,16 @@
 		<?php //} ?>
 		</div>
 	</div>-->
-	<!--
+	
 	<div id="mobile-instream-cpi-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
-			<?php //if(isset($isArticle) && $isArticle ){?>
+		<?php if(isset($isArticle) && $isArticle ){?>
 			<div id="119xpg9hxIAEu"></div>
 			<script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=9&aff_id=1044&format=js&divid=119xpg9hxIAEu" type="text/javascript"></script>
 			<noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=9&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
-			<!--End Ad Tag 
-			<?php// } ?>
+		<?php } ?>
 		</div>
-	<div>-->
+	<div>
 
 	<div id="mobile-instream-connatix-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">

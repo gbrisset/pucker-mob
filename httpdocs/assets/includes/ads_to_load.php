@@ -60,8 +60,7 @@
 			<noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=9&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
 		<?php //} ?>
 		</div>
-	<div>-->
-
+	<div>
 	<div id="mobile-instream-native-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
 		<?php if(isset($isArticle) && $isArticle ){?>
@@ -69,19 +68,19 @@
 		<?php } ?>
 		</div>
 	<div>
-
+	
 	<div id="mobile-instream-connatix-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
-		<?php if(isset($isArticle) && $isArticle ){?>
-		<!-- /73970039/connatix_test -->
+		<?php //if(isset($isArticle) && $isArticle ){?>
+		
 		<div id='div-gpt-ad-1431974009855-0' style='height:250px; width:300px;'>
 		<script type='text/javascript'>
 		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1431974009855-0'); });
 		</script>
 		</div>
-		<?php } ?>
+		<?php //} ?>
 		</div>
-	</div>
+	</div>-->
 <?php }else { ?>
 	<div id="header-ad-loader" class="hide">
       	<div id="get-content">

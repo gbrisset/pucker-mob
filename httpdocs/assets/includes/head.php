@@ -92,33 +92,33 @@
 
   <?php }else{?>
 
-	<!-- Place in head part widget:puck002 -->
-	<script type="text/javascript">
-	 
-		var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
-	 
-		function sbElementCheck() {
-	 
-			var targetedElement = document.getElementById('ingageunit');
-			if(targetedElement) {
-				clearInterval(sbElementInterval);
-				(function(d) {
-					var js, s = d.getElementsByTagName('script')[0];
-					js = d.createElement('script');
-					js.async = true;
-					js.onload = function(e) {
-						SbInGageWidget.init({
-							partnerId : 5087,
-							widgetId : 'puck002',
-							cmsPath : 'http://cms.springboardplatform.com'
-						});
-					}
-					js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
-					s.parentNode.insertBefore(js, s);
-				})(window.document);
-			}
+<!-- Place in head part widget:puck002 -->
+<script type="text/javascript">
+ 
+	var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
+ 
+	function sbElementCheck() {
+ 
+		var targetedElement = document.getElementById('ingageunit');
+		if(targetedElement) {
+			clearInterval(sbElementInterval);
+			(function(d) {
+				var js, s = d.getElementsByTagName('script')[0];
+				js = d.createElement('script');
+				js.async = true;
+				js.onload = function(e) {
+					SbInGageWidget.init({
+						partnerId : 5087,
+						widgetId : 'puck002',
+						cmsPath : 'http://cms.springboardplatform.com'
+					});
+				}
+				js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
+				s.parentNode.insertBefore(js, s);
+			})(window.document);
 		}
-	</script>
+	}
+</script>
 
 <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
@@ -140,25 +140,25 @@
 
 <?php }else{?>
 
- 	<!-- CONNATIX -->
+ <!-- CONNATIX -->
   
-	  <script type='text/javascript'>
-	  (function() {
-	    var useSSL = 'https:' == document.location.protocol;
-	    var src = (useSSL ? 'https:' : 'http:') +
-	        '//www.googletagservices.com/tag/js/gpt.js';
-	    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-	  })();
-	</script>
+  <script type='text/javascript'>
+  (function() {
+    var useSSL = 'https:' == document.location.protocol;
+    var src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+  })();
+</script>
 
-	<script type='text/javascript'>
-	  googletag.cmd.push(function() {
-	    googletag.defineSlot('/73970039/connatix_test', [300, 250], 'div-gpt-ad-1431974009855-0').addService(googletag.pubads());
-	    googletag.pubads().enableSingleRequest();
-	    googletag.pubads().enableSyncRendering();
-	    googletag.enableServices();
-	  });
-	</script>
+<script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/73970039/connatix_test', [300, 250], 'div-gpt-ad-1431974009855-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().enableSyncRendering();
+    googletag.enableServices();
+  });
+</script>
 
 	<!-- PLACE THIS CODE IN WEBSITE HEADER -->
 	<!-- nativeads pixel 104835-puckermob.com start -->

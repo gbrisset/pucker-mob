@@ -3,7 +3,6 @@
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/foundation.min.js"></script>
-
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
@@ -28,6 +27,16 @@
     </script>
     <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
   <?php }?>
+
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/selectshare.js"></script>
+
+    <!-- [ === TOOLTIP init === ] -->
+    <script>var twitterAccount = "Puckermob";</script><!-- [ <-- NOTE: YOUR TWITTER ACCOUNT GOES HERE ! (without "@" !) ] -->
+    <div class="shareTooltip" id="shareTooltip">
+         <div class="tooltipContainer"><a id="sendToTwitter" href="" class="sharingLink twitter"><span></span></a></div>
+     </div>
+     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  
 <?php } ?>
 
 <!-- Vibrant in-text Media Ads 
@@ -109,17 +118,8 @@
 <?php }?>
 
 <!-- DESKTOP & MOBILE SCRIPT -->
-<!-- TWITTER SELECTOR -->
-<?php if(isset($articleInfo) && $articleInfo){ ?>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/selectshare.js"></script>
 
-    <!-- [ === TOOLTIP init === ] -->
-    <script>var twitterAccount = "Puckermob";</script><!-- [ <-- NOTE: YOUR TWITTER ACCOUNT GOES HERE ! (without "@" !) ] -->
-    <div class="shareTooltip" id="shareTooltip">
-         <div class="tooltipContainer"><a id="sendToTwitter" href="" class="sharingLink twitter"><span></span></a></div>
-     </div>
-     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  
+<?php if(isset($articleInfo) && $articleInfo){ ?>
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 

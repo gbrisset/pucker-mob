@@ -611,12 +611,11 @@ class Dashboard{
 						  (`id`, `contributor_id`, `month`, `year`, `total_article_rate`, `total_shares`, `share_rate`, `total_us_pageviews`,  
 						  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`)
 						  VALUES (NULL, '".$id."', '".$month."', '".$year."', '".$total_article_rate."', '".$total_shares."', 
-						  	'".$total_shares."', '".$total_us_pageviews."', '".$share_rate."', '".$total_earnings."', '0', '".$total_earnings."') ";
+						  	'".$total_shares."', '".$total_us_pageviews."', '".$share_rate."', '".$total_earnings."', '0', '".$total_to_be_pay."') ";
 				}
 
 				$queryParams = [ ];			
 				$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-
 			}
 		}
 

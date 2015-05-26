@@ -36,33 +36,14 @@ var asideHeight = {
 
 $(document).ready(function() {
 
-/*if(page == 'article'){
-	var url = Foundation.utils.S('meta[property="og:url"]').attr('content');
-	$.post(
-	    'https://graph.facebook.com',
-	    {
-	        id: url,
-	        scrape: true
-	    },
-	    function(response){
-	        console.log(response);
-	    }
-	);
-}*/
-
 //READ MORE 
-
 if($('body').hasClass('mobile')) {
 	var $el, $ps, $up, totalHeight;
 	var parentOrgHeight = $('#article-content').outerHeight();
-	var wishDisplayHeight = parentOrgHeight * 0.55;
-	//$('#article-content').height(wishDisplayHeight);
-
+	var wishDisplayHeight = parentOrgHeight * 0.73;
 
 	$(".read-more").on('click', '.button', function(e) {
 		e.preventDefault();		
-		// IE 7 doesn't even get this far.
-								
 		totalHeight = 0
 			
 		$el = $(this);
@@ -569,17 +550,17 @@ $('#menu-options li').on('click', function(e){
 			//****************************2nd Spot IN-STREAM************************//
 
 			//SHARETHROUG
-			//if( country && country == 'US' || country == 'XX'){
-			//	inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticle, tag);	
-			//}else{	
-			//	inBodyAd.loadInArticleAd( 'article-content', 5, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
-			//}
+			if( country && country == 'US' || country == 'XX'){
+				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
+			}else{	
+				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
+			}
 
 			//inBodyAd.loadInArticleAd( 'article-content', 5, 0, "<div id='mobile-instream-connatix-ad'></div>", tag);
 
 			//****************************3rd Spot IN-STREAM************************//
 			//GOOGLE 3rd ad NOT BRANOVATE ANYMORE JUST GOOGLE
-			inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlebranovate, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlebranovate, tag);
 			
 			//CRITEO
 			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<iframe src='http://cas.criteo.com/delivery/afr.php?zoneid=235635' framespacing='0' frameborder='no' scrolling='no' width='300' height='250'><a href='http://cas.criteo.com/delivery/ck.php?cb=INSERT_RANDOM_NUMBER' target='_blank'><img src='http://cas.criteo.com/delivery/avw.php?zoneid=235635' border='0' alt='' \/><\/a><\/iframe>", tag);
@@ -1059,11 +1040,11 @@ if($('body').hasClass('mobile') && adPage === 'article'){
 
 if($('body').hasClass('mobile')){
 	
-	var mobile_header_ad_loader = $('#mobile-header-ad-loader').find('#get-content');
+	/*var mobile_header_ad_loader = $('#mobile-header-ad-loader').find('#get-content');
 	setTimeout(function(){
 		mobile_header_ad_loader.appendTo($('#mobile-top-header-ad'));
 		$('#mobile-header-ad-loader').remove();
-	}, 100 );
+	}, 100 );*/
 
 	if(adPage == 'article'){
 	//CRITEO IN STREAM ARTICLES

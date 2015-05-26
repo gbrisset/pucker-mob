@@ -140,7 +140,7 @@
 
 <?php }else{?>
 
- <!-- CONNATIX -->
+ <!-- CONNATIX 
   
   <script type='text/javascript'>
   (function() {
@@ -158,7 +158,7 @@
     googletag.pubads().enableSyncRendering();
     googletag.enableServices();
   });
-</script>
+</script>-->
 
 	<!-- PLACE THIS CODE IN WEBSITE HEADER -->
 	<!-- nativeads pixel 104835-puckermob.com start -->

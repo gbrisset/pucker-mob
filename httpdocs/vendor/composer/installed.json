@@ -1,0 +1,124 @@
+[
+    {
+        "name": "google/apiclient",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/google/google-api-php-client.git",
+            "reference": "523430f21a92c54172099d12d0f31d40f3de67e9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/523430f21a92c54172099d12d0f31d40f3de67e9",
+            "reference": "523430f21a92c54172099d12d0f31d40f3de67e9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-05-17 00:43:01",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Client library for Google APIs",
+        "homepage": "http://developers.google.com/api-client-library/php",
+        "keywords": [
+            "google"
+        ]
+    },
+    {
+        "name": "facebook/php-ads-sdk",
+        "version": "2.3.1",
+        "version_normalized": "2.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/facebook/facebook-php-ads-sdk.git",
+            "reference": "d222b22b91adee4114c587450bc355fe699d6257"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/facebook/facebook-php-ads-sdk/zipball/d222b22b91adee4114c587450bc355fe699d6257",
+            "reference": "d222b22b91adee4114c587450bc355fe699d6257",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": ">=4.0.0",
+            "symfony/finder": "~2.6"
+        },
+        "time": "2015-05-04 15:45:45",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "FacebookAds\\": "src/FacebookAds/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Facebook Platform"
+        ],
+        "description": "PHP SDK for Facebook ads",
+        "homepage": "https://developers.facebook.com/",
+        "keywords": [
+            "ads",
+            "facebook",
+            "sdk"
+        ]
+    },
+    {
+        "name": "drewm/mailchimp-api",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/drewm/mailchimp-api.git",
+            "reference": "c2ca65114d9d67cbb38db29b3e9d430b25a8b8a3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/c2ca65114d9d67cbb38db29b3e9d430b25a8b8a3",
+            "reference": "c2ca65114d9d67cbb38db29b3e9d430b25a8b8a3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "time": "2015-04-14 13:14:22",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Drewm": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Drew McLellan",
+                "homepage": "http://allinthehead.com/"
+            }
+        ],
+        "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
+        "homepage": "https://github.com/drewm/mailchimp-api"
+    }
+]

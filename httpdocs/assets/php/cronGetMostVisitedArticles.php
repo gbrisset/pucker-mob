@@ -21,7 +21,7 @@ $endDate = $prev_date;
 $params = [
 			'dimensions' => 'ga:pagePath,ga:pageTitle',
 			'sort' => '-ga:pageviews',
-			'max-results' => '20'
+			'max-results' => '50'
 		];
 ?>
 <html>

@@ -23,12 +23,14 @@ $arrArticle = $GoogleAnalyticsData->getArticlesNew();
 				$articles_pageviews_from_ga = $analytics->data_ga->get('ga:88041867', $startDate, $endDate, 'ga:pageviews', array(
 				  		'dimensions'=> 'ga:pagePath,ga:pageTitle',
 				  		'filters'=>'ga:country!=United States',
+				  		'max-results' => 10000,
 				  		'sort'=> '-ga:pageviews'
 				));
 
 				$articles_pageviews_from_ga_USA = $analytics->data_ga->get('ga:88041867', $startDate, $endDate, 'ga:pageviews', array(
 				  		'dimensions'=> 'ga:pagePath,ga:pageTitle',
 				  		'filters'=>'ga:country==United States',
+				  		'max-results' => 10000,
 				  		'sort'=> '-ga:pageviews'
 				));
 

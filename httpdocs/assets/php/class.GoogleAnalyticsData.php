@@ -202,7 +202,7 @@ class GoogleAnalyticsData{
 				$queryParams = [];
 
 				$pdo = $this->con->openCon();
-			
+				//var_dump($insert);	
 				$ins = $pdo->prepare($insert);
 
 				$row = $ins->execute($queryParams);
@@ -353,21 +353,14 @@ class GoogleAnalyticsData{
 			'dimensions' => '',
 			'segment' => '',
 			'sort' => '',
-			//'index' => 1,
 			'max-results' => '10000'
 			], $optParams);
-		/*$params = [
-			'dimensions' => 'ga:pagePath,ga:pageTitle',
-			'sort' => 'ga:pageviews',
-			'max-results' => '7'
-		];*/
-
 		
 		try{
 			$analytics = $analyticsObj->data_ga->get($this->viewId, $startDate, $endDate,  $this->metrics, array(
 				'dimensions'=> 'ga:pagePath,ga:pageTitle',
 				'sort' => '-ga:pageviews',
-				'max-results' => '20',
+				'max-results' => $params['max-results'],
 				'start-index' => 1
 				) );
 		}catch (apiServiceException $e) {
@@ -378,8 +371,6 @@ class GoogleAnalyticsData{
 		if($analytics){ 
 			$result = $analytics->getRows();
 			
-			//if(isset($result[0]) && $result[0]) $result = $result[0];
-
 			return $result;
 		}
 		return false;
@@ -394,7 +385,6 @@ class GoogleAnalyticsData{
 
 		$total = $total * 100;
 
-		//$total.='%';
 		return $total;
 	}
 

@@ -60,15 +60,15 @@
 			<noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=9&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
 		<?php //} ?>
 		</div>
-	<div>
+	<div>-->
 	<div id="mobile-instream-native-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
 		<?php if(isset($isArticle) && $isArticle ){?>
-			<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-25d23e16843e41b4dc9f157751b998a785a894bf.js" async></script>
+			<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-deeab8461c3725af1723048fac0d2127cc855db6.js" async></script>		
 		<?php } ?>
 		</div>
 	<div>
-	
+	<!--
 	<div id="mobile-instream-connatix-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
 		<?php //if(isset($isArticle) && $isArticle ){?>

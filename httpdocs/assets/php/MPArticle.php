@@ -926,11 +926,51 @@ public function getMostRecentArticleList( $articleID = null ){
 
 public function getMostRecentArticleListMobile( ){
 	
-	$queryString = " SELECT google_analytics_most_viewed_articles.*, articles.article_id  from google_analytics_most_viewed_articles INNER JOIN articles ON (article_seo_title = seo_title)  ORDER BY pageviews DESC LIMIT 20; ";
+	$queryString = " SELECT google_analytics_most_viewed_articles.*, articles.*  
+	from google_analytics_most_viewed_articles 
+	INNER JOIN articles ON (article_seo_title = seo_title)  ORDER BY pageviews DESC LIMIT 20; ";
 
 	$q = $this->performQuery(['queryString' => $queryString]);
 	return $q;
 }
+
+public function getMostRecentArticleListTrending( ){
+	
+	$queryString = " SELECT google_analytics_most_viewed_articles.*, articles.article_id, 
+	articles.article_seo_title, articles.article_title, articles.date_updated, article_contributors.contributor_name, 
+	  article_contributors.contributor_seo_name, categories.cat_name, categories.cat_dir_name
+	from google_analytics_most_viewed_articles 
+	INNER JOIN (articles, article_categories, categories, article_contributors, article_contributor_articles) 
+	ON (article_seo_title = seo_title)
+	AND ( articles.article_id = article_categories.article_id)
+	AND ( article_categories.cat_id = categories.cat_id)
+	AND ( article_contributor_articles.article_id = articles.article_id)
+	AND (article_contributors.contributor_id = article_contributor_articles.contributor_id)  
+	ORDER BY pageviews DESC; ";
+
+	$q = $this->performQuery(['queryString' => $queryString]);
+	return $q;
+}
+
+public function getMostRecentArticleListMostPopular( ){
+	
+	$queryString = " SELECT google_analytics_most_viewed_articles_always.*, articles.article_id, 
+	articles.article_seo_title, articles.article_title, articles.date_updated, article_contributors.contributor_name, 
+	  article_contributors.contributor_seo_name, categories.cat_name, categories.cat_dir_name
+	from google_analytics_most_viewed_articles_always 
+	INNER JOIN (articles, article_categories, categories, article_contributors, article_contributor_articles) 
+	ON (article_seo_title = seo_title)
+	AND ( articles.article_id = article_categories.article_id)
+	AND ( article_categories.cat_id = categories.cat_id)
+	AND ( article_contributor_articles.article_id = articles.article_id)
+	AND (article_contributors.contributor_id = article_contributor_articles.contributor_id)  
+	GROUP BY article_seo_title ORDER BY pageviews DESC; ";
+
+	$q = $this->performQuery(['queryString' => $queryString]);
+	return $q;
+}
+
+
 
 
 //NOT IN USER 

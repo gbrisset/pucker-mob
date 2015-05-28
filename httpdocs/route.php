@@ -15,7 +15,9 @@
 		else {
 			include_once('category.php');
 		}
-	} else {
+	} elseif($uri['0'] == 'most-recent' || $uri['0'] == 'most-popular' || $uri['0'] == 'trending'){
+			include_once('articleresults.php');
+		}else {
 		include_once('category.php');
 	}
 

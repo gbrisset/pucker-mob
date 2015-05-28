@@ -1,4 +1,4 @@
-<aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print">
+<aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print" style="<?php if( $has_sponsored && $isHomepage ) echo 'right: -5px !important; ' ?>">
   <?php if ( isset($isArticle) && $isArticle ){?>
       <!-- SMARTIES PROMOTION -->
       <?php if($promotedArticle){?>

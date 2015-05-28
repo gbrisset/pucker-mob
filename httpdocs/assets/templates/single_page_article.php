@@ -89,9 +89,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; "> 
 		
 		<?php  //BRANOVATE ABOVE ARTICLE 
-			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-			   <div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>
-		<?php } ?> 
+			//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
+			   <!--<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>-->
+		<?php //} ?> 
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
@@ -100,6 +100,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
 			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;">
 			</div>
+			<!--<div class="clear" id="googlead3-ad" style="margin-bottom:1rem; text-align:center;">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6120722987"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+			</div>-->
 		<?php } ?> 
 
 
@@ -196,8 +199,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
     <?php } ?>
 	
 	</section>
-	
-<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-25d23e16843e41b4dc9f157751b998a785a894bf.js" async=""></script>
+
 </article>
 
 <?php }else{?>
@@ -233,7 +235,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
 			</div>
 		</div>
-		<?php //include($config['include_path'].'socialbuttonsarticles.php'); ?>
 		
 		<!-- Article Image -->
 		<div class="row">
@@ -305,25 +306,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 		<?php }?>
 	
-		<!-- ON DESKTOP --> 
-		<?php //if(!$detect->isMobile()){?>
-		<!-- GOOGLE AD BOTTOM
-				<div class="row padding-top padding-bottom clear">
-					<section class="columns small-12 padding-bottom">
-						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-						<!-- PM 637x90 Bottom 
-						<ins class="adsbygoogle"
-						     style="display:inline-block;width:637px;height:90px"
-						     data-ad-client="ca-pub-8978874786792646"
-						     data-ad-slot="3114328182"></ins>
-						<script>
-						(adsbygoogle = window.adsbygoogle || []).push({});
-						</script>
-					</section>
-				</div>-->
-
-		<?php //}?>
-		
 		<!-- ingageunit -->
 		<div class="row clear" >
 			<!-- Place in body part -->
@@ -379,11 +361,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 10pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
 		<?php }?>
-
-		<!-- NOTES 
-		<?php //if( isset($article_img_credits) && !empty($article_notes)){?>
-		<p><?php //echo $article_notes; ?></p>
-		<?php //}?>-->
 
 		</section>
 	</div>

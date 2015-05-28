@@ -229,7 +229,7 @@
 				  	<?php if($newCalc){?>
 					  	<tr>
 					      <th class="align-left">Article Title</th>
-					      <th>Date Added</th>
+					      <th>Date Created</th>
 					      <th>US Pageviews</th>
 					      <th>Rate</th>
 					      <th class="bold align-right">Total Rev</th>
@@ -237,7 +237,7 @@
 				  	<?php }else{?>
 				    <tr>
 				      <th class="align-left">Article Title</th>
-				      <th>Date Added</th>
+				      <th>Date Created</th>
 				       <?php if( $show_art_rate ){?>
 				     	<th>Article Rate</th>
 				      <?php }?>

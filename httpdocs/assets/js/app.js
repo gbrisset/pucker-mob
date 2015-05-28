@@ -476,7 +476,8 @@ $('#menu-options li').on('click', function(e){
 			tag = 'p',
 			first_p = 2,
 			second_p = 5,
-			third_p = 8;
+			third_p = 8, forth_p = 15,
+			num_items = 0;
 
 			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
 			if(li_length > p_length){
@@ -492,7 +493,9 @@ $('#menu-options li').on('click', function(e){
 				tag = 'li';
 				first_p = 2;
 				second_p = 5;
-				third_p = 8
+				third_p = 9;
+				fourth_p = 15;
+				num_items = li_length;
 			}else{
 				google_position = -1;
 				nativo_position =5; 
@@ -500,7 +503,9 @@ $('#menu-options li').on('click', function(e){
 				carambola_position = -1;
 				first_p = 3;
 				second_p = 6;
-				third_p = 9;
+				third_p = 10;
+				fourth_p = 16;
+				num_items = p_length;
 			}
 
 			$.ajax({
@@ -541,16 +546,17 @@ $('#menu-options li').on('click', function(e){
 
 
 			//GOOGLE 1st ad
-			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
 
 			//NATIVE ADS Mobile CPC 1 
-			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, "<div id='mobile-instream-native-ad'></div>", tag);
+			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, "<div id='mobile-instream-native-ad'></div>", tag);
 
 
 			//****************************2nd Spot IN-STREAM************************//
 
 			//SHARETHROUG
 			if( country && country == 'US' || country == 'XX'){
+				//console.log(country);
 				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
 			}else{	
 				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
@@ -560,7 +566,7 @@ $('#menu-options li').on('click', function(e){
 
 			//****************************3rd Spot IN-STREAM************************//
 			//GOOGLE 3rd ad NOT BRANOVATE ANYMORE JUST GOOGLE
-			//inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlebranovate, tag);
+			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, mobilead[adPage].inarticlegoogle3, tag);
 			
 			//CRITEO
 			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<iframe src='http://cas.criteo.com/delivery/afr.php?zoneid=235635' framespacing='0' frameborder='no' scrolling='no' width='300' height='250'><a href='http://cas.criteo.com/delivery/ck.php?cb=INSERT_RANDOM_NUMBER' target='_blank'><img src='http://cas.criteo.com/delivery/avw.php?zoneid=235635' border='0' alt='' \/><\/a><\/iframe>", tag);
@@ -570,7 +576,19 @@ $('#menu-options li').on('click', function(e){
 			//inBodyAd.loadInArticleAd( 'article-content', 8, 0, "<div id='mobile-instream-cpi-ad'></div>", tag);
 
 			//ADBLADE IN STREAM
-			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+		
+			//BRANOVATE IN STREAM
+			//	inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>', tag);
+
+			
+			//****************************4th Spot IN-STREAM************************//
+			
+			//ADBLADE IN STREAM
+			if(num_items >= fourth_p ){
+				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+			}
+
 		}
 
 		//MULTIPAGE ARTICLE
@@ -1033,7 +1051,7 @@ if($('#warning-icon')){
 //BRANOVATE AD MOBILE
 if($('body').hasClass('mobile') && adPage === 'article'){
 	setTimeout(function() {
-		loadBranovateAd(select.ad.branovate, '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
+		loadBranovateAd( document.getElementById("branovate-ad"), '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
 	}, 2000);
 }
 
@@ -1072,12 +1090,12 @@ if($('body').hasClass('mobile')){
 	}, 100 );/*/
 
 	//CPC NATIVE ADS
-	/*
+	
 	var mobile_instream_native_ad_loader = $('#mobile-instream-native-ad-loader').find('#get-content');
 	setTimeout(function(){
 		mobile_instream_native_ad_loader.appendTo($('#mobile-instream-native-ad'));
 		$('#mobile-instream-native-ad-loader').remove();
-	}, 100 );*/
+	}, 100 );
 
 	}
 }else{

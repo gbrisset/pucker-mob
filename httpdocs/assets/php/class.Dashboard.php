@@ -328,7 +328,7 @@ class Dashboard{
 
 		$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-		//var_dump($s);
+		
 		if ($q && isset($q[0])){
 				// If $q is an array of only one row (The set only contains one article), return it inside an array
 			return $q;

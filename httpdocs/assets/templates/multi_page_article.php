@@ -131,10 +131,10 @@ $linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contri
 		<div class="row">
 			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
 				<p class="left uppercase">
-					<span class="span-category <?php echo $articleInfoObj['cat_dir_name']?>"><?php echo $article_category; ?></span>
+					<!--<span class="span-category <?php //echo $articleInfoObj['cat_dir_name']?>"><?php //echo $article_category; ?></span>-->
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
-				<!--<p class="right uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributor_name; ?></a></span></p>-->
+				<!--<p class="right uppercase"><span class="span-author">By <a href="<?php //echo $linkToContributor; ?>" ><?php //echo $contributor_name; ?></a></span></p>-->
 			</div>
 		</div>
 		<?php }?>

@@ -167,12 +167,22 @@
            <ul class="left">
         <?php }?>
        
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>relationships"  class="relationships" >Relationships</a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>entertainment"  class="entertainment" >Entertainment</a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>money"  class="money" >Money</a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >THE MOB</a></li>
+       <!--   <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>relationships"  class="relationships" >Relationships</a></li>
+          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>entertainment"  class="entertainment" >Entertainment</a></li>
+          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>money"  class="money" >Money</a></li>
+          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
+          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
+          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>moblog"  class="moblog" >THE MOB</a></li>-->
+          
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-recent"  class="entertainment" >Most Recent</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>trending"  class="money" >Trending</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-popular"  class="wellness" >Most Popular</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>contributors"  class="fun" >Contributors</a></li>
+          <?php if(!$detect->isMobile()){?>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a>|</a></li>
+          <?php }?>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>moblog"  class="relationships" >THE MOB</a></li>
+
         </ul>
       </section>
     </nav>

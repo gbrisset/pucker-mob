@@ -9,6 +9,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_id = $articleInfoObj['article_id'];
 	$article_body = $articleInfoObj['article_body'];
 	$article_category = $category['cat_name'];
+	$category_id = $category['cat_id'];
 	$article_category_dir = $category['cat_dir_name'];
 	if(!isset($articleInfoObj['date_updated']) || $articleInfoObj['date_updated'] == "0000-00-00 00:00:00") $date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
 	else $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
@@ -89,9 +90,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; "> 
 		
 		<?php  //BRANOVATE ABOVE ARTICLE 
-			//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-			   <!--<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>-->
-		<?php //} ?> 
+			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
+			   <div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>
+		<?php } ?> 
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
@@ -100,9 +101,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
 			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;">
 			</div>
-			<!--<div class="clear" id="googlead3-ad" style="margin-bottom:1rem; text-align:center;">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6120722987"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-			</div>-->
 		<?php } ?> 
 
 
@@ -260,7 +258,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="row padding-bottom">
 			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
 				<p class="left uppercase">
+					<?php if($category_id == 9){?>
 					<span class="span-category <?php echo $article_category_dir; ?>"><?php echo $article_category; ?></span>
+					<?php }?>
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
 			</div>

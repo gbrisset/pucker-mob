@@ -847,12 +847,12 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 
 
 .span-category{ color: $text-type-color; text-transform: uppercase; font-size:0.6rem;}
-.span-date, .span-author{ color: #464646; font-size:0.7rem;}
+.span-date, .span-author{ color: #464646; font-size:0.7rem;   top: 3px; position: relative;}
 .span-author a{ color: #464646;}
 .span-category:after{ content: '|'; margin: 0 0 0 0.4rem; color: #464646;}
 
 .small-font{
-	.span-date { font-size:0.6rem;}
+	.span-date { font-size:0.6rem; margin-left:1px;}
 	.span-author{ font-size:0.6rem;}
 }
 
@@ -1050,7 +1050,7 @@ body{padding-top:0 !important;}
 .h1-large-article{ 	font-size: 1.8rem !important; }
 .h1-small-article{ font-size: 1.1rem !important; }
 
-#footer-right{margin-top: 3rem;}
+#footer-right{margin-top: 0;}
 #footer-right>div.row{float:right !important;}
 
 }
@@ -1585,7 +1585,7 @@ div.adblade-dyna.zone-989 div.zone div.ad:last-child{ border-bottom:none;}
 	.top-bar>.title-area>.name{width: 80%; padding-top: 0.8rem;}
 	.top-bar-section>ul.left{margin-top: 0.5rem;}
 	.top-bar.expanded .title-area{background:none;}
-	.top-bar-section ul li{padding: 0.5rem 0 0.5rem 1.4rem !important;}
+	.top-bar-section ul li{padding: 0.5rem 0 0.5rem 1.48em !important;}
 
 	.hide-on-tablet{ display:none;}
 		#header-ad{margin-top: 4rem;}

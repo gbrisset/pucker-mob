@@ -53,7 +53,7 @@ foreach ($articlesList as $articles){
 			</a>
 			<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 mobile-vertical-center padding-top">
 				<p class="left uppercase" >
-					<span class="span-category <?php echo $articles['cat_dir_name']?>"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
+					<!--<span class="span-category <?php //echo $articles['cat_dir_name']?>"><a href="<?php //echo $linkToACategory; ?>" ><?php //echo $articles['cat_name']?></a></span>-->
 					<span class="span-date"><?php echo $date; ?></span>
 				</p>
 				<p class="right uppercase">
@@ -88,7 +88,7 @@ foreach ($articlesList as $articles){
 				</a>
 				<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 mobile-vertical-center padding-top">
 					<p class="uppercase small-7 left small-font">
-						<span class="span-category <?php echo $articles['cat_dir_name']?>"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
+						<!--<span class="span-category <?php //echo $articles['cat_dir_name']?>"><a href="<?php //echo $linkToACategory; ?>" ><?php //echo $articles['cat_name']?></a></span>-->
 						<span class="span-date"><?php echo $date; ?></span>
 					</p>
 					<p class="right uppercase small-5 align-right small-font">

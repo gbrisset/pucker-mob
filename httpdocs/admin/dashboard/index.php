@@ -63,7 +63,8 @@
 		$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
 	}
 
-	$rate = $dashboard->get_current_rate();
+	//$rate = $dashboard->get_current_rate();
+	$rate = $dashboard->get_current_rate( 0, $contributor_type );
 
 	$total = 0;
 
@@ -381,7 +382,7 @@
 				  		$total_rev = 0;
 				  		$total_us_page_views = 0;
 				  		$total = 0;
-				  		
+				  	
 				  		foreach( $articles as $article ){ 
 
 				  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');

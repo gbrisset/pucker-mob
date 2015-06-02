@@ -214,7 +214,6 @@
 					  <thead>
 					    <tr>
 					      <th class="align-left" >Name</th>
-					      <!--<th>U.S. Views</th>-->
 					      <th class="bold">U.S. Views | 1K</th>
 					      <th class="bold">Rate</th>
 					      <th class="bold">Total-Month</th>
@@ -266,9 +265,16 @@
 					  			$all_rate = $total_rate;
 					  			$all_total_to_pay += $total_to_pay;
 
+					  			$style = "background-color: #fff;";
+					  			if( $contributor['user_type'] == 8){
+					  				$style = "background-color: #E6FAFF";
+					  			}elseif($month > 6 && $year >= 2015 ) { if($total_to_pay > 50 ) $style = "background-color: #FFFFCC;";}
+					  			elseif($total_to_pay > 50 ) $style = "background-color: #FFFFCC;";
+					  			
+
 					  		?>	
 					  		<?php if(!$no_cover_in_house ){?>
-							<tr style="<?php if($total_to_pay > 25 ) echo "background-color: #FFFFCC;"?>">
+							<tr style="<?php echo $style; ?>">
 							  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
 							  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
 							  			<?php echo $contributor['contributor_name']; ?><?php if($contributor['w9_live'] === '1') echo "<strong style='color:green;  margin-left: 5px;' >(W9 <i class='fa fa-check' style='margin-left:0; margin-right: 0;'></i>)</strong>"?>
@@ -278,7 +284,6 @@
 							  		
 							  	</label>
 							  	</td>
-							  	<!--<td><?php //echo number_format($total_us_viewers, 0, '.', ','); ?></td>-->
 							  	<td><?php echo number_format($total_us_viewers_by_thousands, 2, '.', ','); ?></td>
 							  	<td><?php echo '$'.$total_rate; ?></td>
 							  	<td ><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
@@ -291,7 +296,6 @@
 					  <tfoot>
 					  	<tr>
 					  		<td class="align-left bold">TOTAL:</td>
-					  		<!--<td><?php //echo number_format($all_us_viewers, 0, '.', ','); ?></td>-->
 					  		<td><?php echo number_format($all_us_viwers_by_thousand, 2, '.', ','); ?></td>
 					  		<td><?php echo '$'.$total_rate; ?></td>
 					  		<td class=""><?php echo '$'.number_format($all_total, 2, '.', ','); ?></td>

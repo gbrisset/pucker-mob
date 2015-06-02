@@ -20,7 +20,9 @@
 			$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $contributor_email ])['contributors'];
 		}
 
-		$rate = $dashboard->get_current_rate();
+//		$rate = $dashboard->get_current_rate();
+		$rate = $dashboard->get_current_rate( 0, $adminController->user->data['user_type']  );
+
 		$ManageDashboard = new ManageAdminDashboard( $config );
 
 		$current_month = date('n');

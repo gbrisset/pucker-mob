@@ -79,7 +79,10 @@
 		$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
 	}
 
-	$rate = $dashboard->get_current_rate($month);
+	if(  $month <= 5 && $year == 2015 )	$rate = $dashboard->get_current_rate($month);
+	else  $rate = $dashboard->get_current_rate( $month, $contributor_type );
+	
+	var_dump($month, $contributor_type , $rate);
 
 	$total = 0;
 

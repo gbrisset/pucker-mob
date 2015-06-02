@@ -187,11 +187,18 @@ class Dashboard{
 		}
 	}
 
-	public function get_current_rate( $month = 0 ){
+	public function get_current_rate( $month = 0, $user_type = 0 ){
 		if($month == 0 ) $month = date('n');
+
 		$year = date('Y');
 
-		$s=" SELECT * FROM shares_rate WHERE month = $month AND year = $year LIMIT 1";
+		$s=" SELECT * FROM shares_rate WHERE month = $month AND year = $year ";
+		if( $user_type != 8 ){ $user_type = 0; }
+			$s .= " AND user_type =  ".$user_type;
+		
+		$s .= " LIMIT 1 ";
+
+		var_dump( $s );
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 		
@@ -567,8 +574,7 @@ class Dashboard{
 			
 				$total_article_rate = 0;
 				$total_shares = 0;
-
-				$share_rate = $this->get_current_rate();				
+				$share_rate = $this->get_current_rate($month, $contributor['user_type']);				
 				$total_share_rev = 0;
 				
 				$total_us_pageviews = 0;
@@ -583,8 +589,6 @@ class Dashboard{
 
 				$total_earnings = ($total_us_pageviews/1000) * $share_rate;
 				$total_to_be_pay = $total_earnings;
-
-
 
 				if( isset($prev_month_data) && $prev_month_data ){
 					if($prev_month_data[0]['paid'] == 0){

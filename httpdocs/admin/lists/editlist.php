@@ -403,7 +403,7 @@
 		</div>
 	</main>
 
-	<?php include_once($config['include_path'].'footer.php');?>
+	<?php include_once($config['include_path_admin'].'footer.php');?>
 	<div id='lightbox-cont'>
 		<div class="overlay"></div>
 

@@ -5,19 +5,16 @@
        <div class="small-5 large-2 columns category-colors">
         <h4>Categories</h4>
          <ul class="no-bullet">
-              <!--<li><a href="<?php echo $config['this_url']; ?>hot-topics" class="hot-topics">Hot Topics</a></li>-->
-              <li><a href="<?php echo $config['this_url']; ?>relationships" class="relationships">Relationships</a></li>
-              <li><a href="<?php echo $config['this_url']; ?>entertainment" class="entertainment">Entertainment</a></li>
-              <li><a href="<?php echo $config['this_url']; ?>money" class="money">Money</a></li>
-              
+              <li><a href="<?php echo $config['this_url']; ?>most-recent" class="relationships">Most Recent</a></li>
+              <li><a href="<?php echo $config['this_url']; ?>trending" class="trending">Trending</a></li>
+              <li><a href="<?php echo $config['this_url']; ?>most-popular" class="money">Most Popular</a></li>             
          </ul>
       </div>
-        <div class="small-5 large-2 columns category-colors">
+      <div class="small-5 large-2 columns category-colors">
            <h4 style="height: 1.4rem;"> </h4>
           <ul class="no-bullet">
-            <li><a href="<?php echo $config['this_url']; ?>lifestyle" class="wellness">Lifestyle</a></li>
-            <li><a href="<?php echo $config['this_url']; ?>fun" class="fun">Fun</a></li>
-            <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >The Mob</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>contributors" class="wellness">Contributors</a></li>
+            <li><a href="<?php echo $config['this_url']; ?>moblog" class="fun">THE MOB</a></li>
           </ul>
         </div>
         <div id="footer-right" class="large-6 columns">
@@ -50,6 +47,3 @@
       </div>
       </div>
     </footer>
-
-    <!-- 33ACROSS AD SERVER 
-    <div id="flyatf-ad"></div>-->

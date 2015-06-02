@@ -258,7 +258,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="row padding-bottom">
 			<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
 				<p class="left uppercase">
-					<?php if($category_id == 9){?>
+					<?php if(isset($category_id) && $category_id == 9){?>
 					<span class="span-category <?php echo $article_category_dir; ?>"><?php echo $article_category; ?></span>
 					<?php }?>
 					<span class="span-date"><?php echo $date; ?></span>

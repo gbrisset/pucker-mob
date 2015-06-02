@@ -196,7 +196,7 @@ if(!is_null($categoryInfo)){
 			
 			<!-- Setting the Poll -->			
 			<?php 
-			if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>
+			if(isset($articleInfoObj['article_poll_id']) && strlen($articleInfoObj['article_poll_id']) > 0){ ?>
 				<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="<?php echo $articleInfoObj['article_poll_id']; ?>"></script>
 			<?php }?>
 

@@ -112,7 +112,7 @@
 			
 				<!-- IMAGE SECTION -->
 				<section class="mobile-12 small-12 margin-bottom margin-top">
-						<h2>Profile Photo</h2>
+						<h2 class="small-12">Profile Photo</h2>
 						<div class="small-12 image-profile-box">
 							<img id="img-profile" class="left" src="<?php echo $contImageUrl; ?>" alt="User Image" />
 							<div class="small-10 left image-wrapper">
@@ -150,7 +150,7 @@
 
 				<!-- ACCOUNT INFORMATION -->		
 				<section id="row small-12 account-settings">
-					<h2>General Information</h2>
+					<h2 class="small-12">General Information<span style="text-align: right; float:right; color:#fff; background: #000; padding:0.2rem 1rem;"><a style="color:#fff; font-size:1rem;" href="http://www.puckermob.com/contributors/<?php echo $userInfo['contributor_seo_name']; ?>" target="_blank">VIEW PROFILE</a></span></h2>
 					<form class="ajax-submit-form clear" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
 							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 							<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
@@ -185,7 +185,7 @@
 								</div>
 								<div class="columns mobile-12 small-12 large-6">
 									<label for="contributor_twitter_handle-s">Twitter Handle </label>
-									<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
+									<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="ex:jhonsmith" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
 								</div>
 							</div>
 
@@ -197,13 +197,14 @@
 							</div>
 							
 							<div class="row buttons-container">
-								<div class="columns mobile-12 small-12 large-10">
+								<div class="columns mobile-12 small-12 large-6">
 									<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
 									
 									<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo $updateStatus['message']; ?>
 									</p>
 								</div>
-								<div class="columns mobile-12 small-12 large-2">
+								<div class="columns mobile-12 small-12 large-6">
+									<span style="text-align: right; color:#fff; background: #000; padding:0.5rem 1rem;"><a style="color:#fff; font-size:1rem;" href="http://www.puckermob.com/contributors/<?php echo $userInfo['contributor_seo_name']; ?>" target="_blank">VIEW PROFILE</a></span>
 									<button type="submit" id="submit" name="submit">UPDATE</button>
 								</div>
 							</div>

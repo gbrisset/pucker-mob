@@ -284,7 +284,7 @@
 				<!-- Top 10 most shared writers this month -->
 				<div id="earnings-section" class="top-shares mobile-12 small-12 left">
 					<header>MOST POPULAR MOBloggers</header>
-					<?php if($writers_rank){?>
+					<?php if(isset($writers_rank) && $writers_rank){?>
 					<div class="top-shared-articles">
 							<table class="left" style="margin-right:0.2rem">
 								<thead><tr><td></td><td style="width:80%;">NAME</td><td>PAGEVIEWS</td></tr></thead>

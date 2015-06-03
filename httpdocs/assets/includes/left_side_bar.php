@@ -1,7 +1,7 @@
 <aside id="left-aside" class="fixed-width-sidebar column no-padding hide-for-print show-on-large-up">
 <?php 
 	//MOBLOGS ARTICLES
-	if(isset($articleInfoObj) ){
+	if(isset($articleInfoObj) && isset($articleInfoObj['article_id']) ){
 		$moblog_articles = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );
 	}else{
 		$moblog_articles = $mpArticle->getMoBlogsArticles( );

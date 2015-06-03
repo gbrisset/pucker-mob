@@ -548,7 +548,7 @@ $('#menu-options li').on('click', function(e){
 			//GOOGLE 1st ad
 			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
 
-			//NATIVE ADS Mobile CPC 1 
+			//NATIVE ADS Mobile CPM 1 
 			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, "<div id='mobile-instream-native-ad'></div>", tag);
 
 

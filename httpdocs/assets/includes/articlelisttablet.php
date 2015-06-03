@@ -59,7 +59,7 @@ foreach ($articlesList as $articles){
 			</a>
 			<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 padding-top padding-top-tablet padding-bottom-tablet">
 				<p class="left uppercase " >
-					<span class="span-category <?php echo $articles['cat_dir_name']?>"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
+					<!--<span class="span-category <?php //echo $articles['cat_dir_name']?>"><a href="<?php echo $linkToACategory; ?>" ><?php //echo $articles['cat_name']?></a></span>-->
 					<span class="span-date hide-on-tablet"><?php echo $date; ?></span>
 				</p>
 				<p class="right uppercase hide-on-tablet">
@@ -90,7 +90,7 @@ foreach ($articlesList as $articles){
 				</a>
 				<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 padding-top padding-top-tablet padding-bottom-tablet">
 					<p class="uppercase small-7 left small-font padding-top-tablet">
-						<span class="span-category <?php echo $articles['cat_dir_name']?> padding-bottom-tablet"><a href="<?php echo $linkToACategory; ?>" ><?php echo $articles['cat_name']?></a></span>
+						<!--<span class="span-category <?php //echo $articles['cat_dir_name']?> padding-bottom-tablet"><a href="<?php //echo $linkToACategory; ?>" ><?php //echo $articles['cat_name']?></a></span>-->
 						<span class="span-date hide-on-tablet"><?php echo $date; ?></span>
 					</p>
 					<p class="right uppercase small-5 align-right small-font hide-on-tablet ">

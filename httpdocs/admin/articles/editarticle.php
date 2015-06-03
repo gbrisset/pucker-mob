@@ -114,7 +114,6 @@
 	}
 	//Preview Article Content
 	//include_once($config['include_path_admin'].'preview.php');
-	
 ?>
 
 <!DOCTYPE html>

@@ -188,6 +188,21 @@ class GoogleAnalyticsData{
 		return $wasremoved; 
 	}
 
+	public function removeGoogleAnalyticsMostViewArticlesAlways(){
+
+		$remove = "DELETE  FROM google_analytics_most_viewed_articles_always;";
+		$queryParams = [];
+
+		$pdo = $this->con->openCon();
+				
+		$rem = $pdo->prepare($remove);
+		$wasremoved = $rem->execute($queryParams);
+
+		$this->con->closeCon();
+
+		return $wasremoved; 
+	}
+
 	public function saveGoogleAnalyticsMostViewArticles( $data ){
 		if(!empty($data) && $data){
 			foreach($data as $article){
@@ -214,6 +229,34 @@ class GoogleAnalyticsData{
 			return false;
 		}
 	}
+
+	public function saveGoogleAnalyticsMostViewArticlesAlways( $data ){
+		if(!empty($data) && $data){
+			foreach($data as $article){
+				$pageviews =  $article['pageviews'];
+				$title= $article['title'];
+
+				$url= $article['url'];
+				$seo = $article['seo_title'];
+				$insert = " INSERT INTO google_analytics_most_viewed_articles_always
+							   (`pageviews`, `title`, `url`, `seo_title`) 
+							   VALUES ( $pageviews, '".addslashes($title)."', '".$url."', '".$seo."') ";
+				$queryParams = [];
+
+				$pdo = $this->con->openCon();
+				//var_dump($insert);	
+				$ins = $pdo->prepare($insert);
+
+				$row = $ins->execute($queryParams);
+
+				$this->con->closeCon();
+			}
+			return true; 
+		}else{
+			return false;
+		}
+	}
+
 	public function saveGoogleAnalyticsInformation( $data, $month, $year ){
 		if(!empty($data) && $data){
 				

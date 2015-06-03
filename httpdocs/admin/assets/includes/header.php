@@ -47,16 +47,15 @@
       </ul>
       <section class="top-bar-section category-colors">
         <ul class="left">
-          <!--<li><a href="<?php echo $config['this_url']; ?>hot-topics" class="hot-topics" >Hot Topics</a></li>-->
-          <li><a href="<?php echo $config['this_url']; ?>relationships"  class="relationships" >Relationships</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>entertainment"  class="entertainment" >Entertainment</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>money"  class="money" >Money</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
-          <li><a href="<?php echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
-           <li><a href="<?php echo $config['this_url']; ?>moblog"  class="moblog" >The Mob</a></li>
-          <?php if( !$detect->isMobile()){?>
-          <!--<li><a href="<?php echo $config['this_url']; ?>videos/hot-topics"  class="videos" >Videos</a></li>-->
-          <?php } ?>
+          <li style="<?php if( isset($has_sponsored) && $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-recent"  class="entertainment" >Most Recent</a></li>
+          <li style="<?php if( isset($has_sponsored) && $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>trending"  class="money" >Trending</a></li>
+          <li style="<?php if( isset($has_sponsored) && $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-popular"  class="wellness" >Most Popular</a></li>
+          <li style="<?php if( isset($has_sponsored) && $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>contributors"  class="fun" >Contributors</a></li>
+          <?php if(!$detect->isMobile()){?>
+          <li style="<?php if( isset($has_sponsored) && $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a>|</a></li>
+          <?php }?>
+          <li style="<?php if( isset($has_sponsored) && $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>moblog"  class="relationships" >THE MOB</a></li>
+
         </ul>
       </section>
     </nav>

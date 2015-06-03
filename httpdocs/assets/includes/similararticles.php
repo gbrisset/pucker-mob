@@ -6,7 +6,7 @@ if($detect->isMobile()) $paddingTop = " padding-top bottom-border"; ?>
 <?php if(isset($relatedArticles) && $relatedArticles){ ?>
 <section id="similar-results" class="columns small-12 hide-for-print sidebar-right <?php echo $padding; ?>">
 <hr class="show-for-xxlarge-only hr-hidden">
-	<h2>Also in <span><?php echo $category['cat_name']; ?>:</span></h2>
+	<h2>Also in <span>PUCKERMOB:</span></h2>
 	<div class="row half-padding-left half-padding-right">
 		<?php
 			$relatedArticleIndex = 0;

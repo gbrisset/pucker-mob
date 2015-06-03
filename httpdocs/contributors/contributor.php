@@ -146,13 +146,13 @@ if($contributorInfo['contributors']){
 							</a>
 							<div class="mobile-12 small-12 large-7 xlarge-7 no-padding" style="padding:0 !important;">
 								<p style="margin:0;">
-									<span class="span-category"><?php echo $article['cat_name']?></span>
-									<small><?php echo $date; ?></small>
+									<!--<span class="span-category"><?php //echo $article['cat_name']?></span>
+									<small><?php //echo $date; ?></small>-->
 								</p>
 								<a href="<?php echo $link; ?>">
 									<h1 style="margin-bottom:0;"><?php echo $article['article_title']?></h1>
 								</a>
-								<!--<p><small>By <a href="<?php echo $linkToContributor; ?>" ><?php echo $article['contributor_name']; ?></a></small></p>-->
+								<!--<p><small>By <a href="<?php //echo $linkToContributor; ?>" ><?php //echo $article['contributor_name']; ?></a></small></p>-->
 							</div>
 							<?php }else{?>
 							<?php $articleIndex++; ?>
@@ -161,8 +161,8 @@ if($contributorInfo['contributors']){
 							</a>
 							<div class="mobile-7 small-7 medium-7 large-6 xlarge-6 mobile-vertical-center vertical-align-center half-padding-left half-padding-right">
 								<p class="uppercase">
-									<span class="span-category"><?php echo $article['cat_name']?></span>
-									<span class="span-date"><?php echo $date; ?></span>
+									<!--<span class="span-category"><?php //echo $article['cat_name']?></span>
+									<span class="span-date"><?php //echo $date; ?></span>-->
 								</p>
 								<a href="<?php echo $link; ?>">
 									<h1><?php echo $article['article_title']?></h1>

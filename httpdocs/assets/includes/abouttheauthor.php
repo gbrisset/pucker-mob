@@ -42,7 +42,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<input type="hidden" id="ss_author_id" value="<?php echo $articleInfoObj['contributor_id']?>" />
 			<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
 			<?php if($detect->isMobile()){?>
-				<p><label>Filed Under: <?php echo $article_category; ?></label><label><i class="fa fa-circle"></i> <?php echo $date; ?></label></p>
+				<p><!--<label>Filed Under: <?php //echo $article_category; ?></label>--><label><i class="fa fa-circle"></i> <?php echo $date; ?></label></p>
 			<?php }else{?>
 				<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
 			<?php } ?>

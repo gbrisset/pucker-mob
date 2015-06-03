@@ -4,7 +4,6 @@ $pageName = 'Contributors | '.$mpArticle->data['article_page_name'];
 $sortId = 1;
 $articleContributors = $mpArticle->getContributors(['count' => -1, 'sortType' => $sortId]);
 
-
 $contributorsPerPage = 25;
 $totalPages = ceil(count($articleContributors['contributors']) / $contributorsPerPage);
 if($totalPages > 1){
@@ -29,7 +28,6 @@ if($totalPages > 1){
 		
 		<section id="puc-articles" class="contributor_page sidebar-right small-12 large-11 columns translate-fix sidebar-main-left">
 			<h1 class="contributor-title">Contributors</h1>
-
 			
 					<?php
 					foreach($articleContributors['contributors'] as $contributor){
@@ -38,8 +36,6 @@ if($totalPages > 1){
 						if($fromFB){
 							$contributor_img = $contributor['contributor_image'].'?type=large';
 						}
-
-
 					?>
 					<section id="contributor-intro" class="small-12 left">
 						<?php if($detect->isMobile()){?>
@@ -50,7 +46,6 @@ if($totalPages > 1){
 							</a>
 						</div>
 						<div class="small-12 left" id="contributor-bio">
-							
 							<p class="contributor-bio-text">
 								<?php echo $mpHelpers->truncate(trim(strip_tags($contributor['contributor_bio'])), 120); ?> 
 								<a href="<?php echo $config['this_url'].'contributors/'.$contributor['contributor_seo_name']; ?>" >MORE</a>
@@ -76,16 +71,16 @@ if($totalPages > 1){
 								<i class="fa fa-facebook"></i>
 								<?php 
 								$facebookObj = explode('/', $contributor['contributor_facebook_link']);
-								//var_dump($facebookObj);
 								if(isset($facebookObj) && $facebookObj ){
 
-									echo '/'.$facebookObj[count($facebookObj)-1];
+									echo '/'.substr($facebookObj[count($facebookObj)-1], 0, 10).'...';
 								}?>
 							</a>
 							<?php } ?>
 							<?php if(isset($contributor['contributor_twitter_handle']) && strlen($contributor['contributor_twitter_handle'])){ ?>
 							<a href="http://www.twitter.com/<?php echo $contributor['contributor_twitter_handle']; ?>" class=" small" target="_blank">
-								<i class="fa fa-twitter"></i><?php  echo $contributor['contributor_twitter_handle']; ?>
+								<i class="fa fa-twitter"></i>
+								<?php echo substr($contributor['contributor_twitter_handle'], 0, 10).'...'; ?>
 							</a>
 							<?php } ?>
 							<?php if(isset($contributor['contributor_blog_link']) && strlen($contributor['contributor_blog_link'])){ ?>

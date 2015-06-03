@@ -84,52 +84,7 @@
 		<div id="content" class="columns small-9 large-11">
 		<section id="articles" class="">
 			<div id="profile-inline-settings">
-			<!--<section id="articles" class="">
-			<div id="profile-inline-settings">
 			
-				<div id="add-an-image-fs" class="padding-top padding-bottom left small-12 border-radius">
-					<div class="image-steps image-sec columns small-4 ">
-						<div id="image-container">
-						<?php 
-
-					//	if($contImageExists){
-							echo "<img src=\"".$contImageUrl."\" alt=\"".$userInfo['contributor_name']." Image"."\" />";
-					//	} else {
-					//		echo "<img src=\"".$config['image_url'].'articlesites/sharedimages/default_profile_contributor.png'."\" alt=\"Contributor Image\" style=\"width: 143px; height: 140px;\"/>";
-					//	} 
-					//	echo '<span><a id="change-art-image" href=""><i class="icon-picture"></i>Change Photo</a></span>';
-						?>
-						</div>
-					</div>
-							
-					<div class="image-steps image-button-header">
-						<header class="section-bar">
-							<h2>Add an Image to your profile</h2>
-						</header>
-						<div class="file-upload-container">
-							<span>
-								<button name="image-file-link" id="image-file-link" type="button"><i class="icon-plus-sign"></i>Add Image</i></button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div id="rules" class="left columns small-12">
-					<span>Make sure the image selected:</span>
-					<ul class="padding-top">
-						<li>Must be: .jpg, .jpeg, .gif, or .png type.</li>
-		    			<li>Do not exceed a maximum size: 1 MB.</li>
-		    			<li>Has a minimun dimensions of  140 x 143</li>
-		    		</ul>
-				</div>
-				
-						        
-				<p id="error-img" class="error-img"></p>
-				<div class="<?php //if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo ($updateStatus['hasError'] == true) ? 'error-img show-err' : 'success-img'; ?>" id="result">
-					<?php //if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-wide-image-upload-form') echo $updateStatus['message']; ?>
-				</div>
-			</div>
-
-		</section>-->
 		<!-- IMAGE SECTION -->
 		<section class="mobile-12 small-12 margin-bottom">
 				<h2>Profile Photo</h2>
@@ -169,7 +124,7 @@
 
 		<!-- CONTRIBUTOR INFORMATION -->	
 		<section class="mobile-12 small-12 margin-bottom account-settings" id="contributor-info">
-			<h2>Contributor Information</h2>
+			<h2>Contributor Information<span style="text-align: right; float:right; color:#fff; background: #000; padding:0.5rem 1rem;"><a style="color:#fff; font-size:1rem;" href="http://www.puckermob.com/contributors/<?php echo $contributorInfo['contributor_seo_name']; ?>" target="_blank">VIEW PROFILE</a></span></h2>
 		
 			<form class="ajax-submit-form " id="contributor-info-form" name="contributor-info-form" action="<?php echo $config['this_admin_url']; ?>contributors/edit/<?php echo $uri[2]; ?>" method="POST">
 				<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -206,7 +161,7 @@
 					</div>
 				   <div class="columns mobile-12 small-12 large-6">
 				      	<label for="contributor_twitter_handle-s">Twitter Handle :</label>
-						<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="twitter handle" value="<?php if(isset($contributorInfo['contributor_twitter_handle'])) echo $contributorInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
+						<input type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="twitter handler EX: JhonSmith" value="<?php if(isset($contributorInfo['contributor_twitter_handle'])) echo $contributorInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
 					</div>	
 				</div>
 					
@@ -225,12 +180,13 @@
 				</div>
 
 				<div class="row buttons-container">
-				    <div class="columns mobile-12 small-12 large-10">
+				    <div class="columns mobile-12 small-12 large-6">
 				  		<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-info-form') echo ($updateStatus['hasError'] == true) ? 'radius alert label' : 'radius success label'; ?>" id="result">
 							<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-info-form') echo $updateStatus['message']; ?>
 						</p>
 					</div>
-					<div class="columns mobile-12 small-12 large-2">
+					<div class="columns mobile-12 small-12 large-6">
+						<span style="text-align: right; color:#fff; background: #000; padding:0.5rem 1rem;"><a style="color:#fff; font-size:1rem;" href="http://www.puckermob.com/contributors/<?php echo $contributorInfo['contributor_seo_name']; ?>" target="_blank">VIEW PROFILE</a></span>
 						<button type="submit" id="submit" name="submit">UPDATE</button>
 					</div>
 				</div>
@@ -318,7 +274,7 @@
 	</div>
 
 
-	<?php include_once($config['include_path'].'footer.php');?>
+	<?php include_once($config['include_path_admin'].'footer.php');?>
 
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>

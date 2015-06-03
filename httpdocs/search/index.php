@@ -40,7 +40,7 @@ if( $searchString ){
 
 	$articles = $search->getArticles( $searchString );
 
-	$articlesPerPage = 10;
+	$articlesPerPage = 20;
 	$totalResults = $search->totalResults;
 	
 	$totalPages = ceil( $totalResults / $articlesPerPage);
@@ -122,9 +122,9 @@ if( $searchString ){
 									<img src="<?php echo $linkToImage; ?>" alt=''>
 								</a>
 								<div class="mobile-7 small-7 medium-7 large-7 xlarge-7 half-padding-left mobile-vertical-center vertical-align-center">
-									<p class="vertical-center">
-										<span class="span-category"><?php echo $article['cat_name']?></span>
-										<small><?php echo $date; ?></small>
+									<!--<p class="vertical-center">
+										<span class="span-category"><?php //echo $article['cat_name']?></span>
+										<small><?php //echo $date; ?></small>-->
 									</p>
 									<a href="<?php echo $link; ?>">
 										<h5><?php echo $article['article_title']?></h5>
@@ -137,10 +137,10 @@ if( $searchString ){
 									<img src="<?php echo $linkToImage; ?>" alt=''>
 								</a>
 								<div class="mobile-7 small-7 medium-7 large-6 xlarge-6 mobile-vertical-center vertical-align-center half-padding-left half-padding-right">
-									<p class="uppercase">
-										<span class="span-category"><?php echo $article['cat_name']?></span>
-										<span class="span-date"><?php echo $date; ?></span>
-									</p>
+									<!--<p class="uppercase">
+										<span class="span-category"><?php //echo $article['cat_name']?></span>
+										<span class="span-date"><?php //echo $date; ?></span>
+									</p>-->
 									<a href="<?php echo $link; ?>">
 										<h1><?php echo $article['article_title']?></h1>
 									</a>

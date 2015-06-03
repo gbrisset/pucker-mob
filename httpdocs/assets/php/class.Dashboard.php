@@ -198,7 +198,7 @@ class Dashboard{
 		
 		$s .= " LIMIT 1 ";
 
-		var_dump( $s );
+		//var_dump( $s );
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 		

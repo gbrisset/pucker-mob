@@ -95,7 +95,7 @@
 				<div class="admin-contributor left small-12 padding-bottom admin-contributor-label">
 					<label class="contributor-image contributor-table-label columns small-3" >Writer Name</label>
 					<label class="contributor-info contributor-table-label columns small-3">Email</label>
-					<label class="contributor-info contributor-table-label columns small-2">PageViews</label>
+					<label class="contributor-info contributor-table-label columns small-2">Level</label>
 					<label class="contributor-info contributor-table-label columns small-4"></label>
 				</div>
 				
@@ -117,7 +117,8 @@
 						} 
 
 						$earnings = $ManageDashboard->getContributorEarningsInfo($contributorInfo['contributor_id']);
-					
+						$contributor_type = $adminController->getContributorUserType($contributorInfo['contributor_id']);
+						if($contributor_type) $contributor_type = $contributor_type ["user_type"];
 						?>
 											
 						<div class="admin-contributor row clear padding-bottom">
@@ -136,12 +137,34 @@
 							<div class="contributor-info columns small-3">
 								<p><?php echo $contributorInfo['contributor_email_address'] ?></p>
 							</div>
-							<div class="contributor-info columns small-2">
-								<p><?php echo number_format($earnings['total_us_pageviews'], 0, '.', ','); ?></p>
+							<div class="contributor-info columns small-2 align-center">
+								<?php 
+								$disabled = "";
+								switch ($contributor_type){
+									case 3:
+									case 4:
+									case 5: 
+										$label_level  = "BASIC";
+										$disabled = "";
+										break;
+
+									case 8:
+										$label_level  = "PRO";
+										$disabled = "";
+										break;
+
+									case 1:
+									case 2: 
+									case 6:
+									case 7:
+										$label_level  = "WRITER";
+										$disabled = "disabled";
+										break;
+								}
+								?>
+								<input <?php echo $disabled; ?> class="mob-level" type="button" value ="<?php echo $label_level; ?>" data-info-level= "<?php echo $contributor_type; ?>"/>
 							</div>
-							<!--<div class="contributor-info columns small-2">
-								<p><?php //echo '$'.number_format($earnings['total_earnings'], 2, '.', ','); ?></p>
-							</div>-->
+
 							<div class="contributor-links right small-4" >
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i> Earnings</a>

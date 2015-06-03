@@ -159,6 +159,9 @@
 			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
 					<header>MY DASHBOARD</header>
 			</div>
+			<!--MOB LEVEL    -->
+			<?php include_once($config['include_path_admin'].'showuserplan.php');?>
+
 			<section id="articles">
 				<!-- MONTHLY SHARE RATE -->
 				<div id="share-rate-box" class="mobile-12 small-12">

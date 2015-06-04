@@ -88,7 +88,7 @@
 							<td class="small-2">X</td>
 						</tr>
 						<tr>
-							<td class="small-8 align-right">$50 MINIMUM THRESHOLD FOR PAYMENTS</td>
+							<td class="small-8 align-right">$25 MINIMUM THRESHOLD FOR PAYMENTS</td>
 							<td class="small-2">X</td>
 							<td class="small-2">X</td>
 						</tr>
@@ -112,11 +112,11 @@
 							<td class="small-2"></td>
 							<td class="small-2">X</td>
 						</tr>
-						<tr>
+						<!--<tr>
 							<td class="small-8 align-right">ARTICLES MAY APPEAR IN "MOST POPULAR" LIST</td>
 							<td class="small-2"></td>
 							<td class="small-2">X</td>
-						</tr>
+						</tr>-->
 						<tr>
 							<td class="small-8 align-right">REPUBLISH OLDER POSTS</td>
 							<td class="small-2"></td>

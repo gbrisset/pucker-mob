@@ -189,33 +189,43 @@ class MPArticleAdmin{
 	}
 	/* End Admin Site Information Gathering Functions */
 
-	public function upgradeContributorPlan( $plan, $user_email ){
+	public function upgradeContributorPlan( $post ){
+	
+		$user_email = $post['contributor_email'];
+		$user_type = $post['cont_type'];
+		$new_user_type = false;
 
-		$new_user_type = 3;
-		if( $plan && $plan == 'pro'){
+
+
+		if(empty($new_user_type)) $new_user_type = 3;
+		
+		if( !empty($user_type) && $user_type == '3'){
 			$new_user_type = 8;
-		}elseif( $plan == 'basic'){
+		}else if( $user_type == '8'){
 			$new_user_type = 3;
-		}
+		}else $new_user_type = false;
 
-		$s = "UPDATE users SET user_type = $new_user_type WHERE user_email = :user_email;";
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		
-		$q = $pdo->prepare( $s );
-		$params[':user_email'] = filter_var(trim($user_email), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
+		if($new_user_type){
+			$s = "UPDATE users SET user_type = $new_user_type WHERE user_email = '".$user_email."'";
+			$pdo = $this->con->openCon();
+			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			
+			$q = $pdo->prepare( $s );
+			$params[':user_email_old'] = filter_var(trim($user_email), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+			
+			try{
+				$q->execute($params);
+			}catch(PDOException $e){
+				$this->con->closeCon();
+				return array_merge($this->returnStatus(500), ['hasError' => true]);
+			}
+
 			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
 		}
-		$this->con->closeCon();
 
-		return true;
-
+		return $new_user_type;
 	}
+
 	/* Begin Site Generic Update Functions */
 	public function updateSidebarArticles($post){
 		$params = [];

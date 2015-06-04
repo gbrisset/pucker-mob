@@ -162,7 +162,8 @@
 										break;
 								}
 								?>
-								<input <?php echo $disabled; ?> class="mob-level" type="button" value ="<?php echo $label_level; ?>" data-info-level= "<?php echo $contributor_type; ?>"/>
+								<input <?php echo $disabled; ?> class="mob-level mob-level-contributor" type="button" value ="<?php echo $label_level; ?>" data-info-user-email = "<?php echo $contributorInfo['contributor_email_address']; ?>"data-info-level= "<?php echo $contributor_type; ?>" />
+						
 							</div>
 
 							<div class="contributor-links right small-4" >

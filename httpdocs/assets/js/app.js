@@ -546,10 +546,10 @@ $('#menu-options li').on('click', function(e){
 
 
 			//GOOGLE 1st ad
-			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
+			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
 
 			//NATIVE ADS Mobile CPM 1 
-			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, "<div id='mobile-instream-native-ad'></div>", tag);
+			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, "<div id='mobile-instream-native-ad'></div>", tag);
 
 
 			//****************************2nd Spot IN-STREAM************************//

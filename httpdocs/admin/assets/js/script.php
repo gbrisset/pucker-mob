@@ -922,366 +922,6 @@ $(document).ready(function (){
 	});
 
 
-	/*if($('.elm-wysiwyg').length > 0){
-		$('.elm-wysiwyg').wysiwyg({
-			rmUnusedControls: true,
-			autoSave: true,
-			rmUnwantedBr: true,
-			controls: {
-				bold: {visible: true},
-				italic: {visible: true},
-				underline: {visible: true},
-				h1: {visible: true},
-				h2: {visible: true},
-				h3:{visible:true},
-				strikeThrough: {visible: true},
-				insertUnorderedList: {visible: true},
-				insertOrderedList: {visible: true},
-				removeFormat: {visible: true},
-				createLink: {visible: true}
-			}
-		});
-
-		if(body.is('.admin0, .admin1')){
-			$('.elm-wysiwyg').css({'margin-left': '0'});
-		}else{
-			$('.elm-wysiwyg').css({'margin-left': '10%'});
-		}
-		$('.wysiwyg iframe').css({'width': '100%'});
-	}	*/
-	
-
-	//Image Ajax Processor
-	/*$('#header-logo-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=headerlogo",
-		onComplete : function(resp){
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					$('#header-logo-image-upload .image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){$(this).fadeTo(250, 1);};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			$('#header-logo-image-upload #result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
-
-	$('#footer-logo-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=footerlogo",
-		onComplete : function(resp){
-			console.log(resp);
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					$('#footer-logo-image-upload .image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){$(this).fadeTo(250, 1);};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			$('#footer-logo-image-upload #result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
-
-	$('#player-logo-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=playerlogo",
-		onComplete : function(resp){
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					$('#player-logo-image-upload .image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){$(this).fadeTo(250, 1);};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			$('#player-logo-image-upload #result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
-
-	$('#featured-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=featured",
-		onComplete : function(resp){
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					$('#featured-image-upload .image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){$(this).fadeTo(250, 1);};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			$('#featured-image-upload #result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});*/
-
-	/*$('#contributor-wide-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=contributorwide&imgType=wide&contributorId=" + $(this).find('#contributor_id').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					$('#contributor-wide-image-upload .image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							$('#contributor-wide-image-upload form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=contributorwide&imgType=wide&contributorId=" + $('#contributor-wide-image-upload').find('#contributor_id').val() + '&currentImage=' + $('#contributor-wide-image-upload').find('#currentImage').val();
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			$('#contributor-wide-image-upload #result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});*/
-
-	/*$('#sponsored-by-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=sponsoredBy&articlePageId=" + $(this).find('#c_p_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			var uploadContainer = $('#sponsored-by-image-upload');
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					uploadContainer.find('.image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							uploadContainer.find('form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=sponsoredBy&imgType=sponsoredBy&articlePageId=" + uploadContainer.find('#c_p_i').val() + '&currentImage=' + uploadContainer.find('#currentImage').val();
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			uploadContainer.find('#result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
-
-	$('#sponsored-super-banner-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=sponsoredSuperBanner&articlePageId=" + $(this).find('#c_p_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			var uploadContainer = $('#sponsored-super-banner-upload');
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					uploadContainer.find('.image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							uploadContainer.find('form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=sponsoredSuperBanner&imgType=sponsoredSuperBanner&articlePageId=" + uploadContainer.find('#c_p_i').val() + '&currentImage=' + uploadContainer.find('#currentImage').val();
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			uploadContainer.find('#result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});*/
-
-	/*$('#article-inline-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articleinline&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			var uploadContainer = $('#article-inline-image-upload');
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					uploadContainer.find('.image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							uploadContainer.find('form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articleinline&imgType=inline&articleId=" + uploadContainer.find('#a_i').val() + '&currentImage=' + uploadContainer.find('#currentImage').val();
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			uploadContainer.find('#result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
-
-	$('#page-list-item-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=pageListItem&pageListItemId=" + $(this).find('#page_list_item_id').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			var uploadContainer = $('#page-list-item-image-upload');
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					uploadContainer.find('.image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							uploadContainer.find('form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imgType=pageListItem&pageListItemId=" + uploadContainer.find('#page_list_item_id').val() + '&currentImage=' + uploadContainer.find('#currentImage').val();
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			uploadContainer.find('#result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
-
-
-	$('#article-preview-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articlepreview&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			var uploadContainer = $('#article-preview-image-upload');
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					uploadContainer.find('.image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							var currentImage = uploadContainer.find('#currentImage').val()
-							uploadContainer.find('form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articlepreview&imgType=inline&articleId=" + uploadContainer.find('#a_i').val() + '&currentImage=' + uploadContainer.find('#currentImage').val();
-						};
-						
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			uploadContainer.find('#result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
-
-	$('#article-wide-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articlewide&imgType=wide&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			var uploadContainer = $('#article-wide-image-upload');
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					uploadContainer.find('.image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							// If the image is currently hidden, ie. nothing has been uploaded as the image
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							var currentImage = uploadContainer.find('#currentImage').val()
-							//uploadContainer.find('form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articlewide&imgType=wide&articleId=" + uploadContainer.find('#a_i').val() + '&currentImage=' + currentImage;
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			uploadContainer.find('#result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});
-
-	$('#article-tall-image-upload').mpImageUpload({
-		uploadUrl : "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articletall&imgType=tall&articleId=" + $(this).find('#a_i').val() + '&currentImage=' + $(this).find('#currentImage').val(),
-		onComplete : function(resp){
-			var uploadContainer = $('#article-tall-image-upload');
-			if(!resp.hasError){
-				var reader = new FileReader;
-				reader.onloadend = function(e){
-					uploadContainer.find('.image-preview img').fadeTo(250, 0, function(){
-						this.onload = function(){
-							// If the image is currently hidden, ie. nothing has been uploaded as the image
-							if($(this).hasClass('hidden')){
-								$(this).removeClass('hidden');
-								$(this).parent().find('p.no-img').eq(0).remove();
-							}
-							$(this).fadeTo(250, 1);
-							var currentImage = uploadContainer.find('#currentImage').val()
-							//uploadContainer.find('form #currentImage').val(resp.lastUploadedFile.name);
-							resp.options.uploadUrl = "<?php echo $config['this_admin_url']; ?>assets/php/ajaximageroute.php?imageType=articletall&imgType=tall&articleId=" + uploadContainer.find('#a_i').val() + '&currentImage=' + currentImage;
-						};
-						this.src = e.target.result;
-					});
-				}
-				reader.readAsDataURL(resp.lastUploadedFile);
-			}
-			uploadContainer.find('#result').fadeTo(250, 0, function(){
-				$(this).empty().html(resp.message).removeClass('error success');
-				(resp.hasError) ? $(this).addClass('error') : $(this).addClass('success');
-				$(this).fadeTo(250 , 1);
-			});
-		}
-	});*/
-
 
 	$('#contributor_wide_img').mpImageCropUpload({
 		desWidth: 140,
@@ -1330,31 +970,6 @@ $(document).ready(function (){
 	    });
 	});
 
-	
-	//	Account Settings Form Toggler
-	/*var fieldSet = document.getElementById("hidden-field-set");
-	var toggleButton = document.getElementById("field-toggler");
-	var changePasswordHiddenField = document.getElementById("pwd_change");
-	if (toggleButton !== null){
-		toggleButton.onclick = function(e){
-			var currentState = this.innerHTML;
-			if (currentState == "Change Password"){
-				//	Password is set to be changed...
-				this.innerHTML = "Cancel";
-				fieldSet.className = "revealed";
-				changePasswordHiddenField.setAttribute("value", "true");			
-			} else {
-				//	Password is not changing...
-				this.innerHTML = "Change Password";
-				fieldSet.className = "hidden";
-				changePasswordHiddenField.setAttribute("value", "false");	
-				var passwordFields = fieldSet.getElementsByTagName('input');
-				for(var i=0; i < passwordFields.length; i++){
-					passwordFields[i].value = "";
-				}		
-			}
-		}
-	}*/
 
 	//	Handle click of add new list item...
 	var addText = document.getElementById("large-add-text"),
@@ -1376,17 +991,13 @@ $(document).ready(function (){
 	}
 	
 	$('input[name="collections_name-s"]').SDSeoTitleAutoComplete("collections_seoname-s");
-	//$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
 	$('input[name="page_list_title"]').SDSeoTitleAutoComplete("page_list_seo_title", "seo_title_updated");
 
 	$('.toggle-link').SDToggler('#add-list-form');
 	$('.toggle-link').SDToggler('#add-list-form');
 
-	//$('.radio-input').SDRadioToggler('#image-inputs', '#you-tube-inputs');
-
 	$('#sub-menu-button').click(function(e){
 		$('#main-cont').toggleClass('active_submenu');
-		//$(this).hide();
 	});
 
 
@@ -1495,16 +1106,8 @@ if($('#article_categories')){
 	});
 }
 		
-		$('#preview').on('click', function(event){
-			//event.preventDefault();
 
-			//var lightbox = $('#lightbox-preview-cont');
-
-			//$(lightbox).parent().parent().show();
-
-
-		});
-	$('.has-tooltip').tooltipster();
+$('.has-tooltip').tooltipster();
 
 //LIBRARY PHOTOS
 	if($('#search-lib')){
@@ -1518,7 +1121,7 @@ $('.step-2').hide();
 $('.img_categories').click(function(e){
 	var elm = $(this),
 	category = elm.attr('data-info');
-	console.log(category);
+
 	$.ajax({
 		type: "POST",
 		url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
@@ -1555,7 +1158,6 @@ if($('#dd-shares-calc')){
 }
 
 /*PREVIEW BUTTON*/
-
 if($('#preview')){
 	$('#preview').click(function(e){
 		e.preventDefault();
@@ -1631,15 +1233,11 @@ if(document.body.id == 'editarticle'){
 			if(data == 'false'){
 				$('select[name="nativo_mobile_ad"]').find('option[value="5"]').attr("selected",true);
 				$('select[name="sharethrough_mobile_ad"]').find('option[value="2"]').attr("selected",true);
-				//$('select[name="carambola_mobile_ad"]').find('option[value="-1"]').attr("selected",true);
 				$('select[name="branovate_mobile_ad"]').find('option[value="999"]').attr("selected",true);
 				$('select[name="google_mobile_ad"]').find('option[value="-1"]').attr("selected",true);
 				
 				$('select[name="google_desk_ad"]').find('option[value="-1"]').attr("selected",true);
-				//$('select[name="nativo_desk_ad"]').find('option[value="-1"]').attr("selected",true);
-				
-				//$('select[name="sharethrough_desk_ad"]').find('option[value="5"]').attr("selected",true);
-				
+						
 				if(isListArticle){ 
 					$('select[name="carambola_desk_ad"]').find('option[value="6"]').attr("selected",true);
 					$('select[name="sharethrough_desk_ad"]').find('option[value="2"]').attr("selected",true);
@@ -1647,12 +1245,11 @@ if(document.body.id == 'editarticle'){
 					$('select[name="carambola_desk_ad"]').find('option[value="5"]').attr("selected",true);
 					$('select[name="sharethrough_desk_ad"]').find('option[value="2"]').attr("selected",true);
 				}
-
-				//$('select[name="branovate_desk_ad"]').find('option[value="-1"]').attr("selected",true);
 			}
 		},
 		async:   false
 	});
+
 	//SET DEFAULT VALUES DEPENDING ON ARTICLE BASE TYPE LI/P
 	if(isListArticle){
 		google_position = -1;
@@ -1674,7 +1271,7 @@ $('.paid-checkbox').click( function(e){
 	task = 'pay_contributors', paid = $(current_cb).is(':checked');
 
 	//var url = 'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php';
-	var url = 'http://localhost:8888/projects/pucker-mob//httpdocs/admin/assets/php/ajaxfunctions.php';
+	var url = '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php';
 
 	$.ajax({
 		type: "POST",
@@ -1690,7 +1287,35 @@ $('.paid-checkbox').click( function(e){
 			}
 		}
 	});
-
 });
+
+if($('.mob-level-contributor')){
+	$('.mob-level-contributor').on('click', function(e){
+		var level = $(this), 
+		cont_type = $(level).attr('data-info-level'),
+		contributor_email = $(level).attr('data-info-user-email');
+
+		//console.log(cont_type);
+		$.ajax({
+			type: "POST",
+			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			data: { cont_type: cont_type, task:'update_cont_level', contributor_email: contributor_email }
+		}).done(function(data){
+			if(data){
+				var user_type = data;
+				console.log(data);
+				if(user_type == 8){
+					level.val('PRO');
+					level.attr('data-info-level', '8');
+				}
+				if(user_type == 3){
+					level.val('BASIC');
+					level.attr('data-info-level', '3');
+				}
+			}
+		});
+
+	});
+}
 
 });

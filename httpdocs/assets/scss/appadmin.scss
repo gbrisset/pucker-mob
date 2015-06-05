@@ -128,6 +128,9 @@ $social-hover-darken-percent: -25%;
 .align-left{
 	text-align: left !important;
 }
+.align-center{
+	text-align: center !important;
+}
 
 .inline{display:inline;}
 .inline-block{display: inline-block;}
@@ -1038,6 +1041,27 @@ width: 48%;
 .advertising-box h3{   margin-bottom: 0.2rem; }
 .advertising-box .h3-ads{font-weight: bold; margin: 2rem 0 1rem 0;}
 
+/*USER PLAN BOX*/
+.user-plan{
+	.user-plan-cont{ background: #F6F4F5; border: 1px solid #ddd; }
+	.current-level h2{text-transform: uppercase; font-size: 1.2rem; font-family: Oslo; height: 49px; display: table-cell; vertical-align: middle;}
+	.mob-level-explanation{ margin-top: 0.2rem; }
+	.show-mob-levels{  text-align: right; line-height: 1.3; margin: 0; }
+	.arrow-level .fa-caret-right{display: table-cell; height: 3rem; vertical-align: middle; font-size: 2rem; padding: 0.5rem 1rem;}
+	.arrow-level a{ color: #000; }
+}
+
+.mob-levels-content{
+	h2{  text-transform: uppercase; font-size: 1.2rem; line-height: 1.3; }
+	table{   border: none; background: #fff;}
+	table thead{   border-bottom: 1px solid #000;  background: #fff; }
+	table tr{}
+	table tr td { text-transform: uppercase;   border-right: 1px solid #000; text-align: center;}
+	table tr td.big-td{ font-size:1.2rem; text-align:center;}
+}
+
+.how-do-pro-level h2{ font-size: 1.5rem; text-transform: uppercase; font-family:oslobold;}
+.mob-level{ background: #000; color: #fff; border:none; margin-top:0.5rem; padding-top: 0.3rem;}
 @import "admin/browser_specifics_styling";
 
 

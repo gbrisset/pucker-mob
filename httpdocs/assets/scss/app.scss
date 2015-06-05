@@ -1821,21 +1821,21 @@ a:hover.tooltips span {
 
 .contributor_page{
 	h1.contributor-title{
-	  color: #006633;
+	  color: #000;
 	  text-transform: uppercase;
 	  font-size: 1.9rem !important;
 	  border-bottom: 1px solid #bbb;
-	  padding-bottom: 0.7rem;
+	  padding-bottom: 0rem;
 	}
 	#contributor-intro{
-		border-bottom: 1px solid #bbb;
-  		padding-bottom: 1rem;
-  		padding-top: 0.7rem;
+		border-bottom: 1px solid #ddd;
+  		padding-bottom: 0.5rem;
+  		padding-top: 0.5rem;
   		p{ margin-right: 1rem; margin-bottom:0;}
 	}
 	.contrib-image{
 	  border-radius: 60px;
-	  width: 7rem;
+	  width: 6rem;
 	  display: inline-block;
 	}
 	.contributor-img{
@@ -1845,7 +1845,7 @@ a:hover.tooltips span {
 
 	#contributor-bio{ 
 	width: 48%;
-		h2{ color:#006633;}
+		h2{ color:#006633; font-size:1.3rem; margin-top: 10px;}
 	}
 
 	#author-links{
@@ -1856,6 +1856,10 @@ a:hover.tooltips span {
 	}
 
 	.fa{ font-size: 1.1rem;  min-width: 20px;}
+
+	.writers > #contributor-intro:last-child, .probloggers > #contributor-intro:last-child{
+		border-bottom: none;
+	}
 
 	@media #{$mobile-only} { 
 		.contributor-img h2{  font-size: 1.4rem; max-width: 10rem;}

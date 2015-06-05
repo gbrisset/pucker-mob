@@ -23,16 +23,7 @@
 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
 	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
 
-	//Verify if user is a content provider...
-	$admin_user = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2  || $adminController->user->data['user_type'] == 6){
-		$admin_user = true;
-	}
 
-	$externalWriter = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 7 ){
-		$externalWriter = true;
-	}
 
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributor_email = $adminController->user->data['user_email'];
@@ -51,9 +42,13 @@
 	$allarticles = $mpArticle->getAllLiveArticles();
 
 	$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
+
+	$contributor_id = $article['contributor_id'];
+	$contributor_type = $adminController->getContributorUserType($contributor_id);
+	if($contributor_type != false) $contributor_type =  $contributor_type["user_type"]; else $contributor_type = false;
+
 	// SUMMIT FORM
 	if(isset($_POST['submit'])){
-
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
 				case isset($_POST['article_title-s']):
@@ -78,18 +73,14 @@
 
 			}
 			
-			//$article = $adminController->getSingleArticle(array('seoTitle' => $uri[2]));
 			$article = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 			$article = $article['articles'];
-//var_dump($article );
 			$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
 
 			//Article ADs
 			$article_ads = $mpArticleAdmin->getArticleAds($article);
 			if($article_ads && isset($article_ads[0])) $article_ads = $article_ads[0];
 			
-			//$article = $adminController->getSingleArticle(array('seoTitle' => $_POST['article_seo_title-s']));
-
 		}else $adminController->redirectTo('logout/');
 	}
 
@@ -112,8 +103,6 @@
 				$article_status = "Pending Review";
 		}
 	}
-	//Preview Article Content
-	//include_once($config['include_path_admin'].'preview.php');
 ?>
 
 <!DOCTYPE html>
@@ -270,10 +259,6 @@
 					<?php if($admin_user  || $externalWriter){?>
 					<?php
 						$allStatuses = $adminController->getSiteObjectAll(array('table' => 'article_statuses'));
-						//if($allStatuses && count($allStatuses)){
-							//include_once($config['include_path_admin'].'previewarticle.php'); 
-						//} 
-						
 					?>
 					<div class="row <?php if(isset($content_provider) && $content_provider ) echo 'hide'; ?>">
 					    <div class="columns mobile-12 small-7">
@@ -365,7 +350,8 @@
 					<?php } ?>
 
 					<!-- Featured Article -->
-					<?php if($admin_user){ 
+					<?php if($admin_user && ( $contributor_type == 8 || $contributor_type == 1 || $contributor_type == 2 || $contributor_type == 6 || $contributor_type == 7 ) ){ 
+
 						$featuredArticle = $mpArticle->getFeaturedArticle( 1 );
 					?>
 					<div class="row">
@@ -385,7 +371,7 @@
 
 					<!-- Featured Article on Homepage -->
 		
-					<?php if( $admin_user && $articleResultSet['categories'][0]['cat_id'] == "9"){?>
+					<?php if( $admin_user && $articleResultSet['categories'][0]['cat_id'] == "9" && $contributor_type == 8 ){?>
 					<div class="row">
 					    <div class="columns">
 						<label class="small-4 left uppercase">Show in HomePage </label>
@@ -739,13 +725,14 @@
 					<?php }?>
 
 					<div class="row buttons-container">
+						<?php if( $article['article_status'] == 1 )  { ?> <a href="http://www.puckermob.com/<?php echo $articleResultSet['categories'][0]['cat_dir_name'].'/'.$article['article_seo_title']; ?>" target="_blank" style="padding:0.5rem 1rem !important;" class="button" >SEE ARTICLE</a><?php }?>
 						<button type="submit" id="submit" name="submit" class="">SAVE</button>
 						<button type="button" id="preview" name="preview" class="">PREVIEW</button>
 						<?php if( $admin_user || $blogger || $externalWriter ){
 							$label = "PUBLISH";
 							$val = 1;
-							if( $blogger  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
-							if( $admin_user  && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;}
+							if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
+							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;}
 						?>
 							<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish" class=""><?php echo $label; ?></button>
 						<?php }?>

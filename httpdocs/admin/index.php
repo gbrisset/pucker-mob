@@ -23,7 +23,7 @@
 			$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $contributor_email ])['contributors'];
 		}
 
-		$rate = $dashboard->get_current_rate();
+		$rate = $dashboard->get_current_rate( 0, $adminController->user->data['user_type']  );
 		$ManageDashboard = new ManageAdminDashboard( $config );
 
 		$current_month = date('n');
@@ -159,11 +159,14 @@
 			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
 					<header>MY DASHBOARD</header>
 			</div>
+			<!--MOB LEVEL    -->
+			<?php include_once($config['include_path_admin'].'showuserplan.php');?>
+
 			<section id="articles">
 				<!-- MONTHLY SHARE RATE -->
 				<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
-						<p>May CPM Rate (Based on U.S. Visitors): <?php echo '$'.number_format($rate, 2, '.', ','); ?></p>
+						<p>JUNE CPM Rate (Based on U.S. Visitors): <?php echo '$'.number_format($rate, 2, '.', ','); ?></p>
 						<p id="dd-shares-calc">Click to Learn More About CPM Rates <i class="fa 2x fa-caret-down"></i></p>
 					</div>
 					<div class="find-more-link right">

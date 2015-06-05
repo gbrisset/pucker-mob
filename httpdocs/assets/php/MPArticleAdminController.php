@@ -530,7 +530,18 @@ class MPArticleAdminController extends MPArticle{
 	}
 	/* End Admin Controller Site Updating Functions */
 
+	public function getContributorUserType( $contributor_id ){
+		 $contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT);
 
+		 $s = " SELECT users.user_type FROM article_contributors INNER JOIN ( users ) ON ( users.user_email = article_contributors.contributor_email_address ) WHERE  article_contributors.contributor_id =  :contributor_id";
+
+		 $q = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ':contributor_id' => $contributor_id )
+		));
+
+		 return $q;
+	}
 
 	/* Begin Article Creation Functions */
 	

@@ -679,73 +679,56 @@ public function getContributors($args = [], $attempts = 0){
 		$leftJoinTables = [];//'article_videos', 'syndication_videos'];
 		$leftJoinRelations = [];//'articles.article_id = article_videos.article_id', 'article_videos.syn_video_id = syndication_videos.syn_video_id'];
 		$whereClause = '';
+		
 		switch(true){
-			/*case($options['featured']):
-				if(!is_null($options['pageId'])){
-					$innerJoinTables[] = 'article_category_page_featured_contributors';
-					$innerJoinRelations[] = 'article_contributors.contributor_id = article_category_page_featured_contributors.contributor_id';
-					$whereClause = ' WHERE article_category_page_featured_contributors.category_page_id = :pageId';
-					$orderClause = " ORDER BY article_category_page_featured_contributors.featured_id DESC, article_contributors.contributor_id DESC";
-				}else{
-					$innerJoinTables[] = 'article_page_featured_contributors';
-					$innerJoinRelations[] = 'article_contributors.contributor_id = article_page_featured_contributors.contributor_id';
-					$whereClause = ' WHERE article_page_featured_contributors.article_page_id = :pageId';
-					$orderClause = " ORDER BY article_page_featured_contributors.featured_id DESC, article_contributors.contributor_id DESC";
-				}
-				$whereClause .= "";
-				$queryParams = [':pageId' => filter_var((is_null($options['pageId'])) ? $this->config['articlepageid'] : $options['pageId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)];
-				$articlesType = 'featured';
-				break;*/
+			
 				case(!is_null($options['contributorId']) || strlen($options['contributorSEOName']) ):
-				//$innerJoinTables[] = 'article_contributor_articles';
-				//$innerJoinTables[] = 'articles';
-				//$innerJoinRelations[] = 'article_contributors.contributor_id = article_contributor_articles.contributor_id';
-				//$innerJoinRelations[] = 'article_contributor_articles.article_id = articles.article_id';
-				
+			
+					$whereClause = ' WHERE ( article_contributors.contributor_id = :contributorId OR article_contributors.contributor_seo_name = :contributorSEOName )';
+					$queryParams = [
+					':contributorId' => filter_var($options['contributorId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
+					':contributorSEOName' => filter_var($options['contributorSEOName'], FILTER_SANITIZE_STRING, PDO::PARAM_STR),
+					];
 
-				$whereClause = ' WHERE ( article_contributors.contributor_id = :contributorId OR article_contributors.contributor_seo_name = :contributorSEOName )';
-				$queryParams = [
-				':contributorId' => filter_var($options['contributorId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
-				':contributorSEOName' => filter_var($options['contributorSEOName'], FILTER_SANITIZE_STRING, PDO::PARAM_STR),
-				];
-
-				$orderClause = " ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC";
-				$articlesType = 'single';
-				break;
+					$orderClause = " ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC";
+					$articlesType = 'single';
+					break;
 
 				case( strlen($options['contributorEmail']) ):
-				$whereClause = ' WHERE (article_contributors.contributor_email_address = :contributorEmail)';
-				$queryParams = [
-				':contributorEmail' => filter_var($options['contributorEmail'], FILTER_SANITIZE_STRING, PDO::PARAM_STR)
-				];
-
-				$orderClause = " ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC";
-				$articlesType = 'single';
-				break;
-				default:
-				$innerJoinTables[] = 'article_contributor_articles';
-				$innerJoinTables[] = 'articles';
-				$innerJoinTables[] = 'article_categories';
-				$innerJoinTables[] = 'categories';
-				$innerJoinTables[] = 'article_page_categories';
-				$innerJoinTables[] = 'article_pages';
-				$innerJoinRelations[] = 'article_contributors.contributor_id = article_contributor_articles.contributor_id';
-				$innerJoinRelations[] = 'article_contributor_articles.article_id = articles.article_id';
-				$innerJoinRelations[] = 'articles.article_id = article_categories.article_id';
-				$innerJoinRelations[] = 'article_categories.cat_id = categories.cat_id';
-				$innerJoinRelations[] = 'categories.cat_id = article_page_categories.category_page_id';
-				$innerJoinRelations[] = 'article_page_categories.article_page_id = article_pages.article_page_id';
-				$whereClause = ' WHERE article_contributors.contributor_bio != "" AND article_contributors.contributor_bio IS NOT NULL AND article_contributors.contributor_image != "" AND article_pages.article_page_id = :pageId';
-				$queryParams = [':pageId' => filter_var($this->config['articlepageid'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)];
-				$orderClause = [
-					" ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC",//Most Recent
-					" ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC",//Most Popular
-					" ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC",//Most Visited
-					" ORDER BY article_contributors.contributor_name ASC, article_contributors.contributor_id DESC",//Alpha A-Z
-					" ORDER BY article_contributors.contributor_name DESC, article_contributors.contributor_id DESC"//Alpha Z-A
+					$whereClause = ' WHERE (article_contributors.contributor_email_address = :contributorEmail)';
+					$queryParams = [
+						':contributorEmail' => filter_var($options['contributorEmail'], FILTER_SANITIZE_STRING, PDO::PARAM_STR)
 					];
-					$articlesType = 'all';
+
+					$orderClause = " ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC";
+					$articlesType = 'single';
 					break;
+				default:
+					$innerJoinTables[] = 'article_contributor_articles';
+					$innerJoinTables[] = 'articles';
+					$innerJoinTables[] = 'article_categories';
+					$innerJoinTables[] = 'categories';
+					$innerJoinTables[] = 'article_page_categories';
+					$innerJoinTables[] = 'article_pages';
+					$innerJoinTables[] = 'users';
+					$innerJoinRelations[] = 'article_contributors.contributor_id = article_contributor_articles.contributor_id';
+					$innerJoinRelations[] = 'article_contributor_articles.article_id = articles.article_id';
+					$innerJoinRelations[] = 'articles.article_id = article_categories.article_id';
+					$innerJoinRelations[] = 'article_categories.cat_id = categories.cat_id';
+					$innerJoinRelations[] = 'categories.cat_id = article_page_categories.category_page_id';
+					$innerJoinRelations[] = 'article_page_categories.article_page_id = article_pages.article_page_id';
+					$innerJoinRelations[] = 'article_contributors.contributor_email_address = users.user_email';
+					$whereClause = ' WHERE article_contributors.contributor_bio != "" AND article_contributors.contributor_bio IS NOT NULL AND article_contributors.contributor_image != "" AND users.user_type IN ( 1, 2, 6, 7, 8)';
+					$queryParams = [':pageId' => filter_var($this->config['articlepageid'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)];
+					$orderClause = [
+						" ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC",//Most Recent
+						" ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC",//Most Popular
+						" ORDER BY article_contributors.creation_date DESC, article_contributors.contributor_id DESC",//Most Visited
+						" ORDER BY article_contributors.contributor_name ASC, article_contributors.contributor_id DESC",//Alpha A-Z
+						" ORDER BY article_contributors.contributor_name DESC, article_contributors.contributor_id DESC"//Alpha Z-A
+						];
+						$articlesType = 'all';
+						break;
 				}
 				$s = "SELECT *, article_contributors.contributor_id FROM article_contributors";
 				if($innerJoinTables) $s.= " INNER JOIN  (:joinedTables) ON (:joinRelations)";

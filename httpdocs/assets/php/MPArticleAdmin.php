@@ -189,6 +189,42 @@ class MPArticleAdmin{
 	}
 	/* End Admin Site Information Gathering Functions */
 
+	public function upgradeContributorPlan( $post ){
+	
+		$user_email = $post['contributor_email'];
+		$user_type = $post['cont_type'];
+		$new_user_type = false;
+
+
+
+		if(empty($new_user_type)) $new_user_type = 3;
+		
+		if( !empty($user_type) && $user_type == '3'){
+			$new_user_type = 8;
+		}else if( $user_type == '8'){
+			$new_user_type = 3;
+		}else $new_user_type = false;
+
+		if($new_user_type){
+			$s = "UPDATE users SET user_type = $new_user_type WHERE user_email = '".$user_email."'";
+			$pdo = $this->con->openCon();
+			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			
+			$q = $pdo->prepare( $s );
+			$params[':user_email_old'] = filter_var(trim($user_email), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+			
+			try{
+				$q->execute($params);
+			}catch(PDOException $e){
+				$this->con->closeCon();
+				return array_merge($this->returnStatus(500), ['hasError' => true]);
+			}
+
+			$this->con->closeCon();
+		}
+
+		return $new_user_type;
+	}
 
 	/* Begin Site Generic Update Functions */
 	public function updateSidebarArticles($post){
@@ -1745,7 +1781,6 @@ class MPArticleAdmin{
 		$pdo = $this->con->openCon();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$q = $pdo->prepare("UPDATE  article_page_series_playlist SET article_page_series_featured_video = ".$featured_value." WHERE article_page_series_id = ".$post['s_i']." AND syn_video_id = ".$post['v_i']);
-		//var_dump($q);
 		try{
 			$q->execute($params);
 		}catch(PDOException $e){

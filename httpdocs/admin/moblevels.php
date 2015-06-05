@@ -145,9 +145,19 @@
 					</tbody>
 				</table>
 			</section>
-			<section >
+			<section style="margin-bottom: 3rem;">
 				<div class="how-do-pro-level small-12">
 					<h2>HOW DO YOU GET TO PRO LEVEL? </h2>
+					<p>Are you ready to go Pro? Pro bloggers can earn more money and have access to more features than Basic bloggers. So how do you get to achieve Pro status? It's easy: just be an active contributor to The Mob. Our editors are in constant review of our accounts, and will make decisions as to who gets Pro status based on a number of factors, including:</p>
+					<ul>
+						<li>Age of account (you must be blogging with us for a minimum of three months before being eligible for Pro status)</li>
+						<li>Frequency of posts - we want to see that you're posting new content often</li>
+						<li>How well your posts, topics and writing fit in with the overall site</li>
+						<li>Popularity of your posts (and their ability to draw an audience)</li>
+						<li>Attention to detail (spelling, grammar, etc.)</li>
+						<li>Keeping your articles within our policy guidelines </li>
+					</ul>
+					<p>Promotions to Pro level happen within the first five days of each month. If you'd like to be promoted and want tips on what you'd need to do to get there, please feel free to e-mail us anytime, or live chat with us during office hours. </p>
 				</div>
 			</section>
 		</div>

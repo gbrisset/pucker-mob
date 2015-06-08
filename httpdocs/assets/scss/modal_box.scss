@@ -4,7 +4,8 @@
 .modalDialogDeleteAccount,
 .modalDialogpPreviewArticle,
 .modalDialogFollow,
-.modalDialogFollowPopUp {
+.modalDialogFollowPopUp,
+.modalDialogfacebook {
 	position: fixed;
 	font-family: Arial, Helvetica, sans-serif;
 	top: 0;
@@ -30,7 +31,8 @@
 .show-modal-delete-box .modalDialogDeleteAccount,
 .show-modal-box-prev-art .modalDialogpPreviewArticle,
 .show-modal-box-follow .modalDialogFollow,
-.show-modal-box-follow-popup .modalDialogFollowPopUp {
+.show-modal-box-follow-popup .modalDialogFollowPopUp,
+.show-modal-box-facebook .modalDialogfacebook {
 	opacity:1;
 	pointer-events: auto;
 }
@@ -103,7 +105,8 @@
 	.modalDialogDeleteAccount > div,
 	.modalDialogpPreviewArticle > div,
 	.modalDialogFollow > div, 
-	.modalDialogFollowPopUp > div { width: 35%; max-width: 50rem; margin: 6% auto; }
+	.modalDialogFollowPopUp > div,
+	.modalDialogfacebook > div { width: 35%; max-width: 50rem; margin: 6% auto; }
 }
 
 @media #{$medium-up} { 
@@ -115,7 +118,8 @@
 	.modalDialogLib > div img,
 	.modalDialogFindOut > div img,
 	.modalDialogDeleteAccount  > div img,
-	.modalDialogFollow > div img{ width: 100%; max-width:320px;}
+	.modalDialogFollow > div img, 
+	.modalDialogfacebook > div > img{ width: 100%; max-width:320px;}
 	#popup-content{ max-width:320px; min-width:320px;}
 }
 

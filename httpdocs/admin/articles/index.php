@@ -105,12 +105,12 @@
 			<section id="articles">
 			<section class="left  mobile-12 small-12">
 				<section class="">
-				<form class="search-form-admin small-7 right margin-bottom" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
-						<div id="search-fieldset" class="mobile-12 small-12">
-							<input type="text" value="" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchemailinput">
-							<button type="submit" id="searchsubmit" name="searchsubmit" class="small-4"  >SEARCH<i class="icon-search"></i></button>
-						</div>
-				</form>
+					<form class="search-form-admin small-7 right margin-bottom" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
+							<div id="search-fieldset" class="mobile-12 small-12">
+								<input type="text" value="" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchemailinput">
+								<button type="submit" id="searchsubmit" name="searchsubmit" class="small-4"  >SEARCH<i class="icon-search"></i></button>
+							</div>
+					</form>
 				</section>
 				 <?php 
 					    	$sort = (isset($_GET['sort'])) ? $_GET['sort'] : '';

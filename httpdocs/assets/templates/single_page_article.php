@@ -261,7 +261,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<?php if(isset($category_id) && $category_id == 9){?>
 					<span class="span-category <?php echo $article_category_dir; ?>"><?php echo $article_category; ?></span>
 					<?php }?>
-					<span class="span-date"><?php echo $date; ?></span>
+					<span class="span-date" style="top:3px;"><?php echo $date; ?></span>
 				</p>
 			</div>
 		</div>

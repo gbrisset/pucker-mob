@@ -586,7 +586,12 @@ $('#menu-options li').on('click', function(e){
 			
 			//ADBLADE IN STREAM
 			if(num_items >= fourth_p ){
-				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+				if( article_id == 6920 ){
+					inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="mobile-instream-sprocketster-ad"></div>', tag );
+				}else{
+					inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+				}
+			
 			}
 
 		}
@@ -711,21 +716,8 @@ $('#menu-options li').on('click', function(e){
 		if( adPage === 'articleslide'){
 			//inBodyAd.loadInArticleAd( 'article-caption', 2, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 			inBodyAd.loadInArticleAd( 'article-caption', 4, 0, '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', 'p');
-				
 		}
-
-		//BTF1
-		//loadAd(select.ad.btf1, ad[adPage].btf1);
-
-		//BTF2
-		//loadAd(select.ad.btf2, ad[adPage].btf2);
 	}
-	//BTF3
-	//	if( page === 'home' ||  page === 'category'){
-			//if(hasSponsored == undefined || hasSponsored == 0){
-			//loadAd(select.ad.btf3, ad[adPage].btf3);
-			//}
-	//	}
 
 	$(window).resize(function() {
 
@@ -1057,45 +1049,22 @@ if($('body').hasClass('mobile') && adPage === 'article'){
 
 
 if($('body').hasClass('mobile')){
-	
-	/*var mobile_header_ad_loader = $('#mobile-header-ad-loader').find('#get-content');
-	setTimeout(function(){
-		mobile_header_ad_loader.appendTo($('#mobile-top-header-ad'));
-		$('#mobile-header-ad-loader').remove();
-	}, 100 );*/
 
 	if(adPage == 'article'){
-	//CRITEO IN STREAM ARTICLES
-	/*	var mobile_instream_criteo_ad_loader = $('#mobile-instream-criteo-ad-loader').find('#get-content');
-		setTimeout(function(){
-			mobile_instream_criteo_ad_loader.appendTo($('#mobile-instream-criteo-ad'));
-			$('#mobile-instream-criteo-ad-loader').remove();
-		}, 100 );
-	*/
-
-	//CONNATIX IN STREAM ARTICLES
-	/*
-	var mobile_instream_connatix_ad_loader = $('#mobile-instream-connatix-ad-loader').find('#get-content');
-	setTimeout(function(){
-		mobile_instream_connatix_ad_loader.appendTo($('#mobile-instream-connatix-ad'));
-		$('#mobile-instream-connatix-ad-loader').remove();
-	}, 200 );*/
-	
-	//CPI Campaign 
-	/*
-	var mobile_instream_cpi_ad_loader = $('#mobile-instream-cpi-ad-loader').find('#get-content');
-	setTimeout(function(){
-		mobile_instream_cpi_ad_loader.appendTo($('#mobile-instream-cpi-ad'));
-		$('#mobile-instream-cpi-ad-loader').remove();
-	}, 100 );/*/
-
 	//CPC NATIVE ADS
-	
 	var mobile_instream_native_ad_loader = $('#mobile-instream-native-ad-loader').find('#get-content');
 	setTimeout(function(){
 		mobile_instream_native_ad_loader.appendTo($('#mobile-instream-native-ad'));
 		$('#mobile-instream-native-ad-loader').remove();
 	}, 100 );
+
+	if( article_id == 6920 ){
+		var mobile_instream_sprocketster_ad_loader = $('#mobile-instream-sprocketster-ad-loader').find('#get-content');
+		setTimeout(function(){
+			mobile_instream_sprocketster_ad_loader.appendTo($('#mobile-instream-sprocketster-ad'));
+			$('#mobile-instream-native-ad-loader').remove();
+		}, 100 );
+	}
 
 	}
 }else{

@@ -166,13 +166,6 @@
         <?php }else{?>
            <ul class="left">
         <?php }?>
-       
-       <!--   <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>relationships"  class="relationships" >Relationships</a></li>
-          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>entertainment"  class="entertainment" >Entertainment</a></li>
-          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>money"  class="money" >Money</a></li>
-          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>lifestyle"  class="wellness" >Lifestyle</a></li>
-          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>fun"  class="fun" >Fun</a></li>
-          <li style="<?php //if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php //echo $config['this_url']; ?>moblog"  class="moblog" >THE MOB</a></li>-->
           
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-recent"  class="entertainment" >Most Recent</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>trending"  class="money" >Trending</a></li>
@@ -193,5 +186,15 @@
   if($detect->isMobile() ){
     /*  Highlight Article */
     include_once($config['include_path'].'highlightarticle.php');
-  }?>
+  }else{?>
+  <!-- FACEBOOK COMMENTS SCRIPT -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1473110846264937";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <?php }?>
 

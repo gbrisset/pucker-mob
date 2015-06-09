@@ -90,6 +90,10 @@ if ( $detect->isMobile() ) { ?>
 
 		<!-- MODAL BOX FOLLOWERS POPUP -->
 		<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
+
+		<!-- FACEBOOK POPUP -->
+		<?php include_once($config['include_path'].'facebookpopup.php'); ?>
+
 	</body>
 </html>
 		<?php } ?>

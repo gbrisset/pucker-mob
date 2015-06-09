@@ -85,46 +85,30 @@ $.fn.dynamicRegisterContent = function(){
 
 var ManageCookies = (function() {
     return {
-        retrieveCookie:   function( name ){
-          var cookie_value = "",
-            current_cookie = "",
-            name_expr = name + "=",
-            all_cookies = document.cookie.split(';'),
-            n = all_cookies.length;
-         
-          for(var i = 0; i < n; i++) {
-            current_cookie = all_cookies[i].trim();
-            if(current_cookie.indexOf(name_expr) == 0) {
-                cookie_value = current_cookie.substring(name_expr.length, current_cookie.length);
-                break;
-            }
+        createCookie: function(name,value,days) {
+          if (days) {
+            var date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            var expires = "; expires="+date.toGMTString();
           }
-          console.log(name+": "+cookie_value);
-          return cookie_value;
-        },
-        createCookie:   function (name,value,days) {
-
-          var date = new Date();
-          var exdays = days;
-          var exdate = new Date();
-
-          exdate.setTime(exdate.getTime()+(days*24*60*60*1000));
-          var expires = "; expires="+exdate.toGMTString();
-      
-          document.cookie = name+"="+value+expires;
-          console.log( document.cookie);
-        
-        },
-        
-        delete: function(name){
-            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+          else var expires = "";
+          document.cookie = name+"="+value+expires+"; path=/";
         },
 
-        getParameterByName: function(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        deleteCookie: function(name, path, domain) {
+          if (getCookie(name))
+            createCookie(name, "", -1, path, domain);
+        },
+
+        getCookie: function(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
         }
     }
 

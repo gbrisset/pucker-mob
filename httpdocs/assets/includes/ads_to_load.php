@@ -1,31 +1,4 @@
 <?php if($detect->isMobile()){ ?>
-	<!--<div id="mobile-header-ad-loader" class="hide">
-		<div id="get-content" style="text-align:center;">
-		<?php //if(isset($isArticle) && $isArticle ){?>-->
-	        <!-- puckermob.com/ros 
-	        <script type="text/javascript">
-	          var ord = window.ord || Math.floor(Math.random() * 1e16);
-	          document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';dcopt=ist;type=pop;type=int;ord=' + ord + '?"><\/script>');
-	        </script>
-	        <noscript>
-	        <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-	        <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros;sect=ros;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" />
-	        </a>
-	        </noscript>
-	    <?php //}else{?>-->
-	        <!-- puckermob.com/home 
-	        <script type="text/javascript">
-	          var ord = window.ord || Math.floor(Math.random() * 1e16);
-	          document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';dcopt=ist;type=pop;type=int;ord=' + ord + '?"><\/script>');
-	        </script>
-	        <noscript>
-	        <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-	        <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=320x150,320x100,320x50;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" />
-	        </a>
-	        </noscript>
-	    <?php //}?>-->
-		<!--</div>
-	</div>-->
 	<div id="mobile-instream-native-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
 		<?php if(isset($isArticle) && $isArticle ){?>
@@ -33,19 +6,19 @@
 		<?php } ?>
 		</div>
 	<div>
-	<!--
-	<div id="mobile-instream-connatix-ad-loader" class="hide">
+	<?php if(isset($articleInfoObj) && isset($articleInfoObj['article_id'])){ ?>
+	<div id="mobile-instream-sprocketster-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
-		<?php //if(isset($isArticle) && $isArticle ){?>
-		
-		<div id='div-gpt-ad-1431974009855-0' style='height:250px; width:300px;'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1431974009855-0'); });
-		</script>
+		<?php if(isset($isArticle) && $isArticle ){?>
+			<!-- Javascript Ad Tag: 9 -->
+			<div id="119xpg9Y78YnB"></div>
+			<script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=9&aff_id=1044&format=js&divid=119xpg9Y78YnB" type="text/javascript"></script>
+			<noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=9&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
+			<!-- End Ad Tag -->
+		<?php } ?>
 		</div>
-		<?php //} ?>
-		</div>
-	</div>-->
+	</div>
+	<?php }?>
 <?php }else { ?>
 	<div id="header-ad-loader" class="hide">
       	<div id="get-content">

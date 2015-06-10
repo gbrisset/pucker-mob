@@ -847,7 +847,9 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 
 
 .span-category{ color: $text-type-color; text-transform: uppercase; font-size:0.6rem;}
-.span-date, .span-author{ color: #464646; font-size:0.7rem;   top: 3px; position: relative;}
+.span-date, .span-author{ color: #464646; font-size:0.7rem;   top: 0px; position: relative;}
+
+
 .span-author a{ color: #464646;}
 .span-category:after{ content: '|'; margin: 0 0 0 0.4rem; color: #464646;}
 

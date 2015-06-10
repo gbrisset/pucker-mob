@@ -287,16 +287,7 @@ if(!is_null($categoryInfo)){
 		</div>
 	</div>
 	</div>
-	<!-- FACEBOOK COMMENTS BOX -->
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-
+	
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
     <script type="text/javascript">
@@ -313,6 +304,11 @@ if(!is_null($categoryInfo)){
 
    	<!-- MODAL BOX FOLLOWERS POPUP -->
 	<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
+
+
+	<!-- FACEBOOK POPUP -->
+	<?php include_once($config['include_path'].'facebookpopup.php'); ?>
+
 </body>
 </html>
 <?php } ?>

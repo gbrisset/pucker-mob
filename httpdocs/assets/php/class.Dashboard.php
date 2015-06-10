@@ -465,7 +465,7 @@ class Dashboard{
 		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$contributor_id = $data['contributor'];
-		$share_rate = $this->get_monthly_rate( $month, $year);
+		$share_rate = $this->get_monthly_rate( $month, $year );
 		$s = "
 			SELECT
 			      article_contributor_articles.contributor_id, 

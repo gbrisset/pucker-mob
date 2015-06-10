@@ -1,12 +1,25 @@
 <?php if($detect->isMobile()){ ?>
+
+	<div id="mobile-instream-komoona-ad-loader" class="hide">
+		<div id="get-content" style="text-align:center;">
+		<?php if(isset($isArticle) && $isArticle ){?>
+			<script type="text/javascript">
+			    kmn_placement = 'cb04f88a1ff0727dc9881e3cfe5d8acc';
+			</script>
+			<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
+		<?php } ?>
+		</div>
+	</div>
+
 	<div id="mobile-instream-native-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
 		<?php if(isset($isArticle) && $isArticle ){?>
 			<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-deeab8461c3725af1723048fac0d2127cc855db6.js" async></script>		
 		<?php } ?>
 		</div>
-	<div>
-	<?php if(isset($articleInfoObj) && isset($articleInfoObj['article_id'])){ ?>
+	</div>
+
+	<?php //if(isset($articleInfoObj) && isset($articleInfoObj['article_id'])){ ?>
 	<div id="mobile-instream-sprocketster-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
 		<?php if(isset($isArticle) && $isArticle ){?>
@@ -18,7 +31,10 @@
 		<?php } ?>
 		</div>
 	</div>
-	<?php }?>
+
+	
+
+	<?php // }?>
 <?php }else { ?>
 	<div id="header-ad-loader" class="hide">
       	<div id="get-content">

@@ -160,8 +160,8 @@
 						  	
 						  		$contributor_type = isset($contributor['user_type']) ? $contributor['user_type'] : '4';
 						  		if($contributor_type != 4 ){
-						  		 $contributor['total_to_pay'] = $contributor['total_to_pay'] - $contributor['total_rate'];
-						  		 $contributor['total_rate'] = 0;
+							  		 $contributor['total_to_pay'] = $contributor['total_to_pay'] - $contributor['total_rate'];
+							  		 $contributor['total_rate'] = 0;
 						  		}
 
 						  		$total = $total + $contributor['total_to_pay'];
@@ -268,8 +268,8 @@
 					  			$style = "background-color: #fff;";
 					  			if( $contributor['user_type'] == 8){
 					  				$style = "background-color: #E6FAFF";
-					  			}elseif($month > 6 && $year >= 2015 ) { if($total_to_pay > 50 ) $style = "background-color: #FFFFCC;";}
-					  			elseif($total_to_pay > 50 ) $style = "background-color: #FFFFCC;";
+					  			}elseif($month > 6 && $year >= 2015 ) { if($total_to_pay > 25 ) $style = "background-color: #FFFFCC;";}
+					  			elseif($total_to_pay > 25 ) $style = "background-color: #FFFFCC;";
 					  			
 
 					  		?>	

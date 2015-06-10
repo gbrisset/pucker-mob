@@ -176,10 +176,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 
-		<!-- READ MORE MOBILE -->
+		<!-- READ MORE MOBILE 
 		<div id="grad"></div>
 		<p class="read-more" style="margin-bottom:0 !important;"><a href="" class="button">CONTINUE READING</a></p>
-
+		-->
 		</section>
 	</div>
 	

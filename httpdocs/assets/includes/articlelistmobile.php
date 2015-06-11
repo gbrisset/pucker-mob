@@ -64,7 +64,7 @@
 				</h2>
 			</div>
 			<div class="second-article-date small-12 clear">
-				<label class="small-6" ><?php echo $date; ?></label>
+				<label class="small-6 left" ><?php echo $date; ?></label>
 				<label class="small-6 span-shares-holder"></label>
 			</div>
 		</div>

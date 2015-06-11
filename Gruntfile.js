@@ -32,13 +32,27 @@ module.exports = function(grunt) {
           livereload: true,
         }
       }
+    },
+
+    uglify: {
+      options: {
+        mangle: false,
+        livereload: true,
+      },
+      jscompress: {
+        files: {
+          'httpdocs/assets/js/app.min.js': ['httpdocs/assets/js/plugins.js', 'httpdocs/assets/js/app.js', 'httpdocs/assets/js/js_scroll.js']
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('build', ['sass']);
+  grunt.registerTask('jscompress', ['uglify']);
   grunt.registerTask('default', ['build','watch']);
 }
 

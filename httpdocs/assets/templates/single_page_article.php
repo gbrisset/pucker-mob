@@ -92,22 +92,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<?php  //BRANOVATE ABOVE ARTICLE 
 			//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-			  <!-- <div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>
-		-->
+			<!-- <div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>-->
 		<?php //} ?> 
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
 
-		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
-			<?php if(!$promotedArticle){ ?>
-				<div class="row hide-for-print padding-top ads margin-bottom">
-					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
-					<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-				</div>
-			<?php }?>
-		
-
+		<?php // BRANOVATE BELOW ARTICLE BODY
+		//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
+			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>
+		<?php // } ?> 
 
 		<!-- RELATED ARTICLES -->
 		<?php 
@@ -170,12 +164,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 		</div>
 		<?php }?>
-
-		<?php // BRANOVATE BELOW ARTICLE BODY
-		//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
-			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;">
-			</div>
-		<?php // } ?> 
 
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>

@@ -1445,7 +1445,7 @@ $fun: #f9651b;
 	color: #6ad98a;
 }
 
-/*READ MORE LINK MOBILE
+/*READ MORE LINK MOBILE */
 
 @media #{$mobile-only} {
 	.sidebar-box { 
@@ -1515,7 +1515,7 @@ $fun: #f9651b;
 
 	 .at4-jumboshare .at4-count-container{ padding-top: 0.4rem !important;}
 }
-*/
+
 /*VIDEOS PAGE*/
 dl { margin-bottom: 0.5rem !important; }
 
@@ -1988,12 +1988,10 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .second-popular-article-title h2{  font-size: 1.2rem;  line-height: 1.4rem;  font-family: OswaldLight;  font-weight: bold; color: #222 !important;}
 .second-popular-article-title h2 a {color: #222 !important;}
 .second-article-date span{   position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; }
-.second-article-date label { position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; width: 49%; }
+.second-article-date label { position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; width: 49%; display: inline-block;}
 .second-article-date .span-shares-holder{ text-align: right;}
 
-body#home, body#category{
-	.second-popular-articles-cont{ margin: 0.25rem 0;}
-}
+body#home, body#category{ .second-popular-articles-cont{ margin: 0.25rem 0;} }
 
 .hide-this{ display:none !important;}
 .show-this{ display:inline-block !important;}
@@ -2009,15 +2007,12 @@ body#home, body#category{
   color: #000;
 }
 
-.medium-index{
-	z-index:15 !important;
-}
-.high-index{
-	z-index:100002 !important;
-}
-.low-index{
-	z-index:2 !important;
-}
+.medium-index{ z-index:15 !important; }
+.high-index{ z-index:100002 !important; }
+.low-index{ z-index:2 !important; }
 
 .loading-bar{ text-align: center; }
 .loading-bar img{  width: 15%; display: inline-block; margin: 0.5rem;}
+
+#branovate-ad div{ margin-left:-13px; }
+#branovate-ad-iframe{ border:none; height:240px; }

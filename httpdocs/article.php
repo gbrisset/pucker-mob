@@ -135,7 +135,6 @@ if(!is_null($categoryInfo)){
 			<?php if(!$promotedArticle){ ?>
 				<div class="columns hide-for-print padding-top ads">
 					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
-					<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 				</div>
 			<?php }?>
 
@@ -196,7 +195,7 @@ if(!is_null($categoryInfo)){
 			
 			<!-- Setting the Poll -->			
 			<?php 
-			if(isset($articleInfoObj['article_poll_id']) && strlen($articleInfoObj['article_poll_id']) > 0){ ?>
+			if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>
 				<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="<?php echo $articleInfoObj['article_poll_id']; ?>"></script>
 			<?php }?>
 
@@ -287,7 +286,16 @@ if(!is_null($categoryInfo)){
 		</div>
 	</div>
 	</div>
-	
+	<!-- FACEBOOK COMMENTS BOX -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
     <script type="text/javascript">
@@ -304,11 +312,6 @@ if(!is_null($categoryInfo)){
 
    	<!-- MODAL BOX FOLLOWERS POPUP -->
 	<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
-
-
-	<!-- FACEBOOK POPUP -->
-	<?php include_once($config['include_path'].'facebookpopup.php'); ?>
-
 </body>
 </html>
 <?php } ?>

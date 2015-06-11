@@ -1,29 +1,21 @@
 <head>
-
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
 		<meta http-equiv="x-dns-prefetch-control" content="on" />
 	<?php }
 	
 	$promotedArticle = false; $tag = 'smarties';
-
 	if(isset($isArticle) && $isArticle && $articleInfoObj){ ?>
 		<link rel="canonical" href="<?php echo 'http://puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
 	<?php 
 		if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }
 	} ?>
 
-
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
-    
     <meta content='width=device-width, initial-scale=1' name='viewport'/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<?php 
-
-	if(isset($_GET['print'])){
-		var_dump($articleInfo);
-	}
 		$headDesc = '';
 		if(isset($articleInfo) && strlen($articleInfo['article_desc'])) $headDesc = $articleInfo['article_desc'];
 		else if(isset($categoryInfo) && strlen($categoryInfo['cat_desc'])) $headDesc = $categoryInfo['cat_desc'];
@@ -55,8 +47,8 @@
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/newchangestoadd.css" />
-	<!-- StyleSELECTOR.css -->
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/styleselector.css" media="screen" />
+	<!-- StyleSELECTOR.css 
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/styleselector.css" media="screen" />-->
 
 	<style>.ad320{ height: auto !important; }</style>
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -69,137 +61,25 @@
 	} ?>
 
 <!-- IF ARTICLE PAGE -->
-
-<?php if(!$detect->isMobile()){?>
-
- <?php 
- 	//var_dump($isHomepage);
+<?php if(!$detect->isMobile()){
  	if(isset($isHomepage) && $isHomepage && $has_sponsored){?>
-    <!-- puckermob.com/home -->
+    	<!-- puckermob.com/home -->
 		<script type="text/javascript">
 		  var ord = window.ord || Math.floor(Math.random() * 1e16);
 		  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
 		</script>
 		<noscript>
-		<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-		<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="1000" height="1000" />
-		</a>
+			<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
+			<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="1000" height="1000" />
+			</a>
 		</noscript>
 
-    <!-- Distro Scale AD Tag 
-<script type="text/javascript" src="http://c.jsrdn.com/s/cs.js?p=22257"> </script>-->
-<!-- Begin comScore Tag -->
-
-  <?php }else{?>
-
-<!-- Place in head part widget:puck002 -->
-<script type="text/javascript">
- 
-	var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
- 
-	function sbElementCheck() {
- 
-		var targetedElement = document.getElementById('ingageunit');
-		if(targetedElement) {
-			clearInterval(sbElementInterval);
-			(function(d) {
-				var js, s = d.getElementsByTagName('script')[0];
-				js = d.createElement('script');
-				js.async = true;
-				js.onload = function(e) {
-					SbInGageWidget.init({
-						partnerId : 5087,
-						widgetId : 'puck002',
-						cmsPath : 'http://cms.springboardplatform.com'
-					});
-				}
-				js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
-				s.parentNode.insertBefore(js, s);
-			})(window.document);
-		}
-	}
-</script>
-
-<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-
-<!-- CARAMBOLA IN_IMAGE -->
-<?php //if(isset($articleInfoObj) && $articleInfoObj){ 
-	//$noCarambola = false;
-	//if($articleInfoObj['article_id'] == 4725 || $articleInfoObj['article_id'] == 4664 || $articleInfoObj['article_id'] == 4653 || $articleInfoObj['cat_dir_name'] == 'moblog' ) $noCarambola = true;
-	//if( isset($noCarambola) && !$noCarambola){ ?>
-		<!--<script src="http://route.carambo.la/inimage/getlayer?pid=spdsh12" id="carambola_proxy" type="text/javascript" ></script> 	-->
-	<?php //}
-// }?>
-
-<?php } ?>
- 
-
-
-  <?php }?>
-
-
+ 	<?php } ?>
 <?php }else{?>
 
-<!-- KIXER ADHESION -->
-   <!-- Start Puckermob - interstitial -->
-    <div id='__kx_ad_1486'></div>
-    <script type="text/javascript" language="javascript">
-    var __kx_ad_slots = __kx_ad_slots || [];
+<?php } ?>
 
-    (function () {
-      var slot = 1486;
-      var h = false;
-      __kx_ad_slots.push(slot);
-      if (typeof __kx_ad_start == 'function') {
-        __kx_ad_start();
-      } else {
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = '//cdn.kixer.com/ad/load.js';
-        s.onload = s.onreadystatechange = function(){
-          if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-            h = true;
-            s.onload = s.onreadystatechange = null;
-            __kx_ad_start();
-          }
-        };
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(s, x);
-      }
-    })();
-    </script>
-    <!-- End Puckermob - interstitial -->
- 
- <!-- CONNATIX 
-  
-  <script type='text/javascript'>
-  (function() {
-    var useSSL = 'https:' == document.location.protocol;
-    var src = (useSSL ? 'https:' : 'http:') +
-        '//www.googletagservices.com/tag/js/gpt.js';
-    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-  })();
-</script>
-
-<script type='text/javascript'>
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/73970039/connatix_test', [300, 250], 'div-gpt-ad-1431974009855-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.pubads().enableSyncRendering();
-    googletag.enableServices();
-  });
-</script>-->
-
-	<!-- PLACE THIS CODE IN WEBSITE HEADER -->
-	<!-- nativeads pixel 104835-puckermob.com start -->
-	<script type="text/javascript" src="//cpanel.nativeads.com/js/pixel/pixel-104835-6a7effa002488d0ce2e33c794dadc7f47faa6405.js"></script>
-	<!-- nativeads pixel 104835-puckermob.com end -->
-
-<?php }
-?>
 <?php if (!$local){?>
-
 <!-- COMSCORE -->
 <script>
   var _comscore = _comscore || [];
@@ -214,23 +94,6 @@
   <img src="http://b.scorecardresearch.com/p?c1=2&c2=18667744&cv=2.0&cj=1" />
 </noscript>
 <!-- End COMSCORE Tag -->
-
-<!-- Begin comScore Tag Totally Her-->
-<script>
-  var _comscore = _comscore || [];
-  _comscore.push({ c1: "2", c2: "6036161" });
-  (function() {
-    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; 
-    s.async = true;
-    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
-    el.parentNode.insertBefore(s, el);
-  })();
-</script>
-<noscript>
-  <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" />
-</noscript>
-<!-- End comScore Tag Totally Her -->
-
 
 <!-- Quantcast Tag -->
 <script type="text/javascript">
@@ -256,8 +119,6 @@
   </div>
 </noscript>
 <?php }?>
-<!-- Nativo 
- <script type="text/javascript" src="http://a.postrelease.com/serve/load.js?async=true"></script>-->
-  	
+ 	
 </head>
  <?php flush(); ?>

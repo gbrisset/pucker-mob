@@ -33,6 +33,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	#branovate-ad div{
 		margin-left:-13px;
 	}
+	#branovate-ad-iframe{ border:none; height:240px;}
 </style>
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
@@ -90,18 +91,22 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; "> 
 		
 		<?php  //BRANOVATE ABOVE ARTICLE 
-			if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-			   <div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>
-		<?php } ?> 
+			//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
+			  <!-- <div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>
+		-->
+		<?php //} ?> 
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
 
-		<?php // BRANOVATE BELOW ARTICLE BODY
-		if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
-			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;">
-			</div>
-		<?php } ?> 
+		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
+			<?php if(!$promotedArticle){ ?>
+				<div class="row hide-for-print padding-top ads margin-bottom">
+					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+					<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+				</div>
+			<?php }?>
+		
 
 
 		<!-- RELATED ARTICLES -->
@@ -166,6 +171,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 		<?php }?>
 
+		<?php // BRANOVATE BELOW ARTICLE BODY
+		//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
+			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;">
+			</div>
+		<?php // } ?> 
+
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
@@ -176,10 +187,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 
-		<!-- READ MORE MOBILE 
+		<!-- READ MORE MOBILE -->
 		<div id="grad"></div>
 		<p class="read-more" style="margin-bottom:0 !important;"><a href="" class="button">CONTINUE READING</a></p>
-		-->
+		
 		</section>
 	</div>
 	

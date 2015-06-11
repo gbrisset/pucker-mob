@@ -1,40 +1,21 @@
 <?php if($detect->isMobile()){ ?>
-
+	<?php if(isset($isArticle) && $isArticle ){?>
 	<div id="mobile-instream-komoona-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
-		<?php if(isset($isArticle) && $isArticle ){?>
 			<script type="text/javascript">
 			    kmn_placement = 'cb04f88a1ff0727dc9881e3cfe5d8acc';
 			</script>
 			<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
-		<?php } ?>
 		</div>
 	</div>
-
-	<div id="mobile-instream-native-ad-loader" class="hide">
+	<div id="mobile-instream-smart-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
-		<?php if(isset($isArticle) && $isArticle ){?>
-			<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-deeab8461c3725af1723048fac0d2127cc855db6.js" async></script>		
-		<?php } ?>
+			<script type='text/javascript'> var adParams = {a: '62112490', size: '300x250', serverdomain: 'adk2ads.tictacti.com'  , pubtok: '{affiliate_id}'}; </script> 
+			<script type='text/javascript' src='http://cdnads.tictacti.com/tictacti/scripts/smart/smart.js'></script>	
 		</div>
 	</div>
 
-	<?php //if(isset($articleInfoObj) && isset($articleInfoObj['article_id'])){ ?>
-	<div id="mobile-instream-sprocketster-ad-loader" class="hide">
-		<div id="get-content" style="text-align:center;">
-		<?php if(isset($isArticle) && $isArticle ){?>
-			<!-- Javascript Ad Tag: 9 -->
-			<div id="119xpg9Y78YnB"></div>
-			<script src="http://119xpg.go2cloud.org/aff_ad?campaign_id=9&aff_id=1044&format=js&divid=119xpg9Y78YnB" type="text/javascript"></script>
-			<noscript><iframe src="http://119xpg.go2cloud.org/aff_ad?campaign_id=9&aff_id=1044&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
-			<!-- End Ad Tag -->
-		<?php } ?>
-		</div>
-	</div>
-
-	
-
-	<?php // }?>
+	<?php } ?>
 <?php }else { ?>
 	<div id="header-ad-loader" class="hide">
       	<div id="get-content">

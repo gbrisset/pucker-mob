@@ -3,89 +3,90 @@
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/foundation.min.js"></script>
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js" ></script>
-<!--<script type="text/javascript" src="<?php // echo $config['this_url']; ?>assets/js/plugins.js" ></script>
-<script type="text/javascript" src="<?php //echo $config['this_url']; ?>assets/js/app.js"></script>
-<script type="text/javascript" src="<?php //echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>-->
-
+<?php if (!$local){?>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js" ></script>
+<?php }else {?>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<?php }?>
 
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
+    <!-- IFRAME RESIZER -->
+    <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/iframeResizer.min.js"></script>
 
-  <!-- IFRAME RESIZER -->
-  <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/iframeResizer.min.js"></script>
+    <!--[if !IE]>
+    <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
+    <![endif]-->
 
- <!--[if !IE]>
- <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
- <![endif]-->
-
-  <!-- NETSEER AD IN-IMAGE-->
-  <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-      
-      <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
-      <script type="text/javascript">
-        netseer_tag_id="19129";
-        netseer_task="in-image";
-      </script>
-      <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+    <!-- NETSEER AD IN-IMAGE-->
+    <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+        
+        <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
+        <script type="text/javascript">
+          netseer_tag_id="19129";
+          netseer_task="in-image";
+        </script>
+        <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
     <?php } ?>
 
     <!-- Place in head part widget:puck002 -->
     <script type="text/javascript">
-     
-      var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
-     
-      function sbElementCheck() {
-     
-        var targetedElement = document.getElementById('ingageunit');
-        if(targetedElement) {
-          clearInterval(sbElementInterval);
-          (function(d) {
-            var js, s = d.getElementsByTagName('script')[0];
-            js = d.createElement('script');
-            js.async = true;
-            js.onload = function(e) {
-              SbInGageWidget.init({
-                partnerId : 5087,
-                widgetId : 'puck002',
-                cmsPath : 'http://cms.springboardplatform.com'
-              });
-            }
-            js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
-            s.parentNode.insertBefore(js, s);
-          })(window.document);
+       
+        var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
+       
+        function sbElementCheck() {
+       
+          var targetedElement = document.getElementById('ingageunit');
+          if(targetedElement) {
+            clearInterval(sbElementInterval);
+            (function(d) {
+              var js, s = d.getElementsByTagName('script')[0];
+              js = d.createElement('script');
+              js.async = true;
+              js.onload = function(e) {
+                SbInGageWidget.init({
+                  partnerId : 5087,
+                  widgetId : 'puck002',
+                  cmsPath : 'http://cms.springboardplatform.com'
+                });
+              }
+              js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
+              s.parentNode.insertBefore(js, s);
+            })(window.document);
+          }
         }
-      }
     </script>
 
-  <?php } 
+    <?php } 
 
-  if( isset($promotedArticle) && !$promotedArticle ){ ?>
-  <!-- SHARETHROUNG -->
-  <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
-  <?php }?>
+    if( isset($promotedArticle) && !$promotedArticle ){ ?>
+    <!-- SHARETHROUNG -->
+    <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+    <?php }?>
+
 <!-- MOBILE -->
 <?php }else{ ?>
   <?php if( isset($promotedArticle) && !$promotedArticle ){ 
   
-  if(isset($articleInfoObj) && $articleInfoObj){ ?>
-    <!-- SHARETHROUNG -->
-    <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+    if(isset($articleInfoObj) && $articleInfoObj){ ?>
+      <!-- SHARETHROUNG -->
+      <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
 
-    <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
-        <!-- NETSEER AD IN-IMAGE -->
-         <script type="text/javascript">
-          netseer_tag_id="20429";
-          netseer_task="in-image";
-         </script>
-         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-      <?php }
-    } 
-
-}?>  
+      <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
+          <!-- NETSEER AD IN-IMAGE -->
+           <script type="text/javascript">
+            netseer_tag_id="20429";
+            netseer_task="in-image";
+           </script>
+           <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+        <?php }
+      } 
+  }?>  
  
-
-<!-- KIXER ADHESION -->
+  <!-- KIXER ADHESION -->
     <div id='__kx_ad_1486'></div>
     <script type="text/javascript" language="javascript">
     var __kx_ad_slots = __kx_ad_slots || [];
@@ -113,7 +114,6 @@
       }
     })();
     </script>
-
 <?php }?>
 
 <!-- DESKTOP & MOBILE SCRIPT -->
@@ -127,6 +127,7 @@
   </script>
 <?php }?>
   
+<!-- cloudfront tracker -->
 <script>
   !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
   arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
@@ -135,7 +136,9 @@
   _gs('GSN-829786-N');
 </script>
 
-
+<script type="text/javascript">
+    loadScript("<?php echo $config['this_url']; ?>assets/js/ads.js", function(){ });
+</script>
 
 <!-- TotallyHer comscore tags -->
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>

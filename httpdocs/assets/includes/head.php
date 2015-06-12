@@ -47,9 +47,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/newchangestoadd.css" />
-	<!-- StyleSELECTOR.css 
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/styleselector.css" media="screen" />-->
-
+	
 	<style>.ad320{ height: auto !important; }</style>
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />

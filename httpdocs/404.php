@@ -23,8 +23,8 @@
 							<button id="notfound-search-submit" class="button postfix alert"><i class="fa fa-search"></i>Search</button>
 						</div>
 					</div>
-					<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
-					<?php include_once($config['include_path'].'fromourpartners.php'); ?>
+<!--					<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>-->
+					<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
 					<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
 				</div>
 			</section>

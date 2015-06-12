@@ -31,8 +31,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 <?php if($detect->isMobile()){?>
 <style>
 	#branovate-ad div{
-		margin-left:-13px;
+		margin-left:-4px;
 	}
+	
 	#branovate-ad-iframe{ border:none; height:240px;}
 </style>
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
@@ -90,19 +91,18 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; "> 
 		
-		<?php  //BRANOVATE ABOVE ARTICLE 
-			//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "0" ){?>
-			<!-- <div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>-->
-		<?php //} ?> 
-		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
 
-		<?php // BRANOVATE BELOW ARTICLE BODY
-		//if(isset($article_ads) && $article_ads[0] && $article_ads[0]['mobile_branovate'] == "999" ){?>
-			<div class="clear" id="branovate-ad" style="background-color:#000; min-height: 15.5rem; margin-bottom:1rem; text-align:center;"></div>
-		<?php // } ?> 
+		<!-- BRANOVATE BELOW ARTICLE BODY -->
+		<div class="row inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
 
+		<div class="" id="branovate-ad">
+			<iframe id='ani_passback' border='0' width='0' height='0'></iframe> 
+			<div id="aniplayer"></div> 
+			<script type="text/javascript" id="aniviewJS"> var adConfig = { publisherID :'100976', channelID :'778254', width :300, height :250, HD :false, loop :true, vastRetry :3,	passBackUrl	:'http://rnwsrv.vo.llnwd.net/u/html/pans.js', backgroundColor :'#000000', position :'aniplayer' }; var PlayerUrl = 'http://eu.ani-view.com/Script/4/aniview.js'; var myPlayer; function downloadScript(src,adData) { var scp = document.createElement('script'); scp.src = src; scp.onload = function() { myPlayer= new aniviewPlayer; myPlayer.play(adConfig); }; document.getElementsByTagName('head')[0].appendChild(scp); }; downloadScript(PlayerUrl,adConfig); </script>
+		</div>
+	</div>
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = [];

@@ -1,15 +1,8 @@
 <?php if($detect->isMobile()){ ?>
 	<?php if(isset($isArticle) && $isArticle ){?>
-	<div id="mobile-instream-komoona-ad-loader" class="hide">
-		<div id="get-content" style="text-align:center;">
-			<script type="text/javascript">
-			    kmn_placement = 'cb04f88a1ff0727dc9881e3cfe5d8acc';
-			</script>
-			<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
-		</div>
-	</div>
+	
 	<div id="mobile-instream-smart-ad-loader" class="hide">
-		<div id="get-content" style="text-align:center;">
+		<div id="get-content" style="text-align:center; display: inline-block;">
 			<script type='text/javascript'> var adParams = {a: '62112490', size: '300x250', serverdomain: 'adk2ads.tictacti.com'  , pubtok: '{affiliate_id}'}; </script> 
 			<script type='text/javascript' src='http://cdnads.tictacti.com/tictacti/scripts/smart/smart.js'></script>	
 		</div>

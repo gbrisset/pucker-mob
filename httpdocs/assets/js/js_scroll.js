@@ -85,9 +85,8 @@
 				
 				// Post data to ajax.php
 				var cat_id = $('#cat_id').attr('value');
-				$.post('http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajax.php', {
-				//$.post('http://www.puckermob.com/assets/ajax/ajax.php', {
-						
+				//$.post('http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajax.php', {
+				$.post('http://www.puckermob.com/assets/ajax/ajax.php', {
 					action        : 'scrollpagination',
 				    number        : $settings.nop,
 				    offset        : offset,
@@ -209,8 +208,8 @@
 				
 				// Post data to ajax.php
 				var cat_id = $('#cat_id').attr('value');
-				$.post('http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajaxdesktop.php', {
-				//$.post('http://www.puckermob.com/assets/ajax/ajax.php', {
+				//$.post('http://localhost:8888/projects/pucker-mob/httpdocs/assets/ajax/ajaxdesktop.php', {
+				$.post('http://www.puckermob.com/assets/ajax/ajax.php', {
 						
 					action        : 'scrollpagination',
 				    number        : $settings.nop,

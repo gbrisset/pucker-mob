@@ -158,7 +158,7 @@ if( $searchString ){
 
 			<?php include_once($config['shared_include'].'pagination.php');?>
 			<?php if (!$detect->isMobile()) { ?>
-			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>
+<!--			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>-->
 			<?php include_once($config['include_path'].'fromourpartners.php'); ?>
 			<?php include_once($config['include_path'].'aroundtheweb.php'); 
 			}?>

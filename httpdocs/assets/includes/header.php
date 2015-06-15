@@ -151,7 +151,7 @@
   <?php }?>
   
   
-    <nav class="top-bar" data-topbar="" data-options="scrolltop: false;"  style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important; '?>">
+    <nav id="top-bar-header-cont" class="top-bar" data-topbar="" data-options="scrolltop: false;"  style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important; '?>">
       <ul class="title-area">
         <li class="name">
           <a href="<?php echo $config['this_url']; ?>">
@@ -179,6 +179,9 @@
         </ul>
       </section>
     </nav>
+     <?php if($detect->isMobile() && $isArticle){
+       include_once($config['include_path'].'header_social.php');
+      }?>
   </div>
   <?php 
 

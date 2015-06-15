@@ -1057,52 +1057,45 @@ body{padding-top:0 !important;}
 
 }
 /**************************** END LARGE AND UP ****************************/
-
 /*Article Page*/
-#article-summary{
-	padding-left: 0;
-    padding-right: 0;
-	h1{
-		font-family: OswaldRegular;
-		line-height: 1.4;
-		text-align: center;
-	}
+	#article-summary{
+		padding-left: 0;
+	    padding-right: 0;
+		h1{
+			font-family: OswaldRegular;
+			line-height: 1.4;
+			text-align: center;
+		}
 
-	@media #{$mobile-only} { 
-		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.5rem; margin-bottom: 0;}
-	}
-	@media #{$small-only}{ 
-		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 1.5rem; margin-bottom: 0;}
-	}
-	@media #{$medium-only}{ 
-		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 2rem; margin-bottom: 0; }
-	}
-	@media #{$large-up}{ 
-		.span-category:after{  content: '|'; margin: 0 0.4rem; }
-		h1{ font-size: 2.3rem; margin: 0.8rem auto; width: 95%;}
-	}
-
+		@media #{$mobile-only} { 
+			.span-category:after{  content: '|'; margin: 0 0.4rem; }
+			h1{ font-size: 1.5rem; margin-bottom: 0;}
+		}
+		@media #{$small-only}{ 
+			.span-category:after{  content: '|'; margin: 0 0.4rem; }
+			h1{ font-size: 1.5rem; margin-bottom: 0;}
+		}
+		@media #{$medium-only}{ 
+			.span-category:after{  content: '|'; margin: 0 0.4rem; }
+			h1{ font-size: 2rem; margin-bottom: 0; }
+		}
+		@media #{$large-up}{ 
+			.span-category:after{  content: '|'; margin: 0 0.4rem; }
+			h1{ font-size: 2.3rem; margin: 0.8rem auto; width: 95%;}
+		}
 	}
 
 	.addthis_button_compact{ font-size: 1.3rem; text-transform: uppercase; color: #777 !important; font-family: OswaldLight; padding-top: 1.4rem; position: absolute;}
 	
-	.social-media-container{
-		padding: 0.6rem 0rem 0 1rem;
-		display:block;
-
-
-		
+	.social-media-container{ padding: 0.6rem 0rem 0 1rem; display:block;}
+	#header-social-buttons{display:none;}
+	.social-media-container-header{
+		margin:0;padding:0;
+		.fa-facebook{font-size:1.5rem;}
+		.addthis_button_facebook .label-social-button-2-mobile{background-color:#3B5998;text-align:center;color:#fff;padding:1rem 0 0.5rem 0;}
 	}
-
 	.social-cont-1{
-		img{
-			width: 8%;
-			min-width: 40px;
-		}
-
+		img{ width: 8%; min-width: 40px; }
 		.addthis_button_compact{padding-top: 1.1rem;}
 	}
 
@@ -1110,10 +1103,7 @@ body{padding-top:0 !important;}
 		.social-cont-1 img{ min-width: 45px; }
 	}
 
-	#similar-article-5{
-	border-bottom: none !important;
-	}
-
+	#similar-article-5{ border-bottom: none !important; }
 	@media #{ $small-only }{
 		.social-media-container{ display:none;}
 	}

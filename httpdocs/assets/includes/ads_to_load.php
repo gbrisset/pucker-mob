@@ -1,15 +1,28 @@
-<?php if($detect->isMobile()){ ?>
-	<?php if(isset($isArticle) && $isArticle ){?>
-	
+<?php if($detect->isMobile()){ 
+
+ if(isset($isArticle) && $isArticle ){?>
 	<div id="mobile-instream-smart-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center; display: inline-block;">
-			<script type='text/javascript'> var adParams = {a: '62112490', size: '300x250', serverdomain: 'adk2ads.tictacti.com'  , pubtok: '{affiliate_id}'}; </script> 
-			<script type='text/javascript' src='http://cdnads.tictacti.com/tictacti/scripts/smart/smart.js'></script>	
+			<script type='text/javascript'>var adParams = {a: '62112490', size: '300x250',serverdomain: 'adk2ads.tictacti.com'  ,context:'c64851001'  };</script>
+			<script type='text/javascript' src='http://cdnads.tictacti.com/tictacti/scripts/smart/smart.js'></script>
 		</div>
 	</div>
-
-	<?php } ?>
-<?php }else { ?>
+	<div id="mobile-bottom-sprocketster-ad-loader" >
+		<div id="get-content" style="text-align:center;">
+			<script id="airpushScript" type="text/javascript" 
+			src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
+			</script>
+		</div>
+	</div>	
+	<div id="mobile-instream-branovate-ad-loader" >
+		<div id="get-content" style="text-align:center;">
+			<iframe id='ani_passback' border='0' width='0' height='0'></iframe> 
+			<div id="aniplayer"></div> 
+			<script type="text/javascript" id="aniviewJS"> var adConfig = { publisherID :'100976', channelID :'778254', width :300, height :250, HD :false, loop :true, vastRetry :3,	passBackUrl	:'http://rnwsrv.vo.llnwd.net/u/html/pans.js', backgroundColor :'#000000', position :'aniplayer' }; var PlayerUrl = 'http://eu.ani-view.com/Script/4/aniview.js'; var myPlayer; function downloadScript(src,adData) { var scp = document.createElement('script'); scp.src = src; scp.onload = function() { myPlayer= new aniviewPlayer; myPlayer.play(adConfig); }; document.getElementsByTagName('head')[0].appendChild(scp); }; downloadScript(PlayerUrl,adConfig); </script>
+		</div>
+	</div>
+	<?php } 
+ }else { ?>
 	<div id="header-ad-loader" class="hide">
       	<div id="get-content">
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>

@@ -44,15 +44,28 @@ module.exports = function(grunt) {
           'httpdocs/assets/js/app.min.js': ['httpdocs/assets/js/plugins.js', 'httpdocs/assets/js/app.js', 'httpdocs/assets/js/js_scroll.js']
         }
       }
+    },
+    cssmin: {
+      options: {
+        shorthandCompacting: false,
+        roundingPrecision: -1
+      },
+      target: {
+        files: {
+          'httpdocs/assets/css/app.min.css': ['httpdocs/assets/css/app.css']
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.registerTask('build', ['sass']);
   grunt.registerTask('jscompress', ['uglify']);
+   grunt.registerTask('csscompress', ['cssmin']);
   grunt.registerTask('default', ['build','watch']);
 }
 

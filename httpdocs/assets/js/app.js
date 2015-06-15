@@ -400,6 +400,18 @@ if($('#warning-icon')){
 	});
 }
 
+$(window).scroll( function(){
+	var height = $(window).scrollTop();
+
+	if(height>50){
+		$("#top-bar-header-cont").hide();
+		$("#header-social-buttons").show();
+	}else{
+		$("#top-bar-header-cont").show();
+		$("#header-social-buttons").hide();
+	}
+});
+
 //BRANOVATE AD MOBILE
 /*
 if($('body').hasClass('mobile') && adPage === 'article'){

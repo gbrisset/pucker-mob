@@ -52,6 +52,7 @@ var mobilead = {
 		inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',
 		inarticlebranovate: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 		inarticlesharetothercountry: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
+		inarticle3lift: '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"><\/script>',
 	}
 };
 //MOBILE
@@ -72,20 +73,12 @@ if($('body').hasClass('mobile')) {
 			var p_length = $('#article-content').children('p:not(.read-more)').length;
 			var li_length = $(li_parent).find('li').length;
 			var isListArticle = false;
-
-			var google_position = -1, 
-			sharethrough_position = -1,
-			tag = 'p',
-			first_p = 2,
-			second_p = 5,
-			third_p = 8, forth_p = 15,
-			num_items = 0;
+			var google_position = -1, sharethrough_position = -1, tag = 'p', first_p = 2, second_p = 5, third_p = 8, forth_p = 15, fith_p = 22, num_items = 0;
 
 			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
 			if(li_length > p_length){
 				isListArticle = true;
 			}
-
 			//SET DEFAULT VALUES DEPENDING ON ARTICLE BASE TYPE LI/P
 			if(isListArticle){
 				google_position = -1;
@@ -95,6 +88,7 @@ if($('body').hasClass('mobile')) {
 				second_p = 5;
 				third_p = 9;
 				fourth_p = 15;
+				fith_p = 22;
 				num_items = li_length;
 			}else{
 				sharethrough_position = 2;
@@ -102,6 +96,7 @@ if($('body').hasClass('mobile')) {
 				second_p = 6;
 				third_p = 10;
 				fourth_p = 15;
+				fith_p = 22;
 				num_items = p_length;
 			}
 
@@ -126,8 +121,9 @@ if($('body').hasClass('mobile')) {
 			}
 
 			//1st GOOGLE
-			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
-		
+			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
+			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticle3lift, tag);
+			
 			//2ns SHARETHROUG
 			if( country && country == 'US' || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
@@ -136,12 +132,18 @@ if($('body').hasClass('mobile')) {
 			}
 
 			//3rd GOOGLE
-			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, mobilead[adPage].inarticlegoogle3, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, mobilead[adPage].inarticlegoogle3, tag);
+			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
 			
 			//4th Sprockert
 			if(num_items >= fourth_p ){
 				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="mobile-instream-smart-ad"></div>', tag );
 				//	inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+			}
+
+			//5th Adblade
+			if(num_items >= fith_p ){
+				inBodyAd.loadInArticleAd( 'article-content', fith_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
 			}
 		}
 
@@ -154,6 +156,7 @@ if($('body').hasClass('mobile')) {
 
 	if(adPage == 'article'){
 		appendAdEndBody($('#mobile-instream-smart-ad-loader'), $('#mobile-instream-smart-ad'), 100);
+		appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
 	}
 //DESKTOP
 } else{

@@ -96,13 +96,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- BRANOVATE BELOW ARTICLE BODY -->
 		<div class="row inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
-
-		<div class="" id="branovate-ad">
-			<iframe id='ani_passback' border='0' width='0' height='0'></iframe> 
-			<div id="aniplayer"></div> 
-			<script type="text/javascript" id="aniviewJS"> var adConfig = { publisherID :'100976', channelID :'778254', width :300, height :250, HD :false, loop :true, vastRetry :3,	passBackUrl	:'http://rnwsrv.vo.llnwd.net/u/html/pans.js', backgroundColor :'#000000', position :'aniplayer' }; var PlayerUrl = 'http://eu.ani-view.com/Script/4/aniview.js'; var myPlayer; function downloadScript(src,adData) { var scp = document.createElement('script'); scp.src = src; scp.onload = function() { myPlayer= new aniviewPlayer; myPlayer.play(adConfig); }; document.getElementsByTagName('head')[0].appendChild(scp); }; downloadScript(PlayerUrl,adConfig); </script>
+			<div class="" id="google3-ad">
+				<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6120722987"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+			</div>
 		</div>
-	</div>
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = [];

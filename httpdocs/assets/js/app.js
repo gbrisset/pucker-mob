@@ -132,7 +132,7 @@ $(document).ready(function() {
 	});
 
 	//SCROLL DOWN MOST POPULAR ARTICLES
-	if(page == 'article'){
+/*	if(page == 'article'){
 		$('#second-popular-articles').scrollPagination({
 			nop     : 10,
 			offset  : 10,
@@ -141,7 +141,7 @@ $(document).ready(function() {
 			scroll  : true,
 			page    : 2 
 		});
-	}
+	}*/
 
 	/* slide menu left */
 	if( $( ".toggle-slide-left" ).length > 0){

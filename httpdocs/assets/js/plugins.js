@@ -169,7 +169,7 @@ var inBodyAd = {
 function appendAdEndBody( src, dest, delay ){
     var content = $(src).find('#get-content');
     setTimeout(function(){
-        content.appendTo($(dest));
+        $(content).appendTo($(dest));
         $(src).remove();
     }, delay );
 }

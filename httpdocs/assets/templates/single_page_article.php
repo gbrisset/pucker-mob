@@ -94,11 +94,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
 
-		<!-- BRANOVATE BELOW ARTICLE BODY -->
-		<div class="row inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
+		<!-- KOMOONA BELOW ARTICLE BODY -->
+		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
+		<?php if($article_id == 7160){?>
+			<div id="mobile-instream-komoona-ad" class="">
+				<div id="get-content" style="text-align:center;">
+					<script type="text/javascript">kmn_iframe = true; kmn_placement = 'cb04f88a1ff0727dc9881e3cfe5d8acc'; </script>
+					<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
+				</div>	
+			</div>
+		<?php }else{?>
 			<div class="" id="google3-ad">
 				<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6120722987"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 			</div>
+		<?php }?>
 		</div>
 		<!-- RELATED ARTICLES -->
 		<?php 

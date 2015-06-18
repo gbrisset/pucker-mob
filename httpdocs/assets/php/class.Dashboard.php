@@ -441,13 +441,13 @@ class Dashboard{
 		AND article_contributors.contributor_email_address = users.user_email 
 		LEFT JOIN (user_billing_info)
 		ON( users.user_id = user_billing_info.user_id)
-		WHERE contributor_earnings.month = $month AND contributor_earnings.year = $year AND  total_earnings > 0.5 ";
+		WHERE contributor_earnings.month = $month AND contributor_earnings.year = $year AND to_be_pay > 0.05 ";
 
 		if(isset($contributor_id) && $contributor_id != 0) {
 		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
 		}
 
-		$s .=" ORDER BY total_us_pageviews DESC ";
+		$s .=" ORDER BY to_be_pay DESC ";
 
 		$queryParams = [ ];
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
@@ -465,7 +465,7 @@ class Dashboard{
 		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$contributor_id = $data['contributor'];
-		$share_rate = $this->get_monthly_rate( $month, $year );
+		$share_rate = $this->get_monthly_rate( $month, $year);
 		$s = "
 			SELECT
 			      article_contributor_articles.contributor_id, 
@@ -596,9 +596,9 @@ class Dashboard{
 					}
 				} 
 
-				if($contributor['user_type'] != 4){
-					$total_earnings = $total_earnings - $total_article_rate;
-				}
+//				if($contributor['user_type'] != 4){
+//					$total_earnings = $total_earnings - $total_article_rate;
+//				}
 
 				if($update_data){
 					$s = "UPDATE contributor_earnings 

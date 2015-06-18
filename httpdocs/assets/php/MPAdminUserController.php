@@ -1009,6 +1009,7 @@ End password reset methods
 			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
 		));
 
+		var_dump($nextMonthrecord);
 		if($recordExist){
 			$payment_record =  $this->performUpdate(array(
 				'updateString' => "UPDATE contributor_earnings SET paid = ".$paid." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",

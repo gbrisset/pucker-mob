@@ -111,13 +111,17 @@ google.load("visualization", "1.1", {packages:["bar"]});
           title: '',
           width: 800,
           legend: { position: 'none' },
+          vAxis: {
+            minValue: 0,
+            ticks: [0, .3, .6, .9, 1]
+          },
           animation: {easing: 'in', duration: 200 },
           chart: { title: '',
                    subtitle: '' },
           bars: 'vertical', // Required for Material Bar Charts.
           axes: {
             x: {
-              0: { side: 'bottom', label: 'Earnings'} // Top x-axis.
+              0: { side: 'bottom', label: ' '} // Top x-axis.
             }
           },
           bar: { groupWidth: "80%" }

@@ -82,7 +82,7 @@
 	if(  $month <= 5 && $year == 2015 )	$rate = $dashboard->get_current_rate($month);
 	else  $rate = $dashboard->get_current_rate( $month, $contributor_type );
 	
-	var_dump($month, $contributor_type , $rate);
+	//var_dump($month, $contributor_type , $rate);
 
 	$total = 0;
 

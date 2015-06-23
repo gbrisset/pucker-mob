@@ -132,7 +132,7 @@ $(document).ready(function() {
 	});
 
 	//SCROLL DOWN MOST POPULAR ARTICLES
-/*	if(page == 'article'){
+	if(page == 'article'){
 		$('#second-popular-articles').scrollPagination({
 			nop     : 10,
 			offset  : 10,
@@ -141,7 +141,7 @@ $(document).ready(function() {
 			scroll  : true,
 			page    : 2 
 		});
-	}*/
+	}
 
 	/* slide menu left */
 	if( $( ".toggle-slide-left" ).length > 0){
@@ -236,7 +236,7 @@ $(document).ready(function() {
 
 	/*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
 	function getTotalShares( url, elm ){
-	  		var span_shares_holder = $(elm).find('.span-shares-holder');
+	  		var span_shares_holder = $(elm).find('.span-holder-shares');
 	 		var this_count = 0;
 	 		var fn_callback = null ;
 	 		var label =  " SHARES";
@@ -273,27 +273,6 @@ $(document).ready(function() {
 	 	var url = $(this).attr('data-info-url');
 		getTotalShares( url, $(this) );
 	});
-
- //Prefetch Links
- //NOT IN USE
- /*var app = {
-    prefetchLinks: function(){
-        var hrefs = $("a.prefetch").map(function(index, domElement){
-        	return $(this).attr("href");
-        	return $(this).attr("href");
-        });
-        return $.unique(hrefs);
-    },
-
-    addPrefetchTags: function(){
-        this.prefetchLinks().each(function(index,Element){
-            $("<link />", {
-                rel: "prefetch prerender", href: Element
-            }).appendTo("head");            
-        });
-    },
-}*/
-//app.addPrefetchTags();
 
 //Social Shares Tracking FB Sharing Functionality
 var SocialShares = {
@@ -399,25 +378,4 @@ if($('#warning-icon')){
 
 	});
 }
-
-$(window).scroll( function(){
-	var height = $(window).scrollTop();
-
-	if(height>50){
-		$("#top-bar-header-cont").hide();
-		$("#header-social-buttons").show();
-	}else{
-		$("#top-bar-header-cont").show();
-		$("#header-social-buttons").hide();
-	}
-});
-
-//BRANOVATE AD MOBILE
-/*
-if($('body').hasClass('mobile') && adPage === 'article'){
-	setTimeout(function() {
-		loadBranovateAd( document.getElementById("branovate-ad"), '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
-	}, 2000);
-}*/
-
 });

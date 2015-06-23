@@ -12,18 +12,12 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 }
 
 if($page == 1 ){
-	if( $cat_id == 1){
-		$articlesList = $mpArticle->getArticlesList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis ]);
-		//$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis ] );
-	}else{
-		$articlesList = $mpArticle->getArticlesList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis, 'pageId' => $cat_id ]);
-		//$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset'=>$offset, 'omit' => $omitThis , 'pageId' => $cat_id]);
-	}
+	if( $cat_id == 1) $articlesList = $mpArticle->getArticlesList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis ]);
+	else $articlesList = $mpArticle->getArticlesList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis, 'pageId' => $cat_id ]);
 }else{
-	/*FROM ARTICLE PAGE*/
 	$articlesList = $mpArticle->getLast10Articles( $omitThis, $offset );
 }
-var_dump($articlesList);
+
 foreach( $articlesList as $articles ){
 	$linkToArticle = 'http://www.puckermob.com/'.$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 	$date = date("M d, Y", strtotime($articles['date_updated']));
@@ -45,7 +39,7 @@ foreach( $articlesList as $articles ){
 	$content .=  '</div>';
 	$content .=  '<div class="second-article-date small-12 clear">';
 	$content .=  	'<label class="small-6">'.$date.'</label>';
-	$content .=  	'<label class="small-6 span-shares-holder"></label>';
+	$content .=  	'<label class="small-6 span-holder-shares"></label>';
 	$content .=  '</div>';
 	$content .=  '</div>';
 	

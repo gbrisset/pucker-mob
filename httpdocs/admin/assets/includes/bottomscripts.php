@@ -1,12 +1,7 @@
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
-
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
-<!--<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.js"></script>
-<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.link.js"></script>-->
-
-	
-	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
-	<script type="text/javascript">
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
 	tinymce.init({
 
 		setup: function (ed) {
@@ -70,38 +65,72 @@
 </script>
 
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.tooltipster.min.js"></script>
+
 <script src="<?php echo $config['this_url']; ?>assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>
-
 
 
 <?php
 	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
 	else echo $mpArticle->data['article_page_analytics'];
 ?>
-
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script>
-		$(function() {
-			$('#sortable2').sortable();
+	$(function() {
+		$('#sortable2').sortable();
+	});
 
-		});
-</script>
-
-<script>
 if($('#fb-login')){
 	$('#fb-login').on('click', function(e){
-		//var tos = $('#tos_agreed-s');
-		//$('#tos_agreed-s').attr('checked', true);
-		//$('#tos_agreed-s').attr('disabled', true);
 	    FB.login(function(response) {
-	//    console.log("FB.login");
 	  	  checkLoginState();
 	    }, {scope: 'public_profile,email'});
 	});
 }
-</script>
+
+google.load("visualization", "1.1", {packages:["bar"]});
+      google.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['', 'Percentage'],
+          ['6/01', 44],
+          ['6/02', 31],
+          ['6/03', 12],
+          ['6/04', 10],
+          ['6/05', 3],
+          ['6/06', 10],
+          ['6/07', 10],
+          ['6/08', 10],
+          ['6/09', 10],
+          ['6/10', 10]
+        ]);
+
+        var options = {
+          title: '',
+          width: 800,
+          legend: { position: 'none' },
+          animation: {easing: 'in', duration: 200 },
+          chart: { title: '',
+                   subtitle: '' },
+          bars: 'vertical', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'bottom', label: 'Earnings'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "80%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('bar_chart'));
+        chart.draw(data, options);
+      };
+    </script>
+
 <!--[if lt IE 7 ]>
 	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 	<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
+
+

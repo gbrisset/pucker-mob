@@ -40,7 +40,7 @@ if( isset($recentArticles) && $recentArticles ){ ?>
 			</div>
 			<div class="second-article-date small-12 clear">
 				<label class="small-6 left"><?php echo $date; ?></label>
-				<label class="small-6 span-shares-holder"></label>
+				<label class="small-6 span-holder-shares"></label>
 			</div>
 		</div>
 		

@@ -202,7 +202,7 @@ class Dashboard{
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 		
-		if($q) return $q['rate'];
+		if($q) return $q;
 		else return false;
 	}
 
@@ -596,9 +596,9 @@ class Dashboard{
 					}
 				} 
 
-//				if($contributor['user_type'] != 4){
-//					$total_earnings = $total_earnings - $total_article_rate;
-//				}
+				//if($contributor['user_type'] != 4){
+				//	$total_earnings = $total_earnings - $total_article_rate;
+				//}
 
 				if($update_data){
 					$s = "UPDATE contributor_earnings 

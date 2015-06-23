@@ -4,8 +4,9 @@
 ?>
 
 $(document).ready(function (){
+
 	var body = $('body');
-	MQ.init([
+	/*MQ.init([
 		{ 
 			context: 'admin0', 
 			callback: function(){
@@ -39,7 +40,8 @@ $(document).ready(function (){
 				
 			} 
 		},
-		{ 
+		{ google
+
 			context: 'global', 
 			callback: function(){
 				if(body.is('.admin0, .admin1')){
@@ -60,7 +62,7 @@ $(document).ready(function (){
 				}
 			} 
 		}
-	]);
+	]);*/
 
 	//	Check to see if cookies is enabled
 	var cookiesEnabled = SDCookie.checkEnabled();

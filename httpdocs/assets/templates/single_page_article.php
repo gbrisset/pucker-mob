@@ -96,18 +96,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- KOMOONA BELOW ARTICLE BODY -->
 		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
-		<?php if($article_id == 7160){?>
 			<div id="mobile-instream-komoona-ad" class="">
 				<div id="get-content" style="text-align:center;">
 					<script type="text/javascript">kmn_iframe = true; kmn_placement = 'cb04f88a1ff0727dc9881e3cfe5d8acc'; </script>
 					<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
 				</div>	
 			</div>
-		<?php }else{?>
-			<div class="" id="google3-ad">
-				<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6120722987"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-			</div>
-		<?php }?>
 		</div>
 		<!-- RELATED ARTICLES -->
 		<?php 
@@ -343,8 +337,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 		</div>
 
-		<hr>
-				
+		
+		<div id="3lift-ad "class="columns small-12">
+			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
+		</div>	
 		<!-- ADBLADE-->
 		<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 			<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
@@ -369,7 +365,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		</section>
 	</div>
-		
 	<?php if(!$promotedArticle){ ?>
 		<section class="nativo-ad padding-top clear">
 			<div class="nativo"></div> 

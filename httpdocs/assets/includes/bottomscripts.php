@@ -8,7 +8,6 @@
 <?php }else {?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
-  <!--<script type="text/javascript" src="<?php //echo $config['this_url']; ?>assets/js/ads.js"></script>-->
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <?php }?>
@@ -83,11 +82,8 @@
             netseer_task="in-image";
            </script>
            <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-        <?php }?>
-
-        <script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-
-      <?php } 
+        <?php }
+      } 
   }?>  
  
   <!-- KIXER ADHESION -->

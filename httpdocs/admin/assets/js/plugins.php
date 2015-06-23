@@ -261,6 +261,23 @@ $.fn.mpAddElement = function(){
 	});
 };
 
+/* Begin Scrollable Element Detection */
+function scrollableElement(els) {
+    for (var i = 0, argLength = arguments.length; i < argLength; i++){
+        var el = arguments[i],
+        $scrollElement = $(el);
+        if($scrollElement.scrollTop()> 0) return el;
+        else{
+            $scrollElement.scrollTop(1);
+            var isScrollable = $scrollElement.scrollTop() > 0;
+            $scrollElement.scrollTop(0);
+            if(isScrollable) return el;
+        }
+    }
+    return [];
+}
+/* End Scrollable Element Detection */
+
 $.fn.mpPreview = function(opts){
 	var options = $.extend({
 		'selector' : 'select',

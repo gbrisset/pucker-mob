@@ -821,11 +821,12 @@ z-index: 999; width: 33.57rem; display:none;}
 #warning-box, #announcements{ margin-top:0.3rem !important;}
 
 /*SOCAIL SHARE RATE*/
-#share-rate-box{ overflow: hidden; }
+#share-rate-box{ overflow: hidden;   border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;}
 .share-rate-txt, .find-more-link{background: #991B1C; height: 3.65rem;}
-.share-rate-txt{  width: 74%; }
+.share-rate-txt{    margin-left: 1rem; background: #fff; height: auto;   font-family: OsloBold;}
+.share-rate-txt p span{ color: #156A17;}
 .find-more-link{ padding: 0.5rem; width: 25%; padding-top: 1rem;}
-.share-rate-txt p{ color: #fff; text-transform: uppercase; text-align: center; font-size: 1.4rem; font-weight: bolder; padding: 0; margin:0; }
+.share-rate-txt p{ color: #000; text-transform: uppercase; text-align: center; font-size: 1.4rem; font-weight: bolder; padding: 0; margin:0; }
 .find-more-link p{color: #fff; text-transform: uppercase; font-weight: bold; font-size: 0.8rem; text-align: center; margin: 0; line-height: 1.1;}
 .find-more-link p a{ outline:none; color:#fff;}
 
@@ -1043,12 +1044,13 @@ width: 48%;
 
 /*USER PLAN BOX*/
 .user-plan{
-	.user-plan-cont{ background: #F6F4F5; border: 1px solid #ddd; }
-	.current-level h2{text-transform: uppercase; font-size: 1.2rem; font-family: Oslo; height: 49px; display: table-cell; vertical-align: middle;}
+	.user-plan-cont{ background: #156A17; border: 1px solid #ddd; }
+	.current-level h2{ color: #fff; text-transform: uppercase; font-size: 1.2rem; font-family: Oslo; height: 30px; display: table-cell; vertical-align: middle;}
+	.current-level h2 span{ color: #FBF604; }
 	.mob-level-explanation{ margin-top: 0.2rem; }
-	.show-mob-levels{  text-align: right; line-height: 1.3; margin: 0; }
-	.arrow-level .fa-caret-right{display: table-cell; height: 3rem; vertical-align: middle; font-size: 2rem; padding: 0.5rem 1rem;}
-	.arrow-level a{ color: #000; }
+	.show-mob-levels{  text-align: right; margin: 0; text-transform: uppercase; color: #fff;}
+	.arrow-level .fa-caret-right{display: table-cell; vertical-align: middle; font-size: 1.8em; padding: 0 1rem;}
+	.arrow-level a{ color: #fff; }
 }
 
 .mob-levels-content{

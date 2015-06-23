@@ -2,8 +2,8 @@
 
   $loginActive = isset($_SESSION['login_hash']) || isset($_SESSION['user_id']);
 
-    $has_sponsored = $mpArticle->data['has_sponsored_by'];
- $user_type = 5;
+  $has_sponsored = $mpArticle->data['has_sponsored_by'];
+  $user_type = 5;
   if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
     $user_info = $mpArticle->getUserInfo();
     $user_first_name = "";
@@ -179,7 +179,7 @@
         </ul>
       </section>
     </nav>
-     <?php if($detect->isMobile() && $isArticle){
+     <?php if($detect->isMobile() && ( isset($isArticle) && $isArticle ) ){
        include_once($config['include_path'].'header_social.php');
       }?>
   </div>

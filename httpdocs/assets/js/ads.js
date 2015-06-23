@@ -176,10 +176,9 @@ if($('body').hasClass('mobile')) {
 			}
 
 			//1st GOOGLE
-			if( article_id == 7160 ) inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
-			else inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
-			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-komoona-ad-loader"></div>', tag);
-			
+			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
+			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
+
 			//2ns SHARETHROUG
 			if( country && country == 'US' || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
@@ -211,11 +210,9 @@ if($('body').hasClass('mobile')) {
 	}
 
 	if(adPage == 'article'){
-		//appendAdEndBody($('#mobile-instream-komoona-ad-loader'), $('#mobile-instream-komoona-ad'), 100);
 		appendAdEndBody($('#mobile-instream-smart-ad-loader'), $('#mobile-instream-smart-ad'), 100);
 		appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
-		if( article_id == 7160 ) appendAdEndBody($('#mobile-instream-3lift-ad-loader'), $('#mobile-instream-3lift-ad'), 100);
-		
+		appendAdEndBody($('#mobile-instream-3lift-ad-loader'), $('#mobile-instream-3lift-ad'), 100);
 	}
 //DESKTOP
 } else{

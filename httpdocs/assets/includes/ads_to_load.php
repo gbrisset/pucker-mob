@@ -1,25 +1,25 @@
 <?php if($detect->isMobile()){ 
 
  if(isset($isArticle) && $isArticle ){?>
-	<div id="mobile-instream-smart-ad-loader" class="hide">
+	<!--<div id="mobile-instream-smart-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center; display: inline-block;">
 			<script type='text/javascript'>	var adParams = {a: '62112490', size: '300x250',serverdomain: 'adk2ads.tictacti.com'  ,context:'c66571048'  };</script>
 			<script type='text/javascript' src='http://cdnads.tictacti.com/tictacti/scripts/smart/smart.js'></script>
 		</div>
-	</div>
+	</div>-->
 	
 	<div id="mobile-instream-3lift-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
 		</div>
 	</div>
-	<div id="mobile-bottom-sprocketster-ad-loader" >
+	<!--<div id="mobile-bottom-sprocketster-ad-loader" >
 		<div id="get-content" style="text-align:center;">
 			<script id="airpushScript" type="text/javascript" 
 			src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
 			</script>
 		</div>
-	</div>
+	</div>-->
 	<div id="mobile-instream-branovate-ad-loader" >
 		<div id="get-content" style="text-align:center;">
 			<iframe id='ani_passback'  border='0' width='0' height='0'></iframe>

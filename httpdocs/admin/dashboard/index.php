@@ -172,20 +172,21 @@
 				</div>"""
 				<?php //}?>-->
 			</section>
-			<section>
+			<section class="margin-top">
 				
 			    <div id="bar_chart" style="width: 900px; height: 500px;"></div>
 
 			</section>
-			<section class="row">
+			<section class="row earnings-calendar margin-top">
 				<div class="columns small-12">
-				<div class="small-5 left">
+				<div class="small-6 left">
 					<p>Early Earnings Report</p>
 				</div>
-				<div class="small-7 left">
-					<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+				<div class="small-6 left">
+
+					<div id="reportrange" class="pull-right">
 					    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-					    <span></span> <b class="caret"></b>
+					    <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
 					</div>
 
 				</div>
@@ -406,12 +407,12 @@
 					  			 $total_rev = 0;
 					  		}else{
 					  			if( $us_page_views > 0 ){
-				  					$total_rev = ($us_page_views/1000) * $rate;
+				  					$total_rev = ($us_page_views/1000) * $rate['rate'];
 				  				}
 					  		}
 				  		}else{
 				  			if( $us_page_views > 0 ){
-				  				$total_rev = ($us_page_views/1000) * $rate;
+				  				$total_rev = ($us_page_views/1000) * $rate['rate'];
 				  			}
 				  		}
 
@@ -426,7 +427,7 @@
 					      <td class="article align-left"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
 					      <td><?php echo $creation_date;?></td>
 					      <td class=""><?php echo number_format($us_page_views, 0, '.', ','); ?></td>
-					      <td class=""><?php echo '$'.number_format($rate, 2, '.', ','); ?></td>
+					      <td class=""><?php echo '$'.number_format($rate['rate'], 2, '.', ','); ?></td>
 					      <td class="bold align-right"><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
 					    </tr>
 				  	<?php } ?>
@@ -434,7 +435,7 @@
 					    	<td class="bold">TOTAL</td>
 					    	<td></td>
 					    	<td class="bold"><?php echo number_format($total_us_page_views, 0, '.', ','); ?></td>
-					    	<td class="bold"><?php echo '$'.number_format($rate, 2, '.', ','); ?></td>
+					    	<td class="bold"><?php echo '$'.number_format($rate['rate'], 2, '.', ','); ?></td>
 					    	<td class="bold align-right"><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
 				    	</tr>
 				  	<?php }?>

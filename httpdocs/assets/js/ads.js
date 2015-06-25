@@ -175,25 +175,21 @@ if($('body').hasClass('mobile')) {
 				nativo_position = nativo_position + 1;
 			}
 
-			//1st GOOGLE
-			inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
-			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
-
-			//2ns SHARETHROUG
+			//1st SHARETHROUG
 			if( country && country == 'US' || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticle, tag);	
 			}else{	
 				inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
 			}
+			//2nd GOOGLE
+			inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlegoogle2, tag);
 
-			//3rd GOOGLE
-			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, mobilead[adPage].inarticlegoogle3, tag);
+			//3rd branovate
 			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
 			
-			//4th Sprockert
+			//4th GOOGLE
 			if(num_items >= fourth_p ){
-				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="mobile-instream-smart-ad"></div>', tag );
-				//	inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
 			}
 
 			//5th Adblade
@@ -210,7 +206,7 @@ if($('body').hasClass('mobile')) {
 	}
 
 	if(adPage == 'article'){
-		appendAdEndBody($('#mobile-instream-smart-ad-loader'), $('#mobile-instream-smart-ad'), 100);
+		//appendAdEndBody($('#mobile-instream-smart-ad-loader'), $('#mobile-instream-smart-ad'), 100);
 		appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
 		appendAdEndBody($('#mobile-instream-3lift-ad-loader'), $('#mobile-instream-3lift-ad'), 100);
 	}

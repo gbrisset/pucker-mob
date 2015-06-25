@@ -1320,4 +1320,74 @@ if($('.mob-level-contributor')){
 	});
 }
 
-});
+/*$('input[name="daterange"]').daterangepicker(
+{
+   format: 'MM/DD/YYYY',
+    startDate: moment().subtract(7, 'days'),
+    endDate: moment(),
+    minDate: '01/01/2012',
+    maxDate: '12/31/2015',
+    ranges: {
+       'Today': [moment(), moment()],
+       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+       'This Month': [moment().startOf('month'), moment().endOf('month')],
+       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    }
+}, 
+function(start, end, label) {
+    alert("A new date range was chosen: " + start.format('MM/DD/YYYY') + ' to ' + end.format('MM/DD/YYYY'));
+});*/
+
+ 
+    $('input[name="daterange"]').val(moment().subtract(7, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+ 
+    $('input[name="daterange"]').daterangepicker({
+        format: 'MM/DD/YYYY',
+        startDate: moment().subtract(7, 'days'),
+        endDate: moment(),
+        minDate: '01/01/2012',
+        maxDate: '12/31/2015',
+        dateLimit: { days: 60 },
+        showDropdowns: true,
+        showWeekNumbers: true,
+        timePicker: false,
+        timePickerIncrement: 1,
+        timePicker12Hour: true,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        opens: 'left',
+        drops: 'down',
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-primary',
+        cancelClass: 'btn-default',
+        separator: ' to ',
+        locale: {
+            applyLabel: 'Submit',
+            cancelLabel: 'Cancel',
+            fromLabel: 'From',
+            toLabel: 'To',
+            customRangeLabel: 'Custom',
+            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            firstDay: 1
+        }
+    }); 
+    $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+	  console.log(picker.startDate.format('YYYY-MM-DD'));
+	  console.log(picker.endDate.format('YYYY-MM-DD'));
+
+	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
+	});
+
+	  
+}); 
+ 
+

@@ -1042,6 +1042,38 @@ width: 48%;
 .advertising-box h3{   margin-bottom: 0.2rem; }
 .advertising-box .h3-ads{font-weight: bold; margin: 2rem 0 1rem 0;}
 
+.earnings-calendar p { text-transform: uppercase; font-size: 1.3rem; margin-left: 1rem; }
+#reportrange {
+	background: #fff;
+	cursor: pointer;
+	padding: 0;
+	margin:0;
+	width: 100%;
+	border: 1px solid #ccc;
+
+	
+	.glyphicon-calendar{ font-size: 1.5rem; display: inline; left: 3px; color: #999;}
+	input{   
+		display: inline;
+		width: 80%;
+		border: none;
+		border-left: 1px solid #ddd;
+		font-size: 1.3rem;
+		box-shadow: none;
+		margin: 0.5px;
+	}
+}
+
+.monthselect, .yearselect{
+	background-image: none !important;
+	-webkit-appearance: menulist !important;
+	-moz-appearance: menulist !important;
+	appearance:menulist !important;
+	background-color: #fff;
+	color: #222;
+}
+.monthselect:hover, .yearselect:hover{ background-color:#fff;}
+
 /*USER PLAN BOX*/
 .user-plan{
 	.user-plan-cont{ background: #156A17; border: 1px solid #ddd; }

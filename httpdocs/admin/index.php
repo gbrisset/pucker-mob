@@ -84,7 +84,6 @@
 			$is_in = 0;
 		
 			foreach( $writers_arr as $writer ){
-				
 				if($writer['contributor_id'] == $contributor_id ){
 					$your_rank = $index;
 					$your_shares = $writer['total_us_pageviews'];
@@ -92,6 +91,7 @@
 				}
 				$index ++;
 			}
+			
 			$total = 0;	
 			for($i= 0; $i< count($writers_arr) -1; $i++){
 				$position = $i + 1;
@@ -122,7 +122,6 @@
 				$writers_rank[$i]['shares'] = $shares;
 
 				if($total < 10 ) $total++;
-
 		    }
 
 			if( $is_in === 0 ){
@@ -130,11 +129,8 @@
 				$your_cont_rank['id'] = $your_id;
 				$your_cont_rank['name'] = $contributor_name;
 				$your_cont_rank['total_shares'] = $your_shares;
-
-
 			}
 		}
-	
 	}
 
 	$user_login_count = $adminController->user->data['user_login_count']; 

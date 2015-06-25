@@ -176,14 +176,14 @@ if($('body').hasClass('mobile')) {
 			}
 
 			//1st GOOGLE
-			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
+			inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
 			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
 
 			//2ns SHARETHROUG
 			if( country && country == 'US' || country == 'XX'){
-				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
+				inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticle, tag);	
 			}else{	
-				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
+				inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
 			}
 
 			//3rd GOOGLE

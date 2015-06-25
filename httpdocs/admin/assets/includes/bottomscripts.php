@@ -95,6 +95,7 @@ google.load("visualization", "1.1", {packages:["bar"]});
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
           ['', 'Percentage'],
+
           ['6/01', 44],
           ['6/02', 31],
           ['6/03', 12],

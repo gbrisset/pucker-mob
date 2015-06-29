@@ -2,7 +2,7 @@
 	$admin = true;
 	require_once('../../../assets/php/config.php');
 
-	parse_str($_POST['formData'], $_POST['formData']);
+	if(isset($_POST['formData'])) parse_str($_POST['formData'], $_POST['formData']);
 
 	switch($_POST['task']){
 		case 'update_status':
@@ -52,6 +52,11 @@
 
 		case 'update_cont_level':
 			echo json_encode($mpArticleAdmin->upgradeContributorPlan($_POST));
+		break;
+
+		case 'get_chart_data':
+			echo json_encode($adminController->user->getContributorEarningChartData( $_POST ));
+
 		break;
 
 		default:

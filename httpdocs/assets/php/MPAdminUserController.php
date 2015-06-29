@@ -1009,7 +1009,6 @@ End password reset methods
 			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
 		));
 
-		var_dump($nextMonthrecord);
 		if($recordExist){
 			$payment_record =  $this->performUpdate(array(
 				'updateString' => "UPDATE contributor_earnings SET paid = ".$paid." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
@@ -1031,6 +1030,27 @@ End password reset methods
 		}
 			
 		return $payment_record ;
+
+	}
+
+	public function getContributorEarningChartData($data){
+				//		data: { task:'get_chart_data', contributor_id : 1123, start_date: start_date, end_date: end_date  }
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$s = " SELECT DATE_FORMAT(updated_date, '%Y-%m-%d') as 'date', sum(pageviews), avg(pct_pageviews), sum(usa_pageviews) 
+				FROM google_analytics_data_daily 
+				INNER JOIN (article_contributor_articles) 
+					ON (article_contributor_articles.article_id = google_analytics_data_daily.article_id) 
+				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."' 
+				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
+
+		$getData = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array(':contributor_id' => $contributor_id, ':start_date' => $start_date, ':end_data' => $end_date )
+		));
+
+		var_dump($getData); die;
 
 	}
 

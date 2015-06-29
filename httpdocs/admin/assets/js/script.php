@@ -1356,7 +1356,7 @@ function(start, end, label) {
         timePickerIncrement: 1,
         timePicker12Hour: true,
         ranges: {
-           'Today': [moment(), moment()],
+           //'Today': [moment(), moment()],
            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
@@ -1383,7 +1383,17 @@ function(start, end, label) {
     $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
 	  console.log(picker.startDate.format('YYYY-MM-DD'));
 	  console.log(picker.endDate.format('YYYY-MM-DD'));
+	  var start_date = picker.startDate.format('YYYY-MM-DD');
+	  var end_date = picker.endDate.format('YYYY-MM-DD');
 
+	  $.ajax({
+		type: "POST",
+		url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+		data: { task:'get_chart_data', contributor_id : 1123, start_date: start_date, end_date: end_date  }
+			}).done(function(data) {
+
+				console.log(data);
+			});
 	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
 	});
 

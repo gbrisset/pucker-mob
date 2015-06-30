@@ -1,6 +1,5 @@
-<?php
-	
-	$admin = true;
+<?php 
+	$admin = true; 
 	require_once('../../assets/php/config.php');
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 	
@@ -57,6 +56,7 @@
 	}else{
 		//IS MARCH AND UP
 		$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
+		//$chart_data = $dashboard->get_chartArticlesData();
 	}
 
 	//$rate = $dashboard->get_current_rate();
@@ -463,9 +463,7 @@
 				</p>
 			</section>
 		</div>
-		<?php 	include_once($config['include_path_admin'].'findouthowpopup.php');
-
-		?>
+		<?php 	include_once($config['include_path_admin'].'findouthowpopup.php');?>
 	</main>
 
 	<?php include_once($config['include_path_admin'].'footer.php');?>

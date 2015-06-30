@@ -1,5 +1,5 @@
 <?php
-	$admin = true;
+	$admin = true; 
 	require_once('../../assets/php/config.php');
 
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');

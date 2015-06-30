@@ -1018,9 +1018,7 @@ End password reset methods
 		if( $nextMonthrecord && $payment_record ){
 			if($paid == "true" ){
 				$to_be_pay_next_month = $nextMonthrecord['total_earnings']; 
-				//var_dump("se pago");
 			}else{
-				//var_dump("no se pago");
 				$to_be_pay_next_month = abs($nextMonthrecord['total_earnings'] + $recordExist['total_earnings']);
 			}
 			$payment_record_next_month =  $this->performUpdate(array(
@@ -1028,30 +1026,28 @@ End password reset methods
 				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $next_month, ':year' => $next_year )
 			));
 		}
-			
 		return $payment_record ;
-
 	}
 
 	public function getContributorEarningChartData($data){
-				//		data: { task:'get_chart_data', contributor_id : 1123, start_date: start_date, end_date: end_date  }
+		//data: { task:'get_chart_data', contributor_id : 1123, start_date: start_date, end_date: end_date  }
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
 		$s = " SELECT DATE_FORMAT(updated_date, '%Y-%m-%d') as 'date', sum(pageviews), avg(pct_pageviews), sum(usa_pageviews) 
-				FROM google_analytics_data_daily 
-				INNER JOIN (article_contributor_articles) 
+			   FROM google_analytics_data_daily 
+			   INNER JOIN (article_contributor_articles) 
 					ON (article_contributor_articles.article_id = google_analytics_data_daily.article_id) 
 				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."' 
 				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
 
 		$getData = $this->performQuery(array(
 			'queryString' => $s,
-			'queryParams' => array(':contributor_id' => $contributor_id, ':start_date' => $start_date, ':end_data' => $end_date )
+			'queryParams' => array( )
 		));
 
-		var_dump($getData); die;
-
+		return $getData;
 	}
 
 	public function registerInMailChimpList($post){
@@ -1078,6 +1074,7 @@ End password reset methods
 
 		}else return array_merge($this->helpers->returnStatus(500), array('hasError' => true));
 	}
+	
 	public function send_email($opts){
 		$options = array_merge(array(
 			'email' => '',

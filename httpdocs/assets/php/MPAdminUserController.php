@@ -1035,7 +1035,7 @@ End password reset methods
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
-		$s = " SELECT DATE_FORMAT(updated_date, '%Y-%m-%d') as 'date', sum(pageviews), avg(pct_pageviews), sum(usa_pageviews) 
+		$s = " SELECT DATE_FORMAT(updated_date, '%Y-%m-%d') as 'date', sum(pageviews) as 'total_pageviews', avg(pct_pageviews) as 'total_pct_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
 			   FROM google_analytics_data_daily 
 			   INNER JOIN (article_contributor_articles) 
 					ON (article_contributor_articles.article_id = google_analytics_data_daily.article_id) 
@@ -1046,7 +1046,6 @@ End password reset methods
 			'queryString' => $s,
 			'queryParams' => array( )
 		));
-
 		return $getData;
 	}
 

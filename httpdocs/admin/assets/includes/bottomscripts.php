@@ -90,13 +90,93 @@ if($('#fb-login')){
 	});
 }
 
-google.load("visualization", "1.1", {packages:["bar"]});
-      google.setOnLoadCallback(drawStuff);
+	  // Load the Visualization API 
+	  google.load("visualization", "1.1", {packages:["bar"]});
 
-      function drawStuff() {
+	  $('input[name="daterange"]').val(moment().subtract(7, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+ 
+    $('input[name="daterange"]').daterangepicker({
+        format: 'MM/DD/YYYY',
+        startDate: moment().subtract(7, 'days'),
+        endDate: moment(),
+        minDate: '01/01/2012',
+        maxDate: '12/31/2015',
+        dateLimit: { days: 60 },
+        showDropdowns: true,
+        showWeekNumbers: true,
+        timePicker: false,
+        timePickerIncrement: 1,
+        timePicker12Hour: true,
+        ranges: {
+           //'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        opens: 'left',
+        drops: 'down',
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-primary',
+        cancelClass: 'btn-default',
+        separator: ' to ',
+        locale: {
+            applyLabel: 'Submit',
+            cancelLabel: 'Cancel',
+            fromLabel: 'From',
+            toLabel: 'To',
+            customRangeLabel: 'Custom',
+            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            firstDay: 1
+        }
+    }); 
+
+	var chart_info = [];
+	//chart_info.push([" ", " "]);
+
+
+    function getChartData(start_date, end_date){
+    	var info = {};
+    	console.log('here');
+    	$.ajax({
+			type: "POST",
+			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			data: { task:'get_chart_data', contributor_id : 1123, start_date: start_date, end_date: end_date  }
+		}).done(function(data) {
+			//console.log(data);
+			if( data != false ){ 
+				data = $.parseJSON(data);
+				$(data).each( function(e){	
+					var val = $(this);				
+					info = [ val[0].date, val[0].total_usa_pageviews ];
+					chart_info.push(info);
+				});
+			}
+		});
+//console.log(chart_info);
+	};
+
+    $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker){
+	  console.log(picker.startDate.format('YYYY-MM-DD'));
+	  console.log(picker.endDate.format('YYYY-MM-DD'));
+	  var start_date = picker.startDate.format('YYYY-MM-DD');
+	  var end_date = picker.endDate.format('YYYY-MM-DD');
+
+	  getChartData(start_date, end_date);
+
+	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
+	});
+      	getChartData(moment().subtract(10, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
+
+	  // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+console.log(chart_info);
         var data = new google.visualization.arrayToDataTable([
-          ['', 'Percentage'],
-
+          ['', ''],
           ['6/01', 44],
           ['6/02', 31],
           ['6/03', 12],

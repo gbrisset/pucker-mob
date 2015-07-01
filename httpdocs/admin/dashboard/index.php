@@ -455,6 +455,10 @@
 			</section>
 
 			<section>
+				<p class="notes bold">**Please note: Earnings shown are estimates only, and subject to fluctuation throughout the month.</p>
+			</section>
+
+			<section>
 				<p class="notes">All payments will be made approximately 45 days after the completion of the current month.</p>
 			</section>
 			

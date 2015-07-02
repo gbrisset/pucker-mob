@@ -62,7 +62,7 @@ $(document).ready(function (){
 				}
 			} 
 		}
-	]);*/
+	]);
 
 	//	Check to see if cookies is enabled
 	var cookiesEnabled = SDCookie.checkEnabled();
@@ -80,7 +80,7 @@ $(document).ready(function (){
 			});
 		}
 	}
-
+*/
 
 	$('#menu-icon').click(function(e){
 		if($('#nav-cont').hasClass('shown')) $('#nav-cont').slideUp(500);
@@ -92,11 +92,11 @@ $(document).ready(function (){
 	});
 
 	
-		$('#export').on('click', function(e){
-			e.preventDefault();
-			var ahref ="http://www.puckermob.com/admin/reports/getsocialcsvreport.php?month="+$('#month-option').val()+"&year="+$('#year-option').val()+"&contributor="+$('#contributor-option').val();
-			location.href = ahref;
-		});
+	$('#export').on('click', function(e){
+		e.preventDefault();
+		var ahref ="http://www.puckermob.com/admin/reports/getsocialcsvreport.php?month="+$('#month-option').val()+"&year="+$('#year-option').val()+"&contributor="+$('#contributor-option').val();
+		location.href = ahref;
+	});
 	
 
 	$('#nav-sidemenu .parent').click(function(e){
@@ -114,13 +114,11 @@ $(document).ready(function (){
 			}
 			$(this).toggleClass('shown');
 		}
-
 		e.preventDefault();
 	});
 
 	//Sort By Selection
 	if($('#sort-by')){
-
 		var ul = $('#sort-by').children('ul'),
 		    a  = $(ul).children('li').children('a');
 			 	
@@ -235,7 +233,7 @@ $(document).ready(function (){
    });
    //End
 	
-	$('.colorpicker').mpColorPicker();
+	//$('.colorpicker').mpColorPicker();
 	$('.tooltip').mpTooltip();
 	$('.preview').mpPreview();
 
@@ -276,7 +274,7 @@ $(document).ready(function (){
 		console.log('Send Default');
 	});
 
-	$('#more-ingredients-yes, #more-instructions-yes').click(function(e){
+	/*$('#more-ingredients-yes, #more-instructions-yes').click(function(e){
 		var prefix = $(this).attr('data-info'), 
 		count = $('.'+prefix+'-box').length, 
 		index = count+1;
@@ -389,10 +387,9 @@ $(document).ready(function (){
 		add_element.appendTo(element_box);
 
 		$('#'+prefix+'-'+count).after(fieldset);
-	});
+	});*/
 
 	//Image Article and Contributors Link Hovering and Linking functionalities
-
 	if($('#image-container')){
 		$('#image-container').hover(function(e){
 			$('#image-container').toggleClass('shown');
@@ -404,18 +401,6 @@ $(document).ready(function (){
 		$('#image-file-link').click();
 	});
 	
-
-
-
-
-
-
-
-
-
-
-
-
 
 	//Form Ajax Processor
 	var ajaxCallbacks = {
@@ -449,18 +434,6 @@ $(document).ready(function (){
 		
 		},
 
-		'video-add-form' : function(form, data){
-			setTimeout(function(){
-				window.location = "<?php echo $config['this_admin_url']; ?>media/edit/" + data['videoDetails'][':syn_video_filename'];
-			}, 2000);
-		},
-
-		'video-delete-form' : function(form, data){
-			setTimeout(function(){
-				window.location = "<?php echo $config['this_admin_url']; ?>media/";
-			}, 2000);
-		},
-
 		'list-delete-form': function(form, data){
 			var thisForm = $(form),
 			list_div = '#'+data.pagelist_data;
@@ -470,7 +443,6 @@ $(document).ready(function (){
 					updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
 					callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
 				});
-
 		},
 
 		'list-item-delete-form': function(form, data){
@@ -483,7 +455,6 @@ $(document).ready(function (){
 					updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
 					callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
 				});
-
 		},		
 
 		'article-add-form' : function(form, data){
@@ -553,117 +524,7 @@ $(document).ready(function (){
 				});
 
 		},
-
-		'series-add-form' : function(form, data){
-			setTimeout(function(){
-				window.location = "<?php echo $config['this_admin_url']; ?>media/editseries/" + data['seriesDetails'][':article_page_series_seo'];
-			}, 2000);
-		},
 		
-		'category-slideshow-article-form' : function(form, data){
-			var thisForm = $(form),
-			slideshowList = $('.slideshow'),
-			ul = $(slideshowList).children('section').children('ul'),
-			selectedOption =  $(thisForm).children('.ss-dd-articles').children('select').children('option:selected'),
-			dataList = $(selectedOption).attr('data-list');
-
-			$('<li/>', {
-			    id: $(selectedOption).attr('id'),
-			 })
-			 .html(dataList)
-			 .appendTo(ul)
-			 .find('.b-delete').click(function() {
-     			var thisForm = $(this).parent().parent('form'),
-				thisId = thisForm.attr('id');
-
-				thisForm.mpValidate({
-					updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
-					callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-				});
-			});
-		},
-
-		'category-slideshow-delete': function(form, data){
-			var thisForm = $(form),
-			slideshowList = $('.slideshow'),
-			ul = $(slideshowList).children('section').children('ul'),
-			article_id = '#'+data.article_data;
-
-			$(ul).children(article_id).remove();
-		},
-
-		'series-add-edit-video' : function(form, data){
-			var thisForm = $(form),
-			playlist = $('.series-playlist'),
-			ul = $(playlist).children('section').children('ul'),
-			selectedOption =  $(thisForm).children('fieldset').children('#series_video').children('option:selected'),
-			dataList = $(selectedOption).attr('data-list');
-
-			$('<li/>', {
-			    id: $(selectedOption).attr('id'),
-			 })
-			 .html(dataList)
-			 .appendTo(ul)
-			 .find('.delete button').click(function() {
-     			var thisForm = $(this).parent().parent('form'),
-				thisId = thisForm.attr('id');
-
-				thisForm.mpValidate({
-					updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
-					callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-				});
-
-				$(this).click();
-			});;
-		},
-
-		'series-video-delete': function (form, data){
-			var thisForm = $(form),
-			playlist = $('.series-playlist'),
-			ul = $(playlist).children('section').children('ul'),
-			video_id = '#'+data.article_data;
-
-			$(ul).children(video_id).remove();
-		},
-
-		'series-video-add-remove-slideshow': function ( form, data ){
-			var thisForm = $(form),
-			anchor = $(form).children('a'),
-			anchor_id = $(anchor).attr('id'),
-			action = $(thisForm).children('#action');
-			
-			if(anchor_id == 'series-video-add-slideshow-link'){
-				$(anchor).attr('id', 'series-video-remove-slideshow-link');
-				$(anchor).html('<i class="icon-minus-sign"></i>Remove from slideshow');
-				$(action).attr('value', 'series-video-remove-slideshow-link');
-			}
-			else{
-				$(anchor).attr('id', 'series-video-add-slideshow-link');
-				$(anchor).html('<i class="icon-plus-sign"></i>Add to slideshow');
-				$(action).attr('value', 'series-video-add-slideshow-link');
-			}
-		}, 
-
-		'collection-add-form': function( form, data){
-			setTimeout(function(){
-				window.location = "<?php echo $config['this_admin_url']; ?>recipe_collections/edit/" + data['collectionDetails'][':collections_seoname'];
-			}, 2000);
-		},
-
-		'collection-delete-form': function (form, data){
-			var thisForm = $(form),
-
-			collection_div = '#'+data.article_data;
-
-			thisId = thisForm.attr('id');
-				console.log(thisId);
-				$(collection_div).remove();
-				thisForm.mpValidate({
-					updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
-					callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-				});		
-		},
-
 		'article-tall-image-upload-form': function( form, data ){
 			var thisForm = $(form),
 			article_id = $('#article-id').val(),
@@ -706,81 +567,18 @@ $(document).ready(function (){
 			}
 		},
 
-		'slideshow-add-form' : function(form, data){
-			var thisForm = $(form), 
-			statusCode = data.statusCode,
-			id = data.id;
-			
-			if(!data.hasError) {
-
-				if(id){
-					$('#ss_i').val(id);
-				}
-				$('#article-inline-settings').slideDown(500);
-				$('.review').css('display', 'inline');
-				$('#main-buttons-text').css('display', 'inline');
-				
-				$('#preview-recipe').css('display', 'inline');
-
-			}
-		},
-
-		'slider-image-upload-form': function( form, data ){
-			var thisForm = $(form),
-			id = $('#ss_i').val(),
-			url = '<?php echo $config['image_url']?>articlesites/simpledish/flex_test_images/',
-			d = new Date(),
-			filename = data.filename;
-			img_url = url+filename;
-			img = $('#image-container').children('img');
-			
-			$('.preview-close').click();
-			if(!data.hasError){
-				$(img).attr('src', img_url+'?'+d.getMilliseconds());
-				$('#error-img').text('Image Updated Sucessful!').addClass('new-success').show();
-			}else{
-				$('#error-img').text('something went wrong. Please try again or contact info@simpledish.com.').addClass('error');
-			}
-		},
-
-		'slideshow-delete': function(form, data){
-			var thisForm = $(form),
-			slide_div = '#'+data.slideshow_data;
-			thisId = thisForm.attr('id');
-				$(slide_div).remove();
-				thisForm.mpValidate({
-					updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
-					callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-				});
-
-		},
-
-		'slideshow-update-status-form': function( form, data){
-			window.location = "<?php echo $config['this_admin_url']; ?>slideshow/";
-		},	
-
 	}; 
 	//	END AJAX CALLBACKS
 
 
-
-
-
-
-
-
 	//	BEGIN HANDLERS FOR THE AJAX FORM SUBMISSIONS
-
-	//	edit LIST: editlist.php
-
 	$('.page-list-data-form').each(function(){
-
 		var thisForm = $(this)
 		thisForm.mpValidate({
 			updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
 			callback : function(){
-					//	redirect to the new seo titled page
-					$("#page_list_seo_title").redirectToNewSEOTitle('<?php echo $config['this_admin_url'].'lists/edit/'; ?>');
+				//	redirect to the new seo titled page
+				$("#page_list_seo_title").redirectToNewSEOTitle('<?php echo $config['this_admin_url'].'lists/edit/'; ?>');
 			}
 		});
 	});
@@ -789,7 +587,6 @@ $(document).ready(function (){
 	//	edit LIST ITEM: editlist.php
 
 	$('.page-list-item-data-form').each(function(){
-	
 	
 		var thisForm = $(this),
 		listItemId = thisForm.children('#page_list_item_id').attr("value"),
@@ -833,6 +630,7 @@ $(document).ready(function (){
 		});
 	});
 
+	//REFACTOR THIS TO ONE PLUGIN
 
 	$('.article-delete-form').each(function(){
 		var thisForm = $(this),
@@ -888,18 +686,7 @@ $(document).ready(function (){
 				callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
 			});
 	});
-
-	$('.series-video-add-remove-slideshow').each(function(){
-		var form = $(this), 
-		anchor = $(this).children('a'),
-		formId = $(form).attr('id'),
-		button = $(form).children('button');
-
-		$(anchor).click( function(e){
-			e.preventDefault();
-			button.click();
-		});
-	});
+	//REFACTOR THIS TO ONE PLUGIN
 
 	$('.ajax-submit-form').each(function(){
 		var thisForm = $(this),
@@ -922,8 +709,6 @@ $(document).ready(function (){
 			callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
 		});
 	});
-
-
 
 	$('#contributor_wide_img').mpImageCropUpload({
 		desWidth: 140,
@@ -960,9 +745,6 @@ $(document).ready(function (){
 			window.location = "<?php echo $config['this_admin_url']; ?>articles/";
 		}, 300);
 	});
-
-	
-	
 
 	//	Upload account image link
 	$(function(){
@@ -1003,6 +785,7 @@ $(document).ready(function (){
 	});
 
 
+	//PUBLISH ARTICLE
 	if($('#publish')){
 		$('#publish').on('click', function(e){
 			var statusVal = $(this).attr('data-info');
@@ -1025,7 +808,7 @@ $(document).ready(function (){
 		});
 	}
 
-	
+	//AVATAR
 	if($('.avatar-span')){
 		$('.avatar-span').on('click', function(){
 			var img = $(this).attr('data-info'),
@@ -1034,12 +817,11 @@ $(document).ready(function (){
 			img_profile = $('#img-profile');
 			$(img_profile).attr('src', new_img_src);
 			$(img_profile).attr('data-info', img);
-			console.log(img, new_img_src);
 		});
 
 	}
 
-	if($('.select-avatar')){
+if($('.select-avatar')){
 	$('.select-avatar').on('click', function(event){
 		var img_profile = $('#img-profile'),
 		img_name = $(img_profile).attr('data-info');
@@ -1062,9 +844,6 @@ $(document).ready(function (){
 			 		$('#error-img').text('something went wrong. Please try again or contact info@sequelmediagroup.com.').addClass('error').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );;
 			 	}
 			});
-
-
-
 	});
 }
 
@@ -1319,6 +1098,64 @@ if($('.mob-level-contributor')){
 
 	});
 }
+
+
+//VIEW EARNINGS PAGE
+	EarningsObj.initChart();
+	
+	$('input[name="daterange"]').val(moment().subtract(7, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+ 
+    $('input[name="daterange"]').daterangepicker({
+        format: 'MM/DD/YYYY',
+        startDate: moment().subtract(7, 'days'),
+        endDate: moment(),
+        minDate: '01/01/2012',
+        maxDate: '12/31/2015',
+        dateLimit: { days: 60 },
+        showDropdowns: true,
+        showWeekNumbers: true,
+        timePicker: false,
+        timePickerIncrement: 1,
+        timePicker12Hour: true,
+        ranges: {
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        opens: 'left',
+        drops: 'down',
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-primary',
+        cancelClass: 'btn-default',
+        separator: ' to ',
+        locale: {
+            applyLabel: 'Submit',
+            cancelLabel: 'Cancel',
+            fromLabel: 'From',
+            toLabel: 'To',
+            customRangeLabel: 'Custom',
+            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            firstDay: 1
+        }
+    }); 
+
+    $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker){
+	  var start_date = picker.startDate.format('YYYY-MM-DD');
+	  var end_date = picker.endDate.format('YYYY-MM-DD');
+
+	  EarningsObj.setValues(start_date, end_date);
+	  var chart_info = EarningsObj.getChartData();
+	  EarningsObj.drawChart();
+
+	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
+	});
+
+	EarningsObj.setValues(moment().subtract(10, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
+	EarningsObj.getChartData();   
+
     
 }); 
  

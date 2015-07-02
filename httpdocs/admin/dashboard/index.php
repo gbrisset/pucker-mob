@@ -104,6 +104,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
+<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
 	<script>function change(){ 
 		if($('#month-option').val() == 0) return; 
 		var year  = $('#month option:selected').attr('data-info');  
@@ -136,6 +137,7 @@
 			<!-- MONTHLY SHARE RATE -->
 				<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
+					<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
 						<p><?php echo $rate['month_label'].', '.$rate['year'].' RATE ('.$moblevel.'): <span> $'.number_format($rate['rate'], 2, '.', ',').' CPM </span>'; ?></p>
 					</div>
 

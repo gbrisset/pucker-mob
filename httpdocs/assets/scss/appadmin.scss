@@ -821,9 +821,9 @@ z-index: 999; width: 33.57rem; display:none;}
 #warning-box, #announcements{ margin-top:0.3rem !important;}
 
 /*SOCAIL SHARE RATE*/
-#share-rate-box{ overflow: hidden;   border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;}
+#share-rate-box{ overflow: hidden;}
 .share-rate-txt, .find-more-link{background: #991B1C; height: 3.65rem;}
-.share-rate-txt{    margin-left: 1rem; background: #fff; height: auto;   font-family: OsloBold;}
+.share-rate-txt{ background: #fff; height: auto; font-family: OsloBold; margin-top:1rem; margin-bottom:1rem;}
 .share-rate-txt p span{ color: #156A17;}
 .find-more-link{ padding: 0.5rem; width: 25%; padding-top: 1rem;}
 .share-rate-txt p{ color: #000; text-transform: uppercase; text-align: center; font-size: 1.4rem; font-weight: bolder; padding: 0; margin:0; }

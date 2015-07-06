@@ -152,60 +152,45 @@
 			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
 				<header>View EARNINGS By CONTRIBUTORS</header>
 			</div>
-			<section id="articles">
+
+			<!--MOB LEVEL -->
+			<?php include_once($config['include_path_admin'].'showuserplan.php');?>
+
+			
+			<div id="following-header" class="following-header mobile-12 small-12 half-padding-top clear">
+				<header>Earnings at a glance</header>
+			</div>
+			<section id="articles" class="row box-border no-margin-vaxis">
 				<!-- MONTHLY SHARE RATE -->
-				<div id="share-rate-box" class="mobile-12 small-12">
+				<div id="share-rate-box" class=" mobile-12 small-12 ">
 					<div class="share-rate-txt left">
-						<p>JUNE CPM RATE (BASED ON U.S. VISITORS): <?php echo '$'.number_format($rate, 2, '.', ','); ?></p>
-						<p id="dd-shares-calc">CLICK TO LEARN MORE ABOUT CPM RATES <i class="fa 2x fa-caret-down"></i></p>
-					</div>
-					<div class="find-more-link right">
-						<p><a href="#" id="find-more-info">Find out how to make money with The Mob</a></p>
+					<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+						<p><?php echo $rate['month_label'].', '.$rate['year'].' RATE ('.$moblevel.'): <span> $'.number_format($rate['rate'], 2, '.', ',').' CPM </span>'; ?></p>
 					</div>
 				</div>
-				<div id="dd-shares-content" class="mobile-12 small-12">
-					<div>
-						<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies 
-							generate revenue. So the rate we're paying this month is that amount you'll earn for every 
-							thousand U.S. visitors that read your content.
-						</p>
+				<section class="margin-top">
+				    <div id="bar_chart" style="width: 900px; height: 500px;"></div>
+				</section>
+				<section class="row earnings-calendar margin-top">
+					<div class="columns small-12">
+						<div class="small-6 left">
+							<p>Early Earnings Report</p>
+						</div>
+						<div class="small-6 left">
+							<div id="reportrange" class="pull-right">
+							    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+							    <input type="text" name="daterange" value="01/01/2015 - 12/31/2015" />
+							</div>
+						</div>
 					</div>
-				</div>
-				
-				<!-- WARNINGS BOX -->
-				<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
-				<div id="warning-box" class="warning-box  mobile-12 small-12" style="min-height:6.5rem;">
-					<div id="warning-icon" class="">
-						<i class="fa fa-3x fa-exclamation-triangle"></i>
-					</div>
-					<div id="warning-txt" class="p-cont">
-						<p>
-							<?php echo $warnings[0]['notification_msg']; ?>
-						</p>
-					</div>
-				</div>
-				<?php }?>
-
-				<!-- EARNINGS AT A GLANCE -->
-				<?php if( $contributor_type != 6 && $contributor_type != 1 && $contributor_type != 7 ){ ?>
-				<div id="earnings-info" class="earnings-info mobile-12 small-12 margin-bottom">
-					<header>EARNINGS AT A GLANCE</header>
-					<div class="total-earnings left">
-						<h3>Month to Date</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p>
-					</div>
-					<div class="last-month-earnings left">
-						<h3>Last Month</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($last_month_earnings, 2, '.', ','); ?></p>
-					</div>
-					<div class="total-earnings left">
-						<h3>Total to Date</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
-					</div>
-				</div>
-				<?php }?>
+				</section>
 			</section>
-
+			<div id="share-rate-box" class=" mobile-12 small-12 ">
+				<div class="share-rate-txt box-border no-margin-vaxis ">
+					<p class="upper-big">total earned for selected date range: <span id="total_earned_graph">$0.00</span></p>
+				</div>
+			</div>
+			
 			<section id="dashboard">
 				<header style="margin-top:0.2rem;">EARNINGS PER ARTICLE
 					<div class="right" style="text-align: right;">

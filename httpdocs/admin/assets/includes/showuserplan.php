@@ -28,7 +28,7 @@
 			break;
 	}
 ?>
-<section class="user-plan padding-bottom small-12 right">
+<section class="user-plan small-12 right">
 
 <div class="user-plan-cont column small-12 padding-bottom padding-top">
 	<div class="current-level small-5 inline left">

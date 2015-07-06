@@ -4,15 +4,14 @@
 ?>
 
 var EarningsObj = {	
-	start_date : moment().subtract(10, 'days').format("YYYY-MM-DD"), 
-	end_date : moment().format("YYYY-MM-DD"),
-	chart_info : {},
-	getOptions: function(){
-		return {
+	start_date : moment().subtract(10, 'days').format("YYYY-MM-DD"), end_date : moment().format("YYYY-MM-DD"),
+	chart_info : {}, article_list : {},
+	total_earnings: 0,
+	options : {
           title: '',
           width: 800,
           legend: { position: 'none' },
-          vAxis: { minValue: 0, format: 'currency'},
+          vAxis: { minValue: 0, baselineColor: '#FFFFFF'},
           animation: {easing: 'in', duration: 200 },
           bars: 'vertical',
           axes: {
@@ -20,11 +19,11 @@ var EarningsObj = {
               0: { side: 'bottom'}
             }
           },
+
           bar: { groupWidth: "80%" },
           colors: ['#156A17'],
-        }
     },
-    initChart: function(){
+	initChart: function(){
 	    // Set a callback to run when the Google Visualization API is loaded.
 	    google.setOnLoadCallback(EarningsObj.drawChart);
     },
@@ -33,8 +32,11 @@ var EarningsObj = {
     	EarningsObj.end_date = end_date;
     	EarningsObj.chart_info =  EarningsObj.getChartData( EarningsObj.start_date, EarningsObj.end_date );
     },
+    setTotalEarnings: function( total_earned){
+    	EarningsObj.total_earnings = total_earned;
+	},
     getChartData: function(){
-    	var info = {}, chart = [], contributor_id = $('#contributor_id').val();
+    	var info = {}, chart = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
     	$.ajax({
 			type: "POST",
 			async: false,
@@ -51,32 +53,71 @@ var EarningsObj = {
 					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;	
 
 					var tooltip = pageviews+' $'+amount; 			
-					
-					info = [ val[0].date, amount ];
+					total_earned = total_earned + amount;
+					info = [ val[0].date, amount];
 					chart.push(info);
 				});
 			}
+			EarningsObj.total_earnings = total_earned;
 			EarningsObj.chart_info = chart;
 		});
 	},
+	getArticlesListData: function(){
+    	var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
+    	$.ajax({
+			type: "POST",
+			async: false,
+			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			data: { task:'get_chart_article_data', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
+		}).done(function(data) {
+			if( data != "false" ){ 
+				data = $.parseJSON(data), html = "", t_body = $('#article-list tbody'), total_amount = 0;
+				$(data).each( function(e){	
+					var val = $(this),
+					rate = $('#current-user-rate').val(),
+					pageviews = parseInt(val[0].usa_pageviews),
+					amount = 0;
+					var tr = "";
+
+					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;	
+
+					tr += "<tr id='article-'"+ val[0].article_id + ">";
+						tr += "<td class='article align-left'>";
+							tr += "<a href='http://puckermob.com/"+ val[0].cat_dir_name +"/"+ val[0].article_seo_title +" 'target='blank' > "+ val[0].article_title.substring(0,40) +"... </a>";
+						tr += "</td>";
+						tr += "<td>" + val[0].creation_date + "</td>";
+						tr += "<td>" + pageviews + "</td>";
+						tr += "<td>" + rate + "</td>";
+						tr += "<td class='bold align-right'>" + amount + "</td>";
+					tr += "</tr>";
+					html += tr;
+					total_amount += amount;
+					
+				});
+			}
+			EarningsObj.total_article_earned += total_amount;
+			$(t_body).html(html);
+
+		});
+	},
 	drawChart: function( ) {
-      	var options = EarningsObj.getOptions();
-        
         if(EarningsObj.chart_info.length > 0){
         // Create the data table.
 	    var data = new google.visualization.DataTable();
-	    data.addColumn('string', ' ');
-	    data.addColumn('number', ' ');
-	    
-	    // A column for custom tooltip content
-  	
-	    data.addRows( EarningsObj.chart_info );
 
+	    data.addColumn('string', 'DATE');
+	    data.addColumn('number', 'EARNINGS');
+	    
+	    data.addRows( EarningsObj.chart_info );
+      
         var chart = new google.charts.Bar(document.getElementById('bar_chart'));
-        chart.draw(data, options);
+        chart.draw(data, EarningsObj.options);
         }else{
         	$('#bar_chart').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
         }
+     },
+     updateTotalEarnings: function(){
+     	$('#total_earned_graph').text('$' + parseFloat(EarningsObj.total_earnings, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
      }
 };
 
@@ -113,7 +154,7 @@ var SDCookie = (function() {
 					return null;
 		},
 		delete: function(name){
-					this.save(name,"",-1);
+			this.save(name,"",-1);
 		}
     }
 

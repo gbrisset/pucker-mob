@@ -520,7 +520,7 @@ form .gradient-button.red-gradient {background: -moz-linear-gradient(center top 
 .admin-contributor .contributor-info > p  {margin-bottom: 0; margin-top: 0.45rem;  text-align: center;}
 
 //DASHBOARD
-#dashboard{ margin-top:5%;}
+#dashboard{ margin-top:0.5rem;}
 #dashboard h2{ font-weight: bold; margin-bottom: 5rem;}
 #dashboard table{ background: #fff; border:none; width:100%;}
 #dashboard table thead{background: #fff;}
@@ -542,14 +542,13 @@ form .gradient-button.red-gradient {background: -moz-linear-gradient(center top 
 .close:hover{ color: #fff;}
 #popup-content div{  background: #fff; padding: 1rem; -web-kit-border-radius: 5px; -moz-border-radius:5px; border-radius: 5px;}
 .input-error{ background: rgba(255, 0, 0, 0.5); border-color: rgba(255, 0, 0, 0.8);}
-/*select:hover{background: #01b88a !important; color:#fff; }*/
 select{background-position: 96% center;}
 #nav-cont{bottom:0 !important;}
 #main-cont #content{ top: 0 !important;}
 #article-info, #articles{border:none !important;}
 .section-bar .right p img{width:1.5rem;}
 #month-form {display: inline-block;  margin-left: -1.4rem; padding: 0.5rem;}
-#month-form select{ text-transform: capitalize; border:none; height: 1.95rem; margin: 0; position: Relative; top: 0.2rem;  padding-left: 1.5rem; text-align:left; /*background-size: 1rem; background-position: 120% center;*/ background-position: 70% 60%;}
+#month-form select{ text-transform: capitalize; border:none; height: 1.95rem; margin: 0; position: Relative; top: 0.2rem;  padding-left: 1.5rem; text-align:left;  background-position: 70% 60%;}
 
 .dd-month{display:inline-block; text-transform:uppercase;}
 .dd-month label{ display: inline-block; background: #747371; color: #fff;  font-size: 1rem; padding: 0.22rem 1rem; position: relative; top: -0.9rem;}
@@ -823,7 +822,7 @@ z-index: 999; width: 33.57rem; display:none;}
 /*SOCAIL SHARE RATE*/
 #share-rate-box{ overflow: hidden;}
 .share-rate-txt, .find-more-link{background: #991B1C; height: 3.65rem;}
-.share-rate-txt{ background: #fff; height: auto; font-family: OsloBold; margin-top:1rem; margin-bottom:1rem;}
+.share-rate-txt{ background: #fff; height: auto; font-family: OsloBold;}
 .share-rate-txt p span{ color: #156A17;}
 .find-more-link{ padding: 0.5rem; width: 25%; padding-top: 1rem;}
 .share-rate-txt p{ color: #000; text-transform: uppercase; text-align: center; font-size: 1.4rem; font-weight: bolder; padding: 0; margin:0; }
@@ -1052,15 +1051,16 @@ width: 48%;
 	border: 1px solid #ccc;
 
 	
-	.glyphicon-calendar{ font-size: 1.5rem; display: inline; left: 3px; color: #999;}
+	.glyphicon-calendar{ font-size: 1.3rem; display: inline; left: 3px; color: #999;}
 	input{   
 		display: inline;
 		width: 80%;
 		border: none;
 		border-left: 1px solid #ddd;
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 		box-shadow: none;
-		margin: 0.5px;
+		margin: 0.8px;
+		height: auto;
 	}
 }
 
@@ -1096,6 +1096,14 @@ width: 48%;
 
 .how-do-pro-level h2{ font-size: 1.5rem; text-transform: uppercase; font-family:oslobold;}
 .mob-level{ background: #000; color: #fff; border:none; margin-top:0.5rem; padding-top: 0.3rem;}
+#earnings .box-border {   border: 1px solid #ddd !important; margin: 0.5rem auto; padding: 0.5rem; }
+#earnings #following-header header {	
+  padding: 0.4rem 0.5rem 0.25rem 0.5rem;
+  text-transform: uppercase;
+  background: #000 !important;
+  font-weight: bolder;
+}
+.upper-big{ font-size: 1.7rem !important; padding: 0.5rem !important; }
 @import "admin/browser_specifics_styling";
 
 

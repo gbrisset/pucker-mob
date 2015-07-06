@@ -77,9 +77,15 @@ a{ outline: none !important; }
 .padding-top {
 	padding-top: ($panel-padding/2) !important;
 }
+.half-padding-top {
+	padding-top: ($panel-padding/4) !important;
+}
 
 .padding-bottom {
 	padding-bottom: ($panel-padding/2);
+}
+.half-padding-bottom {
+	padding-bottom: ($panel-padding/4);
 }
 
 .padding-left {
@@ -551,6 +557,7 @@ input.topbar-search-contents:-ms-input-placeholder {  color: #10580d; font-size:
 #article-next-prev-bottom a:last-child {position: relative; right: 4.5rem;}
 #article-caption ul li a button {margin-bottom: 0;}
 #sectioned-article-content, #recipe-content {padding-bottom: $panel-padding /2;  margin-bottom: 0.2rem}
+
 .no-padding {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
@@ -572,8 +579,9 @@ input.topbar-search-contents:-ms-input-placeholder {  color: #10580d; font-size:
 	margin-right: 0;
 }
 
+.no-margin-vaxis{ margin-top: 0 !important; margin-bottom:0 !important;}
 .no-margin-mobile {
-margin:0 !important;
+	margin:0 !important;
 }
 
 .margin-top {

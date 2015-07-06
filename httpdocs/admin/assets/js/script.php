@@ -1147,14 +1147,16 @@ if($('.mob-level-contributor')){
 	  var end_date = picker.endDate.format('YYYY-MM-DD');
 
 	  EarningsObj.setValues(start_date, end_date);
-	  var chart_info = EarningsObj.getChartData();
+	  EarningsObj.getChartData();
 	  EarningsObj.drawChart();
+	  EarningsObj.updateTotalEarnings();   
 
 	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
 	});
 
 	EarningsObj.setValues(moment().subtract(10, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
-	EarningsObj.getChartData();   
+	EarningsObj.getChartData();
+	EarningsObj.updateTotalEarnings();   
 
     
 }); 

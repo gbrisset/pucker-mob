@@ -177,7 +177,13 @@ if(!is_null($categoryInfo)){
 <?php } ?>
 	<?php include_once($config['include_path'].'header.php');?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
-
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+    <script type="text/javascript">
+	$(document).ready(function(){
+		addthis.init();
+	})
+	</script>
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
@@ -287,13 +293,7 @@ if(!is_null($categoryInfo)){
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-    <script type="text/javascript">
-	$(document).ready(function(){
-		addthis.init();
-	})
-	</script>
+	
     <?php if( $promotedArticle ){ ?>
     	<!-- SMARTIES -->
 		<script language="javascript">document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3366273/0/16/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');

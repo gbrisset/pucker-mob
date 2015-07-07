@@ -160,7 +160,7 @@
 
 			<section id="articles">
 				<!-- MONTHLY SHARE RATE -->
-				<div id="share-rate-box" class="mobile-12 small-12">
+				<!--<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
 						<p><?php echo $rate['month_label']; ?> CPM Rate (Based on U.S. Visitors): <?php echo '$'.number_format($rate['rate'], 2, '.', ','); ?></p>
 						<p id="dd-shares-calc">Click to Learn More About CPM Rates <i class="fa 2x fa-caret-down"></i></p>
@@ -169,12 +169,19 @@
 						<p><a href="#" id="find-more-info">Find out how to make money with  The Mob</a></p>
 					</div>
 				</div>
+
 				<div id="dd-shares-content" class="mobile-12 small-12">
 					<div>
 						<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies calculate revenue. 
 							So the rate we're paying this month 
 							is that amount you'll earn for every thousand U.S. visitors that read your content.
 						</p>
+					</div>
+				</div>-->
+				<div id="share-rate-box" class=" mobile-12 small-12 padding-top columns padding-bottom">
+					<div class="share-rate-txt left">
+					<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+						<p><?php echo $rate['month_label'].', '.$rate['year'].' RATE ('.$moblevel.'): <span> $'.number_format($rate['rate'], 2, '.', ',').' CPM </span>'; ?></p>
 					</div>
 				</div>
 				<!-- WARNINGS BOX -->

@@ -8,17 +8,17 @@
 	// 1. the current page number ($current_page)
 	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 	$date_updated = '';
-// 2. records per page ($per_page)
+	
+	// 2. records per page ($per_page)
 	$per_page = 30;
 	$limit=30;
 	$post_date = 'all';
-
 	$articleStatus = '1, 2, 3';
-
-	$userArticlesFilter = $userData['user_email'];
 	$order = '';
 	$filterLabel = 'Most Recent';
-// Sorting information
+	$userArticlesFilter = $userData['user_email'];
+		
+	// Sorting information
 	$article_sort_by = "mr";
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
@@ -34,13 +34,12 @@
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter));
 	$pagination = new Pagination($page, $per_page, $total_count);
 	$offset = $pagination->offset();
-	$current_month = date('n');
+	$current_month = date('m');
 	$current_year = date('Y');
 	
 	$month = isset($_POST['month']) ? $_POST['month'] : $current_month;
 	$year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 
-	//$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
 	$dateupdated = $dashboard->get_dateUpdated($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
 
 	$contributor_name = $userData["contributor_name"];
@@ -54,20 +53,19 @@
 		$dateupdated = $dashboard->get_dateUpdated($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
 		$newCalc = false;
 	}else{
-		//IS MARCH AND UP
-		$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
-		//$chart_data = $dashboard->get_chartArticlesData();
+		if( $year == 2015 && $month <= 6){
+			$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
+		}else{
+			$start_date = date_format(date_create($year.'-'.$month.'-01'), 'Y-m-d');
+			$end_date =   date_format(date_create($year.'-'.$month.'-31'), 'Y-m-d');
+			$data = ['contributor_id' => $contributor_id, 'start_date' => $start_date, 'end_date' => $end_date];
+			$articles = $adminController->user->getContributorEarningChartArticleData($data);
+		}
 	}
-
-	//$rate = $dashboard->get_current_rate();
-	$rate = $dashboard->get_current_rate( 0, $contributor_type );
+	$rate = $dashboard->get_current_rate( $month, $contributor_type );
 	$total = 0;
 
 	$ManageDashboard = new ManageAdminDashboard( $config );
-
-	//WARNINGS
-	//$warnings = $ManageDashboard->getWarningsMessages(); 
-
 	
 	$last_month = $current_month-1;
 	$last_year = $current_year;
@@ -75,25 +73,6 @@
 		 $last_month = 12;
 		 $last_year = $current_year - 1;
 	}
-	//LAST MONTH EARNINGS
-	//$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $last_month, $last_year );
-	//$last_month_earnings = 0;
-	//if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
-			
-	//TOTAL EARNINGS TO DATE
-	//$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0, 0);
-	///$total_earnings_to_date = 0;
-	//if($total_earnings_to_date_info ){
-	//	foreach($total_earnings_to_date_info as $value){
-	//		$total_earnings_to_date += $value['total_earnings'];
-	//	}
-	//} 
-
-	//THIS MONTH EARNINGS
-	//$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month, $current_year);
-	//$this_month_earnigs = 0;
-	//if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
-
 	$show_art_rate = false;
 	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 ?>
@@ -116,20 +95,20 @@
 	</script>
 	
 	<?php include_once($config['include_path_admin'].'header.php');?>
+	
 	<div class="sub-menu row">
 		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">VIEW EARNINGS</h1>
+		<h1 class="left">MY DASHBOARD</h1>
 	</div>
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
-			<h1 class="left">VIEW EARNINGS</h1>
-			
+			<h1 class="left">MY DASHBOARD</h1>
 	</section>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
 			<div id="following-header" class="following-header mobile-12 small-12 half-padding-bottom">
-				<header>View EARNINGS</header>
+				<header>MY DASHBOARD</header>
 			</div>
 
 			<!--MOB LEVEL -->
@@ -141,27 +120,20 @@
 	
 			<section id="articles" class="row box-border no-margin-vaxis">
 				<!-- MONTHLY SHARE RATE -->
-				<div id="share-rate-box" class=" mobile-12 small-12 ">
-					<div class="share-rate-txt left">
-					<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+				<div id="share-rate-box" class=" mobile-12 small-12 padding-top padding-bottom">
+					<div class="share-rate-txt small-6  left">
+						<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
 						<p><?php echo $rate['month_label'].', '.$rate['year'].' RATE ('.$moblevel.'): <span> $'.number_format($rate['rate'], 2, '.', ',').' CPM </span>'; ?></p>
+					</div>
+					<div class="small-5 right">
+						<div id="reportrange" class="pull-right">
+						    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+						    <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+						</div>
 					</div>
 				</div>
 				<section class="margin-top">
-				    <div id="bar_chart" style="width: 900px; height: 500px;"></div>
-				</section>
-				<section class="row earnings-calendar margin-top">
-					<div class="columns small-12">
-						<div class="small-6 left">
-							<p>Early Earnings Report</p>
-						</div>
-						<div class="small-6 left">
-							<div id="reportrange" class="pull-right">
-							    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-							    <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
-							</div>
-						</div>
-					</div>
+				    <div id="bar_chart" style=""></div>
 				</section>
 			</section>
 			<div id="share-rate-box" class=" mobile-12 small-12 ">
@@ -249,7 +221,6 @@
 
 						  		if( !$newCalc ){
 						  		foreach( $articles as $article ){ 
-
 						  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
 						  		$month_created = date_format(date_create($article['creation_date']), 'n');
 						  		$cat = $article['category'];
@@ -364,7 +335,6 @@
 							  		$total = 0;
 							  	
 							  		foreach( $articles as $article ){ 
-
 								  		$creation_date = date_format(date_create($article['creation_date']), 'm/d/y');
 								  		$month_created = date_format(date_create($article['creation_date']), 'n');
 								  		$cat = $article['cat_dir_name'];
@@ -433,7 +403,7 @@
 			</section>
 		</div>
 	
-	<?php include_once($config['include_path_admin'].'findouthowpopup.php');?>
+	<?php //include_once($config['include_path_admin'].'findouthowpopup.php');?>
 	</main>
 
 	<?php include_once($config['include_path_admin'].'footer.php');?>

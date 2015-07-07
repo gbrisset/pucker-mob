@@ -4,23 +4,18 @@
 ?>
 
 var EarningsObj = {	
-	start_date : moment().subtract(10, 'days').format("YYYY-MM-DD"), end_date : moment().format("YYYY-MM-DD"),
+	start_date : moment().subtract(7, 'days').format("YYYY-MM-DD"), end_date : moment().format("YYYY-MM-DD"),
 	chart_info : {}, article_list : {},
 	total_earnings: 0,
 	options : {
-          title: '',
+          title: ' ',
           width: 800,
+          height: 350,
           legend: { position: 'none' },
-          vAxis: { minValue: 0, baselineColor: '#FFFFFF'},
-          animation: {easing: 'in', duration: 200 },
-          bars: 'vertical',
-          axes: {
-            x: {
-              0: { side: 'bottom'}
-            }
-          },
-
-          bar: { groupWidth: "80%" },
+          vAxis: { gridlines: { count: 4 }, format: 'currency' },
+          hAxis: { 
+			title: 'Tracked Categories' 
+			}, 
           colors: ['#156A17'],
     },
 	initChart: function(){
@@ -71,10 +66,11 @@ var EarningsObj = {
 			data: { task:'get_chart_article_data', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
 		}).done(function(data) {
 			if( data != "false" ){ 
-				data = $.parseJSON(data), html = "", t_body = $('#article-list tbody'), total_amount = 0;
+				data = $.parseJSON(data), html = "", t_body = $('#article-list tbody'), total_amount = 0, total_pageviews = 0;
+				var rate = $('#current-user-rate').val();
+				
 				$(data).each( function(e){	
 					var val = $(this),
-					rate = $('#current-user-rate').val(),
 					pageviews = parseInt(val[0].usa_pageviews),
 					amount = 0;
 					var tr = "";
@@ -85,15 +81,24 @@ var EarningsObj = {
 						tr += "<td class='article align-left'>";
 							tr += "<a href='http://puckermob.com/"+ val[0].cat_dir_name +"/"+ val[0].article_seo_title +" 'target='blank' > "+ val[0].article_title.substring(0,40) +"... </a>";
 						tr += "</td>";
-						tr += "<td>" + val[0].creation_date + "</td>";
+						tr += "<td>" + moment( val[0].creation_date ).format("MM/DD/YY") + "</td>";
 						tr += "<td>" + pageviews + "</td>";
 						tr += "<td>" + rate + "</td>";
-						tr += "<td class='bold align-right'>" + amount + "</td>";
+						tr += "<td class='bold align-right'>$"+ parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() +"</td>";
 					tr += "</tr>";
 					html += tr;
 					total_amount += amount;
-					
+					total_pageviews += pageviews;
 				});
+				var total_tr = '<tr class="total">';
+					total_tr += '<td class="bold">TOTAL</td>';
+					total_tr += '<td></td>';
+					total_tr += '<td class="bold">'+total_pageviews+'</td>';
+					total_tr += '<td class="bold">$'+rate+'</td>';
+					total_tr += '<td class="bold align-right">$'+parseFloat(total_amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
+				total_tr += '</tr>';
+
+				html += total_tr;
 			}
 			EarningsObj.total_article_earned += total_amount;
 			$(t_body).html(html);
@@ -105,12 +110,13 @@ var EarningsObj = {
         // Create the data table.
 	    var data = new google.visualization.DataTable();
 
-	    data.addColumn('string', 'DATE');
-	    data.addColumn('number', 'EARNINGS');
+	    data.addColumn('string', ' ');
+	    data.addColumn('number', ' ');
 	    
 	    data.addRows( EarningsObj.chart_info );
       
         var chart = new google.charts.Bar(document.getElementById('bar_chart'));
+
         chart.draw(data, EarningsObj.options);
         }else{
         	$('#bar_chart').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
@@ -234,9 +240,6 @@ Radio Button Toggle
 	Call this on a radio button input(s)
 	When clicked, this function hides both divs given as args,
 	Then show's the :selected div
-
-*/
-
 $.fn.SDRadioToggler = function(divName1, divName2){
 	$(this).click(function(e){
 		var selectedRadio = $(this).parent().find("input[name$='media_type']:checked").val(),
@@ -249,15 +252,13 @@ $.fn.SDRadioToggler = function(divName1, divName2){
 		displayedDiv.fadeIn(300);
 
 	});	
-}
-
+}*/
 
 /*	Click toggler...
 
 		Call this method on an element to be clicked
 		takes 1 arg: The element to be shown, set it's css display property to none in the css
 */
-
 $.fn.SDToggler = function(hiddenDiv){
 	$(this).click(function(e){
 		var cont = $(''+hiddenDiv+'');
@@ -270,7 +271,7 @@ $.fn.SDToggler = function(hiddenDiv){
 	});
 }
 
-
+/*
 $.fn.mpColorPicker = function(){
 	return this.each(function(){
 		var thisPicker = $(this),
@@ -301,6 +302,7 @@ $.fn.mpColorPicker = function(){
 		};
 	});
 };
+*/
 
 $.fn.mpTooltip = function(){
 	return this.each(function(){
@@ -330,6 +332,7 @@ $.fn.mpTooltip = function(){
 	});
 };
 
+// I THINK NOT IN USE ON PUCKERMOB
 $.fn.mpAddElement = function(){
 	return this.each(function(e){
 		
@@ -726,6 +729,7 @@ $.fn.mpImageCropUpload = function( opts, e ){
 	});
 };
 
+// I THINK NOT IN USE ON PUCKERMOB
 $.fn.mpImageUpload = function(opts){
 	var options = $.extend({
 		fileCount : 1,
@@ -962,8 +966,9 @@ $.fn.filterByText = function(textbox, selectSingleMatch) {
                 }
             });            
         });
-    };
+};
 
+// I THINK NOT IN USE ON PUCKERMOB
 $.fn.mpImageDisplay = function(opts){
 	var options = $.extend({
 		fileCount : 1,

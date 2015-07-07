@@ -94,7 +94,8 @@ if($('#fb-login')){
 }
 
 // Load the Visualization API 
-google.load("visualization", "1.1", {packages:["bar"]});
+ google.load('visualization', '1', {packages: ['corechart', 'bar']});
+
 </script>
 
 <!--[if lt IE 7 ]>

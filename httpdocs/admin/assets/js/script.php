@@ -1099,8 +1099,8 @@ if($('.mob-level-contributor')){
 	});
 }
 
-
-//VIEW EARNINGS PAGE
+  if($('#earnings') ){
+	//VIEW EARNINGS PAGE
 	EarningsObj.initChart();
 	
 	$('input[name="daterange"]').val(moment().subtract(7, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
@@ -1109,8 +1109,8 @@ if($('.mob-level-contributor')){
         format: 'MM/DD/YYYY',
         startDate: moment().subtract(7, 'days'),
         endDate: moment(),
-        minDate: '01/01/2012',
-        maxDate: '12/31/2015',
+        minDate: '07/01/2015',
+        
         dateLimit: { days: 60 },
         showDropdowns: true,
         showWeekNumbers: true,
@@ -1149,16 +1149,16 @@ if($('.mob-level-contributor')){
 	  EarningsObj.setValues(start_date, end_date);
 	  EarningsObj.getChartData();
 	  EarningsObj.drawChart();
+	  EarningsObj.getArticlesListData();
 	  EarningsObj.updateTotalEarnings();   
 
 	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
 	});
-
 	EarningsObj.setValues(moment().subtract(10, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
 	EarningsObj.getChartData();
 	EarningsObj.updateTotalEarnings();   
 
-    
+  }
 }); 
  
 

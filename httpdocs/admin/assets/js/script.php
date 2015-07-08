@@ -1099,10 +1099,10 @@ if($('.mob-level-contributor')){
 	});
 }
 
+  //VIEW EARNINGS PAGE
   if($('#earnings') ){
-	//VIEW EARNINGS PAGE
-	EarningsObj.initChart();
 	
+	EarningsObj.initChart();
 	$('input[name="daterange"]').val(moment().subtract(7, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
  
     $('input[name="daterange"]').daterangepicker({
@@ -1154,6 +1154,7 @@ if($('.mob-level-contributor')){
 
 	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
 	});
+	
 	EarningsObj.setValues(moment().subtract(10, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
 	EarningsObj.getChartData();
 	EarningsObj.updateTotalEarnings();   

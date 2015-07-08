@@ -98,6 +98,8 @@
 	}
 	$show_art_rate = false;
 	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -137,6 +139,7 @@
 			<!--MOB LEVEL -->
 			<?php include_once($config['include_path_admin'].'showuserplan.php');?>
 			
+			<?php if( $contributor_type != 1 && $contributor_type != 6 && $contributor_type != 7 ){?>
 			<div id="following-header" class="following-header mobile-12 small-12 half-padding-top clear">
 				<header>Earnings at a glance</header>
 			</div>
@@ -165,7 +168,7 @@
 					<p class="upper-big">total earned for selected date range: <span id="total_earned_graph">$0.00</span></p>				
 				</div>
 			</div>
-			
+			<?php }?>
 			<section id="dashboard">
 				<header style="margin-top:0.2rem;">EARNINGS PER ARTICLE
 					<div class="right" style="text-align: right;">

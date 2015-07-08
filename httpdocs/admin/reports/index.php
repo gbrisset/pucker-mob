@@ -35,6 +35,8 @@
 		}else $adminController->redirectTo('logout/');
 	}
 
+	var_dump($dashboard->getPageViewsUSReportNew($_POST));
+
 ?>
 
 <!DOCTYPE html>

@@ -1071,10 +1071,20 @@ End password reset methods
 		$data = $this->performQuery(array(
 			'queryString' => $s,
 			'queryParams' => array( ),
-			'returnRowAsSingleArray' => true
+			//'returnRowAsSingleArray' => true,
+			'bypassCache' => true
 			));
 
-		return $data;
+		if ($data && isset($data[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $data;
+		} else if ($data && !isset($data[0])){
+				// If $q is an array of rows, return it as normal
+			$data = array($data);
+			return $data;
+		} else {
+			return false;
+		}
 	}
 
 	public function registerInMailChimpList($post){

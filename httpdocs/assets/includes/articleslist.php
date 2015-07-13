@@ -1,5 +1,5 @@
 <?php 
-$articleIndex = 0; $bigImageCounter =  0; $smallImageCounter = 0; $quantity = 44; $omitThis = 0; $cat_id = $mpArticle->data['cat_id'];
+$articleIndex = 1; $bigImageCounter =  0; $smallImageCounter = 0; $quantity = 44; $omitThis = 0; $cat_id = $mpArticle->data['cat_id'];
 $featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 
 //FEATURED ARTICLE

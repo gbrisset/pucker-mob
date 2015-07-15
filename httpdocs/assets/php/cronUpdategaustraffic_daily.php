@@ -12,8 +12,8 @@ $client = $GoogleAnalyticsApi->connect_to_client();
 
 // Create Google Service Analytics object with our preconfigured Google_Client
 $analytics = new Google_Service_Analytics($client);
-$endDate = '2015-07-08';//date('Y-m-d');
-$startDate = '2015-07-08';//= date('Y-m-d');
+$startDate = date('Y-m-d');
+$endDate = date('Y-m-d');
 
 $month= date('n');
 $year = date('Y');
@@ -99,8 +99,8 @@ foreach( $arrArticle as $article ){
 			'pct_pageviews' =>  $pctValue
 		];
 
-		var_dump($data);
-		//$GoogleAnalyticsData->saveGoogleAnalyticsInformationDaily($data, $month, $year);
+		//var_dump($data);
+		$GoogleAnalyticsData->saveGoogleAnalyticsInformationDaily($data, $month, $year);
 	}
 }
 ?>

@@ -104,8 +104,9 @@ $arrArticle = $GoogleAnalyticsData->getArticlesNew();
 							'usa_pageviews' => $usa_pageviews,
 							'pct_pageviews' =>  $pctValue
 						];
-
 						$GoogleAnalyticsData->saveGoogleAnalyticsInformationNew($data, $month, $year);
+						//$GoogleAnalyticsData->saveGoogleAnalyticsInformationDaily($data, $month, $year);
+
 					}
 				}
 

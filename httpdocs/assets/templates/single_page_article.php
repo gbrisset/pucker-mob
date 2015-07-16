@@ -1,6 +1,6 @@
 <?php
 // Initialize variables
-$article_body = $article_title = $article_category = $article_disclaimer = $article_img_credits = $article_notes = $linkToContributor = '';
+$article_body = $article_title = $article_category = $article_disclaimer = $article_img_credits =  $article_img_credits = $article_notes = $linkToContributor = '';
 $article_id =0;
 $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 
@@ -21,6 +21,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 	$article_img_credits = $articleInfoObj['article_img_credits'];
+	$article_img_credits_url = $articleInfoObj['article_img_credits_url'];
+
 	$article_notes = $articleInfoObj['article_additional_comments'];
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
 
@@ -93,9 +95,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
-		<h1>HERE</h1>
-		<?php include_once($config['include_path'].'header_social.php'); ?>
-
+		<?php //if($article_id == 7625){?>
+			<?php include_once($config['include_path'].'header_social.php'); ?>
+			<?php //}?>
 		<!-- KOMOONA BELOW ARTICLE BODY 
 		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
 			<div id="mobile-instream-komoona-ad" class="">
@@ -104,20 +106,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
 				</div>	
 			</div>
-<<<<<<< HEAD
 		</div>-->
 		<!-- 3LIFT -->
-		<!--<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
+		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
 			<div id="mobile-instream-3lift-ad" class="">
 				<div id="get-content" style="text-align:center;">
-					
+					<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
 				</div>	
 			</div>
-		</div>-->
-
-=======
 		</div>
->>>>>>> origin/muchos_changes
+
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = [];
@@ -182,7 +180,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
+		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
+			Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
 		<?php }?>
 		
 		<section id="separator-section" class="row no-padding"></section>
@@ -352,18 +351,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 		</div>
 
-<<<<<<< HEAD
 		<hr>
 		<div id="3lift-ad "class="columns small-12">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
 		</div>
 				
-=======
-		
-		<div id="3lift-ad "class="columns small-12">
-			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
-		</div>	
->>>>>>> origin/muchos_changes
 		<!-- ADBLADE-->
 		<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 			<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
@@ -383,11 +375,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-		<p class="padding-bottom image-source" style="font-size: 10pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">Photo courtesy of <?php echo $article_img_credits; ?></p>
+		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
+			Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
 		<?php }?>
 
 		</section>
 	</div>
+		
 	<?php if(!$promotedArticle){ ?>
 		<section class="nativo-ad padding-top clear">
 			<div class="nativo"></div> 

@@ -553,7 +553,7 @@ class MPArticleAdminController extends MPArticle{
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
 		$unrequired = array(
-			'article_tags', 'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments', 'article_desc'
+			'article_tags', 'article_body', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 'article_desc'
 		);
 
 		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
@@ -823,7 +823,7 @@ class MPArticleAdminController extends MPArticle{
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
 			'post' => $post,
 			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 
-				'article_body', 'article_keywords', 'article_img_credits', 'article_additional_comments', 
+				'article_body', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 
 				'article_poll_id', 'article_desc', 'featured_hp')
 		));
 		

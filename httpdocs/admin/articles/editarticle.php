@@ -402,6 +402,14 @@
 								<input type="text" name="article_img_credits-s" id="article_img_credits-s" placeholder="Enter image credits" value="<?php if(isset($article['article_img_credits'])) echo $article['article_img_credits']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits') echo 'autofocus'; ?> />	
 						</div>
 					</div>
+					<!-- IMAGE CREDITS URL-->
+					<div class="row">
+					    <div class="columns">
+							<label  class="uppercase">Image Credits URL</label>
+								<input type="url" name="article_img_credits_url-s" id="article_img_credits_url-s" placeholder="Enter image credits URL" value="<?php if(isset($article['article_img_credits_url'])) echo $article['article_img_credits_url']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits_url') echo 'autofocus'; ?> />	
+						</div>
+					</div>
+
 					
 					<!-- NOTES -->
 					<div class="row">

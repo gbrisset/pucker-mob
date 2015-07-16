@@ -1,11 +1,9 @@
 <?php
-
-//header("Cache-Control: max-age=86400"); //30days (60sec * 60min * 24hours * 1day)
-
 $local = 1;
 $version = "";
 //error_reporting(E_ALL);
-//	ini_set('display_errors', '1');
+//ini_set('display_errors', '1');
+
 if($local)
 {
 	define("DB_SERVER", "localhost");

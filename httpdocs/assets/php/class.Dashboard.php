@@ -202,7 +202,7 @@ class Dashboard{
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 		
-		if($q) return $q['rate'];
+		if($q) return $q;
 		else return false;
 	}
 
@@ -460,6 +460,36 @@ class Dashboard{
 		}else return false;
 
 	}
+
+	public function getPageViewsUSReportNew($data){
+		$month = 7;//filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year = 2015;//filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		
+		$s = " SELECT *
+			   FROM google_analytics_data_daily 
+			   INNER JOIN ( article_contributor_articles, article_contributors ) 
+					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
+					ON ( article_contributor_articles.contributor_id = article_contributors.contributor_id )
+				WHERE month = ".$month." AND year = ".$year;
+var_dump($s);
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+			));
+
+		if ($data && isset($data[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $data;
+		} else if ($data && !isset($data[0])){
+				// If $q is an array of rows, return it as normal
+			$data = array($data);
+			return $data;
+		} else {
+			return false;
+		}
+	}
+
 	public function socialMediaSharesReport($data){
 
 		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
@@ -596,9 +626,9 @@ class Dashboard{
 					}
 				} 
 
-//				if($contributor['user_type'] != 4){
-//					$total_earnings = $total_earnings - $total_article_rate;
-//				}
+				//if($contributor['user_type'] != 4){
+				//	$total_earnings = $total_earnings - $total_article_rate;
+				//}
 
 				if($update_data){
 					$s = "UPDATE contributor_earnings 

@@ -43,7 +43,7 @@
 
 			function getTotalShares( url, elm ){
  		
-		 		var span_shares_holder = $(elm).find('.span-shares-holder');
+		 		var span_shares_holder = $(elm).find('.span-holder-shares');
 		 		var this_count = 0;
 		 		var fn_callback = null ;
 		 		var label =  " SHARES";

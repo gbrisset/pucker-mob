@@ -104,6 +104,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
 				</div>	
 			</div>
+<<<<<<< HEAD
 		</div>-->
 		<!-- 3LIFT -->
 		<!--<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
@@ -114,6 +115,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</div>
 		</div>-->
 
+=======
+		</div>
+>>>>>>> origin/muchos_changes
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = [];
@@ -348,11 +352,18 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 		</div>
 
+<<<<<<< HEAD
 		<hr>
 		<div id="3lift-ad "class="columns small-12">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
 		</div>
 				
+=======
+		
+		<div id="3lift-ad "class="columns small-12">
+			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
+		</div>	
+>>>>>>> origin/muchos_changes
 		<!-- ADBLADE-->
 		<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 			<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
@@ -377,7 +388,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		</section>
 	</div>
-		
 	<?php if(!$promotedArticle){ ?>
 		<section class="nativo-ad padding-top clear">
 			<div class="nativo"></div> 

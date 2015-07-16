@@ -1,12 +1,7 @@
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
-
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
-<!--<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.js"></script>
-<script src="<?php echo $config['this_url']; ?>assets/js/jquery.wysiwyg.link.js"></script>-->
-
-	
-	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
-	<script type="text/javascript">
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
 	tinymce.init({
 
 		setup: function (ed) {
@@ -70,10 +65,14 @@
 </script>
 
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.tooltipster.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/2.9.0/moment.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/1/daterangepicker.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 <script src="<?php echo $config['this_url']; ?>assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
-<script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>
 
+<script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>
 
 
 <?php
@@ -82,26 +81,26 @@
 ?>
 
 <script>
-		$(function() {
-			$('#sortable2').sortable();
+$(function() {
+	$('#sortable2').sortable();
+});
 
-		});
-</script>
-
-<script>
 if($('#fb-login')){
 	$('#fb-login').on('click', function(e){
-		//var tos = $('#tos_agreed-s');
-		//$('#tos_agreed-s').attr('checked', true);
-		//$('#tos_agreed-s').attr('disabled', true);
 	    FB.login(function(response) {
-	//    console.log("FB.login");
 	  	  checkLoginState();
 	    }, {scope: 'public_profile,email'});
 	});
 }
+
+// Load the Visualization API 
+ google.load('visualization', '1', {packages: ['corechart', 'bar']});
+
 </script>
+
 <!--[if lt IE 7 ]>
 	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 	<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
+
+

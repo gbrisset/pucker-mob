@@ -1154,7 +1154,7 @@ if($('.mob-level-contributor')){
 
 	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
 	});
-	EarningsObj.setValues(moment().startOf('month').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
+	EarningsObj.setValues(moment().subtract(10, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
 	EarningsObj.getChartData();
 	EarningsObj.updateTotalEarnings();   
 

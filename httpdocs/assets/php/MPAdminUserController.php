@@ -41,7 +41,7 @@ class MPAdminUserController extends MPArticleAdminController{
 				return "<script>setTimeout(function(){window.location = \"".$url."\"}, 10);</script>";
 			} else {
 				//	Redirect to admin/articles/ (user_type: 3, 4)
-				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
+				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\dashboard\"}, 10);</script>";
 				//return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."articles/\"}, 1000);</script>";
 			}
 		//} else {
@@ -1009,7 +1009,6 @@ End password reset methods
 			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
 		));
 
-		var_dump($nextMonthrecord);
 		if($recordExist){
 			$payment_record =  $this->performUpdate(array(
 				'updateString' => "UPDATE contributor_earnings SET paid = ".$paid." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
@@ -1019,9 +1018,7 @@ End password reset methods
 		if( $nextMonthrecord && $payment_record ){
 			if($paid == "true" ){
 				$to_be_pay_next_month = $nextMonthrecord['total_earnings']; 
-				//var_dump("se pago");
 			}else{
-				//var_dump("no se pago");
 				$to_be_pay_next_month = abs($nextMonthrecord['total_earnings'] + $recordExist['total_earnings']);
 			}
 			$payment_record_next_month =  $this->performUpdate(array(
@@ -1029,9 +1026,65 @@ End password reset methods
 				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $next_month, ':year' => $next_year )
 			));
 		}
-			
 		return $payment_record ;
+	}
 
+	public function getContributorEarningChartData($data){
+		//data: { task:'get_chart_data', contributor_id : 1123, start_date: start_date, end_date: end_date  }
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
+		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
+			   FROM google_analytics_data_daily 
+			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
+					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
+					AND ( articles.article_id = google_analytics_data_daily.article_id )
+					AND ( articles.article_id = article_categories.article_id )
+					AND ( article_categories.cat_id = categories.cat_id )
+				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."' 
+				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		return $data;
+	}
+
+	public function getContributorEarningChartArticleData($data){
+
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
+		$s = " SELECT articles.article_title, articles.article_seo_title, articles.creation_date, categories.cat_dir_name, SUM(usa_pageviews) as 'usa_pageviews'
+			   FROM google_analytics_data_daily 
+			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
+					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
+					AND ( articles.article_id = google_analytics_data_daily.article_id )
+					AND ( articles.article_id = article_categories.article_id )
+					AND ( article_categories.cat_id = categories.cat_id )
+				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(google_analytics_data_daily.updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."'  
+				GROUP BY google_analytics_data_daily.article_id ORDER BY usa_pageviews DESC ";
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			//'returnRowAsSingleArray' => true,
+			'bypassCache' => true
+			));
+
+		if ($data && isset($data[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $data;
+		} else if ($data && !isset($data[0])){
+				// If $q is an array of rows, return it as normal
+			$data = array($data);
+			return $data;
+		} else {
+			return false;
+		}
 	}
 
 	public function registerInMailChimpList($post){
@@ -1058,6 +1111,7 @@ End password reset methods
 
 		}else return array_merge($this->helpers->returnStatus(500), array('hasError' => true));
 	}
+	
 	public function send_email($opts){
 		$options = array_merge(array(
 			'email' => '',
@@ -1143,7 +1197,7 @@ End password reset methods
 		if($user){
 			if($user['user_verified'] == 1){
 				$r = $this->helpers->returnStatus(200);
-				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>.";
+				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\dashboard\">here</a>.";
 				return $r;
 			}
 
@@ -1161,7 +1215,7 @@ End password reset methods
 
 			if($q){
 				$r = $this->helpers->returnStatus(200);
-				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>.";
+				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\dashboard\">here</a>.";
 				$r['username'] = $user['user_name'];
 				return $r;
 			}else return $this->helpers->returnStatus(500);

@@ -45,7 +45,7 @@ foreach( $articlesList as $articles ){
 	$content .=  '</div>';
 	$content .=  '<div class="second-article-date small-12 clear">';
 	$content .=  	'<label class="small-6">'.$date.'</label>';
-	$content .=  	'<label class="small-6 span-shares-holder"></label>';
+	$content .=  	'<label class="small-6 span-holder-shares"></label>';
 	$content .=  '</div>';
 	$content .=  '</div>';
 	

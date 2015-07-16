@@ -3,9 +3,131 @@
 	require_once('../../../assets/php/config.php');
 ?>
 
+var EarningsObj = {	
+	start_date : moment().subtract(7, 'days').format("YYYY-MM-DD"), end_date : moment().format("YYYY-MM-DD"),
+	chart_info : {}, article_list : {},
+	total_earnings: 0,
+	options : {
+          title: ' ',
+          width: 800,
+          height: 350,
+          legend: { position: 'none' },
+          vAxis: { gridlines: { count: 4 }, format: 'currency' },
+          hAxis: { 
+			title: 'Tracked Categories' 
+			}, 
+          colors: ['#156A17'],
+    },
+	initChart: function(){
+	    // Set a callback to run when the Google Visualization API is loaded.
+	    google.setOnLoadCallback(EarningsObj.drawChart);
+    },
+    setValues: function( start_date, end_date ){
+    	EarningsObj.start_date = start_date;
+    	EarningsObj.end_date = end_date;
+    	EarningsObj.chart_info =  EarningsObj.getChartData( EarningsObj.start_date, EarningsObj.end_date );
+    },
+    setTotalEarnings: function( total_earned){
+    	EarningsObj.total_earnings = total_earned;
+	},
+    getChartData: function(){
+    	var info = {}, chart = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
+    	$.ajax({
+			type: "POST",
+			async: false,
+			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			data: { task:'get_chart_data', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
+		}).done(function(data) {
+			if( data != "false" ){ 
+				data = $.parseJSON(data);
+				$(data).each( function(e){	
+					var val = $(this);
+					var rate = $('#current-user-rate').val();
+					var pageviews = parseInt(val[0].total_usa_pageviews);
+					var amount = 0;
+					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;	
+
+					var tooltip = pageviews+' $'+amount; 			
+					total_earned = total_earned + amount;
+					info = [ val[0].date, amount];
+					chart.push(info);
+				});
+			}
+			EarningsObj.total_earnings = total_earned;
+			EarningsObj.chart_info = chart;
+		});
+	},
+	getArticlesListData: function(){
+    	var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
+    	$.ajax({
+			type: "POST",
+			async: false,
+			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			data: { task:'get_chart_article_data', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
+		}).done(function(data) {
+			if( data != "false" ){ 
+				data = $.parseJSON(data), html = "", t_body = $('#article-list tbody'), total_amount = 0, total_pageviews = 0;
+				var rate = $('#current-user-rate').val();
+				
+				$(data).each( function(e){	
+					var val = $(this),
+					pageviews = parseInt(val[0].usa_pageviews),
+					amount = 0;
+					var tr = "";
+
+					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;	
+
+					tr += "<tr id='article-'"+ val[0].article_id + ">";
+						tr += "<td class='article align-left'>";
+							tr += "<a href='http://puckermob.com/"+ val[0].cat_dir_name +"/"+ val[0].article_seo_title +" 'target='blank' > "+ val[0].article_title.substring(0,40) +"... </a>";
+						tr += "</td>";
+						tr += "<td>" + moment( val[0].creation_date ).format("MM/DD/YY") + "</td>";
+						tr += "<td>" + pageviews + "</td>";
+						tr += "<td>" + rate + "</td>";
+						tr += "<td class='bold align-right'>$"+ parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() +"</td>";
+					tr += "</tr>";
+					html += tr;
+					total_amount += amount;
+					total_pageviews += pageviews;
+				});
+				var total_tr = '<tr class="total">';
+					total_tr += '<td class="bold">TOTAL</td>';
+					total_tr += '<td></td>';
+					total_tr += '<td class="bold">'+total_pageviews+'</td>';
+					total_tr += '<td class="bold">$'+rate+'</td>';
+					total_tr += '<td class="bold align-right">$'+parseFloat(total_amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
+				total_tr += '</tr>';
+
+				html += total_tr;
+			}
+			EarningsObj.total_article_earned += total_amount;
+			$(t_body).html(html);
+
+		});
+	},
+	drawChart: function( ) {
+        if(EarningsObj.chart_info.length > 0){
+        // Create the data table.
+	    var data = new google.visualization.DataTable();
+
+	    data.addColumn('string', ' ');
+	    data.addColumn('number', ' ');
+	    
+	    data.addRows( EarningsObj.chart_info );
+      
+        var chart = new google.charts.Bar(document.getElementById('bar_chart'));
+
+        chart.draw(data, EarningsObj.options);
+        }else{
+        	$('#bar_chart').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
+        }
+     },
+     updateTotalEarnings: function(){
+     	$('#total_earned_graph').text('$' + parseFloat(EarningsObj.total_earnings, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
+     }
+};
+
 jQuery.fn.farbtastic=function(e){$.farbtastic(this,e);return this};jQuery.farbtastic=function(e,t){var e=$(e).get(0);return e.farbtastic||(e.farbtastic=new jQuery._farbtastic(e,t))};jQuery._farbtastic=function(e,t){var n=this;$(e).html('<div class="farbtastic"><div class="color"></div><div class="wheel"></div><div class="overlay"></div><div class="h-marker marker"></div><div class="sl-marker marker"></div></div>');var r=$(".farbtastic",e);n.wheel=$(".wheel",e).get(0);n.radius=84;n.square=100;n.width=194;if(navigator.appVersion.match(/MSIE [0-6]\./)){$("*",r).each(function(){if(this.currentStyle.backgroundImage!="none"){var e=this.currentStyle.backgroundImage;e=this.currentStyle.backgroundImage.substring(5,e.length-2);$(this).css({backgroundImage:"none",filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='"+e+"')"})}})}n.linkTo=function(e){if(typeof n.callback=="object"){$(n.callback).unbind("keyup",n.updateValue)}n.color=null;if(typeof e=="function"){n.callback=e}else if(typeof e=="object"||typeof e=="string"){n.callback=$(e);n.callback.bind("keyup",n.updateValue);if(n.callback.parent().prev("input").val()){n.setColor(n.callback.parent().prev("input").val())}}return this};n.updateValue=function(e){if(this.value&&this.value!=n.color){n.setColor(this.value)}};n.setColor=function(e){var t=n.unpack(e);if(n.color!=e&&t){n.color=e;n.rgb=t;n.hsl=n.RGBToHSL(n.rgb);n.updateDisplay()}return this};n.setHSL=function(e){n.hsl=e;n.rgb=n.HSLToRGB(e);n.color=n.pack(n.rgb);n.updateDisplay();return this};n.widgetCoords=function(e){var t,r;var i=e.target||e.srcElement;var s=n.wheel;if(typeof e.offsetX!="undefined"){var o={x:e.offsetX,y:e.offsetY};var u=i;while(u){u.mouseX=o.x;u.mouseY=o.y;o.x+=u.offsetLeft;o.y+=u.offsetTop;u=u.offsetParent}var u=s;var a={x:0,y:0};while(u){if(typeof u.mouseX!="undefined"){t=u.mouseX-a.x;r=u.mouseY-a.y;break}a.x+=u.offsetLeft;a.y+=u.offsetTop;u=u.offsetParent}u=i;while(u){u.mouseX=undefined;u.mouseY=undefined;u=u.offsetParent}}else{var o=n.absolutePosition(s);t=(e.pageX||0*(e.clientX+$("html").get(0).scrollLeft))-o.x;r=(e.pageY||0*(e.clientY+$("html").get(0).scrollTop))-o.y}return{x:t-n.width/2,y:r-n.width/2}};n.mousedown=function(e){if(!document.dragging){$(document).bind("mousemove",n.mousemove).bind("mouseup",n.mouseup);document.dragging=true}var t=n.widgetCoords(e);n.circleDrag=Math.max(Math.abs(t.x),Math.abs(t.y))*2>n.square;n.mousemove(e);return false};n.mousemove=function(e){var t=n.widgetCoords(e);if(n.circleDrag){var r=Math.atan2(t.x,-t.y)/6.28;if(r<0)r+=1;n.setHSL([r,n.hsl[1],n.hsl[2]])}else{var i=Math.max(0,Math.min(1,-(t.x/n.square)+.5));var s=Math.max(0,Math.min(1,-(t.y/n.square)+.5));n.setHSL([n.hsl[0],i,s])}return false};n.mouseup=function(){$(document).unbind("mousemove",n.mousemove);$(document).unbind("mouseup",n.mouseup);document.dragging=false};n.updateDisplay=function(){var e=n.hsl[0]*6.28;$(".h-marker",r).css({left:Math.round(Math.sin(e)*n.radius+n.width/2)+"px",top:Math.round(-Math.cos(e)*n.radius+n.width/2)+"px"});$(".sl-marker",r).css({left:Math.round(n.square*(.5-n.hsl[1])+n.width/2)+"px",top:Math.round(n.square*(.5-n.hsl[2])+n.width/2)+"px"});$(".color",r).css("backgroundColor",n.pack(n.HSLToRGB([n.hsl[0],1,.5])));if(typeof n.callback=="object"){$(n.callback).css({backgroundColor:n.color,color:n.hsl[2]>.5?"#000":"#fff"});$(n.callback).parent().prev("input").each(function(){if(this.value&&this.value!=n.color){this.value=n.color}})}else if(typeof n.callback=="function"){n.callback.call(n,n.color)}};n.absolutePosition=function(e){var t={x:e.offsetLeft,y:e.offsetTop};if(e.offsetParent){var r=n.absolutePosition(e.offsetParent);t.x+=r.x;t.y+=r.y}return t};n.pack=function(e){var t=Math.round(e[0]*255);var n=Math.round(e[1]*255);var r=Math.round(e[2]*255);return"#"+(t<16?"0":"")+t.toString(16)+(n<16?"0":"")+n.toString(16)+(r<16?"0":"")+r.toString(16)};n.unpack=function(e){if(e.length==7){return[parseInt("0x"+e.substring(1,3))/255,parseInt("0x"+e.substring(3,5))/255,parseInt("0x"+e.substring(5,7))/255]}else if(e.length==4){return[parseInt("0x"+e.substring(1,2))/15,parseInt("0x"+e.substring(2,3))/15,parseInt("0x"+e.substring(3,4))/15]}};n.HSLToRGB=function(e){var t,n,r,i,s;var o=e[0],u=e[1],a=e[2];n=a<=.5?a*(u+1):a+u-a*u;t=a*2-n;return[this.hueToRGB(t,n,o+.33333),this.hueToRGB(t,n,o),this.hueToRGB(t,n,o-.33333)]};n.hueToRGB=function(e,t,n){n=n<0?n+1:n>1?n-1:n;if(n*6<1)return e+(t-e)*n*6;if(n*2<1)return t;if(n*3<2)return e+(t-e)*(.66666-n)*6;return e};n.RGBToHSL=function(e){var t,n,r,i,s,o;var u=e[0],a=e[1],f=e[2];t=Math.min(u,Math.min(a,f));n=Math.max(u,Math.max(a,f));r=n-t;o=(t+n)/2;s=0;if(o>0&&o<1){s=r/(o<.5?2*o:2-2*o)}i=0;if(r>0){if(n==u&&n!=a)i+=(a-f)/r;if(n==a&&n!=f)i+=2+(f-u)/r;if(n==f&&n!=u)i+=4+(u-a)/r;i/=6}return[i,s,o]};$("*",r).mousedown(n.mousedown);n.setColor("#000000");if(t){n.linkTo(t)}}
-
-
 
 var SDCookie = (function() {
     return {
@@ -38,11 +160,13 @@ var SDCookie = (function() {
 					return null;
 		},
 		delete: function(name){
-					this.save(name,"",-1);
+			this.save(name,"",-1);
 		}
     }
 
 }());
+
+
 
 $.fn.SDPopUp = (function(opts){
 	var options = $.extend({
@@ -116,9 +240,6 @@ Radio Button Toggle
 	Call this on a radio button input(s)
 	When clicked, this function hides both divs given as args,
 	Then show's the :selected div
-
-*/
-
 $.fn.SDRadioToggler = function(divName1, divName2){
 	$(this).click(function(e){
 		var selectedRadio = $(this).parent().find("input[name$='media_type']:checked").val(),
@@ -131,15 +252,13 @@ $.fn.SDRadioToggler = function(divName1, divName2){
 		displayedDiv.fadeIn(300);
 
 	});	
-}
-
+}*/
 
 /*	Click toggler...
 
 		Call this method on an element to be clicked
 		takes 1 arg: The element to be shown, set it's css display property to none in the css
 */
-
 $.fn.SDToggler = function(hiddenDiv){
 	$(this).click(function(e){
 		var cont = $(''+hiddenDiv+'');
@@ -152,7 +271,7 @@ $.fn.SDToggler = function(hiddenDiv){
 	});
 }
 
-
+/*
 $.fn.mpColorPicker = function(){
 	return this.each(function(){
 		var thisPicker = $(this),
@@ -183,6 +302,7 @@ $.fn.mpColorPicker = function(){
 		};
 	});
 };
+*/
 
 $.fn.mpTooltip = function(){
 	return this.each(function(){
@@ -212,6 +332,7 @@ $.fn.mpTooltip = function(){
 	});
 };
 
+// I THINK NOT IN USE ON PUCKERMOB
 $.fn.mpAddElement = function(){
 	return this.each(function(e){
 		
@@ -260,6 +381,23 @@ $.fn.mpAddElement = function(){
 
 	});
 };
+
+/* Begin Scrollable Element Detection */
+function scrollableElement(els) {
+    for (var i = 0, argLength = arguments.length; i < argLength; i++){
+        var el = arguments[i],
+        $scrollElement = $(el);
+        if($scrollElement.scrollTop()> 0) return el;
+        else{
+            $scrollElement.scrollTop(1);
+            var isScrollable = $scrollElement.scrollTop() > 0;
+            $scrollElement.scrollTop(0);
+            if(isScrollable) return el;
+        }
+    }
+    return [];
+}
+/* End Scrollable Element Detection */
 
 $.fn.mpPreview = function(opts){
 	var options = $.extend({
@@ -591,6 +729,7 @@ $.fn.mpImageCropUpload = function( opts, e ){
 	});
 };
 
+// I THINK NOT IN USE ON PUCKERMOB
 $.fn.mpImageUpload = function(opts){
 	var options = $.extend({
 		fileCount : 1,
@@ -827,8 +966,9 @@ $.fn.filterByText = function(textbox, selectSingleMatch) {
                 }
             });            
         });
-    };
+};
 
+// I THINK NOT IN USE ON PUCKERMOB
 $.fn.mpImageDisplay = function(opts){
 	var options = $.extend({
 		fileCount : 1,
@@ -1083,3 +1223,4 @@ $.fn.mpImageDisplay = function(opts){
 		that.init();		
 	});
 };
+

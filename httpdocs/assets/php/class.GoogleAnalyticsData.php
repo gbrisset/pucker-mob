@@ -344,21 +344,11 @@ class GoogleAnalyticsData{
 				$usa_pageviews= $data['usa_pageviews'];
 				$pct_pageviews= $data['pct_pageviews'];
 				$current_date = date('Y-m-d H:i:s', time());
-				//$idExist = $this->verifyArticleidNew( $articleId , $month, $year );
-
-				/*if($idExist){
-					$s = " UPDATE  google_analytics_data_new 
-					  	   SET pageviews = $pageviews, 
-					  	   	   usa_pageviews = $usa_pageviews, 
-					  	   	   pct_pageviews = $pct_pageviews ,
-					  	   	   updated_date = '".$current_date ."'  
-					        WHERE article_id = $articleId AND month = '".$month."' AND year = '".$year."' ";
-				}else{*/
-					$s = " INSERT INTO google_analytics_data_daily 
-						   (`article_id`, `pageviews`, `usa_pageviews`, `pct_pageviews`,  `month`, `year`) 
-						   VALUES ( $articleId, $pageviews, $usa_pageviews, $pct_pageviews,  $month, $year) ";
-				//	}
-
+				
+				$s = " INSERT INTO google_analytics_data_daily 
+					   (`article_id`, `pageviews`, `usa_pageviews`, `pct_pageviews`,  `month`, `year`) 
+					   VALUES ( $articleId, $pageviews, $usa_pageviews, $pct_pageviews,  $month, $year) ";
+				
 				$queryParams = [
 					':articleId' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
 				];

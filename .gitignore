@@ -2,3 +2,12 @@ subdomains/images/httpdocs/articlesites/puckermob/
 .DS_Store
 .sass-cache/
 subdomains/images/httpdocs/*
+node_modules/grunt-contrib-compass/*
+node_modules/grunt-contrib-uglify/*
+node_modules/grunt-contrib-watch/*
+node_modules/grunt-contrib-sass/*
+node_modules/matchdep/*
+node_modules/grunt/*
+node_modules/grunt-contrib-jshint/*
+node_modules/grunt-contrib-cssmin/*
+node_modules/grunt-sass/*

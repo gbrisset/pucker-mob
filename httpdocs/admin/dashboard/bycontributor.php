@@ -1,5 +1,4 @@
 <?php
-
 	$admin = true;
 	require_once('../../assets/php/config.php');
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
@@ -20,23 +19,21 @@
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 4){
 		$content_provider = true;
 	}
-
 	if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
 
 	// 1. the current page number ($current_page)
 	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 	
-// 2. records per page ($per_page)
+	// 2. records per page ($per_page)
 	$per_page = 30;
 	$limit=30;
 	$post_date = 'all';
-
 	$articleStatus = '1, 2, 3';
-
-	$userArticlesFilter = $contributorInfo['contributor_email_address'];
 	$order = '';
 	$filterLabel = 'Most Recent';
-// Sorting information
+	$userArticlesFilter = $contributorInfo['contributor_email_address'];
+	
+	// Sorting information
 	$article_sort_by = "mr";
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
@@ -48,44 +45,45 @@
 	if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
 	if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
 	
-// 3. total record count ($total_count)	
+	// 3. total record count ($total_count)	
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter));
 	$pagination = new Pagination($page, $per_page, $total_count);
 	$offset = $pagination->offset();
-	$current_month = date('n');
+	$current_month = date('m');
 	$current_year = date('Y');
 
 	$month = isset($_POST['month']) ? $_POST['month'] : $current_month;
 	$year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 
-	if(!$_POST['month'] && isset($_GET['month'])){
-		$month = $_GET['month'];
-		$year = $_GET['year'];
-	}
+	//if(!$_POST['month'] && isset($_GET['month'])){
+	//	$month = $_GET['month'];
+	//	$year = $_GET['year'];
+	//}
 	
 	$contributor_name = $contributorInfo["contributor_name"];
 	$contributor_id = $contributorInfo["contributor_id"];
 	$contributor_email = $contributorInfo["contributor_email_address"]; 
 	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
 
-	//$contributor_type = 6;
 	$newCalc = true;
 	if( $year < 2015 || ( $year == 2015 && $month <= 2)){
 		$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
 		$dateupdated = $dashboard->get_dateUpdated($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
 		$newCalc = false;
 	}else{
-		//IS MARCH AND UP
-		$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
+		if( $year == 2015 && $month <= 6){
+			$articles = $dashboard->get_articlesbypageviews_new($contributor_id, $month, $year);
+		}else{
+			$start_date = date_format(date_create($year.'-'.$month.'-01'), 'Y-m-d');
+			$end_date =   date_format(date_create($year.'-'.$month.'-31'), 'Y-m-d');
+			$data = ['contributor_id' => $contributor_id, 'start_date' => $start_date, 'end_date' => $end_date];
+			$articles = $adminController->user->getContributorEarningChartArticleData($data);
+		}
 	}
-
-	if(  $month <= 5 && $year == 2015 )	$rate = $dashboard->get_current_rate($month);
-	else  $rate = $dashboard->get_current_rate( $month, $contributor_type );
-	
-	var_dump($month, $contributor_type , $rate);
-
+	$rate = $dashboard->get_current_rate( $month, $contributor_type );
 	$total = 0;
-
+	//if(  $month <= 5 && $year == 2015 )	$rate = $dashboard->get_current_rate($month);
+	//else  $rate = $dashboard->get_current_rate( $month, $contributor_type );
 	$ManageDashboard = new ManageAdminDashboard( $config );
 
 	//WARNINGS
@@ -98,27 +96,10 @@
 		 $last_month = 12;
 		 $last_year = $current_year - 1;
 	}
-	$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $last_month, $last_year );
-	$last_month_earnings = 0;
-	if($last_month_earnings_info && $last_month_earnings_info['total_earnings'] && !empty($last_month_earnings_info['total_earnings']) ) $last_month_earnings = $last_month_earnings_info['total_earnings'];
-	if( $last_month_earnings < 0 ) $last_month_earnings = 0;	
-		
-	//TOTAL EARNINGS TO DATE
-		$total_earnings_to_date_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, 0, 0);
-		$total_earnings_to_date = 0;
-		if($total_earnings_to_date_info ){
-			foreach($total_earnings_to_date_info as $value){
-				$total_earnings_to_date += $value['total_earnings'];
-			}
-		} 
-
-	//THIS MONTH EARNINGS
-	$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month, $current_year);
-	$this_month_earnigs = 0;
-	if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
-
 	$show_art_rate = false;
 	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -127,7 +108,9 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
-<body>
+<body id="earnings">
+	<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
+
 	<script>function change(){ 
 		if($('#month-option').val() == 0) return; 
 		var year  = $('#month option:selected').attr('data-info');  
@@ -152,60 +135,40 @@
 			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
 				<header>View EARNINGS By CONTRIBUTORS</header>
 			</div>
-			<section id="articles">
-				<!-- MONTHLY SHARE RATE -->
-				<div id="share-rate-box" class="mobile-12 small-12">
-					<div class="share-rate-txt left">
-						<p>JUNE CPM RATE (BASED ON U.S. VISITORS): <?php echo '$'.number_format($rate, 2, '.', ','); ?></p>
-						<p id="dd-shares-calc">CLICK TO LEARN MORE ABOUT CPM RATES <i class="fa 2x fa-caret-down"></i></p>
-					</div>
-					<div class="find-more-link right">
-						<p><a href="#" id="find-more-info">Find out how to make money with The Mob</a></p>
-					</div>
-				</div>
-				<div id="dd-shares-content" class="mobile-12 small-12">
-					<div>
-						<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies 
-							generate revenue. So the rate we're paying this month is that amount you'll earn for every 
-							thousand U.S. visitors that read your content.
-						</p>
-					</div>
-				</div>
-				
-				<!-- WARNINGS BOX -->
-				<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
-				<div id="warning-box" class="warning-box  mobile-12 small-12" style="min-height:6.5rem;">
-					<div id="warning-icon" class="">
-						<i class="fa fa-3x fa-exclamation-triangle"></i>
-					</div>
-					<div id="warning-txt" class="p-cont">
-						<p>
-							<?php echo $warnings[0]['notification_msg']; ?>
-						</p>
-					</div>
-				</div>
-				<?php }?>
 
-				<!-- EARNINGS AT A GLANCE -->
-				<?php if( $contributor_type != 6 && $contributor_type != 1 && $contributor_type != 7 ){ ?>
-				<div id="earnings-info" class="earnings-info mobile-12 small-12 margin-bottom">
-					<header>EARNINGS AT A GLANCE</header>
-					<div class="total-earnings left">
-						<h3>Month to Date</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p>
+			<!--MOB LEVEL -->
+			<?php include_once($config['include_path_admin'].'showuserplan.php');?>
+			
+			<?php if( $contributor_type != 1 && $contributor_type != 6 && $contributor_type != 7 ){?>
+			<div id="following-header" class="following-header mobile-12 small-12 half-padding-top clear">
+				<header>Earnings at a glance</header>
+			</div>
+			
+			<section id="articles" class="row box-border no-margin-vaxis">
+				<!-- MONTHLY SHARE RATE -->
+				<div id="share-rate-box" class=" mobile-12 small-12 padding-top padding-bottom">
+					<div class="share-rate-txt small-6  left">
+						<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+						<p><?php echo $rate['month_label'].', '.$rate['year'].' RATE ('.$moblevel.'): <span> $'.number_format($rate['rate'], 2, '.', ',').' CPM </span>'; ?></p>
 					</div>
-					<div class="last-month-earnings left">
-						<h3>Last Month</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($last_month_earnings, 2, '.', ','); ?></p>
-					</div>
-					<div class="total-earnings left">
-						<h3>Total to Date</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
+					<div class="small-5 right">
+						<div id="reportrange" class="pull-right">
+						    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+						    <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+						</div>
 					</div>
 				</div>
-				<?php }?>
+				<section class="margin-top">
+				    <div id="bar_chart" style=""></div>
+				</section>
 			</section>
 
+			<div id="share-rate-box" class=" mobile-12 small-12 ">
+				<div class="share-rate-txt box-border no-margin-vaxis ">
+					<p class="upper-big">total earned for selected date range: <span id="total_earned_graph">$0.00</span></p>				
+				</div>
+			</div>
+			<?php }?>
 			<section id="dashboard">
 				<header style="margin-top:0.2rem;">EARNINGS PER ARTICLE
 					<div class="right" style="text-align: right;">
@@ -249,7 +212,7 @@
 				<?php 
 				$date_updated = '';
 				if(isset($articles) && $articles ){?>
-				<table>
+				<table id="article-list">
 				  <thead>
 				  	<?php if($newCalc){?>
 					  	<tr>
@@ -424,12 +387,12 @@
 					  			 $total_rev = 0;
 					  		}else{
 					  			if( $us_page_views > 0 ){
-				  					$total_rev = ($us_page_views/1000) * $rate;
+				  					$total_rev = ($us_page_views/1000) *  $rate['rate'];
 				  				}
 					  		}
 				  		}else{
 				  			if( $us_page_views > 0 ){
-				  				$total_rev = ($us_page_views/1000) * $rate;
+				  				$total_rev = ($us_page_views/1000) *  $rate['rate'];
 				  			}
 				  		}
 				  		
@@ -443,7 +406,7 @@
 					      <td class="article align-left"><a href='<?php echo $link_to_article; ?>' target='blank'><?php echo $mpHelpers->truncate(trim(strip_tags($article['article_title'])), 20); ?></a></td>
 					      <td><?php echo $creation_date;?></td>
 					      <td class=""><?php echo number_format($us_page_views, 0, '.', ','); ?></td>
-					      <td class=""><?php echo '$'.number_format($rate, 2, '.', ','); ?></td>
+					      <td class=""><?php echo '$'.number_format( $rate['rate'], 2, '.', ','); ?></td>
 					      <td class="bold align-right"><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
 					    </tr>
 				  	<?php } ?>
@@ -451,8 +414,8 @@
 					    	<td class="bold">TOTAL</td>
 					    	<td></td>
 					    	<td class="bold"><?php echo number_format($total_us_page_views, 0, '.', ','); ?></td>
-					    	<td class="bold"><?php echo '$'.number_format($rate, 2, '.', ','); ?></td>
-					    	<td class="bold align-right"><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
+							<td class="bold"><?php echo '$'.number_format($rate['rate'], 2, '.', ','); ?></td>
+							<td class="bold align-right"><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
 				    	</tr>
 				  	<?php 
 				  	}?>
@@ -471,6 +434,10 @@
 			</section>
 
 			<section>
+				<p class="notes bold">**Please note: Earnings shown are estimates only, and subject to fluctuation throughout the month.</p>
+			</section>
+			
+			<section>
 				<p class="notes">All payments will be made approximately 45 days after the completion of the current month.</p>
 			</section>
 			
@@ -480,7 +447,7 @@
 			</section>
 			
 		</div>
-		<?php  include_once($config['include_path_admin'].'findouthowpopup.php'); ?>
+		<?php  //include_once($config['include_path_admin'].'findouthowpopup.php'); ?>
 	</main>
 
 	<?php include_once($config['include_path_admin'].'footer.php');?>

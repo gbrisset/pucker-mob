@@ -84,7 +84,6 @@
 			$is_in = 0;
 		
 			foreach( $writers_arr as $writer ){
-				
 				if($writer['contributor_id'] == $contributor_id ){
 					$your_rank = $index;
 					$your_shares = $writer['total_us_pageviews'];
@@ -92,6 +91,7 @@
 				}
 				$index ++;
 			}
+			
 			$total = 0;	
 			for($i= 0; $i< count($writers_arr) -1; $i++){
 				$position = $i + 1;
@@ -122,7 +122,6 @@
 				$writers_rank[$i]['shares'] = $shares;
 
 				if($total < 10 ) $total++;
-
 		    }
 
 			if( $is_in === 0 ){
@@ -130,11 +129,8 @@
 				$your_cont_rank['id'] = $your_id;
 				$your_cont_rank['name'] = $contributor_name;
 				$your_cont_rank['total_shares'] = $your_shares;
-
-
 			}
 		}
-	
 	}
 
 	$user_login_count = $adminController->user->data['user_login_count']; 
@@ -164,21 +160,28 @@
 
 			<section id="articles">
 				<!-- MONTHLY SHARE RATE -->
-				<div id="share-rate-box" class="mobile-12 small-12">
+				<!--<div id="share-rate-box" class="mobile-12 small-12">
 					<div class="share-rate-txt left">
-						<p>JUNE CPM Rate (Based on U.S. Visitors): <?php echo '$'.number_format($rate, 2, '.', ','); ?></p>
+						<p><?php echo $rate['month_label']; ?> CPM Rate (Based on U.S. Visitors): <?php echo '$'.number_format($rate['rate'], 2, '.', ','); ?></p>
 						<p id="dd-shares-calc">Click to Learn More About CPM Rates <i class="fa 2x fa-caret-down"></i></p>
 					</div>
 					<div class="find-more-link right">
 						<p><a href="#" id="find-more-info">Find out how to make money with  The Mob</a></p>
 					</div>
 				</div>
+
 				<div id="dd-shares-content" class="mobile-12 small-12">
 					<div>
 						<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies calculate revenue. 
 							So the rate we're paying this month 
 							is that amount you'll earn for every thousand U.S. visitors that read your content.
 						</p>
+					</div>
+				</div>-->
+				<div id="share-rate-box" class=" mobile-12 small-12 padding-top columns padding-bottom">
+					<div class="share-rate-txt left">
+					<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+						<p><?php echo $rate['month_label'].', '.$rate['year'].' RATE ('.$moblevel.'): <span> $'.number_format($rate['rate'], 2, '.', ',').' CPM </span>'; ?></p>
 					</div>
 				</div>
 				<!-- WARNINGS BOX -->

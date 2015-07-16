@@ -182,11 +182,15 @@ if($('body').hasClass('mobile')) {
 				inBodyAd.loadInArticleAd( 'article-content', 1, 0, '<script src="http://platform.optimus.ntent.com/widget.js?version=edge"></script><ntent-widget data-widget-id="425" data-account-id="197" data-width="440" data-height="250"></ntent-widget>', tag);	
 			}
 		
+
 			//1st GOOGLE
-			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+
+			//3lift test
+			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"><script>$.getScript("http://ib.3lift.com/ttj?inv_code=puckermob_article_sub").done(function( script, textStatus ) { console.log(textStatus)});</script></div>', tag);
+
 
 			//2nd SHARETHROUG
-			console.log(country);
 			if( country && country == 'US' || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
 			}else{	
@@ -194,15 +198,17 @@ if($('body').hasClass('mobile')) {
 			}
 
 			//3rd branovate
-
-			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
+			//KOMOONA
+			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="kmni_cb04f88a1ff0727dc9881e3cfe5d8acc"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("cb04f88a1ff0727dc9881e3cfe5d8acc");});</script>', tag);
+			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
 			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>', tag);
-			
 			
 			//4th Adblade
 			if(num_items >= fourth_p ){
 			//	inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
-			inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+			//inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+			inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, mobilead[adPage].inarticlenativo, tag);
+
 			}
 
 			//5th 

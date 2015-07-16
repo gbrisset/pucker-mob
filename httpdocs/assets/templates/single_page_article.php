@@ -95,6 +95,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<p><?php echo $article_body; ?></p>
 		<h1>HERE</h1>
 		<?php include_once($config['include_path'].'header_social.php'); ?>
+
 		<!-- KOMOONA BELOW ARTICLE BODY 
 		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
 			<div id="mobile-instream-komoona-ad" class="">
@@ -105,13 +106,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</div>
 		</div>-->
 		<!-- 3LIFT -->
-		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
+		<!--<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
 			<div id="mobile-instream-3lift-ad" class="">
 				<div id="get-content" style="text-align:center;">
-					<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
+					
 				</div>	
 			</div>
-		</div>
+		</div>-->
 
 		<!-- RELATED ARTICLES -->
 		<?php 

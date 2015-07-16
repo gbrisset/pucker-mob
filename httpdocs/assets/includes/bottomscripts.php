@@ -8,13 +8,22 @@
 <?php }else {?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
-  <!--<script type="text/javascript" src="<?php //echo $config['this_url']; ?>assets/js/ads.js"></script>-->
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <?php }?>
 
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
+
+    <!-- SPOUTABLE -->
+    <script type='text/javascript'>
+    (function(){
+      spoutjs=document.createElement('script'),firstjs=document.getElementsByTagName('script')[0];
+      spoutjs.async=1;
+      spoutjs.src='//cdn.spoutable.com/1deb0b13-48fb-4eec-8af0-a5e05f8b6272/spoutable.js';
+      firstjs.parentNode.insertBefore(spoutjs,firstjs)
+    })();
+    </script>
     <!-- IFRAME RESIZER -->
     <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/iframeResizer.min.js"></script>
 
@@ -83,20 +92,24 @@
             netseer_task="in-image";
            </script>
            <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-        <?php }?>
+        <?php }
 
-        <script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-
-      <?php } 
+        //if($articleInfoObj['article_id'] == 7498 ){?>
+        
+        <?php  //}
+      } 
   }?>  
-  <!-- INFO LINK MOBILE -->
-  <script type="text/javascript">
-  var infolinks_pid = 2431692;
-  var infolinks_wsid = 0;
-  </script>
-  <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
 
-  <!-- KIXER ADHESION -->
+  <?php if($articleInfoObj['article_id'] == 7615 ){ ?>  
+    <!-- INFO LINK MOBILE -->
+      <script type="text/javascript">
+      var infolinks_pid = 2431692;
+      var infolinks_wsid = 0;
+      </script>
+      <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+  <?php  } ?>
+
+  	<!-- KIXER ADHESION -->
     <div id='__kx_ad_1486'></div>
     <script type="text/javascript" language="javascript">
     var __kx_ad_slots = __kx_ad_slots || [];
@@ -124,6 +137,7 @@
       }
     })();
     </script>
+
 <?php }?>
 
 <!-- DESKTOP & MOBILE SCRIPT -->
@@ -152,3 +166,6 @@
 
 <!-- TotallyHer comscore tags -->
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
+
+<!-- Nativo -->
+<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>

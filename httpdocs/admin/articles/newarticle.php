@@ -149,9 +149,6 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<!-- KEYWORDS -->
 					<div class="row">
 					    <div class="columns">
-					    	<!--<div class="small-12 label-wrapper">
-								<label class="padding-top">Help readers find your article! Enter up to 10 keywords that best describe your article, separated by commas.</label>
-							</div>-->
 					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter keywords (Up To 10)" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
 						</div>
 					</div>	
@@ -163,11 +160,9 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						</div>
 					</div>	
 					
-					
-
 					<!-- Article Type  -->
 					<?php if($admin_user){?>
-					<div class="row">
+					<div class="row ">
 					    <div class="columns">
 							<label class="small-12 large-3 left uppercase">Article Type: </label>
 							
@@ -184,6 +179,20 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<?php }else if($blogger){?>
 						<input type="hidden" name="article_type-s" data-info="0" id="staff" value="0" />
 					<?php }?>
+
+					<!-- SECOND  IMAGE -->
+					<?php if($admin_user){?>
+					<div class="row margin-bottom margin-top">
+					    <div class="columns">
+							<label class="small-12 large-4 left uppercase">Second Image (MOBILE): </label>
+							<input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+							<div class="small-12 large-3 fileUpload btn btn-primary">
+							    <span>Upload</span>
+							    <input type="file" class="upload" />
+							</div>
+						</div>
+					</div>
+					<?php } ?>
 
 					<!-- PAGE LIST -->
 					<?php if($admin_user){?>

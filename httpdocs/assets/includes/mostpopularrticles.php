@@ -2,10 +2,7 @@
 
 if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articleInfoObj['article_id']){
 	$mostReadArticlesList = $mpArticle->getMostRecentArticleList( $articleInfoObj['article_id'] );
-
-}else{
-	$mostReadArticlesList = $mpArticle->getMostRecentArticleList();
-}
+}else $mostReadArticlesList = $mpArticle->getMostRecentArticleList();
 
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 	<section id="popular-articles" class="sidebar">
@@ -17,27 +14,20 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 					$articleTotalNumber++;
 				}
 				foreach($mostReadArticlesList as $article){
-						//$linkToCategory = $config['this_url'].$article['cat_dir_name'];
-						//$articleUrl = $linkToCategory.'/'.$article['article_seo_title'];
 						$articleUrl = 'http://www.puckermob.com'.$article['url'];
-						//$linkToContributor = $config['this_url'].'/contributors/'.$article['contributor_seo_name'];
-						//$date = date("M d, Y", strtotime($article['creation_date']));
-				
+						
 						$articleNumber++;
-						//$articleUrl = $config['this_url'].$article['cat_dir_name'].'/'.$article['article_seo_title'];
 						$mostReadArticle = '';
 						$mostReadArticle .= '<a id="article-'.$articleNumber.'" class="prefetch" href="'.$articleUrl.'">';
 							$mostReadArticle .= '<div class="columns todays-favorites fade-in-out">';
 								$mostReadArticle .= '<div class="row imageContainer" data-equalizer="">';
 									$mostReadArticle .= '<div class="small-12 columns imageCenterer" data-equalizer-watch>';
-										//$mostReadArticle .= '<img src="'.$config['image_url'].'articlesites/puckermob/large/'.$article['a_id'].'_tall.jpg" alt="'.$article['article_title'].'" />';
 										$mostReadArticle .= '<img src="http://cdn.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg" alt="'.$article['title'].'" />';
 
 									$mostReadArticle .= '</div>';
 								$mostReadArticle .= '</div>';
 								if($articleNumber === $articleTotalNumber) { $mostReadArticle .= '<div class="small-12 columns article-information" data-equalizer-watch style="padding:0 !important; border-bottom:none !important;">';}
 								else{ $mostReadArticle .= '<div class="small-12 columns article-information" data-equalizer-watch style="padding:0 !important;">'; }
-								//$mostReadArticle .= '<div class="small-12 columns article-information" data-equalizer-watch style="padding:0 !important;">';
 									$mostReadArticle .= '<h5 class="left small-12 padding-top">'.$mpHelpers->truncate($article['title'], 80).'</h5>';
 								$mostReadArticle .= '</div>';
 							$mostReadArticle .= '</div>';
@@ -45,11 +35,21 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						$mostReadArticle .= '';
 						echo $mostReadArticle;
 
+						//Replace 2nd article with Adblade
+						if($articleNumber == 1 ){?>
+							<ins class="adbladeads" data-cid="12977-3415166820" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
+							<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
+							<!-- MOVE STYLING TO FILE-->
+							<style>.adblade-dyna.zone-1035 .zone .ad a.description {font-family: Oslo !important;line-height: 1.3; font-size: 15px; margin-bottom: 0.2rem !important; margin-top: 0.2rem !important;}
+								div.adblade-dyna div.zone div.adbladetitle, .__kx_squares_unit_title{ font-family: Oslo !important; font-size: 0 !important;} div.adblade-dyna div.zone {
+								  border-bottom: 2px solid #000 !important;	 }</style>
+						<?php 
+							continue;
+						}
+
+						//Replace 6th article ntent ad
 						if($articleNumber == 6 ){
-							if($has_sponsored && $isHomepage ){ }else{
-							//	echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_right"></script>';
-							
-						?>
+							if(!$has_sponsored && !$isHomepage ){ ?>
 							<!-- NTENT ADS -->
 							<div class="columns todays-favorites fade-in-out">
 							<script type="text/javascript" language="JavaScript">
@@ -87,7 +87,8 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 							</style>
 							</div>
 							<!-- END NTENT ADS -->
-						<?php } }
+						<?php } 
+					}
 					
 				}
 			?>

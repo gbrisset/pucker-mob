@@ -1088,12 +1088,27 @@ body{padding-top:0 !important;}
 	.addthis_button_compact{ font-size: 1.3rem; text-transform: uppercase; color: #777 !important; font-family: OswaldLight; padding-top: 1.4rem; position: absolute;}
 	
 	.social-media-container{ padding: 0.6rem 0rem 0 1rem; display:block;}
-	#header-social-buttons{display:none;}
+	/*#header-social-buttons{display:none;}*/
 	.social-media-container-header{
 		margin:0;padding:0;
 		.fa-facebook{font-size:1.5rem;}
-		.addthis_button_facebook .label-social-button-2-mobile{background-color:#3B5998;text-align:center;color:#fff;padding:1rem 0 0.5rem 0;}
+		.addthis_button_facebook .label-social-button-2-mobile{
+			background-color:#3B5998;text-align:center;color:#fff;padding:1rem 0 0.5rem 0;
+		}
+		.addthis_button_facebook .label-social-button-2-mobile{
+			font-size: 1.1rem !important;
+			color: #fff;
+			font-family: OsloBold !important;
+			display: inline-block;
+			padding: 0;
+			margin: 0 !important;
+			top: -1px;
+			position: Relative;
+			text-transform: uppercase;
+		}
 	}
+
+
 	.social-cont-1{
 		img{ width: 8%; min-width: 40px; }
 		.addthis_button_compact{padding-top: 1.1rem;}

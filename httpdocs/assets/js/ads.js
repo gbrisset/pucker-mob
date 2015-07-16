@@ -95,6 +95,7 @@ var mobilead = {
 		inarticlebranovate: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 		inarticlesharetothercountry: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
 		inarticlegoogle2: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1986084582"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
+		inarticlegoogle4: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 	},
 	category: {	},
 	article: {
@@ -108,8 +109,10 @@ var mobilead = {
 		inarticlebranovate: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 		inarticlesharetothercountry: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
 		inarticle3lift: '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"><\/script>',
+		inarticlegoogle4: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
+
 	}
-};
+};	
 //MOBILE
 if($('body').hasClass('mobile')) {
 	var select = {
@@ -175,31 +178,35 @@ if($('body').hasClass('mobile')) {
 				nativo_position = nativo_position + 1;
 			}
 
+			if(article_id == 7483){
+				inBodyAd.loadInArticleAd( 'article-content', 1, 0, '<script src="http://platform.optimus.ntent.com/widget.js?version=edge"></script><ntent-widget data-widget-id="425" data-account-id="197" data-width="440" data-height="250"></ntent-widget>', tag);	
+			}
+		
 			//1st GOOGLE
-			if( article_id == 7160 ) inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
-			else inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle2, tag);
-			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-komoona-ad-loader"></div>', tag);
-			
-			//2ns SHARETHROUG
+			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+
+			//2nd SHARETHROUG
+			console.log(country);
 			if( country && country == 'US' || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
 			}else{	
 				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
 			}
 
-			//3rd GOOGLE
-			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, mobilead[adPage].inarticlegoogle3, tag);
+			//3rd branovate
+
 			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
+			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>', tag);
 			
-			//4th Sprockert
+			
+			//4th Adblade
 			if(num_items >= fourth_p ){
-				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="mobile-instream-smart-ad"></div>', tag );
-				//	inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
+			//	inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
+			inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
 			}
 
-			//5th Adblade
+			//5th 
 			if(num_items >= fith_p ){
-				inBodyAd.loadInArticleAd( 'article-content', fith_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
 			}
 		}
 
@@ -211,11 +218,10 @@ if($('body').hasClass('mobile')) {
 	}
 
 	if(adPage == 'article'){
-		//appendAdEndBody($('#mobile-instream-komoona-ad-loader'), $('#mobile-instream-komoona-ad'), 100);
-		appendAdEndBody($('#mobile-instream-smart-ad-loader'), $('#mobile-instream-smart-ad'), 100);
+		//appendAdEndBody($('#mobile-instream-smart-ad-loader'), $('#mobile-instream-smart-ad'), 100);
 		appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
-		if( article_id == 7160 ) appendAdEndBody($('#mobile-instream-3lift-ad-loader'), $('#mobile-instream-3lift-ad'), 100);
-		
+		//appendAdEndBody($('#mobile-instream-3lift-ad-loader'), $('#mobile-instream-3lift-ad'), 100);
+
 	}
 //DESKTOP
 } else{
@@ -311,8 +317,8 @@ if($('body').hasClass('mobile')) {
 		resizeMainOnResize();
 	});
 
-	if(adPage == 'article'){
+	//if(adPage == 'article'){
 		appendAdEndBody($('#header-ad-loader'), $('#header-ad'), 100);
 		appendAdEndBody($('#atf-ad-loaded'), $('#atf-ad'), 100);
-	}
+	//}
 }

@@ -89,7 +89,13 @@
 
       <?php } 
   }?>  
- 
+  <!-- INFO LINK MOBILE -->
+  <script type="text/javascript">
+  var infolinks_pid = 2431692;
+  var infolinks_wsid = 0;
+  </script>
+  <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+
   <!-- KIXER ADHESION -->
     <div id='__kx_ad_1486'></div>
     <script type="text/javascript" language="javascript">

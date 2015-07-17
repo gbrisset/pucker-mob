@@ -5,7 +5,7 @@ if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articl
 }else $mostReadArticlesList = $mpArticle->getMostRecentArticleList();
 
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
-	<section id="popular-articles" class="sidebar">
+	<section id="popular-articles" class="sidebar catcher">
 		<div class="h4-container"><h4>Most Popular</h4></div>
 			<?php 
 				$articleNumber = 0;

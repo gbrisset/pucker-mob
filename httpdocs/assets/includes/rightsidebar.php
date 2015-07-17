@@ -74,9 +74,9 @@
         <div id="atf1050-ad" class="ad-unit ad300 show-on-large-up"></div>
       <?php }?>
 
-       <section id="sub-sidebar-2" class="sidebar">
+       <section id="sub-sidebar-2" class="sidebar sticky">
             <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
-        </section>
+       </section>
 
        <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
             else{?>
@@ -130,3 +130,6 @@
       } 
   }?>
 </aside>
+
+
+

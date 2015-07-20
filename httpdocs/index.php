@@ -107,8 +107,14 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 <?php }?>
 
 <script>
+var articles = <?php echo $articles; ?>;
+var articlesList = <?php echo $articlesList; ?>;
+var quantity = <?php echo $quantity; ?>;
+var articleIndex = <?php echo $articleIndex; ?>;
+var omitThis = <?php echo $omitThis; ?>;
+var cat_id  = <?php echo $cat_id  ?>;
+var totalArticles = <?php echo $totalArticles; ?>;
 
-var articles = <?php echo $articles; ?>
 //Scroll to bottom of page 
  $(window).scroll(function () {
     if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
@@ -116,18 +122,11 @@ var articles = <?php echo $articles; ?>
         $.ajax({
         	type: "GET",
         	url: 'index.php',
-        	data: articles,
+        	dataType: 'html',
         	success: function(data) {
-        		
         		$("#puc-articles").append(articles);
-        		
-        		
         	}
         });
-    
-
-
-
     }
 });
 </script>

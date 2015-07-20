@@ -4,14 +4,14 @@
 $articleIndex = 0;
 $bigImageCounter =  0;
 $smallImageCounter = 0;
-$quantity = 45;
+$quantity = 46;
 $omitThis = 0;
 $cat_id = $mpArticle->data['cat_id'];
 
 $featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$articleIndex++;
-	$quantity = 45;
+	$quantity = 46;
 	$omitThis =  $featuredArticle['article_id'];
 
 	include_once($config['include_path'].'featured_article.php');
@@ -116,3 +116,5 @@ foreach ($articlesList as $articles){
 	<style>
 	.str-adunit.hosted-video.str-collapsed, .str-adunit.clickout.str-collapsed{border:none !important;}
 	</style>
+
+

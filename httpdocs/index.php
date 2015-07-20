@@ -92,15 +92,44 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 	<!-- GUM GUM In Screen 
 	<script type="text/javascript">ggv2id='56d76089';</script>-->
 
-	<?php include_once($config['include_path'].'footer.php'); ?>
+	
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
 
 	<!-- MODAL BOX FOLLOWERS POPUP -->
 	
-
+		`
 	<!-- FACEBOOK POPUP -->
 	<?php include_once($config['include_path'].'facebookpopup.php'); ?>
+
+
 </body>
 </html>
 <?php }?>
+
+<script>
+
+var articles = <?php echo $articles; ?>
+//Scroll to bottom of page 
+ $(window).scroll(function () {
+    if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
+        // ajax call should go here
+        $.ajax({
+        	type: "GET",
+        	url: 'index.php',
+        	data: articles,
+        	success: function(data) {
+        		
+        		$("#puc-articles").append(articles);
+        		
+        		
+        	}
+        });
+    
+
+
+
+    }
+});
+</script>
+
 

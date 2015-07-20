@@ -938,6 +938,16 @@ if($('#dd-shares-calc')){
 	});
 }
 
+$("#secondImage").on('change', function () {
+    $("#uploadFile").val( this.value );
+});
+
+$('#show-image').on('click', function(e){
+		$('#second_image_div').slideToggle();
+		
+	
+});
+
 /*PREVIEW BUTTON*/
 if($('#preview')){
 	$('#preview').click(function(e){

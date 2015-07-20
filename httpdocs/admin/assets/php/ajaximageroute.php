@@ -4,7 +4,7 @@
 	if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 	
 		switch($_GET['imageType']){
-			case 'headerlogo':
+			/*case 'headerlogo':
 				$_GET['imgType'] = 'headerlogo';
 				$_GET['currentImage'] = $mpArticle->data['article_page_logo'];
 				echo json_encode($mpArticleAdmin->uploadSiteImage($_FILES, $_GET));
@@ -27,12 +27,12 @@
 				$_GET['currentImage'] = $mpArticle->data['featured_img'];
 				echo json_encode($mpArticleAdmin->uploadSiteImage($_FILES, $_GET));
 				$mpArticle->reloadSiteData();
-				break;
+				break;*/
 				//case 'contributorwide':
-				case 'contributortall': case 'contributorwide': case 'contributorfeatured':
+			/*case 'contributortall': case 'contributorwide': case 'contributorfeatured':
 				//echo json_encode($mpArticleAdmin->uploadContributorImage($_FILES, $_GET));
 				echo json_encode($mpArticleAdmin->uploadNewImage($_FILES, $_POST));
-				break;
+				break;*/
 			case 'articlepreview':
 				echo json_encode($adminController->updateImageRecord($_FILES, array(
 					'currentImage' => $_GET['currentImage'],
@@ -51,13 +51,7 @@
 				$page_list_item = new PageListItem;
 				echo json_encode($page_list_item->update_image_record($_FILES, $_GET['pageListItemId']));
 				break;
-
-
-
-
-
-
-
+/*
 			case 'sponsoredBy':
 				echo json_encode($adminController->updateImageRecord($_FILES, array(
 					'currentImage' => $_GET['currentImage'],
@@ -79,7 +73,7 @@
 					'whereClause' => 'article_page_id = '.$_GET['articlePageId'],
 					'successMessage' => 'The Super Banner image updated successfully!'
 				)));
-				break;
+				break;*/
 
 			//WIDE: 370 × 275
 			//TALL: 405 × 415
@@ -91,9 +85,13 @@
 					'uploadDirectory' => $config['image_upload_dir'].'articlesites/'.$mpArticle->data['article_page_assets_directory'].'/',
 					'whereClause' => 'article_id = '.$_GET['articleId'],
 					'articleId' => $_GET['articleId'],
-					'successMessage' => 'Article image updated successfully!',
+					'successMessage' => 'Image updated successfully!',
 					'resizeImage' => true
 				)));
+
+				break;
+			case 'secondArticleImage':
+				//echo json_encode($mpArticleAdmin->uploadNewImage($_FILES, $_POST));
 
 				break;
 			/*case 'articletall':
@@ -108,7 +106,7 @@
 					'newImageHeight' => '415',
 					'newImageWidth' => '405'
 				)));
-				break;*/
+				break;
 
 			case 'videowide':
 				echo json_encode($adminController->updateImageRecord($_FILES, array(
@@ -131,7 +129,7 @@
 					'whereClause' => 'article_page_series_id = '.$_GET['seriesId'],
 					'successMessage' => 'Series image updated successfully!'
 				)));
-				break;
+				break;*/
 
 			default:
 				echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));

@@ -27,6 +27,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
 
 	$related_articles = $mpArticle->getRelatedToArticle( $article_id );
+	$second_image ='';
+	if(file_exists(	$config['image_upload_dir'].'articlesites/puckermob/second_image/second_mob_img_'.$articleInfoObj["article_id"].'.jpg')){
+		$second_image = $config['image_url'].'articlesites/puckermob/second_image/second_mob_img_'.$articleInfoObj["article_id"].'.jpg';	;
+	}
 }
 ?>
 
@@ -40,7 +44,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 </style>
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
-	
+	<input type="hidden" value="<?php echo $second_image; ?>" id="second-mob-img" />
+
 	<section id="article-summary" class="small-12 column">
 		<!-- Article Image -->
 		<div class="row no-margin-with-tap">
@@ -98,24 +103,24 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php //if($article_id == 7625){?>
 			<?php include_once($config['include_path'].'header_social.php'); ?>
 			<?php //}?>
-		<!-- KOMOONA BELOW ARTICLE BODY 
-		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
-			<div id="mobile-instream-komoona-ad" class="">
-				<div id="get-content" style="text-align:center;">
-					<script type="text/javascript">kmn_iframe = true; kmn_placement = 'cb04f88a1ff0727dc9881e3cfe5d8acc'; </script>
-					<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
-				</div>	
-			</div>
-		</div>-->
-		<!-- 3LIFT -->
-		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
-			<div id="mobile-instream-3lift-ad" class="">
-				<div id="get-content" style="text-align:center;">
-					<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-				</div>	
+		
+		<div class="inarticle-ad ad-unit hide-for-print padding-top" style="display: inline-block;">
+			<!--<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"></ins>
+			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+			<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>-->
+		<!--	<script type="text/javascript">
+			    kmn_placement = 'fc4492dc405ee8f7fe28922253e2e0cb';
+			</script>
+			<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>	-->	
+			<div id="carambola-ad "class="columns small-12">
+			<script class="carambola_InContent" type="text/javascript">
+			(function (i,d,s,o,m,r,t,g) {
+			    var e=d.getElementById(r);if(e===null){
+			    var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) }
+			    })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_initializeProxy','http://'+'route.carambo.la/inimage/getlayer?pid=spdsh12')
+			</script>		
 			</div>
 		</div>
-
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = [];
@@ -217,6 +222,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 ">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
+
 	<section id="article-summary" class="small-12 column">
 		<!-- TITLE -->
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
@@ -319,12 +325,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 		<?php }?>
 	
-		<!-- ingageunit -->
-		<div class="row clear" >
-			<!-- Place in body part -->
-			<div id="ingageunit"></div>
-			<!-- Place in body part -->
-		</div>
+		<!-- ingageunit 
+		<div class="row clear" >-->
+			<!-- Place in body part
+			<div id="ingageunit"></div> -->
+			<!-- Place in body part 
+		</div>-->
 		
 		<!-- Social Media Icons -->
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
@@ -352,23 +358,21 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 
 		<hr>
-		<div id="3lift-ad "class="columns small-12">
-			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
-		</div>
+		<!-- SHARETHROUGN 2ND UNIT -->
+		<?php if(!$promotedArticle  && $article_id != 4555){?>
+			<div data-str-native-key="53caed05" style="display: none;"></div>
+			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+		<?php } ?>
 				
 		<!-- ADBLADE-->
 		<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
 			<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
 			<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 		</section>
-		<hr>
-
-		<!-- SHARETHROUGN 2ND UNIT -->
-		<?php if(!$promotedArticle  && $article_id != 4555){?>
-			<div data-str-native-key="53caed05" style="display: none;"></div>
-			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-		<?php } ?>
-
+		
+		<div id="3lift-ad "class="columns small-12">
+			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
+		</div>
 		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 		<br>

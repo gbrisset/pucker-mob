@@ -62,6 +62,7 @@
 			echo json_encode( $adminController->user->getContributorEarningChartArticleData( $_POST ));
 		break;
 
+		
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));
 		break;

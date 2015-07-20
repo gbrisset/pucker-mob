@@ -7,7 +7,7 @@
 	if($adminController->checkCSRF($_POST['formData'])){  //CSRF token check!!!
 		
 		switch($_POST['formId']){
-			/* "Generic Settings" Page */
+			/* "Generic Settings" Page 
 			case "general-settings-form":
 				echo json_encode($adminController->updateSiteSettings($_POST['formData']));
 				break;
@@ -18,7 +18,7 @@
 					'post' => array_merge($_POST['formData'], array('contributor_id-n' => $_POST['formData']['article_page_featured_contributor'])),
 					'successMessage' => 'Featured contributor updated successfully!'
 				)));
-				break;
+				break;*/
 			case "featured-article-form":
 				echo json_encode($adminController->updateSiteFeautedObject(array(
 					'table' => 'articles_featured',
@@ -28,30 +28,30 @@
 					'successMessage' => 'Featured article updated successfully!'
 				)));
 				break;
-			case "sidebar-articles-form":
+			/*case "sidebar-articles-form":
 				echo json_encode($mpArticleAdmin->updateTodaysFavorites($_POST['formData']));
 				break;
 
 			case "ask-the-chef-form":
 				echo json_encode($mpArticleAdmin->updateAskTheChef($_POST['formData']));
 				break;
-			
+			*/
 			/* "Search Settings" Page */
 			case "search-engine-settings-form":
 				echo json_encode($adminController->updateSiteSearch($_POST['formData']));
 				break;
 
-			/* "Player Settings" Page */
+			/* "Player Settings" Page 
 			case "player-settings-form":
 				echo json_encode($adminController->updatePlayerSettings($_POST['formData']));
 				break;
-
-			/* "Social Network Settings" Page */
+*/
+			/* "Social Network Settings" Page 
 			case "social-network-settings-form":
 				echo json_encode($adminController->updateSocialSettings($_POST['formData']));
 				break;
-
-			/* "Ad Placement Settings" Page */
+*/
+			/* "Ad Placement Settings" Page 
 			case "ad-code-settings-form":
 				echo json_encode($adminController->updateAdCodes($_POST['formData']));
 				break;
@@ -62,7 +62,7 @@
 			case "ad-sponsor-settings-form":
 				echo json_encode($mpArticleAdmin->updateSponsoredBy($_POST['formData']));
 				break;				
-
+*/
 			/* "Styling Settings" Page */
 			//case "styling-settings-form":
 			//	echo json_encode($adminController->updateStylingSettings($_POST['formData']));
@@ -186,7 +186,7 @@
 				echo json_encode( PageListItem::delete($_POST['formData']));
 				break;
 
-			/* Edit Video Media Page*/
+			/* Edit Video Media Page
 			case "video-add-form":
 				echo json_encode($mpArticleAdmin->addVideoMediaInfo($_POST['formData']));
 				break;
@@ -201,9 +201,9 @@
 
 			case "video-add-edit-article":
 				echo json_encode($mpArticleAdmin->updateVideoArticleInfo($_POST['formData']));
-				break;
+				break;*/
 
-			/*"Edit/Add Series Pages"*/
+			/*"Edit/Add Series Pages"
 			case "series-add-form":
 				echo json_encode($mpArticleAdmin->addSeries($_POST['formData']));
 				break;
@@ -223,7 +223,7 @@
 			case "series-video-add-remove-slideshow":
 					echo json_encode( $mpArticleAdmin->addRemoveSlideshowSeriesList($_POST['formData']));
 				break;
-
+			*/
 			case "contributor-wide-image-upload-form":
 				echo json_encode(
 						$mpArticleAdmin->uploadNewImage($_FILES, array(
@@ -255,6 +255,20 @@
 							'desHeight' => 431,
 							'arrayId' => 'article-tall-image-upload-form'
 
+						))
+					);
+				}
+				break;
+			case "article-second-image-upload-form":
+
+			var_dump($_FILES, $_POST); die;
+				if(isset($_POST['formData']['article-id'])){
+					echo json_encode(
+						$mpArticleAdmin->uploadBasicImage($_FILES, array(
+							'allowedExtensions' => 'png,jpg,jpeg,gif',
+							'uploadDirectory' => $config['image_upload_dir'].'articlesites/puckermob/second_image/',
+							'articleId' => $_POST['formData']['article-id'],
+							'imgData' => $_POST['formData']
 						))
 					);
 				}

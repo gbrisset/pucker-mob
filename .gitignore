@@ -1,5 +1,6 @@
 subdomains/images/httpdocs/articlesites/puckermob/
 .DS_Store
+*/.DS_Store
 .sass-cache/
 subdomains/images/httpdocs/*
 node_modules/grunt-contrib-compass/*

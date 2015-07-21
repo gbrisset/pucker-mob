@@ -98,24 +98,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php //if($article_id == 7625){?>
 			<?php include_once($config['include_path'].'header_social.php'); ?>
 			<?php //}?>
-		<!-- KOMOONA BELOW ARTICLE BODY 
-		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
-			<div id="mobile-instream-komoona-ad" class="">
-				<div id="get-content" style="text-align:center;">
-					<script type="text/javascript">kmn_iframe = true; kmn_placement = 'cb04f88a1ff0727dc9881e3cfe5d8acc'; </script>
-					<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
-				</div>	
-			</div>
-		</div>-->
-		<!-- 3LIFT -->
-		<div class="inarticle-ad ad-unit hide-for-print" style="display: inline-block;">
-			<div id="mobile-instream-3lift-ad" class="">
-				<div id="get-content" style="text-align:center;">
-					<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-				</div>	
-			</div>
-		</div>
+		
+		<div class="inarticle-ad ad-unit hide-for-print padding-top" style="display: inline-block;">
+			<!--<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"></ins>
+			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
+			<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>
 
+		</div>
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = [];

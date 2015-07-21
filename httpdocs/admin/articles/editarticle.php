@@ -186,7 +186,7 @@
 								<input type="submit" name="submit" id="submit" class="btn btn-primary" value="SAVE" />
 								<span id="show-image">Preview Image<i class="fa fa-chevron-down" id="arrow-img"></i></span>
 							</div>
-							<?if(file_exists($pathToSecondImage)){?>
+							<?php if(file_exists($pathToSecondImage)){?>
 							<div class="columns small-12 no-padding margin-top" id="second_image_div" style="display:none;">
 								<img id="" src="<?php echo $secondImageUrl; ?>" alt="Second Image Mobile" width="100"  />
 							</div>

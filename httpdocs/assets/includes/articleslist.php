@@ -4,14 +4,27 @@
 $articleIndex = 0;
 $bigImageCounter =  0;
 $smallImageCounter = 0;
-$quantity = 46;
+if (empty($_GET['per_page'])) {
+	$quantity = 46;
+} else {
+	$quantity = $_GET['per_page'];
+}
+
+
+if (empty($_GET['page'])) {
+	$page = 0;
+} else {
+	$page = $_GET['page'];
+}
+
 $omitThis = 0;
+$offset = $quantity * $page;
 $cat_id = $mpArticle->data['cat_id'];
 
 $featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$articleIndex++;
-	$quantity = 46;
+	// $quantity = 56;
 	$omitThis =  $featuredArticle['article_id'];
 
 	include_once($config['include_path'].'featured_article.php');
@@ -27,7 +40,7 @@ else{ ?>
 	<?php }
 }
 
-$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true ]);
+$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true, 'offset' => $offset ]);
 
 
 /* Article List */

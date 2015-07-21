@@ -1,10 +1,16 @@
 <?php
+if (!empty($_GET['ajax'])) {
+	$ajax = true;
+} else {
+	$ajax = false;
+}
+
 require_once('assets/php/config.php');
 $pageName = $mpArticle->data['article_page_name'];
 $isHomepage = true;
 $has_sponsored = $mpArticle->data['has_sponsored_by'];
 
-if ( $detect->isMobile() && !$detect->isTablet()) {?>
+if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
@@ -64,7 +70,10 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 </body>
 </html>
 
-<?php }else { ?>
+<?php }
+else if ($ajax) {
+	include_once($config['include_path'].'articleslist.php');
+} else { ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
@@ -102,11 +111,9 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 	<?php include_once($config['include_path'].'facebookpopup.php'); ?>
 
 
-</body>
-</html>
-<?php }?>
 
 <script>
+
 var articles = <?php echo $articles; ?>;
 var articlesList = <?php echo $articlesList; ?>;
 var quantity = <?php echo $quantity; ?>;
@@ -115,20 +122,41 @@ var omitThis = <?php echo $omitThis; ?>;
 var cat_id  = <?php echo $cat_id  ?>;
 var totalArticles = <?php echo $totalArticles; ?>;
 
-//Scroll to bottom of page 
- $(window).scroll(function () {
-    if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
-        // ajax call should go here
-        $.ajax({
-        	type: "GET",
-        	url: 'index.php',
-        	dataType: 'html',
-        	success: function(data) {
-        		$("#puc-articles").append(articles);
-        	}
-        });
-    }
+var current_page = 0;
+var per_page = 20;
+
+function loadPage() {
+	current_page++;
+    // ajax call should go here
+    console.debug();
+    $.ajax({
+    	type: "GET",
+    	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+    	success: function(data) {
+    		console.log(data);
+    		$("#puc-articles").append(data);
+    	}
+    	
+    });
+}
+
+$(document).ready(function(){
+
+	//Scroll to bottom of page 
+	 $(window).scroll(function () {
+	 	
+	    if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
+	    	loadPage();
+	    	console.log("bottom");
+	    }
+	});
 });
+
+
+
 </script>
 
 
+</body>
+</html>
+<?php }?>

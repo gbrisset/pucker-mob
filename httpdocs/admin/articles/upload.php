@@ -48,7 +48,7 @@ if($action === "new"){
 		}
 	}
 }else{
-var_dump($is_second_img); die;
+
 	if($isLib){
 		$updateStatus = array_merge($mpArticleAdmin->uploadTempImageFromLib([
 			'allowedExtensions' => 'png,jpg,jpeg,gif',

@@ -944,7 +944,7 @@ $("#secondImage").on('change', function () {
 
 $('#show-image').on('click', function(e){
 		$('#second_image_div').slideToggle();
-		
+
 	
 });
 
@@ -1056,6 +1056,7 @@ if(document.body.id == 'editarticle'){
 	}
 }	
 
+//CHECKBOX TO MARK WHEN A BLOGGER HAD BEEN PAY IN THE REPORT
 $('.paid-checkbox').click( function(e){
 	e.preventDefault();
 	var current_cb = $(this), year = $(current_cb).attr('year-info'), month = $(current_cb).attr('month-info'), contributor_id = $(current_cb).attr('contributor-info'),
@@ -1080,6 +1081,7 @@ $('.paid-checkbox').click( function(e){
 	});
 });
 
+//UPGRADE BLOGGLER LEVEL FROM BASIC TO PRO
 if($('.mob-level-contributor')){
 	$('.mob-level-contributor').on('click', function(e){
 		var level = $(this), 
@@ -1109,10 +1111,8 @@ if($('.mob-level-contributor')){
 	});
 }
 
-  if($('#earnings') ){
-	//VIEW EARNINGS PAGE
-	EarningsObj.initChart();
-	
+//Data Chart, Earnings Page and Report Page.
+ if($('#earnings').length > 0  || $('#reports').length > 0 ){ 
 	$('input[name="daterange"]').val(moment().startOf('month').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
  
     $('input[name="daterange"]').daterangepicker({
@@ -1152,23 +1152,33 @@ if($('.mob-level-contributor')){
         }
     }); 
 
+    EarningsObj.setValues(moment().subtract(7, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
+	if($('#earnings').length > 0 ){
+		EarningsObj.initChart();
+		EarningsObj.getChartData();
+		EarningsObj.updateTotalEarnings(); 
+	}
+
     $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker){
-	  var start_date = picker.startDate.format('YYYY-MM-DD');
-	  var end_date = picker.endDate.format('YYYY-MM-DD');
+		  var start_date = picker.startDate.format('YYYY-MM-DD');
+		  var end_date = picker.endDate.format('YYYY-MM-DD');
 
-	  EarningsObj.setValues(start_date, end_date);
-	  EarningsObj.getChartData();
-	  EarningsObj.drawChart();
-	  EarningsObj.getArticlesListData();
-	  EarningsObj.updateTotalEarnings();   
+		  EarningsObj.setValues(start_date, end_date);
 
-	  $('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
+		  if($('#earnings').length > 0 ){
+			  EarningsObj.getChartData();
+			  EarningsObj.drawChart();
+			  EarningsObj.getArticlesListData();
+			  EarningsObj.updateTotalEarnings();   
+		  }else{
+			  if($('#reports').length > 0 ){
+			  	EarningsObj.getWritersReport();
+			  }
+		  }
+	  	$('input[name="daterange"]').val(picker.startDate.format('MMMM D, YYYY') + ' - ' + picker.endDate.format('MMMM D, YYYY'));
 	});
-	EarningsObj.setValues(moment().subtract(10, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
-	EarningsObj.getChartData();
-	EarningsObj.updateTotalEarnings();   
-
   }
+
 }); 
  
 

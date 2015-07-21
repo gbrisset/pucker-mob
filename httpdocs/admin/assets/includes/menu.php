@@ -73,12 +73,21 @@
 			</ul>
 			<?php }?>
 
-			<?php if($adminController->user->checkPermission('user_permission_show_add_contributor')){?>
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'reports') ) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>reports/">Get Report</a>
+			<!-- REPORTS -->
+			<?php  if($adminController->user->data['user_permission_show_add_contributor']){?>
+			<li class="parent "><a href="<?php echo $config['this_admin_url']; ?>reports/">Reports<i class="fa fa-chevron-down"></i></a></li>
+			<ul class="" style="opacity: 1; z-index: 1; display: none;"><h2>Reports</h2>
+				<li class="" id="bloggers_report"><a href="<?php echo $config['this_admin_url']; ?>reports/"> Bloggers Report</a></li>
+				<li class="" id="writers_report"><a href="<?php echo $config['this_admin_url']; ?>reports/writersreport.php">Writers Report</a></li>
+			</ul>
+			<?php }?>
+
+			<!--<?php //if($adminController->user->checkPermission('user_permission_show_add_contributor')){?>
+			<li class="<?php //echo ((isset($uri[0]) && $uri[0] == 'reports') ) ?  'current' :  '';?>">
+				<a href="<?php //echo $config['this_admin_url']; ?>reports/">Get Report</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
-			<?php }?>
+			<?php// }?>-->
 			
 			<?php if($adminController->user->checkPermission('user_permission_show_add_notifications')){?>
 			<li style=" border-bottom: 1px solid #999;" class="<?php echo ((isset($uri[0]) && $uri[0] == 'notifications') ) ?  'current' :  '';?>">

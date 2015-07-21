@@ -62,6 +62,12 @@
 			echo json_encode( $adminController->user->getContributorEarningChartArticleData( $_POST ));
 		break;
 
+		case 'get_report_writers_data':
+			//$dataInfo = ['start_date' => $start_date, 'end_date' => $end_date];
+	//$results = $adminController->user->getContributorEarningsData( $dataInfo )
+			echo json_encode( $adminController->user->getContributorEarningsData( $_POST ));
+		break;
+
 		
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));

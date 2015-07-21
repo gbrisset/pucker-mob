@@ -88,9 +88,10 @@
 	</script>
 </head>
 <?php 
-	$blogger = false; $pro_blogger = false; $admin_user = false; $externalWriter = false;
+	$blogger = false; $pro_blogger = false; $admin_user = false; $externalWriter = false; $pro_admin = false;
 	if( $adminController->user->data['user_type'] == 3 ||  $adminController->user->data['user_type'] == 8 ) $blogger = true;
 	if( $adminController->user->data['user_type'] == 8 ) $pro_blogger = true;
+	if( $adminController->user->data['user_type'] == 1 ) $pro_admin = true;
 	if( $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 6) $admin_user = true;
 	if( $adminController->user->data['user_type'] == 7 ) $externalWriter = true;
 ?>

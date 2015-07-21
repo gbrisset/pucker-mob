@@ -23,7 +23,7 @@
 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
 	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
 	$pathToSecondImage = $config['image_upload_dir'].'articlesites/puckermob/second_image/second_mob_img_'.$article["article_id"].'.jpg';
-	$secondImageUrl = $config['image_url'].'articlesites/puckermob/second_image/second_mob_img_'.$article["article_id"].'.jpg';	
+	$secondImageUrl = $config['image_url'].'articlesites/puckermob/second_image/second_mob_img_'.$article["article_id"].'.jpg?'.rand(1, 100000000000);	
 
 
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
@@ -179,7 +179,7 @@
 							<div style="height: 35px;" class="columns small-12 no-padding">
 								<input id="uploadFile" placeholder="Choose File" disabled="disabled" value=""/>
 								<div class="fileUpload btn btn-primary">
-								    <span>Upload</span>
+								    <span>Choose</span>
 								    <input name="secondImage" id="secondImage" type="file" class="upload" />
 								    
 								</div>

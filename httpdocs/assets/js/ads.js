@@ -4,6 +4,7 @@ var browser_width = $(window).width();
 var article_id = Foundation.utils.S('#article_id').val();
 var hasSponsored = $("#has-sponsored-by").val();
 var country =ManageCookies.getCookie('country');
+var second_image_url = $('#second-mob-img');
 
 if(page != 'articleslide' && page != 'home' && page != 'category' && page != 'article' && page != 'distroscale') {var adPage = 'category';} else {var adPage = page;}
 if(	Foundation.utils.S('#article_id') && ( Foundation.utils.S('#article_id').val() ==  4349 || Foundation.utils.S('#article_id').val() ==  4399  || Foundation.utils.S('#article_id').val() ==  4396)) smarties = true;
@@ -79,10 +80,6 @@ var ad = {
 	    inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3403405783"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
 		inarticlecarambolaothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1926672583"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 	},
-/*	medianet: {
-			article: '<script id="mNCC" language="javascript">  medianet_width=\'600\';  medianet_height= \'175\';  medianet_crid=\'470643824\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script>',
-			sectioned: '<script id="mNCC" language="javascript">  medianet_width=\'600\';  medianet_height= \'175\';  medianet_crid=\'470643824\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script>'
-		}*/
 };
 var mobilead = {
 	home: { },
@@ -132,8 +129,7 @@ if($('body').hasClass('mobile')) {
 			var li_length = $(li_parent).find('li').length;
 			var isListArticle = false;
 			var google_position = -1, sharethrough_position = -1, tag = 'p', first_p = 2, second_p = 5, third_p = 8, forth_p = 15, fith_p = 22, num_items = 0;
-			var second_image_url = $('#second-mob-img').val();
-		
+
 			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
 			if(li_length > p_length){
 				isListArticle = true;
@@ -201,7 +197,7 @@ if($('body').hasClass('mobile')) {
 			inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="kmni_cb04f88a1ff0727dc9881e3cfe5d8acc"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("cb04f88a1ff0727dc9881e3cfe5d8acc");});</script>', tag);
 			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
 			//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>', tag);
-
+			
 			//4th Adblade
 			if(num_items >= fourth_p ){
 
@@ -209,12 +205,8 @@ if($('body').hasClass('mobile')) {
 				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="second_image_holder"><img src="'+second_image_url+'" alt="Second Image Mobile"/></div>', tag);
 			}else{
 				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="kmni_fc4492dc405ee8f7fe28922253e2e0cb"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("fc4492dc405ee8f7fe28922253e2e0cb");});</script>', tag);
-
 			}
-			//inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
-
 			}
-
 			//5th 
 			if(num_items >= fith_p ){
 				inBodyAd.loadInArticleAd( 'article-content', fith_p, 0, mobilead[adPage].inarticlenativo, tag);

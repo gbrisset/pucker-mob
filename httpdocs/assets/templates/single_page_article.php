@@ -21,12 +21,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 	$article_img_credits = $articleInfoObj['article_img_credits'];
-	$article_img_credits_url = $articleInfoObj['article_img_credits_url'];
+	$article_img_credits_url = isset($articleInfoObj['article_img_credits_url']) ? $articleInfoObj['article_img_credits_url'] : '';
 
 	$article_notes = $articleInfoObj['article_additional_comments'];
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
 
 	$related_articles = $mpArticle->getRelatedToArticle( $article_id );
+
 	$second_image ='';
 	if(file_exists(	$config['image_upload_dir'].'articlesites/puckermob/second_image/second_mob_img_'.$articleInfoObj["article_id"].'.jpg')){
 		$second_image = $config['image_url'].'articlesites/puckermob/second_image/second_mob_img_'.$articleInfoObj["article_id"].'.jpg';	;
@@ -45,7 +46,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	<input type="hidden" value="<?php echo $second_image; ?>" id="second-mob-img" />
-
+	
 	<section id="article-summary" class="small-12 column">
 		<!-- Article Image -->
 		<div class="row no-margin-with-tap">
@@ -222,7 +223,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 ">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
-
 	<section id="article-summary" class="small-12 column">
 		<!-- TITLE -->
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>

@@ -34,17 +34,17 @@
 			</li>
 			<?php }?>
 
-			<!-- MULTIPAGE ARTICLES -->
-			<?php if($adminController->user->checkPermission('user_permission_show_manage_lists') ){?>
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'lists') &&  (isset($uri[1]) && $uri[1] == 'new')) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>lists/new/">Add New List</a>
+			<!-- MULTIPAGE ARTICLES 
+			<?php //if($adminController->user->checkPermission('user_permission_show_manage_lists') ){?>
+			<li class="<?php //echo ((isset($uri[0]) && $uri[0] == 'lists') &&  (isset($uri[1]) && $uri[1] == 'new')) ?  'current' :  '';?>">
+				<a href="<?php //echo $config['this_admin_url']; ?>lists/new/">Add New List</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
-			<li style=" border-bottom: 1px solid #999;" class="<?php echo ((isset($uri[0]) && $uri[0] == 'lists') &&  (isset($uri[1]) && $uri[1] == '' || $uri[1] == 'edit')) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>lists/">View/Edit Lists</a>
+			<li style=" border-bottom: 1px solid #999;" class="<?php //echo ((isset($uri[0]) && $uri[0] == 'lists') &&  (isset($uri[1]) && $uri[1] == '' || $uri[1] == 'edit')) ?  'current' :  '';?>">
+				<a href="<?php //echo $config['this_admin_url']; ?>lists/">View/Edit Lists</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
-			<?php }?>
+			<?php //}?>-->
 
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'account') ) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url'].$userLink; ?>">My Profile</a>
@@ -66,10 +66,10 @@
 			
 			<!-- CONTRIBUTORS -->
 			<?php  if($adminController->user->data['user_permission_show_other_contributors']){?>
-			<li class="parent "><a href="<?php echo $config['this_admin_url']; ?>contributors/">Contributors</a></li>
+			<li class="parent "><a href="<?php echo $config['this_admin_url']; ?>contributors/">Contributors<i class="fa fa-chevron-down"></i></a></li>
 			<ul class="" style="opacity: 1; z-index: 1; display: none;"><h2>Contributors</h2>
-				<li class="" id="edit_contributors"><a href="<?php echo $config['this_admin_url']; ?>contributors/">View/Edit Contributors</a></li>
-				<li class="" id="new_contributor"><a href="<?php echo $config['this_admin_url']; ?>contributors/new/">Add New Contributor</a></li>
+				<li class="" id="edit_contributors"><a href="<?php echo $config['this_admin_url']; ?>contributors/">View Contributor</a></li>
+				<li class="" id="new_contributor"><a href="<?php echo $config['this_admin_url']; ?>contributors/new/">New Contributor</a></li>
 			</ul>
 			<?php }?>
 

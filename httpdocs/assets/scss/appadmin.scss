@@ -279,22 +279,23 @@ a.videos{display:none;}
 //Menu
 #nav-cont{ width: 15rem; height: auto; position: absolute; left: -16rem; z-index: 1; background: #E1E1E1; top: 0rem; padding-top: 0 !important; }
 #nav-cont nav { width: 15rem; height: auto; margin: 0; background: #e1ddde !important; }
-#nav-cont nav ul { width: 100%; margin: 0; padding: 0; position: relative; list-style: none; padding-top: 3rem;}
+#nav-cont nav ul { width: 100%; margin: 0; padding: 0; position: relative; list-style: none; padding-top: 0rem;}
 #nav-cont nav ul li, #nav-cont nav ul h2 { text-align: right; color: #000; font: 1rem Oslo,arial,sans-serif; width: 100%; margin: 0; padding: 0.5em 1rem; position: relative; text-transform: capitalize; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; cursor: pointer;}
 #nav-cont nav ul li:after{ border-bottom: 1px solid #ccc; box-shadow: 0px 0px 1px #fff; bottom: 0;content: " ";height: 1px; left: 0; position: absolute; width: 100%; z-index: 0;}
 #nav-cont nav ul li:last-child:after{border-bottom:none; box-shadow: none; }
 
-#nav-cont nav ul .parent:before{content: '>'; float: right; margin: 0.1em 1em 0 0; font: 1.3em/1em ModernPics; color: #DDD;}
+/*#nav-cont nav ul .parent:before{content: '>'; float: right; margin: 0.1em 1em 0 0; font: 1.3em/1em ModernPics; color: #DDD;}*/
 #nav-cont nav ul ul.shown{display: block; margin-bottom: 0.3em;}
 #nav-cont nav ul ul{background: #aaa;}
 #nav-cont nav ul ul li:after{border-bottom: 1px solid #ccc; box-shadow: none;}
 .empty-li { height: 3.5rem; }
-#nav-cont nav ul li.shown:before{content: "-" !important;} 
+/*#nav-cont nav ul li.shown:before{content: "-" !important;} */
 #nav-cont nav ul ul li a{margin-left: 0.5em;}
+.parent .fa-chevron-down:before{ color: #777}
 
 
 @media #{$large-up} {
-	#nav-cont nav ul .parent:before{ content: '/'; margin: 0 5px 0 0;}
+	/*#nav-cont nav ul .parent:before{ content: '/'; margin: 0 5px 0 0;}*/
 	#nav-cont nav ul h2{display:none;}
 	#nav-cont nav ul li a, #nav-cont nav ul h2 a{padding: 0.6em; color: inherit; text-decoration: none; text-transform: uppercase;}
 	#nav-cont nav ul li, #nav-cont nav ul h2{background:none;}

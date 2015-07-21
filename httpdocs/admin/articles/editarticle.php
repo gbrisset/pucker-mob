@@ -22,7 +22,8 @@
 
 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
 	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
-
+	$pathToSecondImage = $config['image_upload_dir'].'articlesites/puckermob/second_image/second_mob_img_'.$article["article_id"].'.jpg';
+	$secondImageUrl = $config['image_url'].'articlesites/puckermob/second_image/second_mob_img_'.$article["article_id"].'.jpg';	
 
 
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
@@ -70,6 +71,20 @@
 					]), ['arrayId' => 'article-tall-image-upload-form']);
 				
 					break;
+				case isset($_POST['is_second_img']):
+
+						if (!empty($_FILES)) { 
+							$updateStatus = array_merge($mpArticleAdmin->uploadBasicImage($_FILES, [
+								'allowedExtensions' => 'png,jpg,jpeg,gif',
+								'uploadDirectory' => $config['image_upload_dir'].'articlesites/puckermob/second_image/',
+								'articleId' => $_POST['a_i'],
+								'imgData' => $_POST,
+								'desWidth' => 300,
+								'desHeight' => 250
+							]), ['arrayId' => 'second-article-image']);
+						}
+					
+				break;
 
 			}
 			
@@ -151,6 +166,35 @@
 					</div>
 					<?php }  ?>
 				</div>
+				<!-- SECOND IMAGE ARTICLE MOBILE -->
+				<?php if($admin_user){?>
+				<form  method="POST" name="second-article-image" id="second-article-image" class="" enctype="multipart/form-data" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>">
+					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
+					<input type="hidden" id="is_second_img" name="is_second_img" value="1" />
+							
+					<div class="row margin-top">
+						<div class="columns">
+							<label for="article_seo_title-s" class="uppercase">Second Image ( Mobile  Only 300x250)</label>
+							<div style="height: 35px;" class="columns small-12 no-padding">
+								<input id="uploadFile" placeholder="Choose File" disabled="disabled" value=""/>
+								<div class="fileUpload btn btn-primary">
+								    <span>Upload</span>
+								    <input name="secondImage" id="secondImage" type="file" class="upload" />
+								    
+								</div>
+								<input type="submit" name="submit" id="submit" class="btn btn-primary" value="SAVE" />
+								<span id="show-image">Preview Image<i class="fa fa-chevron-down" id="arrow-img"></i></span>
+							</div>
+							<?if(file_exists($pathToSecondImage)){?>
+							<div class="columns small-12 no-padding margin-top" id="second_image_div" style="display:none;">
+								<img id="" src="<?php echo $secondImageUrl; ?>" alt="Second Image Mobile" width="100"  />
+							</div>
+							<?php }?>
+						</div>
+					</div>
+				</form>
+				<?php }?>
 				
 				<form id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -289,8 +333,8 @@
 					</div>
 					<?php }?>
 
-					<!-- PAGE LIST -->
-					<?php if($admin_user){?>				
+					<!-- PAGE LIST
+					<?php //if($admin_user){?>				
 					<div class="row">
 					    <div class="columns">
 					    <div class="small-styled-select margin-top">
@@ -298,18 +342,18 @@
 						<select name="page_list_id-nf" id="page_list_id-nf" class="">
 							<option value="0">None</option>
 							<?php			
-								$page_lists = PageList::get();
-								foreach($page_lists as $page_list){
-									echo "<option value='".$page_list->page_list_id."' ".(($page_list->page_list_id == $article['page_list_id']) ? 'selected=selected ': '') ."  >";
-										echo $page_list->page_list_title;
-									echo "</option>";
-								}
+							//	$page_lists = PageList::get();
+							//	foreach($page_lists as $page_list){
+							//		echo "<option value='".$page_list->page_list_id."' ".(($page_list->page_list_id == $article['page_list_id']) ? 'selected=selected ': '') ."  >";
+							//			echo $page_list->page_list_title;
+							//		echo "</option>";
+							//	}
 							?>
 						</select>
 					</div>
 					</div></div>
 
-					<?php }?>
+					<?php //}?> -->
 					
 					
 
@@ -409,7 +453,6 @@
 								<input type="url" name="article_img_credits_url-s" id="article_img_credits_url-s" placeholder="Enter image credits URL" value="<?php if(isset($article['article_img_credits_url'])) echo $article['article_img_credits_url']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_img_credits_url') echo 'autofocus'; ?> />	
 						</div>
 					</div>
-
 					
 					<!-- NOTES -->
 					<div class="row">

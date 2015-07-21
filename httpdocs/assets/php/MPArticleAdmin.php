@@ -417,6 +417,40 @@ class MPArticleAdmin{
 		}
 	}
 
+	public function uploadBasicImage($files, $get){
+		
+		$allowedExtensions = explode(',', $get['allowedExtensions']); //No leading periods
+		$uploadDir = $get['uploadDirectory'];
+		$id = $get['imgData']['a_i'];
+
+		foreach($files as $file){
+			$fileName = $file['name'];
+			$fileType = $file['type'];
+			$fileTempName = $file['tmp_name'];
+			$fileError = $file['error'];
+			$fileSize = $file['size'];
+			
+
+			if(!$this->validateName([
+				'fileName' => $fileName, 'fileType' => $fileType, 'fileSize' => $fileSize, 'allowedExtensions' => $allowedExtensions
+			])) return ['hasError' => true, 'message' => 'Sorry, no valid files were found.  Please try again.'];
+				
+			if(!is_uploaded_file($fileTempName)) return ['hasError' => true, 'message' => 'Sorry, no valid files were found.  Please try again.'];
+
+			$fileName = explode('.', $fileName);
+			$extension = $fileName[count($fileName) - 1];
+			unset($fileName[count($fileName) - 1]);
+			$fileName = 'second_mob_img_'.$id.'.'.$extension;//preg_replace('/[^A-Za-z0-9]/', '_', join($fileName, '')).'.'.$extension;
+			
+
+			$uploadFile = $uploadDir.basename($fileName);
+
+			if(move_uploaded_file($fileTempName, $uploadFile)) return array_merge($this->returnStatus(200), ['hasError' => false, 'message' => " updated successfully!"]);
+
+			return array_merge($this->returnStatus(500), ['hasError' => true]);
+		}
+	}
+
 	private function updateImageRecord($args){
 		if(!isset($args['table']) || !isset($args['column']) || !isset($args['value'])) return array_merge($this->returnStatus(500), ['hasError' => true]);
 		$pdo = $this->con->openCon();

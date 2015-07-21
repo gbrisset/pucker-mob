@@ -1115,14 +1115,13 @@ End password reset methods
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
-
-		$s = " SELECT contributor_name, contributor_seo_name, article_contributor_articles.contributor_id, count(article_contributor_articles.article_id) as 'total_articles'
+		$s = " SELECT contributor_name, contributor_seo_name, article_contributor_articles.contributor_id, count(article_contributor_articles.article_id) as 'total_articles', articles.creation_date
 		FROM users 
 		INNER JOIN ( article_contributors, article_contributor_articles, articles )
 		ON ( article_contributors.contributor_email_address = users.user_email)
 		AND ( article_contributors.contributor_id = article_contributor_articles.contributor_id )
 		AND (articles.article_id = article_contributor_articles.article_id)
-		WHERE user_type in (1, 6, 7) AND  DATE_FORMAT(articles.creation_date, '%Y-%m-%d') BETWEEN '2015-07-01' AND '2015-07-31'
+		WHERE user_type in (1, 6, 7) AND  DATE_FORMAT(articles.creation_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."'
 		GROUP BY article_contributor_articles.contributor_id ";
 		
 		$data = $this->performQuery(array(
@@ -1137,22 +1136,19 @@ End password reset methods
 		} else if ($data && !isset($data[0])){
 				// If $q is an array of rows, return it as normal
 			$data = array($data);
-		} else {
+		} else{
 			return false;
 		}
 
 		$contributor_info = [];
 		foreach( $data as $info ){
-			
 			$contributor_id = $info['contributor_id'];
 			$dataInfo = ['contributor_id' => $contributor_id, 'start_date' => $start_date, 'end_date' => $end_date];
 			$dataFromGoogle = $this->getTotalPageViewsDateRange($dataInfo);
 			$info['pageviews'] = $dataFromGoogle;
-
 			$contributor_info[] = $info;
 		}
-
-
+		
 		return $contributor_info;
 	}
 

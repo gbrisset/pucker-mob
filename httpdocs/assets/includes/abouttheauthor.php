@@ -17,8 +17,6 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 	if($userInfo) $ss_user_email = $userInfo['user_email'];
 
 	$following_this_author = $follow->isFollowingThisAuthor($userInfo['user_email'], $contributor_id);
-
-	//var_dump($adminController->user->getUserInfo());
 	
 ?>
 <div class="row">

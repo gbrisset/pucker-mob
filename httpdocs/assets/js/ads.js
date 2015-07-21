@@ -4,6 +4,7 @@ var browser_width = $(window).width();
 var article_id = Foundation.utils.S('#article_id').val();
 var hasSponsored = $("#has-sponsored-by").val();
 var country =ManageCookies.getCookie('country');
+var second_image_url = $('#second-mob-img');
 
 if(page != 'articleslide' && page != 'home' && page != 'category' && page != 'article' && page != 'distroscale') {var adPage = 'category';} else {var adPage = page;}
 if(	Foundation.utils.S('#article_id') && ( Foundation.utils.S('#article_id').val() ==  4349 || Foundation.utils.S('#article_id').val() ==  4399  || Foundation.utils.S('#article_id').val() ==  4396)) smarties = true;
@@ -68,7 +69,7 @@ var ad = {
 	home: { },
 	category: { },
 	articleslide: {
-		inarticlesharet: '<div data-str-native-key="58ad4c02" style="display: none;"><\/div>',
+		inarticlesharet: '<div data-str-native-key="58ad4c02" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>',
 		inarticlecarambola: '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>',
 		inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3403405783"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
 		inarticlecarambolaothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1926672583"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
@@ -79,10 +80,6 @@ var ad = {
 	    inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3403405783"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
 		inarticlecarambolaothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="1926672583"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 	},
-/*	medianet: {
-			article: '<script id="mNCC" language="javascript">  medianet_width=\'600\';  medianet_height= \'175\';  medianet_crid=\'470643824\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script>',
-			sectioned: '<script id="mNCC" language="javascript">  medianet_width=\'600\';  medianet_height= \'175\';  medianet_crid=\'470643824\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CUCXD4TF" language="javascript"></script>'
-		}*/
 };
 var mobilead = {
 	home: { },
@@ -184,12 +181,11 @@ if($('body').hasClass('mobile')) {
 		
 
 			//1st GOOGLE
-			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
-				inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"><script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script></div>', tag);
-
+			inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+			//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"><script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script></div>', tag);
+			
 
 			//2nd SHARETHROUG
-			//console.log(country);
 			if( country && country == 'US' || country == 'XX'){
 				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
 			}else{	
@@ -204,13 +200,16 @@ if($('body').hasClass('mobile')) {
 			
 			//4th Adblade
 			if(num_items >= fourth_p ){
-			//inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<ins class="adbladeads" data-cid="11851-2106897790" data-host="web.adblade.com" data-tag-type="1" data-width="300" data-height="270" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag );
-			inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, mobilead[adPage].inarticlenativo, tag);
 
+			if($(second_image_url).lenght > 0){
+				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="second_image_holder"><img src="'+second_image_url+'" alt="Second Image Mobile"/></div>', tag);
+			}else{
+				inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="kmni_fc4492dc405ee8f7fe28922253e2e0cb"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("fc4492dc405ee8f7fe28922253e2e0cb");});</script>', tag);
 			}
-
+			}
 			//5th 
 			if(num_items >= fith_p ){
+				inBodyAd.loadInArticleAd( 'article-content', fith_p, 0, mobilead[adPage].inarticlenativo, tag);
 			}
 		}
 
@@ -298,13 +297,13 @@ if($('body').hasClass('mobile')) {
 				inBodyAd.loadInArticleAd( 'article-content', google_position, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:637px;height:90px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="5892997788"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', tag);	
 			}
 			//SHARETHROUGH
-			if(sharethrough_position && sharethrough_position != -1){
+			//if(sharethrough_position && sharethrough_position != -1){
 				if( country && country == 'US'){
 					inBodyAd.loadInArticleAd( 'article-content', sharethrough_position, 0, ad[adPage].inarticlesharet, tag);
 				}else{
 					inBodyAd.loadInArticleAd( 'article-content', sharethrough_position, 0, ad[adPage].inarticlesharetothercountry, tag);
 				}
-			}
+			//}
 			//CARAMBOLA
 			if(carambola_position && carambola_position != -1){
 				inBodyAd.loadInArticleAd( 'article-content', carambola_position, 0, ad[adPage].inarticlecarambola, tag);

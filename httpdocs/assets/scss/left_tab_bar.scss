@@ -1,7 +1,7 @@
 nav.menu{
     position: fixed;
     z-index: 20;
-    background-color: #127055;
+    background-color: #777;
     overflow: scroll;
   
 }
@@ -42,7 +42,7 @@ nav.menu a {
    color: #000;
 }
 
-nav.menu a.current{ color: #127055;}
+nav.menu a.current{ color: #777;}
 
 .article-title h1{
 	  font-size: 0.9rem;
@@ -67,7 +67,7 @@ button.toggle-slide-left{
   left:-29px;
   margin: 0;
   padding: 0.1rem !important;
-  background: #127055;
+  background: #777;
   padding: 0;
   z-index: 1000202;
   border-bottom-right-radius: 5px;
@@ -79,7 +79,7 @@ button.toggle-slide-left{
 }
 
 button.close-menu {
-    background-color: #127055;
+    background-color: #777;
     color: #fff;
 }
 button.close-menu:focus {
@@ -93,7 +93,7 @@ nav.slide-menu-left {
 }
 
 nav.slide-menu-left:after {
-  background: #127055;
+  background: #777;
   bottom: 0;
   content: '';
   position: fixed;

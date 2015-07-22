@@ -13,7 +13,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
 
 	<!-- MOBILE LEFT TAP -->
-	<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
+	<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-11 columns translate-fix sidebar-main-left">

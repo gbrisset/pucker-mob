@@ -2,7 +2,8 @@
     "require": {
        "google/apiclient": "dev-master",
       "drewm/mailchimp-api": "dev-master",
-      "facebook/php-ads-sdk": "2.3.*"
+      "facebook/php-ads-sdk": "2.3.*",
+        "php-console/php-console": "~3.0"
    
     }
 }

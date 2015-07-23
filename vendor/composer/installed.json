@@ -10,7 +10,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/523430f21a92c54172099d12d0f31d40f3de67e9",
+            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/7ee4cb2b473de3bf5cd2a5ada95a2f363b4a4532",
             "reference": "523430f21a92c54172099d12d0f31d40f3de67e9",
             "shasum": ""
         },
@@ -89,18 +89,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/drewm/mailchimp-api.git",
-            "reference": "c2ca65114d9d67cbb38db29b3e9d430b25a8b8a3"
+            "reference": "707d555962442b21a75683a56bdb7cebd0a19f72"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/c2ca65114d9d67cbb38db29b3e9d430b25a8b8a3",
-            "reference": "c2ca65114d9d67cbb38db29b3e9d430b25a8b8a3",
+            "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/707d555962442b21a75683a56bdb7cebd0a19f72",
+            "reference": "707d555962442b21a75683a56bdb7cebd0a19f72",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3"
         },
-        "time": "2015-04-14 13:14:22",
+        "time": "2015-07-07 15:38:25",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -120,5 +120,62 @@
         ],
         "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
         "homepage": "https://github.com/drewm/mailchimp-api"
+    },
+    {
+        "name": "php-console/php-console",
+        "version": "3.1.4",
+        "version_normalized": "3.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/barbushin/php-console.git",
+            "reference": "b40e988dcd7686128a47010161ba13e32d5fdb45"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/barbushin/php-console/zipball/b40e988dcd7686128a47010161ba13e32d5fdb45",
+            "reference": "b40e988dcd7686128a47010161ba13e32d5fdb45",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "suggest": {
+            "php-console/laravel-service-provider": "*",
+            "php-console/silex-service-provider": "*"
+        },
+        "time": "2015-06-30 07:52:47",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PhpConsole": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD 3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sergey Barbushin",
+                "email": "barbushin@gmail.com",
+                "homepage": "http://linkedin.com/in/barbushin"
+            }
+        ],
+        "description": "Server side PHP library for Google Chrome extension \"PHP Console\".",
+        "homepage": "https://github.com/barbushin/php-console",
+        "keywords": [
+            "chrome",
+            "debug",
+            "error handler",
+            "errors",
+            "google chrome",
+            "php"
+        ]
     }
 ]

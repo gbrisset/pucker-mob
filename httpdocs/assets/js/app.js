@@ -399,7 +399,36 @@ if($('#warning-icon')){
 
 	});
 }
+//Inifinite scroll function through an ajax call
+var current_page = 0;
+var per_page = 20;
 
+function loadPage() {
+	current_page++;
+    // ajax call should go here
+    console.debug();
+    $.ajax({
+    	type: "GET",
+    	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+    	success: function(data) {
+    		//console.log(data);
+    		$("#puc-articles").append(data);
+    	}
+    	
+    });
+}
+//detect the bottom of page and runs our load page function 
+$(document).ready(function(){
+
+	//Scroll to bottom of page 
+	 $(window).scroll(function () {
+	 	
+	    if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
+	    	loadPage();
+	    	console.log("bottom");
+	    }
+	});
+});
 //$(window).scroll( function(){
 	var height = $(window).scrollTop();
 //

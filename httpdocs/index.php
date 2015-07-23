@@ -112,49 +112,7 @@ else if ($ajax) {
 
 
 
-<script>
 
-var articles = <?php echo $articles; ?>;
-var articlesList = <?php echo $articlesList; ?>;
-var quantity = <?php echo $quantity; ?>;
-var articleIndex = <?php echo $articleIndex; ?>;
-var omitThis = <?php echo $omitThis; ?>;
-var cat_id  = <?php echo $cat_id  ?>;
-var totalArticles = <?php echo $totalArticles; ?>;
-
-var current_page = 0;
-var per_page = 20;
-
-function loadPage() {
-	current_page++;
-    // ajax call should go here
-    console.debug();
-    $.ajax({
-    	type: "GET",
-    	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
-    	success: function(data) {
-    		console.log(data);
-    		$("#puc-articles").append(data);
-    	}
-    	
-    });
-}
-
-$(document).ready(function(){
-
-	//Scroll to bottom of page 
-	 $(window).scroll(function () {
-	 	
-	    if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
-	    	loadPage();
-	    	console.log("bottom");
-	    }
-	});
-});
-
-
-
-</script>
 
 
 </body>

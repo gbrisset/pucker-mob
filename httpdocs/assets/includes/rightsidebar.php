@@ -17,9 +17,7 @@
       <!-- MOST POPULAR -->
       <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
       
-       <section id="sub-sidebar-2" class="sidebar">
-         <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
-       </section>
+       
 
        <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
           <!-- puckermob.com/ros_btf -->
@@ -74,9 +72,7 @@
         <div id="atf1050-ad" class="ad-unit ad300 show-on-large-up"></div>
       <?php }?>
 
-       <section id="sub-sidebar-2" class="sidebar sticky">
-            <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
-       </section>
+       
 
        <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
             else{?>
@@ -93,6 +89,8 @@
               </noscript>
             </div>
       <?php }?>
+
+
 
       <?php if( !isset($isHomepage) ){ ?>
         <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
@@ -129,6 +127,10 @@
         <?php }
       } 
   }?>
+
+  <section id="sub-sidebar-2" class="sidebar sticky">
+            <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
+   </section>
 </aside>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>

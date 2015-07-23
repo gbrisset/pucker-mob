@@ -129,7 +129,9 @@
   }?>
 
   <section id="sub-sidebar-2" class="sidebar sticky">
-            <?php include_once($config['include_path'].'sidebarconnect.php'); ?>
+  <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>
+  <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png"></a>
+            
    </section>
 </aside>
 

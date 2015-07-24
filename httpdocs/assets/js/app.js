@@ -148,6 +148,7 @@ $(document).ready(function() {
 	    $( ".toggle-slide-left" ).on( "click", function(){
 			$(body).toggleClass("sml-open");
 			$(this).toggleClass("open-menu");
+			$('#slide-menu-left-div').toggleClass("full-height");
 	    });
 	}
 

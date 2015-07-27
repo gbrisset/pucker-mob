@@ -420,7 +420,7 @@ function loadPage() {
     		var content = temp.html();
     		response.children('.featured').remove();
     		
-    		//$("#puc-articles").append(response);
+    		$("#puc-articles").append(response);
     		}
     	
     });
@@ -444,7 +444,7 @@ $(document).ready(function(){
 	$('.loader').ajaxStart(function() {
     $('.loader').show();
     console.log('showing');
-}).ajaxComplete(function() {
+    }).ajaxComplete(function() {
 	console.log('hiding');
     $('.loader').hide();
 });

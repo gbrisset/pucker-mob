@@ -16,9 +16,6 @@
 		case "newarticle":
 			include_once('newarticle.php');
 			break;
-		case "newrecipe":
-			include_once('newrecipe.php');
-			break;
 		default:
 			$mpShared->get404();
 			break;	

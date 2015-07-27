@@ -1537,6 +1537,7 @@ class MPArticleAdmin{
 	/*END MANAGING IMAGES ON LIBRARY*/
 	
 
+	/* MANAGE IN_STREAM ADS ON ARTICLE PAGE FROM ADMIN*/
 	public function getArticleAds($data){
 
 		$article_id = filter_var($data['article_id'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT );
@@ -1554,8 +1555,25 @@ class MPArticleAdmin{
 		$this->con->closeCon();
 
 		return $r;
-
 	}
+
+	public function getAdsInfo(){
+
+		$pdo = $this->con->openCon();
+		$q = $pdo->query("SELECT * FROM ads  ");
+		
+		if($q && $q->rowCount()){
+			$q->setFetchMode(PDO::FETCH_ASSOC);
+			while($row = $q->fetch()){
+				$r[] = $row;
+			}
+			$q->closeCursor();
+		}else $r = false;
+		$this->con->closeCon();
+		return $r;
+	}
+
+	
 	/*Begin Video Add Function*/
 	public function addVideoMediaInfo($post){
 		$params = $this->compileParams($post);

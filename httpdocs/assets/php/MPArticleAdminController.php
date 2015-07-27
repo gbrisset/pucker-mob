@@ -636,6 +636,8 @@ class MPArticleAdminController extends MPArticle{
 			));
 		}
 		
+		$post['a_i'] = $articleId;
+		$this->updateArticleAdsInfo($post);
 		//MOVE and rename image from the temp folder if exists.
 			$img_temp = 'temp_u_'.$_POST['u_i'].'_'.substr($_POST['c_t'], 0, 7).'_tall.jpg';
 			$img_temp_path =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$img_temp;
@@ -670,56 +672,75 @@ class MPArticleAdminController extends MPArticle{
 	/* End Article Creation Functions */
 
 	public function updateArticleAdsInfo($post){
+		$mobile_1 = isset($post['mobile_1']) ? $post['mobile_1'] : 2;
+		$mobile_2 = isset($post['mobile_2']) ? $post['mobile_2'] : 5;
+		$mobile_3 = isset($post['mobile_3']) ? $post['mobile_3'] : 9;
+		$mobile_4 = isset($post['mobile_4']) ? $post['mobile_4'] : 15;
+		$mobile_5 = isset($post['mobile_5']) ? $post['mobile_5'] : -1;
+		$desktop_1 = isset($post['desktop_1']) ? $post['desktop_1'] : 2;
+		$desktop_2 = isset($post['desktop_2']) ? $post['desktop_2'] : 5;
 
-		$google_mobile_ad = $post['google_mobile_ad'];
-		$nativo_mobile_ad = $post['nativo_mobile_ad'];
-		$sharethrough_mobile_ad = $post['sharethrough_mobile_ad'];
-		$carambola_mobile_ad = $post['carambola_mobile_ad'];
-		$branovate_mobile_ad = $post['branovate_mobile_ad'];
-		$google_desk_ad = $post['google_desk_ad'];
-		$nativo_desk_ad = $post['nativo_desk_ad'];
-		$sharethrough_desk_ad = $post['sharethrough_desk_ad'];
-		$carambola_desk_ad = $post['carambola_desk_ad'];
-		$branovate_desk_ad = $post['branovate_desk_ad'];
-
-//var_dump($post); die;
 		//Check if article already has ads set
 		$ads = $this->performQuery( array(
 			'queryString' => 'SELECT * FROM article_ads WHERE article_id = :articleId',
 			'queryParams' => array(':articleId' => $post['a_i'])
 		) );
 
-		if($ads !== false){
+		if($ads !== false){ 
 			$this->performUpdate(array(
 				'updateString' => "UPDATE article_ads SET  
-				mobile_google = $google_mobile_ad, 
-				mobile_nativo = $nativo_mobile_ad, 
-				mobile_sharethrough = $sharethrough_mobile_ad, 
-				mobile_branovate = $branovate_mobile_ad, 
-				desk_google = $google_desk_ad, 
-				desk_sharethrough = $sharethrough_desk_ad, 
-				desk_carambola = $carambola_desk_ad
+				mobile_1 = $mobile_1, 
+				mobile_2 = $mobile_2, 
+				mobile_3 = $mobile_3, 
+				mobile_4 = $mobile_4, 
+				mobile_5 = $mobile_5, 
+				desktop_1 = $desktop_1, 
+				desktop_2 = $desktop_2
 				WHERE article_id = :articleId",
 				'updateParams' => array(':articleId' => $post['a_i'])
 			));
 		}else{
 			$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_ads SET article_id = :articleId, 
-				mobile_google = $google_mobile_ad, 
-				mobile_nativo = $nativo_mobile_ad, 
-				mobile_sharethrough = $sharethrough_mobile_ad, 
-				mobile_branovate = $branovate_mobile_ad, 
-				desk_google = $google_desk_ad, 
-				desk_sharethrough = $sharethrough_desk_ad, 
-				desk_carambola = $carambola_desk_ad",
+				mobile_1 = $mobile_1, 
+				mobile_2 = $mobile_2, 
+				mobile_3 = $mobile_3, 
+				mobile_4 = $mobile_4, 
+				mobile_5 = $mobile_5, 
+				desktop_1 = $desktop_1, 
+				desktop_2 = $desktop_2",
 				'updateParams' => array(':articleId' => $post['a_i'])
 			));
 		}
 
 	}
-	/* Begin Article Updating Fucntion */
+
+		/*public function insertrecords(){
+		
+		for($i = 7801; $i <= 7967; $i ++){
+
+			$this->performUpdate(array(
+				'updateString' => "INSERT INTO article_ads SET article_id = :articleId, 
+				mobile_1 = 2, 
+				mobile_2 = 5, 
+				mobile_3 = 9, 
+				mobile_4 = 15, 
+				mobile_5 = -1, 
+				desktop_1 = 2, 
+				desktop_2 = 5",
+				'updateParams' => array(':articleId' => $i)
+			));
+echo $i;
+
+		}
+		
+
+		
+	}*/
+
+	/* Begin Article Updating Function */
 	public function updateArticleInfo($post){
-		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category for an article.'));
+		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category.'));
 		
 		//Check for same seo-name
 		if(isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_seo_title-s']));
@@ -739,14 +760,14 @@ class MPArticleAdminController extends MPArticle{
 		//Delete all category, contributor, and video entries
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_categories WHERE article_id = '.$post['a_i']));
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_contributor_articles WHERE article_id = '.$post['a_i']));
-		$this->performUpdate(array('updateString' => 'DELETE FROM article_videos WHERE article_id = '.$post['a_i']));
+		//$this->performUpdate(array('updateString' => 'DELETE FROM article_videos WHERE article_id = '.$post['a_i']));
 
-		$this->performUpdate(array(
-			'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId",
-			'updateParams' => array(':articleId' => $post['a_i'])
-		));
+		//$this->performUpdate(array(
+		//	'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId",
+		//	'updateParams' => array(':articleId' => $post['a_i'])
+		//));
 
-		//Add to each category
+		//Insert Category
 		if(isset($post['article_categories']) && $post['article_categories'] != 0){
 			$categoryId = $post['article_categories'];
 				$this->performUpdate(array(
@@ -755,7 +776,7 @@ class MPArticleAdminController extends MPArticle{
 			));
 		}
 
-		//Add contributor if desired
+		//Insert Contributor
 		if(isset($post['article_contributor']) && $post['article_contributor'] != -1){
 			$contributorId = intval(filter_var($post['article_contributor'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
 			$this->performUpdate(array(
@@ -765,13 +786,13 @@ class MPArticleAdminController extends MPArticle{
 		}
 
 		//Add videos if desired
-		if(isset($post['article_video']) && $post['article_video'] != -1){
-			$videoId = intval(filter_var($post['article_video'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO article_videos SET article_id = :articleId, syn_video_id = :videoId",
-				'updateParams' => array(':articleId' => $post['a_i'], ':videoId' => $videoId)
-			));
-		}
+		//if(isset($post['article_video']) && $post['article_video'] != -1){
+		//	$videoId = intval(filter_var($post['article_video'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
+		//	$this->performUpdate(array(
+		//		'updateString' => "INSERT INTO article_videos SET article_id = :articleId, syn_video_id = :videoId",
+		//		'updateParams' => array(':articleId' => $post['a_i'], ':videoId' => $videoId)
+		//	));
+		//}
 
 		//Add Realted Articles if any
 		$this->performUpdate(array('updateString' => 'DELETE FROM related_articles WHERE main_article_id = '.$post['a_i'] ));
@@ -792,7 +813,7 @@ class MPArticleAdminController extends MPArticle{
 		));
 		
 		
-		//Update Feature Article
+		//Update Featured Article
 		if(isset($post['feature_article']) && $post['feature_article'] > 0){
 			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article '));
 			$featureArticle = intval(filter_var($post['feature_article'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
@@ -803,8 +824,6 @@ class MPArticleAdminController extends MPArticle{
 		}
 
 		//Show in homepage moblog article
-
-		
 		if(isset($post['featured_hp']) ){
 			$this->performUpdate(array('updateString' => 'DELETE FROM article_moblogs_featured WHERE article_id = '.$post['a_i']));
 			$featureArticleHp = intval(filter_var($post['featured_hp'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));

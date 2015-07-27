@@ -29,6 +29,8 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 
 	include_once($config['include_path'].'featured_article.php');
 
+
+
 if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
 else{ ?>
 	<!-- ShareT -->
@@ -39,7 +41,7 @@ else{ ?>
 	<hr class="padding-top">
 	<?php }
 }
-
+$omitThis =  $featuredArticle['article_id'];
 $articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true, 'offset' => $offset ]);
 
 

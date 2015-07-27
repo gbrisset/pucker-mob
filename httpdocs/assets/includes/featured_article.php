@@ -31,7 +31,7 @@
 		</div>
 
 <?php } else {?>
-<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="article-featured-1">
+<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding featured" id="article-featured-1">
 	<a class="mobile-12 small-12 medium-12 large-12 xlarge-12" href="<?php echo $linkToArticle; ?>">
 		<img src="<?php echo $linkToImage; ?>" alt='<?php echo $featuredArticle['article_title']?>'>
 	</a>

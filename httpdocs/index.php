@@ -26,7 +26,9 @@ if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 			<?php 
 			$articlesList = $mpArticle->getArticles(['count' => 24]);
 			include_once($config['include_path'].'articlelistmobile.php'); ?>
+
 		</section>
+
 	</main>
 
 	<?php include_once($config['include_path'].'footer.php'); ?>
@@ -89,6 +91,7 @@ else if ($ajax) {
 
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper">
 			<?php include_once($config['include_path'].'articleslist.php'); ?>
+			<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/loading.gif"></center></div>
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
 
@@ -118,3 +121,4 @@ else if ($ajax) {
 </body>
 </html>
 <?php }?>
+

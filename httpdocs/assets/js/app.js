@@ -399,9 +399,12 @@ if($('#warning-icon')){
 
 	});
 }
+
+
 //Inifinite scroll function through an ajax call
 var current_page = 0;
 var per_page = 20;
+var feature = "<?php echo $featuredArticle; ?>"
 
 function loadPage() {
 	current_page++;
@@ -411,9 +414,14 @@ function loadPage() {
     	type: "GET",
     	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
     	success: function(data) {
-    		//console.log(data);
-    		$("#puc-articles").append(data);
-    	}
+    		var response = $('<div />').html(data);
+    		var temp = response.find('.featured');
+    		temp.children('.featured').remove();
+    		var content = temp.html();
+    		response.children('.featured').remove();
+    		
+    		//$("#puc-articles").append(response);
+    		}
     	
     });
 }
@@ -425,12 +433,21 @@ $(document).ready(function(){
 	 	
 	    if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
 	    	loadPage();
-	    	console.log("bottom");
+	    	
 	    }
 	});
 });
 //$(window).scroll( function(){
 	var height = $(window).scrollTop();
+
+
+	$('.loader').ajaxStart(function() {
+    $('.loader').show();
+    console.log('showing');
+}).ajaxComplete(function() {
+	console.log('hiding');
+    $('.loader').hide();
+});
 //
 //	if(height>50){
 //		$("#top-bar-header-cont").hide();

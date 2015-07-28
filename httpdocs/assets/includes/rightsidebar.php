@@ -131,7 +131,7 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <script>
-$(document).ready(function() {
+/*$(document).ready(function() {
         function isScrolledTo(elem) {
             var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
             var docViewBottom = docViewTop + $(window).height();
@@ -156,7 +156,7 @@ $(document).ready(function() {
                 sticky.css('top',stopHeight);
             }
         });
-    });
+    });*/
 </script>
 
 

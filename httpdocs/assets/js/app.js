@@ -39,7 +39,7 @@ var asideHeight = {
 
 
 $(document).ready(function() {
-
+	
 	if(page != 'articleslide' && page != 'home' && page != 'category' && page != 'article' && page != 'distroscale') {var adPage = 'category';} else {var adPage = page;}
 
 	//READ MORE 
@@ -410,24 +410,42 @@ $(document).ready(function() {
 	    	
 	    });
 	}
-	//var height = $(window).scrollTop();
-	//detect the bottom of page and runs our load page function 
-	//$(document).ready(function(){
 
-	$(window).scroll(function () {
-		if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
+	function isScrolledTo(elem) {
+       var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
+       var docViewBottom = docViewTop + $(window).height();
+ 
+       var elemTop = $(elem).offset().top; //num of pixels above the elem
+       var elemBottom = elemTop + $(elem).height();
+ 
+       return ((elemTop <= docViewTop));
+    }
+
+	var catcher = $('.catcher');
+    var sticky = $('.sticky');
+    var height = $(window).scrollTop();
+ 
+    $(window).scroll(function() {
+    	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
 		   loadPage();
 		}
-	});
-	//});
-
-	var height = $(window).scrollTop();
+		if(sticky.length > 0 ){
+	        if(isScrolledTo(sticky)) {
+	   	        sticky.css('position','fixed');
+	            sticky.css('top','0px');
+	        }
+	        var stopHeight = catcher.offset().top + catcher.height();
+	        if ( stopHeight > sticky.offset().top) {
+	            sticky.css('position','absolute');
+	            sticky.css('top',stopHeight);
+	        }
+	    }
+    });
+	
 	//ajax loading image to show when calling an ajax call
     $('.loader').ajaxStart(function() {
     	$('.loader').show();
-    	console.log('showing');
     }).ajaxComplete(function() {
-		console.log('hiding');
 	    $('.loader').hide();
 	});
 

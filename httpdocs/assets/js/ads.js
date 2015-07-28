@@ -283,7 +283,7 @@ if($('body').hasClass('mobile')) {
 	}
 
 	$(window).resize(function() {
-		resizeMainOnResize();
+	//	resizeMainOnResize();
 	});
 
 	appendAdEndBody($('#header-ad-loader'), $('#header-ad'), 100);

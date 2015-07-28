@@ -180,9 +180,15 @@ if(!is_null($categoryInfo)){
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
     <script type="text/javascript">
-	$(document).ready(function(){
-		addthis.init();
-	})
+	
+
+	if(document.readyState === "complete") {
+  		addthis.init();
+	}
+	else {
+	  //Add onload or DOMContentLoaded event listeners here: for example,
+	  window.addEventListener("onload", function () { addthis.init(); }, false);
+	}
 	</script>
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999; min-height:none !important; height:auto;">
@@ -260,7 +266,7 @@ if(!is_null($categoryInfo)){
 	
 	<?php 
 		include_once('admin/fb/fbfunctions.php'); 
-		
+		//include_once($config['include_path'].'footer.php');
     	include_once($config['include_path'].'bottomscripts.php');
     ?>
 

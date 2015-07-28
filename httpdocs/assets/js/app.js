@@ -401,7 +401,7 @@ if($('#warning-icon')){
 }
 
 
-//Inifinite scroll function through an ajax call
+//Inifinite scroll function through an ajax call on all pages
 var current_page = 0;
 var per_page = 20;
 var feature = "<?php echo $featuredArticle; ?>"
@@ -428,36 +428,22 @@ function loadPage() {
 //detect the bottom of page and runs our load page function 
 $(document).ready(function(){
 
-	//Scroll to bottom of page 
-	 $(window).scroll(function () {
-	 	
-	    if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
+	$(window).scroll(function () {
+	 	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
 	    	loadPage();
-	    	
 	    }
 	});
 });
-//$(window).scroll( function(){
+
 	var height = $(window).scrollTop();
-
-
-	$('.loader').ajaxStart(function() {
+	//ajax loading image to show when calling an ajax call
+    $('.loader').ajaxStart(function() {
     $('.loader').show();
     console.log('showing');
     }).ajaxComplete(function() {
 	console.log('hiding');
     $('.loader').hide();
 });
-//
-//	if(height>50){
-//		$("#top-bar-header-cont").hide();
-//		$("#header-social-buttons").show();
-//	}else{
-//		$("#top-bar-header-cont").show();
-//		$("#header-social-buttons").hide();
-//	}
-//});
-
 //BRANOVATE AD MOBILE
 /*
 if($('body').hasClass('mobile') && adPage === 'article'){

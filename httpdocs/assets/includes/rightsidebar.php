@@ -124,15 +124,16 @@
               </a>
               </noscript>
           </div>
+          <section id="sub-sidebar-2" class="sidebar sticky">
+    <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>
+    <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png"></a>
+  </section>
         <?php }
       } 
   }?>
 
-  <section id="sub-sidebar-2" class="sidebar sticky">
-  <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>
-  <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png"></a>
-            
-   </section>
+
+ 
 </aside>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>

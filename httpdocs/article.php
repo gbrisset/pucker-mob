@@ -146,7 +146,7 @@ if(!is_null($categoryInfo)){
 	</main>
 
 <?php include_once('admin/fb/fbfunctions.php'); ?>
-<?php include_once($config['include_path'].'footer.php');?>
+
 <?php include_once($config['include_path'].'bottomscripts.php');?>
 
 <!-- MODAL BOX POPUP -->

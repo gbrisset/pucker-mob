@@ -76,7 +76,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 56rem !important; '?>">
 		
 
-		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper">
+		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper main-div">
 			<?php include_once($config['include_path'].'articlelistresults.php'); ?>
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
@@ -90,7 +90,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 	<!-- GUM GUM In Screen 
 	<script type="text/javascript">ggv2id='56d76089';</script>-->
 
-	<?php include_once($config['include_path'].'footer.php'); ?>
+	
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
 
 	<!-- MODAL BOX FOLLOWERS POPUP -->

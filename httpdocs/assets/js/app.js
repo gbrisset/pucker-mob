@@ -420,16 +420,18 @@ function loadPage() {
     		var content = temp.html();
     		response.children('.featured').remove();
     		
-    		$("#puc-articles").append(response);
+    		$(".main-div").append(response);
     		}
     	
     });
 }
+//var height = $(window).scrollTop();
 //detect the bottom of page and runs our load page function 
 $(document).ready(function(){
 
 	$(window).scroll(function () {
 	 	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
+	 		//alert("bottom");
 	    	loadPage();
 	    }
 	});

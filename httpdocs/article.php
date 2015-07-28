@@ -267,6 +267,7 @@ if(!is_null($categoryInfo)){
 	<?php 
 		include_once('admin/fb/fbfunctions.php'); 
 		//include_once($config['include_path'].'footer.php');
+		 include_once($config['include_path'].'ads_to_load.php');
     	include_once($config['include_path'].'bottomscripts.php');
     ?>
 

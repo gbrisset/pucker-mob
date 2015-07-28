@@ -101,4 +101,4 @@
       </div>
       </div>
     </footer>
-    <?php include_once($config['include_path'].'ads_to_load.php');?>
+  

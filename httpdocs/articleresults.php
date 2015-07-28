@@ -91,7 +91,9 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 	<script type="text/javascript">ggv2id='56d76089';</script>-->
 
 	
-	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
+	<?php 
+	include_once($config['include_path'].'ads_to_load.php');
+	include_once($config['include_path'].'bottomscripts.php'); ?>
 
 	<!-- MODAL BOX FOLLOWERS POPUP -->
 	<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>

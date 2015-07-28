@@ -29,14 +29,14 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 
 
 	if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-	else{ ?>
+	else{ if( $page == 0){?>
 		<!-- ShareT -->
 		<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
 			<div data-str-native-key="6898172d" style="display: none;"></div>
 			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 		</div>
 		<hr class="padding-top">
-	<?php }
+	<?php }}
 }
 $omitThis =  $featuredArticle['article_id'];
 $articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true, 'offset' => $offset ]);

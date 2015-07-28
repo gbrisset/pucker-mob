@@ -167,8 +167,8 @@ $(document).ready(function() {
 		totalHeight = 5400;//3938;
 		//if( page == "videos") totalHeight += 80;
 		if(!$('body').hasClass('mobile')) {
-			leftSide.css("min-height", (totalHeight +  asideHeight.atf + asideHeight.video));
-			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//leftSide.css("min-height", (totalHeight +  asideHeight.atf + asideHeight.video));
+			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 		}
 	});
 
@@ -179,8 +179,8 @@ $(document).ready(function() {
 		if(!$('body').hasClass('mobile')) {
 			totalHeight = 5400;//3938;
 			//if( page == "videos") totalHeight += 80;
-			leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 		}
 	}
 
@@ -191,8 +191,8 @@ $(document).ready(function() {
 		totalHeight = 5400;//3938;
 		//if( page == "videos") totalHeight += 80;
 		if(!$('body').hasClass('mobile')) {
-			leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 		}
 	}
 

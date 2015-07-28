@@ -2,7 +2,8 @@
 	//MOST POPULAR
 	$mostReadArticlesList = $mpArticle->getMostRecentArticleListMobile();
 	//BLOGS
-	$moblog_articles = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );
+	$article_id = isset($articleInfoObj['article_id']) ? $articleInfoObj['article_id'] : false;
+	$moblog_articles = $mpArticle->getMoBlogsArticles( $article_id );
 ?>
 <div class="small-12" id="slide-menu-left-div">
 	<nav class="menu slide-menu-left small-12" id="tap-section" >

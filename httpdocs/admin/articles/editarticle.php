@@ -441,7 +441,17 @@
 						</div>
 					</div>
 
-					
+					<?php if($pro_admin){?>
+					<!-- Article Read More -->
+					<div class="row margin-bottom">
+						<div class="columns">
+							<label for="article_read_more_pct-s" class="uppercase">Read More Value </label>
+							<input type="number" name="article_read_more_pct-s" id="article_read_more_pct-s" min="1" max="100" value="<?php if(isset($article['article_read_more_pct'])) echo $article['article_read_more_pct']; ?>"/>
+							<label for="" class="pct-label left">%</label>
+						</div>
+					</div>
+					<?php }?> 
+
 					<!-- Article Disclaimer -->
 					<div class="row">
 					    <div class="columns">
@@ -511,6 +521,8 @@
 							</div>
 						</div>
 					</div>
+
+					
 
 					<?php if($pro_admin){?>
 					<!-- ADVERTISING OVERRIDE (IN-STREAM) -->

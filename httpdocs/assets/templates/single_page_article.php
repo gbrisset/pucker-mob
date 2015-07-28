@@ -25,7 +25,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 	$article_notes = $articleInfoObj['article_additional_comments'];
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
-
+	$read_more_pct = $articleInfoObj['article_read_more_pct'];
 	$related_articles = $mpArticle->getRelatedToArticle( $article_id );
 
 	$second_image ='';
@@ -46,6 +46,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	<input type="hidden" value="<?php echo $second_image; ?>" id="second-mob-img" />
+	<input type="hidden" value="<?php echo $read_more_pct; ?>" id="read_more_pct" />
 	
 	<section id="article-summary" class="small-12 column">
 		<!-- Article Image -->

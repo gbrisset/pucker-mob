@@ -179,9 +179,7 @@
         </ul>
       </section>
     </nav>
-     <?php if($detect->isMobile() && $isArticle){
-     //  include_once($config['include_path'].'header_social.php');
-      }?>
+    
   </div>
   <?php 
 

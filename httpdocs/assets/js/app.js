@@ -46,7 +46,12 @@ $(document).ready(function() {
 	if($('body').hasClass('mobile')) {
 		var $el, $ps, $up, totalHeight;
 		var parentOrgHeight = $('#article-content').outerHeight();
-		var wishDisplayHeight = parentOrgHeight * 0.73;
+
+		var pct_to_show = parseInt($('#read_more_pct').val());
+		var height_value = pct_to_show / 100 ;
+		var wishDisplayHeight = parentOrgHeight * height_value;
+
+		$('#article-content').css('max-height', wishDisplayHeight);
 
 		$(".read-more").on('click', '.button', function(e) {
 			e.preventDefault();		

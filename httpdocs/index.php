@@ -1,10 +1,16 @@
 <?php
+if (!empty($_GET['ajax'])) {
+	$ajax = true;
+} else {
+	$ajax = false;
+}
+
 require_once('assets/php/config.php');
 $pageName = $mpArticle->data['article_page_name'];
 $isHomepage = true;
 $has_sponsored = $mpArticle->data['has_sponsored_by'];
 
-if ( $detect->isMobile() && !$detect->isTablet()) {?>
+if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
@@ -63,7 +69,10 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 </body>
 </html>
 
-<?php }else { ?>
+<?php }
+else if($ajax) {
+	include_once($config['include_path'].'articleslist.php');
+}else{ ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
@@ -75,9 +84,9 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 56rem !important; '?>">
 		
-
-		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper">
+		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper main-div">
 			<?php include_once($config['include_path'].'articleslist.php'); ?>
+			<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/loading.gif"></center></div>
 		</section>
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
 
@@ -87,14 +96,14 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 		}?>
 	</main>
 	
-	<!-- GUM GUM In Screen 
-	<script type="text/javascript">ggv2id='56d76089';</script>-->
-
-	<?php include_once($config['include_path'].'footer.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
 
 	<!-- MODAL BOX FOLLOWERS POPUP -->
 	<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
+
+	<!-- FACEBOOK POPUP -->
+	<?php include_once($config['include_path'].'facebookpopup.php'); ?>
+
 </body>
 </html>
 <?php }?>

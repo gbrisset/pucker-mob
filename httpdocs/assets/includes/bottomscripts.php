@@ -1,6 +1,7 @@
 
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/modernizr.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
@@ -10,6 +11,7 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 <?php }?>
 
 <!-- DESKTOP -->

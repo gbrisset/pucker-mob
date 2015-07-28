@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['sass']);
   grunt.registerTask('jscompress', ['uglify']);
-   grunt.registerTask('csscompress', ['cssmin']);
+  grunt.registerTask('csscompress', ['cssmin']);
   grunt.registerTask('default', ['build','watch']);
 }
 

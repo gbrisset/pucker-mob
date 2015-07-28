@@ -1,21 +1,49 @@
 <?php 
-$articleIndex = 1; $bigImageCounter =  0; $smallImageCounter = 0; $quantity = 44; $omitThis = 0; $cat_id = $mpArticle->data['cat_id'];
+$articleIndex = 0;
+$bigImageCounter =  0;
+$smallImageCounter = 0;
+if (empty($_GET['per_page'])) {
+	$quantity = 46;
+} else {
+	$quantity = $_GET['per_page'];
+}
+
+
+if (empty($_GET['page'])) {
+	$page = 0;
+} else {
+	$page = $_GET['page'];
+}
+
+$omitThis = 0;
+$offset = $quantity * $page;
+$cat_id = $mpArticle->data['cat_id'];
+
 $featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
+if( $featuredArticle && $featuredArticle['article_status'] == 1){
+	$articleIndex++;
+	$omitThis =  $featuredArticle['article_id'];
 
-//FEATURED ARTICLE
-include_once($config['include_path'].'featured_article.php');
+	//FEATURED ARTICLE
+	include_once($config['include_path'].'featured_article.php');
 
-// ShareT AD
-if( isset($has_sponsored) && !$has_sponsored){ ?>
-	<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
-		<div data-str-native-key="6898172d" style="display: none;"></div>
-		<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-	</div>
-	<hr class="padding-top">
-<?php }
+
+	if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+	else{ ?>
+		<!-- ShareT -->
+		<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
+			<div data-str-native-key="6898172d" style="display: none;"></div>
+			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+		</div>
+		<hr class="padding-top">
+	<?php }
+}
+$omitThis =  $featuredArticle['article_id'];
+$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true, 'offset' => $offset ]);
+
 
 /* Article List */
-$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true ]);
+//$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true ]);
 $totalArticles = count($articlesList);
 
 foreach ($articlesList as $articles){
@@ -56,6 +84,7 @@ foreach ($articlesList as $articles){
 				</div>
 			</div>
 		<?php }
+		
 		if( $articleIndex < $totalArticles ) echo '<hr class="padding-top">'; 
 	}else{
 		$clearLeft='no-padding-right'; 
@@ -85,5 +114,10 @@ foreach ($articlesList as $articles){
 			</div>
 		<?php }
 			if( $smallImageCounter % 2 == 0  && $articleIndex < $totalArticles) echo '<hr class="padding-top">';
-		} 
-	} ?>
+		} ?> 
+
+<?php } ?>
+	<style>
+	.str-adunit.hosted-video.str-collapsed, .str-adunit.clickout.str-collapsed{border:none !important;}
+	</style>
+

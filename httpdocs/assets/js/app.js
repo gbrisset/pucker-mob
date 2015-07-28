@@ -173,8 +173,8 @@ $(document).ready(function() {
 		totalHeight = 5400;//3938;
 		//if( page == "videos") totalHeight += 80;
 		if(!$('body').hasClass('mobile')) {
-			leftSide.css("min-height", (totalHeight +  asideHeight.atf + asideHeight.video));
-			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//leftSide.css("min-height", (totalHeight +  asideHeight.atf + asideHeight.video));
+			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 		}
 	});
 
@@ -185,8 +185,8 @@ $(document).ready(function() {
 		if(!$('body').hasClass('mobile')) {
 			totalHeight = 5400;//3938;
 			//if( page == "videos") totalHeight += 80;
-			leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 		}
 	}
 
@@ -197,8 +197,8 @@ $(document).ready(function() {
 		totalHeight = 5400;//3938;
 		//if( page == "videos") totalHeight += 80;
 		if(!$('body').hasClass('mobile')) {
-			leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-			main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
+			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
 		}
 	}
 
@@ -280,108 +280,163 @@ $(document).ready(function() {
 		getTotalShares( url, $(this) );
 	});
 
-//Social Shares Tracking FB Sharing Functionality
-var SocialShares = {
-	updateFBShare: function( count, article_id ){
-		$.post("http://www.puckermob.com/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
-	},
+	//Social Shares Tracking FB Sharing Functionality
+	var SocialShares = {
+		updateFBShare: function( count, article_id ){
+			$.post("http://www.puckermob.com/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
+		},
 
-	fbEventHandler: function(evt) { 
-		if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
-	     	   addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-	    		var count = obj.count;
-	    		var article_id = Foundation.utils.S('#article_id').val();
-	    		SocialShares.updateFBShare( count, article_id );
-	    	});
-	  	}
-	 }
-}
-	
-if(page === 'article' || page === 'articleslide') {
-	addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-	});
-	addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-}
-
-function kFormatter(num) {
-  	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
-}
-
-$('#follow-author').click(function(e){
-	e.preventDefault();
-
-	if( $('#ss_user_email').val().length < 1  ){
-		$('body').addClass('show-modal-box');
-	}else{
-		 var author_id = $('#ss_author_id').val(),
-		 user_email = $('#ss_user_email').val();
-
-		if( author_id != '0' && user_email != ''){
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            data: { task: 'follow-author', user_email: user_email, author_id: author_id},
-            url: "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php",
-            success: function (msg) {
-                if(msg['hasError']) $('#login-result').html(msg['message']).attr('style', 'color:red; text-transform: inherit;');
-                else{
-                	var email = msg['email'],
-                	container = $('#follow-the-author-bg');
-                	$('#ss_user_email').val(email);
-
-                	$(container).html('<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>');
-                    $('body').removeClass('show-modal-box');
-                    $('.top-header-logout').find('.welcome-email span').html('Welcome, '+email);
-                    $('.top-header-logout').find('#image-header-profile').attr('src', msg['user_img']);
-                    $('.top-header-login').attr('style', 'display:none !important');
-                    $('.top-header-logout').attr('style', 'display:inherit !important');
-                    $('#follow-msg').html(msg['message']);
-                    $('#my-account-header-link').attr('href', 'http://www.puckermob.com/admin/following/');
-                    $('.hide-for-readers').addClass('hide');
-                	$('body').addClass('show-modal-box-follow');
-                	$('.hide-for-readers').css('display', 'none');                 
-                }
-            }
-     	});
-    	}
+		fbEventHandler: function(evt) { 
+			if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
+		     	   addthis.sharecounters.getShareCounts('facebook', function(obj) {        
+		    		var count = obj.count;
+		    		var article_id = Foundation.utils.S('#article_id').val();
+		    		SocialShares.updateFBShare( count, article_id );
+		    	});
+		  	}
+		 }
 	}
-});
-
-$('.close').click(function(e){
-	$('body').removeClass('show-modal-box');
-	$('body').removeClass('show-modal-box-follow');
-});
-
-$('#register-link').click(function(e){
-	e.preventDefault();
-	$('#login-box').hide();
-	$('#register-box').show();
-});
-
-$('#login-link').click(function(e){
-	e.preventDefault();
-	$('#register-box').hide();
-	$('#login-box').show();
-});
-
-$('.ajax-form-submit').click(function(e){
-	e.preventDefault();
-	var dataString = '';	
-	var form = $(this).parent('form'),
-	task = $(form).attr('data-info-task');
-
-	if(task === 'register-reader'){
-		$(form).dynamicRegisterContent();
-	}else if(task === 'login-reader'){
-		$(form).dynamicLoginContent();
+		
+	if(page === 'article' || page === 'articleslide') {
+		addthis.sharecounters.getShareCounts('facebook', function(obj) {        
+		});
+		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
 	}
-});
 
-if($('#warning-icon')){
-	$('#warning-icon').on('click', function(e){
-		e.stopPropagation();
-		$('#dd-shares-content').slideToggle('slow');
+	function kFormatter(num) {
+	  	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
+	}
 
+	$('#follow-author').click(function(e){
+		e.preventDefault();
+
+		if( $('#ss_user_email').val().length < 1  ){
+			$('body').addClass('show-modal-box');
+		}else{
+			 var author_id = $('#ss_author_id').val(),
+			 user_email = $('#ss_user_email').val();
+
+			if( author_id != '0' && user_email != ''){
+	        $.ajax({
+	            type: 'POST',
+	            dataType: 'json',
+	            data: { task: 'follow-author', user_email: user_email, author_id: author_id},
+	            url: "http://www.puckermob.com/assets/ajax/ajaxmultifunctions.php",
+	            success: function (msg) {
+	                if(msg['hasError']) $('#login-result').html(msg['message']).attr('style', 'color:red; text-transform: inherit;');
+	                else{
+	                	var email = msg['email'],
+	                	container = $('#follow-the-author-bg');
+	                	$('#ss_user_email').val(email);
+
+	                	$(container).html('<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>');
+	                    $('body').removeClass('show-modal-box');
+	                    $('.top-header-logout').find('.welcome-email span').html('Welcome, '+email);
+	                    $('.top-header-logout').find('#image-header-profile').attr('src', msg['user_img']);
+	                    $('.top-header-login').attr('style', 'display:none !important');
+	                    $('.top-header-logout').attr('style', 'display:inherit !important');
+	                    $('#follow-msg').html(msg['message']);
+	                    $('#my-account-header-link').attr('href', 'http://www.puckermob.com/admin/following/');
+	                    $('.hide-for-readers').addClass('hide');
+	                	$('body').addClass('show-modal-box-follow');
+	                	$('.hide-for-readers').css('display', 'none');                 
+	                }
+	            }
+	     	});
+	    	}
+		}
 	});
-}
+
+	$('.close').click(function(e){
+		$('body').removeClass('show-modal-box');
+		$('body').removeClass('show-modal-box-follow');
+	});
+
+	$('#register-link').click(function(e){
+		e.preventDefault();
+		$('#login-box').hide();
+		$('#register-box').show();
+	});
+
+	$('#login-link').click(function(e){
+		e.preventDefault();
+		$('#register-box').hide();
+		$('#login-box').show();
+	});
+
+	$('.ajax-form-submit').click(function(e){
+		e.preventDefault();
+		var dataString = '';	
+		var form = $(this).parent('form'),
+		task = $(form).attr('data-info-task');
+
+		if(task === 'register-reader'){
+			$(form).dynamicRegisterContent();
+		}else if(task === 'login-reader'){
+			$(form).dynamicLoginContent();
+		}
+	});
+
+	if($('#warning-icon')){
+		$('#warning-icon').on('click', function(e){
+			e.stopPropagation();
+			$('#dd-shares-content').slideToggle('slow');
+
+		});
+	}
+
+
+	//Inifinite scroll function through an ajax call on all pages
+	var current_page = 0;
+	var per_page = 20;
+	var feature = "<?php echo $featuredArticle; ?>"
+
+	function loadPage() {
+		current_page++;
+	    // ajax call should go here
+	    console.debug();
+	    $.ajax({
+	    	type: "GET",
+	    	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+	    	success: function(data) {
+	    		var response = $('<div />').html(data);
+	    		var temp = response.find('.featured');
+	    		temp.children('.featured').remove();
+	    		var content = temp.html();
+	    		response.children('.featured').remove();
+	    		
+	    		$(".main-div").append(response);
+	    		}
+	    	
+	    });
+	}
+	//var height = $(window).scrollTop();
+	//detect the bottom of page and runs our load page function 
+	//$(document).ready(function(){
+
+	$(window).scroll(function () {
+		if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
+		   loadPage();
+		}
+	});
+	//});
+
+	var height = $(window).scrollTop();
+	//ajax loading image to show when calling an ajax call
+    $('.loader').ajaxStart(function() {
+    	$('.loader').show();
+    	console.log('showing');
+    }).ajaxComplete(function() {
+		console.log('hiding');
+	    $('.loader').hide();
+	});
+
+	//BRANOVATE AD MOBILE
+	/*
+	if($('body').hasClass('mobile') && adPage === 'article'){
+		setTimeout(function() {
+			loadBranovateAd( document.getElementById("branovate-ad"), '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
+		}, 2000);
+	}*/
+
 });

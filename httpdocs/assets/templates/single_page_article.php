@@ -21,7 +21,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
 	$article_img_credits = $articleInfoObj['article_img_credits'];
-	$article_img_credits_url = isset($articleInfoObj['article_img_credits_url']) ? $articleInfoObj['article_img_credits_url'] : '';
+	$article_img_credits_url = $articleInfoObj['article_img_credits_url'];
 
 	$article_notes = $articleInfoObj['article_additional_comments'];
 	$article_disclaimer = $articleInfoObj['article_disclaimer'];
@@ -101,9 +101,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
-		<?php //if($article_id == 7625){?>
+		
 			<?php include_once($config['include_path'].'header_social.php'); ?>
-			<?php //}?>
+		
 		
 		<div class="inarticle-ad ad-unit hide-for-print padding-top" style="display: inline-block;">
 			<!--<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"></ins>
@@ -137,7 +137,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
 			<ul>
 			<?php if( $related['related_article_id_1']['info'] ) {?>
-			<li class="related_to_this_article content-wrapper left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+			<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
 				<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
 					<div class="article-image small-5 left">
 						<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
@@ -151,7 +151,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</li>
 			<?php }?>
 			<?php if( $related['related_article_id_2']['info'] ) {?>
-			<li class="related_to_this_article content-wrapper left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+			<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
 				<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
 					<div class="article-image small-5 left">
 						<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
@@ -165,7 +165,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</li>
 			<?php }?>
 			<?php if( $related['related_article_id_3']['info'] ) {?>
-			<li class="related_to_this_article content-wrapper left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+			<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
 				<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
 					<div class="article-image small-5 left">
 						<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">

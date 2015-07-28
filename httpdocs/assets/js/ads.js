@@ -164,11 +164,13 @@ if($('body').hasClass('mobile')) {
 			console.log(first_p, second_p, third_p, fourth_p, fith_p);
 			//1ST SPOT
 			if( first_p > 0 ){
-				if(article_id == 5049){
+				//1st GOOGLE
+				if(article_id == 5049){ //Komoona article test
 					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
+				}else if( article_id == 7853){ //3lift article test
+					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"><script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script></div>', tag);
 				}else{
 					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
-				    //inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"><script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script></div>', tag);
 				}
 			}
 

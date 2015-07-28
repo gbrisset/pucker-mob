@@ -179,7 +179,7 @@ if(!is_null($categoryInfo)){
 	<?php include_once($config['include_path'].'header_ad.php');?>
 
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999;">
+		<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999; min-height:none !important; height:auto;">
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			<?php 
 			if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
@@ -263,7 +263,7 @@ if(!is_null($categoryInfo)){
 	
 	<?php 
 		include_once('admin/fb/fbfunctions.php'); 
-		include_once($config['include_path'].'footer.php');
+		
     	include_once($config['include_path'].'bottomscripts.php');
     ?>
 

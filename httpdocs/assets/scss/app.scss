@@ -1436,7 +1436,7 @@ $fun: #f9651b;
 	}
 		
 	.sidebar-box {
-	/*	max-height: 70rem;*/
+	
 		position: relative;
 		padding-top: 0.5rem;
 		padding-bottom: 2rem;
@@ -1451,6 +1451,7 @@ $fun: #f9651b;
 		margin: 0;
 		padding: 0rem 0;
 		padding-top: 0;
+		z-index:9999;
 	}
 
 	.sidebar-box .read-more .button{
@@ -1488,6 +1489,7 @@ $fun: #f9651b;
 		padding: 0rem 0;
 		height: 1px;
 		padding-top: 0;
+		border-radius: 1px;
 	
 		-webkit-box-shadow:0px 0px 100px 90px rgba(255, 255, 255, 0.9);
 		-moz-box-shadow:0px 0px 100px 90px rgba(255, 255, 255, 0.9);

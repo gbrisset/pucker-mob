@@ -125,6 +125,8 @@
             <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png"></a>
           </section>
           </div>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script type="text/javascript" src="http://arrow.scrolltotop.com/arrow54.js"></script>
         <?php }
       } 
   }?>

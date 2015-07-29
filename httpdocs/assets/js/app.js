@@ -425,6 +425,8 @@ $(document).ready(function() {
     var sticky = $('.sticky');
     var sideAd = $('.ad-unit');
     var height = $(window).scrollTop();
+    var s = $("#sticker");
+    var pos = s.position(); 
     
  
     $(window).scroll(function() {
@@ -442,6 +444,7 @@ $(document).ready(function() {
 	            sticky.css('top',stopHeight);
 	        }
 	    }
+
     });
 	
 	//ajax loading image to show when calling an ajax call
@@ -459,4 +462,18 @@ $(document).ready(function() {
 		}, 2000);
 	}*/
 
+});
+
+			  	$(document).ready(function() {
+    var s = $("#sticker");
+    var pos = s.position();                    
+    $(window).scroll(function() {
+        var windowpos = $(window).scrollTop();
+        s.html("Distance from top:" + pos.top + "<br />Scroll position: " + windowpos);
+        if (windowpos >= pos.top) {
+            s.addClass("stick");
+        } else {
+            s.removeClass("stick"); 
+        }
+    });
 });

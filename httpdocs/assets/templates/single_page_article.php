@@ -70,9 +70,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<h1 style="margin: 0.5rem 0;"><?php echo $article_title; ?></h1>
 		
 		<!-- SOCIAL DESKTOP -->
+
+	<div id="sticker">...start scrolling to watch me stick</div>
 		<section id="article-content-2">
+			
 			<!-- Social Media Icons -->
-			<div class="row social-media-container  padding-bottom" style=" display:block !important;">
+			<div class="row social-media-container  padding-bottom sticker" style=" display:block !important;">
 				<a class="addthis_button_facebook small-4 left">
 					<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
 				</a> 
@@ -80,7 +83,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
 				</a> 
 				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
+		
 			</div>
+
 		
 		<!-- ABOUT THE AUTHOR -->
 		<?php include_once($config['include_path'].'abouttheauthor.php'); ?>

@@ -64,7 +64,7 @@ foreach ($articlesList as $articles){
 		$articleIndex++; $bigImageCounter++; 
 
 		//3LIFT AD
-		if($bigImageCounter == 1){
+		if($bigImageCounter == 1 && $page == 0){
 			echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed2"></script>';
 		}else{ ?>
 			<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
@@ -93,7 +93,7 @@ foreach ($articlesList as $articles){
 		$articleIndex++; 
 		
 		//3LIFT AD
-		if($smallImageCounter == 2){
+		if($smallImageCounter == 2 && $page == 0){
 			echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
 		}else{ ?>	
 			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?>" id="<?php echo 'article-'.$articleIndex;?>">

@@ -404,7 +404,7 @@ $(document).ready(function() {
 	    		temp.children('.featured').remove();
 	    		var content = temp.html();
 	    		response.children('.featured').remove();
-	    		
+	    		console.log(response);
 	    		$(".main-div").append(response);
 	    		}
 	    	
@@ -423,7 +423,9 @@ $(document).ready(function() {
 
 	var catcher = $('.catcher');
     var sticky = $('.sticky');
+    var sideAd = $('.ad-unit');
     var height = $(window).scrollTop();
+    
  
     $(window).scroll(function() {
     	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
@@ -434,7 +436,7 @@ $(document).ready(function() {
 	   	        sticky.css('position','fixed');
 	            sticky.css('top','0px');
 	        }
-	        var stopHeight = catcher.offset().top + catcher.height();
+	        var stopHeight = catcher.offset().top + (sideAd.height() * 7) + catcher.height();
 	        if ( stopHeight > sticky.offset().top) {
 	            sticky.css('position','absolute');
 	            sticky.css('top',stopHeight);

@@ -14,13 +14,13 @@
 		</div>
 	</div>-->
 	
-	<div id="mobile-bottom-sprocketster-ad-loader" >
+	<!--<div id="mobile-bottom-sprocketster-ad-loader" >
 		<div id="get-content" style="text-align:center;">
 			<script id="airpushScript" type="text/javascript" 
 			src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
 			</script>
 		</div>
-	</div>
+	</div>-->
 	<!--<div id="mobile-instream-branovate-ad-loader" >
 		<div id="get-content" style="text-align:center;">
 			<iframe id='ani_passback'  border='0' width='0' height='0'></iframe>

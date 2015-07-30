@@ -27,24 +27,3 @@
 		<?php }?>
 	</div>
 </nav>
-
-
-
-		<?php // if( $MPNavigation->navigationLinks ){ ?>
-		<!--<div id="header-other-sites">
-			
-				<!--<li id="sign_join_link"><a href="<?php echo $config['this_url'].'verify/ziplist.php'?>" target="_blank">My Recipe Box</a></li>
-				<label>Our other sites: </label>
-				<?php
-					/*foreach($MPNavigation->navigationLinks as $links){
-						if($links['navigation_link_footer_only']) continue;
-						$link = '';
-						$link .= '<li>';
-								$link .= '<a href="'.$links['navigation_link_url'].'" target="_blank">'.$links['navigation_link_text'].'</a>';
-							$link .= '</li>';
-						echo $link;
-					}*/
-				?>
-			</ul>
-		</div>-->
-	<?php //}?>

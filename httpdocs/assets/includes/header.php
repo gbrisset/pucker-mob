@@ -63,6 +63,9 @@
   }
 
  ?>
+
+ <!-- Social Media Icons -->
+  
   <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
     <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">
@@ -113,7 +116,7 @@
   </header>
   
   <header id="top-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
-  <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
+    <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">
         <ul style="<?php if($has_sponsored && $isHomepage) echo 'min-width: 56rem !important'; ?>">
             <li style="margin-left: 1px;"> <a class="my-account-header-link" href="https://www.facebook.com/puckermob" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a></li>
@@ -141,7 +144,20 @@
   <?php }?>
    
    <?php if($detect->isMobile()){?>
-    <div id="mobile-top-header-ad" class="top-header-ad row"></div>
+     <div id="social-media-container-header" class="row" style="display:none;"> 
+        <div class="columns social-media-container  padding-bottom " style=" display:block !important;">
+        <a class="addthis_button_facebook small-4 left">
+          <label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
+        </a> 
+        <a class="addthis_button_twitter  small-2 left">
+          <label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
+        </a> 
+        <div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
+    
+      </div>  
+     </div>  
+
+  <!--  <div id="mobile-top-header-ad" class="top-header-ad row"></div> -->
   <?php }?>
 
   <?php if(!$detect->isMobile()){?>

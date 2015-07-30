@@ -110,11 +110,11 @@
       </script>
       <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
   <?php  } ?>
-    <div id="mobile-bottom-sprocketster-ad-loader" >
-    <script id="airpushScript" type="text/javascript" 
-      src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
-    </script>
-  </div>
+   <!-- <div id="mobile-bottom-sprocketster-ad-loader" >
+      <script id="airpushScript" type="text/javascript" 
+        src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
+      </script>
+  </div>-->
   	
     <!-- KIXER ADHESION -->
     <div id='__kx_ad_1486'></div>
@@ -176,5 +176,3 @@
 
 <!-- Nativo -->
 <script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type="text/javascript" src="http://arrow.scrolltotop.com/arrow54.js"></script>

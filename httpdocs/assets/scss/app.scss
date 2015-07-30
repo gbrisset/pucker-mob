@@ -1063,7 +1063,6 @@ body{padding-top:0 !important;}
 	.addthis_button_compact{ font-size: 1.3rem; text-transform: uppercase; color: #777 !important; font-family: OswaldLight; padding-top: 1.4rem; position: absolute;}
 	
 	.social-media-container{ padding: 0.6rem 0rem 0 1rem; display:block;}
-	/*#header-social-buttons{display:none;}*/
 	.social-media-container-header{
 		margin:0;padding:0;
 		.fa-facebook{font-size:1.5rem;}
@@ -1082,6 +1081,10 @@ body{padding-top:0 !important;}
 			text-transform: uppercase;
 		}
 	}
+	#social-media-container-header{
+		background-color: #fff; z-index: 999; padding: 0.2rem 0.5rem;   border-bottom: 1px solid #eee; border-bottom-width: medium;
+		.social-media-container{ padding: 0.4rem 0 0 1rem;}
+	}
 
 
 	.social-cont-1{
@@ -1094,9 +1097,6 @@ body{padding-top:0 !important;}
 	}
 
 	#similar-article-5{ border-bottom: none !important; }
-	@media #{ $small-only }{
-		.social-media-container{ display:none;}
-	}
 
 	#category-name{ text-transform: uppercase; margin-top: 0 !important; }
 

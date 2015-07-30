@@ -329,6 +329,8 @@
 									}else{
 											$option = '<option value="3"';
 											$option .= '>Draft</option>';
+											// $option .= '<option value="2"';
+											// $option .= '>Reviewed</option>';
 											echo $option;
 									}
 								?>

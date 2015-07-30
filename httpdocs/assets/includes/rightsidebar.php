@@ -123,6 +123,7 @@
           <section id="sub-sidebar-2" class="sidebar sticky" style="padding-top:10px; clear:both;">
             <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>
             <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png"></a>
+            <a href="#" class="back-to-top">Back to Top</a>
           </section>
     
    

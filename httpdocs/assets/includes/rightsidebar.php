@@ -11,14 +11,17 @@
           <!-- End of JavaScript Tag -->
         </div>
       <?php }else{?> 
-        <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;"></div>
+        <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
+          <!-- 300x250: 300x250 --> 
+          <div id="ros_1195"></div> 
+        </div>
       <?php } ?>
 
       <!-- MOST POPULAR -->
       <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
 
        <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
-          <!-- puckermob.com/ros_btf -->
+          <!-- puckermob.com/ros_btf 
           <script type="text/javascript">
             var ord = window.ord || Math.floor(Math.random() * 1e16);
             document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros_btf;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
@@ -27,7 +30,9 @@
             <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros_btf;sz=300x250;ord=[timestamp]?">
               <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros_btf;sz=300x250;ord=[timestamp]?" width="300" height="250" />
             </a>
-          </noscript>
+          </noscript>-->
+          <!-- 300x250 BTF: 300x250 --> 
+          <div id="ros_1201"></div> 
        </div>
        
        <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
@@ -36,7 +41,7 @@
        </section>
         
        <div id="btf2-ad" class="ad-unit ad300" style="height:auto;">
-          <!-- puckermob.com/ros_btf2 -->
+          <!-- puckermob.com/ros_btf2 
           <script type="text/javascript">
             var ord = window.ord || Math.floor(Math.random() * 1e16);
             document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros_btf2;sect=ros_btf2;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=' + ord + '?"><\/script>');
@@ -45,7 +50,9 @@
           <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros_btf2;sect=ros_btf2;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?">
           <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros_btf2;sect=ros_btf2;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?" width="300" height="250" />
           </a>
-          </noscript>
+          </noscript>-->
+           <!-- 300x250 BTF: 300x250 --> 
+          <div id="ros_1203"></div> 
        </div>
 
   <?php }else{ ?>
@@ -55,7 +62,7 @@
       <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
       else{?>
          <div id="btf1-ad" class="ad-unit ad300 show-on-large-up" style="height: auto;">
-            <!-- puckermob.com/home -->
+            <!-- puckermob.com/home 
             <script type="text/javascript">
             var ord = window.ord || Math.floor(Math.random() * 1e16);
             document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
@@ -64,16 +71,19 @@
               <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
                 <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="300" height="250" />
               </a>
-            </noscript>
+            </noscript>-->
+            <!-- 300x250 BTF: 300x250 --> 
+            <div id="home_1185"></div> 
           </div>
         
-          <!--<div id="atf1050-ad" class="ad-unit ad300 show-on-large-up"></div>-->
       <?php }?>
 
        <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
             else{?>
             <div id="btf2-ad" class="ad-unit ad300"  style="height: auto;">
-              <!-- puckermob.com/home_BTF -->
+              <!-- 300x250 BTF2: 300x250 --> 
+              <div id="home_1187"></div> 
+              <!-- puckermob.com/home_BTF 
               <script type="text/javascript">
                 var ord = window.ord || Math.floor(Math.random() * 1e16);
                 document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home_BTF;sect=home_BTF;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
@@ -82,7 +92,7 @@
                 <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home_BTF;sect=home_BTF;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
                   <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home_BTF;sect=home_BTF;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="300" height="250" />
                 </a>
-              </noscript>
+              </noscript>-->
             </div>
       <?php }?>
 
@@ -108,7 +118,7 @@
         <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
         else{?>
           <div id="btf3-ad" style="margin-top: 1rem !important; " class="ad-unit ad300"  style="height: auto;">
-              <!-- puckermob.com/home_btf3 -->
+              <!-- puckermob.com/home_btf3 
               <script type="text/javascript">
                 var ord = window.ord || Math.floor(Math.random() * 1e16);
                 document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=' + ord + '?"><\/script>');
@@ -117,7 +127,9 @@
               <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?">
                 <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home_btf3;sect=home_btf3;sz=300x250;dc_ref='+encodeURIComponent(location.herf)+';ord=[timestamp]?" width="300" height="250" />
               </a>
-              </noscript>
+              </noscript>-->
+              <!-- 300x250: 300x250 --> 
+            <div id="home_1183"></div> 
           </div>
           
           <section id="sub-sidebar-2" class="sidebar sticky" style="padding-top:10px; clear:both;">

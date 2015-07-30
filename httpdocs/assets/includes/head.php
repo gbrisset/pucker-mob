@@ -128,6 +128,11 @@
   </div>
 </noscript>
 <?php }?>
- 	
+	<!-- Nativo -->
+	<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
+
+	<!-- Totally Her GPT -->
+	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
+
 </head>
  <?php flush(); ?>

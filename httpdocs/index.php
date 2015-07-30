@@ -15,6 +15,8 @@ if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="home" class="mobile background-eee">
+	<!-- Out of page for home -->
+	<div id="home_adoop"></div>
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
 
@@ -43,6 +45,8 @@ if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="home" class="">
+	<!-- Out of page for home -->
+	<div id="home_adoop"></div>
 	<!-- Sponsored By Totally Her -->
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
 
@@ -77,6 +81,8 @@ else if($ajax) {
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="home" class="">
+	<!-- Out of page for home -->
+	<div id="home_adoop"></div>
 	<!-- Sponsored By Totally Her -->
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
 

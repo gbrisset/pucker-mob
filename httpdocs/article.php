@@ -81,6 +81,7 @@ if(!is_null($categoryInfo)){
 <?php }else{ ?>
 	<body id="article" class="mobile">
 <?php } ?>
+		<div id="ros_adoop"></div>
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php 
 			$style = '';
@@ -175,6 +176,7 @@ if(!is_null($categoryInfo)){
 <?php }else{ ?>
 	<body id="article">
 <?php } ?>
+	<div id="ros_adoop"></div>
 	<?php include_once($config['include_path'].'header.php');?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->

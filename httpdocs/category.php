@@ -27,7 +27,7 @@ if ( $detect->isMobile() ) { ?>
 	<body id="category" class="mobile background-eee">
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
-		
+		<div id="ros_adoop"></div>
 		<!-- MOBILE LEFT TAP -->
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
@@ -63,6 +63,7 @@ if ( $detect->isMobile() ) { ?>
 	<body id="category">
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
+		<div id="ros_adoop"></div>
 		<main id="main" class="row panel sidebar-on-right" role="main">
 		
 			<section id="puc-articles" class="sidebar-right small-12 medium-12 large-11 columns translate-fix sidebar-main-left">

@@ -11,7 +11,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 <body id="home" class="mobile background-eee">
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
-
+	<div id="home_adoop"></div>
 	<!-- MOBILE LEFT TAP -->
 	<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
@@ -37,6 +37,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="home" class="">
+	<div id="home_adoop"></div>
 	<!-- Sponsored By Totally Her -->
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
 
@@ -65,6 +66,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) {?>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="home" class="">
+	<div id="home_adoop"></div>
 	<!-- Sponsored By Totally Her -->
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
 

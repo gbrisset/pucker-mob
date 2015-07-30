@@ -56,10 +56,10 @@
 	</div>-->
  <?php } 
  }else { ?>
-	<div id="header-ad-loader" class="hide">
+	<!--<div id="header-ad-loader" class="hide">
       	<div id="get-content">
-		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-			<!-- puckermob.com/ros -->
+		<?php //if(isset($articleInfoObj) && $articleInfoObj){ ?>-->
+			<!-- puckermob.com/ros 
 			<script type="text/javascript">
 			  var ord = window.ord || Math.floor(Math.random() * 1e16);
 			  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=728x90,970x90;dcopt=ist;type=pop;type=int;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
@@ -70,8 +70,8 @@
 					<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros;sect=ros;sz=728x90,970x90;ord=[timestamp]?" />
 				</a>
 			</noscript>
-		<?php }else{?>
-		<!-- puckermob.com/home -->
+		<?php //}else{?>
+		puckermob.com/home 
 		<script type="text/javascript">
 		  var ord = window.ord || Math.floor(Math.random() * 1e16);
 		  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=728x90,970x90;dc_ref='+encodeURIComponent(location.href)+';dcopt=ist;type=pop;type=int;ord=' + ord + '?"><\/script>');
@@ -81,13 +81,13 @@
 				<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=728x90,970x90;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" />
 			</a>
 		</noscript>
-		<?php }?>
+		<?php //}?>
 		</div>
 	</div>
-	<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+	<?php //if(isset($articleInfoObj) && $articleInfoObj){ ?>
 	 <div id="atf-ad-loaded" class="hide" >
 	 	<div id="get-content">
-	 		<!-- puckermob.com/ros -->
+	 		
 	        <script type="text/javascript">
 	          var ord = window.ord || Math.floor(Math.random() * 1e16);
 	          document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
@@ -100,6 +100,6 @@
 	        </noscript>
 	 	</div>
 	 </div>
-	 <?php }?>
+	 <?php //}?>-->
 <?php }  ?>
 

@@ -155,6 +155,7 @@
 					     <label>Status:
 					     	<a class="<?php echo $liveClass; ?>" href="<?php  echo $userType_URL.'&sort=1&artype='.$artType; ?>">Live</a> | 
 						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a>
+						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Reviewed</a>
 					     </label>
 					    </div>
 				</section>
@@ -170,7 +171,7 @@
 						      <th class="columns  mobile-12 small-12 medium-7">Article Name</th>
 						      <th class="columns  small-2"><a href="<?php //echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Added</a></th>
 						      <!--<th class="small-2"><a href="<?php //echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>-->
-						      <th  class="columns small-2">U.S. VIEWS</th>
+						      <th  class="columns small-2">status</th>
 						      <th   class="columns small-1"></th>
 						    </tr>
 						 </thead>
@@ -205,7 +206,7 @@
 								  	</td>
 								  	<td class="columns  small-2 padding-top-center"><?php echo $article_date_created; ?></td>
 								  	<!--<td class="small-2"><?php echo $article_status; ?></td>-->
-								  	<td  class="columns  small-2 padding-top-center"><?php if(!empty($article_us_traffic)) echo $article_us_traffic; else echo '0'; ?></td>	
+								  	<td  class="columns  small-2 padding-top-center"><?php echo $article_status ?></td>	
 									<!-- REMOVE ARTICLE -->
 									<td   class="columns small-1 padding-top-center">
 										<?php if($admin_user || $blogger ){?>

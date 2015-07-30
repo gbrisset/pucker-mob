@@ -119,12 +119,16 @@
               </a>
               </noscript>
           </div>
-          <div>
-          <section id="sub-sidebar-2" class="sidebar sticky clear" style="padding-top:10px; clear:both;">
+          
+          <section id="sub-sidebar-2" class="sidebar sticky" style="padding-top:10px; clear:both;">
             <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>
-            <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png"></a>
+            <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png" style="margin-bottom:15px;"></a>
+                    <a href="#" class="back-to-top btn"> Back to top  &#8682; </a>
+
           </section>
-          </div>
+  
+   
+        
           
         <?php }
       } 

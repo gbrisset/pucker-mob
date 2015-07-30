@@ -317,18 +317,19 @@
 								<label for="article_status" class="uppercase">Article Status</label>
 								<select name="article_status" id="article_status" class = "status-select small-6">
 								<?php
-									if(!isset($content_provider)){
+									if(!isset($content_provider)){ 
 										foreach($allStatuses as $statusInfo){
 											$option = '<option data-preview="" value="'.$statusInfo['status_id'].'"';
-											if( $statusInfo['status_id'] == 2 ) continue;
 											if($statusInfo['status_id'] == $article['article_status']) $option .= ' selected="selected"';
 											
 											$option .= '>'.$statusInfo['status_label'].'</option>';
-											echo $option;
+											echo $option; 
 										}
-									}else{
+									}else{ 
 											$option = '<option value="3"';
 											$option .= '>Draft</option>';
+											$option .= '<option value="2"';
+											$option .= '>Reviewed</option>';
 											echo $option;
 									}
 								?>

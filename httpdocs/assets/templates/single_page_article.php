@@ -109,7 +109,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php include_once($config['include_path'].'header_social.php'); ?>
 		
 		
-		<div class="inarticle-ad ad-unit hide-for-print padding-top" style="display: inline-block;">
+		<!--<div class="inarticle-ad ad-unit hide-for-print padding-top" style="display: inline-block;">-->
 			<!--<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"></ins>
 			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 			<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>-->
@@ -117,7 +117,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			    kmn_placement = 'fc4492dc405ee8f7fe28922253e2e0cb';
 			</script>
 			<script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>	-->	
-			<div id="carambola-ad "class="columns small-12">
+			<!--<div id="carambola-ad "class="columns small-12">
 			<script class="carambola_InContent" type="text/javascript">
 			(function (i,d,s,o,m,r,t,g) {
 			    var e=d.getElementById(r);if(e===null){
@@ -125,7 +125,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			    })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_initializeProxy','http://'+'route.carambo.la/inimage/getlayer?pid=spdsh12')
 			</script>		
 			</div>
-		</div>
+		</div>-->
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = [];

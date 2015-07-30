@@ -441,9 +441,17 @@ $(document).ready(function() {
     var sideAd = $('.ad-unit');
     var height = $(window).scrollTop();
     var s = $("#sticker");
-    var pos = s.position(); 
+    var pos = s.position();  
+    //Back To Top Arrow
+    var offset = 220;
+	var duration = 500;
     
- 
+ 	$('.back-to-top').click(function(event) {
+		event.preventDefault();
+		$('html, body').animate({scrollTop: 0}, duration);
+		return false;
+	});
+
     $(window).scroll(function() {
     	//DESKTOP NOT ON ARTICLE PAGES
 	    if( !$('body').hasClass('mobile') && adPage !== 'article'){
@@ -455,14 +463,23 @@ $(document).ready(function() {
 		        if(isScrolledTo(sticky)) {
 		   	        sticky.css('position','fixed');
 		            sticky.css('top','0px');
+		            $('.back-to-top').fadeIn(duration);
 		        }
 		       var stopHeight = catcher.offset().top + (sideAd.height() * 7) + catcher.height();
 		       if ( stopHeight > sticky.offset().top) {
 		       		console.log(stopHeight, sticky.offset().top);
 		            sticky.css('position','absolute');
 		            sticky.css('top',stopHeight);
+		            $('.back-to-top').fadeOut(duration);
 		        }
 		    }
+
+			if ($(this).scrollTop() > offset) {
+				//$('.back-to-top').fadeIn(duration);
+			} else {
+				//$('.back-to-top').fadeOut(duration);
+			}		   	
+				
 		}
 
 	    //MOBILE ARTICLE PAGE

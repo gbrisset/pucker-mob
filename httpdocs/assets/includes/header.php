@@ -1,16 +1,4 @@
-<script src="httpdocs/assets/js/jquery.sticky.js"></script>
-<script>
-  $(document).ready(function(){
-    $("#sticker").sticky({topSpacing:0});
-    console.log("true");
-  });
-</script>
-
-
-
-
-
-  <?php
+<?php
 
   $loginActive = isset($_SESSION['login_hash']) || isset($_SESSION['user_id']);
 
@@ -78,7 +66,7 @@
 
  <!-- Social Media Icons -->
   <div id="nav_bar">
-  <header id="top-banner" class="sticker hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
     <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">
         <?php if($user_type == 5){?>
@@ -127,7 +115,7 @@
   </div>
   </header>
   
-  <header id="top-banner" class="sticker hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
     <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">
         <ul style="<?php if($has_sponsored && $isHomepage) echo 'min-width: 56rem !important'; ?>">
@@ -173,13 +161,13 @@
   <?php }?>
 
   <?php if(!$detect->isMobile()){?>
-    <div id="nav-bar" class="contain-to-grid hide-for-print sticker" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>">
+    <div id="nav-bar" class="contain-to-grid hide-for-print" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>">
   <?php }else{?>
    <div id="nav-bar" class="contain-to-grid hide-for-print column no-padding">
   <?php }?>
   
   
-    <nav id="top-bar-header-cont" class="top-bar sticker" data-topbar="" data-options="scrolltop: false;"  style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important; '?>">
+    <nav id="top-bar-header-cont" class="top-bar" data-topbar="" data-options="scrolltop: false;"  style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important; '?>">
       <ul class="title-area">
         <li class="name">
           <a href="<?php echo $config['this_url']; ?>">
@@ -232,10 +220,3 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
   <?php }?>
-<script src="httpdocs/assets/js/jquery.sticky.js"></script>
-<script>
-  $(document).ready(function(){
-    $(".sticker").sticky({topSpacing:0});
-  });
-</script>
-

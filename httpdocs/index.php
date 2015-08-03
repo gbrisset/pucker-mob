@@ -1,5 +1,3 @@
-<script src="/httpdocs/assets/js/jquery.sticky.js"> console.log("true");</script>
-
 <?php
 if (!empty($_GET['ajax'])) {
 	$ajax = true;

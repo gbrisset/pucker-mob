@@ -519,9 +519,4 @@ $(document).ready(function() {
 		}, 2000);
 	}*/
 
-  $(document).ready(function(){
-    $("#nav-bar").sticky({topSpacing:0});
-    console.log("true");
-  });
-
 });

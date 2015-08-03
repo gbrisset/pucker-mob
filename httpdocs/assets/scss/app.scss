@@ -408,7 +408,7 @@ transition: all 0.3s ease-in-out;}
 
 //Footer Section
 #footer-logo {text-align: center; margin-bottom: $panel-padding;}
-footer .category-colors ul li a{ color: #fff !important;}
+footer .category-colors ul li a{ color: white !important;}
 @media #{$large-up} {
 .top-bar-section {position: absolute; right: 0;}
 .top-bar-section > ul.left {margin-left: 230px; display: block; position: absolute;}
@@ -856,7 +856,7 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 	a{ padding: 8px 0.90278rem !important; }
 }
 
-.category-colors ul li a{ color: #000 !important; }
+.category-colors ul li a{ color: black !important; }
 
 #main {margin-top: 0.1rem !important;}
 .show-on-large-up { visibility: hidden; display:none; }

@@ -436,6 +436,7 @@ $(document).ready(function() {
     }
 
 	var catcher = $('.catcher');
+	var nav_bar = $('#nav_bar');
     var sticky = $('.sticky');
     var social_sticky = $('.social_sticky');
     var sideAd = $('.ad-unit');
@@ -462,8 +463,8 @@ $(document).ready(function() {
 			if(sticky.length > 0 ){
 		        if(isScrolledTo(sticky)) {
 		   	        sticky.css('position','fixed');
-		            sticky.css('top','0px');
-		            $('.back-to-top').fadeIn(duration);
+		            sticky.css('top','110px');
+                   $('.back-to-top').fadeIn(duration);
 		        }
 		       var stopHeight = catcher.offset().top + (sideAd.height() * 7) + catcher.height();
 		       if ( stopHeight > sticky.offset().top) {

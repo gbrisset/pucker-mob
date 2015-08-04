@@ -2047,12 +2047,17 @@ div#sticker {
   text-transform:uppercase;
   text-align: center;
   display: block;
-
+}
 
 
 #nav_bar {
-position: absolute;
-z-index: 10 ;
+position: fixed;
+top: 0px;
+z-index: 10;
 width: 100% !important;
+}
+
+#header-ad {
+	margin-top:110px !important;
 }
 

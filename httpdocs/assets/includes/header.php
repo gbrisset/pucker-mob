@@ -71,7 +71,7 @@
   <?php }?>
 
  <!-- Social Media Icons -->
-  <div id="nav_bar">
+<div id="nav_bar">
   <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
     <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">

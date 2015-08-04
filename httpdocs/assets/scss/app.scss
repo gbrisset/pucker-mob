@@ -1250,38 +1250,26 @@ h5{
 /*Category Page Color Styling*/
 
 $hottopics: #d90816;
-$relationships: #92278f;
+$relationships: yellow;
 $entertaiment: #00baef;
 $style: #f34450;
 $money: #01b88a;
-$wellness: #413181;
+$wellness: #FF0000;
 $fun: #f9651b;
 
 .hot-topics{ 
 	color: #d90816 !important;
 	a {color: #d90816;} 
 } 
-.relationships{ color: $relationships !important; a {color: $relationships;} } 
-.entertainment{ color: $entertaiment !important; a {color: $entertaiment;} } 
-.style{ color: $style !important; a {color: $style; } } 
-.money{ color: $money !important; a {color: $money; } } 
-.wellness{ color: $wellness !important; a {color: $wellness;} } 
-.fun{ color: $fun !important; a {color: $fun;} } 
+.relationships:hover{ color: $relationships !important; a {color: $relationships;} } 
+.entertainment:hover{ color: $entertaiment !important; a {color: $entertaiment;} } 
+.style:hover{ color: $style !important; a {color: $style; } } 
+.money:hover{ color: $money !important; a {color: $money; } } 
+.wellness:hover{ color: $wellness !important; a {color: $wellness;} } 
+.fun:hover{ color: $fun !important; a {color: $fun;} } 
 
 
-.category-colors ul li{
-	
-	@media #{$large-up} {
-	a{ color: #000 !important;}
-	.hot-topics:hover{ border-bottom: 1px solid $hottopics;  }
-	.relationships:hover{ border-bottom: 1px solid $relationships;  }
-	.entertainment:hover{ border-bottom: 1px solid $entertaiment;  }
-	.style:hover{ border-bottom: 1px solid $style;  }
-	.money:hover{ border-bottom: 1px solid $money;  }
-	.wellness:hover{ border-bottom: 1px solid $wellness;  }
-	.fun:hover{ border-bottom: 1px solid $fun;  }
-}
-}
+
 
 .flex-video{
 	margin-bottom: 0; 
@@ -2009,6 +1997,7 @@ body#home, body#category{ .second-popular-articles-cont{ margin: 0.25rem 0;} }
 .load_image{
     height: 200px !important;
     width:200px !important;
+
 }
 
 div#wrapper {
@@ -2059,5 +2048,9 @@ width: 100% !important;
 
 #header-ad {
 	margin-top:110px !important;
+}
+
+.loader {
+	margin-right: 20px;
 }
 

@@ -94,12 +94,14 @@ else if($ajax) {
 			<?php include_once($config['include_path'].'articleslist.php'); ?>
 			<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
 		</section>
+
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
 
 		<!-- LEFT SIDE BAR -->
 		<?php if(!$has_sponsored){
 			include_once($config['include_path'].'left_side_bar.php');
 		}?>
+		
 	</main>
 	
 	<?php 

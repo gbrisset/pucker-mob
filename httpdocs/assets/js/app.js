@@ -390,11 +390,15 @@ $(document).ready(function() {
 	var current_page = 0;
 	var per_page = 20;
 	var feature = "<?php echo $featuredArticle; ?>"
+	var spinner = $('.loader');
+    
 
 	function loadPage() {
 		current_page++;
 	    // ajax call should go here
 	    console.debug();
+	    
+	    $(".main-div").append(spinner);
 	    $.ajax({
 	    	type: "GET",
 	    	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
@@ -406,6 +410,7 @@ $(document).ready(function() {
 	    		response.children('.featured').remove();
 	    		console.log(response);
 	    		$(".main-div").append(response);
+	    		spinner.hide();
 	    		}
 	    	
 	    });
@@ -453,20 +458,25 @@ $(document).ready(function() {
 		return false;
 	});
 
+   
+
+
     $(window).scroll(function() {
     	//DESKTOP NOT ON ARTICLE PAGES
 	    if( !$('body').hasClass('mobile') && adPage !== 'article'){
 	    	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
-			   loadPage();
+	    	   loadPage();
 			}
 			
+    //var spinner = $('.loader');
+
 			if(sticky.length > 0 ){
 		        if(isScrolledTo(sticky)) {
 		   	        sticky.css('position','fixed');
 		            sticky.css('top','110px');
                    $('.back-to-top').fadeIn(duration);
 		        }
-		       var stopHeight = catcher.offset().top + (sideAd.height() * 8) + catcher.height();
+		       var stopHeight = catcher.offset().top + (sideAd.height() * 7) + catcher.height();
 		       if ( stopHeight > sticky.offset().top) {
 		       		console.log(stopHeight, sticky.offset().top);
 		            sticky.css('position','absolute');
@@ -506,13 +516,7 @@ $(document).ready(function() {
     });
 	
 	//ajax loading image to show when calling an ajax call
-    $('.loader').ajaxStart(function() {
-    	$('.loader').show();
-    }).ajaxComplete(function() {
-	    $('.loader').hide();
-	});
-
-	//BRANOVATE AD MOBILE
+//BRANOVATE AD MOBILE
 	/*
 	if($('body').hasClass('mobile') && adPage === 'article'){
 		setTimeout(function() {

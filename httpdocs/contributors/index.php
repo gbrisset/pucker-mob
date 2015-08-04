@@ -193,7 +193,7 @@ if($totalPages > 1){
 			include_once($config['include_path'].'left_side_bar.php');
 		} ?>
 	</main>
-	<?php include_once($config['include_path'].'footer.php'); ?>
+	
 	<?php include_once($config['include_path'].'bottomscripts.php'); ?>
 </body>
 </html>

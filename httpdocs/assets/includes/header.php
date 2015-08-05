@@ -166,7 +166,7 @@
   <?php }?>
 
   <?php if(!$detect->isMobile()){?>
-    <div id="nav-bar" class="contain-to-grid hide-for-print" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?> background-color:black !important">
+    <div id="nav-bar" class="contain-to-grid hide-for-print" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?> background-color:#333333 !important">
   <?php }else{?>
    <div id="nav-bar" class="contain-to-grid hide-for-print column no-padding">
   <?php }?>
@@ -175,7 +175,7 @@
     <nav id="top-bar-header-cont" class="top-bar" data-topbar="" data-options="scrolltop: false;"  style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important; '?>">
       <ul class="title-area">
       <?php if(!$detect->isMobile()){?>
-        <li class="name" style="background-color:black;">
+        <li class="name" style="background-color:#333333;">
            <a href="<?php echo $config['this_url']; ?>">
            <h2 style="color:green; margin-top:-2px;">PUCKER<span style="color:white; font-weight: 900;">MOB</span></h2> 
            <?php }else{?>
@@ -187,7 +187,7 @@
         </li>
        <li class="toggle-topbar menu-icon"><a href="#"></a></li>
       </ul>
-      <section class="top-bar-section category-colors" style="background-color:black;">
+      <section class="top-bar-section category-colors" style="background-color:#333333;">
         <?php if(!$detect->isMobile()){?>
            <ul class="left" style="margin-left: 245px;">
         <?php }else{?>

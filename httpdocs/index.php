@@ -89,11 +89,13 @@ else if($ajax) {
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 
-      <center>
+     
         <div id="light" class="white_content">
             <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><i class="fa fa-times-circle fa-lg"></i></a>
             <center>
+            
             <ul class="info-list">
+               <h1 style="width:50%;">INFO</h1>
                <li class="pop-up-link"><a href="http://www.sequelmediainternational.com/">Publications</a></li>
                <li class="pop-up-link"><a href="http://www.puckermob.com/policy/#privacy">Privacy</a></li>
                <li class="pop-up-link"><a href="http://www.puckermob.com/policy/">Legal</a></li>
@@ -107,7 +109,7 @@ else if($ajax) {
             </ul>
             </center>
         </div>
-        </center>
+
         <div id="fade" class="black_overlay"></div>
 
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 56rem !important; '?>">

@@ -88,6 +88,11 @@ else if($ajax) {
 
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
+
+
+        <div id="light" class="white_content">This is the lightbox content. <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a></div>
+        <div id="fade" class="black_overlay"></div>
+
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 56rem !important; '?>">
 		
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper main-div">
@@ -114,6 +119,7 @@ else if($ajax) {
 
 	<!-- FACEBOOK POPUP -->
 	<?php include_once($config['include_path'].'facebookpopup.php'); ?>
+
 
 </body>
 </html>

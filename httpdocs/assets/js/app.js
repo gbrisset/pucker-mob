@@ -465,7 +465,7 @@ $(document).ready(function() {
     	//DESKTOP NOT ON ARTICLE PAGES
 	    if( !$('body').hasClass('mobile') && adPage !== 'article'){
 	    	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
-	    	   loadPage();
+	    	  loadPage();
 			}
 			
     //var spinner = $('.loader');
@@ -514,6 +514,8 @@ $(document).ready(function() {
 		}
 
     });
+
+  
 	
 	//ajax loading image to show when calling an ajax call
 //BRANOVATE AD MOBILE
@@ -524,4 +526,7 @@ $(document).ready(function() {
 		}, 2000);
 	}*/
 
+
 });
+
+

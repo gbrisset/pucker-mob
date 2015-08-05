@@ -89,8 +89,25 @@ else if($ajax) {
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 
-
-        <div id="light" class="white_content">This is the lightbox content. <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><i class="fa fa-times-circle fa-lg"></i></a></div>
+      <center>
+        <div id="light" class="white_content">
+            <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><i class="fa fa-times-circle fa-lg"></i></a>
+            <center>
+            <ul class="info-list">
+               <li class="pop-up-link"><a href="http://www.sequelmediainternational.com/">Publications</a></li>
+               <li class="pop-up-link"><a href="http://www.puckermob.com/policy/#privacy">Privacy</a></li>
+               <li class="pop-up-link"><a href="http://www.puckermob.com/policy/">Legal</a></li>
+               <li class="pop-up-link"><a href="http://www.sequelmediainternational.com/">Advertise</a></li>
+            </ul>
+            <ul class="social-links">
+               <li class="pop-up-links"><a href="https://www.facebook.com/puckermob"><i class="fa fa-facebook-square"></i></a></li>
+               <li class="pop-up-links"><a href="https://twitter.com/Puckermob"><i class="fa fa-twitter"></i></a></li>
+               <li class="pop-up-links"><a href="https://www.pinterest.com/puckermob/"><i class="fa fa-pinterest"></i></a></li>
+               <li class="pop-up-links"><a href="https://plus.google.com/112707727253651609975/posts"><i class="fa fa-google-plus-square"></i></a></li>
+            </ul>
+            </center>
+        </div>
+        </center>
         <div id="fade" class="black_overlay"></div>
 
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 56rem !important; '?>">

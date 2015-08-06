@@ -515,8 +515,13 @@ $(document).ready(function() {
 
     });
 
-  
-	
+       //Detect if adblock is enabled 
+        if ($('#header-ad').height() == 0) {
+	       $("#main").css("margin-top", "120px");
+        }else {
+	        console.log("false");
+        }
+
 	//ajax loading image to show when calling an ajax call
 //BRANOVATE AD MOBILE
 	/*

@@ -223,4 +223,27 @@
   }(document, 'script', 'facebook-jssdk'));</script>
   <?php }?>
 
- 
+
+          <div id="light" class="white_content">
+            <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><i class="fa fa-times-circle fa-lg"></i></a>
+            <center>
+            
+            <ul class="info-list">
+               <h1 style="width:50%;">INFO</h1>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-book"></i>Publications</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 73px;" href="http://www.puckermob.com/policy/#privacy"><i class="fa fa-shield"></i>Privacy</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px;" href="http://www.puckermob.com/policy/"><i class="fa fa-bank"></i>Legal</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-briefcase"></i>Advertise</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 67px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-phone-square"></i>Contact</a></li>
+            </ul>
+            </center>
+            <ul class="social-links">
+               <li class="pop-up-links"><a href="https://www.facebook.com/puckermob"><i class="fa fa-facebook-square"></i></a></li>
+               <li class="pop-up-links"><a href="https://twitter.com/Puckermob"><i class="fa fa-twitter"></i></a></li>
+               <li class="pop-up-links"><a href="https://www.pinterest.com/puckermob/"><i class="fa fa-pinterest"></i></a></li>
+               <li class="pop-up-links"><a href="https://plus.google.com/112707727253651609975/posts"><i class="fa fa-google-plus-square"></i></a></li>
+            </ul>
+            </center>
+        </div>
+
+        <div id="fade" class="black_overlay" href= "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>

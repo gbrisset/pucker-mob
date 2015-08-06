@@ -96,11 +96,13 @@ else if($ajax) {
             
             <ul class="info-list">
                <h1 style="width:50%;">INFO</h1>
-               <li class="pop-up-link"><a href="http://www.sequelmediainternational.com/">Publications</a></li>
-               <li class="pop-up-link"><a href="http://www.puckermob.com/policy/#privacy">Privacy</a></li>
-               <li class="pop-up-link"><a href="http://www.puckermob.com/policy/">Legal</a></li>
-               <li class="pop-up-link"><a href="http://www.sequelmediainternational.com/">Advertise</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px;" href="http://www.sequelmediainternational.com/">Publications</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 70px;" href="http://www.puckermob.com/policy/#privacy">Privacy</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px;" href="http://www.puckermob.com/policy/">Legal</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px;" href="http://www.sequelmediainternational.com/">Advertise</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 65px;" href="http://www.sequelmediainternational.com/">Contact</a></li>
             </ul>
+            </center>
             <ul class="social-links">
                <li class="pop-up-links"><a href="https://www.facebook.com/puckermob"><i class="fa fa-facebook-square"></i></a></li>
                <li class="pop-up-links"><a href="https://twitter.com/Puckermob"><i class="fa fa-twitter"></i></a></li>
@@ -110,7 +112,7 @@ else if($ajax) {
             </center>
         </div>
 
-        <div id="fade" class="black_overlay"></div>
+        <div id="fade" class="black_overlay" href= "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
 
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 56rem !important; '?>">
 		

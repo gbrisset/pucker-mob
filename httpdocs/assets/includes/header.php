@@ -64,11 +64,7 @@
 
  ?>
 
- <?php if(!$detect->isMobile()){?>  
-           <style type="text/css">
-             .category-colors ul li a{ color: white !important; }
-           </style>
-  <?php }?>
+
 
  <!-- Social Media Icons -->
 <div id="nav_bar">
@@ -166,7 +162,7 @@
   <?php }?>
 
   <?php if(!$detect->isMobile()){?>
-    <div id="nav-bar" class="contain-to-grid hide-for-print" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?> background-color:#333333 !important">
+    <div id="nav-bar" class="contain-to-grid hide-for-print" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?> background-color:white !important">
   <?php }else{?>
    <div id="nav-bar" class="contain-to-grid hide-for-print column no-padding">
   <?php }?>
@@ -175,9 +171,9 @@
     <nav id="top-bar-header-cont" class="top-bar" data-topbar="" data-options="scrolltop: false;"  style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important; '?>">
       <ul class="title-area">
       <?php if(!$detect->isMobile()){?>
-        <li class="name" style="background-color:#333333;">
+        <li class="name" style="background-color:white;">
            <a href="<?php echo $config['this_url']; ?>">
-           <h2 style="color:green; margin-top:-2px;">PUCKER<span style="color:white; font-weight: 900;">MOB</span></h2> 
+           <h2 style="color:green; margin-top:-2px;">PUCKER<span style="color:black; font-weight: 900;">MOB</span></h2> 
            <?php }else{?>
              <li class="name">
              <a href="<?php echo $config['this_url']; ?>">
@@ -187,13 +183,12 @@
         </li>
        <li class="toggle-topbar menu-icon"><a href="#"></a></li>
       </ul>
-      <section class="top-bar-section category-colors" style="background-color:#333333;">
+      <section class="top-bar-section category-colors" style="background-color:white;">
         <?php if(!$detect->isMobile()){?>
            <ul class="left" style="margin-left: 245px;">
         <?php }else{?>
            <ul class="left">
         <?php }?>
-          
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-recent"  class="entertainment" ><i class="fa fa-bolt fa-lg"></i>RECENT</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>trending"  class="money" ><i class="fa fa-line-chart fa-lg"></i>TRENDING</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-popular"  class="wellness" ><i class="fa fa-star fa-lg"></i>POPULAR</a></li>

@@ -96,11 +96,11 @@ else if($ajax) {
             
             <ul class="info-list">
                <h1 style="width:50%;">INFO</h1>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px;" href="http://www.sequelmediainternational.com/">Publications</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 70px;" href="http://www.puckermob.com/policy/#privacy">Privacy</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px;" href="http://www.puckermob.com/policy/">Legal</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px;" href="http://www.sequelmediainternational.com/">Advertise</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 65px;" href="http://www.sequelmediainternational.com/">Contact</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-book"></i>Publications</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 73px;" href="http://www.puckermob.com/policy/#privacy"><i class="fa fa-shield"></i>Privacy</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px;" href="http://www.puckermob.com/policy/"><i class="fa fa-bank"></i>Legal</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-briefcase"></i>Advertise</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 67px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-phone-square"></i>Contact</a></li>
             </ul>
             </center>
             <ul class="social-links">

@@ -69,7 +69,7 @@ class MPArticleAdmin{
 			case 2:
 				//	Pending Review
 				//return '<p class="pending">Pending Review</span></p>';
-				return 'PENDING';
+				return 'REVIEW';
 				break;
 			case 3:
 				//	Draft

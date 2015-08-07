@@ -68,7 +68,6 @@
 	$pagination = new Pagination($page, $per_page, $total_count);
 	
 	$offset = $pagination->offset();
-
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
 	
 	$admin_user = false;
@@ -116,22 +115,29 @@
 					    	$sort = (isset($_GET['sort'])) ? $_GET['sort'] : '';
 					    	$liveClass = '';
 					    	$draftClass = '';
-					    	$sortStatus = 1;
-							if( $sort == 1){
-								$sortStatus = 3; 
-								$liveClass = 'current';
-								$draftClass = '';
-								
-							} elseif( $sort == 3) {
-								$sortStatus = 1;
-								$liveClass = '';
-								$draftClass = 'current';
-								
-							}
+
+					    	switch($sort){
+					    		case 1:
+					    			$liveClass = 'current';
+					    			$draftClass = '';
+					    			$pendingClass = '';
+					    		break;
+					    		case 2:
+					    			$liveClass = '';
+					    			$draftClass = '';
+					    			$pendingClass = 'current';
+
+					    		break;
+					    		case 3:
+					    			$liveClass = '';
+					    			$draftClass = 'current';
+					    			$pendingClass = '';
+					    		break;
+					    	}
 					    ?>
 					<?php if($admin_user || $inhouse_writer){?>
 					<section class="from-diff-users-filter clear">
-					    <div class="columns left small-9">
+					    <div class="columns left small-8">
 					     <label>Show Articles From:
 					     	<?php
 					     		$userType_URL = $config['this_admin_url'].'articles/';
@@ -151,11 +157,11 @@
 					     </label>
 					    </div>
 					   
-					    <div class="columns left small-3 no-padding align-right">
+					    <div class="columns left small-4 no-padding align-right">
 					     <label>Status:
 					     	<a class="<?php echo $liveClass; ?>" href="<?php  echo $userType_URL.'&sort=1&artype='.$artType; ?>">Live</a> | 
-						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a>
-						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Reviewed</a>
+						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a> |
+						 	<a class="<?php echo $pendingClass; ?>" href="<?php echo $userType_URL.'&sort=2&artype='.$artType; ?>">Reviewed</a>
 					     </label>
 					    </div>
 				</section>
@@ -169,8 +175,7 @@
 						<thead>
 						    <tr>
 						      <th class="columns  mobile-12 small-12 medium-7">Article Name</th>
-						      <th class="columns  small-2"><a href="<?php //echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortDate : '?sort='.$sortDate;?>">Added</a></th>
-						      <!--<th class="small-2"><a href="<?php //echo $config['this_admin_url'].'articles/'.($page > 1) ? '?p='.$page.'&sort='.$sortStatus : '?sort='.$sortStatus;?>">status</a></th>-->
+						      <th class="columns  small-2"><a href="">Added</a></th>
 						      <th  class="columns small-2">status</th>
 						      <th   class="columns small-1"></th>
 						    </tr>

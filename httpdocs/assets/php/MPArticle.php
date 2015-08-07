@@ -1799,6 +1799,9 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 		case '1':
 		$order_sql = " ORDER BY a.article_status = 1 DESC, a.article_id DESC ";
 		break;
+		case '2':
+		$order_sql = " ORDER BY a.article_status = 2 DESC, a.article_id DESC ";
+		break;
 		case '3':
 		$order_sql = " ORDER BY a.article_status = 3 DESC, a.article_id DESC ";
 		break;

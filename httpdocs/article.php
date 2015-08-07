@@ -193,7 +193,11 @@ if(!is_null($categoryInfo)){
 	}
 	</script>
 	<main id="main" class="row panel sidebar-on-right" role="main">
+	<?php if(!$detect->isMobile()){?>
+		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="min-height:none !important; height:auto;">
+	<?php }else{ ?>	
 		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999; min-height:none !important; height:auto;">
+	<?php } ?>
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			<?php 
 			if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){

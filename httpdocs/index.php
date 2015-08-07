@@ -88,18 +88,24 @@ else if($ajax) {
 
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
+
+     
+
+
 	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 56rem !important; '?>">
 		
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper main-div">
 			<?php include_once($config['include_path'].'articleslist.php'); ?>
-			<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/loading.gif"></center></div>
+			<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
 		</section>
+
 		<?php include_once($config['include_path'].'rightsidebar.php'); ?>
 
 		<!-- LEFT SIDE BAR -->
 		<?php if(!$has_sponsored){
 			include_once($config['include_path'].'left_side_bar.php');
 		}?>
+		
 	</main>
 	
 	<?php 
@@ -113,7 +119,7 @@ else if($ajax) {
 	<!-- FACEBOOK POPUP -->
 	<?php include_once($config['include_path'].'facebookpopup.php'); ?>
 
+
 </body>
 </html>
 <?php }?>
-

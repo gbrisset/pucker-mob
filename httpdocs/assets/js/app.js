@@ -390,11 +390,15 @@ $(document).ready(function() {
 	var current_page = 0;
 	var per_page = 20;
 	var feature = "<?php echo $featuredArticle; ?>"
+	var spinner = $('.loader');
+    
 
 	function loadPage() {
 		current_page++;
 	    // ajax call should go here
 	    console.debug();
+	    
+	    $(".main-div").append(spinner);
 	    $.ajax({
 	    	type: "GET",
 	    	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
@@ -406,6 +410,7 @@ $(document).ready(function() {
 	    		response.children('.featured').remove();
 	    		console.log(response);
 	    		$(".main-div").append(response);
+	    		spinner.hide();
 	    		}
 	    	
 	    });
@@ -436,6 +441,7 @@ $(document).ready(function() {
     }
 
 	var catcher = $('.catcher');
+	var nav_bar = $('#nav_bar');
     var sticky = $('.sticky');
     var social_sticky = $('.social_sticky');
     var sideAd = $('.ad-unit');
@@ -452,18 +458,23 @@ $(document).ready(function() {
 		return false;
 	});
 
+   
+
+
     $(window).scroll(function() {
     	//DESKTOP NOT ON ARTICLE PAGES
 	    if( !$('body').hasClass('mobile') && adPage !== 'article'){
 	    	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
-			   loadPage();
+	    	  loadPage();
 			}
 			
+    //var spinner = $('.loader');
+
 			if(sticky.length > 0 ){
 		        if(isScrolledTo(sticky)) {
 		   	        sticky.css('position','fixed');
-		            sticky.css('top','0px');
-		            $('.back-to-top').fadeIn(duration);
+		            sticky.css('top','110px');
+                   $('.back-to-top').fadeIn(duration);
 		        }
 		       var stopHeight = catcher.offset().top + (sideAd.height() * 7) + catcher.height();
 		       if ( stopHeight > sticky.offset().top) {
@@ -503,15 +514,16 @@ $(document).ready(function() {
 		}
 
     });
-	
-	//ajax loading image to show when calling an ajax call
-    $('.loader').ajaxStart(function() {
-    	$('.loader').show();
-    }).ajaxComplete(function() {
-	    $('.loader').hide();
-	});
 
-	//BRANOVATE AD MOBILE
+       //Detect if adblock is enabled 
+        if ($('#header-ad').height() == 0) {
+	       $("#main").css("margin-top", "120px");
+        }else {
+	        console.log("false");
+        }
+
+	//ajax loading image to show when calling an ajax call
+//BRANOVATE AD MOBILE
 	/*
 	if($('body').hasClass('mobile') && adPage === 'article'){
 		setTimeout(function() {
@@ -519,4 +531,7 @@ $(document).ready(function() {
 		}, 2000);
 	}*/
 
+
 });
+
+

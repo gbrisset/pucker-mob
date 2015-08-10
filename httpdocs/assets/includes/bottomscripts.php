@@ -102,7 +102,7 @@
       } 
   }?>  
 
-  <?php if($articleInfoObj['article_id'] == 7615 ){ ?>  
+  <?php if(isset($articleInfoObj) && $articleInfoObj['article_id'] == 7615 ){ ?>  
     <!-- INFO LINK MOBILE -->
       <script type="text/javascript">
       var infolinks_pid = 2431692;
@@ -150,11 +150,11 @@
 <!-- DESKTOP & MOBILE SCRIPT -->
 <?php if(isset($articleInfo) && $articleInfo){ ?>
   <!-- Addthis -->
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async ></script>
   <script type="text/javascript">
-    $(document).ready(function(){
-      if(addthis) addthis.init();
-    })
+  //  $(document).ready(function(){
+ //     if(addthis) addthis.init();
+ //   })
   </script>
 <?php }?>
   

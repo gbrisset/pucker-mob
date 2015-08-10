@@ -101,7 +101,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- Article Content -->
 		<div class="row clear" style="margin-top: -1rem;">
 		
-		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; "> 
+		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important;     margin-bottom: -5px;"> 
 		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
@@ -189,10 +189,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 
 		<!-- READ MORE MOBILE -->
-		<div id="grad"></div>
-		<p class="read-more" style="margin-bottom:0 !important;"><a href="" class="button">CONTINUE READING</a></p>
-		
+		<!--<div id="grad"></div>
+		<p class="read-more" style="margin-bottom:0 !important;"><a href="" class="button">CONTINUE READING</a></p>-->
+
+			<!-- READ MORE MOBILE -->
+			
 		</section>
+
+	
+		<div class="row read-more clear small-12">
+			<a href="" class="button">
+				<img src="http://images.puckermob.com/articlesites/sharedimages/continue-reading.png" style=" width: 100%; border: 2px solid #287117;">
+			</a>
+		</div>
+
 	</div>
 	
 	<!-- SMARTIES PROMOTION -->

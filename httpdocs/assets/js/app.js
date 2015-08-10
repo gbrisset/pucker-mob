@@ -57,28 +57,20 @@ $(document).ready(function() {
 			e.preventDefault();		
 			totalHeight = 0
 			$el = $(this);
-			$p  = $el.parent();
-			$up = $p.parent();
-			$children = $up.children();
-			$shTAdHeight = $('.inarticle-ad').outerHeight();
-			
-			$children.each(function(){
-				totalHeight += $(this).outerHeight();
-			});
-			
-			totalHeight +=  $shTAdHeight;
+			$parent_div  = $el.parent();
+			$content = $('#article-content');
 											
-			$up.css({
-					"height": $up.height(),
+			$content.css({
+					"height": $content.height(),
 					"max-height": 9999
 			 });
-			$up.animate({
+			$content.animate({
 					"height": "auto"
 			 },2000);
 						
-			// fade out read-more
-			$p.fadeOut();
-			$('#grad').fadeOut();
+			$parent_div.fadeOut();
+			$('.second-section').css('border-top', '2px solid #bbb');
+
 							
 			// prevent jump-down
 			return false;
@@ -249,7 +241,7 @@ $(document).ready(function() {
 			var service = {
 			  "facebook": "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=",
 			  "twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
-			  "pinterest": "http://widgets.pinterest.com/v1/urls/count.json?source=6&url=",
+			 // "pinterest": "http://widgets.pinterest.com/v1/urls/count.json?source=6&url=",
 			  "linkedint": "http://www.linkedin.com/countserv/count/share?url="
 			};
 	 		$.each( service, function( key, value ) {

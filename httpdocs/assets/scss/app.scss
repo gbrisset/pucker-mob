@@ -1412,6 +1412,32 @@ $fun: #f9651b;
 /*READ MORE LINK MOBILE */
 
 @media #{$mobile-only} {
+
+	.read-more{
+		margin:0 !important;
+		text-align: center; 
+		width: 100%; 
+		top: 4px;
+		padding:0;
+		z-index: 9999 !important;
+
+		.button{
+			background-color: transparent;
+		    margin: 0;
+		    width: 100%;
+		    padding: 0;
+		    z-index: 9999 !important;
+
+		    img{
+		    	width: 88% !important;
+    			border: 2px solid #287117;
+    			z-index: 9999 !important;
+    			height: 35px;
+   				width: 94%;
+   				margin:1px;
+		    }
+		}
+	}
 	.sidebar-box { 
 		float: left; 
 		width: 100%;
@@ -1943,7 +1969,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   background: #eee;
   position: relative;
   top: -15px;
-  border-top: 1px solid #bbb;
+  border-top: 2px solid #287117;
   padding-top:1.5rem;
   overflow:hidden;
 }
@@ -2170,3 +2196,5 @@ width: 100% !important;
 }
 
 .category-colors ul li a{ color: black !important; }
+
+.category-colors ul li a:hover{ color: green !important; }

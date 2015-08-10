@@ -410,12 +410,12 @@ $(document).ready(function() {
 	    		response.children('.featured').remove();
 	    		console.log(response);
 	    		$(".main-div").append(response);
-	    		$(".cool").append(response);
-                spinner.hide();
+	    		spinner.hide();
 	    		}
 	    	
 	    });
 	}
+
 
 	function isScrolledTo(elem) {
        var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
@@ -531,9 +531,34 @@ $(document).ready(function() {
 			loadBranovateAd( document.getElementById("branovate-ad"), '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
 		}, 2000);
 	}*/
+
+function loadArticle() {
+		current_page++;
+	    // ajax call should go here
+	    console.debug();
+	    
+	    $(".cool").append(spinner);
+	    $.ajax({
+	    	type: "GET",
+	    	url: 'article.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+	    	success: function(data) {
+                var response = $('<div />').html(data);
+	    		var temp = response.find('.featured');
+	    		temp.children('.featured').remove();
+	    		response.children('.featured').remove();
+	    		console.log(temp);
+	    		//$(".cool").append(response);
+                spinner.hide();
+	    		}
+	    	
+	    });
+	}
+
+
+
 $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() == $(document).height()) {
-       //loadPage();
+       loadArticle();
    }
 });
 

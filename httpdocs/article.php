@@ -2,7 +2,6 @@
 $categoryInfo = null;
 $isArticle = true;
 $articleInfoObj = array();
-require_once('assets/php/config.php');
 	//ISSUE WITH ANNA ARTICLE
 	$current_url = isset($_SERVER['SCRIPT_URI']) ? $_SERVER['SCRIPT_URI'] : '';
 	if($current_url == "http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for"){

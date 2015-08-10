@@ -410,7 +410,8 @@ $(document).ready(function() {
 	    		response.children('.featured').remove();
 	    		console.log(response);
 	    		$(".main-div").append(response);
-	    		spinner.hide();
+	    		$(".cool").append(response);
+                spinner.hide();
 	    		}
 	    	
 	    });
@@ -530,7 +531,11 @@ $(document).ready(function() {
 			loadBranovateAd( document.getElementById("branovate-ad"), '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
 		}, 2000);
 	}*/
-
+$(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+       loadPage();
+   }
+});
 
 });
 

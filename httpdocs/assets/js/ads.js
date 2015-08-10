@@ -111,6 +111,13 @@ var mobilead = {
 
 	}
 };	
+
+var ip_address = '';
+var current_url = window.location.href;
+var user_agent_str = navigator.userAgent;
+$.get('http://jsonip.com/', function(r){ ip_address = r.ip; });
+
+
 //MOBILE
 if($('body').hasClass('mobile')) {
 	var select = {
@@ -161,7 +168,6 @@ if($('body').hasClass('mobile')) {
 				third_p = third_p + 1;
 			}
 
-			console.log(first_p, second_p, third_p, fourth_p, fith_p);
 			//1ST SPOT
 			if( first_p > 0 ){
 				//1st GOOGLE
@@ -169,6 +175,8 @@ if($('body').hasClass('mobile')) {
 					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
 				}else if( article_id == 7853){ //3lift article test
 					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"><script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script></div>', tag);
+				}else if( article_id == 7510 ){ //TESTING SPROCKESTER ADS
+					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="http://ad5.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid&LR_FORMAT=video/mp4;video/x-flv;video/webm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_AUTOPLAY=0&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_URL='+current_url+'&ord={cachebreaker}&LR_DURATION=REPLACE_ME&LR_USERAGENT='+user_agent_str+'"></script>', tag);
 				}else{
 					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
 				}
@@ -177,7 +185,11 @@ if($('body').hasClass('mobile')) {
 			//2ND SPOT
 			if( second_p > 0 ){
 				if( country && country == 'US' || country == 'XX'){
-					inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
+					if( article_id == 7510 ){ //TESTING SPROCKESTER ADS
+						inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<script type="text/javascript" src="http://ssp.lkqd.net/ad?pid=124&sid=4752&env=1&format=2&width=300&height=250&dnt=[DO_NOT_TRACK]&output=vast&ip='+ip_address+'&ua='+user_agent_str+'&rnd=[CACHEBUSTER]&pageurl='+current_url+'"></script>', tag);
+					}else{
+						inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
+					}
 				}else{	
 					inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
 				}
@@ -286,7 +298,7 @@ if($('body').hasClass('mobile')) {
 	//	resizeMainOnResize();
 	});
 
-	appendAdEndBody($('#header-ad-loader'), $('#header-ad'), 100);
-	appendAdEndBody($('#atf-ad-loaded'), $('#atf-ad'), 100);
+	//appendAdEndBody($('#header-ad-loader'), $('#header-ad'), 100);
+	//appendAdEndBody($('#atf-ad-loaded'), $('#atf-ad'), 100);
 
 }

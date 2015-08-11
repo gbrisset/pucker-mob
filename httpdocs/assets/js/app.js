@@ -549,31 +549,28 @@ $(document).ready(function() {
 	    $(".cool").append(spinner);
 	    $.ajax({
 	    	type: "GET",
-	    	url: 'article.php',
+	    	url: 'http://localhost:8888/projects/pucker-mob//httpdocs/index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
 	    	success: function(data) {
                 var response = $('<div />').html(data);
 	    		var temp = response.find('.featured');
 	    		temp.children('.featured').remove();
 	    		var content = temp.html();
 	    		response.children('.featured').remove();
-	    		//console.log(data);
-	    		//$(".cool").append(response);
+	    		console.log(data);
+	    		$(".cool").append(response);
 	    		spinner.hide();
 	    		}
 	    	
 	    });
 	}
-
+//http://localhost:8888/projects/pucker-mob//httpdocs/index.php?page=5&per_page=10&ajax=true
 //console.log(myData);
 
 
 
 $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-   	   //console.log(myData);
-       //$(".cool").append(myData);
-       //loadArt();
+   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+       loadArt();
    }
 });
-
 });

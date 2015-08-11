@@ -395,7 +395,7 @@ $(document).ready(function() {
 	    	type: "GET",
 	    	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
 	    	success: function(data) {
-	    		var response = $('<div />').html(data);
+                var response = $('<div />').html(data);
 	    		var temp = response.find('.featured');
 	    		temp.children('.featured').remove();
 	    		var content = temp.html();
@@ -407,6 +407,22 @@ $(document).ready(function() {
 	    	
 	    });
 	}
+
+
+
+	// var myData = $.ajax({
+	//     	type: "GET",
+	//     	async: false,
+	//     	context: document.body,
+ //            global: false,
+	//     	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+	//     	success: function(data) {
+ //                return data 
+	//     		}
+	//     }).responseText;
+	
+
+
 
 
 	function isScrolledTo(elem) {
@@ -524,7 +540,8 @@ $(document).ready(function() {
 		}, 2000);
 	}*/
 
-function loadArticle() {
+	function loadArt() {
+
 		current_page++;
 	    // ajax call should go here
 	    console.debug();
@@ -532,28 +549,31 @@ function loadArticle() {
 	    $(".cool").append(spinner);
 	    $.ajax({
 	    	type: "GET",
-	    	url: 'article.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+	    	url: 'article.php',
 	    	success: function(data) {
                 var response = $('<div />').html(data);
 	    		var temp = response.find('.featured');
 	    		temp.children('.featured').remove();
+	    		var content = temp.html();
 	    		response.children('.featured').remove();
-	    		console.log(temp);
+	    		//console.log(data);
 	    		//$(".cool").append(response);
-                spinner.hide();
+	    		spinner.hide();
 	    		}
 	    	
 	    });
 	}
 
+//console.log(myData);
+
 
 
 $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() == $(document).height()) {
-       loadArticle();
+   	   //console.log(myData);
+       //$(".cool").append(myData);
+       //loadArt();
    }
 });
 
 });
-
-

@@ -376,6 +376,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div id="3lift-ad "class="columns small-12">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
 		</div>
+
+		 
 		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 		<br>

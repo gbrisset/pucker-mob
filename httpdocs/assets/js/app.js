@@ -431,6 +431,7 @@ $(document).ready(function() {
 	var catcher = $('.catcher');
 	var nav_bar = $('#nav_bar');
     var sticky = $('.sticky');
+    var articleStick = $('.article-stick');
     var social_sticky = $('.social_sticky');
     var sideAd = $('.ad-unit');
     var height = $(window).scrollTop();
@@ -453,7 +454,7 @@ $(document).ready(function() {
 	    	  loadPage();
 			}
 		}
-    //var spinner = $('.loader');
+    
 
 			if(sticky.length > 0 ){
 		        if(isScrolledTo(sticky)) {
@@ -470,9 +471,22 @@ $(document).ready(function() {
 		        }
 		    }
 
-		
 
-	    //MOBILE ARTICLE PAGE
+		    if(articleStick.length > 0 ){
+		        if(isScrolledTo(articleStick)) {
+		   	        articleStick.css('position','fixed');
+		            articleStick.css('top','110px');
+                   $('.back-to-top').fadeIn(duration);
+		        }
+		       var stopHeight = catcher.offset().top + (sideAd.height() * 24) + catcher.height();
+		       if ( stopHeight > articleStick.offset().top) {
+		       		console.log(stopHeight, articleStick.offset().top);
+		            articleStick.css('position','absolute');
+		            articleStick.css('top',stopHeight);
+		            $('.back-to-top').fadeOut(duration);
+		        }
+		    }
+        //MOBILE ARTICLE PAGE
 	    if($('body').hasClass('mobile') && adPage === 'article'){
 		   
 		    if(social_sticky.length > 0){
@@ -511,8 +525,7 @@ $(document).ready(function() {
 	}*/
 
 	function loadArt() {
-
-		current_page++;
+        current_page++;
 	    // ajax call should go here
 	    //console.debug();
 	    $(".cool").append(spinner);
@@ -535,9 +548,6 @@ $(document).ready(function() {
 //http://localhost:8888/projects/pucker-mob//httpdocs/index.php?page=5&per_page=10&ajax=true
 //http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
 //console.log(myData);
-
-
-
 $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
        loadArt();

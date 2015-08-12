@@ -101,7 +101,7 @@
 
       <?php if( !isset($isHomepage) ){ ?>
         <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
-           <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners xxx</h4></div>
+           <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners</h4></div>
            <?php include_once($config['include_path'].'widget.php'); ?>
         </section>
         <div id="btf3-ad" class="ad-unit ad300"  style="height: auto;">

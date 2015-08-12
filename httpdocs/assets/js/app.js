@@ -231,8 +231,8 @@ $(document).ready(function() {
 
 	notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
 	notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
-
-	/*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
+    
+    /*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
 	function getTotalShares( url, elm ){
 	  		var span_shares_holder = $(elm).find('.span-holder-shares');
 	 		var this_count = 0;
@@ -376,20 +376,16 @@ $(document).ready(function() {
 
 		});
 	}
-
-
-	//Inifinite scroll function through an ajax call on all pages
+    //Inifinite scroll function through an ajax call on all pages
 	var current_page = 0;
 	var per_page = 20;
 	var feature = "<?php echo $featuredArticle; ?>"
 	var spinner = $('.loader');
     
-
-	function loadPage() {
+    function loadPage() {
 		current_page++;
 	    // ajax call should go here
-	    console.debug();
-	    
+	    //console.debug();
 	    $(".main-div").append(spinner);
 	    $.ajax({
 	    	type: "GET",
@@ -404,25 +400,8 @@ $(document).ready(function() {
 	    		$(".main-div").append(response);
 	    		spinner.hide();
 	    		}
-	    	
-	    });
-	}
-
-
-
-	// var myData = $.ajax({
-	//     	type: "GET",
-	//     	async: false,
-	//     	context: document.body,
- //            global: false,
-	//     	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
-	//     	success: function(data) {
- //                return data 
-	//     		}
-	//     }).responseText;
-	
-
-
+	    	});
+	    }
 
 
 	function isScrolledTo(elem) {
@@ -467,16 +446,13 @@ $(document).ready(function() {
 		return false;
 	});
 
-   
-
-
     $(window).scroll(function() {
     	//DESKTOP NOT ON ARTICLE PAGES
 	    if( !$('body').hasClass('mobile') && adPage !== 'article'){
 	    	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
 	    	  loadPage();
 			}
-			
+		}
     //var spinner = $('.loader');
 
 			if(sticky.length > 0 ){
@@ -494,13 +470,7 @@ $(document).ready(function() {
 		        }
 		    }
 
-			if ($(this).scrollTop() > offset) {
-				//$('.back-to-top').fadeIn(duration);
-			} else {
-				//$('.back-to-top').fadeOut(duration);
-			}		   	
-				
-		}
+		
 
 	    //MOBILE ARTICLE PAGE
 	    if($('body').hasClass('mobile') && adPage === 'article'){
@@ -545,7 +515,6 @@ $(document).ready(function() {
 		current_page++;
 	    // ajax call should go here
 	    //console.debug();
-	    
 	    $(".cool").append(spinner);
 	    $.ajax({
 	    	type: "GET",

@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 if (!empty($_GET['ajax'])) {
 	$ajax = true;
 } else {

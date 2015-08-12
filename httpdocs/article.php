@@ -231,7 +231,7 @@ if(!is_null($categoryInfo)){
 			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
 			<hr>
 			
-            <!-- <div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div> -->
+            <div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
 			<!-- CONTENT AD -->
 			<div id="contentad24777"></div>
 			<script type="text/javascript">

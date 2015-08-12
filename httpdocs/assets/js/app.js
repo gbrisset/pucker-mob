@@ -544,12 +544,12 @@ $(document).ready(function() {
 
 		current_page++;
 	    // ajax call should go here
-	    console.debug();
+	    //console.debug();
 	    
 	    $(".cool").append(spinner);
 	    $.ajax({
 	    	type: "GET",
-	    	url: 'http://localhost:8888/projects/pucker-mob//httpdocs/index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+	    	url: '../index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
 	    	success: function(data) {
                 var response = $('<div />').html(data);
 	    		var temp = response.find('.featured');
@@ -564,6 +564,7 @@ $(document).ready(function() {
 	    });
 	}
 //http://localhost:8888/projects/pucker-mob//httpdocs/index.php?page=5&per_page=10&ajax=true
+//http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
 //console.log(myData);
 
 

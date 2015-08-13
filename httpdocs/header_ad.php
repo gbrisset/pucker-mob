@@ -17,7 +17,7 @@
    
     <?php } 
 }else { ?>
-	<div id="header-ad" class="ad-unit hide-for-print" style=" <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> margin-top:110px; ">
+	<div id="header-ad" class="ad-unit hide-for-print" style=" <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> margin-top:110px; z-index:0 !important;">
 		<!-- 728x90, 970x90 combo: 970x90 728x90 -->
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 			<div id="home_1193"></div> 

@@ -538,7 +538,7 @@ $(document).ready(function() {
 	    		temp.children('.featured').remove();
 	    		var content = temp.html();
 	    		response.children('.featured').remove();
-	    		console.log(data);
+	    	//	console.log(data);
 	    		$(".cool").append(response);
 	    		spinner.hide();
 	    		}

@@ -531,7 +531,7 @@ $(document).ready(function() {
 	    $(".cool").append(spinner);
 	    $.ajax({
 	    	type: "GET",
-	    	url: '../index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+	    	url: '../../index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
 	    	success: function(data) {
                 var response = $('<div />').html(data);
 	    		var temp = response.find('.featured');
@@ -549,8 +549,9 @@ $(document).ready(function() {
 //http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
 //console.log(myData);
 $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+   if($(window).scrollTop() + $(window).height() > $(document).height() - .75*$(document).height()) {
        loadArt();
-   }
-});
+       console.log("hello Mr. Deschamps");
+       }
+   });
 });

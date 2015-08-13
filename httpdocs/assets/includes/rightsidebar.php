@@ -36,7 +36,7 @@
        </div>
        
        <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
-         <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners xxx</h4></div>
+         <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners</h4></div>
          <?php include_once($config['include_path'].'widget.php'); ?>
        </section>
 
@@ -54,13 +54,8 @@
            <!-- 300x250 BTF: 300x250 --> 
           <div id="ros_1203"></div> 
        </div>
-
-       
-
-  <?php }else{ ?>
-      
+<?php }else{ ?>
       <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
-
       <?php if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
       else{?>
          <div id="btf1-ad" class="ad-unit ad300 show-on-large-up" style="height: auto;">
@@ -145,11 +140,7 @@
             <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png" style="margin-bottom:15px;"></a>
                     <a href="#" class="back-to-top btn"> Back to top  &#8682; </a>
           </section>
-  
-   
-        
-          
-        <?php }
+       <?php }
       } 
   }?>
 </aside>

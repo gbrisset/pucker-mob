@@ -650,7 +650,7 @@ class MPArticleAdminController extends MPArticle{
 			if(isset($img_temp)){
 				$imageExists = file_exists($img_temp_path);
 			}
-			var_dump($img_temp, $img_temp_dir,$img_name, $imgDir, $imageExists  ); die;
+			//var_dump($img_temp, $img_temp_dir,$img_name, $imgDir, $imageExists  ); die;
 
 			if($imageExists){
 				copy($img_temp_path, $img_path);

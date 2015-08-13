@@ -53,11 +53,11 @@ $(document).ready(function() {
 
 		$('#article-content').css('max-height', wishDisplayHeight);
 
-		$(".read-more").on('click', '.button', function(e) {
+		$("#read-more-img").on('click', function(e) {
 			e.preventDefault();		
-			totalHeight = 0
+			e.stopPropagation();
 			$el = $(this);
-			$parent_div  = $el.parent();
+			$parent_div  = $('.read-more');
 			$content = $('#article-content');
 											
 			$content.css({

@@ -197,9 +197,11 @@ if($('body').hasClass('mobile')) {
 
 			//3RD SPOT
 			if( third_p > 0 ){
-				inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="kmni_cb04f88a1ff0727dc9881e3cfe5d8acc" style="display: inline-block;"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("cb04f88a1ff0727dc9881e3cfe5d8acc");});</script>', tag);
+				//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="kmni_cb04f88a1ff0727dc9881e3cfe5d8acc" style="display: inline-block;"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("cb04f88a1ff0727dc9881e3cfe5d8acc");});</script>', tag);
 				//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
 				//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>', tag);
+				inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-toksnn-ad" class="clear"></div>', tag);
+
 			}
 
 			//4TH SPOT
@@ -229,7 +231,7 @@ if($('body').hasClass('mobile')) {
 	}
 
 	if(adPage == 'article'){
-		//appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
+		appendAdEndBody($('#mobile-instream-toksnn-ad-loader'), $('#mobile-instream-toksnn-ad'), 100);
 	}
 //DESKTOP
 } else{
@@ -284,7 +286,10 @@ if($('body').hasClass('mobile')) {
 			
 			if( second_p > 0 ){
 				//CARAMBOLA
-				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, ad[adPage].inarticlecarambola, tag);
+				//inBodyAd.loadInArticleAd( 'article-content', second_p, 0, ad[adPage].inarticlecarambola, tag);
+				//adSparc
+				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>', tag);
+				
 			}
 		}
 

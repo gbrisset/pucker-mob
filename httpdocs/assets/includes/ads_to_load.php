@@ -1,12 +1,11 @@
 <?php if($detect->isMobile()){ 
-
+var_dump($isArticle);
  if(isset($isArticle) && $isArticle ){?>
-	<!--<div id="mobile-instream-smart-ad-loader" class="hide">
+	<div id="mobile-instream-toksnn-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center; display: inline-block;">
-			<script type='text/javascript'>	var adParams = {a: '62112490', size: '300x250',serverdomain: 'adk2ads.tictacti.com'  ,context:'c66571048'  };</script>
-			<script type='text/javascript' src='http://cdnads.tictacti.com/tictacti/scripts/smart/smart.js'></script>
+			<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
 		</div>
-	</div>-->
+	</div>
 	
 	<!--<div id="mobile-instream-3lift-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center;">

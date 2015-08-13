@@ -17,6 +17,9 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
+     <!-- Q1 Media Slide Unit -->
+    <script src='http://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1'></script>
+    
     <!-- SPOUTABLE -->
     <script type='text/javascript'>
     (function(){
@@ -43,6 +46,8 @@
         </script>
         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
     <?php } ?>
+
+  
 
     <!-- Place in head part widget:puck002 -->
     <script type="text/javascript">
@@ -77,6 +82,7 @@
     if( isset($promotedArticle) && !$promotedArticle ){ ?>
     <!-- SHARETHROUNG -->
     <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+
     <?php }?>
 
 <!-- MOBILE -->

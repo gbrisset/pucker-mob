@@ -290,9 +290,11 @@ $(document).ready(function() {
 	}
 		
 	if(page === 'article' || page === 'articleslide') {
-		addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-		});
-		addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
+		if(addthis){
+			addthis.sharecounters.getShareCounts('facebook', function(obj) {        
+			});
+			addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
+		}
 	}
 
 	function kFormatter(num) {

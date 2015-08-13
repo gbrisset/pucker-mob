@@ -538,7 +538,7 @@ $(document).ready(function() {
 	    		temp.children('.featured').remove();
 	    		var content = temp.html();
 	    		response.children('.featured').remove();
-	    		console.log(data);
+	    	//	console.log(data);
 	    		$(".cool").append(response);
 	    		spinner.hide();
 	    		}
@@ -551,7 +551,7 @@ $(document).ready(function() {
 $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() > $(document).height() - .75*$(document).height()) {
        loadArt();
-       console.log("hello Mr. Deschamps");
+       //console.log("hello Mr. Deschamps");
        }
    });
 });

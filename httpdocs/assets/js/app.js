@@ -531,7 +531,7 @@ $(document).ready(function() {
 	    $(".cool").append(spinner);
 	    $.ajax({
 	    	type: "GET",
-	    	url: '../../index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+	    	url: '../index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
 	    	success: function(data) {
                 var response = $('<div />').html(data);
 	    		var temp = response.find('.featured');

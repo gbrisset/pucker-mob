@@ -18,7 +18,7 @@ if (empty($_GET['page'])) {
 $omitThis = 0;
 $offset = $quantity * $page;
 $cat_id = $mpArticle->data['cat_id'];
-
+$pageName = $mpArticle->data['article_page_name'];
 $featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$articleIndex++;

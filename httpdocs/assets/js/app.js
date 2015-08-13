@@ -231,8 +231,8 @@ $(document).ready(function() {
 
 	notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
 	notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
-
-	/*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
+    
+    /*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
 	function getTotalShares( url, elm ){
 	  		var span_shares_holder = $(elm).find('.span-holder-shares');
 	 		var this_count = 0;
@@ -376,26 +376,22 @@ $(document).ready(function() {
 
 		});
 	}
-
-
-	//Inifinite scroll function through an ajax call on all pages
+    //Inifinite scroll function through an ajax call on all pages
 	var current_page = 0;
 	var per_page = 20;
 	var feature = "<?php echo $featuredArticle; ?>"
 	var spinner = $('.loader');
     
-
-	function loadPage() {
+    function loadPage() {
 		current_page++;
 	    // ajax call should go here
-	    console.debug();
-	    
+	    //console.debug();
 	    $(".main-div").append(spinner);
 	    $.ajax({
 	    	type: "GET",
 	    	url: 'index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
 	    	success: function(data) {
-	    		var response = $('<div />').html(data);
+                var response = $('<div />').html(data);
 	    		var temp = response.find('.featured');
 	    		temp.children('.featured').remove();
 	    		var content = temp.html();
@@ -404,9 +400,9 @@ $(document).ready(function() {
 	    		$(".main-div").append(response);
 	    		spinner.hide();
 	    		}
-	    	
-	    });
-	}
+	    	});
+	    }
+
 
 	function isScrolledTo(elem) {
        var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
@@ -435,6 +431,7 @@ $(document).ready(function() {
 	var catcher = $('.catcher');
 	var nav_bar = $('#nav_bar');
     var sticky = $('.sticky');
+    var articleStick = $('.article-stick');
     var social_sticky = $('.social_sticky');
     var sideAd = $('.ad-unit');
     var height = $(window).scrollTop();
@@ -450,17 +447,14 @@ $(document).ready(function() {
 		return false;
 	});
 
-   
-
-
     $(window).scroll(function() {
     	//DESKTOP NOT ON ARTICLE PAGES
 	    if( !$('body').hasClass('mobile') && adPage !== 'article'){
 	    	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
 	    	  loadPage();
 			}
-			
-    //var spinner = $('.loader');
+		}
+    
 
 			if(sticky.length > 0 ){
 		        if(isScrolledTo(sticky)) {
@@ -477,15 +471,22 @@ $(document).ready(function() {
 		        }
 		    }
 
-			if ($(this).scrollTop() > offset) {
-				//$('.back-to-top').fadeIn(duration);
-			} else {
-				//$('.back-to-top').fadeOut(duration);
-			}		   	
-				
-		}
 
-	    //MOBILE ARTICLE PAGE
+		    if(articleStick.length > 0 ){
+		        if(isScrolledTo(articleStick)) {
+		   	        articleStick.css('position','fixed');
+		            articleStick.css('top','110px');
+                   $('.back-to-top').fadeIn(duration);
+		        }
+		       var stopHeight = catcher.offset().top + (sideAd.height() * 24) + catcher.height();
+		       if ( stopHeight > articleStick.offset().top) {
+		       		console.log(stopHeight, articleStick.offset().top);
+		            articleStick.css('position','absolute');
+		            articleStick.css('top',stopHeight);
+		            $('.back-to-top').fadeOut(duration);
+		        }
+		    }
+        //MOBILE ARTICLE PAGE
 	    if($('body').hasClass('mobile') && adPage === 'article'){
 		   
 		    if(social_sticky.length > 0){
@@ -523,7 +524,33 @@ $(document).ready(function() {
 		}, 2000);
 	}*/
 
-
+	function loadArt() {
+        current_page++;
+	    // ajax call should go here
+	    //console.debug();
+	    $(".cool").append(spinner);
+	    $.ajax({
+	    	type: "GET",
+	    	url: '../index.php?page=' + current_page + '&per_page=' + per_page + '&ajax=true',
+	    	success: function(data) {
+                var response = $('<div />').html(data);
+	    		var temp = response.find('.featured');
+	    		temp.children('.featured').remove();
+	    		var content = temp.html();
+	    		response.children('.featured').remove();
+	    		console.log(data);
+	    		$(".cool").append(response);
+	    		spinner.hide();
+	    		}
+	    	
+	    });
+	}
+//http://localhost:8888/projects/pucker-mob//httpdocs/index.php?page=5&per_page=10&ajax=true
+//http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
+//console.log(myData);
+$(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+       loadArt();
+   }
 });
-
-
+});

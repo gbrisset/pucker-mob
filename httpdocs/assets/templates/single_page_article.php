@@ -375,10 +375,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div id="3lift-ad "class="columns small-12">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
 		</div>
-		<!-- COMMENTS BOX -->
+        <!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 		<br>
-		
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">

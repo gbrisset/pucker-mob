@@ -1,9 +1,5 @@
 <?php
-$categoryInfo = null;
-$isArticle = true;
-$articleInfoObj = array();
-
-	//ISSUE WITH ANNA ARTICLE
+   //ISSUE WITH ANNA ARTICLE
 	$current_url = isset($_SERVER['SCRIPT_URI']) ? $_SERVER['SCRIPT_URI'] : '';
 	if($current_url == "http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for"){
 		header('Location: http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for-');
@@ -194,7 +190,8 @@ if(!is_null($categoryInfo)){
 	</script>
 	<main id="main" class="row panel sidebar-on-right" role="main">
 	<?php if(!$detect->isMobile()){?>
-		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="min-height:none !important; height:auto;">
+		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="min-height:none !important; height:auto; ">
+
 	<?php }else{ ?>	
 		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999; min-height:none !important; height:auto;">
 	<?php } ?>
@@ -227,16 +224,14 @@ if(!is_null($categoryInfo)){
 			<hr>
 			<?php }
 			}?>
-			
 			<!-- ALSO IN CATEGORY -->
 			<?php include_once($config['include_path'].'similararticles.php');?>
-			
 			<?php if( !$promotedArticle ){ ?>
-			
 			<!-- AROUND THE WEB -->
 			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
 			<hr>
-
+			
+            <div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
 			<!-- CONTENT AD -->
 			<div id="contentad24777"></div>
 			<script type="text/javascript">

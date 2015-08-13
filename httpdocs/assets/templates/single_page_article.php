@@ -102,7 +102,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="row clear" style="margin-top: -1rem;">
 		
 		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px; padding-left: 4px !important; padding-right:5px !important;"> 
-		
+		<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
 		

@@ -75,17 +75,21 @@
  	<?php } ?>
 <?php }else{?>
 	<?php if( isset($articleInfoObj) ){?>
+
+		
+
+
 		<!-- PLACE THIS CODE IN WEBSITE HEADER -->
 		<!-- nativeads pixel 104835-puckermob.com start -->
 		<script type="text/javascript" src="//cpanel.nativeads.com/js/pixel/pixel-104835-6a7effa002488d0ce2e33c794dadc7f47faa6405.js"></script>
 		<!-- nativeads pixel 104835-puckermob.com end -->
 	<?php } ?>
 
-	<?php if(isset($articleInfoObj) && $articleInfoObj['article_id'] == 7498 ){?>
-          <!-- WAHWAH Radio Player -->
-          <script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>
+	<?php //if(isset($articleInfoObj) && $articleInfoObj['article_id'] == 7498 ){?>
+          <!-- WAHWAH Radio Player 
+          <script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>-->
           <!-- End WAHWAH Radio Player -->
-        <?php  } ?>
+        <?php // } ?>
 <?php } ?>
 
 <?php if (!$local){?>
@@ -131,6 +135,10 @@
 	<!-- Nativo -->
 	<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
 
+	<!-- BEGIN JS TAG - puckermob.com - IV < - DO NOT MODIFY -->
+		<SCRIPT SRC="http://adsvr2.adsparc.net/ttj?id=5423729&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+		<!-- END TAG -->
+		
 	<!-- Totally Her GPT -->
 	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 

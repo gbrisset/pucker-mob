@@ -196,11 +196,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			
 		</section>
 
-	
 		<div class="row read-more clear small-12">
-			<a href="" class="button">
-				<img src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
-			</a>
+
+			<div class="button">
+				<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
+			</div>
 		</div>
 
 	</div>

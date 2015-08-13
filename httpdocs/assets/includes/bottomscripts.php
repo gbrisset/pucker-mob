@@ -152,9 +152,9 @@
   <!-- Addthis -->
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async ></script>
   <script type="text/javascript">
-  //  $(document).ready(function(){
- //     if(addthis) addthis.init();
- //   })
+    $(document).ready(function(){
+      if(addthis) addthis.init();
+    });
   </script>
 <?php }?>
   

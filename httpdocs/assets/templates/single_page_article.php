@@ -199,7 +199,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 		<div class="row read-more clear small-12">
 			<a href="" class="button">
-				<img src="http://images.puckermob.com/articlesites/sharedimages/continue-reading.png" style=" width: 100%; border: 2px solid #287117;">
+				<img src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
 			</a>
 		</div>
 

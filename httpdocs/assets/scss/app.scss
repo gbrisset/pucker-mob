@@ -1435,6 +1435,9 @@ $fun: #f9651b;
     			height: 35px;
    				width: 94%;
    				margin:1px;
+   				-webkit-box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.75);
+				-moz-box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.75);
+				box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.75);
 		    }
 		}
 	}
@@ -1966,13 +1969,14 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 .background-eee{  background: #eee; }
 .second-section{
-  background: #eee;
-  position: relative;
-  top: -15px;
-  border-top: 2px solid #287117;
-  padding-top:1.5rem;
-  overflow:hidden;
+	  background: #eee;
+	  position: relative;
+	  top: -16px;
+	  border-top: 4px solid #287117;
+	  padding-top:1.5rem;
+	  overflow:hidden;
 }
+
 #second-popular-articles h3 { color: #01B586; font-family: OswaldRegular; font-size: 1.4rem !important; margin-bottom: 0.1rem; }
 #second-popular-articles .content{ width: 91.666667%; position:relative; clear:both; }
 .second-popular-articles-cont{ padding: 0.7rem; background: #fff; border: 1px solid #ddd; margin: 0.25rem 1rem; }

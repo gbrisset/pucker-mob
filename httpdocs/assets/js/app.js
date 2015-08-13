@@ -453,7 +453,7 @@ $(document).ready(function() {
 	    	if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
 	    	  loadPage();
 			}
-		}
+		};
     
 
 			if(sticky.length > 0 ){
@@ -549,9 +549,9 @@ $(document).ready(function() {
 //http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
 //console.log(myData);
 $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() > $(document).height() - .75*$(document).height()) {
+  if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
        loadArt();
-       console.log("hello Mr. Deschamps");
+       //console.log("hello Mr. Deschamps");
        }
-   });
+    });
 });

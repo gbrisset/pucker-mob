@@ -260,7 +260,7 @@ $(document).ready(function() {
 				  	async: false, cache: false
 			  	}).then(function(){
 			  		var label =  "SHARES";
-			  		if(this_count == 1) label = "SHARE";
+			  		if(this_count == 1) label = "SHARES";
 			  			
 			  		span_shares_holder.text(kFormatter(this_count)+label);  		
 			  	});  
@@ -457,7 +457,7 @@ $(document).ready(function() {
 			}
 		};
     
-
+          //sticky right side bar 
 			if(sticky.length > 0 ){
 		        if(isScrolledTo(sticky)) {
 		   	        sticky.css('position','fixed');
@@ -473,7 +473,7 @@ $(document).ready(function() {
 		        }
 		    }
 
-
+           //sticky right side bar on article pages
 		    if(articleStick.length > 0 ){
 		        if(isScrolledTo(articleStick)) {
 		   	        articleStick.css('position','fixed');

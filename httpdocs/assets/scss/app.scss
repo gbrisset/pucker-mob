@@ -1990,7 +1990,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .second-article-date {
 	span{ position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; }
 	label{ position: relative; text-transform: uppercase; top: 5px; font-size: 0.8rem; color: #aaa; width: 49%; display: inline-block;}
-	.span-holder-shares, .span-shares-holder{ text-align: right;}
+	.span-holder-shares { text-align: right;}
 }
 
 body#home, body#category{ .second-popular-articles-cont{ margin: 0.25rem 0;} }
@@ -2203,4 +2203,4 @@ width: 100% !important;
 
 .category-colors ul li a:hover{ color: green !important; }
 
-#OriginPlatformAdUnit-385-inpage { z-index:0 !important;}
+iframe { z-index:0 !important;}

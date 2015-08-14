@@ -24,7 +24,7 @@
 			</div>
 			<div class="second-article-date small-12 clear">
 				<label class="small-6 left" ><?php echo $date; ?></label>
-				<label class="small-6 span-shares-holder"></label>
+				<label class="small-6 span-holder-shares"></label>
 			</div>
 		</div>
 
@@ -37,7 +37,7 @@
 		<p class="left uppercase" >
 			<!--<span class="span-category <?php //echo $featuredArticle['cat_dir_name']?>"><a href="<?php //echo $linkToACategory; ?>" ><?php //echo $featuredArticle['cat_name']?></a></span>-->
 			<span class="span-date"><?php echo $date; ?></span>
-		</p>
+        </p>
 		<p class="right uppercase">
 			<span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $featuredArticle['contributor_name']; ?></a></span>
 		</p>

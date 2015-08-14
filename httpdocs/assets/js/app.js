@@ -234,10 +234,10 @@ $(document).ready(function() {
     
     /*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
 	function getTotalShares( url, elm ){
-	  		var span_shares_holder = $(elm).find('.span-holder-shares');
+	  		var span_shares_holder = $(elm).find(".span-holder-shares");
 	 		var this_count = 0;
 	 		var fn_callback = null ;
-	 		var label =  " SHARES";
+	 		var label =  "SHARES";
 			var service = {
 			  "facebook": "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=",
 			  "twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
@@ -259,8 +259,8 @@ $(document).ready(function() {
 				  	success: fn_callback,
 				  	async: false, cache: false
 			  	}).then(function(){
-			  		var label =  " SHARES";
-			  		if(this_count == 1) label = " SHARE";
+			  		var label =  "SHARES";
+			  		if(this_count == 1) label = "SHARE";
 			  			
 			  		span_shares_holder.text(kFormatter(this_count)+label);  		
 			  	});  

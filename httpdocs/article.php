@@ -1,4 +1,6 @@
 <?php
+
+	$isArticle = true;
    //ISSUE WITH ANNA ARTICLE
 	$current_url = isset($_SERVER['SCRIPT_URI']) ? $_SERVER['SCRIPT_URI'] : '';
 	if($current_url == "http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for"){
@@ -135,6 +137,7 @@ if(!is_null($categoryInfo)){
 				</div>
 			<?php }?>
 
+
 			<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
@@ -143,7 +146,8 @@ if(!is_null($categoryInfo)){
 	</main>
 
 <?php include_once('admin/fb/fbfunctions.php'); ?>
-
+<!-- ADS TO LOAD -->
+<?php include_once($config['include_path'].'ads_to_load.php'); ?>
 <?php include_once($config['include_path'].'bottomscripts.php');?>
 
 <!-- MODAL BOX POPUP -->

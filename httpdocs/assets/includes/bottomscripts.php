@@ -17,6 +17,9 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
+     <!-- Q1 Media Slide Unit -->
+    <script src='http://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1'></script>
+
     <!-- SPOUTABLE -->
     <script type='text/javascript'>
     (function(){
@@ -43,6 +46,8 @@
         </script>
         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
     <?php } ?>
+
+    
 
     <!-- Place in head part widget:puck002 -->
     <script type="text/javascript">
@@ -77,6 +82,7 @@
     if( isset($promotedArticle) && !$promotedArticle ){ ?>
     <!-- SHARETHROUNG -->
     <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
+
     <?php }?>
 
 <!-- MOBILE -->
@@ -110,11 +116,7 @@
       </script>
       <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
   <?php  } ?>
-   <!-- <div id="mobile-bottom-sprocketster-ad-loader" >
-      <script id="airpushScript" type="text/javascript" 
-        src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
-      </script>
-  </div>-->
+    
   	
     <!-- KIXER ADHESION -->
     <div id='__kx_ad_1486'></div>
@@ -149,6 +151,8 @@
 
 <!-- DESKTOP & MOBILE SCRIPT -->
 <?php if(isset($articleInfo) && $articleInfo){ ?>
+
+
   <!-- Addthis -->
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async ></script>
   <script type="text/javascript">
@@ -158,6 +162,7 @@
   </script>
 <?php }?>
   
+
 <!-- cloudfront tracker -->
 <script>
   !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
@@ -171,6 +176,10 @@
     loadScript("<?php echo $config['this_url']; ?>assets/js/ads.js", function(){ });
 </script>
 
+   <!-- Begin ADSNATIVE Code -->
+    <script type="text/javascript" src="//static.adsnative.com/static/js/render.v1.js"></script>
+    <!-- End ADSNATIVE Code -->
+    
 <!-- TotallyHer comscore tags -->
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
 

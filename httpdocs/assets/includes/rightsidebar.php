@@ -40,6 +40,12 @@
          <?php include_once($config['include_path'].'widget.php'); ?>
        </section>
 
+       <section id="sub-sidebar-2" class="sidebar article-stick" style="padding-top:10px; ">
+            <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>
+            <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png" style="margin-bottom:15px;"></a>
+            <a href="#" class="back-to-top btn"> Back to top  &#8682; </a>
+      </section>
+
        <div id="btf2-ad" class="ad-unit ad300" style="height:auto;">
           <!-- puckermob.com/ros_btf2 
           <script type="text/javascript">

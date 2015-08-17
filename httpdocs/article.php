@@ -225,17 +225,9 @@ if(!is_null($categoryInfo)){
 				</p>
 			</div>	 
 			
-			<hr>
+			
 			<?php }
 			}?>
-			<!-- ALSO IN CATEGORY -->
-			<?php include_once($config['include_path'].'similararticles.php');?>
-			<?php if( !$promotedArticle ){ ?>
-			<!-- AROUND THE WEB -->
-			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
-			<hr>
-			
-            <div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
 			<!-- CONTENT AD -->
 			<div id="contentad24777"></div>
 			<script type="text/javascript">
@@ -258,8 +250,13 @@ if(!is_null($categoryInfo)){
 			        document.getElementById("contentad24777").appendChild(s);
 			    })();
 			</script>
+			<!-- ALSO IN CATEGORY -->
+			<?php include_once($config['include_path'].'similararticles.php');?>
+			<?php if( !$promotedArticle ){ ?>
+			<!-- AROUND THE WEB -->
+			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
 			
-			<hr>
+			<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
 			<?php }?>
 			
 		</section>

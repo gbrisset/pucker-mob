@@ -17,8 +17,8 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-     <!-- Q1 Media Slide Unit -->
-    <script src='http://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1'></script>
+     <!-- Q1 Media Slide Unit 
+    <script src='http://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1'></script>-->
 
     <!-- SPOUTABLE -->
     <script type='text/javascript'>
@@ -176,10 +176,7 @@
     loadScript("<?php echo $config['this_url']; ?>assets/js/ads.js", function(){ });
 </script>
 
-   <!-- Begin ADSNATIVE Code -->
-    <script type="text/javascript" src="//static.adsnative.com/static/js/render.v1.js"></script>
-    <!-- End ADSNATIVE Code -->
-    
+
 <!-- TotallyHer comscore tags -->
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
 

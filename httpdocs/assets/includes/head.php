@@ -135,10 +135,7 @@
 	<!-- Nativo -->
 	<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
 
-	<!-- BEGIN JS TAG - puckermob.com - IV < - DO NOT MODIFY -->
-		<SCRIPT SRC="http://adsvr2.adsparc.net/ttj?id=5423729&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
-		<!-- END TAG -->
-		
+
 	<!-- Totally Her GPT -->
 	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 

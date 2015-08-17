@@ -151,7 +151,7 @@ if(!is_null($categoryInfo)){
 <?php include_once($config['include_path'].'bottomscripts.php');?>
 
 <!-- MODAL BOX POPUP -->
-<?php if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
+<?php //if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
 
 <!-- FACEBOOK COMMENTS BOX -->
 		<div id="fb-root"></div>
@@ -279,7 +279,7 @@ if(!is_null($categoryInfo)){
     <!-- MODAL BOX POPUP -->
 	<?php
 		include_once($config['include_path'].'login_register_popup.php'); 
-		 if($articleInfoObj['article_id'] == 4653 ) include_once($config['include_path'].'modalboxform.php'); 
+		 //if($articleInfoObj['article_id'] == 4653 ) include_once($config['include_path'].'modalboxform.php'); 
 		// else include_once($config['include_path'].'modalbox.php'); 
 	?>
 

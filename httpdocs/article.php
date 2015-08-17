@@ -251,11 +251,13 @@ if(!is_null($categoryInfo)){
 			    })();
 			</script>
 			<!-- ALSO IN CATEGORY -->
-			<?php include_once($config['include_path'].'similararticles.php');?>
+			<?php //include_once($config['include_path'].'similararticles.php');?>
 			<?php if( !$promotedArticle ){ ?>
 			<!-- AROUND THE WEB -->
 			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
-			
+			<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
+				<h2 style="margin-top:30px;">Also in <span>PUCKERMOB:</span></h2>			
+			</section>
 			<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
 			<?php }?>
 			
@@ -268,8 +270,7 @@ if(!is_null($categoryInfo)){
 	
 	<?php 
 		include_once('admin/fb/fbfunctions.php'); 
-		//include_once($config['include_path'].'footer.php');
-		 include_once($config['include_path'].'ads_to_load.php');
+		include_once($config['include_path'].'ads_to_load.php');
     	include_once($config['include_path'].'bottomscripts.php');
     ?>
 

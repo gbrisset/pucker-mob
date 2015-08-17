@@ -293,18 +293,17 @@
 					    <div class="columns">
 						<label class="small-12 large-3 left uppercase">Article Type: </label>
 						
-						<input type="radio" name="article_type-s" id="opinion" data-info="1"  value="1" <?php if($article['article_type'] == 1) echo "checked"; ?> />
-						<label for="" class="radio-label">Opinion</label>
+						<input type="radio" name="article_type-s" id="lifestyle" data-info="1"  value="1" <?php if($article['article_type'] == 1) echo "checked"; ?> />
+						<label for="" class="radio-label">Lifestyle</label>
 									
 						<input type="radio" name="article_type-s" data-info="2" id="news" value="2"  <?php if($article['article_type'] == 2) echo "checked"; ?> />
 						<label for="" class="radio-label">News</label>
 
-						<input type="radio" name="article_type-s" data-info="0" id="staff" value="0"  <?php if($article['article_type'] == 0) echo "checked"; ?> />
-						<label for="" class="radio-label">Staff</label>
+						
 						</div>
 					</div>
 					<?php }else if($blogger){?>
-						<input type="hidden" name="article_type-s" data-info="0" id="staff" value="0" />
+						<input type="hidden" name="article_type-s" data-info="1" id="staff" value="1" />
 					<?php }?>
 					<!-- Article Status -->
 					<?php if($admin_user  || $externalWriter){?>

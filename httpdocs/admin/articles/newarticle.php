@@ -1,3 +1,4 @@
+
 <?php
 if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
 
@@ -172,7 +173,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							<label class="small-12 large-3 left uppercase">Article Type: </label>
 							
 							<input type="radio" name="article_type-s" id="opinion" data-info="1"  value="1" checked />
-							<label for="" class="radio-label">Opinion</label>
+							<label for="" class="radio-label">Lifestyle</label>
 									
 							<input type="radio" name="article_type-s" data-info="2" id="news" value="2"  />
 							<label for="" class="radio-label">News</label>

@@ -480,7 +480,7 @@ $(document).ready(function() {
 		            articleStick.css('top','110px');
                    $('.back-to-top').fadeIn(duration);
 		        }
-		       var stopHeight = catcher.offset().top + (sideAd.height() * 24) + catcher.height();
+		       var stopHeight = catcher.offset().top + (sideAd.height() * 21.2) + catcher.height();
 		       if ( stopHeight > articleStick.offset().top) {
 		       		console.log(stopHeight, articleStick.offset().top);
 		            articleStick.css('position','absolute');
@@ -551,7 +551,7 @@ $(document).ready(function() {
 //http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
 //console.log(myData);
 $(window).scroll(function() {
-  if ($(document).height() - 10 <= $(window).scrollTop() + $(window).height()) {
+   if($(window).scrollTop() + $(window).height() > $(document).height() - .3 * $(document).height()) {
        loadArt();
        //console.log("hello Mr. Deschamps");
        }

@@ -99,9 +99,6 @@
 				<a href="<?php echo $config['this_admin_url']; ?>faq/" target="blank">FAQ</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'faq') ) ?  'current' :  '';?>">
-				<a href="mailto:fguzman@sequelmediagroup.com?subject= Report A Bug &body=If something's not working on PuckerMob  you can report it to us. Giving more detail (ex: adding a screenshot and description) helps us find the problem. We may contact you for more details as we investigate. We appreciate the time it takes to give us this information.  [Report a Feature problem here]" >Report a Bug</a>
-			</li>
 			<li style=" border-bottom: 1px solid #999;" class="<?php echo ((isset($uri[0]) && $uri[0] == 'contact') ) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url']; ?>contact/">Contact Us</a>
 				<i class="fa fa-caret-left"></i>

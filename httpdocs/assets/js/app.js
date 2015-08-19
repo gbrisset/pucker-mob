@@ -380,7 +380,7 @@ $(document).ready(function() {
 	}
     //Inifinite scroll function through an ajax call on all pages
 	var current_page = 0;
-	var per_page = 20;
+	var per_page = 40;
 	var feature = "<?php echo $featuredArticle; ?>"
 	var spinner = $('.loader');
     

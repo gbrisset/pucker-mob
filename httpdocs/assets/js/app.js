@@ -551,8 +551,10 @@ $(document).ready(function() {
 //http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
 //console.log(myData);
 $(window).scroll(function() {
+   if( !$('body').hasClass('mobile')) {
    if($(window).scrollTop() + $(window).height() > $(document).height() - .3 * $(document).height()) {
        loadArt();
+          }
        //console.log("hello Mr. Deschamps");
        }
     });

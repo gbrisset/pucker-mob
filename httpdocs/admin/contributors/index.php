@@ -98,7 +98,7 @@
 					<label class="contributor-info columns small-3">Email</label>
 					<label class="contributor-info columns small-1">Level</label>
 					<label class="contributor-info columns small-1">Registered</label>
-					<label class="contributor-info columns small-2">Last Active</label>
+					<label class="contributor-info columns small-2"></label>
 					<p></p>
 				</div>
 				

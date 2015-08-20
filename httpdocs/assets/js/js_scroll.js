@@ -3,7 +3,7 @@
 	$.fn.scrollPagination = function(options) {
 		
 		var settings = { 
-			nop     : 10, // The number of posts per scroll to be loaded
+			nop     : 25, // The number of posts per scroll to be loaded
 			offset  : 0, // Initial offset, begins at 0 in this case
 			error   : 'No More Articles!', // When the user reaches the end this is the message that is
 			                            // displayed. You can change this if you want.
@@ -103,10 +103,10 @@
 						$this.find('.loading-bar').html($settings.error);	
 					}
 					else {
-						
+					
 						// Offset increases
 					    offset = offset+$settings.nop; 
-						    
+						console.log("Loading "+$settings.nop+" offset: "+offset);
 						// Append the data to the content div
 					   	
 					   	var content = $this.find('.content');

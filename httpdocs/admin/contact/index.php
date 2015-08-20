@@ -35,7 +35,7 @@
 			</div>	
 			<section id="articles" class="padding-bottom">
 				<!--<h2 class="">Need help?</h2>-->
-				<p>For site support, please contact us using the form below or email us at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a>.</p>	
+				<p>For site support, please contact us using the form below or email us at <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a>.</p>	
 				<form id="adv-contact-form" name="adv-contact-form" action="" method="POST">
 					 <div class="row">
 					    <div class="columns">
@@ -74,11 +74,11 @@
 				<section class="contact-info">
 					<div>
 						<h3>Info About Advertising Partnerships: </h3>
-						<p>Please email us at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a> or visit our advertising page at: <a href="http://www.puckermob.com/advertise.php" target="_blank">Advertise with Us!</a></p>
+						<p>Please email us at <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a> or visit our advertising page at: <a href="http://www.puckermob.com/advertise.php" target="_blank">Advertise with Us!</a></p>
 					</div>
 					<div>
 						<h3>Our Brands: </h3>
-						<p>You can find more information about Sequel Media Group and our brands at: <a href="http://www.sequelmediagroup.com" target="_blank">Sequelmediagroup.com</a>.</p>
+						<p>You can find more information about Sequel Media Group and our brands at: <a href="http://www.sequelmediainternational.com" target="_blank">sequelmediainternational.com</a>.</p>
 					</div>
 					<div>
 						<h3>Our Terms of Use: </h3>

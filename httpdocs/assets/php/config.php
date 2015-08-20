@@ -12,7 +12,7 @@ if($local)
 	define("DB_NAME", "pucker_mob_con_2");
 
 	define("MAIL_HOST", "smtp.gmail.com");
-	define("MAIL_USER", "info@sequelmediagroup.com");
+	define("MAIL_USER", "info@sequelmediainternational.com");
 	define("MAIL_PASSWORD", "sequel4bria");
 	define("MAIL_ENCRYPTION", "tls");
 	define("MAIL_PORT", 25);
@@ -102,7 +102,7 @@ if($local)
 }else{
 
 	define("MAIL_HOST", "ssl://smtp.gmail.com");
-	define("MAIL_USER", "info@sequelmediagroup.com");
+	define("MAIL_USER", "info@sequelmediainternational.com");
 	define("MAIL_PASSWORD", "sequel4bria");
 	define("MAIL_ENCRYPTION", "tls");		
 	define("MAIL_PORT", 465);

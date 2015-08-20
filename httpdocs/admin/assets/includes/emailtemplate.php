@@ -35,7 +35,7 @@ $body = '<html>';
 					$body .= '<p>Link will expire after 15 minutes.</p>';
 					$body .= '<p style="color: rgb(128, 128, 128) !important;">';
 						$body .= 'You received this email because you signed up for Simple Dish. ';
-						$body .= 'Be sure to add info@sequelmediagroup.com to your address book so ';
+						$body .= 'Be sure to add info@sequelmediainternational.com to your address book so ';
 						$body .= 'that important notices about your account don\'t get lost.';
 					$body .= '</p>';
 				$body .= '</div>';

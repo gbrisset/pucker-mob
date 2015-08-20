@@ -17,8 +17,9 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-     <!-- Q1 Media Slide Unit 
-    <script src='http://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1'></script>-->
+     <!-- Q1 Media Slide Unit
+    <script src='http://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1'></script>
+     -->
 
     <!-- SPOUTABLE -->
     <script type='text/javascript'>

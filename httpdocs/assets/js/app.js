@@ -120,10 +120,10 @@ $(document).ready(function() {
 
 	//INFINITY SCROLL DOWN
 	$('#articlelist-wrapper').scrollPagination({
-		nop     : 15,
-		offset  : 15, 
+		nop     : 25,
+		offset  : 25, 
 		error   : 'No More Articles!',
-		delay   : 300,
+		delay   : 200,
 		scroll  : true, 
 	    page    : 1
 	});
@@ -131,10 +131,10 @@ $(document).ready(function() {
 	//SCROLL DOWN MOST POPULAR ARTICLES
 	if(page == 'article'){
 		$('#second-popular-articles').scrollPagination({
-			nop     : 10,
-			offset  : 10,
+			nop     : 25,
+			offset  : 25,
 			error   : 'No More Articles!',
-			delay   : 300, 
+			delay   : 200, 
 			scroll  : true,
 			page    : 2 
 		});

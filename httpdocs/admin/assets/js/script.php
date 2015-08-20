@@ -543,7 +543,7 @@ $(document).ready(function (){
 				data_prev_element.attr('data-preview', data_prev);
 
 			}else{
-				$('#error-img').text('something went wrong. Please try again or contact info@sequelmediagroup.com.').addClass('error');
+				$('#error-img').text('something went wrong. Please try again or contact info@sequelmediainternational.com.').addClass('error');
 			}
 	
 		},
@@ -563,7 +563,7 @@ $(document).ready(function (){
 				$('#image-header-profile').attr('src', img_url+'?'+d.getMilliseconds());
 				$('#error-img').text('Image Updated Sucessful!').addClass('new-success').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );
 			}else{
-				$('#error-img').text('something went wrong. Please try again or contact info@sequelmediagroup.com.').addClass('error');
+				$('#error-img').text('something went wrong. Please try again or contact info@sequelmediainternational.com.').addClass('error');
 			}
 		},
 
@@ -841,7 +841,7 @@ if($('.select-avatar')){
 
 			 		//alert(data);
 			 	}else{
-			 		$('#error-img').text('something went wrong. Please try again or contact info@sequelmediagroup.com.').addClass('error').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );;
+			 		$('#error-img').text('something went wrong. Please try again or contact info@sequelmediainternational.com.').addClass('error').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );;
 			 	}
 			});
 	});

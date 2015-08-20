@@ -71,7 +71,7 @@
 
 	
 	$pagination = new Pagination($page, $per_page, $total_count);
-	
+	var_dump($order, $articleStatus, $userArticlesFilter, $artType);
 	
 	$offset = $pagination->offset();
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);

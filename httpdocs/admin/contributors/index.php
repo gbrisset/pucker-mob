@@ -93,10 +93,13 @@
 					</div>
 				</section>
 				<div class="admin-contributor left small-12 padding-bottom admin-contributor-label">
-					<label class="contributor-image contributor-table-label columns small-3" >Writer Name</label>
-					<label class="contributor-info contributor-table-label columns small-3">Email</label>
-					<label class="contributor-info contributor-table-label columns small-2">Level</label>
-					<label class="contributor-info contributor-table-label columns small-4"></label>
+				    <label class="contributor-info columns small-1">Photo</label>
+					<label class="contributor-info columns small-2">Writer Name</label>
+					<label class="contributor-info columns small-3">Email</label>
+					<label class="contributor-info columns small-1">Level</label>
+					<label class="contributor-info columns small-1">Registered</label>
+					<label class="contributor-info columns small-2">Last Active</label>
+					<p></p>
 				</div>
 				
 				<?php
@@ -134,8 +137,8 @@
 									</a>
 								</h2>
 							</div>
-							<div class="contributor-info columns small-3">
-								<p><?php echo $contributorInfo['contributor_email_address'] ?></p>
+							<div class="contributor-info columns small-2">
+								<p style="margin-right:200px;"><?php echo $contributorInfo['contributor_email_address'] ?></p>
 							</div>
 							<div class="contributor-info columns small-2 align-center">
 								<?php 
@@ -166,9 +169,17 @@
 						
 							</div>
 
-							<div class="contributor-links right small-4" >
+							<div class="contributor-links right small-3" >
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i> Earnings</a>
+							</div>
+
+							<div class="contributor-links right small-1" >
+								<a href="#">9/22/89</a>
+							</div>
+
+							<div class="contributor-links right small-1" >
+								<a href="#">9/22/89</a>
 							</div>
 
 						</div><hr style="margin: 0.2rem 0 0.6rem 0;">

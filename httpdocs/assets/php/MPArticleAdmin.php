@@ -100,14 +100,14 @@ class MPArticleAdmin{
 				case '3':
 					$sortArray = array('articleStatus' => '3', 'order'=>'', 'filterLabel' => 'Article Drafts');
 					break;
-				case 'az':
-					$sortArray = array('articleStatus' => '1, 2, 3', 'order'=>'az', 'filterLabel' => 'Articles A-Z');
+				case '1':
+					$sortArray = array('articleStatus' => '1', 'order'=>'az', 'filterLabel' => 'Articles A-Z');
 					break;
 				case 'za':
-					$sortArray = array('articleStatus' => '1, 2, 3', 'order'=>'za', 'filterLabel' => 'Articles Z-A');
+					$sortArray = array('articleStatus' => '1', 'order'=>'za', 'filterLabel' => 'Articles Z-A');
 					break;
 				default:
-					$sortArray = array('articleStatus' => '1, 2, 3', 'order'=>'', 'filterLabel' => 'Recent Articles');
+					$sortArray = array('articleStatus' => '1', 'order'=>'', 'filterLabel' => 'Recent Articles');
 					break;
 			}
 			return $sortArray;

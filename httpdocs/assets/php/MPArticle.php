@@ -1754,7 +1754,7 @@ protected function performQuery($opts){
 }
 
 public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesFilter, $articleType = 'all') {
-	$status_sql = " WHERE article_status IN (1, 2, 3) ";
+	$status_sql = " WHERE article_status = $articleStatus";
 
 	$s = "SELECT count( DISTINCT a.article_id) as simpledish_article_count 
 	FROM articles AS a
@@ -1809,8 +1809,10 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 		$order_sql = " ORDER BY a.article_status = 1 DESC, a.article_id DESC ";
 		break;
 	}
+
+	//var_dump($articleStatus); die;
 	
-	$status_sql = " WHERE article_status IN (1, 2, 3) ";
+	$status_sql = " WHERE article_status = $articleStatus";
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date,

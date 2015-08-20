@@ -121,6 +121,10 @@
 
 						$earnings = $ManageDashboard->getContributorEarningsInfo($contributorInfo['contributor_id']);
 						$contributor_type = $adminController->getContributorUserType($contributorInfo['contributor_id']);
+						$date_created = date_format(date_create($contributorInfo['creation_date']), 'm/d/y');//$contributorInfo['creation_date'];
+						//date_format(date_create($contributorInfo['creation_date']), 'm/d/y';
+						
+                         
 						if($contributor_type) $contributor_type = $contributor_type ["user_type"];
 						?>
 											
@@ -175,11 +179,11 @@
 							</div>
 
 							<div class="contributor-links right small-1" >
-								<a href="#">9/22/89</a>
+								<a href="#"></a>
 							</div>
 
 							<div class="contributor-links right small-1" >
-								<a href="#">9/22/89</a>
+								<a href="#" style="font-size:12px;"><?php echo $date_created;?></a>
 							</div>
 
 						</div><hr style="margin: 0.2rem 0 0.6rem 0;">

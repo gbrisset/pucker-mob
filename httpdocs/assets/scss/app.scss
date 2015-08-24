@@ -1412,14 +1412,17 @@ $fun: #f9651b;
 /*READ MORE LINK MOBILE */
 
 @media #{$mobile-only} {
-
 	.read-more{
-		margin:0 !important;
-		text-align: center; 
 		width: 100%; 
 		top: 4px;
 		padding:0;
+		margin:0 !important;
+		text-align: center; 
+		-webkit-box-shadow: 0px -31px 31px 17px rgba(255, 255, 255, 0.9);
+		-moz-box-shadow: 0px -31px 31px 17px rgba(255, 255, 255, 0.9);
+		box-shadow: 0px -31px 31px 17px rgba(255, 255, 255, 0.9);
 		z-index: 9999 !important;
+		border-radius:1px;
 
 		.button{
 			background-color: transparent;
@@ -1427,20 +1430,26 @@ $fun: #f9651b;
 		    width: auto;
 		    padding: 0;
 		    z-index: 9999 !important;
+		    border-top:4px solid #fff;
 
 		    img{
-		    	width: 320px !important;
+		    	width: 335px !important;
     			border: 2px solid #287117;
     			z-index: 9999 !important;
     			height: 35px;
-   				width: 94%;
-   				margin:1px;
-   				-webkit-box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.75);
-				-moz-box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.75);
-				box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.75);
+   				margin:0;
+				z-index: 9999 !important;
+				
+   				
+
 		    }
 		}
 	}
+
+	*, *:before, *:after {
+	-webkit-apperance: none;
+	}
+
 	.sidebar-box { 
 		float: left; 
 		width: 100%;

@@ -62,7 +62,7 @@ $(document).ready(function() {
 											
 			$content.css({
 					"height": $content.height(),
-					"max-height": 9999
+					"max-height": 999999
 			 });
 			$content.animate({
 					"height": "auto"

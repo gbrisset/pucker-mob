@@ -5,7 +5,7 @@
 	<?php }
 	
 	$promotedArticle = false; $tag = 'smarties';
-	if(isset($isArticle) && $isArticle && $articleInfoObj){ ?>
+	if(isset($isArticle) && $isArticle && isset($articleInfoObj)){ ?>
 		<link rel="canonical" href="<?php echo 'http://puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
 	<?php 
 		if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }

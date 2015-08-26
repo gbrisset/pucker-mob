@@ -17,8 +17,7 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-     <!-- Q1 Media Slide Unit 
-    <script src='http://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1'></script>-->
+    
 
     <!-- SPOUTABLE -->
     <script type='text/javascript'>
@@ -48,7 +47,26 @@
     <?php } ?>
 
     
-
+      <!-- SPRINGBOARD SLIDING VIDEO UNIT -->
+      <script type="text/javascript">
+      var sbGlideScriptElement = document.createElement("script");
+      sbGlideScriptElement.type = "text/javascript";
+      sbGlideScriptElement.onload = function() {
+        var glideUnit = typeof SbSlidingUnit == 'undefined' ? parent.SbSlidingUnit : SbSlidingUnit;
+        glideUnit.init({
+          partnerId : 5087,
+          widgetId : 'puck003',
+          cmsPath : 'http://cms.springboardplatform.com'
+        });
+      }
+      sbGlideScriptElement.src = "http://www.springboardplatform.com/storage/js/sliding/sliding_unit.js";
+      if (top === self)
+        document.getElementsByTagName('head')[0].appendChild(sbGlideScriptElement);
+      else
+        parent.document.getElementsByTagName('head')[0].appendChild(sbGlideScriptElement);
+      </script>
+      <!-- SPRINGBOARD SLIDING VIDEO UNIT -->
+      
     <!-- Place in head part widget:puck002 -->
     <script type="text/javascript">
        

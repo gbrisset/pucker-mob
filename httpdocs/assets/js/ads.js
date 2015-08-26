@@ -175,13 +175,16 @@ if($('body').hasClass('mobile')) {
 				//1st GOOGLE
 				if(article_id == 5049){ //Komoona article test
 					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
-				}else if( article_id == 7853){ //3lift article test
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"><script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script></div>', tag);
+				//}else if( article_id == 7853){ //3lift article test
+					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
 				}else if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="http://ad5.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid&LR_FORMAT=video/mp4;video/x-flv;video/webm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_AUTOPLAY=0&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_URL='+current_url+'&ord={cachebreaker}&LR_DURATION=REPLACE_ME&LR_USERAGENT='+user_agent_str+'"></script>', tag);
+					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid&LR_FORMAT=application/javascript&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_AUTOPLAY=0&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_URL='+current_url+'&ord={cachebreaker}&LR_DURATION=REPLACE_ME&LR_USERAGENT='+user_agent_str+'"></script>', tag);
+				}else if( article_id == 8330 ){ //TESTING 3lift ADS http://www.puckermob.com/lifestyle/keep-calm-and-carry-on-23-paranoid-thoughts-all-women-have
+						inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);				
 				}else{
 					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
 				}
+
 			}
 
 			//2ND SPOT

@@ -83,20 +83,24 @@ if(!is_null($categoryInfo)){
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php 
 			$style = '';
-			if( isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] == 4314 || $articleInfoObj['article_id'] == 4341){
+			$article_id = '';
+			if(isset($articleInfoObj)) $article_id = $articleInfoObj['article_id'];
+			
+			if( $article_id == 4314 || $article_id == 4341){
 				$style = 'margin-top: 7rem !important;';
 			}
+			
 		?>
 		<!-- MOBILE LEFT TAP -->
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
 	<main id="main" class="row panel sidebar-on-right" role="main" style="">
 		<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
-			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
+			<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
 			
 			<!-- ARTICLE CONTENT -->
 			<?php 
-				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
+				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['cairo_pattern_get_linear_points(pattern)ist_id'] != 0){
 					include_once($config['template_path'].'multi_page_article.php');
 				} else {
 					include_once($config['template_path'].'single_page_article.php');
@@ -217,7 +221,8 @@ if(!is_null($categoryInfo)){
 			<!-- Like us on FB --> 
 			<?php if(!$detect->isMobile()){?>
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
-			<div class="row hide-for-print like-us-fb">
+		
+			<div class="row hide-for-print like-us-fb clear">
 				<p class="columns small-2">Join the Mob!
 					<div class="columns small-9" >
 						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	

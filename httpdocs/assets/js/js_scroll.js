@@ -3,7 +3,7 @@
 	$.fn.scrollPagination = function(options) {
 		
 		var settings = { 
-			nop     : 10, // The number of posts per scroll to be loaded
+			nop     : 30, // The number of posts per scroll to be loaded
 			offset  : 0, // Initial offset, begins at 0 in this case
 			error   : 'No More Articles!', // When the user reaches the end this is the message that is
 			                            // displayed. You can change this if you want.

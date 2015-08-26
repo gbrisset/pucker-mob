@@ -49,7 +49,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 
 						//Replace 6th article ntent ad
 						if($articleNumber == 6 ){
-							if(!$has_sponsored && !$isHomepage ){ ?>
+							if(!$has_sponsored && (isset($isHomepage) && !$isHomepage) ){ ?>
 							<!-- NTENT ADS -->
 							<div class="columns todays-favorites fade-in-out">
 							<script type="text/javascript" language="JavaScript">

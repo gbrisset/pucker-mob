@@ -89,8 +89,7 @@ if(!is_null($categoryInfo)){
 			if( $article_id == 4314 || $article_id == 4341){
 				$style = 'margin-top: 7rem !important;';
 			}
-			
-		?>
+?>
 		<!-- MOBILE LEFT TAP -->
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		

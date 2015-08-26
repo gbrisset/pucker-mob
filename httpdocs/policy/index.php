@@ -145,7 +145,7 @@
 
 
 <h3>SEQUEL MEDIA INTERNATIONAL, LLC DESIGNATED COPYRIGHT AGENT CONTACT INFO:</h3>
-<p>Email: copyright@sequelmediagroup.com</p>
+<p>Email: info@sequelmediainternational.com</p>
 
 <p>ALL INQUIRIES NOT RELEVANT TO THE ABOVE PROCEDURE WILL RECEIVE NO RESPONSE.</p>
 

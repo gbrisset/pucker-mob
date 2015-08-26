@@ -1409,7 +1409,7 @@ class MPArticleAdmin{
              	return  true;
             }
             else
-            	return ['hasError' => true, 'message' => 'Sorry, looks like something went wrong creating your image. Please try again or contact info@sequelmediagroup.com for assitance.'];
+            	return ['hasError' => true, 'message' => 'Sorry, looks like something went wrong creating your image. Please try again or contact info@sequelmediainternational.com for assitance.'];
 
     }
     
@@ -1428,7 +1428,7 @@ class MPArticleAdmin{
              	return  true;
             }
             else
-            	return ['hasError' => true, 'message' => 'Sorry, looks like something went wrong creating your image. Please try again or contact info@sequelmediagroup.com for assitance.'];
+            	return ['hasError' => true, 'message' => 'Sorry, looks like something went wrong creating your image. Please try again or contact info@sequelmediainternational.com for assitance.'];
 
             // output image to file
     }

@@ -229,7 +229,7 @@
 											</form>
 											<?php }else{?>
 											<!-- REQUEST TO DELETE THIS ARTICLE -->
-											<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediagroup.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
+											<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
 											<?php }?>
 										<?php }?>
 									</td>							  			

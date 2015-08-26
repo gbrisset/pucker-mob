@@ -3,7 +3,7 @@
    * Bug
    * 
    * @package    DatabaseObject
-   * @author     Flot Guzman <fguzman@sequelmediagroup.com.com>
+   * @author     Flot Guzman <fguzman@sequelmediainternational.com>
    */
 
 class Slideshow extends DatabaseObject{

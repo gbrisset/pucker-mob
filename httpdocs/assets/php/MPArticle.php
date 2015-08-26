@@ -20,40 +20,9 @@ class MPArticle{
 		//$this->memcache = new MPMemcache($this->config);
 	}
 
-/*private function getArticlePageInfo($id = 1){
-		$pdo = $this->con->openCon();
-		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;
-		$pageQueryString = "SELECT * FROM article_pages "; 
+//public function getAllArticles($limit){
 
-		$pageQueryString .= "INNER JOIN (article_page_ads, article_page_images, article_page_styling, article_page_social_settings )";
-		$pageQueryString .= "ON (article_pages.article_page_id = article_page_ads.article_page_id ";
-			$pageQueryString .= "AND article_pages.article_page_id = article_page_images.article_page_id "; 
-			$pageQueryString .= "AND article_pages.article_page_id = article_page_styling.article_page_id "; 
-			$pageQueryString .= "AND article_pages.article_page_id = article_page_social_settings.article_page_id) "; 
-			$pageQueryString .= "LEFT JOIN(article_page_player_settings) ";
-			$pageQueryString .= "ON (article_pages.article_page_id = article_page_player_settings.article_page_id) ";
-
-			$pageQueryString .= "LEFT JOIN (syndication_sites) ";
-			$pageQueryString .= "ON (syndication_sites.syn_api_key = article_page_player_settings.player_setting_api_key) ";
-
-			$pageQueryString .= "WHERE article_pages.article_page_id = 1 ";
-
-			$pageQueryString .= "LIMIT 0, 1 ";
-			$q = $pdo->query($pageQueryString);
-			if($q && $q->rowCount()){
-				$q->setFetchMode(PDO::FETCH_ASSOC); 
-				$row = $q->fetch();
-				$r = $row;
-				$q->closeCursor();
-			}else $r = false;
-			$this->con->closeCon();
-
-		return $r;
-}*/
-
-public function getAllArticles($limit){
-
-}
+//}
 private function getArticlePageInfo($id = 1){
 		$pdo = $this->con->openCon();
 		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;

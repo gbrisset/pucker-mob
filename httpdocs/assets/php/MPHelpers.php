@@ -108,7 +108,7 @@ class MPHelpers{
 	}
 
 	public function getEmails(){
-		$emails = "fguzman@sequelmediagroup.com";
+		$emails = "fguzman@sequelmediainternational.com";
 
 		return $emails;
 	}

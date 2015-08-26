@@ -5,7 +5,7 @@
    * 
    * This Class manage the google analytics api functions
    * 
-   * @author     Flor Guzman <fguzman@sequelmediagroup.com.com>
+   * @author     Flor Guzman <fguzman@sequelmediainternational.com>
    */
 
 require_once dirname(__FILE__).'/Connector.php';

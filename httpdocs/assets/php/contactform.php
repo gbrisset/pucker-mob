@@ -22,7 +22,7 @@
 
 		if(!$hasError){
 			$sitename = $mpArticle->data['article_page_visible_name'];
-			$to =  'jmiletsky@sequelmediagroup.com';
+			$to =  'jmiletsky@sequelmediainternational.com';
 			$subject = $name.' wants to contact us! - '.$sitename;
 			
 			$headers  = 'MIME-Version: 1.0' . "\r\n";

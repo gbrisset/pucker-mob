@@ -272,136 +272,136 @@ td {
   font-family: 'PTSansRegular';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/PTSans/PTSansRegular.eot");
-  src: local("☺"), local("PTSans"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansRegular.woff") format("woff"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansRegular.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansRegular.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/PTSans/PTSansRegular.eot");
+  src: local("☺"), local("PTSans"), url("http://fonts.sequelmediainternational.com/PTSans/PTSansRegular.woff") format("woff"), url("http://fonts.sequelmediainternational.com/PTSans/PTSansRegular.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansRegular.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'PTSansBold';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/fonts/PTSans/PTSansBold.eot");
-  src: local("☺"), local("PTSans"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansBold.woff") format("woff"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansBold.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansBold.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/fonts/PTSans/PTSansBold.eot");
+  src: local("☺"), local("PTSans"), url("http://fonts.sequelmediainternational.com/PTSans/PTSansBold.woff") format("woff"), url("http://fonts.sequelmediainternational.com/PTSans/PTSansBold.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansBold.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'PTSansItalic';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/fonts/PTSans/PTSansItalic.eot");
-  src: local("☺"), local("PTSans"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansItalic.woff") format("woff"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansItalic.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansItalic.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/fonts/PTSans/PTSansItalic.eot");
+  src: local("☺"), local("PTSans"), url("http://fonts.sequelmediainternational.com/PTSans/PTSansItalic.woff") format("woff"), url("http://fonts.sequelmediainternational.com/PTSans/PTSansItalic.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/PTSans/PTSansItalic.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'QuicksandLight';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLight.eot");
-  src: local("☺"), local("QuicksandLight"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLight.woff") format("woff"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLight.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLight.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandLight.eot");
+  src: local("☺"), local("QuicksandLight"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandLight.woff") format("woff"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandLight.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLight.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'QuicksandLightItalic';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLightItalic.eot");
-  src: local("☺"), local("QuicksandLightItalic"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLightItalic.woff") format("woff"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLightItalic.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLightItalic.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandLightItalic.eot");
+  src: local("☺"), local("QuicksandLightItalic"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandLightItalic.woff") format("woff"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandLightItalic.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandLightItalic.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'QuicksandBold';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBold.eot");
-  src: local("☺"), local("QuicksandBold"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBold.woff") format("woff"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBold.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBold.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBold.eot");
+  src: local("☺"), local("QuicksandBold"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBold.woff") format("woff"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBold.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBold.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'QuicksandBoldItalic';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBoldItalic.eot");
-  src: local("☺"), local("QuicksandBoldItalic"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBoldItalic.woff") format("woff"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBoldItalic.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBoldItalic.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBoldItalic.eot");
+  src: local("☺"), local("QuicksandBoldItalic"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBoldItalic.woff") format("woff"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBoldItalic.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBoldItalic.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'QuicksandBook';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBook.eot");
-  src: local("☺"), local("QuicksandBook"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBook.woff") format("woff"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBook.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBook.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBook.eot");
+  src: local("☺"), local("QuicksandBook"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBook.woff") format("woff"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBook.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBook.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'QuicksandBookItalic';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBookItalic.eot");
-  src: local("☺"), local("QuicksandBookItalic"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBookItalic.woff") format("woff"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBookItalic.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBookItalic.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBookItalic.eot");
+  src: local("☺"), local("QuicksandBookItalic"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBookItalic.woff") format("woff"), url("http://fonts.sequelmediainternational.com/QuickSand/QuicksandBookItalic.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/QuickSand/QuicksandBookItalic.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'BevanRegular';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.eot");
-  src: local("☺"), local("Bevan"), url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.woff") format("woff"), url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/Bevan/bevanregular.eot");
+  src: local("☺"), local("Bevan"), url("http://fonts.sequelmediainternational.com/Bevan/bevanregular.woff") format("woff"), url("http://fonts.sequelmediainternational.com/Bevan/bevanregular.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'BevanRegular';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.eot");
-  src: local("☺"), local("Bevan"), url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.woff") format("woff"), url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/Bevan/bevanregular.eot");
+  src: local("☺"), local("Bevan"), url("http://fonts.sequelmediainternational.com/Bevan/bevanregular.woff") format("woff"), url("http://fonts.sequelmediainternational.com/Bevan/bevanregular.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Bevan/bevanregular.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'Pictos';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/Pictos/pictos.eot");
-  src: local("☺"), local("Pictos"), url("http://fonts.sequelmediagroup.com/Pictos/pictos.woff") format("woff"), url("http://fonts.sequelmediagroup.com/Pictos/pictos.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Pictos/pictos.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/Pictos/pictos.eot");
+  src: local("☺"), local("Pictos"), url("http://fonts.sequelmediainternational.com/Pictos/pictos.woff") format("woff"), url("http://fonts.sequelmediainternational.com/Pictos/pictos.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Pictos/pictos.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'ModernPics';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/IconFonts/modernpics.eot");
-  src: local("☺"), local("modernpics"), url("http://fonts.sequelmediagroup.com/IconFonts/modernpics.otf") format("otf"), url("http://fonts.sequelmediagroup.com/IconFonts/modernpics.woff") format("woff"), url("http://fonts.sequelmediagroup.com/IconFonts/modernpics.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/IconFonts/modernpics.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/IconFonts/modernpics.eot");
+  src: local("☺"), local("modernpics"), url("http://fonts.sequelmediainternational.com/IconFonts/modernpics.otf") format("otf"), url("http://fonts.sequelmediainternational.com/IconFonts/modernpics.woff") format("woff"), url("http://fonts.sequelmediagroup.com/IconFonts/modernpics.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/IconFonts/modernpics.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'Websymbols';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/Websymbols/websymbolsregular.eot");
-  src: local("☺"), local("websymbolsregular"), url("http://fonts.sequelmediagroup.com/Websymbols/websymbolsregular.woff") format("woff"), url("http://fonts.sequelmediagroup.com/Websymbols/websymbolsregular.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Websymbols/websymbolsregular.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/Websymbols/websymbolsregular.eot");
+  src: local("☺"), local("websymbolsregular"), url("http://fonts.sequelmediainternational.com/Websymbols/websymbolsregular.woff") format("woff"), url("http://fonts.sequelmediainternational.com/Websymbols/websymbolsregular.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Websymbols/websymbolsregular.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'Entypo';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/Entypo/entypo-webfont.eot");
-  src: local("☺"), local("entypo-webfont"), url("http://fonts.sequelmediagroup.com/Entypo/entypo-webfont.woff") format("woff"), url("http://fonts.sequelmediagroup.com/Entypo/entypo-webfont.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Entypo/entypo-webfont.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/Entypo/entypo-webfont.eot");
+  src: local("☺"), local("entypo-webfont"), url("http://fonts.sequelmediainternational.com/Entypo/entypo-webfont.woff") format("woff"), url("http://fonts.sequelmediainternational.com/Entypo/entypo-webfont.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Entypo/entypo-webfont.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'GeometrySoftPro';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/GeometrySoftPro/Geometry_Soft_Pro.eot");
-  src: local("☺"), local("Geometry_Soft_Pro"), url("http://fonts.sequelmediagroup.com/GeometrySoftPro/Geometry_Soft_Pro.woff") format("woff"), url("http://fonts.sequelmediagroup.com/GeometrySoftPro/Geometry_Soft_Pro.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/GeometrySoftPro/Geometry_Soft_Pro.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/GeometrySoftPro/Geometry_Soft_Pro.eot");
+  src: local("☺"), local("Geometry_Soft_Pro"), url("http://fonts.sequelmediainternational.com/GeometrySoftPro/Geometry_Soft_Pro.woff") format("woff"), url("http://fonts.sequelmediainternational.com/GeometrySoftPro/Geometry_Soft_Pro.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/GeometrySoftPro/Geometry_Soft_Pro.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {
   font-family: 'OsloBlack';
   font-style: normal;
   font-weight: normal;
-  src: url("http://fonts.sequelmediagroup.com/Oslo/Black/Oslo-Black.eot");
-  src: local("☺"), local("Oslo-Black"), url("http://fonts.sequelmediagroup.com/Oslo/Black/Oslo-Black.woff") format("woff"), url("http://fonts.sequelmediagroup.com/Oslo/Black/Oslo-Black.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Oslo/Black/Oslo-Black.svg#webfont6izVs1DN") format("svg");
+  src: url("http://fonts.sequelmediainternational.com/Oslo/Black/Oslo-Black.eot");
+  src: local("☺"), local("Oslo-Black"), url("http://fonts.sequelmediainternational.com/Oslo/Black/Oslo-Black.woff") format("woff"), url("http://fonts.sequelmediainternational.com/Oslo/Black/Oslo-Black.ttf") format("truetype"), url("http://fonts.sequelmediagroup.com/Oslo/Black/Oslo-Black.svg#webfont6izVs1DN") format("svg");
 }
 
 @font-face {

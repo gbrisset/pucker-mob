@@ -2,25 +2,28 @@
 	/* Content */
 		
 		Diana Herrera - Content Curation/Scheduling/Administration/Hipster Chick/First Lady
-		Contact - dherrera [at] sequelmediagroup.com
+		Contact - dherrera [at] sequelmediainternational.com
 		Twitter - @dianaherhur
 
 		Miriam Pinedo - Content Management
-		Contact - mpinedo [at] sequelmediagroup.com
+		Contact - mpinedo [at] sequelmediainternational.com
 
 	/* Development */
 
 		Flor Guzman - Front End Engineer /Loud Mouth
-		Contact - fguzman [at] sequelmediagroup.com
+		Contact - fguzman [at] sequelmediainternational.com
 		Twitter - @FlorGuzmanb
+
+		Palermo Deschamps - Web Developer
+		Contact = pdeschamps [at] sequelmediainternational.com
 
 	/* Branding and Marketing */
 		Christina Contaldi - Director of Branding and Marketing
-		Contact - ccontaldi@sequelmediagroup.com
+		Contact - ccontaldi@sequelmediainternational.com
 		
 	/* Design */
 		Jay Miletsky - Project Design Lead/Template Design
-		Contact - jmiletsky [at] sequelmediagroup.com
+		Contact - jmiletsky [at] sequelmediainternational.com
 		
 /* SITE */
 	Last Update: Monday, 10 AUG 2014 04:40:00

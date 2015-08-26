@@ -25,7 +25,7 @@
 					<h2>Access Denied</h2>
 				</header>
 
-				<p>Sorry, it looks like you don't have permission to view the requested page.  If you feel this is an error, please contact support at <a href="mailto:info@sequelmediagroup.com">info@sequelmediagroup.com</a>.</p>
+				<p>Sorry, it looks like you don't have permission to view the requested page.  If you feel this is an error, please contact support at <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a>.</p>
 			</section>
 		</div>
 	</main>

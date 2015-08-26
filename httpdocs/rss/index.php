@@ -13,13 +13,13 @@
    <description>General interest news, information, articles and advice for a world on the move</description>
    <category>Articles</category>
    <language>en-us</language>
-   <copyright>Copyright 2013 sequelmediagroup.com, All rights reserved.</copyright>
-   <managingEditor>info@sequelmediagroup.com (Sequel Media Group)</managingEditor>
-   <webMaster>info@sequelmediagroup.com (Sequel Media Group)</webMaster>
+   <copyright>Copyright 2013 sequelmediainternational.com, All rights reserved.</copyright>
+   <managingEditor>info@sequelmediainternational.com (Sequel Media Group)</managingEditor>
+   <webMaster>info@sequelmediainternational.com (Sequel Media Group)</webMaster>
    <image>
       <title>Pucker Mob | We're All Part of It</title>
       <url>http://images.puckermob.com/articlesites/logos/Puckermob_color.png</url>
-      <link>http://puckermob.com</link>
+      <link>http://www.puckermob.com</link>
       <width>203</width>
       <height>29</height>
    </image>
@@ -31,9 +31,9 @@
          <title><![CDATA[<?php echo $article['article_title']; ?>]]></title>
          <description><![CDATA[<?php echo htmlspecialchars(($article['article_desc'])); ?>]]></description>
          <category><?php echo $article['cat_dir_name']; ?></category>
-         <link>http://puckermob.com/<?php echo $article['cat_dir_name'].'/'.$article['article_seo_title']; ?></link>
-         <guid isPermaLink="true">http://puckermob.com/<?php echo $article['cat_dir_name'].'/'.$article['article_seo_title']; ?></guid>
-         <source url="http://puckermob.com/rss/">Pucker Mob | We're All Part of It</source>
+         <link>http://www.puckermob.com/<?php echo $article['cat_dir_name'].'/'.$article['article_seo_title']; ?></link>
+         <guid isPermaLink="true">http://www.puckermob.com/<?php echo $article['cat_dir_name'].'/'.$article['article_seo_title']; ?></guid>
+         <source url="http://www.puckermob.com/rss/">Pucker Mob | We're All Part of It</source>
          <pubDate><?php echo date('D, d M Y H:i:s O', strtotime($article['creation_date']));?></pubDate>
       </item>
    <?php } ?>

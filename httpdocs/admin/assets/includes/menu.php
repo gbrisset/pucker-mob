@@ -63,6 +63,8 @@
 				<a href="<?php echo $config['this_admin_url']; ?>billing/">billing information</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
+
+
 			
 			<!-- CONTRIBUTORS -->
 			<?php  if($adminController->user->data['user_permission_show_other_contributors']){?>
@@ -81,8 +83,7 @@
 				<li class="" id="writers_report"><a href="<?php echo $config['this_admin_url']; ?>reports/writersreport.php">Writers Report</a></li>
 			</ul>
 			<?php }?>
-
-			<!--<?php //if($adminController->user->checkPermission('user_permission_show_add_contributor')){?>
+            <!--<?php //if($adminController->user->checkPermission('user_permission_show_add_contributor')){?>
 			<li class="<?php //echo ((isset($uri[0]) && $uri[0] == 'reports') ) ?  'current' :  '';?>">
 				<a href="<?php //echo $config['this_admin_url']; ?>reports/">Get Report</a>
 				<i class="fa fa-caret-left"></i>
@@ -99,15 +100,26 @@
 				<a href="<?php echo $config['this_admin_url']; ?>faq/" target="blank">FAQ</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
-			<li style=" border-bottom: 1px solid #999;" class="<?php echo ((isset($uri[0]) && $uri[0] == 'contact') ) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>contact/">Contact Us</a>
-				<i class="fa fa-caret-left"></i>
-			</li>
 			<?php }?>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'delete') ) ?  'current' :  '';?>">
 				<a href="#" id="delete-account">Delete Account</a>
 				<i class="fa fa-caret-left"></i>
 			</li>
+			<li class="parent "><a href="<?php echo $config['this_admin_url']; ?>reports/">Contact Us<i class="fa fa-chevron-down"></i></a></li>
+			<ul class="" style="opacity: 1; z-index: 1; display: none;"><h2>Contact</h2>
+			    <li class="<?php echo ((isset($uri[0]) && $uri[0] == 'faq') ) ?  'current' :  '';?>">
+				  <a href="mailto:info@sequelmediainternational.com?subject= Report A Bug &body=If something's not working on PuckerMob  you can report it to us. Giving more detail (ex: adding a screenshot and description) helps us find the problem. We may contact you for more details as we investigate. We appreciate the time it takes to give us this information." >Report a Bug</a>
+			    </li>
+				<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'faq') ) ?  'current' :  '';?>">
+				  <a href="mailto:info@sequelmediainternational.com?subject= Help &body=If something's not working on PuckerMob  you can report it to us. Giving more detail (ex: adding a screenshot and description) helps us find the problem. We may contact you for more details as we investigate. We appreciate the time it takes to give us this information." >Help</a>
+			    </li>
+			    <li class="<?php echo ((isset($uri[0]) && $uri[0] == 'faq') ) ?  'current' :  '';?>">
+				  <a href="mailto:info@sequelmediainternational.com?subject= General Inqury &body=If something's not working on PuckerMob  you can report it to us. Giving more detail (ex: adding a screenshot and description) helps us find the problem. We may contact you for more details as we investigate. We appreciate the time it takes to give us this information." >General Inquiry</a>
+			    </li>
+			    <li class="<?php echo ((isset($uri[0]) && $uri[0] == 'faq') ) ?  'current' :  '';?>">
+				  <a href="mailto:info@sequelmediainternational.com?subject= Other &body=If something's not working on PuckerMob  you can report it to us. Giving more detail (ex: adding a screenshot and description) helps us find the problem. We may contact you for more details as we investigate. We appreciate the time it takes to give us this information." >Other</a>
+			    </li>
+			</ul>
 		</ul>
 	</nav>
 </div>

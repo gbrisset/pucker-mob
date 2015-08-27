@@ -108,6 +108,7 @@
 								<div class="hsContentLink">
 									<a href="<?php echo $config['this_admin_url']; ?>forgot/" class="align-center">Forgot Password?</a>
 								</div>
+								<input type="checkbox" class="remember"> <span class="remember">Remember Me</span> <br>
 							</div>
 						</form>
 			    	</div>

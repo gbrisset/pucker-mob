@@ -3,7 +3,7 @@
 	<?php 
 
 	$articleIndex = 0;
-	$quantity = 10;
+	$quantity = 30;
 	$omitThis = 0;
 	$cat_id = $mpArticle->data['cat_id'];
 	if(isset($categoryInfo) &&  $categoryInfo){
@@ -13,22 +13,22 @@
 	$featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 	if( $featuredArticle && $featuredArticle['article_status'] == 1){
 		$articleIndex++;
-		$quantity = 11	;
+		$quantity = 31	;
 		$omitThis =  $featuredArticle['article_id'];
 		include_once($config['include_path'].'featured_article.php');
 	}
 
 	// If is HomePage Get new article List
 	if( $cat_id == 1){
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis, 'withMobLogs'=> true ]);
+		$articlesList = $mpArticle->getMobileArticleList(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis, 'withMobLogs'=> true ]);
 		//selse $articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
 	}else{
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id, 'withMobLogs'=> false ] );
+		$articlesList = $mpArticle->getMobileArticleList(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id, 'withMobLogs'=> false ] );
 	}
 
 	foreach ($articlesList as $articles){
 
-		$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
+		$linkToArticle = 'http://www.puckermob.com/'.$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 		$date = date("M d, Y", strtotime($articles['date_updated']));
 		$article_id = $articles['article_id'];
 		$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';//$config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
@@ -65,7 +65,7 @@
 			</div>
 			<div class="second-article-date small-12 clear">
 				<label class="small-6 left" ><?php echo $date; ?></label>
-				<label class="small-6 span-holder-shares"></label>
+				<label class="small-6 span-shares-holder"></label>
 			</div>
 		</div>
 		

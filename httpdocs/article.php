@@ -83,20 +83,23 @@ if(!is_null($categoryInfo)){
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php 
 			$style = '';
-			if( isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] == 4314 || $articleInfoObj['article_id'] == 4341){
+			$article_id = '';
+			if(isset($articleInfoObj)) $article_id = $articleInfoObj['article_id'];
+			
+			if( $article_id == 4314 || $article_id == 4341){
 				$style = 'margin-top: 7rem !important;';
 			}
-		?>
+?>
 		<!-- MOBILE LEFT TAP -->
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
 	<main id="main" class="row panel sidebar-on-right" role="main" style="">
 		<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
-			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
+			<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
 			
 			<!-- ARTICLE CONTENT -->
 			<?php 
-				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
+				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['cairo_pattern_get_linear_points(pattern)ist_id'] != 0){
 					include_once($config['template_path'].'multi_page_article.php');
 				} else {
 					include_once($config['template_path'].'single_page_article.php');

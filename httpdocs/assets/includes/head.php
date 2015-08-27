@@ -5,7 +5,7 @@
 	<?php }
 	
 	$promotedArticle = false; $tag = 'smarties';
-	if(isset($isArticle) && $isArticle && $articleInfoObj){ ?>
+	if(isset($isArticle) && $isArticle && isset($articleInfoObj)){ ?>
 		<link rel="canonical" href="<?php echo 'http://puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
 	<?php 
 		if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }
@@ -28,7 +28,7 @@
 	?>
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
-	<meta name="author" content="Sequel Media Group">
+	<meta name="author" content="Sequel Media International">
 	<meta property="og:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />
 	<meta property="og:description" content="<?php echo $headDesc; ?>" />
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />

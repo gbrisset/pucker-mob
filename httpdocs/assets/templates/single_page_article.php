@@ -1,10 +1,11 @@
 <?php
 // Initialize variables
-$article_body = $article_title = $article_category = $article_disclaimer = $article_img_credits =  $article_img_credits = $article_notes = $linkToContributor = '';
+$article_body = $article_title = $article_category = $article_disclaimer = $article_img_credits =  $article_img_credits = $article_notes = $linkToContributor = $read_more_pct = '';
 $article_id =0;
-$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
+$second_image ='';
 
 if (isset($articleInfoObj) && $articleInfoObj ){
+	$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 	$article_title = $articleInfoObj['article_title'];;
 	$article_id = $articleInfoObj['article_id'];
 	$article_body = $articleInfoObj['article_body'];
@@ -28,7 +29,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$read_more_pct = $articleInfoObj['article_read_more_pct'];
 	$related_articles = $mpArticle->getRelatedToArticle( $article_id );
 
-	$second_image ='';
 	if(file_exists(	$config['image_upload_dir'].'articlesites/puckermob/second_image/second_mob_img_'.$articleInfoObj["article_id"].'.jpg')){
 		$second_image = $config['image_url'].'articlesites/puckermob/second_image/second_mob_img_'.$articleInfoObj["article_id"].'.jpg';	;
 	}
@@ -101,8 +101,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- Article Content -->
 		<div class="row clear" style="margin-top: -1rem;">
 		
-		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px; padding-left: 4px !important; padding-right:5px !important;"> 
-		<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
+		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important;     margin-bottom: -5px;"> 
+		
 		<!-- ARTICLE BODY -->
 		<p><?php echo $article_body; ?></p>
 		
@@ -376,9 +376,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div id="3lift-ad "class="columns small-12">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
 		</div>
-        <!-- COMMENTS BOX -->
+		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 		<br>
+		
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">

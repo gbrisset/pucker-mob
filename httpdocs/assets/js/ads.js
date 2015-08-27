@@ -178,10 +178,11 @@ if($('body').hasClass('mobile')) {
 				//}else if( article_id == 7853){ //3lift article test
 					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
 				}else if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="http://ad5.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid&LR_FORMAT=video/mp4;video/x-flv;video/webm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_AUTOPLAY=0&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_URL='+current_url+'&ord={cachebreaker}&LR_DURATION=REPLACE_ME&LR_USERAGENT='+user_agent_str+'"></script>', tag);
+					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid&LR_FORMAT=application/javascript&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_AUTOPLAY=0&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_URL='+current_url+'&ord={cachebreaker}&LR_DURATION=REPLACE_ME&LR_USERAGENT='+user_agent_str+'"></script>', tag);
+				}else if( article_id == 8330 ){ //TESTING 3lift ADS http://www.puckermob.com/lifestyle/keep-calm-and-carry-on-23-paranoid-thoughts-all-women-have
+						inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);				
 				}else{
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
-					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
 				}
 
 			}
@@ -301,7 +302,7 @@ if($('body').hasClass('mobile')) {
 
 				}else{
 					//CARAMBOLA
-				//inBodyAd.loadInArticleAd( 'article-content', second_p, 0, ad[adPage].inarticlecarambola, tag);
+				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, ad[adPage].inarticlecarambola, tag);
 				}
 			}
 		}

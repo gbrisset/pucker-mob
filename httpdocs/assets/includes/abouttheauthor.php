@@ -4,10 +4,14 @@ $class = " column small-12 hide-for-print sidebar-right  no-padding ";
 if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right no-padding "; ?>
 
 <?php 
-	$bio = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_bio"])));
-	$name = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_name"])));
+	$bio = $name = '';
 	$image_name = 'pm_avatars_1.png';
-	if( !empty($articleInfoObj['contributor_image']) ) $image_name = $articleInfoObj['contributor_image'];
+
+	if(isset($articleInfoObj)){
+		$bio = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_bio"])));
+		$name = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_name"])));
+		if( !empty($articleInfoObj['contributor_image']) ) $image_name = $articleInfoObj['contributor_image'];
+	}
 	$ss_user_id=0;
 	$ss_user_email = '';
 	$userInfo =  $adminController->user->getUserInfo();
@@ -17,6 +21,8 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 	if($userInfo) $ss_user_email = $userInfo['user_email'];
 
 	$following_this_author = $follow->isFollowingThisAuthor($userInfo['user_email'], $contributor_id);
+
+	//var_dump($adminController->user->getUserInfo());
 	
 ?>
 <div class="row">

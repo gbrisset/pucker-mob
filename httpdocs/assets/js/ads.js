@@ -294,15 +294,12 @@ if($('body').hasClass('mobile')) {
 			}
 			
 			if( second_p > 0 ){
-				
-				if(article_id == 8225){
+				if(article_id == 8225){ //http://www.puckermob.com/lifestyle/22-signs-youre-expectations-for-life-are-based-on-disney-movies
 				//adSparc
-				//inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>', tag);
-				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<SCRIPT SRC="http://adsvr2.adsparc.net/ttj?id=5423729&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>', tag);
-
+					inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<div id="adsparc-instream-ad" ></div>', tag);
 				}else{
 					//CARAMBOLA
-				inBodyAd.loadInArticleAd( 'article-content', second_p, 0, ad[adPage].inarticlecarambola, tag);
+					inBodyAd.loadInArticleAd( 'article-content', second_p, 0, ad[adPage].inarticlecarambola, tag);
 				}
 			}
 		}

@@ -602,14 +602,14 @@ $.fn.mpValidate = function(opts){
 					//	Else: Confirm is not a param OR confirm is a param, but the annon func in confirm() resolves to true
 					//	Perform the ajax post (or delete)...
 					
-						console.log(thisForm.serialize());
+					//	console.log(thisForm.serialize());
 						$.post(options.updateUrl, {
 								formData : thisForm.serialize(),
 								formId : thisId,
 								additionalParams : options.additionalParams
 							},
 							function(data){
-								console.log(data);
+								//console.log(data);
 								//alert(data);
 								data = JSON.parse(data);
 

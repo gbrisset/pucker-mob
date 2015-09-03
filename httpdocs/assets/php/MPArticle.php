@@ -343,7 +343,7 @@ public function getSingleArticleInfo(  $args = [] ){
 	$s = "SELECT * FROM articles  
 		INNER JOIN ( article_contributor_articles, article_contributors ) 
 		ON (article_contributor_articles.article_id = articles.article_id ) AND ( article_contributors.contributor_id = article_contributor_articles.contributor_id )
-		WHERE (articles.article_id = :articleId OR articles.article_seo_title = :articleSEOTitle ) LIMIT 1 ";
+		WHERE articles.article_status = 1 AND (articles.article_id = :articleId OR articles.article_seo_title = :articleSEOTitle ) LIMIT 1 ";
 	$queryParams = [
 		':articleId' => filter_var($options['articleId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
 		':articleSEOTitle' => filter_var($options['articleSEOTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR)

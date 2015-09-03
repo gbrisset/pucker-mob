@@ -173,28 +173,34 @@ if($('body').hasClass('mobile')) {
 			//1ST SPOT
 			if( first_p > 0 ){
 				//1st GOOGLE
-				if(article_id == 5049){ //Komoona article test
+				if(article_id == 8501){ //Komoona article test
 					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
 				//}else if( article_id == 7853){ //3lift article test
 					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
 				}else if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid&LR_FORMAT=application/javascript&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_AUTOPLAY=0&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_URL='+current_url+'&ord={cachebreaker}&LR_DURATION=REPLACE_ME&LR_USERAGENT='+user_agent_str+'"></script>', tag);
-				}else if( article_id == 8330 ){ //TESTING 3lift ADS http://www.puckermob.com/lifestyle/keep-calm-and-carry-on-23-paranoid-thoughts-all-women-have
-						inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);				
+					$.get('http://jsonip.com', function (res) {
+						inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid& LR_CONTENT=1&LR_FORMAT=application/x-shockwave-flash;application/javascript;video%2Fmp4;video%2Fwebm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_UID=REPLACE_ME&CACHEBUSTER=REPLACE_ME&LR_DURATION=REPLACE_ME&&LR_USERAGENT='+user_agent_str+'"></script>', tag);
+					});
+					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid&LR_FORMAT=application/javascript&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_AUTOPLAY=0&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_URL='+current_url+'&ord={cachebreaker}&LR_DURATION=REPLACE_ME&LR_USERAGENT='+user_agent_str+'"></script>', tag);
+				//}else if( article_id == 8330 ){ //TESTING 3lift ADS http://www.puckermob.com/lifestyle/keep-calm-and-carry-on-23-paranoid-thoughts-all-women-have					
 				}else{
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticle, tag);	
+					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);	
+					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
 				}
-
+				
 			}
 
 			//2ND SPOT
 			if( second_p > 0 ){
 				if( country && country == 'US' || country == 'XX'){
-					if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
-						inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<script type="text/javascript" src="http://ssp.lkqd.net/ad?pid=124&sid=4752&env=1&format=2&width=300&height=250&dnt=[DO_NOT_TRACK]&output=vast&ip='+ip_address+'&ua='+user_agent_str+'&rnd=[CACHEBUSTER]&pageurl='+current_url+'"></script>', tag);
-					}else{
-						inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
-					}
+					//if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
+						//inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<script type="text/javascript" src="http://ssp.lkqd.net/ad?pid=124&sid=4752&env=1&format=2&width=300&height=250&dnt=[DO_NOT_TRACK]&output=vast&ip='+ip_address+'&ua='+user_agent_str+'&rnd=[CACHEBUSTER]&pageurl='+current_url+'"></script>', tag);
+					//}else{
+						inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);	
+						
+					//}
 				}else{	
 					inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
 				}
@@ -237,6 +243,9 @@ if($('body').hasClass('mobile')) {
 			inBodyAd.loadInArticleAd( 'article-caption', 4, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
 			inBodyAd.loadInArticleAd( 'article-caption', 6, 0, mobilead[adPage].inarticle, 'p');	
 		}
+
+		 $('.inarticle-ad').prepend("<p style='margin-left: 0.5rem !important;color: #bbb;font-size: 0.9rem !important;font-style: italic;'>Advertisement</p>");
+        
 	}
 
 	if(adPage == 'article'){
@@ -275,7 +284,7 @@ if($('body').hasClass('mobile')) {
 					if(data != 'false'){
 						var info = $.parseJSON(data);
 						console.log(info[0]);
-						first_p  = parseInt(info[0].desktop_1);
+						first_p  = parseInt(info[0].desktop_1) ;
 						second_p  = parseInt(info[0].desktop_2);	
 					}
 				},

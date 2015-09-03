@@ -3,6 +3,8 @@
 $article_body = $article_title = $article_category = $article_disclaimer = $article_img_credits =  $article_img_credits = $article_notes = $linkToContributor = $read_more_pct = '';
 $article_id =0;
 $second_image ='';
+$contributor_id = 0;
+$contributor_name = '';
 
 if (isset($articleInfoObj) && $articleInfoObj ){
 	$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
@@ -15,9 +17,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	if(!isset($articleInfoObj['date_updated']) || $articleInfoObj['date_updated'] == "0000-00-00 00:00:00") $date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
 	else $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 
-	$contributor_name = '';
+	
 	if(isset($articleInfoObj['contributor_name']) && $articleInfoObj['contributor_name']) $contributor_name = $articleInfoObj['contributor_name'];
-	$contributor_id = 0;
+	
 	if(isset($articleInfoObj['contributor_id']) && $articleInfoObj['contributor_id']) $contributor_id = $articleInfoObj['contributor_id'];
 
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
@@ -37,11 +39,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 <?php if($detect->isMobile()){?>
 <style>
-	#branovate-ad div{
-		margin-left:-4px;
-	}
-	
+	#branovate-ad div{ margin-left:-4px; }
 	#branovate-ad-iframe{ border:none; height:240px;}
+	div#tl_ad { margin-top: 0 !important; padding-top: 0 !important;}
 </style>
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
@@ -108,7 +108,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<?php include_once($config['include_path'].'header_social.php'); ?>
 		
-		<div class="inarticle-ad ad-unit hide-for-print padding-top" style="display: inline-block;">
+		<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 		<div id="branovate-ad "class="columns small-12 margin-top margin-bottom">
 			<!-- BEGIN JS TAG - puckermob.com 300x250 < - DO NOT MODIFY -->
 			<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>

@@ -40,6 +40,13 @@
 	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
 	<meta property="article:tag" content="<?php echo $headTags; ?>" />
 	<?php } ?>
+	<meta name="twitter:card" content="photo" />
+	<meta name="twitter:site" content="@PuckerMob" />
+	<meta name="twitter:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />
+	<meta name="twitter:image" content="<?php if(isset($articleInfo) && $articleInfo ){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg';}else{echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png';}?>" />
+	<meta name="twitter:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
+
+
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
 	
@@ -139,5 +146,12 @@
 	<!-- Totally Her GPT -->
 	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-8978874786792646",
+	    enable_page_level_ads: true
+	  });
+	</script>
 </head>
  <?php flush(); ?>

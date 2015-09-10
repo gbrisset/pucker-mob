@@ -143,11 +143,11 @@
   <?php }?>
    
    <?php if($detect->isMobile()){?>
-      <div id="mobile-instream-3lift-ad-loader" class="hide">
+      <!--<div id="mobile-instream-3lift-ad-loader" class="hide">
       <div id="get-content" style="text-align:center;">
         <script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
       </div>
-    </div>
+    </div>-->
      <div id="social-media-container-header" class="row" style="display:none;"> 
         <div class="columns social-media-container  padding-bottom " style=" display:block !important;">
         <a class="addthis_button_facebook small-4 left">

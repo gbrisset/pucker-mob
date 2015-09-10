@@ -17,8 +17,7 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-    
-
+  
     <!-- SPOUTABLE -->
     <script type='text/javascript'>
     (function(){
@@ -47,7 +46,7 @@
     <?php } ?>
 
     
-      <!-- SPRINGBOARD SLIDING VIDEO UNIT -->
+      <!-- SPRINGBOARD SLIDING VIDEO UNIT 
       <script type="text/javascript">
       var sbGlideScriptElement = document.createElement("script");
       sbGlideScriptElement.type = "text/javascript";
@@ -64,7 +63,7 @@
         document.getElementsByTagName('head')[0].appendChild(sbGlideScriptElement);
       else
         parent.document.getElementsByTagName('head')[0].appendChild(sbGlideScriptElement);
-      </script>
+      </script>-->
       <!-- SPRINGBOARD SLIDING VIDEO UNIT -->
       
     <!-- Place in head part widget:puck002 -->
@@ -194,7 +193,11 @@
     loadScript("<?php echo $config['this_url']; ?>assets/js/ads.js", function(){ });
 </script>
 
-
+<?php if( !$detect->isMobile() && isset($articleInfoObj) /*&& $articleInfoObj['article_id'] == 8225 */){?>
+  <!-- BEGIN JS TAG - puckermob.com - IV < - DO NOT MODIFY -->
+  <SCRIPT SRC="http://adsvr2.adsparc.net/ttj?id=5423729&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+  <!-- END TAG -->
+<?php }?>
 <!-- TotallyHer comscore tags -->
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
 

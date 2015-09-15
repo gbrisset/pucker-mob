@@ -441,7 +441,7 @@ class Dashboard{
 		AND article_contributors.contributor_email_address = users.user_email 
 		LEFT JOIN (user_billing_info)
 		ON( users.user_id = user_billing_info.user_id)
-		WHERE contributor_earnings.month = $month AND contributor_earnings.year = $year AND to_be_pay > 0.05 ";
+		WHERE contributor_earnings.month = $month AND contributor_earnings.year = $year AND to_be_pay > 0.00 ";
 
 		if(isset($contributor_id) && $contributor_id != 0) {
 		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
@@ -460,36 +460,6 @@ class Dashboard{
 		}else return false;
 
 	}
-
-	public function getPageViewsUSReportNew($data){
-		$month = 7;//filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$year = 2015;//filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		
-		$s = " SELECT *
-			   FROM google_analytics_data_daily 
-			   INNER JOIN ( article_contributor_articles, article_contributors ) 
-					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
-					ON ( article_contributor_articles.contributor_id = article_contributors.contributor_id )
-				WHERE month = ".$month." AND year = ".$year;
-var_dump($s);
-		$data = $this->performQuery(array(
-			'queryString' => $s,
-			'queryParams' => array( ),
-			'bypassCache' => true
-			));
-
-		if ($data && isset($data[0])){
-				// If $q is an array of only one row (The set only contains one article), return it inside an array
-			return $data;
-		} else if ($data && !isset($data[0])){
-				// If $q is an array of rows, return it as normal
-			$data = array($data);
-			return $data;
-		} else {
-			return false;
-		}
-	}
-
 	public function socialMediaSharesReport($data){
 
 		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
@@ -614,21 +584,29 @@ var_dump($s);
 				if($earnings_info && $earnings_info[0]){
 					foreach ($earnings_info as $earnings) {
 						$total_us_pageviews += $earnings['usa_pageviews']; 
+
 					}
 				}
 
-				$total_earnings = ($total_us_pageviews/1000) * $share_rate;
+				if(isset($share_rate) && $share_rate){
+					$share_rate = floatval($share_rate['rate']);
+				}
+
+				if( $total_us_pageviews > 0 ){
+					$total_earnings = ($total_us_pageviews / 1000 ) * $share_rate;
+				}
+
 				$total_to_be_pay = $total_earnings;
 
+				
 				if( isset($prev_month_data) && $prev_month_data ){
 					if($prev_month_data[0]['paid'] == 0){
 						$total_to_be_pay = $total_to_be_pay + $prev_month_data[0]['to_be_pay'];
 					}
-				} 
+				}
 
-				//if($contributor['user_type'] != 4){
-				//	$total_earnings = $total_earnings - $total_article_rate;
-				//}
+				//var_dump($id, $share_rate, $total_us_pageviews); 
+
 
 				if($update_data){
 					$s = "UPDATE contributor_earnings 
@@ -673,8 +651,6 @@ var_dump($s);
 
 				$earnings_info = $this->socialMediaSharesReport($data);
 
-				//var_dump($earnings_info);
-
 				$total_article_rate = 0;
 				$total_shares = 0;
 
@@ -690,7 +666,6 @@ var_dump($s);
 					$total_share_rev = $earnings_info["share_revenue"]; 
 					$total_earnings = $earnings_info["total_to_pay"]; //TOTAL RATE PER ARTICLE + NUMBER OF SHARES * 0.02
 				}
-
 
 				if($contributor['user_type'] != 4){
 					$total_earnings = $total_earnings - $total_article_rate;

@@ -3,6 +3,8 @@
 $article_body = $article_title = $article_category = $article_disclaimer = $article_img_credits =  $article_img_credits = $article_notes = $linkToContributor = $read_more_pct = '';
 $article_id =0;
 $second_image ='';
+$contributor_id = 0;
+$contributor_name = '';
 
 if (isset($articleInfoObj) && $articleInfoObj ){
 	$date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
@@ -15,9 +17,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	if(!isset($articleInfoObj['date_updated']) || $articleInfoObj['date_updated'] == "0000-00-00 00:00:00") $date = date("M d, Y", strtotime($articleInfoObj['creation_date']));
 	else $date = date("M d, Y", strtotime($articleInfoObj['date_updated']));
 
-	$contributor_name = '';
+	
 	if(isset($articleInfoObj['contributor_name']) && $articleInfoObj['contributor_name']) $contributor_name = $articleInfoObj['contributor_name'];
-	$contributor_id = 0;
+	
 	if(isset($articleInfoObj['contributor_id']) && $articleInfoObj['contributor_id']) $contributor_id = $articleInfoObj['contributor_id'];
 
 	$linkToContributor = $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name'];
@@ -37,11 +39,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 <?php if($detect->isMobile()){?>
 <style>
-	#branovate-ad div{
-		margin-left:-4px;
-	}
-	
+	#branovate-ad div{ margin-left:-4px; }
 	#branovate-ad-iframe{ border:none; height:240px;}
+	div#tl_ad { margin-top: 0 !important; padding-top: 0 !important;}
 </style>
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
@@ -108,13 +108,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<?php include_once($config['include_path'].'header_social.php'); ?>
 		
-		<div class="inarticle-ad ad-unit hide-for-print padding-top" style="display: inline-block;">
-		<div id="branovate-ad "class="columns small-12 margin-top margin-bottom">
-			<!-- BEGIN JS TAG - puckermob.com 300x250 < - DO NOT MODIFY -->
-			<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
-			<!-- END TAG -->
+		<!--ADSPARC-->
+		<?php if( $article_id == 8785 ){?>
+
+		<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+			<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
 		</div>
-		</div>
+		<?php }?>
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = [];
@@ -366,16 +366,21 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<div data-str-native-key="53caed05" style="display: none;"></div>
 			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
 		<?php } ?>
-				
+		
+		<!-- CARAMBOLA -->
+		<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+			<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy', 'Cbola_initializeProxy', 'http://route.carambo.la/inimage/getlayer?pid=spdsh12')</script>
+		</section>
+
 		<!-- ADBLADE-->
-		<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding">
+		<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-top:0;">
 			<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
 			<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 		</section>
 		
-		<div id="3lift-ad "class="columns small-12">
+		<!--<div id="3lift-ad "class="columns small-12">
 			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
-		</div>
+		</div>-->
 		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 		<br>

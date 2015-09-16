@@ -24,7 +24,7 @@
 	$limit=20;
 	$post_date = 'all';
 
-	$articleStatus = '1, 2, 3';
+	$articleStatus = 1;
 
 	$artType = '';
 	$allCurrent = 'current';
@@ -48,13 +48,17 @@
 	$filterLabel = 'Most Recent';
 // Sorting information
 	$article_sort_by = "mr";
+
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
+
 		$articleStatus = $sortingMethod['articleStatus'];
 		$filterLabel = $sortingMethod['filterLabel'];
 		$order = $sortingMethod['order'];
 		$article_sort_by = $_GET['sort'];
 	}
+
+
 	// if (isset($_GET['category'])) {$category = $_GET['category'];}
 	if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
 	if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
@@ -64,8 +68,10 @@
 // 3. total record count ($total_count)	
 	// $total_count = $mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter);
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter, $artType));
+
 	
 	$pagination = new Pagination($page, $per_page, $total_count);
+	var_dump($order, $articleStatus, $userArticlesFilter, $artType);
 	
 	$offset = $pagination->offset();
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);

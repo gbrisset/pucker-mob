@@ -40,6 +40,13 @@
 	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
 	<meta property="article:tag" content="<?php echo $headTags; ?>" />
 	<?php } ?>
+	<meta name="twitter:card" content="photo" />
+	<meta name="twitter:site" content="@PuckerMob" />
+	<meta name="twitter:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />
+	<meta name="twitter:image" content="<?php if(isset($articleInfo) && $articleInfo ){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg';}else{echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png';}?>" />
+	<meta name="twitter:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
+
+
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
 	

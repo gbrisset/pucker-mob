@@ -1,5 +1,4 @@
 <?php if($detect->isMobile()){ 
-var_dump($isArticle);
  if(isset($isArticle) && $isArticle ){?>
 	<div id="mobile-instream-toksnn-ad-loader" class="hide">
 		<div id="get-content" style="text-align:center; display: inline-block;">
@@ -7,97 +6,27 @@ var_dump($isArticle);
 		</div>
 	</div>
 	
-	<!--<div id="mobile-instream-3lift-ad-loader" class="hide">
-		<div id="get-content" style="text-align:center;">
-			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-		</div>
-	</div>-->
-	
-	<!--<div id="mobile-bottom-sprocketster-ad-loader" >
-		<div id="get-content" style="text-align:center;">
-			<script id="airpushScript" type="text/javascript" 
-			src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
-			</script>
-		</div>
-	</div>-->
-	<!--<div id="mobile-instream-branovate-ad-loader" >
-		<div id="get-content" style="text-align:center;">
-			<iframe id='ani_passback'  border='0' width='0' height='0'></iframe>
-				<div id="aniplayer"></div>
-				<script type="text/javascript" id="aniviewJS">
-				var adConfig = { 
-					publisherID         :'100976',
-					channelID           :'778254',
-					width               :300,
-					height              :250,
-					HD                  :false,
-					loop                :true, 	
-					vastRetry 	        :5,		
-					passBackUrl	:'http://rnwsrv.vo.llnwd.net/u/html/pans.js',
-					backgroundColor     :'#000000',
-					ref1                :'LR_AUTOPLAY=1',
-				        position            :'aniplayer'
-				};
-				var PlayerUrl = 'http://eu.ani-view.com/Script/4/aniview.js';
-				var myPlayer;
-				function downloadScript(src,adData) {
-				   var scp = document.createElement('script');
-				   scp.src = src;
-				   scp.onload = function() {
-						myPlayer= new aniviewPlayer;
-						myPlayer.play(adConfig);
-				    };
-				   document.getElementsByTagName('head')[0].appendChild(scp);
-				};
-				downloadScript(PlayerUrl,adConfig);
-				</script>
-		</div>
-	</div>-->
- <?php } 
- }else { ?>
-	<!--<div id="header-ad-loader" class="hide">
-      	<div id="get-content">
-		<?php //if(isset($articleInfoObj) && $articleInfoObj){ ?>
-			<script type="text/javascript">
-			  var ord = window.ord || Math.floor(Math.random() * 1e16);
-			  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=728x90,970x90;dcopt=ist;type=pop;type=int;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
-			</script>
-
-			<noscript>
-				<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros;sect=ros;sz=728x90,970x90;ord=[timestamp]?">
-					<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros;sect=ros;sz=728x90,970x90;ord=[timestamp]?" />
-				</a>
-			</noscript>
-		<?php //}else{?>
-		
-		<script type="text/javascript">
-		  var ord = window.ord || Math.floor(Math.random() * 1e16);
-		  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=728x90,970x90;dc_ref='+encodeURIComponent(location.href)+';dcopt=ist;type=pop;type=int;ord=' + ord + '?"><\/script>');
-		</script>
-		<noscript>
-			<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=728x90,970x90;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-				<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=728x90,970x90;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" />
-			</a>
-		</noscript>
-		<?php //}?>
+	<div id="mobile-instream-branovate-ad-loader" class="hide">
+		<div id="get-content" style="text-align:center; display: inline-block;">
+			<div id="branovate-ad "class="columns small-12 margin-top margin-bottom">
+				<!-- BEGIN JS TAG - puckermob.com 300x250 < - DO NOT MODIFY -->
+				<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>
+				<!-- END TAG -->
+			</div>
 		</div>
 	</div>
-	<?php //if(isset($articleInfoObj) && $articleInfoObj){ ?>
-	 <div id="atf-ad-loaded" class="hide" >
-	 	<div id="get-content">
-	 		
-	        <script type="text/javascript">
-	          var ord = window.ord || Math.floor(Math.random() * 1e16);
-	          document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/ros;sect=ros;sz=300x250;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
-	        </script>
-
-	        <noscript>
-	          <a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/ros;sect=ros;sz=300x250;ord=[timestamp]?">
-	            <img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/ros;sect=ros;sz=300x250;ord=[timestamp]?" width="300" height="250" />
-	          </a>
-	        </noscript>
-	 	</div>
-	 </div>
-	 <?php // }?>-->
+	<?php if($articleInfoObj && $articleInfoObj['article_id'] == 8669 ){ ?>
+	<div id="mobile-instream-adsparc-ad-loader" class="hide">
+		<div id="get-content" style="text-align:center; display: inline-block;">
+			<div id="adsparc-ad "class="columns small-12 margin-top margin-bottom">
+				<div id="adsparc-miv"></div>
+				<SCRIPT SRC="http://adsvr2.adsparc.net/ttj?id=5599483&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+			</div>
+		</div>
+	</div>
+	<?php }?>
+ <?php } 
+ }else { ?>
+	
 <?php }  ?>
 

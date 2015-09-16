@@ -821,6 +821,8 @@ echo $i;
 				'updateString' => "INSERT INTO featured_article SET  article_id = :articleId, category_id = 1",
 				'updateParams' => array(':articleId' => $post['a_i'])
 			));
+		}else{
+			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article WHERE article_id = '.$post['a_i']));
 		}
 
 		//Show in homepage moblog article

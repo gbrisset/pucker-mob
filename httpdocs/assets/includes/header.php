@@ -63,16 +63,6 @@
   }
 
  ?>
- <?php if($detect->isMobile()){?>
-
-  <?php if(isset($articleInfoObj) && $articleInfoObj['article_id'] == 8330 ){?>
-    <div id="mobile-instream-3lift-ad-loader" class="hide">
-      <div id="get-content" style="text-align:center;">
-        <script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-      </div>
-    </div>
-  <?php }?>
-<?php }?>
  <!-- Social Media Icons -->
 <div id="nav_bar">
   <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
@@ -153,6 +143,11 @@
   <?php }?>
    
    <?php if($detect->isMobile()){?>
+      <!--<div id="mobile-instream-3lift-ad-loader" class="hide">
+      <div id="get-content" style="text-align:center;">
+        <script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
+      </div>
+    </div>-->
      <div id="social-media-container-header" class="row" style="display:none;"> 
         <div class="columns social-media-container  padding-bottom " style=" display:block !important;">
         <a class="addthis_button_facebook small-4 left">

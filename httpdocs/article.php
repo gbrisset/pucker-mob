@@ -81,6 +81,18 @@ if(!is_null($categoryInfo)){
 <?php } ?>
 		<div id="ros_adoop"></div>
 		<?php include_once($config['include_path'].'header.php');?>
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+	    <script type="text/javascript">
+		
+
+		if(document.readyState === "complete") {
+	  		addthis.init();
+		}else {
+		  //Add onload or DOMContentLoaded event listeners here: for example,
+		  window.addEventListener("onload", function () { addthis.init(); }, false);
+		}
+		</script>
 		<?php 
 			$style = '';
 			$article_id = '';
@@ -189,8 +201,7 @@ if(!is_null($categoryInfo)){
 
 	if(document.readyState === "complete") {
   		addthis.init();
-	}
-	else {
+	}else {
 	  //Add onload or DOMContentLoaded event listeners here: for example,
 	  window.addEventListener("onload", function () { addthis.init(); }, false);
 	}

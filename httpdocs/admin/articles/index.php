@@ -71,11 +71,11 @@
 
 	
 	$pagination = new Pagination($page, $per_page, $total_count);
-	var_dump($order, $articleStatus, $userArticlesFilter, $artType);
+	
 	
 	$offset = $pagination->offset();
-	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
-	
+
+
 	$admin_user = false;
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
 		$admin_user = true;
@@ -85,6 +85,14 @@
 	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 6 ){
 		$inhouse_writer = true;
 	}
+
+	if( $inhouse_writer == false && $admin_user == false){
+		$articleStatus = '1, 2, 3';
+	}
+
+	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
+
+
 
 ?>
 <!DOCTYPE html>
@@ -162,16 +170,18 @@
 						 	<a class="<?php echo $bloggersCurrent; ?>" href="<?php echo $userType_URL.'&sort='.$order.'&artype=bloggers'; ?>">Bloggers</a>
 					     </label>
 					    </div>
-					   
+					  
 					    <div class="columns left small-4 no-padding align-right">
 					     <label>Status:
 					     	<a class="<?php echo $liveClass; ?>" href="<?php  echo $userType_URL.'&sort=1&artype='.$artType; ?>">Live</a> | 
-						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a> |
+						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a>| 
 						 	<a class="<?php echo $pendingClass; ?>" href="<?php echo $userType_URL.'&sort=2&artype='.$artType; ?>">Reviewed</a>
+						
 					     </label>
 					    </div>
 				</section>
-				<?php }?>
+				 <?php }?>
+				
 
 				<section id="articles-list" class="margin-top clear">
 				

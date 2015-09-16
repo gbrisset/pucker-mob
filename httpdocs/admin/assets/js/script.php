@@ -222,15 +222,15 @@ $(document).ready(function (){
 	});
 
 	// Limit the user to select no more than 5 categories at the same time
-	if($("input[type=checkbox]:checked").length >= 5){
-		$("input[type=checkbox]").not(":checked").attr("disabled",true);
-	}  
+	//if($("input[type=checkbox]:checked").length >= 5){
+	//	$("input[type=checkbox]").not(":checked").attr("disabled",true);
+	//}  
 
- 	$("input[type=checkbox]").click(function() {
-    	var bol = $("input[type=checkbox]:checked").length >= 5;  
+ 	//$("input[type=checkbox]").click(function() {
+    //	var bol = $("input[type=checkbox]:checked").length >= 5;  
 
- 		$("input[type=checkbox]").not(":checked").attr("disabled",bol);
-   });
+ 	//	$("input[type=checkbox]").not(":checked").attr("disabled",bol);
+   //});
    //End
 	
 	//$('.colorpicker').mpColorPicker();

@@ -549,7 +549,6 @@ class MPArticleAdminController extends MPArticle{
 		
 		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'You must insert a title'));
 		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
-		//if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'You must insert a Description'));
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
 		$unrequired = array(
@@ -638,6 +637,7 @@ class MPArticleAdminController extends MPArticle{
 		
 		$post['a_i'] = $articleId;
 		$this->updateArticleAdsInfo($post);
+
 		//MOVE and rename image from the temp folder if exists.
 			$img_temp = 'temp_u_'.$_POST['u_i'].'_'.substr($_POST['c_t'], 0, 7).'_tall.jpg';
 			$img_temp_path =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$img_temp;
@@ -714,29 +714,6 @@ class MPArticleAdminController extends MPArticle{
 		}
 
 	}
-
-		/*public function insertrecords(){
-		
-		for($i = 7801; $i <= 7967; $i ++){
-
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO article_ads SET article_id = :articleId, 
-				mobile_1 = 2, 
-				mobile_2 = 5, 
-				mobile_3 = 9, 
-				mobile_4 = 15, 
-				mobile_5 = -1, 
-				desktop_1 = 2, 
-				desktop_2 = 5",
-				'updateParams' => array(':articleId' => $i)
-			));
-echo $i;
-
-		}
-		
-
-		
-	}*/
 
 	/* Begin Article Updating Function */
 	public function updateArticleInfo($post){

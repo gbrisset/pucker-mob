@@ -104,12 +104,15 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important;     margin-bottom: -5px;"> 
 		
 		<!-- ARTICLE BODY -->
-		<p><?php echo $article_body; ?></p>
-		
+		<div id="article-body">
+			<?php echo $article_body; ?>
+		</div>
+
 		<?php include_once($config['include_path'].'header_social.php'); ?>
+
 		
 		<!--ADSPARC-->
-		<?php if( $article_id == 8785 ){?>
+		<?php if( $article_id == 8669 ){?>
 
 		<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 			<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
@@ -177,6 +180,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 		<?php }?>
 
+		
 		<!-- IMAGE SOURCE -->
 		<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 		<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
@@ -188,12 +192,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 
-		<!-- READ MORE MOBILE -->
-		<!--<div id="grad"></div>
-		<p class="read-more" style="margin-bottom:0 !important;"><a href="" class="button">CONTINUE READING</a></p>-->
-
-			<!-- READ MORE MOBILE -->
-			
 		</section>
 
 		<div class="row read-more clear small-12">
@@ -303,7 +301,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<section id="article-content" class="small-12 column sidebar-box padding-top">
 		
 		<!-- ARTICLE BODY -->
-		<p><?php echo $article_body; ?></p>
+		<div id="article-body">
+			<p><?php echo $article_body; ?></p>
+		</div>
 
 		<!-- RELATED ARTICLES -->
 		<?php 
@@ -328,13 +328,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 		<?php }?>
 	
-		<!-- ingageunit 
-		<div class="row clear" >-->
-			<!-- Place in body part
-			<div id="ingageunit"></div> -->
-			<!-- Place in body part 
-		</div>-->
-		
 		<!-- Social Media Icons -->
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				
@@ -378,9 +371,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 		</section>
 		
-		<!--<div id="3lift-ad "class="columns small-12">
-			<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub_desktop"></script>
-		</div>-->
+		
 		<!-- COMMENTS BOX -->
 		<?php include_once($config['include_path'].'disqus.php'); ?>
 		<br>

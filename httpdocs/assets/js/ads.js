@@ -105,7 +105,6 @@ var mobilead = {
 		inarticlenativo: '<div class="nativo" id="nativo-ad"></div>',
 		inarticlebranovate: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="3900787786"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
 		inarticlesharetothercountry: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>' ,
-		inarticle3lift: '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_article_sub"><\/script>',
 		inarticlegoogle4: '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"><\/ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>',
 
 
@@ -125,13 +124,13 @@ if($('body').hasClass('mobile')) {
 
 		//SINGLE PAGE ARTICLE
 		if( adPage === 'article' ){
-			var li_parent = $('#article-content').find('ol');
-			var p_length = $('#article-content').children('p:not(.read-more)').length;
+			var li_parent = $('#article-body').find('ol');
+			var p_length = $('#article-body').children('p:not(.read-more)').length;
 			var li_length = $(li_parent).find('li').length;
 			var isListArticle = false;
 			var tag = 'p', num_items = p_length, first_p = 2, second_p = 5, third_p = 9, fourth_p = 15, fith_p = 22;
 
-			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-content').find('ul');
+			if($(li_parent) && $(li_parent).length == 0 ) li_parent = $('#article-body').find('ul');
 			if(li_length > p_length){
 				isListArticle = true;
 				tag = 'li';
@@ -169,45 +168,19 @@ if($('body').hasClass('mobile')) {
 					ip_address = res.ip;
 				});
 			}
-			//console.log(first_p, second_p, third_p, fourth_p, fith_p);
-			//1ST SPOT
-			/*if( first_p > 0 ){
-				//1st GOOGLE
-				//if(article_id == 8501){ //Komoona article test
-					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
-					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
-					//'<script type="text/javascript">kmn_iframe = true; kmn_placement = "7538b6e9386a88109f9b7f7363f3096e";</script><script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>'
-
-
-				//}else if( article_id == 7853){ //3lift article test
-					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);
-				//}else 
-				if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
-					$.get('http://jsonip.com', function (res) {
-						inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid& LR_CONTENT=1&LR_FORMAT=application/x-shockwave-flash;application/javascript;video%2Fmp4;video%2Fwebm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_UID=REPLACE_ME&CACHEBUSTER=REPLACE_ME&LR_DURATION=REPLACE_ME&&LR_USERAGENT='+user_agent_str+'"></script>', tag);
-					});
-					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid&LR_FORMAT=application/javascript&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_AUTOPLAY=0&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_URL='+current_url+'&ord={cachebreaker}&LR_DURATION=REPLACE_ME&LR_USERAGENT='+user_agent_str+'"></script>', tag);
-				//}else if( article_id == 8330 ){ //TESTING 3lift ADS http://www.puckermob.com/lifestyle/keep-calm-and-carry-on-23-paranoid-thoughts-all-women-have					
-				}else{
-					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
-					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-3lift-ad"></div>', tag);	
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
-					//inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="kmni_7538b6e9386a88109f9b7f7363f3096e" style="display: inline-block;"><\/div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("7538b6e9386a88109f9b7f7363f3096e");});<\/script>', tag);
-				}
-				
-			}*/
+			
 			if( first_p > 0 ){
 				
 				if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
 					$.get('http://jsonip.com', function (res) {
-						inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid& LR_CONTENT=1&LR_FORMAT=application/x-shockwave-flash;application/javascript;video%2Fmp4;video%2Fwebm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_UID=REPLACE_ME&CACHEBUSTER=REPLACE_ME&LR_DURATION=REPLACE_ME&&LR_USERAGENT='+user_agent_str+'"></script>', tag);
+						inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid& LR_CONTENT=1&LR_FORMAT=application/x-shockwave-flash;application/javascript;video%2Fmp4;video%2Fwebm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_UID=REPLACE_ME&CACHEBUSTER=REPLACE_ME&LR_DURATION=REPLACE_ME&&LR_USERAGENT='+user_agent_str+'"></script>', tag);
 					});
 				}else if(article_id == 8669 ){ //http://www.puckermob.com/relationships/8-modern-dating-practices-that-our-parents-generation-wouldnt-understand
 				//ADSPARK VIDEO UNIT
-				inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div id="mobile-instream-adsparc-ad"></div>', tag);
-				//	inBodyAd.loadInArticleAd( 'article-content', first_p, 0, '<div class="nativo"></div>', tag);
+				inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div id="mobile-instream-adsparc-ad"></div>', tag);
+				//	inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div class="nativo"></div>', tag);
 				}else{
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
 				}
 				
 			}
@@ -215,35 +188,30 @@ if($('body').hasClass('mobile')) {
 			//2ND SPOT
 			if( second_p > 0 ){
 				if( country && country == 'US' || country == 'XX'){
-					//if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
-						//inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<script type="text/javascript" src="http://ssp.lkqd.net/ad?pid=124&sid=4752&env=1&format=2&width=300&height=250&dnt=[DO_NOT_TRACK]&output=vast&ip='+ip_address+'&ua='+user_agent_str+'&rnd=[CACHEBUSTER]&pageurl='+current_url+'"></script>', tag);
-					//}else{
-						//inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<div id="mobile-instream-3lift-ad" style="margin-top: -7px;"></div>', tag);	
-						inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticle, tag);	
-
-					//}
+					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, mobilead[adPage].inarticle, tag);	
 				}else{	
-					inBodyAd.loadInArticleAd( 'article-content', second_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
+					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, mobilead[adPage].inarticlesharetothercountry, tag);	
 				}
 			}
 
 			//3RD SPOT
 			if( third_p > 0 ){
-				//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="kmni_cb04f88a1ff0727dc9881e3cfe5d8acc" style="display: inline-block;"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("cb04f88a1ff0727dc9881e3cfe5d8acc");});</script>', tag);
-				//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
-				//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>', tag);
-				//inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div id="mobile-instream-toksnn-ad" class="clear"></div>', tag);
-				inBodyAd.loadInArticleAd( 'article-content', third_p, 0, '<div class="nativo"></div>', tag);
+				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="kmni_cb04f88a1ff0727dc9881e3cfe5d8acc" style="display: inline-block;"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("cb04f88a1ff0727dc9881e3cfe5d8acc");});</script>', tag);
+				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
+				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>', tag);
+				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="mobile-instream-toksnn-ad" class="clear"></div>', tag);
+				inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div class="nativo"></div>', tag);
 			}
 
 			//4TH SPOT
+			console.log( fourth_p, num_items );
 			if( fourth_p > 0 ){
 				if(num_items >= fourth_p ){
 					if($(second_image_url).lenght > 0){
-						inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="second_image_holder"><img src="'+second_image_url+'" alt="Second Image Mobile"/></div>', tag);
+						inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="second_image_holder"><img src="'+second_image_url+'" alt="Second Image Mobile"/></div>', tag);
 					}else{
-						//inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="kmni_fc4492dc405ee8f7fe28922253e2e0cb" style="display: inline-block;"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("fc4492dc405ee8f7fe28922253e2e0cb");});</script>', tag);
-						inBodyAd.loadInArticleAd( 'article-content', fourth_p, 0, '<div id="mobile-instream-branovate-ad" class="clear"></div>', tag);
+						//inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="kmni_fc4492dc405ee8f7fe28922253e2e0cb" style="display: inline-block;"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("fc4492dc405ee8f7fe28922253e2e0cb");});</script>', tag);
+						inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="mobile-instream-branovate-ad" class="clear"></div>', tag);
 
 					}
 				}
@@ -252,7 +220,7 @@ if($('body').hasClass('mobile')) {
 			//5TH SPOT 
 			if( fith_p > 0 ){
 				if(num_items >= fith_p ){
-					inBodyAd.loadInArticleAd( 'article-content', fith_p, 0, mobilead[adPage].inarticleadblade, tag);
+					inBodyAd.loadInArticleAd( 'article-body', fith_p, 0, mobilead[adPage].inarticleadblade, tag);
 				}
 			}
 		}
@@ -320,19 +288,19 @@ if($('body').hasClass('mobile')) {
 			if( first_p > 0 ){
 				//SHARET
 				if( country && country == 'US'){
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, ad[adPage].inarticlesharet, tag);
+					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, ad[adPage].inarticlesharet, tag);
 				}else{
-					inBodyAd.loadInArticleAd( 'article-content', first_p, 0, ad[adPage].inarticlesharetothercountry, tag);
+					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, ad[adPage].inarticlesharetothercountry, tag);
 				}
 			}
 			
 			if( second_p > 0 ){
 				//if(article_id == 8225){ //http://www.puckermob.com/lifestyle/22-signs-youre-expectations-for-life-are-based-on-disney-movies
 				//adSparc
-					inBodyAd.loadInArticleAd( 'article-content', second_p, 0, '<div id="adsparc-instream-ad" ></div>', tag);
+					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="adsparc-instream-ad" ></div>', tag);
 				//}else{
 					//CARAMBOLA
-				//	inBodyAd.loadInArticleAd( 'article-content', second_p, 0, ad[adPage].inarticlecarambola, tag);
+				//	inBodyAd.loadInArticleAd( 'article-body', second_p, 0, ad[adPage].inarticlecarambola, tag);
 				//}
 			}
 		}

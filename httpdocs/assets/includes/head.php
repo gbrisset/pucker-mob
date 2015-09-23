@@ -26,6 +26,7 @@
 		else if(isset($categoryInfo) && strlen($categoryInfo['cat_tags'])) $headTags = $categoryInfo['cat_tags'];
 		else if(isset($mpArticle->data) && strlen($mpArticle->data['article_page_tags'])) $headTags = $mpArticle->data['article_page_tags'];
 	?>
+
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
 	<meta name="author" content="Sequel Media International">
@@ -40,6 +41,7 @@
 	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
 	<meta property="article:tag" content="<?php echo $headTags; ?>" />
 	<?php } ?>
+	
 	<meta name="twitter:card" content="photo" />
 	<meta name="twitter:site" content="@PuckerMob" />
 	<meta name="twitter:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />
@@ -81,22 +83,7 @@
 
  	<?php } ?>
 <?php }else{?>
-	<?php if( isset($articleInfoObj) ){?>
 
-		
-
-
-		<!-- PLACE THIS CODE IN WEBSITE HEADER -->
-		<!-- nativeads pixel 104835-puckermob.com start -->
-		<script type="text/javascript" src="//cpanel.nativeads.com/js/pixel/pixel-104835-6a7effa002488d0ce2e33c794dadc7f47faa6405.js"></script>
-		<!-- nativeads pixel 104835-puckermob.com end -->
-	<?php } ?>
-
-	<?php //if(isset($articleInfoObj) && $articleInfoObj['article_id'] == 7498 ){?>
-          <!-- WAHWAH Radio Player 
-          <script src="http://cdn-s.wahwahnetworks.com/00BA6A/toolbar/publishers/1730/wahwahobject.js"></script>-->
-          <!-- End WAHWAH Radio Player -->
-        <?php // } ?>
 <?php } ?>
 
 <?php if (!$local){?>
@@ -139,6 +126,7 @@
   </div>
 </noscript>
 <?php }?>
+	
 	<!-- Nativo -->
 	<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
 

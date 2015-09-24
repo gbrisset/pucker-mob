@@ -117,7 +117,7 @@ else if($ajax) {
 	<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
 
 	<!-- FACEBOOK POPUP -->
-	<?php include_once($config['include_path'].'facebookpopup.php'); ?>
+	<?php //include_once($config['include_path'].'facebookpopup.php'); ?>
 
 
 </body>

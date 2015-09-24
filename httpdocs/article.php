@@ -84,14 +84,12 @@ if(!is_null($categoryInfo)){
 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 	    <script type="text/javascript">
-		
-
-		if(document.readyState === "complete") {
-	  		addthis.init();
-		}else {
-		  //Add onload or DOMContentLoaded event listeners here: for example,
-		  window.addEventListener("onload", function () { addthis.init(); }, false);
-		}
+			if(document.readyState === "complete") {
+		  		addthis.init();
+			}else {
+			  //Add onload or DOMContentLoaded event listeners here: for example,
+			  window.addEventListener("onload", function () { addthis.init(); }, false);
+			}
 		</script>
 		<?php 
 			$style = '';
@@ -101,7 +99,8 @@ if(!is_null($categoryInfo)){
 			if( $article_id == 4314 || $article_id == 4341){
 				$style = 'margin-top: 7rem !important;';
 			}
-?>
+			
+		?>
 		<!-- MOBILE LEFT TAP -->
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
@@ -201,7 +200,8 @@ if(!is_null($categoryInfo)){
 
 	if(document.readyState === "complete") {
   		addthis.init();
-	}else {
+	}
+	else {
 	  //Add onload or DOMContentLoaded event listeners here: for example,
 	  window.addEventListener("onload", function () { addthis.init(); }, false);
 	}

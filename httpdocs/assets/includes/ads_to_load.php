@@ -15,6 +15,16 @@
 			</div>
 		</div>
 	</div>
+	<?php if($articleInfoObj && $articleInfoObj['article_id'] == 8669 ){ ?>
+	<div id="mobile-instream-adsparc-ad-loader" class="hide">
+		<div id="get-content" style="text-align:center; display: inline-block;">
+			<div id="adsparc-ad "class="columns small-12 margin-top margin-bottom">
+				<div id="adsparc-miv"></div>
+				<SCRIPT SRC="http://adsvr2.adsparc.net/ttj?id=5599483&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+			</div>
+		</div>
+	</div>
+	<?php }?>
  <?php } 
  }else { ?>
 	

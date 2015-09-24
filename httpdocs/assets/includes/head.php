@@ -26,6 +26,7 @@
 		else if(isset($categoryInfo) && strlen($categoryInfo['cat_tags'])) $headTags = $categoryInfo['cat_tags'];
 		else if(isset($mpArticle->data) && strlen($mpArticle->data['article_page_tags'])) $headTags = $mpArticle->data['article_page_tags'];
 	?>
+
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
 	<meta name="author" content="Sequel Media International">
@@ -40,6 +41,7 @@
 	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
 	<meta property="article:tag" content="<?php echo $headTags; ?>" />
 	<?php } ?>
+	
 	<meta name="twitter:card" content="photo" />
 	<meta name="twitter:site" content="@PuckerMob" />
 	<meta name="twitter:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />

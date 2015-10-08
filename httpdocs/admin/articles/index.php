@@ -86,7 +86,7 @@
 		$inhouse_writer = true;
 	}
 
-	if( $inhouse_writer == false && $admin_user == false){
+	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 2){
 		$articleStatus = '1, 2, 3';
 	}
 
@@ -180,9 +180,29 @@
 					     </label>
 					    </div>
 				</section>
-				 <?php }?>
-				
+				 <?php }else{?>
+					<section class="from-diff-users-filter clear">
+					<?php
+					     		$userType_URL = $config['this_admin_url'].'articles/';
 
+					     		if($page > 1){
+					     			$userType_URL .= '?page='.$page;
+					     		}else $userType_URL .= '?page=1';
+
+					     		$order='';
+					     		if (!isset($sortingMethod['order']) || strlen($sortingMethod['order']) == 0){
+									if (isset($sortingMethod)) $order = $sortingMethod['articleStatus'];
+								}
+					     	?>
+					     	 <div class="columns left small-12 no-padding align-right">
+					     	<label>Status:
+					     	<a class="<?php echo $liveClass; ?>" href="<?php  echo $userType_URL.'&sort=1&artype='.$artType; ?>">Live</a> | 
+						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a>
+						
+					     </label>
+					    </div>
+					</section>
+				  <?php }?>
 				<section id="articles-list" class="margin-top clear">
 				
  				<?php

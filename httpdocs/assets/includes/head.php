@@ -62,10 +62,9 @@
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-	<?php if (!$local){
-    	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
-    	else echo $mpArticle->data['article_page_analytics'];
-	} ?>
+	
+
+	
 
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){
@@ -133,13 +132,13 @@
 
 	<!-- Totally Her GPT -->
 	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
-
+<!--
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script>
 	  (adsbygoogle = window.adsbygoogle || []).push({
 	    google_ad_client: "ca-pub-8978874786792646",
 	    enable_page_level_ads: true
 	  });
-	</script>
+	</script>-->
 </head>
  <?php flush(); ?>

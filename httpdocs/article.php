@@ -1,20 +1,20 @@
 <?php
 
-	$isArticle = true;
+$isArticle = true;
    //ISSUE WITH ANNA ARTICLE
-	$current_url = isset($_SERVER['SCRIPT_URI']) ? $_SERVER['SCRIPT_URI'] : '';
-	if($current_url == "http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for"){
-		header('Location: http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for-');
-		die;
-	}
-	if($current_url == "http://www.puckermob.com/fun/21-things-only-antsy-people-do"){
-		header('Location: http://www.puckermob.com/fun/21-things-only-antsy-people-do-');
-		die;
-	}
-	if($current_url == "http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol"){
-		header('Location: http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-');
-		die;
-	}
+$current_url = isset($_SERVER['SCRIPT_URI']) ? $_SERVER['SCRIPT_URI'] : '';
+if($current_url == "http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for"){
+	header('Location: http://www.puckermob.com/relationships/19-things-you-forget-to-thank-your-soulmate-wifey-for-');
+	die;
+}
+if($current_url == "http://www.puckermob.com/fun/21-things-only-antsy-people-do"){
+	header('Location: http://www.puckermob.com/fun/21-things-only-antsy-people-do-');
+	die;
+}
+if($current_url == "http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol"){
+	header('Location: http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-');
+	die;
+}
 
 foreach($MPNavigation->categories as $category){
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
@@ -75,108 +75,105 @@ if(!is_null($categoryInfo)){
 <?php include_once($config['include_path'].'head.php');?>
 
 <?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){ ?>
-	<body id="articleslide" class="mobile">
-<?php }else{ ?>
+<body id="articleslide" class="mobile">
+	<?php }else{ ?>
 	<body id="article" class="mobile">
-<?php } ?>
+		<?php } ?>
 		<div id="ros_adoop"></div>
 		<?php include_once($config['include_path'].'header.php');?>
 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-	    <script type="text/javascript">
+		<script type="text/javascript">
 			if(document.readyState === "complete") {
-		  		addthis.init();
+				addthis.init();
 			}else {
 			  //Add onload or DOMContentLoaded event listeners here: for example,
 			  window.addEventListener("onload", function () { addthis.init(); }, false);
 			}
 		</script>
 		<?php 
-			$style = '';
-			$article_id = '';
-			if(isset($articleInfoObj)) $article_id = $articleInfoObj['article_id'];
-			
-			if( $article_id == 4314 || $article_id == 4341){
-				$style = 'margin-top: 7rem !important;';
-			}
-			
+		$style = '';
+		$article_id = '';
+		if(isset($articleInfoObj)) $article_id = $articleInfoObj['article_id'];
+		
+		if( $article_id == 4314 || $article_id == 4341){
+			$style = 'margin-top: 7rem !important;';
+		}
+		
 		?>
 		<!-- MOBILE LEFT TAP -->
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
-	<main id="main" class="row panel sidebar-on-right" role="main" style="">
-		<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
-			<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
-			
-			<!-- ARTICLE CONTENT -->
-			<?php 
-				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['cairo_pattern_get_linear_points(pattern)ist_id'] != 0){
+		<main id="main" class="row panel sidebar-on-right" role="main" style="">
+			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
+				<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
+				
+				<!-- ARTICLE CONTENT -->
+				<?php 
+				if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
 					include_once($config['template_path'].'multi_page_article.php');
 				} else {
 					include_once($config['template_path'].'single_page_article.php');
 				}
-			?>
-		
-			<!-- SMARTIES PROMOTION -->
-			<?php if( $promotedArticle ){?>
-			    <div class="padding-bottom  show-on-large-up">
-			       <!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
-			        <script language="javascript"><!--
-			        document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+				?>
+				
+				<!-- SMARTIES PROMOTION -->
+				<?php if( $promotedArticle ){?>
+				<div class="padding-bottom  show-on-large-up">
+					<!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
+					<script language="javascript"><!--
+						document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
 			        //-->
-			        </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
-			        <!-- End of JavaScript Tag -->
-			    </div>
+			    </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
+			    <!-- End of JavaScript Tag -->
+			</div>
 			<?php } ?>
 			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
-				<hr>
-				<?php include_once($config['include_path'].'similararticles.php');?>
+			<hr>
+			<?php include_once($config['include_path'].'similararticles.php');?>
 			<?php } ?>	
 			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
-				<!-- COMMENTS BOX -->
-				<?php include_once($config['include_path'].'disqus.php'); ?>
-				<hr>
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			<hr>
 			<?php }?>
-		
+			
 		</section>
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
-		<!-- SHARETHROUGH 2 ARTICLE MOBILE AD -->
-			<?php if(!$promotedArticle){ ?>
-				<div class="columns hide-for-print padding-top ads">
-					<div data-str-native-key="81d7c1fc" style="display: none;"></div>
-				</div>
-			<?php }?>
-
+			<!--ADSPARC 10/09/2015 -->
+			<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+				<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
+			</div>
 
 			<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
-		<?php }?>
+			<?php }?>
 		</section>
 	</main>
 
-<?php include_once('admin/fb/fbfunctions.php'); ?>
-<!-- ADS TO LOAD -->
-<?php include_once($config['include_path'].'ads_to_load.php'); ?>
-<?php include_once($config['include_path'].'bottomscripts.php');?>
+	<?php include_once('admin/fb/fbfunctions.php'); ?>
+	<!-- ADS TO LOAD -->
+	<?php include_once($config['include_path'].'ads_to_load.php'); ?>
+	<?php include_once($config['include_path'].'bottomscripts.php');?>
 
-<!-- MODAL BOX POPUP -->
-<?php //if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
+	<!-- MODAL BOX POPUP -->
+	<?php //if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
 
-<!-- FACEBOOK COMMENTS BOX -->
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-		
+	<!-- FACEBOOK COMMENTS BOX -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
 </body>
 </html>
 
@@ -186,38 +183,38 @@ if(!is_null($categoryInfo)){
 <?php include_once($config['include_path'].'head.php');?>
 
 <?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){ ?>
-	<body id="articleslide">
-<?php }else{ ?>
+<body id="articleslide">
+	<?php }else{ ?>
 	<body id="article">
-<?php } ?>
-	<div id="ros_adoop"></div>
-	<?php include_once($config['include_path'].'header.php');?>
-	<?php include_once($config['include_path'].'header_ad.php');?>
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-    <script type="text/javascript">
-	
+		<?php } ?>
+		<div id="ros_adoop"></div>
+		<?php include_once($config['include_path'].'header.php');?>
+		<?php include_once($config['include_path'].'header_ad.php');?>
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
+		<script type="text/javascript">
+			
 
-	if(document.readyState === "complete") {
-  		addthis.init();
-	}
-	else {
+			if(document.readyState === "complete") {
+				addthis.init();
+			}
+			else {
 	  //Add onload or DOMContentLoaded event listeners here: for example,
 	  window.addEventListener("onload", function () { addthis.init(); }, false);
 	}
-	</script>
-	<main id="main" class="row panel sidebar-on-right" role="main">
+</script>
+<main id="main" class="row panel sidebar-on-right" role="main">
 	<?php if(!$detect->isMobile()){?>
-		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="min-height:none !important; height:auto; ">
+	<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="min-height:none !important; height:auto; ">
 
-	<?php }else{ ?>	
+		<?php }else{ ?>	
 		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index:999; min-height:none !important; height:auto;">
-	<?php } ?>
+			<?php } ?>
 			<input type="hidden" value="<?php echo $articleInfoObj['article_id']; ?>" id="article_id"/>
 			<?php 
 			if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){
 				include_once($config['template_path'].'multi_page_article.php');
-			 } else {
+			} else {
 				include_once($config['template_path'].'single_page_article.php'); 
 			} ?>
 
@@ -225,13 +222,13 @@ if(!is_null($categoryInfo)){
 			
 			<!-- Setting the Poll -->			
 			<?php if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>
-				<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="<?php echo $articleInfoObj['article_poll_id']; ?>"></script>
+			<script src="http://assets-polarb-com.a.ssl.fastly.net/assets/polar-embedded.js" async="true" data-publisher="Sequel" data-poll-id="<?php echo $articleInfoObj['article_poll_id']; ?>"></script>
 			<?php }?>
 
 			<!-- Like us on FB --> 
 			<?php if(!$detect->isMobile()){?>
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
-		
+			
 			<div class="row hide-for-print like-us-fb clear">
 				<p class="columns small-2">Join the Mob!
 					<div class="columns small-9" >
@@ -242,125 +239,93 @@ if(!is_null($categoryInfo)){
 			
 			
 			<?php }
-			}?>
-			<!-- CONTENT AD -->
-			<div id="contentad24777"></div>
-			<script type="text/javascript">
-			    (function() {
-			        var params =
-			        {
-			            id: "a8eb16d0-6594-4e2f-a80b-7ff948aee7a2",
-			            d:  "cHVja2VybW9iLmNvbQ==",
-			            wid: "24777",
-			            cb: (new Date()).getTime()
-			        };
+		}?>
+		<!-- CONTENT AD -->
+		<div id="contentad24777"></div>
+		<script type="text/javascript">
+			(function() {
+				var params =
+				{
+					id: "a8eb16d0-6594-4e2f-a80b-7ff948aee7a2",
+					d:  "cHVja2VybW9iLmNvbQ==",
+					wid: "24777",
+					cb: (new Date()).getTime()
+				};
 
-			        var qs="";
-			        for(var key in params){qs+=key+"="+params[key]+"&"}
-			        qs=qs.substring(0,qs.length-1);
-			        var s = document.createElement("script");
-			        s.type= 'text/javascript';
-			        s.src = "http://api.content.ad/Scripts/widget.aspx?" + qs;
-			        s.async = true;
-			        document.getElementById("contentad24777").appendChild(s);
-			    })();
-			</script>
-			<!-- ALSO IN CATEGORY -->
-			<?php //include_once($config['include_path'].'similararticles.php');?>
-			<?php if( !$promotedArticle ){ ?>
-			<!-- AROUND THE WEB -->
-			<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
-			<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
-				<h2 style="margin-top:30px;">Also in <span>PUCKERMOB:</span></h2>			
-			</section>
-			<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
-			<?php }?>
-			
+				var qs="";
+				for(var key in params){qs+=key+"="+params[key]+"&"}
+					qs=qs.substring(0,qs.length-1);
+				var s = document.createElement("script");
+				s.type= 'text/javascript';
+				s.src = "http://api.content.ad/Scripts/widget.aspx?" + qs;
+				s.async = true;
+				document.getElementById("contentad24777").appendChild(s);
+			})();
+		</script>
+		<!-- ALSO IN CATEGORY -->
+		<?php //include_once($config['include_path'].'similararticles.php');?>
+		<?php if( !$promotedArticle ){ ?>
+		<!-- AROUND THE WEB -->
+		<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
+		<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
+			<h2 style="margin-top:30px;">Also in <span>PUCKERMOB:</span></h2>			
 		</section>
-		<?php include_once($config['include_path'].'rightsidebar.php');?>
+		<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
+		<?php }?>
+		
+	</section>
+	<?php include_once($config['include_path'].'rightsidebar.php');?>
 
-		<!-- LEFT SIDE BAR -->
-		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
-	</main>
-	
-	<?php 
-		include_once('admin/fb/fbfunctions.php'); 
-		include_once($config['include_path'].'ads_to_load.php');
-    	include_once($config['include_path'].'bottomscripts.php');
-    ?>
+	<!-- LEFT SIDE BAR -->
+	<?php include_once($config['include_path'].'left_side_bar.php'); ?>
+</main>
 
-    <!-- MODAL BOX POPUP -->
-	<?php
-		include_once($config['include_path'].'login_register_popup.php'); 
+<?php 
+include_once('admin/fb/fbfunctions.php'); 
+include_once($config['include_path'].'ads_to_load.php');
+include_once($config['include_path'].'bottomscripts.php');
+?>
+
+<!-- MODAL BOX POPUP -->
+<?php
+include_once($config['include_path'].'login_register_popup.php'); 
 		 //if($articleInfoObj['article_id'] == 4653 ) include_once($config['include_path'].'modalboxform.php'); 
 		// else include_once($config['include_path'].'modalbox.php'); 
-	?>
+?>
 
-	<div id="openModal" class="modalDialogFollow">
+<div id="openModal" class="modalDialogFollow">
 	<div id="popup-content" class="follow-msg-content">
 		<a href="#close" title="Close" class="close">X</a>
 		<div class="small-12" id="follow-box">
 			<header>PUCKERMOB</header>
-        	<section>
-        		<h1>Your are following this author!</h1>
+			<section>
+				<h1>Your are following this author!</h1>
 				<p id="follow-msg" class="follow-msg" ></p>
 			</section>
 		</div>
 	</div>
-	</div>
-	<!-- FACEBOOK COMMENTS BOX -->
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
+</div>
+<!-- FACEBOOK COMMENTS BOX -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-	
-    <?php if( $promotedArticle ){ ?>
-    	<!-- SMARTIES -->
-		<script language="javascript">document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3366273/0/16/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
-		</script>
-		<noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
-    <?php }?>
 
-   	<!-- MODAL BOX FOLLOWERS POPUP -->
-	<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
-		<script>
-(function() {
-    var message = "We've detected that you have an ad blocker enabled! Please enable it and help support our work!";
-
-        // Define a function for showing the message.
-        // Set a timeout of 2 seconds to give adblocker
-        // a chance to do its thing
-        var tryMessage = function() {
-            setTimeout(function() {
-                if(!document.getElementsByClassName) return;
-                var ads = document.getElementsByClassName('afs_ads'),
-                    ad  = ads[ads.length - 1];
-
-                if(!ad
-                    || ad.innerHTML.length == 0
-                    || ad.clientHeight === 0) {
-                    alert(message);
-                    //window.location.href = '[URL of the donate page. Remove the two slashes at the start of thsi line to enable.]';
-                } else {
-                    ad.style.display = 'none';
-                }
-
-            }, 2000);
-        }
-
-        /* Attach a listener for page load ... then show the message */
-        if(window.addEventListener) {
-            window.addEventListener('load', tryMessage, false);
-        } else {
-            window.attachEvent('onload', tryMessage); //IE
-        }
-})();
+<?php if( $promotedArticle ){ ?>
+<!-- SMARTIES -->
+<script language="javascript">document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3366273/0/16/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
 </script>
+<noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
+<?php }?>
+
+<!-- MODAL BOX FOLLOWERS POPUP -->
+<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
+
 </body>
 </html>
 <?php } ?>

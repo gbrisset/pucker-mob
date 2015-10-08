@@ -42,6 +42,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	#branovate-ad div{ margin-left:-4px; }
 	#branovate-ad-iframe{ border:none; height:240px;}
 	div#tl_ad { margin-top: 0 !important; padding-top: 0 !important;}
+	#article-content p:first-child{margin-bottom: 1.25rem !important;}
 </style>
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
@@ -107,14 +108,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div id="article-body">
 			<?php echo $article_body; ?>
 		</div>
+		
 
 		<?php include_once($config['include_path'].'header_social.php'); ?>
 
-		
+		<?php if( $article_id == 9098 ){ ?>
+			<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+				<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+			</div>
+		<?php }else{?>
 		<!--ADSPARC-->
 		<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 			<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
 		</div>
+		<?php }?>
 	
 		<!-- RELATED ARTICLES -->
 		<?php 
@@ -260,7 +267,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			?>
 				<div id="smarties-image" class="small-12 columns half-padding-right-on-lg">
 					<span style="position: absolute; right: 0.45rem; z-index: 999;" >
-						<img style="<?php echo $smartiesImagestyle; ?>" src="http://dev.puckermob.com/assets/img/sponsoredby-smarties.png">
+						<img style="<?php echo $smartiesImagestyle; ?>" src="http://www.puckermob.com/assets/img/sponsoredby-smarties.png">
 					</span>
 				</div>
 			<?php } ?>
@@ -301,8 +308,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- ARTICLE BODY -->
 		<div id="article-body">
 			<p><?php echo $article_body; ?></p>
-		</div>
 
+		</div>
+		
 		<!-- RELATED ARTICLES -->
 		<?php 
 		$related = []; 

@@ -155,9 +155,9 @@ if($('body').hasClass('mobile')) {
 			});
 
 			if( tag == 'p'){
-				first_p = first_p + 1;
-				second_p = second_p + 1;
-				third_p = third_p + 1;
+				first_p = first_p;
+				second_p = second_p;
+				third_p = third_p;
 			}
 
 			if(article_id == 7614){
@@ -171,14 +171,14 @@ if($('body').hasClass('mobile')) {
 			
 			if( first_p > 0 ){
 				
-				if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
-					$.get('http://jsonip.com', function (res) {
-						inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid& LR_CONTENT=1&LR_FORMAT=application/x-shockwave-flash;application/javascript;video%2Fmp4;video%2Fwebm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_UID=REPLACE_ME&CACHEBUSTER=REPLACE_ME&LR_DURATION=REPLACE_ME&&LR_USERAGENT='+user_agent_str+'"></script>', tag);
-					});
-				}else if(article_id == 8669 ){ //http://www.puckermob.com/relationships/8-modern-dating-practices-that-our-parents-generation-wouldnt-understand
-				//ADSPARC VIDEO UNIT
-				inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div id="mobile-instream-adsparc-ad"></div>', tag);
-				//	inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div class="nativo"></div>', tag);
+				//if( article_id == 7614 ){ //TESTING SPROCKESTER ADS
+					//$.get('http://jsonip.com', function (res) {
+					//	inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<script type="text/javascript" src="http://ad4.liverail.com/?LR_PUBLISHER_ID=136898&LR_SCHEMA=vast2-vpaid& LR_CONTENT=1&LR_FORMAT=application/x-shockwave-flash;application/javascript;video%2Fmp4;video%2Fwebm&LR_TITLE=REPLACE_ME&LR_VIDEO_ID=REPLACE_ME&LR_IP='+ip_address+'&LR_TAGS=REPLACE_ME&LR_UID=REPLACE_ME&CACHEBUSTER=REPLACE_ME&LR_DURATION=REPLACE_ME&&LR_USERAGENT='+user_agent_str+'"></script>', tag);
+					//});
+				//}else 
+				if(article_id == 8669 ){ //http://www.puckermob.com/relationships/8-modern-dating-practices-that-our-parents-generation-wouldnt-understand
+					//ADSPARC VIDEO UNIT
+					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div id="mobile-instream-adsparc-ad"></div>', tag);
 				}else{
 					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, mobilead[adPage].inarticlegoogle4, tag);
 				}
@@ -198,7 +198,6 @@ if($('body').hasClass('mobile')) {
 			if( third_p > 0 ){
 				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="kmni_cb04f88a1ff0727dc9881e3cfe5d8acc" style="display: inline-block;"></div><script>$.getScript("//cdn.komoona.com/scripts/kmn_sa.js").done(function( script, textStatus ) {kmn_sa.tag("cb04f88a1ff0727dc9881e3cfe5d8acc");});</script>', tag);
 				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
-				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-104835-1ce7cfe58df073099621d46d348f56db35a3c2e3.js" async></script>', tag);
 				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="mobile-instream-toksnn-ad" class="clear"></div>', tag);
 				inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div class="nativo"></div>', tag);
 			}
@@ -236,7 +235,7 @@ if($('body').hasClass('mobile')) {
 	}
 
 	if(adPage == 'article'){
-		appendAdEndBody($('#mobile-instream-toksnn-ad-loader'), $('#mobile-instream-toksnn-ad'), 100);
+		//appendAdEndBody($('#mobile-instream-toksnn-ad-loader'), $('#mobile-instream-toksnn-ad'), 100);
 		appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
 		if(article_id == 8669 ){
 			appendAdEndBody($('#mobile-instream-adsparc-ad-loader'), $('#mobile-instream-adsparc-ad'), 100);

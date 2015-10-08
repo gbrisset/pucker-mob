@@ -6,12 +6,28 @@
 <script type="text/javascript" src="http://cdn-assets.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js" ></script>
+  <?php if (!$local){
+      if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
+      else echo $mpArticle->data['article_page_analytics'];
+  } ?>
+  <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+    <script src="<?php echo $config['this_url']; ?>assets/js/jquery.scrolldepth.min.js"></script>
+    <script>
+    $(function() {
+      $.scrollDepth({
+          elements:['#header-social-buttons', '#inarticle2-ad', '#inarticle5-ad', '#inarticle9-ad' , '#inarticle15-ad' ],
+          userTiming: false,
+        pixelDepth: false,
+          nonInteraction: false
+      });
+    });
+    </script>
+  <?php } ?>
 <?php }else {?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
 <?php }?>
 
 <!-- DESKTOP -->
@@ -85,13 +101,14 @@
       </script>
       <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
   <?php  } ?>
-    
+  <!-- Sprockester Airpush Unit : Oct 6, 4:17PM -->
+   <script id="airpushScript" type="text/javascript" 
+    src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
+  </script>
 <?php }?>
 
 <!-- DESKTOP & MOBILE SCRIPT -->
 <?php if(isset($articleInfo) && $articleInfo){ ?>
-
-
   <!-- Addthis -->
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async ></script>
   <script type="text/javascript">

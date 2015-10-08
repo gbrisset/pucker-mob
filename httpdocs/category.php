@@ -1,6 +1,17 @@
 <?php
 $categoryInfo = null;
 $category_page = true;
+
+$current_url = isset($_SERVER['SCRIPT_URI']) ? $_SERVER['SCRIPT_URI'] : '';
+	if($current_url == "http://www.puckermob.com/relationships/" || $current_url == "http://www.puckermob.com/relationships" 
+		|| $current_url == "http://www.puckermob.com/fun" || $current_url == "http://www.puckermob.com/fun/"  
+		|| $current_url == "http://www.puckermob.com/lifestyle" || $current_url == "http://www.puckermob.com/lifestyle/"
+		|| $current_url == "http://www.puckermob.com/money" || $current_url == "http://www.puckermob.com/money/" 
+		|| $current_url == "http://www.puckermob.com/entertainment" || $current_url == "http://www.puckermob.com/entertainment/" ){
+		header('Location: http://www.puckermob.com');
+		die;
+	}
+
 foreach($MPNavigation->categories as $category){
 	if( isset($category['cat_dir_name'])&& !(isset($uri[1])) && isset($uri[0]) && ($category['cat_dir_name'] == $uri[0])  ){
 		$categoryInfo = $category;

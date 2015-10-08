@@ -14,16 +14,15 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 	}
 	$ss_user_id=0;
 	$ss_user_email = '';
+	$ss_author_id = 0;
 	$userInfo =  $adminController->user->getUserInfo();
 	if(!isset($userInfo) || !$userInfo) $userInfo = $follow->getReaderInfo();
 	if(isset($_SESSION) && isset($_SESSION['user_id'])) $ss_user_id = $_SESSION['user_id'];
 
+	if(isset($articleInfoObj)) $ss_user_id = $articleInfoObj['contributor_id'];
 	if($userInfo) $ss_user_email = $userInfo['user_email'];
 
-	$following_this_author = $follow->isFollowingThisAuthor($userInfo['user_email'], $contributor_id);
-
-	//var_dump($adminController->user->getUserInfo());
-	
+	$following_this_author = $follow->isFollowingThisAuthor($userInfo['user_email'], $contributor_id);	
 ?>
 <div class="row">
 <?php if($detect->isMobile() ){?>
@@ -43,10 +42,10 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 		<div class="author-info columns no-padding">
 			<input type="hidden" id="ss_user_id" value="<?php echo $ss_user_id; ?>" />
 			<input type="hidden" id="ss_user_email" value="<?php echo $ss_user_email; ?>" />
-			<input type="hidden" id="ss_author_id" value="<?php echo $articleInfoObj['contributor_id']?>" />
+			<input type="hidden" id="ss_author_id" value="<?php echo $ss_user_id; ?>" />
 			<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
 			<?php if($detect->isMobile()){?>
-				<p><!--<label>Filed Under: <?php //echo $article_category; ?></label>--><label><i class="fa fa-circle"></i> <?php echo $date; ?></label></p>
+				<p><label><i class="fa fa-circle"></i> <?php echo $date; ?></label></p>
 			<?php }else{?>
 				<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
 			<?php } ?>

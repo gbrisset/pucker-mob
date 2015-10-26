@@ -148,12 +148,13 @@ if(!is_null($categoryInfo)){
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
-			<!--ADSPARC 10/09/2015 -->
-			<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-				<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
-			</div>
+			<!-- Talk Media Ad 10/09/2015 3:00 PM ( SWITCH TI THIS SPOT ON OCT 26)-->
+				<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+					<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
+				</div>
 
-			<!-- 10  MOST RECENT ARTICLES ADDED -->
+				<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
 			<?php }?>

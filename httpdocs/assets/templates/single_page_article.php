@@ -116,10 +116,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 							<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 						</div>
-						<!-- Talk Media Ad 10/09/2015 3:00 PM-->
+						<!--ADSPARC 10/09/2015 ( SWITCH TI THIS SPOT ON OCT 26)-->
 						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-						<div id="get-content" style="text-align:center; display: inline-block;">
-							<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
+							<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
 						</div>
 					</div>
 						

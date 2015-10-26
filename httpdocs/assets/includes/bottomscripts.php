@@ -17,8 +17,9 @@
       $.scrollDepth({
           elements:['#header-social-buttons', '#inarticle2-ad', '#inarticle5-ad', '#inarticle9-ad' , '#inarticle15-ad' ],
           userTiming: false,
-        pixelDepth: false,
-          nonInteraction: false
+          pixelDepth: false,
+          nonInteraction: false,
+          percentage: false
       });
     });
     </script>

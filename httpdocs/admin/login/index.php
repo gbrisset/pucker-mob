@@ -85,7 +85,7 @@
 							<input type="email" id="user_login_input" name="user_login_input" value="<?php if(isset($loginStatus) && $loginStatus['hasError']) echo $_POST['user_login_input']; ?>" placeholder="email" required  autofocus />
 							<input type="password" id="user_login_password_input" name="user_login_password_input" value="<?php if(isset($loginStatus) && $loginStatus['hasError']) echo $_POST['user_login_password_input']; ?>" placeholder="password" required <?php if(isset($loginStatus) && isset($loginStatus['field']) && $loginStatus['field'] == 'password') echo 'autofocus'; ?> />
 
-				   			<p class="registration-akn">By logging in, you acknowledge that you have read and agree with our Terms of Service.</p>
+				   			<p class="registration-akn">By logging in, you acknowledge that you have read and agree with our <a href="http://www.puckermob.com/policy" style=" text-transform: capitalize; text-decoration:underline;">Terms of Service.</a></p>
 					   		
 					   		<div class="">
 							    <div class="">

@@ -119,7 +119,7 @@ $(document).ready(function() {
 							<div class="g-recaptcha" style="margin-left:-7px; " data-sitekey="<?php echo RECAPTCHAPUBLICKEY; ?>"></div>
 					        <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en"></script>
 				   			
-				   			<p class="registration-akn">By registering, you acknowledge that you have read and agree with our Terms of Service.</p>
+				   			<p class="registration-akn">By registering, you acknowledge that you have read and agree with our <a href="http://www.puckermob.com/policy" style=" text-transform: capitalize; text-decoration:underline;">Terms of Service.</a></p>
 					   		<div class="">
 							    <div class="">
 									<?php if(isset($loginStatus)){ ?><p class="<?php echo ($loginStatus['hasError'] == true) ? 'error' : 'success'; ?>"><?php echo $loginStatus['message']; ?></p><?php } ?>

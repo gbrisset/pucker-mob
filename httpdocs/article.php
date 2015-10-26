@@ -103,9 +103,13 @@ if(!is_null($categoryInfo)){
 		?>
 		<!-- MOBILE LEFT TAP -->
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
-		
+			<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-bottom: 5px; margin-top: 5px;  }</style>
+
 		<main id="main" class="row panel sidebar-on-right" role="main" style="">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
+				<div class="evolve-media">
+					<div id="ros_1207"></div>
+				</div>
 				<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
 				
 				<!-- ARTICLE CONTENT -->

@@ -3,7 +3,7 @@
 	
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 	$article = $articleResultSet['articles'];
-
+var_dump($article, $article['article_title']);
 	if(empty($article)) $mpShared->get404();
 
 	// If the article exists and has an id, check to see if this user has permissions to edit this article...
@@ -41,7 +41,6 @@
 	if(isset($artImageDir) && !empty($artImageDir) && !is_null($artImageDir)){
 		$artImageExists = file_exists($artImageDir);
 	}
-	
 	//Contributor Info
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributor_email = $adminController->user->data['user_email'];
@@ -125,6 +124,8 @@
 				$article_status = "Pending Review";
 		}
 	}*/
+
+	var_dump($article['article_title']);
 ?>
 
 <!DOCTYPE html>

@@ -17,6 +17,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <body id="home" class="mobile background-eee">
 	<!-- Out of page for home -->
 	<div id="home_adoop"></div>
+	<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-top: 5px;    }</style>
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
 
@@ -24,7 +25,12 @@ if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 	<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
 	<main id="main" class="row panel sidebar-on-right" role="main">
+		
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-11 columns translate-fix sidebar-main-left">
+			<div class="evolve-media">
+			<div id="home_1197"></div>
+		</div>
+
 			<?php 
 			$articlesList = $mpArticle->getArticles(['count' => 24]);
 			include_once($config['include_path'].'articlelistmobile.php'); ?>

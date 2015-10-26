@@ -116,7 +116,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 							<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 						</div>
-						
+						<!-- Talk Media Ad 10/09/2015 3:00 PM-->
+						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+						<div id="get-content" style="text-align:center; display: inline-block;">
+							<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
+						</div>
+					</div>
 						
 						<!-- RELATED ARTICLES -->
 						<?php 
@@ -193,13 +198,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							<?php include_once($config['include_path'].'disqus.php'); ?>
 
 						</section>
-
-						<div class="row read-more clear small-12">
+						<!-- REMOVED OCT 26th 3PM -->
+						<!--<div class="row read-more clear small-12">
 
 							<div class="button">
 								<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
 							</div>
-						</div>
+						</div>-->
 
 					</div>
 					

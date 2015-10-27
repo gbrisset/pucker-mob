@@ -22,6 +22,10 @@
 			$moblevel = 'Pro'; 
 			//$explanation = "Find more about Mob Levels, and the benefits you enjoy by being a Pro blogger";
 			break;
+		case 9:
+			$moblevel = 'Invited'; 
+			//$explanation = "Find more about Mob Levels, and the benefits you enjoy by being a Pro blogger";
+			break;
 		default:
 			$moblevel = 'Basic';
 			//$explanation = "Find more about Mob Levels, and how you can earn more by becoming a Pro blogger";

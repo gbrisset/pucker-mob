@@ -116,7 +116,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 							<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 						</div>
-						
+						<!--ADSPARC 10/09/2015 ( SWITCH TI THIS SPOT ON OCT 26)-->
+						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+							<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
+						</div>
+					</div>
 						
 						<!-- RELATED ARTICLES -->
 						<?php 
@@ -193,13 +197,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							<?php include_once($config['include_path'].'disqus.php'); ?>
 
 						</section>
-
-						<div class="row read-more clear small-12">
+						<!-- REMOVED OCT 26th 3PM -->
+						<!--<div class="row read-more clear small-12">
 
 							<div class="button">
 								<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
 							</div>
-						</div>
+						</div>-->
 
 					</div>
 					

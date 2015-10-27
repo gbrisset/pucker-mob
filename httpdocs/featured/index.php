@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'nativo_head.php');?>
-<body id="category">
+<body>
 <?php include_once($config['include_path'].'header.php');?>
 
 

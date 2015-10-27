@@ -80,9 +80,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<a class="addthis_button_facebook small-4 left">
 						<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
 					</a> 
-					<a class="addthis_button_twitter  small-2 left">
-						<label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
-					</a> 
+					<a class="addthis_button_pinterest_share small-2 left">
+						<label class="label-social-button-2-mobile left"><i class="fa fa-pinterest" style="margin-right: 9%; font-size: 1.2rem;position: relative; top: 1px; left: 3px;"></i></label>
+					</a>
 					<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
 					
 				</div>	
@@ -110,6 +110,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						</div>
 						
 
+						
+
+
 						<?php include_once($config['include_path'].'header_social.php'); ?>
 
 						<!-- ShareT. 2nd Spot 10/08/2015 -->
@@ -121,7 +124,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
 						</div>
 					</div>
-						
+					
 						<!-- RELATED ARTICLES -->
 						<?php 
 						$related = [];

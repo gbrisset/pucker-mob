@@ -1,8 +1,5 @@
 #about-the-author {
 	 padding-right: 8px !important;
-  	/*padding-top: 1rem;
-	padding-bottom: 1.4rem;
-	padding-right:0;*/
 
 	i {
 		margin: 0;
@@ -84,31 +81,40 @@ label.follow-author{
 	.hide-on-small-and-mobile{display:none;}
 	.author-on-mobile-small{display:inline;}
 	.author-on-medium-up{display:none;}
-	 #about-the-author #about-the-author-bg .author-info{width: 70%; margin-left: 0.4rem; padding-top:0.3rem; }
+	 #about-the-author #about-the-author-bg .author-info{width: 72%; margin-left: 0.4rem; padding-top:0.3rem; }
 	 .author-image{ max-width: 60px !important; min-width:60px  !important; } 
 	 .follow-author{ font-size:0.8rem; height: 5.8rem; }
 	 #about-the-author h4{ font-size: 0.87rem; height: 2rem; display: table-cell; vertical-align: middle; }
 	 #about-the-author #about-the-author-bg{width:100%; padding: 0.2rem 0 0.15rem 0 !important;  margin:0.2rem 0; }
-	 #author-links{ display:none; }
+	 
 	 #about-the-author #about-the-author-bg p{ margin-top:-5px; color: #777; font-family: CrimsonText, "Oslo","Helvetica Neue","Helvetica",Helvetica,sans-serif !important; }
 	 #about-the-author #about-the-author-bg p label{ display: inline; font-size: 0.65rem; text-transform: capitalize; }
 	 #about-the-author #about-the-author-bg p label i{ font-size: 5px; color:#777; margin:0.2rem; position: relative; top: -2px; right: -2px;}
+
+	 .fb-tw-mobile{
+	 	a{ color: #000 !important;}
+	 	
+	 }
 }
 
 @media #{$mobile-only} { 
 	.hide-on-small-and-mobile{display:none;}
 	.author-on-mobile-small{display:inline-block;}
 	 .author-on-medium-up{display:none;}
-	 #about-the-author #about-the-author-bg .author-info{width: 70%; margin-left: 0.4rem;  padding-top:0.3rem;}
+	 #about-the-author #about-the-author-bg .author-info{width: 72%; margin-left: 0.4rem;  padding-top:0.3rem;}
 	 .author-image{ max-width: 60px !important; min-width:60px !important;} 
 	 .follow-author{ font-size:0.8rem; height: 5.8rem;}
 	 #about-the-author h4{ font-size: 0.87rem; height: 2rem; display: table-cell; vertical-align: middle;}
 	 #about-the-author #about-the-author-bg{width:100%; padding: 0.2rem 0 0.15rem 0 !important; margin:0.2rem 0;}
-	 #author-links{ display:none;}
+	
 	 #about-the-author #about-the-author-bg p{ margin-top:-5px; font-family: CrimsonText, "Oslo","Helvetica Neue","Helvetica",Helvetica,sans-serif !important;}
 	 #about-the-author #about-the-author-bg p label{ display: inline; font-size: 0.65rem; text-transform: capitalize; }
 	 #about-the-author #about-the-author-bg p label i{ font-size: 5px; color:#777; margin:0.2rem; position: relative; top: -2px; right: -2px;}
 
+	.fb-tw-mobile{
+	 	a{ color: #000 !important;}
+	 	
+	 }
 
 }
 @media #{$medium-up} {

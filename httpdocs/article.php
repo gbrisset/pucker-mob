@@ -32,8 +32,6 @@ foreach($MPNavigation->categories as $category){
 
 if(!is_null($categoryInfo)){
 	$articleInfo = $mpArticle->getSingleArticleInfo(['articleSEOTitle' => $articleTitle]);
-	//$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
-	//$cat_name = $articleInfo['articles'][0]['cat_dir_name'];
 
 	//ISSUE WITH WENDESDAY ARTICLE 
 	if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
@@ -65,8 +63,6 @@ if(!is_null($categoryInfo)){
 }else {
 	$mpShared->get404();
 }
-
-//	include_once('admin/fb/fbfunctions.php');
 
 ?>
 <?php if ( $detect->isMobile() ) { ?>
@@ -107,7 +103,7 @@ if(!is_null($categoryInfo)){
 
 		<main id="main" class="row panel sidebar-on-right" role="main" style="">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
-				<div class="evolve-media">
+				<div class="evolve-media ad-unit hide-for-print">
 					<div id="ros_1207"></div>
 				</div>
 				<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>

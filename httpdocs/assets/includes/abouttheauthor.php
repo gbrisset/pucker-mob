@@ -27,8 +27,8 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 <div class="row">
 <?php if($detect->isMobile() ){?>
 	<section id="about-the-author" class="small-12 hide-for-print padding">
-		<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
-		<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 0rem;">
+		<div id="about-the-author-bg" class="columns small-10 no-padding margin-top" style="min-height: 5rem;">
+		<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 0rem;     top: 6px;">
 <?php }else{?>
 	<section id="about-the-author" class="columns small-12 hide-for-print">
 		<div id="about-the-author-bg" class="columns small-10 no-padding">
@@ -36,7 +36,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 <?php }?>
 	
 			<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>">
-				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" style="max-height: 91px;"/>
+				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image" style="max-height: 91px; "/>
 			</a>
 		</div>
 		<div class="author-info columns no-padding">
@@ -45,11 +45,36 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<input type="hidden" id="ss_author_id" value="<?php echo $ss_user_id; ?>" />
 			<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
 			<?php if($detect->isMobile()){?>
-				<p><label><i class="fa fa-circle"></i> <?php echo $date; ?></label></p>
+				<!--<p style="width: 43%; float: left;"><label><i class="fa fa-circle"></i> <?php //echo $date; ?></label> </p>-->
+				<label class="fb-tw-mobile">
+					
+					<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>
+					<a href="<?php echo $articleInfoObj['contributor_facebook_link']; ?>" class="small" target="_blank">
+						<i class="fa fa-facebook"></i>
+						<?php 
+						$facebookObj = explode('/', $articleInfoObj['contributor_facebook_link']);
+						
+						if(isset($facebookObj) && $facebookObj ){
+
+							echo '/'.$facebookObj[count($facebookObj)-1];
+						}?>
+					</a>
+					<?php } ?>
+					</label>
+					<label  class="fb-tw-mobile">
+					<?php if(isset($articleInfoObj['contributor_twitter_handle']) && strlen($articleInfoObj['contributor_twitter_handle'])){ ?>
+					<a href="http://www.twitter.com/<?php echo $articleInfoObj['contributor_twitter_handle']; ?>" class="small " target="_blank">
+						<i class="fa fa-twitter"></i>
+						<?php  echo $articleInfoObj['contributor_twitter_handle']; ?>
+					</a>
+					<?php } ?>
+					</label>
+					
+			</div>
+			
 			<?php }else{?>
 				<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
-			<?php } ?>
-			<div id="author-links">
+				<div id="author-links">
 						<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>
 							<a href="<?php echo $articleInfoObj['contributor_facebook_link']; ?>" class="button small facebook" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
 						<?php } ?>
@@ -63,6 +88,8 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 
 				<a class="button small more-contributors hide-on-small-and-mobile" href="<?php echo $config['this_url'].'contributors';?>"><i class="fa fa-users"></i>More Contributors</a>
 			</div>
+			<?php } ?>
+			
 		</div>
 	</div>
 	<div id="follow-the-author-bg" class="columns small-2 no-padding author-on-medium-up">

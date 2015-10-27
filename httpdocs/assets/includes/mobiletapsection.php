@@ -16,13 +16,8 @@
 				<?php 
 				$index = 0;
 				foreach( $mostReadArticlesList as $article ){
-					
 					$linkToArticle = $config['this_url'].$article['url'];
-
-					//if($index == 3 ){?>
-					<!--<div class="columns padding-top padding-bottom" style="text-align:center;">
-					</div>-->
-					<?php// } ?>
+				?>
 				<article id="article-<?php echo $article['article_id']; ?>" class="columns">
 					<div class="article-image small-6 left">
 						<a href="<?php echo $linkToArticle; ?>">
@@ -57,5 +52,5 @@
 			</div>
 		</div>
 	</nav>
- 	<button class="nav-toggler toggle-slide-left rotate ">TAP</button>
+ 	<button class="nav-toggler toggle-slide-left rotate ">MORE</button>
 </div>

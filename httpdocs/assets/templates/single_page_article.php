@@ -80,9 +80,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<a class="addthis_button_facebook small-4 left">
 						<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
 					</a> 
-					<a class="addthis_button_twitter  small-2 left">
-						<label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
-					</a> 
+					<a class="addthis_button_pinterest_share small-2 left">
+						<label class="label-social-button-2-mobile left"><i class="fa fa-pinterest" style="margin-right: 9%; font-size: 1.2rem;position: relative; top: 1px; left: 3px;"></i></label>
+					</a>
 					<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
 					
 				</div>	
@@ -110,14 +110,21 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						</div>
 						
 
+						
+
+
 						<?php include_once($config['include_path'].'header_social.php'); ?>
 
 						<!-- ShareT. 2nd Spot 10/08/2015 -->
 						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 							<div data-str-native-key="81d7c1fc" style="display: none;"></div>
 						</div>
-						
-						
+						<!--ADSPARC 10/09/2015 ( SWITCH TI THIS SPOT ON OCT 26)-->
+						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+							<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
+						</div>
+					</div>
+					
 						<!-- RELATED ARTICLES -->
 						<?php 
 						$related = [];
@@ -193,13 +200,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							<?php include_once($config['include_path'].'disqus.php'); ?>
 
 						</section>
-
-						<div class="row read-more clear small-12">
+						<!-- REMOVED OCT 26th 3PM -->
+						<!--<div class="row read-more clear small-12">
 
 							<div class="button">
 								<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
 							</div>
-						</div>
+						</div>-->
 
 					</div>
 					

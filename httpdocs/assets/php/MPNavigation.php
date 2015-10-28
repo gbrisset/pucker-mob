@@ -13,7 +13,7 @@ class MPNavigation{
 	public function __construct($c){
 		$this->config = $c;
 		$this->con = new Connector($this->config);
-		$this->navigationLinks = $this->getNavigationPageLinks();
+//		$this->navigationLinks = $this->getNavigationPageLinks();
 
 		$this->mainCategories = $this->getArticlePageMainCategories();
 		$this->categories = $this->getAllCategories(1);

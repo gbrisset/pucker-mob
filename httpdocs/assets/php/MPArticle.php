@@ -1323,8 +1323,10 @@ public function getFeatured($args = []){
 			if($articleRow){
 				$q->setFetchMode(PDO::FETCH_ASSOC);
 				$articleRow = $q->fetchAll();
+
 				$article = ['ids' => [],'articles' => [], 'categories' => []];
 				$article['articles'] = array_shift($articleRow);
+
 				$article['categories'] = $this->performQuery(array(
 					'queryString' => 'SELECT * 
 					FROM article_categories as a_c 
@@ -1338,7 +1340,6 @@ public function getFeatured($args = []){
 				$q->closeCursor();
 			}else $article = false;
 			$this->con->closeCon();
-
 			return $article;
 
 		}

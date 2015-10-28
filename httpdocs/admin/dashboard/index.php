@@ -62,9 +62,11 @@
 			$articles = $adminController->user->getContributorEarningChartArticleData($data);
 		}
 	}
+	//var_dump( $month, $contributor_type );
+
 	$rate = $dashboard->get_current_rate( $month, $contributor_type );
 	$total = 0;
-
+//var_dump($rate);
 	$ManageDashboard = new ManageAdminDashboard( $config );
 	
 	$last_month = $current_month-1;

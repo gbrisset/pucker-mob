@@ -184,3 +184,7 @@
 	
 </body>
 </html>
+
+http://www.wordstream.com/blog/ws/2014/08/14/increase-traffic-to-my-website
+
+http://www.wordstream.com/blog/ws/2014/07/17/headline-writing

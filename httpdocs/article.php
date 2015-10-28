@@ -32,8 +32,6 @@ foreach($MPNavigation->categories as $category){
 
 if(!is_null($categoryInfo)){
 	$articleInfo = $mpArticle->getSingleArticleInfo(['articleSEOTitle' => $articleTitle]);
-	//$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
-	//$cat_name = $articleInfo['articles'][0]['cat_dir_name'];
 
 	//ISSUE WITH WENDESDAY ARTICLE 
 	if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
@@ -65,8 +63,6 @@ if(!is_null($categoryInfo)){
 }else {
 	$mpShared->get404();
 }
-
-//	include_once('admin/fb/fbfunctions.php');
 
 ?>
 <?php if ( $detect->isMobile() ) { ?>
@@ -103,9 +99,13 @@ if(!is_null($categoryInfo)){
 		?>
 		<!-- MOBILE LEFT TAP -->
 		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
-		
+			<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-bottom: 5px; margin-top: 5px;  }</style>
+
 		<main id="main" class="row panel sidebar-on-right" role="main" style="">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
+				<div class="evolve-media ad-unit hide-for-print">
+					<div id="ros_1207"></div>
+				</div>
 				<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
 				
 				<!-- ARTICLE CONTENT -->
@@ -144,12 +144,13 @@ if(!is_null($categoryInfo)){
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
-			<!--ADSPARC 10/09/2015 -->
-			<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-				<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
-			</div>
+			<!-- Talk Media Ad 10/09/2015 3:00 PM ( SWITCH TI THIS SPOT ON OCT 26)-->
+				<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+					<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
+				</div>
 
-			<!-- 10  MOST RECENT ARTICLES ADDED -->
+				<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
 			<?php }?>

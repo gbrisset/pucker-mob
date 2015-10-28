@@ -146,12 +146,10 @@
       
      <div id="social-media-container-header" class="row" style="display:none;"> 
         <div class="columns social-media-container  padding-bottom " style=" display:block !important;">
-        <a class="addthis_button_facebook small-4 left">
-          <label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
+        <a class="addthis_button_facebook small-6 left">
+          <label class="label-social-button-2-mobile left" style="font-size: 1rem; font-family: OsloBold !important; text-align: center; padding: 0.5rem 0.5rem 0.5rem 0.25rem;" ><i class="fa fa-facebook-square" style="font-size: 1.5rem; "></i>SHARE</label>
         </a> 
-        <a class="addthis_button_twitter  small-2 left">
-          <label class="label-social-button-2-mobile left"><i class="fa fa-twitter"></i></label>
-        </a> 
+       
         <div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
       </div>  
      </div>

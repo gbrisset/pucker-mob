@@ -14,6 +14,7 @@ if (empty($_GET['page'])) {
 } else {
 	$page = $_GET['page'];
 }
+$has_sponsored = 0;
 
 $omitThis = 0;
 $offset = $quantity * $page;
@@ -29,7 +30,7 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 
 
 	if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-	else{ if( $page == 0){?>
+	else{ if( $page == 0 ){?>
 		<!-- ShareT -->
 		<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
 			<div data-str-native-key="6898172d" style="display: none;"></div>
@@ -64,9 +65,9 @@ foreach ($articlesList as $articles){
 		$articleIndex++; $bigImageCounter++; 
 
 		//3LIFT AD
-		if($bigImageCounter == 1 && $page == 0){
-			echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed2"></script>';
-		}else{ ?>
+		//if($bigImageCounter == 1 && $page == 0){
+		//	echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed2"></script>';
+		//}else{ ?>
 			<div class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding" id="<?php echo 'article-'.$articleIndex;?>">
 				<a class="mobile-5 small-5 medium-5 large-12 xlarge-12 " href="<?php echo $linkToArticle; ?>">
 					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articleTitle; ?>'>
@@ -83,7 +84,7 @@ foreach ($articlesList as $articles){
 					</a>
 				</div>
 			</div>
-		<?php }
+		<?php //}
 		
 		if( $articleIndex < $totalArticles ) echo '<hr class="padding-top">'; 
 	}else{
@@ -93,9 +94,9 @@ foreach ($articlesList as $articles){
 		$articleIndex++; 
 		
 		//3LIFT AD
-		if($smallImageCounter == 2 && $page == 0){
-			echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
-		}else{ ?>	
+		//if($smallImageCounter == 2 && $page == 0){
+		//	echo '<script src="http://ib.3lift.com/ttj?inv_code=puckermob_main_feed"></script>';
+		//}else{ ?>	
 			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?>" id="<?php echo 'article-'.$articleIndex;?>">
 				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 " href="<?php echo $linkToArticle; ?>">
 					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articleTitle?>'>
@@ -112,7 +113,7 @@ foreach ($articlesList as $articles){
 					</a>
 				</div>
 			</div>
-		<?php }
+		<?php //}
 			if( $smallImageCounter % 2 == 0  && $articleIndex < $totalArticles) echo '<hr class="padding-top">';
 		} ?> 
 

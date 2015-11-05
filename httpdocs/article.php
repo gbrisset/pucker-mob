@@ -32,6 +32,8 @@ foreach($MPNavigation->categories as $category){
 
 if(!is_null($categoryInfo)){
 	$articleInfo = $mpArticle->getSingleArticleInfo(['articleSEOTitle' => $articleTitle]);
+	//$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
+	//$cat_name = $articleInfo['articles'][0]['cat_dir_name'];
 
 	//ISSUE WITH WENDESDAY ARTICLE 
 	if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
@@ -63,6 +65,8 @@ if(!is_null($categoryInfo)){
 }else {
 	$mpShared->get404();
 }
+
+//	include_once('admin/fb/fbfunctions.php');
 
 ?>
 <?php if ( $detect->isMobile() ) { ?>
@@ -103,7 +107,7 @@ if(!is_null($categoryInfo)){
 
 		<main id="main" class="row panel sidebar-on-right" role="main" style="">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
-				<div class="evolve-media ad-unit hide-for-print">
+				<div class="evolve-media">
 					<div id="ros_1207"></div>
 				</div>
 				<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
@@ -144,17 +148,36 @@ if(!is_null($categoryInfo)){
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
+			<?php if($articleInfoObj['article_id'] == 9764 ) { ?>
+
+			<!-- CARAMBOLA http://www.puckermob.com/lifestyle/8-movie-genres-that-describe-your-personality -->
+				<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+					<!--Carambola Trivia script -->
+						<img height='0' width='0' alt='' src='http://pixel.watch/pssj' />
+						<script class="carambola_InContent" type="text/javascript">
+						(function (i,d,s,o,m,r,t,g) {
+						var e=d.getElementById(r);if(e===null){
+						var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else if(typeof i[t]!=='undefined'){i[t]++}
+						else{i[t]=1}
+						})(window, document, 'ic', 'script', 'cbola', 'carambola_proxy','Cbola_IC','http://route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233')
+						</script>
+					</div>
+				</div>
+			<?php }else {?>
+
 			<!-- Talk Media Ad 10/09/2015 3:00 PM ( SWITCH TI THIS SPOT ON OCT 26)-->
 				<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
 					<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
 				</div>
-
+			<?php }?>
 				<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
-			<?php }?>
+			
 		</section>
+		<?php }?>
 	</main>
 
 	<?php include_once('admin/fb/fbfunctions.php'); ?>
@@ -205,6 +228,7 @@ if(!is_null($categoryInfo)){
 	}
 </script>
 <main id="main" class="row panel sidebar-on-right" role="main">
+
 	<?php if(!$detect->isMobile()){?>
 	<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="min-height:none !important; height:auto; ">
 
@@ -262,12 +286,12 @@ if(!is_null($categoryInfo)){
 				s.async = true;
 				document.getElementById("contentad24777").appendChild(s);
 			})();
-		</script>
+		</script> 
 		<!-- ALSO IN CATEGORY -->
 		<?php //include_once($config['include_path'].'similararticles.php');?>
 		<?php if( !$promotedArticle ){ ?>
 		<!-- AROUND THE WEB -->
-		<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
+		<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
 		<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
 			<h2 style="margin-top:30px;">Also in <span>PUCKERMOB:</span></h2>			
 		</section>
@@ -278,7 +302,7 @@ if(!is_null($categoryInfo)){
 	<?php include_once($config['include_path'].'rightsidebar.php');?>
 
 	<!-- LEFT SIDE BAR -->
-	<?php include_once($config['include_path'].'left_side_bar.php'); ?>
+	<?php  include_once($config['include_path'].'left_side_bar.php'); ?>
 </main>
 
 <?php 

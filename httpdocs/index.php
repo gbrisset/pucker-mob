@@ -8,7 +8,8 @@ if (!empty($_GET['ajax'])) {
 require_once('assets/php/config.php');
 $pageName = $mpArticle->data['article_page_name'];
 $isHomepage = true;
-$has_sponsored = $mpArticle->data['has_sponsored_by'];
+$has_sponsored = 1;// $mpArticle->data['has_sponsored_by'];
+$is_takeover = true;
 
 if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <!DOCTYPE html>
@@ -98,7 +99,7 @@ else if($ajax) {
      
 
 
-	<main id="main" class="row panel sidebar-on-right" role="main" style="<?php if($has_sponsored) echo 'max-width: 56rem !important; '?>">
+	<main id="main" class="row panel sidebar-on-right" role="main">
 		
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-12 large-11 columns translate-fix sidebar-main-left articlelist-wrapper main-div">
 			<?php include_once($config['include_path'].'articleslist.php'); ?>

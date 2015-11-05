@@ -11,6 +11,7 @@
       else echo $mpArticle->data['article_page_analytics'];
   } ?>
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+    <?php if ( $detect->isMobile() ) { ?>
     <script src="<?php echo $config['this_url']; ?>assets/js/jquery.scrolldepth.min.js"></script>
     <script>
     $(function() {
@@ -18,11 +19,11 @@
           elements:['#header-social-buttons', '#inarticle2-ad', '#inarticle5-ad', '#inarticle9-ad' , '#inarticle15-ad' ],
           userTiming: false,
           pixelDepth: false,
-          nonInteraction: false,
-          percentage: false
+          nonInteraction: false
       });
     });
     </script>
+    <?php } ?>
   <?php } ?>
 <?php }else {?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
@@ -71,6 +72,11 @@
 
 <!-- MOBILE -->
 <?php }else{ ?>
+
+  
+<!-- Nativo -->
+<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
+
   <?php if( isset($promotedArticle) && !$promotedArticle ){ 
   
     if(isset($articleInfoObj) && $articleInfoObj){ ?>
@@ -102,10 +108,10 @@
       </script>
       <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
   <?php  } ?>
-  <!-- Sprockester Airpush Unit : Oct 6, 4:17PM -->
+  <!-- Sprockester Airpush Unit : Oct 6, 4:17PM - REMOVED OCT 12 2015, 10:13 AM
    <script id="airpushScript" type="text/javascript" 
     src="http://ab.airpush.com/apportal/client/airpush.js?siteid=269236&testmode=0&banner360=1&banner=0&placementid=0&tp=0" >
-  </script>
+  </script>-->
 <?php }?>
 
 <!-- DESKTOP & MOBILE SCRIPT -->
@@ -142,8 +148,6 @@
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
 
 
-<!-- Nativo -->
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
 
 <!-- ADSUPPLY -->
 <script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>

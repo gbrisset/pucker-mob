@@ -313,6 +313,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 					</div>
 					
+					<div id="ld-6320-990"></div><script>(function(w,d,s,i){w.ldAdInit=w.ldAdInit||[];w.ldAdInit.push({slot:8158967306013287,size:[0, 0],id:"ld-6320-990"});if(!d.getElementById(i)){var j=d.createElement(s),p=d.getElementsByTagName(s)[0];j.async=true;j.src="//cdn2.lockerdome.com/_js/ajs.js";j.id=i;p.parentNode.insertBefore(j,p);}})(window,document,"script","ld-ajs");</script>
+
 					<!-- RELATED ARTICLES -->
 					<?php 
 					$related = []; 
@@ -373,7 +375,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 									<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy', 'Cbola_initializeProxy', 'http://route.carambo.la/inimage/getlayer?pid=spdsh12')</script>
 								</section>
 
-								<!-- ADBLADE-->
+								<!-- ADBLADE -->
 								<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-top:0;">
 									<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
 									<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>

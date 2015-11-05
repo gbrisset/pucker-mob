@@ -15,6 +15,7 @@ function resizeContentByscreenSize(){
 		//HIDE LEFT SIDE BAR WHEN BROWSER IS LESS THAT 1030 px.
 		if( $(window).width() < 1090 && $(window).width() > 1030 ){
 			$('#left-aside').hide();
+			$('#aside').attr('style', 'right:0;');
 			if(page === 'home'){
 				if( $("#has-sponsored-by").val() == '0') $('#aside').attr('style', 'right:2%;');
 				else $('#aside').attr('style', 'right:0;');
@@ -26,14 +27,16 @@ function resizeContentByscreenSize(){
 			if(page === 'home'){
 				if( $("#has-sponsored-by").val() == '0') $('#aside').attr('style', 'right:1%;');
 				else $('#aside').attr('style', 'right:0;');
+				$('#aside').attr('style', 'right:0;');
 			}else{
 				$('#aside').attr('style', 'right:1%;');
 			}
 		}else {
 			$('#left-aside').show();
-			if(page === 'home'){
+			if(page === 'home' ){
 				if( $("#has-sponsored-by").val() == '0') $('#aside').attr('style', 'right:103px;');
 				else $('#aside').attr('style', 'right:0;');
+				$('#aside').attr('style', 'right:0;');
 			}else{
 				$('#aside').attr('style', 'right:103px;');
 			}
@@ -148,7 +151,7 @@ if($('body').hasClass('mobile')) {
 						second_p  = parseInt(info[0].mobile_2);
 						third_p  = parseInt(info[0].mobile_3);
 						fourth_p  = parseInt(info[0].mobile_4);
-						fith_p  = parseInt(info[0].mobile_5);	
+						fith_p  = 22;//parseInt(info[0].mobile_5);	
 					}
 				},
 				async:   false
@@ -200,7 +203,11 @@ if($('body').hasClass('mobile')) {
 				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="mobile-instream-branovate-ad"></div>', tag);
 				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="mobile-instream-toksnn-ad" class="clear"></div>', tag);
 				//inBodyAd.loadInArticleAd( 'article-body', third_p, 0, mobilead[adPage].inarticlenativo, tag);
-				inBodyAd.loadInArticleAd( 'article-body', third_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+				//if(article_id == 9445 ){ //http://www.puckermob.com/relationships/11-things-to-know-before-dating-someone-who-seems-intimidating-at-first
+					inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="vm_inreadcontent" class="playerDiv_inline_close"><script id="fifScript"> (function() { var script = document.createElement("script"); script.async = true; script.src = "http://player.videomosh.com/players/instream/puckermob.min.js"; var entry = document.getElementsByTagName("script")[0]; entry.parentNode.insertBefore(script, entry);  })(); </script> </div>', tag);
+				//}else{
+				//	inBodyAd.loadInArticleAd( 'article-body', third_p, 0, mobilead[adPage].inarticlegoogle4, tag);
+				//}
 			}
 
 			//4TH SPOT
@@ -218,9 +225,10 @@ if($('body').hasClass('mobile')) {
 			}
 
 			//5TH SPOT 
+			console.log(num_items, fith_p);
 			if( fith_p > 0 ){
 				if(num_items >= fith_p ){
-					inBodyAd.loadInArticleAd( 'article-body', fith_p, 0, mobilead[adPage].inarticleadblade, tag);
+					inBodyAd.loadInArticleAd( 'article-body', 22, 0, mobilead[adPage].inarticleadblade, tag);
 				}
 			}
 		}
@@ -295,13 +303,13 @@ if($('body').hasClass('mobile')) {
 			}
 			
 			if( second_p > 0 ){
-				//if(article_id == 8225){ //http://www.puckermob.com/lifestyle/22-signs-youre-expectations-for-life-are-based-on-disney-movies
+				if(article_id == 8225){ //http://www.puckermob.com/lifestyle/22-signs-youre-expectations-for-life-are-based-on-disney-movies
 				//adSparc
 					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="adsparc-instream-ad" ></div>', tag);
-				//}else{
+				}else{
 					//CARAMBOLA
-				//	inBodyAd.loadInArticleAd( 'article-body', second_p, 0, ad[adPage].inarticlecarambola, tag);
-				//}
+					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, ad[adPage].inarticlecarambola, tag);
+				}
 			}
 		}
 

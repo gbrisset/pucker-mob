@@ -6,7 +6,7 @@
 	
 	$promotedArticle = false; $tag = 'smarties';
 	if(isset($isArticle) && $isArticle && isset($articleInfoObj)){ ?>
-		<link rel="canonical" href="<?php echo 'http://puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
+		<link rel="canonical" href="<?php echo 'http://www.puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
 	<?php 
 		if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }
 	} ?>
@@ -54,8 +54,8 @@
 	
 	<style>	body {background: #fcf4de;} </style>
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/newchangestoadd.css" />
+	<link rel="stylesheet" type="text/css" href="http://www.puckermob.com/assets/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="http://www.puckermob.com/assets/css/newchangestoadd.css" />
 	
 	<style>.ad320{ height: auto !important; }</style>
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -70,7 +70,7 @@
 
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){
- 	if(isset($isHomepage) && $isHomepage && $has_sponsored){?>
+ 	//if(isset($isHomepage) && $isHomepage && $has_sponsored){?>
     	<!-- puckermob.com/home -->
 		<script type="text/javascript">
 		  var ord = window.ord || Math.floor(Math.random() * 1e16);
@@ -82,7 +82,7 @@
 			</a>
 		</noscript>
 
- 	<?php } ?>
+ 	<?php //} ?>
 <?php }else{?>
 
 <?php } ?>

@@ -29,12 +29,12 @@ $has_sponsored = 0;
           <div id="ros_1201"></div> 
        </div>
        
-       <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
+       <section id="sub-sidebar-3" class="sidebar show-on-large-up hide"  style="margin: 0.9375rem 0 !important; display:none;">
          <div class="h4-container" style="margin-bottom: 10px;"><h4 >From Our Partners</h4></div>
          <?php include_once($config['include_path'].'widget.php'); ?>
        </section>
 
-       <section id="sub-sidebar-2" class="sidebar article-stick" style="padding-top:10px; ">
+       <section id="sub-sidebar-2" class="sidebar article-stick hide" style="padding-top:10px; ">
             <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>
             <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png" style="margin-bottom:15px;"></a>
             <a href="#" class="back-to-top btn"> Back to top  &#8682; </a>

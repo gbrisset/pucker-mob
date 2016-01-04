@@ -2,21 +2,22 @@
     <div class="clear padding-bottom" style="text-align: center;">
     <?php if ( $detect->isMobile() ) { ?>
 
-    <?php if( isset($promotedArticle) && !$promotedArticle ){ ?>
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- PuckerMob Mobile -->
+    <?php //if( isset($promotedArticle) && !$promotedArticle ){ ?>
+     <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+     
       <ins class="adsbygoogle"
            style="display:inline-block;width:320px;height:50px"
            data-ad-client="ca-pub-8978874786792646"
            data-ad-slot="5274646185"></ins>
       <script>
       (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-      <?php } ?>
+      </script>-->
+     
+      <?php //} ?>
 
     <?php }else{ 
-       if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
-        else{?>
+      if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+      else{?>
           <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
              <div id="footer-ad" class="ad-unit hide-for-print " style="max-width: 46rem; margin: 0 auto;">
                 <!-- puckermob.com/ros_btf -->
@@ -53,23 +54,8 @@
     <footer class="hide-for-print">
       <div class="row">
       <div class="small-5 large-2 columns category-colors">
-       <!-- <h4>Categories</h4>
-         <ul class="no-bullet">
-              <li><a href="<?php //echo $config['this_url']; ?>relationships" class="relationships">Relationships</a></li>
-              <li><a href="<?php //echo $config['this_url']; ?>entertainment" class="entertainment">Entertainment</a></li>
-              <li><a href="<?php //echo $config['this_url']; ?>money" class="money">Money</a></li>
-              
-         </ul>-->
       </div>
         <div class="small-5 large-2 columns category-colors">
-         <!--  <h4 style="height: 1.4rem;"> </h4>
-          <ul class="no-bullet">
-            <li><a href="<?php //echo $config['this_url']; ?>lifestyle" class="wellness">Lifestyle</a></li>
-
-              <li><a href="<?php //echo $config['this_url']; ?>fun" class="fun">Fun</a></li>
-              <li><a href="<?php //echo $config['this_url']; ?>moblog"  class="moblog" >THE MOB</a></li>
-
-          </ul>-->
         </div>
 
         <div id="footer-right" class="large-6 columns">
@@ -101,4 +87,4 @@
       </div>
       </div>
     </footer>
-  
+    <?php include_once($config['include_path'].'ads_to_load.php');?>

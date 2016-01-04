@@ -9,7 +9,7 @@ require_once('assets/php/config.php');
 $pageName = $mpArticle->data['article_page_name'];
 $isHomepage = true;
 $has_sponsored = 1;// $mpArticle->data['has_sponsored_by'];
-$is_takeover = true;
+$is_takeover = false;
 
 if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <!DOCTYPE html>

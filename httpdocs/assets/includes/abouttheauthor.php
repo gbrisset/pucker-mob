@@ -1,5 +1,5 @@
 
-<?php
+<?php 
 $class = " column small-12 hide-for-print sidebar-right  no-padding ";
 if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right no-padding "; ?>
 
@@ -27,7 +27,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 <div class="row">
 <?php if($detect->isMobile() ){?>
 	<section id="about-the-author" class="small-12 hide-for-print padding">
-		<div id="about-the-author-bg" class="columns small-10 no-padding margin-top" style="min-height: 5rem;">
+		<div id="about-the-author-bg" class="columns small-10 no-padding margin-top" style="min-height: 5rem; margin-bottom: 15px;">
 		<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 0rem;     top: 6px;">
 <?php }else{?>
 	<section id="about-the-author" class="columns small-12 hide-for-print">

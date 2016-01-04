@@ -148,30 +148,13 @@ if(!is_null($categoryInfo)){
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
-			<?php if($articleInfoObj['article_id'] == 9764 ) { ?>
+			<?php //if($articleInfoObj['article_id'] == 9764 ) { ?>
 
-			<!-- CARAMBOLA http://www.puckermob.com/lifestyle/8-movie-genres-that-describe-your-personality -->
-				<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-					<div id="get-content" style="text-align:center; display: inline-block;">
-					<!--Carambola Trivia script -->
-						<img height='0' width='0' alt='' src='http://pixel.watch/pssj' />
-						<script class="carambola_InContent" type="text/javascript">
-						(function (i,d,s,o,m,r,t,g) {
-						var e=d.getElementById(r);if(e===null){
-						var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else if(typeof i[t]!=='undefined'){i[t]++}
-						else{i[t]=1}
-						})(window, document, 'ic', 'script', 'cbola', 'carambola_proxy','Cbola_IC','http://route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233')
-						</script>
-					</div>
-				</div>
-			<?php }else {?>
+			
+			<?php //}else {?>
 
-			<!-- Talk Media Ad 10/09/2015 3:00 PM ( SWITCH TI THIS SPOT ON OCT 26)-->
-				<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-					<div id="get-content" style="text-align:center; display: inline-block;">
-					<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
-				</div>
-			<?php }?>
+			
+			<?php //}?>
 				<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
@@ -243,7 +226,7 @@ if(!is_null($categoryInfo)){
 				include_once($config['template_path'].'single_page_article.php'); 
 			} ?>
 
-			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0) echo "<hr>"; ?>
+			<?php //if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0) echo "<hr>"; ?>
 			
 			<!-- Setting the Poll -->			
 			<?php if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>
@@ -254,7 +237,7 @@ if(!is_null($categoryInfo)){
 			<?php if(!$detect->isMobile()){?>
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
 			
-			<div class="row hide-for-print like-us-fb clear">
+			<div class="row hide-for-print like-us-fb clear" style="margin-bottom: 2rem;">
 				<p class="columns small-2">Join the Mob!
 					<div class="columns small-9" >
 						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
@@ -265,41 +248,21 @@ if(!is_null($categoryInfo)){
 			
 			<?php }
 		}?>
-		<!-- CONTENT AD -->
-		<div id="contentad24777"></div>
-		<script type="text/javascript">
-			(function() {
-				var params =
-				{
-					id: "a8eb16d0-6594-4e2f-a80b-7ff948aee7a2",
-					d:  "cHVja2VybW9iLmNvbQ==",
-					wid: "24777",
-					cb: (new Date()).getTime()
-				};
+		
+					<?php include_once( $config['include_path'].'similararticles.php'); ?>
 
-				var qs="";
-				for(var key in params){qs+=key+"="+params[key]+"&"}
-					qs=qs.substring(0,qs.length-1);
-				var s = document.createElement("script");
-				s.type= 'text/javascript';
-				s.src = "http://api.content.ad/Scripts/widget.aspx?" + qs;
-				s.async = true;
-				document.getElementById("contentad24777").appendChild(s);
-			})();
-		</script> 
-		<!-- ALSO IN CATEGORY -->
-		<?php //include_once($config['include_path'].'similararticles.php');?>
-		<?php if( !$promotedArticle ){ ?>
-		<!-- AROUND THE WEB -->
-		<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
-		<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
+		<?php //if( !$promotedArticle ){ ?>
+		
+		<!--<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
 			<h2 style="margin-top:30px;">Also in <span>PUCKERMOB:</span></h2>			
-		</section>
-		<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
-		<?php }?>
+		</section>-->
+		<!--<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>-->
+		<?php //}?>
 		
 	</section>
 	<?php include_once($config['include_path'].'rightsidebar.php');?>
+
+
 
 	<!-- LEFT SIDE BAR -->
 	<?php  include_once($config['include_path'].'left_side_bar.php'); ?>
@@ -307,15 +270,14 @@ if(!is_null($categoryInfo)){
 
 <?php 
 include_once('admin/fb/fbfunctions.php'); 
-include_once($config['include_path'].'ads_to_load.php');
+//include_once($config['include_path'].'ads_to_load.php');
 include_once($config['include_path'].'bottomscripts.php');
 ?>
 
 <!-- MODAL BOX POPUP -->
 <?php
 include_once($config['include_path'].'login_register_popup.php'); 
-		 //if($articleInfoObj['article_id'] == 4653 ) include_once($config['include_path'].'modalboxform.php'); 
-		// else include_once($config['include_path'].'modalbox.php'); 
+
 ?>
 
 <div id="openModal" class="modalDialogFollow">
@@ -348,8 +310,6 @@ include_once($config['include_path'].'login_register_popup.php');
 <noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
 <?php }?>
 
-<!-- MODAL BOX FOLLOWERS POPUP -->
-<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
 
 </body>
 </html>

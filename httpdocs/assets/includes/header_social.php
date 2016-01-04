@@ -1,4 +1,4 @@
-<div id="header-social-buttons" class=" clear columns small-12 clear" style="display:inline-block !important;">
+<div id="header-social-buttons" class=" clear columns small-12" style="z-index:999999999999 !important;">
 
 	<div class="small-12" data-url="">
 		<div class="row social-media-container social-media-container-header" style=" display:block !important;">

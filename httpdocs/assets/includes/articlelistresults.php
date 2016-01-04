@@ -79,12 +79,6 @@ foreach ($articlesList as $articles){
 			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?> ggnoads" id="<?php echo 'article-'.$articleIndex;?>">
 				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 " href="<?php echo $linkToArticle; ?>">
 					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>'>
-					<?php if(!isset($_GET['show']) && $_GET['show'] == 'type'){
-						if($articles['page_list_id'] != 0) $type = 'MULTI'; else $type = 'SINGLE';
-					echo '<span style="position: absolute; top: 3.5rem; left: 5rem; font-size: 4rem;  color: #000; font-weight: bold; ">';
-					echo $type;
-					echo '</span>';
-					}?>
 				</a>
 				<div class="mobile-12 small-12 medium-12 large-12 xlarge-12 mobile-vertical-center ">
 					<p class="uppercase small-7 left small-font">

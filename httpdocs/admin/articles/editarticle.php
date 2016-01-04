@@ -3,7 +3,7 @@
 	
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 	$article = $articleResultSet['articles'];
-var_dump($article, $article['article_title']);
+
 	if(empty($article)) $mpShared->get404();
 
 	// If the article exists and has an id, check to see if this user has permissions to edit this article...
@@ -41,6 +41,7 @@ var_dump($article, $article['article_title']);
 	if(isset($artImageDir) && !empty($artImageDir) && !is_null($artImageDir)){
 		$artImageExists = file_exists($artImageDir);
 	}
+	
 	//Contributor Info
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributor_email = $adminController->user->data['user_email'];
@@ -124,8 +125,6 @@ var_dump($article, $article['article_title']);
 				$article_status = "Pending Review";
 		}
 	}*/
-
-	var_dump($article['article_title']);
 ?>
 
 <!DOCTYPE html>
@@ -294,17 +293,18 @@ var_dump($article, $article['article_title']);
 					    <div class="columns">
 						<label class="small-12 large-3 left uppercase">Article Type: </label>
 						
-						<input type="radio" name="article_type-s" id="lifestyle" data-info="1"  value="1" <?php if($article['article_type'] == 1) echo "checked"; ?> />
-						<label for="" class="radio-label">Lifestyle</label>
+						<input type="radio" name="article_type-s" id="opinion" data-info="1"  value="1" <?php if($article['article_type'] == 1) echo "checked"; ?> />
+						<label for="" class="radio-label">Opinion</label>
 									
 						<input type="radio" name="article_type-s" data-info="2" id="news" value="2"  <?php if($article['article_type'] == 2) echo "checked"; ?> />
 						<label for="" class="radio-label">News</label>
 
-						
+						<input type="radio" name="article_type-s" data-info="0" id="staff" value="0"  <?php if($article['article_type'] == 0) echo "checked"; ?> />
+						<label for="" class="radio-label">Staff</label>
 						</div>
 					</div>
 					<?php }else if($blogger){?>
-						<input type="hidden" name="article_type-s" data-info="1" id="staff" value="1" />
+						<input type="hidden" name="article_type-s" data-info="0" id="staff" value="0" />
 					<?php }?>
 					<!-- Article Status -->
 					<?php if($admin_user  || $externalWriter){?>
@@ -389,7 +389,7 @@ var_dump($article, $article['article_title']);
 						<input type="radio" name="feature_article" data-info="yes"  value="1" <?php echo $y_checked; ?> />
 						<label for="" class="radio-label">Yes</label>
 								
-						<input type="radio" name="feature_article" id="no" value="0"  <?php echo $n_checked; ?> />
+						<input type="radio" name="feature_article" id="no" data-info="no"  value="0"  <?php echo $n_checked; ?> />
 						<label for="" class="radio-label">No</label>
 					</div></div>
 					<?php }?>

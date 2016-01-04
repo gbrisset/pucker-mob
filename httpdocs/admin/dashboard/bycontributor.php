@@ -80,7 +80,8 @@
 			$articles = $adminController->user->getContributorEarningChartArticleData($data);
 		}
 	}
-	$rate = $dashboard->get_current_rate( $month, $contributor_type );
+	$rate = $dashboard->get_current_rate( $month, $contributor_type, $year );
+	//var_dump($rate)
 	$total = 0;
 	//if(  $month <= 5 && $year == 2015 )	$rate = $dashboard->get_current_rate($month);
 	//else  $rate = $dashboard->get_current_rate( $month, $contributor_type );
@@ -177,7 +178,7 @@
 						<input type="hidden" value="<?php echo $year; ?>" id="year" name="year"/>
 					  	<select id="month" name='month' onchange = "change()">
 					  		<option value='0'>Select Month</option>
-					  		<?php if($month == 10 && $year == 2015){?>
+					  		<?php if($month == 10 && $year == 2014){?>
 					  			<option value='10' data-info="2014" selected>October, 2014</option>
 					  		<?php }else{?>
 					  			<option value='10' data-info="2014">October, 2014</option>
@@ -197,12 +198,21 @@
 					  		
 						  	<?php 
 						  	$index = 1;
-						  	for($m = $index; $m <= $current_month; $m++){
-						  		$dateObj   = DateTime::createFromFormat('!m', $m);
-						  		$monthName = $dateObj->format('F');
-						  		if($month == $m) $selected  = 'selected'; else $selected = '';
-						  		echo '<option value="'.$m.'" '.$selected.' data-info="'.$current_year.'" >'.$monthName.", ".$current_year.'</option>';
-							} ?>
+
+						  		for($m = $index; $m <= 12; $m++){
+							  		$dateObj   = DateTime::createFromFormat('!m', $m);
+							  		$monthName = $dateObj->format('F');
+							  		//if($month == $m ) $selected  = 'selected'; else $selected = '';
+							  		echo '<option value="'.$m.'"  data-info="2015" >'.$monthName.", 2015".'</option>';
+								}
+
+						  	  	for($m = $index; $m <= $current_month; $m++){
+							  		$dateObj   = DateTime::createFromFormat('!m', $m);
+							  		$monthName = $dateObj->format('F');
+							  		if($month == $m ) $selected  = 'selected'; else $selected = '';
+							  		echo '<option value="'.$m.'" '.$selected.' data-info="'.$current_year.'" >'.$monthName.", ".$current_year.'</option>';
+								} 
+							?>
 						</select>
 					
 					</form> 

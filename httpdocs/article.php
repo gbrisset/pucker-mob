@@ -121,17 +121,6 @@ if(!is_null($categoryInfo)){
 				}
 				?>
 				
-				<!-- SMARTIES PROMOTION -->
-				<?php if( $promotedArticle ){?>
-				<div class="padding-bottom  show-on-large-up">
-					<!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
-					<script language="javascript"><!--
-						document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
-			        //-->
-			    </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
-			    <!-- End of JavaScript Tag -->
-			</div>
-			<?php } ?>
 			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
 			<hr>

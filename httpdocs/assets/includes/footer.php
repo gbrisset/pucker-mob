@@ -2,19 +2,6 @@
     <div class="clear padding-bottom" style="text-align: center;">
     <?php if ( $detect->isMobile() ) { ?>
 
-    <?php //if( isset($promotedArticle) && !$promotedArticle ){ ?>
-     <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-     
-      <ins class="adsbygoogle"
-           style="display:inline-block;width:320px;height:50px"
-           data-ad-client="ca-pub-8978874786792646"
-           data-ad-slot="5274646185"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>-->
-     
-      <?php //} ?>
-
     <?php }else{ 
       if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
       else{?>
@@ -87,4 +74,5 @@
       </div>
       </div>
     </footer>
+
     <?php include_once($config['include_path'].'ads_to_load.php');?>

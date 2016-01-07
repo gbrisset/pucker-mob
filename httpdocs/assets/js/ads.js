@@ -185,34 +185,32 @@ console.log(1);
 					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);	
 				}
 			}
-console.log(2);
 
 			if( second_p > 0 ){ //2ND SPOT
-				if(article_id == 10157){
+				if(article_id == 10157){ //STRIKE VIDEO
 					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="mobile-instream-adsnative-ad" class="clear"></div>', tag);
 				}else{
 					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="ad-inline-2880"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2880/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
 				}
 			}
-console.log(3);
 
 				
-			if( third_p > 0 ){ //3RD SPOT
+			if( third_p > 0 ){ //3RD SPOT  //TABOOLA 
 				if(article_id == 9499){
 					//VIACOM http://www.puckermob.com/lifestyle/18-struggles-of-girls-who-love-too-hard-but-are-bad-at-expressing-it
 					inBodyAd.loadInArticleAd('article-body', third_p, 0, '<div style="background-color:#000000;"><div style="padding:4px;"><iframe src="http://media.mtvnservices.com/embed/mgid:arc:video:comedycentral.com:96180201-3c00-436a-b2d9-274413842c98" width="300" height="288" frameborder="0"></iframe><p style="text-align:left;background-color:#FFFFFF;padding:4px;margin-top:4px;margin-bottom:0px;font-family:Arial, Helvetica, sans-serif;font-size:12px;">Get More: <a href="http://www.cc.com">Comedy Central</a>,<a href="http://www.cc.com/funny-videos">Funny Videos</a>,<a href="http://www.cc.com/shows">Funny TV Shows</a></p></div></div>', tag);
 				}else{
-					inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="vm_inreadcontent" class="playerDiv_inline_close"><script id="fifScript"> (function() { var script = document.createElement("script"); script.async = true; script.src = "http://player.videomosh.com/players/instream/puckermob.min.js"; var entry = document.getElementsByTagName("script")[0]; entry.parentNode.insertBefore(script, entry);  })(); </script> </div>', tag);
+					inBodyAd.loadInArticleAd('article-body', third_p, 0, '<div id="taboola-mid-article-thumbnails"></div><script type="text/javascript"> window._taboola = window._taboola || []; _taboola.push({ mode: \'thumbnails-c\', container: \'taboola-mid-article-thumbnails\', placement: \'Mid Article Thumbnails\', target_type: \'mix\' }); </script>', tag );
+
 				}
 			}
-console.log(4);
 			
 			if( fourth_p > 0 ){ //4TH SPOT
-				if(num_items >= fourth_p ){
-					inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="mobile-instream-branovate-ad" class="clear"></div>', tag);
+				if(num_items >= fourth_p ){ //ANSWERS MEDIA
+					inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="vm_inreadcontent" class="playerDiv_inline_close"><script id="fifScript"> (function() { var script = document.createElement("script"); script.async = true; script.src = "http://player.videomosh.com/players/instream/puckermob.min.js"; var entry = document.getElementsByTagName("script")[0]; entry.parentNode.insertBefore(script, entry);  })(); </script> </div>', tag);
+					//inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="mobile-instream-branovate-ad" class="clear"></div>', tag);
 				}
 			}
-console.log(5);
 			if( fith_p > 0 ){ //5TH SPOT 
 				if(num_items >= fith_p ){
 					inBodyAd.loadInArticleAd( 'article-body', fith_p, 0,  '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag);
@@ -231,7 +229,7 @@ console.log(5);
 	}
 
 	if(adPage == 'article'){
-		appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
+		//appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
 		if(article_id == 8669 ){
 			appendAdEndBody($('#mobile-instream-adsparc-ad-loader'), $('#mobile-instream-adsparc-ad'), 100);
 		}	

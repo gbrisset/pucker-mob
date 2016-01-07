@@ -1,25 +1,7 @@
 <?php if($detect->isMobile()){ 
 	if(isset($isArticle) && $isArticle ){?>
 		
-		<div id="mobile-instream-branovate-ad-loader" class="hide">
-			<div id="get-content" style="text-align:center; display: inline-block;">
-				
-					<?php if( $detect->is('iOS') ){?>
-						<div id="branovate-ad "class="columns small-12 margin-top margin-bottom IOS">
-						<!-- BEGIN JS TAG - puckermob.com 300x250 IOS < - DO NOT MODIFY -->
-						<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5839932&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
-						<!-- END TAG -->
-						</div>
-					<?php }else{?>
-					<div id="branovate-ad "class="columns small-12 margin-top margin-bottom">
-					<!-- BEGIN JS TAG - puckermob.com Mobile 300x250 < - DO NOT MODIFY -->
-					<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
-					<!-- END TAG -->
-					</div>
-					<?php }?>
-				
-			</div>
-		</div>
+		
 		<?php if($articleInfoObj && $articleInfoObj['article_id'] == 10157 ){ ?>
 			<div id="mobile-instream-adsnative-ad-loader" class="hide">
 			<div id="get-content" style="text-align:center; display: inline-block;">

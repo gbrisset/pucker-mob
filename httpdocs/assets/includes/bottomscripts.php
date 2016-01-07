@@ -62,6 +62,13 @@
       <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>
     <?php }?>
 
+
+    <!-- TABOOLA -->
+    <script type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({flush: true});
+  </script>
+
 <!-- MOBILE -->
 <?php }else{ ?>
 
@@ -117,6 +124,12 @@
       </script>
       <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
   <?php  } ?>
+  
+  <!-- TABOOLA MOBILE 1/5/2016-->
+  <script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({flush: true});
+</script>
 
 <?php }?>
 

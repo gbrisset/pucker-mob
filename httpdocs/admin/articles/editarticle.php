@@ -265,11 +265,21 @@
 				
 					
 					<!-- BODY -->
-					<div class="row margin-bottom">
+					<div class="row margin-bottom  margin-top">
 					    <div class="columns">
-							<textarea class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+							<textarea class="mceEditor" name="article_body-nf" id="article_editor" required  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
 						</div>
 					</div>
+
+					
+					 <script>
+				      $(function() {
+				          $('#article_editor').froalaEditor({
+				          	  height: 300,
+				          	  placeholderText: 'Start Writing Here.'
+				          });
+				      });
+				  </script> 
 				
 					<!-- KEYWORDS -->
 					<div class="row">

@@ -21,7 +21,10 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/tooltipster.css" />
+	
+	
 
+	
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/adminstylingie78.css">
 	<![endif]-->
@@ -86,6 +89,37 @@
 	  	 }
 		};
 	</script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<!-- Include Editor style. -->
+	<link href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_editor.min.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_style.css">
+	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/code_view.css">
+	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/image_manager.css">
+	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/image.css">
+	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/line_breaker.css">
+	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/link.min.js">
+	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/char_counter.css">
+	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/css/plugins/file.css">
+
+	<!-- Include JS files. -->
+	  <script src="<?php echo $config['this_url']; ?>assets/js/froalajs/froala_editor.min.js"></script>
+
+	  <!-- Include Plugins. -->
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/align.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/char_counter.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/code_view.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/entities.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/image.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/image_manager.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/line_breaker.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/link.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/lists.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/save.min.js"></script>
+	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
+
 </head>
 <?php 
 	$blogger = false; $pro_blogger = false; $admin_user = false; $externalWriter = false; $pro_admin = false;

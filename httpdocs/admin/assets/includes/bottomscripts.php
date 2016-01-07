@@ -2,7 +2,7 @@
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
-	tinymce.init({
+	/*tinymce.init({
 
 		setup: function (ed) {
 			var placeholder = $('#' + ed.id).attr('placeholder');
@@ -61,7 +61,7 @@
 	//     console.log(tinyMCE.activeEditor.getContent());
 	 }
 
-	});
+	});*/
 </script>
 
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.tooltipster.min.js"></script>

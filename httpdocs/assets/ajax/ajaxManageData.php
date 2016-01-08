@@ -3,8 +3,8 @@ require_once('../php/config.php');
 require_once('../php/class.SocialMediaManage.php');
 
 $socialMediaManage = new SocialMediaManage($config);
-$url = 'http://www.puckermob.com/lifestyle/14-things-only-overthinkers-will-understand';//$_GET['url'];
-//$articleId = $_GET['articleId'];
+$url = $_GET['url'];
+
 $total_shares = 0;
  try{
  	

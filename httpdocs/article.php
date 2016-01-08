@@ -32,6 +32,8 @@ foreach($MPNavigation->categories as $category){
 
 if(!is_null($categoryInfo)){
 	$articleInfo = $mpArticle->getSingleArticleInfo(['articleSEOTitle' => $articleTitle]);
+	//$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
+	//$cat_name = $articleInfo['articles'][0]['cat_dir_name'];
 
 	//ISSUE WITH WENDESDAY ARTICLE 
 	if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
@@ -63,6 +65,8 @@ if(!is_null($categoryInfo)){
 }else {
 	$mpShared->get404();
 }
+
+//	include_once('admin/fb/fbfunctions.php');
 
 ?>
 <?php if ( $detect->isMobile() ) { ?>
@@ -103,7 +107,7 @@ if(!is_null($categoryInfo)){
 
 		<main id="main" class="row panel sidebar-on-right" role="main" style="">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
-				<div class="evolve-media ad-unit hide-for-print">
+				<div class="evolve-media">
 					<div id="ros_1207"></div>
 				</div>
 				<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
@@ -117,17 +121,6 @@ if(!is_null($categoryInfo)){
 				}
 				?>
 				
-				<!-- SMARTIES PROMOTION -->
-				<?php if( $promotedArticle ){?>
-				<div class="padding-bottom  show-on-large-up">
-					<!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
-					<script language="javascript"><!--
-						document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
-			        //-->
-			    </script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
-			    <!-- End of JavaScript Tag -->
-			</div>
-			<?php } ?>
 			
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){	?>
 			<hr>
@@ -144,17 +137,19 @@ if(!is_null($categoryInfo)){
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
-			<!-- Talk Media Ad 10/09/2015 3:00 PM ( SWITCH TI THIS SPOT ON OCT 26)-->
-				<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-					<div id="get-content" style="text-align:center; display: inline-block;">
-					<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
-				</div>
+			<?php //if($articleInfoObj['article_id'] == 9764 ) { ?>
 
+			
+			<?php //}else {?>
+
+			
+			<?php //}?>
 				<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 
-			<?php }?>
+			
 		</section>
+		<?php }?>
 	</main>
 
 	<?php include_once('admin/fb/fbfunctions.php'); ?>
@@ -205,6 +200,7 @@ if(!is_null($categoryInfo)){
 	}
 </script>
 <main id="main" class="row panel sidebar-on-right" role="main">
+
 	<?php if(!$detect->isMobile()){?>
 	<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="min-height:none !important; height:auto; ">
 
@@ -219,7 +215,7 @@ if(!is_null($categoryInfo)){
 				include_once($config['template_path'].'single_page_article.php'); 
 			} ?>
 
-			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0) echo "<hr>"; ?>
+			<?php //if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0) echo "<hr>"; ?>
 			
 			<!-- Setting the Poll -->			
 			<?php if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>
@@ -230,7 +226,7 @@ if(!is_null($categoryInfo)){
 			<?php if(!$detect->isMobile()){?>
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
 			
-			<div class="row hide-for-print like-us-fb clear">
+			<div class="row hide-for-print like-us-fb clear" style="margin-bottom: 2rem;">
 				<p class="columns small-2">Join the Mob!
 					<div class="columns small-9" >
 						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
@@ -241,57 +237,36 @@ if(!is_null($categoryInfo)){
 			
 			<?php }
 		}?>
-		<!-- CONTENT AD -->
-		<div id="contentad24777"></div>
-		<script type="text/javascript">
-			(function() {
-				var params =
-				{
-					id: "a8eb16d0-6594-4e2f-a80b-7ff948aee7a2",
-					d:  "cHVja2VybW9iLmNvbQ==",
-					wid: "24777",
-					cb: (new Date()).getTime()
-				};
+		
+					<?php include_once( $config['include_path'].'similararticles.php'); ?>
 
-				var qs="";
-				for(var key in params){qs+=key+"="+params[key]+"&"}
-					qs=qs.substring(0,qs.length-1);
-				var s = document.createElement("script");
-				s.type= 'text/javascript';
-				s.src = "http://api.content.ad/Scripts/widget.aspx?" + qs;
-				s.async = true;
-				document.getElementById("contentad24777").appendChild(s);
-			})();
-		</script>
-		<!-- ALSO IN CATEGORY -->
-		<?php //include_once($config['include_path'].'similararticles.php');?>
-		<?php if( !$promotedArticle ){ ?>
-		<!-- AROUND THE WEB -->
-		<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
-		<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
+		<?php //if( !$promotedArticle ){ ?>
+		
+		<!--<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
 			<h2 style="margin-top:30px;">Also in <span>PUCKERMOB:</span></h2>			
-		</section>
-		<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>
-		<?php }?>
+		</section>-->
+		<!--<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>-->
+		<?php //}?>
 		
 	</section>
 	<?php include_once($config['include_path'].'rightsidebar.php');?>
 
+
+
 	<!-- LEFT SIDE BAR -->
-	<?php include_once($config['include_path'].'left_side_bar.php'); ?>
+	<?php  include_once($config['include_path'].'left_side_bar.php'); ?>
 </main>
 
 <?php 
 include_once('admin/fb/fbfunctions.php'); 
-include_once($config['include_path'].'ads_to_load.php');
+//include_once($config['include_path'].'ads_to_load.php');
 include_once($config['include_path'].'bottomscripts.php');
 ?>
 
 <!-- MODAL BOX POPUP -->
 <?php
 include_once($config['include_path'].'login_register_popup.php'); 
-		 //if($articleInfoObj['article_id'] == 4653 ) include_once($config['include_path'].'modalboxform.php'); 
-		// else include_once($config['include_path'].'modalbox.php'); 
+
 ?>
 
 <div id="openModal" class="modalDialogFollow">
@@ -324,8 +299,6 @@ include_once($config['include_path'].'login_register_popup.php');
 <noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
 <?php }?>
 
-<!-- MODAL BOX FOLLOWERS POPUP -->
-<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
 
 </body>
 </html>

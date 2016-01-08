@@ -175,13 +175,22 @@
 							  		<?php }?>
 							  		
 								  	<?php 
-								  	$index = 1;
-								  	for($m = $index; $m <= $current_month; $m++){
+						  			$index = 1;
+
+							  		for($m = $index; $m <= 12; $m++){
 								  		$dateObj   = DateTime::createFromFormat('!m', $m);
 								  		$monthName = $dateObj->format('F');
-								  		if($month == $m) $selected  = 'selected'; else $selected = '';
+								  		//if($month == $m ) $selected  = 'selected'; else $selected = '';
+								  		echo '<option value="'.$m.'"  data-info="2015" >'.$monthName.", 2015".'</option>';
+									}
+
+							  	  	for($m = $index; $m <= $current_month; $m++){
+								  		$dateObj   = DateTime::createFromFormat('!m', $m);
+								  		$monthName = $dateObj->format('F');
+								  		if($month == $m ) $selected  = 'selected'; else $selected = '';
 								  		echo '<option value="'.$m.'" '.$selected.' data-info="'.$current_year.'" >'.$monthName.", ".$current_year.'</option>';
-									} ?>
+									} 
+							?>
 								</select>
 								</form> 
 						</label>

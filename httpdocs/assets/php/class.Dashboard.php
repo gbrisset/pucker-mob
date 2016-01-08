@@ -187,12 +187,12 @@ class Dashboard{
 		}
 	}
 
-	public function get_current_rate( $month = 0, $user_type = 0 ){
+	public function get_current_rate( $month = 0, $user_type = 0, $year = 0 ){
 		if($month == 0 ) $month = date('n');
+		if($year == 0 ) $year =  date('Y');
 
-		$year = date('Y');
-
-		$s=" SELECT * FROM shares_rate WHERE month = $month AND year = $year ";
+		//$year = date('Y');
+		$s=" SELECT * FROM user_rate WHERE month = $month AND year = $year ";
 		if( $user_type != 8  && $user_type != 9 ){ $user_type = 0; }
 			$s .= " AND user_type =  ".$user_type;
 		

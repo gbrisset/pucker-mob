@@ -1,4 +1,3 @@
-
 <?php
 if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
 
@@ -18,7 +17,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 	
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
-			
+			//var_dump($_POST); die;
 			$updateStatus = $adminController->addArticle($_POST);
 			$updateStatus['arrayId'] = 'article-add-form';
 
@@ -103,7 +102,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<?php }else{?>
 					<div class="row">
 					    <div class="columns">
-					      <input type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+					      <input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
 					 	</div>
 					</div>	
 					<?php }?>
@@ -141,18 +140,27 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 					
 					<!-- BODY -->
-					<div class="row margin-bottom">
+					 <!-- Initialize the editor. -->
+
+				 
+					<div class="row margin-bottom margin-top">
 					    <div class="columns">
-							<textarea  class="mceEditor" name="article_body-nf" id="article_body-nf" rows="15" required placeholder="Start writing article here." ><?php if(isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
+							<textarea  class="" name="article_body-nf" id="article_editor"  required ></textarea>
 						</div>
 					</div>
+
+					 <script>
+				      $(function() {
+				          $('#article_editor').froalaEditor({
+				          	  height: 300,
+				          	  placeholderText: 'Start Writing Here.'
+				          });
+				      });
+				  </script> 
 
 					<!-- KEYWORDS -->
 					<div class="row">
 					    <div class="columns">
-					    	<!--<div class="small-12 label-wrapper">
-								<label class="padding-top">Help readers find your article! Enter up to 10 keywords that best describe your article, separated by commas.</label>
-							</div>-->
 					    	<input class="small-12" type="text" name="article_tags-s" id="article_tags-s" placeholder="Enter keywords (Up To 10)" value="<?php if(isset($_POST['article_tags-s'])) echo $_POST['article_tags-s']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_tags') echo 'autofocus'; ?> />		
 						</div>
 					</div>	
@@ -173,7 +181,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							<label class="small-12 large-3 left uppercase">Article Type: </label>
 							
 							<input type="radio" name="article_type-s" id="opinion" data-info="1"  value="1" checked />
-							<label for="" class="radio-label">Lifestyle</label>
+							<label for="" class="radio-label">Opinion</label>
 									
 							<input type="radio" name="article_type-s" data-info="2" id="news" value="2"  />
 							<label for="" class="radio-label">News</label>
@@ -186,26 +194,6 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<input type="hidden" name="article_type-s" data-info="0" id="staff" value="0" />
 					<?php }?>
 
-					<!-- PAGE LIST -->
-					<?php if($admin_user){?>
-					<div class="row">
-					    <div class="columns">
-					    	<div class="small-styled-select">
-							<select name="page_list_id-nf" id="page_list_id-nf" class="small-12 large-4 left">
-								<option value="0">Select Page List</option>
-								<?php			
-									$page_lists = PageList::get();
-									foreach($page_lists as $page_list){
-										echo "<option value='".$page_list->page_list_id."'  >";
-											echo $page_list->page_list_title;
-										echo "</option>";
-									}
-								?>
-							</select>
-						</div>
-						</div>
-					</div>
-					<?php }?>
 					
 					<!-- CONTRIBUTORS -->
 					<?php if($admin_user){

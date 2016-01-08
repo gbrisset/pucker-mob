@@ -46,10 +46,7 @@ if( isset($recentArticles) && $recentArticles ){ ?>
 		
 		<?php if($articleNumber == 2 ){ 
 		 if(!$promotedArticle){ ?>
-		  <!-- NATIVO 2ND AD -->
-			<div class="columns small-11 nativo-ad">
-				<div class="nativo"></div> 
-			</div>
+		 
 		<?php } 
 		 }
 					

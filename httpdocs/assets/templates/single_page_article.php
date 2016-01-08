@@ -110,18 +110,51 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						</div>
 						
 
-						
-
-
 						<?php include_once($config['include_path'].'header_social.php'); ?>
 
-						<!-- ShareT. 2nd Spot 10/08/2015 -->
+						<!-- ShareT. 2nd Removed 1/5/2016 
 						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 							<div data-str-native-key="81d7c1fc" style="display: none;"></div>
+						</div>-->
+
+						<!-- BRANOVATE -->
+						<div id="mobile-instream-branovate-ad">
+							<div id="get-content" style="text-align:center; display: inline-block;">
+								
+									<?php if( $detect->is('iOS') ){?>
+										<div id="branovate-ad "class="columns small-12 margin-top margin-bottom IOS">
+										<!-- BEGIN JS TAG - puckermob.com 300x250 IOS < - DO NOT MODIFY -->
+										<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5839932&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+										<!-- END TAG -->
+										</div>
+									<?php }else{?>
+									<div id="branovate-ad "class="columns small-12 margin-top margin-bottom">
+									<!-- BEGIN JS TAG - puckermob.com Mobile 300x250 < - DO NOT MODIFY -->
+									<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+									<!-- END TAG -->
+									</div>
+									<?php }?>
+								
+							</div>
 						</div>
-						<!--ADSPARC 10/09/2015 ( SWITCH TI THIS SPOT ON OCT 26)-->
+						<!-- CARAMBOLA  -->
+						<style>
+						.cbola-trivia-box {
+						    z-index: 99 !important;
+						}
+						</style>
 						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-							<div class="an-container" id="0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf"></div>
+							<div id="get-content" style="text-align:center; display: inline-block;">
+							<!--Carambola Trivia script -->
+								<img height='0' width='0' alt='' src='http://pixel.watch/pssj' />
+								<script class="carambola_InContent" type="text/javascript">
+								(function (i,d,s,o,m,r,t,g) {
+								var e=d.getElementById(r);if(e===null){
+								var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else if(typeof i[t]!=='undefined'){i[t]++}
+								else{i[t]=1}
+								})(window, document, 'ic', 'script', 'cbola', 'carambola_proxy','Cbola_IC','http://route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233')
+								</script>
+							</div>
 						</div>
 					</div>
 					
@@ -198,30 +231,19 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							
 							<!-- COMMENTS BOX -->
 							<?php include_once($config['include_path'].'disqus.php'); ?>
+							<div class="ad-unit hide-for-print padding-top">
+							<div id="mobile-instream-toksnn-ad-loader" class="">
+								<div id="get-content" style="text-align:center; display: inline-block;">
+									<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
+								</div>
+							</div>
+							</div>
 
 						</section>
-						<!-- REMOVED OCT 26th 3PM -->
-						<!--<div class="row read-more clear small-12">
-
-							<div class="button">
-								<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
-							</div>
-						</div>-->
+						
 
 					</div>
-					
-					<!-- SMARTIES PROMOTION -->
-					<?php  if($promotedArticle){ ?>	
-					<div class="hide-for-print row half-padding padding-top padding-bottom">
-						
-						<!--JavaScript Tag // Tag for network 5470: Sequel Media Group // Website: Pucker Mob // Page: 1 pg Aritcle // Placement: 300 ATF (3243114) // created at: Oct 14, 2014 11:09:55 AM-->
-						<script language="javascript"><!--
-							document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3243114/0/170/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
-		//-->
-	</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3243114/0/170/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="300" height="250"></a></noscript>
-	<!-- End of JavaScript Tag -->
-</div>
-<?php } ?>
+	
 
 </section>
 
@@ -239,16 +261,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 			
 			<a class="addthis_button_facebook">
-				<img src="http://cdn-assets.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
+				<img src="http://www.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
 			</a> 
 			<a class="addthis_button_twitter">
-				<img src="http://cdn-assets.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
+				<img src="http://www.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
 			</a> 
 			<a class="addthis_button_pinterest_share">
-				<img src="http://cdn-assets.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
+				<img src="http://www.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
 			</a>
 			<a href="#disqus-container" class="disqus_container">
-				<img src="http://cdn-assets.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
+				<img src="http://www.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
 			</a>
 			
 			<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
@@ -342,16 +364,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 								<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 									
 									<a class="addthis_button_facebook">
-										<img src="http://cdn-assets.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
+										<img src="http://www.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
 									</a> 
 									<a class="addthis_button_twitter">
-										<img src="http://cdn-assets.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
+										<img src="http://www.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
 									</a> 
 									<a class="addthis_button_pinterest_share">
-										<img src="http://cdn-assets.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
+										<img src="http://www.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
 									</a>
 									<a href="#disqus-container" class="disqus_container">
-										<img src="http://cdn-assets.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
+										<img src="http://www.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
 									</a>
 									
 									<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
@@ -364,23 +386,32 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 								</div>
 
 								<hr>
-								<!-- SHARETHROUGN 2ND UNIT -->
-								<?php if(!$promotedArticle  && $article_id != 4555){?>
+								<!-- SHARETHROUGN 2ND UNIT REMOVE 1/5/2016
+								<?php //if(!$promotedArticle  && $article_id != 4555){?>
 								<div data-str-native-key="53caed05" style="display: none;"></div>
 								<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-								<?php } ?>
+								<?php //} ?>-->
 								
+								<!-- TABOOLA -->
+								<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+
+								<div id="taboola-below-article-thumbnails"></div>
+								<script type="text/javascript">
+								  window._taboola = window._taboola || [];
+								  _taboola.push({
+								    mode: 'thumbnails-a',
+								    container: 'taboola-below-article-thumbnails',
+								    placement: 'Below Article Thumbnails',
+								    target_type: 'mix'
+								  });
+								</script>
+								</section>
+
 								<!-- CARAMBOLA -->
 								<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
 									<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy', 'Cbola_initializeProxy', 'http://route.carambo.la/inimage/getlayer?pid=spdsh12')</script>
 								</section>
 
-								<!-- ADBLADE-->
-								<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-top:0;">
-									<ins class="adbladeads" data-cid="6669-1650351935" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
-									<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
-								</section>
-								
 								
 								<!-- COMMENTS BOX -->
 								<?php include_once($config['include_path'].'disqus.php'); ?>

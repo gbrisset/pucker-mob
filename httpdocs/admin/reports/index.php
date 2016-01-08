@@ -35,8 +35,6 @@
 		}else $adminController->redirectTo('logout/');
 	}
 
-	//var_dump($results);
-
 ?>
 
 <!DOCTYPE html>

@@ -123,6 +123,44 @@ class GoogleAnalyticsData{
 		return $arr;
 	}
 
+	public function getArticlesTEST(){
+		$month = 11;
+		$year = 2015;
+		
+		$arr = [];
+		$s = "SELECT articles.article_id, article_seo_title, article_title  
+			  FROM  articles 
+			  INNER JOIN article_contributor_articles
+			  ON ( article_contributor_articles.article_id = articles.article_id )
+			  WHERE article_status = 1 and article_contributor_articles.contributor_id = 3612 
+			  ORDER BY articles.article_id DESC ";
+
+		$q = $this->performQuery(['queryString' => $s]);
+		
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			$q = $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			//return $q;
+		} else {
+			$q = false;
+		}
+		
+		if($q){
+			foreach($q as $article){
+				$arr[] = [	'article_id' => $article['article_id'], 
+							'article_title' => $article['article_title'],
+							'article_seo' => $article['article_seo_title']//,
+							//'category' => $article['category']
+						 ];
+			}
+		}
+
+		return $arr;
+	}
+
 	public function verifyArticleid( $articleId , $month, $year ){
 			$s="SELECT article_id FROM google_analytics_data WHERE article_id = $articleId AND month = $month AND year = $year LIMIT 1";
 

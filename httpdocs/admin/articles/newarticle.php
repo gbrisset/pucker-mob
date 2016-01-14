@@ -148,12 +148,16 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							<textarea  class="" name="article_body-nf" id="article_editor"  required ></textarea>
 						</div>
 					</div>
-
 					 <script>
 				      $(function() {
+				      		
 				          $('#article_editor').froalaEditor({
 				          	  height: 300,
-				          	  placeholderText: 'Start Writing Here.'
+				          	  placeholderText: 'Start Writing Here.',
+						      imageUploadURL: '/projects/pucker-mob//httpdocs/admin/articles/upload_images.php',
+						      imageUploadParams: { id: 'my_editor' },
+						      imageMaxSize: 2 * 1024 * 1024,
+						      imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif']
 				          });
 				      });
 				  </script> 

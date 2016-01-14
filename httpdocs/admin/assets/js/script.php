@@ -1152,7 +1152,8 @@ if($('.mob-level-contributor')){
         }
     }); 
 
-    EarningsObj.setValues(moment().subtract(7, 'days').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
+    //var startDate = moment([year, month - 1]);
+    EarningsObj.setValues(moment().startOf('month').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
 	if($('#earnings').length > 0 ){
 		EarningsObj.initChart();
 		EarningsObj.getChartData();

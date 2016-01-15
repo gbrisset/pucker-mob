@@ -244,6 +244,26 @@ class Dashboard{
 		}
 	}
 
+	public function get_articlesbypageviews_daily( $start_date, $end_date ){
+
+		$s = "SELECT article_id, sum(usa_pageviews) as usa_pageviews, month, year, updated_date FROM  google_analytics_data_daily
+			  WHERE  google_analytics_data_daily.updated_date between '".$start_date."' AND  '".$end_date." ' 
+			  GROUP BY article_id ORDER BY google_analytics_data_daily.usa_pageviews DESC";
+
+		$queryParams = [];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}
+	}
+
 	public function get_articlesbypageviews_new( $contributor_id, $month, $year ){
 
 		//$month = 2;

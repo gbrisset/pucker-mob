@@ -21,17 +21,18 @@
 	$selected_year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 	$selected_contributor = isset($_POST['contributor']) ? $_POST['contributor'] : 0;
 	$new_cal = false;
-	if($selected_month > 2 && $selected_year >= 2015) $new_cal = true;
-	
+	if( $selected_year == 2015 && $selected_month  > 2 ) $new_cal = true;
+	if( $selected_year > 2015) $new_cal = true;
+
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 
-			if($selected_month > 2 && $selected_year >= 2015){
+			//if($selected_month > 2 && $selected_year >= 2015){
 				$results = $dashboard->getPageViewsUSReport($_POST);
-			}
-			else{
-				$results = $dashboard->socialMediaSharesReport($_POST);
-			}
+			//}
+			//else{
+			//	$results = $dashboard->socialMediaSharesReport($_POST);
+			//}
 		}else $adminController->redirectTo('logout/');
 	}
 
@@ -240,8 +241,8 @@
 					  			
 								$no_cover_in_house = false;
 
-					  			if( $contributor['user_type'] == '6' || $contributor['user_type'] == '1' || $contributor['user_type'] == '7' ){
-							  		if( $selected_month > 2 && $selected_year >= 2015 ){
+					  			if( $contributor['user_type'] == '6' || $contributor['user_type'] == '1' || $contributor['user_type'] == '7' || $contributor['user_type'] == '0' || $contributor['user_type'] == '5'){
+							  		if( $selected_year >= 2015 ){
 							  			 $total_rev = 0;
 							  			 $total_to_pay  = 0;
   										 $no_cover_in_house = true;

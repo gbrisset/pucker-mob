@@ -5,13 +5,14 @@
 
 	//$cron = new CronSocialMediaInformation($config);
 	$dashboard = new Dashboard($config);
+	//1- Get All Articles Status = Live.
 	
-	$month = 12;//date('n');
-	$year = 2015;//date('Y');
+	$month = date('n');
+	$year = date('Y');
 	
-	//if($year >= 2015 && $month > 2){
-	$results = $dashboard->pageviewsReport( $month, $year );
-	//}else $dashboard->updateContributorsEarnings( $month, $year );
+	if($year >= 2015 && $month > 2){
+		$results = $dashboard->pageviewsReport( $month, $year );
+	}else $dashboard->updateContributorsEarnings( $month, $year );
 
 	echo "DONE!";
 

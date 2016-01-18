@@ -63,8 +63,11 @@
   }
 
  ?>
+
+ 
  <!-- Social Media Icons -->
 <div id="nav_bar">
+
   <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
     <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">
@@ -141,9 +144,13 @@
   </header>
    
   <?php }?>
-   
    <?php if($detect->isMobile()){?>
-      
+    <!-- Strike Video -->
+      <div id="ad-pushdown-2911" style=""></div>
+      <script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2911/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>
+    <?php }?>
+   <?php if($detect->isMobile()){?>
+   
      <div id="social-media-container-header" class="row" style="display:none; z-index:99999999 !important;"> 
         <div class="columns social-media-container  padding-bottom " style=" display:block !important; z-index:99999999 !important;">
         <a class="addthis_button_facebook small-6 left">

@@ -1,9 +1,8 @@
 <?php if($detect->isMobile()){ 
-	if(isset($isArticle) && $isArticle ){?>
-		
-		
-		<?php if($articleInfoObj && $articleInfoObj['article_id'] == 10157 ){ ?>
-			<div id="mobile-instream-adsnative-ad-loader" class="hide">
+	//if(isset($isArticle) && $isArticle ){
+
+	 //if($articleInfoObj && $articleInfoObj['article_id'] == 10157 ){ ?>
+			<!--<div id="mobile-instream-adsnative-ad-loader" class="hide">
 			<div id="get-content" style="text-align:center; display: inline-block;">
 				<div id="adsnative-ad "class="columns small-12 margin-top margin-bottom">
 					<script>
@@ -99,12 +98,10 @@
 					</script>				
 				</div>
 				</div>
-			</div>
-		<?php } ?>
-		
-	<?php  
+			</div>-->
+		<?php // } 
 
-	}
+	//}
 
 } ?>
 

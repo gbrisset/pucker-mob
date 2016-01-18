@@ -144,41 +144,15 @@ if($('body').hasClass('mobile')) {
 				num_items = li_length;
 			}
 
-			/*$.ajax({
-				type: "POST",
-				url:  'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php',
-				data: { article_id: article_id, task:'article_ads' },
-				success: function (data) {
-					if(data != 'false'){
-						var info = $.parseJSON(data);
-						// first_p  = parseInt(info[0].mobile_1);
-						// second_p  = parseInt(info[0].mobile_2);
-						// third_p  = parseInt(info[0].mobile_3);
-						// fourth_p  = parseInt(info[0].mobile_4);
-						//fith_p  = 22;//parseInt(info[0].mobile_5);	
-					}
-				},
-				async:   false
-			});*/
-
 			if( tag == 'p'){
 				first_p = first_p;
 				second_p = second_p;
 				third_p = third_p;
 			}
 
-			/*if(article_id == 7614){
-				var ip_address = '';
-				var current_url = window.location.href;
-				var user_agent_str = navigator.userAgent;
-				$.get('http://jsonip.com', function (res) {
-					ip_address = res.ip;
-				});
-			}*/
-console.log(1);
-			
+						
 			//1ST SPOT
-			if( first_p > 0 ){
+			if( first_p > 0 ){ //SHARETHROUG
 				if( country && country == 'US' || country == 'XX'){
 					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', tag);	
 				}else{	
@@ -186,54 +160,36 @@ console.log(1);
 				}
 			}
 
-			if( second_p > 0 ){ //2ND SPOT
-				if(article_id == 10157){ //STRIKE VIDEO
-					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="mobile-instream-adsnative-ad" class="clear"></div>', tag);
-				}else{
-					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="ad-inline-2880"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2880/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
-				}
+			if( second_p > 0 ){ //2ND SPOT GOOGLE
+				inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);	
 			}
 
-				
-			if( third_p > 0 ){ //3RD SPOT  //TABOOLA 
-				if(article_id == 9499){
-					//VIACOM http://www.puckermob.com/lifestyle/18-struggles-of-girls-who-love-too-hard-but-are-bad-at-expressing-it
-					inBodyAd.loadInArticleAd('article-body', third_p, 0, '<div style="background-color:#000000;"><div style="padding:4px;"><iframe src="http://media.mtvnservices.com/embed/mgid:arc:video:comedycentral.com:96180201-3c00-436a-b2d9-274413842c98" width="300" height="288" frameborder="0"></iframe><p style="text-align:left;background-color:#FFFFFF;padding:4px;margin-top:4px;margin-bottom:0px;font-family:Arial, Helvetica, sans-serif;font-size:12px;">Get More: <a href="http://www.cc.com">Comedy Central</a>,<a href="http://www.cc.com/funny-videos">Funny Videos</a>,<a href="http://www.cc.com/shows">Funny TV Shows</a></p></div></div>', tag);
+			if( third_p > 0 ){ //3RD SPOT STRIKE VIDEO
+				if( country && country == 'CA' ){
+					inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="ad-inline-2978"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2978/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
 				}else{
-					inBodyAd.loadInArticleAd('article-body', third_p, 0, '<div id="taboola-mid-article-thumbnails"></div><script type="text/javascript"> window._taboola = window._taboola || []; _taboola.push({ mode: \'thumbnails-c\', container: \'taboola-mid-article-thumbnails\', placement: \'Mid Article Thumbnails\', target_type: \'mix\' }); </script>', tag );
-
+					inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="ad-inline-2880"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2880/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
 				}
+				//inBodyAd.loadInArticleAd('article-body', third_p, 0, '<div id="taboola-mid-article-thumbnails"></div><script type="text/javascript"> window._taboola = window._taboola || []; _taboola.push({ mode: \'thumbnails-c\', container: \'taboola-mid-article-thumbnails\', placement: \'Mid Article Thumbnails\', target_type: \'mix\' }); </script>', tag );
+				//inBodyAd.loadInArticleAd('article-body', third_p, 0, '<script type="text/javascript">var __refURL = "%%REFERRER_URL_UNESC%%";</script><script type="text/javascript" src="http://babaroll.com/js/gcapuckermobmw"></script>', tag);
+		
 			}
-			
+
 			if( fourth_p > 0 ){ //4TH SPOT
 				if(num_items >= fourth_p ){ //ANSWERS MEDIA
 					inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="vm_inreadcontent" class="playerDiv_inline_close"><script id="fifScript"> (function() { var script = document.createElement("script"); script.async = true; script.src = "http://player.videomosh.com/players/instream/puckermob.min.js"; var entry = document.getElementsByTagName("script")[0]; entry.parentNode.insertBefore(script, entry);  })(); </script> </div>', tag);
 					//inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="mobile-instream-branovate-ad" class="clear"></div>', tag);
 				}
 			}
-			if( fith_p > 0 ){ //5TH SPOT 
-				if(num_items >= fith_p ){
-					inBodyAd.loadInArticleAd( 'article-body', fith_p, 0,  '<ins class="adbladeads" data-cid="7958-2737561138" data-host="web.adblade.com" data-tag-type="2" style="display:none"><\/ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"><\/script>', tag);
-				}
-			}
+
 		}
 
-		//MULTIPAGE ARTICLE
-		/*if( adPage === 'articleslide'){
-			inBodyAd.loadInArticleAd( 'article-caption', 4, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:150px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6986976583"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>', 'p');	
-			inBodyAd.loadInArticleAd( 'article-caption', 6, 0, mobilead[adPage].inarticle, 'p');	
-		}*/
-
-		 $('.inarticle-ad').prepend("<p style='margin-left: 0.5rem !important;color: #bbb;font-size: 0.9rem !important;font-style: italic;'>Advertisement</p>");
+		$('.inarticle-ad').prepend("<p style='margin-left: 0.5rem !important;color: #bbb;font-size: 0.9rem !important;font-style: italic;'>Advertisement</p>");
         
 	}
 
 	if(adPage == 'article'){
 		//appendAdEndBody($('#mobile-instream-branovate-ad-loader'), $('#mobile-instream-branovate-ad'), 100);
-		if(article_id == 8669 ){
-			appendAdEndBody($('#mobile-instream-adsparc-ad-loader'), $('#mobile-instream-adsparc-ad'), 100);
-		}	
-		
 	}
 //DESKTOP
 } else{
@@ -302,9 +258,5 @@ console.log(1);
 			}
 		}
 	}
-
-
-	//appendAdEndBody($('#header-ad-loader'), $('#header-ad'), 100);
-	//appendAdEndBody($('#atf-ad-loaded'), $('#atf-ad'), 100);
 
 }

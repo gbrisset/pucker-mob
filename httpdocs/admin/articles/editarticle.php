@@ -271,15 +271,19 @@
 						</div>
 					</div>
 
-					
 					 <script>
-				      $(function() {
+				      $(function() {	
 				          $('#article_editor').froalaEditor({
+				          	  key: 'UcbaE2hlypyospbD3ali==',
 				          	  height: 300,
-				          	  placeholderText: 'Start Writing Here.'
+				          	  placeholderText: 'Start Writing Here.',
+						      imageUploadURL: '/projects/pucker-mob//httpdocs/admin/articles/upload_images.php',
+						      imageUploadParams: { id: 'my_editor' },
+						      imageMaxSize: 2 * 1024 * 1024,
+						      imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif']
 				          });
 				      });
-				  </script> 
+				  	</script> 
 				
 					<!-- KEYWORDS -->
 					<div class="row">

@@ -149,9 +149,9 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						</div>
 					</div>
 					 <script>
-				      $(function() {
-				      		
+				      $(function() {	
 				          $('#article_editor').froalaEditor({
+				          	key: 'UcbaE2hlypyospbD3ali==',
 				          	  height: 300,
 				          	  placeholderText: 'Start Writing Here.',
 						      imageUploadURL: '/projects/pucker-mob//httpdocs/admin/articles/upload_images.php',
@@ -160,7 +160,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						      imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif']
 				          });
 				      });
-				  </script> 
+				  	</script> 
 
 					<!-- KEYWORDS -->
 					<div class="row">

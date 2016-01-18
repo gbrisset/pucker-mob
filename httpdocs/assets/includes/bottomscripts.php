@@ -103,7 +103,7 @@
   }?>  
 
  <?php //if( $articleInfoObj['article_id'] == 7850 ){?>
-  <!-- AIR PUSH  -->
+  <!-- AIR PUSH 
    <script type="text/javascript">
      this.airpushConfig={
      "siteid": 291995,
@@ -112,7 +112,7 @@
      "placementid": 0
   };
   </script>
-  <script type="text/javascript"  src="//ab.airpush.com/apportal/v2/cdn/airpush.js" ></script>
+  <script type="text/javascript"  src="//ab.airpush.com/apportal/v2/cdn/airpush.js" ></script> -->
 <?php //} ?>
 
   

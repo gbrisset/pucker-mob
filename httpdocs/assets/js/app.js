@@ -51,7 +51,7 @@ $(document).ready(function() {
 		var height_value = pct_to_show / 100 ;
 		var wishDisplayHeight = parentOrgHeight * height_value;
 
-		//$('#article-content').css('max-height', wishDisplayHeight);
+		$('#article-content').css('max-height', wishDisplayHeight);
 
 		$("#read-more-img").on('click', function(e) {
 			e.preventDefault();		
@@ -100,7 +100,7 @@ $(document).ready(function() {
 			$('#left-aside').show();
 			if(page === 'home'){
 				if( $("#has-sponsored-by").val() == '0') $('#aside').attr('style', 'right:103px;');
-				else $('#aside').attr('style', 'right:0;');
+				else $('#aside').attr('style', 'right:103px;');
 			}else{
 				$('#aside').attr('style', 'right:103px;');
 			}

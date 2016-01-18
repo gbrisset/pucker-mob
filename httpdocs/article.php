@@ -15,18 +15,20 @@ if($current_url == "http://www.puckermob.com/lifestyle/what-all-smokers-know-7-r
 	header('Location: http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-');
 	die;
 }
-
+$categoryInfo = array( "cat_id" => "6",  "cat_name"=> "Lifestyle", "cat_dir_name"=> "lifestyle",
+ "cat_desc" => "",  "cat_tags" => "");
 foreach($MPNavigation->categories as $category){
+
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
 		$categoryInfo = $category;
 		$articleTitle = explode('&', preg_replace('/[?]/', '&', $uri[1]))[0];
 		$hasParent = false;
-		break;
+	//	break;
 	} else if(isset($category['cat_dir_name']) && (isset($uri[2])) && ($category['cat_dir_name'] == $uri[1]) ){
 		$categoryInfo = $category;
 		$articleTitle = explode('&', preg_replace('/[?]/', '&', $uri[2]))[0];
 		$hasParent = true;
-		break;
+		//break;
 	}
 }
 

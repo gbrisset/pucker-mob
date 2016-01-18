@@ -53,16 +53,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<!-- Article Image -->
 		<div class="row no-margin-with-tap">
-			<!-- SMARTIES -->
-			<?php if($promotedArticle){ 
-				if($detect->isMobile()) $smartiesImagestyle = 'width:98%;'; else $smartiesImagestyle='';
-				?>
-				<div id="smarties-image" class="small-12 columns">
-					<span style="position: absolute; right: 0.45rem; z-index: 999;" >
-						<img style="<?php echo $smartiesImagestyle; ?>" src="http://www.puckermob.com/assets/img/sponsoredby-smarties.png">
-					</span>
-				</div>
-				<?php } ?>
 				<div id="article-image" class="small-12 columns no-padding">
 					<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 				</div>
@@ -89,163 +79,168 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<!-- ABOUT THE AUTHOR -->
 				<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
-				<!-- DISCLAIMER -->
-				<?php if($article_disclaimer){?>
-				<div class="columns no-padding padding-top disclaimer">
-					<p>
-						*The following article does not represent the viewpoints of PuckerMob, it's management or 
-						partners, but is solely the opinion of the contributor.
-					</p>
-				</div>
-				<?php }?>
+		<!-- DISCLAIMER -->
+		<?php if($article_disclaimer){?>
+		<div class="columns no-padding padding-top disclaimer">
+			<p>
+				*The following article does not represent the viewpoints of PuckerMob, it's management or 
+				partners, but is solely the opinion of the contributor.
+			</p>
+		</div>
+		<?php }?>
 
-				<!-- Article Content -->
-				<div class="row clear" style="margin-top: -1rem;">
-					
-					<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important;     margin-bottom: -5px;"> 
+		<!-- Article Content -->
+		<div class="row clear" style="margin-top: -1rem;">
+			
+			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important;     margin-bottom: -5px;"> 
+				
+			<!-- ARTICLE BODY -->
+			<div id="article-body">
+				<?php echo $article_body; ?>
+			</div>
 						
-						<!-- ARTICLE BODY -->
-						<div id="article-body">
-							<?php echo $article_body; ?>
-						</div>
-						
 
-						<?php include_once($config['include_path'].'header_social.php'); ?>
-
-						<!-- ShareT. 2nd Removed 1/5/2016 
-						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-							<div data-str-native-key="81d7c1fc" style="display: none;"></div>
-						</div>-->
-
-						<!-- BRANOVATE -->
-						<div id="mobile-instream-branovate-ad">
-							<div id="get-content" style="text-align:center; display: inline-block;">
-								
-									<?php if( $detect->is('iOS') ){?>
-										<div id="branovate-ad "class="columns small-12 margin-top margin-bottom IOS">
-										<!-- BEGIN JS TAG - puckermob.com 300x250 IOS < - DO NOT MODIFY -->
-										<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5839932&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
-										<!-- END TAG -->
-										</div>
-									<?php }else{?>
-									<div id="branovate-ad "class="columns small-12 margin-top margin-bottom">
-									<!-- BEGIN JS TAG - puckermob.com Mobile 300x250 < - DO NOT MODIFY -->
-									<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
-									<!-- END TAG -->
-									</div>
-									<?php }?>
-								
-							</div>
-						</div>
-						<!-- CARAMBOLA  -->
-						<style>
-						.cbola-trivia-box {
-						    z-index: 99 !important;
-						}
-						</style>
-						<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-							<div id="get-content" style="text-align:center; display: inline-block;">
-							<!--Carambola Trivia script -->
-								<img height='0' width='0' alt='' src='http://pixel.watch/pssj' />
-								<script class="carambola_InContent" type="text/javascript">
-								(function (i,d,s,o,m,r,t,g) {
-								var e=d.getElementById(r);if(e===null){
-								var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else if(typeof i[t]!=='undefined'){i[t]++}
-								else{i[t]=1}
-								})(window, document, 'ic', 'script', 'cbola', 'carambola_proxy','Cbola_IC','http://route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233')
-								</script>
-							</div>
-						</div>
-					</div>
+			<?php include_once($config['include_path'].'header_social.php'); ?>
+			
+			<!-- BRANOVATE -->
+			<div id="mobile-instream-branovate-ad">
+				<div id="get-content" style="text-align:center; display: inline-block;">
 					
-						<!-- RELATED ARTICLES -->
-						<?php 
-						$related = [];
-						if(isset($related_articles) && $related_articles && 
-							($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
-							$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
-						$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
-						$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
-						?>
-						<div class="row small-12 clear related-articles-box half-padding">
-							<hr>
-							<div class="rel-articles-wrapper remember-to-share">
-								<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
-								<ul>
-									<?php if( $related['related_article_id_1']['info'] ) {?>
-									<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-										<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
-											<div class="article-image small-5 left" style="padding-right:10px">
-												<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
-													<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
-												</a>
-											</div>
-											<div class="article-title small-7 left" style="padding-right:10px">
-												<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></h1>
-											</div>
-										</article>
-									</li>
-									<?php }?>
-									<?php if( $related['related_article_id_2']['info'] ) {?>
-									<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-										<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
-											<div class="article-image small-5 left" style="padding-right:10px">
-												<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
-													<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
-												</a>
-											</div>
-											<div class="article-title small-7 left">
-												<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></h1>
-											</div>
-										</article>
-									</li>
-									<?php }?>
-									<?php if( $related['related_article_id_3']['info'] ) {?>
-									<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-										<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
-											<div class="article-image small-5 left" style="padding-right:10px">
-												<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">
-													<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
-												</a>
-											</div>
-											<div class="article-title small-7 left" style="padding-right:10px">
-												<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></h1>
-											</div>
-										</article>
-									</li>
-									<?php }?>
-								</ul>
+						<?php if( $detect->is('iOS') ){?>
+							<div id="branovate-ad "class="columns small-12 margin-top margin-bottom IOS">
+							<!-- BEGIN JS TAG - puckermob.com 300x250 IOS < - DO NOT MODIFY -->
+							<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5839932&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+							<!-- END TAG -->
 							</div>
-							
+						<?php }else{?>
+						<div id="branovate-ad "class="columns small-12 margin-top margin-bottom">
+						<!-- BEGIN JS TAG - puckermob.com Mobile 300x250 < - DO NOT MODIFY -->
+						<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+						<!-- END TAG -->
 						</div>
 						<?php }?>
+					
+				</div>
+			</div>
 
-						
-						<!-- IMAGE SOURCE -->
-						<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-						<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
-							Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
-							<?php }?>
-							
-							<section id="separator-section" class="row no-padding"></section>
-							
-							<!-- COMMENTS BOX -->
-							<?php include_once($config['include_path'].'disqus.php'); ?>
-							<div class="ad-unit hide-for-print padding-top">
-							<div id="mobile-instream-toksnn-ad-loader" class="">
-								<div id="get-content" style="text-align:center; display: inline-block;">
-									<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
+			<!-- CARAMBOLA  -->
+			<style>
+				.cbola-trivia-box {
+				    z-index: 99 !important;
+				}
+			</style>
+			<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+				<div id="get-content" style="text-align:center; display: inline-block;">
+				<!--Carambola Trivia script -->
+					<img height='0' width='0' alt='' src='http://pixel.watch/pssj' />
+					<script class="carambola_InContent" type="text/javascript">
+						(function (i,d,s,o,m,r,t,g) {
+						var e=d.getElementById(r);if(e===null){
+						var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else if(typeof i[t]!=='undefined'){i[t]++}
+						else{i[t]=1}
+						})(window, document, 'ic', 'script', 'cbola', 'carambola_proxy','Cbola_IC','http://route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233')
+					</script>
+				</div>
+			</div>
+
+			</div>
+
+			<!-- IMAGE SOURCE -->
+			<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
+			<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
+				Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
+			<?php }?>
+
+			<div class="row read-more clear small-12">
+			<div class="button" style="border-top-width: 0px;">
+				<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
+			</div>
+			</div>
+			
+
+			<!-- RELATED ARTICLES -->
+			<?php 
+			$related = [];
+			if(isset($related_articles) && $related_articles && 
+				($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
+				$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
+			$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
+			$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
+			?>
+			<div class="row small-12 clear related-articles-box half-padding margin-top" style="margin-top:20px !important;">
+				
+				<div class="rel-articles-wrapper remember-to-share">
+					<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
+					<ul>
+						<?php if( $related['related_article_id_1']['info'] ) {?>
+						<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+							<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
+								<div class="article-image small-5 left" style="padding-right:10px">
+									<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
+										<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
+									</a>
 								</div>
-							</div>
-							</div>
+								<div class="article-title small-7 left" style="padding-right:10px">
+									<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></h1>
+								</div>
+							</article>
+						</li>
+						<?php }?>
+						<?php if( $related['related_article_id_2']['info'] ) {?>
+						<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+							<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
+								<div class="article-image small-5 left" style="padding-right:10px">
+									<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
+										<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
+									</a>
+								</div>
+								<div class="article-title small-7 left">
+									<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></h1>
+								</div>
+							</article>
+						</li>
+						<?php }?>
+						<?php if( $related['related_article_id_3']['info'] ) {?>
+						<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+							<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
+								<div class="article-image small-5 left" style="padding-right:10px">
+									<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">
+										<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
+									</a>
+								</div>
+								<div class="article-title small-7 left" style="padding-right:10px">
+									<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></h1>
+								</div>
+							</article>
+						</li>
+						<?php }?>
+					</ul>
+				</div>
+				
+			</div>
+			<?php }?>
 
-						</section>
-						
-
+			
+			
+				
+			<section id="separator-section" class="row no-padding"></section>
+				
+			<!-- COMMENTS BOX -->
+			<?php include_once($config['include_path'].'disqus.php'); ?>
+			<div class="ad-unit hide-for-print padding-top">
+				<div id="mobile-instream-toksnn-ad-loader" class="">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+						<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
 					</div>
-	
+				</div>
+			</div>
 
-</section>
+		</section>
+		
+
+		</div>
+	
+	</section>
 
 </article>
 
@@ -355,84 +350,79 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 									<?php if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php }?>
 										<?php if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></li><?php }?>
 										</ul>
-									</div>
+						</div>
 									<hr>
-								</div>
-								<?php }?>
+					</div>
+				<?php }?>
 								
-								<!-- Social Media Icons -->
-								<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-									
-									<a class="addthis_button_facebook">
-										<img src="http://www.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
-									</a> 
-									<a class="addthis_button_twitter">
-										<img src="http://www.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
-									</a> 
-									<a class="addthis_button_pinterest_share">
-										<img src="http://www.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
-									</a>
-									<a href="#disqus-container" class="disqus_container">
-										<img src="http://www.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
-									</a>
-									
-									<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
+				<!-- Social Media Icons -->
+				<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+					
+					<a class="addthis_button_facebook">
+						<img src="http://www.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
+					</a> 
+					<a class="addthis_button_twitter">
+						<img src="http://www.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
+					</a> 
+					<a class="addthis_button_pinterest_share">
+						<img src="http://www.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
+					</a>
+					<a href="#disqus-container" class="disqus_container">
+						<img src="http://www.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
+					</a>
+					
+					<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
 
-									<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
+					<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
 
-									<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">	
-										<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
-									</div>
-								</div>
+					<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">	
+						<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
+					</div>
+				</div>
 
-								<hr>
-								<!-- SHARETHROUGN 2ND UNIT REMOVE 1/5/2016
-								<?php //if(!$promotedArticle  && $article_id != 4555){?>
-								<div data-str-native-key="53caed05" style="display: none;"></div>
-								<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-								<?php //} ?>-->
-								
-								<!-- TABOOLA -->
-								<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+				<hr>
+				
+				<!-- TABOOLA -->
+				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
 
-								<div id="taboola-below-article-thumbnails"></div>
-								<script type="text/javascript">
-								  window._taboola = window._taboola || [];
-								  _taboola.push({
-								    mode: 'thumbnails-a',
-								    container: 'taboola-below-article-thumbnails',
-								    placement: 'Below Article Thumbnails',
-								    target_type: 'mix'
-								  });
-								</script>
-								</section>
+					<div id="taboola-below-article-thumbnails"></div>
+					<script type="text/javascript">
+					  window._taboola = window._taboola || [];
+					  _taboola.push({
+					    mode: 'thumbnails-a',
+					    container: 'taboola-below-article-thumbnails',
+					    placement: 'Below Article Thumbnails',
+					    target_type: 'mix'
+					  });
+					</script>
+				</section>
 
-								<!-- CARAMBOLA -->
-								<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
-									<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy', 'Cbola_initializeProxy', 'http://route.carambo.la/inimage/getlayer?pid=spdsh12')</script>
-								</section>
+				<!-- CARAMBOLA -->
+				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+					<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy', 'Cbola_initializeProxy', 'http://route.carambo.la/inimage/getlayer?pid=spdsh12')</script>
+				</section>
 
-								
-								<!-- COMMENTS BOX -->
-								<?php include_once($config['include_path'].'disqus.php'); ?>
-								<br>
-								
-								<!-- IMAGE SOURCE -->
-								<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-								<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
-									Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
-									<?php }?>
+				
+				<!-- COMMENTS BOX -->
+				<?php include_once($config['include_path'].'disqus.php'); ?>
+				<br>
+				
+				<!-- IMAGE SOURCE -->
+				<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
+				<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
+					Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
+					<?php }?>
 
-								</section>
-							</div>
+				</section>
+			</div>
 							
-							<?php if(!$promotedArticle){ ?>
-							<section class="nativo-ad padding-top clear">
-								<div class="nativo"></div> 
-							</section>
-							<?php } ?>
-							
-						</section>
-					</article>
+		<?php if(!$promotedArticle){ ?>
+		<section class="nativo-ad padding-top clear">
+			<div class="nativo"></div> 
+		</section>
+		<?php } ?>
+		
+	</section>
+</article>
 
-					<?php } ?>
+<?php } ?>

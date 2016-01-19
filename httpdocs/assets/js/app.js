@@ -44,14 +44,14 @@ $(document).ready(function() {
 
 	//READ MORE 
 	if($('body').hasClass('mobile')) {
-		var $el, $ps, $up, totalHeight;
+		/*var $el, $ps, $up, totalHeight;
 		var parentOrgHeight = $('#article-content').outerHeight();
 
 		var pct_to_show = parseInt($('#read_more_pct').val());
 		var height_value = pct_to_show / 100 ;
-		var wishDisplayHeight = parentOrgHeight * height_value;
+		var wishDisplayHeight = parentOrgHeight * height_value;*/
 
-		$('#article-content').css('max-height', wishDisplayHeight);
+		//$('#article-content').css('max-height', wishDisplayHeight);
 
 		$("#read-more-img").on('click', function(e) {
 			e.preventDefault();		
@@ -160,15 +160,6 @@ $(document).ready(function() {
 		$('#'+this_a).addClass('current');
 	});	
 
-	Foundation.utils.image_loaded(Foundation.utils.S('#aside img'), function(){
-		//asideHeight.popular = poparticles.height();
-		totalHeight = 5400;//3938;
-		//if( page == "videos") totalHeight += 80;
-		if(!$('body').hasClass('mobile')) {
-			//leftSide.css("min-height", (totalHeight +  asideHeight.atf + asideHeight.video));
-			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-		}
-	});
 
 	function resizeMainOnResize() {
 		resizeContentByscreenSize();
@@ -267,10 +258,10 @@ $(document).ready(function() {
 	 		});
 	}
 
-	$.each($('.article-id'),  function( i ){
-	 	var url = $(this).attr('data-info-url');
-		getTotalShares( url, $(this) );
-	});
+	//$.each($('.article-id'),  function( i ){
+	 	//var url = $(this).attr('data-info-url');
+		//getTotalShares( url, $(this) );
+	//});
 
 	//Social Shares Tracking FB Sharing Functionality
 	var SocialShares = {
@@ -283,19 +274,19 @@ $(document).ready(function() {
 		     	   addthis.sharecounters.getShareCounts('facebook', function(obj) {        
 		    		var count = obj.count;
 		    		var article_id = Foundation.utils.S('#article_id').val();
-		    		SocialShares.updateFBShare( count, article_id );
+		    		//SocialShares.updateFBShare( count, article_id );
 		    	});
 		  	}
 		 }
 	}
 		
-	if(page === 'article' || page === 'articleslide') {
+	/*if(page === 'article' || page === 'articleslide') {
 		if(addthis){
 			addthis.sharecounters.getShareCounts('facebook', function(obj) {        
 			});
 			addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
 		}
-	}
+	}*/
 
 	function kFormatter(num) {
 	  	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
@@ -398,7 +389,7 @@ $(document).ready(function() {
 	    		temp.children('.featured').remove();
 	    		var content = temp.html();
 	    		response.children('.featured').remove();
-	    		console.log(response);
+	    		//console.log(response);
 	    		$(".main-div").append(response);
 	    		spinner.hide();
 	    		}
@@ -425,9 +416,6 @@ $(document).ready(function() {
 	           sticky.css('position','absolute');
 	           sticky.css('top',stopHeight);
 	    }
-
-
-	   // return stopHeight > sticky.offset().top;
     }
 
 	var catcher = $('.catcher');
@@ -456,7 +444,7 @@ $(document).ready(function() {
 	    	  loadPage();
 			}
 		};
-    
+    	if( !$('body').hasClass('mobile') ){
           //sticky right side bar 
 			if(sticky.length > 0 ){
 		        if(isScrolledTo(sticky)) {
@@ -473,6 +461,7 @@ $(document).ready(function() {
 		        }
 		    }
 
+
            //sticky right side bar on article pages
 		    if(articleStick.length > 0 ){
 		        if(isScrolledTo(articleStick)) {
@@ -488,6 +477,7 @@ $(document).ready(function() {
 		            $('.back-to-top').fadeOut(duration);
 		        }
 		    }
+		 }
         //MOBILE ARTICLE PAGE
 	    if($('body').hasClass('mobile') && adPage === 'article'){
 		   
@@ -510,21 +500,11 @@ $(document).ready(function() {
 
     });
 
-       //Detect if adblock is enabled 
-        if ($('#header-ad').height() == 0) {
-	       $("#main").css("margin-top", "120px");
-        }else {
-	        console.log("false");
-        }
+   //Detect if adblock is enabled 
+    if ($('#header-ad').height() == 0) {
+       $("#main").css("margin-top", "120px");
+    }
 
-	//ajax loading image to show when calling an ajax call
-//BRANOVATE AD MOBILE
-	/*
-	if($('body').hasClass('mobile') && adPage === 'article'){
-		setTimeout(function() {
-			loadBranovateAd( document.getElementById("branovate-ad"), '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
-		}, 2000);
-	}*/
 
 	function loadArt() {
         current_page++;
@@ -547,15 +527,12 @@ $(document).ready(function() {
 	    	
 	    });
 	}
-//http://localhost:8888/projects/pucker-mob//httpdocs/index.php?page=5&per_page=10&ajax=true
-//http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
-//console.log(myData);
-$(window).scroll(function() {
-   if( !$('body').hasClass('mobile')) {
-   if($(window).scrollTop() + $(window).height() > $(document).height() - .3 * $(document).height()) {
-       loadArt();
-          }
-       //console.log("hello Mr. Deschamps");
-       }
-    });
+
+	$(window).scroll(function() {
+	   if( !$('body').hasClass('mobile')) {
+		   if($(window).scrollTop() + $(window).height() > $(document).height() - .3 * $(document).height()) {
+		       loadArt();
+		    }
+	    }
+	});
 });

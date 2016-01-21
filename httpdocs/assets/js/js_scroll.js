@@ -49,8 +49,8 @@
 		 		var label =  " SHARES";
 				var service = {
 				  "facebook": "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=",
-				  "twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
-				  "pinterest": "http://widgets.pinterest.com/v1/urls/count.json?source=6&url=",
+				  //"twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
+				  //"pinterest": "http://widgets.pinterest.com/v1/urls/count.json?source=6&url=",
 				 // "linkedint": "http://www.linkedin.com/countserv/count/share?url="
 				};
 		 		
@@ -116,9 +116,9 @@
 						// No longer busy!	
 						busy = false;
 
-						$.each($('.article-id'),  function( i ){
+						/*$.each($('.article-id'),  function( i ){
 					 	 	getTotalShares( $(this).attr('data-info-url'), $(this) );
-					 	});
+					 	});*/
 					}	
 						
 				});
@@ -240,9 +240,9 @@
 						// No longer busy!	
 						busy = false;
 
-						$.each($('.article-id'),  function( i ){
-					 	 	getTotalShares( $(this).attr('data-info-url'), $(this) );
-					 	});
+						//$.each($('.article-id'),  function( i ){
+					 	// 	getTotalShares( $(this).attr('data-info-url'), $(this) );
+					 	//});
 					}	
 						
 				});

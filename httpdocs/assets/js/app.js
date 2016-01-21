@@ -223,70 +223,7 @@ $(document).ready(function() {
 	notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
 	notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
     
-    /*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
-	function getTotalShares( url, elm ){
-	  		var span_shares_holder = $(elm).find(".span-holder-shares");
-	 		var this_count = 0;
-	 		var fn_callback = null ;
-	 		var label =  "SHARES";
-			var service = {
-			  "facebook": "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=",
-			  "twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
-			 // "pinterest": "http://widgets.pinterest.com/v1/urls/count.json?source=6&url=",
-			  "linkedint": "http://www.linkedin.com/countserv/count/share?url="
-			};
-	 		$.each( service, function( key, value ) {
-			  var api_url = value+url;
-			  if(key == "facebook"){
-			  	var fn_callback = function(obj){
-				  	this_count = this_count + obj[0]['total_count'];
-				 }
-			  }else{
-			  	var fn_callback = function(obj){
-				  	this_count = this_count + obj['count'];
-				 }
-			  }
-			 $.ajax({ type: 'GET',  dataType: 'jsonp',  data: {}, url: api_url, 
-				  	success: fn_callback,
-				  	async: false, cache: false
-			  	}).then(function(){
-			  		var label =  "SHARES";
-			  		if(this_count == 1) label = "SHARES";
-			  			
-			  		span_shares_holder.text(kFormatter(this_count)+label);  		
-			  	});  
-	 		});
-	}
-
-	//$.each($('.article-id'),  function( i ){
-	 	//var url = $(this).attr('data-info-url');
-		//getTotalShares( url, $(this) );
-	//});
-
-	//Social Shares Tracking FB Sharing Functionality
-	var SocialShares = {
-		updateFBShare: function( count, article_id ){
-			$.post("http://www.puckermob.com/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
-		},
-
-		fbEventHandler: function(evt) { 
-			if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
-		     	   addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-		    		var count = obj.count;
-		    		var article_id = Foundation.utils.S('#article_id').val();
-		    		//SocialShares.updateFBShare( count, article_id );
-		    	});
-		  	}
-		 }
-	}
-		
-	/*if(page === 'article' || page === 'articleslide') {
-		if(addthis){
-			addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-			});
-			addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-		}
-	}*/
+   
 
 	function kFormatter(num) {
 	  	return num > 999 ? (num/1000).toFixed(1) + 'k' : num

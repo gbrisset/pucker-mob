@@ -6,7 +6,11 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js" ></script>
+  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js" ></script>
+
+  <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+    
+  <?php } ?>
 <?php }else {?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
@@ -22,18 +26,16 @@
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
     <![endif]-->
 
-<div id="evolve_footer"></div>
+    <div id="evolve_footer"></div>
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
         
-      <?php if( $articleInfoObj['article_id'] != 4653 && $articleInfoObj['article_id'] != 4664 ){?>
        <script type="text/javascript">
           netseer_tag_id="19129";
           netseer_task="in-image";
         </script>
         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-      <?php } ?>
 
     <?php } 
 
@@ -60,10 +62,29 @@
 <?php if( isset($promotedArticle) && !$promotedArticle ){ 
   
 
-    if(isset($articleInfoObj) && $articleInfoObj){ ?>
+  if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
-      
-
+     <!-- ANSWERS -->
+        <div id="vm_inline"></div>
+        <script>
+            window._videomosh = window._videomosh || [];
+            !function (e, f, u) {
+                e.async = 1;
+                e.src = u;
+                f.parentNode.insertBefore(e, f);
+            }(document.createElement('script'),
+                    document.getElementsByTagName('script')[0],
+                    'http://player.videomosh.com/players/loader/loader_final4.js');
+            _videomosh.push({
+                publisher_key: "sequelmedia",
+                mode: "slider",
+                container: "vm_inline",
+                incontent_mobile_id: "23002",
+                incontent_desktop_id: "",
+                target_type: "mobile",
+                        });
+        </script>
+        
       <!-- NETSEER AD IN-IMAGE -->
            <script type="text/javascript">
             netseer_tag_id="20429";
@@ -72,29 +93,15 @@
            <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
         
     <?php  } ?>
-<?php if(isset($article_id) && $article_id == 6957 ){?>
 
-    <!-- AIR PUSH -->
-    <script type="text/javascript">
-     
-     this.airpushConfig={
-     "siteid": 291995,
-     "testmode": 0,
-     "banner360": 1,
-     "placementid": 0
-  };
-  </script>
-  <script type="text/javascript"  src="//ab.airpush.com/apportal/v2/cdn/airpush.js" ></script>
-<?php } ?>
+      <?php if(isset($article_id) && $article_id == 12134 ){?>
 
-  
+
+      <?php } ?>
 
   <?php } ?>  
   
-<?php }?>
-
-
-  
+<?php } ?>
 
 <!-- cloudfront tracker -->
 <script>

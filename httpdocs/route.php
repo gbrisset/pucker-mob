@@ -1,6 +1,6 @@
 <?php
 	require_once('assets/php/config.php');
-	require_once('assets/php/newsletter.php');
+	//require_once('assets/php/newsletter.php');
 
 	$uri = $uriHelper->getURI($mpHelpers->curPageURL()); 
 	$mainCategoryArray = $uriHelper::getMainCategoryArray($MPNavigation->mainCategories);	

@@ -68,6 +68,7 @@
 
 </script>
 
+
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){
  	//if(isset($isHomepage) && $isHomepage && $has_sponsored){?>

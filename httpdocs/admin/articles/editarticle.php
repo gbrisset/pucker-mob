@@ -226,12 +226,14 @@ SEE ARTICLE</a><?php }?></h1>
 				          	  height: 420,
 				          	  placeholderText: 'Start Writing Here.',
 						      imageUploadURL: 'upload_images.php',
+
 						      imageUploadParams: { id: 'my_editor' },
 						      imageMaxSize: 2 * 1024 * 1024,
 						      imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif']
 				          });
 				      });
 				  	</script> 
+
 
 				  	<!-- RELATED ARTICLES -->
 					<div class="row" id="related-articles-section">

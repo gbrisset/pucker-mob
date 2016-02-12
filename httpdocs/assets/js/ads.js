@@ -3,8 +3,10 @@ var page = document.body.id;
 var browser_width = $(window).width();
 var article_id = Foundation.utils.S('#article_id').val();
 var hasSponsored = $("#has-sponsored-by").val();
-var country =ManageCookies.getCookie('country');
+var country =ManageCookies.getCookie('country_code');
 var second_image_url = $('#second-mob-img');
+
+console.log(country);
 
 
 if(page != 'articleslide' && page != 'home' && page != 'category' && page != 'article' && page != 'distroscale') {var adPage = 'category';} else {var adPage = page;}
@@ -91,23 +93,15 @@ if($('body').hasClass('mobile')) {
 				third_p = third_p;
 			}
 
-
-			//if( article_id == 10761 ){			
 			
-				//1ST SPOT
-	//if( article_id != 9380 ){			
-
-				if( first_p > 0 ){ //SHARETH
-					if( country && country == 'US' || country == 'XX'){
-						inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', tag);	
-					}else{	
-						inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);	
-					}
+			//1ST SPOT
+			if( first_p > 0 ){ //SHARETH
+				if( country == 'US' || country == 'XX'){
+					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', tag);	
+				}else{	
+					inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);	
 				}
-
-	//}
-			
-	//	if( article_id == 9380 ){			
+			}
 
 			if( second_p > 0 ){ //2ND SPOT STRIKE VIDEO
 				if( country && country == 'CA' ){
@@ -116,10 +110,7 @@ if($('body').hasClass('mobile')) {
 					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="ad-kikvid-300x250-3043"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3043/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
 				}
 			}
-	//}
-
-//if( article_id != 9380 ){			
-
+	
 			if( third_p > 0 ){ //3RD ANSWERS MEDIA
 				inBodyAd.loadInArticleAd( 'article-body', third_p, 0, '<div id="vm_inreadcontent" class="playerDiv_inline_close"><script id="fifScript"> (function() { var script = document.createElement("script"); script.async = true; script.src = "http://player.videomosh.com/players/instream/puckermob.min.js"; var entry = document.getElementsByTagName("script")[0]; entry.parentNode.insertBefore(script, entry);  })(); </script> </div>', tag);
 
@@ -128,13 +119,13 @@ if($('body').hasClass('mobile')) {
 			if( fourth_p > 0 ){ //4TH SPOT GOOGLE
 				if(num_items >= fourth_p ){ 
 					if( article_id == 9924 ){	
-						inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<script id=\'helper\' data­my_var_1=\'0­8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf\' data­my_var_2=\'//static.adsnative.com/static/js/render.v1.js\' data­my_var_3=\'none\' src=\'https://s3.amazonaws.com/sf.adsparc.com/native/native­inline­ad­2015­noiframe-article.js\' async=\'true\'></script>', tag);
+						inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, "<script id='helper' data-my_var_1='0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf' data-my_var_2='//static.adsnative.com/static/js/render.v1.js' data-my_var_3='none' src='https://s3.amazonaws.com/sf.adsparc.com/native/native-inline-ad-2015-noiframe-article.js' async='true'></script>", tag);
 					}else{
 						inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="2880293382"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);	
 					}
 				}
 			}
-//}
+
 			
 			//inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div id="mobile-instream-branovate-ad" class="clear"></div>', tag);
 

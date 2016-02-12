@@ -17,8 +17,6 @@ if($current_url == "http://www.puckermob.com/lifestyle/what-all-smokers-know-7-r
 }
 $categoryInfo = array( "cat_id" => "6",  "cat_name"=> "Lifestyle", "cat_dir_name"=> "lifestyle",
  "cat_desc" => "",  "cat_tags" => "");
-
-$articleTitle = '';
 foreach($MPNavigation->categories as $category){
 
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){

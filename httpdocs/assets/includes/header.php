@@ -158,6 +158,7 @@
    
 
   <?php if($detect->isMobile()){?>
+
    
      <div id="social-media-container-header" class="row" style="display:none; z-index:99999999 !important;"> 
         <div class="columns social-media-container  padding-bottom " style=" display:block !important; z-index:99999999 !important;">

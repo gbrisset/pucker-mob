@@ -254,23 +254,24 @@ class MPHelpers{
 
 	public function geotargeting(){
 		$ip = $_SERVER [ 'REMOTE_ADDR' ]; 
-		$country = 'US';
-		
-		//if( !isset( $_COOKIE['country'] ) ) {
+		$country_code = 'US';
+		$region = 'New York';
 
-		//	try{
-		//		$country = file_get_contents ( 'http://api.hostip.info/country.php?ip=' . $ip ); 
-		//	}catch (Exception $e) {
-					// If the API isn't available, we have to do this
-		//			$country = "US";					
-		//	}
-			setcookie('country', 'US', time()+60*60*24*30); //A YEAR
+		if( !isset( $_COOKIE['country_code'] ) ) {
 
-		//}
-		
+			try{
+				$geo_details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+				 $country_code = isset($geo_details->country) ? $geo_details->country : 'US';
+				 $region = isset($geo_details->region) ? $geo_details->region : 'New York';
+
+			}catch (Exception $e) {
+				$country_code = "US";
+				$region = 'New York';
+			}
+			setcookie('country_code', $country_code, time()+60*60*24*30); //A YEAR
+			setcookie('region' ,$region, time()+60*60*24*30); //A YEAR
+		}
 	}
-
-
 
 }
 ?>

@@ -18,15 +18,6 @@
 	$filterLabel = 'Most Recent';
 	$userArticlesFilter = $userData['user_email'];
 		
-	// Sorting information
-	$article_sort_by = "mr";
-	if (isset($_GET['sort'])) {
-		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
-		$articleStatus = $sortingMethod['articleStatus'];
-		$filterLabel = $sortingMethod['filterLabel'];
-		$order = $sortingMethod['order'];
-		$article_sort_by = $_GET['sort'];
-	}
 	if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
 	if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
 
@@ -62,11 +53,9 @@
 			$articles = $adminController->user->getContributorEarningChartArticleData($data);
 		}
 	}
-	//var_dump( $month, $contributor_type );
 
 	$rate = $dashboard->get_current_rate( $month, $contributor_type );
 	$total = 0;
-//var_dump($rate);
 	$ManageDashboard = new ManageAdminDashboard( $config );
 	
 	$last_month = $current_month-1;
@@ -98,11 +87,7 @@
 	</script>
 	
 	<?php include_once($config['include_path_admin'].'header.php');?>
-	
-	<div class="sub-menu row">
-		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">MY DASHBOARD</h1>
-	</div>
+
 	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
 			<h1 class="left">MY DASHBOARD</h1>
 	</section>
@@ -110,8 +95,8 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<div id="following-header" class="following-header mobile-12 small-12 half-padding-bottom">
-				<header>MY DASHBOARD</header>
+			<div class=" mobile-12 small-12 half-padding-bottom">
+				<h1>MY DASHBOARD</h1>
 			</div>
 
 			<!--MOB LEVEL -->
@@ -147,7 +132,7 @@
 				</div>
 			</div>
 			<?php } ?>
-			
+			<?php if( $blogger ){?>
 			<section id="dashboard">
 				<header style="margin-top:0.2rem;">EARNINGS PER ARTICLE / MONTH
 					<div class="right" style="text-align: right;">
@@ -400,7 +385,7 @@
 				</section>
 				<?php } ?>
 			</section>
-
+<?php }?>
 			<section>
 				<p class="time">Last time updated: <span class="bold"><?php echo $date_updated; ?></span></p>
 			</section>

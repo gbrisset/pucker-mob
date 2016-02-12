@@ -27,12 +27,8 @@
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 
-			//if($selected_month > 2 && $selected_year >= 2015){
-				$results = $dashboard->getPageViewsUSReport($_POST);
-			//}
-			//else{
-			//	$results = $dashboard->socialMediaSharesReport($_POST);
-			//}
+		$results = $dashboard->getPageViewsUSReport($_POST);
+	
 		}else $adminController->redirectTo('logout/');
 	}
 
@@ -269,7 +265,7 @@
 					  			$style = "background-color: #fff;";
 					  			if( $contributor['user_type'] == 8){
 					  				$style = "background-color: #E6FAFF";
-					  			}elseif($month > 6 && $year >= 2015 ) { if($total_to_pay > 25 ) $style = "background-color: #FFFFCC;";}
+					  			}elseif($selected_month > 6 && $selected_year >= 2015 ) { if($total_to_pay > 25 ) $style = "background-color: #FFFFCC;";}
 					  			elseif($total_to_pay > 25 ) $style = "background-color: #FFFFCC;";
 					  			
 

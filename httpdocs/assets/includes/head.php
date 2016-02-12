@@ -8,7 +8,7 @@
 	if(isset($isArticle) && $isArticle && isset($articleInfoObj)){ ?>
 		<link rel="canonical" href="<?php echo 'http://www.puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
 	<?php 
-		if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }
+		//if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }
 	} ?>
 
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
@@ -51,22 +51,22 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	
-	<style>	body {background: #fcf4de;} </style>
-	
-	<link rel="stylesheet" type="text/css" href="http://www.puckermob.com/assets/css/app.css" />
-	<link rel="stylesheet" type="text/css" href="http://www.puckermob.com/assets/css/newchangestoadd.css" />
-	
-	<style>.ad320{ height: auto !important; }</style>
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
 	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	
-<!-- Nativo -->
-	<!--<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>-->
+  ga('create', 'UA-6839498-81', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){
@@ -96,70 +96,82 @@
 	  '//cdn.taboola.com/libtrc/puckermob/loader.js');
 	</script>
 
+	<!-- Totally Her GPT -->
+	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
+
 <?php }else{?>
 
-<!-- TABOOLA MOBILE -->
-<script type="text/javascript">
-  window._taboola = window._taboola || [];
-  _taboola.push({article:'auto'});
-  !function (e, f, u) {
-    e.async = 1;
-    e.src = u;
-    f.parentNode.insertBefore(e, f);
-  }(document.createElement('script'),
-  document.getElementsByTagName('script')[0],
-  '//cdn.taboola.com/libtrc/puckermob/loader.js');
-</script>
+<?php if(isset($article_id) && $article_id == 9397 ){?>
+	<!-- Totally Her GPT -->
+	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
+<?php } ?>
+
+<?php //if(isset($article_id) && $article_id == 10761 ){?>
+            <!-- SHARETHROUNG -->
+           <script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js" async></script>
+      <?php //} ?>
+
+<?php //REMOVE 01/19/2016if(isset($article_id) && $article_id != 10761 ){?>
+	<!-- TABOOLA MOBILE 
+	<script type="text/javascript">
+	  window._taboola = window._taboola || [];
+	  _taboola.push({article:'auto'});
+	  !function (e, f, u) {
+	    e.async = 1;
+	    e.src = u;
+	    f.parentNode.insertBefore(e, f);
+	  }(document.createElement('script'),
+	  document.getElementsByTagName('script')[0],
+	  '//cdn.taboola.com/libtrc/puckermob/loader.js');
+	</script>-->
+<?php //} ?>
 
 <?php } ?>
 
 <?php if (!$local){?>
 
 <!-- COMSCORE -->
-<script>
-  var _comscore = _comscore || [];
-  _comscore.push({ c1: "2", c2: "18667744" });
-  (function() {
-    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
-    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
-    el.parentNode.insertBefore(s, el);
-  })();
-</script>
-<noscript>
-  <img src="http://b.scorecardresearch.com/p?c1=2&c2=18667744&cv=2.0&cj=1" />
-</noscript>
+	<script>
+	  var _comscore = _comscore || [];
+	  _comscore.push({ c1: "2", c2: "18667744" });
+	  (function() {
+	    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+	    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+	    el.parentNode.insertBefore(s, el);
+	  })();
+	</script>
+	<noscript>
+	  <img src="http://b.scorecardresearch.com/p?c1=2&c2=18667744&cv=2.0&cj=1" />
+	</noscript>
 <!-- End COMSCORE Tag -->
 
 <!-- Quantcast Tag -->
-<script type="text/javascript">
-  var _qevents = _qevents || [];
+	<script type="text/javascript">
+	  var _qevents = _qevents || [];
 
-  (function() {
-  var elem = document.createElement('script');
-  elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
-  elem.async = true;
-  elem.type = "text/javascript";
-  var scpt = document.getElementsByTagName('script')[0];
-  scpt.parentNode.insertBefore(elem, scpt);
-  })();
+	  (function() {
+	  var elem = document.createElement('script');
+	  elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+	  elem.async = true;
+	  elem.type = "text/javascript";
+	  var scpt = document.getElementsByTagName('script')[0];
+	  scpt.parentNode.insertBefore(elem, scpt);
+	  })();
 
-  _qevents.push({
-  qacct:"p-B2Jsd5NDNU3Qq"
-  });
-</script>
+	  _qevents.push({
+	  qacct:"p-B2Jsd5NDNU3Qq"
+	  });
+	</script>
+	<noscript>
+	  <div style="display:none;">
+	    <img src="//pixel.quantserve.com/pixel/p-B2Jsd5NDNU3Qq.gif" border="0" height="1" width="1" alt="Quantcast"/>
+	  </div>
+	</noscript>
 
-<noscript>
-  <div style="display:none;">
-    <img src="//pixel.quantserve.com/pixel/p-B2Jsd5NDNU3Qq.gif" border="0" height="1" width="1" alt="Quantcast"/>
-  </div>
-</noscript>
 <?php }?>
 	
-	
 
 
-	<!-- Totally Her GPT -->
-	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
+
 
 </head>
- <?php flush(); ?>

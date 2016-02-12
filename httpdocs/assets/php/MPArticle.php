@@ -20,9 +20,7 @@ class MPArticle{
 		//$this->memcache = new MPMemcache($this->config);
 	}
 
-//public function getAllArticles($limit){
 
-//}
 private function getArticlePageInfo($id = 1){
 		$pdo = $this->con->openCon();
 		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;
@@ -546,7 +544,6 @@ public function getArticles($args = [], $attempts = 0){
 	$s .= is_array($orderClause) ? isset($orderClause[$options['sortType'] - 1]) ? $orderClause[$options['sortType'] - 1] : $orderClause[0] : $orderClause;
 	if($options['sortType'] !== 2 && $options['count'] !== -1) $s .= " LIMIT 0, ".$options['count'];
 
-	//var_dump($s);
 	$pdo = $this->con->openCon();
 
 	$q = $pdo->prepare($s);
@@ -558,17 +555,9 @@ public function getArticles($args = [], $attempts = 0){
 
 		while($row = $q->fetch()){
 			if(!in_array($row['article_id'], $r['ids'])){
-				//$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating, count(article_ratings.rating) AS reviews FROM article_ratings INNER JOIN (articles) ON (articles.article_id = article_ratings.article_id) WHERE articles.article_id = ".$row['article_id']);
-				//$parent_category = $pdo->query("SELECT cat_name as parent_category_name, cat_dir_name as parent_category_page_directory FROM categories WHERE cat_id = ".$row['parent_category_id']);
-
+			
 				$parentArray = [];
 				$ratingArray = [];
-				//if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
-				//if($parent_category && $parent_category->rowCount()) $parentArray = $parent_category->fetch(PDO::FETCH_ASSOC);
-
-				//$row = array_merge($row, $parentArray);
-
-				//var_dump($row);
 				$r['ids'][] =$row['article_id'];
 				$r['articles'][] = array_merge($row, $ratingArray);
 			}
@@ -922,262 +911,6 @@ public function getMostRecentArticleListMostPopular( ){
 	return $q;
 }
 
-
-
-
-//NOT IN USER 
-/*
-public function getTodaysFavorites(){
-	$queryString = "SELECT article.*, parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name 
-
-	FROM categories AS cat, categories AS parent 
-
-	INNER JOIN ( SELECT articles.article_id as a_id, articles.article_title as article_title, articles.article_seo_title, articles.article_status, categories.*, article_images.*, article_todays_favorites.slot 
-		FROM articles
-		INNER JOIN (article_todays_favorites, article_images) 
-		ON articles.article_id = article_todays_favorites.article_id 
-		AND articles.article_id = article_images.article_id 
-
-		LEFT JOIN (article_categories, categories) 
-		ON articles.article_id=article_categories.article_id 
-		AND article_categories.cat_id=categories.cat_id 
-
-		WHERE (
-			(article_categories.cat_id = 9 AND slot = 1 ) OR
-			(article_categories.cat_id = 8 AND slot = 2 ) OR 
-			(article_categories.cat_id = 11 AND slot = 3 ) OR
-			(article_categories.cat_id = 3 AND slot = 4 ) OR
-			(article_categories.cat_id IN (13, 14, 15, 17, 18) AND slot = 5 ) OR
-			(article_categories.cat_id = 4 AND slot = 6 ) 
-			)
-			AND articles.article_status = 1
-			GROUP BY slot 
-			ORDER BY slot ASC 
-			LIMIT 6 
-			) as article  
-
-			WHERE (parent.lft > 1
-				AND article.lft BETWEEN (parent.lft+1) 
-				AND (parent.rgt -1))
-
-			OR (article.cat_id IN (115, 3))
-
-			AND cat.cat_id = article.cat_id 
-			GROUP BY article.a_id 
-			ORDER BY article.slot ASC ";
-
-	$q = $this->performQuery(['queryString' => $queryString]);
-	return $q;
-}
-
-public function getCollections( ){
-
-	$queryString = "SELECT * FROM collections;";
-
-	$q = $this->performQuery(['queryString' => $queryString]);
-
-	return $q;
-}
-
-public function getCollectionInfo( $keyword ){
-
-	$queryString = "SELECT * FROM collections WHERE collections_seoname = '".$keyword."' LIMIT 1";
-
-	$q = $this->performQuery(['queryString' => $queryString]);
-
-	return $q;
-}
-
-public function getRecipeCollections( $keyword ){
-	$queryString = "SELECT article.*, parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name 
-
-	FROM categories AS cat, categories AS parent 
-
-	INNER JOIN ( 
-		SELECT articles.article_id, articles.article_title, articles.article_tags, articles.article_seo_title, articles.article_desc, nc.cat_id, nc.cat_name, nc.cat_dir_name, nc.lft, nc.rgt  
-		FROM articles  
-
-		INNER JOIN (article_categories, categories as nc ) 
-		ON articles.article_id = article_categories.article_id  
-		AND article_categories.cat_id = nc.cat_id 
-
-		WHERE articles.article_status = 1 
-		AND articles.article_tags LIKE '%".$keyword."%' 
-		GROUP BY articles.article_id 
-
-		ORDER BY articles.article_id DESC 
-		) as article  
-
-		WHERE article.lft BETWEEN (parent.lft+1) 
-		AND (parent.rgt -1)
-		AND cat.cat_id = article.cat_id 
-		AND parent.lft > 1
-		OR (article.cat_id IN (115, 3))
-
-		GROUP BY article.article_id 
-
-		ORDER BY article.article_id DESC";
-
-	$pdo = $this->con->openCon();
-
-	$q = $this->performQuery(['queryString' => $queryString]);
-
-
-	if($q){
-		foreach( $q as $row ){
-			if($row['article_id']){
-				$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating, count(article_ratings.rating) AS reviews FROM article_ratings INNER JOIN (articles) ON (articles.article_id = article_ratings.article_id) WHERE articles.article_id = ".$row['article_id']);
-				$ratingArray = [];
-				if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
-
-						//$r['ids'][] =$row['article_id'];
-				$r['articles'][] = array_merge($row, $ratingArray);
-			}
-		}
-
-	}else $r = false;
-	$this->con->closeCon();
-
-	return $r;	
-}
-
-public function getAllBodyTags(){
-	$queryString = "SELECT articles.article_id, articles.article_body ";
-	$queryString .="FROM articles ";
-
-	$queryString .="ORDER BY article_id DESC";
-
-	$q = $this->performQuery(['queryString' => $queryString]);
-	return $q;
-}
-
-public function extractRecipeBodyDataToDBField($fieldName, $pattern){
-	$bodyFieldSet = $this->getAllBodyTags();
-	$qString = "UPDATE articles SET {$fieldName} = CASE ";
-	foreach ($bodyFieldSet as $bodyField){
-		$subject =  $bodyField['article_body'];
-		$subject = str_replace("'", "", $subject);
-		$id = $bodyField['article_id'];
-		preg_match($pattern, $subject, $matches);
-		$matches = array_shift($matches);
-		$id = $bodyField['article_id'];
-
-		$qString .= "WHEN article_id = {$id} THEN '{$matches}' ";
-
-	}
-	$qString .= "ELSE {$fieldName} ";
-	$qString .= "END;";
-
-	$qString = strip_tags($qString, '<li>, </li>');
-	$qString =  (($qString));
-
-	echo htmlspecialchars($qString);
-}
-private function parseStringCommasIntoArray($dataset){
-	foreach ($dataset as $row) {
-		$id = $row['article_id'];
-
-		$categoryArray = explode(',', $row['category_id']);
-			// var_dump($categoryArray);
-		$sql = "";
-		for ($i=0; $i<count($categoryArray); $i++){
-				// echo" <br />".$i.count($categoryArray)."<br />";
-			$sql .= "INSERT INTO article_categories_from_csv_migrated VALUES ({$id}, {$categoryArray[$i]});";
-		}
-		$qInsert = $this->performQuery(['queryString' => $sql]);
-		if ($qInsert){
-			return true;
-		}
-
-	}
-}
-
-public function extractIdAndCommaSeparatedCategories(){
-	$qString = "SELECT * FROM article_categories_from_csv";
-	$q = $this->performQuery(['queryString' => $qString]);
-	if ($q){
-		$parsedSet = $this->parseStringCommasIntoArray($q);
-	}
-}
-
-public function getMostViewed($args = []){
-	$options = array_merge([
-		'pageId' => 1, 
-		'articleCount' => 12, 
-			'sortType' =>1, //1 == Most Recent, 2 == Most Popular, 3 == Most Visited, 4 == A-Z, 5 == Z-A
-			'featured'=> false, 
-			'featureType' =>2, //2 == sidebar (Dish of the Day), 3 == Slideshow 
-			'contributorId' => null, 
-			'omit'=> [],
-			'articleId' => null, 
-			'articleTitles' => [],
-			'articleSEOTitle' => '',
-			'articleSEOTitles' =>[],
-			'articleStatus' => 1
-			], $args);
-
-
-	$s = 'SELECT article.*, ';
-	$s .= 'parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name ';
-
-	$s .= 'FROM categories AS cat, categories AS parent ';
-
-	$s .= 'INNER JOIN ( ';
-		$s .= 'SELECT articles.*, ';
-		$s .= 'i.article_post_img, i.article_preview_img, nc.cat_id, nc.cat_name, nc.cat_dir_name, nc.lft, nc.rgt, featured.article_id as featured_id, featured.feature_type as feature_type, article_contributors.contributor_id, article_contributors.contributor_name, article_contributors.contributor_image ';
-		$s .= 'FROM articles ';
-
-
-		$s .= 'INNER JOIN (article_images as i, article_categories, categories as nc, articles_featured as featured, article_contributor_articles, article_contributors) ';
-		$s .= 'ON articles.article_id = i.article_id ';
-		$s .= 'AND articles.article_id = article_categories.article_id ';
-		$s .= 'AND article_categories.cat_id = nc.cat_id ';
-		$s .= 'AND articles.article_id = featured.article_id ';
-		$s .= 'AND articles.article_id = article_contributor_articles.article_id ';
-		$s .= 'AND article_contributor_articles.contributor_id = article_contributors.contributor_id ';
-		$s .= 'WHERE featured.feature_type = :featureType ';
-		$s .= 'AND featured.cat_id = :pageId ';
-		$s .= ') as article ';
-
-		$s .= 'WHERE cat.lft BETWEEN parent.lft ';
-		$s .= 'AND parent.rgt ';
-		$s .= 'AND cat.cat_id = article.cat_id ';
-		$s .= 'AND parent.lft > 1 ';
-		$s .= 'GROUP BY featured_id ';
-
-		$s .= 'ORDER BY article.article_id DESC ';
-				//$s .= 'LIMIT '.$options['articleCount'] ;
-
-		$queryParams = [
-		':featureType' => filter_var($options['featureType'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT),
-		':pageId' => filter_var($options['pageId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
-		];
-		$pdo = $this->con->openCon();
-		$q = $pdo->prepare($s);
-		$row = $q->execute($queryParams);
-		// if ($options['featureType'] == 3){var_dump($s); }
-
-	if($row){
-			// $q->setFetchMode(PDO::FETCH_ASSOC);
-			// $row = $q->fetchAll();
-			// $r = ['ids' => [],'articles' => []];
-			// $r['articles'] = $row;
-			// $q->closeCursor();
-	while($row = $q->fetch()){
-		if(!in_array($row['article_id'], $r['ids'])){
-			$rating = $pdo->query("SELECT avg(article_ratings.rating) AS rating, count(article_ratings.rating) AS reviews FROM article_ratings INNER JOIN (articles) ON (articles.article_id = article_ratings.article_id) WHERE articles.article_id = ".$row['article_id']);
-			$ratingArray = [];
-			if($rating && $rating->rowCount()) $ratingArray = $rating->fetch(PDO::FETCH_ASSOC);
-
-			$r['ids'][] =$row['article_id'];
-			$r['articles'][] = array_merge($row, $ratingArray);
-		}
-	}
-	}else $r = false;
-	$this->con->closeCon();
-	return $r;		
-}
-*/
 //NOT SURE OF THIS ONE
 public function getFeatured($args = []){
 	$options = array_merge([
@@ -1281,7 +1014,6 @@ public function getFeatured($args = []){
 		public function getByName($args = []){
 			$options = array_merge([
 				'pageId' => 1, 
-			'sortType' =>1, //1 == Most Recent, 2 == Most Popular, 3 == Most Visited, 4 == A-Z, 5 == Z-A
 			'articleCount' => -1, 
 			'featured'=> false, 
 			'featureType' =>2, //2 == sidebar (Dish of the Day), 3 == Slideshow 
@@ -1294,20 +1026,14 @@ public function getFeatured($args = []){
 			'articleStatus' => 1
 			], $args);
 
-			$s = 'SELECT articles.*, article_contributors.contributor_id, article_contributors.contributor_name, article_contributors.contributor_email_address, article_contributors.contributor_image, 
-			article_images.article_preview_img, article_images.article_post_img, article_moblogs_featured.article_cat,  article_moblogs_featured.article_featured_hp  
-			
+			$s = 'SELECT articles.*, article_contributors.contributor_id, article_contributors.contributor_name, article_contributors.contributor_email_address,
+			categories.cat_name, categories.cat_dir_name, categories.cat_id
 			FROM articles 
-
-			LEFT JOIN ( article_contributor_articles, article_contributors) 
-			ON articles.article_id = article_contributor_articles.article_id 
+			INNER JOIN (article_categories, categories, article_contributor_articles, article_contributors )
+			ON ( articles.article_id = article_categories.article_id ) 
+			AND article_categories.cat_id = categories.cat_id
+			AND articles.article_id = article_contributor_articles.article_id 
 			AND article_contributor_articles.contributor_id = article_contributors.contributor_id 
-
-			LEFT JOIN article_moblogs_featured
-			ON articles.article_id = article_moblogs_featured.article_id
-
-			LEFT JOIN article_images
-			ON articles.article_id = article_images.article_id
 
 			WHERE articles.article_seo_title = :articleSEOTitle
 			GROUP BY articles.article_id 
@@ -1316,37 +1042,26 @@ public function getFeatured($args = []){
 			$queryParams = [
 			':articleSEOTitle' => filter_var($options['articleSEOTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR)
 			];
+
 			$pdo = $this->con->openCon();
 			$q = $pdo->prepare($s);
 			$articleRow = $q->execute($queryParams);		
 
 			if($articleRow){
 				$q->setFetchMode(PDO::FETCH_ASSOC);
+				
 				$articleRow = $q->fetchAll();
 
-				$article = ['ids' => [],'articles' => [], 'categories' => []];
 				$article['articles'] = array_shift($articleRow);
+				
 
-				$article['categories'] = $this->performQuery(array(
-					'queryString' => 'SELECT * 
-					FROM article_categories as a_c 
-
-					INNER JOIN (categories as nc) 
-					ON (a_c.cat_id = nc.cat_id) 
-
-					WHERE a_c.article_id = '.$article['articles']['article_id'],
-					'returnRowAsSingleArray' => false
-					));
 				$q->closeCursor();
 			}else $article = false;
 			$this->con->closeCon();
+
 			return $article;
 
 		}
-
-	// public function getMostViewed(){
-
-	// }
 
 		
 		public function insertSubscribers($articleId, $email){
@@ -1699,8 +1414,9 @@ protected function performQuery($opts){
 		'queryParams' => array(),
 		'returnRowAsSingleArray' => true,
 		'bypassCache' => false,
-			'returnCount' => false  //	true: performQuery will only return a count of rows
-			), $opts);
+		'returnCount' => false  //	true: performQuery will only return a count of rows
+	), $opts);
+
 	$cachedData = false;
 	if($cachedData === false || $options['bypassCache'] === true){
 		$pdo = $this->con->openCon();

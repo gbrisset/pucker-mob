@@ -128,63 +128,8 @@
 		</section>
 		    <?php } ?>
 	</main>
-	<!--<main id="main-cont" class="row panel sidebar-on-right background-blue" role="main">
-			<section id="login-cont" class="admin-logout-content admin-box mobile-12 small-5 auto-margin">
-				<h1>MOBlog</h1>
-				<div class="admin-form-cont" id="login-form-cont">
-					<form id="login-form" class="login-form" name="login-form" action="<?php echo $config['this_admin_url']; ?>login/" method="POST">
-						<div class="row">
-						    <div class="large-12 columns">
-						        <input type="text" id="user_login_input" name="user_login_input" value="<?php if(isset($loginStatus) && $loginStatus['hasError']) echo $_POST['user_login_input']; ?>" placeholder="email address" required autofocus/>     
-						    </div>
-						</div>
-						<div class="row">
-						    <div class="large-12 columns">
-						    	<input type="password" id="user_login_password_input" name="user_login_password_input" value="<?php if(isset($loginStatus) && $loginStatus['hasError']) echo $_POST['user_login_password_input']; ?>" placeholder="Password" required autofocus/>
-						    </div>
-						</div>
-						
-
-						<div class="row margin-top">
-						    <div class="large-12 columns">
-								<?php if(isset($loginStatus)){ ?><p class="<?php echo ($loginStatus['hasError'] == true) ? 'error' : 'success'; ?>"><?php echo $loginStatus['message']; ?></p><?php } ?>
-								
-								<a href="<?php echo $config['this_admin_url']; ?>register/" class="left a-gray-link">Register</a>
-								<button type="submit" id="submit" name="submit" class="button right">Log In</button>
-							</div>
-						</div>
-						<div class="row">
-						    <div class="large-12 columns padding-top">
-								<p id="bottom-link">
-									
-									<a href="<?php echo $config['this_admin_url']; ?>forgot/" class="align-center">Forgot Password?</a>
-								</p>
-							</div>
-						</div>
-						<hr>
-						<div class="row margin-top">
-							<div class="large-12 columns">
-								<div class="fb-login-button ">
-									<img id="fb-login" src = "<?php echo $config['this_url'].'assets/img/fb_log_button_img.jpg'; ?>" alt="" />
-								</div>							
-							</div>
-						</div>
-						<div class="margin-top facebook-txt">
-									<p class"padding-bottom" style="color: #fff; ">We'll never post anything to Facebook
-									without your permission.</p>
-									
-									<p style="color: #fff; ">By registering through Facebook, you acknowledge that 
-									you have read and agree with our Terms of Service.</p>
-								</div>
-					</form>
-				</div>
-			</section>
-	</main>-->
+	
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 	
 </body>
 </html>
-
-http://www.wordstream.com/blog/ws/2014/08/14/increase-traffic-to-my-website
-
-http://www.wordstream.com/blog/ws/2014/07/17/headline-writing

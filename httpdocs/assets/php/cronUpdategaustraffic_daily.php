@@ -12,7 +12,7 @@ $client = $GoogleAnalyticsApi->connect_to_client();
 
 // Create Google Service Analytics object with our preconfigured Google_Client
 $analytics = new Google_Service_Analytics($client);
-$startDate = date('Y-m-01');
+$startDate = date('Y-m-d');
 $endDate = date('Y-m-d');
 
 $arrArticle = $GoogleAnalyticsData->getArticlesNew();
@@ -72,7 +72,6 @@ foreach( $arrArticle as $article ){
 			'usa_pageviews' => $usa_pageviews,
 			'pct_pageviews' =>  100
 		];
-
 		$GoogleAnalyticsData->saveGoogleAnalyticsInformationDaily($data, $month, $year);
 	}
 }

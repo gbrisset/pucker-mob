@@ -26,12 +26,13 @@
         // Generate new random name.
         $name = sha1(microtime()) . "." . $extension;
 
+       // var_dump(dirname(dirname(dirname(__FILE__)))); die;
         // Save file in the uploads folder.
-        move_uploaded_file($_FILES["file"]["tmp_name"], '/Users/florguzman/Desktop/projects/pucker-mob/httpdocs/assets/img/'.$name);
+        move_uploaded_file($_FILES["file"]["tmp_name"], dirname(dirname(dirname(__FILE__)))'/assets/img/'.$name);
 
         // Generate response.
         $response = new StdClass;
-        $response->link ='http://localhost:8888/projects/pucker-mob//httpdocs/assets/img/'.$name;
+        $response->link ='http://www.puckermob.com/assets/img/'.$name;
         echo stripslashes(json_encode($response));
     }
 ?>

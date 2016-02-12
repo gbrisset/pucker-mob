@@ -117,7 +117,7 @@
 						busy = false;
 
 						$.each($('.article-id'),  function( i ){
-					 	 	getTotalShares( $(this).attr('data-info-url'), $(this) );
+					 	 //	getTotalShares( $(this).attr('data-info-url'), $(this) );
 					 	});
 					}	
 						
@@ -241,7 +241,7 @@
 						busy = false;
 
 						$.each($('.article-id'),  function( i ){
-					 	 	getTotalShares( $(this).attr('data-info-url'), $(this) );
+					 	 //	getTotalShares( $(this).attr('data-info-url'), $(this) );
 					 	});
 					}	
 						

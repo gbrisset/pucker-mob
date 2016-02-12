@@ -20,8 +20,8 @@
 	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 	
 // 2. records per page ($per_page)
-	$per_page = 20;
-	$limit=20;
+	$per_page = 40;
+	$limit=40;
 	$post_date = 'all';
 
 	$articleStatus = 1;
@@ -48,10 +48,8 @@
 	$filterLabel = 'Most Recent';
 // Sorting information
 	$article_sort_by = "mr";
-
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
-
 		$articleStatus = $sortingMethod['articleStatus'];
 		$filterLabel = $sortingMethod['filterLabel'];
 		$order = $sortingMethod['order'];
@@ -66,13 +64,8 @@
 		$userArticlesFilter = 'all';
 	}
 // 3. total record count ($total_count)	
-	// $total_count = $mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter);
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter, $artType));
-
-	
-	$pagination = new Pagination($page, $per_page, $total_count);
-	
-	
+	$pagination = new Pagination($page, $per_page, $total_count);	
 	$offset = $pagination->offset();
 
 
@@ -103,22 +96,19 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
-	<div class="sub-menu row">
-		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">View Articles</h1>
-	</div>
+
 	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
-				<header>View Articles</header>
+			<div class=" mobile-12 small-12 padding-bottom">
+				<h1>View Articles</h1>
 			</div>
 			<section id="articles">
 			<section class="left  mobile-12 small-12">
 				<section class="">
-				<form class="search-form-admin small-7 right margin-bottom" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
+				<form class="search-form-admin small-12 right margin-bottom" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
 						<div id="search-fieldset" class="mobile-12 small-12">
 							<input type="text" value="" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchemailinput">
 							<button type="submit" id="searchsubmit" name="searchsubmit" class="small-4"  >SEARCH<i class="icon-search"></i></button>
@@ -151,8 +141,8 @@
 					    ?>
 					<?php if($admin_user || $inhouse_writer){?>
 					<section class="from-diff-users-filter clear">
-					    <div class="columns left small-8">
-					     <label>Show Articles From:
+					    <div class="columns left small-12 large-6 hide-small">
+					     <label class="uppercase">From:
 					     	<?php
 					     		$userType_URL = $config['this_admin_url'].'articles/';
 
@@ -171,8 +161,8 @@
 					     </label>
 					    </div>
 					  
-					    <div class="columns left small-4 no-padding align-right">
-					     <label>Status:
+					    <div class="columns  small-12 large-6  align-right">
+					     <label class="uppercase">Status:
 					     	<a class="<?php echo $liveClass; ?>" href="<?php  echo $userType_URL.'&sort=1&artype='.$artType; ?>">Live</a> | 
 						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a>| 
 						 	<a class="<?php echo $pendingClass; ?>" href="<?php echo $userType_URL.'&sort=2&artype='.$artType; ?>">Reviewed</a>
@@ -211,7 +201,7 @@
 						<thead>
 						    <tr>
 						      <th class="columns  mobile-12 small-12 medium-7">Article Name</th>
-						      <th class="columns  small-2"><a href="">Added</a></th>
+						      <th class="columns  small-2 hide-small "><a href="">Added</a></th>
 						      <th  class="columns small-2">status</th>
 						      <th   class="columns small-1"></th>
 						    </tr>
@@ -229,23 +219,22 @@
 							$article_us_traffic = $articleInfo['us_traffic'];
 						
 							if(file_exists($pathToImage)){
-								$imageUrl = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
+								$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
 							} else {
 								$imageUrl = 'http://cdn.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
 							}
 
-						//	$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/6225_tall.jpg';
 							?>
 								<tr id="<?php echo 'article-'.$article_id; ?>" class="columns small-12 no-padding">
-								  	<td class="columns mobile-12 small-12  medium-7">
+								  	<td class="columns mobile-8 small-8  medium-7">
 								  		<div class="article-image mobile-1 small-1">
 											<a href="<?php echo $articleUrl; ?>">
 												<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 											</a>
 										</div>
-										<h2><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 43); ?></a></h2>
+										<h2 class=""><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 43); ?></a></h2>
 								  	</td>
-								  	<td class="columns  small-2 padding-top-center"><?php echo $article_date_created; ?></td>
+								  	<td class="columns  hide-small small-2 padding-top-center"><?php echo $article_date_created; ?></td>
 								  	<!--<td class="small-2"><?php echo $article_status; ?></td>-->
 								  	<td  class="columns  small-2 padding-top-center"><?php echo $article_status ?></td>	
 									<!-- REMOVE ARTICLE -->

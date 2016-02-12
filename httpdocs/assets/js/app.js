@@ -3,40 +3,19 @@ var aside = Foundation.utils.S('#aside');
 var poparticles = Foundation.utils.S("#popular-articles");
 var subsidebar = Foundation.utils.S("#sub-sidebar-2");
 var subsidebar3 = Foundation.utils.S("#sub-sidebar-3");
-var trendingNowHeight = Foundation.utils.S('#trending-now').height();
-var socialwidget = Foundation.utils.S('#social_widget');
-var adsonarHeight = Foundation.utils.S('#ad-sonar').height();
 var main = Foundation.utils.S('#main');
 var leftSide = Foundation.utils.S('#puc-articles');
 var base_url = 'http://www.puckermob.com';
 var URL = $(location).attr('href');
 var page = document.body.id;
-var country =ManageCookies.getCookie('country');
+//var country =ManageCookies.getCookie('country');
 var body = document.body;
 
 
-if(socialwidget.length > 0) socialwidget = socialwidget.height(); else socialwidget=0;
-
 var isIE11 = !!navigator.userAgent.match(/Trident.*rv\:11\./);
 if(isIE11){
-	//smain.css("left", "0%");
 	main.css("display", "block");
 }
-
-var asideHeight = {
-	video: socialwidget,
-	atf: 0,
-	popular: poparticles.height(),
-	subsidebar: subsidebar.height(),
-	adSonar: 300,
-	connect: Foundation.utils.S("#connect-with-us").height(),
-	btf1: 0,
-	btf2: 0,
-	btf3: 0,
-	subsidebar3: poparticles.height() + 140,
-	margin: parseInt(main.css("padding-bottom"))
-};
-
 
 $(document).ready(function() {
 	
@@ -51,8 +30,6 @@ $(document).ready(function() {
 		var height_value = pct_to_show / 100 ;
 		var wishDisplayHeight = parentOrgHeight * height_value;
 
-		//$('#article-content').css('max-height', wishDisplayHeight);
-
 		$("#read-more-img").on('click', function(e) {
 			e.preventDefault();		
 			e.stopPropagation();
@@ -61,16 +38,16 @@ $(document).ready(function() {
 			$content = $('#article-content');
 											
 			$content.css({
-					"height": $content.height(),
-					"max-height": 999999
+				"height": $content.height(),
+				"max-height": 999999
 			 });
+
 			$content.animate({
-					"height": "auto"
+				"height": "auto"
 			 },2000);
 						
 			$parent_div.fadeOut();
 			$('.second-section').css('border-top', '2px solid #bbb');
-
 							
 			// prevent jump-down
 			return false;
@@ -160,40 +137,6 @@ $(document).ready(function() {
 		$('#'+this_a).addClass('current');
 	});	
 
-	Foundation.utils.image_loaded(Foundation.utils.S('#aside img'), function(){
-		//asideHeight.popular = poparticles.height();
-		totalHeight = 5400;//3938;
-		//if( page == "videos") totalHeight += 80;
-		if(!$('body').hasClass('mobile')) {
-			//leftSide.css("min-height", (totalHeight +  asideHeight.atf + asideHeight.video));
-			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-		}
-	});
-
-	function resizeMainOnResize() {
-		resizeContentByscreenSize();
-		//asideHeight.trending = trendingNowHeight;
-		//asideHeight.popular = poparticles.height();
-		if(!$('body').hasClass('mobile')) {
-			totalHeight = 5400;//3938;
-			//if( page == "videos") totalHeight += 80;
-			//leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-		}
-	}
-
-	function resizeMainOnAdLoad() {
-		//asideHeight.trending = trendingNowHeight;
-		//asideHeight.popular = poparticles.height();
-		resizeContentByscreenSize();
-		totalHeight = 5400;//3938;
-		//if( page == "videos") totalHeight += 80;
-		if(!$('body').hasClass('mobile')) {
-			//leftSide.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-			//main.css("min-height", (totalHeight +  asideHeight.atf  + asideHeight.video));
-		}
-	}
-
 	if($('body').hasClass('mobile')) {
 		//HIDE LEFT SIDE BAR WHEN BROWSER IS LESS THAT 1030 px.
 		if( $(window).width() < 1050 ) $('#left-aside').hide();
@@ -232,75 +175,6 @@ $(document).ready(function() {
 	notfound_search_submit.click(function() {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();});
 	notfound_search_contents.keypress(function(e) {if(e.keyCode == 13) {window.location.href = base_url+'/search/?q='+notfound_search_contents.val();}});
     
-    /*GET TOTAL SHARES PER ARTICLE ON HP/CATEGORY/INTERIOR PAGE MOST RECENTS*/
-	function getTotalShares( url, elm ){
-	  		var span_shares_holder = $(elm).find(".span-holder-shares");
-	 		var this_count = 0;
-	 		var fn_callback = null ;
-	 		var label =  "SHARES";
-			var service = {
-			  "facebook": "http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=",
-			  "twitter": "http://cdn.api.twitter.com/1/urls/count.json?url=",
-			 // "pinterest": "http://widgets.pinterest.com/v1/urls/count.json?source=6&url=",
-			  "linkedint": "http://www.linkedin.com/countserv/count/share?url="
-			};
-	 		$.each( service, function( key, value ) {
-			  var api_url = value+url;
-			  if(key == "facebook"){
-			  	var fn_callback = function(obj){
-				  	this_count = this_count + obj[0]['total_count'];
-				 }
-			  }else{
-			  	var fn_callback = function(obj){
-				  	this_count = this_count + obj['count'];
-				 }
-			  }
-			 $.ajax({ type: 'GET',  dataType: 'jsonp',  data: {}, url: api_url, 
-				  	success: fn_callback,
-				  	async: false, cache: false
-			  	}).then(function(){
-			  		var label =  "SHARES";
-			  		if(this_count == 1) label = "SHARES";
-			  			
-			  		span_shares_holder.text(kFormatter(this_count)+label);  		
-			  	});  
-	 		});
-	}
-
-	$.each($('.article-id'),  function( i ){
-	 	var url = $(this).attr('data-info-url');
-		getTotalShares( url, $(this) );
-	});
-
-	//Social Shares Tracking FB Sharing Functionality
-	var SocialShares = {
-		updateFBShare: function( count, article_id ){
-			$.post("http://www.puckermob.com/assets/ajax/ajaxManageData.php", {"count" : count, "articleId" : article_id}, function(data) {} );
-		},
-
-		fbEventHandler: function(evt) { 
-			if (evt.type == 'addthis.menu.share' && evt.data.service == 'facebook') { 
-		     	   addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-		    		var count = obj.count;
-		    		var article_id = Foundation.utils.S('#article_id').val();
-		    		SocialShares.updateFBShare( count, article_id );
-		    	});
-		  	}
-		 }
-	}
-		
-	if(page === 'article' || page === 'articleslide') {
-		if(addthis){
-			addthis.sharecounters.getShareCounts('facebook', function(obj) {        
-			});
-			addthis.addEventListener('addthis.menu.share', SocialShares.fbEventHandler);
-		}
-	}
-
-	function kFormatter(num) {
-	  	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
-	}
-
 	$('#follow-author').click(function(e){
 		e.preventDefault();
 
@@ -378,6 +252,7 @@ $(document).ready(function() {
 
 		});
 	}
+
     //Inifinite scroll function through an ajax call on all pages
 	var current_page = 0;
 	var per_page = 40;
@@ -488,6 +363,7 @@ $(document).ready(function() {
 		            $('.back-to-top').fadeOut(duration);
 		        }
 		    }
+        
         //MOBILE ARTICLE PAGE
 	    if($('body').hasClass('mobile') && adPage === 'article'){
 		   
@@ -510,26 +386,14 @@ $(document).ready(function() {
 
     });
 
-       //Detect if adblock is enabled 
-        if ($('#header-ad').height() == 0) {
-	       $("#main").css("margin-top", "120px");
-        }else {
-	        console.log("false");
-        }
-
-	//ajax loading image to show when calling an ajax call
-//BRANOVATE AD MOBILE
-	/*
-	if($('body').hasClass('mobile') && adPage === 'article'){
-		setTimeout(function() {
-			loadBranovateAd( document.getElementById("branovate-ad"), '<SCRIPT SRC="http://ib.adnxs.com/ttj?id=4408970&referrer=[REFERRER_URL]" TYPE="text/javascript"></SCRIPT>');
-		}, 2000);
-	}*/
+    //Detect if adblock is enabled 
+    if ($('#header-ad').height() == 0) {
+	    $("#main").css("margin-top", "120px");
+    }
 
 	function loadArt() {
         current_page++;
 	    // ajax call should go here
-	    //console.debug();
 	    $(".cool").append(spinner);
 	    $.ajax({
 	    	type: "GET",
@@ -540,22 +404,17 @@ $(document).ready(function() {
 	    		temp.children('.featured').remove();
 	    		var content = temp.html();
 	    		response.children('.featured').remove();
-	    	//	console.log(data);
 	    		$(".cool").append(response);
 	    		spinner.hide();
 	    		}
 	    	
 	    });
 	}
-//http://localhost:8888/projects/pucker-mob//httpdocs/index.php?page=5&per_page=10&ajax=true
-//http://localhost:8888/projects/pucker-mob//httpdocs/lifestyle/index.php?page=1&per_page=20&ajax=true
-//console.log(myData);
 $(window).scroll(function() {
    if( !$('body').hasClass('mobile')) {
    if($(window).scrollTop() + $(window).height() > $(document).height() - .3 * $(document).height()) {
        loadArt();
           }
-       //console.log("hello Mr. Deschamps");
        }
     });
 });

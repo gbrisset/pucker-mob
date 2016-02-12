@@ -17,7 +17,6 @@
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/1/daterangepicker-bs3.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/appadmin.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/newchangesadded.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/tooltipster.css" />
@@ -28,7 +27,7 @@
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/adminstylingie78.css">
 	<![endif]-->
-	<style type="text/css">
+	<!--<style type="text/css">
 	/* Apply these styles only when #preview-pane has
 	   been placed within the Jcrop widget */
 	#preview-pane {
@@ -46,7 +45,7 @@
 	.jcrop-preview{ width: 169px; }
 	/* The Javascript code will set the aspect ratio of the crop area based on the size of the thumbnail preview, specified here */
 	#preview-pane .preview-container { width: 140px; height: 143px; overflow: hidden; }
-</style>
+	</style>-->
 
 	<script type="text/javascript" src="http://www.puckermob.com/assets/js/modernizr-2.5.3.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
@@ -74,8 +73,17 @@
 	  			formData.append("filesize", file.size); // Will send the filesize along with the file as POST data.
 			});
 			this.on("thumbnail", function(file) {
+
+			  //if(file.size > maxFilesize ) file.rejectFileSize();
 		      // Do the dimension checks you want to do
 		      if (file.width < minImageWidth || file.height < minImageHeight) {
+		        file.rejectDimensions()
+		      }
+		      else {
+		        file.acceptDimensions();
+		      }
+
+		      if (file.width > (minImageWidth + 30) || file.height > ( minImageHeight+ 30) ) {
 		        file.rejectDimensions()
 		      }
 		      else {
@@ -85,7 +93,8 @@
 		 },
 		 accept: function(file, done) {
 		    file.acceptDimensions = done;
-		    file.rejectDimensions = function() { done("Invalid dimension."); };
+		    file.rejectDimensions = function() { done("Invalid dimension. Must be 784x431 px"); };
+		    file.rejectFileSize = function(){ done("Image Size must be less than 2MB");  }
 	  	 }
 		};
 	</script>
@@ -94,17 +103,15 @@
 	<!-- Include Editor style. -->
 	<link href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_editor.min.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_style.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_style.css">
-	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/code_view.css">
-	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/image_manager.css">
-	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/image.css">
-	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/line_breaker.css">
-	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/link.min.js">
-	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/char_counter.css">
-	  <link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/css/plugins/file.css">
+	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/code_view.css">
+	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/image_manager.css">
+	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/image.css">
+	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/line_breaker.css">
+	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/char_counter.css">
+	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/file.css">
 
 	<!-- Include JS files. -->
-	  <script src="<?php echo $config['this_url']; ?>assets/js/froalajs/froala_editor.min.js"></script>
+	 <script src="<?php echo $config['this_url']; ?>assets/js/froalajs/froala_editor.min.js"></script>
 
 	  <!-- Include Plugins. -->
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/align.min.js"></script>

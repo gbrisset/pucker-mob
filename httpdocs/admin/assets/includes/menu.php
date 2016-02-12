@@ -6,62 +6,33 @@
 <div id="nav-cont" class="columns small-3 large-1 no-padding sticky hide-for-print fixed-content padding-top">
 	<nav id="nav-sidemenu">
 		<ul>
-			<?php if($adminController->user->data['user_type'] == 5 ){?>
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'following') && (isset($uri[1]) && $uri[1] == 'following')) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>following/">Following</a>
-				<i class="fa fa-caret-left"></i>
-			</li>
-			<?php }?>
-
+			
 			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'dashboard') ) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>dashboard/">MY DASHBOARD</a>
-				<i class="fa fa-caret-left"></i>
+			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'dashboard') ) ?  'current' :  '';?> margin-top">
+				<a href="<?php echo $config['this_admin_url']; ?>dashboard/"> <i class="fa fa-bar-chart"></i>DASHBOARD</a>
 			</li>
 			<?php }?>
 			
 			<!-- SINGLE ARTICLES -->
 			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'articles') && (isset($uri[1]) && $uri[1] == 'newarticle')) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>articles/newarticle/">Add New Article</a>
-				<i class="fa fa-caret-left"></i>
+				<a href="<?php echo $config['this_admin_url']; ?>articles/newarticle/">New Article</a>
 			</li>
 			<?php }?>
 			<?php if($adminController->user->checkPermission('user_permission_show_edit_article') ){?>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'articles') && (isset($uri[1]) && $uri[1] == '' || $uri[1] == 'edit')) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>articles/?page=1&sort=1&artype=">View/Edit Articles</a>
-				<i class="fa fa-caret-left"></i>
-			</li>
-			<?php }?>
-
-			<!-- MULTIPAGE ARTICLES 
-			<?php //if($adminController->user->checkPermission('user_permission_show_manage_lists') ){?>
-			<li class="<?php //echo ((isset($uri[0]) && $uri[0] == 'lists') &&  (isset($uri[1]) && $uri[1] == 'new')) ?  'current' :  '';?>">
-				<a href="<?php //echo $config['this_admin_url']; ?>lists/new/">Add New List</a>
-				<i class="fa fa-caret-left"></i>
-			</li>
-			<li style=" border-bottom: 1px solid #999;" class="<?php //echo ((isset($uri[0]) && $uri[0] == 'lists') &&  (isset($uri[1]) && $uri[1] == '' || $uri[1] == 'edit')) ?  'current' :  '';?>">
-				<a href="<?php //echo $config['this_admin_url']; ?>lists/">View/Edit Lists</a>
-				<i class="fa fa-caret-left"></i>
-			</li>
-			<?php //}?>-->
-
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'account') ) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url'].$userLink; ?>">My Profile</a>
-				<i class="fa fa-caret-left"></i>
-			</li>
-			<?php if($adminController->user->data['user_type'] != 5 ){?>
-			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'following') ) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>following/">Following</a>
-				<i class="fa fa-caret-left"></i>
+				<a href="<?php echo $config['this_admin_url']; ?>articles/?page=1&sort=1&artype=">View Articles</a>
 			</li>
 			<?php }?>
 
 			
+			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'account') ) ?  'current' :  '';?>">
+				<a href="<?php echo $config['this_admin_url'].$userLink; ?>">My Profile</a>
+			</li>
+			
 			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
 			<li style=" border-bottom: 1px solid #999;" class="<?php echo ((isset($uri[0]) && $uri[0] == 'billing') ) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url']; ?>billing/">billing information</a>
-				<i class="fa fa-caret-left"></i>
 			</li>
 			
 			<!-- CONTRIBUTORS -->
@@ -82,34 +53,31 @@
 			</ul>
 			<?php }?>
 
-			<!--<?php //if($adminController->user->checkPermission('user_permission_show_add_contributor')){?>
-			<li class="<?php //echo ((isset($uri[0]) && $uri[0] == 'reports') ) ?  'current' :  '';?>">
-				<a href="<?php //echo $config['this_admin_url']; ?>reports/">Get Report</a>
-				<i class="fa fa-caret-left"></i>
-			</li>
-			<?php// }?>-->
 			
 			<?php if($adminController->user->checkPermission('user_permission_show_add_notifications')){?>
 			<li style=" border-bottom: 1px solid #999;" class="<?php echo ((isset($uri[0]) && $uri[0] == 'notifications') ) ?  'current' :  '';?>">
-				<a href="<?php echo $config['this_admin_url']; ?>notifications/">Notifications</a>
-				<i class="fa fa-caret-left"></i>
+				<a href="<?php echo $config['this_admin_url']; ?>notifications/"><i class="fa fa-bell-o"></i> Notifications</a>
 			</li>
 			<?php }?>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'faq') ) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url']; ?>faq/" target="blank">FAQ</a>
-				<i class="fa fa-caret-left"></i>
 			</li>
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'faq') ) ?  'current' :  '';?>">
-				<a href="mailto:fguzman@sequelmediagroup.com?subject= Report A Bug &body=If something's not working on PuckerMob  you can report it to us. Giving more detail (ex: adding a screenshot and description) helps us find the problem. We may contact you for more details as we investigate. We appreciate the time it takes to give us this information.  [Report a Feature problem here]" >Report a Bug</a>
+				<a href="mailto:fguzman@sequelmediagroup.com?subject= Report A Bug &body=If something's not working on PuckerMob  you can report it to us. Giving more detail (ex: adding a screenshot and description) helps us find the problem. We may contact you for more details as we investigate. We appreciate the time it takes to give us this information.  [Report a Feature problem here]" ><i class="fa fa-bug"></i> Report a Bug</a>
 			</li>
+
 			<li style=" border-bottom: 1px solid #999;" class="<?php echo ((isset($uri[0]) && $uri[0] == 'contact') ) ?  'current' :  '';?>">
 				<a href="<?php echo $config['this_admin_url']; ?>contact/">Contact Us</a>
-				<i class="fa fa-caret-left"></i>
 			</li>
+
 			<?php }?>
+
+			<li class="margin-top">
+				<i class="fa fa-sign-out" style="color: #fff;"></i> <a href="<?php echo $config['this_admin_url']; ?>/logout/">Sign Out</a>
+			</li>
+
 			<li class="<?php echo ((isset($uri[0]) && $uri[0] == 'delete') ) ?  'current' :  '';?>">
 				<a href="#" id="delete-account">Delete Account</a>
-				<i class="fa fa-caret-left"></i>
 			</li>
 		</ul>
 	</nav>

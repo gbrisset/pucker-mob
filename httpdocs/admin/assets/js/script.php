@@ -234,7 +234,7 @@ $(document).ready(function (){
    //End
 	
 	//$('.colorpicker').mpColorPicker();
-	$('.tooltip').mpTooltip();
+	//$('.tooltip').mpTooltip();
 	$('.preview').mpPreview();
 
 	$('.search-form').mpSearch();
@@ -268,126 +268,6 @@ $(document).ready(function (){
 		});
 	}
 
-	$('.add-element-link').mpAddElement();
-	
-	$('#more-ingredients-yes9').click(function(e){
-		console.log('Send Default');
-	});
-
-	/*$('#more-ingredients-yes, #more-instructions-yes').click(function(e){
-		var prefix = $(this).attr('data-info'), 
-		count = $('.'+prefix+'-box').length, 
-		index = count+1;
-		
-		fieldset = $('<fieldset />', {
-			id: prefix+'-'+index,
-			class: prefix+'-box'
-		}),
-		
-		label = $('<label />', {
-		}).html(prefix+' for: <span></span>'),
-
-		input = $('<input />', {
-			type: 'text',
-			placeholder: 'ex: Sauce, Glaze, Icing',
-			class: 'article_'+prefix+'-title-'+index+'-nf', 
-			id: 'article_'+prefix+'-title-'+index+'-nf', 
-			name: 'article_'+prefix+'-title-'+index+'-nf' 
-
-		}),
-
-		span = $('<span />', {
-			class: 'remove-element',
-			id: "remove-span"
-		}),
-
-		a = $('<a />', {
-			href: ''
-		}),
-		
-		i = $('<i />', {
-			class: 'icon-minus-sign'
-		}),
-
-		span.click(function(e){
-			var element_id = '#'+$(this).prev().attr('id');
-			e.preventDefault();
-			$(element_id).parent('fieldset').remove();
-			$(this).remove();
-		});
-
-		element_box = $('<div />', {
-			id: 'elements-box'
-		}).attr('data-info', 'article_'+prefix+'-nf'),
-
-		add_element = $('<div />', {
-			class:'add-element'
-		}),
-
-		add_element_link = $('<a />', {
-			class: 'add-element-link', 
-			name: 'add-element-link',
-			href: ''
-		}).html('<i class="icon-plus-sign"></i>Add '+prefix),
-
-		input_elements_div = $('<div />', {
-			class: 'input-elements'
-		});
-
-		add_element_link.click(function(e, prefix2){
-			var thisElement = $(this),
-			parent = thisElement.parent().parent(),
-			box = parent.parent(),
-			fieldset = box.parent();
-			input_box = parent.children('.input-elements'),
-			prefix2 = 'article_'+box.attr('id')+'-nf'; //$(parent).attr('data-info');
-		
-			e.preventDefault();
-
-			var total = $(input_box).children('input').length+1,
-			input = $('<input/>', {
-			    	id:    prefix2+'-'+total,
-			    	class: prefix2+'-'+total,
-			    	name:  prefix2+'-'+total,
-			    	type:  "text",
-			    	placeholder: "Insert "+prefix+" here."
-				 }),
-			span = $('<span />', {
-				class: 'remove-element'
-			});
-			a = $('<a />', {
-				href: ''
-			}),
-			i = $('<i />', {
-				class: 'icon-minus-sign'
-			});
-
-			span.click(function(e){
-				var element_id = '#'+$(this).prev().attr('id');
-				e.preventDefault();
-				$(input_box).children(element_id).remove();
-				$(this).remove();
-			});
-
-			i.appendTo(a);
-			a.appendTo(span);
-	
-			input.appendTo(input_box);
-			span.appendTo(input_box);
-		});
-
-		label.appendTo(fieldset);
-		input.appendTo(fieldset);
-		i.appendTo(a);
-		a.appendTo(span);
-		span.appendTo(fieldset);
-		element_box.appendTo(fieldset);
-		input_elements_div.appendTo(element_box);
-		add_element_link.appendTo(add_element);
-		add_element.appendTo(element_box);
-
-		$('#'+prefix+'-'+count).after(fieldset);
-	});*/
 
 	//Image Article and Contributors Link Hovering and Linking functionalities
 	if($('#image-container')){
@@ -665,18 +545,6 @@ $(document).ready(function (){
 		});
 	});
 
-	$('.collection-delete-form').each(function(){
-		var thisForm = $(this),
-		thisId = thisForm.attr('id');
-		console.log(thisId);
-			thisForm.mpValidate({
-				updateUrl : '<?php echo $config['this_admin_url']; ?>assets/php/ajaxsubmitroute.php',
-				additionalParams : 'confirm',
-				callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-			});
-	});
-
-
 	$('.list-item-delete-form').each(function(){
 		var thisForm = $(this),
 		thisId = thisForm.attr('id');
@@ -738,14 +606,6 @@ $(document).ready(function (){
 		$('#add-an-image-fs').slideDown();
 	});
 
-	$('#edit-recipe').click(function(e){
-		e.preventDefault();
-
-		setTimeout(function(){
-			window.location = "<?php echo $config['this_admin_url']; ?>articles/";
-		}, 300);
-	});
-
 	//	Upload account image link
 	$(function(){
 	    $("#upload_link").on('click', function(e){
@@ -781,7 +641,8 @@ $(document).ready(function (){
 	$('.toggle-link').SDToggler('#add-list-form');
 
 	$('#sub-menu-button').click(function(e){
-		$('#main-cont').toggleClass('active_submenu');
+		$('#content').toggleClass('active_submenu');
+		$('#nav-cont').toggleClass('mobile-menu');
 	});
 
 
@@ -795,7 +656,6 @@ $(document).ready(function (){
 			  data: { status: statusVal, a_i: $('#a_i').val(), task:'update_status' }
 			}).done(function(data) {
 
-				console.log(data);
 				if(data == "false" ){
 					alert("You need to Upload an Image in order to make this article Live!");
 				}else{
@@ -879,8 +739,7 @@ if($('#article_categories')){
 				break;
 
 		}
-		console.log(value);
-		//console.log(label);
+	
 		$(container).html(label);
 
 	
@@ -888,7 +747,7 @@ if($('#article_categories')){
 }
 		
 
-$('.has-tooltip').tooltipster();
+//$('.has-tooltip').tooltipster();
 
 //LIBRARY PHOTOS
 	if($('#search-lib')){

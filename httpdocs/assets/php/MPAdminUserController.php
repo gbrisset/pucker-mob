@@ -574,13 +574,14 @@ End password reset methods
 		
 		//Query for username and password...
 		$options = array(
-			'queryString' => "SELECT * FROM users WHERE (user_name = :username OR  user_email = :username) AND user_hashed_password = :password LIMIT 0, 1",
+			'queryString' => "SELECT * FROM users WHERE  user_email = :username AND user_hashed_password = :password LIMIT 0, 1",
 			'queryParams' => array(':username' => $post['user_login_input'], ':password' => $hashed_password),
 			'returnRowAsSingleArray' => true,
 			'bypassCache' => true
 		);
 
 		$q = $this->performQuery($options);
+
 		if($q && count($q)){
 			$this->updateNumberOfLogins($user);
 			$verificationResult = $this->doVerification($hash);

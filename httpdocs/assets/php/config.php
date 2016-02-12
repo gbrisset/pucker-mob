@@ -32,7 +32,7 @@ if($local)
 		'host' => 'localhost',
 		'user' => 'root',
 		'pass' => 'root',
-		'main_db' => 'pucker_mob_live',
+		'main_db' => 'puckermom_db',	
 
 		'include_path' => dirname(dirname(__FILE__)).'/includes/',
 		'include_path_admin' => dirname(dirname(dirname(__FILE__))).'/admin/assets/includes/',
@@ -59,19 +59,15 @@ if($local)
 	require_once $config['assets_path'].'/MPShared.php';
 	require_once $config['assets_path'].'/class.Connector.php';
 	require_once $config['assets_path'].'/class.DatabaseObject.php';
-	require_once $config['assets_path'].'/class.Bug.php';
-	require_once $config['assets_path'].'/class.SlideShow.php';
 	
 	require_once $config['assets_path'].'/MCAPI.class.php';
 	require_once $config['assets_path'].'/MPHelpers.php';
 	require_once $config['assets_path'].'/MPArticle.php';
-	require_once $config['assets_path'].'/MPVideoShows.php';
+
 	require_once $config['assets_path'].'/MPNavigation.php';
 	require_once $config['assets_path'].'/MPUriHelper.php';
 
 	require_once $config['assets_path'].'/class.pagination.php';
-	//require_once dirname($config['shared_include']).'/php/class.Search.php';
-	require_once $config['assets_path'].'/class.askTheChef.php';
 
 	require_once $config['assets_path'].'/class.PageList.php';	
 	require_once $config['assets_path'].'/class.PageListItem.php';
@@ -95,9 +91,6 @@ if($local)
 	require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
 
-	//if(isset($admin) && $admin){
-		//require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
-	//}
 	
 }else{
 
@@ -152,15 +145,12 @@ if($local)
 	require_once dirname(__FILE__).'/MPShared.php';
 	require_once dirname(__FILE__).'/MCAPI.class.php';
 	require_once dirname(__FILE__).'/class.pagination.php';
-	require_once dirname(__FILE__).'/class.askTheChef.php';
 
 	require_once dirname(__FILE__).'/class.Connector.php';
 	require_once dirname(__FILE__).'/class.DatabaseObject.php';	
 	require_once dirname(__FILE__).'/class.PageList.php';	
 	require_once dirname(__FILE__).'/class.PageListItem.php';
-	require_once dirname(__FILE__).'/class.Bug.php';
 	require_once dirname(__FILE__).'/class.ArticleList.php';
-	require_once dirname(__FILE__).'/class.SlideShow.php';
 
 	require_once dirname(__FILE__).'/PHPMailerAutoload.php';
 	require_once dirname(__FILE__).'/class.phpmailer.php';	
@@ -171,7 +161,6 @@ if($local)
 	require_once dirname(__FILE__).'/MPArticle.php';
 	require_once dirname(__FILE__).'/MPNavigation.php';
 	require_once dirname(__FILE__).'/MPUriHelper.php';
-	require_once dirname(__FILE__).'/MPVideoShows.php';
 
 	require_once dirname(__FILE__).'/mobile-detect.php';
 	require_once dirname(__FILE__).'/class.Search.php';
@@ -186,33 +175,21 @@ if($local)
 	require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
 	require_once dirname(__FILE__).'/class.FacebookDebugger.php';
 	
-	if(isset($admin) && $admin){
-
-	//	require_once dirname(__FILE__).'/class.Dashboard.php';
-	//	require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
-	//	require_once $config['assets_path'].'/class.recaptchalib.php';
-
-	}
 
 	date_default_timezone_set('America/New_York');
 }
 
 $MPNavigation = new MPNavigation($config);
-$askTheChef = new AskTheChef($config);
 $mpArticle = new MPArticle($config);
 $config['catid'] = $mpArticle->data['cat_id'];
 $mpShared = new MPShared($config);
 $mpHelpers = new MPHelpers();
 $uriHelper = new MPUriHelper( $config['this_url'] );
-//$mpVideoShows = new MPVideoShows($config);
 $MailChimp = new Mailchimp( MAIL_CHIMP_API );
 $adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
 $mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, null, $adminController);
-//if(isset($admin) && $admin){
-	$adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
-	$mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, null, $adminController);
-	$dashboard = new Dashboard($config);
-//}
+$dashboard = new Dashboard($config);
+
 $follow = new FollowAuthor($config);
 
 $mpHelpers->start_session();
@@ -222,15 +199,4 @@ $mpHelpers->geotargeting();
 //recaptcha public key
 define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");
 define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
-
-/*
-Begin Dependancies/Soft Links:
-
-	Taken care of in build script:
-		
-	To be added to build script:
-		
-		
-End Dependancies/Soft Links 
-*/
 ?>

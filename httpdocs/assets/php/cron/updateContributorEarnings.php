@@ -6,8 +6,8 @@
 	//$cron = new CronSocialMediaInformation($config);
 	$dashboard = new Dashboard($config);
 	
-	$month = 12;//date('n');
-	$year = 2015;//date('Y');
+	$month = date('n');
+	$year = date('Y');
 	
 	//if($year >= 2015 && $month > 2){
 	$results = $dashboard->pageviewsReport( $month, $year );

@@ -15,26 +15,28 @@ if($current_url == "http://www.puckermob.com/lifestyle/what-all-smokers-know-7-r
 	header('Location: http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-');
 	die;
 }
+$categoryInfo = array( "cat_id" => "6",  "cat_name"=> "Lifestyle", "cat_dir_name"=> "lifestyle",
+ "cat_desc" => "",  "cat_tags" => "");
 
+$articleTitle = '';
 foreach($MPNavigation->categories as $category){
+
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
 		$categoryInfo = $category;
 		$articleTitle = explode('&', preg_replace('/[?]/', '&', $uri[1]))[0];
 		$hasParent = false;
-		break;
+	//	break;
 	} else if(isset($category['cat_dir_name']) && (isset($uri[2])) && ($category['cat_dir_name'] == $uri[1]) ){
 		$categoryInfo = $category;
 		$articleTitle = explode('&', preg_replace('/[?]/', '&', $uri[2]))[0];
 		$hasParent = true;
-		break;
+		//break;
 	}
 }
 
 if(!is_null($categoryInfo)){
 	$articleInfo = $mpArticle->getSingleArticleInfo(['articleSEOTitle' => $articleTitle]);
-	//$articleInfo = $mpArticle->getArticles(['articleSEOTitle' => $articleTitle]);
-	//$cat_name = $articleInfo['articles'][0]['cat_dir_name'];
-
+	
 	//ISSUE WITH WENDESDAY ARTICLE 
 	if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
 		header('Location: http://www.puckermob.com/lifestyle/so-youd-like-to-be-a-phonesex-operator-a-helpful-quiz');
@@ -70,8 +72,16 @@ if(!is_null($categoryInfo)){
 
 ?>
 <?php if ( $detect->isMobile() ) { ?>
+
+<?php 
+		$style = '';
+		$article_id = '';
+		if(isset($articleInfoObj)) $article_id = $articleInfoObj['article_id'];
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <?php include_once($config['include_path'].'head.php');?>
 
 <?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] != 0){ ?>
@@ -79,37 +89,19 @@ if(!is_null($categoryInfo)){
 	<?php }else{ ?>
 	<body id="article" class="mobile">
 		<?php } ?>
-		<div id="ros_adoop"></div>
+		
+		<?php if(isset($article_id) && $article_id == 9397 ){?>
+			<div id="ros_adoop"></div> 
+		<?php } ?>
+		
 		<?php include_once($config['include_path'].'header.php');?>
-		<!-- Go to www.addthis.com/dashboard to customize your tools -->
-		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-		<script type="text/javascript">
-			if(document.readyState === "complete") {
-				addthis.init();
-			}else {
-			  //Add onload or DOMContentLoaded event listeners here: for example,
-			  window.addEventListener("onload", function () { addthis.init(); }, false);
-			}
-		</script>
-		<?php 
-		$style = '';
-		$article_id = '';
-		if(isset($articleInfoObj)) $article_id = $articleInfoObj['article_id'];
 		
-		if( $article_id == 4314 || $article_id == 4341){
-			$style = 'margin-top: 7rem !important;';
-		}
-		
-		?>
-		<!-- MOBILE LEFT TAP -->
-		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
-			<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-bottom: 5px; margin-top: 5px;  }</style>
+		<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-bottom: 5px; margin-top: 5px;  }</style>
 
 		<main id="main" class="row panel sidebar-on-right" role="main" style="">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left medium-index">
-				<div class="evolve-media">
-					<div id="ros_1207"></div>
-				</div>
+				
+				
 				<input type="hidden" value="<?php echo $article_id; ?>" id="article_id"/>
 				
 				<!-- ARTICLE CONTENT -->
@@ -132,7 +124,16 @@ if(!is_null($categoryInfo)){
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 			<hr>
 			<?php }?>
-			
+			<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async></script>
+		<script type="text/javascript">
+			if(document.readyState === "complete") {
+				addthis.init();
+			}else {
+			  //Add onload or DOMContentLoaded event listeners here: for example,
+			  window.addEventListener("onload", function () { addthis.init(); }, false);
+			}
+		</script>
 		</section>
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
@@ -190,15 +191,14 @@ if(!is_null($categoryInfo)){
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 		<script type="text/javascript">
 			
-
 			if(document.readyState === "complete") {
 				addthis.init();
 			}
 			else {
-	  //Add onload or DOMContentLoaded event listeners here: for example,
-	  window.addEventListener("onload", function () { addthis.init(); }, false);
-	}
-</script>
+			  //Add onload or DOMContentLoaded event listeners here: for example,
+			  window.addEventListener("onload", function () { addthis.init(); }, false);
+			}
+	</script>
 <main id="main" class="row panel sidebar-on-right" role="main">
 
 	<?php if(!$detect->isMobile()){?>

@@ -17,8 +17,6 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 
 <script>
 	$('body').addClass('show-modal-box');
-	///if($('#openModal')){
-
 		$('.close').click(function(e){
 			$('body').removeClass('show-modal-box');
 		});
@@ -26,8 +24,6 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 		$('#openModal').click(function(e){
 			$('body').removeClass('show-modal-box');
 		});
-
-	//}
 </script>
 <?php }else{?>
 
@@ -35,7 +31,7 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 	<div id="openModal" class="modalDialog">
 	<div id="popup-content">
 		<div>
-			<p>Succesfully Added!!</p>
+			<p>Your article was created Succesfully!!</p>
 		</div>
 	</div>
 	</div>

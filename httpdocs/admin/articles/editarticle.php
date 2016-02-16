@@ -127,7 +127,7 @@ SEE ARTICLE</a><?php }?></h1>
 						<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 						<div class="dz-message" data-dz-message>
 							<div id="img-container">
-						   		<div class="image-icon"><i class="fa fa-file-image-o font-4x"></i></div>
+						   		<div class="image-icon  padding-top"><i class="fa fa-file-image-o font-4x"></i></div>
 						   		<label class="padding-top large-font-size uppercase main-color">
 						   			Add an Image to your article
 								</label>
@@ -219,22 +219,8 @@ SEE ARTICLE</a><?php }?></h1>
 						</div>
 					</div>
 
-					 <script>
-				      $(function() {	
-				          $('#article_editor').froalaEditor({
-				          	  key: 'UcbaE2hlypyospbD3ali==',
-				          	  height: 420,
-				          	  placeholderText: 'Start Writing Here.',
-						      imageUploadURL: 'upload_images.php',
 
-						      imageUploadParams: { id: 'my_editor' },
-						      imageMaxSize: 2 * 1024 * 1024,
-						      imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif']
-				          });
-				      });
-				  	</script> 
-
-
+						 
 				  	<!-- RELATED ARTICLES -->
 					<div class="row" id="related-articles-section">
 					    <div class="columns">
@@ -612,7 +598,20 @@ SEE ARTICLE</a><?php }?></h1>
 		</div>
 	</div>
 	<!--FOOTER-->
-	
+	<script>
+      $(function() {	
+          $('#article_editor').froalaEditor({
+          	  key: 'UcbaE2hlypyospbD3ali==',
+          	  height: 420,
+          	  placeholderText: 'Start Writing Here.',
+		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
+          });
+      });
+  	</script> 
+  	
 	<?php include_once($config['include_path_admin'].'footer.php'); ?>
 	<!-- ARTICLE PREV TEMPLATE -->
 	<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>

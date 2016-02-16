@@ -25,6 +25,7 @@ module.exports = function(grunt) {
           livereload: true,
         }
       },
+     
       sass: {
         files: 'httpdocs/assets/scss/**//*.scss',
         tasks: ['sass'],
@@ -39,17 +40,20 @@ module.exports = function(grunt) {
         mangle: false,
         livereload: true,
       },
+     
       jscompress: {
         files: {
           'httpdocs/assets/js/app.min.js': ['httpdocs/assets/js/plugins.js', 'httpdocs/assets/js/app.js', 'httpdocs/assets/js/js_scroll.js']
         }
       }
     },
+   
     cssmin: {
       options: {
         shorthandCompacting: false,
         roundingPrecision: -1
       },
+   
       target: {
         files: {
           'httpdocs/assets/css/app.min.css': ['httpdocs/assets/css/app.css']

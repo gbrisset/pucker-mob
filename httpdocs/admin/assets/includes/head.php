@@ -21,32 +21,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/tooltipster.css" />
 	
-	
-
-	
-	<!--[if lt IE 9]>
-		<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/adminstylingie78.css">
-	<![endif]-->
-	<!--<style type="text/css">
-	/* Apply these styles only when #preview-pane has
-	   been placed within the Jcrop widget */
-	#preview-pane {
-	  display: block;
-	  position: absolute;
-	  z-index: 2000;
-	  top: 10px;
-	  right: -280px;
-	  padding: 6px;
-	  background-color: white;
-	  -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
-	  -moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
-	  box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
-	}
-	.jcrop-preview{ width: 169px; }
-	/* The Javascript code will set the aspect ratio of the crop area based on the size of the thumbnail preview, specified here */
-	#preview-pane .preview-container { width: 140px; height: 143px; overflow: hidden; }
-	</style>-->
-
 	<script type="text/javascript" src="http://www.puckermob.com/assets/js/modernizr-2.5.3.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
@@ -103,12 +77,8 @@
 	<!-- Include Editor style. -->
 	<link href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_editor.min.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_style.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/code_view.css">
-	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/image_manager.css">
-	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/image.css">
 	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/line_breaker.css">
 	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/char_counter.css">
-	<link rel="stylesheet" href="<?php echo $config['this_url']; ?>assets/css/froalacss/plugins/file.css">
 
 	<!-- Include JS files. -->
 	 <script src="<?php echo $config['this_url']; ?>assets/js/froalajs/froala_editor.min.js"></script>
@@ -116,15 +86,11 @@
 	  <!-- Include Plugins. -->
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/align.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/char_counter.min.js"></script>
-	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/code_view.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/entities.min.js"></script>
-	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/image.min.js"></script>
-	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/image_manager.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/line_breaker.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/link.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/lists.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
-	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/save.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
 
 </head>

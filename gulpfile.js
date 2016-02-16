@@ -6,10 +6,6 @@ var gulp  = require('gulp'),
     sass = require('gulp-sass');
 
 var paths = {
-    scripts: {
-        src:  'src/coffee/**/*.coffee',
-        dest: 'public/javascripts'
-    },
     styles: {
         src:  'httpdocs/assets/scss/*.scss',
         dest: 'httpdocs/assets/css'
@@ -32,10 +28,13 @@ gulp.task('compress', function() {
     .pipe(gulp.dest('httpdocs/assets/js/min/'));
 });
 
+
+
  gulp.task('sass', function () {
-   return gulp.src(paths.styles.src)
-        .pipe(sass({errLogToConsole: true}))
-        .pipe(gulp.dest(paths.styles.dest));
+   return   gulp.src('httpdocs/assets/scss/*.scss')
+            .pipe(sass({ includePaths: ['bower_components/foundation/scss'] }))
+            .pipe(sass.sync().on('error', sass.logError))
+            .pipe(gulp.dest('httpdocs/assets/css/'));
 });
 
 // configure which files to watch and what tasks to use on file changes

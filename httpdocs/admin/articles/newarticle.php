@@ -2,19 +2,14 @@
 if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
 
 	if (!empty($_FILES)) {
-	     $ds          = DIRECTORY_SEPARATOR;  //1
-	 
+	    $ds          = DIRECTORY_SEPARATOR;  //1
 		$storeFolder = 'uploads';   //2
 	    $tempFile = $_FILES['file']['tmp_name'];          //3             
-	      
 	    $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
-	     
 	    $targetFile =  $targetPath. $_FILES['file']['name'];  //5
-	 
 	    move_uploaded_file($tempFile,$targetFile); //6
-	     
 	}
-	
+
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			$updateStatus = $adminController->addArticle($_POST);
@@ -50,7 +45,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						
 						<div class="dz-message" data-dz-message>
 							<div id="img-container">
-								<div class="image-icon"><i class="fa fa-file-image-o font-4x"></i></div>
+								<div class="image-icon  padding-top"><i class="fa fa-file-image-o font-4x"></i></div>
 						   		<label class="padding-top large-font-size uppercase main-color">
 						   			Add an Image to your article
 								</label>
@@ -244,13 +239,13 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 	 <script>
       $(function() {	
           $('#article_editor').froalaEditor({
-          	key: 'UcbaE2hlypyospbD3ali==',
+          	  key: 'UcbaE2hlypyospbD3ali==',
           	  height: 420,
           	  placeholderText: 'Start Writing Here.',
-		      imageUploadURL: '/projects/pucker-mob//httpdocs/admin/articles/upload_images.php',
-		      imageUploadParams: { id: 'my_editor' },
-		      imageMaxSize: 1 * 1024 * 1024,
-		      imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif']
+		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
           });
       });
   	</script> 

@@ -1,27 +1,18 @@
 <?php
 	$userInfo = $adminController->user->data;
 
-	//if( $userInfo && isset($userInfo[0])) $userInfo = $adminController->user->data[0];
-	
 	//	If the user hasn't yet set an image, set $image = default_profile_image.png
 	$image = (isset($userInfo['contributor_image']) && $userInfo['contributor_image'] != "") ? $userInfo['contributor_image'] : 'pm_avatars_1.png';
 
 	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
 	if (isset($userInfo['contributor_id'])){
 		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
-	} else {
-		$mpShared->get404();
-	}
+	} else $mpShared->get404();
+	
 	//	If the name in the url string doesn't match the logged in user's username...
 	if ($userInfo['user_name'] != $uri[2]){
 		//	No access
 		$adminController->redirectTo('noaccess/');
-	}
-
-	//Verify if is a content provider user
-	$content_provider = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 4){
-		$content_provider = true;
 	}
 
 	//	Set the paths to the image
@@ -29,7 +20,7 @@
 	$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$image; 
 	$contImageExists = false;
 
-	$userfbid = $adminController->user->data['user_facebook_id'];
+	$userfbid = isset($adminController->user->data['user_facebook_id']) ? $adminController->user->data['user_facebook_id'] : 0;
 	$fromFB = false;
 	if($userfbid && strlen($userfbid) > 0 ){
 		$fromFB = true;
@@ -37,7 +28,7 @@
 	}
 	
 	//	Verify if the usr has ever SELECTED an image
-	if(isset($image) /*&& $image != 'default_profile_contributor.png'*/){
+	if(isset($image) ){
 		$contImageExists = file_exists($contImageDir);
 	}
 	if(isset($_POST['submit'])){
@@ -61,10 +52,6 @@
 					$userInfo = $adminController->user->getUserInfo();
 					$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$userInfo['contributor_image']; ;
 					break;
-				//case isset($_POST['user_email-e']):
-                 //   $updateStatus = $adminController->updateUserInfo($_POST);
-                  //  $adminController->user->data = $adminController->user->getUserInfo();
-                //    break;
 				case isset($_POST['c_i_d']):
 					$mpArticleAdmin->deleteuserInfo($_POST);
 					$adminController->redirectTo('contributors/');
@@ -81,23 +68,16 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
-	<div class="sub-menu row">
-		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">My Profile</h1>
-	</div>
 
-	<!-- WELCOME MESSAGE -->
-	
-	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
+		<!-- SUB MENU ADMIN -->		
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			
-			<div id="following-header" class="following-header mobile-12 small-12">
-					<header>MY PROFILE</header>
+			<div class="  mobile-12 small-12 columns padding-bottom ">
+				<h1>My Account</h1>
 			</div>
-			<div id="announcements" class="announcements-box  mobile-12 small-12" style="MARGIN-BOTTOM: 1rem;">
+			<div id="announcements" class="announcements-box mobile-12 columns">
 				<div id="announcement-icon" class="">
 					<i class="fa fa-3x fa-comments"></i>
 				</div>
@@ -111,14 +91,14 @@
 			<div id="profile-inline-settings">
 			
 				<!-- IMAGE SECTION -->
-				<section class="mobile-12 small-12 margin-bottom margin-top">
+				<section class="mobile-12 small-12 columns margin-bottom margin-top">
 						<h2 class="small-12">Profile Photo</h2>
 						<div class="small-12 image-profile-box">
 							<img id="img-profile" class="left" src="<?php echo $contImageUrl; ?>" alt="User Image" />
 							<div class="small-10 left image-wrapper">
-								<div class="small-6 left div-images">
+								<div class="small-6 columns div-images">
 									<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $userInfo['contributor_id']; ?>" />
-									<a href="#" class="b-upload select-avatar small-12" id="select-avatar">Save Avatar</a>
+									
 									<div class="small-12 avatars">
 										<?php for($i = 1; $i<= 18; $i++){?>
 											<span class="avatar-span" id="avatar-image-<?php echo $i;?>" data-info="pm_avatars_<?php echo $i;?>.png">
@@ -126,11 +106,12 @@
 											</span> 
 										<?php }?>
 									</div>
+									<a href="#" class="b-upload select-avatar small-12" id="select-avatar">Save Avatar</a>
 								</div>
 								<div style="width:4.2rem;" class="left">
 									<span class="and ">or</span>
 								</div>
-								<div class="small-6 left div-file-upload">
+								<div class="small-6 columns div-file-upload">
 									<a href="#" class="b-upload small-12 upload-photo" name="image-file-link" id="image-file-link">Upload Photo</a>
 									<input type="file" class="hidden" id="upload_form" name="upload_form" />
 										<div class="small-12 photo-instructions">
@@ -320,7 +301,19 @@
 		</div>
 	</div>
 
-	
+	<script>
+      $(function() {	
+          $('#contributor_bio-nf').froalaEditor({
+          	  key: 'UcbaE2hlypyospbD3ali==',
+          	  height: 220,
+          	  placeholderText: 'Start Writing Here.',
+		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
+          });
+      });
+  	</script> 
 
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>

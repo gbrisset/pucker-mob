@@ -683,7 +683,7 @@ footer{clear:both; background: #E1e1e1; }
 .warning-box  .p-cont p a{ color: #fff; text-decoration: underline; }
 .warning-box  .p-cont a{ color: #fff; text-decoration: underline; }
 
-#announcements{ background: #BFE2DB;  margin-top:0.5rem;  -webkit-border-radius: 5px; -moz-border-radius: 5px; -o-border-radius:5px; border-radius: 5px; padding: 1rem; overflow:hidden;}
+#announcements{ background: #BFE2DB;  margin-top:0.5rem;  -webkit-border-radius: 5px; -moz-border-radius: 5px; -o-border-radius:5px; border-radius: 5px; padding: 1rem !important; overflow:hidden;}
 #announcements-box  > p{margin:0;}
 .announcements-box  .fa-comments{ color: #777; }
 .announcements-box   .p-cont p{ margin: 0; color: #777; overflow: hidden; margin-bottom: 0.5rem;}

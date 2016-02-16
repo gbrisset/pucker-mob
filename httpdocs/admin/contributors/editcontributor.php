@@ -175,7 +175,18 @@
 
 				<div class="row">
 				    <div class="columns mobile-12 small-12 large-12">
-				    	<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about this writer! Start writing Bio here." ><?php if(isset($contributorInfo['contributor_bio'])) echo $contributorInfo['contributor_bio']; ?></textarea>
+				    	<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" ><?php if(isset($contributorInfo['contributor_bio'])) echo $contributorInfo['contributor_bio']; ?></textarea>
+
+					 <script>
+				      $(function() {	
+				          $('#contributor_bio-nf').froalaEditor({
+				          	  key: 'UcbaE2hlypyospbD3ali==',
+				          	  height: 200,
+				          	  placeholderText: 'Tell us something about you! Start writing here.',
+						     
+						  });
+				      });
+				  	</script> 
 					</div>
 				</div>
 

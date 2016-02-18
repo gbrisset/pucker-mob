@@ -43,6 +43,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	#branovate-ad-iframe{ border:none; height:240px;}
 	div#tl_ad { margin-top: 0 !important; padding-top: 0 !important;}
 	#article-content p:first-child{margin-bottom: 1.25rem !important;}
+	#kikvid-3043, #vm_inline{ display:inline-block !important; }
 </style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
@@ -82,6 +83,21 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						<div id="ros_1207"></div>
 					</div>
 				<?php } ?>
+
+				<div class="row newsletter-box">
+					 <div class="small-12 columns no-padding newsletter-wrapper">
+					      <div class="row collapse">
+					        <label>GET THE DAILY <span>MOB REPORT<span></label>
+					        <div class="small-10 columns">
+					          <input type="text" id="visitor_email" name = 'visitor_email' placeholder="Type Your Email Address" />
+					        </div>
+					        <div class="small-2 columns" >
+					          <span class="postfix" id="newsletter-submit"><i class="fa fa-caret-right"></i></span>
+					        </div>
+					        <label id="msg" ></label>
+					      </div>
+				    </div>
+				</div>
 		</section>
 
 		<!-- DISCLAIMER -->
@@ -100,13 +116,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 			<!-- ARTICLE BODY -->
 			<div id="article-body">
+			<div class="margin-bottom">
+				<div data-str-native-key="536c62e7" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			</div>
 				<?php echo $article_body; ?>
 			</div>
-			<div id="pm_banner_event" class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+			<!--<div id="pm_banner_event" class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 				<a href="https://www.facebook.com/events/433886753487493/" target="_blank">
 					<img src ="http://www.puckermob.com/assets/img/singles-unite-mobile.jpg" alt="NYC PuckerMob Event" />
 				</a>
-			</div>
+			</div>-->
 			<!-- RELATED ARTICLES -->
 			<?php 
 			$related = [];
@@ -341,6 +361,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					
 					<!-- ARTICLE BODY -->
 					<div id="article-body">
+						<div class="margin-bottom">
+							<div data-str-native-key="58ad4c02" style="display: none;"></div>
+							<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+						</div>
 						<p><?php echo $article_body; ?></p>
 
 					</div>

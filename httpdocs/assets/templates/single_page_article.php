@@ -82,6 +82,21 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						<div id="ros_1207"></div>
 					</div>
 				<?php } ?>
+
+				<div class="row newsletter-box">
+					 <div class="small-12 columns no-padding newsletter-wrapper">
+					      <div class="row collapse">
+					        <label>GET THE DAILY <span>MOB REPORT<span></label>
+					        <div class="small-10 columns">
+					          <input type="text" id="visitor_email" name = 'visitor_email' placeholder="Type Your Email Address" />
+					        </div>
+					        <div class="small-2 columns" >
+					          <span class="postfix" id="newsletter-submit"><i class="fa fa-caret-right"></i></span>
+					        </div>
+					        <label id="msg" ></label>
+					      </div>
+				    </div>
+				</div>
 		</section>
 
 		<!-- DISCLAIMER -->
@@ -100,13 +115,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 			<!-- ARTICLE BODY -->
 			<div id="article-body">
+			<div class="margin-bottom">
+				<div data-str-native-key="536c62e7" style="display: none;"></div>
+				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+			</div>
 				<?php echo $article_body; ?>
 			</div>
-			<div id="pm_banner_event" class="ad-unit hide-for-print padding-top" style="display: inline-block;">
+			<!--<div id="pm_banner_event" class="ad-unit hide-for-print padding-top" style="display: inline-block;">
 				<a href="https://www.facebook.com/events/433886753487493/" target="_blank">
 					<img src ="http://www.puckermob.com/assets/img/singles-unite-mobile.jpg" alt="NYC PuckerMob Event" />
 				</a>
-			</div>
+			</div>-->
 			<!-- RELATED ARTICLES -->
 			<?php 
 			$related = [];

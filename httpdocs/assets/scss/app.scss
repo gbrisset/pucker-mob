@@ -265,6 +265,32 @@ header {
 	  display: inline-block;
 	  margin-left: -2.5rem !important;
 	}
+
+
+	.newsletter-box{
+		display:block !important;
+		background: #eee;
+	    padding: 0.5rem;
+	    border: 1px solid #ddd;
+	    margin-top: 2px !important;
+	    margin-bottom: 10px !important;
+	   
+	    label{
+	    	font-size: 16px;
+	    	color: #222;
+	    	font-family: OsloBold;
+	    	
+	    	span{
+	    		color: green;
+	    	}
+
+	    }
+
+	    .fa{
+	    	    font-size: 2.3rem;
+	    		color: #888;
+	    }
+	}
 }
 
 @media #{$small-only} {
@@ -274,6 +300,31 @@ header {
 	  text-align: center;
 	  display: inline-block;
 	 margin-left: -2.5rem !important;
+	}
+
+	.newsletter-box{
+		display:block !important;
+		background: #eee;
+	    padding: 0.5rem;
+	    border: 1px solid #ddd;
+	    margin-top: 2px !important;
+	    margin-bottom: 10px !important;
+	   
+	    label{
+	    	font-size: 16px;
+	    	color: #222;
+	    	font-family: OsloBold;
+	    	
+	    	span{
+	    		color: green;
+	    	}
+
+	    }
+
+	    .fa{
+	    	    font-size: 2.3rem;
+	    		color: #888;
+	    }
 	}
 }
 @media #{$medium-only} {
@@ -1912,8 +1963,8 @@ input#email::-webkit-input-placeholder { color: #222; }
 input#email:-moz-placeholder { /* Firefox 18- */ color: #222; }
 input#email::-moz-placeholder {  /* Firefox 19+ */ color: #222;  }
 input#email:-ms-input-placeholder {  color: #222;  }
-.error{color:red;}
-.success{color: green;}
+.error{color:red !important;}
+.success{color: green !important;}
 
 @media only screen and (min-width: 33.8125rem) {
 #popup-content { min-width: auto;}
@@ -2247,4 +2298,8 @@ iframe { z-index:0;}
 .mob-level {
 	font-size: 12px;
 	margin-left: 15px;
+}
+
+.newsletter-box{
+	display:none;
 }

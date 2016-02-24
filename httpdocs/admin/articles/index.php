@@ -102,16 +102,16 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<div class=" mobile-12 small-12 padding-bottom">
+			<div class="  mobile-12 small-12 columns padding-bottom ">
 				<h1>View Articles</h1>
 			</div>
 			<section id="articles">
-			<section class="left  mobile-12 small-12">
+			<section class="left  mobile-12 small-12 columns">
 				<section class="">
 				<form class="search-form-admin small-12 right margin-bottom" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
-						<div id="search-fieldset" class="mobile-12 small-12">
-							<input type="text" value="" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchemailinput">
-							<button type="submit" id="searchsubmit" name="searchsubmit" class="small-4"  >SEARCH<i class="icon-search"></i></button>
+						<div id="search-fieldset" class="small-12 large-11 columns no-padding">
+							<input type="text" value="" class="small-11 columns " placeholder="Search all" id="searchemailinput" name="searchemailinput">
+							<button type="submit" id="searchsubmit" name="searchsubmit" class="small-2 large-1 columns "  ><i class="fa fa-search"></i></button>
 						</div>
 				</form>
 				</section>
@@ -200,9 +200,9 @@
 					<table class="columns small-12 no-padding">
 						<thead>
 						    <tr>
-						      <th class="columns  mobile-12 small-12 medium-7">Article Name</th>
+						      <th class="columns  mobile-6 small-6 medium-7">Title</th>
 						      <th class="columns  small-2 hide-small "><a href="">Added</a></th>
-						      <th  class="columns small-2">status</th>
+						      <th  class="columns small-2 medium-2">status</th>
 						      <th   class="columns small-1"></th>
 						    </tr>
 						 </thead>
@@ -225,40 +225,42 @@
 							}
 
 							?>
-								<tr id="<?php echo 'article-'.$article_id; ?>" class="columns small-12 no-padding">
-								  	<td class="columns mobile-8 small-8  medium-7">
-								  		<div class="article-image mobile-1 small-1">
-											<a href="<?php echo $articleUrl; ?>">
-												<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
-											</a>
-										</div>
-										<h2 class=""><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 43); ?></a></h2>
-								  	</td>
-								  	<td class="columns  hide-small small-2 padding-top-center"><?php echo $article_date_created; ?></td>
-								  	<!--<td class="small-2"><?php echo $article_status; ?></td>-->
-								  	<td  class="columns  small-2 padding-top-center"><?php echo $article_status ?></td>	
-									<!-- REMOVE ARTICLE -->
-									<td   class="columns small-1 padding-top-center">
-										<?php if($admin_user || $blogger ){?>
-											<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-												<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-												<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-												<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
-											</form>
+							<tr id="<?php echo 'article-'.$article_id; ?>" class="columns small-12 no-padding">
+							  	<td class="columns mobile-8 small-8  medium-7">
+							  		<div class="small-3 columns no-padding">
+										<a href="<?php echo $articleUrl; ?>">
+											<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
+										</a>
+									</div>
+									<div class="small-9 columns ">
+										<h2><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 43); ?></a></h2>
+									</div>
+							  	</td>
+
+							  	<td class="columns  hide-small small-2 padding-top-center"><?php echo $article_date_created; ?></td>
+							  	<td  class="columns  small-2 padding-top-center"><?php echo $article_status ?></td>	
+								<!-- REMOVE ARTICLE -->
+								<td   class="columns small-1 padding-top-center">
+									<?php if($admin_user || $blogger ){?>
+										<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+											<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
+											<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
+											<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+										</form>
+									<?php }else{?>
+										<?php if($articleInfo["article_status"] != 1 ){?>
+										<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+											<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
+											<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
+											<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+										</form>
 										<?php }else{?>
-											<?php if($articleInfo["article_status"] != 1 ){?>
-											<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-												<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-												<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-												<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
-											</form>
-											<?php }else{?>
-											<!-- REQUEST TO DELETE THIS ARTICLE -->
-											<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
-											<?php }?>
+										<!-- REQUEST TO DELETE THIS ARTICLE -->
+										<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
 										<?php }?>
-									</td>							  			
-								</tr>
+									<?php }?>
+								</td>							  			
+							</tr>
 						<?php }?>
 					    </tbody>
 					</table>

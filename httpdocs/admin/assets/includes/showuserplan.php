@@ -1,53 +1,39 @@
 <?php 
-	$user_type = $adminController->user->data['user_type'];
 	$moblevel = "Basic";
-	$explanation = "LEARN MORE ABOUT LEVELS";
 	
 	switch($user_type){
+		case 99:
 		case 1:
 		case 2:
 			$moblevel = 'Admin';
-			//$explanation = "Find more about Mob Levels, and the benefits you enjoy by being a Pro blogger";
 			break;
 		case 3:
 			$moblevel = 'Basic';
-			//$explanation = "Find more about Mob Levels, and how you can earn more by becoming a Pro blogger";
 			break;
 		case 6:
 		case 7:
 			$moblevel = 'Writer';
-			//$explanation = "Find more about Mob Levels, and the benefits you enjoy by being a Pro blogger";
 			berak;
 		case 8:
 			$moblevel = 'Pro'; 
-			//$explanation = "Find more about Mob Levels, and the benefits you enjoy by being a Pro blogger";
 			break;
 		case 9:
 			$moblevel = 'Invited'; 
-			//$explanation = "Find more about Mob Levels, and the benefits you enjoy by being a Pro blogger";
+			break;
+		case 0:
+			$moblevel = 'Suspend'; 
 			break;
 		default:
 			$moblevel = 'Basic';
-			//$explanation = "Find more about Mob Levels, and how you can earn more by becoming a Pro blogger";
 			break;
 	}
 ?>
-<section class="user-plan small-12 right">
+<div class="user-plan" class="small-12 columns right">
 
-<div class="user-plan-cont column small-12 padding-bottom padding-top">
-	<div class="current-level small-5 inline left">
-		<h2>Current Mob Level: <span><?php echo $moblevel; ?></span></h2>
+	<div class="user-plan-cont column small-12 box-it-up">
+		<div class="current-level">
+			<label class="uppercase">Mob Level: <span><?php echo $moblevel; ?></span></label>
+		</div>
 	</div>
-	<div class="mob-level-explanation small-6 inline left">
-		<a href="<?php echo $config['this_admin_url'].'moblevels.php'; ?>">
-			<p class="show-mob-levels"><?php echo $explanation; ?></p>
-		</a>
-	</div>
-	<div class="arrow-level small-1 right">
-		<a href="<?php echo $config['this_admin_url'].'moblevels.php'; ?>">
-			<i class="fa 2x fa-caret-right"></i>
-		</a>
-	</div>
+
 </div>
-
-</section>

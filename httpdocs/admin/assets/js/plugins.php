@@ -82,7 +82,7 @@ var EarningsObj = {
 						tr += "<td class='article align-left'>";
 							tr += "<a href='http://puckermob.com/"+ val[0].cat_dir_name +"/"+ val[0].article_seo_title +" 'target='blank' > "+ val[0].article_title.substring(0,40) +"... </a>";
 						tr += "</td>";
-						tr += "<td>" + moment( val[0].creation_date ).format("MM/DD/YY") + "</td>";
+						tr += "<td>" + moment( val[0].creation_date ).format("ll") + "</td>";
 						tr += "<td>" + pageviews + "</td>";
 						tr += "<td>" + rate + "</td>";
 						tr += "<td class='bold align-right'>$"+ parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() +"</td>";

@@ -43,6 +43,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	#branovate-ad-iframe{ border:none; height:240px;}
 	div#tl_ad { margin-top: 0 !important; padding-top: 0 !important;}
 	#article-content p:first-child{margin-bottom: 1.25rem !important;}
+	#kikvid-3043, #vm_inline{ display:inline-block !important; }
 </style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
@@ -360,6 +361,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					
 					<!-- ARTICLE BODY -->
 					<div id="article-body">
+						<div class="margin-bottom">
+							<div data-str-native-key="58ad4c02" style="display: none;"></div>
+							<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+						</div>
 						<p><?php echo $article_body; ?></p>
 
 					</div>

@@ -385,7 +385,7 @@ ul.inline-centered>li{ padding: 0.8rem;}
 
 //SEARCH FORM
 .search-form-admin{ display:inline-block; margin-top: 0;}
-#searchemailinput{ width: 66.66%; font-size: 1rem; text-transform: uppercase;  margin-bottom: 0; height:3rem;}
+#searchemailinput{ font-size: 1rem; width: 91.6%; min-height: 2.8rem;}
 
 //SORT BY BAR
 #main-cont section .section-bar #right #sort-by ul{ list-style: none outside none; margin: 0; padding: 0; width: auto; padding-top: 0.3rem;}
@@ -630,7 +630,7 @@ form .gradient-button.red-gradient {background: -moz-linear-gradient(center top 
 .admin-contributor .contributor-info > p  {margin-bottom: 0; margin-top: 0.45rem;  text-align: center;}
 
 //DASHBOARD
-#dashboard{ margin-top:0.5rem;}
+#dashboard{ margin-top:0.5rem; }
 #dashboard h2{ font-weight: bold; margin-bottom: 5rem;}
 #dashboard table{ background: #fff; border:none; width:100%;}
 #dashboard table thead{background: #fff;}
@@ -955,15 +955,23 @@ z-index: 999; width: 33.57rem; display:none;}
  #announcement-icon{ display: table-cell; vertical-align: middle; background: #47AC9A; padding: 0.2rem;}
 #warning-box, #announcements{ margin-top:0.3rem !important;}
 
-/*SOCAIL SHARE RATE*/
-#share-rate-box{ overflow: hidden;}
-.share-rate-txt, .find-more-link{background: #991B1C; height: 3.65rem;}
-.share-rate-txt{ background: #fff; height: auto; font-family: OsloBold;}
-.share-rate-txt p span{ color: #156A17;}
-.find-more-link{ padding: 0.5rem; width: 25%; padding-top: 1rem;}
-.share-rate-txt p{ color: #000; text-transform: uppercase; text-align: center; font-size: 1.4rem; font-weight: bolder; padding: 0; margin:0; }
-.find-more-link p{color: #fff; text-transform: uppercase; font-weight: bold; font-size: 0.8rem; text-align: center; margin: 0; line-height: 1.1;}
-.find-more-link p a{ outline:none; color:#fff;}
+/*SOCIAL SHARE RATE*/
+
+
+.box-it-up{
+	background:#ddd;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-top: 4px;
+
+	label{
+		font-size:16px;
+
+		span{ margin-left:10px;}
+	}
+}
+
+
 
 /*Earnings Info*/
 .earnings-info{ margin-top:0.3rem !important; margin-bottom: 0 !important;}
@@ -994,7 +1002,7 @@ z-index: 999; width: 33.57rem; display:none;}
 
 
 /*EARNINGS PAGE*/
-#dashboard{ clear: both; overflow: hidden;}
+#dashboard{ clear: both; overflow: hidden; padding-left: 0;}
 #month-form select { background-color: #000 !important; font-size: 0.8rem !important; margin: 0 !important; height: auto; top: -6px !important; text-transform: uppercase;  background-size: 15px 10px; background-position: 95% 50%; width: 8rem !important;}
 .dd-field-month{width: 90%; margin: 0; display: inline-flex; font-size: 0.8rem; color: #fff !important;}
 #month-form { display: inline; margin-left: -1.4rem; padding: 0rem; margin: 0 !important;}
@@ -1200,24 +1208,16 @@ padding-top: 0.46875rem !important;
 
 .earnings-calendar p { text-transform: uppercase; font-size: 1.3rem; margin-left: 1rem; }
 #reportrange {
-	background: #fff;
 	cursor: pointer;
-	padding: 0;
-	margin:0;
-	width: 100%;
-	border: 1px solid #ccc;
-
 	
-	.glyphicon-calendar{ font-size: 1.3rem; display: inline; left: 3px; color: #999;}
+	.glyphicon-calendar{ font-size: 2.3rem; top: 5px; color: #222;}
 	input{   
 		display: inline;
 		width: 80%;
 		border: none;
-		border-left: 1px solid #ddd;
-		font-size: 1.2rem;
+		font-size: 1rem;
 		box-shadow: none;
-		margin: 0.8px;
-		height: auto;
+		background:#ddd !important;
 	}
 }
 
@@ -1232,15 +1232,6 @@ padding-top: 0.46875rem !important;
 .monthselect:hover, .yearselect:hover{ background-color:#fff;}
 
 /*USER PLAN BOX*/
-.user-plan{
-	.user-plan-cont{ background: #156A17; border: 1px solid #ddd; }
-	.current-level h2{ color: #fff; text-transform: uppercase; font-size: 1.2rem; font-family: Oslo; height: 30px; display: table-cell; vertical-align: middle;}
-	.current-level h2 span{ color: #FBF604; }
-	.mob-level-explanation{ margin-top: 0.2rem; }
-	.show-mob-levels{  text-align: right; margin: 0; text-transform: uppercase; color: #fff;}
-	.arrow-level .fa-caret-right{display: table-cell; vertical-align: middle; font-size: 1.8em; padding: 0 1rem;}
-	.arrow-level a{ color: #fff; }
-}
 
 .mob-levels-content{
 	h2{  text-transform: uppercase; font-size: 1.2rem; line-height: 1.3; }
@@ -1253,7 +1244,7 @@ padding-top: 0.46875rem !important;
 
 .how-do-pro-level h2{ font-size: 1.5rem; text-transform: uppercase; font-family:oslobold;}
 .mob-level{ background: #000; color: #fff; border:none; margin-top:0.5rem; padding-top: 0.3rem;}
-#earnings .box-border {   border: 1px solid #ddd !important; margin: 0.5rem auto; padding: 0.5rem; }
+#earnings .box-border {  padding: 0.5rem; }
 #earnings #following-header header {	
   padding: 0.4rem 0.5rem 0.25rem 0.5rem;
   text-transform: uppercase;

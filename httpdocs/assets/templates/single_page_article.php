@@ -79,12 +79,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<!-- ABOUT THE AUTHOR -->
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 				<?php if(isset($article_id) && $article_id == 9397 ){?>
-					<div class="evolve-media margin-bottom">
+					<!--<div class="evolve-media margin-bottom">
 						<div id="ros_1207"></div>
-					</div>
+					</div>-->
 				<?php } ?>
 
-				<div class="row newsletter-box">
+				<!--<div class="row newsletter-box">
 					 <div class="small-12 columns no-padding newsletter-wrapper">
 					      <div class="row collapse">
 					        <label>GET THE DAILY <span>MOB REPORT<span></label>
@@ -97,7 +97,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					        <label id="msg" ></label>
 					      </div>
 				    </div>
-				</div>
+				</div>-->
 		</section>
 
 		<!-- DISCLAIMER -->
@@ -116,17 +116,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 			<!-- ARTICLE BODY -->
 			<div id="article-body">
-			<div class="margin-bottom">
-				<div data-str-native-key="536c62e7" style="display: none;"></div>
-				<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-			</div>
+			
 				<?php echo $article_body; ?>
 			</div>
-			<!--<div id="pm_banner_event" class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-				<a href="https://www.facebook.com/events/433886753487493/" target="_blank">
-					<img src ="http://www.puckermob.com/assets/img/singles-unite-mobile.jpg" alt="NYC PuckerMob Event" />
-				</a>
-			</div>-->
+			
 			<!-- RELATED ARTICLES -->
 			<?php 
 			$related = [];
@@ -191,27 +184,23 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php } ?>
 
 			<?php include_once($config['include_path'].'header_social.php'); ?>
-<!-- //http://www.puckermob.com/lifestyle/25-reasons-to-get-out-of-bed-in-the-morning -->
-<?php  //if(isset($article_id) && $article_id != 9380 ){  ?>
+<!-- http://www.puckermob.com/relationships/to-the-guy-who-stopped-appreciating-the-girl-he-loves -->
+<?php  //if(isset($article_id) && $article_id == 9974 ){  ?>
 			<!-- BRANOVATE -->
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
 					<?php if( $detect->is('iOS') ){ ?>
 						<div id="branovate-ad" class="columns small-12 margin-top margin-bottom IOS" >
-							<!-- BEGIN IFRAME TAG - puckermob.com 300x250 IOS < - DO NOT MODIFY -->
 							<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
-							<!-- END TAG -->
  						</div>
 					<?php }else{ ?>
 					 	<div id="branovate-ad" class="columns small-12 margin-top margin-bottom" >
-							<!-- BEGIN IFRAME TAG - puckermob.com Mobile 300x250 < - DO NOT MODIFY -->
-							<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
-							<!-- END TAG -->
+							<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>						
 						</div>
 					<?php }?>
 				</div>
 			</div>
-<?php // }?>
+<?php  //} ?>
 <?php //if(isset($article_id) && $article_id == 9698 ){ ?>
 
 			<!-- CARAMBOLA  -->
@@ -261,6 +250,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<section id="separator-section" class="row no-padding"></section>				
 				<!-- COMMENTS BOX -->
 				<?php include_once($config['include_path'].'disqus.php'); ?>
+				<?php  if(isset($article_id) && $article_id == 4215 ){  ?>
 
 				<!-- TOK MEDIA -->
 				<div class="ad-unit hide-for-print padding-top">
@@ -270,6 +260,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						</div>
 					</div>
 				</div>
+				<?php } ?>
 			</section>
 		
 
@@ -361,10 +352,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					
 					<!-- ARTICLE BODY -->
 					<div id="article-body">
-						<div class="margin-bottom">
-							<div data-str-native-key="58ad4c02" style="display: none;"></div>
-							<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-						</div>
 						<p><?php echo $article_body; ?></p>
 
 					</div>

@@ -2,9 +2,10 @@
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
 		<meta http-equiv="x-dns-prefetch-control" content="on" />
+
 	<?php }
 	
-	$promotedArticle = false; $tag = 'smarties';
+	$promotedArticle = false; $tag = 'smarties'; $has_sponsored = true;
 	if(isset($isArticle) && $isArticle && isset($articleInfoObj)){ ?>
 		<link rel="canonical" href="<?php echo 'http://www.puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
 	<?php 
@@ -12,7 +13,9 @@
 	} ?>
 
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
-    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+   <!-- <meta content='width=device-width, initial-scale=1' name='viewport'/> -->
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<?php 
@@ -51,12 +54,14 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="http://www.puckermob.com/assets/css/app.css" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-	
+
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -65,25 +70,21 @@
 
   ga('create', 'UA-6839498-81', 'auto');
   ga('send', 'pageview');
-
 </script>
 
-
 <!-- IF ARTICLE PAGE -->
-<?php if(!$detect->isMobile()){
- 	//if(isset($isHomepage) && $isHomepage && $has_sponsored){?>
-    	<!-- puckermob.com/home -->
-		<script type="text/javascript">
-		  var ord = window.ord || Math.floor(Math.random() * 1e16);
-		  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
-		</script>
-		<noscript>
-			<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-			<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="1000" height="1000" />
-			</a>
-		</noscript>
+<?php if(!$detect->isMobile()){ ?>
+	<!-- puckermob.com/home -->
+	<script type="text/javascript">
+	  var ord = window.ord || Math.floor(Math.random() * 1e16);
+	  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
+	</script>
+	<noscript>
+		<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
+		<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="1000" height="1000" />
+		</a>
+	</noscript>
 
- 	<?php //} ?>
  	<!-- TABOOLA -->
  	<script type="text/javascript">
 	  window._taboola = window._taboola || [];
@@ -100,32 +101,17 @@
 	<!-- Totally Her GPT -->
 	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 
-<?php }else{?>
+<?php }else{ ?>
 
-<?php if(isset($article_id) && $article_id == 9397 ){?>
-	<!-- Totally Her GPT -->
-	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
-<?php } ?>
+	<!-- SHARETHROUNG
+     <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
 
-<?php //if(isset($article_id) && $article_id == 10761 ){?>
-            <!-- SHARETHROUNG -->
-           <script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js" async></script>
-      <?php //} ?>
+	<?php if(isset($article_id) && $article_id == 9397 ){?>
+		<!-- Totally Her GPT -->
+		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
+	<?php } ?>
 
-<?php //REMOVE 01/19/2016if(isset($article_id) && $article_id != 10761 ){?>
-	<!-- TABOOLA MOBILE 
-	<script type="text/javascript">
-	  window._taboola = window._taboola || [];
-	  _taboola.push({article:'auto'});
-	  !function (e, f, u) {
-	    e.async = 1;
-	    e.src = u;
-	    f.parentNode.insertBefore(e, f);
-	  }(document.createElement('script'),
-	  document.getElementsByTagName('script')[0],
-	  '//cdn.taboola.com/libtrc/puckermob/loader.js');
-	</script>-->
-<?php //} ?>
+	
 
 <?php } ?>
 
@@ -170,9 +156,5 @@
 	</noscript>
 
 <?php }?>
-	
-
-
-
 
 </head>

@@ -5,13 +5,14 @@
     <?php //}else{?>
     <!-- Totally Her -->
     <div style=" top: 3rem; position: relative; text-align: center;">
-		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-		
-		<?php } ?>
-		</div>
+
+	</div>
     <?php //} 
 }else { ?>
-	<div id="header-ad" class="ad-unit hide-for-print" style=" max-width: 970px;     width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+	<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+		<!--<div style="max-width: 970px;  ">
+			<IFRAME SRC="http://ib.adnxs.com/tt?id=6447475&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="970" HEIGHT="250"></IFRAME>		
+		</div>-->
 		<!-- 728x90, 970x90 combo: 970x90 728x90 -->
 		<style> #ros_1193, #home_1181{ display:inline-block !important; }</style>
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>

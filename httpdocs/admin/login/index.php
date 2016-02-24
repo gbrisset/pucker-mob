@@ -35,9 +35,9 @@
 <body id="login">
 	<?php //include_once($config['include_path_admin'].'header.php');?>
 	<main>
-       	 <?php if( $detect->isMobile() ){?>
+       	 <?php //if( $detect->isMobile() ){?>
 
-       	<section id="slide-1" class="homeSlide">
+       <!--	<section id="slide-1" class="homeSlide">
 	        <div class="bcg">
 		       	<div class="hsContainer">
 		        	<h1>PUCKERMOB</h1>
@@ -63,8 +63,8 @@
 		        	</div>
 		        </div>
 		    </div>
-		</section>
-       	 <?php }else{?>
+		</section>-->
+       	 <?php //}else{?>
        	<section id="slide-1" class="homeSlide">
 	        <div class="bcg">
 		       	<div class="hsContainer">
@@ -126,7 +126,7 @@
 		        	
 		        </div>
 		</section>
-		    <?php } ?>
+		    <?php //} ?>
 	</main>
 	
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

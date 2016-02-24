@@ -1,4 +1,6 @@
 <?php
+	require_once('../../assets/php/config.php');
+
 if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
 
 	if (!empty($_FILES)) {
@@ -43,10 +45,10 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 						<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 						
-						<div class="dz-message" data-dz-message>
+						<div class="dz-message padding" data-dz-message>
 							<div id="img-container">
 								<div class="image-icon  padding-top"><i class="fa fa-file-image-o font-4x"></i></div>
-						   		<label class="padding-top large-font-size uppercase main-color">
+						   		<label class="padding-top large-font-size uppercase main-color hide-small">
 						   			Add an Image to your article
 								</label>
 						   		<label class="margin-bottom">Drag Image here or click to upload</label>
@@ -55,6 +57,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						   		<label> Choose from our free <span class="photo-library" id="search-lib">Photo Library!</span></label>
 						   		<label class="mini-fonts padding-bottom margin-top-2x">Size: 784x431 pixels</label>
 						   	</div>
+						
 						</div>
 					</form>
 

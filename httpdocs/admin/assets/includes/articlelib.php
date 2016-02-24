@@ -8,7 +8,7 @@
 
 ?>
 <div id="openModalLib" class="modalDialogLib" >
-	<div id="popup-content" style="width:40% !important; min-width: 20rem; margin: 1% auto !important;">
+	<div id="popup-content" style="width:40% !important; min-width: 20rem; margin: 10% auto !important;">
 		<a href="#close" title="Close" class="close">X</a>
 		<form name="images-lib" id="images-library-form" method="POST" action="" class="ajax-submit-form clear">
 		

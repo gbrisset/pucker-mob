@@ -125,10 +125,10 @@ SEE ARTICLE</a><?php }?></h1>
 					<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 						<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
-						<div class="dz-message" data-dz-message>
+						<div class="dz-message padding" data-dz-message>
 							<div id="img-container">
 						   		<div class="image-icon  padding-top"><i class="fa fa-file-image-o font-4x"></i></div>
-						   		<label class="padding-top large-font-size uppercase main-color">
+						   		<label class="padding-top large-font-size uppercase main-color hide-small">
 						   			Add an Image to your article
 								</label>
 						   		<label class="margin-bottom">Drag Image here or click to upload</label>

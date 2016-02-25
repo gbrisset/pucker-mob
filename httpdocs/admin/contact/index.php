@@ -16,25 +16,15 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
-	<div class="sub-menu row">
-		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">Contact Us</h1>
-	</div>
-
-	<!-- WELCOME MESSAGE -->
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up hide">
-			<h1 class="left">Contact Us</h1>
-	</section>
 	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
 			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
-				<header>Contact Us</header>
+				<h1>Contact Us</h1>
 			</div>	
 			<section id="articles" class="padding-bottom">
-				<!--<h2 class="">Need help?</h2>-->
 				<p>For site support, please contact us using the form below or email us at <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a>.</p>	
 				<form id="adv-contact-form" name="adv-contact-form" action="" method="POST">
 					 <div class="row">
@@ -78,7 +68,7 @@
 					</div>
 					<div>
 						<h3>Our Brands: </h3>
-						<p>You can find more information about Sequel Media Group and our brands at: <a href="http://www.sequelmediainternational.com" target="_blank">sequelmediainternational.com</a>.</p>
+						<p>You can find more information about Sequel Media International and our brands at: <a href="http://www.sequelmediainternational.com" target="_blank">sequelmediainternational.com</a>.</p>
 					</div>
 					<div>
 						<h3>Our Terms of Use: </h3>

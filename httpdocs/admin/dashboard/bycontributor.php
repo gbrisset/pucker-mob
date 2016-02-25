@@ -159,7 +159,7 @@
 				</div>
 				<div id="total-earned-range" class="small-12 columns right box-it-up">
 					<div class="share-rate-txt">
-						<label class="uppercase">Total Earned for selected range: <span class="main-color"><?php echo "$".number_format($total, 2, '.', ',');?></span></label>
+						<label class="uppercase">Total Earned for selected range: <span id="total_earned_graph" class="main-color"><?php echo "$".number_format($total, 2, '.', ',');?></span></label>
 					</div>
 				</div>
 				<div id="calendar-section" class="small-12 columns right box-it-up">

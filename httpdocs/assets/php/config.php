@@ -32,7 +32,7 @@ if($local)
 		'host' => 'localhost',
 		'user' => 'root',
 		'pass' => 'root',
-		'main_db' => 'puckermom_db',	
+		'main_db' => 'puckermob_db',	
 
 		'include_path' => dirname(dirname(__FILE__)).'/includes/',
 		'include_path_admin' => dirname(dirname(dirname(__FILE__))).'/admin/assets/includes/',

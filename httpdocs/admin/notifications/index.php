@@ -78,7 +78,7 @@
 						<h2 class="small-12 large-12 left uppercase margin-top">Warnings </h2>
 						</div>
 					    <div class="columns">
-							<textarea  class="mceEditor" name="notification_msg" id="notification_msg" rows="5" placeholder="START WRITING HERE." ><?php if(isset($warnings[0]['notification_msg'])) echo $warnings[0]['notification_msg']; ?></textarea>
+							<textarea  class="editor" name="notification_msg" id="notification_msg" rows="5" placeholder="START WRITING HERE." ><?php if(isset($warnings[0]['notification_msg'])) echo $warnings[0]['notification_msg']; ?></textarea>
 						</div>
 					</div>
 
@@ -113,7 +113,7 @@
 						<h2 class="small-12 large-12 left uppercase">ANNOUNCEMENTS </h2>
 						</div>
 					    <div class="columns">
-							<textarea  class="mceEditor" name="notification_annoucement_msg" id="notification_annoucement_msg" rows="5" placeholder="START WRITING HERE." ><?php if(isset($annoucements[0]['notification_msg'])) echo $annoucements[0]['notification_msg']; ?></textarea>
+							<textarea  class="editor" name="notification_annoucement_msg editor" id="notification_annoucement_msg" rows="5" placeholder="START WRITING HERE." ><?php if(isset($annoucements[0]['notification_msg'])) echo $annoucements[0]['notification_msg']; ?></textarea>
 						</div>
 					</div>
 

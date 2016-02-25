@@ -63,7 +63,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 					<div class="dropzone-previews">
 						<div id="main-image" class="dz-preview dz-image-preview dz-processing dz-success hidden">
-							<div class="dz-details">	
+							<div class="dz-details columns">	
 								<img class="data-dz-thumbnail" src=""  />
 							</div>
 						</div>
@@ -100,7 +100,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<!-- BODY -->
 						<div class="row margin-bottom margin-top" >
 						    <div class="columns">
-								<textarea  class="" name="article_body-nf" id="article_editor"  required ></textarea>
+								<textarea  class=" editor " name="article_body-nf" id="article_editor"  required ></textarea>
 							</div>
 						</div>
 					
@@ -239,19 +239,6 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 		<?php include_once($config['include_path_admin'].'articlelib.php');?>
 	</main>	
 
-	 <script>
-      $(function() {	
-          $('#article_editor').froalaEditor({
-          	  key: 'UcbaE2hlypyospbD3ali==',
-          	  height: 420,
-          	  placeholderText: 'Start Writing Here.',
-		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
-          });
-      });
-  	</script> 
   	<script>
 		$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
 	</script>

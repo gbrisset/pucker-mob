@@ -9,7 +9,6 @@ var EarningsObj = {
 	total_earnings: 0,
 	options : {
           title: ' ',
-          width: 800,
           height: 350,
           legend: { position: 'none' },
           vAxis: { gridlines: { count: 4 }, format: 'currency' },

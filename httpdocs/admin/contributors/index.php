@@ -27,9 +27,9 @@
 		$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 		
 	// 2. records per page ($per_page)
-		$per_page = 10;
+		$per_page = 20;
 		$order="";
-		$limit=10;
+		$limit=20;
 		$category = '';
 		$post_date = 'all';
 		$visible = '';
@@ -60,14 +60,8 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
-	<div class="sub-menu row">
-		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">CONTRIBUTORS</h1>
-	</div>
-	<section class="section-bar mobile-12 small-12 no-padding show-on-large-up  hide">
-			<h1 class="left">Contributors</h1>
-			
-	</section>
+	
+	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
@@ -75,10 +69,10 @@
 			<section id="contributors-list">
 				<section class="">
 					<form class=" small-12" id="header-search" action="<?php echo $config['this_admin_url'].'contributors/';?>" method="POST">
-							<div id="search-fieldset" class="mobile-12 small-12">
-								<input type="text" value="" style="width: 82%;" class="small-8 left" placeholder="Search all" id="searchemailinput" name="searchcontributorinput">
-								<button type="submit" id="searchsubmit" name="searchcontributor" class="small-2"  >SEARCH<i class="icon-search"></i></button>
-							</div>
+								<div id="search-fieldset" class="small-12 large-11 columns no-padding">
+							<input type="text" value="" class="small-11 columns " placeholder="Search all" id="searchemailinput" name="searchcontributorinput">
+							<button type="submit" id="searchsubmit" name="searchcontributor" class="small-2 large-1 columns "  ><i class="fa fa-search"></i></button>
+						</div>
 					</form>
 				</section>
 				<section class="section-bar left mobile-12 small-12 margin-bottom">
@@ -92,14 +86,14 @@
 						</div>
 					</div>
 				</section>
+
 				<div class="admin-contributor left small-12 padding-bottom admin-contributor-label">
-				    <label class="contributor-info columns small-1">Photo</label>
-					<label class="contributor-info columns small-2">Writer Name</label>
-					<label class="contributor-info columns small-3">Email</label>
-					<label class="contributor-info columns small-1">Level</label>
-					<label class="contributor-info columns small-1">Registered</label>
-					<label class="contributor-info columns small-2"></label>
-					<p></p>
+				    <label class="contributor-info columns small-1 hide-small">IMAGE</label>
+					<label class="contributor-info columns small-2">NAME</label>
+					<label class="contributor-info columns small-4 hide-small">EMAIL</label>
+					<label class="contributor-info columns small-1 hide-small">LEVEL</label>
+					<label class="contributor-info columns small-1 hide-small"></label>
+					<label class="contributor-info columns small-3"></label>
 				</div>
 				
 				<?php
@@ -109,7 +103,7 @@
 
 						if(file_exists($pathToImage)){
 							$imageUrl = 'http://images.puckermob.com/articlesites/contributors_redesign/'.$contributorInfo['contributor_id'].'_contributor.jpg';
-							//http://images.puckermob.com/articlesites/contributors_redesign/2431_contributor.jpg
+						
 						} elseif(!empty($contributorInfo['contributor_image']) && !file_exists($pathToImage)){
 							if(count(explode('graph.facebook.com', $contributorInfo['contributor_image'])) > 1 )
 								$imageUrl = $contributorInfo['contributor_image'];
@@ -121,17 +115,16 @@
 
 						$earnings = $ManageDashboard->getContributorEarningsInfo($contributorInfo['contributor_id']);
 						$contributor_type = $adminController->getContributorUserType($contributorInfo['contributor_id']);
-						$date_created = date_format(date_create($contributorInfo['creation_date']), 'm/d/y');//$contributorInfo['creation_date'];
-						//date_format(date_create($contributorInfo['creation_date']), 'm/d/y';
+						$date_created = date_format(date_create($contributorInfo['creation_date']), 'm/d/y');
 						
                          
 						if($contributor_type) $contributor_type = $contributor_type ["user_type"];
 						?>
 											
-						<div class="admin-contributor row clear padding-bottom">
-							<div class="contributor-image columns small-1">
+						<div class="admin-contributor small-12 columns no-padding padding-bottom">
+							<div class="contributor-image columns small-1 no-padding-left hide-small">
 								<a href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']?>" >
-									<img src="<?php echo $imageUrl; ?>" alt="<?php echo $contributorInfo['contributor_name']; ?>" />
+									<img src="<?php echo $imageUrl; ?>" alt="<?php echo $contributorInfo['contributor_name']; ?>" style= "min-width: 2rem;" />
 								</a>
 							</div>
 							<div class="contributor-info columns small-2">
@@ -141,10 +134,10 @@
 									</a>
 								</h2>
 							</div>
-							<div class="contributor-info columns small-2">
+							<div class="contributor-info columns small-4 hide-small">
 								<p style="margin-right:200px;"><?php echo $contributorInfo['contributor_email_address'] ?></p>
 							</div>
-							<div class="contributor-info columns small-2 align-center">
+							<div class="contributor-info columns small-1 no-margin hide-small">
 								<?php 
 								$disabled = "";
 								switch ($contributor_type){
@@ -169,25 +162,23 @@
 										break;
 								}
 								?>
-								<input <?php echo $disabled; ?> class="mob-level mob-level-contributor" type="button" value ="<?php echo $label_level; ?>" data-info-user-email = "<?php echo $contributorInfo['contributor_email_address']; ?>"data-info-level= "<?php echo $contributor_type; ?>" />
-						
+								<input <?php echo $disabled; ?> class="mob-level mob-level-contributor no-margin" type="button" value ="<?php echo $label_level; ?>" data-info-user-email = "<?php echo $contributorInfo['contributor_email_address']; ?>"data-info-level= "<?php echo $contributor_type; ?>" />
 							</div>
-
-							<div class="contributor-links right small-3" >
-								<a class="manage-links" href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i>Edit</a>
-								<a class="manage-links" href="<?php echo $config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i> Earnings</a>
-							</div>
-
-							<div class="contributor-links right small-1" >
-								<a href="#"></a>
-							</div>
-
-							<div class="contributor-links right small-1" >
+							<div class="contributor-links columns small-1 hide-small" >
 								<a href="#" style="font-size:12px;"><?php echo $date_created;?></a>
 							</div>
 
-						</div><hr style="margin: 0.2rem 0 0.6rem 0;">
+							<div class="contributor-links columns small-5 large-3" >
+								<a class="manage-links" href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i></a>
+								<a class="manage-links" href="<?php echo $config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i></a>
+							</div>
+
+							
+
+						</div>
+						<hr style="margin: 0.2rem 0 0.6rem 0;">
 					<?php } ?>
+					</div>
 			</section>
 
 			<?php  include_once($config['include_path_admin'].'pages.php');?>

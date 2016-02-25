@@ -94,9 +94,9 @@
 				<section class="mobile-12 small-12 columns margin-bottom margin-top">
 						<h2 class="small-12">Profile Photo</h2>
 						<div class="small-12 image-profile-box">
-							<img id="img-profile" class="left" src="<?php echo $contImageUrl; ?>" alt="User Image" />
-							<div class="small-10 left image-wrapper">
-								<div class="small-6 columns div-images">
+							<img id="img-profile" class="small-4 large-2 columns" src="<?php echo $contImageUrl; ?>" alt="User Image" />
+							<div class="small-12 large-10 left image-wrapper">
+								<div class="small-6 columns div-images  hide-small">
 									<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $userInfo['contributor_id']; ?>" />
 									
 									<div class="small-12 avatars">
@@ -108,10 +108,10 @@
 									</div>
 									<a href="#" class="b-upload select-avatar small-12" id="select-avatar">Save Avatar</a>
 								</div>
-								<div style="width:4.2rem;" class="left">
+								<div style="width:4.2rem;" class="left hide-small">
 									<span class="and ">or</span>
 								</div>
-								<div class="small-6 columns div-file-upload">
+								<div class="small-12 large-6 columns div-file-upload">
 									<a href="#" class="b-upload small-12 upload-photo" name="image-file-link" id="image-file-link">Upload Photo</a>
 									<input type="file" class="hidden" id="upload_form" name="upload_form" />
 										<div class="small-12 photo-instructions">
@@ -131,7 +131,7 @@
 
 				<!-- ACCOUNT INFORMATION -->		
 				<section id="row small-12 account-settings">
-					<h2 class="small-12">General Information<span style="text-align: right; float:right; color:#fff; background: #000; padding:0.2rem 1rem;"><a style="color:#fff; font-size:1rem;" href="http://www.puckermob.com/contributors/<?php echo $userInfo['contributor_seo_name']; ?>" target="_blank">VIEW PROFILE</a></span></h2>
+					<h2 class="small-12">General Information<span class="hide-small" style="text-align: right; float:right; color:#fff; background: #000; padding:0.2rem 1rem;"><a style="color:#fff; font-size:1rem;" href="http://www.puckermob.com/contributors/<?php echo $userInfo['contributor_seo_name']; ?>" target="_blank" >VIEW PROFILE</a></span></h2>
 					<form class="ajax-submit-form clear" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/<?php echo $uri[2]; ?>" method="POST">
 							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 							<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />

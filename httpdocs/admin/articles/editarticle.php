@@ -144,7 +144,7 @@ SEE ARTICLE</a><?php }?></h1>
 						<?php if(file_exists($pathToTallImage)){?>
 						<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg';	?>
 						<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
-							<div class="dz-details">	
+							<div class="dz-details columns">	
 								<img class="data-dz-thumbnail" style="width:100%;" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
 							</div>
 						</div>
@@ -215,7 +215,7 @@ SEE ARTICLE</a><?php }?></h1>
 					<!-- BODY -->
 					<div class="row margin-bottom  margin-top">
 					    <div class="columns">
-							<textarea class="mceEditor" name="article_body-nf" id="article_editor" required  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+							<textarea class="editor" name="article_body-nf" id="article_editor" required  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
 						</div>
 					</div>
 
@@ -597,20 +597,7 @@ SEE ARTICLE</a><?php }?></h1>
 			</div>
 		</div>
 	</div>
-	<!--FOOTER-->
-	<script>
-      $(function() {	
-          $('#article_editor').froalaEditor({
-          	  key: 'UcbaE2hlypyospbD3ali==',
-          	  height: 420,
-          	  placeholderText: 'Start Writing Here.',
-		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
-          });
-      });
-  	</script> 
+	
   	
 	<?php include_once($config['include_path_admin'].'footer.php'); ?>
 	<!-- ARTICLE PREV TEMPLATE -->

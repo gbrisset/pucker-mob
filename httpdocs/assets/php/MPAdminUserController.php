@@ -29,25 +29,10 @@ class MPAdminUserController extends MPArticleAdminController{
  *	Depending on the user_type 
  */
 	public function redirectAfterLogin(){
-		//	getUserInfo() doesn't require any arg - uses $_SESSION
 		$user = $this->getUserInfo();
 		
 		$config = $this->config;
-		//if( $user['user_type'] > 2  &&  $user['user_type'] < 6 ){
-			//	Check if 1st login...
-			if($user['user_login_count'] < 1){
-				$url = $config['this_admin_url']."account/user/".$user['user_name'];
-				//	Redirect to My Profile/ (first login)
-				return "<script>setTimeout(function(){window.location = \"".$url."\"}, 10);</script>";
-			} else {
-				//	Redirect to admin/articles/ (user_type: 3, 4)
-				return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\dashboard\"}, 10);</script>";
-				//return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."articles/\"}, 1000);</script>";
-			}
-		//} else {
-			//	Redirect to admin/	(user_type: 1, 2, 6)
-			//return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\"}, 10);</script>";
-		//}
+			return "<script>setTimeout(function(){window.location = \"".$config['this_admin_url']."\dashboard\"}, 10);</script>";
 	}
 
 
@@ -857,7 +842,7 @@ End password reset methods
 			}else{ 
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 				return $this->doUserActivation($verificationHash);
-				//return array('hasError' =>false, 'message'=>"You Have been Register Successfully! "); 
+
 			}
 		}else return $this->helpers->returnStatus(500);
 	

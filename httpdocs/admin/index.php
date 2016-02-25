@@ -1,19 +1,22 @@
 <?php
+	require_once('../assets/php/config.php');
+	$ManageDashboard = new ManageAdminDashboard( $config );
+
 	$new_visitor = false;
 	$username = "";
 	$admin = true;
-	require_once('../assets/php/config.php');
+	$current_month = date('n');
+	$current_year = date('Y');
 
 	//WELCOME POPUP SESSION VALUE
 	if(!isset($_SESSION['welcome-seen']) ) $_SESSION['welcome-seen'] = false;
 
 	if(!$adminController->user->getLoginStatus()) {
 		$adminController->redirectTo('login/');
-		$somevar = 0;
 	} else{
 		$userData = $adminController->user->data = $adminController->user->getUserInfo();
 
-		if($adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
+		if($admin_user){
 			$userFilter = 'all';
 		}else{
 			$userFilter = $adminController->user->data['user_email'];
@@ -24,12 +27,8 @@
 		}
 
 		$rate = $dashboard->get_current_rate( 0, $adminController->user->data['user_type']  );
-		$ManageDashboard = new ManageAdminDashboard( $config );
-
-		$current_month = date('n');
-		$current_year = date('Y');
-		$contributor_id = $userData["contributor_id"];
 		
+		$contributor_id = $userData["contributor_id"];
 		$contributor_name = $userData["contributor_name"];
 		$month =  $current_month;
 		$sort_ever = '';
@@ -43,11 +42,6 @@
 		//Get Top 10 Shared Moblogs
 		$top_shares_articles = $ManageDashboard->getTopSharedMoblogs($month, $current_year ); 
 
-		//WARNINGS
-		$warnings = $ManageDashboard->getWarningsMessages(); 
-
-		//ANNOUNCEMENTS
-		$annoucements = $ManageDashboard->getAnnouncements(); 
  
 		//LAST MONTH EARNINGS
 		$last_month_earnings_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month-1, $current_year);
@@ -70,10 +64,8 @@
 		$this_month_earnigs_info =  $ManageDashboard->getLastMonthEarnings($contributor_id, $current_month, $current_year);
 		$this_month_earnigs = 0;
 		if($this_month_earnigs_info && $this_month_earnigs_info['total_earnings'] && !empty($this_month_earnigs_info['total_earnings']) ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
-		//if($this_month_earnigs_info ) $this_month_earnigs = $this_month_earnigs_info['total_earnings'];
-
+	
 		//Top Shared Writers
-		
 		$writers_arr = $ManageDashboard->getTopShareWritesRank($current_month);
 		$index = 0;
 		$your_cont_rank = array();
@@ -134,103 +126,36 @@
 	}
 
 	$user_login_count = $adminController->user->data['user_login_count']; 
-	//var_dump($user_login_count);
+	$user_type = $userData["user_type"];
+
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
 <?php include_once($config['include_path_admin'].'head.php');?>
+
 <body>
 	<?php include_once($config['include_path_admin'].'header.php');?>
-	<div class="sub-menu row">
-		<label class="small-3" id="sub-menu-button">MENU <i class="fa fa-caret-left"></i></label>
-		<h1 class="left">My DASHBOARD</h1>
-	</div>
+	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
-					<header>MY DASHBOARD</header>
+
+			<div id="following-header" class="  mobile-12 small-12 columns padding-bottom ">
+				<h2>MY DASHBOARD</h2>
 			</div>
-			<!--MOB LEVEL    -->
-			<?php include_once($config['include_path_admin'].'showuserplan.php');?>
 
-			<section id="articles">
-				<!-- MONTHLY SHARE RATE -->
-				<!--<div id="share-rate-box" class="mobile-12 small-12">
-					<div class="share-rate-txt left">
-						<p><?php echo $rate['month_label']; ?> CPM Rate (Based on U.S. Visitors): <?php echo '$'.number_format($rate['rate'], 2, '.', ','); ?></p>
-						<p id="dd-shares-calc">Click to Learn More About CPM Rates <i class="fa 2x fa-caret-down"></i></p>
-					</div>
-					<div class="find-more-link right">
-						<p><a href="#" id="find-more-info">Find out how to make money with  The Mob</a></p>
-					</div>
-				</div>
-
-				<div id="dd-shares-content" class="mobile-12 small-12">
-					<div>
-						<p>CPM stands for Cost Per Thousand and is one of the standard ways that people and companies calculate revenue. 
-							So the rate we're paying this month 
-							is that amount you'll earn for every thousand U.S. visitors that read your content.
-						</p>
-					</div>
-				</div>-->
-				<div id="share-rate-box" class=" mobile-12 small-12 padding-top columns padding-bottom">
-					<div class="share-rate-txt left">
-					<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
-						<p><?php echo $rate['month_label'].', '.$rate['year'].' RATE ('.$moblevel.'): <span> $'.number_format($rate['rate'], 2, '.', ',').' CPM </span>'; ?></p>
-					</div>
-				</div>
-				<!-- WARNINGS BOX -->
-				<?php if(isset($warnings) && $warnings[0] && $warnings[0]['notification_live']){ ?>
-				<div id="warning-box" class="warning-box  mobile-12 small-12" style="">
-					<div id="warning-icon" class="">
-						<i class="fa fa-3x fa-exclamation-triangle"></i>
-					</div>
-					<div id="warning-txt" class="p-cont">
-						<p>
-							<?php echo $warnings[0]['notification_msg']; ?>
-						</p>
-					</div>
-				</div>
-				<?php }?>
-
-				<!-- ANNOUNCEMENTS BOX -->
-				<?php if(isset($annoucements) && $annoucements[0] && $annoucements[0]['notification_live']){ ?>
-				<div id="announcements" class="announcements-box  mobile-12 small-12" style="MARGIN-BOTTOM: 1rem;">
-					<div id="announcement-icon" class="">
-						<i class="fa fa-3x fa-comments"></i>
-					</div>
-					<div id="announcement-txt" class="p-cont">
-						<p>
-							<?php echo $annoucements[0]['notification_msg']; ?>
-						</p>
-					</div>
-				</div>
-				<?php }?>
+			<div class="small-12 xxlarge-8 left padding margin-top">
 				
-				<!-- EARNINGS AT A GLANCE -->
-				<?php if($userData['user_type'] != 6 && $userData['user_type'] != 1 && $userData['user_type'] != 7){?>
-				<div id="earnings-info" class="earnings-info mobile-12 small-12">
-					<header>EARNINGS AT A GLANCE</header>
-					<div class="total-earnings left">
-						<h3>Month to Date</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($this_month_earnigs, 2, '.', ','); ?></p>
-					</div>
-					<div class="last-month-earnings left">
-						<h3>Last Month</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($last_month_earnings, 2, '.', ','); ?></p>
-					</div>
-					<div class="total-earnings left">
-						<h3>Total to Date</h3>
-						<p class="earnings-value"><?php echo '$'.number_format($total_earnings_to_date, 2, '.', ','); ?></p>
-					</div>
-				</div>
-				<?php }?>
+				<?php include_once($config['include_path_admin'].'warnings.php'); ?>
 
+				<?php include_once($config['include_path_admin'].'annoucements.php'); ?>
+				
 				<!-- TOP MOST SHARES MOBLOGS -->
 				<div id="top-shares" class="top-shares mobile-12 small-12 left">
 					<?php if(isset($top_shares_articles) && $top_shares_articles){?>
@@ -289,7 +214,7 @@
 				
 				<!-- Top 10 most shared writers this month -->
 				<div id="earnings-section" class="top-shares mobile-12 small-12 left">
-					<header>MOST POPULAR MOBloggers</header>
+					<header>MOST POPULAR Bloggers</header>
 					<?php if(isset($writers_rank) && $writers_rank){?>
 					<div class="top-shared-articles">
 							<table class="left" style="margin-right:0.2rem">
@@ -335,7 +260,28 @@
 					<?php }?>
 				
 				</div>
-			</section>
+			</div>
+			<!-- Right Side -->
+			<div class="small-12 xxlarge-4 right padding" id="right-new-article">
+				<!--MOB LEVEL -->
+				<?php include_once($config['include_path_admin'].'showuserplan.php');?>
+
+				<!-- MONTHLY SHARE RATE -->
+				<div id="share-rate-box" class="small-12 columns right box-it-up">
+					<div class="share-rate-txt padding-bottom padding-top">
+						<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+						<label class="uppercase main-color"><?php echo "CPM (".$moblevel.") : $".number_format($rate['rate'], 2, '.', ',');?></label>
+					</div>
+				</div>
+				
+				<div id="mob-rank" class="small-12 columns right box-it-up">
+					<?php  include_once($config['include_path'].'your_rank.php'); ?>
+					<div class="share-rate-txt">
+						<label class="uppercase">Mob Rank: <span><?php echo "#".$your_rank;?></span></label>
+					</div>
+				</div>
+
+			</div>
 		</div>
 		<?php 
 

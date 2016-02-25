@@ -631,7 +631,7 @@ if($('.select-avatar')){
 	});
 }
 
-if($('#article_categories')){
+/*if($('#article_categories')){
 	$('#article_categories').on('change', function(event){
 		var value = $('#article_categories').val(),
 		label = '',
@@ -668,7 +668,7 @@ if($('#article_categories')){
 
 	
 	});
-}
+}*/
 		
 
 //$('.has-tooltip').tooltipster();

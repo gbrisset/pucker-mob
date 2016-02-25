@@ -6,6 +6,8 @@
 			if (isset($sortingMethod))$order = $sortingMethod['articleStatus'];
 		}
 
+		$artType = isset($artType) ? $artType : '';
+
 ?>
 	<section id="pages">
 		<ul>

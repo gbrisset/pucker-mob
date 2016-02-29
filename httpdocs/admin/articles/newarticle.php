@@ -45,8 +45,8 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 						<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 						
-						<div class="dz-message padding" data-dz-message>
-							<div id="img-container">
+						<div class="dz-message" data-dz-message>
+							<div id="img-container" class="radius">
 								<div class="image-icon  padding-top"><i class="fa fa-file-image-o font-4x"></i></div>
 						   		<label class="padding-top large-font-size uppercase main-color hide-small">
 						   			Add an Image to your article
@@ -228,8 +228,8 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						</div>
 						<?php }?>	
 
-						<div class="row buttons-container">
-							<button type="submit" id="submit" name="submit" class="">SAVE</button>
+						<div class="small-12">
+							<button type="submit" id="submit" name="submit" class="small-12 large-2 radius">SAVE</button>
 						</div>
 					</div>
 				</form>
@@ -240,10 +240,10 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 	</main>	
 
   	<script>
-		$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
+		//$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
 	</script>
 
-	<?php include_once($config['include_path_admin'].'footer.php');?>
+	<?php include_once($config['include_path_admin'].'footer-badge.php');?>
 	<?php include_once($config['include_path_admin'].'showerrors.php'); ?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 	

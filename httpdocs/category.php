@@ -27,8 +27,13 @@ if(!is_null($categoryInfo)){
 	$cat_name = $categoryInfo['cat_dir_name'];
 	$pageName = $categoryInfo['cat_name'].' | '.$mpArticle->data['article_page_name'];
 	
+	$articlesList = $mpArticle->getArticles(['count' => 24]);
+
 	//$articlesList = $mpArticle->getMostRecentByCatId(['pageId' => $categoryInfo['cat_id']]);
-	$articlesList = $mpArticle->getArticlesList(['pageId' => $categoryInfo['cat_id'], 'withMobLogs'=> false ]);
+	$articlesList = $mpArticle->getArticlesList(['pageId' => 9, 'limit' => 60 ]);
+
+	//var_dump(count($articlesList)); die;
+
 	$recentArticles = $articlesList;
 }else $mpShared->get404();
 if ( $detect->isMobile() ) { ?>
@@ -81,15 +86,11 @@ if ( $detect->isMobile() ) { ?>
 					<h1 id="category-name" class="h1-large-article"><?php echo $categoryInfo['cat_name']; ?></h1>
 			
 					<?php include_once($config['include_path'].'categoryresults.php');?>
-					<?php //include_once($config['shared_include'].'pagination.php');?>
-					<!--<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>-->
-					<section class="hide-for-print ">
+					<!--<section class="hide-for-print ">
 						<div id="ingageunit" class="hide-for-print"></div>
-					</section>
+					</section>-->
 					<hr>
-					<?php include_once($config['include_path'].'fromourpartners.php'); ?>
-					<!--<hr>-->
-					<?php //include_once($config['include_path'].'aroundtheweb.php'); ?>
+					<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
 			</section>
 			<?php 
 				include_once($config['include_path'].'rightsidebar.php');
@@ -100,11 +101,6 @@ if ( $detect->isMobile() ) { ?>
 		<?php include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
 
-		<!-- MODAL BOX FOLLOWERS POPUP -->
-		<?php //include_once($config['include_path'].'modal_box_followers.php'); ?>
-
-		<!-- FACEBOOK POPUP -->
-		<?php //include_once($config['include_path'].'facebookpopup.php'); ?>
 
 	</body>
 </html>

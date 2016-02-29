@@ -92,9 +92,8 @@ if($('body').hasClass('mobile')) {
 			}
 			
 			if( second_p > 0 ){ //Strike
-				if( article_id == 12930 ){	
-					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', tag);	
-				}else{
+				if( article_id == 7094 ){	
+
 					if( country && country == 'CA' ){
 						inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="ad-inline-2978"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2978/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
 					}else{
@@ -116,6 +115,10 @@ if($('body').hasClass('mobile')) {
 					inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);	
 				}
 			}
+
+			if( article_id == 12930 ){	
+				inBodyAd.loadInArticleAd( 'article-body', fith_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', tag);	
+			}
 		}
 
 		$('.inarticle-ad').prepend("<p style='margin-left: 0.5rem !important;color: #bbb;font-size: 0.9rem !important;font-style: italic; margin-bottom:7px !important;'>Advertisement</p>");
@@ -125,7 +128,8 @@ if($('body').hasClass('mobile')) {
 	var select = {
 		ad: { header: document.getElementById("header-ad") }
 	};
-		
+	
+
 	if( !smarties ){
 		if(browser_width < 740) {
 			loadAd(select.ad.header, mobilead[adPage].header);
@@ -173,11 +177,7 @@ if($('body').hasClass('mobile')) {
 				}
 			}
 
-			//if( p_length > 7 ||  li_length > 7){
-				//if( article_id == 9499 ){ 
-				//		inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<div style="background-color:#000000;width:520px;"><div style="padding:4px;"><iframe src="http://media.mtvnservices.com/embed/mgid:arc:video:comedycentral.com:96180201-3c00-436a-b2d9-274413842c98" width="512" height="288" frameborder="0"></iframe><p style="text-align:left;background-color:#FFFFFF;padding:4px;margin-top:4px;margin-bottom:0px;font-family:Arial, Helvetica, sans-serif;font-size:12px;">Get More: <a href="http://www.cc.com">Comedy Central</a>,<a href="http://www.cc.com/funny-videos">Funny Videos</a>,<a href="http://www.cc.com/shows">Funny TV Shows</a></p></div></div>', tag);
-				//}
-			//}
+		
 			
 			if( second_p > 0 ){
 				//if( article_id != 9499 ){ 

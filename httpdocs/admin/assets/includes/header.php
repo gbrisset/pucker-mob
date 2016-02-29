@@ -34,13 +34,12 @@
   <div id="nav-bar" class="sticky contain-to-grid hide-for-print">
     <nav class="top-bar" data-topbar="" data-options="scrolltop: false;">
       <ul class="title-area small-12 large-2 columns">
-        <li class="name">
-         <span class="small-2 columns" id="sub-menu-button"><i class="fa fa-bars"></i></span>
-         <a href="<?php echo $config['this_url']; ?>">
-           <h2 style="color:green; font-size:2rem;">PUCKER<span style="color:black; font-weight: 900;">MOB</span></h2> 
-         </a>
+        <li class="name columns">
+         <span class="small-1 columns right align-right" id="sub-menu-button"><i class="fa fa-bars no-margin"></i></span>
+         <h1  class="small-11 columns no-padding">
+           <a href="<?php echo $config['this_url']; ?>">  PUCKERMOB  </a>
+         </h1> 
         </li>
-       
       </ul>
       <section class="top-bar-section category-colors">
         <ul class="left">

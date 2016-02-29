@@ -1,6 +1,7 @@
 <?php 
 	$uri = $adminController->helpers->getURI($mpHelpers->curPageURL());
 	($adminController->user->data['user_name']) ? $userLink = 'account/user/'.$adminController->user->data['user_name'] : $userLink = 'noacess';
+
 ?>
 
 <div id="nav-cont" class="columns small-3 large-1 no-padding sticky hide-for-print fixed-content padding-top">

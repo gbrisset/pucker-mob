@@ -2,9 +2,9 @@
 	require_once('../assets/php/config.php');
 	$ManageDashboard = new ManageAdminDashboard( $config );
 
-	$new_visitor = false;
+	//$new_visitor = false;
 	$username = "";
-	$admin = true;
+	//$admin = true;
 	$current_month = date('n');
 	$current_year = date('Y');
 
@@ -16,7 +16,7 @@
 	} else{
 		$userData = $adminController->user->data = $adminController->user->getUserInfo();
 
-		if($admin_user){
+		if(isset($admin_user) && $admin_user ){
 			$userFilter = 'all';
 		}else{
 			$userFilter = $adminController->user->data['user_email'];

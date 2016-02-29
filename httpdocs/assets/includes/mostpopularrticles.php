@@ -38,19 +38,11 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						//Replace 2nd article with Adblade
 						if($articleNumber == 1 ){?>
 							<?php if( !$has_sponsored ){?>
-							<!--<ins class="adbladeads" data-cid="12977-3415166820" data-host="web.adblade.com" data-tag-type="2" style="display:none"></ins>
-							<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
-							
-							<style>.adblade-dyna.zone-1035 .zone .ad a.description {font-family: Oslo !important;line-height: 1.3; font-size: 15px; margin-bottom: 0.2rem !important; margin-top: 0.2rem !important;}
-								div.adblade-dyna div.zone div.adbladetitle, .__kx_squares_unit_title{ font-family: Oslo !important; font-size: 0 !important;} div.adblade-dyna div.zone {
-								  border-bottom: 2px solid #000 !important;	 }</style>
-								  -->
-								<style>
-								  		#bbrlContainer { margin-left: -10px; }
-										embed#bbrlVideoPlayerEm{ padding: 10px; }
-								</style>
-								  <script type="text/javascript">var __refURL = "%%REFERRER_URL_UNESC%%";</script>
-								 <script type="text/javascript" src="http://babaroll.com/js/gcapuckermob"></script>
+							<div class="columns todays-favorites fade-in-out">
+								<!-- BEGIN JS TAG - puckermob.com Desktop 300x250 < - DO NOT MODIFY -->
+								<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5975094&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
+								<!-- END TAG -->
+							</div>
 						<?php }
 							continue;
 						}

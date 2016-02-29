@@ -34,6 +34,7 @@
       <script type="text/javascript">
           netseer_tag_id="19129";
           netseer_task="in-image";
+          netseer_inview_status="disabled";
         </script>
         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
 
@@ -94,8 +95,10 @@
            <script type="text/javascript">
             netseer_tag_id="20429";
             netseer_task="in-image";
-           </script>
+            netseer_inview_status="disabled";
+            </script>
            <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+
 
     <?php  } ?>
 <?php  } ?>

@@ -78,12 +78,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			
 			<!-- ABOUT THE AUTHOR -->
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
-				<?php if(isset($article_id) && $article_id == 9397 ){?>
-					<!--<div class="evolve-media margin-bottom">
-						<div id="ros_1207"></div>
-					</div>-->
-				<?php } ?>
-
 				<!--<div class="row newsletter-box">
 					 <div class="small-12 columns no-padding newsletter-wrapper">
 					      <div class="row collapse">
@@ -184,8 +178,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php } ?>
 
 			<?php include_once($config['include_path'].'header_social.php'); ?>
-<!-- http://www.puckermob.com/relationships/to-the-guy-who-stopped-appreciating-the-girl-he-loves -->
-<?php  //if(isset($article_id) && $article_id == 9974 ){  ?>
 			<!-- BRANOVATE -->
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
@@ -200,8 +192,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<?php }?>
 				</div>
 			</div>
-<?php  //} ?>
-<?php //if(isset($article_id) && $article_id == 9698 ){ ?>
 
 			<!-- CARAMBOLA  -->
 			<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
@@ -229,7 +219,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			</div>
 
-<?php //}?>	
 			<!-- IMAGE SOURCE -->
 			<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
 			<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
@@ -250,17 +239,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<section id="separator-section" class="row no-padding"></section>				
 				<!-- COMMENTS BOX -->
 				<?php include_once($config['include_path'].'disqus.php'); ?>
-				<?php  if(isset($article_id) && $article_id == 4215 ){  ?>
+				<?php  //if(isset($article_id) && $article_id == 4215 ){  ?>
 
-				<!-- TOK MEDIA -->
+				<!-- TOK MEDIA 
 				<div class="ad-unit hide-for-print padding-top">
 					<div id="mobile-instream-toksnn-ad-loader" class="">
 						<div id="get-content" style="text-align:center; display: inline-block;">
 							<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
 						</div>
 					</div>
-				</div>
-				<?php } ?>
+				</div>-->
+				<?php //} ?>
 			</section>
 		
 

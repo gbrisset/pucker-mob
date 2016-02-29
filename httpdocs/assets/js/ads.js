@@ -87,32 +87,33 @@ if($('body').hasClass('mobile')) {
 				third_p = third_p;
 			}
 	
-			 //if( article_id != 12689 ){	
-				if( first_p > 0 ){ //2ND SPOT STRIKE
-					if( country && country == 'CA' ){
-						inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div id="ad-inline-2978"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2978/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
-					}else{
-						inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div id="ad-kikvid-300x250-3043"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3043/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
-					}
-				}
-
-			if( second_p > 0 ){ //SHARETH
-				if( country == 'US' || country == 'XX'){
-					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', tag);	
-				}else{	
-					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);	
-				}
+			if( first_p > 0 ){ //3Lift
+				inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>', tag);	
 			}
 			
-			if( third_p > 0 ){ //3RD SPOT Answer Media
-				inBodyAd.loadInArticleAd( 'article-body', third_p, 0, "<div id=\"vm_inline\"></div><script type='text/javascript'> window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], 'http://player.videomosh.com/players/loader/loader_final4.js'); _videomosh.push({  publisher_key: \"sequelmedia\",  mode: \"incontent\",  container: \"vm_inline\", incontent_mobile_id: \"9834\", target_type: \"mix\", backfill: \"<div id='gpt-backfill'></div><script type='text/javascript'> var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); })();  googletag.cmd.push(function() {googletag.defineSlot('/27755252/sequel_media/puckermob.com', [300, 250], 'gpt-backfill').addService(googletag.pubads());googletag.pubads().enableSingleRequest();googletag.enableServices();});googletag.cmd.push(function() { googletag.display('gpt-backfill'); });</scr\"+\"ipt>\" });</script>", tag);		
+			if( second_p > 0 ){ //Strike
+				if( article_id == 12930 ){	
+					inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', tag);	
+				}else{
+					if( country && country == 'CA' ){
+						inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="ad-inline-2978"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2978/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
+					}else{
+						inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<div id="ad-kikvid-300x250-3043"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3043/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>', tag);
+					}
+				}
 			}
 
-			if( fourth_p > 0 ){ //4TH SPOT GOOGLE
+			
+			
+			if( third_p > 0 ){ //Answer Media
+				inBodyAd.loadInArticleAd( 'article-body', third_p, 0, "<div id=\"vm_inline\"></div><script type='text/javascript'> window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], 'http://player.videomosh.com/players/loader/loader_final4.js'); _videomosh.push({  publisher_key: \"sequelmedia\",  mode: \"incontent\",  container: \"vm_inline\", incontent_mobile_id: \"9834\", target_type: \"mix\", backfill: \"<div id='gpt-backfill'></div><script type='text/javascript'> var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); })();  googletag.cmd.push(function() {googletag.defineSlot('/27755252/sequel_media/puckermob.com', [300, 250], 'gpt-backfill').addService(googletag.pubads());googletag.pubads().enableSingleRequest();googletag.enableServices();});googletag.cmd.push(function() { googletag.display('gpt-backfill'); });</scr\"+\"ipt>\" });</script>", tag);		
+			}	
+
+			if( fourth_p > 0 ){ //SPOT GOOGLE
 				if( article_id == 8669 ){	
 					inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, "<script id='helper' data-my_var_1='0-8UiOP8_cHL92Kr9xIW4mjUnB0jYtrFKF1PPqlf' data-my_var_2='//static.adsnative.com/static/js/render.v1.js' data-my_var_3='none' src='https://s3.amazonaws.com/sf.adsparc.com/native/native-inline-ad-2015-noiframe-article.js' async='true'></script>", tag);
 				}else{
-					inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>', tag);	
+					inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="8590484981"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);	
 				}
 			}
 		}

@@ -36,62 +36,36 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<div class="  mobile-12 small-12 columns padding-bottom ">
+			<div class="small-12 margin-bottom-2x">
 				<h1>Add New Article</h1>
 			</div>
-			<section id="article-info">
-				<div class="small-12 xxlarge-8 left padding margin-bottom" id="image-drop" >
-					<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
-						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-						<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
-						
-						<div class="dz-message" data-dz-message>
-							<div id="img-container" class="radius">
-								<div class="image-icon  padding-top"><i class="fa fa-file-image-o font-4x"></i></div>
-						   		<label class="padding-top large-font-size uppercase main-color hide-small">
-						   			Add an Image to your article
-								</label>
-						   		<label class="margin-bottom">Drag Image here or click to upload</label>
-						   		<label class="margin-top">Don't have an image?</label>
-
-						   		<label> Choose from our free <span class="photo-library" id="search-lib">Photo Library!</span></label>
-						   		<label class="mini-fonts padding-bottom margin-top-2x">Size: 784x431 pixels</label>
-						   	</div>
-						
-						</div>
-					</form>
-
-					<div class="dropzone-previews">
-						<div id="main-image" class="dz-preview dz-image-preview dz-processing dz-success hidden">
-							<div class="dz-details columns">	
-								<img class="data-dz-thumbnail" src=""  />
-							</div>
-						</div>
-					</div>
-				</div>	
+			
+			<section id="article-info" class="small-12 columns">
+				
+				<?php include_once($config['include_path_admin'].'dropbox_image.php'); ?>	
 
 				<form  id="article-add-form" class="margin-top" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 					
-					<div class="small-12 xxlarge-8 left padding margin-top">
+					<div class="small-12 xxlarge-8 columns margin-top-2x">
 						<!-- ARTICLE TITLE -->
 						<div class="row ">
-						    <div class="columns">
+						    <div>
 						      	<input type="text" name="article_title-s" id="article_title-s" placeholder="WRITE YOUR TITLE"   value="" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'class="input-error"'; ?> />
 							</div>
 						</div>
 
 						<?php if($admin_user){?>
 						<div class="row">
-						    <div class="columns">
+						    <div>
 								<label for="article_seo_title-s" class="small-3 columns no-padding seo-title">SEO URL:</label>
 								  <input type="text" disabled class="form-control small-9 columns" id="article_seo_title-s"  name="article_seo_title-s" aria-describedby="basic-addon3">
 							</div>
 						</div>	
 						<?php }else{ ?>
 						<div class="row">
-						    <div class="columns">
+						    <div>
 						      <input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
 						 	</div>
 						</div>	
@@ -99,7 +73,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 						<!-- BODY -->
 						<div class="row margin-bottom margin-top" >
-						    <div class="columns">
+						    <div>
 								<textarea  class=" editor " name="article_body-nf" id="article_editor"  required ></textarea>
 							</div>
 						</div>
@@ -108,7 +82,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<div class="small-12 xxlarge-4 right padding" id="right-new-article">
 						<!-- KEYWORDS -->
 						<div class="row">
-						    <div class="columns">
+						    <div>
 						    	<textarea  class="" name="article_tags-nf" id="article_tags-s"  placeholder="Enter tags"  required ></textarea>
 						    	
 							</div>
@@ -116,7 +90,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						
 						<!-- DESCRIPTION -->
 						<div class="row">
-						    <div class="columns">
+						    <div>
 						    	<textarea  class="" name="article_desc-s" id="article_desc-s"  required placeholder="Enter description"  maxlength="150"></textarea>
 							</div>
 						</div>	
@@ -130,7 +104,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							if($allCategories && count($allCategories)){
 							?>
 							<div class="row">
-							    <div class="columns">
+							    <div>
 										<select id="article_categories" name="article_categories" class="small-12" required>
 											<option value="0">Category</option>
 											<?php
@@ -147,7 +121,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<!-- ARTICLE TYPE  -->
 						<?php if($admin_user){?>
 						<div class="row">
-						    <div class="columns">
+						    <div>
 						    <select id="article-type" name="article_type-s" class="small-12" required >
 								<option value="0">Article Type</option>
 								<option value="1">Opinion</option>
@@ -167,7 +141,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							if($allContributors && count($allContributors)){
 						?>
 							<div class="row">
-							    <div class="columns">
+							    <div>
 									<select name="article_contributor" id="article_contributor" class="small-12">
 										<option value="-1">Contributors</option>
 										<?php
@@ -192,21 +166,21 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 						<!-- IMAGE CREDITS -->
 						<div class="row">
-							<div class="columns">
+							<div>
 								<textarea  class="" name="article_img_credits-s" id="article_img_credits-s"  required placeholder="image credits"><?php if(isset($_POST['article_img_credits-s'])) echo $_POST['article_img_credits-s']; ?></textarea>
 							</div>
 						</div>
 
 						<!-- IMAGE CREDITS URL-->
 						<div class="row">
-							<div class="columns">
+							<div>
 								<textarea  class="" name="article_img_credits_url-s" id="article_img_credits_url-s"  required placeholder="image credits URL"><?php if(isset($_POST['article_img_credits_url-s'])) echo $_POST['article_img_credits_url-s']; ?></textarea>
 							</div>
 						</div>
 
 						<!-- COMMENTS -->
 						<div class="row">
-							<div class="columns">
+							<div>
 
 							   	<textarea type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="comments" ><?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?></textarea>
 							</div>
@@ -228,7 +202,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						</div>
 						<?php }?>	
 
-						<div class="small-12">
+						<div class="row">
 							<button type="submit" id="submit" name="submit" class="small-12 large-2 radius">SAVE</button>
 						</div>
 					</div>
@@ -243,7 +217,11 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 		//$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
 	</script>
 
-	<?php include_once($config['include_path_admin'].'footer-badge.php');?>
+<!-- INFO BADGE -->
+<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
+	<?php include($config['include_path_admin'].'info-badge.php');?>
+</div>
+
 	<?php include_once($config['include_path_admin'].'showerrors.php'); ?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 	

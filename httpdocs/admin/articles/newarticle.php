@@ -36,7 +36,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<div class="small-12 margin-bottom-2x">
+			<div class="small-12">
 				<h1>Add New Article</h1>
 			</div>
 			
@@ -48,7 +48,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 					
-					<div class="small-12 xxlarge-8 columns margin-top-2x">
+					<div class="small-12 xxlarge-8 columns margin-top">
 						<!-- ARTICLE TITLE -->
 						<div class="row ">
 						    <div>
@@ -119,8 +119,8 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						}?>
 
 						<!-- ARTICLE TYPE  -->
-						<?php if($admin_user){?>
-						<div class="row">
+						<?php //if($admin_user){?>
+						<!--<div class="row">
 						    <div>
 						    <select id="article-type" name="article_type-s" class="small-12" required >
 								<option value="0">Article Type</option>
@@ -129,10 +129,10 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 								<option value="0">Staff</option>
 							</select>
 							</div>
-						</div>
-						<?php }else if($blogger){?>
+						</div>-->
+						<?php //}else if($blogger){?>
 							<input type="hidden" name="article_type-s" data-info="0" id="staff" value="0" />
-						<?php }?>
+						<?php //}?>
 
 						
 						<!-- CONTRIBUTORS -->
@@ -189,7 +189,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<!-- DISCLAIMER -->
 						
 						<div class="row">
-						    <div class="large-12 columns">
+						    <div>
 							<label class="uppercase label-wrapper"> Disclaimer:
 								
 								<input type="radio" name="article_disclaimer-s" id="disclaimer-yes" data-info="1"  value="1"  />
@@ -202,7 +202,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						</div>
 						<?php }?>	
 
-						<div class="row">
+						<div class="row padding-top">
 							<button type="submit" id="submit" name="submit" class="small-12 large-2 radius">SAVE</button>
 						</div>
 					</div>
@@ -214,7 +214,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 	</main>	
 
   	<script>
-		//$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
+		$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
 	</script>
 
 <!-- INFO BADGE -->

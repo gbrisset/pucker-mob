@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
 
 require 'config.php';
 require 'class.GoogleAnalyticsApi.php';
@@ -33,11 +31,9 @@ $params = [
 			<?php
 
 				$articles = $GoogleAnalyticsData->queryGoogleAnalyticsInformation($analytics, $startDate, $endDate, $params);
-				//var_dump($articles); die;
 				$arrArticles = [];
 				if($articles){
 					foreach( $articles as $article){
-						var_dump($article);
 						echo '<br>';
 						$title = $article[1];
 						$path = $article[0];

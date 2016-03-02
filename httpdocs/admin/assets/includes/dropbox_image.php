@@ -4,9 +4,9 @@
 		<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 		
 		<div class="dz-message inline-flex" data-dz-message >
-			<div id="img-container" class="small-12 large-8 margin-top-2x" >
+			<div id="img-container" class="small-12 large-8" >
 				<div class="hide-for-large-up">
-					<div class="image-icon  padding-top small-3 columns "><i class="fa fa-file-image-o font-3x"></i></div>
+					<div class="image-icon small-3 columns "><i class="fa fa-file-image-o font-4x"></i></div>
 			   		<label class="small-9 columns">  <span class="photo-library" id="search-lib">Choose An image from our Photo Library!</span> </label>
 			   		<label class="mini-fonts mini-fonts small-12 columns">(If you'd like to upload your own photo please login from a desktop computer</label>
 		   		</div>
@@ -22,8 +22,8 @@
 
 	<div class="dropzone-previews">
 		<div id="main-image" class="dz-preview dz-image-preview dz-processing dz-success hidden">
-			<div class="dz-details columns">	
-				<img class="data-dz-thumbnail" src=""  />
+			<div class="dz-details columns no-padding padding-bottom">	
+				<img class="data-dz-thumbnail" src="http://cdn.puckermob.com/articlesites/puckermob/large/11765_tall.jpg"  />
 			</div>
 		</div>
 	</div>

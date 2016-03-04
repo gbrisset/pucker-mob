@@ -66,7 +66,9 @@ if($('#openModalLib')){
 		$('body').removeClass('show-modal-box-lib');
 	});
 
-	$('#search-lib').click(function(e){
+	$('.photo-library').click(function(e){
+		e.preventDefault();
+		e.stopPropagation();
 		$('.step-2').hide();
 		$('.article-imgs-container').html('');
 		$('.step-1').show();

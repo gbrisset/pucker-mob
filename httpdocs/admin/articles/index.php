@@ -18,8 +18,6 @@
 // for the new Pagination class - we only need 3 bits of info...
 // 1. the current page number ($current_page)
 	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
-	
-// 2. records per page ($per_page)
 	$per_page = 40;
 	$limit=40;
 	$post_date = 'all';
@@ -29,10 +27,10 @@
 	$artType = '';
 	$allCurrent = 'current';
 	$writersCurrent = $bloggersCurrent = '';
+	
 	if(  isset($_GET['artype']) && $_GET['artype']){
 		$allCurrent = '';
 		$artType = $_GET["artype"];
-		//var_dump($artType);
 		if($artType === "bloggers") $bloggersCurrent = 'current';
 		elseif($artType === "writers")  $writersCurrent = 'current';
 	}
@@ -69,16 +67,6 @@
 	$offset = $pagination->offset();
 
 
-	$admin_user = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2){
-		$admin_user = true;
-	}
-
-	$inhouse_writer = false;
-	if(isset($adminController->user->data['user_type']) && $adminController->user->data['user_type'] == 6 ){
-		$inhouse_writer = true;
-	}
-
 	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 2){
 		$articleStatus = '1, 2, 3';
 	}
@@ -103,20 +91,16 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<div class="  mobile-12 small-12 columns padding-bottom ">
-				<h1>View Articles</h1>
+				<h1>View & Edit Articles</h1>
 			</div>
-			<section id="articles">
-			<section class="left  mobile-12 small-12 columns">
-				<section class="">
-				<form class="search-form-admin small-12 right margin-bottom" id="header-search" action="<?php echo $config['this_url'];?>search/" method="POST">
-						<div id="search-fieldset" class="small-12 large-11 columns no-padding">
-							<input type="text" value="" class="small-11 columns " placeholder="Search all" id="searchemailinput" name="searchemailinput">
-							<button type="submit" id="searchsubmit" name="searchsubmit" class="small-2 large-1 columns "  ><i class="fa fa-search"></i></button>
-						</div>
-				</form>
-				</section>
+			
+			<section id="edit-articles">
+			
+				<!-- ARTICLES RESUME INFO --> 
+				<?php include_once($config['include_path_admin'].'view_articles_resume.php'); ?>
+			
 				 <?php 
-					    	$sort = (isset($_GET['sort'])) ? $_GET['sort'] : '';
+					    /*	$sort = (isset($_GET['sort'])) ? $_GET['sort'] : '';
 					    	$liveClass = '';
 					    	$draftClass = '';
 
@@ -137,10 +121,10 @@
 					    			$draftClass = 'current';
 					    			$pendingClass = '';
 					    		break;
-					    	}
+					    	}*/
 					    ?>
-					<?php if($admin_user || $inhouse_writer){?>
-					<section class="from-diff-users-filter clear">
+					<?php if($admin_user ){?>
+					<!--<section class="from-diff-users-filter clear">
 					    <div class="columns left small-12 large-6 hide-small">
 					     <label class="uppercase">From:
 					     	<?php
@@ -169,9 +153,9 @@
 						
 					     </label>
 					    </div>
-				</section>
+					</section>-->
 				 <?php }else{?>
-					<section class="from-diff-users-filter clear">
+					<!--<section class="from-diff-users-filter clear">
 					<?php
 					     		$userType_URL = $config['this_admin_url'].'articles/';
 
@@ -191,100 +175,110 @@
 						
 					     </label>
 					    </div>
-					</section>
+					</section>-->
 				  <?php }?>
-				<section id="articles-list" class="margin-top clear">
 				
- 				<?php
-					if($articles){ ?>
-					<table class="columns small-12 no-padding">
-						<thead>
-						    <tr>
-						      <th class="columns  mobile-6 small-6 medium-7">Title</th>
-						      <th class="columns  small-2 hide-small "><a href="">Added</a></th>
-						      <th  class="columns small-2 medium-2">status</th>
-						      <th   class="columns small-1"></th>
-						    </tr>
-						 </thead>
-						 <tbody>
-						 <?php foreach($articles as $articleInfo){
-
-							$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
-							$article_id = $articleInfo["article_id"];
-							$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
-							$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
-							$article_title = $articleInfo['article_title'];
-							$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
-							$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
-							$article_us_traffic = $articleInfo['us_traffic'];
-						
-							if(file_exists($pathToImage)){
-								$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
-							} else {
-								$imageUrl = 'http://cdn.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
-							}
-
-							?>
-							<tr id="<?php echo 'article-'.$article_id; ?>" class="columns small-12 no-padding">
-							  	<td class="columns mobile-8 small-8  medium-7">
-							  		<div class="small-3 columns no-padding">
-										<a href="<?php echo $articleUrl; ?>">
-											<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
-										</a>
-									</div>
-									<div class="small-9 columns ">
-										<h2><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 43); ?></a></h2>
-									</div>
-							  	</td>
-
-							  	<td class="columns  hide-small small-2 padding-top-center"><?php echo $article_date_created; ?></td>
-							  	<td  class="columns  small-2 padding-top-center"><?php echo $article_status ?></td>	
-								<!-- REMOVE ARTICLE -->
-								<td   class="columns small-1 padding-top-center">
-									<?php if($admin_user || $blogger ){?>
-										<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-											<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-											<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-											<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
-										</form>
-									<?php }else{?>
-										<?php if($articleInfo["article_status"] != 1 ){?>
-										<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-											<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-											<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-											<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
-										</form>
-										<?php }else{?>
-										<!-- REQUEST TO DELETE THIS ARTICLE -->
-										<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
-										<?php }?>
-									<?php }?>
-								</td>							  			
-							</tr>
-						<?php }?>
-					    </tbody>
-					</table>
+					<div class="small-12 xxlarge-9 columns no-padding">
+						<section id="articles-list" class="columns margin-top no-padding">
+						<?php
+							if(isset($articles) && $articles ){ ?>
+							<table class="columns small-12 no-padding">
+								<thead>
+								    <tr>
+								      <th width="500" class="align-left">Title</th>
+								      <th width="100" class="show-for-large-up">Added</th>
+								       <th width="100"  class="show-for-large-up">status</th>
+								      	<th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
+								      <th  width="50" class="show-for-large-up"></th>
+								    </tr>
+								 </thead>
 								
-					<?php }else{ ?>
-					<p class="not-found">
-						Sorry, no articles were found!
-					</p>
-					<p class="not-found">
-						<span>Upload Articles:</span>
-						Start adding your own articles to our site clicking <a href="<?php echo $config['this_admin_url']?>articles/newarticle/">HERE</a>.
-					</p>
-					
-					<?php } ?>
-			</section>
+								 <tbody>
+								 <?php foreach($articles as $articleInfo){
 
-			<?php include_once($config['include_path_admin'].'pages.php'); ?>
-		</section>
+									$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
+									$article_id = $articleInfo["article_id"];
+									$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
+									$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
+									$article_title = $articleInfo['article_title'];
+									$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
+									$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
+									$article_us_traffic = $articleInfo['us_traffic'];
+								
+									if(file_exists($pathToImage)){
+										$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
+									} else {
+										$imageUrl = 'http://cdn.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
+									}
+									$imageUrl = 'http://cdn.puckermob.com/articlesites/puckermob/large/7189_tall.jpg';
+
+									?>
+									<tr id="<?php echo 'article-'.$article_id; ?>">
+									  	<td class="border-right">
+									  		<div class=" large-4 columns no-padding-left show-for-large-up">
+												<a href="<?php echo $articleUrl; ?>">
+													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
+												</a>
+											</div>
+											<div class="large-8 columns no-padding" style="display: table-caption">
+												<h2 class="small-12 columns no-padding"><i class="fa fa-caret-right hide-for-large-up small-1  columns"></i><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?></a></h2>
+											</div>
+									  	</td>
+
+									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
+									  	<td  class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
+										<!-- REMOVE ARTICLE -->
+										<td class="show-for-xlarge-up  border-right" ><label>123</label></td>
+										<td class="show-for-large-up no-border-right">
+											<?php if($admin_user || $blogger ){?>
+												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
+													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
+													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+												</form>
+											<?php }else{?>
+												<?php if($articleInfo["article_status"] != 1 ){?>
+												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
+													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
+													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+												</form>
+												<?php }else{?>
+												<!-- REQUEST TO DELETE THIS ARTICLE -->
+												<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
+												<?php }?>
+											<?php }?>
+										</td>							  			
+									</tr>
+								<?php }?>
+							    </tbody>
+							</table>
+										
+							<?php }else{ ?>
+							<p class="not-found">
+								Sorry, no articles were found!
+							</p>
+							<p class="not-found">
+								<span>Upload Articles:</span>
+								Start adding your own articles to our site clicking <a href="<?php echo $config['this_admin_url']?>articles/newarticle/">HERE</a>.
+							</p>
+							
+							<?php } ?>
+						</section>
+					</div>
+					
+					<div class="small-12 xxlarge-3 right padding" >
+						<?php include_once($config['include_path_admin'].'statuses.php'); ?>
+						<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
+					</div>
+
+				<?php include_once($config['include_path_admin'].'pages.php'); ?>
 		</section>
 
 		</div>
 	</main>
 
-	<?php include_once($config['include_path_admin'].'footer.php');?>
+	<?php //include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

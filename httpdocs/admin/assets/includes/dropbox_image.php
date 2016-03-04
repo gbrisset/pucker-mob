@@ -11,10 +11,10 @@
 			   		<label class="mini-fonts mini-fonts small-12 columns">(If you'd like to upload your own photo please login from a desktop computer</label>
 		   		</div>
 		   		<div class="show-for-large-up">
-			   		<label class="large-10 columns uppercase bold no-padding font-2-5x">ADD An Image</label>
-			   		<label style="color: #ccc;" class="large-10 columns  no-padding margin-bottom-2x">Drag Image Here or <a>Click to Upload</a> (784x431) </label>
-			   		<label class="large-10 columns uppercase bold no-padding font-1-5x margin-bottom">Don't have your own image? Don't worry!</label>
-			   		<label class="large-10 columns no-padding left" style="color: #ccc;" >  Pick An image from our free <a class="photo-library" id="search-lib">Photo Library!</a> </label>
+			   		<label class="large-10 columns uppercase bold no-padding main-label font-170-pct">ADD An Image</label>
+			   		<label style="color: #ccc;" class="large-10 columns no-padding margin-bottom-2x">Drag Image Here or <a>Click to Upload</a> (784x431) </label>
+			   		<label class="large-10 columns uppercase bold no-padding font-1x margin-bottom second-label font-125-pct">Don't have your own image? Don't worry!</label>
+			   		<label class="large-10 columns no-padding left" style="color: #ccc;" >  Pick An image from our free <a href="#" class="photo-library" id="search-lib">Photo Library!</a> </label>
 		   		</div>
 		   	</div>
 		</div>
@@ -23,7 +23,7 @@
 	<div class="dropzone-previews">
 		<div id="main-image" class="dz-preview dz-image-preview dz-processing dz-success hidden">
 			<div class="dz-details columns no-padding padding-bottom">	
-				<img class="data-dz-thumbnail" src="http://cdn.puckermob.com/articlesites/puckermob/large/11765_tall.jpg"  />
+				<img class="data-dz-thumbnail" src=""  />
 			</div>
 		</div>
 	</div>

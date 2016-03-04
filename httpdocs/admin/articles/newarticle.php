@@ -203,18 +203,21 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<?php }?>	
 
 						<div class="row padding-top">
-							<button type="submit" id="submit" name="submit" class="small-12 large-2 radius">SAVE</button>
+							<button type="button" id="preview" name="preview" class="small-12 large-6 columns radius show-for-large-up">PREVIEW</button>
+
+							<button type="submit" id="submit" name="submit" class="small-12 large-5 columns radius">SAVE</button>
+
 						</div>
+											<?php include_once($config['include_path_admin'].'formatting_tips.php');?>
+
 					</div>
 				</form>
-					
-			</section>
+				</section>
 		</div>
-		<?php include_once($config['include_path_admin'].'articlelib.php');?>
 	</main>	
 
   	<script>
-		$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
+		//$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
 	</script>
 
 <!-- INFO BADGE -->
@@ -224,6 +227,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 	<?php include_once($config['include_path_admin'].'showerrors.php'); ?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
-	
+			<?php include_once($config['include_path_admin'].'articlelib.php');?>
+
 </body>
 </html>

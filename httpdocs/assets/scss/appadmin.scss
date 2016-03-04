@@ -59,6 +59,9 @@ $social-hover-darken-percent: -25%;
 // Helpers / Hover Effects
 .main-color{ color: $main-color !important; }
 .large-font-size{ font-size: 2.3rem !important; }
+.font-170-pct{ font-size:170% !important; }
+.font-125-pct{ font-size:125% !important; }
+
 .font-1-5x{ font-size:1.5rem !important; }
 .font-2-5x{ font-size:2.5rem !important; }
 .font-2x{ font-size:2rem !important; }
@@ -440,7 +443,7 @@ ul.inline-centered>li{ padding: 0.8rem;}
 
 @media #{$large-up} {
 	#main-cont #content { 
-		width: 100%; margin: 2rem auto; padding-left: 16.2rem;
+		width: 100%; margin: 2rem auto; padding-left: 16.2rem; min-height: 1650px;
 		h1{  border-bottom: 2px solid #ddd; }
 	}
 	#article-info, #articles{ border: 1px solid #ddd; padding:15px;}
@@ -490,15 +493,40 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 
 //NEW DESIGN ARTICLE LIST
 #articles-list .article-image{ float:left; width: 4rem; margin-right: 0.5rem;}
-#articles-list table{ border:none;}
-#articles-list table thead tr { border-bottom: 2px solid #bbb;}
-#articles-list table thead tr th{ font-size: 1.2rem; text-transform: uppercase; font-family: arial; padding-bottom: 0.2rem; text-align:center;}
-#articles-list table tr { border-bottom: 2px solid #ddd;}
-#articles-list table tr td { vertical-align: middle; padding: 0.4rem 0.5rem 0.4rem; text-align: center; font-size: 1rem;}
+#articles-list {
+	table{ border:none;}
+	thead{
+		background: #fff;
+	}
+}
+#articles-list table thead tr { border-bottom: 1px solid #ddd;}
+#articles-list table thead tr th{ 
+	font-size: 14px; 
+	text-transform: uppercase; 
+	font-family: OsloBold;
+ 	text-align:center;
+ 	padding: 0.4rem 0.5rem 0.4rem;
+
+}
+#articles-list table tr.even, #articles-list table tr.alt, #articles-list table tr:nth-of-type(even){
+	background: #eee;
+}
+
+#articles-list table tr td { border: none; vertical-align: middle; padding: 0.2rem; text-align: center; font-size: 1rem;}
 #articles-list table tr td:first-child, articles-list table thead tr th:first-child{ text-align: left;}
-#articles-list table tr td h2 { font-size: 1.2rem; padding: 0; margin-bottom: 0; margin-top: 0; padding-top:0.5rem;}
+#articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: 65px;}
+
+#articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: auto;}
+
+@media #{$large-up} {
+	#articles-list table tr td { border-right: 1px solid #ddd;}
+	#articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: 45px;}
+}
+@media #{$xxlarge-up} {
+	#articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: 65px;}
+}
 #articles-list table tr td.padding-top-center{ padding-top:1.05rem; }
-#articles-list table tr td h2 a, #articles-list table tr th a{ color: #000; outline:none;}
+#articles-list table tr td h2 a, #articles-list table tr th a, #articles-list table tr td label{ color: #000; outline:none; font-size:14px;}
 .article-delete-form{ margin:0;}
 .fa-times{ color: #FF0000; font-size: large;}
 .from-other-sites-filter{ padding-top:2rem; padding-bottom: 1rem;} 
@@ -561,7 +589,7 @@ select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family:
 	}
 }
 #img-container{ 
-	padding:25px;
+	padding: 10% 5%;
 	.fa-file-image-o{ color: #fff; margin-bottom:2rem; margin-top:1px;}
 	label{ font-size: 1.4rem; color: #fff; line-height: 0.8;}
 	a{ color: #bbb; text-decoration: underline; outline:none; }
@@ -591,8 +619,10 @@ select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family:
 @media #{$large-up} {
 	#img-container{ 
 		label{ 
-			font-size: 20px;
+			font-size: 15px;
 			line-height: 1.1;
+
+			a{ font-size: 15px;}
 		}
 	}  
 }
@@ -1454,4 +1484,45 @@ form#user-account-delete-form {
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0);
+}
+
+//FOrmatting Text Section
+#formatting-tips{
+	background: #eee;
+	border: 1px solid #ddd;
+	padding: 10px;
+	h3{
+		font-size: 20px;
+		color: #666;
+	}
+	p{ color: #666; }
+	ol{
+		li{
+			color: #666;
+		    font-size: 14px;
+		    margin-bottom: 15px;
+		}
+	}
+}
+
+.articles_resume{
+	height: 7rem;
+	padding:10% 8px;
+	color: #fff;
+	text-align: center;
+	
+	h3, span{
+		font-size: 20px;
+		color: #fff;
+	}
+
+	.mini-fonts{
+		margin-top:4px;
+	}
+}
+.filter-by-status, .hottopics{
+	    background: #eee;     padding-bottom: 10px;     border: 1px solid #ddd;
+	    h3{ font-size: 20px; }
+	    label{ font-size: 15px;}
+	    a{ outline:none;  font-size: 15px; color: #222;}
 }

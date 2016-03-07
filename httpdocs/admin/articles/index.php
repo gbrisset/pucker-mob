@@ -40,16 +40,15 @@
 		$sts = '?sts='.$_GET['sts'];
 	}
 
-
 	$userArticlesFilter = $userData['user_email'];
 	$order = '';
-	$filterLabel = 'Most Recent';
+	//$filterLabel = 'Most Recent';
 // Sorting information
 	$article_sort_by = "mr";
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
 		$articleStatus = $sortingMethod['articleStatus'];
-		$filterLabel = $sortingMethod['filterLabel'];
+		//$filterLabel = $sortingMethod['filterLabel'];
 		$order = $sortingMethod['order'];
 		$article_sort_by = $_GET['sort'];
 	}
@@ -81,11 +80,13 @@
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
 <?php include_once($config['include_path_admin'].'head.php');?>
+
 <body>
+	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
-	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
@@ -98,90 +99,26 @@
 			
 				<!-- ARTICLES RESUME INFO --> 
 				<?php include_once($config['include_path_admin'].'view_articles_resume.php'); ?>
-			
-				 <?php 
-					    /*	$sort = (isset($_GET['sort'])) ? $_GET['sort'] : '';
-					    	$liveClass = '';
-					    	$draftClass = '';
+				<?php 
+		     		$userType_URL = $config['this_admin_url'].'articles/';
 
-					    	switch($sort){
-					    		case 1:
-					    			$liveClass = 'current';
-					    			$draftClass = '';
-					    			$pendingClass = '';
-					    		break;
-					    		case 2:
-					    			$liveClass = '';
-					    			$draftClass = '';
-					    			$pendingClass = 'current';
+		     		if($page > 1){
+		     			$userType_URL .= '?page='.$page;
+		     		}else $userType_URL .= '?page=1';
 
-					    		break;
-					    		case 3:
-					    			$liveClass = '';
-					    			$draftClass = 'current';
-					    			$pendingClass = '';
-					    		break;
-					    	}*/
-					    ?>
-					<?php if($admin_user ){?>
-					<!--<section class="from-diff-users-filter clear">
-					    <div class="columns left small-12 large-6 hide-small">
-					     <label class="uppercase">From:
-					     	<?php
-					     		$userType_URL = $config['this_admin_url'].'articles/';
-
-					     		if($page > 1){
-					     			$userType_URL .= '?page='.$page;
-					     		}else $userType_URL .= '?page=1';
-
-					     		$order='';
-					     		if (!isset($sortingMethod['order']) || strlen($sortingMethod['order']) == 0){
-									if (isset($sortingMethod)) $order = $sortingMethod['articleStatus'];
-								}
-					     	?>
-					     	<a class="<?php echo $allCurrent; ?>" href="<?php echo $userType_URL.'&sort='.$order.'&artype=' ?>">All</a> | 
-						 	<a class="<?php echo $writersCurrent; ?>" href="<?php echo $userType_URL.'&sort='.$order.'&artype=writers'; ?>">Writers</a> |
-						 	<a class="<?php echo $bloggersCurrent; ?>" href="<?php echo $userType_URL.'&sort='.$order.'&artype=bloggers'; ?>">Bloggers</a>
-					     </label>
-					    </div>
-					  
-					    <div class="columns  small-12 large-6  align-right">
-					     <label class="uppercase">Status:
-					     	<a class="<?php echo $liveClass; ?>" href="<?php  echo $userType_URL.'&sort=1&artype='.$artType; ?>">Live</a> | 
-						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a>| 
-						 	<a class="<?php echo $pendingClass; ?>" href="<?php echo $userType_URL.'&sort=2&artype='.$artType; ?>">Reviewed</a>
-						
-					     </label>
-					    </div>
-					</section>-->
-				 <?php }else{?>
-					<!--<section class="from-diff-users-filter clear">
-					<?php
-					     		$userType_URL = $config['this_admin_url'].'articles/';
-
-					     		if($page > 1){
-					     			$userType_URL .= '?page='.$page;
-					     		}else $userType_URL .= '?page=1';
-
-					     		$order='';
-					     		if (!isset($sortingMethod['order']) || strlen($sortingMethod['order']) == 0){
-									if (isset($sortingMethod)) $order = $sortingMethod['articleStatus'];
-								}
-					     	?>
-					     	 <div class="columns left small-12 no-padding align-right">
-					     	<label>Status:
-					     	<a class="<?php echo $liveClass; ?>" href="<?php  echo $userType_URL.'&sort=1&artype='.$artType; ?>">Live</a> | 
-						 	<a class="<?php echo $draftClass; ?>" href="<?php echo $userType_URL.'&sort=3&artype='.$artType; ?>">Draft</a>
-						
-					     </label>
-					    </div>
-					</section>-->
-				  <?php }?>
-				
-					<div class="small-12 xxlarge-9 columns no-padding">
+		     		$order='';
+		     		if (!isset($sortingMethod['order']) || strlen($sortingMethod['order']) == 0){
+						if (isset($sortingMethod)) $order = $sortingMethod['articleStatus'];
+					}
+			 	?>
+					
+				<div class="small-12 xxlarge-9 columns no-padding">
 						<section id="articles-list" class="columns margin-top no-padding">
 						<?php
 							if(isset($articles) && $articles ){ ?>
+
+							<?php include_once($config['include_path_admin'].'statuses-mobile.php'); ?>
+
 							<table class="columns small-12 no-padding">
 								<thead>
 								    <tr>
@@ -210,7 +147,6 @@
 									} else {
 										$imageUrl = 'http://cdn.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
 									}
-									$imageUrl = 'http://cdn.puckermob.com/articlesites/puckermob/large/7189_tall.jpg';
 
 									?>
 									<tr id="<?php echo 'article-'.$article_id; ?>">
@@ -244,6 +180,7 @@
 													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 												</form>
 												<?php }else{?>
+												
 												<!-- REQUEST TO DELETE THIS ARTICLE -->
 												<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
 												<?php }?>
@@ -265,20 +202,19 @@
 							
 							<?php } ?>
 						</section>
+						<?php include_once($config['include_path_admin'].'pages.php'); ?>
 					</div>
 					
 					<div class="small-12 xxlarge-3 right padding" >
 						<?php include_once($config['include_path_admin'].'statuses.php'); ?>
+						<?php include_once($config['include_path_admin'].'filter_by_usertype.php'); ?>
 						<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
 					</div>
-
-				<?php include_once($config['include_path_admin'].'pages.php'); ?>
 		</section>
 
 		</div>
 	</main>
 
-	<?php //include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

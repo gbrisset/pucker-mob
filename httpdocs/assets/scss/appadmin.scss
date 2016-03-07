@@ -26,7 +26,8 @@ $bgColor: #ffffff;
 "foundation/components/tooltips",
 "foundation/components/labels",
 "foundation/components/tables",
-"foundation/components/tooltips";
+"foundation/components/tooltips",
+"foundation/components/thumbs";
 // Custom variables
 
 
@@ -501,7 +502,7 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 }
 #articles-list table thead tr { border-bottom: 1px solid #ddd;}
 #articles-list table thead tr th{ 
-	font-size: 14px; 
+	font-size: 22px; 
 	text-transform: uppercase; 
 	font-family: OsloBold;
  	text-align:center;
@@ -514,19 +515,23 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 
 #articles-list table tr td { border: none; vertical-align: middle; padding: 0.2rem; text-align: center; font-size: 1rem;}
 #articles-list table tr td:first-child, articles-list table thead tr th:first-child{ text-align: left;}
-#articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: 65px;}
-
+#articles-list table tr td h2 { font-size: 1.2rem; padding-top:5px;}
+#articles-list table tr td h2 i{ padding:0; width: 10px;     height: 20px;}
 #articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: auto;}
 
 @media #{$large-up} {
 	#articles-list table tr td { border-right: 1px solid #ddd;}
-	#articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: 45px;}
+	#articles-list table tr td h2 { font-size: 1.2rem; }
+	#articles-list table tr td h2 a { vertical-align: middle; display: table-cell; heiht: 42px; }
+
+	#articles-list table thead tr th{ font-size: 16px; }
 }
-@media #{$xxlarge-up} {
-	#articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: 65px;}
+@media #{$xlarge-up} {
+	#articles-list table tr td h2 a { vertical-align: middle; display: table-cell; height: 65px;}
+	#articles-list table tr td img { max-width: 10rem;     width: 100%;}
 }
 #articles-list table tr td.padding-top-center{ padding-top:1.05rem; }
-#articles-list table tr td h2 a, #articles-list table tr th a, #articles-list table tr td label{ color: #000; outline:none; font-size:14px;}
+#articles-list table tr td h2 a, #articles-list table tr th a, #articles-list table tr td label{ color: #000; outline:none; font-size:16px;}
 .article-delete-form{ margin:0;}
 .fa-times{ color: #FF0000; font-size: large;}
 .from-other-sites-filter{ padding-top:2rem; padding-bottom: 1rem;} 
@@ -540,9 +545,9 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 border-bottom: 1px solid #dddddd; }
 #pages ul { width: 100%; margin: 0 auto 0; padding: 0; position: relative; list-style: none; text-align: right;
 overflow: hidden; zoom: 1; }
-#pages ul li { width: auto; color: #000; font: 1.2em OsloRegular, arial, sans-serif; margin: 0 0.125em; padding: 0.35em 0 0.25em; position: relative; display: inline-block;}
-#pages ul li.current a, #pages ul li:hover a, #pages ul li:focus a{text-decoration: underline; color: #000;}
-#pages ul li a{color: #000; text-decoration: none; outline: none; padding: 0.1em;}
+#pages ul li { width: auto; color: #000; font: 1.2em OsloRegular, arial, sans-serif; margin: 0 0.125em; padding: 0.35em 0 0.25em; position: relative; display: inline-block; color:#aaa;}
+#pages ul li.current a, #pages ul li:hover a, #pages ul li:focus a{text-decoration: underline; color: $main-color;}
+#pages ul li a{color: #aaa; text-decoration: none; outline: none; padding: 0.1em;}
 @media #{$large-up} {
 	#articles-list .admin-article .article-info p{ display:block;}
 	#articles-list .admin-article .article-info h2{ text-align: left; }
@@ -564,22 +569,33 @@ width: auto; }
 .buttons-container button { padding: 0.5rem 0.5rem; }
 select#categories{background-color: #01b88a; color: #fff; font-size: 1.2rem; height: auto;}
 .label-wrapper {
-	background-color: #eee;
-	border: 1px solid #ddd;
-    padding: 0.8rem;
-    input[type="checkbox"]+label, input[type="radio"]+label{
-	    vertical-align: text-top;
-	    margin-left: 0;
-    }
-    input[type="file"], input[type="checkbox"], input[type="radio"]{
-    	margin: 1rem 0.5rem;
-    }
-
+	button#preview, button#submit, button#publish{ 
+		background: #5A9859;
+	    padding: 0.8rem;
+	    margin-bottom: 0.8rem;
+	    width: 100%;
+	    font-size: 1.1rem;
+	} 
 }
 select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family: Oslo; background-size: 1.3rem; background-image:url("http://www.puckermob.com/assets/img/Down-Arrow2.png");}
+span.postfix, label.postfix{ color: #aaa;}
+.prefix, .postfix{ height: 2.5rem;}
+#sizing-addon2{
+	padding: 0.7rem;
+    height: 2.5rem;
 
+}
 #image-drop{
 	background: #66A167; 
+}
+.inner-header{
+	background: #ddd !important;
+    font-size: 20px;
+    color: #fff;
+    padding: 8px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-family: OsloBold;
 }
 @media #{$large-up} {
 	#image-drop{
@@ -590,7 +606,7 @@ select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family:
 }
 #img-container{ 
 	padding: 10% 5%;
-	.fa-file-image-o{ color: #fff; margin-bottom:2rem; margin-top:1px;}
+	.fa-file-image-o{ color: #fff; margin-bottom:2rem; margin-top:1px; font-size:50px !important;}
 	label{ font-size: 1.4rem; color: #fff; line-height: 0.8;}
 	a{ color: #bbb; text-decoration: underline; outline:none; }
 	
@@ -606,7 +622,7 @@ select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family:
 
 	#search-lib{
 		text-transform:uppercase;
-		font-size: 1.2rem;
+		font-size: 1rem;
 		color: #fff;
 
 		&:hover{
@@ -618,11 +634,17 @@ select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family:
 
 @media #{$large-up} {
 	#img-container{ 
+		.fa-file-image-o{ font-size:4rem !important; }
 		label{ 
 			font-size: 15px;
 			line-height: 1.1;
 
 			a{ font-size: 15px;}
+		}
+
+		#search-lib{
+			font-size: 1.2rem;
+			color: #fff;
 		}
 	}  
 }
@@ -1370,10 +1392,10 @@ form#user-account-delete-form {
   }
 
 .related_articles_box i{
-  background: #000;
-  color: #fff;
-  margin: 0 0 0 -0.5rem;
-  padding: 0.65rem 0.5rem;
+  background: #fff;
+  color: #222;
+  margin: 0;
+  padding: 11px !important;
   font-size: 1.2rem;
 }
 
@@ -1521,8 +1543,28 @@ form#user-account-delete-form {
 	}
 }
 .filter-by-status, .hottopics{
-	    background: #eee;     padding-bottom: 10px;     border: 1px solid #ddd;
-	    h3{ font-size: 20px; }
-	    label{ font-size: 15px;}
-	    a{ outline:none;  font-size: 15px; color: #222;}
+	    background: #bbb;     
+	    
+	    border: 1px solid #ddd;
+	    h3{ 
+	    	font-size: 20px;  
+	    	color: #fff;
+	    	margin: 0px;
+    		margin-top: 7px !important;
+	    }
+	    label{ font-size: 20px; color: #fff;  margin-top: 2px;}
+	    a{ outline:none;  font-size: 20px; color: #fff;}
+}
+@media #{$large-up} {
+
+.filter-by-status, .hottopics{
+	background: #eee;     
+	padding-bottom: 10px;     
+	border: 1px solid #ddd;
+	    
+	h3{ font-size: 20px; color: #222; margin-bottom: 0.625rem;}
+	label{ font-size: 15px; color: #222;}
+	a{ outline:none;  font-size: 15px; color: #222;}
+}
+	
 }

@@ -135,19 +135,25 @@ class ManageAdminDashboard{
 		return $q;
 	}
 
-	public function getTopShareWritesRankHeader($month){
+	public function getTopShareWritesRankHeader($month, $year = 0){
 
-		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$year = date('Y');
+		 $month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		 $year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		 
+		 if($year == 0) $year = date('Y');
 
 		$s = "SELECT contributor_id, (@rownum := @rownum + 1) as rownum 
 			FROM `contributor_earnings` 
-			WHERE month = $month AND year = $year 
+			JOIN  (SELECT @rownum := 0) r
+			WHERE  month = $month AND year = $year 
 			ORDER BY total_us_pageviews DESC ";
-		$q = $this->performQuery(['queryString' => $s]);
 
+		$q = $this->performQuery(['queryString' => $s]);
+		
 		return $q;
 	}
+
+	
 
 	public function getTopSharedMoblogsBU(){
 		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, article_contributors.contributor_id,  article_contributors.contributor_name,  article_contributors.contributor_image,  social_media_records.date_updated, articles.creation_date, social_media_records.category, (SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares)) as 'total_shares'  

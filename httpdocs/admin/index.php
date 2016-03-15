@@ -142,6 +142,7 @@
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
+	
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
@@ -152,9 +153,9 @@
 
 			<div class="small-12 xxlarge-8 left padding margin-top">
 				
-				<?php include_once($config['include_path_admin'].'warnings.php'); ?>
+				<?php //include_once($config['include_path_admin'].'warnings.php'); ?>
 
-				<?php include_once($config['include_path_admin'].'annoucements.php'); ?>
+				<?php //include_once($config['include_path_admin'].'annoucements.php'); ?>
 				
 				<!-- TOP MOST SHARES MOBLOGS -->
 				<div id="top-shares" class="top-shares mobile-12 small-12 left">

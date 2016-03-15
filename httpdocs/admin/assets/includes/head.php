@@ -32,16 +32,22 @@
 		Dropzone.options.imageDrop = {
 		  acceptedFiles: "image/*",
 		  paramName: "file", // The name that will be used to transfer the file
+		  maxFiles: 1,
 		  maxFilesize: 2, // MB
 		  thumbnailWidth: 784,
 		  thumbnailHeight: 431,
 		  previewsContainer: ".dropzone-previews",
+
+		  
 		  init: function() {
-		    this.on("addedfile", function() {
+			this.on("addedfile", function() {
 			  if (this.files[1]!=null){
 			    this.removeFile(this.files[0]);
 			  } 
-			  $('#main-image').hide();
+			  //var img_src = $('img[data-dz-thumbnail]').attr('src');
+			  //$('img[data-dz-thumbnail]').hide();
+			  //$('#main-image-src').attr('src', img_src);
+			  //console.log(img_src);
 			});
 			this.on("sending", function(file, xhr, formData) {
 	  			formData.append("filesize", file.size); // Will send the filesize along with the file as POST data.

@@ -203,13 +203,13 @@
 							<?php } ?>
 						</section>
 						<?php include_once($config['include_path_admin'].'pages.php'); ?>
-					</div>
+				</div>
 					
-					<div class="small-12 xxlarge-3 right padding" >
+				<div class="small-12 xxlarge-3 right padding" >
 						<?php include_once($config['include_path_admin'].'statuses.php'); ?>
 						<?php include_once($config['include_path_admin'].'filter_by_usertype.php'); ?>
 						<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
-					</div>
+				</div>
 		</section>
 
 		</div>

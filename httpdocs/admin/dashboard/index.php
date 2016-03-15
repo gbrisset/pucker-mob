@@ -70,6 +70,8 @@
 
 	$user_type = $userData["user_type"];
 
+	var_dump($rate );
+
 ?>
 <!DOCTYPE html>
 
@@ -90,54 +92,30 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
+			
 			<div class="  mobile-12 small-12 columns padding-bottom ">
 				<h1>MY DASHBOARD</h1>
 			</div>
 
-			<div class="small-12 xxlarge-8 left padding margin-top">
-				<?php if( $blogger ){?>
-				<section id="dashboard" class="small-12 columns">
-					<header>EARNINGS PER ARTICLE</header>	
-					<?php include_once($config['include_path_admin'].'dashboard_list_articles.php'); ?>
-				</section>
-				<?php } ?>
+			
+				<!-- ARTICLES RESUME INFO --> 
+				<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
+			
+
+			<div class="small-12 xxlarge-9 columns no-padding">
+				<!-- CHARTS --> 
+				<?php include_once($config['include_path_admin'].'charts.php'); ?>
 			</div>
 
 			<!-- Right Side -->
-			<div class="small-12 xxlarge-4 right padding" id="right-new-article">
-				<!--MOB LEVEL -->
-				<?php include_once($config['include_path_admin'].'showuserplan.php');?>
+			<div class="small-12 xxlarge-3 right padding" >
+				<!-- HOT TOPICS --> 
+				<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
 
-				<?php if( $blogger ){?>
-				<!-- MONTHLY SHARE RATE -->
-				<div id="share-rate-box" class="small-12 columns right box-it-up">
-					<div class="share-rate-txt padding-bottom padding-top">
-						<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
-						<label class="uppercase main-color"><?php echo "CPM (".$moblevel.") : $".number_format($rate['rate'], 2, '.', ',');?></label>
-					</div>
-				</div>
-				<div id="total-earned-range" class="small-12 columns right box-it-up">
-					<div class="share-rate-txt">
-						<label class="uppercase">Total Earned for selected range: <span id="total_earned_graph" class="main-color"><?php echo "$".number_format($total, 2, '.', ',');?></span></label>
-					</div>
-				</div>
-				<div id="calendar-section" class="small-12 columns right box-it-up">
-					<div id="reportrange">
-						<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-						<input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
-					</div>
-				</div>
-				<?php } ?>
-				<div id="mob-rank" class="small-12 columns right box-it-up">
-					<?php  include_once($config['include_path'].'your_rank.php'); ?>
-					<div class="share-rate-txt">
-						<label class="uppercase">Mob Rank: <span><?php echo "#".$your_rank;?></span></label>
-					</div>
-				</div>
+				<?php include_once($config['include_path_admin'].'top_bloggers.php'); ?>
 				
 			</div>
 
-			<?php include_once($config['include_path_admin'].'earnings_information.php'); ?>
 
 		</div>
 

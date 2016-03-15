@@ -212,7 +212,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 					</div>
 				</form>
-				</section>
+			</section>
 		</div>
 	</main>	
 

@@ -146,17 +146,6 @@ $(document).ready(function (){
 		}
 	});
 
-	// Limit the user to select no more than 5 categories at the same time
-	/*if($("input[type=checkbox]:checked").length >= 5){
-		$("input[type=checkbox]").not(":checked").attr("disabled",true);
-	}  
-
- 	$("input[type=checkbox]").click(function() {
-    	var bol = $("input[type=checkbox]:checked").length >= 5;  
-
- 		$("input[type=checkbox]").not(":checked").attr("disabled",bol);
-   });*/
-   //End
 	
 	//$('.tooltip').mpTooltip();
 	$('.preview').mpPreview();
@@ -540,7 +529,7 @@ $(document).ready(function (){
 
 
 	//	Handle click of add new list item...
-	var addText = document.getElementById("large-add-text"),
+	/*var addText = document.getElementById("large-add-text"),
 	addNewListItemDiv = document.getElementById("add-list-item"),
 	addForm = document.getElementById("page-list-item-data-add-form");
 	if(addNewListItemDiv){
@@ -556,7 +545,7 @@ $(document).ready(function (){
 			addNewListItemDiv.style.backgroundColor="#eee";
 			addNewListItemDiv.style.cursor="auto";
 		}
-	}
+	}*/
 	
 	$('input[name="collections_name-s"]').SDSeoTitleAutoComplete("collections_seoname-s");
 	$('input[name="page_list_title"]').SDSeoTitleAutoComplete("page_list_seo_title", "seo_title_updated");
@@ -700,52 +689,32 @@ if($('#preview')){
 		var preview = $(this),
 		prev_box = $('#preview-article'),
 		title = $('#article_title-s').val(),
-		body = $('#article_body-nf').text(),
+		body = $('.fr-element').html(),
 		contributor = $('#contributor-name').val(),
 		category = $('#article_categories option:selected').text(),
-		date =  new Date($('#creation_date').val()),
+		//date =  new Date($('#creation_date').val()),
 		template = $(prev_box).html(),
-		id = $('#a_i').val(),
-		day = date.getDate(),
-		month = date.getMonth(),
-		year = date.getFullYear();
+		id = $('#a_i').val();
+		//day = date.getDate(),
+		//month = date.getMonth(),
+		//year = date.getFullYear();
 
 		$('.close').click(function(e){
 			$('body').removeClass('show-modal-box-prev-art');
 		});
 
 		$('#article-title').text(title);
-		$('#article-content').html(body);
-		$('#article-category').text(category).addClass(category);
+		$('#article-body').html(body);
+		//$('#article-category').text(category).addClass(category);
 		
-		$('#article-author').text(contributor);
+		//$('#article-author').text(contributor);
 		
-	  $('#article-date').text(month+'-'+day+'-'+year);
+	  //$('#article-date').text(month+'-'+day+'-'+year);
 		$('#article_img').attr('src', 'http://images.puckermob.com/articlesites/puckermob/large/'+id+'_tall.jpg');
 		$('body').addClass('show-modal-box-prev-art');
 	
 	});
 }
-
-$('.unfollow-author').each( function(){
-	$(this).on('click', function(e){
-		e.preventDefault();
-
-		var parent = $(this).parents('#about-the-author'),
-		author_id = $(parent).attr('data-info'),
-		reader_email = $('#reader_email').val();
-
-		$.ajax({
-			type: "POST",
-			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-			data: { author_id: author_id, reader_email: reader_email, task:'unfollow-author' }
-		}).done(function(data) {
-			if(data){
-				$(parent).remove();
-			}
-		});
-	});
-});
 
 if(document.body.id == 'editarticle'){
 	

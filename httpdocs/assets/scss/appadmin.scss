@@ -198,7 +198,7 @@ html {
 small {font-family: $header-font-family;}
 h5, h6 {font-family: $body-font-family;}
 i {margin-left: 5px; margin-right: 5px;}
-
+label{ font-size: 1rem !important;}
 a{ outer: none; }
 .panel{ border: none; border-radius: 0px; }
 
@@ -571,15 +571,23 @@ select#categories{background-color: #01b88a; color: #fff; font-size: 1.2rem; hei
 .label-wrapper {
 	button#preview, button#submit, button#publish{ 
 		background: #5A9859;
-	    padding: 0.8rem;
-	    margin-bottom: 0.8rem;
+	    padding: 1%;
 	    width: 100%;
-	    font-size: 1.1rem;
+	    font-size: 100%;
+	    min-height: 2.5rem;
+	    height: 100%;
 	} 
+}
+@media #{$large-up}{
+	label-wrapper {
+		button#preview, button#submit, button#publish{ 
+			padding: 10%;
+		}
+	}
 }
 select{ background-color: #01b88a; color: #fff; font-size: 1.2rem;  font-family: Oslo; background-size: 1.3rem; background-image:url("http://www.puckermob.com/assets/img/Down-Arrow2.png");}
 span.postfix, label.postfix{ color: #aaa;}
-.prefix, .postfix{ height: 2.5rem;}
+.prefix, .postfix{ height: 2.5rem; font-size:10px;}
 #sizing-addon2{
 	padding: 0.7rem;
     height: 2.5rem;
@@ -597,13 +605,7 @@ span.postfix, label.postfix{ color: #aaa;}
     margin-bottom: 10px;
     font-family: OsloBold;
 }
-@media #{$large-up} {
-	#image-drop{
-	    background: url('http://images.puckermom.com/articlesites/sharedimages/DropImageBG.png') no-repeat;
-	    background-size: 100% 100%;
-	    min-height: 20rem;
-	}
-}
+
 #img-container{ 
 	padding: 10% 5%;
 	.fa-file-image-o{ color: #fff; margin-bottom:2rem; margin-top:1px; font-size:50px !important;}
@@ -631,6 +633,90 @@ span.postfix, label.postfix{ color: #aaa;}
 	}
 
 }
+
+#editarticle {
+	#image-drop{
+		background: #888;
+		min-height:auto;
+	}
+
+	#img-container{
+	 	padding: 0 !important;
+	
+		a{ color: #eee !important; font-size:14px;}
+		p{ margin-bottom: 5px; color: #eee !important;}
+		label{ color: #fff !important; font-family:OsloBold; font-size: 1.2rem !important; }
+		.lib-img-wrapper{
+		    height: 115px;
+		    display: table-cell;
+		    vertical-align: middle;
+		    margin-bottom: 0;
+		    padding-bottom: 0;
+		    padding: 25% 8px;
+		}
+	}	
+}
+
+@media #{$large-up} {
+	#image-drop{
+	    background: url('http://images.puckermom.com/articlesites/sharedimages/DropImageBG.png') no-repeat;
+	    background-size: 100% 100%;
+	    min-height: 20rem;
+	}
+
+	#editarticle {
+		#image-drop{
+			background: #888;
+			min-height:auto;
+		}
+
+		#img-container{
+		    text-align: center;
+   			padding: 2% !important;
+
+		 #search-lib{
+		 	color: #fff;
+		 	font-size: 14px;
+		 }
+		 a{ color: #eee !important; font-size:14px;}
+		 p{ margin-bottom: 5px; color: #eee !important;}
+		label{ color: #fff !important; font-family:OsloBold; font-size: 1.2rem !important; }
+		.lib-img-wrapper{
+			     height: auto;
+			    display: inherit;
+			    padding: 0;
+			    text-align:center;
+			}
+		}
+
+
+		.dropbox-image-edit{
+			img{
+			max-width: 700px;
+		    height: auto;
+		    max-height: 260px;
+			}
+		}
+		
+		
+	}
+}
+
+@media #{$xxlarge-up} {
+	#editarticle {
+
+		#img-container{
+			text-align:left;
+
+			.lib-img-wrapper{
+			   
+			    text-align:left;
+			}
+		}	
+	}
+}
+
+
 
 @media #{$large-up} {
 	#img-container{ 
@@ -692,7 +778,7 @@ select:hover{background-color:#ddd; background-image:url("http://www.puckermob.c
 
 //FORM SETTINGS
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{
-	font-size: 1.5rem;
+	font-size: 1rem;
 	text-transform: capitalize;
 	height:2.5rem;
 	padding:0.35rem;
@@ -709,7 +795,7 @@ textarea{
 	min-height:180px;
 	background: #eee !important;
 	padding: 0.8rem;
-	font-size:1.2rem;
+	font-size:1rem;
 }
 
 
@@ -780,8 +866,8 @@ form .gradient-button.red-gradient {background: -moz-linear-gradient(center top 
 //CONTRIBUTORS LIST
 .admin-contributor{
 	label{
-		    font-size: 18px;
-    font-family: OsloBold;
+		font-size: 18px;
+    	font-family: OsloBold;
 	}
 }
 .admin-contributor-label { border-bottom: 1px solid #ddd; margin-bottom: 0.5rem; padding-bottom: 0; margin-top: 2rem; }
@@ -1234,6 +1320,7 @@ input[type="text"], input[type="email"]{
 }
 select{
 	background-color: #eee;
+	font-size: 1rem;
 	padding: 5px 15px;
 	color: #777;
 	text-transform: uppercase;
@@ -1279,7 +1366,7 @@ form#user-account-delete-form {
 /*ARTICLE PREVIEW CONTENT*/
 #preview-article{
 	.close{z-index:999;}
-	#article-summary{background:#fff;}
+	#article-summary{background:#fff; height: 35rem; overflow: scroll;}
 	#popup-content div{-web-kit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;}
 }
 
@@ -1367,13 +1454,14 @@ form#user-account-delete-form {
 .vertical-align-center{ height: 85px; display: table-cell !important; vertical-align: middle;}
 
 .related_articles, select.related_articles:hover{
+ font-size:14px;
   background-position-x: 99%;
   background: #fff;
   color: rgba(0, 0, 0, 0.75);
   background-repeat: no-repeat;
-  min-height: 2.5rem;
-  background-size: 5rem;
-  background-position: 103% center;
+  min-height: 2rem;
+  background-size: 3rem;
+  background-position: 105% center;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+) !important;
 }
 
@@ -1400,10 +1488,14 @@ form#user-account-delete-form {
 }
 
 /*ADS OVERRIDE*/
-.advertising-providers label{ width: 7rem; display: inline-block; }
+.advertising-providers label{ 
+	font-size: 12px;
+    padding-left: 0;
+    margin-top: 10px; 
+}
 .advertising-providers select{
 	text-transform: uppercase;
-	font-size: medium;
+	font-size: 14px;
 }
 .advertising-box hr{ margin:0;}
 .advertising-box h3{   margin-bottom: 0.2rem; }

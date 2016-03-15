@@ -59,6 +59,7 @@
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
 				case isset($_POST['article_title-s']):
+
 					$updateStatus = $adminController->updateArticleInfo($_POST);
 					$updateStatus['arrayId'] = 'article-info-form';
 					break;
@@ -127,38 +128,15 @@
 			</div>
 
 			<section id="article-info" class="small-12 columns">
+
+			<?php if(file_exists($pathToTallImage)){
+				$tallImageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/10571_tall.jpg';//$config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg';
+				include_once($config['include_path_admin'].'dropbox_image_edit.php');	
+			?>
+
+			<?php }else{  ?>
 				<?php include_once($config['include_path_admin'].'dropbox_image.php'); ?>	
-			<!--	<div class="small-12 xxlarge-8 left padding margin-bottom" id="image-drop" >
-					<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
-						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-						<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
-						<div class="dz-message padding" data-dz-message>
-							<div id="img-container">
-						   		<div class="image-icon  padding-top"><i class="fa fa-file-image-o font-4x"></i></div>
-						   		<label class="padding-top large-font-size uppercase main-color hide-small">
-						   			Add an Image to your article
-								</label>
-						   		<label class="margin-bottom">Drag Image here or click to upload</label>
-						   		<label class="margin-top">Don't have an image?</label>
-
-						   		<label> Choose from our free <span class="photo-library" id="search-lib">Photo Library!</span></label>
-						   		<label class="mini-fonts padding-bottom margin-top-2x">Size: 784x431 pixels</label>
-						   	</div>
-						</div>
-					</form>
-
-					<div class="dropzone-previews">
-						<?php if(file_exists($pathToTallImage)){?>
-						<?php 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg';	?>
-						<div id="main-image"class="dz-preview dz-image-preview dz-processing dz-success">
-							<div class="dz-details columns">	
-								<img class="data-dz-thumbnail" style="width:100%;" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
-							</div>
-						</div>
-						<?php }  ?>
-					</div>
-				</div>-->
-
+			<?php } ?>
 				
 				<form id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -173,17 +151,8 @@
 						</div>
 					</div>
 
-					<?php if($admin_user){?>
-					<div class="row">
-					    <div>
-							<input type="text" disabled  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required  />
-						</div>
-					</div>
-					<?php }else{?>
-						<input type="hidden" disabled  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
+					<input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
 					
-					<?php }?>
-				
 					
 					<!-- BODY -->
 					<div class="row margin-bottom margin-top" >
@@ -204,8 +173,8 @@
 				
 					</div>
 					
-					<div class="small-12 xxlarge-4 right padding" id="right-new-article">		
-						<div class="row label-wrapper ">
+					<div class="small-12 xxlarge-4 right padding " id="right-new-article">		
+						<div class="row label-wrapper show-for-xxlarge-up ">
 							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up">PREVIEW</button></div>
 							<div class="small-12 large-4 column"><button type="submit" id="submit" name="submit" style="background-color: #016201;" >SAVE</button></div>
 							<?php if( $admin_user || $blogger || $externalWriter ){
@@ -227,7 +196,6 @@
 						<!-- DESCRIPTION -->
 						<div class="row">
 						    <div>
-						    	<?php // if(strlen($article['article_desc']) > 0 ){ echo '<label class="small-label">Description:</label>'; }?>
 								<textarea  name="article_desc-s" id="article_desc-s"  required placeholder="Enter description"  maxlength="150"><?php if(isset($article['article_desc'])) echo $article['article_desc']; ?></textarea>
 							</div>
 						</div>	
@@ -383,21 +351,26 @@
 							</label>
 							</div>
 						</div>
-					
-					
 
-					<!--<div class="buttons-container">
-						<button type="submit" id="submit" name="submit" class="">SAVE</button>
-						<button type="button" id="preview" name="preview" class="">PREVIEW</button>
-						<?php if( $admin_user || $blogger || $externalWriter ){
+						<div class="row label-wrapper show-for-large-up hide-for-xxlarge-up">
+							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up">PREVIEW</button></div>
+							<div class="small-12 large-4 column"><button type="submit" id="submit" name="submit" style="background-color: #016201;" >SAVE</button></div>
+							<?php if( $admin_user || $blogger || $externalWriter ){
 							$label = "PUBLISH";
 							$val = 1;
 							if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
-							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;}
-						?>
-							<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish" class=""><?php echo $label; ?></button>
-						<?php }?>
-					</div>-->
+							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUB"; $val = 1;} ?>
+								<div class="small-12 large-4 column  left no-padding"><button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="show-for-large-up" style="background: #622000; "><?php echo $label; ?></button></div>
+							<?php }?>
+						</div>
+					
+						<div class="row label-wrapper hide-for-large-up ">
+							<div class="small-12 large-4 column no-padding hide-for-large-up">
+								<button class="small-12 large-5 columns radius" type="submit" id="submit" name="submit" style="background-color: #016201;" >SAVE</button>
+							</div>
+							
+						</div>	
+					
 					</div>
 				</form>
 			</section>
@@ -420,9 +393,15 @@
 	</div>
 	
   	
-	<?php include_once($config['include_path_admin'].'footer.php'); ?>
+
+	<!-- INFO BADGE -->
+	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
+		<?php include($config['include_path_admin'].'info-badge.php');?>
+	</div>
+
 	<!-- ARTICLE PREV TEMPLATE -->
 	<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>
+	
 	<!-- BOTTOMSCRIPTS -->
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 	<script>

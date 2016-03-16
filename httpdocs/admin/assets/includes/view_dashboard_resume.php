@@ -13,15 +13,13 @@
 		 		$rank = $rank_pw['rownum'];
 		 	}
 		 }
-	}
-
-
-
+	 }
 
 	//GET PAGEVIEWS THIS MONTH
 	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
-	$pageviews = 0;
-	if(isset($earnings['total_us_pageviews'])) $pageviews = $earnings['total_us_pageviews'];
+	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
+	$balance_due = isset($earnings['to_be_pay']) ? $earnings['to_be_pay'] : 0;
+
 
 ?>
 
@@ -29,14 +27,14 @@
 	<div  class="small-12 large-4 xlarge-3 columns  no-padding ">
 		<div style="background-color: #7BB583; " class="small-12 columns articles_resume radius">
 		<h3 class="small-12 columns uppercase">Current Earnings</h3>
-			<span class="small-12 columns bold"><?php echo money_format('%(#10n', $pageviews); ?></span>
+			<span class="small-12 columns bold"><?php echo money_format('%(#10n', $current_earnings); ?></span>
 			<span class="small-12 columns  mini-fonts uppercase show-for-xxlarge-up ">this month</span>
 		</div>
 	</div>
 	<div  class="small-12 large-4 xlarge-3 columns ">
 		<div style="background-color: #867BB5; " class="small-12 columns articles_resume radius" >
 		<h3 class="small-12 columns uppercase">Balance Due</h3>
-		<span class="small-12 columns bold"><?php echo '$0.00'; ?></span>
+		<span class="small-12 columns bold"><?php echo money_format('%(#10n', $balance_due); ?></span>
 		</div>
 	</div>
 	<div class="small-12 large-4 xlarge-3 columns  no-padding">

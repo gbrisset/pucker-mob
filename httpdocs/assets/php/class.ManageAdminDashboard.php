@@ -200,7 +200,7 @@ class ManageAdminDashboard{
 		$year = date('Y');
 		$month = date('n');
 
-		$s = "SELECT total_earnings, total_us_pageviews, contributor_id 
+		$s = "SELECT total_earnings, total_us_pageviews, contributor_id, to_be_pay
 		FROM contributor_earnings 
 		WHERE  year = $year AND month = $month ";
 

@@ -56,7 +56,8 @@
 		}
 	}
 
-	$rate = $dashboard->get_current_rate( $month, $contributor_type );
+	$rate = $dashboard->get_current_rate( 2, $contributor_type );
+	if($rate) $rate = $rate['rate'];
 	$total = 0;
 	
 	$last_month = $current_month-1;
@@ -69,8 +70,8 @@
 	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 
 	$user_type = $userData["user_type"];
-
-	var_dump($rate );
+	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
+	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 
 ?>
 <!DOCTYPE html>
@@ -96,22 +97,28 @@
 			<div class="  mobile-12 small-12 columns padding-bottom ">
 				<h1>MY DASHBOARD</h1>
 			</div>
-
 			
-				<!-- ARTICLES RESUME INFO --> 
-				<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
+			<!-- ARTICLES RESUME INFO --> 
+			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
 			
-
+			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns no-padding">
-				<!-- CHARTS --> 
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
 			</div>
 
-			<!-- Right Side -->
-			<div class="small-12 xxlarge-3 right padding" >
-				<!-- HOT TOPICS --> 
-				<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
+			<div class="small-12 columns no-padding margin-top hide-for-large-up">
+				<div class="month-to-date radius">
+					<label>$<?php echo $current_earnings; ?></label>
+					<span class="uppercase">Month to Date</span>
+				</div>
+			</div>
 
+			<!-- Right Side -->
+			<div class="small-12 xxlarge-3 right padding rightside-padding" >
+				<!-- HOT TOPICS --> 
+				<div class="small-12  columns margin-bottom no-padding">
+					<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
+				</div>
 				<?php include_once($config['include_path_admin'].'top_bloggers.php'); ?>
 				
 			</div>
@@ -121,7 +128,11 @@
 
 	</main>
 
-	<?php include_once($config['include_path_admin'].'footer.php');?>
+	<!-- INFO BADGE -->
+	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
+		<?php include($config['include_path_admin'].'info-badge.php');?>
+	</div>
+	<?php //include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php');?>
 </body>
 </html>

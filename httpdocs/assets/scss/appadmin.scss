@@ -1640,32 +1640,44 @@ form#user-account-delete-form {
 		margin-top:4px;
 	}
 }
+
+.hottopics{ margin-top: 0.95rem !important; }
 .filter-by-status, .hottopics{
-	    background: #bbb;     
+		padding-top:7px;
+		padding-bottom:7px;
+	    background: #bbb; 
 	    
 	    border: 1px solid #ddd;
 	    h3{ 
-	    	font-size: 20px;  
+	    	font-size: 22px;  
 	    	color: #fff;
-	    	margin: 0px;
-    		margin-top: 7px !important;
+	    	margin: 7px 0;
+	    	border-bottom:1px solid #eee;
 	    }
-	    label{ font-size: 20px; color: #fff;  margin-top: 2px;}
+	    label{ font-size: 18px !important; color: #fff;  margin-top: 2px;}
 	    a{ outline:none;  font-size: 20px; color: #fff;}
 }
-@media #{$large-up} {
 
+@media #{$large-up} {
+.hottopics{ margin-top: 0 !important; }
 .filter-by-status, .hottopics{
 	background: #eee;     
 	padding-bottom: 10px; 
 	padding-top:10px;    
 	border: 1px solid #ddd;
+	
 	    
-	h3{ font-size: 20px; color: #666; margin-bottom: 0.625rem;}
+	h3{ font-size: 20px; color: #666; margin: 0; margin-bottom: 0.625rem;}
 	label{ font-size: 15px; color: #888;}
 	a{ outline:none;  font-size: 15px; color: #222;}
 }
 	
+}
+
+.rightside-padding{ padding: 0 !important; }
+@media #{$large-up} {
+	.rightside-padding{ padding: 0 10px !important; }
+
 }
 
 //CHARTS
@@ -1678,10 +1690,10 @@ form#user-account-delete-form {
 
 	h3{
 	    font-size: 1.7rem;
-    text-transform: uppercase;
-    color: #555;
-    font-family: OsloBold;
-    margin: 10px 2rem;
+	    text-transform: uppercase;
+	    color: #555;
+	    font-family: OsloBold;
+	    margin: 10px 2rem;
 	}
 
 	.chart-legend{
@@ -1694,4 +1706,19 @@ form#user-account-delete-form {
 		}
 
 	}
+}
+
+.month-to-date{
+	background: $main-color;
+    color: #fff;
+    text-align: CENTER;
+    padding: 0.7rem;
+    opacity: 0.7;
+    
+    label{
+    	font-size: 3rem !important;
+    	color: #fff;
+    	font-family: OsloBold;
+    }
+    span{ color: #fff; }
 }

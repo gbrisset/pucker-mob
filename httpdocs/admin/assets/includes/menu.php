@@ -27,7 +27,6 @@
 				<a href="<?php echo $config['this_admin_url']; ?>dashboard/">DASHBOARD</a>
 			</li>
 
-			
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url']; ?>articles/newarticle/">New Article</a>
 			</li>
@@ -42,7 +41,7 @@
 
 			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>">Earnings & Analytics</a>
+				<a href="<?php echo $config['this_admin_url']; ?>earnings">Earnings & Analytics</a>
 			</li>
 
 			<li class="small-12 columns border-bottom padding-top padding-bottom">

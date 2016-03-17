@@ -8,18 +8,20 @@ var EarningsObj = {
 	chart_info : {}, article_list : {},
 	total_earnings: 0,
 	options : {
-          title: ' ',
-          height: 350,
-          legend: { position: 'none' },
-          vAxis: { gridlines: { count: 4 }, format: 'currency' },
-          hAxis: { 
-			title: 'Tracked Categories' 
-			}, 
-          colors: ['#156A17'],
-    },
+	       	  legend : { position:"none"},
+	          chart: {
+	            title: '',
+	            subtitle: '',
+	          },
+	          bars: 'vertical',
+	          vAxis: {format: 'decimal'},
+	          height: 400,
+	          colors: ['#014694', '#627E93'],
+	},
+    
 	initChart: function(){
-	    // Set a callback to run when the Google Visualization API is loaded.
-	    google.setOnLoadCallback(EarningsObj.drawChart);
+	   
+	     google.charts.setOnLoadCallback(EarningsObj.drawChart);
     },
     setValues: function( start_date, end_date ){
     	EarningsObj.start_date = start_date;
@@ -171,8 +173,9 @@ var EarningsObj = {
 		});
 	},
 	drawChart: function( ) {
-        if(EarningsObj.chart_info.length > 0){
+       // if(EarningsObj.chart_info.length > 0){
         // Create the data table.
+        /*
 	    var data = new google.visualization.DataTable();
 
 	    data.addColumn('string', ' ');
@@ -182,10 +185,31 @@ var EarningsObj = {
       
         var chart = new google.charts.Bar(document.getElementById('bar_chart'));
 
-        chart.draw(data, EarningsObj.options);
-        }else{
-        	$('#bar_chart').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
-        }
+        chart.draw(data, EarningsObj.options);*/
+        console.log(EarningsObj.chart_info);
+        var data = google.visualization.arrayToDataTable([
+	        ['', 'This Month', 'Last Month'],
+	        ['2014', 1000, 400],
+	        ['2015', 1170, 460],
+	        ['2016', 660, 1120],
+	        ['2017', 1030, 540]
+	    ]);
+
+	       
+
+
+	        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+
+	        chart.draw(data, google.charts.Bar.convertOptions(EarningsObj.options));
+
+
+	        
+	      
+
+
+      //  }else{
+       // 	$('#chart_div').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
+      //  }
      },
      updateTotalEarnings: function(){
      	$('#total_earned_graph').text('$' + parseFloat(EarningsObj.total_earnings, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())

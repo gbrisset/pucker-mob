@@ -23,7 +23,7 @@
 
 ?>
 
-<div class="small-12 columns  no-padding margin-bottom show-for-large-up">
+<div class="small-12 columns no-padding-right margin-bottom show-for-large-up">
 	<div  class="small-12 large-4 xlarge-3 columns  no-padding ">
 		<div style="background-color: #7BB583; " class="small-12 columns articles_resume radius">
 		<h3 class="small-12 columns uppercase">Current Earnings</h3>

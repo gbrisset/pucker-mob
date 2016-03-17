@@ -1,4 +1,4 @@
-<div class="small-12 columns show-for-large-up margin-top no-padding">
+<div class="small-12 columns show-for-large-up no-padding">
 	<div class="small-12 columns radius hottopics">
 		<h3 class="margin-top bold">TOP 5 BLOGGERS</h3>
 		<div class="">

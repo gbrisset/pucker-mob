@@ -36,7 +36,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						echo $mostReadArticle;
 
 						//Replace 2nd article with Adblade
-						if($articleNumber == 1 ){?>
+						if($articleNumber == 3 ){?>
 							<?php if( !$has_sponsored ){?>
 							<div class="columns todays-favorites fade-in-out">
 								<!-- BEGIN JS TAG - puckermob.com Desktop 300x250 < - DO NOT MODIFY -->

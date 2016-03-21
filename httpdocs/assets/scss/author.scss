@@ -78,14 +78,15 @@ label.follow-author{
 }
 
 @media #{$small-only} { 
+	 #about-the-author #about-the-author-bg { border-top: none; border-bottom: none; }
 	.hide-on-small-and-mobile{display:none;}
 	.author-on-mobile-small{display:inline;}
 	.author-on-medium-up{display:none;}
-	 #about-the-author #about-the-author-bg .author-info{width: 72%; margin-left: 0.4rem; padding-top:0.3rem; }
-	 .author-image{ max-width: 60px !important; min-width:60px  !important; } 
+	 #about-the-author #about-the-author-bg .author-info{margin-left: 0.4rem; padding-top:0.3rem; }
+	 .author-image{ max-width: 50px !important; min-width:50px  !important; } 
 	 .follow-author{ font-size:0.8rem; height: 5.8rem; }
 	 #about-the-author h4{ font-size: 0.87rem; height: 2rem; display: table-cell; vertical-align: middle; }
-	 #about-the-author #about-the-author-bg{width:100%; padding: 0.2rem 0 0.15rem 0 !important;  margin:0.2rem 0; }
+	 #about-the-author #about-the-author-bg{width:100%; padding: 0.2rem 0 0.5rem 0 !important;  margin:1rem 0 1.1rem 0; }
 	 
 	 #about-the-author #about-the-author-bg p{ margin-top:-5px; color: #777; font-family: CrimsonText, "Oslo","Helvetica Neue","Helvetica",Helvetica,sans-serif !important; }
 	 #about-the-author #about-the-author-bg p label{ display: inline; font-size: 0.65rem; text-transform: capitalize; }
@@ -98,14 +99,15 @@ label.follow-author{
 }
 
 @media #{$mobile-only} { 
+	#about-the-author #about-the-author-bg { border-top: none; border-bottom: none; }
 	.hide-on-small-and-mobile{display:none;}
 	.author-on-mobile-small{display:inline-block;}
 	 .author-on-medium-up{display:none;}
-	 #about-the-author #about-the-author-bg .author-info{width: 72%; margin-left: 0.4rem;  padding-top:0.3rem;}
-	 .author-image{ max-width: 60px !important; min-width:60px !important;} 
+	 #about-the-author #about-the-author-bg .author-info{margin-left: 0.4rem;  padding-top:0.3rem;}
+	 .author-image{ max-width: 50px !important; min-width:50px !important;} 
 	 .follow-author{ font-size:0.8rem; height: 5.8rem;}
-	 #about-the-author h4{ font-size: 0.87rem; height: 2rem; display: table-cell; vertical-align: middle;}
-	 #about-the-author #about-the-author-bg{width:100%; padding: 0.2rem 0 0.15rem 0 !important; margin:0.2rem 0;}
+	 #about-the-author h4{ font-size: 1rem !important; height: 50px !important; color: #222; font-family: Oslo; display: table-cell; vertical-align: middle;}
+	 #about-the-author #about-the-author-bg{width:100%; padding: 0.2rem 0 0.5rem 0 !important; margin:1rem 0 1.1rem 0;}
 	
 	 #about-the-author #about-the-author-bg p{ margin-top:-5px; font-family: CrimsonText, "Oslo","Helvetica Neue","Helvetica",Helvetica,sans-serif !important;}
 	 #about-the-author #about-the-author-bg p label{ display: inline; font-size: 0.65rem; text-transform: capitalize; }

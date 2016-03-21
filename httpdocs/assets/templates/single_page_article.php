@@ -44,6 +44,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	div#tl_ad { margin-top: 0 !important; padding-top: 0 !important;}
 	#article-content p:first-child{margin-bottom: 1.25rem !important;}
 	#kikvid-3043, #vm_inline{ display:inline-block !important; }
+	#adunit-300x250-3159{ display:inline-block; }
 </style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
@@ -61,37 +62,25 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 			
 		<!-- TITLE -->
-		<h1 id="social_catcher"style="margin: 0.5rem 0;"><?php echo $article_title; ?></h1>
+		<h1 id="social_catcher"style="margin: 1rem 0;"><?php echo $article_title; ?></h1>
 		
 		<section id="article-content-2">
 			
 			<!-- SOCIAL DESKTOP -->
-			<div class="row social-media-container  padding-bottom social_sticky">
-				<a class="addthis_button_facebook small-4 left">
+			<div class="social-media-container  padding-bottom social_sticky">
+				<a class="addthis_button_facebook small-12 left">
 					<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
 				</a> 
-				<a class="addthis_button_pinterest_share small-2 left">
+				<!--<a class="addthis_button_pinterest_share small-2 left">
 					<label class="label-social-button-2-mobile left"><i class="fa fa-pinterest" style="margin-right: 9%; font-size: 1.2rem;position: relative; top: 1px; left: 3px;"></i></label>
 				</a>
-				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
+				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>-->
 			</div>	
 			
 			<!-- ABOUT THE AUTHOR -->
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
-				<!--<div class="row newsletter-box">
-					 <div class="small-12 columns no-padding newsletter-wrapper">
-					      <div class="row collapse">
-					        <label>GET THE DAILY <span>MOB REPORT<span></label>
-					        <div class="small-10 columns">
-					          <input type="text" id="visitor_email" name = 'visitor_email' placeholder="Type Your Email Address" />
-					        </div>
-					        <div class="small-2 columns" >
-					          <span class="postfix" id="newsletter-submit"><i class="fa fa-caret-right"></i></span>
-					        </div>
-					        <label id="msg" ></label>
-					      </div>
-				    </div>
-				</div>-->
+			
+
 		</section>
 
 		<!-- DISCLAIMER -->
@@ -107,11 +96,22 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- Article Content -->
 		<div class="row clear" style="margin-top: -1rem;">
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
-				
+			
+			<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
+			<!-- /73970039/engage_unit -->
+			<div id='div-gpt-ad-1458332569430-0' style='height:250px; width:300px; display: inline-block;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1458332569430-0'); });
+				</script>
+			</div>
+			</div>
+
 			<!-- ARTICLE BODY -->
 			<div id="article-body">
-			
 				<?php echo $article_body; ?>
+			</div>
+			<div class="columns inarticle-ad ad-unit hide-for-print"  style="display:inline">
+				<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
 			</div>
 			
 			<!-- RELATED ARTICLES -->
@@ -178,6 +178,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php } ?>
 
 			<?php include_once($config['include_path'].'header_social.php'); ?>
+			
 			<!-- BRANOVATE -->
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
@@ -192,32 +193,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<?php }?>
 				</div>
 			</div>
-
-			<!-- CARAMBOLA  -->
-			<div class="ad-unit hide-for-print padding-top" style="display: inline-block;">
-				<style>
-				.cbola-trivia-box {z-index: 99 !important;}
-				#social-media-container-header {
-				      -webkit-transform: translateZ(100000px);
-				                 transform: translateZ(100000px);
-				}
-
-				.cbola-trivia-box {
-				      -webkit-transform: translateZ(0);
-				                 transform: translateZ(0);
-				}
-				</style>
-				<div id="get-content" style="text-align:center; display: inline-block;">
-					<img height='0' width='0' alt='' src='http://pixel.watch/pssj' />
-					<script class="carambola_InContent" type="text/javascript">
-						(function (i,d,s,o,m,r,t,g) {
-						var e=d.getElementById(r);if(e===null){
-						var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else if(typeof i[t]!=='undefined'){i[t]++}
-						else{i[t]=1}
-						})(window, document, 'ic', 'script', 'cbola', 'carambola_proxy','Cbola_IC','http://route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233')
-					</script>
-				</div>
-			</div>
+			
 
 			<!-- IMAGE SOURCE -->
 			<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
@@ -239,17 +215,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<section id="separator-section" class="row no-padding"></section>				
 				<!-- COMMENTS BOX -->
 				<?php include_once($config['include_path'].'disqus.php'); ?>
-				<?php  //if(isset($article_id) && $article_id == 4215 ){  ?>
-
-				<!-- TOK MEDIA 
-				<div class="ad-unit hide-for-print padding-top">
-					<div id="mobile-instream-toksnn-ad-loader" class="">
-						<div id="get-content" style="text-align:center; display: inline-block;">
-							<script src="http://www.toksnn.com/ads/pkm_ent1_mob_us.js?player=av&amp;adTag=avpkm&amp;pub=sqmpkmusm"></script>
-						</div>
-					</div>
-				</div>-->
-				<?php //} ?>
+	
 			</section>
 		
 
@@ -367,9 +333,14 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 									<hr>
 					</div>
 				<?php }?>
-				
-					<div id="ld-6320-990"></div><script>(function(w,d,s,i){w.ldAdInit=w.ldAdInit||[];w.ldAdInit.push({slot:8158967306013287,size:[0, 0],id:"ld-6320-990"});if(!d.getElementById(i)){var j=d.createElement(s),p=d.getElementsByTagName(s)[0];j.async=true;j.src="//cdn2.lockerdome.com/_js/ajs.js";j.id=i;p.parentNode.insertBefore(j,p);}})(window,document,"script","ld-ajs");</script>
 
+				<!-- CARAMBOLA
+				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+					<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy', 'Cbola_initializeProxy', 'http://route.carambo.la/inimage/getlayer?pid=spdsh12')</script>
+				</section> -->
+				
+				<!--	<div id="ld-6320-990"></div><script>(function(w,d,s,i){w.ldAdInit=w.ldAdInit||[];w.ldAdInit.push({slot:8158967306013287,size:[0, 0],id:"ld-6320-990"});if(!d.getElementById(i)){var j=d.createElement(s),p=d.getElementsByTagName(s)[0];j.async=true;j.src="//cdn2.lockerdome.com/_js/ajs.js";j.id=i;p.parentNode.insertBefore(j,p);}})(window,document,"script","ld-ajs");</script>
+				-->
 					
 								
 				<!-- Social Media Icons -->
@@ -412,11 +383,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					    target_type: 'mix'
 					  });
 					</script>
-				</section>
-
-				<!-- CARAMBOLA -->
-				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
-					<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy', 'Cbola_initializeProxy', 'http://route.carambo.la/inimage/getlayer?pid=spdsh12')</script>
 				</section>
 
 				

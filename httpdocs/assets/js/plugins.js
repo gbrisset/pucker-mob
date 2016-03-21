@@ -155,7 +155,7 @@ var inBodyAd = {
                         if(elm == 'li') this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', ' inarticle-ad ad-unit hide-for-print' );
                         else this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print' );
                     }else{
-                        this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'row inarticle-ad ad-unit hide-for-print no-padding margin-bottom ad-unit' );
+                        this_obj.insertElement($(this), 'inarticle'+index+'-ad', 'div', 'columns inarticle-ad ad-unit hide-for-print no-padding margin-bottom ad-unit' );
                     }
                     if(iframe) loadAd(document.getElementById('inarticle'+index+'-ad'), ad);    
                     else this_obj.inserDivAdTag(document.getElementById('inarticle'+index+'-ad'), ad);

@@ -261,8 +261,8 @@ class MPHelpers{
 
 			try{
 				$geo_details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-				 $country_code = isset($geo_details->country) ? $geo_details->country : 'US';
-				 $region = isset($geo_details->region) ? $geo_details->region : 'New York';
+				 $country_code = $geo_details->country;
+				 $region = $geo_details->region;
 
 			}catch (Exception $e) {
 				$country_code = "US";
@@ -272,6 +272,10 @@ class MPHelpers{
 			setcookie('region' ,$region, time()+60*60*24*30); //A YEAR
 		}
 	}
+
+
+
+
 
 }
 ?>

@@ -19,7 +19,7 @@
                   </a>
                 </noscript>
               </div>
-           <?php }else{?>
+           <?php }else{ ?>
             <div id="footer-ad" class="ad-unit"  style="max-width: 46rem; margin: 0 auto;">
               <!-- puckermob.com/home_BTF -->
               <script type="text/javascript">

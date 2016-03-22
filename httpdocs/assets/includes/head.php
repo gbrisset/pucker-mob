@@ -1,19 +1,15 @@
 <head>
 	<meta charset="utf-8" />
 	<?php if ( !$detect->isMobile() ) { ?>
-		<meta http-equiv="x-dns-prefetch-control" content="on" />
-
+		<!--<meta http-equiv="x-dns-prefetch-control" content="on" />-->
 	<?php }
 	
 	$promotedArticle = false; $tag = 'smarties'; $has_sponsored = true;
 	if(isset($isArticle) && $isArticle && isset($articleInfoObj)){ ?>
 		<link rel="canonical" href="<?php echo 'http://www.puckermob.com/'.$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title']; ?>" />
-	<?php 
-		//if($articleInfoObj['article_id'] == 4349 || $articleInfoObj['article_id'] == 4399 || $articleInfoObj['article_id'] == 4396){ $promotedArticle = true; }
-	} ?>
+	<?php } ?>
 
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
-   <!-- <meta content='width=device-width, initial-scale=1' name='viewport'/> -->
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -54,7 +50,7 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="http://www.puckermob.com/assets/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -156,5 +152,25 @@
 	</noscript>
 
 <?php }?>
+
+<script type='text/javascript'>
+  (function() {
+    var useSSL = 'https:' == document.location.protocol;
+    var src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+  })();
+</script>
+
+<script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/73970039/engage_unit', [300, 250], 'div-gpt-ad-1458332569430-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.pubads().enableSyncRendering();
+    googletag.enableServices();
+  });
+</script>
+
 
 </head>

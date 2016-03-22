@@ -15,8 +15,7 @@ if($current_url == "http://www.puckermob.com/lifestyle/what-all-smokers-know-7-r
 	header('Location: http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-');
 	die;
 }
-$categoryInfo = array( "cat_id" => "6",  "cat_name"=> "Lifestyle", "cat_dir_name"=> "lifestyle",
- "cat_desc" => "",  "cat_tags" => "");
+$categoryInfo = array();
 foreach($MPNavigation->categories as $category){
 
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
@@ -90,7 +89,7 @@ if(!is_null($categoryInfo)){
 		
 		<?php if(isset($article_id) && $article_id == 9397 ){?>
 			<div id="ros_adoop"></div> 
-		<?php } ?>
+		<?php  } ?>
 		
 		<?php include_once($config['include_path'].'header.php');?>
 		
@@ -155,6 +154,9 @@ if(!is_null($categoryInfo)){
 	<!-- ADS TO LOAD -->
 	<?php include_once($config['include_path'].'ads_to_load.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php');?>
+
+	<!--<div id="evolve_footer"></div> -->
+
 
 	<!-- MODAL BOX POPUP -->
 	<?php //if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
@@ -279,6 +281,8 @@ include_once($config['include_path'].'login_register_popup.php');
 		</div>
 	</div>
 </div>
+
+
 <!-- FACEBOOK COMMENTS BOX -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -290,12 +294,6 @@ include_once($config['include_path'].'login_register_popup.php');
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<?php if( $promotedArticle ){ ?>
-<!-- SMARTIES -->
-<script language="javascript">document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5470.1/3366273/0/16/ADTECH;loc=100;target=_blank;key=smarties;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
-</script>
-<noscript><a href="http://adserver.adtechus.com/adlink/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5470.1/3366273/0/16/ADTECH;loc=300;key=smarties;grp=[group]" border="0" width="1" height="1"></a></noscript>
-<?php }?>
 
 
 </body>

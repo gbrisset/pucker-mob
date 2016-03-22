@@ -125,8 +125,6 @@
             <li style="margin-left: 1px;"> <a class="my-account-header-link" href="https://www.facebook.com/puckermob" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a></li>
             <li> <a class="my-account-header-link" href="https://twitter.com/Puckermob" target="_blank"><i class="fa fa-twitter fade-in-out"></i></a></li>
             <li class="empty-list "></li>
-            <!--<li id="info-icon"><i class="fa fa-info-circle"></i></li>
-            <li class="empty-list "></li>-->
             <li class="registration-link">
               <a class="my-account-header-link" href="http://www.puckermob.com/admin/register">REGISTER</a>
             </li>
@@ -145,16 +143,6 @@
   </header>
    
   <?php }?>
-  
-  <?php //if($detect->isMobile()){?>
-  <?php //if(isset($article_id) && $article_id != 9380 ){?>
-
-    <!-- Strike Video 
-      <div id="ad-pushdown-2911" style=""></div>
-      <script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/2911/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>
-    -->
-    <?php //}?>
-  <?php //}?>
    
 
   <?php if($detect->isMobile()){?>
@@ -165,11 +153,10 @@
           <label class="label-social-button-2-mobile left" style="font-size: 1rem; font-family: OsloBold !important; text-align: center; padding: 0.5rem 0.5rem 0.5rem 0.25rem;" ><i class="fa fa-facebook-square" style="font-size: 1.5rem; "></i>SHARE</label>
         </a> 
        
-        <div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>
+          <!--<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>-->
       </div>  
      </div>
 
-  <!--  <div id="mobile-top-header-ad" class="top-header-ad row"></div> -->
   <?php }?>
 
   <?php if(!$detect->isMobile()){?>
@@ -182,35 +169,39 @@
     <nav id="top-bar-header-cont" class="top-bar" data-topbar="" data-options="scrolltop: false;"  style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important; '?>">
       <ul class="title-area">
       <?php if(!$detect->isMobile()){?>
-        <li class="name" style="background-color:white;">
-           <a href="<?php echo $config['this_url']; ?>">
-           <h2 style="color:green; margin-top:-2px;">PUCKER<span style="color:black; font-weight: 900;">MOB</span></h2> 
+           <li class="name" style="background-color:white;">
+             <a href="<?php echo $config['this_url']; ?>">
+             <h2 style="color:green; margin-top:-2px;">PUCKER<span style="color:black; font-weight: 900;">MOB</span></h2> 
            <?php }else{?>
              <li class="name">
              <a href="<?php echo $config['this_url']; ?>">
-             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMsAAAAdCAMAAAAzQmgzAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFAAAAIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8g8D4fWgAAABB0Uk5TABAgMEBQYHCAj5+vv8/f7yMagooAAAROSURBVFjD3ZhJluwoDEUFlo2MMbz9r7YGdAJ3kTX8TPIkJgQX9RD9S2OTMjZbZqzIvGRT/5nNBwDh2EyZ4eG7E1mIiEWPcStWy9vXPnhaQryHiBR827H+UERE1jYb0IbPNAyMsgNCJ5HU1qdyCFHfyQM+T+oxbZWk7m8AgMf9IgDFt8ab3xEp6cdSDxpFRCQkIC1fLEsEknfM7A4Ap5lZKgoJMOslIIiI+LP9kogB6KuoU43F+OFS4nLDAmzTQR0QzTvLBqBdjT2AZWJpKCSzFKJQT2gP4FAHhx2XKRZzAgDOXSSrNS2dJYVQdJ3sdOlb5ntmWVIXRUS0xcnGfDvjKwvRUc+fWbxaZQEAe5cIhKXYNwAk01hCdu+2XjtDxPHGYuKIQmRHlq3bzgeLBZxi0YrJNlUkriMpJ7TbGheFmWVHfGMRYL0LhZVFo3ywULWiNbP0DwaaJU5K4x4qlJ/FEl00S97/icWkyUknlgHlV5YS7pK+A6R6zBXFh9V1VzjFEm5Y/Ktetge1FJYR5YPFaJa9BSIiSsAZ6jG9/tLVdqOX+Dd/8Uj0zDKhfLBICYEkAEwqZymRcmssCYAZhfhqZJ2Fq64Ui3uPY7HFqBuWGeWdZQXOblIkaCqPQGw2Y7unE+m0oFmMSzV4NBYj5XaeWIZkPLFcUEgAbmNkWX1PEzsAsu2OGYCQLyyM655LDcAlv8QhV+a8f3zm/ReWmC6FiFxKGF0uBTu4rUexuQDAZGU9sDR9aPn+Wo8ZemdxTyxDQm6ToY1pK78MSb5bvM1/Ncv6CwvOchMphBBCr5P/h15wcip1xKu/eGYWHYEpZM8J2eSLfr70clQmETlCakE9XJLGM8v+aGOGlp/j2KIduoSs7NGm3LmUWMW47snK90UV0v5PLOdDqvxzftH1Qw2/EUimxjNRcfechDgUW9cFaIndv7Psl1h/zfu/xeTY0kmzfgdgq3lmrSznXEPnqWVioT3/4JaFp5/vZd69sdCua6c3lq1LalmitHiu2hGPFYs2sUgzy/rEYqe6odUbUTvtDYvqXj5yZdCV+6HK4zzdWCyqFrRa5MLinlgojlNbFbfOlzSzkO/yX1m4+XQ7kVWJoscvj9ELfa9DNUvIyDcsMhiZ6dZ9zJWeTCzmbCt+7MX6iY7ex3QWm1ryaP2ym24hT8fbOEZGt4/m6FHHnGOM9Hlv1SN3mM9e7JgyCGNonLtr1eRqXdSdGQDPzLzusXZANyy09heP9dSGZU4glpcds8WSHvXbhanVzEf/Ij2DSHcFpvnOC8ylXJny/rWv7C6SAITDhzQFErMDwBkkhF62DG9K9U1gfFPimaU0dprFMtOVhThqQUK3LDs9spBtLzmB5y9pfqwaWCrMB0tpMG4rLhXdcgFfaZK3dMNy7mV64eU2aRgeHjOHGO9ExHVGO4qwzJbIsh4mb6WlMVsiU79NO/Akch13LGuYmdnSPzj+AyWmaBwhuQUYAAAAAElFTkSuQmCC" alt="PuckerMob Logo">
+
+             <img style="width: 75%; " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMsAAAAdCAMAAAAzQmgzAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFAAAAIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8g8D4fWgAAABB0Uk5TABAgMEBQYHCAj5+vv8/f7yMagooAAAROSURBVFjD3ZhJluwoDEUFlo2MMbz9r7YGdAJ3kTX8TPIkJgQX9RD9S2OTMjZbZqzIvGRT/5nNBwDh2EyZ4eG7E1mIiEWPcStWy9vXPnhaQryHiBR827H+UERE1jYb0IbPNAyMsgNCJ5HU1qdyCFHfyQM+T+oxbZWk7m8AgMf9IgDFt8ab3xEp6cdSDxpFRCQkIC1fLEsEknfM7A4Ap5lZKgoJMOslIIiI+LP9kogB6KuoU43F+OFS4nLDAmzTQR0QzTvLBqBdjT2AZWJpKCSzFKJQT2gP4FAHhx2XKRZzAgDOXSSrNS2dJYVQdJ3sdOlb5ntmWVIXRUS0xcnGfDvjKwvRUc+fWbxaZQEAe5cIhKXYNwAk01hCdu+2XjtDxPHGYuKIQmRHlq3bzgeLBZxi0YrJNlUkriMpJ7TbGheFmWVHfGMRYL0LhZVFo3ywULWiNbP0DwaaJU5K4x4qlJ/FEl00S97/icWkyUknlgHlV5YS7pK+A6R6zBXFh9V1VzjFEm5Y/Ktetge1FJYR5YPFaJa9BSIiSsAZ6jG9/tLVdqOX+Dd/8Uj0zDKhfLBICYEkAEwqZymRcmssCYAZhfhqZJ2Fq64Ui3uPY7HFqBuWGeWdZQXOblIkaCqPQGw2Y7unE+m0oFmMSzV4NBYj5XaeWIZkPLFcUEgAbmNkWX1PEzsAsu2OGYCQLyyM655LDcAlv8QhV+a8f3zm/ReWmC6FiFxKGF0uBTu4rUexuQDAZGU9sDR9aPn+Wo8ZemdxTyxDQm6ToY1pK78MSb5bvM1/Ncv6CwvOchMphBBCr5P/h15wcip1xKu/eGYWHYEpZM8J2eSLfr70clQmETlCakE9XJLGM8v+aGOGlp/j2KIduoSs7NGm3LmUWMW47snK90UV0v5PLOdDqvxzftH1Qw2/EUimxjNRcfechDgUW9cFaIndv7Psl1h/zfu/xeTY0kmzfgdgq3lmrSznXEPnqWVioT3/4JaFp5/vZd69sdCua6c3lq1LalmitHiu2hGPFYs2sUgzy/rEYqe6odUbUTvtDYvqXj5yZdCV+6HK4zzdWCyqFrRa5MLinlgojlNbFbfOlzSzkO/yX1m4+XQ7kVWJoscvj9ELfa9DNUvIyDcsMhiZ6dZ9zJWeTCzmbCt+7MX6iY7ex3QWm1ryaP2ym24hT8fbOEZGt4/m6FHHnGOM9Hlv1SN3mM9e7JgyCGNonLtr1eRqXdSdGQDPzLzusXZANyy09heP9dSGZU4glpcds8WSHvXbhanVzEf/Ij2DSHcFpvnOC8ylXJny/rWv7C6SAITDhzQFErMDwBkkhF62DG9K9U1gfFPimaU0dprFMtOVhThqQUK3LDs9spBtLzmB5y9pfqwaWCrMB0tpMG4rLhXdcgFfaZK3dMNy7mV64eU2aRgeHjOHGO9ExHVGO4qwzJbIsh4mb6WlMVsiU79NO/Akch13LGuYmdnSPzj+AyWmaBwhuQUYAAAAAElFTkSuQmCC" alt="PuckerMob Logo"> 
+
            <?php }?>
            </a>
-        </li>
+          </li>
        <li class="toggle-topbar menu-icon"><a href="#"></a></li>
       </ul>
       <section class="top-bar-section category-colors" style="background-color:white;">
         <?php if(!$detect->isMobile()){?>
-           <!--<ul class="left" style="margin-left: 245px;">-->
-                      <ul class="left" style="margin-left: 185px;">
-
+          <ul class="left" style="margin-left: 185px;">
         <?php }else{?>
            <ul class="left">
         <?php }?>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-recent"  class="entertainment" ><i class="fa fa-bolt fa-lg"></i>RECENT</a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>trending"  class="money" ><i class="fa fa-exclamation-circle fa-lg"></i>TRENDING</a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-popular"  class="wellness" ><i class="fa fa-star fa-lg"></i>POPULAR</a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>contributors"  class="fun" ><i class="fa fa-users"></i>CONTRIBUTORS</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-recent"  class="entertainment" ></i>RECENT</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>trending"  class="money" ></i>TRENDING</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-popular"  class="wellness" >POPULAR</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>contributors"  class="fun" >CONTRIBUTORS</a></li>
           <?php if(!$detect->isMobile()){?>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"><i class="fa fa-info-circle fa-lg info"></i></a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a>|</a></li>
           <?php }?>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>moblog"  class="relationships" >THE SQUAD</a></li>
+
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>moblog"  class="relationships" >THE MOB</a></li>
+            <?php if($detect->isMobile()){?>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.sequelmediainternational.com"  target="_blank" class="relationships" >Info & About Us</a></li>
+            <?php } ?>
 
         </ul>
       </section>
@@ -222,8 +213,7 @@
 
 
   if($detect->isMobile() ){
-    /*  Highlight Article */
-    //include_once($config['include_path'].'highlightarticle.php');
+
   }else{?>
   <!-- FACEBOOK COMMENTS SCRIPT -->
   <div id="fb-root"></div>

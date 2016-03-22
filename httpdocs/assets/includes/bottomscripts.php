@@ -56,6 +56,7 @@
 <?php }else{ ?>
     
 
+  
  
 
   <?php if(isset($article_id) && $article_id == 9397 ){?>
@@ -99,8 +100,106 @@
             </script>
            <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
 
-
+      
     <?php  } ?>
+
+    <script>
+    (function() 
+
+{ 
+
+   var tagqa = '';
+
+   var playerId = '';
+
+   var playerContainerId = 'ad' + Math.round(Math.random()*1000000000).toString();
+
+   var playerWidth = '300';
+
+   var playerHeight = '250';
+
+   var controls = '';
+
+   var render = '';
+
+   var tracki = '';
+
+   var trackc = '';
+
+   var custom1 = '';
+
+   var custom2 = '';
+
+   var custom3 = '';
+
+   var videourl = '';
+
+   var viewMode = 'normal';
+
+   var companionId = '';
+
+   var pubMacros = '';
+
+
+
+   try { if (document.readyState && document.readyState != 'complete') { document.write('<div id="' + playerContainerId + '"></div>'); } } catch (e) {} 
+
+
+
+   var lkqdVPAID;
+
+   var lkqdId = new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString();
+
+   var environmentVars = { slot: document.getElementById(playerContainerId), videoSlot: document.getElementById(playerId), videoSlotCanAutoPlay: true };
+
+   var creativeData = '';
+
+
+
+   function onVPAIDLoad()
+
+   {
+
+        lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, 'AdLoaded');
+
+   }
+
+
+
+   var vpaidFrame = document.createElement('iframe');
+
+   vpaidFrame.id = lkqdId;
+
+   vpaidFrame.name = lkqdId;
+
+   vpaidFrame.style.display = 'none';
+
+   vpaidFrame.onload = function() {
+
+        vpaidLoader = vpaidFrame.contentWindow.document.createElement('script');
+
+        vpaidLoader.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//ad.lkqd.net/serve/pure.js?format=1&vpaid=true&apt=auto&ear=0&pid=85&sid=28814&tagqa=' + tagqa + '&elementid=' + encodeURIComponent(playerId) + '&containerid=' + encodeURIComponent(playerContainerId) + '&render=' + render + '&controls=' + controls + '&width=' + playerWidth + '&height=' + playerHeight + '&mode=' + viewMode + '&companionid=' + encodeURIComponent(companionId) + '&tracki=' + encodeURIComponent(tracki) + '&trackc=' + encodeURIComponent(trackc) + '&c1=' + encodeURIComponent(custom1) + '&c2=' + encodeURIComponent(custom2) + '&c3=' + encodeURIComponent(custom3) + '&videourl=' + encodeURIComponent(videourl) + '&rnd=' + Math.floor(Math.random() * 100000000) + '&m=' + encodeURIComponent(pubMacros);
+
+        vpaidLoader.onload = function() {
+
+              lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd();
+
+              lkqdVPAID.handshakeVersion('2.0');
+
+              onVPAIDLoad();
+
+              lkqdVPAID.initAd(playerWidth, playerHeight, viewMode, 600, creativeData, environmentVars);
+
+        };
+
+        vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader);
+
+   };
+
+   document.documentElement.appendChild(vpaidFrame);
+
+})();
+    </script>
 <?php  } ?>
 
   
@@ -122,5 +221,9 @@
 <!-- TotallyHer comscore tags -->
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
 
-<!-- ADSUPPLY -->
+<!-- ADSUPPLY 
 <script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
+-->
+
+<!--<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=552818"></script>-->
+

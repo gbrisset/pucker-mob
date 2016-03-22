@@ -476,7 +476,6 @@ footer .category-colors ul li a{ color: black !important;}
 	#_ci_widget_div_31931 ul li {width: 50%;}
 	#_ci_widget_div_31931 ul li:last-child {display: none;}
 	.panel {border-color: #ddd;}
-	/*#sectioned-article-content, #recipe-content, #full-page-article {padding-left: $panel-padding; padding-right: ($panel-padding * 2)}*/
 	.shadow-on-large-up {
 		-moz-box-shadow:    0px 1px 1px 0px $shadow-color;
  		-webkit-box-shadow: 0px 1px 1px 0px $shadow-color;
@@ -642,7 +641,11 @@ input.topbar-search-contents:-ms-input-placeholder {  color: #10580d; font-size:
 .margin-bottom {
 	margin-bottom: 1.25rem !important;
 }
+#article-content{ background: #F6F7F8;}
+@media #{$large-up} {
 
+	#article-content{ background: #fff; padding-top: 1rem;}
+}
 #article-caption p, #article-caption li, #article-content p,  #article-content li{ font-size: 1.125rem !important; margin-bottom:1.25rem !important; text-align:left !important;} 
 #article-content p:first-child{
 	margin:0 !important;
@@ -1112,8 +1115,7 @@ body{padding-top:0 !important;}
 	}
 
 	.addthis_button_compact{ font-size: 1.3rem; text-transform: uppercase; color: #777 !important; font-family: OswaldLight; padding-top: 1.4rem; position: absolute;}
-	
-	.social-media-container{ padding: 0.6rem 0rem 0 1rem; display:block;}
+
 	.social-media-container-header{
 		margin:0;padding:0;
 		.fa-facebook{font-size:1.5rem;}
@@ -1134,7 +1136,6 @@ body{padding-top:0 !important;}
 	}
 	#social-media-container-header{
 		background-color: #fff; z-index: 999; padding: 0.2rem 0.5rem;   border-bottom: 1px solid #ccc; border-bottom-width: 1px;
-		.social-media-container{ padding: 0.4rem 0 0 1rem;}
 	}
 
 
@@ -1938,10 +1939,10 @@ a:hover.tooltips span {
 
 
 
-.label-social-button-2-mobile{    display: inline-block;  position: relative;  top: -3px; width: 100%; font-family: Oslo !important; padding: 0.75rem 0.75rem 0.75rem 0.5rem; -webkit-border-radius: 3px;  -moz-box-border-radius:3px; border-radius:3px; font-size: 0.9rem; display: inline-block; color: #fff; text-align: center;}
+.label-social-button-2-mobile{    display: inline-block;  position: relative;  top: 0px; width: 100%; font-family: Oslo !important; padding: 0.75rem 0.75rem 0.5rem 0.5rem; -webkit-border-radius: 3px;  -moz-box-border-radius:3px; border-radius:3px; font-size: 1.2rem; display: inline-block; color: #fff; text-align: center;}
 
 .addthis_button_facebook .label-social-button-2-mobile{ background-color: #3B5998; color: #fff;}
-.addthis_button_facebook .label-social-button-2-mobile .fa-facebook-square{margin-right: 9%; font-size: 1.2rem;}
+.addthis_button_facebook .label-social-button-2-mobile .fa-facebook-square{margin-right: 10px; font-size: 1.6rem;}
 .addthis_button_twitter .label-social-button-2-mobile{ margin-right:0.9rem;  background-color: #00ACED;  }
 .addthis_button_pinterest_share .label-social-button-2-mobile{ margin-right:0.9rem;  background-color: $pinterest-color;  }
 .addthis_button_twitter .label-social-button-2-mobile .fa-twitter, .addthis_button_pinterest_share .label-social-button-2-mobile .fa-pinterest{  margin-right: 9%; font-size: 1.2rem;  position: relative;   top: 1px;   left: 3px; }

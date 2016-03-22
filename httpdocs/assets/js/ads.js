@@ -143,7 +143,7 @@ if($('body').hasClass('mobile')) {
 
 			}
 
-			$.ajax({
+			/*$.ajax({
 				type: "POST",
 				url:  'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php',
 				data: { article_id: article_id, task:'article_ads' },
@@ -156,13 +156,13 @@ if($('body').hasClass('mobile')) {
 					}
 				},
 				async:   false
-			});
+			});*/
 
-			if( tag == 'p'){ first_p = first_p + 1; second_p = second_p + 1; }
+			//if( tag == 'p'){ first_p = first_p + 1; second_p = second_p + 1; }
 			
-			if( second_p > 0 ){//BRANOVATE
-				inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=6447475&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="970" HEIGHT="250"></IFRAME>', tag);
-			}
+			//if( second_p > 0 ){//BRANOVATE
+				//inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=6447475&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="970" HEIGHT="250"></IFRAME>', tag);
+		//	}
 
 //			if( second_p > 0 ){//CARAMBOLA
 				//inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>', tag);

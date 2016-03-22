@@ -27,7 +27,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 <div class="row">
 	<?php if($detect->isMobile() ){?>
 		<section id="about-the-author" class="small-12 hide-for-print padding">
-			<div id="about-the-author-bg" class="columns small-10 no-padding margin-top" style="margin-bottom: 20px;">
+			<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
 				<div class="columns no-padding small-4">
 	<?php }else{?>
 		<section id="about-the-author" class="columns small-12 hide-for-print">

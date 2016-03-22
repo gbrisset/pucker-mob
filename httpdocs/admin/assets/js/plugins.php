@@ -32,7 +32,7 @@ var EarningsObj = {
     	EarningsObj.total_earnings = total_earned;
 	},
     getChartData: function(){
-    	var info = {}, chart = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
+    	var info = {}, chart = [ ['', 'This Month', 'Last Month'] ], contributor_id = $('#contributor_id').val(), total_earned = 0;
     	$.ajax({
 			type: "POST",
 			async: false,
@@ -42,6 +42,7 @@ var EarningsObj = {
 			if( data != "false" ){ 
 				data = $.parseJSON(data);
 				$(data).each( function(e){	
+				console.log(data );
 					var val = $(this);
 					var rate = $('#current-user-rate').val();
 					var pageviews = parseInt(val[0].total_usa_pageviews);
@@ -50,7 +51,7 @@ var EarningsObj = {
 
 					var tooltip = pageviews+' $'+amount; 			
 					total_earned = total_earned + amount;
-					info = [ val[0].date, amount];
+					info = [ val[0].date, amount, 20];
 					chart.push(info);
 				});
 			}
@@ -186,14 +187,10 @@ var EarningsObj = {
         var chart = new google.charts.Bar(document.getElementById('bar_chart'));
 
         chart.draw(data, EarningsObj.options);*/
+       
         console.log(EarningsObj.chart_info);
-        var data = google.visualization.arrayToDataTable([
-	        ['', 'This Month', 'Last Month'],
-	        ['2014', 1000, 400],
-	        ['2015', 1170, 460],
-	        ['2016', 660, 1120],
-	        ['2017', 1030, 540]
-	    ]);
+        
+        var data = google.visualization.arrayToDataTable(EarningsObj.chart_info );
 
 	       
 

@@ -1015,21 +1015,58 @@ End password reset methods
 		return $payment_record ;
 	}
 
-	public function getContributorEarningChartData($data){
-		//data: { task:'get_chart_data', contributor_id : 1123, start_date: start_date, end_date: end_date  }
-		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	public function getContributorEarningChartData( $data ){
+		$contributor_id = 1123;//filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$start_date = "2015-11-01";//filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$end_date = "2015-11-30"; //filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
-		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
+		$s = " SELECT DATE_FORMAT(updated_date, '%d') as 'date', 
+				sum(usa_pageviews) as  'total_usa_pageviews'
 			   FROM google_analytics_data_daily 
-			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
+			   INNER JOIN (article_contributor_articles) 
 					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
-					AND ( articles.article_id = google_analytics_data_daily.article_id )
-					AND ( articles.article_id = article_categories.article_id )
-					AND ( article_categories.cat_id = categories.cat_id )
+				
 				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."' 
 				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
+		$result = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		$last_month_data = $this->getContributorEarningChartLastMonthData( $data );
+		$array_earnins = [];
+		$earnings_chart = [];
+		
+		foreach($result as $earnings){
+			$earnings_chart['date'] = $earnings['date'];
+			$earnings_chart['current_pageviews'] = $earnings['total_usa_pageviews'];
+
+			foreach($last_month_data as $last_month_earnings){
+				if( $earnings_chart['date']  == $last_month_earnings['date']){
+					$earnings_chart['last_month_pageviews'] = $last_month_earnings['total_last_usa_pageviews'];
+				}
+			}
+			$array_earnins[] = $earnings_chart;
+		}
+
+		return $array_earnins;
+
+	}
+
+	public function getContributorEarningChartLastMonthData( $data ){
+		$contributor_id = 1123;//filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$last_month_start_date = "2015-10-01";//date('Y-m-d', strtotime('first day of last month'));
+		$last_month_end_date = "2015-10-30"; //date('Y-m-d', strtotime('last day of last month'));
+		
+		$s = " select DATE_FORMAT(updated_date, '%d') as 'date', sum(usa_pageviews) as  'total_last_usa_pageviews' 
+					FROM google_analytics_data_daily 
+					INNER JOIN (article_contributor_articles ) 
+					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
+					WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$last_month_start_date."' AND '".$last_month_end_date."' 
+					GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ;
+				) as 'last_month_pageviews' ";
+
 		$data = $this->performQuery(array(
 			'queryString' => $s,
 			'queryParams' => array( ),
@@ -1071,6 +1108,30 @@ End password reset methods
 		} else {
 			return false;
 		}
+	}
+
+	public function getTop5BloggersByPageviews(){
+		$limit = 5;
+		$month = 12;//date('n');
+		$year = 2015;//date('Y');
+
+		$s = "	SELECT contributor_name, contributor_seo_name, contributor_earnings.contributor_id, total_us_pageviews, month, year 
+				FROM `contributor_earnings` 
+				INNER JOIN (article_contributors, users ) 
+				ON (article_contributors.contributor_id =  contributor_earnings.contributor_id ) 
+				AND  (article_contributors.contributor_email_address = users.user_email) 
+				WHERE month = $month AND year = $year AND users.user_type in (3, 8, 9) 
+				ORDER BY total_us_pageviews DESC LIMIT $limit ";
+
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		return $data;
+
+
 	}
 
 	public function getTotalPageViewsDateRange($data){

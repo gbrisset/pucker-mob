@@ -100,7 +100,8 @@
 			
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
-			
+			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns no-padding">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>

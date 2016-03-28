@@ -124,7 +124,7 @@
 			}
 		}
 	}
-
+	
 	$user_login_count = $adminController->user->data['user_login_count']; 
 	$user_type = $userData["user_type"];
 

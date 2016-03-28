@@ -42,18 +42,21 @@ var EarningsObj = {
 			if( data != "false" ){ 
 				data = $.parseJSON(data);
 				$(data).each( function(e){	
-				console.log(data );
 					var val = $(this);
 					var rate = $('#current-user-rate').val();
-					var pageviews = parseInt(val[0].total_usa_pageviews);
-					var amount = 0;
-					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;	
+					var pageviews = parseInt(val[0].current_pageviews),
+					last_month_pageviews = parseInt(val[0].last_month_pageviews),
+					amount = 0, 
+					last_month_amount = 0;
 
-					var tooltip = pageviews+' $'+amount; 			
+					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;
+					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
+
 					total_earned = total_earned + amount;
-					info = [ val[0].date, amount, 20];
+					info = [ val[0].date, amount, last_month_amount];
 					chart.push(info);
 				});
+
 			}
 			EarningsObj.total_earnings = total_earned;
 			EarningsObj.chart_info = chart;
@@ -173,6 +176,7 @@ var EarningsObj = {
 
 		});
 	},
+
 	drawChart: function( ) {
        // if(EarningsObj.chart_info.length > 0){
         // Create the data table.

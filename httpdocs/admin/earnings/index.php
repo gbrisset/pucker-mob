@@ -94,9 +94,18 @@
 			<div class="small-12 columns padding-bottom ">
 				<h1>Earnings & Analytics</h1>
 			</div>
-			
+			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
+
+			<!-- Calendar -->
+			<div id="calendar-section" class="small-12 columns right margin-bottom">
+				<div id="reportrange" class="radius">
+					<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+					<input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+				</div>
+			</div>
 			
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-8 columns">

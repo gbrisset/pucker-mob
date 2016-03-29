@@ -1016,9 +1016,9 @@ End password reset methods
 	}
 
 	public function getContributorEarningChartData( $data ){
-		$contributor_id = 1123;//filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$start_date = "2015-11-01";//filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$end_date = "2015-11-30"; //filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$contributor_id = 1123; //filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
 		$s = " SELECT DATE_FORMAT(updated_date, '%d') as 'date', 
 				sum(usa_pageviews) as  'total_usa_pageviews'

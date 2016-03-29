@@ -61,18 +61,6 @@ $(document).ready(function (){
 		body.toggleClass('active_menu');
 	});
 
-	/*$('.footer-list h2').each(function(){
-		var thisH2 = $(this),
-		cont = $(thisH2).parents('.footer-list'),
-		slideObj = $(thisH2).next();
-
-		thisH2.click(function(e){
-			if(cont.hasClass('shown')) slideObj.slideUp(500);
-			else slideObj.slideDown(500);
-			cont.toggleClass('shown');
-		});
-	}).filter(':first').click();*/
-
 	$('#sidebar-articles-form').on('submit', function(e){
 		var thisForm = $(this),
 		theseFields = [],
@@ -526,32 +514,12 @@ $(document).ready(function (){
 	        $(".account-file-input:hidden").trigger('click');
 	    });
 	});
-
-
-	//	Handle click of add new list item...
-	/*var addText = document.getElementById("large-add-text"),
-	addNewListItemDiv = document.getElementById("add-list-item"),
-	addForm = document.getElementById("page-list-item-data-add-form");
-	if(addNewListItemDiv){
-		addNewListItemDiv.onclick = function(e){
-
-			//	remove the + add text...
-			if (addText.parentNode) {
-			  addText.parentNode.removeChild(addText);
-			}
-
-			//	add the form...
-			addForm.style.display="inherit";
-			addNewListItemDiv.style.backgroundColor="#eee";
-			addNewListItemDiv.style.cursor="auto";
-		}
-	}*/
 	
-	$('input[name="collections_name-s"]').SDSeoTitleAutoComplete("collections_seoname-s");
-	$('input[name="page_list_title"]').SDSeoTitleAutoComplete("page_list_seo_title", "seo_title_updated");
+	//$('input[name="collections_name-s"]').SDSeoTitleAutoComplete("collections_seoname-s");
+	//$('input[name="page_list_title"]').SDSeoTitleAutoComplete("page_list_seo_title", "seo_title_updated");
 
-	$('.toggle-link').SDToggler('#add-list-form');
-	$('.toggle-link').SDToggler('#add-list-form');
+	//$('.toggle-link').SDToggler('#add-list-form');
+	//$('.toggle-link').SDToggler('#add-list-form');
 
 	$('#sub-menu-button').click(function(e){
 		$('#content').toggleClass('active_submenu');
@@ -848,7 +816,7 @@ if($('.mob-level-contributor')){
            'This Month': [moment().startOf('month'), moment().endOf('month')],
            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         },
-        opens: 'left',
+        opens: 'right',
         drops: 'down',
         buttonClasses: ['btn', 'btn-sm'],
         applyClass: 'btn-primary',

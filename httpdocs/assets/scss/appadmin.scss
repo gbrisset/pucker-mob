@@ -1516,16 +1516,19 @@ form#user-account-delete-form {
 
 .earnings-calendar p { text-transform: uppercase; font-size: 1.3rem; margin-left: 1rem; }
 #reportrange {
+	background: #aaa;
 	cursor: pointer;
+	padding: 6px 5px 0px 5px;
 	
-	.glyphicon-calendar{ font-size: 2rem; top: 5px; color: #222;}
+	.glyphicon-calendar{ font-size: 2rem; top: 5px; color: #eee;}
 	input{   
 		display: inline;
 		width: 80%;
 		border: none;
-		font-size: 1rem;
+		color: #eee;	
+		font-size: 1.2rem;
 		box-shadow: none;
-		background:#ddd !important;
+		background:#aaa !important;
 	}
 }
 
@@ -1573,7 +1576,7 @@ form#user-account-delete-form {
   display: inline-block !important;
   padding: 6px 12px !important;
   margin: 0 !important;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   line-height: 1;
   text-align: center;

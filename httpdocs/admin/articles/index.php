@@ -96,7 +96,6 @@
 			</div>
 			
 			<section id="edit-articles">
-			
 				<!-- ARTICLES RESUME INFO --> 
 				<?php include_once($config['include_path_admin'].'view_articles_resume.php'); ?>
 				<?php 
@@ -122,15 +121,15 @@
 							<table class="columns small-12 no-padding">
 								<thead>
 								    <tr>
-								      <th width="500" class="align-left">Title</th>
-								      <th width="100" class="show-for-large-up">Added</th>
+								       <th width="500" class="align-left">Title</th>
+								       <th width="100" class="show-for-large-up">Added</th>
 								       <th width="100"  class="show-for-large-up">status</th>
-								      	<th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
-								      <th  width="50" class="show-for-large-up"></th>
+								       <th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
+								       <th  width="50" class="show-for-large-up"></th>
 								    </tr>
-								 </thead>
+								</thead>
 								
-								 <tbody>
+								<tbody>
 								 <?php foreach($articles as $articleInfo){
 
 									$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
@@ -162,7 +161,7 @@
 									  	</td>
 
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
-									  	<td  class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
+									  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
 										<!-- REMOVE ARTICLE -->
 										<td class="show-for-xlarge-up  border-right" ><label>123</label></td>
 										<td class="show-for-large-up no-border-right">
@@ -179,11 +178,10 @@
 													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
 													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 												</form>
-												<?php }else{?>
-												
-												<!-- REQUEST TO DELETE THIS ARTICLE -->
-												<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
-												<?php }?>
+												<?php }else{ ?>
+													<!-- REQUEST TO DELETE THIS ARTICLE -->
+													<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
+												<?php } ?>
 											<?php }?>
 										</td>							  			
 									</tr>
@@ -206,12 +204,12 @@
 				</div>
 					
 				<div class="small-12 xxlarge-3 right padding" >
-						<?php include_once($config['include_path_admin'].'statuses.php'); ?>
-						<?php include_once($config['include_path_admin'].'filter_by_usertype.php'); ?>
+					<?php include_once($config['include_path_admin'].'statuses.php'); ?>
+					<?php include_once($config['include_path_admin'].'filter_by_usertype.php'); ?>
 
-						<div class="small-12 columns show-for-large-up margin-top no-padding">
-							<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
-						</div>
+					<div class="small-12 columns show-for-large-up margin-top no-padding">
+						<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
+					</div>
 				</div>
 		</section>
 

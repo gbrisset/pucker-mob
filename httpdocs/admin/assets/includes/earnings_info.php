@@ -1,9 +1,9 @@
 	<div class="small-12 columns radius right-side-box">
 		<div class="">
 			<ul class="small-12 columns">
-				<li class="small-12"><label class="small-6 columns no-padding-left align-left uppercase light-green">U.S. VISITS:</label><label class="small-6 columns no-padding-right align-right">59,345</label></li>
-				<li class="small-12"><label class="small-6 columns no-padding-left align-left uppercase light-green">AVE time on page:</label><label class="small-6 columns  no-padding-right align-right">1:23</label></li>
-				<li class="small-12"><label class="small-6 columns no-padding-left align-left uppercase light-green">Rank Last Month:</label><label class="small-6 columns no-padding-right align-right">#54</label></li>
+				<li class="small-12 columns no-padding"><label class="small-6 columns no-padding-left align-left uppercase light-green">U.S. VISITS:</label><label class="small-6 columns no-padding-right align-right">59,345</label></li>
+				<li class="small-12 columns no-padding"><label class="small-6 columns no-padding-left align-left uppercase light-green">AVE time on page:</label><label class="small-6 columns  no-padding-right align-right">1:23</label></li>
+				<li class="small-12 columns no-padding"><label class="small-6 columns no-padding-left align-left uppercase light-green">Rank Last Month:</label><label class="small-6 columns no-padding-right align-right">#54</label></li>
 			</ul>
 		</div>
 	</div>

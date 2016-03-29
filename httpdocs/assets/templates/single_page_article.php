@@ -45,6 +45,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	#article-content p:first-child{margin-bottom: 1.25rem !important;}
 	#kikvid-3043, #vm_inline{ display:inline-block !important; }
 	#adunit-300x250-3159{ display:inline-block; }
+	.sumome-share-client.sumome-share-client-mobile-bottom-bar.sumome-share-client-counts.sumome-share-client-light.sumome-share-client-medium{
+		width: 100%;
+	}
+	a.sumome-share-client-animated.sumome-share-client-share{     width: 100%; }
+	a.sumome-share-client-animated.sumome-share-client-share {
+    width: 100% !important;
+}
+	.sumome-share-client-animated.sumome-share-client-share.sumome-share-client-share-share.sumome-share-client-count{ display: none !important;}
+	div#inarticle12-ad {
+	    top: -20px;
+	}
 </style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
@@ -65,12 +76,21 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<h1 id="social_catcher"style="margin: 1rem 0;"><?php echo $article_title; ?></h1>
 		
 		<section id="article-content-2">
-			
-			<!-- SOCIAL DESKTOP -->
-			<div class="social-media-container  padding-bottom social_sticky">
-				<a class="addthis_button_facebook small-12 left">
-					<label class="label-social-button-2-mobile left" ><i class="fa fa-facebook-square" ></i>SHARE</label>
-				</a> 
+			<div class="social-media-container  columns padding-bottom social_sticky clear ">
+				<?php //if($article_id == 13516){?>
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+    					<a class="a2a_button_facebook" style="
+						    background: #3b5998;
+						    width: 100%;
+						    "><label class="label-social-button-2-mobile" style="padding:8px;"><i class="fa fa-facebook-square" ></i>SHARE</label></a>
+						    			<script src="//static.addtoany.com/menu/page.js"></script>
+
+					</div>
+				<?php //}else{ ?>
+				<!--<a class="addthis_button_facebook small-12 left" >
+					<label class="label-social-button-2-mobile" ><i class="fa fa-facebook-square" ></i>SHARE</label>
+				</a> -->
+				<?php  //} ?>
 				<!--<a class="addthis_button_pinterest_share small-2 left">
 					<label class="label-social-button-2-mobile left"><i class="fa fa-pinterest" style="margin-right: 9%; font-size: 1.2rem;position: relative; top: 1px; left: 3px;"></i></label>
 				</a>
@@ -98,22 +118,49 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 			
 			<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
-			<!-- /73970039/engage_unit -->
-			<div id='div-gpt-ad-1458332569430-0' style='height:250px; width:300px; display: inline-block;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1458332569430-0'); });
-				</script>
-			</div>
+				<?php if($article_id == 13577){ //http://www.puckermob.com/relationships/signs-hes-a-keeperpsych ?>
+					<!-- /73970039/engage_unit -->
+					<div id='div-gpt-ad-1459184179852-0' style='height:250px; width:300px;'>
+						<script type='text/javascript'>
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1459184179852-0'); });
+						</script>
+					</div>
+				<?php }elseif($article_id == 13305){?>
+					<div id="ros_1195" style="display: inline-block;"></div> 
+				<?php }?>
 			</div>
 
 			<!-- ARTICLE BODY -->
 			<div id="article-body">
 				<?php echo $article_body; ?>
 			</div>
-			<div class="columns inarticle-ad ad-unit hide-for-print"  style="display:inline">
-				<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-			</div>
+
 			
+
+			<!-- IMAGE SOURCE -->
+			<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
+			<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
+				Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
+			<?php }?>
+
+
+		</div>
+
+			<!-- READ MORE -->
+			<div class=" read-more  small-12 columns margin-bottom" style="background: white; border: 2px solid green; padding: 5px;">
+				<div class="button" style="border-top-width: 0px;">
+					<!--<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
+					-->
+					<label id="read-more-img" style="    color: green; font-family: oslobold; font-size: 20px;">READ MORE</label>
+				</div>
+			</div>
+
+			<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">
+				<div id="get-content" style="text-align:center; display: inline-block;">
+					<div id='__kx_ad_4251'></div><script type="text/javascript" language="javascript" id="__kx_tag_4251">var __kx_ad_slots = __kx_ad_slots || []; (function () { var slot = 4251; var h = false; var doc = document; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') { __kx_ad_start(); } else { if (top == self) { var s = doc.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){ if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = doc.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } else { var tag = doc.getElementById('__kx_tag_'+slot); var win = window.parent; doc = win.document; var top_div = doc.createElement("div"); top_div.id = '__kx_ad_'+slot; doc.body.appendChild(top_div); var top_tag = doc.createElement("script"); top_tag.id = '__kx_top_tag_'+slot; top_tag.innerHTML = tag.innerHTML; doc.body.appendChild(top_tag); }}})();</script>
+				</div>
+			</div>
+
 			<!-- RELATED ARTICLES -->
 			<?php 
 			$related = [];
@@ -124,7 +171,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
 				$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
 			?>
-				<div class="row small-12 clear related-articles-box half-padding margin-top" style="margin-top:15px !important; margin-bottom:15px !important;">
+				<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:15px !important; margin-bottom:15px !important;">
 					
 					<div class="rel-articles-wrapper remember-to-share">
 						<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
@@ -177,8 +224,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			<?php } ?>
 
-			<?php include_once($config['include_path'].'header_social.php'); ?>
-			
+
+			<?php include_once($config['include_path'].'header_social.php'); ?> 
+
+
 			<!-- BRANOVATE -->
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
@@ -193,26 +242,19 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<?php }?>
 				</div>
 			</div>
-			
 
-			<!-- IMAGE SOURCE -->
-			<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-			<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
-				Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
-			<?php }?>
 
-		</div>
-
-			<!-- READ MORE 
-			<div class="row read-more clear small-12">
-				<div class="button" style="border-top-width: 0px;">
-					<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
+			<div id="mobile-instream-branovate-ad">
+				<div id="get-content" style="text-align:center; display: inline-block;">
+					<div id="tok-ad" class="columns small-12 margin-top margin-bottom IOS" >
+					<iframe style="width:300px;height:250px;overflow:hidden;" src="//www.toksnn.com/ads/pkm_ent1_mob_us?pub=sqmpkmusmi" frameborder="0" scrolling="no"></iframe>
+					</div>
 				</div>
-			</div>-->
-
+			</div>
+			
 			
 
-			<section id="separator-section" class="row no-padding"></section>				
+			<!--<section id="separator-section" class="row no-padding"></section>				
 				<!-- COMMENTS BOX -->
 				<?php include_once($config['include_path'].'disqus.php'); ?>
 	
@@ -333,6 +375,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 									<hr>
 					</div>
 				<?php }?>
+
+				
 
 				<!-- CARAMBOLA
 				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">

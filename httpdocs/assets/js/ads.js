@@ -6,7 +6,7 @@ var hasSponsored = $("#has-sponsored-by").val();
 var country =ManageCookies.getCookie('country_code');
 var second_image_url = $('#second-mob-img');
 
-console.log(country);
+//console.log(country);
 
 
 if(page != 'articleslide' && page != 'home' && page != 'category' && page != 'article' && page != 'distroscale') {var adPage = 'category';} else {var adPage = page;}
@@ -104,7 +104,7 @@ if($('body').hasClass('mobile')) {
 			
 			//if( fourth_p > 0 ){ 
 
-				inBodyAd.loadInArticleAd( 'article-body', 12, 0, '<div id=\'__kx_ad_4251\'></div><script type="text/javascript" language="javascript" id="__kx_tag_4251">var __kx_ad_slots = __kx_ad_slots || []; (function () { var slot = 4251; var h = false; var doc = document; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == \'function\') { __kx_ad_start(); } else { if (top == self) { var s = doc.createElement(\'script\'); s.type = \'text/javascript\'; s.async = true; s.src = \'//cdn.kixer.com/ad/load.js\'; s.onload = s.onreadystatechange = function(){ if (!h && (!this.readyState || this.readyState == \'loaded\' || this.readyState == \'complete\')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = doc.getElementsByTagName(\'script\')[0]; x.parentNode.insertBefore(s, x); } else { var tag = doc.getElementById(\'__kx_tag_\'+slot); var win = window.parent; doc = win.document; var top_div = doc.createElement("div"); top_div.id = \'__kx_ad_\'+slot; doc.body.appendChild(top_div); var top_tag = doc.createElement("script"); top_tag.id = \'__kx_top_tag_\'+slot; top_tag.innerHTML = tag.innerHTML; doc.body.appendChild(top_tag); }}})();</script>', tag);
+				inBodyAd.loadInArticleAd( 'article-body', 12, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>', tag);
 				//inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div class="dailymotion-widget" data-placement="56d75ebdb71169002859de44"></div><script>(function(w,d,s,u,n,e,c){w.PXLObject = n; w[n] = w[n] || function(){(w[n].q = w[n].q || []).push(arguments);};w[n].l = 1 * new Date();e = d.createElement(s); e.async = 1; e.src = u;c = d.getElementsByTagName(s)[0]; c.parentNode.insertBefore(e,c);})(window, document, "script", "//api.dmcdn.net/pxl/client.js", "pxl");</script>', tag);
 			//}	
 

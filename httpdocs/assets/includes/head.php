@@ -99,15 +99,25 @@
 
 <?php }else{ ?>
 
+
 	<!-- SHARETHROUNG
      <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
 
-	<?php if(isset($article_id) && $article_id == 9397 ){?>
+	<?php if(isset($article_id) && $article_id == 13305 ){?>
 		<!-- Totally Her GPT -->
 		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 	<?php } ?>
 
-	
+		<!-- Go to www.addthis.com/dashboard to customize your tools 
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async></script>
+		<script type="text/javascript">
+			if(document.readyState === "complete") {
+				addthis.init();
+			}else {
+			  //Add onload or DOMContentLoaded event listeners here: for example,
+			  window.addEventListener("onload", function () { addthis.init(); }, false);
+			}
+		</script>-->
 
 <?php } ?>
 
@@ -162,7 +172,7 @@
   })();
 </script>
 
-<script type='text/javascript'>
+<!--<script type='text/javascript'>
   googletag.cmd.push(function() {
     googletag.defineSlot('/73970039/engage_unit', [300, 250], 'div-gpt-ad-1458332569430-0').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
@@ -170,7 +180,7 @@
     googletag.pubads().enableSyncRendering();
     googletag.enableServices();
   });
-</script>
+</script>-->
 
 
 </head>

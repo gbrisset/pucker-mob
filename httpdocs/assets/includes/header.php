@@ -148,12 +148,25 @@
   <?php if($detect->isMobile()){?>
    
      <div id="social-media-container-header" class="row" style="display:none; z-index:99999999 !important;"> 
+
         <div class="columns social-media-container  padding-bottom " style=" display:block !important; z-index:99999999 !important;">
-        <a class="addthis_button_facebook small-6 left">
-          <label class="label-social-button-2-mobile left" style="font-size: 1rem; font-family: OsloBold !important; text-align: center; padding: 0.5rem 0.5rem 0.5rem 0.25rem;" ><i class="fa fa-facebook-square" style="font-size: 1.5rem; "></i>SHARE</label>
-        </a> 
-       
-          <!--<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>-->
+            <?php //if($article_id == 13516){?>
+            <style>span.a2a_count {
+                font-size: 20px !important;
+                padding: 5px;
+                height: 45px !important;
+            }</style>
+              <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                  <a class="a2a_button_facebook a2a_counter" style="width: 100%; margin-top: 7px;"><label class="label-social-button-2-mobile left" style="padding:8px; width:73%; background: #3b5998;"><i class="fa fa-facebook-square" ></i>SHARE</label></a>
+              </div>
+            <?php //}else {?>
+            <!--<a class="addthis_button_facebook small-6 left">
+              <label class="label-social-button-2-mobile left" style="font-size: 1rem; font-family: OsloBold !important; text-align: center; padding: 0.5rem 0.5rem 0.5rem 0.25rem;     top: 4px;" ><i class="fa fa-facebook-square" style="font-size: 1.5rem; "></i>SHARE</label>
+            </a> 
+
+        
+          <div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>-->
+          <?php //}?>
       </div>  
      </div>
 

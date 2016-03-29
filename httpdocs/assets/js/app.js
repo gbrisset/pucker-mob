@@ -23,12 +23,14 @@ $(document).ready(function() {
 
 	//READ MORE 
 	if($('body').hasClass('mobile')) {
-		/*var $el, $ps, $up, totalHeight;
-		var parentOrgHeight = $('#article-content').outerHeight();
+		var $el, $ps, $up, totalHeight;
+		var parentOrgHeight = $('#article-body').outerHeight();
 
-		var pct_to_show = parseInt($('#read_more_pct').val());
+		var pct_to_show = 50;//parseInt($('#read_more_pct').val());
 		var height_value = pct_to_show / 100 ;
-		var wishDisplayHeight = parentOrgHeight * height_value;*/
+		var wishDisplayHeight = parentOrgHeight * height_value;
+
+		$('#article-content').height(wishDisplayHeight);
 
 		$("#read-more-img").on('click', function(e) {
 			e.preventDefault();		

@@ -1016,16 +1016,18 @@ End password reset methods
 	}
 
 	public function getContributorEarningChartData( $data ){
-		$contributor_id = 1123; //filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$contributor_id = 1103; //filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
-		$s = " SELECT DATE_FORMAT(updated_date, '%d') as 'date', 
-				sum(usa_pageviews) as  'total_usa_pageviews'
+		
+		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
 			   FROM google_analytics_data_daily 
-			   INNER JOIN (article_contributor_articles) 
+			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
 					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
-				
+					AND ( articles.article_id = google_analytics_data_daily.article_id )
+					AND ( articles.article_id = article_categories.article_id )
+					AND ( article_categories.cat_id = categories.cat_id )
 				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."' 
 				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
 		$result = $this->performQuery(array(
@@ -1037,36 +1039,42 @@ End password reset methods
 		$last_month_data = $this->getContributorEarningChartLastMonthData( $data );
 		$array_earnins = [];
 		$earnings_chart = [];
-		
+
 		foreach($result as $earnings){
 			$earnings_chart['date'] = $earnings['date'];
 			$earnings_chart['current_pageviews'] = $earnings['total_usa_pageviews'];
 
-			foreach($last_month_data as $last_month_earnings){
-				if( $earnings_chart['date']  == $last_month_earnings['date']){
-					$earnings_chart['last_month_pageviews'] = $last_month_earnings['total_last_usa_pageviews'];
+			if( count($last_month_data) > 0){
+				foreach($last_month_data as $last_month_earnings){
+					if( date('d', strtotime($earnings_chart['date'])) == date('d', strtotime($last_month_earnings['date']))){
+						$earnings_chart['last_month_pageviews'] = $last_month_earnings['total_usa_pageviews'];
+					}
 				}
+
+				$array_earnins[] = $earnings_chart;
 			}
-			$array_earnins[] = $earnings_chart;
+			
 		}
 
+		//var_dump($array_earnins); die;
 		return $array_earnins;
 
 	}
 
-	function getContributorEarningChartDataRange(){
-		$contributor_id = 1123; //filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	public function getContributorEarningChartDataRange($data){
+		$contributor_id = 1103; //filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-
-		$s = " SELECT DATE_FORMAT(updated_date, '%d') as 'date', 
-				sum(usa_pageviews) as  'total_usa_pageviews'
+		$s = "SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
 			   FROM google_analytics_data_daily 
-			   INNER JOIN (article_contributor_articles) 
+			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
 					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
-				
+					AND ( articles.article_id = google_analytics_data_daily.article_id )
+					AND ( articles.article_id = article_categories.article_id )
+					AND ( article_categories.cat_id = categories.cat_id )
 				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."' 
 				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
+
 		$result = $this->performQuery(array(
 			'queryString' => $s,
 			'queryParams' => array( ),
@@ -1076,28 +1084,35 @@ End password reset methods
 		$array_earnins = [];
 		$earnings_chart = [];
 		
+		if ($result && !isset($result[0])){
+			$result = array($result);
+		}
+
 		foreach($result as $earnings){
 			$earnings_chart['date'] = $earnings['date'];
 			$earnings_chart['current_pageviews'] = $earnings['total_usa_pageviews'];
+			$earnings_chart['last_month_pageviews']  = 0;
 
 			$array_earnins[] = $earnings_chart;
 		}
-
 		return $array_earnins;
 	}
 
 	public function getContributorEarningChartLastMonthData( $data ){
-		$contributor_id = 1123;//filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$contributor_id = 1103;//filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$last_month_start_date = date('Y-m-d', strtotime('first day of last month'));
 		$last_month_end_date = date('Y-m-d', strtotime('last day of last month'));
 		
-		$s = " select DATE_FORMAT(updated_date, '%d') as 'date', sum(usa_pageviews) as  'total_last_usa_pageviews' 
-					FROM google_analytics_data_daily 
-					INNER JOIN (article_contributor_articles ) 
+
+		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
+			   FROM google_analytics_data_daily 
+			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
 					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
-					WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$last_month_start_date."' AND '".$last_month_end_date."' 
-					GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ;
-				) as 'last_month_pageviews' ";
+					AND ( articles.article_id = google_analytics_data_daily.article_id )
+					AND ( articles.article_id = article_categories.article_id )
+					AND ( article_categories.cat_id = categories.cat_id )
+				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$last_month_start_date."' AND '".$last_month_end_date."' 
+				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
 
 		$data = $this->performQuery(array(
 			'queryString' => $s,

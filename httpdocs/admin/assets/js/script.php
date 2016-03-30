@@ -849,9 +849,9 @@ if($('.mob-level-contributor')){
 		  EarningsObj.setValues(start_date, end_date);
 
 		  if($('#earnings').length > 0 ){
-			  EarningsObj.getChartData();
+			  EarningsObj.getChartDataRange();
 			  EarningsObj.drawChart();
-			  EarningsObj.getArticlesListData();
+			  //EarningsObj.getArticlesListData();
 			  EarningsObj.updateTotalEarnings();   
 		  }else{
 			  if($('#reports').length > 0 ){

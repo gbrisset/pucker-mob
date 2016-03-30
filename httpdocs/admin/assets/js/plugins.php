@@ -20,17 +20,19 @@ var EarningsObj = {
 	},
     
 	initChart: function(){
-	   
-	     google.charts.setOnLoadCallback(EarningsObj.drawChart);
+	    google.charts.setOnLoadCallback(EarningsObj.drawChart);
     },
+   
     setValues: function( start_date, end_date ){
     	EarningsObj.start_date = start_date;
     	EarningsObj.end_date = end_date;
     	EarningsObj.chart_info =  EarningsObj.getChartData( EarningsObj.start_date, EarningsObj.end_date );
     },
+  
     setTotalEarnings: function( total_earned){
     	EarningsObj.total_earnings = total_earned;
 	},
+   
     getChartData: function(){
     	var info = {}, chart = [ ['', 'This Month', 'Last Month'] ], contributor_id = $('#contributor_id').val(), total_earned = 0;
     	$.ajax({
@@ -64,8 +66,9 @@ var EarningsObj = {
 	},
 
 	getChartDataRange: function(){
+
 		var info = {}, 
-		chart = [ ['', ''] ], 
+		chart = [['', 'revenue', ' '] ], 
 		contributor_id = $('#contributor_id').val(), 
 		total_earned = 0;
     	$.ajax({
@@ -92,14 +95,17 @@ var EarningsObj = {
 					chart.push(info);
 				});
 
-				$('#month-year-title').text('TOTAL: '+total_earned);
-				$('.chart-legend').hide();
+				
 
 			}
 			EarningsObj.total_earnings = total_earned;
 			EarningsObj.chart_info = chart;
+
+			$('#month-year-title').text('Earnings: $'+ parseFloat(EarningsObj.total_earnings, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+			$('.chart-legend').hide();
 		});
 	},
+	
 	getArticlesListData: function(){
     	var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
     	$.ajax({
@@ -216,40 +222,18 @@ var EarningsObj = {
 	},
 
 	drawChart: function( ) {
-       // if(EarningsObj.chart_info.length > 0){
-        // Create the data table.
-        /*
-	    var data = new google.visualization.DataTable();
-
-	    data.addColumn('string', ' ');
-	    data.addColumn('number', ' ');
-	    
-	    data.addRows( EarningsObj.chart_info );
-      
-        var chart = new google.charts.Bar(document.getElementById('bar_chart'));
-
-        chart.draw(data, EarningsObj.options);*/
-       
-        console.log(EarningsObj.chart_info);
-        
+        if(EarningsObj.chart_info.length > 0){
+              
         var data = google.visualization.arrayToDataTable(EarningsObj.chart_info );
+		var chart = new google.charts.Bar(document.getElementById('chart_div'));
 
-	       
+	    chart.draw(data, google.charts.Bar.convertOptions(EarningsObj.options));
 
-
-	        var chart = new google.charts.Bar(document.getElementById('chart_div'));
-
-	        chart.draw(data, google.charts.Bar.convertOptions(EarningsObj.options));
-
-
-	        
-	      
-
-
-      //  }else{
-       // 	$('#chart_div').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
-      //  }
+        }else{
+       		$('#chart_div').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
+       }
      },
+
      updateTotalEarnings: function(){
      	$('#total_earned_graph').text('$' + parseFloat(EarningsObj.total_earnings, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
      }

@@ -45,8 +45,8 @@
 			</li>
 
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>">Ranking & Incentives</a>
-			</li>
+				<a href="<?php echo $config['this_admin_url']; ?>ranking">Ranking & Incentives</a>
+			</li>	
 
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url'].$userLink; ?>">My Profile</a>

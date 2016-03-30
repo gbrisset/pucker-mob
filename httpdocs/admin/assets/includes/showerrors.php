@@ -37,7 +37,6 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 	</div>
 	<script type="text/javascript">
 	$('body').addClass('show-modal-box');
-	
 		setTimeout(function(){
 			window.location = "<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $updateStatus['articleInfo'][':article_seo_title']; ?>";
 	}, 2000);

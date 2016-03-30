@@ -451,7 +451,7 @@ ul.inline-centered>li{ padding: 0.8rem;}
 
 @media #{$large-up} {
 	#main-cont #content { 
-		width: 100%; margin: 2rem auto; padding-left: 16.2rem; min-height: 1650px;
+		width: 100%; margin: 2rem auto; padding-left: 16.2rem; /*min-height: 1650px;*/
 		h1{  border-bottom: 2px solid #ddd; }
 	}
 	#article-info, #articles{ border: 1px solid #ddd; padding:15px;}

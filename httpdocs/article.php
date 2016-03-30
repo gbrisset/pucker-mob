@@ -15,7 +15,8 @@ if($current_url == "http://www.puckermob.com/lifestyle/what-all-smokers-know-7-r
 	header('Location: http://www.puckermob.com/lifestyle/what-all-smokers-know-7-reasons-why-pot-is-better-than-alcohol-');
 	die;
 }
-$categoryInfo = array();
+$categoryInfo = array( "cat_id" => "6",  "cat_name"=> "Lifestyle", "cat_dir_name"=> "lifestyle",
+ "cat_desc" => "",  "cat_tags" => "");
 foreach($MPNavigation->categories as $category){
 
 	if( isset($category['cat_dir_name'])  && !(isset($uri[2])) && ($category['cat_dir_name'] == $uri[0])  ){
@@ -87,9 +88,9 @@ if(!is_null($categoryInfo)){
 	<body id="article" class="mobile">
 		<?php } ?>
 		
-		<?php if(isset($article_id) && $article_id == 9397 ){?>
+		<?php if(isset($article_id) && $article_id == 13305 ){?>
 			<div id="ros_adoop"></div> 
-		<?php  } ?>
+		<?php } ?>
 		
 		<?php include_once($config['include_path'].'header.php');?>
 		
@@ -121,27 +122,12 @@ if(!is_null($categoryInfo)){
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 			<hr>
 			<?php }?>
-			<!-- Go to www.addthis.com/dashboard to customize your tools -->
-		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async></script>
-		<script type="text/javascript">
-			if(document.readyState === "complete") {
-				addthis.init();
-			}else {
-			  //Add onload or DOMContentLoaded event listeners here: for example,
-			  window.addEventListener("onload", function () { addthis.init(); }, false);
-			}
-		</script>
+		
 		</section>
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
-			<?php //if($articleInfoObj['article_id'] == 9764 ) { ?>
-
-			
-			<?php //}else {?>
-
-			
-			<?php //}?>
+	
 				<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 

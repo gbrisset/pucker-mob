@@ -24,7 +24,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 
 	$following_this_author = $follow->isFollowingThisAuthor($userInfo['user_email'], $contributor_id);	
 ?>
-<div class="row">
+<div class="row clear">
 	<?php if($detect->isMobile() ){?>
 		<section id="about-the-author" class="small-12 hide-for-print padding">
 			<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">

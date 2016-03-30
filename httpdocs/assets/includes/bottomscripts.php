@@ -51,6 +51,16 @@
     _taboola.push({flush: true});
   </script>
 
+    <?php if( isset($article_id) && $article_id  == 13481 ){ ?>
+    <!--Puckermob.com CORNERSTREAM Validation Test Tag -->
+    <section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+      <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5938&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
+    </section>
+  <?php } ?>
+
+  <!-- Puckermob.com CORNERSTREAM Revshare_50 -->
+  <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
+
 
 <!-- MOBILE -->
 <?php }else{ ?>
@@ -59,7 +69,7 @@
   
  
 
-  <?php if(isset($article_id) && $article_id == 9397 ){?>
+  <?php if(isset($article_id) && $article_id == 13305 ){?>
     <div id="evolve_footer"></div>
   <?php } ?>
 

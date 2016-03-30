@@ -1,10 +1,10 @@
 <?php if($detect->isMobile()){ ?>
     
-    	<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+    	 <!--<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
 
-    <!--<div style=" top: 3rem; position: relative; text-align: center;">-->
+   <div style=" top: 3rem; position: relative; text-align: center;">
 
-	</div>
+	</div>-->
     <?php }else { ?>
 	<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
 		<!-- 728x90, 970x90 combo: 970x90 728x90 -->

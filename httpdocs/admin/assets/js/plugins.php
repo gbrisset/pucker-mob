@@ -62,6 +62,44 @@ var EarningsObj = {
 			EarningsObj.chart_info = chart;
 		});
 	},
+
+	getChartDataRange: function(){
+		var info = {}, 
+		chart = [ ['', ''] ], 
+		contributor_id = $('#contributor_id').val(), 
+		total_earned = 0;
+    	$.ajax({
+			type: "POST",
+			async: false,
+			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			data: { task:'get_chart_data_range', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
+		}).done(function(data) {
+			if( data != "false" ){ 
+				data = $.parseJSON(data);
+				$(data).each( function(e){	
+					var val = $(this);
+					var rate = $('#current-user-rate').val();
+					var pageviews = parseInt(val[0].current_pageviews),
+					last_month_pageviews = parseInt(val[0].last_month_pageviews),
+					amount = 0, 
+					last_month_amount = 0;
+
+					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;
+					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
+
+					total_earned = total_earned + amount;
+					info = [ val[0].date, amount, last_month_amount];
+					chart.push(info);
+				});
+
+				$('#month-year-title').text('TOTAL: '+total_earned);
+				$('.chart-legend').hide();
+
+			}
+			EarningsObj.total_earnings = total_earned;
+			EarningsObj.chart_info = chart;
+		});
+	},
 	getArticlesListData: function(){
     	var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
     	$.ajax({

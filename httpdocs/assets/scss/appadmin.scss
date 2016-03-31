@@ -1746,3 +1746,17 @@ form#user-account-delete-form {
     }
     span{ color: #fff; }
 }
+
+//Insentive and Ranking page
+#ranking #content{
+	h1{ font-size: 20px !important; }
+	.mobile-ranking-div{
+		background: #bbb;
+		padding:8px 10px 0 15px !important;
+
+		h2{ color: #fff; font-size: 18px;}
+	}
+	@media #{$large-up} {
+		h1{ font-size: 1.7rem;}
+	}
+}

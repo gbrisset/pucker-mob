@@ -127,9 +127,9 @@ class ManageAdminDashboard{
 			  INNER JOIN ( article_contributors, users) 
 			  	ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
 			  	AND ( article_contributors.contributor_email_address = users.user_email)
-			  WHERE month = $month AND year = $year  
+			  WHERE month = $month AND year = $year  AND users.user_type IN (3, 8, 9)
 			  ORDER BY total_us_pageviews DESC LIMIT ".$limit;
-//AND users.user_type IN (2, 3, 4, 5)
+
 		$q = $this->performQuery(['queryString' => $s]);
 
 		return $q;

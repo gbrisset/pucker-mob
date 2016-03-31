@@ -20,7 +20,6 @@
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 	$balance_due = isset($earnings['to_be_pay']) ? $earnings['to_be_pay'] : 0;
 
-
 ?>
 
 <div class="small-12 columns no-padding-right margin-bottom show-for-large-up">

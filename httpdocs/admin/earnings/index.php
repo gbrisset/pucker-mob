@@ -121,9 +121,7 @@
 
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-4 right padding rightside-padding" >
-		
 				<?php include_once($config['include_path_admin'].'earnings_info.php'); ?>
-				
 			</div>
 
 

@@ -59,7 +59,28 @@ module.exports = function(grunt) {
           'httpdocs/assets/css/app.min.css': ['httpdocs/assets/css/app.css']
         }
       }
-    }
+    },
+
+    browserify:     {
+      options:      {
+        transform:  [ require('grunt-react').browserify ]
+      },
+      app:          {
+        src:        'path/to/source/main.js',
+        dest:       'path/to/target/output.js'
+      }
+    },
+
+      react: {
+        files: {
+          expand: true,
+          cwd: 'httpdocs/assets/jsx/',
+          src: ['**/*.jsx'],
+          dest: 'phttpdocs/assets/js/',
+          ext: '.js'
+        }
+      }
+    
   });
 
   grunt.loadNpmTasks('grunt-sass');
@@ -67,6 +88,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-react');
+  grunt.loadNpmTasks('grunt-browserify');
 
   grunt.registerTask('build', ['sass']);
   grunt.registerTask('jscompress', ['uglify']);

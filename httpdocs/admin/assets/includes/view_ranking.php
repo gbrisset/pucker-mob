@@ -4,6 +4,7 @@
 	 $current_year = date('Y');
 	 $contributor_id = $userData['contributor_id'];
 
+
 	 $rank_data= $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
 	 if(isset($rank_data) && $rank_data ){
 		 foreach($rank_data as $rank_pw){
@@ -33,8 +34,8 @@
 	</div>
 	<div  class="small-12 large-3 columns  show-for-xlarge-up ">
 		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius">
-			<h3 class="small-12 columns uppercase">U.S. Pageviews</h3>
-			<span class="small-12 columns bold"><?php echo $pageviews ?></span>
+			<h3 class="small-12 columns uppercase">TOTAL U.S. Visits</h3>
+			<span class="small-12 columns bold"><?php echo money_format('%(#10n', $pageviews); ?></span>
 			<span class="small-12 columns  mini-fonts uppercase show-for-xxlarge-up ">this month</span>
 
 		</div>

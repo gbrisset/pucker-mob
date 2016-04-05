@@ -13,8 +13,7 @@
 	if($detect->isMobile()){
 		$limit = 10;
 	}
-
-	 $rank_list = $ManageDashboard->getTopShareWritesRank( date('n'), $limit);
+	 $rank_list = $ManageDashboard->getTopShareWritesRank( 3/*date('n')*/, $limit);
 	 $rank = '9999';
 	
 ?>

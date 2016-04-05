@@ -366,7 +366,7 @@ $(document).ready(function (){
 
 
 	//	edit LIST ITEM: editlist.php
-
+/*
 	$('.page-list-item-data-form').each(function(){
 	
 		var thisForm = $(this),
@@ -409,7 +409,7 @@ $(document).ready(function (){
 				}
 			}
 		});
-	});
+	});*/
 
 	//REFACTOR THIS TO ONE PLUGIN
 
@@ -496,14 +496,12 @@ $(document).ready(function (){
 
 	$('#image-file-link').click(function(e){
 		e.preventDefault();
-		var input_file = $('.upload-img-file');
+		$('#contributor_wide_img').click()
 		$('#update-article-image').show();
-		input_file.click();
 	});
 
 	$('#enable-add-image').click(function(e){
 		e.preventDefault();
-
 		$('#add-an-image-fs').slideDown();
 	});
 
@@ -528,7 +526,7 @@ $(document).ready(function (){
 
 
 	//PUBLISH ARTICLE
-	if($('#publish')){
+	if( $('#publish') ){
 		$('#publish').on('click', function(e){
 			var statusVal = $(this).attr('data-info');
 			$.ajax({
@@ -542,10 +540,7 @@ $(document).ready(function (){
 				}else{
 					location.reload();
 				}
-				
-			  
 			});
-			 
 		});
 	}
 
@@ -555,14 +550,34 @@ $(document).ready(function (){
 			var img = $(this).attr('data-info'),
 			avatar_dir = "http://images.puckermob.com/articlesites/contributors_redesign",
 			new_img_src = avatar_dir+'/'+img,
-			img_profile = $('#img-profile');
+			img_profile = $('#img-profile'),
+			img_name = $(img_profile).attr('data-info');
+			
 			$(img_profile).attr('src', new_img_src);
+
 			$(img_profile).attr('data-info', img);
+
+			$.ajax({
+			  type: "POST",
+			  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			  data: { image: img, c_i: $('#cont_i').val(), task:'update_avatar_img' }
+			}).done(function(data) {
+				if(data){
+					avatar_dir = "http://images.puckermob.com/articlesites/contributors_redesign",
+					new_img_src = avatar_dir+'/'+img;
+					$('#image-header-profile').attr('src', new_img_src);
+					$('#error-img').text('Image Updated Sucessful!').addClass('new-success').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );
+
+			 	}else{
+			 		$('#error-img').text('something went wrong. Please try again or contact info@sequelmediainternational.com.').addClass('error').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );;
+			 	}
+			});
 		});
 
 	}
 
-if($('.select-avatar')){
+//PROFILE PAGE AVATAR
+/*if($('.select-avatar')){
 	$('.select-avatar').on('click', function(event){
 		var img_profile = $('#img-profile'),
 		img_name = $(img_profile).attr('data-info');
@@ -586,18 +601,17 @@ if($('.select-avatar')){
 			 	}
 			});
 	});
-}
+}*/
 		
 
 //$('.has-tooltip').tooltipster();
 
 //LIBRARY PHOTOS
-	if($('#search-lib')){
-		$('#search-lib').on('click', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-
-		});	
+if( $('#search-lib') ){
+	$('#search-lib').on('click', function(e){
+		e.preventDefault();
+		e.stopPropagation();
+	});	
 }
 
 $('.step-2').hide();

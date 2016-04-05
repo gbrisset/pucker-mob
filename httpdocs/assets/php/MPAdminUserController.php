@@ -610,6 +610,8 @@ End password reset methods
 			'updateString' => "UPDATE article_contributors SET contributor_image = '".$contributorImg."'  WHERE contributor_id = ".$contributorId
 		));
 
+		var_dump($contributorId, $contributorImg);
+
 		if($updateImage === true) return true;
 		return false;
 	}

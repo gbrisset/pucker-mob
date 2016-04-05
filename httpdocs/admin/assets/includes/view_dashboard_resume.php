@@ -2,13 +2,13 @@
 	 $ManageDashboard = new ManageAdminDashboard( $config );
 	 $current_month = date('n');
 	 $current_year = date('Y');
-	 $contributor_id = $userData['contributor_id'];
-	
+	 $contributor_id = 1103;//$userData['contributor_id'];
+
 	//GET RANK POSITION FOR CURRENT USER.
-	 $rank_list = $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
-	 $rank = 'NONE';
-	 if(isset($rank_list) && $rank_list ){
-		 foreach($rank_list as $rank_pw){
+	 $rank = '9999';
+	 $rank_data= $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
+	 if(isset($rank_data) && $rank_data ){
+		 foreach($rank_data as $rank_pw){
 		 	if($contributor_id === $rank_pw['contributor_id']){
 		 		$rank = $rank_pw['rownum'];
 		 	}

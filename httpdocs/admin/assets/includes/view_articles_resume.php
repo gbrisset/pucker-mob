@@ -6,7 +6,7 @@
 	
 	//GET RANK POSITION FOR CURRENT USER.
 	 $rank_list = $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
-	 $rank = 'NONE';
+	 $rank = '9999';
 	 if(isset($rank_list) && $rank_list ){
 		 foreach($rank_list as $rank_pw){
 		 	if($contributor_id === $rank_pw['contributor_id']){

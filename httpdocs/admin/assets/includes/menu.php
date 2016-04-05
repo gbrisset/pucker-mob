@@ -1,6 +1,7 @@
 <?php 
 	$uri = $adminController->helpers->getURI($mpHelpers->curPageURL());
-	($adminController->user->data['user_name']) ? $userLink = 'account/user/'.$adminController->user->data['user_name'] : $userLink = 'noacess';
+	($adminController->user->data['user_name']) ? $userLink = 'account/edit/'.$adminController->user->data['user_name'] : $userLink = 'noacess';
+	($adminController->user->data['user_name']) ? $userLinkPublic = 'account/user/'.$adminController->user->data['user_name'] : $userLinkPublic = 'noacess';
 
 ?>
 
@@ -48,8 +49,16 @@
 				<a href="<?php echo $config['this_admin_url']; ?>ranking">Ranking & Incentives</a>
 			</li>	
 
-			<li class="small-12 columns border-bottom padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url'].$userLink; ?>">My Profile</a>
+			<li class="parent small-12 columns border-bottom padding-top padding-bottom">
+				<a href="<?php echo $config['this_admin_url'].$userLinkPublic; ?>">My Profile<i class="fa fa-chevron-down"></i></a>
+			</li>
+				<ul class="" style="opacity: 1; z-index: 1; display: none;">
+					<li class="small-12 columns border-bottom border-top padding-top padding-bottom" id="edit_contributors">
+						<a href="<?php echo $config['this_admin_url'].$userLink; ?>">SET UP</a>
+					</li>
+					<li class="small-12 columns  padding-top padding-bottom" id="new_contributor"><a href="<?php echo $config['this_admin_url'].$userLinkPublic; ?>">View Public</a>
+					</li>
+				</ul>
 			</li>
 
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
@@ -61,7 +70,8 @@
 			<!-- CONTRIBUTORS -->
 			<?php  if($adminController->user->data['user_permission_show_other_contributors']){?>
 			<li class="parent small-12 columns  padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>contributors/">Contributors<i class="fa fa-chevron-down"></i></a></li>
+				<a href="<?php echo $config['this_admin_url']; ?>contributors/">Contributors<i class="fa fa-chevron-down"></i></a>
+			</li>
 				<ul class="" style="opacity: 1; z-index: 1; display: none;">
 					<li class="small-12 columns border-bottom border-top padding-top padding-bottom" id="edit_contributors"><a href="<?php echo $config['this_admin_url']; ?>contributors/">View Contributor</a></li>
 					<li class="small-12 columns  padding-top padding-bottom" id="new_contributor"><a href="<?php echo $config['this_admin_url']; ?>contributors/new/">New Contributor</a></li>

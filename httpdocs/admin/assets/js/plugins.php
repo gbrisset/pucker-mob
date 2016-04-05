@@ -273,10 +273,7 @@ var SDCookie = (function() {
 			this.save(name,"",-1);
 		}
     }
-
 }());
-
-
 
 $.fn.SDPopUp = (function(opts){
 	var options = $.extend({
@@ -301,12 +298,9 @@ $.fn.SDPopUp = (function(opts){
 	});
 });
 
-
-
 /*	Redirect to a new seo title page
 	Call this on the form input containing a new seo title to preform a redirect.
 	arg1: The url path without the seo title
-
 */
 $.fn.redirectToNewSEOTitle = function(basePath){
 	var newSEOName = $(this).attr("value");
@@ -320,7 +314,6 @@ $.fn.redirectToNewSEOTitle = function(basePath){
 }
 
 /*	SEO Title auto complete...
-
 		Call this method on a form input element that the user will be typing in
 		argument1: The input to be auto-completed
 		argument2: The hidden input that indicates the seo name has changed
@@ -341,7 +334,6 @@ $.fn.SDSeoTitleAutoComplete = function(seoTitleInputName, hiddenInput){
 		$('input[name="'+hiddenInput+'"]').val("true");
 	});		
 }
-
 
 $.fn.SDToggler = function(hiddenDiv){
 	$(this).click(function(e){
@@ -383,7 +375,6 @@ $.fn.mpTooltip = function(){
 		};
 	});
 };*/
-
 
 /* Begin Scrollable Element Detection */
 function scrollableElement(els) {
@@ -484,9 +475,9 @@ $.fn.mpValidate = function(opts){
 			submit.attr('disabled', true);
 			var confirmed = false;
 
-			if(tinyMCE){
-				tinyMCE.triggerSave();
-			}
+			//if(tinyMCE){
+			//	tinyMCE.triggerSave();
+			//}
 
 			if(options.additionalParams == 'file' && $(options.imageFile)[0].files[0] != null){
 				
@@ -572,7 +563,6 @@ $.fn.appendAround = function(){
 		$(window).resize(appendToVisibleContainer);
 	});
 };
-
 
 $.fn.mpImageCropUpload = function( opts, e ){
 	var options = $.extend({

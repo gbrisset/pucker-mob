@@ -10,7 +10,11 @@
 	
 	switch($uri[1]){
 		case "user":
-			if(isset($uri[2]) && strlen($uri[2])) include_once('editaccount.php');
+			if(isset($uri[2]) && strlen($uri[2])) include_once('viewprofile.php');
+			else $mpShared->get404();
+			break;
+		case "edit":
+			if(isset($uri[2]) && strlen($uri[2])) include_once('editprofile.php');
 			else $mpShared->get404();
 			break;
 		default:

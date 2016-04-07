@@ -1,19 +1,26 @@
 <?php
 	$userInfo = $adminController->user->data;
+	var_dump($uri[2]);
+	$contributorInfo = $mpArticle->getContributors(['contributorSEOName' => $uri[2] ])['contributors'];
+
+	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
+	if (isset($contributorInfo['contributor_id'])){
+		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
+	} else $mpShared->get404();
+
+	//if(empty($contributorInfo)) $mpShared->get404();
+	$contributorInfo = $contributorInfo[0];	
 
 	//	If the user hasn't yet set an image, set $image = default_profile_image.png
 	$image = (isset($userInfo['contributor_image']) && $userInfo['contributor_image'] != "") ? $userInfo['contributor_image'] : 'pm_avatars_1.png';
 
-	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
-	if (isset($userInfo['contributor_id'])){
-		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
-	} else $mpShared->get404();
+	
 	
 	//	If the name in the url string doesn't match the logged in user's username...
-	if ($userInfo['user_name'] != $uri[2]){
+	//if ($userInfo['user_name'] != $uri[2]){
 		//	No access
-		$adminController->redirectTo('noaccess/');
-	}
+	//	$adminController->redirectTo('noaccess/');
+	//}
 
 	//	Set the paths to the image
 	$contImageDir =  $config['image_upload_dir'].'articlesites/contributors_redesign/'.$image;
@@ -80,9 +87,9 @@
 			<div class="small-12 columns padding-bottom ">
 				<h1 class="columns small-12" >My Profile
 					<div class="inline right show-for-large-up">
-						<a href="<?php echo $config['this_url'].'admin/account/edit/'.$adminController->user->data['user_name']; ?>" class="font-1-5x main-color">SET UP</a>
+						<a href="<?php echo $config['this_url'].'admin/account/edit/'.$contributorInfo['contributor_seo_name']; ?>" class="font-1-5x main-color">SET UP</a>
 						<i class="fa fa-circle"></i>
-						<a href="<?php echo $config['this_url'].'admin/account/user/'.$adminController->user->data['user_name']; ?>" class="font-1-5x black">VIEW PUBLIC</a>
+						<a href="<?php echo $config['this_url'].'admin/account/user/'.$contributorInfo['contributor_seo_name']; ?>" class="font-1-5x black">VIEW PUBLIC</a>
 					</div>
 				</h1>
 			</div>
@@ -138,22 +145,22 @@
 
 							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 							<input type="hidden" id="c_i" name="c_i" value="<?php echo $userInfo['contributor_id']; ?>" />
-							<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset($userInfo['user_email'])) echo $userInfo['user_email']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+							<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset( $contributorInfo['contributor_email_address'])) echo  $contributorInfo['contributor_email_address']; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
 
 							<div class="columns small-12 large-6 no-padding">
 								<div class="columns small-12 margin-top">
-									<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($adminController->user->data['user_first_name'])) echo $adminController->user->data['user_first_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_first_name') echo 'autofocus'; ?> />
+									<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($contributorInfo['contributor_name'])) echo $contributorInfo['contributor_name']; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_name') echo 'autofocus'; ?> />
 								</div>
 								<div class="columns small-12 margin-top">
-									<input type="email" name="user_email-e" id="user_email-e" placeholder="YOUR E-MAIL ADDRESS" value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'user_email') echo 'autofocus'; ?> />
+									<input type="email" name="user_email-e" id="user_email-e" placeholder="YOUR E-MAIL ADDRESS" value="<?php if(isset($contributorInfo['contributor_email_address'])) echo $contributorInfo['contributor_email_address']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
 								</div>
 								<div class="columns small-12 margin-top">
-									<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="YOUR LOCATION" value="<?php if(isset($userInfo['contributor_location'])) echo $userInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
+									<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="YOUR LOCATION" value="<?php if(isset($contributorInfo['contributor_location'])) echo $contributorInfo['contributor_location']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
 								</div>
 							</div>
 							<div class="columns small-12 large-6  no-padding">
 								<div class="columns small-12">
-									<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($userInfo['contributor_bio'])) echo $userInfo['contributor_bio']; ?></textarea>
+									<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($contributorInfo['contributor_bio'])) echo $contributorInfo['contributor_bio']; ?></textarea>
 								</div>
 							</div>
 						</div>
@@ -164,14 +171,14 @@
 
 						<div class="small-12 columns margin-bottom margin-top no-padding">
 							<div class="columns mobile-12 small-12 large-12">
-								<input class="margin-top" type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="YOUR FACEBOOK URL" value="<?php if(isset($userInfo['contributor_facebook_link'])) echo $userInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
+								<input class="margin-top" type="url" name="contributor_facebook_link-s" id="contributor_facebook_link-s" placeholder="YOUR FACEBOOK URL" value="<?php if(isset($contributorInfo['contributor_facebook_link'])) echo $contributorInfo['contributor_facebook_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_facebook_link') echo 'autofocus'; ?> />
 							</div>
 
 							<div class="columns mobile-12 small-12 large-12">
-								<input class="margin-top"  type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="YOUR TWITTER HANDLE" value="<?php if(isset($userInfo['contributor_twitter_handle'])) echo $userInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
+								<input class="margin-top"  type="text" name="contributor_twitter_handle-s" id="contributor_twitter_handle-s" placeholder="YOUR TWITTER HANDLE" value="<?php if(isset($contributorInfo['contributor_twitter_handle'])) echo $contributorInfo['contributor_twitter_handle']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_twitter_handle') echo 'autofocus'; ?> />
 							</div>
 							<div class="columns mobile-12 small-12 large-12">
-								<input class="margin-top" type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="YOUR BLOG OR WEBSITE URL" value="<?php if(isset($userInfo['contributor_blog_link'])) echo $userInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
+								<input class="margin-top" type="url" name="contributor_blog_link-s" id="contributor_blog_link-s" placeholder="YOUR BLOG OR WEBSITE URL" value="<?php if(isset($contributorInfo['contributor_blog_link'])) echo $contributorInfo['contributor_blog_link']; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_blog_link') echo 'autofocus'; ?> />
 							</div>
 						</div>
 
@@ -183,7 +190,7 @@
 									</p>
 								</div>
 								<div class="columns mobile-12 small-12 large-6 align-right no-padding">
-									<button class="columns small-6 radius wide-button elm"><a href="http://www.puckermob.com/contributors/<?php echo $userInfo['contributor_seo_name']; ?>" target="_blank">PROFILE</a></button>
+									<button class="columns small-6 radius wide-button elm"><a href="http://www.puckermob.com/contributors/<?php echo $contributorInfo['contributor_seo_name']; ?>" target="_blank">PROFILE</a></button>
 									<button class="columns small-6  radius wide-button" style="margin-right: -5px;" type="submit" id="submit" name="submit">SAVE</button>
 								</div>
 						</div>

@@ -610,7 +610,7 @@ End password reset methods
 			'updateString' => "UPDATE article_contributors SET contributor_image = '".$contributorImg."'  WHERE contributor_id = ".$contributorId
 		));
 
-		var_dump($contributorId, $contributorImg);
+		//var_dump($contributorId, $contributorImg);
 
 		if($updateImage === true) return true;
 		return false;
@@ -1018,7 +1018,7 @@ End password reset methods
 	}
 
 	public function getContributorEarningChartData( $data ){
-		$contributor_id = 1103; //filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
@@ -1180,6 +1180,101 @@ End password reset methods
 
 		return $data;
 
+	}
+
+	public function getContributorsArticleList( $contributor_id){
+
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+		$s= "SELECT articles.article_title, articles.article_seo_title, articles.article_id, categories.cat_dir_name FROM article_contributor_articles
+		 INNER JOIN ( articles, article_categories, categories)
+		 ON ( article_contributor_articles.article_id = articles.article_id 
+		 	AND articles.article_id = article_categories.article_id 
+		 	AND article_categories.cat_id = categories.cat_id
+		 ) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		ORDER BY articles.article_id DESC";
+
+		$article = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
+
+		return $article;
+
+	}
+
+	public function getLastPostedArticle($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+		$s= "SELECT articles.article_id, articles.creation_date FROM article_contributor_articles
+		 INNER JOIN ( articles, article_categories, categories)
+		 ON ( article_contributor_articles.article_id = articles.article_id 
+		 	AND articles.article_id = article_categories.article_id 
+		 	AND article_categories.cat_id = categories.cat_id
+		 ) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		ORDER BY articles.article_id DESC LIMIT 1 ";
+
+		$article = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
+
+		return $article;
+	}
+
+	public function articlesPublisThisMonth($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$month = date('n');
+		$year = date('Y');
+
+		$s= "SELECT count(*) as 'total' FROM article_contributor_articles
+		 INNER JOIN ( articles )
+		 ON ( article_contributor_articles.article_id = articles.article_id ) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		AND month(articles.creation_date) = $month 
+		AND year(articles.creation_date) = $year ";
+
+		$article = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
+
+		return $article;
+
+	}
+
+	public function mostPopularPost($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$month = date('n');
+		$year = date('Y');
+
+		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, usa_pageviews, categories.cat_dir_name FROM  google_analytics_data_new
+		 INNER JOIN ( articles, article_contributor_articles, article_categories, categories )
+		 ON (  google_analytics_data_new.article_id = articles.article_id
+		 	AND google_analytics_data_new.article_id = article_contributor_articles.article_id 
+		 	AND article_categories.article_id = articles.article_id
+		 	AND article_categories.cat_id = categories.cat_id) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		AND google_analytics_data_new.month = $month 
+		AND google_analytics_data_new.year = $year 
+		ORDER BY google_analytics_data_new.usa_pageviews DESC LIMIT 1";
+
+		$article = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
+
+		return $article;
 
 	}
 

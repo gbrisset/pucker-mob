@@ -1,19 +1,23 @@
 <?php
 	$userInfo = $adminController->user->data;
+	$contributorInfo = $mpArticle->getContributors(['contributorSEOName' => $uri[2] ])['contributors'];
 
-	//	If the user hasn't yet set an image, set $image = default_profile_image.png
-	$image = (isset($userInfo['contributor_image']) && $userInfo['contributor_image'] != "") ? $userInfo['contributor_image'] : 'pm_avatars_1.png';
+	if(empty($contributorInfo)) $mpShared->get404();
+	$contributorInfo = $contributorInfo[0];	
 
 	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
-	if (isset($userInfo['contributor_id'])){
+	if (isset($contributorInfo['contributor_id'])){
 		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
 	} else $mpShared->get404();
+
+	//	If the user hasn't yet set an image, set $image = default_profile_image.png
+	$image = (isset($contributorInfo['contributor_image']) && $contributorInfo['contributor_image'] != "") ? $contributorInfo['contributor_image'] : 'pm_avatars_1.png';
 	
 	//	If the name in the url string doesn't match the logged in user's username...
-	if ($userInfo['user_name'] != $uri[2]){
+	//if ($userInfo['user_name'] != $uri[2]){
 		//	No access
-		$adminController->redirectTo('noaccess/');
-	}
+	//	$adminController->redirectTo('noaccess/');
+	//}
 
 	//	Set the paths to the image
 	$contImageDir =  $config['image_upload_dir'].'articlesites/contributors_redesign/'.$image;
@@ -21,12 +25,10 @@
 	$contImageExists = false;
 
 	//	Verify if the usr has ever SELECTED an image
-	if(isset($image) ){
-		$contImageExists = file_exists($contImageDir);
-	}
+	if( isset($image) ){ $contImageExists = file_exists($contImageDir); }
 
-
-//	$contributorInfo = $mpArticle->getContributors(['contributorSEOName' => 'kirsten-corley-', 'sortType' => 1]);
+	$contributor_id = $contributorInfo['contributor_id'];
+	$article_list = $adminController->user->getContributorsArticleList( $contributor_id );
 
 ?>
 
@@ -58,28 +60,44 @@
 				</h1>
 			</div>
 			
-			<div class="small-12 xxlarge-9 columns">	
+			<div class="small-12 xxlarge-8 columns">	
 				<div class="small-12 columns margin-bottom no-padding">
 					<div class="small-12 columns no-padding">
-						<div class="small-5 large-3 columns no-padding">
+						<div class="small-5 large-2 columns no-padding">
 							<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" />
 						</div>
-						<div class="small-7 large-9 columns no-padding-right cont-info">
+						<div class="small-7 large-10 columns no-padding-right cont-info" style="    padding-top: 35px;">
 							<div class="small-12 large-6 columns">
-								<p style="    margin-top: 11px;"><?php echo $userInfo['user_first_name']; ?></p>
-								<p class="show-for-large-up"><?php echo $userInfo['contributor_location']; ?></p>
-								<p class="show-for-large-up">JOINED: <?php echo date('F d, Y', strtotime($userInfo['user_creation_date'])); ?></p>
+								<p style="margin-top: 11px;"><?php echo $contributorInfo['contributor_name']; ?></p>
+								<p class="show-for-large-up"><?php echo $contributorInfo['contributor_location']; ?></p>
+								<p class="show-for-large-up">JOINED: <?php echo date('F d, Y', strtotime($contributorInfo['creation_date`'])); ?></p>
 							</div>
 							<div class="small-12 large-6 columns show-for-large-up">
-								<p><a href=""><i class="fa fa-facebook-square"></i>FOLLOW ON FACEBOOK</a></p>
-								<p><a href=""><i class="fa fa-twitter"></i>FOLLOW ON TWITTER</a></p>
-								<p><a href=""><i class="fa fa-desktop"></i>VIEW MY BLOG/SITE</a></p>
+								<?php if($userInfo['contributor_facebook_link']){?>
+									<p><a href="<?php echo $contributorInfo['contributor_facebook_link']; ?>" target="_blank"><i class="fa fa-facebook-square"></i>FOLLOW ON FACEBOOK</a></p>
+								<?php }?>
+
+								<?php if($userInfo['contributor_twitter_handle']){?>
+								<p><a href="http://www.twitter.com/<?php echo $contributorInfo['contributor_twitter_handle']; ?>" target="_blank"><i class="fa fa-twitter"></i>FOLLOW ON TWITTER</a></p>
+								<?php }?>
+
+								<?php if($userInfo['contributor_blog_link']){?>
+								<p><a href="<?php echo $contributorInfo['contributor_blog_link']; ?>" target="_blank"><i class="fa fa-desktop"></i>VIEW MY BLOG/SITE</a></p>
+								<?php }?>
 							</div>
 
 							<div class="small-12 large-6 columns hide-for-large-up margin-top">
-								<p class="small-4 columns no-padding"><a href=""><i style="font-size: 1.6rem;" class="fa fa-facebook-square"></i></a></p>
-								<p class="small-4 columns no-padding" ><a href=""><i style="font-size: 1.6rem;" class="fa fa-twitter"></i></a></p>
-								<p class="small-4 columns no-padding" ><a href=""><i style="font-size: 1.6rem;" class="fa fa-desktop"></i></a></p>
+								<?php if($userInfo['contributor_facebook_link']){?>
+								<p class="small-4 columns no-padding"><a href="<?php echo $contributorInfo['contributor_facebook_link']; ?>" target="_blank"><i style="font-size: 1.6rem;" class="fa fa-facebook-square"></i></a></p>
+								<?php }?>
+
+								<?php if($userInfo['contributor_twitter_handle']){?>
+								<p class="small-4 columns no-padding" ><a href="http://www.twitter.com/<?php echo $contributorInfo['contributor_twitter_handle']; ?>" target="_blank"><i style="font-size: 1.6rem;" class="fa fa-twitter"></i></a></p>
+								<?php }?>
+
+								<?php if($userInfo['contributor_blog_link']){?>
+								<p class="small-4 columns no-padding" ><a href="<?php echo $contributorInfo['contributor_blog_link']; ?>" target="_blank"><i style="font-size: 1.6rem;" class="fa fa-desktop"></i></a></p>
+								<?php }?>
 							</div>
 						</div>
 					</div>
@@ -87,34 +105,34 @@
 
 				<div class="small-12 columns no-padding margin-bottom margin-top">
 					<h2 class="bold">ABOUT ME</h2>
-					<p><?php echo $userInfo['contributor_bio']; ?></p>
+					<p><?php echo $contributorInfo['contributor_bio']; ?></p>
 				</div>
 
 				<div class="small-12 columns no-padding margin-bottom margin-top">
 					<h2 class="bold">MY ARTICLES</h2>
 					<div class="small-12 columns no-padding">
+					<?php if(isset($article_list) && $article_list ){?>
 					<table>
-						<tr>
-							<td width="200" class="show-for-large-up"><img src="http://cdn.puckermob.com/articlesites/puckermob/large/12964_tall.jpg" alt="Article Image"/></td>
-							<td ><a>To The Mother Who Doesn't Deserve Him, I Loved Him When You Walked Out</a></td>
+						<?php foreach($article_list as $article){
+							$article_url = $config['this_url'].'/'.$article['cat_dir_name'].'/'.$article['article_seo_title'];
+						?>
+						<tr id="article_<?php echo $article['article_id'];?>">
+							<td width="170" class="show-for-large-up"><img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id'];?>_tall.jpg" alt="Article Image"/></td>
+							<td ><a href="<?php echo $article_url; ?>" target="blanck"><?php echo $article['article_title'];?></a></td>
 						</tr>
-						<tr>
-							<td width="200" class="show-for-large-up"><img src="http://cdn.puckermob.com/articlesites/puckermob/large/12964_tall.jpg" alt="Article Image"/></td>
-							<td ><a>To The Mother Who Doesn't Deserve Him, I Loved Him When You Walked Out</a></td>
-						</tr>
-						<tr>
-							<td width="200" class="show-for-large-up"><img src="http://cdn.puckermob.com/articlesites/puckermob/large/12964_tall.jpg" alt="Article Image"/></td>
-							<td ><a>To The Mother Who Doesn't Deserve Him, I Loved Him When You Walked Out</a></td>
-						</tr>
+						<?php }?>
 					</table>
+					<?php }else{
+						echo '<p>No Articles Found!</p>';
+					} ?>
 						
 					</div>
 				</div>
 			</div>
 			
 			<!-- Right Side -->
-			<div class="small-12 xxlarge-3 right padding rightside-padding show-for-large-up" >
-				<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
+			<div class="small-12 xxlarge-4 right padding rightside-padding show-for-large-up" >
+				<?php include_once($config['include_path_admin'].'myprofile_sidebar.php'); ?>
 			</div>
 		</div>
 	</main>

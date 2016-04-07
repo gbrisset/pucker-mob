@@ -632,6 +632,24 @@ public function getContributorUserType( $email ){
 	return $r;
 }
 
+public function getContributorInfo( $seo_name ){
+	$pdo = $this->con->openCon();
+	$q = $pdo->query("	SELECT * FROM article_contributors 
+		WHERE contributor_seo_name = '".$seo_name."' ");
+
+	if($q && $q->rowCount()){
+		$q->setFetchMode(PDO::FETCH_ASSOC);
+		while($row = $q->fetch()){
+			$r = $row;
+		}
+		$q->closeCursor();
+	}else $r = false;
+	$this->con->closeCon();
+
+	return $r;
+}
+
+
 public function getContributors($args = [], $attempts = 0){
 	$options = array_merge([
 		'pageId' => null,

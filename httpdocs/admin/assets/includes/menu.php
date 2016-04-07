@@ -1,7 +1,7 @@
 <?php 
 	$uri = $adminController->helpers->getURI($mpHelpers->curPageURL());
-	($adminController->user->data['user_name']) ? $userLink = 'account/edit/'.$adminController->user->data['user_name'] : $userLink = 'noacess';
-	($adminController->user->data['user_name']) ? $userLinkPublic = 'account/user/'.$adminController->user->data['user_name'] : $userLinkPublic = 'noacess';
+	($adminController->user->data['contributor_seo_name']) ? $userLink = 'profile/edit/'.$adminController->user->data['contributor_seo_name'] : $userLink = 'noacess';
+	($adminController->user->data['contributor_seo_name']) ? $userLinkPublic = 'profile/user/'.$adminController->user->data['contributor_seo_name'] : $userLinkPublic = 'noacess';
 
 ?>
 
@@ -74,7 +74,7 @@
 			</li>
 				<ul class="" style="opacity: 1; z-index: 1; display: none;">
 					<li class="small-12 columns border-bottom border-top padding-top padding-bottom" id="edit_contributors"><a href="<?php echo $config['this_admin_url']; ?>contributors/">View Contributor</a></li>
-					<li class="small-12 columns  padding-top padding-bottom" id="new_contributor"><a href="<?php echo $config['this_admin_url']; ?>contributors/new/">New Contributor</a></li>
+					<!--<li class="small-12 columns  padding-top padding-bottom" id="new_contributor"><a href="<?php echo $config['this_admin_url']; ?>contributors/new/">New Contributor</a></li>-->
 				</ul>
 			</li>
 			<?php }?>

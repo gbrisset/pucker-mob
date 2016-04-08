@@ -170,7 +170,7 @@
 
 							<div class="contributor-links columns small-5 large-3" >
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'profile/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i></a>
-								<a class="manage-links" href="<?php echo $config['this_admin_url'].'dashboard/contributor/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i></a>
+								<a class="manage-links" href="<?php echo $config['this_admin_url'].'earnings/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i></a>
 							</div>
 
 							

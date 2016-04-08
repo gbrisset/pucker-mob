@@ -42,7 +42,7 @@
 
 			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>earnings">Earnings & Analytics</a>
+				<a href="<?php echo $config['this_admin_url']; ?>earnings/<?php echo $adminController->user->data['contributor_seo_name']; ?>">Earnings & Analytics</a>
 			</li>
 
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
@@ -62,7 +62,7 @@
 			</li>
 
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>">My Account</a>
+				<a href="<?php echo $config['this_admin_url'].'account'; ?>">My Account</a>
 			</li>
 			<?php }?>
 

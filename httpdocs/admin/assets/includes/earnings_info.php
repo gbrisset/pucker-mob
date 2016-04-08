@@ -1,8 +1,7 @@
 	<div class="small-12 columns radius right-side-box">
 		<div class="">
-			<ul class="small-12 columns">
-				<li class="small-12 columns no-padding"><label class="small-6 columns no-padding-left align-left uppercase light-green">U.S. VISITS:</label><label class="small-6 columns no-padding-right align-right">59,345</label></li>
-			</ul>
+				<label class="uppercase light-green">U.S. VISITS: 
+				<span style="color: #222;">59,345</span></label>
 		</div>
 	</div>
 

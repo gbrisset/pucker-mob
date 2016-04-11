@@ -108,7 +108,7 @@ else if($ajax) {
 
 		<!-- LEFT SIDE BAR -->
 		<?php if(!$has_sponsored){
-			include_once($config['include_path'].'left_side_bar.php');
+		//	include_once($config['include_path'].'left_side_bar.php');
 		}?>
 		
 	</main>

@@ -69,11 +69,11 @@
  <!-- Social Media Icons -->
 <div id="nav_bar">
 
-  <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
-    <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="" >
+    <div class="row" style="max-width: 69.5rem">
       <div id="header-social" class="small-12 columns no-padding">
         <?php if($user_type == 5){?>
-          <ul style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; ?>">
+          <ul style="">
               <li><a class="my-account-header-link" id="my-account-header-link" href="<?php echo $config['this_admin_url'].'following/'; ?>">My Account</a></li>
               <li class="empty-list "></li>
               <li><a  class="my-account-header-link" href="<?php echo $config['this_admin_url']; ?>/logout/">LOG OUT </a></li>
@@ -86,7 +86,7 @@
               </li>
             </ul>
         <?php }else {?>
-          <ul style="<?php if($has_sponsored && $isHomepage) echo 'min-width: 56rem !important'; ?>">
+          <ul style="">
             <li style="margin-left: 1px;"> <a class="my-account-header-link" id="my-account-header-link" href="<?php echo $config['this_admin_url'].'/'; ?>">My Dashboard</a></li>
             <?php if($user_type != 6 && $user_type != 1 && $user_type != 7){?>
               <li class="empty-list "></li>
@@ -118,7 +118,7 @@
   </div>
   </header>
   
-  <header id="top-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?>" >
+  <header id="top-banner" class="hide-for-print show-for-large-up top-header-login <?php echo  $logout_header; ?>" style="" >
     <div class="row" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56rem !important'; else echo 'max-width: 69.5rem'; ?>">
       <div id="header-social" class="small-12 columns no-padding">
         <ul style="<?php if($has_sponsored && $isHomepage) echo 'min-width: 56rem !important'; ?>">
@@ -159,21 +159,13 @@
               <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                   <a class="a2a_button_facebook a2a_counter" style="width: 100%; margin-top: 7px;"><label class="label-social-button-2-mobile left" style="padding:8px; width:73%; background: #3b5998;"><i class="fa fa-facebook-square" ></i>SHARE</label></a>
               </div>
-            <?php //}else {?>
-            <!--<a class="addthis_button_facebook small-6 left">
-              <label class="label-social-button-2-mobile left" style="font-size: 1rem; font-family: OsloBold !important; text-align: center; padding: 0.5rem 0.5rem 0.5rem 0.25rem;     top: 4px;" ><i class="fa fa-facebook-square" style="font-size: 1.5rem; "></i>SHARE</label>
-            </a> 
-
-        
-          <div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>-->
-          <?php //}?>
       </div>  
      </div>
 
   <?php }?>
 
   <?php if(!$detect->isMobile()){?>
-    <div id="nav-bar" class="contain-to-grid hide-for-print" style="<?php if($has_sponsored && $isHomepage) echo 'max-width: 56.8rem !important'; ?> background-color:white !important">
+    <div id="nav-bar" class="contain-to-grid hide-for-print" style=" background-color:white !important">
   <?php }else{?>
    <div id="nav-bar" class="contain-to-grid hide-for-print column no-padding">
   <?php }?>

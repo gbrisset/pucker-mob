@@ -33,7 +33,7 @@
 	<meta property="og:description" content="<?php echo $headDesc; ?>" />
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />
 	<meta property="og:site_name" content="<?php echo $mpArticle->data['article_page_name']; ?>" />
-	<meta property="og:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
+	<meta property="og:url" content="http://www.puckermob.com/lifestyle/11-reasons-to-treat-yo-self" />
 	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo ){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg';}else{echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png';}?>" />
 	<?php if(isset($articleInfo) && $articleInfo){ ?>
 	<meta property="article:published_time" content="<?php if (isset($articleInfo)) echo date('Y-m-d\TH:i', strtotime($articleInfo['creation_date'])); ?>" />
@@ -99,6 +99,23 @@
 
 <?php }else{ ?>
 
+	<script type='text/javascript'>
+  (function() {
+    var useSSL = 'https:' == document.location.protocol;
+    var src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+  })();
+</script>
+
+<script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/73970039/test_unit', [300, 250], 'div-gpt-ad-1460408034474-0').setTargeting('top', []).addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().enableSyncRendering();
+    googletag.enableServices();
+  });
+</script>
 
 	<!-- SHARETHROUNG
      <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
@@ -162,25 +179,4 @@
 	</noscript>
 
 <?php }?>
-
-<script type='text/javascript'>
-  (function() {
-    var useSSL = 'https:' == document.location.protocol;
-    var src = (useSSL ? 'https:' : 'http:') +
-        '//www.googletagservices.com/tag/js/gpt.js';
-    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-  })();
-</script>
-
-<!--<script type='text/javascript'>
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/73970039/engage_unit', [300, 250], 'div-gpt-ad-1458332569430-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.pubads().collapseEmptyDivs();
-    googletag.pubads().enableSyncRendering();
-    googletag.enableServices();
-  });
-</script>-->
-
-
 </head>

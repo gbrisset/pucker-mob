@@ -84,18 +84,11 @@ if ( $detect->isMobile() ) { ?>
 		
 			<section id="puc-articles" class="sidebar-right small-12 medium-12 large-11 columns translate-fix sidebar-main-left">
 					<h1 id="category-name" class="h1-large-article"><?php echo $categoryInfo['cat_name']; ?></h1>
-			
 					<?php include_once($config['include_path'].'categoryresults.php');?>
-					<!--<section class="hide-for-print ">
-						<div id="ingageunit" class="hide-for-print"></div>
-					</section>-->
 					<hr>
-					<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
 			</section>
 			<?php 
 				include_once($config['include_path'].'rightsidebar.php');
-
-				//include_once($config['include_path'].'left_side_bar.php');
 			?>
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>

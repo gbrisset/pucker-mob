@@ -84,7 +84,7 @@
 			?>
 			<div class="articles columns mobile-12 small-12 medium-6 large-6 xlarge-6 <?php echo $clearLeft; ?>" id="<?php echo 'article-'.$articleIndex;?>">
 				<a class="mobile-5 small-5 medium-12 large-12 xlarge-12 prefetch" href="<?php echo $linkToArticle; ?>">
-					<img src="<?php echo $linkToImage; ?>" alt='<?php echo $articles['article_title']?>' style="width:100%; max-width: 322px; height:100%; max-height: 177px;">
+					<img src="<?php echo $linkToImage; ?>" alt="<?php echo $articles['article_title']?>">
 					<?php if(isset($_GET['show']) && $_GET['show'] == 'type'){
 						if($articles['page_list_id'] != 0) $type = 'MULTI'; else $type = 'SINGLE';
 					echo '<span style="position: absolute; top: 3.5rem; left: 5rem; font-size: 4rem;  color: #000; font-weight: bold; ">';

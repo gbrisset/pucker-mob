@@ -188,7 +188,7 @@ public function getMoBlogsArticles( $current_article_id = 0){
 		$s .= " AND articles.article_id != $current_article_id ";
 	}
 	 
-	$s .= " ORDER BY articles.date_updated DESC LIMIT 40 ";
+	$s .= " ORDER BY articles.date_updated DESC LIMIT 8 ";
 
 	$q = $this->performQuery(['queryString' => $s]);
 		

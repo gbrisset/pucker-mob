@@ -22,7 +22,7 @@
 	#about-the-author-bg {
 		border-top: 1px solid #ddd;
 		border-bottom: 1px solid #ddd;
-		padding: 0 !important;
+		padding: 0.4rem 0 0.4rem 0 !important;
 		width: 83%;margin-bottom:0.7rem;
 		margin-top:2px;
 		margin-bottom: 0px;
@@ -39,7 +39,7 @@
 
 		.author-info { margin-left:0.4rem; width:auto; float:left; padding-top: 0.2rem; float:left;}
 		.author-info p a{color: #01b88a !important;}
-		.author-image {width: 100%; float: left;  margin-right: 3px; -webkit-border-radius: 50px; -moz-border-radius:50px; -o-border-radius:50px; border-radius:50px; min-width:80px; max-width: 6rem;}	
+		.author-image {width: 100%; float: left;  margin-right: 5px; -webkit-border-radius: 50px; -moz-border-radius:50px; -o-border-radius:50px; border-radius:50px; min-width:80px; max-width: 6rem;}	
 	}
 
 	.social-link {
@@ -86,7 +86,7 @@ label.follow-author{
 	 .author-image{ max-width: 50px !important; min-width:50px  !important; } 
 	 .follow-author{ font-size:0.8rem; height: 5.8rem; }
 	 #about-the-author h4{ font-size: 0.87rem; height: 35px; display: table-cell; vertical-align: middle; }
-	 #about-the-author #about-the-author-bg{width:100%; padding: 0 !important;  margin:2px 0; }
+	 #about-the-author #about-the-author-bg{width:100%; padding: 0.2rem 0 0.5rem 0 !important;  margin:0px 0 10px 0; }
 	 
 	 #about-the-author #about-the-author-bg p{ margin-top:-5px; color: #777; font-family: CrimsonText, "Oslo","Helvetica Neue","Helvetica",Helvetica,sans-serif !important; }
 	 #about-the-author #about-the-author-bg p label{ display: inline; font-size: 0.65rem; text-transform: capitalize; }
@@ -107,7 +107,7 @@ label.follow-author{
 	 .author-image{ max-width: 35px !important; min-width:35px !important;} 
 	 .follow-author{ font-size:0.8rem; height: 5.8rem;}
 	 #about-the-author h4{ font-size: 1rem !important; height: 35px !important; color: #222; font-family: Oslo; display: table-cell; vertical-align: middle;}
-	 #about-the-author #about-the-author-bg{width:100%; padding: 0 !important;  margin:2px 0; }
+	 #about-the-author #about-the-author-bg{width:100%; padding: 0.2rem 0 0.5rem 0 !important; margin:0px 0 10px 0;}
 	
 	 #about-the-author #about-the-author-bg p{ margin-top:-5px; font-family: CrimsonText, "Oslo","Helvetica Neue","Helvetica",Helvetica,sans-serif !important;}
 	 #about-the-author #about-the-author-bg p label{ display: inline; font-size: 0.65rem; text-transform: capitalize; }

@@ -27,7 +27,7 @@
 				<div id="following-header" class="following-header mobile-12 small-12 padding-bottom">
 					<h1>Contact Us</h1>
 				</div>
-				<div class="small-12 xxlarge-8 columns">	
+				<div class="small-12 xxlarge-12 columns">	
 	
 					<div id="articles" class="margin-bottom">
 						<p>For site support, please contact us using the form below or email us at <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a>.</p>	
@@ -84,10 +84,10 @@
 					
 					</div>
 				</div>
-				<!-- Right Side -->
+				<!-- Right Side 
 				<div class="small-12 xxlarge-4 right padding rightside-padding show-for-large-up" >
-					<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
-				</div>
+					<?php //include_once($config['include_path_admin'].'hottopics.php'); ?>
+				</div>-->
 			</div>
 		</div>
 	</main>

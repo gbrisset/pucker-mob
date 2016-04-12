@@ -216,7 +216,7 @@ a{ outer: none; }
 @media #{$large-up} {
 	#main-cont{ 
 		
-		height: auto;
+		height: 100%;
 	}
 }
 
@@ -359,7 +359,7 @@ label.seo-title{
 #nav-cont {
 	width: 15rem; 
 	height: auto; 
-	position: absolute; 
+	//position: absolute; 
 	left: -16rem; 
 	z-index: 1; 
 	background: #f2f2f2; 
@@ -405,12 +405,12 @@ label.seo-title{
 	#nav-cont{ 
 		width: 15rem; 
 		height: 100%; 
-		position: absolute; 
+		//position: absolute; 
 		left: 0; z-index: 1;
 		
 		top: 1rem; 
 		bottom: -0.5rem; 
-		padding-top: 0 !important;
+		padding-top: 30px !important;
 		}
 	.sub-menu , #sub-menu-button{ display:none;}
 
@@ -456,6 +456,7 @@ ul.inline-centered>li{ padding: 0.8rem;}
 .active_submenu{left:16rem;}
 
 @media #{$large-up} {
+	#main-cont{ overflow: visible; }
 	#main-cont #content { 
 		width: 100%; margin: 2rem auto; padding-left: 16.2rem; /*min-height: 1650px;*/
 		h1{  border-bottom: 2px solid #ddd; }
@@ -1159,11 +1160,11 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 /*ACCOUNT PAGE*/
 #profile-inline-settings section h2{   font-size: 1.4rem; text-transform: uppercase; }
 #profile-inline-settings section div label{ font-size: 1rem; font-family:OsloBold, Oslo, arial; }
-.avatar-span img {max-width: 1.7rem; cursor: pointer;}
+.avatar-span img {max-width: 1.6rem; cursor: pointer;}
 .image-profile-box{padding:0.8rem;}
 .select-avatar, .upload-photo { display:inline-block; text-align:center; font-size: 1.3rem; text-transform: uppercase; padding: 12px;}
 .photo-instructions {
-	p{ font-size: 12px; text-align:center; color: #777;}
+	p{ font-size: 12px; text-align:center; color: #777; font-family:OsloBold}
 	.fa-circle{ font-size: 5px; top: -2px; position: relative;}
 }
 .div-images{
@@ -1817,7 +1818,7 @@ form#user-account-delete-form {
 	img{ width: 100%; max-width: 140px;}
 	.cont-info{
 		
-		p, a{  margin: 0; text-transform: uppercase; font-size: 1rem; color: #666;
+		p, a{  margin: 0; text-transform: CAPITALIZE; font-size: 1rem; color: #666;
    			font-family: OsloBold;}
 	}
 

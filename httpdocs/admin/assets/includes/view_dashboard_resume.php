@@ -2,7 +2,7 @@
 	 $ManageDashboard = new ManageAdminDashboard( $config );
 	 $current_month = date('n');
 	 $current_year = date('Y');
-	 $contributor_id = 1103;//$userData['contributor_id'];
+	 $contributor_id = $userData['contributor_id'];
 
 	//GET RANK POSITION FOR CURRENT USER.
 	 $rank = '9999';
@@ -19,8 +19,6 @@
 	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 	$balance_due = isset($earnings['to_be_pay']) ? $earnings['to_be_pay'] : 0;
-
-	var_dump($earnings);
 
 ?>
 

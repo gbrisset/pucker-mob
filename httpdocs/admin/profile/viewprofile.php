@@ -28,6 +28,7 @@
 	if( isset($image) ){ $contImageExists = file_exists($contImageDir); }
 
 	$contributor_id = $contributorInfo['contributor_id'];
+	$contributor_seo_name = $contributorInfo['contributor_seo_name'];
 	$article_list = $adminController->user->getContributorsArticleList( $contributor_id );
 
 ?>
@@ -53,9 +54,9 @@
 			<div class="small-12 columns padding-bottom ">
 				<h1 class="columns small-12" >My Profile
 					<div class="inline right show-for-large-up">
-						<a href="<?php echo $config['this_url'].'admin/account/edit/'.$adminController->user->data['user_name']; ?>" class="font-1-5x black ">SET UP</a>
+						<a href="<?php echo $config['this_url'].'admin/profile/edit/'.$contributor_seo_name; ?>" class="font-1-5x black ">SET UP</a>
 						<i class="fa fa-circle"></i>
-						<a href="<?php echo $config['this_url'].'admin/account/user/'.$adminController->user->data['user_name']; ?>" class="font-1-5x main-color">VIEW PUBLIC</a>
+						<a href="<?php echo $config['this_url'].'admin/profile/user/'.$contributor_seo_name; ?>" class="font-1-5x main-color">VIEW PUBLIC</a>
 					</div>
 				</h1>
 			</div>
@@ -70,19 +71,19 @@
 							<div class="small-12 large-6 columns">
 								<p style="margin-top: 11px;"><?php echo $contributorInfo['contributor_name']; ?></p>
 								<p class="show-for-large-up"><?php echo $contributorInfo['contributor_location']; ?></p>
-								<p class="show-for-large-up">JOINED: <?php echo date('F d, Y', strtotime($contributorInfo['creation_date'])); ?></p>
+								<p class="show-for-large-up">Joined: <?php echo date('F d, Y', strtotime($contributorInfo['creation_date'])); ?></p>
 							</div>
 							<div class="small-12 large-6 columns show-for-large-up">
 								<?php if($userInfo['contributor_facebook_link']){?>
-									<p><a href="<?php echo $contributorInfo['contributor_facebook_link']; ?>" target="_blank"><i class="fa fa-facebook-square"></i>FOLLOW ON FACEBOOK</a></p>
+									<p><a href="<?php echo $contributorInfo['contributor_facebook_link']; ?>" target="_blank"><i class="fa fa-facebook-square"></i>Follow on Facebook</a></p>
 								<?php }?>
 
 								<?php if($userInfo['contributor_twitter_handle']){?>
-								<p><a href="http://www.twitter.com/<?php echo $contributorInfo['contributor_twitter_handle']; ?>" target="_blank"><i class="fa fa-twitter"></i>FOLLOW ON TWITTER</a></p>
+								<p><a href="http://www.twitter.com/<?php echo $contributorInfo['contributor_twitter_handle']; ?>" target="_blank"><i class="fa fa-twitter"></i>Follow on Twitter</a></p>
 								<?php }?>
 
 								<?php if($userInfo['contributor_blog_link']){?>
-								<p><a href="<?php echo $contributorInfo['contributor_blog_link']; ?>" target="_blank"><i class="fa fa-desktop"></i>VIEW MY BLOG/SITE</a></p>
+								<p><a href="<?php echo $contributorInfo['contributor_blog_link']; ?>" target="_blank"><i class="fa fa-desktop"></i>View my Blog/Site</a></p>
 								<?php }?>
 							</div>
 

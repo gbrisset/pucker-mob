@@ -610,7 +610,6 @@ End password reset methods
 			'updateString' => "UPDATE article_contributors SET contributor_image = '".$contributorImg."'  WHERE contributor_id = ".$contributorId
 		));
 
-		//var_dump($contributorId, $contributorImg);
 
 		if($updateImage === true) return true;
 		return false;
@@ -909,7 +908,6 @@ End password reset methods
 		}else{
 			$contributor_img = 'http://images.puckermob.com/articlesites/contributors_redesign/'. $user_info['contributor_image'];
 		}
-		//var_dump($user_info);
 		if( !$exist ){
 		
 			$result = $this->performUpdate(array(
@@ -1058,13 +1056,12 @@ End password reset methods
 			
 		}
 
-		//var_dump($array_earnins); die;
 		return $array_earnins;
 
 	}
 
 	public function getContributorEarningChartDataRange($data){
-		$contributor_id = 1103; //filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$s = "SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
@@ -1101,7 +1098,7 @@ End password reset methods
 	}
 
 	public function getContributorEarningChartLastMonthData( $data ){
-		$contributor_id = 1103;//filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$last_month_start_date = date('Y-m-d', strtotime('first day of last month'));
 		$last_month_end_date = date('Y-m-d', strtotime('last day of last month'));
 		
@@ -1161,8 +1158,8 @@ End password reset methods
 
 	public function getTop5BloggersByPageviews(){
 		$limit = 5;
-		$month = 12;//date('n');
-		$year = 2015;//date('Y');
+		$month = date('n');
+		$year =  date('Y');
 
 		$s = "	SELECT contributor_name, contributor_seo_name, contributor_earnings.contributor_id, total_us_pageviews, month, year 
 				FROM `contributor_earnings` 
@@ -1171,6 +1168,31 @@ End password reset methods
 				AND  (article_contributors.contributor_email_address = users.user_email) 
 				WHERE month = $month AND year = $year AND users.user_type in (3, 8, 9) 
 				ORDER BY total_us_pageviews DESC LIMIT $limit ";
+
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		return $data;
+
+	}
+
+	public function getTop5ArticlesByPageviews($limit = 5, $contributor_id){
+		$contributor_id = $contributor_id;
+		$month = date('n');
+		$year = date('Y');
+
+		$s = "	SELECT articles.article_id, articles.article_title, articles.article_seo_title, categories.cat_dir_name, usa_pageviews
+				FROM `article_contributor_articles` 
+				INNER JOIN (articles, article_categories, categories, google_analytics_data_new) 
+				ON  (articles.article_id = article_contributor_articles.article_id ) 
+				AND (article_categories.article_id = article_contributor_articles.article_id) 
+				AND ( categories.cat_id = article_categories.cat_id)
+				AND (google_analytics_data_new.article_id = articles.article_id) 
+				WHERE article_contributor_articles.contributor_id = $contributor_id AND month = $month AND year = $year
+				ORDER BY usa_pageviews DESC LIMIT $limit ";
 
 		$data = $this->performQuery(array(
 			'queryString' => $s,

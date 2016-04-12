@@ -120,7 +120,14 @@
 				<div class="small-12  columns margin-bottom no-padding">
 					<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
 				</div>
-				<?php include_once($config['include_path_admin'].'top_bloggers.php'); ?>
+				<div class="small-12  columns margin-bottom no-padding">
+					<?php include_once($config['include_path_admin'].'top_bloggers.php'); ?>
+				</div>
+
+				<div class="small-12  columns margin-bottom no-padding">
+					<?php include_once($config['include_path_admin'].'top_bloggers_articles.php'); ?>
+				</div>
+
 				
 			</div>
 

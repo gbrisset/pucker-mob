@@ -85,14 +85,14 @@
 			<div class="small-12 columns padding-bottom ">
 				<h1 class="columns small-12" >My Profile
 					<div class="inline right show-for-large-up">
-						<a href="<?php echo $config['this_url'].'admin/account/edit/'.$contributorInfo['contributor_seo_name']; ?>" class="font-1-5x main-color">SET UP</a>
+						<a href="<?php echo $config['this_url'].'admin/profile/edit/'.$contributorInfo['contributor_seo_name']; ?>" class="font-1-5x main-color">SET UP</a>
 						<i class="fa fa-circle"></i>
-						<a href="<?php echo $config['this_url'].'admin/account/user/'.$contributorInfo['contributor_seo_name']; ?>" class="font-1-5x black">VIEW PUBLIC</a>
+						<a href="<?php echo $config['this_url'].'admin/profile/user/'.$contributorInfo['contributor_seo_name']; ?>" class="font-1-5x black">VIEW PUBLIC</a>
 					</div>
 				</h1>
 			</div>
 			
-			<div class="small-12 xxlarge-8 columns">
+			<div class="small-12 xxlarge-9 columns">
 			
 			<div class="small-12 columns radius header-style">
 				<h2>STEP 1: ADD A PICTURE</h2>
@@ -101,10 +101,10 @@
 			<!-- IMAGE SECTION -->
 			<div class="small-12 columns margin-bottom margin-top no-padding">
 				<div class="small-12 image-profile-box radius">
-					<div class="small-12 large-3 columns align-center">
+					<div class="small-12 large-2 columns align-center no-padding-left">
 						<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" />
 					</div>
-					<div class="small-12 large-9 columns">
+					<div class="small-12 large-10 columns no-padding-left">
 						<div class="div-file-upload">
 							<a href="#" class="b-upload small-12 upload-photo radius" name="image-file-link" id="image-file-link">Upload Photo</a>
 							 <div class="file-upload-container hidden">
@@ -117,10 +117,10 @@
 						</div>
 						<div class="small-12 columns div-images no-padding show-for-large-up">
 							<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $contributorInfo['contributor_id']; ?>" />
-							<div class="small-3 large-4 columns no-padding">
+							<div class="small-3 large-3 columns no-padding">
 								<label>NO PIC? CHOOSE AN AVATAR:</label>
 							</div>
-							<div class=" small-9 large-8 columns avatars">
+							<div class=" small-9 large-9 columns avatars">
 								<?php for($i = 1; $i<= 18; $i++){?>
 									<span class="avatar-span" id="avatar-image-<?php echo $i;?>" data-info="pm_avatars_<?php echo $i;?>.png">
 										<img src="http://images.puckermob.com/articlesites/contributors_redesign/<?php echo 'pm_avatars_'.$i.'.png'; ?>" class="avatar-img" id="pm_avatars_<?php echo $i;?>" />
@@ -197,7 +197,7 @@
 			</div>
 			
 			<!-- Right Side -->
-			<div class="small-12 xxlarge-4 right padding rightside-padding show-for-large-up" >
+			<div class="small-12 xxlarge-3 right padding rightside-padding show-for-large-up" >
 				<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
 			</div>
 		</div>

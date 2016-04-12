@@ -33,7 +33,7 @@
 	<meta property="og:description" content="<?php echo $headDesc; ?>" />
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />
 	<meta property="og:site_name" content="<?php echo $mpArticle->data['article_page_name']; ?>" />
-	<meta property="og:url" content="http://www.puckermob.com/lifestyle/11-reasons-to-treat-yo-self" />
+	<meta property="og:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
 	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo ){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg';}else{echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png';}?>" />
 	<?php if(isset($articleInfo) && $articleInfo){ ?>
 	<meta property="article:published_time" content="<?php if (isset($articleInfo)) echo date('Y-m-d\TH:i', strtotime($articleInfo['creation_date'])); ?>" />

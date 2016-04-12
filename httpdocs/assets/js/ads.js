@@ -92,8 +92,15 @@ if($('body').hasClass('mobile')) {
 				//inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"></div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>', tag);	
 			//}
 
-			//if( second_p > 0 ){ //KIOSKED
-				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script type="text/javascript" async="async" src="//scripts.kiosked.com/loader/kiosked-loader.js?pub=11623&site=12230"></script>', tag);
+			//if( second_p > 0 ){ //
+
+			if(article_id == 10534){ //ADNEMOS
+				inBodyAd.loadInArticleAd( 'article-body', 8, 0, "<script type='text/javascript' src='//rtb.adnemo.com/sys/adnemo.js?pzoneid=4269&dmid=444&height=250&width=300&tld=puckermob.com_mobile&cb=1889485789'></script>", tag);
+
+			}else{//KIOSKED
+				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script type="text/javascript" async="async" src="//scripts.kiosked.com/loader/kiosked-loader.js?pub=11623&site=12230&_=1460114819610"></script>', tag);
+
+			}
 			//}
 			
 			//if( third_p > 0 ){ //3Lift
@@ -103,19 +110,19 @@ if($('body').hasClass('mobile')) {
 
 			
 			//if( fourth_p > 0 ){ 
+			//if(article_id == 13577){
+				inBodyAd.loadInArticleAd( 'article-body', 12, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_articlesub_mobile"></script>', tag);
 
-				inBodyAd.loadInArticleAd( 'article-body', 12, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>', tag);
+			//}else{
+				//inBodyAd.loadInArticleAd( 'article-body', 12, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>', tag);
+
+			//}
+				
 				//inBodyAd.loadInArticleAd( 'article-body', fourth_p, 0, '<div class="dailymotion-widget" data-placement="56d75ebdb71169002859de44"></div><script>(function(w,d,s,u,n,e,c){w.PXLObject = n; w[n] = w[n] || function(){(w[n].q = w[n].q || []).push(arguments);};w[n].l = 1 * new Date();e = d.createElement(s); e.async = 1; e.src = u;c = d.getElementsByTagName(s)[0]; c.parentNode.insertBefore(e,c);})(window, document, "script", "//api.dmcdn.net/pxl/client.js", "pxl");</script>', tag);
 			//}	
 
 			//inBodyAd.loadInArticleAd( 'article-body', fith_p, 0, "<div id='div-gpt-ad-1458332569430-0' style='height:250px; width:300px;'><script type='text/javascript'>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1458332569430-0'); });</script></div>", tag);
 
-			
-
-			//if( article_id == 12930 ){	
-				
-				//inBodyAd.loadInArticleAd( 'article-body', fith_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"><\/div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"><\/script>', tag);	
-			//}
 		}
 		$('.inarticle-ad').attr('style', 'display:inline');
 		//$('.inarticle-ad').prepend("<p style='margin-left: 0.5rem !important;color: #bbb;font-size: 0.9rem !important;font-style: italic; margin-bottom:7px !important;'>Advertisement</p>");
@@ -164,10 +171,12 @@ if($('body').hasClass('mobile')) {
 				//inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=6447475&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="970" HEIGHT="250"></IFRAME>', tag);
 		//	}
 
-//			if( second_p > 0 ){//CARAMBOLA
-				//inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>', tag);
-
-			//}
+			if( second_p > 0 ){//CARAMBOLA
+			//	inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>', tag);
+				//if(article_id == 10079){
+					inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_mid_article"></script>', tag);
+				//}
+			}
 		}
 	}
 

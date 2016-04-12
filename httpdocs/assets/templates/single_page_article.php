@@ -77,30 +77,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 		<section id="article-content-2">
 			<div class="social-media-container  columns padding-bottom social_sticky clear ">
-				<?php //if($article_id == 13516){?>
 					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
     					<a class="a2a_button_facebook" style="
 						    background: #3b5998;
 						    width: 100%;
 						    "><label class="label-social-button-2-mobile" style="padding:8px;"><i class="fa fa-facebook-square" ></i>SHARE</label></a>
-						    			<script src="//static.addtoany.com/menu/page.js"></script>
-
+						   <script src="//static.addtoany.com/menu/page.js async"></script>
 					</div>
-				<?php //}else{ ?>
-				<!--<a class="addthis_button_facebook small-12 left" >
-					<label class="label-social-button-2-mobile" ><i class="fa fa-facebook-square" ></i>SHARE</label>
-				</a> -->
-				<?php  //} ?>
-				<!--<a class="addthis_button_pinterest_share small-2 left">
-					<label class="label-social-button-2-mobile left"><i class="fa fa-pinterest" style="margin-right: 9%; font-size: 1.2rem;position: relative; top: 1px; left: 3px;"></i></label>
-				</a>
-				<div class="addthis_jumbo_share  small-4 right hide-for-print social-buttons-top" style="height: 2.2rem !important;"></div>-->
-			</div>	
+				</div>	
 			
 			<!-- ABOUT THE AUTHOR -->
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
-			
-
 		</section>
 
 		<!-- DISCLAIMER -->
@@ -118,16 +105,28 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 			
 			<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
-				<?php if($article_id == 13577){ //http://www.puckermob.com/relationships/signs-hes-a-keeperpsych ?>
-					<!-- /73970039/engage_unit -->
-					<div id='div-gpt-ad-1459184179852-0' style='height:250px; width:300px;'>
+				<?php if($article_id == 14174){ //http://www.puckermob.com/relationships/a-vow-to-myself-to-enhance-the-life-i-live ?>
+					<!-- /73970039/test_unit -->
+					<div id='div-gpt-ad-1460408034474-0' style='height:250px; width:300px;'>
 						<script type='text/javascript'>
-							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1459184179852-0'); });
+						googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460408034474-0'); });
 						</script>
 					</div>
-				<?php }elseif($article_id == 13305){?>
+				<?php }elseif($article_id == 12824){ //http://www.puckermob.com/moblog/an-open-letter-to-the-person-i-used-to-be ?>
+					<script src="//ebdr3.com/serve?ynjs=1&zid=128905&pid=4040&click=" type="text/javascript" ></script>
+				<?php }elseif($article_id == 13305){ ?>
 					<div id="ros_1195" style="display: inline-block;"></div> 
-				<?php }?>
+				<?php }else{?>
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- PM Mobile Top Spot -->
+					<ins class="adsbygoogle"
+					     style="display:inline-block;width:300px;height:250px"
+					     data-ad-client="ca-pub-8978874786792646"
+					     data-ad-slot="2880293382"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				<?php } ?>
 			</div>
 
 			<!-- ARTICLE BODY -->
@@ -135,25 +134,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<?php echo $article_body; ?>
 			</div>
 
-			
-
 			<!-- IMAGE SOURCE -->
 			<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
-			<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
-				Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a></p>
+				<p class="padding-bottom image-source" style="font-size: 8pt !important; margin-bottom: 0rem !important; padding-bottom: 0;">
+					Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a>
+				</p>
 			<?php }?>
-
-
 		</div>
 
-			<!-- READ MORE -->
+			<!-- READ MORE
 			<div class=" read-more  small-12 columns margin-bottom" style="background: white; border: 2px solid green; padding: 5px;">
 				<div class="button" style="border-top-width: 0px;">
-					<!--<img id="read-more-img" src="http://images.puckermob.com/articlesites/sharedimages/continue-reading-2.jpg" style=" width: 100%; border: 2px solid #287117;">
-					-->
 					<label id="read-more-img" style="    color: green; font-family: oslobold; font-size: 20px;">READ MORE</label>
 				</div>
-			</div>
+			</div> -->
 
 			<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">
 				<div id="get-content" style="text-align:center; display: inline-block;">
@@ -251,7 +245,35 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					</div>
 				</div>
 			</div>
-			
+
+			<div id="mobile-instream-branovate-ad">
+				<div id="get-content" style="text-align:center; display: inline-block;">
+					<!--Carambola Script -->
+
+					<img height='0' width='0' alt='' src='http://pixel.watch/pssj' /> 
+
+					<script data-cfasync="false" class="carambola_InContent" type="text/javascript" cbola_wid="0"> 
+
+					(function (i,d,s,o,m,r,t,l,w,q,y,h,g) { 
+
+					var e=d.getElementById(r);if(e===null){ 
+
+					var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);
+
+					var dt=new Date().getTime(); 
+
+					try{i[l][w+y](h,i[l][q+y](h)+'&'+dt);}catch(er){i[h]=dt;} 
+
+					} else if(typeof i[t]!=='undefined'){i[t]++} 
+
+					else{i[t]=1;} 
+
+					})(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_IC','localStorage','set','get','Item','cbolaDt','http://route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233&wid=0') 
+
+					</script>
+				</div>
+			</div>
+					
 			
 
 			<!--<section id="separator-section" class="row no-padding"></section>				
@@ -276,62 +298,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<h1 style="margin-bottom: 0.5rem;"><?php echo $article_title; ?></h1>
 		
 		<!-- SOCIAL DESKTOP -->
-		<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-			
-			<a class="addthis_button_facebook">
-				<img src="http://www.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
-			</a> 
-			<a class="addthis_button_twitter">
-				<img src="http://www.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
-			</a> 
-			<a class="addthis_button_pinterest_share">
-				<img src="http://www.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
-			</a>
-			<a href="#disqus-container" class="disqus_container">
-				<img src="http://www.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
-			</a>
-			
-			<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
-
-			<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
-
-			<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem;">
-				
-				<div class="addthis_jumbo_share  hide-for-print social-buttons-top"></div>
-			</div>
+		<div class="row social-media-container social-cont-1" style="margin-bottom: 10px; margin-top:20px; display:block !important;">
+			<?php include($config['include_path'].'social_media_article_buttons.php'); ?>	
 		</div>
 		
 		<!-- Article Image -->
 		<div class="row">
-			<!-- SMARTIES -->
-			<?php if($promotedArticle){ 
-				if($detect->isMobile()) $smartiesImagestyle = 'width:98%;'; else $smartiesImagestyle='';
-				?>
-				<div id="smarties-image" class="small-12 columns half-padding-right-on-lg">
-					<span style="position: absolute; right: 0.45rem; z-index: 999;" >
-						<img style="<?php echo $smartiesImagestyle; ?>" src="http://www.puckermob.com/assets/img/sponsoredby-smarties.png">
-					</span>
-				</div>
-				<?php } ?>
-				<div id="article-image" class="small-12 columns half-padding-right-on-lg padding-top">
-					<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
-				</div>
+			<div id="article-image" class="small-12 columns half-padding-right-on-lg padding-top">
+				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
+		</div>
 			
 			<!-- ABOUT THE AUTHOR -->
 			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
 
-			<!-- Category, Date And Author Information 
-			<div class="row padding-bottom">
-				<div class="columns mobile-12 small-7 medium-7 large-12 xlarge-12 half-padding-right-on-lg padding-bottom">
-					<p class="left uppercase">
-						<?php if(isset($category_id) && $category_id == 9){?>
-						<span class="span-category <?php echo $article_category_dir; ?>"><?php echo $article_category; ?></span>
-						<?php }?>
-						<span class="span-date" style="top:3px;"><?php echo $date; ?></span>
-					</p>
-				</div>
-			</div>-->
 			
 			<!-- DISCLAIMER -->
 			<?php if($article_disclaimer){?>
@@ -350,7 +330,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<!-- ARTICLE BODY -->
 					<div id="article-body">
 						<p><?php echo $article_body; ?></p>
-
 					</div>
 					
 					<!-- RELATED ARTICLES -->
@@ -375,48 +354,22 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 									<hr>
 					</div>
 				<?php }?>
-
 				
-
-				<!-- CARAMBOLA
-				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
-					<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy', 'Cbola_initializeProxy', 'http://route.carambo.la/inimage/getlayer?pid=spdsh12')</script>
-				</section> -->
-				
-				<!--	<div id="ld-6320-990"></div><script>(function(w,d,s,i){w.ldAdInit=w.ldAdInit||[];w.ldAdInit.push({slot:8158967306013287,size:[0, 0],id:"ld-6320-990"});if(!d.getElementById(i)){var j=d.createElement(s),p=d.getElementsByTagName(s)[0];j.async=true;j.src="//cdn2.lockerdome.com/_js/ajs.js";j.id=i;p.parentNode.insertBefore(j,p);}})(window,document,"script","ld-ajs");</script>
-				-->
-					
-								
+				<?php if($article_id == 10079){ ?>
+					<!-- 3LIFT -->
+					<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+						<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
+					</section>				
+				<?php } ?>
 				<!-- Social Media Icons -->
 				<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
-					
-					<a class="addthis_button_facebook">
-						<img src="http://www.puckermob.com/assets/img/FacebookIconCircle3.png" alt="Facebook" />
-					</a> 
-					<a class="addthis_button_twitter">
-						<img src="http://www.puckermob.com/assets/img/TwitterIconCircle.png" alt="Twitter" />
-					</a> 
-					<a class="addthis_button_pinterest_share">
-						<img src="http://www.puckermob.com/assets/img/Pinterest-Icon-Circle.png" alt="Pinterest" />
-					</a>
-					<a href="#disqus-container" class="disqus_container">
-						<img src="http://www.puckermob.com/assets/img/CommentsIconCircle.png" alt="Comments" />
-					</a>
-					
-					<a class="addthis_button_facebook_like show-on-large-up" fb:like:send="true"  fb:like:layout="button"></a>
-
-					<a class="addthis_button_compact show-on-medium-up"><span><i class="fa fa-plus"></i> More</span></a> 
-
-					<div id ="email-comment" class="small-4 xxlarge-4 columns hide-for-print no-padding" style="text-align: right; margin-top: 0rem !important;">	
-						<div class="addthis_jumbo_share  hide-for-print social-buttons-top" style="padding-top: 0rem !important;"></div>
-					</div>
+					<?php include($config['include_path'].'social_media_article_buttons.php'); ?>
 				</div>
 
 				<hr>
 				
 				<!-- TABOOLA -->
 				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
-
 					<div id="taboola-below-article-thumbnails"></div>
 					<script type="text/javascript">
 					  window._taboola = window._taboola || [];
@@ -442,13 +395,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 				</section>
 			</div>
-							
-		<?php if(!$promotedArticle){ ?>
-		<section class="nativo-ad padding-top clear">
-			<div class="nativo"></div> 
-		</section>
-		<?php } ?>
-		
 	</section>
 </article>
 

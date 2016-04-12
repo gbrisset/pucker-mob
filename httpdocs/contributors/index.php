@@ -190,7 +190,7 @@ if($totalPages > 1){
 		<?php if (!$detect->isMobile()) { 
 			include_once($config['include_path'].'rightsidebar.php');
 
-			include_once($config['include_path'].'left_side_bar.php');
+			//include_once($config['include_path'].'left_side_bar.php');
 		} ?>
 	</main>
 	

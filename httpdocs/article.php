@@ -173,7 +173,7 @@ if(!is_null($categoryInfo)){
 		<!--<div id="ros_adoop"></div>-->
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
-		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<!-- Go to www.addthis.com/dashboard to customize your tools 
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
 		<script type="text/javascript">
 			
@@ -184,7 +184,7 @@ if(!is_null($categoryInfo)){
 			  //Add onload or DOMContentLoaded event listeners here: for example,
 			  window.addEventListener("onload", function () { addthis.init(); }, false);
 			}
-	</script>
+	</script>-->
 <main id="main" class="row panel sidebar-on-right" role="main">
 
 	<?php if(!$detect->isMobile()){?>
@@ -240,7 +240,7 @@ if(!is_null($categoryInfo)){
 
 
 	<!-- LEFT SIDE BAR -->
-	<?php  include_once($config['include_path'].'left_side_bar.php'); ?>
+	<?php  //include_once($config['include_path'].'left_side_bar.php'); ?>
 </main>
 
 <?php 

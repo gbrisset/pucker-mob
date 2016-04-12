@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js" ></script>
+  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_124" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
@@ -59,15 +59,41 @@
   <?php } ?>
 
   <!-- Puckermob.com CORNERSTREAM Revshare_50 -->
-  <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
-
+ <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+   <!--SHAREBUTTONS BAR VERTICAL-->
+<script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
+<div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+    <a class="a2a_button_facebook a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+</div>
+<script async src="//static.addtoany.com/menu/page.js" async></script>
+<?php } ?>
 
 <!-- MOBILE -->
 <?php }else{ ?>
-    
-
   
- 
+  <?php if(isset($article_id) && $article_id == 14174 ){?>
+     <script type='text/javascript'>
+      (function() {
+        var useSSL = 'https:' == document.location.protocol;
+        var src = (useSSL ? 'https:' : 'http:') +
+            '//www.googletagservices.com/tag/js/gpt.js';
+        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+      })();
+    </script>
+
+    <script type='text/javascript'>
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/73970039/engage_unit', [300, 250], 'div-gpt-ad-1460122963773-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().enableSyncRendering();
+        googletag.enableServices();
+      });
+    </script>
+<?php } ?>
 
   <?php if(isset($article_id) && $article_id == 13305 ){?>
     <div id="evolve_footer"></div>
@@ -234,6 +260,8 @@
 <!-- ADSUPPLY 
 <script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
 -->
+<!--Propeller Ads: Pop-under
+<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=552818"></script>-->
 
 <!--<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=552818"></script>-->
 

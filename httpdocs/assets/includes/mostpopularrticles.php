@@ -1,12 +1,19 @@
 <?php 
-
+$label = "THE MOB";
 if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articleInfoObj['article_id']){
-	$mostReadArticlesList = $mpArticle->getMostRecentArticleList( $articleInfoObj['article_id'] );
-}else $mostReadArticlesList = $mpArticle->getMostRecentArticleList();
+	$mostReadArticlesList = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );//$mpArticle->getMostRecentArticleList( $articleInfoObj['article_id'] );
+}else{
+	if(isset($categoryInfo) && $categoryInfo['cat_id'] == 9 ){
+		$mostReadArticlesList = $mpArticle->getMostRecentArticleList();	
+		$label = "MOST POPULAR";
+	}else{
+		$mostReadArticlesList = $mpArticle->getMoBlogsArticles( );
+	}
+} 
 
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 	<section id="popular-articles" class="sidebar catcher">
-		<div class="h4-container"><h4>Most Popular</h4></div>
+		<div class="h4-container"><h4><?php echo $label; ?></h4></div>
 			<?php 
 				$articleNumber = 0;
 				$articleTotalNumber = 0;

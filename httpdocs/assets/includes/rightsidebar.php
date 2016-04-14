@@ -4,7 +4,7 @@
   if ( isset($isArticle) && $isArticle ){?>
   <aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print" style="">
       <!-- LELO -->
-      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14330 && $articleInfoObj['article_id'] != 11339 ){?>
+      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
               
       <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
         <div id="ros_1195"></div> 
@@ -19,7 +19,7 @@
       <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
 
        <!-- LELO -->
-      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14330 && $articleInfoObj['article_id'] != 11339 ){?>
+      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
      
       <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
           <div id="ros_1201"></div> 

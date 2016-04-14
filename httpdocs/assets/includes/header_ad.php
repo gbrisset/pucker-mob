@@ -12,7 +12,7 @@
 		<style> #ros_1193, #home_1181{ display:inline-block !important; }</style>
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 			 <!-- LELO -->
-      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14330 && $articleInfoObj['article_id'] != 11339 ){?>
+      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
 
 			<div id="ros_1193" style="display: inline-block !important;"></div> 
 			<?php } ?>

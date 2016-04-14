@@ -32,7 +32,7 @@
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
       <!-- LELO -->
-     <?php if(isset($article_id) && $article_id != 11339 && $article_id != 14330 ){?>
+     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576 ){?>
 
       <script type="text/javascript">
           netseer_tag_id="19129";
@@ -92,7 +92,7 @@
 
   if(isset($articleInfoObj) && $articleInfoObj){ ?>
      <!-- LELO -->
-     <?php if(isset($article_id) && $article_id != 14330 && $article_id != 11339 ){?>
+     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576 ){?>
        <!-- ANSWERS SLIDER UNIT -->
           <div id="vm_inline"></div>
           <script>

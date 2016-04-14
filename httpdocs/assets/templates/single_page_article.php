@@ -108,7 +108,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<?php if($article_id == 13305){ ?>
 					<div id="ros_1195" style="display: inline-block;"></div> 
 					<!-- LELO -->
-				<?php }elseif( $article_id == 11339 || $article_id == 14330 ){?>
+				<?php }elseif( $article_id == 14479 || $article_id == 14576 ){?>
 						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
 							<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/camp_banner_v1.jpg" />
 						</a>
@@ -143,7 +143,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</div> -->
 			
 			<!-- LELO -->
-			<?php if( $article_id == 11339 || $article_id == 14330 ){?>
+			<?php if( $article_id == 14479 || $article_id == 14576 ){?>
 				<div id="mobile-instream-branovate-ad"  class="margin-top small-12 row no-padding" style="margin-top: 2rem;">
 					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
 						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
@@ -226,7 +226,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php include_once($config['include_path'].'header_social.php'); ?> 
 
 			<!-- LELO -->
-			<?php if( $article_id != 11339 &&  $article_id != 14330 ){?>
+			<?php if( $article_id != 14479 &&  $article_id != 14576 ){?>
 
 			<!-- BRANOVATE -->
 			<div id="mobile-instream-branovate-ad">

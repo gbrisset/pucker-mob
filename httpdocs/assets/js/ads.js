@@ -87,6 +87,11 @@ if($('body').hasClass('mobile')) {
 				third_p = third_p;
 			}
 	
+			//LELO
+			if(article_id == 14479 || article_id == 14576){
+				inBodyAd.loadInArticleAd( 'article-body', 4, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/breaking_news_300x250_v1.gif" /></a>', tag);		
+				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/shaking_app_300x250_v2.gif" /></a>', tag);		
+			}else{
 			//if( first_p > 0 ){ //ANSWERS
 				inBodyAd.loadInArticleAd( 'article-body', 4, 0, "<div id=\"vm_inline\"></div><script type='text/javascript'> window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], 'http://player.videomosh.com/players/loader/loader_final4.js'); _videomosh.push({  publisher_key: \"sequelmedia\",  mode: \"incontent\",  container: \"vm_inline\", incontent_mobile_id: \"9834\", target_type: \"mix\", backfill: \"<div id='gpt-backfill'></div><script type='text/javascript'> var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); })();  googletag.cmd.push(function() {googletag.defineSlot('/27755252/sequel_media/puckermob.com', [300, 250], 'gpt-backfill').addService(googletag.pubads());googletag.pubads().enableSingleRequest();googletag.enableServices();});googletag.cmd.push(function() { googletag.display('gpt-backfill'); });</scr\"+\"ipt>\" });</script>", tag);		
 				//inBodyAd.loadInArticleAd( 'article-body', first_p, 0, '<div data-str-native-key="536c62e7" style="display: none;"></div><script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>', tag);	
@@ -94,11 +99,11 @@ if($('body').hasClass('mobile')) {
 
 			//if( second_p > 0 ){ //
 
-			if(article_id == 10534){ //ADNEMOS
+			if(article_id == 10534){ //ADNEMOS http://www.puckermob.com/relationships/to-the-friend-i-thought-would-be-there-on-my-wedding-day
 				inBodyAd.loadInArticleAd( 'article-body', 8, 0, "<script type='text/javascript' src='//rtb.adnemo.com/sys/adnemo.js?pzoneid=4269&dmid=444&height=250&width=300&tld=puckermob.com_mobile&cb=1889485789'></script>", tag);
 
 			}else{//KIOSKED
-				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script type="text/javascript" async="async" src="//scripts.kiosked.com/loader/kiosked-loader.js?pub=11623&site=12230&_=1460114819610"></script>', tag);
+				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script type="text/javascript" async="async" src="//scripts.kiosked.com/loader/kiosked-loader.js"></script>', tag);
 
 			}
 			//}
@@ -122,7 +127,7 @@ if($('body').hasClass('mobile')) {
 			//}	
 
 			//inBodyAd.loadInArticleAd( 'article-body', fith_p, 0, "<div id='div-gpt-ad-1458332569430-0' style='height:250px; width:300px;'><script type='text/javascript'>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1458332569430-0'); });</script></div>", tag);
-
+			}
 		}
 		$('.inarticle-ad').attr('style', 'display:inline');
 		//$('.inarticle-ad').prepend("<p style='margin-left: 0.5rem !important;color: #bbb;font-size: 0.9rem !important;font-style: italic; margin-bottom:7px !important;'>Advertisement</p>");
@@ -170,12 +175,14 @@ if($('body').hasClass('mobile')) {
 			//if( second_p > 0 ){//BRANOVATE
 				//inBodyAd.loadInArticleAd( 'article-body', second_p, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=6447475&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="970" HEIGHT="250"></IFRAME>', tag);
 		//	}
-
-			if( second_p > 0 ){//CARAMBOLA
-			//	inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>', tag);
-				//if(article_id == 10079){
-					inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_mid_article"></script>', tag);
-				//}
+			//LELO
+			if(article_id == 14479 || article_id == 14576){}else{
+				if( second_p > 0 ){//CARAMBOLA
+				//	inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>', tag);
+					//if(article_id == 10079){
+						inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_mid_article"></script>', tag);
+					//}
+				}
 			}
 		}
 	}

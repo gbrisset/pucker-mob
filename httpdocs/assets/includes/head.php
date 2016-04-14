@@ -50,7 +50,7 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e5" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -70,6 +70,7 @@
 
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
+
 	<!-- puckermob.com/home -->
 	<script type="text/javascript">
 	  var ord = window.ord || Math.floor(Math.random() * 1e16);
@@ -99,23 +100,25 @@
 
 <?php }else{ ?>
 
-	<script type='text/javascript'>
-  (function() {
-    var useSSL = 'https:' == document.location.protocol;
-    var src = (useSSL ? 'https:' : 'http:') +
-        '//www.googletagservices.com/tag/js/gpt.js';
-    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-  })();
-</script>
+  	<?php //if(isset($article_id) && $article_id == 14174 ){?>
+	  <script type='text/javascript'>
+	  (function() {
+	    var useSSL = 'https:' == document.location.protocol;
+	    var src = (useSSL ? 'https:' : 'http:') +
+	        '//www.googletagservices.com/tag/js/gpt.js';
+	    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+	  })();
+	</script>
 
-<script type='text/javascript'>
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/73970039/test_unit', [300, 250], 'div-gpt-ad-1460408034474-0').setTargeting('top', []).addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.pubads().enableSyncRendering();
-    googletag.enableServices();
-  });
-</script>
+	<script type='text/javascript'>
+	  googletag.cmd.push(function() {
+	    googletag.defineSlot('/73970039/test_unit', [300, 250], 'div-gpt-ad-1460406489796-0').addService(googletag.pubads()).setTargeting("Top", "top");
+	    googletag.pubads().enableSingleRequest();
+	    googletag.pubads().enableSyncRendering();
+	    googletag.enableServices();
+	  });
+	</script>
+	<?php //} ?>
 
 	<!-- SHARETHROUNG
      <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
@@ -124,17 +127,6 @@
 		<!-- Totally Her GPT -->
 		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 	<?php } ?>
-
-		<!-- Go to www.addthis.com/dashboard to customize your tools 
-		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" async></script>
-		<script type="text/javascript">
-			if(document.readyState === "complete") {
-				addthis.init();
-			}else {
-			  //Add onload or DOMContentLoaded event listeners here: for example,
-			  window.addEventListener("onload", function () { addthis.init(); }, false);
-			}
-		</script>-->
 
 <?php } ?>
 

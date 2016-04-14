@@ -39,12 +39,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 <?php if($detect->isMobile()){?>
 <style>
-	#branovate-ad div{ margin-left:-4px; }
+	#branovate-ad div{margin-left:-4px;}
 	#branovate-ad-iframe{ border:none; height:240px;}
-	div#tl_ad { margin-top: 0 !important; padding-top: 0 !important;}
+	div#tl_ad {margin-top: 0 !important; padding-top: 0 !important;}
 	#article-content p:first-child{margin-bottom: 1.25rem !important;}
-	#kikvid-3043, #vm_inline{ display:inline-block !important; }
-	#adunit-300x250-3159{ display:inline-block; }
+	#kikvid-3043, #vm_inline{display:inline-block !important;}
+	#adunit-300x250-3159{display:inline-block;}
 	.sumome-share-client.sumome-share-client-mobile-bottom-bar.sumome-share-client-counts.sumome-share-client-light.sumome-share-client-medium{
 		width: 100%;
 	}
@@ -105,27 +105,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 			
 			<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
-				<?php if($article_id == 14174){ //http://www.puckermob.com/relationships/a-vow-to-myself-to-enhance-the-life-i-live ?>
-					<!-- /73970039/test_unit -->
-					<div id='div-gpt-ad-1460408034474-0' style='height:250px; width:300px;'>
-						<script type='text/javascript'>
-						googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460408034474-0'); });
-						</script>
-					</div>
-				<?php }elseif($article_id == 12824){ //http://www.puckermob.com/moblog/an-open-letter-to-the-person-i-used-to-be ?>
-					<script src="//ebdr3.com/serve?ynjs=1&zid=128905&pid=4040&click=" type="text/javascript" ></script>
-				<?php }elseif($article_id == 13305){ ?>
+				<?php if($article_id == 13305){ ?>
 					<div id="ros_1195" style="display: inline-block;"></div> 
+					<!-- LELO -->
+				<?php }elseif( $article_id == 11339 || $article_id == 14330 ){?>
+						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
+							<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/camp_banner_v1.jpg" />
+						</a>
 				<?php }else{?>
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- PM Mobile Top Spot -->
-					<ins class="adsbygoogle"
-					     style="display:inline-block;width:300px;height:250px"
-					     data-ad-client="ca-pub-8978874786792646"
-					     data-ad-slot="2880293382"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
+					<!-- /73970039/test_unit -->
+					<div id='div-gpt-ad-1460406489796-0' style='height:250px; width:300px; display:inline-block;'>
+					<script type='text/javascript'>
+					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460406489796-0'); });
 					</script>
+					</div>
 				<?php } ?>
 			</div>
 
@@ -148,12 +141,23 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<label id="read-more-img" style="    color: green; font-family: oslobold; font-size: 20px;">READ MORE</label>
 				</div>
 			</div> -->
-
+			
+			<!-- LELO -->
+			<?php if( $article_id == 11339 || $article_id == 14330 ){?>
+				<div id="mobile-instream-branovate-ad"  class="margin-top small-12 row no-padding" style="margin-top: 2rem;">
+					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
+						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
+							<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/camp_banner_v1.jpg" />
+						</a>
+					</div>
+				</div>
+			<?php }else{?>
 			<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">
 				<div id="get-content" style="text-align:center; display: inline-block;">
 					<div id='__kx_ad_4251'></div><script type="text/javascript" language="javascript" id="__kx_tag_4251">var __kx_ad_slots = __kx_ad_slots || []; (function () { var slot = 4251; var h = false; var doc = document; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') { __kx_ad_start(); } else { if (top == self) { var s = doc.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){ if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = doc.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } else { var tag = doc.getElementById('__kx_tag_'+slot); var win = window.parent; doc = win.document; var top_div = doc.createElement("div"); top_div.id = '__kx_ad_'+slot; doc.body.appendChild(top_div); var top_tag = doc.createElement("script"); top_tag.id = '__kx_top_tag_'+slot; top_tag.innerHTML = tag.innerHTML; doc.body.appendChild(top_tag); }}})();</script>
 				</div>
 			</div>
+			<?php } ?>
 
 			<!-- RELATED ARTICLES -->
 			<?php 
@@ -221,6 +225,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 			<?php include_once($config['include_path'].'header_social.php'); ?> 
 
+			<!-- LELO -->
+			<?php if( $article_id != 11339 &&  $article_id != 14330 ){?>
 
 			<!-- BRANOVATE -->
 			<div id="mobile-instream-branovate-ad">
@@ -274,7 +280,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			</div>
 					
-			
+				<?php } ?>
 
 			<!--<section id="separator-section" class="row no-padding"></section>				
 				<!-- COMMENTS BOX -->

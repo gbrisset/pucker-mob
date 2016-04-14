@@ -26,18 +26,21 @@
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
     <![endif]-->
 
+
     <div id="evolve_footer"></div>
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-        
+      <!-- LELO -->
+     <?php if(isset($article_id) && $article_id != 11339 && $article_id != 14330 ){?>
+
       <script type="text/javascript">
           netseer_tag_id="19129";
           netseer_task="in-image";
           netseer_inview_status="disabled";
         </script>
         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-
+        <?php } ?>
     <?php } 
 
     if( isset($promotedArticle) && !$promotedArticle ){ ?>
@@ -76,23 +79,7 @@
 <?php }else{ ?>
   
   <?php if(isset($article_id) && $article_id == 14174 ){?>
-     <script type='text/javascript'>
-      (function() {
-        var useSSL = 'https:' == document.location.protocol;
-        var src = (useSSL ? 'https:' : 'http:') +
-            '//www.googletagservices.com/tag/js/gpt.js';
-        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-      })();
-    </script>
-
-    <script type='text/javascript'>
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/73970039/engage_unit', [300, 250], 'div-gpt-ad-1460122963773-0').addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().enableSyncRendering();
-        googletag.enableServices();
-      });
-    </script>
+  
 <?php } ?>
 
   <?php if(isset($article_id) && $article_id == 13305 ){?>
@@ -104,8 +91,8 @@
   
 
   if(isset($articleInfoObj) && $articleInfoObj){ ?>
-     
-     <?php //if(isset($article_id) && $article_id == 11999 ){?>
+     <!-- LELO -->
+     <?php if(isset($article_id) && $article_id != 14330 && $article_id != 11339 ){?>
        <!-- ANSWERS SLIDER UNIT -->
           <div id="vm_inline"></div>
           <script>
@@ -126,7 +113,6 @@
                   target_type: "mobile"
               });
           </script>
-      <?php  //} ?>
 
       <!-- NETSEER AD IN-IMAGE -->
            <script type="text/javascript">
@@ -136,8 +122,9 @@
             </script>
            <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
 
-      
+          <?php  } ?>
     <?php  } ?>
+     <?php if(isset($article_id) && $article_id != 14330 && $article_id != 11339 ){?>
 
     <script>
     (function() 
@@ -238,7 +225,8 @@
     </script>
 <?php  } ?>
 
-  
+      <?php  } ?>
+
   
 <?php } ?>
 

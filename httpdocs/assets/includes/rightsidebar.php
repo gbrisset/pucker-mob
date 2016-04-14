@@ -3,21 +3,38 @@
   $has_sponsored = 0;
   if ( isset($isArticle) && $isArticle ){?>
   <aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print" style="">
-
+      <!-- LELO -->
+      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14330 && $articleInfoObj['article_id'] != 11339 ){?>
+              
       <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
         <div id="ros_1195"></div> 
       </div>
+      <?php }else{?>
+          <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
+                <a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/breaking_news_300x250_v1.gif" /></a>
+          </div>
+      <?php }?>
     
       <!-- MOST POPULAR -->
       <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
 
+       <!-- LELO -->
+      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14330 && $articleInfoObj['article_id'] != 11339 ){?>
+     
       <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
           <div id="ros_1201"></div> 
       </div>
-       
+
       <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
          <?php include_once($config['include_path'].'widget.php'); ?>
       </section>
+
+      <?php }else{?>
+      <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
+         <a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/shaking_app_300x250_v2.gif" /></a>
+       </div>
+      <?php }?>
+      
 
       <section id="sub-sidebar-2" class="sidebar article-stick hide" style="padding-top:10px; ">
             <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>

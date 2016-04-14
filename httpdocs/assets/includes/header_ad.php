@@ -7,10 +7,15 @@
 	</div>-->
     <?php }else { ?>
 	<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+		
 		<!-- 728x90, 970x90 combo: 970x90 728x90 -->
 		<style> #ros_1193, #home_1181{ display:inline-block !important; }</style>
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+			 <!-- LELO -->
+      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14330 && $articleInfoObj['article_id'] != 11339 ){?>
+
 			<div id="ros_1193" style="display: inline-block !important;"></div> 
+			<?php } ?>
 		<?php }else{?>
 			<div id="home_1181" style="display: inline-block;"></div> 
 		<?php }?> 

@@ -541,11 +541,19 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 	#articles-list table thead tr th{ font-size: 16px; }
 }
 @media #{$xlarge-up} {
-	#articles-list table tr td h2 a { vertical-align: middle; display: table-cell; height: 65px;}
+	#articles-list table tr td h2 a { vertical-align: middle; display: table-cell; height: 45px;}
 	#articles-list table tr td img { max-width: 10rem;     width: 100%;}
 }
 #articles-list table tr td.padding-top-center{ padding-top:1.05rem; }
 #articles-list table tr td h2 a, #articles-list table tr th a, #articles-list table tr td label{ color: #000; outline:none; font-size:16px;}
+#articles-list table tr td h2 span a{    
+	font-size: 12px;
+    color: #666;
+    font-style: italic;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
 .article-delete-form{ margin:0;}
 .fa-times{ color: #FF0000; font-size: large;}
 .from-other-sites-filter{ padding-top:2rem; padding-bottom: 1rem;} 
@@ -1710,6 +1718,7 @@ form#user-account-delete-form {
 	h3{ font-size: 20px; color: #666; margin: 0; margin-bottom: 0.625rem;}
 	label{ font-size: 14px !important; color: #888;}
 	a{ outline:none;  font-size: 15px; color: #222;}
+	.current{ color: #3593C6 !important; font-family:OsloBold;}
 }
 	
 }

@@ -179,13 +179,13 @@
 					<div class="small-12 xxlarge-4 right padding " id="right-new-article">		
 						<div class="row label-wrapper show-for-xxlarge-up ">
 							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up">PREVIEW</button></div>
-							<div class="small-12 large-4 column"><button type="submit" id="submit" name="submit" style="background-color: #016201;" >SAVE</button></div>
+							<div class="small-12 large-4 column"><button type="submit" id="submit" class="columns small-6 radius wide-button elm" name="submit" >SAVE</button></div>
 							<?php if( $admin_user || $blogger || $externalWriter ){
 							$label = "PUBLISH";
 							$val = 1;
 							if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
 							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUB"; $val = 1;} ?>
-								<div class="small-12 large-4 column  left no-padding"><button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="show-for-large-up" style="background: #622000; "><?php echo $label; ?></button></div>
+								<div class="small-12 large-4 column  left no-padding"><button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up"><?php echo $label; ?></button></div>
 							<?php }?>
 						</div>		
 

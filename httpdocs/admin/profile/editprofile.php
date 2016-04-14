@@ -139,7 +139,7 @@
 			</div>
 			<!-- PROFILE SETTINGS -->
 				<form class="ajax-submit-form clear" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/	<?php echo $uri[2]; ?>" method="POST">
-						<div class="small-12 columns margin-bottom margin-top no-padding valign-middle">
+						<div class="small-12 columns margin-bottom margin-top no-padding">
 
 							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 							<input type="hidden" id="c_i" name="c_i" value="<?php echo $contributorInfo['contributor_id']; ?>" />

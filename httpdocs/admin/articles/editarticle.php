@@ -3,6 +3,7 @@
 	
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 	$article = $articleResultSet['articles'];
+	$category = $articleResultSet['categories'];
 
 	if(empty($article)) $mpShared->get404();
 
@@ -93,6 +94,8 @@
 			$article = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 			$article = $article['articles'];
 			$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
+			$category = $article['categories'];
+
 
 			//Article ADs
 			$article_ads = $mpArticleAdmin->getArticleAds($article);
@@ -207,12 +210,18 @@
 						<?php }?>
 
 						<!-- ARTICLE CATEGORY -->
-						<?php
+						<?php 
+
 						if( $blogger ){?>
 							<input type="hidden"  name="article_categories" id="article_categories" value="9" />
 						<?php }else{
 							$allCategories = $MPNavigation->getAllCategoriesWithArticles();
 							if($allCategories && count($allCategories)){
+
+								if(isset($category[0]) && $category[0]){
+									$category = $category[0];
+								}
+
 						?>
 							<div class="row">
 							    <div>
@@ -224,7 +233,7 @@
 											$selected = '';
 
 											if( $category['cat_id'] == 9 && !$admin_user) continue; 
-											if(isset($article['cat_id']) && $article['cat_id'] == $category['cat_id']) $selected = 'selected';
+											if(isset($category['cat_id']) && $category['cat_id'] == $category['cat_id']) $selected = 'selected';
 										?>
 											<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>" <?php echo $selected; ?>><?php echo $category['cat_name']; ?></option>
 									<?php }?>

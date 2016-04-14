@@ -130,7 +130,7 @@
 			<section id="article-info" class="small-12 columns">
 
 			<?php if(file_exists($pathToTallImage)){
-				$tallImageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/10571_tall.jpg';//$config['image_url'].'articlesites/puckermob/large/'.$article_id.'_tall.jpg';
+				$tallImageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg';
 				include_once($config['include_path_admin'].'dropbox_image_edit.php');	
 			?>
 

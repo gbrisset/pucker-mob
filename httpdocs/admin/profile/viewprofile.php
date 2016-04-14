@@ -29,7 +29,7 @@
 
 	$contributor_id = $contributorInfo['contributor_id'];
 	$contributor_seo_name = $contributorInfo['contributor_seo_name'];
-	$article_list = $adminController->user->getContributorsArticleList( $contributor_id );
+	$article_list = $adminController->user->getContributorsArticleList( 1103 );
 
 ?>
 
@@ -67,13 +67,13 @@
 						<div class="small-5 large-2 columns no-padding">
 							<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" />
 						</div>
-						<div class="small-7 large-10 columns no-padding-right cont-info" style="    padding-top: 35px;">
+						<div class="small-7 large-10 columns no-padding-right cont-info valign-middle" style="">
 							<div class="small-12 large-6 columns">
 								<p style="margin-top: 11px;"><?php echo $contributorInfo['contributor_name']; ?></p>
-								<p class="show-for-large-up"><?php echo $contributorInfo['contributor_location']; ?></p>
-								<p class="show-for-large-up">Joined: <?php echo date('F d, Y', strtotime($contributorInfo['creation_date'])); ?></p>
+								<p class=""><?php echo $contributorInfo['contributor_location']; ?></p>
+								<p class="">Joined: <?php echo date('F d, Y', strtotime($contributorInfo['creation_date'])); ?></p>
 							</div>
-							<div class="small-12 large-6 columns show-for-large-up">
+							<div class="small-12 large-6 columns ">
 								<?php if($userInfo['contributor_facebook_link']){?>
 									<p><a href="<?php echo $contributorInfo['contributor_facebook_link']; ?>" target="_blank"><i class="fa fa-facebook-square"></i>Follow on Facebook</a></p>
 								<?php }?>
@@ -87,19 +87,7 @@
 								<?php }?>
 							</div>
 
-							<div class="small-12 large-6 columns hide-for-large-up margin-top">
-								<?php if($userInfo['contributor_facebook_link']){?>
-								<p class="small-4 columns no-padding"><a href="<?php echo $contributorInfo['contributor_facebook_link']; ?>" target="_blank"><i style="font-size: 1.6rem;" class="fa fa-facebook-square"></i></a></p>
-								<?php }?>
-
-								<?php if($userInfo['contributor_twitter_handle']){?>
-								<p class="small-4 columns no-padding" ><a href="http://www.twitter.com/<?php echo $contributorInfo['contributor_twitter_handle']; ?>" target="_blank"><i style="font-size: 1.6rem;" class="fa fa-twitter"></i></a></p>
-								<?php }?>
-
-								<?php if($userInfo['contributor_blog_link']){?>
-								<p class="small-4 columns no-padding" ><a href="<?php echo $contributorInfo['contributor_blog_link']; ?>" target="_blank"><i style="font-size: 1.6rem;" class="fa fa-desktop"></i></a></p>
-								<?php }?>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -118,8 +106,8 @@
 							$article_url = $config['this_url'].'/'.$article['cat_dir_name'].'/'.$article['article_seo_title'];
 						?>
 						<tr id="article_<?php echo $article['article_id'];?>">
-							<td width="170" class="show-for-large-up"><img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id'];?>_tall.jpg" alt="Article Image"/></td>
-							<td ><a href="<?php echo $article_url; ?>" target="blanck"><?php echo $article['article_title'];?></a></td>
+							<td width="160" class="show-for-large-up no-padding-left"><img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id'];?>_tall.jpg" alt="Article Image"/></td>
+							<td class="no-padding-right"><a href="<?php echo $article_url; ?>" target="blanck"><?php echo $article['article_title'];?></a></td>
 						</tr>
 						<?php }?>
 					</table>

@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   grunt.initConfig({
+    
     pkg: grunt.file.readJSON('package.json'),
 
     sass: {
@@ -17,20 +18,23 @@ module.exports = function(grunt) {
       }
     },
 
-    watch: {
-      grunt: { files: ['Gruntfile.js'] },
-      html: {
-        files: ['*.html'],
+    browserify: {
+      dev: {
         options: {
-          livereload: true,
+          debug: true,
+          transform: ['reactify']
+        },
+        files: {
+          'httpdocs/assets/js/app_test.js': 'httpdocs/assets/jsx/**/*.jsx'
         }
       },
-     
-      sass: {
-        files: 'httpdocs/assets/scss/**//*.scss',
-        tasks: ['sass'],
+      build: {
         options: {
-          livereload: true,
+          debug: false,
+          transform: ['reactify']
+        },
+        files: {
+          'httpdocs/assets/js/app_test.js': 'httpdocs/assets/jsx/**/*.jsx'
         }
       }
     },
@@ -59,18 +63,38 @@ module.exports = function(grunt) {
           'httpdocs/assets/css/app.min.css': ['httpdocs/assets/css/app.css']
         }
       }
-    }
+    },
     
+    watch: {
+      grunt: { files: ['Gruntfile.js'] },
+      
+      sass: {
+        files: 'httpdocs/assets/scss/**//*.scss',
+        tasks: ['sass'],
+        options: {
+          livereload: true,
+        }
+      },
+
+      browserify: {
+        files: ['httpdocs/assets/js/**/*.js', 'httpdocs/assets/jsx/**/*.jsx'],
+        tasks: ['browserify:dev'],
+         options: {
+          livereload: true,
+        }
+      },
+    }
+
   });
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-
+  grunt.loadNpmTasks('grunt-browserify');
 
   grunt.registerTask('build', ['sass']);
   grunt.registerTask('jscompress', ['uglify']);
   grunt.registerTask('csscompress', ['cssmin']);
-  grunt.registerTask('default', ['build','watch']);
+  grunt.registerTask('default', ['watch', 'cssmin', 'uglify']);
 }

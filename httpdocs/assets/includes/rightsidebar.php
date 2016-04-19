@@ -20,25 +20,26 @@
 
        <!-- LELO -->
       <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
-     
-      <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
-          <div id="ros_1201"></div> 
-      </div>
+      <?php if($articleInfoObj['article_id'] != 8560){ ?>
+        <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
+            <div id="ros_1201"></div> 
+        </div>
+      <?php } ?>
 
       <section id="sub-sidebar-3" class="sidebar show-on-large-up"  style="margin: 0.9375rem 0 !important;">
          <?php include_once($config['include_path'].'widget.php'); ?>
       </section>
 
       <?php }else{?>
-      <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
-         <a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/shaking_app_300x250_v2.gif" /></a>
+         <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
+          <a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/shaking_app_300x250_v2.gif" /></a>
        </div>
       <?php }?>
       
 
-      <section id="sub-sidebar-2" class="sidebar article-stick hide" style="padding-top:10px; ">
-            <a href="https://www.surveymonkey.com/r/QMXVYTC"> <img src="https://s3.amazonaws.com/pucker-mob/images/midnight.png"></a>
-            <a href="http://www.puckermob.com/admin/register/"> <img src="https://s3.amazonaws.com/pucker-mob/images/themob.png" style="margin-bottom:15px;"></a>
+      <section id="sub-sidebar-2" class="sidebar sticky" style="padding-top:10px; ">
+            <a href="https://www.facebook.com/puckermob" target="_blank"> <img src="http://www.puckermob.com/assets/img/homepage/likeuson.jpg" style="margin-bottom: 8px;"></a>
+            <a href="http://sequelmediainternational.com/contact" target="_blank"> <img src="http://www.puckermob.com/assets/img/homepage/WriteForPuckerMob.jpg" style="margin-bottom:15px;"></a>
             <a href="#" class="back-to-top btn"> Back to top  &#8682; </a>
       </section>
 </aside>

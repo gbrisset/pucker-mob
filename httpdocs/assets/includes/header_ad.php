@@ -7,14 +7,17 @@
 	</div>-->
     <?php }else { ?>
 	<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
-		
-		<!-- 728x90, 970x90 combo: 970x90 728x90 -->
 		<style> #ros_1193, #home_1181{ display:inline-block !important; }</style>
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 			 <!-- LELO -->
       		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
-
-			<div id="ros_1193" style="display: inline-block !important;"></div> 
+				<div id="ros_1193" style="display: inline-block !important;"></div> 
+			<?php }else{?>
+				<div class="">
+					<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
+						<img src="http://www.puckermob.com/assets/img/campaing/camp_banner_v1_desk.jpg" />
+					</a>
+				</div>
 			<?php } ?>
 		<?php }else{?>
 			<div id="home_1181" style="display: inline-block;"></div> 

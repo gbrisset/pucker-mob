@@ -17,22 +17,52 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js" ></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_2343rf" ></script>
 
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-    <!--[if !IE]>
+  <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
     <![endif]-->
 
+  <?php if(isset($article_id) && $article_id == 5118 ){ ?>
+    <script type='text/javascript'>
+      var googletag = googletag || {};
+      googletag.cmd = googletag.cmd || [];
+      (function() {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+          '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+      })();
+    </script>
 
-    <div id="evolve_footer"></div>
+    <script type='text/javascript'>
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/73970039/test_undertone', [[320, 480], [320, 50], [160, 600], [970, 250], [300, 600], [1024, 768], [300, 50], [768, 1024], [1, 1], [970, 90], [768, 50], [300, 250], [728, 90]], 'div-gpt-ad-1460669862695-0').addService(googletag.pubads());
+        googletag.enableServices();
+      });
+    </script>
+  <?php } ?>
+
+
+  <?php if ($article_id != 8560 /*TEST PAGE http://www.puckermob.com/lifestyle/16-pieces-of-advice-to-ignore*/ ){?>
+    <div id="mb_container"></div> 
+    <div id="mb_video_sponso"></div> 
+    <script type="text/javascript"> (function(){ var sc = document.createElement('script'); sc.src = 'http://player.mediabong.net/se/924.js?url='+encodeURIComponent(document.location.href); sc.type = 'text/javascript'; sc.async = true; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s); })(); </script>
+  <?php }?>
+    
+  <div id="evolve_footer"></div>
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
       <!-- LELO -->
-     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576 ){?>
+     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 /*TEST PAGE */){?>
 
       <script type="text/javascript">
           netseer_tag_id="19129";
@@ -40,6 +70,7 @@
           netseer_inview_status="disabled";
         </script>
         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+
         <?php } ?>
     <?php } 
 
@@ -78,9 +109,29 @@
 <!-- MOBILE -->
 <?php }else{ ?>
   
-  <?php if(isset($article_id) && $article_id == 14174 ){?>
-  
-<?php } ?>
+  <?php if(isset($article_id) && $article_id == 5118 ){?>
+        <script type='text/javascript'>
+      var googletag = googletag || {};
+      googletag.cmd = googletag.cmd || [];
+      (function() {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+          '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+      })();
+    </script>
+
+    <script type='text/javascript'>
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/73970039/test_undertone', [[320, 480], [320, 50], [160, 600], [970, 250], [300, 600], [1024, 768], [300, 50], [768, 1024], [1, 1], [970, 90], [768, 50], [300, 250], [728, 90]], 'div-gpt-ad-1460669862695-0').addService(googletag.pubads());
+        googletag.enableServices();
+      });
+    </script>
+  <?php } ?>
 
   <?php if(isset($article_id) && $article_id == 13305 ){?>
     <div id="evolve_footer"></div>
@@ -92,7 +143,7 @@
 
   if(isset($articleInfoObj) && $articleInfoObj){ ?>
      <!-- LELO -->
-     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576 ){?>
+     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 /*TEST PAGE */){?>
        <!-- ANSWERS SLIDER UNIT -->
           <div id="vm_inline"></div>
           <script>
@@ -126,104 +177,104 @@
     <?php  } ?>
      <?php if(isset($article_id) && $article_id != 14330 && $article_id != 11339 ){?>
 
-    <script>
-    (function() 
+        <script>
+          (function() 
 
-{ 
+          { 
 
-   var tagqa = '';
+             var tagqa = '';
 
-   var playerId = '';
+             var playerId = '';
 
-   var playerContainerId = 'ad' + Math.round(Math.random()*1000000000).toString();
+             var playerContainerId = 'ad' + Math.round(Math.random()*1000000000).toString();
 
-   var playerWidth = '300';
+             var playerWidth = '300';
 
-   var playerHeight = '250';
+             var playerHeight = '250';
 
-   var controls = '';
+             var controls = '';
 
-   var render = '';
+             var render = '';
 
-   var tracki = '';
+             var tracki = '';
 
-   var trackc = '';
+             var trackc = '';
 
-   var custom1 = '';
+             var custom1 = '';
 
-   var custom2 = '';
+             var custom2 = '';
 
-   var custom3 = '';
+             var custom3 = '';
 
-   var videourl = '';
+             var videourl = '';
 
-   var viewMode = 'normal';
+             var viewMode = 'normal';
 
-   var companionId = '';
+             var companionId = '';
 
-   var pubMacros = '';
-
-
-
-   try { if (document.readyState && document.readyState != 'complete') { document.write('<div id="' + playerContainerId + '"></div>'); } } catch (e) {} 
+             var pubMacros = '';
 
 
 
-   var lkqdVPAID;
-
-   var lkqdId = new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString();
-
-   var environmentVars = { slot: document.getElementById(playerContainerId), videoSlot: document.getElementById(playerId), videoSlotCanAutoPlay: true };
-
-   var creativeData = '';
+             try { if (document.readyState && document.readyState != 'complete') { document.write('<div id="' + playerContainerId + '"></div>'); } } catch (e) {} 
 
 
 
-   function onVPAIDLoad()
+             var lkqdVPAID;
 
-   {
+             var lkqdId = new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString();
 
-        lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, 'AdLoaded');
+             var environmentVars = { slot: document.getElementById(playerContainerId), videoSlot: document.getElementById(playerId), videoSlotCanAutoPlay: true };
 
-   }
+             var creativeData = '';
 
 
 
-   var vpaidFrame = document.createElement('iframe');
+             function onVPAIDLoad()
 
-   vpaidFrame.id = lkqdId;
+             {
 
-   vpaidFrame.name = lkqdId;
+                  lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, 'AdLoaded');
 
-   vpaidFrame.style.display = 'none';
+             }
 
-   vpaidFrame.onload = function() {
 
-        vpaidLoader = vpaidFrame.contentWindow.document.createElement('script');
 
-        vpaidLoader.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//ad.lkqd.net/serve/pure.js?format=1&vpaid=true&apt=auto&ear=0&pid=85&sid=28814&tagqa=' + tagqa + '&elementid=' + encodeURIComponent(playerId) + '&containerid=' + encodeURIComponent(playerContainerId) + '&render=' + render + '&controls=' + controls + '&width=' + playerWidth + '&height=' + playerHeight + '&mode=' + viewMode + '&companionid=' + encodeURIComponent(companionId) + '&tracki=' + encodeURIComponent(tracki) + '&trackc=' + encodeURIComponent(trackc) + '&c1=' + encodeURIComponent(custom1) + '&c2=' + encodeURIComponent(custom2) + '&c3=' + encodeURIComponent(custom3) + '&videourl=' + encodeURIComponent(videourl) + '&rnd=' + Math.floor(Math.random() * 100000000) + '&m=' + encodeURIComponent(pubMacros);
+             var vpaidFrame = document.createElement('iframe');
 
-        vpaidLoader.onload = function() {
+             vpaidFrame.id = lkqdId;
 
-              lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd();
+             vpaidFrame.name = lkqdId;
 
-              lkqdVPAID.handshakeVersion('2.0');
+             vpaidFrame.style.display = 'none';
 
-              onVPAIDLoad();
+             vpaidFrame.onload = function() {
 
-              lkqdVPAID.initAd(playerWidth, playerHeight, viewMode, 600, creativeData, environmentVars);
+                  vpaidLoader = vpaidFrame.contentWindow.document.createElement('script');
 
-        };
+                  vpaidLoader.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//ad.lkqd.net/serve/pure.js?format=1&vpaid=true&apt=auto&ear=0&pid=85&sid=28814&tagqa=' + tagqa + '&elementid=' + encodeURIComponent(playerId) + '&containerid=' + encodeURIComponent(playerContainerId) + '&render=' + render + '&controls=' + controls + '&width=' + playerWidth + '&height=' + playerHeight + '&mode=' + viewMode + '&companionid=' + encodeURIComponent(companionId) + '&tracki=' + encodeURIComponent(tracki) + '&trackc=' + encodeURIComponent(trackc) + '&c1=' + encodeURIComponent(custom1) + '&c2=' + encodeURIComponent(custom2) + '&c3=' + encodeURIComponent(custom3) + '&videourl=' + encodeURIComponent(videourl) + '&rnd=' + Math.floor(Math.random() * 100000000) + '&m=' + encodeURIComponent(pubMacros);
 
-        vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader);
+                  vpaidLoader.onload = function() {
 
-   };
+                        lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd();
 
-   document.documentElement.appendChild(vpaidFrame);
+                        lkqdVPAID.handshakeVersion('2.0');
 
-})();
-    </script>
-<?php  } ?>
+                        onVPAIDLoad();
+
+                        lkqdVPAID.initAd(playerWidth, playerHeight, viewMode, 600, creativeData, environmentVars);
+
+                  };
+
+                  vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader);
+
+             };
+
+             document.documentElement.appendChild(vpaidFrame);
+
+          })();
+        </script>
+    <?php  } ?>
 
       <?php  } ?>
 
@@ -233,14 +284,7 @@
     <!-- SHARETHROUNG -->
     <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>
     
-<!-- cloudfront tracker -->
-<script>
-  !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
-  arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
-  d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
-  insertBefore(d,q)}(window,document,'script','_gs');
-  _gs('GSN-829786-N');
-</script>
+
 
 <!-- TotallyHer comscore tags -->
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>

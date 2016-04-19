@@ -56,6 +56,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	div#inarticle12-ad {
 	    top: -20px;
 	}
+	#playerHolder{ height: 250px !important; width: 300px !important;     display: inline-block !important;}
 </style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
@@ -112,7 +113,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
 							<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/camp_banner_v1.jpg" />
 						</a>
-				<?php }else{?>
+				<?php }else{ ?>
 					<!-- /73970039/test_unit -->
 					<div id='div-gpt-ad-1460406489796-0' style='height:250px; width:300px; display:inline-block;'>
 					<script type='text/javascript'>
@@ -133,6 +134,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					Photo courtesy of  <a target="_blank" href="<?php echo $article_img_credits_url;?>" > <?php echo $article_img_credits; ?></a>
 				</p>
 			<?php }?>
+
+			<?php include_once($config['include_path'].'header_social.php'); ?> 
 		</div>
 
 			<!-- READ MORE
@@ -151,7 +154,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						</a>
 					</div>
 				</div>
-			<?php }else{?>
+			<?php }elseif( $article_id != 8560 ){ ?>
 			<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">
 				<div id="get-content" style="text-align:center; display: inline-block;">
 					<div id='__kx_ad_4251'></div><script type="text/javascript" language="javascript" id="__kx_tag_4251">var __kx_ad_slots = __kx_ad_slots || []; (function () { var slot = 4251; var h = false; var doc = document; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') { __kx_ad_start(); } else { if (top == self) { var s = doc.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){ if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = doc.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } else { var tag = doc.getElementById('__kx_tag_'+slot); var win = window.parent; doc = win.document; var top_div = doc.createElement("div"); top_div.id = '__kx_ad_'+slot; doc.body.appendChild(top_div); var top_tag = doc.createElement("script"); top_tag.id = '__kx_top_tag_'+slot; top_tag.innerHTML = tag.innerHTML; doc.body.appendChild(top_tag); }}})();</script>
@@ -223,7 +226,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php } ?>
 
 
-			<?php include_once($config['include_path'].'header_social.php'); ?> 
+			
 
 			<!-- LELO -->
 			<?php if( $article_id != 14479 &&  $article_id != 14576 ){?>
@@ -247,10 +250,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
 					<div id="tok-ad" class="columns small-12 margin-top margin-bottom IOS" >
-					<iframe style="width:300px;height:250px;overflow:hidden;" src="//www.toksnn.com/ads/pkm_ent1_mob_us?pub=sqmpkmusmi" frameborder="0" scrolling="no"></iframe>
+						<iframe style="width:300px;height:250px;overflow:hidden;" src="//www.toksnn.com/ads/pkm_ent1_mob_us?pub=sqmpkmusmi" frameborder="0" scrolling="no"></iframe>
 					</div>
 				</div>
 			</div>
+
+			<?php if( isset($article_id) && $article_id != 8560 ){?>
 
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
@@ -279,6 +284,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					</script>
 				</div>
 			</div>
+			<?php } ?>
 					
 				<?php } ?>
 
@@ -332,12 +338,30 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<!-- Article Content -->
 			<div class="row clear">
 				<section id="article-content" class="small-12 column sidebar-box padding-top">
-					
+					<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
+						<?php if(  $article_id == 5118  ){ //http://www.puckermob.com/relationships/are-they-your-friend-or-your-frenemy ?>
+								<!-- /73970039/test_undertone -->
+								<div id='div-gpt-ad-1460669862695-0'>
+								<script type='text/javascript'>
+								googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460669862695-0'); });
+								</script>
+								</div>
+						<?php } ?>
+					</div>
 					<!-- ARTICLE BODY -->
 					<div id="article-body">
 						<p><?php echo $article_body; ?></p>
 					</div>
-					
+
+				
+					<!-- LELO -->
+					<?php if( $article_id == 14479 || $article_id == 14576 ){?>
+					<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
+						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
+							<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/camp_banner_v2_desk.jpg" />
+						</a>
+					</div>
+					<?php } ?>
 					<!-- RELATED ARTICLES -->
 					<?php 
 					$related = []; 
@@ -405,3 +429,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 </article>
 
 <?php } ?>
+
+<!-- UNDERTONE -->
+	<?php if( isset($article_id) && $article_id == 8560 ){?>
+		<!-- /73970039/test_undertone-->
+		<div id='div-gpt-ad-1461080723176-0' style='height:1px; width:1px;'>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461080723176-0'); });
+			</script>
+		</div>
+	<?php } ?>

@@ -1,43 +1,94 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var ReactDOM = require('react-dom');
-
 var React = require('react');
 var Dropzone = require('react-dropzone');
 
-var DropzoneDemo = React.createClass({displayName: "DropzoneDemo",
-    onDrop: function(files){
-        var req = request.post('/upload');
-        files.forEach((file)=> {
-            req.attach(file.name, file);
-        });
-        req.end(callback);
-    },
+module.exports = React.createClass({displayName: "exports",
+	
+  getDefaultProps: function () {
+    return {
+      disableClick: false,
+      multiple: false
+    };
+  },
 
-    onOpenClick: function () {
-      this.refs.dropzone.open();
-    },
+  getInitialState: function () {
+    return {
+      files: [],
+      file: ''
+    };
+  },
 
-    render: function () {
-      return 
-          React.createElement("div", null, 
-            React.createElement(Dropzone, {ref: "dropzone", onDrop: this.onDrop}, 
-              React.createElement("div", null, "Try dropping some files here, or click to select files to upload.")
-            ), 
-            React.createElement("button", {type: "button", onClick: this.onOpenClick}, 
-                "Open Dropzone"
-            ), 
-            this.state.files ? React.createElement("div", null, 
-            React.createElement("h2", null, "Uploading ", files.length, " files..."), 
-            React.createElement("div", null, React.createElement("img", {src: file.preview}))
-            ) : null
-          )
-     
+  onDrop: function (files) {
+    this.setState({
+      files: files,
+      file: files[0]
+    });
+   
+    if(files.length == 1){
+      $('#image-article').hide();
+      $('input[type=file]').attr('name', 'article_image');
+
     }
+  },
+
+  onOpenClick: function (e) {
+    e.preventDefault();
+    this.refs.dropzone.open();
+  },
+
+  onOpenLibrary:function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    $('.step-2').hide();
+  //  console.log("Open Library");
+
+  },
+
+  showError: function(){
+    return(
+      React.createElement("div", {className: "warning center"}, 
+        React.createElement("p", null, "You are trying to upload more than one image")
+      )
+    );
+    console.log("ERROR");
+  },
+
+  render: function () {
+    var style = {
+        borderWidth: 0,
+        borderColor: 'transparent',
+        borderStyle: 'none',
+        borderRadius: 0,
+        margin: 0,
+        padding: 0,
+        width: 'auto'
+      };
+
+    return (
+     React.createElement("div", null, 
+       React.createElement(Dropzone, {style: style, ref: "dropzone", onDrop: this.onDrop}, 
+        	React.createElement("div", {className: "dz-message center", "data-dz-message": true}, 
+                React.createElement("span", {className: "glyphicon glyphicon-picture"}), 
+                React.createElement("div", {id: "img-container"}, 
+                  React.createElement("h2", null, "Add an image to your article"), 
+                  React.createElement("label", {className: "padding-top"}, "Drag image here or Click to Upload"), 
+
+                  React.createElement("div", {className: "library"}, 
+                    React.createElement("label", null, "Dont have an image? Choose from our Free ", React.createElement("a", {name: "search-lib", id: "search-lib", "data-toggle": "modal", "data-target": "#library", onClick: this.onOpenLibrary}, "Photo Library!"))
+                  )
+                )
+         	)
+       ), 
+         ( this.state.files.length > 0 && this.state.files.length < 2) ? React.createElement("div", null, 
+          React.createElement("h3", null, "Current image"), 
+          React.createElement("div", null, React.createElement("img", {src:  (this.state.file.preview)}))
+        ) : null
+      )
+    );
+}
 });
 
-React.ReactDOM(React.createElement(DropzoneDemo, null), document.body);
-
-},{"react":165,"react-dom":8,"react-dropzone":9}],2:[function(require,module,exports){
+},{"react":165,"react-dropzone":9}],2:[function(require,module,exports){
 var React = require('react');
 
 module.exports = React.createClass({displayName: "exports",
@@ -107,16 +158,15 @@ module.exports = React.createClass({displayName: "exports",
 var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
-var FormattingTips = require('./components/admin/formatting_tips.jsx');
-var Header = require('./components/admin/header.jsx');
+//var FormattingTips = require('./components/admin/formatting_tips.jsx');
+//var Header = require('./components/admin/header.jsx');
 var DropImage = require('./components/admin/dropimage.jsx');
 
+//ReactDOM.render(<Header />, document.getElementById('nav-bar'));
+ReactDOM.render(React.createElement(DropImage, null), document.getElementById('image-drop'));
+//ReactDOM.render(<FormattingTips />, document.getElementById('formatting-tips-box'));
 
-
-ReactDOM.render(React.createElement(Header, null), document.getElementById('nav-bar'));
-ReactDOM.render(React.createElement(FormattingTips, null), document.getElementById('formatting-tips-box'));
-
-},{"./components/admin/dropimage.jsx":1,"./components/admin/formatting_tips.jsx":2,"./components/admin/header.jsx":3,"jquery":7,"react":165,"react-dom":8}],6:[function(require,module,exports){
+},{"./components/admin/dropimage.jsx":1,"jquery":7,"react":165,"react-dom":8}],6:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};

@@ -1,37 +1,89 @@
-var ReactDOM = require('react-dom');
-
 var React = require('react');
 var Dropzone = require('react-dropzone');
 
-var DropzoneDemo = React.createClass({
-    onDrop: function(files){
-        var req = request.post('/upload');
-        files.forEach((file)=> {
-            req.attach(file.name, file);
-        });
-        req.end(callback);
-    },
+module.exports = React.createClass({
+	
+  getDefaultProps: function () {
+    return {
+      disableClick: false,
+      multiple: false
+    };
+  },
 
-    onOpenClick: function () {
-      this.refs.dropzone.open();
-    },
+  getInitialState: function () {
+    return {
+      files: [],
+      file: ''
+    };
+  },
 
-    render: function () {
-      return 
-          <div>
-            <Dropzone ref="dropzone" onDrop={this.onDrop} >
-              <div>Try dropping some files here, or click to select files to upload.</div>
-            </Dropzone>
-            <button type="button" onClick={this.onOpenClick}>
-                Open Dropzone
-            </button>
-            {this.state.files ? <div>
-            <h2>Uploading {files.length} files...</h2>
-            <div><img src={file.preview} /></div>
-            </div> : null}
-          </div>
-     
+  onDrop: function (files) {
+    this.setState({
+      files: files,
+      file: files[0]
+    });
+   
+    if(files.length == 1){
+      $('#image-article').hide();
+      $('input[type=file]').attr('name', 'article_image');
+
     }
+  },
+
+  onOpenClick: function (e) {
+    e.preventDefault();
+    this.refs.dropzone.open();
+  },
+
+  onOpenLibrary:function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    $('.step-2').hide();
+  //  console.log("Open Library");
+
+  },
+
+  showError: function(){
+    return(
+      <div className="warning center">
+        <p>You are trying to upload more than one image</p>
+      </div>
+    );
+    console.log("ERROR");
+  },
+
+  render: function () {
+    var style = {
+        borderWidth: 0,
+        borderColor: 'transparent',
+        borderStyle: 'none',
+        borderRadius: 0,
+        margin: 0,
+        padding: 0,
+        width: 'auto'
+      };
+
+    return (
+     <div>
+       <Dropzone style={style} ref="dropzone" onDrop={this.onDrop}>
+        	<div className="dz-message center" data-dz-message>
+                <span className="glyphicon glyphicon-picture"></span>
+                <div id="img-container">
+                  <h2>Add an image to your article</h2>
+                  <label className="padding-top">Drag image here or Click to Upload</label>
+
+                  <div className="library">
+                    <label>Dont have an image? Choose from our Free <a name="search-lib" id="search-lib" data-toggle="modal" data-target="#library" onClick={this.onOpenLibrary} >Photo Library!</a></label>
+                  </div>
+                </div>
+         	</div>
+       </Dropzone>
+        { ( this.state.files.length > 0 && this.state.files.length < 2) ? <div>
+          <h3>Current image</h3>
+          <div><img src={ (this.state.file.preview )} /></div>
+        </div> : null }
+      </div>
+    );
+}
 });
 
-React.ReactDOM(<DropzoneDemo />, document.body);

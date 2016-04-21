@@ -208,7 +208,9 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							<button type="submit" id="submit" name="submit" class="small-12 large-5 columns radius">SAVE</button>
 
 						</div>
-											<?php include_once($config['include_path_admin'].'formatting_tips.php');?>
+						
+						<?php //include_once($config['include_path_admin'].'formatting_tips.php');?>
+						<div id="formatting-tips-box" class="row show-for-medium-up margin-bottom"></div>
 
 					</div>
 				</form>

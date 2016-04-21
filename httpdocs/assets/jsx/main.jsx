@@ -1,11 +1,11 @@
+var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
+var FormattingTips = require('./components/admin/formatting_tips.jsx');
+var Header = require('./components/admin/header.jsx');
+var DropImage = require('./components/admin/dropimage.jsx');
 
 
-var HelloMessage = React.createClass({
-  render: function () {
-    return <h1>Hello {this.props.message}</h1>;
-  }
-});
 
-//ReactDOM.render(<HelloMessage message="Flor" />, document.getElementById('article-info'));
+ReactDOM.render(<Header />, document.getElementById('nav-bar'));
+ReactDOM.render(<FormattingTips />, document.getElementById('formatting-tips-box'));

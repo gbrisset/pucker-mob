@@ -5,6 +5,6 @@ var ReactDOM = require('react-dom');
 //var Header = require('./components/admin/header.jsx');
 var DropImage = require('./components/admin/dropimage.jsx');
 
-//ReactDOM.render(<Header />, document.getElementById('nav-bar'));
+ReactDOM.render(<Header />, document.getElementById('nav-bar'));
 ReactDOM.render(<DropImage />, document.getElementById('image-drop'));
-//ReactDOM.render(<FormattingTips />, document.getElementById('formatting-tips-box'));
+ReactDOM.render(<FormattingTips />, document.getElementById('formatting-tips-box'));

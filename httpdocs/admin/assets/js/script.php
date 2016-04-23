@@ -876,6 +876,11 @@ if($('.mob-level-contributor')){
 	});
   }
 
+
+//Add NEW ARTICLE
+
+$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
+
 }); 
  
 

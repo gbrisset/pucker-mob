@@ -21,13 +21,30 @@ module.exports = React.createClass({displayName: "exports",
   onDrop: function (files) {
     this.setState({
       files: files,
-      file: files[0]
+      file: files[0],
+      image_width: 1,
+      image_height: 1
     });
-   
-    if(files.length == 1){
+
+    var fr = new FileReader;
+    fr.readAsDataURL(files[0]);
+console.log(fr);
+    fr.onload = function() {
+        var img = new Image;
+        
+        img.onload = function() {
+          this.setState({image_width: img.width, image_height: img.height });
+        };
+        
+        img.src = fr.result;
+    };
+    
+    
+    console.log(files[0], this.state.image_width, this.state.image_height);
+
+    if(this.state.files.length == 1){
       $('#image-article').hide();
       $('input[type=file]').attr('name', 'article_image');
-
     }
   },
 
@@ -40,7 +57,7 @@ module.exports = React.createClass({displayName: "exports",
     e.preventDefault();
     e.stopPropagation();
     $('.step-2').hide();
-  //  console.log("Open Library");
+    console.log("Open Library");
 
   },
 
@@ -162,9 +179,9 @@ var ReactDOM = require('react-dom');
 //var Header = require('./components/admin/header.jsx');
 var DropImage = require('./components/admin/dropimage.jsx');
 
-//ReactDOM.render(<Header />, document.getElementById('nav-bar'));
+ReactDOM.render(React.createElement(Header, null), document.getElementById('nav-bar'));
 ReactDOM.render(React.createElement(DropImage, null), document.getElementById('image-drop'));
-//ReactDOM.render(<FormattingTips />, document.getElementById('formatting-tips-box'));
+ReactDOM.render(React.createElement(FormattingTips, null), document.getElementById('formatting-tips-box'));
 
 },{"./components/admin/dropimage.jsx":1,"jquery":7,"react":165,"react-dom":8}],6:[function(require,module,exports){
 // shim for using process in browser

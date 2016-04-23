@@ -20,13 +20,30 @@ module.exports = React.createClass({
   onDrop: function (files) {
     this.setState({
       files: files,
-      file: files[0]
+      file: files[0],
+      image_width: 1,
+      image_height: 1
     });
-   
-    if(files.length == 1){
+
+    var fr = new FileReader;
+    fr.readAsDataURL(files[0]);
+console.log(fr);
+    fr.onload = function() {
+        var img = new Image;
+        
+        img.onload = function() {
+          this.setState({image_width: img.width, image_height: img.height });
+        };
+        
+        img.src = fr.result;
+    };
+    
+    
+    console.log(files[0], this.state.image_width, this.state.image_height);
+
+    if(this.state.files.length == 1){
       $('#image-article').hide();
       $('input[type=file]').attr('name', 'article_image');
-
     }
   },
 
@@ -39,7 +56,7 @@ module.exports = React.createClass({
     e.preventDefault();
     e.stopPropagation();
     $('.step-2').hide();
-  //  console.log("Open Library");
+    console.log("Open Library");
 
   },
 

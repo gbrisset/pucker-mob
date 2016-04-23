@@ -76,13 +76,13 @@ module.exports = function(grunt) {
         }
       },
 
-      browserify: {
-        files: ['httpdocs/assets/js/**/*.js', 'httpdocs/assets/jsx/**/**/*.jsx'],
-        tasks: ['browserify:dev'],
-         options: {
-          livereload: true,
-        }
-      },
+      //browserify: {
+        //files: ['httpdocs/assets/js/**/*.js', 'httpdocs/assets/jsx/**/**/*.jsx'],
+        //tasks: ['browserify:dev'],
+        // options: {
+        //  livereload: true,
+        //}
+      //},
     }
 
   });

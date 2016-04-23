@@ -239,6 +239,25 @@ var EarningsObj = {
      }
 };
 
+/*	SEO Title auto complete...
+		Call this method on a form input element that the user will be typing in
+		argument1: The input to be auto-completed
+		argument2: The hidden input that indicates the seo name has changed
+*/
+
+$.fn.SeoTitleAutoComplete = function(seoTitleInputName, hiddenInput){
+	$(this).keyup(function () { 
+		var title= $(this).val();
+		title = title.replace(/[^0-9a-zA-Z_\s]/g, '');
+		title = title.trim();
+		title = title.toLowerCase().replace(/ /g, '-');
+
+		$('input[name="'+seoTitleInputName+'"]').val(title);
+
+		$('input[name="'+hiddenInput+'"]').val("true");
+	});		
+}
+
 var SDCookie = (function() {
     return {
     	checkEnabled: 	function(){
@@ -313,27 +332,7 @@ $.fn.redirectToNewSEOTitle = function(basePath){
 	}
 }
 
-/*	SEO Title auto complete...
-		Call this method on a form input element that the user will be typing in
-		argument1: The input to be auto-completed
-		argument2: The hidden input that indicates the seo name has changed
-*/
 
-$.fn.SDSeoTitleAutoComplete = function(seoTitleInputName, hiddenInput){
-	$(this).keyup(function () { 
-		var title= $(this).val();
-		title = title.replace(/[^0-9a-zA-Z_\s]/g, '');
-		title = title.trim();
-		title = title.toLowerCase().replace(/ /g, '-');
-
-		$('input[name="'+seoTitleInputName+'"]').val(title);
-
-		//	Change the value of the hiddenInput field to true, so we know to perform 
-		//	a redirect.  Why?  The SEO name has been changed, so this edit page no longer exists.
-		//	A redirect must be called, on submit (callback from mpValidate).
-		$('input[name="'+hiddenInput+'"]').val("true");
-	});		
-}
 
 $.fn.SDToggler = function(hiddenDiv){
 	$(this).click(function(e){

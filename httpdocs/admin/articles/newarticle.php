@@ -60,7 +60,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<div class="row">
 						    <div>
 								<label for="article_seo_title-s" class="small-3 columns no-padding seo-title">SEO URL:</label>
-								  <input type="text" disabled class="form-control small-9 columns" id="article_seo_title-s"  name="article_seo_title-s" aria-describedby="basic-addon3">
+								  <input type="text" value="" disabled class="form-control small-9 columns" id="article_seo_title-s"  name="article_seo_title-s" aria-describedby="basic-addon3">
 							</div>
 						</div>	
 						<?php }else{ ?>
@@ -209,18 +209,13 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 						</div>
 						
-						<?php //include_once($config['include_path_admin'].'formatting_tips.php');?>
-						<div id="formatting-tips-box" class="row show-for-medium-up margin-bottom"></div>
+						<?php include_once($config['include_path_admin'].'formatting_tips.php');?>
 
 					</div>
 				</form>
 			</section>
 		</div>
 	</main>	
-
-  	<script>
-		//$('input[name="article_title-s"]').SDSeoTitleAutoComplete("article_seo_title-s");
-	</script>
 
 <!-- INFO BADGE -->
 <div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">

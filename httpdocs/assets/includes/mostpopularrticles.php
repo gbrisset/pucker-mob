@@ -53,19 +53,21 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 
 						//Replace 2nd article with Adblade
 						if($articleNumber == 3 ){?>
-							<?php if( !$has_sponsored ){?>
+							<?php if( !$has_sponsored && !$sponsored_aricle ){ ?>
+							<?php if( $articleInfoObj['article_id'] != 14472 ){ ?>
 							<div class="columns todays-favorites fade-in-out">
 								<!-- BEGIN JS TAG - puckermob.com Desktop 300x250 < - DO NOT MODIFY -->
 								<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5975094&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>
 								<!-- END TAG -->
 							</div>
+							<?php } ?>
 						<?php }
 							continue;
 						}
 
 						//Replace 6th article ntent ad
 						if($articleNumber == 6 ){
-							if(!$has_sponsored && (isset($isHomepage) && !$isHomepage) ){ ?>
+							if(!$has_sponsored && (isset($isHomepage) && !$isHomepage ) && !$sponsored_aricle  && $article['article_id'] != 14472 ){ ?>
 							<!-- NTENT ADS -->
 							<div class="columns todays-favorites fade-in-out">
 							<script type="text/javascript" language="JavaScript">

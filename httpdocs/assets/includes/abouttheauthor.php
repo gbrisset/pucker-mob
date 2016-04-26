@@ -4,12 +4,13 @@ $class = " column small-12 hide-for-print sidebar-right  no-padding ";
 if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right no-padding "; ?>
 
 <?php 
-	$bio = $name = '';
+	$bio = $name = $seo_name = '' ;
 	$image_name = 'pm_avatars_1.png';
 
 	if(isset($articleInfoObj)){
 		$bio = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_bio"])));
 		$name = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_name"])));
+		$seo_name = $articleInfoObj['contributor_seo_name'];
 		if( !empty($articleInfoObj['contributor_image']) ) $image_name = $articleInfoObj['contributor_image'];
 	}
 	$ss_user_id=0;
@@ -28,24 +29,34 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 	<?php if($detect->isMobile() ){?>
 		<section id="about-the-author" class="small-12 hide-for-print padding">
 			<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
-				<div class="columns no-padding small-4">
+				<!--<div class="columns no-padding small-4">
+					<a href="<?php echo $config['this_url'].'contributors/'.$seo_name; ?>">
+						<img src="<?php echo 'http://cdn.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $name; ?> Image" class="author-image right" style="max-height: 90px; "/>
+					</a>
+				</div>-->
+				<div class="author-info columns no-padding small-12" style="margin: 0;">
+					<input type="hidden" id="ss_user_id" value="<?php echo $ss_user_id; ?>" />
+					<input type="hidden" id="ss_user_email" value="<?php echo $ss_user_email; ?>" />
+					<input type="hidden" id="ss_author_id" value="<?php echo $ss_user_id; ?>" />
+					<h4 small-12 columns>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo $name; ?></a></h4>
+				</div>
+			</div>
+		</section>
 	<?php }else{?>
 		<section id="about-the-author" class="columns small-12 hide-for-print">
 			<div id="about-the-author-bg" class="columns small-10 no-padding">
 				<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 1rem;">
-	<?php }?>
-	
-					<a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>">
-						<img src="<?php echo 'http://cdn.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $articleInfoObj['contributor_name']; ?> Image" class="author-image right" style="max-height: 90px; "/>
+					<a href="<?php echo $config['this_url'].'contributors/'.$seo_name; ?>">
+						<img src="<?php echo 'http://cdn.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $name; ?> Image" class="author-image right" style="max-height: 90px; "/>
 					</a>
 				</div>
 				<div class="author-info columns no-padding small-7">
 					<input type="hidden" id="ss_user_id" value="<?php echo $ss_user_id; ?>" />
 					<input type="hidden" id="ss_user_email" value="<?php echo $ss_user_email; ?>" />
 					<input type="hidden" id="ss_author_id" value="<?php echo $ss_user_id; ?>" />
-					<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>"><?php echo $articleInfoObj["contributor_name"]; ?></a></h4>
+					<h4>BY: <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo $name; ?></a></h4>
 					<?php if(!$detect->isMobile()){?>
-						<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($articleInfoObj['contributor_bio'])), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$articleInfoObj['contributor_seo_name']; ?>" >MORE</a></p> 
+						<p class="author-on-medium-up"><?php echo $mpHelpers->truncate(trim(strip_tags($bio)), 50); ?> <a href="<?php echo $config['this_url'].'contributors/'.$seo_name; ?>" >MORE</a></p> 
 							<div id="author-links">
 								<?php if(isset($articleInfoObj['contributor_facebook_link']) && strlen($articleInfoObj['contributor_facebook_link'])){ ?>
 									<a href="<?php echo $articleInfoObj['contributor_facebook_link']; ?>" class="button small facebook" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
@@ -54,7 +65,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 								<?php } ?>
 								<?php if(isset($articleInfoObj['contributor_blog_link']) && strlen($articleInfoObj['contributor_blog_link'])){ ?>
 									<a href="<?php echo $articleInfoObj['contributor_blog_link']; ?>" class="button small hide-on-small-and-mobile" target="_blank">
-										<i class="fa fa-external-link"></i><?php echo explode(' ', $articleInfoObj['contributor_name'])[0]; ?>'s Website
+										<i class="fa fa-external-link"></i><?php echo explode(' ', $name)[0]; ?>'s Website
 									</a>
 								<?php } ?>
 
@@ -72,5 +83,6 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 				<?php }?>
 			</div>
 		</section>
+	<?php }?>		
 </div>
 

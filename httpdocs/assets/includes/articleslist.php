@@ -46,7 +46,7 @@ $articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $om
 /* Article List */
 //$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true ]);
 $totalArticles = count($articlesList);
-
+if(isset($articlesList) && $articlesList){
 foreach ($articlesList as $articles){
 
 	$linkToArticle = $config['this_url'].$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
@@ -116,6 +116,8 @@ foreach ($articlesList as $articles){
 		<?php //}
 			if( $smallImageCounter % 2 == 0  && $articleIndex < $totalArticles) echo '<hr class="padding-top">';
 		} ?> 
+
+<?php } ?>
 
 <?php } ?>
 	<style>

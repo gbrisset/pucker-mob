@@ -2,7 +2,7 @@
 
   $loginActive = isset($_SESSION['login_hash']) || isset($_SESSION['user_id']);
 
-  $has_sponsored = $mpArticle->data['has_sponsored_by'];
+  $has_sponsored = false;//$mpArticle->data['has_sponsored_by'];
   $user_type = 5;
   
   if(isset($_SESSION['user_id']) && $_SESSION['user_id']){

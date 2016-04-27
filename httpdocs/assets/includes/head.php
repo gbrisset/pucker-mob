@@ -1,8 +1,6 @@
 <head>
 	<meta charset="utf-8" />
-	<?php if ( !$detect->isMobile() ) { ?>
-		<!--<meta http-equiv="x-dns-prefetch-control" content="on" />-->
-	<?php }
+	<?php 
 	
 	$promotedArticle = false; $tag = 'smarties'; $has_sponsored = true;
 	if(isset($isArticle) && $isArticle && isset($articleInfoObj)){ ?>
@@ -11,7 +9,6 @@
 
 	<title><?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob";} ?></title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<?php 
@@ -50,7 +47,7 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e5" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e7" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -68,10 +65,49 @@
   ga('send', 'pageview');
 </script>
 
+	<!-- UNDERTONE -->
+	<?php if( $articleInfo['article_id'] == 14613  ){?>
+		<script type='text/javascript'>
+		  var googletag = googletag || {};
+		  googletag.cmd = googletag.cmd || [];
+		  (function() {
+		    var gads = document.createElement('script');
+		    gads.async = true;
+		    gads.type = 'text/javascript';
+		    var useSSL = 'https:' == document.location.protocol;
+		    gads.src = (useSSL ? 'https:' : 'http:') +
+		      '//www.googletagservices.com/tag/js/gpt.js';
+		    var node = document.getElementsByTagName('script')[0];
+		    node.parentNode.insertBefore(gads, node);
+		  })();
+		</script>
+
+		<script type='text/javascript'>
+		  googletag.cmd.push(function() {
+		    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1461622964696-0').addService(googletag.pubads());
+		    googletag.defineSlot('/73970039/UT_P', [300, 1050], 'div-gpt-ad-1461622964696-1').addService(googletag.pubads());
+		    googletag.defineSlot('/73970039/UT_SS', [1, 1], 'div-gpt-ad-1461622964696-2').addService(googletag.pubads());
+		    googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1461622964696-3').addService(googletag.pubads());
+		    googletag.defineSlot('/73970039/UT_ST', [300, 250], 'div-gpt-ad-1461622964696-4').addService(googletag.pubads());
+		    googletag.defineSlot('/73970039/UT_SA', [320, 50], 'div-gpt-ad-1461622964696-5').addService(googletag.pubads());
+		    googletag.defineSlot('/73970039/UT_SP', [320, 50], 'div-gpt-ad-1461622964696-6').addService(googletag.pubads());
+		    googletag.pubads().enableSingleRequest();
+		    googletag.enableServices();
+		  });
+		</script>
+	<?php } ?>
+
+<?php 
+	$sponsored_aricle = true; 
+	//if($articleInfoObj['article_id'] == 14785 ) $sponsored_aricle = true;
+?>
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
 
-	<!-- puckermob.com/home -->
+	<?php if( !$sponsored_aricle ){?>
+
+	<?php if($articleInfo['article_id'] != 14613 ){ ?>
+	<!-- puckermob.com/home 
 	<script type="text/javascript">
 	  var ord = window.ord || Math.floor(Math.random() * 1e16);
 	  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
@@ -81,7 +117,7 @@
 		<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="1000" height="1000" />
 		</a>
 	</noscript>
-
+	-->
  	<!-- TABOOLA -->
  	<script type="text/javascript">
 	  window._taboola = window._taboola || [];
@@ -97,35 +133,17 @@
 
 	<!-- Totally Her GPT -->
 	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
-
+	<?php } ?>
+	<?php } ?>
 <?php }else{ ?>
 
-  	<?php //if(isset($article_id) && $article_id == 14174 ){?>
-	  <script type='text/javascript'>
-	  (function() {
-	    var useSSL = 'https:' == document.location.protocol;
-	    var src = (useSSL ? 'https:' : 'http:') +
-	        '//www.googletagservices.com/tag/js/gpt.js';
-	    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-	  })();
-	</script>
+	<?php if( !$sponsored_aricle ){?>
 
-	<script type='text/javascript'>
-	  googletag.cmd.push(function() {
-	    googletag.defineSlot('/73970039/test_unit', [300, 250], 'div-gpt-ad-1460406489796-0').addService(googletag.pubads()).setTargeting("Top", "top");
-	    googletag.pubads().enableSingleRequest();
-	    googletag.pubads().enableSyncRendering();
-	    googletag.enableServices();
-	  });
-	</script>
-	<?php //} ?>
+		<?php if(isset($article_id) && $article_id == 13305 ){?>
+			<!-- Totally Her GPT -->
+			<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
+		<?php } ?>
 
-	<!-- SHARETHROUNG
-     <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js"></script>-->
-
-	<?php if(isset($article_id) && $article_id == 13305 ){?>
-		<!-- Totally Her GPT -->
-		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 	<?php } ?>
 
 <?php } ?>
@@ -184,28 +202,8 @@
   _gs('GSN-829786-N');
 </script>
 
-<!-- UNDERTONE -->
-	<?php if( isset($articleInfo) && $articleInfo['article_id'] == 8560 ){?>
-		<script type='text/javascript'>
-		  var googletag = googletag || {};
-		  googletag.cmd = googletag.cmd || [];
-		  (function() {
-		    var gads = document.createElement('script');
-		    gads.async = true;
-		    gads.type = 'text/javascript';
-		    var useSSL = 'https:' == document.location.protocol;
-		    gads.src = (useSSL ? 'https:' : 'http:') +
-		      '//www.googletagservices.com/tag/js/gpt.js';
-		    var node = document.getElementsByTagName('script')[0];
-		    node.parentNode.insertBefore(gads, node);
-		  })();
-		</script>
+<!-- SHARETHROUHGH-->
+<script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js"></script>
 
-		<script type='text/javascript'>
-		  googletag.cmd.push(function() {
-		    googletag.defineSlot('/73970039/test_undertone', [[1, 1]], 'div-gpt-ad-1461080723176-0').addService(googletag.pubads());
-		    googletag.enableServices();
-		  });
-		</script>
-	<?php } ?>
+
 </head>

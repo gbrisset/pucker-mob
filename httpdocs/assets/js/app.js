@@ -30,9 +30,9 @@ $(document).ready(function() {
 		var height_value = pct_to_show / 100 ;
 		var wishDisplayHeight = parentOrgHeight * height_value;
 
-		//$('#article-content').height(wishDisplayHeight);
+		$('#article-content').height(wishDisplayHeight);
 
-		/*$("#read-more-img").on('click', function(e) {
+		$("#read-more-img").on('click', function(e) {
 			e.preventDefault();		
 			e.stopPropagation();
 			$el = $(this);
@@ -53,7 +53,7 @@ $(document).ready(function() {
 							
 			return false;
 							
-		});*/
+		});
 
 
 

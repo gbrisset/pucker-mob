@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_124" ></script>
+  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_3456d" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
@@ -17,14 +17,16 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_2343rf" ></script>
-
-<!-- DESKTOP -->
-<?php if ( !$detect->isMobile() ) { ?>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3456d" ></script>
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
     <![endif]-->
+
+<!-- DESKTOP -->
+<?php if ( !$detect->isMobile() ) { ?>
+
+<?php if( !$sponsored_aricle ){?>
 
   <?php if(isset($article_id) && $article_id == 5118 ){ ?>
     <script type='text/javascript'>
@@ -51,18 +53,19 @@
   <?php } ?>
 
 
-  <?php if ($article_id != 8560 /*TEST PAGE http://www.puckermob.com/lifestyle/16-pieces-of-advice-to-ignore*/ ){?>
+  <?php if($article_id != 8560 && $article_id != 14472 ){?>
     <div id="mb_container"></div> 
     <div id="mb_video_sponso"></div> 
     <script type="text/javascript"> (function(){ var sc = document.createElement('script'); sc.src = 'http://player.mediabong.net/se/924.js?url='+encodeURIComponent(document.location.href); sc.type = 'text/javascript'; sc.async = true; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s); })(); </script>
-  <?php }?>
+ 
     
-  <div id="evolve_footer"></div>
+    <div id="evolve_footer"></div>
+ <?php }?>
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
       <!-- LELO -->
-     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 /*TEST PAGE */){?>
+     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 ){?>
 
       <script type="text/javascript">
           netseer_tag_id="19129";
@@ -70,20 +73,15 @@
           netseer_inview_status="disabled";
         </script>
         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+    
+        <!-- TABOOLA -->
+        <script type="text/javascript">
+        window._taboola = window._taboola || [];
+        _taboola.push({flush: true});
+      </script>
 
-        <?php } ?>
-    <?php } 
-
-    if( isset($promotedArticle) && !$promotedArticle ){ ?>
-
-    <?php }?>
-
-
-    <!-- TABOOLA -->
-    <script type="text/javascript">
-    window._taboola = window._taboola || [];
-    _taboola.push({flush: true});
-  </script>
+   <?php } ?>
+    <?php }  ?>
 
     <?php if( isset($article_id) && $article_id  == 13481 ){ ?>
     <!--Puckermob.com CORNERSTREAM Validation Test Tag -->
@@ -91,39 +89,41 @@
       <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5938&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
     </section>
   <?php } ?>
-
+ 
+ <?php } ?>
+ 
   <!-- Puckermob.com CORNERSTREAM Revshare_50 -->
  <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
    <!--SHAREBUTTONS BAR VERTICAL-->
-<script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
-<div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
-    <a class="a2a_button_facebook a2a_button_facebook"></a>
-    <a class="a2a_button_twitter"></a>
-    <a class="a2a_button_google_plus"></a>
-    <a class="a2a_button_pinterest"></a>
-    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-</div>
-<script async src="//static.addtoany.com/menu/page.js" async></script>
+    <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+        <a class="a2a_button_facebook a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_google_plus"></a>
+        <a class="a2a_button_pinterest"></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+    </div>
+    <script async src="//static.addtoany.com/menu/page.js" async></script>
 <?php } ?>
 
 <!-- MOBILE -->
 <?php }else{ ?>
+<?php if( !$sponsored_aricle ){ ?>
   
   <?php if(isset($article_id) && $article_id == 5118 ){?>
         <script type='text/javascript'>
-      var googletag = googletag || {};
-      googletag.cmd = googletag.cmd || [];
-      (function() {
-        var gads = document.createElement('script');
-        gads.async = true;
-        gads.type = 'text/javascript';
-        var useSSL = 'https:' == document.location.protocol;
-        gads.src = (useSSL ? 'https:' : 'http:') +
-          '//www.googletagservices.com/tag/js/gpt.js';
-        var node = document.getElementsByTagName('script')[0];
-        node.parentNode.insertBefore(gads, node);
-      })();
-    </script>
+          var googletag = googletag || {};
+          googletag.cmd = googletag.cmd || [];
+          (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+              '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+          })();
+        </script>
 
     <script type='text/javascript'>
       googletag.cmd.push(function() {
@@ -138,162 +138,106 @@
   <?php } ?>
 
 
-<?php if( isset($promotedArticle) && !$promotedArticle ){ 
-  
+  <?php if( isset($promotedArticle) && !$promotedArticle ){ 
+      if(isset($articleInfoObj) && $articleInfoObj){ ?>
+        <!-- LELO -->
+        <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613){?>
+            <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
 
-  if(isset($articleInfoObj) && $articleInfoObj){ ?>
-     <!-- LELO -->
-     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 /*TEST PAGE */){?>
-       <!-- ANSWERS SLIDER UNIT -->
-          <div id="vm_inline"></div>
-          <script>
-              window._videomosh = window._videomosh || [];
-              !function (e, f, u) {
-                  e.async = 1;
-                  e.src = u;
-                  f.parentNode.insertBefore(e, f);
-              }(document.createElement('script'),
-                      document.getElementsByTagName('script')[0],
-                      'http://player.videomosh.com/players/loader/loader_final4.js');
-              _videomosh.push({
-                  publisher_key: "sequelmedia",
-                  mode: "slider",
-                  container: "vm_inline",
-                  incontent_mobile_id: "23002",
-                  incontent_desktop_id: "",
-                  target_type: "mobile"
-              });
-          </script>
-
-      <!-- NETSEER AD IN-IMAGE -->
-           <script type="text/javascript">
-            netseer_tag_id="20429";
-            netseer_task="in-image";
-            netseer_inview_status="disabled";
+         <!-- ANSWERS SLIDER UNIT -->
+            <div id="vm_inline"></div>
+            <script>
+                window._videomosh = window._videomosh || [];
+                !function (e, f, u) {
+                    e.async = 1;
+                    e.src = u;
+                    f.parentNode.insertBefore(e, f);
+                }(document.createElement('script'),
+                        document.getElementsByTagName('script')[0],
+                        'http://player.videomosh.com/players/loader/loader_final4.js');
+                _videomosh.push({
+                    publisher_key: "sequelmedia",
+                    mode: "slider",
+                    container: "vm_inline",
+                    incontent_mobile_id: "23002",
+                    incontent_desktop_id: "",
+                    target_type: "mobile"
+                });
             </script>
-           <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
 
-          <?php  } ?>
-    <?php  } ?>
-     <?php if(isset($article_id) && $article_id != 14330 && $article_id != 11339 ){?>
+        <!-- NETSEER AD IN-IMAGE -->
+             <script type="text/javascript">
+              netseer_tag_id="20429";
+              netseer_task="in-image";
+              netseer_inview_status="disabled";
+              </script>
+             <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
 
-        <script>
-          (function() 
-
-          { 
-
-             var tagqa = '';
-
-             var playerId = '';
-
-             var playerContainerId = 'ad' + Math.round(Math.random()*1000000000).toString();
-
-             var playerWidth = '300';
-
-             var playerHeight = '250';
-
-             var controls = '';
-
-             var render = '';
-
-             var tracki = '';
-
-             var trackc = '';
-
-             var custom1 = '';
-
-             var custom2 = '';
-
-             var custom3 = '';
-
-             var videourl = '';
-
-             var viewMode = 'normal';
-
-             var companionId = '';
-
-             var pubMacros = '';
-
-
-
-             try { if (document.readyState && document.readyState != 'complete') { document.write('<div id="' + playerContainerId + '"></div>'); } } catch (e) {} 
-
-
-
-             var lkqdVPAID;
-
-             var lkqdId = new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString();
-
-             var environmentVars = { slot: document.getElementById(playerContainerId), videoSlot: document.getElementById(playerId), videoSlotCanAutoPlay: true };
-
-             var creativeData = '';
-
-
-
-             function onVPAIDLoad()
-
-             {
-
-                  lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, 'AdLoaded');
-
-             }
-
-
-
-             var vpaidFrame = document.createElement('iframe');
-
-             vpaidFrame.id = lkqdId;
-
-             vpaidFrame.name = lkqdId;
-
-             vpaidFrame.style.display = 'none';
-
-             vpaidFrame.onload = function() {
-
-                  vpaidLoader = vpaidFrame.contentWindow.document.createElement('script');
-
-                  vpaidLoader.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//ad.lkqd.net/serve/pure.js?format=1&vpaid=true&apt=auto&ear=0&pid=85&sid=28814&tagqa=' + tagqa + '&elementid=' + encodeURIComponent(playerId) + '&containerid=' + encodeURIComponent(playerContainerId) + '&render=' + render + '&controls=' + controls + '&width=' + playerWidth + '&height=' + playerHeight + '&mode=' + viewMode + '&companionid=' + encodeURIComponent(companionId) + '&tracki=' + encodeURIComponent(tracki) + '&trackc=' + encodeURIComponent(trackc) + '&c1=' + encodeURIComponent(custom1) + '&c2=' + encodeURIComponent(custom2) + '&c3=' + encodeURIComponent(custom3) + '&videourl=' + encodeURIComponent(videourl) + '&rnd=' + Math.floor(Math.random() * 100000000) + '&m=' + encodeURIComponent(pubMacros);
-
-                  vpaidLoader.onload = function() {
-
-                        lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd();
-
-                        lkqdVPAID.handshakeVersion('2.0');
-
-                        onVPAIDLoad();
-
-                        lkqdVPAID.initAd(playerWidth, playerHeight, viewMode, 600, creativeData, environmentVars);
-
-                  };
-
-                  vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader);
-
-             };
-
-             document.documentElement.appendChild(vpaidFrame);
-
-          })();
-        </script>
-    <?php  } ?>
-
+        <?php  } ?>
       <?php  } ?>
 
-  
+      <?php if( $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560){ ?>
+          <script>
+            (function() 
+            { 
+               var tagqa = '';
+               var playerId = '';
+               var playerContainerId = 'ad' + Math.round(Math.random()*1000000000).toString();
+               var playerWidth = '300';
+               var playerHeight = '250';
+               var controls = '';
+               var render = '';
+               var tracki = '';
+               var trackc = '';
+               var custom1 = '';
+               var custom2 = '';
+               var custom3 = '';
+               var videourl = '';
+               var viewMode = 'normal';
+               var companionId = '';
+               var pubMacros = '';
+               try { if (document.readyState && document.readyState != 'complete') { document.write('<div id="' + playerContainerId + '"></div>'); } } catch (e) {} 
+
+               var lkqdVPAID;
+               var lkqdId = new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString();
+               var environmentVars = { slot: document.getElementById(playerContainerId), videoSlot: document.getElementById(playerId), videoSlotCanAutoPlay: true };
+               var creativeData = '';
+
+               function onVPAIDLoad()
+               {
+                    lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, 'AdLoaded');
+               }
+               var vpaidFrame = document.createElement('iframe');
+               vpaidFrame.id = lkqdId;
+               vpaidFrame.name = lkqdId;
+               vpaidFrame.style.display = 'none';
+               vpaidFrame.onload = function() {
+               vpaidLoader = vpaidFrame.contentWindow.document.createElement('script');
+                    vpaidLoader.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//ad.lkqd.net/serve/pure.js?format=1&vpaid=true&apt=auto&ear=0&pid=85&sid=28814&tagqa=' + tagqa + '&elementid=' + encodeURIComponent(playerId) + '&containerid=' + encodeURIComponent(playerContainerId) + '&render=' + render + '&controls=' + controls + '&width=' + playerWidth + '&height=' + playerHeight + '&mode=' + viewMode + '&companionid=' + encodeURIComponent(companionId) + '&tracki=' + encodeURIComponent(tracki) + '&trackc=' + encodeURIComponent(trackc) + '&c1=' + encodeURIComponent(custom1) + '&c2=' + encodeURIComponent(custom2) + '&c3=' + encodeURIComponent(custom3) + '&videourl=' + encodeURIComponent(videourl) + '&rnd=' + Math.floor(Math.random() * 100000000) + '&m=' + encodeURIComponent(pubMacros);
+                    vpaidLoader.onload = function() {
+                          lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd();
+                          lkqdVPAID.handshakeVersion('2.0');
+                          onVPAIDLoad();
+                          lkqdVPAID.initAd(playerWidth, playerHeight, viewMode, 600, creativeData, environmentVars);
+                    };
+                    vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader);
+               };
+               document.documentElement.appendChild(vpaidFrame);
+            })();
+          </script>
+      <?php  } ?>
+
+  <?php } ?>
+
+<?php  } ?>
 <?php } ?>
 
-    <!-- SHARETHROUNG -->
-    <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>
+<!-- SHARETHROUNG -->
+<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>
     
-
-
 <!-- TotallyHer comscore tags -->
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
 
 <!-- ADSUPPLY 
 <script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
 -->
-<!--Propeller Ads: Pop-under
-<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=552818"></script>-->
-
-<!--<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=552818"></script>-->
-

@@ -1,11 +1,5 @@
-<?php if($detect->isMobile()){ ?>
+<?php if(!$detect->isMobile()){ ?>
     
-    	 <!--<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
-
-   <div style=" top: 3rem; position: relative; text-align: center;">
-
-	</div>-->
-    <?php }else { ?>
 	<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
 		<style> #ros_1193, #home_1181{ display:inline-block !important; }</style>
 
@@ -14,12 +8,8 @@
 				 <!-- LELO -->
 	      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
 	      			
-	      			<?php //if( !$sponsored_aricle ){?>
-
 			      		<?php if($articleInfoObj['article_id'] != 14613 ){?>
-			      			<?php if( !$sponsored_aricle ){?>
 								<div id="ros_1193" style="display: inline-block !important;"></div> 
-							<?php } ?>
 						<?php }else{?>
 							<!-- /73970039/UT_BB -->
 							<div id='div-gpt-ad-1461622964696-0' style='height:250px; width:970px;'>
@@ -28,7 +18,6 @@
 								</script>
 							</div>
 						<?php } ?>
-					<?php //} ?>
 				<?php }else{?>
 					<div class="">
 						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">

@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_3456d" ></script>
+  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_345678e" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
@@ -17,7 +17,7 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3456d" ></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_345678e" ></script>
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -26,32 +26,6 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-<?php if( !$sponsored_aricle ){?>
-
-  <?php if(isset($article_id) && $article_id == 5118 ){ ?>
-    <script type='text/javascript'>
-      var googletag = googletag || {};
-      googletag.cmd = googletag.cmd || [];
-      (function() {
-        var gads = document.createElement('script');
-        gads.async = true;
-        gads.type = 'text/javascript';
-        var useSSL = 'https:' == document.location.protocol;
-        gads.src = (useSSL ? 'https:' : 'http:') +
-          '//www.googletagservices.com/tag/js/gpt.js';
-        var node = document.getElementsByTagName('script')[0];
-        node.parentNode.insertBefore(gads, node);
-      })();
-    </script>
-
-    <script type='text/javascript'>
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/73970039/test_undertone', [[320, 480], [320, 50], [160, 600], [970, 250], [300, 600], [1024, 768], [300, 50], [768, 1024], [1, 1], [970, 90], [768, 50], [300, 250], [728, 90]], 'div-gpt-ad-1460669862695-0').addService(googletag.pubads());
-        googletag.enableServices();
-      });
-    </script>
-  <?php } ?>
-
 
   <?php if($article_id != 8560 && $article_id != 14472 ){?>
     <div id="mb_container"></div> 
@@ -59,8 +33,9 @@
     <script type="text/javascript"> (function(){ var sc = document.createElement('script'); sc.src = 'http://player.mediabong.net/se/924.js?url='+encodeURIComponent(document.location.href); sc.type = 'text/javascript'; sc.async = true; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s); })(); </script>
  
     
-    <div id="evolve_footer"></div>
  <?php }?>
+<?php if( !$sponsored_aricle ){?>
+    <div id="evolve_footer"></div>
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
@@ -109,30 +84,6 @@
 <?php }else{ ?>
 <?php if( !$sponsored_aricle ){ ?>
   
-  <?php if(isset($article_id) && $article_id == 5118 ){?>
-        <script type='text/javascript'>
-          var googletag = googletag || {};
-          googletag.cmd = googletag.cmd || [];
-          (function() {
-            var gads = document.createElement('script');
-            gads.async = true;
-            gads.type = 'text/javascript';
-            var useSSL = 'https:' == document.location.protocol;
-            gads.src = (useSSL ? 'https:' : 'http:') +
-              '//www.googletagservices.com/tag/js/gpt.js';
-            var node = document.getElementsByTagName('script')[0];
-            node.parentNode.insertBefore(gads, node);
-          })();
-        </script>
-
-    <script type='text/javascript'>
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/73970039/test_undertone', [[320, 480], [320, 50], [160, 600], [970, 250], [300, 600], [1024, 768], [300, 50], [768, 1024], [1, 1], [970, 90], [768, 50], [300, 250], [728, 90]], 'div-gpt-ad-1460669862695-0').addService(googletag.pubads());
-        googletag.enableServices();
-      });
-    </script>
-  <?php } ?>
-
   <?php if(isset($article_id) && $article_id == 13305 ){?>
     <div id="evolve_footer"></div>
   <?php } ?>

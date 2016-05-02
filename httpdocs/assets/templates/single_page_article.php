@@ -85,7 +85,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						    background: #3b5998;
 						    width: 100%;
 						    "><label class="label-social-button-2-mobile" style="padding:8px;"><i class="fa fa-facebook-square" ></i>SHARE</label></a>
-						   <script src="//static.addtoany.com/menu/page.js async"></script>
+						   <script src="//static.addtoany.com/menu/page.js" async></script>
 					</div>
 			</div>	
 			
@@ -108,7 +108,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 				<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
 
-				<?php if( !$sponsored_aricle ){ ?>
+				<?php //if( !$sponsored_aricle ){ ?>
 					<?php if($article_id == 13305){ ?>
 					<!-- TOTALLY HER -->
 						<div id="ros_1195" style="display: inline-block;"></div> 
@@ -118,16 +118,18 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 								<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/camp_banner_v1.jpg" />
 							</a>
 					<?php }else{ ?>
-						<!-- /73970039/test_unit ENGAGE UNIT
-						<div id='div-gpt-ad-1460406489796-0' style='height:250px; width:300px; display:inline-block;'>
-						<script type='text/javascript'>
-						googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460406489796-0'); });
-						</script>
-						</div>-->
-						<!-- PULSE POINT -->
-						<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- PM Mobile Top Spot -->
+							<ins class="adsbygoogle"
+							     style="display:inline-block;width:300px;height:250px"
+							     data-ad-client="ca-pub-8978874786792646"
+							     data-ad-slot="2880293382"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+	
 					<?php } ?>
-				<?php } ?>
+				<?php //} ?>
 				</div>
 
 				<!-- ARTICLE BODY -->
@@ -339,10 +341,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</script>
 		</div>
 
-		<!-- /73970039/UT_SP -->
-		<div id='div-gpt-ad-1461622964696-6' style='height:50px; width:320px;'>
+		<!-- /73970039/UT_SS -->
+		<div id='div-gpt-ad-1461622964696-2'>
 		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-6'); });
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-2'); });
 		</script>
 		</div>
 
@@ -443,13 +445,6 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</section>
 				<?php } ?>
 			
-			<?php if($article_id == 10079){ ?>
-				<!-- 3LIFT -->
-				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns clear hide-for-print no-padding" style="padding-bottom:0;">
-					<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-				</section>				
-			<?php } ?>
-
 			<!-- Social Media Icons -->
 			<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
 				<?php include($config['include_path'].'social_media_article_buttons.php'); ?>
@@ -492,18 +487,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	<!-- UNDERTONE -->
 	<?php if( isset($article_id) && ( $article_id == 14613)){?>
 		
-		<!-- /73970039/UT_SS -->
-		<div id='div-gpt-ad-1461622964696-2'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-2'); });
-		</script>
-		</div>
-
 		<!-- /73970039/UT_SS_FP -->
 		<div id='div-gpt-ad-1461622964696-3'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
-		</script>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
+			</script>
 		</div>
 
 	<?php } ?>

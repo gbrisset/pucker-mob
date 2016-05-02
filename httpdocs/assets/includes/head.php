@@ -47,7 +47,7 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e7" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e9" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -104,54 +104,25 @@
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
 
-	<?php if( !$sponsored_aricle ){?>
-
 	<?php if($articleInfo['article_id'] != 14613 ){ ?>
-	<!-- puckermob.com/home 
-	<script type="text/javascript">
-	  var ord = window.ord || Math.floor(Math.random() * 1e16);
-	  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
-	</script>
-	<noscript>
-		<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-		<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="1000" height="1000" />
-		</a>
-	</noscript>
-	-->
- 	<!-- TABOOLA -->
- 	<script type="text/javascript">
-	  window._taboola = window._taboola || [];
-	  _taboola.push({article:'auto'});
-	  !function (e, f, u) {
-	    e.async = 1;
-	    e.src = u;
-	    f.parentNode.insertBefore(e, f);
-	  }(document.createElement('script'),
-	  document.getElementsByTagName('script')[0],
-	  '//cdn.taboola.com/libtrc/puckermob/loader.js');
-	</script>
-
-	<!-- Totally Her GPT -->
-	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
-	<?php } ?>
+	 	<!-- Totally Her GPT -->
+		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 	<?php } ?>
 <?php }else{ ?>
 
-	<?php if( !$sponsored_aricle ){?>
+	<?php //if( !$sponsored_aricle ){?>
 
-		<?php if(isset($article_id) && $article_id == 13305 ){?>
-			<!-- Totally Her GPT -->
-			<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
-		<?php } ?>
+		<?php //if(isset($article_id) && $article_id == 13305 ){?>
+			<!-- Totally Her GPT
+			<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script>  -->
+		<?php //} ?>
 
-	<?php } ?>
+	<?php //} ?>
 
 <?php } ?>
 
 <?php if (!$local){?>
 	
-	
-
 <!-- COMSCORE -->
 	<script>
 	  var _comscore = _comscore || [];
@@ -202,7 +173,7 @@
   _gs('GSN-829786-N');
 </script>
 
-<!-- SHARETHROUHGH-->
+<!-- SHARETHROUHGH -->
 <script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js"></script>
 
 

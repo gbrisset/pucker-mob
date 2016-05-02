@@ -683,15 +683,23 @@ span.postfix, label.postfix{ color: #aaa;}
 
 .dropzone{
 	border:none !important;
-	background:none !important;
+	background:#555 !important;
 	padding:none !important;
+}
+
+.dz-preview.dz-error.dz-image-preview{
+	opacity:0.7;
 }
 
 @media #{$large-up} {
 	#image-drop{
-	    background: url('http://images.puckermom.com/articlesites/sharedimages/DropImageBG.png') no-repeat !important;
-	    background-size: 100% 100%  !important;
+
 	    min-height: 17rem  !important;
+	}
+
+	.dz-preview{
+		background: url('http://images.puckermom.com/articlesites/sharedimages/DropImageBG.png') no-repeat !important;
+   		background-size: 100% 100%  !important;
 	}
 
 	#editarticle {
@@ -1230,13 +1238,16 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 .earnings-info .earnings-value{font-size: 3.3rem; font-family: OsloBold; color: #555; }
 .earnings-info .last-month-earnings{border-left: 1px solid #555; border-right: 1px solid #555; margin: 0 1rem; padding: 0 1rem;}
 
-.dropzone .dz-preview .dz-error-message, .dropzone-previews .dz-preview .dz-error-message{
-	top: 40% !important;
-    left: 0 !important;
-    position: relative !important;
+.dropzone .dz-error .dz-error-message, .dropzone-previews .dz-error .dz-error-message{
+	top: 46% !important;
+    position: absolute !important;
     font-size: 1.2rem;
-    background: none !important;
+    background: #fff !important;
+    padding: 10px;
+    z-index: 1000;
+    font-family: OsloBold;
     opacity: 1 !important;
+    color: red;
 }
 
 .small-styled-select select {

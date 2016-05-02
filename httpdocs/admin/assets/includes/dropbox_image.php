@@ -13,7 +13,7 @@
 	            <div class="dz-progress" style="display:none;"><span class="dz-upload" data-dz-uploadprogress></span></div>
 	            <div class="dz-success-mark" style="display:none;"><span>✔</span></div>
 	            <div class="dz-error-mark" style="display:none;"><span>✘</span></div>
-	            <div class="dz-error-message"><span data-dz-errormessage></span></div>
+	            <div class="dz-error-message large-8 center"><span data-dz-errormessage></span></div>
           	</div>
  			<div id="img-container" class="small-12 large-4" >
  				<div class="hide-for-large-up">
@@ -33,78 +33,68 @@
 </div>
 
 <script>
-		var minImageWidth = 784, minImageHeight = 431;
-		//getting thumbnail template
-		  var previewNode = document.querySelector("#template");
-		  previewNode.id = "";
-		  var previewTemplate = previewNode.parentNode.innerHTML;
-		  previewNode.parentNode.removeChild(previewNode);
+	var maxImageWidth = 784, maxImageHeight = 431, currentWidth = 0, currentHeight = 0;
+	  var previewNode = document.querySelector("#template");
+	  previewNode.id = "";
+	  var previewTemplate = previewNode.parentNode.innerHTML;
+	  previewNode.parentNode.removeChild(previewNode);
 		
 		Dropzone.options.imageDrop = {
 		  previewTemplate : previewTemplate,
-		  acceptedFiles: "image/*",
-		  parallelUploads: 1,
 		  paramName: "file", // The name that will be used to transfer the file
-		  maxFiles: 1,
+		  maxFiles: '1',
+		  acceptedFiles: '.jpg, .gif, .png, .jpeg',       // allowed image types don't use image/*
+		  autoQueue: false, 
 		  maxFilesize: 3, // MB
 		  uploadMultiple: false,
-		  addRemoveLinks: true,
 		  thumbnailWidth: 784,
 		  thumbnailHeight: 431,
-		  autoProcessQueue: false,
-
 		  previewsContainer: ".dropzone-previews",
 
 		  init: function() {
-			 this.on("addedfile", function(file) {
-			  if (this.files[1]!=null){
+		  	this.on("maxfilesexceeded", function(file) {
+	            console.log('maxfilesexceeded');
+		    });
+
+			this.on("addedfile", function(file) {
+			  console.log('addedfile');
+			  if(this.files[1]!=null){
 			    this.removeFile(this.files[0]);
 			  } 
 
-			  this.on('maxfilesexceeded', function(file){
-            		this.removeAllFiles();
-        	  });
-
-
-
-			//  var img_src = $('img[data-dz-thumbnail]').attr('src');
-			  //$('img[data-dz-thumbnail]').hide();
-			 // $('#main-image-src').attr('src', img_src);
-			 // console.log(img_src);*/
+			  currentWidth = 0;
+	          currentHeight = 0;
 
 			});
 
+			// Will send the filesize along with the file as POST data.
 			this.on("sending", function(file, xhr, formData) {
-	  			formData.append("filesize", file.size); // Will send the filesize along with the file as POST data.
+	  			formData.append("filesize", file.size); 
+	  			formData.append("filewidth", file.width); 
+	  			formData.append("fileheight", file.height); 
 			});
-			
+
 			this.on("thumbnail", function(file) {
-
-			  //if(file.size > maxFilesize ) file.rejectFileSize();
-		      // Do the dimension checks you want to do
-		      if (file.width < minImageWidth || file.height < minImageHeight) {
-		        file.rejectDimensions()
-		      }
-		      else {
-		        file.acceptDimensions();
-		      }
-
-		      if (file.width > (minImageWidth + 30) || file.height > ( minImageHeight+ 30) ) {
-		        file.rejectDimensions()
-		      }
-		      else {
-		        file.acceptDimensions();
-		      }
+	           //currentWidth = file.width;
+	           //currentHeight = file.height;
+	           console.log('thumbnail');
 		    });
+			
+			this.on("complete", function(file) {
+			 // console.log(file);
+			
 
-		    this.on("complete", function(file) {
-			  this.removeFile(file);
 			});
 		 },
 		 accept: function(file, done) {
-		    file.acceptDimensions = done;
-		    file.rejectDimensions = function() { done("Invalid dimension. Must be 784x431px"); };
-		    file.rejectFileSize = function(){ done("Image Size must be less than 2MB");  }
-	  	 }
+		  	console.log('accept'); 
+		  	console.log(currentWidth, currentHeight);
+
+		    if (file.width > maxImageWidth || file.height > maxImageHeight){
+		      done("Invalid dimension. Must be 784x431 px");
+		    }else if(file.width < maxImageWidth || file.height < maxImageHeight){
+		      done("Invalid dimension. Must be 784x431 px");
+		    }else { done(); }
+		 }
 		};
 	</script>

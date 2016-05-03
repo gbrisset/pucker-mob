@@ -35,9 +35,9 @@
 ?>
 
 <script>
-$(function() {
-	$('#sortable2').sortable();
-});
+//$(function() {
+	//$('#sortable2').sortable();
+//});
 
 if($('#fb-login')){
 	$('#fb-login').on('click', function(e){

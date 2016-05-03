@@ -4,7 +4,7 @@
 ?>
 
 $(document).ready(function (){
-
+	
 	var body = $('body');
 	
 	$('#menu-icon').click(function(e){

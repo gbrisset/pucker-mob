@@ -99,8 +99,8 @@ if($('#openModalLib')){
 				data = JSON.parse(data);
 				if(!data.hasError){
 					var src = "<?php echo $config['image_url'].'articlesites/puckermob/'?>"+data.directory+'/'+data.filename+'?'+random_val;
-					if($('#main-image-src').length > 0 ){
-						$('#main-image-src').attr('src', src );
+					if($('img[data-dz-thumbnail]').length > 0 ){
+						$('img[data-dz-thumbnail]').attr('src', src );
 
 					}else{
 						var div_elm = $('<div class="dz-preview small-12 large-7 dz-image-preview" id="template_copy"><div class="dz-details dztemplate"><img data-dz-thumbnail src="'+ src +'" id="main-image-src"/></div></div>');

@@ -15,10 +15,10 @@
 			   	</div>
 		   	</div>
 			<div class=" small-8 large-8 columns no-padding" id="image-content">
-				<div class="dz-preview dz-file-preview small-12">
+				<div class="small-12">
 					<div id="main-image" class="">
 						<div class="dz-details columns no-padding">	
-							<img id="main-image-src" class="data-dz-thumbnail" style="width:100%; height:270px;" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
+							<img  id="main-image-src" data-dz-thumbnail style="width:100%; height:270px;" src="<?php echo $tallImageUrl; ?>" alt="<?php echo $article['article_title'].' Image'; ?>" />
 						</div>
 					</div>
 				</div>
@@ -57,8 +57,8 @@
 			  }
 
 			   file.previewElement = Dropzone.createElement(this.options.previewTemplate);
-			   $('#image-content').html('');
-			   $('#image-content').html(file.previewElement );			
+			   //$('#image-content').html('');
+			   $('#image-content').html(file.previewElement) ;			
 			  
 			  currentWidth = 0;
 	          currentHeight = 0;

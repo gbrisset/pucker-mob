@@ -28,7 +28,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path_admin'].'head.php');?>
-<body>
+<body id="newarticle">
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -221,6 +221,9 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 <div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
 	<?php include($config['include_path_admin'].'info-badge.php');?>
 </div>
+
+		<!-- ARTICLE PREV TEMPLATE -->
+	<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>
 
 	<?php include_once($config['include_path_admin'].'showerrors.php'); ?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

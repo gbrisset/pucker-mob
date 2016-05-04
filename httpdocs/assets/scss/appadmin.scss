@@ -413,13 +413,13 @@ label.seo-title{
 	.sub-menu , #sub-menu-button{ display:none;}
 
 	.related_articles_box{ display:inline-block; }
-	#related-articles-section, .advertising-override{ display:inline-block; }
+	#related-articles-section, .advertising-override{ display:inline; }
 }
 
 @media #{$xlarge-up} {
 	a.videos{display:inline;}
 	.related_articles_box{ display:inline-block; }
-	#related-articles-section, .advertising-override{ display:inline-block; }
+	#related-articles-section, .advertising-override{ display:inline; }
 }
 
 #nav-cont nav ul li.current { 
@@ -446,7 +446,7 @@ ul.inline-centered>li{ padding: 0.8rem;}
 	text-transform: uppercase; 
 	font-weight: bold; 
 	font-size: 1.7rem;
-	margin: 5px; 
+	margin: 5px 0; 
 	font-family:OsloBold;
 	padding-bottom: 10px;
 	border-bottom:none;
@@ -614,7 +614,7 @@ span.postfix, label.postfix{ color: #aaa;}
 
 }
 #image-drop{
-	background: #66A167; 
+	background: #888; 
 }
 .inner-header{
 	background: #ddd !important;
@@ -627,7 +627,7 @@ span.postfix, label.postfix{ color: #aaa;}
 }
 
 #img-container{ 
-	padding: 2% 4%;
+	padding: 15px 5px;
 	.fa-file-image-o{ color: #fff; margin-bottom:2rem; margin-top:1px; font-size:50px !important;}
 	label{ font-size: 1.4rem; color: #fff; line-height: 0.8;}
 	a{ color: #bbb; text-decoration: underline; outline:none; }
@@ -655,7 +655,7 @@ span.postfix, label.postfix{ color: #aaa;}
 }
 
 #editarticle {
-
+	.dz-success-mark, .dz-error-mark, .dz-error-message, .dz-filename, .dz-size{ display:none;}
 	.dropzone .dz-preview, .dropzone-previews .dz-preview{
 		box-shadow:none;
 	}
@@ -692,17 +692,20 @@ span.postfix, label.postfix{ color: #aaa;}
 }
 
 @media #{$large-up} {
+	#img-container{ 
+		padding: 5px 4%;
+	}
 	#image-drop{
-
 		background: url('http://images.puckermom.com/articlesites/sharedimages/DropImageBG.png') no-repeat !important;
    		background-size: 100% 100%  !important;
-	   // min-height: 17rem  !important;
+   		min-height: 270px;
 	}
 
 	#editarticle {
 		#image-drop{
 			background: #888;
 			min-height:auto;
+			height: 270px;
 		}
 
 		#img-container{
@@ -715,7 +718,7 @@ span.postfix, label.postfix{ color: #aaa;}
 		 }
 		 a{ color: #eee !important; font-size:14px;}
 		 p{ margin-bottom: 5px; color: #eee !important;}
-		label{ color: #fff !important; font-family:OsloBold; font-size: 1rem !important; }
+		label{ color: #fff !important; font-family:OsloBold; font-size: 15px !important; }
 		.lib-img-wrapper{
 			     height: auto;
 			    display: inherit;
@@ -723,17 +726,6 @@ span.postfix, label.postfix{ color: #aaa;}
 			    text-align:center;
 			}
 		}
-
-
-		.dropbox-image-edit{
-			img{
-			max-width: 700px;
-		    height: auto;
-		    max-height: 260px;
-			}
-		}
-		
-		
 	}
 }
 
@@ -1438,7 +1430,7 @@ form#user-account-delete-form {
 .img_categories{ border:1px solid #eee; margin:0.5rem 0;  border-radius:0 !important; -moz-border-radius:0 !important; -webkit-border-radius:0 !important; cursor: pointer;}
 .more-coming{ text-align: center; margin: 3rem 0 2rem 0; }
 .more-coming h1{text-transform: uppercase;}
-.dz-details img{ width: 100%; height:250px;}
+.dz-details img{ width: 100%; height:270px;}
 
 
 /*FOLLOWING AUTHORS*/
@@ -1670,6 +1662,7 @@ form#user-account-delete-form {
 	}
 	p{ color: #666; }
 	ol{
+		margin-bottom: 0; 
 		li{
 			color: #666;
 		    font-size: 14px;

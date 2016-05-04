@@ -677,9 +677,6 @@ if($('#preview')){
 		//date =  new Date($('#creation_date').val()),
 		template = $(prev_box).html(),
 		id = $('#a_i').val();
-		//day = date.getDate(),
-		//month = date.getMonth(),
-		//year = date.getFullYear();
 
 		$('.close').click(function(e){
 			$('body').removeClass('show-modal-box-prev-art');
@@ -687,12 +684,13 @@ if($('#preview')){
 
 		$('#article-title').text(title);
 		$('#article-body').html(body);
-		//$('#article-category').text(category).addClass(category);
 		
-		//$('#article-author').text(contributor);
+		if( $('#a_i').length > 0 ){
+			$('#article_img').attr('src', 'http://images.puckermob.com/articlesites/puckermob/large/'+id+'_tall.jpg');
+		}else{
+			$('#article_img').attr('src', $('img[data-dz-thumbnail]').attr('src') );
+		}
 		
-	  //$('#article-date').text(month+'-'+day+'-'+year);
-		$('#article_img').attr('src', 'http://images.puckermob.com/articlesites/puckermob/large/'+id+'_tall.jpg');
 		$('body').addClass('show-modal-box-prev-art');
 	
 	});
@@ -878,8 +876,13 @@ if($('.mob-level-contributor')){
 
 
 //Add NEW ARTICLE
+if( $('#newarticle').length > 0  || $('#editarticle').length > 0 ){
+	
+		//SEO AUTO COMPLETE
+		$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
 
-$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
+
+}
 
 }); 
  

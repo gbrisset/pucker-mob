@@ -1,4 +1,4 @@
-<div class="row show-for-medium-up margin-bottom" id="formatting-tips">
+<div class="row show-for-medium-up margin-bottom" id="formatting-tips-box">
 
 	<h3 class="uppercase large-12 columns">Formatting Tips</h3>
 	<div class="large-12 columns formatting-tips-text">

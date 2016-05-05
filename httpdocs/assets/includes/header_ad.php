@@ -6,9 +6,9 @@
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
 				 <!-- LELO -->
-	      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
+	      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109){?>
 	      			
-			      		<?php if($articleInfoObj['article_id'] != 14613 ){?>
+			      		<?php if($articleInfoObj['article_id'] != 14613 && $articleInfoObj['article_id'] != 14873 && $articleInfoObj['article_id'] != 12966){?>
 								<div id="ros_1193" style="display: inline-block !important;"></div> 
 						<?php }else{?>
 							<!-- /73970039/UT_BB -->
@@ -30,5 +30,4 @@
 			<div id="home_1181" style="display: inline-block;"></div> 
 		<?php }?> 
 	</div>
-<?php }  ?>
-
+<?php }?>

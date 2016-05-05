@@ -5,7 +5,7 @@
   <aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print" style="">
       
       <!-- LELO -->
-      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
+      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109){?>
         <?php if( $articleInfoObj['article_id'] != 14613   ){?>     
            <?php if( !$sponsored_aricle ){?>
             <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
@@ -31,7 +31,7 @@
     <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
 
     <!-- LELO -->
-    <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 ){?>
+    <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109){?>
     <?php if($articleInfoObj['article_id'] != 8560 &&  $articleInfoObj['article_id'] != 14613){ ?>
     
     <?php if( !$sponsored_aricle ){?>

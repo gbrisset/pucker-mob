@@ -66,7 +66,7 @@
 </script>
 
 	<!-- UNDERTONE -->
-	<?php if( $articleInfo['article_id'] == 14613  ){?>
+	<?php if( isset($articleInfo) && ($articleInfo['article_id'] == 14613 || $articleInfo['article_id'] == 15104 || $articleInfo['article_id'] == 14873 || $articleInfo['article_id'] == 12966) ){?>
 		<script type='text/javascript'>
 		  var googletag = googletag || {};
 		  googletag.cmd = googletag.cmd || [];
@@ -101,10 +101,12 @@
 	$sponsored_aricle = true; 
 	//if($articleInfoObj['article_id'] == 14785 ) $sponsored_aricle = true;
 ?>
+
+
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
 
-	<?php if($articleInfo['article_id'] != 14613 ){ ?>
+	<?php if( isset( $articleInfo['article_id'] ) && ( $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966) ){ ?>
 	 	<!-- Totally Her GPT -->
 		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 	<?php } ?>
@@ -177,4 +179,23 @@
 <script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js"></script>
 
 
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1637730259885401');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1637730259885401&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<script>
+// ViewContent
+// Track key page views (ex: product page, landing page or article)
+	fbq('track', 'ViewContent');
+</script>
 </head>

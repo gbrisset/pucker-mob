@@ -74,6 +74,7 @@
 	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 
+	//$best_article = $ManageDashboard->get_bestArticle(17, date('M'), date('Y'));
 ?>
 <!DOCTYPE html>
 

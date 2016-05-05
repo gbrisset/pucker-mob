@@ -244,6 +244,8 @@ class Dashboard{
 		}
 	}
 
+	
+
 	public function get_articlesbypageviews_daily( $start_date, $end_date ){
 
 		$s = "SELECT article_id, sum(usa_pageviews) as usa_pageviews, month, year, updated_date FROM  google_analytics_data_daily
@@ -446,6 +448,7 @@ class Dashboard{
 		return $row; 
 	}
 
+	
 
 	public function getPageViewsUSReport($data){
 		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);

@@ -625,7 +625,7 @@ span.postfix, label.postfix{ color: #aaa;}
     margin-bottom: 10px;
     font-family: OsloBold;
 }
-
+img[data-dz-thumbnail]{ padding:10px;}
 #img-container{ 
 	padding: 15px 5px;
 	.fa-file-image-o{ color: #fff; margin-bottom:2rem; margin-top:1px; font-size:50px !important;}
@@ -665,7 +665,7 @@ span.postfix, label.postfix{ color: #aaa;}
 	}
 
 	#img-container{
-	 	padding: 0 !important;
+	 	//padding: 0 !important;
 	
 		a{ color: #eee !important; font-size:14px;}
 		p{ margin-bottom: 5px; color: #eee !important;}
@@ -692,6 +692,7 @@ span.postfix, label.postfix{ color: #aaa;}
 }
 
 @media #{$large-up} {
+img[data-dz-thumbnail]{ padding:0;}
 	#img-container{ 
 		padding: 5px 4%;
 	}
@@ -710,7 +711,7 @@ span.postfix, label.postfix{ color: #aaa;}
 
 		#img-container{
 		    text-align: center;
-   			padding: 2% !important;
+		    padding: 3rem 4% !important;
 
 		 #search-lib{
 		 	color: #fff;
@@ -1425,10 +1426,10 @@ form#user-account-delete-form {
 	img{ border-radius:0 !important; -moz-border-radius:0 !important; -webkit-border-radius:0 !important; box-shadow:none !important; -webkit-box-shadow:none !important; -moz-box-shadow:none !important; }
 }
 .lib_cat_desc{
-	h1{ text-transform: uppercase;}
+	h1{ text-transform: uppercase; font-size: 1.2rem;}
 }
 .img_categories{ border:1px solid #eee; margin:0.5rem 0;  border-radius:0 !important; -moz-border-radius:0 !important; -webkit-border-radius:0 !important; cursor: pointer;}
-.more-coming{ text-align: center; margin: 3rem 0 2rem 0; }
+.more-coming{ text-align: center; margin: 0.5rem 0 0rem 0; }
 .more-coming h1{text-transform: uppercase;}
 .dz-details img{ width: 100%; height:270px;}
 
@@ -1861,9 +1862,14 @@ form#user-account-delete-form {
 #account-info{
 	.delete-account-box{
 	    background: #66A167;
+	    #delete-account{     
+	    	top: -4px;
+    		position: relative; 
+    	}
 	    h3{     
 	    	color: #fff;
 		    margin: 12px 0px;
+		    padding-top:4px;
 		    font-family: OsloBold; 
 		}
 

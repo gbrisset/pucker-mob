@@ -21,10 +21,10 @@
 					if($lib_categories){
 						foreach( $lib_categories as $img_category){ ?>
 						<div class="img_categories no-padding no-vertical-padding" data-info="<?php echo $img_category['seo_name']; ?>">
-							<div class="lib_cat_img small-4 inline-block">
+							<div class="lib_cat_img small-6 large-4 inline-block">
 								<img class="" src="http://www.puckermob.com/admin/assets/img/articles/<?php echo $img_category['img_name']; ?>" alt="<?php echo $img_category['name']; ?>" >
 							</div>
-							<div class="lib_cat_desc small-7 inline-block">
+							<div class="lib_cat_desc small-5 large-7 inline-block">
 								<h1><?php echo $img_category['name']; ?></h1>
 							</div>
 						</div>

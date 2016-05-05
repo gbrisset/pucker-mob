@@ -211,6 +211,39 @@ class ManageAdminDashboard{
 
 		return $q;	
 	}
+
+	public function get_bestArticle( $contributor_id, $month, $year ){
+
+		$month = 5;
+		$s = "SELECT * FROM  google_analytics_data_new 
+				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
+				ON ( article_contributor_articles.article_id = google_analytics_data_new.article_id )
+				AND ( articles.article_id = google_analytics_data_new.article_id )
+				AND ( article_categories.article_id = google_analytics_data_new.article_id )
+				AND (categories.cat_id = article_categories.cat_id )
+				WHERE google_analytics_data_new.month = ".$month." AND  google_analytics_data_new.year = ".$year;
+
+			if( isset($contributor_id) && $contributor_id != 0){
+				$s.= " AND article_contributor_articles.contributor_id = ".$contributor_id;
+			}
+
+			$s.= " ORDER BY google_analytics_data_new.usa_pageviews DESC LIMIT 1 ";
+		$queryParams = [];			
+		
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+	
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}
+
+	}
 	
 	public function getAnnouncements(){
 		$s = "SELECT *  

@@ -83,8 +83,6 @@
 			});
 
 			this.on("thumbnail", function(file) {
-	           //currentWidth = file.width;
-	           //currentHeight = file.height;
 	           console.log('thumbnail');
 		    });
 			
@@ -114,7 +112,7 @@
  		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
  		<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
  		
- 		<div class="dz-message inline-flex dropzone-previews" data-dz-message >
+ 		<div class="dz-message  dropzone-previews" data-dz-message >
  			<div id="img-container" class="small-12 large-4 columns radius" >
  				<div class="columns small-12">
  					<div class="image-icon small-3 columns"><i class="fa fa-file-image-o font-4x"></i></div>

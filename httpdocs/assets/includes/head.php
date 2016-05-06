@@ -47,7 +47,7 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e7" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e9" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -66,7 +66,7 @@
 </script>
 
 	<!-- UNDERTONE -->
-	<?php if( $articleInfo['article_id'] == 14613  ){?>
+	<?php if( isset($articleInfo) && ($articleInfo['article_id'] == 14613 || $articleInfo['article_id'] == 15104 || $articleInfo['article_id'] == 14873 || $articleInfo['article_id'] == 12966) ){?>
 		<script type='text/javascript'>
 		  var googletag = googletag || {};
 		  googletag.cmd = googletag.cmd || [];
@@ -101,57 +101,30 @@
 	$sponsored_aricle = true; 
 	//if($articleInfoObj['article_id'] == 14785 ) $sponsored_aricle = true;
 ?>
+
+
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
 
-	<?php if( !$sponsored_aricle ){?>
-
-	<?php if($articleInfo['article_id'] != 14613 ){ ?>
-	<!-- puckermob.com/home 
-	<script type="text/javascript">
-	  var ord = window.ord || Math.floor(Math.random() * 1e16);
-	  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N4403/adj/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?"><\/script>');
-	</script>
-	<noscript>
-		<a href="http://ad.doubleclick.net/N4403/jump/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?">
-		<img src="http://ad.doubleclick.net/N4403/ad/puckermob.com/home;sect=home;sz=1000x1000;dc_ref='+encodeURIComponent(location.href)+';ord=[timestamp]?" width="1000" height="1000" />
-		</a>
-	</noscript>
-	-->
- 	<!-- TABOOLA -->
- 	<script type="text/javascript">
-	  window._taboola = window._taboola || [];
-	  _taboola.push({article:'auto'});
-	  !function (e, f, u) {
-	    e.async = 1;
-	    e.src = u;
-	    f.parentNode.insertBefore(e, f);
-	  }(document.createElement('script'),
-	  document.getElementsByTagName('script')[0],
-	  '//cdn.taboola.com/libtrc/puckermob/loader.js');
-	</script>
-
-	<!-- Totally Her GPT -->
-	<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
-	<?php } ?>
+	<?php if( isset( $articleInfo['article_id'] ) && ( $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966) ){ ?>
+	 	<!-- Totally Her GPT -->
+		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
 	<?php } ?>
 <?php }else{ ?>
 
-	<?php if( !$sponsored_aricle ){?>
+	<?php //if( !$sponsored_aricle ){?>
 
-		<?php if(isset($article_id) && $article_id == 13305 ){?>
-			<!-- Totally Her GPT -->
-			<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
-		<?php } ?>
+		<?php //if(isset($article_id) && $article_id == 13305 ){?>
+			<!-- Totally Her GPT
+			<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script>  -->
+		<?php //} ?>
 
-	<?php } ?>
+	<?php //} ?>
 
 <?php } ?>
 
 <?php if (!$local){?>
 	
-	
-
 <!-- COMSCORE -->
 	<script>
 	  var _comscore = _comscore || [];
@@ -202,8 +175,27 @@
   _gs('GSN-829786-N');
 </script>
 
-<!-- SHARETHROUHGH-->
+<!-- SHARETHROUHGH -->
 <script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js"></script>
 
 
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1637730259885401');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1637730259885401&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<script>
+// ViewContent
+// Track key page views (ex: product page, landing page or article)
+	fbq('track', 'ViewContent');
+</script>
 </head>

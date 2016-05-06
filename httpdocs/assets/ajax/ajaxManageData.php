@@ -13,28 +13,28 @@ $total_shares = 0;
 		$fbTotal = $socialMediaManage->formatSocialMediaResult('facebook_shares', $fbCounts);
  		
  		/*TWITTER*/
- 		$tweetCounts = $socialMediaManage->getSocialMediaResult('twitter', 'http://cdn.api.twitter.com/1/urls/count.json?url='.$url);
- 		$tweetsTotal = $socialMediaManage->formatSocialMediaResult('twitter', $tweetCounts);
+ 		//$tweetCounts = $socialMediaManage->getSocialMediaResult('twitter', 'http://cdn.api.twitter.com/1/urls/count.json?url='.$url);
+ 		$tweetsTotal = 0; //$socialMediaManage->formatSocialMediaResult('twitter', $tweetCounts);
  		
  		/*PINTEREST*/
  		$pinCounts = $socialMediaManage->getSocialMediaResult('pinterest', 'http://widgets.pinterest.com/v1/urls/count.json?source=6&url='.$url);
  		$pinterestTotal = $socialMediaManage->formatSocialMediaResult('pinterest', $pinCounts);
  		
  		/*GOOGLE PLUS*/
- 		$googleCounts = $socialMediaManage->getSocialMediaResult('googleplus', $url);
- 		$googleTotal = $socialMediaManage->formatSocialMediaResult('googleplus', $googleCounts);
+ 		//$googleCounts = $socialMediaManage->getSocialMediaResult('googleplus', $url);
+ 		$googleTotal = 0;$socialMediaManage->formatSocialMediaResult('googleplus', $googleCounts);
  		
  		/*LINKEDIN*/
- 		$linCounts = $socialMediaManage->getSocialMediaResult('linkedin', 'http://www.linkedin.com/countserv/count/share?url='.$url);
- 		$linkedinTotal = $socialMediaManage->formatSocialMediaResult('linkedin', $linCounts);
+ 		//$linCounts = $socialMediaManage->getSocialMediaResult('linkedin', 'http://www.linkedin.com/countserv/count/share?url='.$url);
+ 		$linkedinTotal = 0; // $socialMediaManage->formatSocialMediaResult('linkedin', $linCounts);
  		
  		/*DELICIOUS*/
- 		$delCounts = $socialMediaManage->getSocialMediaResult('delicious', 'http://feeds.delicious.com/v2/json/urlinfo/data?url='.$url);
-		$deliciousTotal = $socialMediaManage->formatSocialMediaResult('delicious', $delCounts);
+ 		//$delCounts = $socialMediaManage->getSocialMediaResult('delicious', 'http://feeds.delicious.com/v2/json/urlinfo/data?url='.$url);
+		$deliciousTotal = 0; //$socialMediaManage->formatSocialMediaResult('delicious', $delCounts);
  		
  		/*STUMBLEUPON*/
- 		$stCounts = $socialMediaManage->getSocialMediaResult('stumbleupon', 'http://www.stumbleupon.com/services/1.01/badge.getinfo?url='.$url);
- 		$stumbleuponTotal = $socialMediaManage->formatSocialMediaResult('stumbleupon', $stCounts);
+ 		//$stCounts = $socialMediaManage->getSocialMediaResult('stumbleupon', 'http://www.stumbleupon.com/services/1.01/badge.getinfo?url='.$url);
+ 		$stumbleuponTotal = 0 ; //$socialMediaManage->formatSocialMediaResult('stumbleupon', $stCounts);
  		
  		$total_shares = $fbTotal + $tweetsTotal + $pinterestTotal + $linkedinTotal + $deliciousTotal + $stumbleuponTotal + $googleTotal; 
  		echo $total_shares;

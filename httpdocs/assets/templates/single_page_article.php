@@ -36,6 +36,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 }
 ?>
 
+	
 <?php if($detect->isMobile()){?>
 <style>
 	#branovate-ad div{margin-left:-4px;}
@@ -85,7 +86,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						    background: #3b5998;
 						    width: 100%;
 						    "><label class="label-social-button-2-mobile" style="padding:8px;"><i class="fa fa-facebook-square" ></i>SHARE</label></a>
-						   <script src="//static.addtoany.com/menu/page.js async"></script>
+						   <script src="//static.addtoany.com/menu/page.js" async></script>
 					</div>
 			</div>	
 			
@@ -106,28 +107,30 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<div class="row clear" style="margin-top: -1rem;">
 				<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 				
-				<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
+				<div class="columns ad-unit hide-for-print padding-top"  style="display:inline">
 
-				<?php if( !$sponsored_aricle ){ ?>
+				<?php //if( !$sponsored_aricle ){ ?>
 					<?php if($article_id == 13305){ ?>
 					<!-- TOTALLY HER -->
 						<div id="ros_1195" style="display: inline-block;"></div> 
 					<!-- LELO -->
-					<?php }elseif( $article_id == 14479 || $article_id == 14576 ){?>
+					<?php }elseif( $article_id == 14479 || $article_id == 14576 || $article_id == 15109 ){?>
 							<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
 								<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/camp_banner_v1.jpg" />
 							</a>
 					<?php }else{ ?>
-						<!-- /73970039/test_unit ENGAGE UNIT
-						<div id='div-gpt-ad-1460406489796-0' style='height:250px; width:300px; display:inline-block;'>
-						<script type='text/javascript'>
-						googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460406489796-0'); });
-						</script>
-						</div>-->
-						<!-- PULSE POINT -->
-						<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- PM Mobile Top Spot -->
+							<ins class="adsbygoogle"
+							     style="display:inline-block;width:300px;height:250px"
+							     data-ad-client="ca-pub-8978874786792646"
+							     data-ad-slot="2880293382"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+	
 					<?php } ?>
-				<?php } ?>
+				<?php //} ?>
 				</div>
 
 				<!-- ARTICLE BODY -->
@@ -163,7 +166,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			
 			
 			<!-- LELO -->
-			<?php if( $article_id == 14479 || $article_id == 14576 ){?>
+			<?php if( $article_id == 14479 || $article_id == 14576 || $article_id == 15109 ){?>
 				<div id="mobile-instream-branovate-ad"  class="margin-top small-12 row no-padding" style="margin-top: 2rem;">
 					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
 						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
@@ -171,7 +174,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						</a>
 					</div>
 				</div>
-			<?php }elseif( $article_id != 8560 &&  $article_id != 14613){ ?>
+			<?php }elseif( $article_id != 8560 &&  $article_id != 14613  &&  $article_id != 15104){ ?>
 
 			<?php //if($article_id == 14783){?>
 			<!-- SHARETH -->
@@ -261,7 +264,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 			
 			<!-- LELO -->
-			<?php if( $article_id != 14479 &&  $article_id != 14576 ){?>
+			<?php if( $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 ){?>
 
 			<!-- BRANOVATE -->
 			<div id="mobile-instream-branovate-ad">
@@ -287,7 +290,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			</div>
 
-			<?php if( isset($article_id) && $article_id != 8560 &&  $article_id != 14613){?>
+			<?php if( isset($article_id) && $article_id != 8560 &&  $article_id != 14613  &&  $article_id != 15104){?>
 				<!-- CARAMBOLA -->
 				<!--<div id="mobile-instream-branovate-ad">
 					<div id="get-content" style="text-align:center; display: inline-block;">
@@ -331,7 +334,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 	</section>
 	<!-- UNDERTONE -->
-	<?php if( isset($article_id) && ( $article_id == 14613)){?>
+	<?php if( isset($article_id) && ( $article_id == 14613 ) ){?>
 		<!-- /73970039/UT_SA -->
 		<div id='div-gpt-ad-1461622964696-5' style='height:50px; width:320px;'>
 			<script type='text/javascript'>
@@ -339,10 +342,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</script>
 		</div>
 
-		<!-- /73970039/UT_SP -->
-		<div id='div-gpt-ad-1461622964696-6' style='height:50px; width:320px;'>
+		<!-- /73970039/UT_SS -->
+		<div id='div-gpt-ad-1461622964696-2'>
 		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-6'); });
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-2'); });
 		</script>
 		</div>
 
@@ -404,7 +407,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			
 				<!-- LELO -->
-				<?php if( $article_id == 14479 || $article_id == 14576 ){?>
+				<?php if( $article_id == 14479 || $article_id == 14576 ||  $article_id == 15109 ){?>
 				<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
 					<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
 						<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/camp_banner_v2_desk.jpg" />
@@ -412,6 +415,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 				<?php } ?>
 
+						<?php //if($article_id == 14783){?>
+				<!-- SHARETH -->
+				<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0;">
+					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
+				</section>
+				<?php //} ?>
+				
 				<!-- RELATED ARTICLES -->
 				<?php 
 				$related = []; 
@@ -436,22 +446,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 				<?php }?>
 
-				<?php if($article_id == 14783){?>
-				<!-- SHARETH -->
-				<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding" style="padding-bottom:0;">
-					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
-				</section>
-				<?php } ?>
+		
 			
-			<?php if($article_id == 10079){ ?>
-				<!-- 3LIFT -->
-				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns clear hide-for-print no-padding" style="padding-bottom:0;">
-					<script src="//ib.3lift.com/ttj?inv_code=puckermob_article_sub"></script>
-				</section>				
-			<?php } ?>
-
 			<!-- Social Media Icons -->
-			<div class="row social-media-container social-cont-1" style="margin-bottom: 0rem; display:block !important;">
+			<div class="row social-media-container social-cont-1 padding-top" style="margin-bottom: 0rem; display:block !important;">
 				<?php include($config['include_path'].'social_media_article_buttons.php'); ?>
 			</div>
 
@@ -488,22 +486,3 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 </article>
 <?php } ?>
-
-	<!-- UNDERTONE -->
-	<?php if( isset($article_id) && ( $article_id == 14613)){?>
-		
-		<!-- /73970039/UT_SS -->
-		<div id='div-gpt-ad-1461622964696-2'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-2'); });
-		</script>
-		</div>
-
-		<!-- /73970039/UT_SS_FP -->
-		<div id='div-gpt-ad-1461622964696-3'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
-		</script>
-		</div>
-
-	<?php } ?>

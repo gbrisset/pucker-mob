@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_3456d" ></script>
+  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_345678e" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
@@ -17,7 +17,7 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3456d" ></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3456798e" ></script>
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -26,73 +26,40 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-<?php if( !$sponsored_aricle ){?>
-
-  <?php if(isset($article_id) && $article_id == 5118 ){ ?>
-    <script type='text/javascript'>
-      var googletag = googletag || {};
-      googletag.cmd = googletag.cmd || [];
-      (function() {
-        var gads = document.createElement('script');
-        gads.async = true;
-        gads.type = 'text/javascript';
-        var useSSL = 'https:' == document.location.protocol;
-        gads.src = (useSSL ? 'https:' : 'http:') +
-          '//www.googletagservices.com/tag/js/gpt.js';
-        var node = document.getElementsByTagName('script')[0];
-        node.parentNode.insertBefore(gads, node);
-      })();
-    </script>
-
-    <script type='text/javascript'>
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/73970039/test_undertone', [[320, 480], [320, 50], [160, 600], [970, 250], [300, 600], [1024, 768], [300, 50], [768, 1024], [1, 1], [970, 90], [768, 50], [300, 250], [728, 90]], 'div-gpt-ad-1460669862695-0').addService(googletag.pubads());
-        googletag.enableServices();
-      });
-    </script>
-  <?php } ?>
-
 
   <?php if($article_id != 8560 && $article_id != 14472 ){?>
+    
     <div id="mb_container"></div> 
     <div id="mb_video_sponso"></div> 
     <script type="text/javascript"> (function(){ var sc = document.createElement('script'); sc.src = 'http://player.mediabong.net/se/924.js?url='+encodeURIComponent(document.location.href); sc.type = 'text/javascript'; sc.async = true; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s); })(); </script>
  
+ <?php } ?>
+<?php if( !$sponsored_aricle ){?>
     
     <div id="evolve_footer"></div>
- <?php }?>
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+     
       <!-- LELO -->
-     <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 ){?>
-
-      <script type="text/javascript">
+      <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109){?>
+        <script type="text/javascript">
           netseer_tag_id="19129";
           netseer_task="in-image";
           netseer_inview_status="disabled";
         </script>
         <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-    
-        <!-- TABOOLA -->
-        <script type="text/javascript">
-        window._taboola = window._taboola || [];
-        _taboola.push({flush: true});
-      </script>
-
-   <?php } ?>
+      <?php } ?>
     <?php }  ?>
 
-    <?php if( isset($article_id) && $article_id  == 13481 ){ ?>
-    <!--Puckermob.com CORNERSTREAM Validation Test Tag -->
-    <section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
-      <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5938&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
-    </section>
-  <?php } ?>
- 
  <?php } ?>
+
+
+   <!--Puckermob.com CORNERSTREAM Validation Test Tag 
+  <section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+    <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5938&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
+  </section>-->
  
-  <!-- Puckermob.com CORNERSTREAM Revshare_50 -->
  <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
    <!--SHAREBUTTONS BAR VERTICAL-->
     <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
@@ -107,44 +74,16 @@
 
 <!-- MOBILE -->
 <?php }else{ ?>
-<?php if( !$sponsored_aricle ){ ?>
   
-  <?php if(isset($article_id) && $article_id == 5118 ){?>
-        <script type='text/javascript'>
-          var googletag = googletag || {};
-          googletag.cmd = googletag.cmd || [];
-          (function() {
-            var gads = document.createElement('script');
-            gads.async = true;
-            gads.type = 'text/javascript';
-            var useSSL = 'https:' == document.location.protocol;
-            gads.src = (useSSL ? 'https:' : 'http:') +
-              '//www.googletagservices.com/tag/js/gpt.js';
-            var node = document.getElementsByTagName('script')[0];
-            node.parentNode.insertBefore(gads, node);
-          })();
-        </script>
-
-    <script type='text/javascript'>
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/73970039/test_undertone', [[320, 480], [320, 50], [160, 600], [970, 250], [300, 600], [1024, 768], [300, 50], [768, 1024], [1, 1], [970, 90], [768, 50], [300, 250], [728, 90]], 'div-gpt-ad-1460669862695-0').addService(googletag.pubads());
-        googletag.enableServices();
-      });
-    </script>
-  <?php } ?>
-
-  <?php if(isset($article_id) && $article_id == 13305 ){?>
-    <div id="evolve_footer"></div>
-  <?php } ?>
-
-
   <?php if( isset($promotedArticle) && !$promotedArticle ){ 
+      
       if(isset($articleInfoObj) && $articleInfoObj){ ?>
         <!-- LELO -->
-        <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613){?>
+        <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873){ ?>
+        
+         <!-- ANSWERS SLIDER UNIT -->
             <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
 
-         <!-- ANSWERS SLIDER UNIT -->
             <div id="vm_inline"></div>
             <script>
                 window._videomosh = window._videomosh || [];
@@ -165,18 +104,21 @@
                 });
             </script>
 
-        <!-- NETSEER AD IN-IMAGE -->
+        <?php if( !$sponsored_aricle ){ ?>
+
+         <!-- NETSEER AD IN-IMAGE -->
              <script type="text/javascript">
               netseer_tag_id="20429";
               netseer_task="in-image";
               netseer_inview_status="disabled";
               </script>
              <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+         <?php  } ?>  
 
         <?php  } ?>
       <?php  } ?>
 
-      <?php if( $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560){ ?>
+      <?php if( $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 ){ ?>
           <script>
             (function() 
             { 
@@ -229,7 +171,6 @@
 
   <?php } ?>
 
-<?php  } ?>
 <?php } ?>
 
 <!-- SHARETHROUNG -->

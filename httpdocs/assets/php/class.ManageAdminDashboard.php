@@ -208,13 +208,11 @@ class ManageAdminDashboard{
 		$s .= " ORDER BY total_earnings DESC";
 
 		$q = $this->performQuery(['queryString' => $s]);
-
 		return $q;	
 	}
 
 	public function get_bestArticle( $contributor_id, $month, $year ){
 
-		$month = 5;
 		$s = "SELECT * FROM  google_analytics_data_new 
 				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
 				ON ( article_contributor_articles.article_id = google_analytics_data_new.article_id )
@@ -231,7 +229,7 @@ class ManageAdminDashboard{
 		$queryParams = [];			
 		
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-	
+
 		if ($q && isset($q[0])){
 				// If $q is an array of only one row (The set only contains one article), return it inside an array
 			return $q;

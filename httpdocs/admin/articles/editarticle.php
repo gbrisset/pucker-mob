@@ -164,10 +164,10 @@
 						</div>
 					</div>
 
-	 
+					<?php if( $admin_user ){?>
 				  	<!-- RELATED ARTICLES -->
 					<?php include_once($config['include_path_admin'].'related_edit_articles.php'); ?>
-
+					<?php } ?>
 					
 					<?php if($pro_admin){ ?>
 						<!-- ADVERTISING OVERRIDE (IN-STREAM) -->
@@ -353,6 +353,8 @@
 						</div>
 						<?php }?> 
 
+						<?php if($admin_user){?>
+
 						<!-- Article Disclaimer -->
 						<div class="row">
 						    <div>
@@ -366,6 +368,7 @@
 							</label>
 							</div>
 						</div>
+						<?php }?> 
 
 						<div class="row label-wrapper show-for-large-up hide-for-xxlarge-up">
 							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up">PREVIEW</button></div>

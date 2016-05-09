@@ -1752,14 +1752,13 @@ public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesF
 		AND article_contributors.contributor_id = article_contributor_articles.contributor_id ";
 	$s .= $status_sql;		
 	if ($userArticlesFilter != 'all'){
-		$s .=	" AND article_contributors.contributor_email_address =  '".$userArticlesFilter."'' ";
+		$s .=	" AND article_contributors.contributor_email_address =  '".$userArticlesFilter."' ";
 	}
 
 	if ($articleType != 'all'){
 		if($articleType == 'bloggers') 	$s .=	" AND a_c.cat_id =  9 ";
 		if($articleType == 'writers' ) 	$s .=	" AND a_c.cat_id !=  9 ";
 	}
-
 	$queryParams = [
 			':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)
 	];				

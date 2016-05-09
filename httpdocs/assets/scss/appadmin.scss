@@ -1853,8 +1853,10 @@ form#user-account-delete-form {
 
 
 	@media #{$large-up} {
-		p, a{  margin: 0; text-transform: inherit; font-size: 1rem; color: #666; }
-		table tr td a{ font-size: 1.2rem}
+		#content{
+			p, a{  margin: 0; text-transform: inherit; font-size: 1rem; color: #666; }
+			table tr td a{ font-size: 1.2rem}
+		}
 	}
 
 }

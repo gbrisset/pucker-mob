@@ -29,7 +29,7 @@
 
 	$contributor_id = $contributorInfo['contributor_id'];
 	$contributor_seo_name = $contributorInfo['contributor_seo_name'];
-	$article_list = $adminController->user->getContributorsArticleList( 1103 );
+	$article_list = $adminController->user->getContributorsArticleList( $contributor_id );
 
 ?>
 
@@ -52,7 +52,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<div class="small-12 columns padding-bottom ">
-				<h1 class="columns small-12" >My Profile
+				<h1 class="columns small-12 no-padding" >My Profile
 					<div class="inline right show-for-large-up">
 						<a href="<?php echo $config['this_url'].'admin/profile/edit/'.$contributor_seo_name; ?>" class="font-1-5x black ">SET UP</a>
 						<i class="fa fa-circle"></i>

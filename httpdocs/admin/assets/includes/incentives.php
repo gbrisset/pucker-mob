@@ -4,7 +4,7 @@
 	<div class="small-12 columns radius right-side-box half-margin-top">
 		<div class="">
 			<p>
-				MARCH MADNESS: Market your articles  aggressively - everyone in the Top  10 at the end of the month will earn an extra $100!
+				<span class="uppercase"><?php echo date('F'); ?></span> MADNESS: Market your articles  aggressively - everyone in the Top  10 at the end of the month will earn an extra $100!
 			</p>	
 		</div>
 	</div>

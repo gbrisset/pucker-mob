@@ -473,7 +473,7 @@ End password reset methods
 			if(!$q) return $this->helpers->returnStatus(500);
 			else return array(
 				'hasError' => false, 
-				'message' => "Thanks!  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>" 
+				'message' => "Thanks!  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."/dashboard\">here</a>" 
 			);
 		}else return $this->helpers->returnStatus(500);
 	}

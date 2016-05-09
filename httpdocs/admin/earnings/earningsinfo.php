@@ -4,10 +4,12 @@
 	$ManageDashboard = new ManageAdminDashboard( $config );
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
+
 	$contributorInfo = $mpArticle->getContributorInfo( $uri[1] );
+
 	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
 	if (isset($contributorInfo['contributor_id'])){
-		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
+		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userData['contributor_email_address'])) && $contributorInfo['contributor_email_address'] !== $userData['contributor_email_address']  ) $adminController->redirectTo('noaccess/');
 	} else $mpShared->get404();
 
 	if(empty($contributorInfo)) $mpShared->get404();
@@ -57,7 +59,7 @@
 		}
 	}
 
-	$rate = $dashboard->get_current_rate( 2, $contributor_type );
+	$rate = $dashboard->get_current_rate( $current_month, $contributor_type );
 	if($rate) $rate = $rate['rate'];
 	$total = 0;
 	
@@ -70,11 +72,10 @@
 	$show_art_rate = false;
 	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 
-	$user_type = $contributor_type;
+	$user_type = $contributor_type; 
 	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
-
-	//$best_article = $ManageDashboard->get_bestArticle(17, date('M'), date('Y'));
+	$best_article = $ManageDashboard->get_bestArticle($contributor_id,  date('n'), date('Y'));
 ?>
 <!DOCTYPE html>
 

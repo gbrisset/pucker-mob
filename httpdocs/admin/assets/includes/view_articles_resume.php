@@ -25,7 +25,7 @@
 	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
 	$pageviews = 0;
 	if(isset($earnings['total_us_pageviews'])) $pageviews = $earnings['total_us_pageviews'];
-	
+
 ?>
 
 <div class="small-12 columns  no-padding margin-bottom show-for-large-up">
@@ -37,7 +37,7 @@
 	</div>
 	<div  class="small-12 large-4 xlarge-3 columns ">
 		<div style="background-color: #867BB5; " class="small-12 columns articles_resume radius" >
-		<h3 class="small-12 columns uppercase">Articles in Draft</h3>
+		<h3 class="small-12 columns uppercase">Draft Articles</h3>
 		<span class="small-12 columns bold"><?php echo $onDraft; ?></span>
 		</div>
 	</div>
@@ -50,7 +50,7 @@
 	<div  class="small-12 large-3 columns  show-for-xlarge-up ">
 		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius">
 			<h3 class="small-12 columns uppercase">Total U.S. Visits</h3>
-			<span class="small-12 columns bold"><?php echo money_format('%(#10n', $pageviews); ?></span>
+			<span class="small-12 columns bold"><?php echo $pageviews; ?></span>
 			<span class="small-12 columns  mini-fonts uppercase show-for-xxlarge-up ">this month</span>
 		</div>
 	</div>

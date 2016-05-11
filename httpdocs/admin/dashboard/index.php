@@ -103,7 +103,7 @@
 			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
 
 			<!-- CHARTS --> 
-			<div class="small-12 xxlarge-9 columns no-padding">
+			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
 			</div>
 

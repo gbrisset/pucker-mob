@@ -1718,7 +1718,7 @@ protected function performQuery($opts){
 		'bypassCache' => false,
 			'returnCount' => false  //	true: performQuery will only return a count of rows
 			), $opts);
-	$cachedData = false;
+		$cachedData = false;
 	if($cachedData === false || $options['bypassCache'] === true){
 		$pdo = $this->con->openCon();
 		$q = $pdo->prepare($options['queryString']);
@@ -1768,6 +1768,7 @@ public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesF
 	}
 }
 
+
 public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $articleType = 'all' ) {
 	
 	switch ($order) {
@@ -1801,6 +1802,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$status_sql = " WHERE article_status IN ( $articleStatus )";
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	
 	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date,
 	nc.cat_id, '0' as us_traffic, article_contributors.contributor_name, article_contributors.contributor_seo_name FROM articles as a
 	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles)
@@ -1839,6 +1841,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	}
 }
 
+//I THINK IS NOT IN USE RIGHT NOW
 public function get_dashboardArticles($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month) {
 
 	switch ($order) {
@@ -1899,6 +1902,21 @@ public function get_dashboardArticles($limit = 10, $order = '', $articleStatus =
 	} else {
 		return false;
 	}
+}
+
+public function getTotalUsPageviews( $ids = null ){
+	 //$ids = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	 $s = "SELECT sum(usa_pageviews) as total_usa_pv, article_id FROM `google_analytics_data_new` ";
+
+	 if($ids != null ) $s.= " WHERE article_id IN ( $ids ) ";
+
+	 $s.= " group by article_id  ";
+
+	$q = $this->performQuery(['queryString' => $s]);
+
+
+	return $q;
+ 
 }
 
 /**

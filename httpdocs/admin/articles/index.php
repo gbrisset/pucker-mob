@@ -76,9 +76,23 @@
 		$articleStatus = '1, 2, 3';
 	}
 
+	//GET ALL ARTICLES BASE ON THE FILTER BY STATUS, USERTYPE, ETC...
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
+	$arr_ids = [];
+	foreach($articles as $article){
+		$arr_ids[] = $article['article_id'];
+	}
 
+	//IMPLODE ALL THE IDS FOR EACH ARTICLE ON THE CURRENT INDEX PAGE.
+	$comma_separated = implode(",", $arr_ids);
 
+	//GET USA PAGEVIEWS FOR EACH ARTICLE ON THE LIST
+	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
+	$pageviews_list = [];
+	foreach($usa_pageview_list as $key=>$value){
+		//var_dump($key, $value, $value['article_id'], $value['total_usa_pv']);
+		$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
+	}
 
 ?>
 <!DOCTYPE html>
@@ -144,9 +158,13 @@
 									$article_title = $articleInfo['article_title'];
 									$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
 									$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
-									$article_us_traffic = $articleInfo['us_traffic'];
+									$article_us_traffic = 0;
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
+
+									if(!is_null($pageviews_list[$article_id])){
+								    	$article_us_traffic = $pageviews_list[$article_id];
+									}
 
 									if(file_exists($pathToImage)){
 										$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
@@ -169,7 +187,7 @@
 														<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
 													</a>
 													<?php if($admin){?>
-														<span class="show-for-large-up"><a href="http://www.puckermob.com/admin/profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>
+														<span class="show-for-large-up"><a href="<?php echo $config['this_url']; ?>/admin/profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>
 													<?php }?>
 												</h2>
 												
@@ -179,7 +197,7 @@
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
 										<!-- REMOVE ARTICLE -->
-										<td class="show-for-xlarge-up  border-right" ><label>123</label></td>
+										<td class="show-for-xlarge-up  border-right" ><label><?php echo $article_us_traffic; ?></label></td>
 										<td class="show-for-large-up no-border-right valign-middle">
 											<?php if($admin_user || $blogger ){?>
 												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">

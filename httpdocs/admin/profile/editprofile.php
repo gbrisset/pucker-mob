@@ -106,7 +106,7 @@
 					</div>
 					<div class="small-12 large-10 columns no-padding-left">
 						<div class="div-file-upload">
-							<a href="#" class="b-upload small-12 upload-photo radius" name="image-file-link" id="image-file-link">Upload Photo</a>
+							<a href="#" class="b-upload small-12 upload-photo radius" name="image-file-link" id="image-file-link">Click Here to Upload Photo</a>
 							 <div class="file-upload-container hidden">
 					    	<input type="file" name="contributor_wide_img" id="contributor_wide_img" class="upload-img-file account-file-input" />
 						</div>  
@@ -118,7 +118,7 @@
 						<div class="small-12 columns div-images no-padding show-for-large-up">
 							<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $contributorInfo['contributor_id']; ?>" />
 							<div class="small-3 large-3 columns no-padding">
-								<label>NO PIC? CHOOSE AN AVATAR:</label>
+								<label>OR CHOOSE AN AVATAR:</label>
 							</div>
 							<div class=" small-9 large-9 columns avatars">
 								<?php for($i = 1; $i<= 18; $i++){?>

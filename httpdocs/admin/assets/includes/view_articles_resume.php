@@ -30,28 +30,35 @@
 
 <div class="small-12 columns  no-padding margin-bottom show-for-large-up">
 	<div  class="small-12 large-4 xlarge-3 columns  no-padding ">
-		<div style="background-color: #7BB583; " class="small-12 columns articles_resume radius">
-		<h3 class="small-12 columns uppercase">Live Articles</h3>
-			<span class="small-12 columns bold"><?php echo $onLive; ?></span>
+		<div style="background-color: #7BB583; " class="small-12 columns articles_resume radius valign-middle">
+			<div class="small-12 columns ">
+				<h3 class="uppercase">Live Articles</h3>
+				<span class="bold"><?php echo $onLive; ?></span>
+			</div>
 		</div>
 	</div>
 	<div  class="small-12 large-4 xlarge-3 columns ">
-		<div style="background-color: #867BB5; " class="small-12 columns articles_resume radius" >
-		<h3 class="small-12 columns uppercase">Draft Articles</h3>
-		<span class="small-12 columns bold"><?php echo $onDraft; ?></span>
+		<div style="background-color: #867BB5; " class="small-12 columns articles_resume radius valign-middle" >
+			<div class="small-12 columns ">
+				<h3 class="uppercase">Draft Articles</h3>
+				<span class="bold"><?php echo $onDraft; ?></span>
+			</div>
 		</div>
 	</div>
 	<div class="small-12 large-4 xlarge-3 columns  no-padding">
-		<div style="background-color: #D79324; " class="small-12 columns articles_resume radius">
-			<h3 class="small-12 columns uppercase">Current Rank</h3>
-			<span class="small-12 columns bold">#<?php echo $rank; ?></span>
+		<div style="background-color: #D79324; " class="small-12 columns articles_resume radius valign-middle">
+			<div class="small-12 columns ">
+				<h3 class="uppercase">Current Rank</h3>
+				<span class="bold">#<?php echo $rank; ?></span>
+			</div>
 		</div>
 	</div>
 	<div  class="small-12 large-3 columns  show-for-xlarge-up ">
-		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius">
-			<h3 class="small-12 columns uppercase">Total U.S. Visits</h3>
-			<span class="small-12 columns bold"><?php echo $pageviews; ?></span>
-			<span class="small-12 columns  mini-fonts uppercase show-for-xxlarge-up ">this month</span>
+		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius valign-middle">
+			<div class="small-12 columns ">
+				<h3 class="uppercase">U.S. Visits<span style="color: #fff; font-size: 12px; top: -3px; position: relative;"> ( THIS MONTH )</span></h3>
+				<span class="bold"><?php echo $pageviews; ?></span>
+			</div>
 		</div>
 	</div>
 </div>

@@ -26,9 +26,8 @@
 	<div  class="small-12 large-4 xlarge-3 columns  no-padding ">
 		<div style="background-color: #7BB583; " class="small-12 columns articles_resume radius valign-middle">
 			<div class="small-12 columns ">
-				<h3 class="uppercase">Current Earnings</h3>
+				<h3 class="uppercase">Earnings<span style="color: #fff; font-size: 12px; top: -3px; position: relative;"> ( THIS MONTH )</span></h3>
 				<span class="bold"><?php echo money_format('%(#10n', $current_earnings); ?></span>
-				<p style="color: #fff; font-size: 10px; margin:0;">THIS MONTH</p>
 			</div>
 		</div>
 	</div>
@@ -52,7 +51,7 @@
 		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius valign-middle">
 			<div class="small-12 columns ">
 				<h3 class="uppercase">Level</h3>
-				<span class="bold"><?php echo 'PRO ($'. $rate .' CPM)' ?></span>
+				<span class="bold"><?php echo 'PRO ('. money_format('%(#10n', $rate) .' CPM )' ?></span>
 			</div>
 		</div>
 	</div>

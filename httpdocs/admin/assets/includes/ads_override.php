@@ -1,4 +1,4 @@
-<div class="row advertising-override margin-top">
+<div class="small-12 columns no-padding advertising-override margin-top">
 	<div class="advertising-box small-12 columns  no-padding">
 		<header class="inner-header">Ads Override (in-Stream)</header>
 	</div>
@@ -13,7 +13,7 @@
 			$target = 'mobile_'.$relation_num;
 		?>
 		<div class="advertising-providers small-12" id="ad-info-<?php echo $relation_num;?>">
-			<label class="small-4 columns"><?php echo $name; ?></label>
+			<label class="small-4 columns uppercase"><?php echo $name; ?></label>
 			<select id="mobile_<?php echo $relation_num;?>" name="mobile_<?php echo $relation_num;?>" class="related_articles small-8">
 			<?php 
 			if( $article_ads[$target] == -1) 

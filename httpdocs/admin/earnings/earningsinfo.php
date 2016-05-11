@@ -110,11 +110,13 @@
 				<div id="reportrange" class="radius">
 					<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
 					<input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+					<i class="fa fa-caret-down" aria-hidden="true"></i>
+
 				</div>
 			</div>
 			
 			<!-- CHARTS --> 
-			<div class="small-12 xxlarge-8 columns">
+			<div class="small-12 xxlarge-8 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
 			</div>
 
@@ -129,7 +131,9 @@
 			<div class="small-12 xxlarge-4 right padding rightside-padding" >
 				<?php include_once($config['include_path_admin'].'earnings_info.php'); ?>
 			</div>
-
+			<div class="small-12 xxlarge-4 right padding rightside-padding" >
+				<?php include_once($config['include_path_admin'].'payment_options.php'); ?>
+			</div>
 
 		</div>
 

@@ -9,7 +9,7 @@
 
 	?>
 
-	<div class="small-12 columns radius right-side-box half-margin-top">
+	<div class="small-12 columns radius right-side-box no-margin-top">
 		<h3 class="margin-top bold">LAST POSTED:</h3>
 		<div class="">
 			<label><?php echo date('F d, Y',strtotime($last_posted_date['creation_date']));?></label>
@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="small-12 columns radius right-side-box half-margin-top">
-		<h3 class="margin-top bold">POST THIS MONTH:<span style="margin-left: 10px;"><?php echo $post_this_month['total']; ?></span></h3>
+		<h3 class="margin-top bold">POSTS THIS MONTH:<span style="margin-left: 10px;"><?php echo $post_this_month['total']; ?></span></h3>
 	</div>
 
 	<div class="small-12 columns radius right-side-box half-margin-top">

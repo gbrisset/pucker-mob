@@ -6,7 +6,7 @@
 var EarningsObj = {	
 	start_date : moment().subtract(7, 'days').format("YYYY-MM-DD"), end_date : moment().format("YYYY-MM-DD"),
 	chart_info : {}, article_list : {},
-	total_earnings: 0,
+	total_earnings: 0, 
 	options : {
 	       	  legend : { position:"none"},
 	          chart: {
@@ -15,7 +15,7 @@ var EarningsObj = {
 	          },
 	          bars: 'vertical',
 	          vAxis: {format: 'decimal'},
-	          height: 400,
+	          height: $('#height_chart').val(),
 	          colors: ['#014694', '#627E93'],
 	},
     
@@ -55,7 +55,7 @@ var EarningsObj = {
 					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
 
 					total_earned = total_earned + amount;
-					info = [ val[0].date, amount, last_month_amount];
+					info = [ val[0].date, '$'+amount, last_month_amount];
 					chart.push(info);
 				});
 
@@ -91,7 +91,7 @@ var EarningsObj = {
 					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
 
 					total_earned = total_earned + amount;
-					info = [ val[0].date, amount, last_month_amount];
+					info = [ val[0].date, '$'+amount, last_month_amount];
 					chart.push(info);
 				});
 

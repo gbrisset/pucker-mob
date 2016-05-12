@@ -1,16 +1,3 @@
-<script>
-      $(function() {	
-          $('.editor').froalaEditor({
-          	  key: 'UcbaE2hlypyospbD3ali==',
-          	  height: 420,
-          	  placeholderText: 'Start Writing Here.',
-		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-      		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
-          });
-      });
-</script> 
 
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
@@ -26,8 +13,6 @@
 
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>
 <script src="<?php echo $config['this_url']; ?>/assets/js/main.js"></script>
-
-
 
 <?php
 	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);

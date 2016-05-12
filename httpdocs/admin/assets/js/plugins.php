@@ -55,7 +55,7 @@ var EarningsObj = {
 					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
 
 					total_earned = total_earned + amount;
-					info = [ val[0].date, '$'+amount, last_month_amount];
+					info = [ val[0].date, amount, '$'+last_month_amount];
 					chart.push(info);
 				});
 

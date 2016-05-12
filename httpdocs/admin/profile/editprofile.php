@@ -70,7 +70,9 @@
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
 <?php include_once($config['include_path_admin'].'head.php');?>
+
 <body id="edit-my-profile">
 
 	<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
@@ -234,7 +236,7 @@
 
   	<!-- INFO BADGE -->
 	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
-		<?php include($config['include_path_admin'].'info-badge.php');?>
+		<?php include_once($config['include_path_admin'].'info-badge.php');?>
 	</div>
 
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

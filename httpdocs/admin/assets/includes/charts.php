@@ -1,6 +1,6 @@
 
 <div class="small-12 columns radius" id="chart-wrapper">
-<input type="hidden" id="height_chart" value="<?php if($detect->isMobile()) echo 300; else echo 400; ?>" />
+<input type="hidden" id="height_chart" value="<?php if($detect->isMobile()) echo 250; else echo 400; ?>" />
 	<div id="chart_div"></div>
 	<div class="columns">
 		<h3 id="month-year-title" class="small-12 large-4 columns no-padding"><?php echo date('F').' '.date('Y')?></h3>

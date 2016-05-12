@@ -116,7 +116,7 @@
 			</div>
 			
 			<!-- CHARTS --> 
-			<div class="small-12 xxlarge-8 columns chart_wrapper_div">
+			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
 			</div>
 
@@ -128,10 +128,10 @@
 			</div>
 
 			<!-- Right Side -->
-			<div class="small-12 xxlarge-4 right padding rightside-padding" >
+			<div class="small-12 xxlarge-3 right padding rightside-padding" >
 				<?php include_once($config['include_path_admin'].'earnings_info.php'); ?>
 			</div>
-			<div class="small-12 xxlarge-4 right padding rightside-padding" >
+			<div class="small-12 xxlarge-3 right padding rightside-padding" >
 				<?php include_once($config['include_path_admin'].'payment_options.php'); ?>
 			</div>
 

@@ -16,11 +16,11 @@
 		</div>
 	</div>
 
-	<div class="small-12 columns radius right-side-box half-margin-top">
+	<div class="small-12 columns radius right-side-box margin-top">
 		<h3 class="margin-top bold">POSTS THIS MONTH:<span style="margin-left: 10px;"><?php echo $post_this_month['total']; ?></span></h3>
 	</div>
 
-	<div class="small-12 columns radius right-side-box half-margin-top">
+	<div class="small-12 columns radius right-side-box margin-top">
 		<h3 class="margin-top bold">MOST POPULAR POST:</h3>
 		<div class="">
 			<?php if($most_popular_article){?>

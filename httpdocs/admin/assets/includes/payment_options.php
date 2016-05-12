@@ -1,9 +1,9 @@
 
 	<div class="small-12 columns radius right-side-box no-margin-top margin-bottom " id="payment-options">
-		<h2 class="margin-top bold font-2x">PAYMENT OPTIONS</h2>
+		<h2 class="margin-top bold ">PAYMENT OPTIONS</h2>
 		<div class="small-12 columns no-padding  margin-top">
 			<div class="small-12">
-				<i id="fast-pay" class="fa fa-square-o font-3x small-2 large-2 columns no-padding-left"></i>
+				<i id="fast-pay" class="fa fa-square-o font-2-5x small-2 large-2 columns no-padding-left"></i>
 				<h3 class=" small-10 large-10  columns">FAST PAY</h3>
 			</div>
 			<div class="small-12 columns no-padding">
@@ -15,7 +15,7 @@
 		
 		<div class="small-12 columns no-padding  margin-top">
 			<div class="small-12">
-				<i id="ad-match" class="fa fa-square-o font-3x small-2 large-2 columns no-padding-left"></i>
+				<i id="ad-match" class="fa fa-square-o font-2-5x small-2 large-2 columns no-padding-left"></i>
 				<h3 class="small-10 large-10  columns">AD MATCHING</h3>
 			</div>
 			<div class="small-12 columns no-padding">
@@ -27,7 +27,7 @@
 
 		<div class="small-12 columns no-padding  margin-top">
 			<div class="small-12">
-				<i id="expo-bidding" class="fa fa-square-o font-3x small-2 large-2 columns no-padding-left"></i>
+				<i id="expo-bidding" class="fa fa-square-o font-2-5x small-2 large-2 columns no-padding-left"></i>
 				<h3 class="small-10 large-10  columns">EXPOSURE BIDDING</h3>
 			</div>
 			<div class="small-12 columns no-padding">

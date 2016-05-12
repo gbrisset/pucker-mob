@@ -1,5 +1,5 @@
 	<?php if(isset($earnings) && $earnings){?>
-		<div class="small-12 columns radius right-side-box">
+		<div class="small-12 columns radius right-side-box margin-bottom">
 			<div class="">
 					<label class="uppercase light-green">U.S. VISITS: 
 					<span style="color: #222;"><?php echo $earnings['total_us_pageviews']; ?></span></label>

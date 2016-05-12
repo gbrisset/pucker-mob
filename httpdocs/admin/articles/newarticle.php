@@ -1,4 +1,5 @@
 <?php
+	$admin = true;
 	require_once('../../assets/php/config.php');
 
 if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
@@ -27,7 +28,9 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
 <?php include_once($config['include_path_admin'].'head.php');?>
+
 <body id="newarticle">
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
@@ -222,12 +225,14 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 	<?php include($config['include_path_admin'].'info-badge.php');?>
 </div>
 
-		<!-- ARTICLE PREV TEMPLATE -->
-	<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>
+	<!-- ARTICLE PREV TEMPLATE -->
+<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>
 
-	<?php include_once($config['include_path_admin'].'showerrors.php'); ?>
-	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
-			<?php include_once($config['include_path_admin'].'articlelib.php');?>
+<?php include_once($config['include_path_admin'].'articlelib.php');?>
+
+<?php include_once($config['include_path_admin'].'showerrors.php'); ?>
+
+<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 
 </body>
 </html>

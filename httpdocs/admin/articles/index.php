@@ -103,7 +103,7 @@
 
 <?php include_once($config['include_path_admin'].'head.php');?>
 
-<body>
+<body id="article-list">
 	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
@@ -118,6 +118,7 @@
 			<section id="edit-articles">
 				<!-- ARTICLES RESUME INFO --> 
 				<?php include_once($config['include_path_admin'].'view_articles_resume.php'); ?>
+				
 				<?php 
 		     		$userType_URL = $config['this_admin_url'].'articles/';
 

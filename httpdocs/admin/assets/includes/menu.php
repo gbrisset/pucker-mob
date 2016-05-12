@@ -12,7 +12,7 @@
 			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
 
 			<li class="small-12 columns no-border-top search-in-menu">
-				<form method="get" action="/search" id="serch-menu-form">
+				<form method="get" action="<?php echo $config['this_url']; ?>admin/search" id="serch-menu-form">
 			    	<div class="small-12">
 					  	<div class="small-10 columns no-padding ">
 							<input class="no-border-right" tabindex="1" id="search-menu" name="search-menu" type="search" placeholder="Search..." autocomplete="off" />

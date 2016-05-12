@@ -47,6 +47,20 @@
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
 
+	  <script>
+      $(function() {	
+          $('.editor').froalaEditor({
+          	  key: 'UcbaE2hlypyospbD3ali==',
+          	  height: 420,
+          	  placeholderText: 'Start Writing Here.',
+		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
+          });
+      });
+</script> 
+
 </head>
 <?php 
 	$blogger = false; $pro_blogger = false; $admin_user = false; $externalWriter = false; $pro_admin = false;

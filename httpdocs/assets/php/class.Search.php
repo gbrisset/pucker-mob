@@ -18,38 +18,8 @@ class Search {
 		$this->value = $value;
 		$pdo = $this->con->openCon();
 
-				/*$queryString = "SELECT article.*, parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name
-						FROM categories AS cat, categories AS parent 
-
-						INNER JOIN ( 
-							SELECT articles.article_id, articles.article_title, article_ingredients, articles.article_tags, articles.article_seo_title, articles.article_desc, nc.cat_id, nc.cat_name, nc.cat_dir_name, nc.lft, nc.rgt, contributor_name, contributor_seo_name  
-							FROM articles  
-
-							INNER JOIN (article_categories, categories as nc ) 
-							ON articles.article_id = article_categories.article_id  
-							AND article_categories.cat_id = nc.cat_id 
-
-							LEFT JOIN (article_contributors, article_contributor_articles ) 
-							ON articles.article_id = article_contributor_articles.article_id  
-							AND article_contributors.contributor_id = article_contributor_articles.contributor_id 
-
-							WHERE articles.article_status = 1 
-							AND ( article_title LIKE '%".$value."%' OR article_tags LIKE '%".$value."%' OR article_ingredients LIKE '%".$value."%' )
-							GROUP BY articles.article_id 
-	
-						) as article  
-
-					WHERE article.lft BETWEEN (parent.lft+1) 
-					AND (parent.rgt -1)
-					AND cat.cat_id = article.cat_id 
-					AND parent.lft > 1
-					OR (article.cat_id IN (115, 3))
-			 
-				GROUP BY article.article_id 
-				ORDER BY  (article.article_title LIKE '%".$value."%') + (article.article_tags LIKE '%".$value."%') + (article.article_ingredients LIKE '%".$value."%')  desc";
-*/
 		$queryString = "SELECT articles.article_title, articles.creation_date, articles.article_seo_title, articles.article_id, contributor_name, 
-						contributor_seo_name, article_contributors.contributor_id, categories.cat_id, cat_dir_name, cat_name 
+						contributor_seo_name, article_contributors.contributor_id, categories.cat_id, cat_dir_name, cat_name
 						FROM articles 
 						INNER JOIN ( article_categories, categories, article_contributor_articles, article_contributors ) 
 						ON (articles.article_id =  article_categories.article_id 
@@ -106,7 +76,8 @@ class Search {
 	}
 
 	public  function get_article_filtered( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $title ) {
-		
+		$title = filter_var($title, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
 		$pdo = $this->con->openCon();
 
 		switch ($order) {
@@ -125,7 +96,7 @@ class Search {
 		$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, 
-					nc.cat_id
+					nc.cat_id, article_contributors.contributor_name, article_contributors.contributor_seo_name, a.creation_date, a.article_status
 
 				FROM articles as a
 

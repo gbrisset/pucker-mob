@@ -1,5 +1,5 @@
 <?php
-
+$isHomepage = false;
 $isArticle = true;
    //ISSUE WITH ANNA ARTICLE
 $current_url = isset($_SERVER['SCRIPT_URI']) ? $_SERVER['SCRIPT_URI'] : '';
@@ -40,7 +40,7 @@ if(!is_null($categoryInfo)){
 		header('Location: http://www.puckermob.com/lifestyle/so-youd-like-to-be-a-phonesex-operator-a-helpful-quiz');
 		die;
 	}
-
+	$article_link = '';
 	//CHECK IF ARTICLES IN REGISTER UNDER THAT CATEGORY
 	$verifyInCat = $mpArticle->verifyArticleInCategory( $articleInfo['article_id'], $categoryInfo['cat_id']);
 	
@@ -88,11 +88,25 @@ if(!is_null($categoryInfo)){
 	<body id="article" class="mobile">
 		<?php } ?>
 		
+
+		<!-- UNDERTONE -->
+		<?php if( isset($article_id) && ( $article_id == 15104 || $article_id == 14613 || $article_id == 14873) ) { ?>
+			<!-- /73970039/UT_SS_FP -->
+			<div id='div-gpt-ad-1461622964696-3'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
+				</script>
+			</div>
+
+		<?php } ?>
+
 		<?php if(isset($article_id) && $article_id == 13305 ){?>
 			<div id="ros_adoop"></div> 
 		<?php } ?>
 		
 		<?php include_once($config['include_path'].'header.php');?>
+				<?php include_once($config['include_path'].'header_ad.php');?>
+
 		
 		<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-bottom: 5px; margin-top: 5px;  }</style>
 
@@ -169,23 +183,24 @@ if(!is_null($categoryInfo)){
 <body id="articleslide">
 	<?php }else{ ?>
 	<body id="article">
+	<?php } ?>
+
+		<!-- UNDERTONE -->
+		<?php if( isset($articleInfoObj) && ( $articleInfoObj['article_id'] == 15104 || $articleInfoObj['article_id'] == 14613 || $articleInfoObj['article_id'] == 14873) ) { ?>
+			<!-- /73970039/UT_SS_FP -->
+			<div id='div-gpt-ad-1461622964696-3'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
+				</script>
+			</div>
+
 		<?php } ?>
+
 		<!--<div id="ros_adoop"></div>-->
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
-		<!-- Go to www.addthis.com/dashboard to customize your tools 
-		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4498040efc634" ></script>
-		<script type="text/javascript">
-			
-			if(document.readyState === "complete") {
-				addthis.init();
-			}
-			else {
-			  //Add onload or DOMContentLoaded event listeners here: for example,
-			  window.addEventListener("onload", function () { addthis.init(); }, false);
-			}
-	</script>-->
-<main id="main" class="row panel sidebar-on-right" role="main">
+
+	<main id="main" class="row panel sidebar-on-right" role="main">
 
 	<?php if(!$detect->isMobile()){?>
 	<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="min-height:none !important; height:auto; ">
@@ -212,7 +227,7 @@ if(!is_null($categoryInfo)){
 			<?php if(!$detect->isMobile()){?>
 			<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){?>
 			
-			<div class="row hide-for-print like-us-fb clear" style="margin-bottom: 2rem;">
+			<div class="columns no-padding hide-for-print like-us-fb clear" style="margin-bottom: 2rem;">
 				<p class="columns small-2">Join the Mob!
 					<div class="columns small-9" >
 						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPuckerMob%2F1492027101033794&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=1473110846264937" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:25px; width: 100%;" allowTransparency="true"></iframe>	
@@ -223,29 +238,31 @@ if(!is_null($categoryInfo)){
 			
 			<?php }
 		}?>
-		
-					<?php include_once( $config['include_path'].'similararticles.php'); ?>
+		<?php if( $article_id != 14479 && $article_id != 14576  && $article_id != 15109   && $article_id != 15271 && $article_id != 15284  && $article_id != 15488 ){?>
+		<!-- NewsMax 
+		<div class="columns small-12 margin-top">
+			<div id="NmWg4152" ></div>
+			<script type="text/javascript" src ='https://cdn.nmcdn.us/js/connectV3.js'></script><script type="text/javascript">  NM.init({WidgetID: 4152})</script>
+		</div>-->
+		<!-- ADBLADE-->
+		<div class="columns small-12 margin-top">
+			<ins class="adbladeads" data-cid="21331-3493314697" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins>
+			<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
+		</div>
 
-		<?php //if( !$promotedArticle ){ ?>
+		<?php }?>
 		
-		<!--<section id="similar-results" class="row padding small-12 hide-for-print " style="margin-top: 12px;margin-bottom: -10px;padding: 0;">
-			<h2 style="margin-top:30px;">Also in <span>PUCKERMOB:</span></h2>			
-		</section>-->
-		<!--<div class="loader"><center><img class="load_image" src="https://s3.amazonaws.com/pucker-mob/images/Preloader.gif"></center></div>-->
-		<?php //}?>
+		<!-- Also In PM -->
+		<?php include_once( $config['include_path'].'similararticles.php'); ?>
+
 		
 	</section>
 	<?php include_once($config['include_path'].'rightsidebar.php');?>
 
-
-
-	<!-- LEFT SIDE BAR -->
-	<?php  //include_once($config['include_path'].'left_side_bar.php'); ?>
 </main>
 
 <?php 
 include_once('admin/fb/fbfunctions.php'); 
-//include_once($config['include_path'].'ads_to_load.php');
 include_once($config['include_path'].'bottomscripts.php');
 ?>
 

@@ -206,7 +206,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<?php }?>	
 
 						<div class="row padding-top">
-							<button type="button" id="preview" name="preview" class="small-12 large-6 columns radius show-for-large-up">PREVIEW</button>
+							<button type="button" id="preview" name="preview" class="small-12 large-6 columns radius show-for-large-up preview-button">PREVIEW</button>
 
 							<button type="submit" id="submit" name="submit" class="small-12 large-5 columns radius">SAVE</button>
 

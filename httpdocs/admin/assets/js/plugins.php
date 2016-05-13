@@ -55,7 +55,7 @@ var EarningsObj = {
 					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
 
 					total_earned = total_earned + amount;
-					info = [ val[0].date, amount, '$'+last_month_amount];
+					info = [ val[0].date, amount, last_month_amount];
 					chart.push(info);
 				});
 
@@ -77,6 +77,7 @@ var EarningsObj = {
 			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
 			data: { task:'get_chart_data_range', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
 		}).done(function(data) {
+		console.log(data);
 			if( data != "false" ){ 
 				data = $.parseJSON(data);
 				$(data).each( function(e){	
@@ -91,7 +92,7 @@ var EarningsObj = {
 					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
 
 					total_earned = total_earned + amount;
-					info = [ val[0].date, '$'+amount, last_month_amount];
+					info = [ val[0].date, amount, last_month_amount];
 					chart.push(info);
 				});
 

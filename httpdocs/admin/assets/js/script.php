@@ -527,19 +527,21 @@ $(document).ready(function (){
 
 	//PUBLISH ARTICLE
 	if( $('#publish') ){
-		$('#publish').on('click', function(e){
-			var statusVal = $(this).attr('data-info');
-			$.ajax({
-			  type: "POST",
-			  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-			  data: { status: statusVal, a_i: $('#a_i').val(), task:'update_status' }
-			}).done(function(data) {
+		$('.publish-button').each(function(){
+			$(this).on('click', function(e){
+				var statusVal = $(this).attr('data-info');
+				$.ajax({
+				  type: "POST",
+				  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+				  data: { status: statusVal, a_i: $('#a_i').val(), task:'update_status' }
+				}).done(function(data) {
 
-				if(data == "false" ){
-					alert("You need to Upload an Image in order to make this article Live!");
-				}else{
-					location.reload();
-				}
+					if(data == "false" ){
+						alert("You need to Upload an Image in order to make this article Live!");
+					}else{
+						location.reload();
+					}
+				});
 			});
 		});
 	}
@@ -666,33 +668,36 @@ $('#show-image').on('click', function(e){
 
 /*PREVIEW BUTTON*/
 if($('#preview')){
-	$('#preview').click(function(e){
-		e.preventDefault();
-		var preview = $(this),
-		prev_box = $('#preview-article'),
-		title = $('#article_title-s').val(),
-		body = $('.fr-element').html(),
-		contributor = $('#contributor-name').val(),
-		category = $('#article_categories option:selected').text(),
-		//date =  new Date($('#creation_date').val()),
-		template = $(prev_box).html(),
-		id = $('#a_i').val();
+	$('.preview-button').each(function() {
+	console.log($(this));
+		$(this).click(function(e){
+			e.preventDefault();
+			var preview = $(this),
+			prev_box = $('#preview-article'),
+			title = $('#article_title-s').val(),
+			body = $('.fr-element').html(),
+			contributor = $('#contributor-name').val(),
+			category = $('#article_categories option:selected').text(),
+			//date =  new Date($('#creation_date').val()),
+			template = $(prev_box).html(),
+			id = $('#a_i').val();
 
-		$('.close').click(function(e){
-			$('body').removeClass('show-modal-box-prev-art');
-		});
+			$('.close').click(function(e){
+				$('body').removeClass('show-modal-box-prev-art');
+			});
 
-		$('#article-title').text(title);
-		$('#article-body').html(body);
-		
-		if( $('#a_i').length > 0 ){
-			$('#article_img').attr('src', 'http://images.puckermob.com/articlesites/puckermob/large/'+id+'_tall.jpg');
-		}else{
-			$('#article_img').attr('src', $('img[data-dz-thumbnail]').attr('src') );
-		}
-		
-		$('body').addClass('show-modal-box-prev-art');
+			$('#article-title').text(title);
+			$('#article-body').html(body);
+			
+			if( $('#a_i').length > 0 ){
+				$('#article_img').attr('src', 'http://images.puckermob.com/articlesites/puckermob/large/'+id+'_tall.jpg');
+			}else{
+				$('#article_img').attr('src', $('img[data-dz-thumbnail]').attr('src') );
+			}
+			
+			$('body').addClass('show-modal-box-prev-art');
 	
+		});
 	});
 }
 

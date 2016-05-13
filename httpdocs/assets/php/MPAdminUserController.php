@@ -1080,6 +1080,7 @@ End password reset methods
 			'returnRowAsSingleArray' => true
 			));
 
+		$last_month_data = $this->getContributorEarningChartLastMonthData( $data );
 		$array_earnins = [];
 		$earnings_chart = [];
 		
@@ -1090,19 +1091,29 @@ End password reset methods
 		foreach($result as $earnings){
 			$earnings_chart['date'] = $earnings['date'];
 			$earnings_chart['current_pageviews'] = $earnings['total_usa_pageviews'];
-			$earnings_chart['last_month_pageviews']  = 0;
+			//$earnings_chart['last_month_pageviews']  = 0;
 
-			$array_earnins[] = $earnings_chart;
+			//$array_earnins[] = $earnings_chart;
+			if( count($last_month_data) > 0){
+				foreach($last_month_data as $last_month_earnings){
+					if( date('d', strtotime($earnings_chart['date'])) == date('d', strtotime($last_month_earnings['date']))){
+						$earnings_chart['last_month_pageviews'] = $last_month_earnings['total_usa_pageviews'];
+					}
+				}
+
+				$array_earnins[] = $earnings_chart;
+			}
 		}
 		return $array_earnins;
 	}
 
 	public function getContributorEarningChartLastMonthData( $data ){
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$last_month_start_date = date('Y-m-d', strtotime('first day of last month'));
-		$last_month_end_date = date('Y-m-d', strtotime('last day of last month'));
+	//	$last_month_start_date = date('Y-m-d', strtotime('first day of last month'));
+	//	$last_month_end_date = date('Y-m-d', strtotime('last day of last month'));
+		$last_month_start_date = date('Y-m-d', strtotime("last month", strtotime($data['start_date'])));
+		$last_month_end_date = date('Y-m-d', strtotime("last month", strtotime($data['end_date'])));
 		
-
 		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
 			   FROM google_analytics_data_daily 
 			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 

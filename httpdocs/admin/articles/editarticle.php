@@ -1,6 +1,6 @@
 <?php
 	if(!$adminController->user->checkPermission('user_permission_show_edit_article')) $adminController->redirectTo('noaccess/');
-	
+
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 	$article = $articleResultSet['articles'];
 	$category = $articleResultSet['categories'];
@@ -91,10 +91,11 @@
 
 			}
 			
-			$article = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
-			$article = $article['articles'];
+			$articleObj = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
+			$category = $articleObj['categories'];
+			$article = $articleObj['articles'];
 			$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
-			$category = $article['categories'];
+
 
 
 			//Article ADs
@@ -179,7 +180,7 @@
 					<div class="small-12 xxlarge-4 right padding " id="right-new-article">		
 						<div class="row label-wrapper show-for-xxlarge-up ">
 							<div class="small-12 large-4 column no-padding">
-								<button type="button" id="preview" name="preview" class="show-for-large-up radius wide-button " style="height: 3.3rem;">PREVIEW</button>
+								<button type="button" id="preview" name="preview" class="show-for-large-up radius wide-button preview-button" style="height: 3.3rem;">PREVIEW</button>
 							</div>
 							<div class="small-12 large-4 column">
 								<button type="submit" id="submit" class="columns small-6 radius wide-button elm" name="submit"  style="height: 3.3rem;" >SAVE</button>
@@ -190,7 +191,7 @@
 							if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
 							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
 								<div class="small-12 large-4 column  left no-padding">
-									<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up" style="height: 3.3rem;" ><?php echo $label; ?></button>
+									<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" ><?php echo $label; ?></button>
 								</div>
 							<?php }?>
 						</div>		
@@ -223,11 +224,10 @@
 						<?php }else{
 							$allCategories = $MPNavigation->getAllCategoriesWithArticles();
 							if($allCategories && count($allCategories)){
-
+								
 								if(isset($category[0]) && $category[0]){
 									$category = $category[0];
 								}
-
 						?>
 							<div class="row">
 							    <div>
@@ -235,13 +235,13 @@
 									<select id="article_categories" name="article_categories" class="small-12 left" required>
 										<option value="0">CATEGORY:</option>
 										<?php 
-										foreach($allCategories as $category){ 
+										foreach($allCategories as $cat){ 
 											$selected = '';
 
-											if( $category['cat_id'] == 9 && !$admin_user) continue; 
-											if(isset($category['cat_id']) && $category['cat_id'] == $category['cat_id']) $selected = 'selected';
+											if( $cat['cat_id'] == 9 && !$admin_user) continue; 
+											if( $cat['cat_id'] == $category['cat_id'] ) $selected = 'selected';
 										?>
-											<option id="<?php echo 'category-'.$category['cat_id']; ?>" value="<?php echo $category['cat_id']; ?>" <?php echo $selected; ?>><?php echo $category['cat_name']; ?></option>
+											<option id="<?php echo 'category-'.$cat['cat_id']; ?>" value="<?php echo $cat['cat_id']; ?>" <?php echo $selected; ?>><?php echo $cat['cat_name']; ?></option>
 									<?php }?>
 									</select>									
 								</div>
@@ -370,15 +370,15 @@
 						</div>
 						<?php }?> 
 
-						<div class="row label-wrapper show-for-large-up hide-for-xxlarge-up">
-							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up">PREVIEW</button></div>
-							<div class="small-12 large-4 column"><button type="submit" id="submit" name="submit" style="background-color: #016201;" >SAVE</button></div>
+						<div class="row label-wrapper show-for-large-up">
+							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up radius preview-button"  style="height: 3.3rem;">PREVIEW</button></div>
+							<div class="small-12 large-4 column"><button class="radius" type="submit" id="submit" name="submit" style="height: 3.3rem;" >SAVE</button></div>
 							<?php if( $admin_user || $blogger || $externalWriter ){
 							$label = "PUBLISH";
 							$val = 1;
 							if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
-							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUB"; $val = 1;} ?>
-								<div class="small-12 large-4 column  left no-padding"><button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="show-for-large-up" style="background: #622000; "><?php echo $label; ?></button></div>
+							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
+								<div class="small-12 large-4 column  left no-padding"><button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up  publish-button"  style="height: 3.3rem;"><?php echo $label; ?></button></div>
 							<?php }?>
 						</div>
 					
@@ -422,7 +422,6 @@
 	
 	<!-- BOTTOMSCRIPTS -->
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
-	
 	<script>
 		$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
 	</script>

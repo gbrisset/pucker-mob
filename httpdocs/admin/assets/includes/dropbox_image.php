@@ -48,7 +48,7 @@
 		  paramName: "file", // The name that will be used to transfer the file
 		  maxFiles: '1',
 		  acceptedFiles: '.jpg, .gif, .png, .jpeg',       // allowed image types don't use image/*
-		  autoQueue: false, 
+		  //autoQueue: false, 
 		  maxFilesize: 3, // MB
 		  uploadMultiple: false,
 		  thumbnailWidth: 784,
@@ -78,19 +78,19 @@
 			// Will send the filesize along with the file as POST data.
 			this.on("sending", function(file, xhr, formData) {
 	  			formData.append("filesize", file.size); 
-	  			formData.append("filewidth", file.width); 
-	  			formData.append("fileheight", file.height); 
+	  			//formData.append("filewidth", file.width); 
+	  			//formData.append("fileheight", file.height); 
 			});
 
-			this.on("thumbnail", function(file) {
-	           console.log('thumbnail');
-		    });
+			//this.on("thumbnail", function(file) {
+	           //console.log('thumbnail');
+		    //});
 			
-			this.on("complete", function(file) {
+			//this.on("complete", function(file) {
 			 // console.log(file);
 			
 
-			});
+			//});
 
 		 },
 		 accept: function(file, done) {

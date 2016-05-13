@@ -103,7 +103,7 @@
 
 <?php include_once($config['include_path_admin'].'head.php');?>
 
-<body id="article-list">
+<body>
 	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
@@ -176,12 +176,12 @@
 									?>
 									<tr id="<?php echo 'article-'.$article_id; ?>">
 									  	<td class="border-right">
-									  		<div class=" large-3 columns no-padding-left show-for-large-up">
+									  		<div class=" large-4 columns no-padding-left show-for-large-up">
 												<a href="<?php echo $articleUrl; ?>">
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 												</a>
 											</div>
-											<div class="large-9 columns no-padding" style="display: table-caption">
+											<div class="large-8 columns no-padding" style="display: table-caption">
 												<h2 class="small-12 columns no-padding">
 													<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
 													<a href="<?php echo $articleUrl; ?>">

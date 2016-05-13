@@ -5,31 +5,35 @@
 	if(empty($contributorInfo)) $mpShared->get404();
 	$contributorInfo = $contributorInfo[0];	
 
-	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
-	if (isset($contributorInfo['contributor_id'])){
+	//VERIFY IS USER CAN EDIT OTHER CONTRIBUTORS
+	if(isset($contributorInfo['contributor_id']) && $contributorInfo['contributor_email_address'] != $userInfo['contributor_email_address'] ){
 		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
-	} else $mpShared->get404();
-
-	//	If the user hasn't yet set an image, set $image = default_profile_image.png
-	$image = (isset($contributorInfo['contributor_image']) && $contributorInfo['contributor_image'] != "") ? $contributorInfo['contributor_image'] : 'pm_avatars_1.png';
+	}// else $mpShared->get404();
 	
+
 	//	If the name in the url string doesn't match the logged in user's username...
 	//if ($userInfo['user_name'] != $uri[2]){
 		//	No access
 	//	$adminController->redirectTo('noaccess/');
 	//}
 
+	//	If the user hasn't yet set an image, set $image = default_profile_image.png
+	$image = (isset($contributorInfo['contributor_image']) && $contributorInfo['contributor_image'] != "") ? $contributorInfo['contributor_image'] : 'pm_avatars_1.png';
+	
+
 	//	Set the paths to the image
 	$contImageDir =  $config['image_upload_dir'].'articlesites/contributors_redesign/'.$image;
 	$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$image; 
 	$contImageExists = false;
 
-	//	Verify if the usr has ever SELECTED an image
-	if( isset($image) ){ $contImageExists = file_exists($contImageDir); }
-
 	$contributor_id = $contributorInfo['contributor_id'];
 	$contributor_seo_name = $contributorInfo['contributor_seo_name'];
 	$article_list = $adminController->user->getContributorsArticleList( $contributor_id );
+
+	//	Verify if the usr has ever SELECTED an image
+	if( isset($image) ){ $contImageExists = file_exists($contImageDir); }
+
+	
 
 ?>
 
@@ -101,13 +105,17 @@
 					<h2 class="bold">MY ARTICLES</h2>
 					<div class="small-12 columns no-padding">
 					<?php if(isset($article_list) && $article_list ){?>
-					<table>
+					<table class="small-12">
 						<?php foreach($article_list as $article){
 							$article_url = $config['this_url'].'/'.$article['cat_dir_name'].'/'.$article['article_seo_title'];
 						?>
 						<tr id="article_<?php echo $article['article_id'];?>">
-							<td width="160" class="show-for-large-up no-padding-left"><img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id'];?>_tall.jpg" alt="Article Image"/></td>
-							<td class="no-padding-right"><a href="<?php echo $article_url; ?>" target="blanck"><?php echo $article['article_title'];?></a></td>
+							<td width="160" class="show-for-large-up">
+								<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id'];?>_tall.jpg" alt="Article Image"/>
+							</td>
+							<td class="no-padding-right">
+								<a href="<?php echo $article_url; ?>" target="blanck"><?php echo $article['article_title'];?></a>
+							</td>
 						</tr>
 						<?php }?>
 					</table>

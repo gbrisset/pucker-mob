@@ -7,7 +7,7 @@
 		</div>
 	<?php }?>
 	<?php if(isset($best_article) && $best_article[0]){?>
-	<div class="small-12 columns radius right-side-box half-margin-top">
+	<div class="small-12 columns radius right-side-box half-margin-top margin-bottom">
 		<div class="">
 				<label class="uppercase light-green">BEST performing article:</label>
 				<label >

@@ -2,12 +2,16 @@
 	$userInfo = $adminController->user->data;
 	$contributorInfo = $mpArticle->getContributorInfo( $uri[2] );
 	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
-	if (isset($contributorInfo['contributor_id'])){
-		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
-	} else $mpShared->get404();
 
+	//IF NO CONTRIBUTOR INFO REDIRECT TO NOT FOUND PAGE
 	if(empty($contributorInfo)) $mpShared->get404();
 	//$contributorInfo = $contributorInfo[0];	
+
+	//VERIFY IS USER CAN EDIT OTHER CONTRIBUTORS
+	if(isset($contributorInfo['contributor_id']) && $contributorInfo['contributor_email_address'] != $userInfo['contributor_email_address'] ){
+		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userInfo['contributor_email_address'])) ) $adminController->redirectTo('noaccess/');
+	}// else $mpShared->get404();
+
 
 	//	If the user hasn't yet set an image, set $image = default_profile_image.png
 	$image = (isset($contributorInfo['contributor_image']) && $contributorInfo['contributor_image'] != "") ? $contributorInfo['contributor_image'] : 'pm_avatars_1.png';
@@ -70,9 +74,7 @@
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-
 <?php include_once($config['include_path_admin'].'head.php');?>
-
 <body id="edit-my-profile">
 
 	<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
@@ -236,7 +238,7 @@
 
   	<!-- INFO BADGE -->
 	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
-		<?php include_once($config['include_path_admin'].'info-badge.php');?>
+		<?php include($config['include_path_admin'].'info-badge.php');?>
 	</div>
 
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

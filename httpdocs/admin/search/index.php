@@ -74,7 +74,10 @@
 	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
 	$pageviews_list = [];
 	foreach($usa_pageview_list as $key=>$value){
-		$pageviews_list[$value['article_id']] = $value['total_usa_pv'];
+
+		$total_pv = isset($value['total_usa_pv']) ? $value['total_usa_pv'] : 0;
+		if(isset($value['article_id']))  $pageviews_list[$value['article_id']] = $total_pv;
+
 	}
 
 
@@ -121,48 +124,6 @@
 				<div class="small-12 xxlarge-9 columns no-padding">
 					<section id="articles-list" class="columns margin-top no-padding">
 						<?php if(isset($articles) && $articles ){ ?>
-						<!--<table class="columns small-12 no-padding">
-							<thead>
-							    <tr>
-							      <th class="columns  mobile-12 small-12 medium-7">Article Name</th>
-							      <th  class="columns small-2">U.S. VIEWS</th>
-							   
-							    </tr>
-							 </thead>
-							 <tbody>
-							 <?php foreach($articles['articles'] as $articleInfo){
-
-								$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
-								$article_id = $articleInfo["article_id"];
-								$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
-								$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
-								$article_title = $articleInfo['article_title'];
-								$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
-								$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
-								$article_us_traffic = $articleInfo['us_traffic'];
-							
-								if(file_exists($pathToImage)){
-									$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
-								} else {
-									$imageUrl = 'http://images.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
-								}
-								?>
-									<tr id="<?php echo 'article-'.$article_id; ?>" class="columns small-12 no-padding">
-									  	<td class="columns mobile-12 small-12  medium-7">
-									  		<div class="article-image mobile-1 small-1">
-												<a href="<?php echo $articleUrl; ?>">
-													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
-												</a>
-											</div>
-											<h2><a href="<?php echo $articleUrl; ?>"><?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 43); ?></a></h2>
-									  	</td>
-									  	<td  class="columns  small-2 padding-top-center"><?php if(!empty($article_us_traffic)) echo $article_us_traffic; else echo '0'; ?></td>	
-																	  			
-									</tr>
-							<?php }?>
-						    </tbody>
-						</table>-->
-									
 						<table class="columns small-12 no-padding">
 								<thead>
 								    <tr>
@@ -200,12 +161,12 @@
 									?>
 									<tr id="<?php echo 'article-'.$article_id; ?>">
 									  	<td class="border-right">
-									  		<div class=" large-3 columns no-padding-left show-for-large-up">
+									  		<div class=" large-4 columns no-padding-left show-for-large-up">
 												<a href="<?php echo $articleUrl; ?>">
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 												</a>
 											</div>
-											<div class="large-9 columns no-padding" style="display: table-caption">
+											<div class="large-8  columns no-padding" style="display: table-caption">
 												<h2 class="small-12 columns no-padding">
 													<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
 													<a href="<?php echo $articleUrl; ?>">

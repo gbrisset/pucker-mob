@@ -720,7 +720,7 @@ class MPArticleAdminController extends MPArticle{
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category.'));
 		
 		//Check for same seo-name
-		if(isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_seo_title-s']));
+		//if(isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_seo_title-s']));
 
 		$params = $this->helpers->compileParams($post);
 

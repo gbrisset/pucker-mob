@@ -422,9 +422,7 @@
 	
 	<!-- BOTTOMSCRIPTS -->
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
-	<script>
-		$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
-	</script>
+
 	
 	<script>
 		$('#related_article_1').filterByText($('#related_article_textbox_1'), false);

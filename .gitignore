@@ -12,3 +12,8 @@ node_modules/grunt/*
 node_modules/grunt-contrib-jshint/*
 node_modules/grunt-contrib-cssmin/*
 node_modules/grunt-sass/*
+node_modules/*
+subdomains/images/httpdocs/articlesites/.DS_Store
+subdomains/images/httpdocs/.DS_Store
+subdomains/images/.DS_Store
+subdomains/.DS_Store

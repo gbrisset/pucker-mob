@@ -1,5 +1,5 @@
 <?php if($admin_user ){?>
-<div class="small-12 columns show-for-large-up no-padding margin-top">
+<div class="small-12 columns show-for-large-up no-padding half-margin-top">
 	<div class="small-12 columns radius filter-by-status">
 		<h3 class="margin-top bold">FILTER BY</h3>
 		<div class="">

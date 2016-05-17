@@ -22,11 +22,11 @@
 
 ?>
 
-<div class="small-12 columns no-padding-right margin-bottom show-for-large-up">
+<div class="small-12 columns no-padding-right half-margin-bottom show-for-large-up">
 	<div  class="small-12 large-4 xlarge-3 columns  no-padding ">
 		<div style="background-color: #7BB583; " class="small-12 columns articles_resume radius valign-middle">
 			<div class="small-12 columns ">
-				<h3 class="uppercase">Earnings<span style="color: #fff; font-size: 12px; top: -3px; position: relative;"> ( THIS MONTH )</span></h3>
+				<h3 class="uppercase">Earnings<span style="color: #fff; font-size: 12px; top: -3px; position: relative;"> (THIS MONTH)</span></h3>
 				<span class="bold"><?php echo '$'.number_format($current_earnings, 2); ?></span>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius valign-middle">
 			<div class="small-12 columns ">
 				<h3 class="uppercase">Level</h3>
-				<span class="bold" style="font-size: 22px;"><?php echo 'PRO ( $'. number_format($rate, 2) .' CPM )' ?></span>
+				<span class="bold" style="font-size: 22px;"><?php echo 'PRO ($'. number_format($rate, 2) .' CPM)' ?></span>
 			</div>
 		</div>
 	</div>

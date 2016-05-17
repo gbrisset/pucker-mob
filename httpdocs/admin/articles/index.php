@@ -188,7 +188,7 @@
 														<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
 													</a>
 													<?php if($admin){?>
-														<span class="show-for-large-up"><a href="<?php echo $config['this_url']; ?>contributors/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>
+														<span class="show-for-large-up"><a href="<?php echo $config['this_admin_url']; ?>profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>
 													<?php }?>
 												</h2>
 												
@@ -242,7 +242,7 @@
 					<?php include_once($config['include_path_admin'].'statuses.php'); ?>
 					<?php include_once($config['include_path_admin'].'filter_by_usertype.php'); ?>
 
-					<div class="small-12 columns show-for-large-up margin-top no-padding">
+					<div class="small-12 columns show-for-large-up half-margin-top no-padding">
 						<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
 					</div>
 				</div>

@@ -54,7 +54,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						//Replace 2nd article with Adblade
 						if($articleNumber == 1 ){?>
 							<?php if( !$has_sponsored  ){ ?>
-							<?php if( $articleInfoObj['article_id'] != 14472 && $articleInfoObj['article_id'] != 15109){ ?>
+							<?php if( $articleInfoObj['article_id'] != 14472 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
 							<style>#bbrlContainer{ left:-10px; }</style>
 							<div class="columns todays-favorites fade-in-out">
 								<!-- BEGIN JS TAG - puckermob.com Desktop 300x250 
@@ -71,7 +71,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						//Replace 6th article ntent ad
 						if($articleNumber == 6 ){
 							if(!$has_sponsored && (isset($isHomepage) && !$isHomepage ) && !$sponsored_aricle  && $article['article_id'] != 14472 ){ ?>
-							<!-- NTENT ADS -->
+							<!-- NTENT ADS
 							<div class="columns todays-favorites fade-in-out">
 							<script type="text/javascript" language="JavaScript">
 							var era_rc = {
@@ -106,7 +106,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 								.era_ad_block.thumbnail.ERA_RC_w300r1i240 .vsw-ad-item{margin:0 !important;}
 								.era_ad_block.thumbnail div.vsw-ad-rc{border-bottom: 2px solid #232323;}
 							</style>
-							</div>
+							</div>-->
 							<!-- END NTENT ADS -->
 						<?php } 
 					}

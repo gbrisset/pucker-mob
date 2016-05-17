@@ -117,10 +117,10 @@
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" >
 				<!-- HOT TOPICS --> 
-				<div class="small-12  columns margin-bottom no-padding">
+				<div class="small-12  columns half-margin-bottom no-padding">
 					<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
 				</div>
-				<div class="small-12  columns margin-bottom no-padding">
+				<div class="small-12  columns half-margin-bottom no-padding">
 					<?php include_once($config['include_path_admin'].'top_bloggers.php'); ?>
 				</div>
 

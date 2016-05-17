@@ -106,14 +106,8 @@
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
 
 			<!-- Calendar -->
-			<div id="calendar-section" class="small-12 columns right margin-bottom">
-				<div id="reportrange" class="radius">
-					<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-					<input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
-					<i class="fa fa-caret-down" aria-hidden="true"></i>
+			<?php include_once($config['include_path_admin'].'calendar.php'); ?>
 
-				</div>
-			</div>
 			
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">

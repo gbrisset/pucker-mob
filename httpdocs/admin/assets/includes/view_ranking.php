@@ -19,7 +19,7 @@
 	$pageviews = isset($earnings['total_us_pageviews']) ? number_format($earnings['total_us_pageviews']) : 0;
 ?>
 
-<div class="small-12 columns no-padding-right margin-bottom show-for-large-up no-padding">
+<div class="small-12 columns no-padding-right half-margin-bottom show-for-large-up no-padding">
 	<div  class="small-12 large-7 xlarge-6 columns ">
 		<div style="background-color: #867BB5; " class="small-12 columns articles_resume radius valign-middle" >
 			<h3 class="small-12 columns uppercase bold" style="line-height: 1.2;">
@@ -37,8 +37,8 @@
 	<div  class="small-12 large-3 columns  show-for-xlarge-up ">
 		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius valign-middle">
 			<div class="small-12 columns ">
-				<h3 class="uppercase">U.S. Visits <span style="color: #fff; font-size: 12px; top: -3px; position: relative;"> ( THIS MONTH )</span></h3>
-				<span class="bold"><?php echo $pageviews; ?></span>
+				<h3 class="uppercase">U.S. Visits <span style="color: #fff; font-size: 12px; top: -3px; position: relative;"> (THIS MONTH)</span></h3>
+				<span class="bold"><?php echo number_format($pageviews); ?></span>
 			</div>
 		</div>
 	</div>

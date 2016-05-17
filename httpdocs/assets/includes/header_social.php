@@ -2,33 +2,12 @@
 
 	<div class="small-12" data-url="">
 		<div class="row social-media-container social-media-container-header" style=" display:block !important;">
-			<?php //if($article_id == 13516){?>
 					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-    					<a class="a2a_button_facebook" style="
-						    background: #3b5998;
-						    width: 100%;
-						    "><label class="label-social-button-2-mobile" style="padding:8px;"><i class="fa fa-facebook-square" ></i>SHARE ON FACEBOOK</label></a>
-						    			<script src="//static.addtoany.com/menu/page.js"></script>
-
+    					<a class="a2a_button_facebook" style="background: #3b5998; width: 100%;">
+    						<label class="label-social-button-2-mobile" style="padding:8px;"><i class="fa fa-facebook" style="margin-right:10px"></i>Share on Facebook</label></a>
+						    <script src="//static.addtoany.com/menu/page.js"></script>
 					</div>
-				<?php //}else{ ?>
-			<!--<a class="addthis_button_facebook small-12 left">
-				<label class="label-social-button-2-mobile no-radius left" style="  padding: 0.8rem 0 0.6rem 0;" >
-					<i class="fa fa-facebook small-2"></i>
-					<p class="small-9" style="
-					    font-size: 1.1rem !important;
-					    color: #fff;
-					    font-family: OsloBold !important;
-					    display: inline-block;
-					    padding: 0;
-					    margin: 0 !important;
-					    top: -1px;
-					    position: Relative;
-					      text-transform: uppercase;
-					">Share On Facebook</p>
-				</label>
-			</a>-->
-			<?php //}?>
+		
 		</div> 
 	</div>
 </div>

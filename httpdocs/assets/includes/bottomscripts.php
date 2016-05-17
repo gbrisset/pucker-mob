@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_345678e" ></script>
+  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_3456788e" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
@@ -27,14 +27,14 @@
 <?php if ( !$detect->isMobile() ) { ?>
 
 
-  <?php if($article_id != 8560 && $article_id != 14472 ){?>
-    
+  <?php if($article_id != 8560 && $article_id != 14472 && $article_id != 15284 && $article_id != 15488 ){?>
+    <!--
     <div id="mb_container"></div> 
     <div id="mb_video_sponso"></div> 
     <script type="text/javascript"> (function(){ var sc = document.createElement('script'); sc.src = 'http://player.mediabong.net/se/924.js?url='+encodeURIComponent(document.location.href); sc.type = 'text/javascript'; sc.async = true; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s); })(); </script>
- 
+ -->
  <?php } ?>
-<?php if( !$sponsored_aricle ){?>
+<?php //if( !$sponsored_aricle ){?>
     
     <div id="evolve_footer"></div>
 
@@ -42,17 +42,15 @@
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
      
       <!-- LELO -->
-      <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109){?>
+      <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 ){?>
         <script type="text/javascript">
-          netseer_tag_id="19129";
-          netseer_task="in-image";
-          netseer_inview_status="disabled";
+        netseer_tag_id="19129"; 
         </script>
-        <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
+        <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
       <?php } ?>
     <?php }  ?>
 
- <?php } ?>
+ <?php //} ?>
 
 
    <!--Puckermob.com CORNERSTREAM Validation Test Tag 
@@ -79,46 +77,80 @@
       
       if(isset($articleInfoObj) && $articleInfoObj){ ?>
         <!-- LELO -->
-        <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873){ ?>
+        <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 && $article_id != 15488){ ?>
         
-         <!-- ANSWERS SLIDER UNIT -->
             <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
 
-            <div id="vm_inline"></div>
-            <script>
-                window._videomosh = window._videomosh || [];
-                !function (e, f, u) {
-                    e.async = 1;
-                    e.src = u;
-                    f.parentNode.insertBefore(e, f);
-                }(document.createElement('script'),
-                        document.getElementsByTagName('script')[0],
-                        'http://player.videomosh.com/players/loader/loader_final4.js');
-                _videomosh.push({
-                    publisher_key: "sequelmedia",
-                    mode: "slider",
-                    container: "vm_inline",
-                    incontent_mobile_id: "23002",
-                    incontent_desktop_id: "",
-                    target_type: "mobile"
-                });
-            </script>
+             <!-- ANSWERS SLIDER UNIT -->
+           <div id="vm_inline"></div>
+          <script>
+              window._videomosh = window._videomosh || [];
+              !function (e, f, u) {
+                  e.async = 1;
+                  e.src = u;
+                  f.parentNode.insertBefore(e, f);
+              }(document.createElement('script'),
+                      document.getElementsByTagName('script')[0],
+                      'http://player.videomosh.com/players/loader/loader_final4.js');
+              _videomosh.push({
+                  publisher_key: "sequelmedia",
+                  mode: "slider",
+                  container: "vm_inline",
+                  incontent_mobile_id: "23002",
+                  incontent_desktop_id: "42300",
+                  target_type: "mix"
+                          });
+          </script>
 
-        <?php if( !$sponsored_aricle ){ ?>
 
          <!-- NETSEER AD IN-IMAGE -->
-             <script type="text/javascript">
-              netseer_tag_id="20429";
-              netseer_task="in-image";
-              netseer_inview_status="disabled";
-              </script>
-             <script type="text/javascript" src="http://ps.ns-cdn.com/dsatserving2/scripts/netseerads.js"></script>
-         <?php  } ?>  
+            <script type="text/javascript">
+            netseer_tag_id="19129"; 
+            </script>
+            <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
 
-        <?php  } ?>
+
+        <!-- kixer adhesion -->
+        <!-- Start Pucker Mob - Adhesion - iframe buster code -->
+        <div id='__kx_ad_4915'></div>
+        <script type="text/javascript" language="javascript" id="__kx_tag_4915">
+        var __kx_ad_slots = __kx_ad_slots || [];
+
+        (function () {
+          var slot = 4915;
+          var h = false;
+          var doc = document;
+          __kx_ad_slots.push(slot);
+          if (typeof __kx_ad_start == 'function') {
+            __kx_ad_start();
+          } else {
+            if (top == self) {      var s = doc.createElement('script');
+              s.type = 'text/javascript';
+              s.async = true;
+              s.src = '//cdn.kixer.com/ad/load.js';
+              s.onload = s.onreadystatechange = function(){
+                if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+                  h = true;
+                  s.onload = s.onreadystatechange = null;
+                  __kx_ad_start();
+                }
+              };
+              var x = doc.getElementsByTagName('script')[0];
+              x.parentNode.insertBefore(s, x);
+            } else {        var tag = doc.getElementById('__kx_tag_'+slot);       var win = window.parent;
+              doc = win.document;       var top_div = doc.createElement("div");       top_div.id = '__kx_ad_'+slot;
+              doc.body.appendChild(top_div);
+              var top_tag = doc.createElement("script");      top_tag.id = '__kx_top_tag_'+slot;
+              top_tag.innerHTML = tag.innerHTML;
+              doc.body.appendChild(top_tag);
+            }
+          }
+        })();
+        </script>
+        <!-- End Pucker Mob - Adhesion - iframe buster code -->
       <?php  } ?>
-
-      <?php if( $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 ){ ?>
+<?php  } ?>
+      <?php if( $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 ){ ?>
           <script>
             (function() 
             { 

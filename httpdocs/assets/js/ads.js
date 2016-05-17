@@ -92,31 +92,27 @@ if($('body').hasClass('mobile')) {
 	
 		
 			//LELO
-			if(article_id == 14479 || article_id == 14576 ||  article_id == 15109 ){
-				inBodyAd.loadInArticleAd( 'article-body', 4, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/breaking_news_300x250_v1.gif" /></a>', tag);		
-				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/shaking_app_300x250_v2.gif" /></a>', tag);		
+			if(article_id == 14479 || article_id == 14576 ||  article_id == 15109 || article_id == 15271){
+				inBodyAd.loadInArticleAd( 'article-body', 4, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/Remoji_300x250.gif" /></a>', tag);		
+				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/Remoji_300x250.gif" /></a>', tag);		
 			}else{ 
-				//ANSWERS
-				inBodyAd.loadInArticleAd( 'article-body', 12, 0, "<div id=\"vm_inline\"></div><script type='text/javascript'> window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], 'http://player.videomosh.com/players/loader/loader_final4.js'); _videomosh.push({  publisher_key: \"sequelmedia\",  mode: \"incontent\",  container: \"vm_inline\", incontent_mobile_id: \"9834\", target_type: \"mix\", backfill: \"<div id='gpt-backfill'></div><script type='text/javascript'> var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); })();  googletag.cmd.push(function() {googletag.defineSlot('/27755252/sequel_media/puckermob.com', [300, 250], 'gpt-backfill').addService(googletag.pubads());googletag.pubads().enableSingleRequest();googletag.enableServices();});googletag.cmd.push(function() { googletag.display('gpt-backfill'); });</scr\"+\"ipt>\" });</script>", tag);		
+			if(article_id != 15284 &&  article_id != 15488 ){
 				
-				
-				
+				inBodyAd.loadInArticleAd( 'article-body', 4, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6383502588"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);
+
 				//ADNEMOS http://www.puckermob.com/relationships/to-the-friend-i-thought-would-be-there-on-my-wedding-day
 				if(article_id == 10534){ 
 					inBodyAd.loadInArticleAd( 'article-body', 8, 0, "<script type='text/javascript' src='//rtb.adnemo.com/sys/adnemo.js?pzoneid=4269&dmid=444&height=250&width=300&tld=puckermob.com_mobile&cb=1889485789'></script>", tag);
 				}else if(article_id == 14820){
 					inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script type="text/javascript">function myAdDoneFunction(spotx_ad_found)  { if(spotx_ad_found)  {}else {}}</script><script type="text/javascript" src="//search.spotxchange.com/js/spotx.js" data-spotx_channel_id="148392" data-spotx_ad_unit="incontent" data-spotx_ad_done_function="myAdDoneFunction" data-spotx_content_width="300" data-spotx_content_height="250" data-spotx_loop="1" data-spotx_ad_volume="0" data-spotx_autoplay="1" data-spotx_ad_format="html5" data-spotx_https="0"></script>', tag);
 				}else{
-					inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8978874786792646" data-ad-slot="6383502588"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>', tag);
+					//ANSWERS
+					//inBodyAd.loadInArticleAd( 'article-body', 8, 0, "<div id=\"vm_inline\"></div><script type='text/javascript'> window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], 'http://player.videomosh.com/players/loader/loader_final4.js'); _videomosh.push({  publisher_key: \"sequelmedia\",  mode: \"incontent\",  container: \"vm_inline\", incontent_mobile_id: \"9834\", target_type: \"mix\", backfill: \"<div id='gpt-backfill'></div><script type='text/javascript'> var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); })();  googletag.cmd.push(function() {googletag.defineSlot('/27755252/sequel_media/puckermob.com', [300, 250], 'gpt-backfill').addService(googletag.pubads());googletag.pubads().enableSingleRequest();googletag.enableServices();});googletag.cmd.push(function() { googletag.display('gpt-backfill'); });</scr\"+\"ipt>\" });</script>", tag);		
+					inBodyAd.loadInArticleAd( 'article-body', 8, 0, "<div id=\"vm_inline\"></div><script type='text/javascript'> window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], 'http://player.videomosh.com/players/loader/loader_final4.js'); _videomosh.push({  publisher_key: \"sequelmedia\",  mode: \"incontent\",  container: \"vm_inline\", incontent_mobile_id: \"9834\", incontent_desktop_id: \"42296\",  target_type: \"mix\", backfill:\"<script src='//ib.3lift.com/ttj?inv_code=puckermob_article_sub'></scr\"+\"ipt>\"}); </script>", tag);
 				}
 
-				inBodyAd.loadInArticleAd( 'article-body', 4, 0, '<div id=\'__kx_ad_4251\'></div><script type="text/javascript" language="javascript" id="__kx_tag_4251">var __kx_ad_slots = __kx_ad_slots || []; (function () { var slot = 4251; var h = false; var doc = document; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == \'function\') { __kx_ad_start(); } else { if (top == self) { var s = doc.createElement(\'script\'); s.type = \'text/javascript\'; s.async = true; s.src = \'//cdn.kixer.com/ad/load.js\'; s.onload = s.onreadystatechange = function(){ if (!h && (!this.readyState || this.readyState == \'loaded\' || this.readyState == \'complete\')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = doc.getElementsByTagName(\'script\')[0]; x.parentNode.insertBefore(s, x); } else { var tag = doc.getElementById(\'__kx_tag_\'+slot); var win = window.parent; doc = win.document; var top_div = doc.createElement("div"); top_div.id = \'__kx_ad_\'+slot; doc.body.appendChild(top_div); var top_tag = doc.createElement("script"); top_tag.id = \'__kx_top_tag_\'+slot; top_tag.innerHTML = tag.innerHTML; doc.body.appendChild(top_tag); }}})();</script>', tag);
-
-							
-				
-
-				//MEME
-				//inBodyAd.loadInArticleAd( 'article-body', 12, 0, '<script>var ourBBBDomain = "growfoodsmart.com"; </script><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><div id="mvp"></div><script id="tme3" type="text/javascript" src = \'http://growfoodsmart.com/sas/player/avMul.php?&sPlt=Direct&sCmpID=10269&sSlr=133&creativeID=123&sDmn=${REFERER_URL}&channelID=56e97118181f4655728b4618\'></script>', tag);
+				inBodyAd.loadInArticleAd( 'article-body', 12, 0, '<div id=\'__kx_ad_4251\'></div><script type="text/javascript" language="javascript" id="__kx_tag_4251">var __kx_ad_slots = __kx_ad_slots || []; (function () { var slot = 4251; var h = false; var doc = document; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == \'function\') { __kx_ad_start(); } else { if (top == self) { var s = doc.createElement(\'script\'); s.type = \'text/javascript\'; s.async = true; s.src = \'//cdn.kixer.com/ad/load.js\'; s.onload = s.onreadystatechange = function(){ if (!h && (!this.readyState || this.readyState == \'loaded\' || this.readyState == \'complete\')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = doc.getElementsByTagName(\'script\')[0]; x.parentNode.insertBefore(s, x); } else { var tag = doc.getElementById(\'__kx_tag_\'+slot); var win = window.parent; doc = win.document; var top_div = doc.createElement("div"); top_div.id = \'__kx_ad_\'+slot; doc.body.appendChild(top_div); var top_tag = doc.createElement("script"); top_tag.id = \'__kx_top_tag_\'+slot; top_tag.innerHTML = tag.innerHTML; doc.body.appendChild(top_tag); }}})();</script>', tag);
+			}
 				
 			}
 			
@@ -152,15 +148,15 @@ if($('body').hasClass('mobile')) {
 			
 
 				//LELO
-				if(article_id == 14479 || article_id == 14576 || article_id == 14472 || article_id == 15104 ||  article_id == 15109 ){}else{
-					if( second_p > 0 ){//CARAMBOLA
-					//	inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script class="carambola_InContent" type="text/javascript">(function (i,d,s,o,m,r,t,g) {var e=d.getElementById(r);if(e===null){ var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);} else { i[t](2) } })(window, document, \'InContent\', \'script\', \'mediaType\', \'carambola_proxy\',\'Cbola_initializeProxy\',\'http://\'+\'route.carambo.la/inimage/getlayer?pid=spdsh12\')<\/script>', tag);
-						//if(article_id == 10079){
-							
-							inBodyAd.loadInArticleAd( 'article-body', 3, 0, '<div><div id="mb_video_syncad" class="floating_banner no_video"></div></div>', tag);
+				if(article_id == 14479 || article_id == 14576 || article_id == 14472 || article_id == 15104 ||  article_id == 15109 || article_id == 15271){}else{
+					if( second_p > 0 ){
+						
+						if(article_id != 15284 && article_id != 15488){
 
+							inBodyAd.loadInArticleAd( 'article-body', 3, 0, '<div><div id="mb_video_syncad" class="floating_banner no_video"></div></div>', tag);
+							$('#inarticle3-ad').removeClass('columns');
 							//inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_mid_article"></script>', tag);
-						//}
+						}
 					}
 				}
 		}

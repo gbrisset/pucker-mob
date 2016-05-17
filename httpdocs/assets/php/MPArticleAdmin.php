@@ -1940,7 +1940,7 @@ class MPArticleAdmin{
 				$r['message'] = "Sorry, one or more required fields were missing.  Please fill in all required fields and try again.";
 				break;
 			case 500:
-				$r['message'] = 'Sorry, looks like something went wrong.  Please try again or contact <a href="mailto:info@simpledish.com">info@simpledish.com</a> for assitance.';
+				$r['message'] = 'Sorry, looks like something went wrong.  Please try again or contact <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a> for assitance.';
 				break;
 			default: 
 				$r['message'] = '';

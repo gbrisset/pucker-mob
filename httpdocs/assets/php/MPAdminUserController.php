@@ -473,7 +473,7 @@ End password reset methods
 			if(!$q) return $this->helpers->returnStatus(500);
 			else return array(
 				'hasError' => false, 
-				'message' => "Thanks!  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\">here</a>" 
+				'message' => "Thanks!  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."/dashboard\">here</a>" 
 			);
 		}else return $this->helpers->returnStatus(500);
 	}
@@ -609,6 +609,7 @@ End password reset methods
 		$updateImage = $this->performUpdate(array(
 			'updateString' => "UPDATE article_contributors SET contributor_image = '".$contributorImg."'  WHERE contributor_id = ".$contributorId
 		));
+
 
 		if($updateImage === true) return true;
 		return false;
@@ -907,7 +908,6 @@ End password reset methods
 		}else{
 			$contributor_img = 'http://images.puckermob.com/articlesites/contributors_redesign/'. $user_info['contributor_image'];
 		}
-		//var_dump($user_info);
 		if( !$exist ){
 		
 			$result = $this->performUpdate(array(
@@ -1015,12 +1015,12 @@ End password reset methods
 		return $payment_record ;
 	}
 
-	public function getContributorEarningChartData($data){
-		//data: { task:'get_chart_data', contributor_id : 1123, start_date: start_date, end_date: end_date  }
+	public function getContributorEarningChartData( $data ){
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
+		
 		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
 			   FROM google_analytics_data_daily 
 			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
@@ -1030,6 +1030,100 @@ End password reset methods
 					AND ( article_categories.cat_id = categories.cat_id )
 				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."' 
 				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
+		$result = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		$last_month_data = $this->getContributorEarningChartLastMonthData( $data );
+		$array_earnins = [];
+		$earnings_chart = [];
+
+		foreach($result as $earnings){
+			$earnings_chart['date'] = $earnings['date'];
+			$earnings_chart['current_pageviews'] = $earnings['total_usa_pageviews'];
+
+			if( count($last_month_data) > 0){
+				foreach($last_month_data as $last_month_earnings){
+					if( date('d', strtotime($earnings_chart['date'])) == date('d', strtotime($last_month_earnings['date']))){
+						$earnings_chart['last_month_pageviews'] = $last_month_earnings['total_usa_pageviews'];
+					}
+				}
+
+				$array_earnins[] = $earnings_chart;
+			}
+			
+		}
+
+		return $array_earnins;
+
+	}
+
+	public function getContributorEarningChartDataRange($data){
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$s = "SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
+			   FROM google_analytics_data_daily 
+			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
+					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
+					AND ( articles.article_id = google_analytics_data_daily.article_id )
+					AND ( articles.article_id = article_categories.article_id )
+					AND ( article_categories.cat_id = categories.cat_id )
+				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."' 
+				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
+
+		$result = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		$last_month_data = $this->getContributorEarningChartLastMonthData( $data );
+		$array_earnins = [];
+		$earnings_chart = [];
+		
+		if ($result && !isset($result[0])){
+			$result = array($result);
+		}
+
+		foreach($result as $earnings){
+			$earnings_chart['date'] = $earnings['date'];
+			$earnings_chart['current_pageviews'] = $earnings['total_usa_pageviews'];
+			//$earnings_chart['last_month_pageviews']  = 0;
+
+			//$array_earnins[] = $earnings_chart;
+			if( count($last_month_data) > 0){
+				foreach($last_month_data as $last_month_earnings){
+					if( date('d', strtotime($earnings_chart['date'])) == date('d', strtotime($last_month_earnings['date']))){
+						$earnings_chart['last_month_pageviews'] = $last_month_earnings['total_usa_pageviews'];
+					}
+				}
+
+				$array_earnins[] = $earnings_chart;
+			}
+		}
+		return $array_earnins;
+	}
+
+	public function getContributorEarningChartLastMonthData( $data ){
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	//	$last_month_start_date = date('Y-m-d', strtotime('first day of last month'));
+	//	$last_month_end_date = date('Y-m-d', strtotime('last day of last month'));
+		$last_month_start_date = date('Y-m-d', strtotime("last month", strtotime($data['start_date'])));
+		$last_month_end_date = date('Y-m-d', strtotime("last month", strtotime($data['end_date'])));
+		
+		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
+			   FROM google_analytics_data_daily 
+			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
+					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
+					AND ( articles.article_id = google_analytics_data_daily.article_id )
+					AND ( articles.article_id = article_categories.article_id )
+					AND ( article_categories.cat_id = categories.cat_id )
+				WHERE contributor_id = ".$contributor_id." AND DATE_FORMAT(updated_date, '%Y-%m-%d') BETWEEN '".$last_month_start_date."' AND '".$last_month_end_date."' 
+				GROUP BY  DATE_FORMAT(updated_date, '%Y-%m-%d') ";
+
 		$data = $this->performQuery(array(
 			'queryString' => $s,
 			'queryParams' => array( ),
@@ -1071,6 +1165,150 @@ End password reset methods
 		} else {
 			return false;
 		}
+	}
+
+	public function getTop5BloggersByPageviews(){
+		$limit = 5;
+		$month = date('n');
+		$year =  date('Y');
+
+		$s = "	SELECT contributor_name, contributor_seo_name, contributor_earnings.contributor_id, total_us_pageviews, month, year 
+				FROM `contributor_earnings` 
+				INNER JOIN (article_contributors, users ) 
+				ON (article_contributors.contributor_id =  contributor_earnings.contributor_id ) 
+				AND  (article_contributors.contributor_email_address = users.user_email) 
+				WHERE month = $month AND year = $year AND users.user_type in (3, 8, 9) 
+				ORDER BY total_us_pageviews DESC LIMIT $limit ";
+
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		return $data;
+
+	}
+
+	public function getTop5ArticlesByPageviews($limit = 5, $contributor_id){
+		$contributor_id = $contributor_id;
+		$month = date('n');
+		$year = date('Y');
+
+		$s = "	SELECT articles.article_id, articles.article_title, articles.article_seo_title, categories.cat_dir_name, usa_pageviews
+				FROM `article_contributor_articles` 
+				INNER JOIN (articles, article_categories, categories, google_analytics_data_new) 
+				ON  (articles.article_id = article_contributor_articles.article_id ) 
+				AND (article_categories.article_id = article_contributor_articles.article_id) 
+				AND ( categories.cat_id = article_categories.cat_id)
+				AND (google_analytics_data_new.article_id = articles.article_id) 
+				WHERE article_contributor_articles.contributor_id = $contributor_id AND month = $month AND year = $year
+				ORDER BY usa_pageviews DESC LIMIT $limit ";
+
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		return $data;
+
+	}
+
+	public function getContributorsArticleList( $contributor_id){
+
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+		$s= "SELECT articles.article_title, articles.article_seo_title, articles.article_id, categories.cat_dir_name FROM article_contributor_articles
+		 INNER JOIN ( articles, article_categories, categories)
+		 ON ( article_contributor_articles.article_id = articles.article_id 
+		 	AND articles.article_id = article_categories.article_id 
+		 	AND article_categories.cat_id = categories.cat_id
+		 ) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		ORDER BY articles.article_id DESC";
+
+		$article = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
+
+		return $article;
+
+	}
+
+	public function getLastPostedArticle($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+		$s= "SELECT articles.article_id, articles.creation_date FROM article_contributor_articles
+		 INNER JOIN ( articles, article_categories, categories)
+		 ON ( article_contributor_articles.article_id = articles.article_id 
+		 	AND articles.article_id = article_categories.article_id 
+		 	AND article_categories.cat_id = categories.cat_id
+		 ) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		ORDER BY articles.article_id DESC LIMIT 1 ";
+
+		$article = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
+
+		return $article;
+	}
+
+	public function articlesPublisThisMonth($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$month = date('n');
+		$year = date('Y');
+
+		$s= "SELECT count(*) as 'total' FROM article_contributor_articles
+		 INNER JOIN ( articles )
+		 ON ( article_contributor_articles.article_id = articles.article_id ) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		AND month(articles.creation_date) = $month 
+		AND year(articles.creation_date) = $year ";
+
+		$article = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
+
+		return $article;
+
+	}
+
+	public function mostPopularPost($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$month = date('n');
+		$year = date('Y');
+
+		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, usa_pageviews, categories.cat_dir_name FROM  google_analytics_data_new
+		 INNER JOIN ( articles, article_contributor_articles, article_categories, categories )
+		 ON (  google_analytics_data_new.article_id = articles.article_id
+		 	AND google_analytics_data_new.article_id = article_contributor_articles.article_id 
+		 	AND article_categories.article_id = articles.article_id
+		 	AND article_categories.cat_id = categories.cat_id) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		AND google_analytics_data_new.month = $month 
+		AND google_analytics_data_new.year = $year 
+		ORDER BY google_analytics_data_new.usa_pageviews DESC LIMIT 1";
+
+		$article = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
+
+		return $article;
+
 	}
 
 	public function getTotalPageViewsDateRange($data){

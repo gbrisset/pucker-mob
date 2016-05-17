@@ -64,7 +64,7 @@ if( $searchString ){
 <body id="search">
 	<?php include_once($config['include_path'].'header.php');?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
-	<main id="main" class="row panel sidebar-on-right" role="main">
+	<main id="main" class="row panel sidebar-on-right" role="main" style="min-height: 3600px !important;">
 		<section id="puc-articles" class="sidebar-right small-11 columns translate-fix sidebar-main-left">
 			<section id="search-intro" class="small-12 columns sidebar-right">
 				<div class="row collapse">
@@ -159,14 +159,14 @@ if( $searchString ){
 			<?php include_once($config['shared_include'].'pagination.php');?>
 			<?php if (!$detect->isMobile()) { ?>
 <!--			<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>-->
-			<?php include_once($config['include_path'].'fromourpartners.php'); ?>
-			<?php include_once($config['include_path'].'aroundtheweb.php'); 
+			<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
+			<?php //include_once($config['include_path'].'aroundtheweb.php'); 
 			}?>
 	</section>
 	<?php if (!$detect->isMobile()) { 
 		include_once($config['include_path'].'rightsidebar.php');
 
-		include_once($config['include_path'].'left_side_bar.php');
+		//include_once($config['include_path'].'left_side_bar.php');
 	} ?>
 
 </main>

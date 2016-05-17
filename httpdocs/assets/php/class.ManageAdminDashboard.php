@@ -127,27 +127,33 @@ class ManageAdminDashboard{
 			  INNER JOIN ( article_contributors, users) 
 			  	ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
 			  	AND ( article_contributors.contributor_email_address = users.user_email)
-			  WHERE month = $month AND year = $year  
+			  WHERE month = $month AND year = $year  AND users.user_type IN (3, 8, 9)
 			  ORDER BY total_us_pageviews DESC LIMIT ".$limit;
-//AND users.user_type IN (2, 3, 4, 5)
+
 		$q = $this->performQuery(['queryString' => $s]);
 
 		return $q;
 	}
 
-	public function getTopShareWritesRankHeader($month){
+	public function getTopShareWritesRankHeader($month, $year = 0){
 
-		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$year = date('Y');
+		 $month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		 $year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		 
+		 if($year == 0) $year = date('Y');
 
 		$s = "SELECT contributor_id, (@rownum := @rownum + 1) as rownum 
 			FROM `contributor_earnings` 
-			WHERE month = $month AND year = $year 
+			JOIN  (SELECT @rownum := 0) r
+			WHERE  month = $month AND year = $year 
 			ORDER BY total_us_pageviews DESC ";
-		$q = $this->performQuery(['queryString' => $s]);
 
+		$q = $this->performQuery(['queryString' => $s]);
+		
 		return $q;
 	}
+
+	
 
 	public function getTopSharedMoblogsBU(){
 		$s = "SELECT articles.article_id, articles.article_title, articles.article_seo_title, article_contributors.contributor_id,  article_contributors.contributor_name,  article_contributors.contributor_image,  social_media_records.date_updated, articles.creation_date, social_media_records.category, (SUM(facebook_shares) + SUM(twitter_shares) + SUM(pinterest_shares) + SUM(google_shares) + SUM(linkedin_shares) + SUM(delicious_shares) + SUM(stumbleupon_shares)) as 'total_shares'  
@@ -194,7 +200,7 @@ class ManageAdminDashboard{
 		$year = date('Y');
 		$month = date('n');
 
-		$s = "SELECT total_earnings, total_us_pageviews, contributor_id 
+		$s = "SELECT total_earnings, total_us_pageviews, contributor_id, to_be_pay
 		FROM contributor_earnings 
 		WHERE  year = $year AND month = $month ";
 
@@ -202,8 +208,39 @@ class ManageAdminDashboard{
 		$s .= " ORDER BY total_earnings DESC";
 
 		$q = $this->performQuery(['queryString' => $s]);
-
 		return $q;	
+	}
+
+	public function get_bestArticle( $contributor_id, $month, $year ){
+
+		$s = "SELECT * FROM  google_analytics_data_new 
+				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
+				ON ( article_contributor_articles.article_id = google_analytics_data_new.article_id )
+				AND ( articles.article_id = google_analytics_data_new.article_id )
+				AND ( article_categories.article_id = google_analytics_data_new.article_id )
+				AND (categories.cat_id = article_categories.cat_id )
+				WHERE google_analytics_data_new.month = ".$month." AND  google_analytics_data_new.year = ".$year;
+
+			if( isset($contributor_id) && $contributor_id != 0){
+				$s.= " AND article_contributor_articles.contributor_id = ".$contributor_id;
+			}
+
+			$s.= " ORDER BY google_analytics_data_new.usa_pageviews DESC LIMIT 1 ";
+		$queryParams = [];			
+		
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			return $q;
+		} else {
+			return false;
+		}
+
 	}
 	
 	public function getAnnouncements(){

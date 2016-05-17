@@ -4,7 +4,7 @@
 ?>
 
 $(document).ready(function (){
-
+	console.log('HERE');
 	var body = $('body');
 	
 	$('#menu-icon').click(function(e){
@@ -60,18 +60,6 @@ $(document).ready(function (){
 	$('nav h2').click(function(e){
 		body.toggleClass('active_menu');
 	});
-
-	/*$('.footer-list h2').each(function(){
-		var thisH2 = $(this),
-		cont = $(thisH2).parents('.footer-list'),
-		slideObj = $(thisH2).next();
-
-		thisH2.click(function(e){
-			if(cont.hasClass('shown')) slideObj.slideUp(500);
-			else slideObj.slideDown(500);
-			cont.toggleClass('shown');
-		});
-	}).filter(':first').click();*/
 
 	$('#sidebar-articles-form').on('submit', function(e){
 		var thisForm = $(this),
@@ -146,17 +134,6 @@ $(document).ready(function (){
 		}
 	});
 
-	// Limit the user to select no more than 5 categories at the same time
-	/*if($("input[type=checkbox]:checked").length >= 5){
-		$("input[type=checkbox]").not(":checked").attr("disabled",true);
-	}  
-
- 	$("input[type=checkbox]").click(function() {
-    	var bol = $("input[type=checkbox]:checked").length >= 5;  
-
- 		$("input[type=checkbox]").not(":checked").attr("disabled",bol);
-   });*/
-   //End
 	
 	//$('.tooltip').mpTooltip();
 	$('.preview').mpPreview();
@@ -389,7 +366,7 @@ $(document).ready(function (){
 
 
 	//	edit LIST ITEM: editlist.php
-
+/*
 	$('.page-list-item-data-form').each(function(){
 	
 		var thisForm = $(this),
@@ -432,7 +409,7 @@ $(document).ready(function (){
 				}
 			}
 		});
-	});
+	});*/
 
 	//REFACTOR THIS TO ONE PLUGIN
 
@@ -519,14 +496,12 @@ $(document).ready(function (){
 
 	$('#image-file-link').click(function(e){
 		e.preventDefault();
-		var input_file = $('.upload-img-file');
+		$('#contributor_wide_img').click()
 		$('#update-article-image').show();
-		input_file.click();
 	});
 
 	$('#enable-add-image').click(function(e){
 		e.preventDefault();
-
 		$('#add-an-image-fs').slideDown();
 	});
 
@@ -537,32 +512,12 @@ $(document).ready(function (){
 	        $(".account-file-input:hidden").trigger('click');
 	    });
 	});
-
-
-	//	Handle click of add new list item...
-	var addText = document.getElementById("large-add-text"),
-	addNewListItemDiv = document.getElementById("add-list-item"),
-	addForm = document.getElementById("page-list-item-data-add-form");
-	if(addNewListItemDiv){
-		addNewListItemDiv.onclick = function(e){
-
-			//	remove the + add text...
-			if (addText.parentNode) {
-			  addText.parentNode.removeChild(addText);
-			}
-
-			//	add the form...
-			addForm.style.display="inherit";
-			addNewListItemDiv.style.backgroundColor="#eee";
-			addNewListItemDiv.style.cursor="auto";
-		}
-	}
 	
-	$('input[name="collections_name-s"]').SDSeoTitleAutoComplete("collections_seoname-s");
-	$('input[name="page_list_title"]').SDSeoTitleAutoComplete("page_list_seo_title", "seo_title_updated");
+	//$('input[name="collections_name-s"]').SDSeoTitleAutoComplete("collections_seoname-s");
+	//$('input[name="page_list_title"]').SDSeoTitleAutoComplete("page_list_seo_title", "seo_title_updated");
 
-	$('.toggle-link').SDToggler('#add-list-form');
-	$('.toggle-link').SDToggler('#add-list-form');
+	//$('.toggle-link').SDToggler('#add-list-form');
+	//$('.toggle-link').SDToggler('#add-list-form');
 
 	$('#sub-menu-button').click(function(e){
 		$('#content').toggleClass('active_submenu');
@@ -571,24 +526,23 @@ $(document).ready(function (){
 
 
 	//PUBLISH ARTICLE
-	if($('#publish')){
-		$('#publish').on('click', function(e){
-			var statusVal = $(this).attr('data-info');
-			$.ajax({
-			  type: "POST",
-			  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-			  data: { status: statusVal, a_i: $('#a_i').val(), task:'update_status' }
-			}).done(function(data) {
+	if( $('#publish') ){
+		$('.publish-button').each(function(){
+			$(this).on('click', function(e){
+				var statusVal = $(this).attr('data-info');
+				$.ajax({
+				  type: "POST",
+				  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+				  data: { status: statusVal, a_i: $('#a_i').val(), task:'update_status' }
+				}).done(function(data) {
 
-				if(data == "false" ){
-					alert("You need to Upload an Image in order to make this article Live!");
-				}else{
-					location.reload();
-				}
-				
-			  
+					if(data == "false" ){
+						alert("You need to Upload an Image in order to make this article Live!");
+					}else{
+						location.reload();
+					}
+				});
 			});
-			 
 		});
 	}
 
@@ -598,14 +552,34 @@ $(document).ready(function (){
 			var img = $(this).attr('data-info'),
 			avatar_dir = "http://images.puckermob.com/articlesites/contributors_redesign",
 			new_img_src = avatar_dir+'/'+img,
-			img_profile = $('#img-profile');
+			img_profile = $('#img-profile'),
+			img_name = $(img_profile).attr('data-info');
+			
 			$(img_profile).attr('src', new_img_src);
+
 			$(img_profile).attr('data-info', img);
+
+			$.ajax({
+			  type: "POST",
+			  url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			  data: { image: img, c_i: $('#cont_i').val(), task:'update_avatar_img' }
+			}).done(function(data) {
+				if(data){
+					avatar_dir = "http://images.puckermob.com/articlesites/contributors_redesign",
+					new_img_src = avatar_dir+'/'+img;
+					$('#image-header-profile').attr('src', new_img_src);
+					$('#error-img').text('Image Updated Sucessful!').addClass('new-success').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );
+
+			 	}else{
+			 		$('#error-img').text('something went wrong. Please try again or contact info@sequelmediainternational.com.').addClass('error').slideDown( "slow" ).delay( 1000 ).slideUp( "slow" );;
+			 	}
+			});
 		});
 
 	}
 
-if($('.select-avatar')){
+//PROFILE PAGE AVATAR
+/*if($('.select-avatar')){
 	$('.select-avatar').on('click', function(event){
 		var img_profile = $('#img-profile'),
 		img_name = $(img_profile).attr('data-info');
@@ -629,58 +603,19 @@ if($('.select-avatar')){
 			 	}
 			});
 	});
-}
-
-/*if($('#article_categories')){
-	$('#article_categories').on('change', function(event){
-		var value = $('#article_categories').val(),
-		label = '',
-		container = $('#category-description');
-		switch(value){
-
-			case '3':
-				//RELATIONSHIPS
-				label = "<label>Articles about love, sex, marriage, dating, friends and family.</label>";
-				break;
-			case '4':
-				//ENTERTAINMENT
-				label = "<label>Articles about movies, TV, books, sports, music and art. Includes Hollywood gossip, reviews, etc.</label>";
-				break;
-			case '5':
-				//MONEY
-				label = "<label>Articles about budgeting, saving, spending, career and entrepreneurship.</label>";
-				break;
-			case '6':
-				//LIFESTYLE
-				label = "<label>Articles about travel, school, fashion, going out, night life, living better,food, diet, health and spirituality.</label>";
-				break;
-			case '7':
-				//FUN
-				label = "<label>Viral and funny videos, memes, nostalgia, general interest/shocking news items.</label>";
-				break;
-			default:
-				label = "<label>Choose one category that best specifies the genre of your article. This is where your post will reside on the site.</label>";
-				break;
-
-		}
-	
-		$(container).html(label);
-
-	
-	});
 }*/
 		
 
 //$('.has-tooltip').tooltipster();
 
 //LIBRARY PHOTOS
-	if($('#search-lib')){
-		$('#search-lib').on('click', function(e){
-			e.preventDefault();
-			e.stopPropagation();
+if( $('#search-lib') ){
+	$('#search-lib').on('click', function(e){
+		e.preventDefault();
+		e.stopPropagation();
+	});	
+}
 
-		});	
-	}
 $('.step-2').hide();
 $('.img_categories').click(function(e){
 	var elm = $(this),
@@ -733,57 +668,38 @@ $('#show-image').on('click', function(e){
 
 /*PREVIEW BUTTON*/
 if($('#preview')){
-	$('#preview').click(function(e){
-		e.preventDefault();
-		var preview = $(this),
-		prev_box = $('#preview-article'),
-		title = $('#article_title-s').val(),
-		body = $('#article_body-nf').text(),
-		contributor = $('#contributor-name').val(),
-		category = $('#article_categories option:selected').text(),
-		date =  new Date($('#creation_date').val()),
-		template = $(prev_box).html(),
-		id = $('#a_i').val(),
-		day = date.getDate(),
-		month = date.getMonth(),
-		year = date.getFullYear();
+	$('.preview-button').each(function() {
+	console.log($(this));
+		$(this).click(function(e){
+			e.preventDefault();
+			var preview = $(this),
+			prev_box = $('#preview-article'),
+			title = $('#article_title-s').val(),
+			body = $('.fr-element').html(),
+			contributor = $('#contributor-name').val(),
+			category = $('#article_categories option:selected').text(),
+			//date =  new Date($('#creation_date').val()),
+			template = $(prev_box).html(),
+			id = $('#a_i').val();
 
-		$('.close').click(function(e){
-			$('body').removeClass('show-modal-box-prev-art');
-		});
+			$('.close').click(function(e){
+				$('body').removeClass('show-modal-box-prev-art');
+			});
 
-		$('#article-title').text(title);
-		$('#article-content').html(body);
-		$('#article-category').text(category).addClass(category);
-		
-		$('#article-author').text(contributor);
-		
-	  $('#article-date').text(month+'-'+day+'-'+year);
-		$('#article_img').attr('src', 'http://images.puckermob.com/articlesites/puckermob/large/'+id+'_tall.jpg');
-		$('body').addClass('show-modal-box-prev-art');
+			$('#article-title').text(title);
+			$('#article-body').html(body);
+			
+			if( $('#a_i').length > 0 ){
+				$('#article_img').attr('src', 'http://images.puckermob.com/articlesites/puckermob/large/'+id+'_tall.jpg');
+			}else{
+				$('#article_img').attr('src', $('img[data-dz-thumbnail]').attr('src') );
+			}
+			
+			$('body').addClass('show-modal-box-prev-art');
 	
+		});
 	});
 }
-
-$('.unfollow-author').each( function(){
-	$(this).on('click', function(e){
-		e.preventDefault();
-
-		var parent = $(this).parents('#about-the-author'),
-		author_id = $(parent).attr('data-info'),
-		reader_email = $('#reader_email').val();
-
-		$.ajax({
-			type: "POST",
-			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-			data: { author_id: author_id, reader_email: reader_email, task:'unfollow-author' }
-		}).done(function(data) {
-			if(data){
-				$(parent).remove();
-			}
-		});
-	});
-});
 
 if(document.body.id == 'editarticle'){
 	
@@ -917,7 +833,7 @@ if($('.mob-level-contributor')){
            'This Month': [moment().startOf('month'), moment().endOf('month')],
            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         },
-        opens: 'left',
+        opens: 'right',
         drops: 'down',
         buttonClasses: ['btn', 'btn-sm'],
         applyClass: 'btn-primary',
@@ -950,9 +866,9 @@ if($('.mob-level-contributor')){
 		  EarningsObj.setValues(start_date, end_date);
 
 		  if($('#earnings').length > 0 ){
-			  EarningsObj.getChartData();
+			  EarningsObj.getChartDataRange();
 			  EarningsObj.drawChart();
-			  EarningsObj.getArticlesListData();
+			  //EarningsObj.getArticlesListData();
 			  EarningsObj.updateTotalEarnings();   
 		  }else{
 			  if($('#reports').length > 0 ){
@@ -962,6 +878,16 @@ if($('.mob-level-contributor')){
 	  	$('input[name="daterange"]').val(picker.startDate.format('ll') + ' - ' + picker.endDate.format('ll'));
 	});
   }
+
+
+//Add NEW ARTICLE
+if( $('#newarticle').length > 0 ){
+	
+		//SEO AUTO COMPLETE
+		$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
+
+
+}
 
 }); 
  

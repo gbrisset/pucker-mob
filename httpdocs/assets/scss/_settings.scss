@@ -63,8 +63,8 @@ $alert-color: rgb(124,124,124);
 // $info-color: #a0d3e8;
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
-// $global-rounded: 1000px;
+ $global-radius: 3px;
+ $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
 // $shiny-edge-size: 0 1px 0;
@@ -361,8 +361,8 @@ $paragraph-text-rendering: auto;
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
-// $button-radius: $global-radius;
-// $button-round: $global-rounded;
+ $button-radius: $global-radius;
+ $button-round: $global-rounded;
 
 // We use this to set default opacity for disabled buttons.
 // $button-disabled-opacity: 0.7;

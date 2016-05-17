@@ -58,6 +58,10 @@
 			echo json_encode($adminController->user->getContributorEarningChartData( $_POST ));
 		break;
 
+		case 'get_chart_data_range':
+			echo json_encode($adminController->user->getContributorEarningChartDataRange( $_POST ));
+		break;
+
 		case 'get_chart_article_data':
 			echo json_encode( $adminController->user->getContributorEarningChartArticleData( $_POST ));
 		break;

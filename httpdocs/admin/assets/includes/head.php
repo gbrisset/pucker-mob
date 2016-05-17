@@ -25,54 +25,8 @@
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
 	<script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script>
-	<script>
-		var minImageWidth = 784,
-	    minImageHeight = 431;
-
-		Dropzone.options.imageDrop = {
-		  acceptedFiles: "image/*",
-		  paramName: "file", // The name that will be used to transfer the file
-		  maxFilesize: 2, // MB
-		  thumbnailWidth: 784,
-		  thumbnailHeight: 431,
-		  previewsContainer: ".dropzone-previews",
-		  init: function() {
-		    this.on("addedfile", function() {
-			  if (this.files[1]!=null){
-			    this.removeFile(this.files[0]);
-			  } 
-			  $('#main-image').hide();
-			});
-			this.on("sending", function(file, xhr, formData) {
-	  			formData.append("filesize", file.size); // Will send the filesize along with the file as POST data.
-			});
-			this.on("thumbnail", function(file) {
-
-			  //if(file.size > maxFilesize ) file.rejectFileSize();
-		      // Do the dimension checks you want to do
-		      if (file.width < minImageWidth || file.height < minImageHeight) {
-		        file.rejectDimensions()
-		      }
-		      else {
-		        file.acceptDimensions();
-		      }
-
-		      if (file.width > (minImageWidth + 30) || file.height > ( minImageHeight+ 30) ) {
-		        file.rejectDimensions()
-		      }
-		      else {
-		        file.acceptDimensions();
-		      }
-		    });
-		 },
-		 accept: function(file, done) {
-		    file.acceptDimensions = done;
-		    file.rejectDimensions = function() { done("Invalid dimension. Must be 784x431 px"); };
-		    file.rejectFileSize = function(){ done("Image Size must be less than 2MB");  }
-	  	 }
-		};
-	</script>
-
+	
+	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 	<!-- Include Editor style. -->
 	<link href="<?php echo $config['this_url']; ?>assets/css/froalacss/froala_editor.min.css" rel="stylesheet" type="text/css" />
@@ -92,6 +46,20 @@
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/lists.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
 	  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
+
+	  <script>
+      $(function() {	
+          $('.editor').froalaEditor({
+          	  key: 'UcbaE2hlypyospbD3ali==',
+          	  height: 420,
+          	  placeholderText: 'Start Writing Here.',
+		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+      		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
+          });
+      });
+</script> 
 
 </head>
 <?php 

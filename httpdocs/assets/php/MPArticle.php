@@ -632,6 +632,24 @@ public function getContributorUserType( $email ){
 	return $r;
 }
 
+public function getContributorInfo( $seo_name ){
+	$pdo = $this->con->openCon();
+	$q = $pdo->query("	SELECT * FROM article_contributors 
+		WHERE contributor_seo_name = '".$seo_name."' ");
+
+	if($q && $q->rowCount()){
+		$q->setFetchMode(PDO::FETCH_ASSOC);
+		while($row = $q->fetch()){
+			$r = $row;
+		}
+		$q->closeCursor();
+	}else $r = false;
+	$this->con->closeCon();
+
+	return $r;
+}
+
+
 public function getContributors($args = [], $attempts = 0){
 	$options = array_merge([
 		'pageId' => null,
@@ -1700,7 +1718,7 @@ protected function performQuery($opts){
 		'bypassCache' => false,
 			'returnCount' => false  //	true: performQuery will only return a count of rows
 			), $opts);
-	$cachedData = false;
+		$cachedData = false;
 	if($cachedData === false || $options['bypassCache'] === true){
 		$pdo = $this->con->openCon();
 		$q = $pdo->prepare($options['queryString']);
@@ -1734,14 +1752,13 @@ public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesF
 		AND article_contributors.contributor_id = article_contributor_articles.contributor_id ";
 	$s .= $status_sql;		
 	if ($userArticlesFilter != 'all'){
-		$s .=	" AND article_contributors.contributor_email_address =  '".$userArticlesFilter."'' ";
+		$s .=	" AND article_contributors.contributor_email_address =  '".$userArticlesFilter."' ";
 	}
 
 	if ($articleType != 'all'){
 		if($articleType == 'bloggers') 	$s .=	" AND a_c.cat_id =  9 ";
 		if($articleType == 'writers' ) 	$s .=	" AND a_c.cat_id !=  9 ";
 	}
-
 	$queryParams = [
 			':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)
 	];				
@@ -1750,6 +1767,7 @@ public function countFiltered($order, $articleStatus = '1, 2, 3', $userArticlesF
 		return array_shift($q);
 	}
 }
+
 
 public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $articleType = 'all' ) {
 	
@@ -1784,8 +1802,9 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$status_sql = " WHERE article_status IN ( $articleStatus )";
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	
 	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date,
-	nc.cat_id, '0' as us_traffic FROM articles as a
+	nc.cat_id, '0' as us_traffic, article_contributors.contributor_name, article_contributors.contributor_seo_name FROM articles as a
 	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles)
 	ON a_c.article_id = a.article_id
 	AND a_c.cat_id = nc.cat_id
@@ -1822,6 +1841,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	}
 }
 
+//I THINK IS NOT IN USE RIGHT NOW
 public function get_dashboardArticles($limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month) {
 
 	switch ($order) {
@@ -1882,6 +1902,21 @@ public function get_dashboardArticles($limit = 10, $order = '', $articleStatus =
 	} else {
 		return false;
 	}
+}
+
+public function getTotalUsPageviews( $ids = null ){
+	 //$ids = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	 $s = "SELECT sum(usa_pageviews) as total_usa_pv, article_id FROM `google_analytics_data_new` ";
+
+	 if($ids != null ) $s.= " WHERE article_id IN ( $ids ) ";
+
+	 $s.= " group by article_id  ";
+
+	$q = $this->performQuery(['queryString' => $s]);
+
+
+	return $q;
+ 
 }
 
 /**

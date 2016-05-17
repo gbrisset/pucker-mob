@@ -93,7 +93,7 @@ class MPArticleAdminController extends MPArticle{
 				$r['message'] = "Sorry, one or more required fields were missing.  Please fill in all required fields and try again.";
 				break;
 			case 500:
-				$r['message'] = 'Sorry, looks like something went wrong.  Please try again or contact <a href="mailto:info@simpledish.com">info@simpledish.com</a> for assitance.';
+				$r['message'] = 'Sorry, looks like something went wrong.  Please try again or contact <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a> for assitance.';
 				break;
 			default: 
 				$r['message'] = '';
@@ -720,7 +720,7 @@ class MPArticleAdminController extends MPArticle{
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category.'));
 		
 		//Check for same seo-name
-		if(isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_seo_title-s']));
+		//if(isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_seo_title-s']));
 
 		$params = $this->helpers->compileParams($post);
 
@@ -737,12 +737,7 @@ class MPArticleAdminController extends MPArticle{
 		//Delete all category, contributor, and video entries
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_categories WHERE article_id = '.$post['a_i']));
 		$this->performUpdate(array('updateString' => 'DELETE FROM article_contributor_articles WHERE article_id = '.$post['a_i']));
-		//$this->performUpdate(array('updateString' => 'DELETE FROM article_videos WHERE article_id = '.$post['a_i']));
 
-		//$this->performUpdate(array(
-		//	'updateString' => "DELETE FROM article_categories WHERE article_id = :articleId",
-		//	'updateParams' => array(':articleId' => $post['a_i'])
-		//));
 
 		//Insert Category
 		if(isset($post['article_categories']) && $post['article_categories'] != 0){
@@ -762,16 +757,7 @@ class MPArticleAdminController extends MPArticle{
 			));
 		}
 
-		//Add videos if desired
-		//if(isset($post['article_video']) && $post['article_video'] != -1){
-		//	$videoId = intval(filter_var($post['article_video'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-		//	$this->performUpdate(array(
-		//		'updateString' => "INSERT INTO article_videos SET article_id = :articleId, syn_video_id = :videoId",
-		//		'updateParams' => array(':articleId' => $post['a_i'], ':videoId' => $videoId)
-		//	));
-		//}
-
-		//Add Realted Articles if any
+		//Add Related Articles if any
 		$this->performUpdate(array('updateString' => 'DELETE FROM related_articles WHERE main_article_id = '.$post['a_i'] ));
 		$related_article_1 = $related_article_2 = $related_article_3 = -1;
 		if(isset($post['related_article_1']) && $post['related_article_1'] != '-1' ) $related_article_1 = $post['related_article_1'];

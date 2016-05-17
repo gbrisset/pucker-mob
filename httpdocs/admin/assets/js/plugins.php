@@ -6,31 +6,35 @@
 var EarningsObj = {	
 	start_date : moment().subtract(7, 'days').format("YYYY-MM-DD"), end_date : moment().format("YYYY-MM-DD"),
 	chart_info : {}, article_list : {},
-	total_earnings: 0,
+	total_earnings: 0, 
 	options : {
-          title: ' ',
-          height: 350,
-          legend: { position: 'none' },
-          vAxis: { gridlines: { count: 4 }, format: 'currency' },
-          hAxis: { 
-			title: 'Tracked Categories' 
-			}, 
-          colors: ['#156A17'],
-    },
+	       	  legend : { position:"none"},
+	          chart: {
+	            title: '',
+	            subtitle: '',
+	          },
+	          bars: 'vertical',
+	          vAxis: {format: 'decimal'},
+	          height: $('#height_chart').val(),
+	          colors: ['#014694', '#627E93'],
+	},
+    
 	initChart: function(){
-	    // Set a callback to run when the Google Visualization API is loaded.
-	    google.setOnLoadCallback(EarningsObj.drawChart);
+	    google.charts.setOnLoadCallback(EarningsObj.drawChart);
     },
+   
     setValues: function( start_date, end_date ){
     	EarningsObj.start_date = start_date;
     	EarningsObj.end_date = end_date;
     	EarningsObj.chart_info =  EarningsObj.getChartData( EarningsObj.start_date, EarningsObj.end_date );
     },
+  
     setTotalEarnings: function( total_earned){
     	EarningsObj.total_earnings = total_earned;
 	},
+   
     getChartData: function(){
-    	var info = {}, chart = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
+    	var info = {}, chart = [ ['', 'This Month', 'Last Month'] ], contributor_id = $('#contributor_id').val(), total_earned = 0;
     	$.ajax({
 			type: "POST",
 			async: false,
@@ -42,20 +46,67 @@ var EarningsObj = {
 				$(data).each( function(e){	
 					var val = $(this);
 					var rate = $('#current-user-rate').val();
-					var pageviews = parseInt(val[0].total_usa_pageviews);
-					var amount = 0;
-					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;	
+					var pageviews = parseInt(val[0].current_pageviews),
+					last_month_pageviews = parseInt(val[0].last_month_pageviews),
+					amount = 0, 
+					last_month_amount = 0;
 
-					var tooltip = pageviews+' $'+amount; 			
+					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;
+					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
+
 					total_earned = total_earned + amount;
-					info = [ val[0].date, amount];
+					info = [ val[0].date, amount, last_month_amount];
 					chart.push(info);
 				});
+
 			}
 			EarningsObj.total_earnings = total_earned;
 			EarningsObj.chart_info = chart;
 		});
 	},
+
+	getChartDataRange: function(){
+
+		var info = {}, 
+		chart = [['', 'revenue', ' '] ], 
+		contributor_id = $('#contributor_id').val(), 
+		total_earned = 0;
+    	$.ajax({
+			type: "POST",
+			async: false,
+			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+			data: { task:'get_chart_data_range', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
+		}).done(function(data) {
+		console.log(data);
+			if( data != "false" ){ 
+				data = $.parseJSON(data);
+				$(data).each( function(e){	
+					var val = $(this);
+					var rate = $('#current-user-rate').val();
+					var pageviews = parseInt(val[0].current_pageviews),
+					last_month_pageviews = parseInt(val[0].last_month_pageviews),
+					amount = 0, 
+					last_month_amount = 0;
+
+					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;
+					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
+
+					total_earned = total_earned + amount;
+					info = [ val[0].date, amount, last_month_amount];
+					chart.push(info);
+				});
+
+				
+
+			}
+			EarningsObj.total_earnings = total_earned;
+			EarningsObj.chart_info = chart;
+
+			$('#month-year-title').text('Earnings: $'+ parseFloat(EarningsObj.total_earnings, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+			$('.chart-legend').hide();
+		});
+	},
+	
 	getArticlesListData: function(){
     	var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
     	$.ajax({
@@ -170,27 +221,43 @@ var EarningsObj = {
 
 		});
 	},
+
 	drawChart: function( ) {
         if(EarningsObj.chart_info.length > 0){
-        // Create the data table.
-	    var data = new google.visualization.DataTable();
+              
+        var data = google.visualization.arrayToDataTable(EarningsObj.chart_info );
+		var chart = new google.charts.Bar(document.getElementById('chart_div'));
 
-	    data.addColumn('string', ' ');
-	    data.addColumn('number', ' ');
-	    
-	    data.addRows( EarningsObj.chart_info );
-      
-        var chart = new google.charts.Bar(document.getElementById('bar_chart'));
+	    chart.draw(data, google.charts.Bar.convertOptions(EarningsObj.options));
 
-        chart.draw(data, EarningsObj.options);
         }else{
-        	$('#bar_chart').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
-        }
+       		$('#chart_div').text('Sorry, No data found!').css('text-transform', 'uppercase').css('height', 'auto').css('margin-bottom', '2rem').css('margin-left', '1rem');
+       }
      },
+
      updateTotalEarnings: function(){
      	$('#total_earned_graph').text('$' + parseFloat(EarningsObj.total_earnings, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
      }
 };
+
+/*	SEO Title auto complete...
+		Call this method on a form input element that the user will be typing in
+		argument1: The input to be auto-completed
+		argument2: The hidden input that indicates the seo name has changed
+*/
+
+$.fn.SeoTitleAutoComplete = function(seoTitleInputName, hiddenInput){
+	$(this).keyup(function () { 
+		var title= $(this).val();
+		title = title.replace(/[^0-9a-zA-Z_\s]/g, '');
+		title = title.trim();
+		title = title.toLowerCase().replace(/ /g, '-');
+
+		$('input[name="'+seoTitleInputName+'"]').val(title);
+
+		$('input[name="'+hiddenInput+'"]').val("true");
+	});		
+}
 
 var SDCookie = (function() {
     return {
@@ -226,10 +293,7 @@ var SDCookie = (function() {
 			this.save(name,"",-1);
 		}
     }
-
 }());
-
-
 
 $.fn.SDPopUp = (function(opts){
 	var options = $.extend({
@@ -254,12 +318,9 @@ $.fn.SDPopUp = (function(opts){
 	});
 });
 
-
-
 /*	Redirect to a new seo title page
 	Call this on the form input containing a new seo title to preform a redirect.
 	arg1: The url path without the seo title
-
 */
 $.fn.redirectToNewSEOTitle = function(basePath){
 	var newSEOName = $(this).attr("value");
@@ -272,28 +333,6 @@ $.fn.redirectToNewSEOTitle = function(basePath){
 	}
 }
 
-/*	SEO Title auto complete...
-
-		Call this method on a form input element that the user will be typing in
-		argument1: The input to be auto-completed
-		argument2: The hidden input that indicates the seo name has changed
-*/
-
-$.fn.SDSeoTitleAutoComplete = function(seoTitleInputName, hiddenInput){
-	$(this).keyup(function () { 
-		var title= $(this).val();
-		title = title.replace(/[^0-9a-zA-Z_\s]/g, '');
-		title = title.trim();
-		title = title.toLowerCase().replace(/ /g, '-');
-
-		$('input[name="'+seoTitleInputName+'"]').val(title);
-
-		//	Change the value of the hiddenInput field to true, so we know to perform 
-		//	a redirect.  Why?  The SEO name has been changed, so this edit page no longer exists.
-		//	A redirect must be called, on submit (callback from mpValidate).
-		$('input[name="'+hiddenInput+'"]').val("true");
-	});		
-}
 
 
 $.fn.SDToggler = function(hiddenDiv){
@@ -336,7 +375,6 @@ $.fn.mpTooltip = function(){
 		};
 	});
 };*/
-
 
 /* Begin Scrollable Element Detection */
 function scrollableElement(els) {
@@ -437,9 +475,9 @@ $.fn.mpValidate = function(opts){
 			submit.attr('disabled', true);
 			var confirmed = false;
 
-			if(tinyMCE){
-				tinyMCE.triggerSave();
-			}
+			//if(tinyMCE){
+			//	tinyMCE.triggerSave();
+			//}
 
 			if(options.additionalParams == 'file' && $(options.imageFile)[0].files[0] != null){
 				
@@ -525,7 +563,6 @@ $.fn.appendAround = function(){
 		$(window).resize(appendToVisibleContainer);
 	});
 };
-
 
 $.fn.mpImageCropUpload = function( opts, e ){
 	var options = $.extend({

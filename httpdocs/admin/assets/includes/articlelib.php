@@ -10,6 +10,7 @@
 <div id="openModalLib" class="modalDialogLib" >
 	<div id="popup-content" style="width:40% !important; min-width: 20rem; margin: 10% auto !important;">
 		<a href="#close" title="Close" class="close">X</a>
+		
 		<form name="images-lib" id="images-library-form" method="POST" action="" class="ajax-submit-form clear">
 		
 		<div class = "step-1">
@@ -20,10 +21,10 @@
 					if($lib_categories){
 						foreach( $lib_categories as $img_category){ ?>
 						<div class="img_categories no-padding no-vertical-padding" data-info="<?php echo $img_category['seo_name']; ?>">
-							<div class="lib_cat_img small-4 inline-block">
+							<div class="lib_cat_img small-6 large-4 inline-block">
 								<img class="" src="http://www.puckermob.com/admin/assets/img/articles/<?php echo $img_category['img_name']; ?>" alt="<?php echo $img_category['name']; ?>" >
 							</div>
-							<div class="lib_cat_desc small-7 inline-block">
+							<div class="lib_cat_desc small-5 large-7 inline-block">
 								<h1><?php echo $img_category['name']; ?></h1>
 							</div>
 						</div>
@@ -66,7 +67,9 @@ if($('#openModalLib')){
 		$('body').removeClass('show-modal-box-lib');
 	});
 
-	$('#search-lib').click(function(e){
+	$('.photo-library').click(function(e){
+		e.preventDefault();
+		e.stopPropagation();
 		$('.step-2').hide();
 		$('.article-imgs-container').html('');
 		$('.step-1').show();
@@ -74,8 +77,8 @@ if($('#openModalLib')){
 	});
 
 	$('body').on('click', '.article-img-preset',  function(e){
-		$('.article-img-preset').removeClass('highlight-img');//.removeClass('transition');
-		$(this).addClass('highlight-img');//.addClass('transition');
+		$('.article-img-preset').removeClass('highlight-img');
+		$(this).addClass('highlight-img');
 		$('#image_value').val($(this).attr('data-info'));
 	});
 
@@ -95,9 +98,15 @@ if($('#openModalLib')){
 
 				data = JSON.parse(data);
 				if(!data.hasError){
-					$('.data-dz-thumbnail').attr('src', "<?php echo $config['image_url'].'articlesites/puckermob/'?>"+data.directory+'/'+data.filename+'?'+random_val);
-					$('.dz-preview.dz-image-preview.dz-processing.dz-success').find('img').attr('src', "<?php echo $config['image_url'].'articlesites/puckermob/'?>"+data.directory+'/'+data.filename+'?'+random_val);
-					$('#main-image').removeClass('hidden');
+					var src = "<?php echo $config['image_url'].'articlesites/puckermob/'?>"+data.directory+'/'+data.filename+'?'+random_val;
+					if($('img[data-dz-thumbnail]').length > 0 ){
+						$('img[data-dz-thumbnail]').attr('src', src );
+
+					}else{
+						var div_elm = $('<div class="dz-preview small-12 large-7 dz-image-preview" id="template_copy"><div class="dz-details dztemplate"><img data-dz-thumbnail src="'+ src +'" id="main-image-src"/></div></div>');
+
+						$('.dz-message').append(div_elm);
+					}
 					$('body').removeClass('show-modal-box-lib');
 				}
 			});

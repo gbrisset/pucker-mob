@@ -1,8 +1,8 @@
 <?php
 $local = 1;
 $version = "";
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+//error_reporting(E_ALL);
+//ini_set('display_errors', '1');
 
 if($local)
 {
@@ -178,6 +178,8 @@ if($local)
 
 	date_default_timezone_set('America/New_York');
 }
+
+setlocale(LC_MONETARY, 'en_US');
 
 $MPNavigation = new MPNavigation($config);
 $mpArticle = new MPArticle($config);

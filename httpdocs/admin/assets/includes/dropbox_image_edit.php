@@ -1,5 +1,7 @@
 
 <?php if(!$detect->isMobile()){?>
+
+
 <div class="small-12 xxlarge-8 left padding margin-bottom no-padding dropbox-image-edit" style="background:#888;">
 	<form  id="image-drop" class="dropzone" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
 		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -88,7 +90,7 @@
 		 },
 		  accept: function(file, done) {
 		  	console.log('accept'); 
-		  	console.log(currentWidth, currentHeight);
+		  	//console.log(currentWidth, currentHeight);
 
 		    if (file.width > maxImageWidth || file.height > maxImageHeight){
 		      done("Invalid dimension. Must be 784x431 px");

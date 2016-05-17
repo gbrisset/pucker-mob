@@ -104,6 +104,7 @@
 			
 		}else $adminController->redirectTo('logout/');
 	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -123,24 +124,26 @@
 			<div class="small-12">
 				<h1>VIEW & EDIT ARTICLE 
 				<?php if( $article['article_status'] == 1 )  { ?> 
-					<!--<a href="http://www.puckermob.com/<?php echo $article['cat_dir_name'].'/'.$article['article_seo_title']; ?>" class="see-article-link right" target="_blank" >
+					<a href="http://www.puckermob.com/<?php echo $category[0]['cat_dir_name'].'/'.$article['article_seo_title']; ?>" class="see-article-link right" target="_blank" >
 						<i class="fa fa-external-link"></i>
 						SEE ARTICLE
-					</a>-->
+					</a>
 				<?php }?>
 				</h1>
 			</div>
 
 			<section id="article-info" class="small-12 columns">
 
-			<?php if(file_exists($pathToTallImage)){
+			<?php 
+			//var_dump(file_exists($pathToTallImage), ($pathToTallImage)); 
+			//if(file_exists($pathToTallImage)){
 				$tallImageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg';
 				include_once($config['include_path_admin'].'dropbox_image_edit.php');	
 			?>
 
-			<?php }else{  ?>
-				<?php include_once($config['include_path_admin'].'dropbox_image.php'); ?>	
-			<?php } ?>
+			<?php //}else{  ?>
+				<?php //include_once($config['include_path_admin'].'dropbox_image.php'); ?>	
+			<?php //} ?>
 				
 				<form id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >

@@ -90,7 +90,7 @@ if(!is_null($categoryInfo)){
 		
 
 		<!-- UNDERTONE -->
-		<?php if( isset($article_id) && ( $article_id == 15104 || $article_id == 14613 || $article_id == 14873) ) { ?>
+		<?php //if( isset($article_id) && ( $article_id == 15104 || $article_id == 14613 || $article_id == 14873) ) { ?>
 			<!-- /73970039/UT_SS_FP -->
 			<div id='div-gpt-ad-1461622964696-3'>
 				<script type='text/javascript'>
@@ -98,7 +98,7 @@ if(!is_null($categoryInfo)){
 				</script>
 			</div>
 
-		<?php } ?>
+		<?php //} ?>
 
 		<?php if(isset($article_id) && $article_id == 13305 ){?>
 			<div id="ros_adoop"></div> 
@@ -186,7 +186,7 @@ if(!is_null($categoryInfo)){
 	<?php } ?>
 
 		<!-- UNDERTONE -->
-		<?php if( isset($articleInfoObj) && ( $articleInfoObj['article_id'] == 15104 || $articleInfoObj['article_id'] == 14613 || $articleInfoObj['article_id'] == 14873) ) { ?>
+		<?php //if( isset($articleInfoObj) && ( $articleInfoObj['article_id'] == 15104 || $articleInfoObj['article_id'] == 14613 || $articleInfoObj['article_id'] == 14873) ) { ?>
 			<!-- /73970039/UT_SS_FP -->
 			<div id='div-gpt-ad-1461622964696-3'>
 				<script type='text/javascript'>
@@ -194,7 +194,7 @@ if(!is_null($categoryInfo)){
 				</script>
 			</div>
 
-		<?php } ?>
+		<?php //} ?>
 
 		<!--<div id="ros_adoop"></div>-->
 		<?php include_once($config['include_path'].'header.php');?>

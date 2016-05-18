@@ -127,7 +127,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							</div>
 						<?php }else{ ?>
 						<?php if($article_id != 15284 && $article_id != 15488 ){?>
-							<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 							
 							<ins class="adsbygoogle"
 							     style="display:inline-block;width:300px;height:250px"
@@ -135,26 +135,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							     data-ad-slot="2880293382"></ins>
 							<script>
 							(adsbygoogle = window.adsbygoogle || []).push({});
-							</script>-->
-							<div class="alignleft">
-							     <script type="text/javascript">
-							        amzn_assoc_banner_id = "048JV5R198MXDXRBR1R2";
-									amzn_assoc_ad_type = "banner";
-									amzn_assoc_marketplace = "amazon";
-									amzn_assoc_region = "US";
-									amzn_assoc_placement = "assoc_banner_placement_default";
-									amzn_assoc_campaigns = "student_usa";
-									amzn_assoc_banner_type = "category";
-									amzn_assoc_p = "12";
-									amzn_assoc_isresponsive = "false";
-									amzn_assoc_banner_id = "048JV5R198MXDXRBR1R2";
-									amzn_assoc_width = "300";
-									amzn_assoc_height = "250";
-									amzn_assoc_tracking_id = "perspective08-20";
-									amzn_assoc_linkid = "47a9419c51a7be7885e11c830d5511bf";
-							     </script>
-							     <script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
-							</div>
+							</script>
+							
 						<?php } ?>
 					<?php } ?>
 				</div>
@@ -366,10 +348,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 	
 			<?php if( $article_id != 14479 &&  $article_id != 14576 &&  $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 ){?>
-				<div class="small-12 columns margin-top margin-bottom" >
+				<!--<div class="small-12 columns margin-top margin-bottom" >
 					<ins class="adbladeads" data-cid="21332-1502367429" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins>
 					<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
-				</div>
+				</div>-->
 			<?php }?>
 			</section>
 
@@ -377,7 +359,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 	</section>
 	<!-- UNDERTONE -->
-	<?php if( isset($article_id) && ( $article_id == 14613 ) ){?>
+	<?php //if( isset($article_id) && ( $article_id == 14613 ) ){?>
 		<!-- /73970039/UT_SA -->
 		<div id='div-gpt-ad-1461622964696-5' style='height:50px; width:320px;'>
 			<script type='text/javascript'>
@@ -392,7 +374,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</script>
 		</div>
 
-	<?php } ?>
+	<?php //} ?>
 
 	<?php if( !$sponsored_aricle ){ ?>
 		<?php if( $article_id != 14479 &&  $article_id != 14576 &&  $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 ){?>

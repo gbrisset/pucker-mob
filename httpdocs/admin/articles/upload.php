@@ -19,6 +19,7 @@ if(isset($_POST) && empty($_POST['a_i'] ) ){
 	$action = "new";
 }
 
+var_dump($_FILES); die;
 
 if($action === "new"){
 	if($isLib){

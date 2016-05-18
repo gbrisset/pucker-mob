@@ -47,7 +47,7 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e9" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_123456e10" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -66,7 +66,7 @@
 </script>
 
 	<!-- UNDERTONE -->
-	<?php if( isset($articleInfo) && ($articleInfo['article_id'] == 14613 || $articleInfo['article_id'] == 15104 || $articleInfo['article_id'] == 14873 || $articleInfo['article_id'] == 12966) ){?>
+	<?php //if( isset($articleInfo) && ($articleInfo['article_id'] == 14613 || $articleInfo['article_id'] == 15104 || $articleInfo['article_id'] == 14873 || $articleInfo['article_id'] == 12966) ){?>
 		<script type='text/javascript'>
 		  var googletag = googletag || {};
 		  googletag.cmd = googletag.cmd || [];
@@ -95,7 +95,7 @@
 		    googletag.enableServices();
 		  });
 		</script>
-	<?php } ?>
+	<?php //} ?>
 
 	<?php if( isset($articleInfo) && ($articleInfo['article_id'] == 8787 ) ) {?>
 		<!-- ENGAGE -->
@@ -134,8 +134,8 @@
 <?php if(!$detect->isMobile()){ ?>
 
 	<?php if( isset( $articleInfo['article_id'] ) && ( $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488) ){ ?>
-	 	<!-- Totally Her GPT -->
-		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> 
+	 	<!-- Totally Her GPT 
+		<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script> -->
 	<?php } ?>
 <?php }else{ ?>
 

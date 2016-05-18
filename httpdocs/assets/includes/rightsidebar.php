@@ -3,13 +3,22 @@
   $has_sponsored = 0;
   if ( isset($isArticle) && $isArticle ){?>
   <aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print" style="">
-      
       <!-- LELO -->
       <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271){?>
         <?php if( $articleInfoObj['article_id'] != 14613){?>     
-           <?php if( !$sponsored_aricle &&  $articleInfoObj['article_id'] != 15284 && $articleInfoObj['article_id'] != 15488){?>
+           <?php if(   $articleInfoObj['article_id'] != 15284 && $articleInfoObj['article_id'] != 15488){?>
             <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
-              <div id="ros_1195"></div> 
+                    <style> a#adContent-clickOverlay{z-index: 9 !important;}</style>
+
+              <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+                <script type="text/javascript" language="javascript">
+                //<![CDATA[
+                aax_getad_mpb({
+                  "slot_uuid":"b4587d75-20a4-4621-998d-e64e4f4270b2"
+                });
+                //]]>
+                </script>
+           <!--   <div id="ros_1195"></div> -->
             </div>
             <?php }?> 
         <?php }else{ ?>
@@ -33,14 +42,14 @@
     <!-- LELO -->
     <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271){?>
     <?php if($articleInfoObj['article_id'] != 8560 &&  $articleInfoObj['article_id'] != 14613){ ?>
-         <!-- ADBLADE -->
+         <!-- ADBLADE 
             <div class="ad-unit ad300" style="border: 1px solid #ddd; padding:5px; height: auto; min-height: 490px">
                 <ins class="adbladeads" data-cid="21330-1521667484" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins>
                 <script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
-            </div>
+            </div> -->
     <?php if( !$sponsored_aricle  && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){?>
             <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
-                <div id="ros_1201"></div> 
+               <!-- <div id="ros_1201"></div>--> 
             </div>
     <?php } ?>
   <?php } ?>
@@ -62,14 +71,23 @@
       <style>
 .fixed-width-sidebar{width: auto !important;}
       </style>
+      <div id="btf1-ad" class="ad-unit ad300 show-on-large-up" style="height: auto;">
+       <!-- <div id="home_1185"></div> -->
+       <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+        <script type="text/javascript" language="javascript">
+        //<![CDATA[
+        aax_getad_mpb({
+          "slot_uuid":"b4587d75-20a4-4621-998d-e64e4f4270b2"
+        });
+        //]]>
+        </script>
+      </div>
       <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
       
-      <div id="btf1-ad" class="ad-unit ad300 show-on-large-up" style="height: auto;">
-        <div id="home_1185"></div> 
-      </div>
+      
       
       <div id="btf2-ad" class="ad-unit ad300"  style="height: auto;">
-          <div id="home_1187"></div> 
+        <!--  <div id="home_1187"></div> -->
       </div>
       
       <!-- ADBLADE -->
@@ -80,7 +98,7 @@
 
           
           <div id="btf3-ad" style="margin-top: 1rem !important; " class="ad-unit ad300"  style="height: auto;">
-            <div id="home_1183"></div> 
+          <!--  <div id="home_1183"></div>  -->
           </div>
 
            

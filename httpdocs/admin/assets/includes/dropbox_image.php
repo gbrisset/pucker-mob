@@ -4,12 +4,13 @@
 	<form id="image-drop" class="dropzone dz-clickable small-12 column no-padding" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
  		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
  		<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
- 		
+
  		<div class="dz-message inline-flex dropzone-previews" data-dz-message >
  			<div class="dz-preview dz-file-preview small-12 large-7" id="template">  <!-- template for images -->
 	            <div class="dz-details dztemplate">
 	              <div class="dz-filename" style="display:none;"><span data-dz-name></span></div>
 	              <div class="dz-size"  style="display:none;" data-dz-size></div>
+
 	              <img data-dz-thumbnail style="display:inline;" id="main-image-src" src=""/>
 	            </div>
 	            <div class="dz-progress" style="display:none;"><span class="dz-upload" data-dz-uploadprogress></span></div>
@@ -78,31 +79,22 @@
 			// Will send the filesize along with the file as POST data.
 			this.on("sending", function(file, xhr, formData) {
 	  			formData.append("filesize", file.size); 
-	  			//formData.append("filewidth", file.width); 
-	  			//formData.append("fileheight", file.height); 
 			});
 
-			//this.on("thumbnail", function(file) {
-	           //console.log('thumbnail');
-		    //});
-			
-			//this.on("complete", function(file) {
-			 // console.log(file);
-			
-
-			//});
+			this.on("thumbnail", function(file) {
+                if (file.width != maxImageWidth || file.height != maxImageHeight) {
+                  file.rejectDimensions()
+                }
+                else {
+                  file.acceptDimensions();
+                }
+              });
 
 		 },
 		 accept: function(file, done) {
-		  	console.log('accept'); 
-		  	console.log(currentWidth, currentHeight);
-
-		    if (file.width > maxImageWidth || file.height > maxImageHeight){
-		      done("Invalid dimension. Must be 784x431 px");
-		    }else if(file.width < maxImageWidth || file.height < maxImageHeight){
-		      done("Invalid dimension. Must be 784x431 px");
-		    }else { done(); }
-		 }
+              file.acceptDimensions = done;
+              file.rejectDimensions = function() { done("Invalid dimension. Must be 784x431PX"); };
+          }
 		};
 	</script>
 <?php }else{?>

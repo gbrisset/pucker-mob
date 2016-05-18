@@ -80,24 +80,20 @@
 	  			formData.append("fileheight", file.height); 
 			});
 
-		//	this.on("thumbnail", function(file) {
-	         //   console.log('thumbnail');
-		  //  });
-			
-			//this.on("complete", function(file) {
-			//});
+			this.on("thumbnail", function(file) {
+                if (file.width != maxImageWidth || file.height != maxImageHeight) {
+                  file.rejectDimensions()
+                }
+                else {
+                  file.acceptDimensions();
+                }
+              });
 
 		 },
-		  accept: function(file, done) {
-		  	console.log('accept'); 
-		  	//console.log(currentWidth, currentHeight);
-
-		    if (file.width > maxImageWidth || file.height > maxImageHeight){
-		      done("Invalid dimension. Must be 784x431 px");
-		    }else if(file.width < maxImageWidth || file.height < maxImageHeight){
-		      done("Invalid dimension. Must be 784x431 px");
-		    }else { done(); }
-		 }
+		 accept: function(file, done) {
+              file.acceptDimensions = done;
+              file.rejectDimensions = function() { done("Invalid dimension. Must be 784x431PX"); };
+          }
 		};
 	</script>
 <?php }else{?>

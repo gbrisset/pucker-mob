@@ -9,7 +9,15 @@
 	      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 ){?>
 	      			
 			      		<?php if($articleInfoObj['article_id'] != 14613 && $articleInfoObj['article_id'] != 14873 && $articleInfoObj['article_id'] != 12966 && $articleInfoObj['article_id'] != 15284 ){?>
-								<div id="ros_1193" style="display: inline-block !important;"></div> 
+								<!--<div id="ros_1193" style="display: inline-block !important;"></div> -->
+								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+			<script type="text/javascript" language="javascript">
+			//<![CDATA[
+			aax_getad_mpb({
+			  "slot_uuid":"4dccafa1-4eba-4f93-a40f-2c0f5348f76d"
+			});
+			//]]>
+			</script>
 						<?php }else{?>
 							<?php if($articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
 							<!-- /73970039/UT_BB -->
@@ -29,7 +37,17 @@
 				<?php } ?>
 			
 		<?php }else{?>
-			<div id="home_1181" style="display: inline-block;"></div> 
+			<!--<div id="home_1181" style="display: inline-block;"></div> -->
+
+			<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+			<script type="text/javascript" language="javascript">
+			//<![CDATA[
+			aax_getad_mpb({
+			  "slot_uuid":"4dccafa1-4eba-4f93-a40f-2c0f5348f76d"
+			});
+			//]]>
+			</script>
+
 		<?php }?> 
 	</div>
 <?php }?>

@@ -17,7 +17,7 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3456798e" ></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_34567977e" ></script>
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -43,10 +43,10 @@
      
       <!-- LELO -->
       <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 ){?>
-        <script type="text/javascript">
+       <!-- <script type="text/javascript">
         netseer_tag_id="19129"; 
         </script>
-        <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
+        <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>-->
       <?php } ?>
     <?php }  ?>
 
@@ -103,12 +103,12 @@
           </script>
 
 
-         <!-- NETSEER AD IN-IMAGE -->
+         <!-- NETSEER AD IN-IMAGE 
             <script type="text/javascript">
             netseer_tag_id="19129"; 
             </script>
             <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
-
+-->
 
         <!-- kixer adhesion -->
         <!-- Start Pucker Mob - Adhesion - iframe buster code -->
@@ -208,9 +208,9 @@
 <!-- SHARETHROUNG -->
 <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>
     
-<!-- TotallyHer comscore tags -->
+<!-- TotallyHer comscore tags 
 <script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
-
+-->
 <!-- ADSUPPLY 
 <script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
 -->

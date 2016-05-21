@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="http://www.puckermob.com/assets/js/app.min.js?ver_3456788e" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_345678808e" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
@@ -17,7 +17,7 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_34567977e" ></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_345679998e" ></script>
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -79,9 +79,9 @@
         <!-- LELO -->
         <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 && $article_id != 15488){ ?>
         
-            <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
+         <!--   <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
 
-             <!-- ANSWERS SLIDER UNIT -->
+              ANSWERS SLIDER UNIT 
            <div id="vm_inline"></div>
           <script>
               window._videomosh = window._videomosh || [];
@@ -100,7 +100,7 @@
                   incontent_desktop_id: "42300",
                   target_type: "mix"
                           });
-          </script>
+          </script>-->
 
 
          <!-- NETSEER AD IN-IMAGE 

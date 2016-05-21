@@ -11,6 +11,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	$article_title = $articleInfoObj['article_title'];;
 	$article_id = $articleInfoObj['article_id'];
 	$article_body = $articleInfoObj['article_body'];
+	$article_desc = $articleInfoObj['article_desc'];
 	$article_category = $category['cat_name'];
 	$category_id = $category['cat_id'];
 	$article_category_dir = $category['cat_dir_name'];
@@ -33,32 +34,14 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	if(file_exists(	$config['image_upload_dir'].'articlesites/puckermob/second_image/second_mob_img_'.$articleInfoObj["article_id"].'.jpg')){
 		$second_image = $config['image_url'].'articlesites/puckermob/second_image/second_mob_img_'.$articleInfoObj["article_id"].'.jpg';	;
 	}
+
+	$name = htmlspecialchars(trim(strip_tags($articleInfoObj["contributor_name"])));
+	$seo_name = $articleInfoObj['contributor_seo_name'];
 }
 ?>
 
 	
 <?php if($detect->isMobile()){?>
-<style>
-	#branovate-ad div{margin-left:-4px;}
-	#branovate-ad-iframe{ border:none; height:240px;}
-	div#tl_ad {margin-top: 0 !important; padding-top: 0 !important;}
-	#article-content p:first-child{margin-bottom: 1.25rem !important;}
-	#kikvid-3043, #vm_inline{display:inline-block !important;}
-	#adunit-300x250-3159{display:inline-block;}
-	.sumome-share-client.sumome-share-client-mobile-bottom-bar.sumome-share-client-counts.sumome-share-client-light.sumome-share-client-medium{
-		width: 100%;
-	}
-	a.sumome-share-client-animated.sumome-share-client-share{     width: 100%; }
-	a.sumome-share-client-animated.sumome-share-client-share {
-    width: 100% !important;
-}
-	.sumome-share-client-animated.sumome-share-client-share.sumome-share-client-share-share.sumome-share-client-count{ display: none !important;}
-	div#inarticle12-ad {
-	    top: -20px;
-	}
-	#playerHolder{ height: 250px !important; width: 300px !important; display: inline-block !important;}
-	#article-content li{ clear:both; }
-</style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
@@ -67,32 +50,52 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	
 	<section id="article-summary" class="small-12 column">
 		
+		<!-- TITLE -->
+		<h1 id="social_catcher" style="margin: 1rem 0 0.5rem 0;"><?php echo $article_title; ?></h1>
+		
+		<div class="small-12">
+			<?php if(!empty($article_desc) ){?><p class="description" style="margin-bottom:8px;"><?php echo $article_desc; ?></p><?php }?>
+			<p class="author">by <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo $name; ?></a></p>
+		</div>
+
+		<div id="article-content-2" class="clear">
+			<div class="social-media-container   small-12 columns no-padding padding-bottom social_sticky clear ">
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+    					<a class="a2a_button_facebook small-5  columns" style="background: #3b5998;">
+    						<label class="label-social-button-2-mobile" style="padding:9px 0 3px 0;">
+    							<i class="fa fa-facebook" style="margin-right: 10px; font-size: 1.8rem;" ></i></label>
+    					</a>
+    					<a class="a2a_button_pinterest small-2 columns" style="background: #cb2027;">
+    						<label class="label-social-button-2-mobile" style="padding: 6px; top: 2px;">
+    							<i class="fa fa-pinterest" aria-hidden="true" style="font-size: 1.8rem; margin: 0;"></i>
+							</label>
+						</a>
+						<a class="a2a_button_twitter small-2  columns" style="background: #00aced;">
+							<label class="label-social-button-2-mobile" style="padding: 6px; top: 2px;">
+    							<i class="fa fa-twitter" aria-hidden="true" style="font-size: 1.8rem; margin: 0;"></i>
+							</label>
+						</a>
+						<a class="a2a_dd small-2 columns" style="background: #003782;" href="https://www.addtoany.com/share">
+							<label class="label-social-button-2-mobile" style="padding: 6px; top: 2px;">
+    							<i class="fa fa-plus" aria-hidden="true" style="font-size: 1.8rem; margin: 0;"></i>
+							</label>
+						</a>
+						<script src="//static.addtoany.com/menu/page.js" async></script>
+					</div>
+			</div>		
+		</div>
+
 		<!-- Article Image -->
-		<div class="row no-margin-with-tap">
-			<div id="article-image" class="small-12 columns no-padding">
+		<div class="clear margin-bottom">
+			<div id="article-image" class=" no-padding">
 				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
 		</div>
 			
-		<!-- TITLE -->
-		<h1 id="social_catcher"style="margin: 1rem 0 0.5rem 0;"><?php echo $article_title; ?></h1>
 		
 		<!-- ABOUT THE AUTHOR -->
-			<?php include_once($config['include_path'].'abouttheauthor.php'); ?>
+		<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
 			
-		<section id="article-content-2">
-			<div class="social-media-container  columns padding-bottom social_sticky clear ">
-					<div class="a2a_kit a2a_kit_size_32 a2a_default_style data-a2a-icon-color="lightseagreen"">
-    					<a class="a2a_button_facebook" style="background: #3b5998;width: 80%;"><label class="label-social-button-2-mobile" style="padding:8px;"><i class="fa fa-facebook" style="margin-right: 10px;" ></i>Share on Facebook</label></a>
-    					<a class="a2a_button_pinterest" style="background: #cb2027;width: 15%;"><label class="label-social-button-2-mobile" style="padding: 6px; top: 2px;"><i class="fa fa-pinterest" aria-hidden="true" style="font-size: 1.8rem;
-    margin: 0;"></i></label></a>
-						   <script src="//static.addtoany.com/menu/page.js" async></script>
-					</div>
-			</div>	
-			
-			
-		</section>
-
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>
 		<div class="columns no-padding padding-top disclaimer">
@@ -107,17 +110,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<div class="row clear" style="margin-top: -1rem;">
 				<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 				
-				<div class="columns ad-unit hide-for-print padding-top"  style="display:inline">
-
-					<?php if($article_id == 13305){ ?>
-					<!-- TOTALLY HER -->
-						<div id="ros_1195" style="display: inline-block;"></div> 
-					<!-- LELO -->
-					<?php }elseif( $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 ){?>
+				<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+					<?php //LELO
+						if( $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 ){?>
 							<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
 								<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/lelo_mobile.gif" />
 							</a>
-					<?php }elseif( $article_id == 8787 ){?>
+						<?php }elseif( $article_id == 8787 ){?>
 						<!-- ENGAGE BDR -->
 						<!-- /73970039/ROS300x250 -->
 							<div id='div-gpt-ad-1462440432230-0' style='height:250px; width:300px; display:inline-block;'>
@@ -126,19 +125,18 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							</script>
 							</div>
 						<?php }else{ ?>
-						<?php if($article_id != 15284 && $article_id != 15488 ){?>
-							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-							
-							<ins class="adsbygoogle"
-							     style="display:inline-block;width:300px;height:250px"
-							     data-ad-client="ca-pub-8978874786792646"
-							     data-ad-slot="2880293382"></ins>
-							<script>
-							(adsbygoogle = window.adsbygoogle || []).push({});
-							</script>
-							
+							<?php if($article_id != 15284 && $article_id != 15488 ){?>
+								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								<!-- PM Mobile 320x50 -->
+								<ins class="adsbygoogle"
+								     style="display:inline-block;width:320px;height:50px"
+								     data-ad-client="ca-pub-8978874786792646"
+								     data-ad-slot="4899985785"></ins>
+								<script>
+								(adsbygoogle = window.adsbygoogle || []).push({});
+								</script>
+							<?php } ?>
 						<?php } ?>
-					<?php } ?>
 				</div>
 
 				<!-- ARTICLE BODY -->
@@ -162,16 +160,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					</p>
 				<?php }?>
 
+
 				<?php include_once($config['include_path'].'header_social.php'); ?> 
 			</div>
 
-			<!-- READ MORE -->
+			<!-- READ MORE  -->
 			<div class=" read-more  small-12 columns margin-bottom" style="background: white; border: 3px solid green; padding: 5px;">
 				<div class="button" style="border-top-width: 0px;  width:100%;">
-					<label id="read-more-img" style="    color: green; font-family: oslobold; font-size: 20px;">READ MORE</label>
+					<label id="read-more-img" style="    color: green; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
 				</div>
 			</div> 
-
+			
 			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 4.2rem;"></div>
 			
 			

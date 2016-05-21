@@ -40,7 +40,7 @@ $(document).ready(function() {
 			$content = $('#article-content');
 											
 			$content.css({
-				"height": $content.height(),
+				//"height": //$content.height(),
 				"max-height": 999999
 			 });
 

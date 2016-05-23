@@ -1,6 +1,6 @@
 <?php if(!$detect->isMobile()){ ?>
     
-	<div id="header-ad" class="ad-unit hide-for-print" style="  background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+	<div id="header-ad" class="ad-unit hide-for-print" style=" background:#fff;  width: 100%; max-width: 46rem; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
 		<style> #ros_1193, #home_1181{ display:inline-block !important; }</style>
 
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>

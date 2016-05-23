@@ -53,61 +53,25 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 
 						//Replace 2nd article with Adblade
 						if($articleNumber == 1 ){?>
-							<?php if( !$has_sponsored  ){ ?>
+							<?php //if( !$has_sponsored  ){ ?>
 							<?php if( $articleInfoObj['article_id'] != 14472 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
 							<style>#bbrlContainer{ left:-10px; }</style>
 							<div class="columns todays-favorites fade-in-out">
 								<!-- BEGIN JS TAG - puckermob.com Desktop 300x250 
 								<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5975094&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>-->
 								<!-- END TAG -->
-								<script type="text/javascript">var __refURL = "%%REFERRER_URL_UNESC%%";</script>
-								<script type="text/javascript" src="http://babaroll.com/js/gcapuckermob"></script>
+								<!--<script type="text/javascript">var __refURL = "%%REFERRER_URL_UNESC%%";</script>
+								<script type="text/javascript" src="http://babaroll.com/js/gcapuckermob"></script>-->
 							</div>
 							<?php } ?>
-						<?php }
-							continue;
+						<?php //		}
+							//continue;
 						}
 
 						//Replace 6th article ntent ad
 						if($articleNumber == 6 ){
 							if(!$has_sponsored && (isset($isHomepage) && !$isHomepage ) && !$sponsored_aricle  && $article['article_id'] != 14472 ){ ?>
-							<!-- NTENT ADS
-							<div class="columns todays-favorites fade-in-out">
-							<script type="text/javascript" language="JavaScript">
-							var era_rc = {
-							   Styles: '{"thumbnail":{"iw":240,"ww":300,"pa":20,"nr":1,"nc":1}}',
-							   Scripts: 'thumbnail',
-							   ERADomain: 'as.vs4entertainment.com',
-							   PubID: 'puckermob',
-							   Layout: 'large thumbnail',
-							   MaxRelatedItems: '1',
-							   BlockID: 'w300r1i240',
-							   SearchWidgetPosition: '2',
-							   ImageSize: 'large',
-							   SearchBoxCaption: 'Find More ...',
-							   HeaderText: ''
-							};
-							(function(){var v='ERA_AD_BLOCK';var i=1;while(document.getElementById(v)){if(i==25)break;v='ERA_AD_BLOCK'+i++;}document.write("<"+"div id='"+v+"'><"+"/div>");
-							var sch=(location.protocol=='https:'?'https':'http');var host=sch=='http'?'as.ntent.com':'secure.ntent.com';var s=document.createElement('script');var src=sch+"://"+host+"/ERALinks/era_rl.aspx?elid="+v;for(var p in era_rc)
-							{if(era_rc.hasOwnProperty(p)){src+=decodeURIComponent('%26')+p.toLowerCase()+"="+encodeURIComponent(era_rc[p]);}};s.src=src;document.getElementsByTagName("head")[0].appendChild(s);})();
-							</script>
-							<style>
-								.era_ad_block.thumbnail.ERA_RC_w300r1i240 .vsw-ad-item .vsw-ad-image{border: none !important; width: 276px !important;}
-								.era_ad_block.thumbnail.ERA_RC_w300r1i240 .vsw-ad-title{
-									margin-top: 0.2rem !important;
-									margin-bottom: 0.2rem !important;
-									font-family: Oslo !important;
-									font-size: 15px !important;
-									line-height: 1.2 !important;
-									color: #292929 !important;
-									text-align: left !important;
-									width: 280px !important;
-								}
-								.era_ad_block.thumbnail.ERA_RC_w300r1i240 .vsw-ad-item{margin:0 !important;}
-								.era_ad_block.thumbnail div.vsw-ad-rc{border-bottom: 2px solid #232323;}
-							</style>
-							</div>-->
-							<!-- END NTENT ADS -->
+						
 						<?php } 
 					}
 					

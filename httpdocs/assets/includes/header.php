@@ -67,7 +67,7 @@
 
  
  <!-- Social Media Icons -->
-<div id="nav_bar">
+<div id="nav_bar" style="z-index:1000000000 !important;"> 
 
   <header id="top-banner" class="hide-for-print show-for-large-up top-header-logout <?php echo  $login_header; ?>" style="" >
     <div class="row" style="max-width: 69.5rem">

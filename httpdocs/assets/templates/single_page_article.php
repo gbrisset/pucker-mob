@@ -42,6 +42,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 	
 <?php if($detect->isMobile()){?>
+<style>
+	div#inarticle12-ad{ display:inline; }
+</style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />

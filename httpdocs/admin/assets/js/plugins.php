@@ -347,34 +347,6 @@ $.fn.SDToggler = function(hiddenDiv){
 	});
 }
 
-/*
-$.fn.mpTooltip = function(){
-	return this.each(function(){
-		var thisToolTip = $(this),
-		thisToolTipInfo = $(thisToolTip).find('.tooltip-info'),
-		ttIconOver = false, ttOver = false, ttTimeout = null;
-
-		$(thisToolTip).mouseenter(function(e){
-			$(thisToolTipInfo).fadeTo(200, 1);
-			ttIconOver = true;
-		}).mouseleave(function(e){
-			ttIconOver = false;
-			ttTimeout = setTimeout(onTimeout, 200);
-		});
-
-		$(thisToolTipInfo).mouseenter(function(e){
-			ttOver = true;
-		}).mouseleave(function(e){
-			ttOver = false;
-			ttTimeout = setTimeout(onTimeout, 200);
-		});
-
-		function onTimeout(){
-			if(!ttOver && !ttIconOver) $(thisToolTipInfo).fadeTo(200, 0, function(){$(this).hide();});
-			clearTimeout(ttTimeout);
-		};
-	});
-};*/
 
 /* Begin Scrollable Element Detection */
 function scrollableElement(els) {
@@ -744,4 +716,46 @@ $.fn.filterByText = function(textbox, selectSingleMatch) {
                 }
             });            
         });
+};
+
+$.fn.autoEdit = function(){
+
+	$(this).each(function(e){
+		let elm = $(this);
+		let category = $(elm).attr('data-category');
+		let id = $(elm).attr('data-info');
+		let content = $(elm).attr('data-src');
+		let edit = $('#edit-list');
+		let save = $('<button id="save_button">save</button>');
+		let current_data = $('.current-data');
+		let textarea = $('<textarea>'+content+'</textarea>');
+
+		
+
+		$(edit).on('click', function(e){
+			$(this).hide();
+			$(current_data).remove();
+			$(elm).append(textarea);
+			$('.button-box').append(save);
+		});
+		
+
+		$(save).on('click', function(e){
+			console.log('save');
+			console.log($(textarea).val());
+			let data = $(textarea).val();
+			$(edit).show();
+			$(save).hide();
+			
+
+			/*$.ajax(
+				//AJAX CALL HERE
+			);*/
+
+
+		});
+		
+		console.log(content);
+	});
+	
 };

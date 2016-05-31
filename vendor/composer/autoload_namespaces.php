@@ -6,5 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Psr\\Log\\' => array($vendorDir . '/psr/log'),
+    'PhpConsole' => array($vendorDir . '/php-console/php-console/src'),
+    'Google_Service_' => array($vendorDir . '/google/apiclient-services'),
+    'Google_' => array($vendorDir . '/google/apiclient/src'),
     'Drewm' => array($vendorDir . '/drewm/mailchimp-api/src'),
 );

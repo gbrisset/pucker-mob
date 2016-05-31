@@ -105,6 +105,8 @@
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
+
+				<?php include_once($config['include_path_admin'].'blogger_status_level.php'); ?>
 			</div>
 
 			<div class="small-12 columns no-padding margin-top hide-for-large-up">
@@ -113,6 +115,8 @@
 					<span class="uppercase">Month to Date</span>
 				</div>
 			</div>
+
+		
 
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" >
@@ -124,9 +128,9 @@
 					<?php include_once($config['include_path_admin'].'top_bloggers.php'); ?>
 				</div>
 
-				<!--<div class="small-12  columns margin-bottom no-padding">
-					<?php //include_once($config['include_path_admin'].'top_bloggers_articles.php'); ?>
-				</div>-->
+				<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
+					<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
+				</div>
 
 				
 			</div>

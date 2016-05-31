@@ -79,9 +79,9 @@
         <!-- LELO -->
         <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 && $article_id != 15488){ ?>
         
-         <!--   <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
+          <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
 
-              ANSWERS SLIDER UNIT 
+             
            <div id="vm_inline"></div>
           <script>
               window._videomosh = window._videomosh || [];
@@ -100,15 +100,25 @@
                   incontent_desktop_id: "42300",
                   target_type: "mix"
                           });
-          </script>-->
+          </script>
 
+          <?php //if($article_id == 15754 ){ ?>
+          <!-- AIRPUSH MOBILE -->
+          <script type="text/javascript">
+		    this.airpushConfig = {
+		        "siteid": 291995,
+		        "smartwall": 1
+		    };
+		</script>
+		<script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
+		<?php //} ?>
 
-         <!-- NETSEER AD IN-IMAGE 
+         <!-- NETSEER AD IN-IMAGE -->
             <script type="text/javascript">
             netseer_tag_id="19129"; 
             </script>
             <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
--->
+		
 
         <!-- kixer adhesion -->
         <!-- Start Pucker Mob - Adhesion - iframe buster code -->

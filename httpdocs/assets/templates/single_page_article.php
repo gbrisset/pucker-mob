@@ -127,19 +127,19 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462440432230-0'); });
 							</script>
 							</div>
-						<?php }else{ ?>
-							<?php if($article_id != 15284 && $article_id != 15488 ){?>
-								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-								<!-- PM Mobile 320x50 -->
+						<?php }//else{ ?>
+							<?php //if($article_id != 15284 && $article_id != 15488 ){?>
+								<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								 PM Mobile 320x50 
 								<ins class="adsbygoogle"
 								     style="display:inline-block;width:320px;height:50px"
 								     data-ad-client="ca-pub-8978874786792646"
 								     data-ad-slot="4899985785"></ins>
 								<script>
 								(adsbygoogle = window.adsbygoogle || []).push({});
-								</script>
-							<?php } ?>
-						<?php } ?>
+								</script>-->
+							<?php //} ?>
+						<?php //} ?>
 				</div>
 
 				<!-- ARTICLE BODY -->

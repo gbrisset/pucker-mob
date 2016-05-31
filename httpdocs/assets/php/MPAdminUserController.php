@@ -454,8 +454,9 @@ End password reset methods
 			} else {
 				date_default_timezone_set('America/New_York');
 			}
-		
-			 if(!$this->helpers->compareTimes(time(), strtotime($q['user_login_creation_date']), 120)) return array(
+		// var_dump(PHP_SESSION_ACTIVE); die;
+			// if(!$this->helpers->compareTimes(time(), strtotime($q['user_login_creation_date']), 120))
+			if( session_status() === (PHP_SESSION_ACTIVE ? TRUE : FALSE) ) return array(
 			 	'hasError' => true, 
 			 	'message' => "Sorry, your session has expired.  Please try again <a href=\"".$this->config['this_admin_url'].'login/'."\">here</a>."
 			 );

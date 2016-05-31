@@ -100,6 +100,7 @@
 			
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
+			
 			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
 
 			<!-- CHARTS --> 
@@ -107,6 +108,8 @@
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
 
 				<?php include_once($config['include_path_admin'].'blogger_status_level.php'); ?>
+
+				<?php include_once($config['include_path_admin'].'social_dashboard_links.php'); ?>
 			</div>
 
 			<div class="small-12 columns no-padding margin-top hide-for-large-up">
@@ -119,7 +122,7 @@
 		
 
 			<!-- Right Side -->
-			<div class="small-12 xxlarge-3 right padding rightside-padding" >
+			<div class="small-12 xxlarge-3 right padding rightside-padding" style="padding: 0 15px !important;" >
 				<!-- HOT TOPICS --> 
 				<div class="small-12  columns half-margin-bottom no-padding">
 					<?php include_once($config['include_path_admin'].'hottopics.php'); ?>

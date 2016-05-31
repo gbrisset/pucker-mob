@@ -1961,6 +1961,32 @@ form#user-account-delete-form {
 	.status-level{ display: inline; }
 }
 
+#connect-with-us-fb{
+	h3{
+		font-size: 1.7rem !important;
+	    color: #3B589E;
+	    top: 1.2rem;
+	    position: relative;
+	    margin-right: 15px;
+	}
+	.inner-box{ 
+		background: #627E93;
+		padding: 15px;
+		a{ 
+			outline:none; 
+			&:hover{ text-decoration: none;}
+		}
+
+		h4, p{ color: #fff; }
+		h4{ font-size: 1.1rem}
+		p{     
+			margin-bottom: 0;
+		    font-size: 15px !important;
+		    line-height: 1.2;
+    	}
+	}
+
+}
 
 .coming-soon{
 	color: red;

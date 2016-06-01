@@ -100,11 +100,16 @@
 			
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
+			
 			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
 
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
+
+				<?php include_once($config['include_path_admin'].'blogger_status_level.php'); ?>
+
+				<?php include_once($config['include_path_admin'].'social_dashboard_links.php'); ?>
 			</div>
 
 			<div class="small-12 columns no-padding margin-top hide-for-large-up">
@@ -114,8 +119,10 @@
 				</div>
 			</div>
 
+		
+
 			<!-- Right Side -->
-			<div class="small-12 xxlarge-3 right padding rightside-padding" >
+			<div class="small-12 xxlarge-3 right padding rightside-padding" style="padding: 0 15px !important;" >
 				<!-- HOT TOPICS --> 
 				<div class="small-12  columns half-margin-bottom no-padding">
 					<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
@@ -124,9 +131,9 @@
 					<?php include_once($config['include_path_admin'].'top_bloggers.php'); ?>
 				</div>
 
-				<!--<div class="small-12  columns margin-bottom no-padding">
-					<?php //include_once($config['include_path_admin'].'top_bloggers_articles.php'); ?>
-				</div>-->
+				<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
+					<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
+				</div>
 
 				
 			</div>

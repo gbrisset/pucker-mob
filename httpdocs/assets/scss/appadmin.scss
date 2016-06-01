@@ -127,11 +127,11 @@ $social-hover-darken-percent: -25%;
 }
 
 .half-margin-top{
-	margin-top: 7px;
+	margin-top: 7px !important;
 }
 
 .half-margin-bottom{
-		margin-bottom: 7px;
+		margin-bottom: 7px !important;
 }
 
 .bold{ font-weight: bold !important; font-family:OsloBold; }
@@ -1729,6 +1729,12 @@ form#user-account-delete-form {
 	
 }
 
+.experttips{
+	h3{ font-size: 20px; color: #666; margin: 0; margin-bottom: 0.625rem;  line-height: 1.2; margin-top: 0rem !important;
+}
+	label, p, ol, ol li{ font-size: 14px !important; color: #666 !important; margin-bottom: 15px;}
+}
+
 .rightside-padding{ padding: 0 !important; }
 .right-side-box{ 
 	margin-top: 1rem;
@@ -1759,7 +1765,7 @@ form#user-account-delete-form {
 	background: #F5F5F5;
 	border: 1px solid #eee;
 
-	#chart_div{ margin-top:1rem;}
+	#chart_div{ margin-top:2.8rem;}
 
 	h3{
 	    font-size: 1.7rem;
@@ -1813,6 +1819,12 @@ form#user-account-delete-form {
 	}
 
 	.incentive-second-table{ display:none;}
+	table tr.even, table tr.alt, table tr:nth-of-type(even) { background: rgba(1, 98, 1, 0.18); }
+	table thead{ 
+		background: #016201;
+		td{ color: #fff;}
+	}
+
 	@media #{$large-up} {
 		h1{ font-size: 1.7rem;}
 		.incentive-second-table{ display: table;}
@@ -1925,6 +1937,55 @@ form#user-account-delete-form {
 	    top: 5px;
 	}
 	p{ font-size: 18px; } 
+}
+
+.status-level{
+	display:none;
+	.main-title{
+		h3{ color: white; background:green; padding: 1.5rem; text-align: CENTER; margin-bottom: 0;}
+	}
+
+	.inner-box{ 
+
+		background: #C6D3C1; margin-top: 5px; padding-top: 1rem; padding-bottom:1rem;
+		h3{ font-size: 2rem; font-family: OswaldLight; }
+		h4{ font-size: 1.2rem; font-family:OsloBold; line-height:0;}
+		p, ul li{ font-size: 14px;}
+	}
+
+	@media #{$large-up} {
+		.inner-box{  background: #C6D3C1; margin-top: 5px; padding-top: 1rem;}
+	}
+}
+@media #{$large-up} {
+	.status-level{ display: inline; }
+}
+
+#connect-with-us-fb{
+	h3{
+		font-size: 1.7rem !important;
+	    color: #3B589E;
+	    top: 1.2rem;
+	    position: relative;
+	    margin-right: 15px;
+	}
+	.inner-box{ 
+		background: #627E93;
+		padding: 15px;
+		a{ 
+			outline:none; 
+			&:hover{ text-decoration: none;}
+		}
+
+		h4, p{ color: #fff; }
+		h4{ font-size: 1.1rem}
+		p{     
+			margin-bottom: 0;
+		    font-size: 15px !important;
+		    line-height: 1.2;
+    	}
+	}
+
 }
 
 .coming-soon{

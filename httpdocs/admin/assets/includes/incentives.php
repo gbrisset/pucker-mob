@@ -6,11 +6,8 @@
 			<p style="margin:0;">
 				<span class="uppercase"><?php echo date('F'); ?> Incentive Plan:</span>
 				Place in the Top 10 for the month for overall U.S. traffic, and we’ll add an extra $100 to your total earnings!
-			</p>	
-		</div>
-	</div>
-	<div class="small-12 columns radius right-side-box half-margin-top">
-		<div>
+			</p>
+			<br />	
 			<p>
 				This incentive is open to both Pro and Basic bloggers. Final outcome is based off of traffic as recorded on our dashboard, which is provided to us via Google Analytics. 
 			</p>

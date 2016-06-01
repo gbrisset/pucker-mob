@@ -103,22 +103,22 @@
           </script>
 
           <?php //if($article_id == 15754 ){ ?>
-          <!-- AIRPUSH MOBILE -->
+          <!-- AIRPUSH MOBILE 
           <script type="text/javascript">
 		    this.airpushConfig = {
 		        "siteid": 291995,
 		        "smartwall": 1
 		    };
 		</script>
-		<script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
+		<script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>-->
 		<?php //} ?>
 
-         <!-- NETSEER AD IN-IMAGE -->
+         <!-- NETSEER AD IN-IMAGE 
             <script type="text/javascript">
             netseer_tag_id="19129"; 
             </script>
             <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
-		
+		-->
 
         <!-- kixer adhesion -->
         <!-- Start Pucker Mob - Adhesion - iframe buster code -->

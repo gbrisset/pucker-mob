@@ -26,7 +26,7 @@
 			<div class="small-12 columns radius inner-box">
 				<h3 class="uppercase" >PRO</h3>
 				<div class="small-12">
-					<p>Basic level bloggers have an opportunity to make a few extra dollars while building an audience and becoming more 
+					<p>Pro level bloggers have an opportunity to make a few extra dollars while building an audience and becoming more 
 						integrated with the PuckerMob community: </p>
 					<ul>
 						<li>CPM Rate: $3.00</li>

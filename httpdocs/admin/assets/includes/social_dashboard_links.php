@@ -23,7 +23,7 @@
 		<div class=" radius inner-box">
 			<a href="https://www.facebook.com/puckermob" target="_blank">
 				<h4>PUCKERMOB</h4>
-				<p>Our primary fan page, showcasting our best content</p>
+				<p>Our fan page, showcasting our best content</p>
 			</a>
 		</div>
 	</div>

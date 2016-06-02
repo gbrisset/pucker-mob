@@ -369,7 +369,7 @@ $(document).ready(function() {
 		            sticky.css('top','110px');
                    $('.back-to-top').fadeIn(duration);
 		        }
-		       var stopHeight = catcher.offset().top + (sideAd.height() * 7) + catcher.height();
+		       var stopHeight = catcher.offset().top + (sideAd.height() ) + catcher.height();
 		       if ( stopHeight > sticky.offset().top) {
 		       		//console.log(stopHeight, sticky.offset().top);
 		            sticky.css('position','absolute');

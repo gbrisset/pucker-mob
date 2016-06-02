@@ -1825,6 +1825,12 @@ form#user-account-delete-form {
 		td{ color: #fff;}
 	}
 
+	.incentive-second-table thead{ 
+		background: #666;
+		td{ color: #fff;}
+	}
+	.incentive-second-table tr.even, .incentive-second-table tr.alt, .incentive-second-table tr:nth-of-type(even) { background: #ddd; }
+
 	@media #{$large-up} {
 		h1{ font-size: 1.7rem;}
 		.incentive-second-table{ display: table;}

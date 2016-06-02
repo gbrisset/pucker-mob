@@ -154,6 +154,9 @@ if($('body').hasClass('mobile')) {
 						if(article_id != 15284 && article_id != 15488){
 
 							inBodyAd.loadInArticleAd( 'article-body', 3, 0, '<div><div id="mb_video_syncad" class="floating_banner no_video"></div></div>', tag);
+
+							inBodyAd.loadInArticleAd( 'article-body', 6, 0, '<div id="vm_inline"></div><script>  window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1;  e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement(\'script\'),  document.getElementsByTagName(\'script\')[0], \'http://player.videomosh.com/players/loader/loader_final4.js\');  _videomosh.push({ publisher_key: "sequelmedia", mode: "incontent", container: "vm_inline", incontent_mobile_id: "9834", incontent_desktop_id: "42296", target_type: "mix", backfill: "<script src=\'//ib.3lift.com/ttj?inv_code=puckermob_article_sub\'></scr"+"ipt>" });</script>', tag);
+							
 							$('#inarticle3-ad').removeClass('columns');
 							//inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_mid_article"></script>', tag);
 						}

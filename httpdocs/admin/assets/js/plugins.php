@@ -54,6 +54,9 @@ var EarningsObj = {
 					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;
 					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
 
+					amount = parseFloat(amount.toFixed(2));
+					last_month_amount = parseFloat(last_month_amount.toFixed(2));
+
 					total_earned = total_earned + amount;
 					info = [ val[0].date, amount, last_month_amount];
 					chart.push(info);
@@ -68,7 +71,7 @@ var EarningsObj = {
 	getChartDataRange: function(){
 
 		var info = {}, 
-		chart = [['', 'revenue', ' '] ], 
+		chart = [['', 'Selected Month', 'Previous Month'] ], 
 		contributor_id = $('#contributor_id').val(), 
 		total_earned = 0;
     	$.ajax({
@@ -77,7 +80,7 @@ var EarningsObj = {
 			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
 			data: { task:'get_chart_data_range', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
 		}).done(function(data) {
-		console.log(data);
+		
 			if( data != "false" ){ 
 				data = $.parseJSON(data);
 				$(data).each( function(e){	
@@ -90,6 +93,12 @@ var EarningsObj = {
 
 					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;
 					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
+					amount = parseFloat(amount.toFixed(2));
+					last_month_amount = parseFloat(last_month_amount.toFixed(2));
+
+					//var lm = val[0].date;
+					//var current_date = moment(lm); 
+					//var last_month_date = current_date.subtract(1, 'months').format('MM/DD'); 
 
 					total_earned = total_earned + amount;
 					info = [ val[0].date, amount, last_month_amount];
@@ -103,7 +112,7 @@ var EarningsObj = {
 			EarningsObj.chart_info = chart;
 
 			$('#month-year-title').text('Earnings: $'+ parseFloat(EarningsObj.total_earnings, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
-			$('.chart-legend').hide();
+			//$('.chart-legend').hide();
 		});
 	},
 	

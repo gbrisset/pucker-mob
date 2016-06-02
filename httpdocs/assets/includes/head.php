@@ -124,6 +124,8 @@
 
 	<?php }?>
 
+
+
 <?php 
 	$sponsored_aricle = true; 
 	//if($articleInfoObj['article_id'] == 14785 ) $sponsored_aricle = true;
@@ -141,10 +143,46 @@
 
 	<?php //if( !$sponsored_aricle ){?>
 
-		<?php //if(isset($article_id) && $article_id == 13305 ){?>
+		<?php if(isset($article_id) && $article_id == 15078 ){?>
 			<!-- Totally Her GPT
 			<script src="http://tags.evolvemediallc.com/websites/evolve_tags/13623"></script>  -->
-		<?php //} ?>
+
+			<!-- ICELAND AIRLINE -->
+			<script type='text/javascript'>
+
+			  var googletag = googletag || {};
+
+			  googletag.cmd = googletag.cmd || [];
+
+			  (function() {
+
+			    var gads = document.createElement('script');
+
+			    gads.async = true;
+
+			    gads.type = 'text/javascript';
+
+			    var useSSL = 'https:' == document.location.protocol;
+
+			    gads.src = (useSSL ? 'https:' : 'http:') +
+
+			      '//www.googletagservices.com/tag/js/gpt.js';
+
+			    var node = document.getElementsByTagName('script')[0];
+
+			    node.parentNode.insertBefore(gads, node);
+
+			  })();
+
+			</script>
+			<script type='text/javascript'>
+			  googletag.cmd.push(function() {
+			    googletag.defineSlot('/73970039/ROS1x1', [1, 1], 'div-gpt-ad-1462751375432-0').addService(googletag.pubads());
+			    googletag.pubads().enableSingleRequest();
+			    googletag.enableServices();
+			  });
+			</script>
+		<?php } ?>
 
 	<?php //} ?>
 

@@ -70,6 +70,28 @@
     <script async src="//static.addtoany.com/menu/page.js" async></script>
 <?php } ?>
 
+<?php if($article_id == 11655 ){ ?>
+<div id="vm_inline"></div>
+<script>
+    window._videomosh = window._videomosh || [];
+    !function (e, f, u) {
+        e.async = 1;
+        e.src = u;
+        f.parentNode.insertBefore(e, f);
+    }(document.createElement('script'),
+            document.getElementsByTagName('script')[0],
+            'http://player.videomosh.com/players/loader/loader_final4.js');
+    _videomosh.push({
+        publisher_key: "sequelmedia",
+        mode: "slider",
+        container: "vm_inline",
+        incontent_mobile_id: "23002",
+        incontent_desktop_id: "42300",
+        target_type: "mix"
+                });
+</script>
+<?php }?>
+
 <!-- MOBILE -->
 <?php }else{ ?>
   
@@ -102,16 +124,16 @@
                           });
           </script>
 
-          <?php //if($article_id == 15754 ){ ?>
-          <!-- AIRPUSH MOBILE 
+          <?php if($article_id == 12964 ){ ?>
+          <!-- AIRPUSH MOBILE -->
           <script type="text/javascript">
-		    this.airpushConfig = {
-		        "siteid": 291995,
-		        "smartwall": 1
-		    };
-		</script>
-		<script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>-->
-		<?php //} ?>
+    		    this.airpushConfig = {
+    		        "siteid": 291995,
+    		        "smartwall": 1
+    		    };
+    		  </script>
+		      <script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
+		<?php } ?>
 
          <!-- NETSEER AD IN-IMAGE 
             <script type="text/javascript">

@@ -127,19 +127,19 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462440432230-0'); });
 							</script>
 							</div>
-						<?php }//else{ ?>
-							<?php //if($article_id != 15284 && $article_id != 15488 ){?>
-								<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-								 PM Mobile 320x50 
+						<?php }else{ ?>
+							<?php if($article_id != 15284 && $article_id != 15488 ){?>
+								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								<!-- PM Mobile Top Spot -->
 								<ins class="adsbygoogle"
-								     style="display:inline-block;width:320px;height:50px"
+								     style="display:inline-block;width:300px;height:250px"
 								     data-ad-client="ca-pub-8978874786792646"
-								     data-ad-slot="4899985785"></ins>
+								     data-ad-slot="2880293382"></ins>
 								<script>
 								(adsbygoogle = window.adsbygoogle || []).push({});
-								</script>-->
-							<?php //} ?>
-						<?php //} ?>
+								</script>
+							<?php } ?>
+						<?php } ?>
 				</div>
 
 				<!-- ARTICLE BODY -->
@@ -196,13 +196,24 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462751375432-0'); });
 				</script>
 				</div>
-			<?php }else{?>
-			<!-- SHARETH -->
-			<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">
-				<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>	
-			</div>
-			<?php }?>
+			<?php }elseif($article_id == 15078){?>
+				<!-- /73970039/ROS1x1 -->
 
+				<div id='div-gpt-ad-1462751375432-0' style='height:1px; width:1px;'>
+					<script type='text/javascript'>
+					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462751375432-0'); });
+					</script>
+					</div>
+					<script src="//ebdr3.com/serve?ynjs=1&zid=128905&pid=4040&click=%%CLICK_URL_ESC_ESC%%" type="text/javascript" ></script>
+			
+				<?php }else{ ?>
+					<!-- SHARETH -->
+					<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">
+						<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
+					</div>
+				<?php }?>
+			
+			
 			<?php if( !$sponsored_aricle ){ ?>
 			<!-- KIXER -->
 			<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">

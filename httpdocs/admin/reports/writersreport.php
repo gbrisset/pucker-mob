@@ -13,6 +13,7 @@
 
 	$dataInfo = ['start_date' => $start_date, 'end_date' => $end_date];
 	$results = $adminController->user->getContributorEarningsData( $dataInfo );
+
 ?>
 
 <!DOCTYPE html>
@@ -60,9 +61,9 @@
 					    <tr>
 					      <th class="bold align-left" >Name</th>
 					      <th class="bold">New Articles</th>
-					      <th class="bold">Total Articles Rev.</th>
-					      <th class="bold">US Traffic</th>
-					      <th class="bold">US Traffic Rev.</th>
+					      <th class="bold">Rate</th>
+					      <th class="bold">U.S. Traffic | 1k</th>
+					      <th class="bold">U.S. Traffic Rev.</th>
 					      <th class="bold align-right">Total</th>
 					    </tr>
 					  </thead>
@@ -72,16 +73,24 @@
 					  			foreach($results as $contributor ){
 						  			$total_article_rev = $contributor['article_rate'];
 						  			$total_CPM_earned = 0;
+
+						  			$user_type = $contributor['user_type'];
+						  			$rate = $dashboard->get_current_rate( $current_month , $user_type, $year = 0 );
+
+						  			if($rate) $rate = $rate['rate']; else $rate = 0.45;
+
 						  			$pageviews = $contributor['pageviews']['us_pageviews'];
 						  			if($pageviews > 0){
-						  				$total_CPM_earned = ($pageviews / 1000 ) * 7.5;
+						  				$pageviews = $pageviews / 1000;
+						  				$total_CPM_earned = ($pageviews ) * $rate;
 						  			}
-						  			$total =  ($total_CPM_earned - $total_article_rev);
+						  			$total =  ($total_CPM_earned);
 						  			$total_articles += $contributor['total_articles'];
 						  			$total_per_article += $total_article_rev;
 						  			$total_pageviews += $pageviews;
 						  			$total_cpm  += $total_CPM_earned;
 						  			$total_rev += $total;
+						  			
 
 						  			$styling = '';
 									if($total < 0 ) $styling = 'style="color: red;"'
@@ -89,20 +98,20 @@
 					  		<tr id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
 						  		<td class=" align-left" ><?php echo $contributor['contributor_name']; ?></td>
 						  		<td><?php echo $contributor['total_articles']; ?></td>
-						  		<td><?php echo '$'.number_format($total_article_rev, 0, '.', ','); ?></td>
-						  		<td><?php echo number_format($pageviews, 0, '.', ','); ?></td>
-						  		<td><?php echo '$'.number_format($total_CPM_earned, 0, '.', ','); ?></td>
-						  		<td class="align-right" <?php echo $styling; ?>><?php echo '$'.number_format($total, 0, '.', ','); ?></td>
+						  		<td><?php echo '$'.number_format($rate, 2, '.', ','); ?></td>
+						  		<td><?php echo number_format($pageviews, 2, '.', ','); ?></td>
+						  		<td><?php echo '$'.number_format($total_CPM_earned, 2, '.', ','); ?></td>
+						  		<td class="align-right" <?php echo $styling; ?>><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
 					  		</tr>
 					  		<?php } ?>
 					
 					  	<tr style="background-color: #E6FAFF">
 					  		<td class="bold align-left">TOTAL:</td>
 					  		<td><?php echo $total_articles; ?></td>
-					  		<td><?php echo '$'.number_format($total_per_article, 0, '.', ','); ?></td>
+					  		<td>----</td>
 					  		<td><?php echo number_format($total_pageviews, 0, '.', ','); ?></td>
-					  		<td><?php echo '$'.number_format($total_cpm, 0, '.', ','); ?></td>
-					  		<td class="align-right"><?php echo '$'.number_format($total_rev, 0, '.', ','); ?></td>
+					  		<td><?php echo '$'.number_format($total_cpm, 2, '.', ','); ?></td>
+					  		<td class="align-right"><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></td>
 					  		
 					  	</tr>
 					   </tbody>

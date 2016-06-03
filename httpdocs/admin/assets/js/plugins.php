@@ -186,11 +186,15 @@ var EarningsObj = {
 					total_CPM_earned = 0, total = 0,
 					pageviews = (val[0].pageviews.us_pageviews != null) ? parseInt(val[0].pageviews.us_pageviews) : 0;
 					
-					if(pageviews > 0) total_CPM_earned = ( pageviews / 1000 ) * 7.5;
+					if(pageviews > 0){
+						pageviews = pageviews / 1000;
+					} 
+					
+					total_CPM_earned = ( pageviews ) * 0.45;
 					
 					new_articles = parseInt(val[0].total_articles);
-  			
-					total = total_CPM_earned - total_article_rev;
+  				
+					total = total_CPM_earned; //- total_article_rev;
 					total_articles += new_articles;
 					total_per_article += total_article_rev;
 					total_pageviews += pageviews;
@@ -203,7 +207,7 @@ var EarningsObj = {
 					tr+= '<tr id="contributor-id-'+val[0].contributor_id+'">';
 						tr+= '<td class="align-left" >'+val[0].contributor_name+'</td>';
 						tr+= '<td>'+new_articles+'</td>';
-						tr+= '<td>$'+parseFloat(total_article_rev, 10).toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
+						tr+= '<td>$0.45</td>';
 						tr+= '<td>'+parseFloat(pageviews, 10).toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
 						tr+= '<td>$'+parseFloat(total_CPM_earned, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
 						tr+= '<td class="align-right" '+styling+'>$'+parseFloat(total, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
@@ -216,7 +220,7 @@ var EarningsObj = {
 				var total_tr = '<tr style="background-color: #E6FAFF">';
 					total_tr += '<td class="bold align-left">TOTAL:</td>';
 					total_tr += '<td>'+parseFloat(total_articles, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
-					total_tr += '<td>'+parseFloat(total_per_article, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
+					total_tr += '<td>---</td>';
 					total_tr += '<td>'+parseFloat(total_pageviews, 10).toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
 					total_tr += '<td>'+parseFloat(total_cpm, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
 					total_tr += '<td class="align-right">$'+parseFloat(total_amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';

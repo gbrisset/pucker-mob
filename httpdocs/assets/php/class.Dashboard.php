@@ -193,7 +193,7 @@ class Dashboard{
 
 		//$year = date('Y');
 		$s=" SELECT * FROM user_rate WHERE month = $month AND year = $year ";
-		if( $user_type != 8  && $user_type != 9 ){ $user_type = 0; }
+		if( $user_type != 8  && $user_type != 9  && $user_type != 6 ){ $user_type = 0; }
 			$s .= " AND user_type =  ".$user_type;
 		
 		$s .= " LIMIT 1 ";

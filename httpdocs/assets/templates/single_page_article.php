@@ -298,6 +298,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<!-- LELO -->
 			<?php if( $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 ){?>
 
+			<?php if($article_id == 13465 ){?>
+			<div id="mobile-instream-branovate-ad">
+				<div id="adunit-300x250-3159"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3159/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>
+			</div>
+			<?php }else{?>
 			<!-- BRANOVATE -->
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
@@ -312,6 +317,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<?php }?>
 				</div>
 			</div>
+			<?php } ?>
 			<?php if( !$sponsored_aricle ){ ?>
 			<!-- TOK -->
 			<div id="mobile-instream-branovate-ad">

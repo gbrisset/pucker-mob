@@ -1994,6 +1994,45 @@ form#user-account-delete-form {
 
 }
 
+#library{
+	#add-lib-image{
+		color: #3593C6;
+	}
+
+	.cat_section{
+		background: #ddd;
+    	padding: 8px;
+		
+	}
+	.images-container{
+		display:flex; 
+		flex-wrap: wrap;
+		div img{ display:flex; }
+
+		#remove-image{
+			position: absolute;
+		    top: -6px;
+		    right: 5px;
+		    cursor: pointer;
+		}
+	}
+
+	.upload-img-library-form{
+		form{
+			border: 1px solid #ddd;
+	    	padding: 15px 15px;
+		}
+		#library_category{ height:3rem;}
+		input {
+		    padding: 14px;
+    		height: 3rem;
+    		top: 4px;
+		}
+
+		
+	}
+}
+
 .coming-soon{
 	color: red;
 }

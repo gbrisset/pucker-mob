@@ -5,6 +5,49 @@ $admin = true;
         $adminController->user->data = $adminController->user->getUserInfo();
 
         $lib_categories = $mpArticleAdmin->getImagesCategories();
+        $status = true;
+        if(isset($_POST['submit'])){
+			$category = isset($_POST['library_category'] ) ? $_POST['library_category']  : false;
+				
+			if( !$category )  $status = array( 'error' => true, 'message' => 'Please Select A Category' ) ;  	
+			else{
+
+				$target_dir = $config['image_path_admin']."articles/";
+				$target_file = $target_dir . basename( $_FILES["image-to-library"]["name"] );
+				$uploadOk = 1;
+				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+				// Check if image file is a actual image or fake image
+
+			    $check = getimagesize($_FILES["image-to-library"]["tmp_name"]);
+			    if($check === false) {
+			        $status =  array( 'error' => true, 'message' => 'This File is not an Image');	
+			        $uploadOk = 0;
+			    }
+
+			    // Check if file already exists
+				if (file_exists($target_file)) {
+				    $status =  array( 'error' => true, 'message' => 'Sorry, file already exists.' );
+				    $uploadOk = 0;
+				}
+
+				// Check if $uploadOk is set to 0 by an error
+				if ($uploadOk == 0) {
+				     $status = array( 'error' => true, 'message' => 'Sorry, your file was not uploaded.');
+				// if everything is ok, try to upload file
+				} else{
+				    if (move_uploaded_file($_FILES["image-to-library"]["tmp_name"], $target_file)) {
+				    	$data = array(
+				    		'category' => $category,
+				    		'img_name' => $_FILES["image-to-library"]["name"] 
+				    	);
+				    	$inserting = $mpArticleAdmin->insertImagesPerCategory($data);
+				        $status =  array( 'error' => false, 'message' => 'The file '. basename( $_FILES["image-to-library"]["name"]). ' has been uploaded.' );
+				    } else{
+				         $status =  array( 'error' => true, 'message' => 'Sorry, there was an error uploading your file.');
+				    }
+				}
+			}
+        }
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +58,7 @@ $admin = true;
 
 <?php include_once($config['include_path_admin'].'head.php');?>
 
-<body id="newarticle">
+<body id="library">
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -25,117 +68,55 @@ $admin = true;
 		<div id="content" class="columns small-9 large-11">
 			<div class="small-12">
 				<h1>Manage Library</h1>
+				
+				<div class="small-12 columns no-padding margin-top upload-img-library-form">
+					<form action="" method="post" enctype="multipart/form-data">
+					   <span id="add-lib-image" class="margin-top margin-bottom uppercase"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Image</span>
+					    <input type="file" name="image-to-library" id="image-to-library">
+					    <select id="library_category" name="library_category" class="small-12 large-3 " required>
+							<option value="0">Select Category</option>
+							<option value="abstract">Abstract</option>
+							<option value="animals_pets">Animals | Pets </option>
+							<option value="people">People</option>
+							<option value="food">Food | Dinning </option>
+						</select>
+					    <input class="button radius" type="submit" value="Upload Image" name="submit" />
+					    <label class="uppercase <?php if($status['error'] === true ) echo ' error '; else echo ' success '?> ">
+						<?php echo $status['message']; ?>
+					</label>
+					</form>
+					
+				</div>
 			</div>
 			
-			<section id="article-info" class="small-12 columns">
-				
-
-<?php if(!$detect->isMobile()){?>
-<div class="radius small-12 xxlarge-8 columns no-padding"  >
-	<form id="image-drop" class="dropzone dz-clickable small-12 column no-padding" action="<?php echo $config['this_admin_url']; ?>library/upload.php">
- 		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
- 		<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
-
- 		<div class="dz-message inline-flex dropzone-previews" data-dz-message >
- 			<div class="dz-preview dz-file-preview small-12 large-7" id="template">  <!-- template for images -->
-	            <div class="dz-details dztemplate">
-	              <div class="dz-filename" style="display:none;"><span data-dz-name></span></div>
-	              <div class="dz-size"  style="display:none;" data-dz-size></div>
-
-	              <img data-dz-thumbnail style="display:inline;" id="main-image-src" src=""/>
-	            </div>
-	            <div class="dz-progress" style="display:none;"><span class="dz-upload" data-dz-uploadprogress></span></div>
-	            <div class="dz-success-mark" style="display:none;"><span>✔</span></div>
-	            <div class="dz-error-mark" style="display:none;"><span>✘</span></div>
-	            <div class="dz-error-message large-8 center"><span data-dz-errormessage></span></div>
-          	</div>
- 			<div id="img-container" class="small-12 large-5" >
- 				<div class="show-for-large-up" style="margin: 12% 0;">
- 			   		<label class="large-12 columns uppercase bold no-padding main-label">Add an image to the Library</label>
- 			   		<label style="color: #ccc;" class="large-12 columns no-padding margin-bottom">Drag Image Here or <a>Click to Upload</a> (784x431) </label>
- 		   		</div>
- 		   	</div>
- 		</div>
- 	</form>
-</div>
-
-<script>
-	var maxImageWidth = 784, maxImageHeight = 431, currentWidth = 0, currentHeight = 0;
-	  var previewNode = document.querySelector("#template");
-	  previewNode.id = "";
-	  var previewTemplate = previewNode.parentNode.innerHTML;
-	  previewNode.parentNode.removeChild(previewNode);
-		
-
-
-		Dropzone.options.imageDrop = {
-		  previewTemplate : previewTemplate,
-		  paramName: "file", // The name that will be used to transfer the file
-		  maxFiles: '1',
-		  acceptedFiles: '.jpg, .gif, .png, .jpeg',       // allowed image types don't use image/*
-		  //autoQueue: false, 
-		  maxFilesize: 3, // MB
-		  uploadMultiple: false,
-		  thumbnailWidth: 784,
-		  thumbnailHeight: 431,
-		  previewsContainer: ".dropzone-previews",
-
-		  init: function() {
-		  	this.on("maxfilesexceeded", function(file) {
-	            console.log('maxfilesexceeded');
-		    });
-
-			this.on("addedfile", function(file) {
-			  console.log('addedfile');
-			  if(this.files[1]!=null){
-			    this.removeFile(this.files[0]);
-			  } 
-
-			  if($('#template_copy').length > 0 ){
-			  		$('#template_copy').remove();
-			  }
-
-			  currentWidth = 0;
-	          currentHeight = 0;
-
-			});
-
-			// Will send the filesize along with the file as POST data.
-			this.on("sending", function(file, xhr, formData) {
-	  			formData.append("filesize", file.size); 
-			});
-
-			this.on("thumbnail", function(file) {
-                if (file.width != maxImageWidth || file.height != maxImageHeight) {
-                  file.rejectDimensions()
-                }
-                else {
-                  file.acceptDimensions();
-                }
-              });
-
-		 },
-		 accept: function(file, done) {
-              file.acceptDimensions = done;
-              file.rejectDimensions = function() { done("Invalid dimension. Must be 784x431PX"); };
-          }
-		};
-	</script>
-<?php }?>
-</section>
+			
 
 <section>
 	<div>
-
-		<h2>Images:</h2>
-		<div class="small-12">
+		<div class="small-12 columns no-padding margin-top">
 			<?php 
 				if($lib_categories){
-						foreach( $lib_categories as $img_category){ ?>
+						foreach( $lib_categories as $img_category){  ?>
 						<div class=" no-padding no-vertical-padding" data-info="<?php echo $img_category['seo_name']; ?>">
-							<div class="lib_cat_desc small-5 large-8 inline-block">
-								<h1><?php echo $img_category['name']; ?></h1>
+							<div class="lib_cat_desc">
+								<h3 class="cat_section uppercase" data-info="<?php echo $img_category['seo_name']; ?>"><?php echo $img_category['name']; ?></h3>
 							</div>
+							<?php if(isset($img_category['seo_name'])){ ?>
+							<div class="images-container">
+								<?php  
+									$data = [
+										'category' => $img_category['seo_name']
+									];
+									$images = $mpArticleAdmin->getImagesPerCategory($data);
+									if($images){
+										foreach($images as $img ){?>
+										<div class="small-4 large-1 columns padding-bottom"><img id="<?php echo $img['id'] ?>" src="<?php echo $config['this_admin_url'].'assets/img/articles/'.$img['img_name']?>" />
+											<span id="remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>
+										</div>
+										<?php }
+									} ?>	
+							</div>
+							<?php } ?>
 						</div>
 
 					<?php }

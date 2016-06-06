@@ -88,6 +88,10 @@
 					<li class="small-12 columns  padding-top padding-bottom" id="writers_report"><a href="<?php echo $config['this_admin_url']; ?>reports/writersreport.php">Writers Report</a></li>
 				</ul>
 			</li>
+
+			<li class="small-12 columns border-top border-bottom padding-top padding-bottom">
+				<a href="<?php echo $config['this_admin_url']; ?>library/">Library</a>
+			</li>	
 			<?php }?>
 
 	

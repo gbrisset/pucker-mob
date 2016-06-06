@@ -882,11 +882,8 @@ if($('.mob-level-contributor')){
 
 //Add NEW ARTICLE
 if( $('#newarticle').length > 0 ){
-	
-		//SEO AUTO COMPLETE
-		$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
-
-
+	//SEO AUTO COMPLETE
+	$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
 }
 
 }); 

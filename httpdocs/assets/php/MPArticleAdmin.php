@@ -1535,6 +1535,50 @@ var_dump($width); die;
 	
 		return $r;
 	}
+
+	public function insertImagesPerCategory($data){
+
+		$category  = filter_var(trim($data['category']), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$img_name  = filter_var(trim($data['img_name']), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
+		$pdo = $this->con->openCon();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$q = $pdo->prepare("INSERT INTO image_library (id, img_name, category) VALUES (NULL, '".$img_name."', '".$category."') ");
+
+		try{
+			$q->execute(array());
+			$image_id = $pdo->lastInsertId();
+		}catch(PDOException $e){
+			$this->con->closeCon();
+			return array_merge($this->returnStatus(500), ['hasError' => true]);
+		}
+		$this->con->closeCon();
+		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
+		$r['message'] = "Image added successfully!  You will be redirected momentarily.";
+	
+		return $r;
+	}
+
+	public function deleteImagePerCategory($data){
+		$id = filter_var( $data['id'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT );
+
+		$params = $this->compileParams(array());
+		$pdo = $this->con->openCon();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$q = $pdo->prepare("DELETE FROM image_library WHERE id = ".$id);
+		
+		try{
+			$q->execute($params);
+		}catch(PDOException $e){
+			$this->con->closeCon();
+			return array_merge($this->returnStatus(500), ['hasError' => true]);
+		}
+		$this->con->closeCon();
+		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
+		$r['message'] = "Image deleted successfully!";
+		
+		return $r;
+	}
 	/*END MANAGING IMAGES ON LIBRARY*/
 	
 

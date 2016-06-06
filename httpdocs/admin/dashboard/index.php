@@ -56,7 +56,7 @@
 		}
 	}
 
-	$rate = $dashboard->get_current_rate( 2, $contributor_type );
+	$rate = $dashboard->get_current_rate( $month, $contributor_type );
 	if($rate) $rate = $rate['rate'];
 	$total = 0;
 	

@@ -1341,7 +1341,8 @@ End password reset methods
 
 		$s = "SELECT article_contributor_articles.contributor_id, contributor_name, contributor_seo_name,  
 			SUM(IF(DATE_FORMAT(articles.creation_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."', 30, 0)) as 'article_rate', 
-			SUM(IF(DATE_FORMAT(articles.creation_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."', 1, 0)) as 'total_articles'
+			SUM(IF(DATE_FORMAT(articles.creation_date, '%Y-%m-%d') BETWEEN '".$start_date."' AND '".$end_date."', 1, 0)) as 'total_articles', 
+			user_type 
 			FROM articles 
 	        INNER JOIN (article_contributor_articles, article_contributors, users)
 		        ON articles.article_id = article_contributor_articles.article_id

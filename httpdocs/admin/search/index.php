@@ -173,7 +173,7 @@
 														<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
 													</a>
 													<?php if($admin){?>
-														<span class="show-for-large-up"><a href="<?php echo $config['this_url']; ?>/admin/profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>
+														<span class="show-for-large-up"><a href="<?php echo $config['this_admin_url']; ?>profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>
 													<?php }?>
 												</h2>
 												

@@ -1820,6 +1820,7 @@ form#user-account-delete-form {
 
 	.incentive-second-table{ display:none;}
 	table tr.even, table tr.alt, table tr:nth-of-type(even) { background: rgba(1, 98, 1, 0.18); }
+	table tr.even, table tr.alt, table tr.gray-out:nth-of-type(even) { background: #ddd; }
 	table thead{ 
 		background: #016201;
 		td{ color: #fff;}

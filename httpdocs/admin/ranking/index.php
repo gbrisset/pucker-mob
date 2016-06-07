@@ -9,9 +9,9 @@
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 
 	//GET RANK POSITION FOR CURRENT USER.
-	$limit = 20;
+	$limit = 40;
 	if($detect->isMobile()){
-		$limit = 10;
+		$limit = 20;
 	}
 	 $rank_list = $ManageDashboard->getTopShareWritesRank( date('n'), $limit);
 	 $rank = '9999';
@@ -61,9 +61,7 @@
 				<div class="small-12 columns no-padding hide-for-large-up margin-bottom" >
 					<label class="main-color font-1-5x">$100 TOP 10 BONUS</label>
 					<p>It's really simple: finish among the Top 10 for the month, and we'll add $100 to your earning total for the month!</p>
-					<label class="main-color font-1-5x">FRIENDS SIGN-UP BONUS</label>
-					<p>We want more blogger! Get your friends to sign up. For each friend that you geete to sign up as a blogger ( make sure they add your name to the registration page!). We'll pay you $10 after they publish their first five articles.</p>
-				</div>
+					</div>
 
 			</div>
 			<!-- Right Side -->

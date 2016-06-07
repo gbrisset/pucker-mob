@@ -58,7 +58,7 @@ if($contributorInfo['contributors']){
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
 		<!-- LEFT SIDE BAR -->
-		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
+		<?php //include_once($config['include_path'].'left_side_bar.php'); ?>
 		
 		<section id="puc-articles" class="contributor_page sidebar-right small-12 large-11 columns translate-fix sidebar-main-left">
 			<h1 class="contributor-title">Contributors</h1>

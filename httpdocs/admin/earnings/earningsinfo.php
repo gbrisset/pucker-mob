@@ -63,6 +63,7 @@
 	if($rate) $rate = $rate['rate'];
 	$total = 0;
 	
+
 	$last_month = $current_month-1;
 	$last_year = $current_year;
 	if($current_month == 1){
@@ -100,7 +101,8 @@
 			<div class="small-12 columns padding-bottom ">
 				<h1>Earnings & Analytics</h1>
 			</div>
-			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+			
+			<input type="hidden" value="<?php echo $rate; ?>" id="current-user-rate" />
 
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>

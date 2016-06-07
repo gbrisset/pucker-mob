@@ -1152,7 +1152,7 @@ class MPArticleAdmin{
 		}
 		foreach($files as $file){
 			list($width, $height) = getimagesize( $file['name']);
-var_dump($width); die;
+
 
 			$fileType = $file['type'];
 			$fileTempName = $file['tmp_name'];

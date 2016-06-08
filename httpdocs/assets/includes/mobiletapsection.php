@@ -1,16 +1,17 @@
 <?php 
 	//MOST POPULAR
 	$mostReadArticlesList = $mpArticle->getMostRecentArticleListMobile();
+
 	//BLOGS
 	$article_id = isset($articleInfoObj['article_id']) ? $articleInfoObj['article_id'] : false;
-	$moblog_articles = $mpArticle->getMoBlogsArticles( $article_id );
+	//$moblog_articles = $mpArticle->getMoBlogsArticles( $article_id );
 ?>
 <div class="small-12" id="slide-menu-left-div">
 	<nav class="menu slide-menu-left small-12" id="tap-section" >
 		<div class="content-wrapper columns small-12 padding-top">
 			<ul id="menu-options">
 				<li><a id="mostpopular" class="current">Most Popular</a></li>
-				<li><a id="blogs">Blogs</a></li>
+				<!--<li><a id="blogs">Blogs</a></li>-->
 			</ul>
 		<div class="columns small-12 no-padding padding-top tap-articles " data-info="mostpopular">
 				<?php 
@@ -31,7 +32,7 @@
 				<?php $index ++;
 			}?>
 		</div>
-		<div class="columns small-12 no-padding padding-top tap-articles hide" data-info="blogs">
+		<!--<div class="columns small-12 no-padding padding-top tap-articles hide" data-info="blogs">
 				<?php  
 				$index = 0;
 				foreach( $moblog_articles as $article ){
@@ -49,8 +50,8 @@
 					</article>
 					<?php 	$index ++; 
 				}?>
-			</div>
+			</div>-->
 		</div>
 	</nav>
- 	<button class="nav-toggler toggle-slide-left rotate ">MORE</button>
+ 	<button class="nav-toggler toggle-slide-left rotate ">FEATURED</button>
 </div>

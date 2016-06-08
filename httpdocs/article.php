@@ -66,15 +66,11 @@ if(!is_null($categoryInfo)){
 	$mpShared->get404();
 }
 
-//	include_once('admin/fb/fbfunctions.php');
-
 ?>
-<?php if ( $detect->isMobile() ) { ?>
-
-<?php 
-		$style = '';
-		$article_id = '';
-		if(isset($articleInfoObj)) $article_id = $articleInfoObj['article_id'];
+<?php if ( $detect->isMobile() ) { 
+	$style = '';
+	$article_id = '';
+	if(isset($articleInfoObj)) $article_id = $articleInfoObj['article_id'];
 ?>
 
 <!DOCTYPE html>
@@ -141,16 +137,16 @@ if(!is_null($categoryInfo)){
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
-	
-				<!-- 10  MOST RECENT ARTICLES ADDED -->
+			<!-- 10  MOST RECENT ARTICLES ADDED -->
 			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
-
-			
 		</section>
 		<?php }?>
 	</main>
 
 	<?php include_once('admin/fb/fbfunctions.php'); ?>
+	<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
+
+
 	<!-- ADS TO LOAD -->
 	<?php include_once($config['include_path'].'ads_to_load.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php');?>

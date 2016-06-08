@@ -241,7 +241,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
 				$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
 			?>
-				<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:15px !important; margin-bottom:15px !important;">
+				<div class="row padding small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:15px !important; margin-bottom:15px !important;">
 					
 					<div class="rel-articles-wrapper remember-to-share">
 						<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>

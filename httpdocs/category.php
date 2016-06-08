@@ -32,7 +32,6 @@ if(!is_null($categoryInfo)){
 	//$articlesList = $mpArticle->getMostRecentByCatId(['pageId' => $categoryInfo['cat_id']]);
 	$articlesList = $mpArticle->getArticlesList(['pageId' => 9, 'limit' => 60 ]);
 
-	//var_dump(count($articlesList)); die;
 
 	$recentArticles = $articlesList;
 }else $mpShared->get404();
@@ -43,9 +42,9 @@ if ( $detect->isMobile() ) { ?>
 	<body id="category" class="mobile background-eee">
 		<?php include_once($config['include_path'].'header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
-		<div id="ros_adoop"></div>
+		
 		<!-- MOBILE LEFT TAP -->
-		<?php //include_once($config['include_path'].'mobiletapsection.php'); ?>
+		<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
 		
 		<main id="main" class="row panel sidebar-on-right" role="main">
 			<section id="puc-articles" class="sidebar-right small-12 columns translate-fix sidebar-main-left">

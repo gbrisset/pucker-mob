@@ -58,6 +58,9 @@
 					</li>
 					<li class="small-12 columns  padding-top padding-bottom" id="new_contributor"><a href="<?php echo $config['this_admin_url'].$userLinkPublic; ?>">View Public</a>
 					</li>
+					<li class="small-12 columns  padding-top padding-bottom" id="billing"><a href="<?php echo $config['this_admin_url'].'billing'; ?>">Billing</a>
+					</li>
+
 				</ul>
 			</li>
 

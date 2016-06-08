@@ -55,26 +55,26 @@ nav.menu a.current{ color: #777;}
 .sml-open{ overflow: hidden; }
 button.open-menu{
   left:85% !important;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
 button.toggle-slide-left{
   position: fixed;
-  top: 30%;
+  top: 50%;
   left:-29px;
   margin: 0;
   padding: 0.1rem !important;
   background: #777;
   padding: 0;
   z-index: 1000202;
-  border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 0;
   width: 5rem;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 0;
   font-family: OsloBold;
-
+  font-size: 13px;
 
 }
 

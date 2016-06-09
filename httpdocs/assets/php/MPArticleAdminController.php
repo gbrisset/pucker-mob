@@ -114,9 +114,6 @@ class MPArticleAdminController extends MPArticle{
 			ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id AND af.article_id = a.article_id ) 
 			WHERE a.article_seo_title = :seoTitle OR a.article_id = :articleId";
 		
-		//$sql = "SELECT a.*, a.article_id, ai.*, astatus.*, article_moblogs_featured.article_featured_hp FROM articles as a LEFT JOIN (article_images as ai, article_statuses as astatus, article_moblogs_featured) 
-		//	ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id AND article_moblogs_featured.article_id = a.article_id ) 
-		//	WHERE a.article_seo_title = :seoTitle OR a.article_id = :articleId";
 		$params = array(
 			'seoTitle' => filter_var($options['seoTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR),
 			'articleId' => filter_var($options['articleId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
@@ -139,16 +136,13 @@ class MPArticleAdminController extends MPArticle{
 			'queryString' => 'SELECT * FROM article_contributor_articles as aca INNER JOIN (article_contributors as ac) ON (aca.contributor_id = ac.contributor_id) WHERE aca.article_id = '.$article['article_id']
 		));
 
-		//$article['video'] = $this->performQuery(array(
-		//	'queryString' => 'SELECT * FROM article_videos as av INNER JOIN (syndication_videos as sv) ON (av.syn_video_id = sv.syn_video_id) WHERE av.article_id = '.$article['article_id']
-		//));
-		return $article;
+			return $article;
 	}
 	/* End Admin Controller Get Information Functions */
 
 
 	/* Begin Admin Controller Site Updating Functions */
-	public function updateSiteSettings($post){
+	/*public function updateSiteSettings($post){
 		//$siteCategoryUpdate = $this->performUpdate(array(
 			//'updateString' => "UPDATE article_pages SET cat_id = :cat_id WHERE article_page_id = ".$this->config['articlepageid'],
 			//'updateParams' => array(':cat_id' => (strlen(preg_replace('/[^0-9]/', '', $post['cat_id']))) ? preg_replace('/[^0-9]/', '', $post['cat_id']) : 0)
@@ -165,9 +159,9 @@ class MPArticleAdminController extends MPArticle{
 		));
 		if($result === true) return array('hasError' => false, 'message' => 'Site information updated successfully!');
 		else return $result;
-	}
+	}*/
 
-	public function updateSiteFeautedObject($opts){
+/*	public function updateSiteFeautedObject($opts){
 		$options = array_merge(array(
 			'table' => 'articles_featured',
 			'column' => '',
@@ -182,40 +176,18 @@ class MPArticleAdminController extends MPArticle{
 		));
 		if($result === true) return array('hasError' => false, 'message' => $options['successMessage']);
 		else return $result;
-	}
+	}*/
 
-	public function updateSiteSearch($post){
+/*	public function updateSiteSearch($post){
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE article_page_social_settings SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
 			'post' => $post
 		));
 		if($result === true) return array('hasError' => false, 'message' => 'Search settings updated successfully!');
 		else return $result;	
-	}
-
-	/*public function updatePlayerSettings($post){
-		$post = array_merge(array(
-			'player_setting_debug-n' => (isset($post['player_setting_debug']) && $post['player_setting_debug'] == "player_setting_debug_on") ? 1 : 0,
-			'player_setting_autoplay-n' => (isset($post['player_setting_autoplay']) && $post['player_setting_autoplay'] == "player_setting_autoplay_on") ? 1 : 0,
-			'player_setting_randomize_playlist-n' => (isset($post['player_setting_randomize_playlist']) && $post['player_setting_randomize_playlist'] == "player_setting_randomize_playlist_on") ? 1 : 0,
-			'player_setting_countoff_start-n' => (isset($post['player_setting_countoff_start']) && $post['player_setting_countoff_start'] == "player_setting_countoff_start_on") ? 1 : 0,
-			'player_setting_withads-n' => (isset($post['player_setting_withads']) && $post['player_setting_withads'] == "player_setting_withads_on") ? 1 : 0,
-			'player_setting_prerolls-n' => (isset($post['player_setting_prerolls']) && $post['player_setting_prerolls'] == "player_setting_prerolls_on") ? 1 : 0,
-			'player_setting_postrolls-n' => (isset($post['player_setting_postrolls']) && $post['player_setting_postrolls'] == "player_setting_postrolls_on") ? 1 : 0,
-			'player_setting_ad_server_key-s' => preg_replace('/[\s]/', '', $post['player_setting_ad_server_key-s']),
-			'player_setting_ad_server_keywords-s' => preg_replace('/[\s]/', '', $post['player_setting_ad_server_keywords-s']),
-			'player_setting_ad_server_categories-s' => preg_replace('/[\s]/', '', $post['player_setting_ad_server_categories-s']),
-		), $post);
-
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE article_page_player_settings SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
-			'post' => $post
-		));
-		if($result === true) return array('hasError' => false, 'message' => 'Player settings updated successfully!');
-		else return $result;
 	}*/
 
-	public function updateSocialSettings($post){
+	/*public function updateSocialSettings($post){
 		$post = array_merge(array(
 			'articles_have_facebook-n' => (isset($post['articles_have_facebook'])) ? 1 : 0,
 			'articles_have_twitter-n' => (isset($post['articles_have_twitter'])) ? 1 : 0,
@@ -231,18 +203,18 @@ class MPArticleAdminController extends MPArticle{
 		));
 		if($result === true) return array('hasError' => false, 'message' => 'Social settings updated successfully!');
 		else return $result;
-	}
+	}*/
 
-	public function updateAdCodes($post){
+	/*public function updateAdCodes($post){
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE article_page_ads SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
 			'post' => $post
 		));
 		if($result === true) return array('hasError' => false, 'message' => 'Ad placement settings updated successfully!');
 		else return $result;
-	}
+	}*/
 
-	public function updateAdTiming($post){
+	/*public function updateAdTiming($post){
 		$post = array_merge(array(
 			'ads_rotate-n' => (isset($post['ads_rotate']) && $post['ads_rotate'] == "ads_rotate_enabled") ? 1 : 0
 		), $post);
@@ -253,9 +225,9 @@ class MPArticleAdminController extends MPArticle{
 		));
 		if($result === true) return array('hasError' => false, 'message' => 'Ad timing settings updated successfully!');
 		else return $result;
-	}
+	}*/
 
-	public function updateStylingSettings($post){
+/*	public function updateStylingSettings($post){
 		$params = $this->helpers->compileParams($post);
 
 		foreach($params as $key => $value){
@@ -287,7 +259,7 @@ class MPArticleAdminController extends MPArticle{
 		));
 		if($result === true) return array('hasError' => false, 'message' => 'Featured image link information updated successfully!');
 		else return $result;
-	}
+	}*/
 
 	/*MANAGE BILLING INFORMATION*/
 	public function editBillingInformation($data){
@@ -340,14 +312,7 @@ class MPArticleAdminController extends MPArticle{
 
 
 	public function updateUserInfo($post){
-		//$current_password = filter_var($post['user_password_current-s'], FILTER_SANITIZE_URL);
-		//$password_1 = filter_var($post['user_password1-s'], FILTER_SANITIZE_URL);
-		//$password_2 = filter_var($post['user_password2-s'], FILTER_SANITIZE_URL);
-
-		//unset($post['user_password_current-s']);
-		//unset($post['user_password1-s']);
-		//unset($post['user_password2-s']);
-
+		
 		$params = $this->helpers->compileParams($post);
 		
 		$this->user->data = $this->user->getUserInfo();
@@ -366,37 +331,6 @@ class MPArticleAdminController extends MPArticle{
 		if( $params[':user_email'] == "" ) {
 			return array('hasError' => true, 'message' => "Oops!  You must fill out the email field.");
 		} 
-
-		//	If the user has the password change form open, check to make sure they have filled out the pasword fields...
-		//if( $post['pwd_change'] == "true" &&  ($current_password == "" || $password_1 == "" || $password_2 == "") ){
-		//	return array('hasError' => true, 'message' => "Oops!  You must fill out ALL of the password fields.");
-		//}
-
-		/*if ($post['pwd_change'] == "true"){
-			//	Handle the password change
-			//	Make sure the new passwords match...
-			if($password_1 != $password_2){
-				return array('hasError' => true, 'message' => "Oops!  Your passwords do not match.");
-			}
-
-			//	Make sure the current password is correct
-			if ($this->user->checkPassword($this->user->data['user_name'], $current_password) == false){
-				return array('hasError' => true, 'message' => 'You have not entered the current password correctly.');
-			}
-
-			//	Change the password
-			$hashed_password = crypt($password_2, '$2a$12$' . $salt);
-			$params = array(":user_hashed_password" => $hashed_password) + $params;
-			$post = array("user_hashed_password-s" => $hashed_password) + $post;
-		} */
-
-
-
-		// $result_cont = $this->updateSiteObject(array(
-		// 	'updateString' => "UPDATE article_contributors SET contributor_email_address = '".$params[':user_email']."' WHERE contributor_email_address = '".$this->user->data['user_email']."'",
-		// 	'post' => $post,
-		// 	'unrequired' => array('user_last_name')
-		// ));
 
 		$user_post = $post;
 		unset($user_post['contributor_email_address-e']);
@@ -422,7 +356,6 @@ class MPArticleAdminController extends MPArticle{
 		$params[':contributor_facebook_link'] = filter_var($params[':contributor_facebook_link'], FILTER_SANITIZE_URL);
 		$params[':contributor_blog_link'] = filter_var($params[':contributor_blog_link'], FILTER_SANITIZE_URL);
 		$params[':contributor_bio'] = filter_var($params[':contributor_bio'], FILTER_SANITIZE_STRING);
-//contributor_bio = '".$params[':contributor_bio']."'
 		
 		if ($result){
 			$result_cont = $this->updateSiteObject(array(
@@ -719,9 +652,6 @@ class MPArticleAdminController extends MPArticle{
 	public function updateArticleInfo($post){
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category.'));
 		
-		//Check for same seo-name
-		//if(isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_seo_title-s']));
-
 		$params = $this->helpers->compileParams($post);
 
 		$seoTitleCheck = $this->performQuery(array(
@@ -777,7 +707,7 @@ class MPArticleAdminController extends MPArticle{
 		
 		
 		//Update Featured Article
-		if(isset($post['feature_article']) && $post['feature_article'] > 0){
+		/*if(isset($post['feature_article']) && $post['feature_article'] > 0){
 			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article '));
 			$featureArticle = intval(filter_var($post['feature_article'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
 			$this->performUpdate(array(
@@ -786,10 +716,17 @@ class MPArticleAdminController extends MPArticle{
 			));
 		}else{
 			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article WHERE article_id = '.$post['a_i']));
+		}*/
+
+		//FEATURED THIS ARTICLE ON LEFT SIDE BAR MOBILE TAP SECTION
+
+		if(isset($post['article_featured']) &&  $post['article_featured'] !== "-1" ){
+			$this->featuredArticle( $post );
 		}
 
+
 		//Show in homepage moblog article
-		if(isset($post['featured_hp']) ){
+		/*if(isset($post['featured_hp']) ){
 			$this->performUpdate(array('updateString' => 'DELETE FROM article_moblogs_featured WHERE article_id = '.$post['a_i']));
 			$featureArticleHp = intval(filter_var($post['featured_hp'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
 			$featureArticleId = intval(filter_var($post['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
@@ -798,7 +735,7 @@ class MPArticleAdminController extends MPArticle{
 				'updateString' => "INSERT INTO article_moblogs_featured SET  article_id = :articleId, article_cat = 'moblog', article_featured_hp = :articleHPFeature ",
 				'updateParams' => array(':articleId' => $featureArticleId, ':articleHPFeature'=> $featureArticleHp )
 			));
-		}
+		}*/
 
 		//UPDATE / INSERT ARTICLE ADS SETTINGS
 		$this->updateArticleAdsInfo($post);
@@ -830,21 +767,6 @@ class MPArticleAdminController extends MPArticle{
 
 		$articleStatus = filter_var($post['article_status'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 
-		switch($articleStatus){
-			case 3:
-				//Draft
-				//No constraints on this
-				break;
-			case 2:
-				//Pending Review
-				//No constraints on this -- perhaps a permission check
-				break;
-			case 1:
-				//Live
-				//if(is_null($articleInfo['article_post_img']) || is_null($articleInfo['article_preview_img'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'Sorry, an article must have both an inline and preview image in order to be set "live".'));
-				break;
-
-		}
 		
 		$statusChange = $this->performUpdate(array(
 			'updateString' => "UPDATE articles SET article_status = ".$articleStatus." WHERE article_id = ".$articleId
@@ -855,9 +777,7 @@ class MPArticleAdminController extends MPArticle{
 	}
 
 	public function republishArticle($data){
-		$articleId = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		//$articleStatus = filter_var($data['status'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		
+		$articleId = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);	
 
 		$status = $data['status'];
 		
@@ -871,12 +791,11 @@ class MPArticleAdminController extends MPArticle{
 		if(isset($image)){
 			$imageExists = file_exists($imageDir);
 		}
-		//var_dump( $image, $imageDir,  $imageExists);
 
 		if( $status === "3"){
 			$statusChange = $this->performUpdate(array(
-					'updateString' => "UPDATE articles SET article_status = 3, date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
-				));
+				'updateString' => "UPDATE articles SET article_status = 3, date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
+			));
 		}else if( $status === "1"){
 			if($imageExists){
 				$statusChange = $this->performUpdate(array(
@@ -889,44 +808,108 @@ class MPArticleAdminController extends MPArticle{
 		if($statusChange === true) return true;
 		return false;
 	}
+
+	//FEATURED THIS ARTICLE 
+	public function featuredArticle($data){
+	
+		$is_featured = filter_var($data['article_featured'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$status = $data['article_status'];
+		$result = false;
+		if( $status != 1){ //Make sure this article is already life
+			return array_merge($this->helpers->returnStatus(500), array('message' => 'Error!. This article is not live.'));
+		}else{//INSERT TO FEATURED_ARTICLE TABLE
+			if($is_featured){
+				$dup = $this->checkDupFeaturedArticle($data);
+			
+				if( $dup == false ){
+					//Insert Into articles_featured table
+					$result = $this->insertFeaturedArticle($data);
+				}
+			}else{
+				//Delete from articles_featured table
+				$result = $this->deleteFeaturedArticle($data);
+			}
+		}
+
+		return $result;
+	}
+
+	public function getFeaturedArticle( $article_id = 1 ){
+		$article_id = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		
+		$s = " SELECT articles_featured.article_id, articles.article_title, articles.article_seo_title, categories.cat_dir_name, article_contributors.contributor_name, article_contributors.contributor_seo_name  
+			FROM articles_featured 
+			INNER JOIN ( articles, article_categories, categories, article_contributors, article_contributor_articles )
+			ON articles_featured.article_id=articles.article_id 
+			AND articles.article_id=article_categories.article_id 
+			AND article_categories.cat_id=categories.cat_id 
+			AND articles_featured.article_id = article_contributor_articles.article_id
+			AND article_contributor_articles.contributor_id = article_contributors.contributor_id
+			WHERE articles_featured.article_id = $article_id ";
+		
+			$q = $this->performQuery(['queryString' => $s]);
+
+			if(isset($q[0])) $q = $q[0];
+
+			return $q;
+	}
+
+	private function checkDupFeaturedArticle( $data ){
+		$article_id = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);	
+
+		$s = " SELECT * FROM articles_featured WHERE article_id = $article_id ";
+
+		$q = $this->performQuery(['queryString' => $s]);
+
+		return $q;
+
+	}
+	
+	private function insertFeaturedArticle( $data ){
+		$article_id = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);	
+		$category= filter_var($data['article_categories'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);	
+		$is_featured = filter_var($data['article_featured'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$feature_type = 1; //For now only one type of feature. This will be on the tap left bar on mobile
+		$status = $data['article_status'];
+
+		$s = " INSERT INTO articles_featured (featured_id, cat_id, article_id, feature_type) VALUES (null, :category, :article_id, :feature_type) ";
+		
+		$queryParams = [
+		':category' => $category, 
+		':article_id' => $article_id, 
+		':feature_type' => $feature_type
+		];
+
+		$pdo = $this->con->openCon();
+			
+		$q = $pdo->prepare($s);
+		$row = $q->execute($queryParams);
+
+		$this->con->closeCon();
+		
+		return $row ; 
+	}
+
+	private function deleteFeaturedArticle( $data ){
+		$article_id = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);	
+
+		$s = " DELETE FROM articles_featured WHERE article_id = $article_id ";
+
+		$pdo = $this->con->openCon();
+			
+		$q = $pdo->prepare($s);
+		$row = $q->execute(array());
+
+		$this->con->closeCon();
+		return $row ; 
+	}
+
+	/* End Featured Article Function */
+
 	/* End Article Updating Fucntion */
 
 
-	/* Begin Navigation Item Creation Functions */
-	public function makeSingleNavItem($opts){
-		$template = '<li class="{current}" ><a href="{link}">{label}</a></li>';
-		foreach($opts as $optionKey => $optionValue){
-			$template = str_replace('{'.$optionKey.'}', $optionValue, $template);
-		}
-		return $template;
-	}
-
-	public function makeNavItemGroup($opts){
-		$template = '<li class="parent {shown}"><a href="{link}">{label}</a></li><ul class="{shown}"><h2>{label}</h2>{childElements}</ul>';
-		$childTemplate = '<li class="{current}" id="{childId}"><a href="{childLink}">{childLabel}</a></li>';
-		$children = '';
-		
-		foreach($opts['childElements'] as $childObj){
-			$child = $childTemplate;
-			foreach($childObj as $childKey => $childValue){
-				$child = str_replace('{'.$childKey.'}', $childValue, $child);
-			}
-			$children .= $child;
-		}
-		
-		$opts['childElements'] = $children;
-		
-		foreach($opts as $optionKey => $optionValue){
-			$template = str_replace('{'.$optionKey.'}', $optionValue, $template);
-		}
-		
-		return $template;
-	}
-	/* End Navigation Item Creation Functions */
-
-
 	/* Begin Admin Image Uploading Functions */
-	// Updates the database with the new name
 	public function updateImageRecord($files, $opts){
 		$options = array_merge(array(
 			// Set defaults
@@ -945,13 +928,7 @@ class MPArticleAdminController extends MPArticle{
 			'newImageHeight' => '',
 			'newImageWidth' => ''
 		), $opts);
-		// if ($options['currentImage'] == 'unset'){
-		// 	$options['column'][] = 'article_preview_img';
-		// 	$options['updateString'] = $options['addString'];
-		// 	$result = $this->uploadImage($files, $options);
-		// 	if($result === true) return array_merge($this->helpers->returnStatus(200), array('message' => $options['successMessage']));
-		// 	else return $result;
-		// } else {
+		
 			$options['updateString'] = $options['updateString'].$options['whereClause'];
 			$result = $this->uploadImage($files, $options);
 			if($result === true) {
@@ -960,7 +937,6 @@ class MPArticleAdminController extends MPArticle{
 
 				return $result;
 			}
-		//}
 	}
 
 	protected function performUpdate($opts){
@@ -974,7 +950,6 @@ class MPArticleAdminController extends MPArticle{
 		$pdo = $this->con->openCon();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-		//var_dump($options['updateString']); die;
 		$q = $pdo->prepare($options['updateString']);
 
 		try{
@@ -985,7 +960,6 @@ class MPArticleAdminController extends MPArticle{
 		}
 		$this->con->closeCon();
 		$r = ($options['isInsert']) ? $pdo->lastInsertId() : true;
-		//echo json_encode( array('resp' => $options['updateString']) );
 		return $r;
 	}
 
@@ -1082,19 +1056,7 @@ class MPArticleAdminController extends MPArticle{
 				unset($fileName[count($fileName) - 1]);
 				$placement = $opts['placement'];
 				$articleId = $opts['articleId'];
-				// Create the new filename by joining article ID, and wide/tall, and the extension
-				//$fileName = $articleId.$placement.'.'.$extension;
-
-
-				//echo json_encode( array('resp' => $file['name']) );
-				// if($opts['currentImage'] == $fileName) return array_merge($this->helpers->returnStatus(500), array('message' => '2-This is already the default image!  Please try again with a new file.'));
-
-				//$fullPathToFile = $opts['uploadDirectory'].basename($fileName);
-				// If the file already exists, just update the DB
-				//if(file_exists($uploadFile)) return $this->performUpdate($opts);
-				//if (file_exists($fullPathToFile)){
-				//	unlink($fullPathToFile);
-				//}
+			
 
 				if($opts['resizeImage']){
 					$placementObj = ['wide', 'tall', 'preview'];
@@ -1152,68 +1114,6 @@ class MPArticleAdminController extends MPArticle{
 		}
 		unset($files);
 	}
-
-
-	public function getPreviewRecipe($opts){
-		$options = array_merge(array(
-			'articleId' => -1
-		), $opts);
-
-		$config = $this->config;
-		$articleId = filter_var($opts['articleId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$article = $this->getSingleArticle(array('articleId' => $articleId));
-			
-		include_once($this->config['include_path_admin'].'preview.php');
-
-		return $preview_article;
-
-	}
-
-
-
-
-	// private function uploadImage($files, $opts){
-	// 	$opts['allowedExtensions'] = explode(',', $opts['allowedExtensions']); //No leading periods
-
-	// 	foreach($files as $file){
-	// 		if(!$this->helpers->validateName(array(
-	// 			'fileName' => $file['name'],
-	// 			'fileType' => $file['type'],
-	// 			'fileSize' => $file['size'],
-	// 			'allowedExtensions' => $opts['allowedExtensions']
-	// 		))) return array_merge($this->helpers->returnStatus(500), array('message' => 'Sorry, no valid files were found.  Please try again.'));
-
-	// 		if ($opts[''] == ){
-
-	// 		}
-	// 		//Hack to keep image uploads under 500kb
-	// 		if($file['size'] > 512000) return array_merge($this->helpers->returnStatus(500), array('message' => 'This image appears to be too large in file size for mobile devices.  Please try again with a smaller file.'));
-			
-	// 		if(!is_uploaded_file($file['tmp_name']) || empty($opts['table']) || empty($opts['column'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'Sorry, no valid files were found.  Please try again.'));
-
-	// 		$fileName = explode('.', $file['name']);
-	// 		$extension = $fileName[count($fileName) - 1];
-	// 		unset($fileName[count($fileName) - 1]);
-	// 		$fileName = preg_replace('/[^A-Za-z0-9]/', '_', join($fileName, '')).'.'.$extension;
-
-	// 		if($opts['currentImage'] == $fileName) return array_merge($this->helpers->returnStatus(500), array('message' => 'This is already the default image!  Please try again with a new file.'));
-
-	// 		$opts['table'] = filter_var($opts['table'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-	// 		$opts['column'] = filter_var($opts['column'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-
-	// 		$uploadFile = $opts['uploadDirectory'].basename($fileName);
-
-	// 		$opts['updateString'] = str_replace('{table}', $opts['table'], $opts['updateString']);
-	// 		$opts['updateString'] = str_replace('{column}', $opts['column'], $opts['updateString']);
-	// 		$opts['updateParams'] = array(':uploadedImage' => $fileName);
-	// 		if(file_exists($uploadFile)) return $this->performUpdate($opts);
-	// 		if(move_uploaded_file($file['tmp_name'], $uploadFile)) return $this->performUpdate($opts);
-			
-	// 		return $this->helpers->returnStatus(500);
-	// 	}
-	// }
-	/* End Admin Image Uploading Functions */
-
 
 	/* Begin Admin Controller Helper Functions */
 	public function getFileExtension($name){

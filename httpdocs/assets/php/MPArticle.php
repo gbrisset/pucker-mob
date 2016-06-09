@@ -1988,26 +1988,6 @@ public function getUserInfo(){
 	return $this->performQuery($options);
 }
 
-public function getFeaturedArticle( $cat_id = 1 ){
-	$cat_id = filter_var($cat_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-	$s = "
-		SELECT featured_article.article_id, articles.article_title, articles.article_seo_title, articles.creation_date, articles.date_updated, articles.article_status, 
-		categories.cat_name, categories.cat_dir_name, 
-		article_contributors.contributor_name, article_contributors.contributor_seo_name  
-		FROM featured_article 
-		INNER JOIN ( articles, article_categories, categories, article_contributors, article_contributor_articles )
-		ON featured_article.article_id=articles.article_id 
-		AND articles.article_id=article_categories.article_id 
-		AND article_categories.cat_id=categories.cat_id 
-		AND featured_article.article_id = article_contributor_articles.article_id
-		AND article_contributor_articles.contributor_id = article_contributors.contributor_id
-		WHERE featured_article.category_id = ".$cat_id." LIMIT 1 
-		";
-
-	$q = $this->performQuery(['queryString' => $s]);
-
-	return $q;
-}
 
 /***** Article Page ( Get prev. and next article from the current article in the same category ) ********/
 public function getPrevArticle( $article_id = null, $cat_id = 1){

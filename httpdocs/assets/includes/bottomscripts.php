@@ -53,11 +53,6 @@
  <?php //} ?>
 
 
-   <!--Puckermob.com CORNERSTREAM Validation Test Tag 
-  <section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
-    <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5938&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
-  </section>-->
- 
  <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
    <!--SHAREBUTTONS BAR VERTICAL-->
     <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
@@ -101,7 +96,7 @@
         <!-- LELO -->
         <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 && $article_id != 15488){ ?>
         
-          <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
+          <!--<script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
 
              
            <div id="vm_inline"></div>
@@ -122,9 +117,9 @@
                   incontent_desktop_id: "42300",
                   target_type: "mix"
                           });
-          </script>
+          </script>-->
 
-          <?php if($article_id == 12964 ){ ?>
+          <?php //if($article_id == 12964 ){ ?>
           <!-- AIRPUSH MOBILE -->
           <script type="text/javascript">
     		    this.airpushConfig = {
@@ -133,7 +128,7 @@
     		    };
     		  </script>
 		      <script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
-		<?php } ?>
+		<?php //} ?>
 
          <!-- NETSEER AD IN-IMAGE 
             <script type="text/javascript">

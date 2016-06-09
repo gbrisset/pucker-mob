@@ -37,7 +37,7 @@
 				</div>
 				<div class="small-12 columns no-padding half-margin-top">
 					<h4 class="uppercase bold">TO REMAIN PRO:</h4>
-					<p class="bold">Traffic cannot go under 50,000 for two months in a row</p>
+					<p class="bold">Traffic cannot go under 35,000 for two months in a row</p>
 				</div>
 			</div>
 		</div>

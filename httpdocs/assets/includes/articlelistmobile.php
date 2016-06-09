@@ -10,7 +10,7 @@
 		$cat_id = $categoryInfo['cat_id'];
 	}
 
-	$featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
+	$featuredArticle = false;//$mpArticle->getFeaturedArticle( $cat_id );
 	if( $featuredArticle && $featuredArticle['article_status'] == 1){
 		$articleIndex++;
 		$quantity = 31	;

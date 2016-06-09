@@ -1990,7 +1990,7 @@ public function getUserInfo(){
 
 
 /***** Article Page ( Get prev. and next article from the current article in the same category ) ********/
-public function getPrevArticle( $article_id = null, $cat_id = 1){
+/*public function getPrevArticle( $article_id = null, $cat_id = 1){
 	$article_id = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$cat_id = filter_var($cat_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 
@@ -2030,11 +2030,27 @@ public function getNextArticle( $article_id = null, $cat_id = 1){
 
 	return $q;
 
-}
+}*/
 
 public function redirectTo($location = ''){
 		header('Location: '.$this->config['this_url'].$location);
 }
+
+public function getFeaturedArticles(){
+		
+		$s = " SELECT articles_featured.article_id, articles.article_title, articles.article_seo_title, categories.cat_dir_name, article_contributors.contributor_name, article_contributors.contributor_seo_name  
+			FROM articles_featured 
+			INNER JOIN ( articles, article_categories, categories, article_contributors, article_contributor_articles )
+			ON articles_featured.article_id=articles.article_id 
+			AND articles.article_id=article_categories.article_id 
+			AND article_categories.cat_id=categories.cat_id 
+			AND articles_featured.article_id = article_contributor_articles.article_id
+			AND article_contributor_articles.contributor_id = article_contributors.contributor_id ";
+		
+			$q = $this->performQuery(['queryString' => $s]);
+
+			return $q;
+	}
 
 }
 ?>

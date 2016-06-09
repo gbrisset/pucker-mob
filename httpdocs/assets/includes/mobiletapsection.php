@@ -5,6 +5,9 @@
 	//BLOGS
 	$article_id = isset($articleInfoObj['article_id']) ? $articleInfoObj['article_id'] : false;
 	//$moblog_articles = $mpArticle->getMoBlogsArticles( $article_id );
+
+	$featured_articles = $mpArticle->getFeaturedArticles();
+
 ?>
 <style>
 	nav.menu{ background: #D44545; }

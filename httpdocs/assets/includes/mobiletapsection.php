@@ -40,7 +40,7 @@
 							<h1><?php echo $article_title; ?></h1>
 							
 							<div class="small-12">
-								<?php if(!empty($article_desc) ){?><p class="description" style="margin-bottom:8px;"><?php echo $article_desc; ?></p><?php }?>
+								<?php if(!empty($article_desc) ){?><p class="description" style="margin-bottom:0;"><?php echo $article_desc; ?></p><?php }?>
 								<p class="author">by <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo $name; ?></a></p>
 							</div>
 
@@ -56,7 +56,7 @@
 							</div>
 							
 						</div>
-						<div class="columns ad-unit hide-for-print padding-top no-padding">
+						<div class="columns ad-unit hide-for-print padding-top no-padding" style="margin-bottom: 10px !important;">
 								<?php if($index == 1){?>
 								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 								<!-- PuckerMob mobile 300x250 Featured 1 -->

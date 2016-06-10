@@ -14,7 +14,7 @@
 </style>
 <div class="small-12" id="slide-menu-left-div">
 	<nav class="menu slide-menu-left small-12" id="tap-section" >
-		<h2 class="uppercase featured-title">Featured Article</h2>
+		<h2 class="uppercase featured-title">Featured Articles</h2>
 		<div class="content-wrapper columns no-padding small-12">
 		<?php //var_dump($featured_articles);
 				if($featured_articles){

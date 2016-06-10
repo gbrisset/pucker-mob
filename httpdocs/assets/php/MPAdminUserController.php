@@ -432,19 +432,19 @@ End password reset methods
 
 		$q = $this->performQuery($options);
 		if($q && count($q)){
-//	Check to see if same browser
+			//	Check to see if same browser
 			if($q['user_login_ua'] != $_SERVER['HTTP_USER_AGENT']){
 				return array(
 					'hasError' => true, 
 					'message' => "Sorry, it looks like you're not who you say you are.  For your protection, we've cancelled your login.  Please try again <a href=\"".$this->config['this_admin_url'].'login/'."\">here</a>."
 				);
 			}
-// //Check for same IP address
+			// //Check for same IP address
 			if($q['user_login_ip'] !== $_SERVER['REMOTE_ADDR']) return array(
 				'hasError' => true, 
 				'message' => "Sorry, it looks like you're trying to log in from a different computer.  For your protection, we've cancelled your login.  Please try again <a href=\"".$this->config['this_admin_url'].'login/'."\">here</a>."
 			);
-// //Check if the user has clicked the email link within 15 minutes
+			// //Check if the user has clicked the email link within 15 minutes
 			//Timezone hack to get around different server timezones
 			$tz = date_default_timezone_get();
 			
@@ -454,7 +454,7 @@ End password reset methods
 			} else {
 				date_default_timezone_set('America/New_York');
 			}
-		// var_dump(PHP_SESSION_ACTIVE); die;
+			// var_dump(PHP_SESSION_ACTIVE); die;
 			// if(!$this->helpers->compareTimes(time(), strtotime($q['user_login_creation_date']), 120))
 			if( session_status() === (PHP_SESSION_ACTIVE ? TRUE : FALSE) ) return array(
 			 	'hasError' => true, 
@@ -462,10 +462,10 @@ End password reset methods
 			 );
 			date_default_timezone_set($tz);
 			
-// //Invalidate all user tokens
+			// //Invalidate all user tokens
 			if(!$invalidate = $this->invalidateAllTokens()) return $this->helpers->returnStatus(500);
 			
-// //Validate just this login attempt (identified by the unique row id)
+			// //Validate just this login attempt (identified by the unique row id)
 			$options = array(
 				'updateString' => "UPDATE user_logins SET user_login_valid = 1 WHERE user_login_id = :loginId",
 				'updateParams' => array(':loginId' => $q['user_login_id'])
@@ -971,6 +971,7 @@ End password reset methods
 
 	}
 
+	/*CONTRIBUTORS*/
 	public function setContributorEarningsPaid($data){
 
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
@@ -1110,8 +1111,6 @@ End password reset methods
 
 	public function getContributorEarningChartLastMonthData( $data ){
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-	//	$last_month_start_date = date('Y-m-d', strtotime('first day of last month'));
-	//	$last_month_end_date = date('Y-m-d', strtotime('last day of last month'));
 		$last_month_start_date = date('Y-m-d', strtotime("last month", strtotime($data['start_date'])));
 		$last_month_end_date = date('Y-m-d', strtotime("last month", strtotime($data['end_date'])));
 		

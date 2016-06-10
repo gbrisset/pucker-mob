@@ -54,6 +54,7 @@
 
 	//Relate Articles
 	$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
+	$featured_article = $adminController->getFeaturedArticle( $article['article_id'] );
 
 	// SUMMIT FORM
 	if(isset($_POST['submit'])){
@@ -96,7 +97,7 @@
 			$article = $articleObj['articles'];
 			$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );
 
-
+			$featured_article = $adminController->getFeaturedArticle($article['article_id']);
 
 			//Article ADs
 			$article_ads = $mpArticleAdmin->getArticleAds($article);
@@ -135,15 +136,10 @@
 			<section id="article-info" class="small-12 columns">
 
 			<?php 
-			//var_dump(file_exists($pathToTallImage), ($pathToTallImage)); 
-			//if(file_exists($pathToTallImage)){
+
 				$tallImageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg';
 				include_once($config['include_path_admin'].'dropbox_image_edit.php');	
 			?>
-
-			<?php //}else{  ?>
-				<?php //include_once($config['include_path_admin'].'dropbox_image.php'); ?>	
-			<?php //} ?>
 				
 				<form id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
@@ -287,8 +283,8 @@
 						<?php } ?>
 
 						<!-- Article Status -->
-						<?php if($admin_user  || $externalWriter){?>
-						<?php
+						<?php if($admin_user  || $externalWriter){
+
 							$allStatuses = $adminController->getSiteObjectAll(array('table' => 'article_statuses'));
 						?>
 						<div class="row <?php if(isset($content_provider) && $content_provider ) echo 'hide'; ?>">
@@ -316,6 +312,20 @@
 							</div>
 						
 						</div>
+						<?php }?>
+
+						<?php if($admin_user){?>
+							<!-- Article Featured -->
+							<div class="row <?php if(isset($content_provider) && $content_provider ) echo 'hide'; ?>">
+						    	<div>
+						    		<label for="article_featured" class="small-label">Featured Article:</label>
+									<select name="article_featured" id="article_featured">
+										<option value="-1" >Featured Article</option>
+										<option value="1" <?php if($featured_article) echo "selected"; ?> > YES </option>
+										<option value="0" <?php if(!$featured_article) echo "selected"; ?> >NO </option>
+									</select>
+								</div>
+							</div>
 						<?php }?>
 						
 						<!-- IMAGE CREDITS -->
@@ -357,7 +367,6 @@
 						<?php }?> 
 
 						<?php if($admin_user){?>
-
 						<!-- Article Disclaimer -->
 						<div class="row">
 						    <div>

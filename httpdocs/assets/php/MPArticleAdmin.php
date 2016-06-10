@@ -1106,7 +1106,6 @@ class MPArticleAdmin{
 
 					break;
 			}
-		//	var_dump(is_writable($uploadFile)); die;
 			if(move_uploaded_file($fileTempName, $uploadFile)){
 				
 				if($data['imgType'] == 'contributor'){
@@ -1216,11 +1215,7 @@ class MPArticleAdmin{
 				if($data['imgType'] == 'article'){
             		
             		$this->createArticleLargeImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-            		//$this->createArticlePreviewImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-					//$this->createArticleTallImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-					//$this->createArticleMediumImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-					//$this->createArticleSquareImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-            		
+            			
             		return ['hasError' => false, 'message' => "", 'filename' => $uploadFile];
             		
             	}
@@ -1352,7 +1347,6 @@ class MPArticleAdmin{
 
 					break;
 			}
-		//	var_dump(is_writable($uploadFile)); die;
 			if(move_uploaded_file($fileTempName, $uploadFile)){
 				
 				if($data['imgType'] == 'contributor'){
@@ -1365,7 +1359,7 @@ class MPArticleAdmin{
             		//$this->createArticlePreviewImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
 					//$this->createArticleTallImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
 					//$this->createArticleMediumImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-					$this->createArticleSquareImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+					//$this->createArticleSquareImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
             		
             		return ['hasError' => false, 'message' => "", 'filename' => $uploadFile];
             		
@@ -1445,40 +1439,11 @@ class MPArticleAdmin{
 	
 	}
 	/* Article Preview Update Functions */
-	private function createArticlePreviewImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
-		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/preview/'.$fileName;
-
-		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  0, 0, 250, 225, $src_w, $src_h);
-	}
-
+	
 	private function createArticleLargeImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
 		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$fileName;
 
 		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  0, 0, 784, 431, 784, 431);
-	}
-
-	private function createArticleTallImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
-		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/tall/'.$fileName;
-
-		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  0, 0, 415, 405, $src_w, $src_h);
-	}
-
-	private function createArticleMediumImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
-		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/medium/'.$fileName;
-
-		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  0, 0, 235, 185, $src_w, $src_h);
-	}
-
-	private function createArticleSquareImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
-		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/square/'.$fileName;
-
-		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  0, 0, 167, 167, $src_w, $src_h);
-	}
-
-	private function createArticleMicroSideBarImage($extension, $uploadFile, $fileTempName, $fileName, $src_w, $src_h){
-		$destPathToFile = $this->config['image_upload_dir'].'articlesites/puckermob/microsidebar/'.$fileName;
-
-		return $this->createNewImage($extension, $uploadFile, $destPathToFile,  0, 0, 65, 65, $src_w, $src_h);
 	}
 
 	private function updateArticlePreviewImageRecord($args){
@@ -1518,7 +1483,6 @@ class MPArticleAdmin{
 		$this->con->closeCon();
 		return $r;
 	}
-
 
 	public function getImagesPerCategory($data){
 
@@ -1618,277 +1582,6 @@ class MPArticleAdmin{
 		return $r;
 	}
 
-	
-	/*Begin Video Add Function*/
-	public function addVideoMediaInfo($post){
-		$params = $this->compileParams($post);
-		$pairs = $this->compilePairs($post, true);
-		$unrequired = ['syn_video_tags'];
-
-		if(isset($params[':syn_video_filename'])) $params[':syn_video_filename'] = join(explode(' ', preg_replace('/[^A-Za-z0-9- ]/', '', $params[':syn_video_filename'])), '');
-		
-		$dupCheck = $this->mpArticle->getSyndicationVideos(['videoFileName' => $params[':syn_video_filename']]);
-		
-		if($dupCheck) return ['hasError' => true, 'message' => "This video file already exists!"];
-		
-		$valid = $this->validateRequired($params, $unrequired);
-		if($valid !== true) return $valid;
-
-		$keys = [];
-		$values = [];
-		foreach($pairs as $key => $value){
-			$keys[] = $key;
-			$values[] = $value;
-		}
-
-		$pdo = $this->con->openSynCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$q = $pdo->prepare("INSERT INTO syndication_videos (".join(', ', $keys).") VALUES (".join(', ', $values).")");
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeSynCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = "Video added successfully!  You will be redirected momentarily.";
-		$r['videoDetails'] = $params;
-		return $r;
-	}
-
-	public function updateVideoMediaInfo($post){
-		$params = $this->compileParams($post);
-		$pairs = $this->compilePairs($post);
-		$unrequired = ['syn_video_tags', 'article_video', ''];
-
-		if(isset($params[':syn_video_filename'])) $params[':syn_video_filename'] = join(explode(' ', preg_replace('/[^A-Za-z0-9- ]/', '', $params[':syn_video_filename'])), '');
-		
-		$valid = $this->validateRequired($params, $unrequired);
-		if($valid !== true) return $valid;
-
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$q = $pdo->prepare("UPDATE syndication_videos SET ".join(', ', $pairs)." WHERE syn_video_id = ".$post['v_i']);
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = preg_replace('/\{formname\}/', 'Contributor Information', $r['message']);
-		return $r;
-	}
-
-	public function deleteVideoMediaInfo($post){
-		$params = $this->compileParams($post);
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$q = $pdo->prepare("DELETE FROM syndication_videos WHERE syn_video_id = ".$post['v_i']);
-		
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = "Video deleted successfully!  You will be redirected momentarily to contributos page.";
-		
-		return $r;
-	}
-
-	public function addSeries($post){
-		$params = $this->compileParams($post);
-		$pairs = $this->compilePairs($post, true);
-		$unrequired = ['article_page_series_tags'];
-
-		$post['article_page_series_tags-s'] = $this->helpers->generateName(array('input' => $post['article_page_series_tags-s']));
-
-		$valid = $this->validateRequired($params, $unrequired);
-		if($valid !== true) return $valid;
-
-		//Check for same seo-name
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-		$seoTitleCheck = $pdo->query("SELECT * FROM article_page_series WHERE article_page_series_seo = '".$params[':article_page_series_seo']."'");
-
-		if($seoTitleCheck->rowCount() != 0) return array_merge($this->helpers->returnStatus(500), array('message' => 'This SEO Title is already in use.  Please try again with a new SEO title.', 'field' => 'article_page_series_seo'));
-
-		$keys = [];
-		$values = [];
-		foreach($pairs as $key => $value){
-			$keys[] = $key;
-			$values[] = $value;
-		}
-
-		
-		$q = $pdo->prepare("INSERT INTO article_page_series (".join(', ', $keys).") VALUES (".join(', ', $values).") ");
-		//var_dump($q ); die;
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-			$r['message'] = "Series added successfully!  You will be redirected momentarily.";
-		$r['seriesDetails'] = $params;
-		return $r;
-	}
-
-	public function updateSeriesMediaInfo($post){
-		$params = $this->compileParams($post);
-		$pairs = $this->compilePairs($post);
-		$unrequired = ['article_page_series_tags'];
-
-		$valid = $this->validateRequired($params, $unrequired);
-		if($valid !== true) return $valid;
-
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$q = $pdo->prepare("UPDATE article_page_series SET ".join(', ', $pairs)." WHERE article_page_series_id = ".$post['s_i']);
-		//var_dump($q );
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = preg_replace('/\{formname\}/', 'Series Information', $r['message']);
-		return $r;
-	}
-
-	public function updateSeriesPlaylist($post){
-		$params = [];
-		$pairs = [];
-		$unrequired = [];
-		
-		$pairs[] = "article_page_series_id = :article_page_series_id";
-		$params[':article_page_series_id'] = (strlen(preg_replace('/[^0-9]/', '', $post['series_id-s']))) ? preg_replace('/[^0-9]/', '', $post['series_id-s']) : 0;
-		$params[':article_page_series_video_prev_img'] = $post['series_id-s']."-video-wide.jpg";
-		$valid = $this->validateRequired($params, $unrequired);
-		if($valid !== true) return $valid;
-		
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$q = $pdo->prepare("INSERT INTO article_page_series_playlist (article_page_series_id, syn_video_id, article_page_series_featured_video, article_page_series_video_prev_img) VALUES( :article_page_series_id, ".$post["series_video"].", 0, :article_page_series_video_prev_img )");
-		
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = "Article added successfully!";
-		return $r;
-	}
-
-	public function deleteSeriesVideo($post){
-		$params = [];
-		$pairs = [];
-		$unrequired = [];
-		$pairs[] = "video_id = :video_id";
-		$params[':video_id'] = (strlen(preg_replace('/[^0-9]/', '', $post['v_i']))) ? preg_replace('/[^0-9]/', '', $post['v_i']) : 0;
-		
-		$valid = $this->validateRequired($params, $unrequired);
-		if($valid !== true) return $valid;
-		
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$q = $pdo->prepare("DELETE FROM article_page_series_playlist WHERE article_page_series_playlist.syn_video_id = :video_id AND article_page_series_playlist.article_page_series_id = ".$post['s_i']);
-	
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){//var_dump($e);
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r['message'] = "Article deleted successfully!";
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['article_data'] =  $post['v_i'];
-		
-		return $r;
-	}
-
-	public function updateVideoArticleInfo( $post ){
-			
-		$params = $this->compileParams($post); 
-		$unrequired = [];
-
-		$valid = $this->validateRequired($params, $unrequired);
-		if($valid !== true) return $valid;
-
-		$dupCheck = $this->mpVideoShows->getArticleInfoPerVideo($post['syn_video_id-s']);
-		
-		if($dupCheck) 
-			$pairs = $this->compilePairs($post);
-		else 
-			$pairs = $this->compilePairs($post, true);
-
-		$keys = [];
-		$values = [];
-		foreach($pairs as $key => $value){
-			$keys[] = $key;
-			$values[] = $value;
-		}
-
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		if($dupCheck){
-			$q = $pdo->prepare("UPDATE article_videos SET ".join(', ', $pairs)." WHERE syn_video_id = ".$post['syn_video_id-s']);
-		}else{
-			$q = $pdo->prepare("INSERT INTO article_videos (".join(', ', $keys).") VALUES (".join(', ', $values).")");
-		}
-		
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = 'Article added successfully';
-		return $r;	
-	}
-
-	public function addRemoveSlideshowSeriesList($post){
-		$params = [];
-		$unrequired = [];
-		
-		$featured_value = 0;
-		
-		if($post['action'] == 'series-video-add-slideshow-link'){
-			$featured_value = 2;
-		}else{
-			$featured_value = 0;
-		}
-
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$q = $pdo->prepare("UPDATE  article_page_series_playlist SET article_page_series_featured_video = ".$featured_value." WHERE article_page_series_id = ".$post['s_i']." AND syn_video_id = ".$post['v_i']);
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = "Video added to the slideshow successfully!";
-		return $r;
-	}
 
 	/* Begin Helper Functions */
 	private function validateName($args){

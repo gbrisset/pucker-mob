@@ -20,7 +20,7 @@ $omitThis = 0;
 $offset = $quantity * $page;
 $cat_id = $mpArticle->data['cat_id'];
 
-$featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
+$featuredArticle = false;//$mpArticle->getFeaturedArticle( $cat_id );
 if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$articleIndex++;
 	$omitThis =  $featuredArticle['article_id'];
@@ -39,7 +39,7 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 		<hr class="padding-top">
 	<?php }}
 }
-$omitThis =  $featuredArticle['article_id'];
+//$omitThis =  $featuredArticle['article_id'];
 $articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis, 'withMobLogs'=> true, 'offset' => $offset ]);
 
 

@@ -10,7 +10,7 @@
 		$cat_id = $categoryInfo['cat_id'];
 	}
 
-	$featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
+	$featuredArticle = false;//$mpArticle->getFeaturedArticle( $cat_id );
 	if( $featuredArticle && $featuredArticle['article_status'] == 1){
 		$articleIndex++;
 		$quantity = 31	;
@@ -26,6 +26,7 @@
 		$articlesList = $mpArticle->getMobileArticleList(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id, 'withMobLogs'=> false ] );
 	}
 
+	if(isset($articlesList) && $articlesList){
 	foreach ($articlesList as $articles){
 
 		$linkToArticle = 'http://www.puckermob.com/'.$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
@@ -76,6 +77,7 @@
 		</div>
 		
 		<?php } 
+	}
 	}
 ?>
 <div id="article-list" class="small-12 clear margin-top"></div>

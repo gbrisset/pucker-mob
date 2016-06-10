@@ -127,6 +127,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462440432230-0'); });
 							</script>
 							</div>
+						<?php }elseif( $article_id == 16397 ){?>
+							<!-- KIXER DFP TEST PAGE -->
+							<!-- /73970039/SV_300x250 -->
+
+							<div id='div-gpt-ad-1465504491752-0' style='height:250px; width:300px;'>
+
+							<script type='text/javascript'>
+
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1465504491752-0'); });
+
+							</script>
+
+							</div>
+
 						<?php }else{ ?>
 							<?php if($article_id != 15284 && $article_id != 15488 ){?>
 								<?php if($article_id == 13465 ){?>

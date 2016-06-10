@@ -89,9 +89,10 @@
 	//GET USA PAGEVIEWS FOR EACH ARTICLE ON THE LIST
 	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
 	$pageviews_list = [];
-	foreach($usa_pageview_list as $key=>$value){
-		//var_dump($key, $value, $value['article_id'], $value['total_usa_pv']);
-		$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
+	if($usa_pageview_list){
+		foreach($usa_pageview_list as $key=>$value){
+			$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
+		}
 	}
 
 ?>
@@ -163,7 +164,7 @@
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
 
-									if(!is_null($pageviews_list[$article_id])){
+									if(isset($pageviews_list[$article_id]) && !is_null($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
 									}
 

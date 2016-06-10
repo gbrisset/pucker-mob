@@ -119,7 +119,7 @@
                           });
           </script>-->
 
-          <?php //if($article_id == 12964 ){ ?>
+          <?php if($article_id == 12964 ){ ?>
           <!-- AIRPUSH MOBILE -->
           <script type="text/javascript">
     		    this.airpushConfig = {
@@ -128,7 +128,7 @@
     		    };
     		  </script>
 		      <script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
-		<?php //} ?>
+		<?php } ?>
 
          <!-- NETSEER AD IN-IMAGE 
             <script type="text/javascript">

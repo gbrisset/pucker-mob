@@ -1398,6 +1398,7 @@ $fun: #f9651b;
 	border: 1px solid #ddd;
 }
 
+
 .right{ float:right;}
 .right-border{
 	border-right: 1px solid #ddd;
@@ -1415,7 +1416,7 @@ $fun: #f9651b;
 	border-left: 1px solid #ddd;
 }
 .remove-border{
-	border: none;
+	border: none !important;
 }
 
 /**************************** Content Ads *****************************/

@@ -2038,7 +2038,7 @@ public function redirectTo($location = ''){
 
 public function getFeaturedArticles(){
 		
-		$s = " SELECT articles_featured.article_id, articles.article_title, articles.article_seo_title, categories.cat_dir_name, article_contributors.contributor_name, article_contributors.contributor_seo_name  
+		$s = " SELECT articles_featured.article_id, articles.article_title, articles.article_seo_title, articles.article_desc, categories.cat_dir_name, article_contributors.contributor_name, article_contributors.contributor_seo_name  
 			FROM articles_featured 
 			INNER JOIN ( articles, article_categories, categories, article_contributors, article_contributor_articles )
 			ON articles_featured.article_id=articles.article_id 

@@ -229,15 +229,25 @@
 					  		$all_us_viwers_by_thousand = 0;
 					  		$all_total = 0;
 					  		$all_total_to_pay = 0;
+					  		$all_basic_total = 0;
+					  		$all_pro_total = 0;
+					  		$all_us_viwers_by_thousand_pro = $all_us_viwers_by_thousand_basic = 0;
+					  		$new = 0;
 
 					  		foreach( $results as $contributor){
 					  			$total_rate = $contributor['share_rate'];
 					  			$total_us_viewers = $contributor["total_us_pageviews"];
 					  			$total_us_viewers_by_thousands = $total_us_viewers / 1000;
+					  			$user_type = $contributor['user_type'];
 					  			
 								$no_cover_in_house = false;
+								$blogger = $problogger = $basicblogger = false;
+								if($user_type == '3' ||  $user_type == '8' || $user_type == '9') $blogger = true;
+								if( $user_type == '8' || $user_type == '9') $problogger = true;
+								if( $user_type == '3' ) $basicblogger = true;
 
-					  			if( $contributor['user_type'] == '6' || $contributor['user_type'] == '1' || $contributor['user_type'] == '7' || $contributor['user_type'] == '0' || $contributor['user_type'] == '5'){
+
+					  			if( !$blogger ){
 							  		if( $selected_year >= 2015 ){
 							  			 $total_rev = 0;
 							  			 $total_to_pay  = 0;
@@ -250,17 +260,30 @@
 						  			$total_rev = $contributor['total_earnings'];
 						  			$total_to_pay = $contributor['to_be_pay'];
 						  		}
+
 						  		$paid = $contributor['paid'];
 						  		$paid_cb = '';
 						  		if($paid == 1){
 						  			$paid_cb = 'checked=true';
 						  		}
 
-					  			$all_us_viewers += $total_us_viewers;
-					  			$all_us_viwers_by_thousand += $total_us_viewers_by_thousands;
-					  			$all_total += $total_rev; 
-					  			$all_rate = $total_rate;
-					  			$all_total_to_pay += $total_to_pay;
+						  		if( $blogger ){
+							  		if( $problogger ){
+							  			$all_pro_total += $total_rev;
+							  			$all_us_viwers_by_thousand_pro += $total_us_viewers_by_thousands ;
+							  			$total_rate_pro = $total_rate;
+							  		}else{ 
+							  			$all_basic_total += $total_rev;
+							  			$all_us_viwers_by_thousand_basic += $total_us_viewers_by_thousands;
+							  			$total_rate_basic = $total_rate;
+							  		}
+
+						  			$all_us_viewers += $total_us_viewers;
+						  			$all_us_viwers_by_thousand += $total_us_viewers_by_thousands;
+						  			$all_total += $total_rev; 
+						  			$all_rate = $total_rate;
+						  			$all_total_to_pay += $total_to_pay;
+							  	}
 
 					  			$style = "background-color: #fff;";
 					  			if( $contributor['user_type'] == 8){
@@ -270,7 +293,7 @@
 					  			
 
 					  		?>	
-					  		<?php if(!$no_cover_in_house ){?>
+					  		<?php if(!$no_cover_in_house ){  ?>
 							<tr style="<?php echo $style; ?>">
 							  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
 							  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
@@ -278,8 +301,7 @@
 							  		</a>
 							  		<label>
 							  		<?php echo $contributor['paypal_email'];?>
-							  		
-							  	</label>
+							  		</label>
 							  	</td>
 							  	<td><?php echo number_format($total_us_viewers_by_thousands, 2, '.', ','); ?></td>
 							  	<td><?php echo '$'.$total_rate; ?></td>
@@ -287,14 +309,32 @@
 							  	<td class="bold"><?php echo '$'.number_format($total_to_pay, 2, '.', ','); ?></td>
 							  	<td><input type="checkbox" id="input-<?php echo $contributor['contributor_id']; ?>" month-info="<?php echo $contributor['month']; ?>" year-info="<?php echo $contributor['year']; ?>" contributor-info="<?php echo $contributor['contributor_id']; ?>" <?php echo $paid_cb; ?> class="paid-checkbox" /></td>
 							</tr>
-					  	<?php  }  }?>
+					  	<?php  }  } ?>
 					  	
 					  </tbody>
 					  <tfoot>
+					  	<tr class="small-12 ">
+					  		<td class="align-left bold small-3">PRO:</td>
+					  		<td class="small-2 "><?php echo number_format($all_us_viwers_by_thousand_pro, 2, '.', ','); ?></td>
+					  		<td class="small-2 "><?php echo '$'.$total_rate_pro; ?></td>
+					  		<td class="small-3"><?php echo '$'.number_format($all_pro_total, 2, '.', ','); ?></td>
+					  		<td class="bold small-1">---</td>
+					  		<td class="small-1 "></td>
+					  		
+					  	</tr>
+					  	<tr>
+					  		<td class="align-left bold">BASIC:</td>
+					  		<td><?php echo number_format($all_us_viwers_by_thousand_basic, 2, '.', ','); ?></td>
+					  		<td><?php echo '$'.$total_rate_basic; ?></td>
+					  		<td class=""><?php echo '$'.number_format($all_basic_total, 2, '.', ','); ?></td>
+					  		<td class="bold">---</td>
+					  		<td></td>
+					  		
+					  	</tr>
 					  	<tr>
 					  		<td class="align-left bold">TOTAL:</td>
 					  		<td><?php echo number_format($all_us_viwers_by_thousand, 2, '.', ','); ?></td>
-					  		<td><?php echo '$'.$total_rate; ?></td>
+					  		<td>---</td>
 					  		<td class=""><?php echo '$'.number_format($all_total, 2, '.', ','); ?></td>
 					  		<td class="bold"><?php echo '$'.number_format($all_total_to_pay, 2, '.', ','); ?></td>
 					  		<td></td>

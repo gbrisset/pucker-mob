@@ -114,15 +114,15 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 				
 					<?php //LELO
-						if( $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 ){?>
-										<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+						if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 ){?>
+						<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
 
 							<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
-								<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/lelo_mobile.gif" />
+								<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" />
 							</a>
 						</div>
 						<?php }elseif( $article_id == 8787 ){?>
-										<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+						<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
 
 						<!-- ENGAGE BDR -->
 						<!-- /73970039/ROS300x250 -->
@@ -202,11 +202,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			
 
 			<!-- LELO -->
-			<?php if( $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 ){?>
+			<?php if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 ){?>
 				<div id="mobile-instream-branovate-ad"  class="margin-top padding-top small-12 row no-padding" style="margin-top: 2rem;">
 					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
 						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
-							<img style="width: 100%;  margin-top: 1rem;" src="http://www.puckermob.com/assets/img/campaing/lelo_mobile.gif" />
+							<img style="width: 100%;  margin-top: 1rem;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_black.jpg" />
 						</a>
 					</div>
 				</div>
@@ -319,7 +319,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 			
 			<!-- LELO -->
-			<?php if( $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 ){?>
+			<?php if(  $article_id != 16562  &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 ){?>
 
 			
 			<!-- BRANOVATE -->
@@ -336,68 +336,20 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<?php }?>
 				</div>
 			</div>
-		
-			<?php if( !$sponsored_aricle ){ ?>
-			<!-- TOK -->
-			<div id="mobile-instream-branovate-ad">
-				<div id="get-content" style="text-align:center; display: inline-block;">
-					<div id="tok-ad" class="columns small-12 margin-top margin-bottom IOS" >
-						<iframe style="width:300px;height:250px;overflow:hidden;" src="//www.toksnn.com/ads/pkm_ent1_mob_us?pub=sqmpkmusmi" frameborder="0" scrolling="no"></iframe>
-					</div>
-				</div>
-			</div>
 
-			<?php if( isset($article_id) && $article_id != 8560 &&  $article_id != 14613  &&  $article_id != 15104  && 	$article_id != 15284  && $article_id != 15488 ){?>
-				<!-- CARAMBOLA -->
-				<!--<div id="mobile-instream-branovate-ad">
-					<div id="get-content" style="text-align:center; display: inline-block;">
-
-						<img height='0' width='0' alt='' src='http://pixel.watch/pssj' /> 
-
-						<script data-cfasync="false" class="carambola_InContent" type="text/javascript" cbola_wid="0"> 
-
-						(function (i,d,s,o,m,r,t,l,w,q,y,h,g) { 
-
-						var e=d.getElementById(r);if(e===null){ 
-
-						var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n);
-
-						var dt=new Date().getTime(); 
-
-						try{i[l][w+y](h,i[l][q+y](h)+'&'+dt);}catch(er){i[h]=dt;} 
-
-						} else if(typeof i[t]!=='undefined'){i[t]++} 
-
-						else{i[t]=1;} 
-
-						})(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_IC','localStorage','set','get','Item','cbolaDt','http://route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233&wid=0') 
-
-						</script>
-					</div>
-				</div>-->
-
-			<?php } ?>
-					
-			<?php } ?>
 
 			<?php } ?>
 
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 	
-			<?php if( $article_id != 14479 &&  $article_id != 14576 &&  $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 ){?>
-				<!--<div class="small-12 columns margin-top margin-bottom" >
-					<ins class="adbladeads" data-cid="21332-1502367429" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins>
-					<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
-				</div>-->
-			<?php }?>
+		
 			</section>
 
 		</div>
 	
 	</section>
 	<!-- UNDERTONE -->
-	<?php //if( isset($article_id) && ( $article_id == 14613 ) ){?>
 		<!-- /73970039/UT_SA -->
 		<div id='div-gpt-ad-1461622964696-5' style='height:50px; width:320px;'>
 			<script type='text/javascript'>
@@ -412,17 +364,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</script>
 		</div>
 
-	<?php //} ?>
 
-	<?php if( !$sponsored_aricle ){ ?>
-		<?php if( $article_id != 14479 &&  $article_id != 14576 &&  $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 ){?>
-		<!-- News Max 
-		<div id="NmWg4156" ></div>
-		<script type="text/javascript" src ='https://cdn.nmcdn.us/js/connectiaV1.js'></script>
-		<script type="text/javascript">  NM.init({WidgetID: 4156,ArticleSelector: '.nmWidgetContainerArticle'})</script>
-		-->
-		<?php } ?>
-	<?php } ?>
 </article>
 
 
@@ -471,7 +413,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			
 				<!-- LELO -->
-				<?php if( $article_id == 14479 || $article_id == 14576 ||  $article_id == 15109 || $article_id == 15271 ){?>
+				<?php if(  $article_id == 16562  || $article_id == 14479 || $article_id == 14576 ||  $article_id == 15109 || $article_id == 15271 ){?>
 				<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
 					<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
 						<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/lelo_desk.png" />
@@ -488,7 +430,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					</script>
 					</div>
 				<?php }else{?>
-					<?php if( $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 ){?>
+					<?php if(  $article_id != 16562 && $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 ){?>
 					<!-- SHARETH -->
 					<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0;">
 						<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
@@ -528,7 +470,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</div>
 
 			<hr>
-			<?php if(!$sponsored_aricle && $article_id != 14613 && $article_id != 15284  && $article_id != 15488 ){ ?>
+			<?php if(!$sponsored_aricle &&  $article_id != 16562 && $article_id != 14613 && $article_id != 15284  && $article_id != 15488 ){ ?>
 			<!-- TABOOLA -->
 			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
 				<div id="taboola-below-article-thumbnails"></div>

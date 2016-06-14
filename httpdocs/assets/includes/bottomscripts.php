@@ -34,7 +34,7 @@
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
      
       <!-- LELO -->
-      <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 ){?>
+      <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 ){?>
        <!-- <script type="text/javascript">
         netseer_tag_id="19129"; 
         </script>
@@ -86,7 +86,7 @@
       
       if(isset($articleInfoObj) && $articleInfoObj){ ?>
         <!-- LELO -->
-        <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 && $article_id != 15488){ ?>
+        <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 && $article_id != 15488){ ?>
         
           <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
 
@@ -168,6 +168,7 @@
         </script>
         <!-- End Pucker Mob - Adhesion - iframe buster code -->
       <?php  } ?>
+      
 <?php  } ?>
       <?php if( $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 ){ ?>
           <script>

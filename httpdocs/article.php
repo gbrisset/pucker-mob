@@ -234,7 +234,7 @@ if(!is_null($categoryInfo)){
 			
 			<?php }
 		}?>
-		<?php if( $article_id != 14479 && $article_id != 14576  && $article_id != 15109   && $article_id != 15271 && $article_id != 15284  && $article_id != 15488 ){?>
+		<?php if( $article_id != 16562 && $article_id != 14479 && $article_id != 14576  && $article_id != 15109   && $article_id != 15271 && $article_id != 15284  && $article_id != 15488 ){?>
 		<!-- NewsMax 
 		<div class="columns small-12 margin-top">
 			<div id="NmWg4152" ></div>

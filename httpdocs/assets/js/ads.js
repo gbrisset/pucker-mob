@@ -92,9 +92,9 @@ if($('body').hasClass('mobile')) {
 	
 		
 			//LELO
-			if(article_id == 14479 || article_id == 14576 ||  article_id == 15109 || article_id == 15271){
-				inBodyAd.loadInArticleAd( 'article-body', 4, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/Remoji_300x250.gif" /></a>', tag);		
-				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/Remoji_300x250.gif" /></a>', tag);		
+			if( article_id == 16562 || article_id == 14479 || article_id == 14576 ||  article_id == 15109 || article_id == 15271){
+				inBodyAd.loadInArticleAd( 'article-body', 4, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_320x50_black.jpg" /></a>', tag);		
+				inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_320x50_white.jpg" /></a>', tag);		
 			}else{ 
 			if(article_id != 15284 &&  article_id != 15488 ){
 				
@@ -148,7 +148,7 @@ if($('body').hasClass('mobile')) {
 			
 
 				//LELO
-				if(article_id == 14479 || article_id == 14576 || article_id == 14472 || article_id == 15104 ||  article_id == 15109 || article_id == 15271){}else{
+				if( article_id == 16562 || article_id == 14479 || article_id == 14576 || article_id == 14472 || article_id == 15104 ||  article_id == 15109 || article_id == 15271){}else{
 					if( second_p > 0 ){
 						
 						if(article_id != 15284 && article_id != 15488){

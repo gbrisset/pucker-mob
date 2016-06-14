@@ -4,7 +4,7 @@
   if ( isset($isArticle) && $isArticle ){?>
   <aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print" style="">
       <!-- LELO -->
-      <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271){?>
+      <?php if(isset($articleInfoObj['article_id']) &&  $articleInfoObj['article_id'] != 16562 &&   $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271){?>
         <?php if( $articleInfoObj['article_id'] != 14613){?>     
            <?php if(   $articleInfoObj['article_id'] != 15284 && $articleInfoObj['article_id'] != 15488){?>
               <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
@@ -29,7 +29,7 @@
        <?php } ?>
       <?php }else{?>
           <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
-              <a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/Remoji_300x250.gif" /></a>
+              <a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_black.jpg" /></a>
           </div>
       <?php }?>
    
@@ -38,7 +38,7 @@
     <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
 
     <!-- LELO -->
-    <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271){?>
+    <?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id'] != 16562 && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271){?>
       <?php if($articleInfoObj['article_id'] != 8560 &&  $articleInfoObj['article_id'] != 14613){ ?>
         <?php if(  $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){?>
             <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
@@ -55,7 +55,7 @@
       <?php } ?>
     <?php }else{ ?>
       <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
-          <a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/Remoji_300x250.gif" /></a>
+          <a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>
       </div>
     <?php } ?>
       

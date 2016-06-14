@@ -283,7 +283,7 @@
 						<?php } ?>
 
 						<!-- Article Status -->
-						<?php if($admin_user  || $externalWriter){
+						<?php // if($admin_user  || $externalWriter){
 
 							$allStatuses = $adminController->getSiteObjectAll(array('table' => 'article_statuses'));
 						?>
@@ -312,7 +312,7 @@
 							</div>
 						
 						</div>
-						<?php }?>
+						<?php //}?>
 
 						<?php if($admin_user){?>
 							<!-- Article Featured -->

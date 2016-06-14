@@ -113,13 +113,17 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<div class="row clear" style="margin-top: -1rem;">
 				<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 				
-				<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
 					<?php //LELO
 						if( $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 ){?>
+										<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+
 							<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
 								<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/lelo_mobile.gif" />
 							</a>
+						</div>
 						<?php }elseif( $article_id == 8787 ){?>
+										<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+
 						<!-- ENGAGE BDR -->
 						<!-- /73970039/ROS300x250 -->
 							<div id='div-gpt-ad-1462440432230-0' style='height:250px; width:300px; display:inline-block;'>
@@ -127,26 +131,39 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462440432230-0'); });
 							</script>
 							</div>
+						</div>
+						<?php }elseif( $article_id == 16397 ){?>
+										<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+
+							<!-- strike DFP TEST PAGE -->
+							<!-- /73970039/SV_300x250 -->
+								<div id='div-gpt-ad-1465504491752-0' style='height:250px; width:300px;'>
+								<script type='text/javascript'>
+								googletag.cmd.push(function() { googletag.display('div-gpt-ad-1465504491752-0'); });
+								</script>
+								</div>
+							</div>
 						<?php }else{ ?>
 							<?php if($article_id != 15284 && $article_id != 15488 ){?>
 								<?php if($article_id == 13465 ){?>
+								<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+
 								<div id="mobile-instream-branovate-ad">
 									<div id="adunit-300x250-3159"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3159/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>
 								</div>
+							</div>
 								<?php }else{?>
-								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-								<!-- PM Mobile Top Spot -->
+								<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 								<ins class="adsbygoogle"
 								     style="display:inline-block;width:300px;height:250px"
 								     data-ad-client="ca-pub-8978874786792646"
 								     data-ad-slot="2880293382"></ins>
 								<script>
 								(adsbygoogle = window.adsbygoogle || []).push({});
-								</script>
+								</script>-->
 								<?php } ?>
 							<?php } ?>
 						<?php } ?>
-				</div>
 
 				<!-- ARTICLE BODY -->
 				<div class="nmWidgetContainerArticle"><!-- News Max -->

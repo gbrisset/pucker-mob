@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_345678808e" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_3456788708e" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
@@ -26,17 +26,9 @@
 <!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
 
-
-  <?php if($article_id != 8560 && $article_id != 14472 && $article_id != 15284 && $article_id != 15488 ){?>
-    <!--
-    <div id="mb_container"></div> 
-    <div id="mb_video_sponso"></div> 
-    <script type="text/javascript"> (function(){ var sc = document.createElement('script'); sc.src = 'http://player.mediabong.net/se/924.js?url='+encodeURIComponent(document.location.href); sc.type = 'text/javascript'; sc.async = true; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s); })(); </script>
- -->
- <?php } ?>
 <?php //if( !$sponsored_aricle ){?>
     
-    <div id="evolve_footer"></div>
+    <!--<div id="evolve_footer"></div>-->
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
@@ -96,7 +88,7 @@
         <!-- LELO -->
         <?php if(isset($article_id) && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 && $article_id != 15488){ ?>
         
-          <!--<script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
+          <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
 
              
            <div id="vm_inline"></div>
@@ -117,9 +109,9 @@
                   incontent_desktop_id: "42300",
                   target_type: "mix"
                           });
-          </script>-->
+          </script>
 
-          <?php //if($article_id == 12964 ){ ?>
+          <?php if($article_id == 12964 ){ ?>
           <!-- AIRPUSH MOBILE -->
           <script type="text/javascript">
     		    this.airpushConfig = {
@@ -128,14 +120,14 @@
     		    };
     		  </script>
 		      <script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
-		<?php //} ?>
+		<?php } ?>
 
          <!-- NETSEER AD IN-IMAGE 
             <script type="text/javascript">
             netseer_tag_id="19129"; 
             </script>
-            <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
-		-->
+            <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script> -->
+		
 
         <!-- kixer adhesion -->
         <!-- Start Pucker Mob - Adhesion - iframe buster code -->
@@ -234,10 +226,3 @@
 
 <!-- SHARETHROUNG -->
 <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>
-    
-<!-- TotallyHer comscore tags 
-<script>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "6036161" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();</script><noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&cv=2.0&cj=1" /></noscript>
--->
-<!-- ADSUPPLY 
-<script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="//cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=ce106c14-9ffe-4f0b-8cb8-c965d9d04213";s.id="infinity";s.setAttribute("data-guid","ce106c14-9ffe-4f0b-8cb8-c965d9d04213");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
--->

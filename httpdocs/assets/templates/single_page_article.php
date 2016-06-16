@@ -133,16 +133,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							</div>
 						</div>
 						<?php }elseif( $article_id == 16397 ){?>
-										<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
-
-							<!-- strike DFP TEST PAGE -->
-							<!-- /73970039/SV_300x250 -->
-								<div id='div-gpt-ad-1465504491752-0' style='height:250px; width:300px;'>
-								<script type='text/javascript'>
-								googletag.cmd.push(function() { googletag.display('div-gpt-ad-1465504491752-0'); });
-								</script>
-								</div>
-							</div>
+							
 						<?php }else{ ?>
 							<?php if($article_id != 15284 && $article_id != 15488 ){?>
 								<?php if($article_id == 13465 ){?>
@@ -188,6 +179,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 
 				<?php include_once($config['include_path'].'header_social.php'); ?> 
+
+				<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+					<!-- strike DFP TEST PAGE -->
+					<!-- /73970039/SV_300x250 -->
+					<div id='div-gpt-ad-1465504491752-0' style='height:250px; width:300px;'>
+					<script type='text/javascript'>
+					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1465504491752-0'); });
+					</script>
+					</div>
+				</div>
 			</div>
 
 			<!-- READ MORE  -->

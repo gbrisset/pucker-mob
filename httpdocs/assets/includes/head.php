@@ -125,7 +125,7 @@
 	<?php }?>
 
 	<!-- strike TEST DFP -->
-	<?php if( isset($articleInfo) && ($articleInfo['article_id'] == 16397 ) ) {?>
+	<?php //if( isset($articleInfo) && ($articleInfo['article_id'] == 16397 ) ) {?>
 
 				<script type='text/javascript'>
 				  var googletag = googletag || {};
@@ -151,7 +151,7 @@
 				</script>
 
 
-	<?php } ?>
+	<?php //} ?>
 
 
 <?php 
@@ -211,6 +211,39 @@
 			  });
 			</script>
 		<?php } ?>
+
+		<?php //if( $article_id == 16561 ){ ?>
+          <!-- Start Pucker Mob - Interstitial -->
+			<div id='__kx_ad_5270'></div>
+			<script type="text/javascript" language="javascript">
+			var __kx_ad_slots = __kx_ad_slots || [];
+
+			(function () {
+				var slot = 5270;
+				var h = false;
+				__kx_ad_slots.push(slot);
+				if (typeof __kx_ad_start == 'function') {
+					__kx_ad_start();
+				} else {
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.async = true;
+					s.src = '//cdn.kixer.com/ad/load.js';
+					s.onload = s.onreadystatechange = function(){
+						if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+							h = true;
+							s.onload = s.onreadystatechange = null;
+							__kx_ad_start();
+						}
+					};
+					var x = document.getElementsByTagName('script')[0];
+					x.parentNode.insertBefore(s, x);
+				}
+			})();
+			</script>
+			<!-- End Pucker Mob - Interstitial -->
+
+          <?php  //} ?>
 
 	<?php //} ?>
 

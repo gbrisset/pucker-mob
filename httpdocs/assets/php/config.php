@@ -9,7 +9,7 @@ if($local)
 	define("DB_SERVER", "localhost");
 	define("DB_USER", "root");
 	define("DB_PASS", "root");
-	define("DB_NAME", "pucker_mob_con_2");
+	define("DB_NAME", "puckermob_db");
 
 	define("MAIL_HOST", "smtp.gmail.com");
 	define("MAIL_USER", "info@sequelmediainternational.com");
@@ -90,6 +90,8 @@ if($local)
 	require_once $config['assets_path'].'/class.Dashboard.php';
 	require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
+
+	require_once $config['assets_path'].'/class.User.php';
 
 	
 }else{
@@ -197,6 +199,8 @@ $follow = new FollowAuthor($config);
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
 $mpHelpers->geotargeting();
+
+var_dump(new User('fguzman@sequelmediagroup.com')); die;
 
 //recaptcha public key
 define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");

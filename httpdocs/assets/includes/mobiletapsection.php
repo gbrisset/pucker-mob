@@ -1,7 +1,10 @@
 <?php 
 	//MOST POPULAR
+	$mostReadArticlesList = $mpArticle->getMostRecentArticleListMobile();
 	$article_id = isset($articleInfoObj['article_id']) ? $articleInfoObj['article_id'] : false;
+
 	$featured_articles = $mpArticle->getFeaturedArticles();
+	//var_dump(count($featured_articles), $featured_articles); 
 
 ?>
 <style>
@@ -12,8 +15,8 @@
 <div class="small-12" id="slide-menu-left-div">
 	<nav class="menu slide-menu-left small-12" id="tap-section" >
 		<h2 class="uppercase featured-title">Featured Articles</h2>
-		<div class="content-wrapper columns small-12" style="padding: 10px;">
-		<?php 
+		<div class="content-wrapper columns no-padding small-12">
+		<?php //var_dump($featured_articles);
 				if($featured_articles){
 					$index = 0;
 					foreach($featured_articles as $farticle){
@@ -28,42 +31,70 @@
 						$index++;
 
 					?>
-					<div class="columns small-12 second-popular-articles-cont article-id" style="margin: 0 !important;">
-						<div id="article-featured-<?php echo $article_id; ?>" class="columns small-12 no-padding">
-							<div id="article-summary" class="small-12 column ">
-								<!-- Article Image -->
-								<div class="clear">
-									<div id="article-image " class=" no-padding  ">
-										<a href="<?php echo $link_article; ?>">
-											<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
-										</a>
-									</div>
-								</div>
-								<!-- TITLE -->
-								<div class="small-12 columns second-popular-article-title">
-								<h2 class="left small-12 padding-top"><a href="<?php echo $link_article; ?>"><?php echo $article_title; ?></a></h2>
-								</div>
+					<div class="columns small-12 padding-top featured-wrapper-div">
+					
+					<div id="article-featured-<?php echo $article_id; ?>" class="columns small-12 no-padding remove-border">
+						<div id="article-summary" class="small-12 column ">
+							
+							<!-- TITLE -->
+							<h1><?php echo $article_title; ?></h1>
+							
+							<div class="small-12">
+								<?php if(!empty($article_desc) ){?><p class="description" style="margin-bottom:0;"><?php echo $article_desc; ?></p><?php }?>
+								<p class="author">by <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo $name; ?></a></p>
 							</div>
-						</div>
-					</div>
-					<div class="columns ad-unit hide-for-print padding-top" style="margin-bottom: 3px !important;       padding-top: 5px !important;">
-							<?php if($index == 1){?>
-								<!--<iframe style="width:300px;height:250px;overflow:hidden;display: inline-block;" src="//www.toksnn.com/ads/pkm_ent1_mob_us?pub=sqmpkmusmi" frameborder="0" scrolling="no"></iframe>-->
-							<?php } ?>
 
-							<?php if($index == 3){?>
-								<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- Article Image -->
+							<div class="clear margin-bottom" style="background: black;     margin-bottom: 5px !important;">
+								<div id="article-image " class=" no-padding tinted-image " style="opacity: 0.5;">
+									<a href="<?php echo $link_article; ?>">
+										<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+									</a>
+								</div>
+								<span class="span-middle-label-img"><a href="<?php echo $link_article; ?>">Click to read full article</a></span>
+
+							</div>
+							
+						</div>
+						<div class="columns ad-unit hide-for-print padding-top no-padding" style="margin-bottom: 10px !important;">
+								<?php if($index == 1){?>
+								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								<!-- PuckerMob mobile 300x250 Featured 1 -->
 								<ins class="adsbygoogle"
 								     style="display:inline-block;width:300px;height:250px"
 								     data-ad-client="ca-pub-8978874786792646"
-								     data-ad-slot="3165143381"></ins>
+								     data-ad-slot="1688410185"></ins>
 								<script>
 								(adsbygoogle = window.adsbygoogle || []).push({});
-								</script>-->
-							<?php } ?>
+								</script>
+								<?php } ?>
 
+								<?php if($index == 2){?>
+									<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									<!-- PuckerMob 300x250 Featured Tab 2 -->
+									<ins class="adsbygoogle"
+									     style="display:inline-block;width:300px;height:250px"
+									     data-ad-client="ca-pub-8978874786792646"
+									     data-ad-slot="3165143381"></ins>
+									<script>
+									(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+								<?php } ?>
+
+								<?php if($index == 3){?>
+									<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									<!-- PuckerMob 300x250 Featured Tab 3 -->
+									<ins class="adsbygoogle"
+									     style="display:inline-block;width:300px;height:250px"
+									     data-ad-client="ca-pub-8978874786792646"
+									     data-ad-slot="6118609785"></ins>
+									<script>
+									(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+								<?php } ?>
+							</div>
 					</div>
-				
+					</div>
 					<?php }
 				}else{
 					echo '<p>No Featured article available.</p>';

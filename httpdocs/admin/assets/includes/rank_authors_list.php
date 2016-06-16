@@ -14,7 +14,7 @@
 			<?php 
 				for( $j = 0; $j < 20; $j ++ ){ ?>
 
-					<tr id="contributor_id_<?php echo $rank_list[$j]['contributor_id']; ?>" class="<?php if( $j > 9 ) echo " gray-out "; ?>">
+					<tr id="contributor_id_<?php echo $rank_list[$j]['contributor_id']; ?>" class="<?php if( $j > 14 ) echo " gray-out "; ?>">
 						<td style="padding-left: 20px; "><?php echo $index; ?></td>
 						<td><?php echo $rank_list[$j]['contributor_name']; ?></td>
 						<td class="align-center"><?php echo number_format($rank_list[$j]['total_us_pageviews']); ?></td>

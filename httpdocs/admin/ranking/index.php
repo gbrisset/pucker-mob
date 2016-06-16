@@ -46,12 +46,8 @@
 
 			<?php include_once($config['include_path_admin'].'view_ranking.php');?>
 
-			<div class="small-1 xxlarge-1 columns no-padding-right show-for-large-up" style="width: 4.5rem;">
-				<img style="height:100%;" src="http://www.puckermob.com/admin/assets/img/misc/bonus-100.jpg" />
-				<img style="height:100%;" src="http://www.puckermob.com/admin/assets/img/misc/bonus-25.jpg" />
-
-			</div>
-			<div class="small-12 large-10 xxlarge-7 columns no-padding">
+			
+			<div class="small-12 large-10 xxlarge-8 columns no-padding-right">
 				<p class="small-12 columns no-padding hide-for-large-up">
 					View your rank compared to other bloggers in our community, and check to see our latest incentive plan.
 				</p>

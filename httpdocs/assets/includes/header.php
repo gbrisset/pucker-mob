@@ -105,13 +105,13 @@
             </li>
             <?php }?>
             <li><a  class="my-account-header-link" href="<?php echo $config['this_admin_url']; ?>/logout/">LOG OUT </a></li>
-            <li></li>
-            <li class="right">
+             <div id="searchbox"></div>
+           <!-- <li class="right">
               <div id="topbar-container">
                 <input id="topbar-search-contents-login"  value="" class="topbar-search-contents" type="search" placeholder="SEARCH">
                 <button id="topbar-search-submit-login" class="alert button expand" style="background-color: #10580d;"><i class="fa fa-search"></i></button>
               </div>
-            </li>
+            </li>-->
           </ul>
         <?php }?>
     </div>
@@ -131,12 +131,13 @@
             <li class="login-link">
               <a class="my-account-header-link" href="http://www.puckermob.com/admin/login">LOGIN</a>
             </li>
-            <li class="right">
-              <div id="topbar-container">
+            <div id="searchbox"></div>
+           <!-- <li class="right">
+             <div id="topbar-container">
                 <input id="topbar-search-contents" value="" class="topbar-search-contents" type="search" placeholder="SEARCH">
                 <button id="topbar-search-submit" class="alert button expand" style="background-color: #10580d;"><i class="fa fa-search"></i></button>
               </div>
-            </li>
+            </li>-->
         </ul>
     </div>
     </div>
@@ -219,11 +220,7 @@
   </div>
   <?php 
 
-
-  if($detect->isMobile() ){
-    /*  Highlight Article */
-    //include_once($config['include_path'].'highlightarticle.php');
-  }else{?>
+  if(!$detect->isMobile() ){?>
   <!-- FACEBOOK COMMENTS SCRIPT -->
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
@@ -242,11 +239,12 @@
             
             <ul class="info-list">
                <h1 style="width:50%;">INFO</h1>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-book"></i>Publications</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 73px;" href="http://www.puckermob.com/policy/#privacy"><i class="fa fa-shield"></i>Privacy</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px;" href="http://www.puckermob.com/policy/"><i class="fa fa-gavel"></i>Legal</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-briefcase"></i>Advertise</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 67px;" href="http://www.sequelmediainternational.com/"><i class="fa fa-phone-square"></i>Contact</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px;" href="http://www.sequelmediainternational.com/">Publications</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 73px;" href="http://www.puckermob.com/privacy/">Privacy</a></li>
+                <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 30px;" href="http://www.puckermob.com/policy/">Terms Of Service</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px;" href="http://www.puckermob.com/policy/">Legal</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px;" href="http://www.sequelmediainternational.com/">Advertise</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 67px;" href="http://www.sequelmediainternational.com/">Contact</a></li>
             </ul>
             </center>
             <ul class="social-links">
@@ -259,3 +257,4 @@
         </div>
 
         <div id="fade" class="black_overlay" href= "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
+        <div id="mobilesearchbox"></div>

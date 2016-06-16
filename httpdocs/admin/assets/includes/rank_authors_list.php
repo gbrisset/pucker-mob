@@ -3,7 +3,12 @@
 		$index = 1;
 
 ?>
-<div class = "small-12 columns no-padding">
+<div class="show-for-large-up left" style="width: 4rem;">
+				<img style="height:100%;" src="http://www.puckermob.com/admin/assets/img/misc/bonus-100.jpg" />
+				<img style="height:100%;" src="http://www.puckermob.com/admin/assets/img/misc/bonus-25.jpg" />
+
+			</div>
+<div class = " small-12 large-10 xxlarge-11 columns no-padding">
 	<table  class="small-12 large-6 columns">
 		<thead>
 			<td class="bold">RANK</td>

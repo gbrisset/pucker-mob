@@ -198,7 +198,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			</div> 
 			
-			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 4.2rem;"></div>
+			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 3.7rem;"></div>
 			
 			
 
@@ -232,7 +232,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			
 				<?php }else{ ?>
 					<!-- SHARETH -->
-					<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">
+					<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">
 						<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
 					</div>
 				<?php }?>

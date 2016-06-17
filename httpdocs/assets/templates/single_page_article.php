@@ -117,7 +117,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 ){?>
 						<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
 
-							<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
+							<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
 								<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" />
 							</a>
 						</div>
@@ -180,15 +180,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 				<?php include_once($config['include_path'].'header_social.php'); ?> 
 
+				<?php if( $article_id == 16638 ){?>
 				<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
-					<!-- strike DFP TEST PAGE -->
-					<!-- /73970039/SV_300x250 -->
-					<div id='div-gpt-ad-1465504491752-0' style='height:250px; width:300px;'>
-					<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1465504491752-0'); });
-					</script>
-					</div>
+					<!-- strike  TEST PAGE -->
+					<div id="adunit-300x250-3159"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3159/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>
 				</div>
+				<?php }?>
 			</div>
 
 			<!-- READ MORE  -->
@@ -206,7 +203,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 ){?>
 				<div id="mobile-instream-branovate-ad"  class="margin-top padding-top small-12 row no-padding" style="margin-top: 2rem;">
 					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
-						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
+						<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
 							<img style="width: 100%;  margin-top: 1rem;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_black.jpg" />
 						</a>
 					</div>
@@ -416,7 +413,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<!-- LELO -->
 				<?php if(  $article_id == 16562  || $article_id == 14479 || $article_id == 14576 ||  $article_id == 15109 || $article_id == 15271 ){?>
 				<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
-					<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
+					<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
 						<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/lelo_desk.png" />
 					</a>
 				</div>

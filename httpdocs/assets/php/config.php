@@ -201,12 +201,7 @@ $detect = new Mobile_Detect;
 $mpHelpers->geotargeting();
 
 
-//$user = new User();
-//PageList::get_by_seo_title($uri[2]);
-//var_dump(User::getUser('fguzman@sequelmediagroup.com')); 
-$user = new User('fguzman@sequelmediagroup.com');
-//$user->update(array('user_type' => '1', 'user_id' => 960, 'user_name' => 'florgb0202', 'user_email' => 'fguzman@sequelmediagroup.com'), $_FILES);
-var_dump($user->contributor->getContributorName()); die;
+
 
 
 //recaptcha public key

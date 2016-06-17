@@ -23,12 +23,8 @@
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
     <![endif]-->
 
-<!-- DESKTOP -->
 <?php if ( !$detect->isMobile() ) { ?>
-
-<?php //if( !$sponsored_aricle ){?>
-    
-    <!--<div id="evolve_footer"></div>-->
+    <!-- DESKTOP -->
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
@@ -42,55 +38,52 @@
       <?php } ?>
     <?php }  ?>
 
- <?php //} ?>
+   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+     <!--SHAREBUTTONS BAR VERTICAL-->
+      <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+          <a class="a2a_button_facebook a2a_button_facebook"></a>
+          <a class="a2a_button_twitter"></a>
+          <a class="a2a_button_google_plus"></a>
+          <a class="a2a_button_pinterest"></a>
+          <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="//static.addtoany.com/menu/page.js" async></script>
+  <?php } ?>
 
-
- <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-   <!--SHAREBUTTONS BAR VERTICAL-->
-    <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
-        <a class="a2a_button_facebook a2a_button_facebook"></a>
-        <a class="a2a_button_twitter"></a>
-        <a class="a2a_button_google_plus"></a>
-        <a class="a2a_button_pinterest"></a>
-        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-    </div>
-    <script async src="//static.addtoany.com/menu/page.js" async></script>
-<?php } ?>
-
-<?php if($article_id == 11655 ){ ?>
-<div id="vm_inline"></div>
-<script>
-    window._videomosh = window._videomosh || [];
-    !function (e, f, u) {
-        e.async = 1;
-        e.src = u;
-        f.parentNode.insertBefore(e, f);
-    }(document.createElement('script'),
-            document.getElementsByTagName('script')[0],
-            'http://player.videomosh.com/players/loader/loader_final4.js');
-    _videomosh.push({
-        publisher_key: "sequelmedia",
-        mode: "slider",
-        container: "vm_inline",
-        incontent_mobile_id: "23002",
-        incontent_desktop_id: "42300",
-        target_type: "mix"
-                });
-</script>
+  <?php if($article_id == 11655 ){ ?>
+  <div id="vm_inline"></div>
+  <script>
+      window._videomosh = window._videomosh || [];
+      !function (e, f, u) {
+          e.async = 1;
+          e.src = u;
+          f.parentNode.insertBefore(e, f);
+      }(document.createElement('script'),
+              document.getElementsByTagName('script')[0],
+              'http://player.videomosh.com/players/loader/loader_final4.js');
+      _videomosh.push({
+          publisher_key: "sequelmedia",
+          mode: "slider",
+          container: "vm_inline",
+          incontent_mobile_id: "23002",
+          incontent_desktop_id: "42300",
+          target_type: "mix"
+                  });
+  </script>
 <?php }?>
 
-<!-- MOBILE -->
 <?php }else{ ?>
-  
+  <!-- MOBILE -->
+
   <?php if( isset($promotedArticle) && !$promotedArticle ){ 
       
       if(isset($articleInfoObj) && $articleInfoObj){ ?>
         <!-- LELO -->
-        <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 && $article_id != 15488){ ?>
+        <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
+        && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
+        && $article_id != 15488) { ?>
         
-          <script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>
-
-             
+          <!--<script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>     
            <div id="vm_inline"></div>
           <script>
               window._videomosh = window._videomosh || [];
@@ -109,18 +102,21 @@
                   incontent_desktop_id: "42300",
                   target_type: "mix"
                           });
-          </script>
+          </script>-->
 
           <?php if($article_id == 12964 ){ ?>
           <!-- AIRPUSH MOBILE -->
-          <script type="text/javascript">
-    		    this.airpushConfig = {
-    		        "siteid": 291995,
-    		        "smartwall": 1
-    		    };
-    		  </script>
-		      <script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
-		<?php } ?>
+            <script type="text/javascript">
+      		    this.airpushConfig = {
+      		        "siteid": 291995,
+      		        "smartwall": 1
+      		    };
+      		  </script>
+  		      <script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
+	       	<?php } ?>
+
+          
+
 
          <!-- NETSEER AD IN-IMAGE 
             <script type="text/javascript">
@@ -128,48 +124,51 @@
             </script>
             <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script> -->
 		
+      <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
+        && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
+        && $article_id != 15488) { ?>
+            <!-- kixer adhesion -->
+            <!-- Start Pucker Mob - Adhesion - iframe buster code -->
+            <div id='__kx_ad_4915'></div>
+            <script type="text/javascript" language="javascript" id="__kx_tag_4915">
+            var __kx_ad_slots = __kx_ad_slots || [];
 
-        <!-- kixer adhesion -->
-        <!-- Start Pucker Mob - Adhesion - iframe buster code -->
-        <div id='__kx_ad_4915'></div>
-        <script type="text/javascript" language="javascript" id="__kx_tag_4915">
-        var __kx_ad_slots = __kx_ad_slots || [];
-
-        (function () {
-          var slot = 4915;
-          var h = false;
-          var doc = document;
-          __kx_ad_slots.push(slot);
-          if (typeof __kx_ad_start == 'function') {
-            __kx_ad_start();
-          } else {
-            if (top == self) {      var s = doc.createElement('script');
-              s.type = 'text/javascript';
-              s.async = true;
-              s.src = '//cdn.kixer.com/ad/load.js';
-              s.onload = s.onreadystatechange = function(){
-                if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-                  h = true;
-                  s.onload = s.onreadystatechange = null;
-                  __kx_ad_start();
+            (function () {
+              var slot = 4915;
+              var h = false;
+              var doc = document;
+              __kx_ad_slots.push(slot);
+              if (typeof __kx_ad_start == 'function') {
+                __kx_ad_start();
+              } else {
+                if (top == self) {      var s = doc.createElement('script');
+                  s.type = 'text/javascript';
+                  s.async = true;
+                  s.src = '//cdn.kixer.com/ad/load.js';
+                  s.onload = s.onreadystatechange = function(){
+                    if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+                      h = true;
+                      s.onload = s.onreadystatechange = null;
+                      __kx_ad_start();
+                    }
+                  };
+                  var x = doc.getElementsByTagName('script')[0];
+                  x.parentNode.insertBefore(s, x);
+                } else {        var tag = doc.getElementById('__kx_tag_'+slot);       var win = window.parent;
+                  doc = win.document;       var top_div = doc.createElement("div");       top_div.id = '__kx_ad_'+slot;
+                  doc.body.appendChild(top_div);
+                  var top_tag = doc.createElement("script");      top_tag.id = '__kx_top_tag_'+slot;
+                  top_tag.innerHTML = tag.innerHTML;
+                  doc.body.appendChild(top_tag);
                 }
-              };
-              var x = doc.getElementsByTagName('script')[0];
-              x.parentNode.insertBefore(s, x);
-            } else {        var tag = doc.getElementById('__kx_tag_'+slot);       var win = window.parent;
-              doc = win.document;       var top_div = doc.createElement("div");       top_div.id = '__kx_ad_'+slot;
-              doc.body.appendChild(top_div);
-              var top_tag = doc.createElement("script");      top_tag.id = '__kx_top_tag_'+slot;
-              top_tag.innerHTML = tag.innerHTML;
-              doc.body.appendChild(top_tag);
-            }
-          }
-        })();
-        </script>
-        <!-- End Pucker Mob - Adhesion - iframe buster code -->
+              }
+            })();
+            </script>
+            <!-- End Pucker Mob - Adhesion - iframe buster code -->
+            <?php  } ?>
       <?php  } ?>
-<?php  } ?>
-      <?php if( $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 ){ ?>
+    <?php  } ?>
+      <?php if( $article_id != 16562  && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 ){ ?>
           <script>
             (function() 
             { 

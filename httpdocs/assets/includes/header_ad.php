@@ -30,7 +30,7 @@
 						<?php } ?>
 				<?php }else{?>
 					<div class="">
-						<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank">
+						<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
 							<img src="http://www.puckermob.com/assets/img/campaing/lelo_desk.png" />
 						</a>
 					</div>

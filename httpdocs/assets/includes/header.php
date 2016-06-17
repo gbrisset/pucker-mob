@@ -209,6 +209,8 @@
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>moblog"  class="relationships" >THE MOB</a></li>
             <?php if($detect->isMobile()){?>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.sequelmediainternational.com"  target="_blank" class="relationships" >Info & About Us</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/privacy/"  target="_blank" class="" >Privacy Policy</a></li>
+
            <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/login"  target="_blank" class="relationships" >LOGIN</a></li>
             <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/register"  target="_blank" class="relationships" >REGISTER</a></li>
             <?php } ?>

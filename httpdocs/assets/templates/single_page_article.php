@@ -204,7 +204,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<div id="mobile-instream-branovate-ad"  class="margin-top padding-top small-12 row no-padding" style="margin-top: 2rem;">
 					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
 						<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
-							<img style="width: 100%;  margin-top: 1rem;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_black.jpg" />
+							<img style="width: 100%;  margin-top: 1rem;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" />
 						</a>
 					</div>
 				</div>

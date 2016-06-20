@@ -85,7 +85,14 @@ if(!is_null($categoryInfo)){
 		<?php } ?>
 		
 
-		<!-- UNDERTONE -->
+		<?php if(isset($article_id) && $article_id == 13305 ){?>
+			<div id="ros_adoop"></div> 
+		<?php } ?>
+		
+		<?php include_once($config['include_path'].'header.php');?>
+				<?php include_once($config['include_path'].'header_ad.php');?>
+
+			<!-- UNDERTONE -->
 		<?php //if( isset($article_id) && ( $article_id == 15104 || $article_id == 14613 || $article_id == 14873) ) { ?>
 			<!-- /73970039/UT_SS_FP -->
 			<div id='div-gpt-ad-1461622964696-3'>
@@ -95,14 +102,6 @@ if(!is_null($categoryInfo)){
 			</div>
 
 		<?php //} ?>
-
-		<?php if(isset($article_id) && $article_id == 13305 ){?>
-			<div id="ros_adoop"></div> 
-		<?php } ?>
-		
-		<?php include_once($config['include_path'].'header.php');?>
-				<?php include_once($config['include_path'].'header_ad.php');?>
-
 		
 		<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-bottom: 5px; margin-top: 5px;  }</style>
 

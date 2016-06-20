@@ -1,5 +1,6 @@
 <?php
 
+
 class Contributor extends DatabaseObject{
 
 	protected static $table_name = "article_contributors";
@@ -38,6 +39,10 @@ class Contributor extends DatabaseObject{
 
 	public function getContributorEmail(){
 		return $this->contributor->contributor_email_address;
+	}
+
+	public function getContributorEarnings(){
+		$contributor_earnings = new ContributorEarnings( self::instance );
 	}
 
 }

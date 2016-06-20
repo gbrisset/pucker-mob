@@ -1,11 +1,12 @@
 <?php
 $local = 1;
 $version = "";
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
 
 if($local)
 {
+		error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 	define("DB_SERVER", "localhost");
 	define("DB_USER", "root");
 	define("DB_PASS", "root");
@@ -91,7 +92,7 @@ if($local)
 	require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
 
-	require_once $config['assets_path'].'/class.User.php';
+	//require_once $config['assets_path'].'/class.User.php';
 
 	
 }else{
@@ -183,7 +184,7 @@ if($local)
 
 setlocale(LC_MONETARY, 'en_US');
 
-$MPNavigation = new MPNavigation($config);
+//$MPNavigation = new MPNavigation($config);
 $mpArticle = new MPArticle($config);
 $config['catid'] = $mpArticle->data['cat_id'];
 $mpShared = new MPShared($config);

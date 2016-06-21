@@ -115,12 +115,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				
 					<?php //LELO
 						if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 ){?>
-						<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
+						<!--<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
 
 							<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
 								<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" />
 							</a>
-						</div>
+						</div>-->
 						<?php }elseif( $article_id == 8787 ){?>
 						<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
 
@@ -201,10 +201,10 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 			<!-- LELO -->
 			<?php if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 ){?>
-				<div id="mobile-instream-branovate-ad"  class="margin-top padding-top small-12 row no-padding" style="margin-top: 2rem;">
+				<div id="mobile-instream-branovate-ad"  class="margin-top padding-top small-12 row no-padding">
 					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
 						<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
-							<img style="width: 100%;  margin-top: 1rem;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" />
+							<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_320x50_white.jpg" />
 						</a>
 					</div>
 				</div>

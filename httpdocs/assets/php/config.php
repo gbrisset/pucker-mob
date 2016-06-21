@@ -184,7 +184,7 @@ ini_set('display_errors', '1');
 
 setlocale(LC_MONETARY, 'en_US');
 
-//$MPNavigation = new MPNavigation($config);
+$MPNavigation = new MPNavigation($config);
 $mpArticle = new MPArticle($config);
 $config['catid'] = $mpArticle->data['cat_id'];
 $mpShared = new MPShared($config);
@@ -199,7 +199,7 @@ $follow = new FollowAuthor($config);
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
-$mpHelpers->geotargeting();
+//$mpHelpers->geotargeting();
 
 
 

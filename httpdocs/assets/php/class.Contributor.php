@@ -41,8 +41,13 @@ class Contributor extends DatabaseObject{
 		return $this->contributor->contributor_email_address;
 	}
 
-	public function getContributorEarnings(){
-		$contributor_earnings = new ContributorEarnings( self::instance );
+	public function getContributorEarnings( Contributor $contributor, $limit = 99999){
+
+		$contributor_earnings = new ContributorEarnings( $contributor);
+
+		if( !is_null( $contributor_earnings )) 	return $contributor_earnings->getEarnings( $limit );
+		else return false;
+
 	}
 
 }

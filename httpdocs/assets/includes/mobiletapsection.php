@@ -10,7 +10,7 @@
 <style>
 	nav.menu{ background: #78ad6c; }
 	nav.slide-menu-left:after{background: #78ad6c;}
-
+	iframe{ display:inline; }
 </style>
 <div class="small-12" id="slide-menu-left-div">
 	<nav class="menu slide-menu-left small-12" id="tap-section" >
@@ -58,39 +58,37 @@
 						</div>
 						<div class="columns ad-unit hide-for-print padding-top no-padding" style="margin-bottom: 10px !important;">
 								<?php if($index == 1){?>
-								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-								<!-- PuckerMob mobile 300x250 Featured 1 -->
-								<ins class="adsbygoogle"
-								     style="display:inline-block;width:300px;height:250px"
-								     data-ad-client="ca-pub-8978874786792646"
-								     data-ad-slot="1688410185"></ins>
-								<script>
-								(adsbygoogle = window.adsbygoogle || []).push({});
+								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+								<script type="text/javascript" language="javascript">
+								//<![CDATA[
+								aax_getad_mpb({
+								  "slot_uuid":"07cc8194-4eca-4036-8ef3-43e0a582fdbd"
+								});
+								//]]>
 								</script>
+
 								<?php } ?>
 
 								<?php if($index == 2){?>
-									<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-									<!-- PuckerMob 300x250 Featured Tab 2 -->
-									<ins class="adsbygoogle"
-									     style="display:inline-block;width:300px;height:250px"
-									     data-ad-client="ca-pub-8978874786792646"
-									     data-ad-slot="3165143381"></ins>
-									<script>
-									(adsbygoogle = window.adsbygoogle || []).push({});
+									<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+									<script type="text/javascript" language="javascript">
+									//<![CDATA[
+									aax_getad_mpb({
+									  "slot_uuid":"a19421b0-d555-476b-ba63-e6b89e44cf93"
+									});
+									//]]>
 									</script>
 								<?php } ?>
 
 								<?php if($index == 3){?>
-									<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-									<!-- PuckerMob 300x250 Featured Tab 3 -->
-									<ins class="adsbygoogle"
-									     style="display:inline-block;width:300px;height:250px"
-									     data-ad-client="ca-pub-8978874786792646"
-									     data-ad-slot="6118609785"></ins>
-									<script>
-									(adsbygoogle = window.adsbygoogle || []).push({});
-									</script>
+								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+								<script type="text/javascript" language="javascript">
+								//<![CDATA[
+								aax_getad_mpb({
+								  "slot_uuid":"2bef2550-d479-4b9b-9aea-31455c8df746"
+								});
+								//]]>
+								</script>
 								<?php } ?>
 							</div>
 					</div>

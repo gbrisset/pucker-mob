@@ -1,4 +1,11 @@
 <?php
+/**
+   * Notification
+   * Manage Notifiation Object - Table
+   * 
+   * @package    DatabaseObject
+   * @author     Flor Guzman <fguzman@sequelmediainternational.com>
+**/
 
 class Notification extends DatabaseObject{
 
@@ -9,14 +16,12 @@ class Notification extends DatabaseObject{
 	public $notification_id;
 	public $user_id;
 	public $status;
+	public $notification_msg;
 
 	//	Object Vars
 	protected static $db_fields = array('id', 'user_id', 'notification_id', 'status');
 
-	public function __construct(){ 
-
-	}
-
+	//Get all notifications per user
 	public static function all(){
 		
 		$notification = static::find_by_sql("SELECT * FROM notify_users");
@@ -24,24 +29,37 @@ class Notification extends DatabaseObject{
 		return  $notification;
 	}
 
-	public static function getNotificationByUser($user_id){
-		//	Set the params to be bound
-		$params_to_bind = [':user_id' => $user_id];
+	//Update
+	public function updateObj( $data ){
+
+		$update = static::update($data);
 		
-		$notification = static::find_by_sql("SELECT * FROM notify_users WHERE user_id = :user_id", $params_to_bind);
-var_dump( $notification);
-		if(!is_null($notification)){
-			$this->status = $notification->status;
-		}
+		return $update;
+
+	}
+
+	//Insert into notify_users table
+	public function saveObj( $data ){
+
+		$save = static::create($data);
+		
+		return $save;
+
+	}
+
+	//Get all notifications by UserID
+	public static function getNotificationByUser( $user_id ){
+		//	Set the params to be bound
+		$params_to_bind = [':user_id' => $user_id ];
+		
+		$notification = static::find_by_sql(
+			"SELECT * 
+			 FROM notify_users 
+			INNER JOIN (notification_center) 
+				ON notify_users.notification_id = notification_center.notification_id 
+			WHERE user_id = :user_id and status = 1 GROUP BY notification_type ORDER BY notify_users.notification_id DESC", $params_to_bind
+		);
+
 		return  $notification;
 	}
-
-	public function getNotificationStatus(){
-		return $this->status;
-	}
-
-
-
-	
-}
-?>
+} ?>

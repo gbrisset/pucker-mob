@@ -84,7 +84,7 @@ class MPHelpers{
 		return $truncate;
 	}
 
-	public function newTruncate($string, $length, $ending = '...', $isHTML = false){
+	/*public function newTruncate($string, $length, $ending = '...', $isHTML = false){
 		$i = 0;
 		$tags = array();
 		if($isHTML){
@@ -101,12 +101,14 @@ class MPHelpers{
 			}
 		}
 		return substr($string, 0, $length = min(strlen($string),  $length + $i)).(count($tags = array_reverse($tags)) ? (strlen($string) > $length ? $ending : '').'</'.implode('></', $tags).'>' : '');
-	}
+	}*/
 
+	//NOT IN USE
 	public function roundToNearestHalf($n){
 		return round($n * 2) / 2;
 	}
-
+	
+	//NOT IN USE
 	public function getEmails(){
 		$emails = "fguzman@sequelmediainternational.com";
 
@@ -209,6 +211,8 @@ class MPHelpers{
 		session_start();
 	}
 
+		//NOT IN USE
+
 	public function getNextPermutation($i){
 		$len = strlen($i);
 		if($len < 2) return false;
@@ -272,10 +276,6 @@ class MPHelpers{
 			setcookie('region' ,$region, time()+60*60*24*30); //A YEAR
 		}
 	}
-
-
-
-
 
 }
 ?>

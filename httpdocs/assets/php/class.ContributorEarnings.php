@@ -14,6 +14,8 @@
 		public $year;
 		public $to_be_pay;
 		public $paid;
+		public $rate;
+		public $month_label;
 
 
 		//	Object Vars
@@ -41,6 +43,23 @@
 
 		public function getPageviews(){
 			return $pageviwes;
+		}
+
+		public function getRate( $month, $year, $user_type ){
+			
+			//	Set the params to be bound
+			$params_to_bind = [ 
+				':month' => $month,
+				':year' => $year,
+				':user_type' => $user_type
+			];
+			
+			$rate = static::find_by_sql( "SELECT * FROM user_rate WHERE user_type = 8 and month = 3 and year = 2016 LIMIT 1", $params_to_bind );
+			$this->rate = $rate[0]->rate;
+			$this->month_label = $rate[0]->month_label;
+
+			return  $rate;
+
 		}
 
 	}

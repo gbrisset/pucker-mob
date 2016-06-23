@@ -1,13 +1,21 @@
 <?php if(!$detect->isMobile()){ ?>
     
-	<div id="header-ad" class="ad-unit hide-for-print" style=" background:#fff;  width: 100%; max-width: 46rem; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+	<div id="header-ad" class="ad-unit hide-for-print" style=" background:#fff;  width: 100%; max-width:46rem; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
 		<style> #ros_1193, #home_1181{ display:inline-block !important; }</style>
 
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
 				 <!-- LELO -->
-	      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id']  != 16562  &&  $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 ){?>
+	      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id']  != 16562  &&  $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 ){ //echo $_COOKIE['region']; ?>
 	      			
+	      			<?php if( $_COOKIE['region'] == 'Virginia'){ ?>
+	      					<!-- /73970039/UT_970x250 -->
+							<div id='div-gpt-ad-1466610548103-0' style='height:250px; width:970px;'>
+							<script type='text/javascript'>
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1466610548103-0'); });
+							</script>
+							</div>
+	      			<?php }else{?>
 			      		<?php if($articleInfoObj['article_id'] != 14613 && $articleInfoObj['article_id'] != 14873 && $articleInfoObj['article_id'] != 12966 && $articleInfoObj['article_id'] != 15284 ){?>
 								<!--<div id="ros_1193" style="display: inline-block !important;"></div> -->
 								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
@@ -28,6 +36,7 @@
 							</div>
 							<?php } ?>
 						<?php } ?>
+					<?php } ?>
 				<?php }else{?>
 					<div class="">
 						<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">

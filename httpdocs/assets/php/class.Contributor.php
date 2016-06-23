@@ -20,6 +20,33 @@ class Contributor extends DatabaseObject{
 		$this->contributor_email_address = $email;
 	}
 
+	//Get all contributors 
+	public static function all(){
+		
+		$contributors = static::find_by_sql("SELECT * FROM article_contributors");
+		
+		return  $contributors;
+	}
+
+	//Update
+	public function updateObj( $data ){
+
+		$update = static::update($data);
+		
+		return $update;
+
+	}
+
+	//Insert into notify_users table
+	public function saveObj( $data ){
+
+		$save = static::create($data);
+		
+		return $save;
+
+	}
+
+
 	public static function getContributor($email){
 		//	Set the params to be bound
 		$params_to_bind = [':contributor_email_address' => $email];

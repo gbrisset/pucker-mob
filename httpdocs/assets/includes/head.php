@@ -97,32 +97,30 @@
 		</script>
 	<?php //} ?>
 
-	<?php if( isset($articleInfo) && ($articleInfo['article_id'] == 8787 ) ) {?>
-		<!-- ENGAGE -->
-		<script type='text/javascript'>
-		  var googletag = googletag || {};
-		  googletag.cmd = googletag.cmd || [];
-		  (function() {
-		    var gads = document.createElement('script');
-		    gads.async = true;
-		    gads.type = 'text/javascript';
-		    var useSSL = 'https:' == document.location.protocol;
-		    gads.src = (useSSL ? 'https:' : 'http:') +
-		      '//www.googletagservices.com/tag/js/gpt.js';
-		    var node = document.getElementsByTagName('script')[0];
-		    node.parentNode.insertBefore(gads, node);
-		  })();
-		</script>
+	<!-- Undertone 970x250 VIRGINIA CAMP-->
+	<script type='text/javascript'>
+	  var googletag = googletag || {};
+	  googletag.cmd = googletag.cmd || [];
+	  (function() {
+	    var gads = document.createElement('script');
+	    gads.async = true;
+	    gads.type = 'text/javascript';
+	    var useSSL = 'https:' == document.location.protocol;
+	    gads.src = (useSSL ? 'https:' : 'http:') +
+	      '//www.googletagservices.com/tag/js/gpt.js';
+	    var node = document.getElementsByTagName('script')[0];
+	    node.parentNode.insertBefore(gads, node);
+	  })();
+	</script>
 
-		<script type='text/javascript'>
-		  googletag.cmd.push(function() {
-		    googletag.defineSlot('/73970039/ROS300x250', [300, 250], 'div-gpt-ad-1462440432230-0').addService(googletag.pubads());
-		    googletag.pubads().enableSingleRequest();
-		    googletag.enableServices();
-		  });
-		</script>
-
-	<?php }?>
+	<script type='text/javascript'>
+	  	googletag.cmd.push(function() {
+	    googletag.defineSlot('/73970039/UT_970x250', [970, 250], 'div-gpt-ad-1466610548103-0').addService(googletag.pubads());
+	    googletag.pubads().enableSingleRequest();
+	    googletag.enableServices();
+	  });
+	</script>
+	<!-- END Undertone 970x250 VIRGINIA CAMP-->
 
 <?php 
 	$sponsored_aricle = true; 
@@ -132,17 +130,13 @@
 
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
-
-	<?php if( isset( $articleInfo['article_id'] ) && (   $articleInfo['article_id']  != 16562 &&  $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488) ){ ?>
-
 		<!-- CODEFUEL SEARCH -->
-		<?php if( $articleInfo['article_id'] == 16592 ){ ?>
-			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
-		<?php } ?>
+		<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
 
-
-	<?php } ?>
 <?php }else{ ?>
+			<!-- CODEFUEL SEARCH -->
+			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
+
 
 		<?php if(isset($article_id) && $article_id == 15078 ){?>
 			<!-- ICELAND AIRLINE -->
@@ -182,14 +176,9 @@
 			</script>
 		<?php } ?>
 
-		<!-- CODEFUEL SEARCH -->
-		<?php if( $article_id == 16592 ){ ?>
-			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
-		<?php } ?>
-
 	<?php if( isset( $articleInfo['article_id'] ) && (   $articleInfo['article_id']  != 16562 &&  $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488) ){ ?>
 
-        <!-- Start Pucker Mob - Interstitial -->
+        <!-- Start Pucker Mob - Interstitial 
 		<div id='__kx_ad_5270'></div>
 		<script type="text/javascript" language="javascript">
 		var __kx_ad_slots = __kx_ad_slots || [];
@@ -216,7 +205,7 @@
 				x.parentNode.insertBefore(s, x);
 			}
 		})();
-		</script>
+		</script>-->
 		<!-- End Pucker Mob - Interstitial -->
 <?php } ?>
 <?php } ?>

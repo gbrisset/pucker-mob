@@ -178,7 +178,7 @@
 
 	<?php if( isset( $articleInfo['article_id'] ) && (   $articleInfo['article_id']  != 16562 &&  $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488) ){ ?>
 
-        <!-- Start Pucker Mob - Interstitial -->
+        <!-- Start Pucker Mob - Interstitial 
 		<div id='__kx_ad_5270'></div>
 		<script type="text/javascript" language="javascript">
 		var __kx_ad_slots = __kx_ad_slots || [];
@@ -205,7 +205,7 @@
 				x.parentNode.insertBefore(s, x);
 			}
 		})();
-		</script>
+		</script>-->
 		<!-- End Pucker Mob - Interstitial -->
 <?php } ?>
 <?php } ?>

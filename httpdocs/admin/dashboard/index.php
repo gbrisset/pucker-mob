@@ -59,6 +59,8 @@
 
 	$rate = $dashboard->get_current_rate( $month, $contributor_type );
 	if(isset($rate['rate'])) $rate = $rate['rate'];
+
+
 	$total = 0;
 	
 	$last_month = $current_month-1;
@@ -102,7 +104,7 @@
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
 			
-			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+			<input type="hidden" value="<?php echo $rate; ?>" id="current-user-rate" />
 
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
@@ -135,6 +137,8 @@
 				<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
 					<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
 				</div>
+						<?php include_once($config['include_path_admin'].'welcome_modal.php'); ?>
+
 
 				
 			</div>

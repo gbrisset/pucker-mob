@@ -338,4 +338,87 @@
 	#register-form .g-recaptcha{ margin-top:1rem !important; margin-left:-4rem !important;}
 }
 
+/* Welcome Modal */
+.welcome-modal{
+	padding: 3rem 2rem;
+
+	//INTRO MODAL
+	.intro-modal{
+		h2{
+		    font-size: 3rem;
+			text-align: center;
+			color: $dark-main-color;
+    		font-family: OswaldRegular;
+		}
+
+		div.intro-modal-wrapper{
+			padding: 1rem;
+			p{
+				font-size: 2rem;
+			    font-family: OswaldLight;
+			    text-align: center;
+			    margin-bottom: 3rem;
+			}
+		}
+	}
+
+	//FOOTER
+	ul.pagination{
+		margin: 0;
+		li{     
+			
+		    width: 25px;
+		    position: relative; 
+		    list-style: none;
+		    color: #ddd;
+
+		    i{
+		    	font-size:  1.4rem;
+		    }
+		}
+
+		li.current{
+			color: $dark-main-color !important;
+			a{
+				padding: 0;
+			    border: none;
+			    top: 5px;
+			}
+			
+		}
+
+		li.next{
+			a{
+				padding: 0;
+			    border: none;
+			    top: 5px;
+			    color: #ddd !important; 
+			}
+			
+		}
+	}
+
+	.welcome-modal-footer{
+		p{ margin:0;}
+	}
+	.next-modal-step{
+		color: green;
+	    font-family: OswaldLight;
+	    font-size: 1.5rem;
+	    line-height: 1;
+	}
+
+	.close-reveal-modal {
+		font-size: 1.5rem;
+	    line-height: 1;
+	    position: relative;
+	    color: #aaa;
+	    top:0;
+	    font-weight: normal;
+	    font-family: OswaldLight;
+	    cursor: pointer;
+	    width: 100%;
+	}
+
+}
 

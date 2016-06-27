@@ -1,4 +1,34 @@
 
+
+<script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script>
+
+<!-- Include JS files. -->
+<script src="<?php echo $config['this_url']; ?>assets/js/froalajs/froala_editor.min.js"></script>
+
+<!-- Include Plugins. -->
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/align.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/char_counter.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/entities.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/line_breaker.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/link.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/lists.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
+
+<script>
+$(function() {	
+  $('.editor').froalaEditor({
+  	  key: 'UcbaE2hlypyospbD3ali==',
+  	  height: 420,
+  	  placeholderText: 'Start Writing Here.',
+      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
+		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
+  });
+});
+</script> 
+
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
 

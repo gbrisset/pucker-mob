@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__).'/Connector.php';
 
-class MPNavigation{
+class Navigation{
 	protected $config;
 	protected $con;
 
@@ -20,20 +20,7 @@ class MPNavigation{
 	}
 
 
-	/*public function getCategoryDepths(){
-		$pdo = $this->con->openCon();
-		$q = $pdo->query("SELECT cat.*, (COUNT(parent.cat_name) - 2) AS depth
-							FROM categories AS cat, categories AS parent
-							WHERE cat.lft BETWEEN parent.lft AND parent.rgt
-							GROUP BY cat.cat_name
-							ORDER BY cat.lft;"
-						);
-		$q->setFetchMode(PDO::FETCH_ASSOC);
-		$categorySet = $q->fetchAll();
-		$this->con->closeCon();
-
-		return $categorySet;
-	}*/
+	
 	public function getFeaturedArticle($catID){
 		$pdo = $this->con->openCon();
 		$q = $pdo->query("SELECT article_title, cat_dir_name, article_seo_title, article_id FROM articles INNER JOIN categories ON articles.article_id = categories.cat_dropdown_article_id WHERE categories.cat_id = {$catID}");
@@ -42,14 +29,7 @@ class MPNavigation{
 		$this->con->closeCon();
 		return $recipeDetails;
 	}
-	/*public function getFeaturedArticleCategorySlug($articleID){
-		$pdo = $this->con->openCon();
-		$q = $pdo->query("SELECT cat_dir_name FROM categories INNER JOIN article_categories ON categories.cat_id = article_categories.cat_id WHERE article_categories.article_id = {$articleID} LIMIT 1");
-		$q->setFetchMode(PDO::FETCH_ASSOC);
-		$categorySlug = $q->fetch();
-		$this->con->closeCon();
-		return $categorySlug;
-	}*/
+
 	public function getCategoryInfoById($catId){
 		$pdo = $this->con->openCon();
 		$q = $pdo->query("SELECT parent.* 
@@ -85,184 +65,7 @@ class MPNavigation{
 		$this->con->closeCon();
 		return $categorySet;
 	}
-/*
-	private function getDropDownArticle($id = null){
-		$pdo = $this->con->openCon();
-		$q = $pdo->query("SELECT article.*, parent.cat_id as parent_id, parent.cat_name as parent_name, parent.cat_dir_name as parent_dir_name
-							FROM categories AS cat, categories AS parent
-							INNER JOIN (
-								SELECT articles.*, i.article_post_img, i.article_preview_img, nc.cat_id, nc.cat_name, nc.cat_dir_name, nc.lft, nc.rgt
-								FROM articles 
 
-								INNER JOIN (article_images as i, article_categories, categories as nc)
-								ON articles.article_id = i.article_id
-								AND articles.article_id = article_categories.article_id
-								AND article_categories.cat_id = nc.cat_id		
-								WHERE articles.article_id = {$id}
-							) as article
-							WHERE cat.lft BETWEEN parent.lft 
-							AND parent.rgt 
-							AND cat.cat_id = article.cat_id 
-							AND parent.lft > 1
-
-							ORDER BY parent.lft ASC
-							LIMIT 1"
-						);
-		$q->setFetchMode(PDO::FETCH_ASSOC);
-		$articleSet = $q->fetch();
-
-		$this->con->closeCon();
-		
-		return $articleSet;		
-	}
-
-
-	private function displayDropDownArticle($article){
-		$text_helper = new MPHelpers;
-		$parentDirName = $article['parent_dir_name'];
-		$catDirName = $article['cat_dir_name'];
-		if ($parentDirName == $catDirName){
-			$link = $this->config['this_url'].$catDirName.'/'.$article['article_seo_title'];
-		} else {
-			$link = $this->config['this_url'].$parentDirName.'/'.$catDirName.'/'.$article['article_seo_title'];
-		}
-		$articleString = '<h2>Featured Recipe</h2>';
-		$articleString .= '<div class="article-info" data-title="'.$article['article_title'].'"  data-desc="'.$article["article_desc"].'">';
-		$articleString .= '<div id="image-recipe">';
-			$articleString .='<a href="'.$link.'" >';
-				$articleString .= '<img src="'.$this->config['image_url'].'/articlesites/simpledish/tall/'.$article['article_id'].'_tall.jpg'.'" alt="'.$article['article_title'].' Preview Image" />';
-			$articleString .='</a>';
-		$articleString .= '</div>';
-
-		$articleString .= '<div id="info-recipe">';
-		$articleString .= '<h2><a href="'.$link.'">';
-		$articleString .= $article['article_title'];
-		$articleString .= '</a></h2>';
-		$articleString .= '<label class="get-recipe">';
-		$articleString .= '<a href="'.$link.'">';
-		$articleString .= 'GET RECIPE</a>';
-		$articleString .= '</label>';
-		$articleString .= '</div>';
-		$articleString .= '</div>';
-	
-		return $articleString;
-
-	}
-
-	private function displayShopDropdown(){
-		$result = '';
-		$result.='<li class="parent" id="c901">';
-	        $result.='<label class="parent-title">';
-	       	 	$result.='<a class="isParent" href="#">SHOP</a>';
-	        $result.='</label>';
-	        $result.='<div style="display: none;" class="submenu-wrapper">';
-		        $result.='<div class="left">';
-			        $result.='<ul class="submenu" style="display: block;">';
-			        	$result.='<li id="c902"><a target="_blank" href="http://shop.simpledish.com/collections/apparel">Apparel</a>	</li>';
-			        	$result.='<li id="c903"><a target="_blank" href="http://shop.simpledish.com/collections/coffee-mugs">Coffee Mugs</a></li>';
-			        	$result.='<li id="c904"><a  target="_blank" href="http://shop.simpledish.com/collections/art-decor">Art & Decor</a></li>';
-			        $result.='</ul>';
-				$result.='</div>';
-				$result.='<div class="right">';
-					$result.='<h2>Gift Sale !</h2>';
-					$result.='<div data-desc="20% OFF all gift items! Use Code: GIVETHANKS Ends 11/28" data-title="20% OFF all gift items! Use Code: GIVETHANKS Ends 11/28" class="article-info">';
-						$result.='<div id="image-recipe">';
-							$result.='<a target="_blank" href="http://shop.simpledish.com"><img alt="Shop Simpledish Preview Image" src="';
-								$result.=$this->config['image_url'].'articlesites/simpledish/campaign/Drop-Down-Ad.jpg">';
-							$result.='</a>';
-						$result.='</div>';
-						$result.='<div id="info-recipe">';
-							$result.='<h2><a target="_blank" href="http://shop.simpledish.com">20% OFF all gift items! Use Code: GIVETHANKS Ends 11/28</a></h2>';
-							$result.='<label class="get-recipe"><a target="_blank" href="http://shop.simpledish.com">SHOP NOW</a></label>';
-						$result.='</div>';
-					$result.='</div>';
-				$result.='</div>';
-			$result.='</div>';
-			$result.='</li>';
-
-			return $result;
-	}*/
-
-/*
-	public function renderNavigation( $categories = array(array('name' => '', 'depth' => '', 'lft' => '', 'rgt' => '')) ) {
-        $currentDepth = 0;
-        $counter = 0;
-        $found = false;
-        $nextSibling = false;
-        $result = '';
-        $parentName = '';
-        
-        foreach ($categories as $cat) {
-            $catDepth = $cat['depth'];
-            $catName = $cat['cat_name'];
-            $catId = $cat['cat_id'];
-
-            if($cat['cat_menu_visible']){
-
-            if ($catDepth < 0) {
-                // show root items only if no childern is selected
-                continue;
-            }
-            if ($catDepth == $currentDepth) {
-                //if ($counter > 0)
-               //     $result .= '</li>';
-            }
-            elseif ($catDepth > $currentDepth) {
-
-				$result .= '<div class="submenu-wrapper" style="display: none;">';
-				$result .= '<div class="left">';
-                $result .= '<ul style="display: block;" class="submenu">';
-                $currentDepth = $currentDepth + ($catDepth - $currentDepth);
-            } elseif ($catDepth < $currentDepth) {
-            	$afterSubMenu = '</li></ul><!-- end of submenu list -->';
-            	$afterSubMenu .= '</div>';
-            	$afterSubMenu .= '<div class="right">';
-            	$afterSubMenu .= $this->displayDropDownArticle($dropDownArticle);
-            	$afterSubMenu .= '</div><!-- end of div class right--><div>';
-
-                $result .= str_repeat($afterSubMenu, $currentDepth - $catDepth) . '</li>';
-                $currentDepth = $currentDepth - ($currentDepth - $catDepth);
-            }
-            if ($catDepth < 1 && $cat['has_children']) {
-            	$parentName = $cat['cat_dir_name'];
-            	// If catDepth < 1 and has_children = true, This category is a parent
-				$dropDownArticleId = $cat['cat_dropdown_article_id'];
-				$dropDownArticle = $this->getDropDownArticle($dropDownArticleId);
-            	$result .= '<li id="c' . $catId . '" class="parent">';
-            	$result .= '<label class="parent-title">';
-            	$result .= '<a href="#" class="isParent">' . $catName .'</a>';
-				$result .= '</label>';
-            } else {
-            	if ($catId != 900){
-            		// If this is the nilla wafers link, do NOT display the li tag
-		        	$result .= '<li id="c' . $catId . '" ';
-				}
-	            // Testing...
-	            // $result .= ($catDepth < 1 && $cat['has_children']) ?' class="parent"':'';
-	            // $result .= $catDepth == 1 ?' class="depth1"':'';
-
-	            // If this is a subcategory ($catDepth == 1)...put the parentName on the link
-	            if ($catDepth == 1){
-	            	// If this is the nilla wafers link, do NOT display the a tag
-	            	if ($catId == 900){
-	            		$result .= '';	            		
-	            	} else {
-	            		$result .= '><a href="'.$this->config['this_url'].$parentName.'/'.$cat['cat_dir_name'].'">' . $catName .'</a>';
-	            	}
-	            } else {
-	            	$result .= '><a href="'.$this->config['this_url'].$cat['cat_dir_name'].'">' . $catName .'</a>';
-	            }
-        	}
-        }
-
-            ++$counter;
-        }
-        unset($found);
-        unset($nextSibling);
-        $result .= $this->displayShopDropdown();
-        return $result;
-    }
-*/
 	public function getNavigationPageLinks($id = null){
 		$pdo = $this->con->openCon();
 		$id = (is_null($id)) ? $this->config['articlepageid'] : $id;

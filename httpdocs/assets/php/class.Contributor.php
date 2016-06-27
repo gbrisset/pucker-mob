@@ -77,5 +77,12 @@ class Contributor extends DatabaseObject{
 
 	}
 
+	public function getContributorArticles(Contributor $contributor){
+
+		$article = new Article( $contributor );
+
+		
+	}
+
 }
 ?>

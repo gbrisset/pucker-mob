@@ -51,7 +51,7 @@
 				$not  = [ "user_id" => $user_id, "notification_id" => 4, "status" => 1 ];
 
 				//Update User Type value
-				//$user->updateObj( $data );
+				$user->updateObj( $data );
 				
 				//Add a  Notification for this user
 				$notification_obj->saveObj( $not );

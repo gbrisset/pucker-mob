@@ -17,11 +17,11 @@
   	<p class="small-3 columns"><a class="close-reveal-modal" aria-label="Close">Skip set-up</a></p>
     <div class="small-6 columns pagination-centered">
     	<ul role="pagination" class="small-12 columns pagination" >
-	      <li class="current"><i class="fa fa-circle" aria-hidden="true"></i></li>
-	      <li class="next"><a href="#" data-reveal-id="profile-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
-	      <li class=""><i class="fa fa-circle" aria-hidden="true"></i></li>
-	      <li class=""><i class="fa fa-circle" aria-hidden="true"></i></li>
-	      <li class=""><i class="fa fa-circle" aria-hidden="true"></i></li>
+	      <li class="current"><a href="#" data-reveal-id="intro-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
+	      <li><a href="#" data-reveal-id="profile-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
+	      <li><a href="#" data-reveal-id="payment-modal" ><i class="fa fa-circle" aria-hidden="true"></i></a></li>
+	      <li><a href="#"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
+	      <li><a href="#"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
     	</ul>
     </div>
     <p class="small-3 columns align-right no-padding-right"><a href="#" data-reveal-id="profile-modal" class="secondary next-modal-step">GO TO STEP 1<i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>

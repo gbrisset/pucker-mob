@@ -340,12 +340,12 @@
 
 /* Welcome Modal */
 .welcome-modal{
-	padding: 3rem 2rem;
+	padding: 5% 1%;
 
 	//INTRO MODAL
 	.intro-modal{
 		h2{
-		    font-size: 3rem;
+		    font-size: 180%;
 			text-align: center;
 			color: $dark-main-color;
     		font-family: OswaldRegular;
@@ -354,12 +354,19 @@
 		div.intro-modal-wrapper{
 			padding: 1rem;
 			p{
-				font-size: 2rem;
+				font-size: 150%;
 			    font-family: OswaldLight;
+			    line-height: 1.5;
 			    text-align: center;
-			    margin-bottom: 3rem;
+			    margin-bottom: 2rem;
 			}
 		}
+	}
+
+	//ALL MODALS STYLE
+	.profile-modal, .payment-modal{
+		h2{ color: $dark-main-color; font-size: 1.2rem; font-family: OswaldRegular;}
+		p{ font-size: 1rem; font-family: Oslo;}
 	}
 
 	//FOOTER
@@ -367,24 +374,27 @@
 		margin: 0;
 		li{     
 			
-		    width: 25px;
+		    width: 20px;
 		    position: relative; 
 		    list-style: none;
 		    color: #ddd;
 
 		    i{
-		    	font-size:  1.4rem;
+		    	font-size:  100%;
 		    }
-		}
 
-		li.current{
-			color: $dark-main-color !important;
-			a{
+		    a{
 				padding: 0;
 			    border: none;
 			    top: 5px;
+			    color: #ddd !important; 
+			    background: none !important;
 			}
-			
+		}
+
+		li.current a{
+			color: $dark-main-color !important;
+
 		}
 
 		li.next{
@@ -404,12 +414,12 @@
 	.next-modal-step{
 		color: green;
 	    font-family: OswaldLight;
-	    font-size: 1.5rem;
+	    font-size: 100%;
 	    line-height: 1;
 	}
 
 	.close-reveal-modal {
-		font-size: 1.5rem;
+		font-size: 100%;
 	    line-height: 1;
 	    position: relative;
 	    color: #aaa;

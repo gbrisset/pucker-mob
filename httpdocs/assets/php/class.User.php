@@ -27,7 +27,7 @@ class User extends DatabaseObject{
 	public function __construct( $email = null ){ 
 		$this->user_email = $email;
 		$this->user = $this->getUser($email);
-		$this->contributor = $this->getContributorInfo($email);
+		$this->contributor = $this->getContributorInfo();
 	}
 
 	public static function getUser($user_email){

@@ -199,7 +199,7 @@ $follow = new FollowAuthor($config);
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
-//$mpHelpers->geotargeting();
+$mpHelpers->geotargeting();
 
 
 

@@ -2045,7 +2045,7 @@ public function getFeaturedArticles(){
 			AND articles.article_id=article_categories.article_id 
 			AND article_categories.cat_id=categories.cat_id 
 			AND articles_featured.article_id = article_contributor_articles.article_id
-			AND article_contributor_articles.contributor_id = article_contributors.contributor_id ";
+			AND article_contributor_articles.contributor_id = article_contributors.contributor_id ORDER BY articles_featured.featured_id DESC ";
 		
 			$q = $this->performQuery(['queryString' => $s]);
 

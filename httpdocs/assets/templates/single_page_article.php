@@ -340,8 +340,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 						</div>
 					<?php //}?>
 				</div>
-			</div>-->
-			
+			</div>
+			-->
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
 					<script type="text/javascript">var __refURL = "%%REFERRER_URL_UNESC%%";</script>
@@ -477,7 +477,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 			
 			<!-- Social Media Icons -->
-			<div class="row social-media-container social-cont-1 padding-top" style="margin-bottom: 0rem; display:block !important;">
+			<div class="row social-media-container social-cont-1 padding-top clear" style="margin-bottom: 0rem; display:block !important;">
 				<?php include($config['include_path'].'social_media_article_buttons.php'); ?>
 			</div>
 

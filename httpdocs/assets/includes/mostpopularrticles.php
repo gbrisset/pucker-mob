@@ -54,7 +54,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						//Replace 2nd article with Adblade
 						if($articleNumber == 3 ){?>
 							<?php if( $articleInfoObj['article_id'] != 14472 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
-							<style>#bbrlContainer{ left:-10px; }</style>
+							<!--<style>#bbrlContainer{ left:-10px; }</style>
 							<div class="columns todays-favorites fade-in-out">
 								<script type="text/javascript">
 									var __refURL = "%%REFERRER_URL_UNESC%%";
@@ -62,7 +62,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 									var _bbrl_SLIDERAUTO = true;
 								</script>
 								<script type="text/javascript" src="http://babaroll.com/js/gcapuckermob_sl"></script>
-							</div>
+							</div>-->
 							<?php } ?>
 						<?php
 							

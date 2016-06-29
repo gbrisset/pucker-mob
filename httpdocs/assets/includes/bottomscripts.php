@@ -121,7 +121,7 @@
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488) { ?>
             <!-- kixer adhesion -->
-            <!-- Start Pucker Mob - Adhesion - iframe buster code -->
+            <!-- Start Pucker Mob - Adhesion - iframe buster code 
             <div id='__kx_ad_4915'></div>
             <script type="text/javascript" language="javascript" id="__kx_tag_4915">
             var __kx_ad_slots = __kx_ad_slots || [];
@@ -156,7 +156,7 @@
                 }
               }
             })();
-            </script>
+            </script>-->
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
             <?php  } ?>
       <?php  } ?>

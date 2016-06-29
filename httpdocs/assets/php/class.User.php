@@ -4,11 +4,6 @@ require 'config.php';
 
 class User extends DatabaseObject{
 
-	//
-//$user = new User();
-//PageList::get_by_seo_title($uri[2]);
-//var_dump(User::getUser('fguzman@sequelmediagroup.com')->user_name); die;
-
 	protected static $table_name = "users";
 
 	// Database Fields

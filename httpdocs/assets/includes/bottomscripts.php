@@ -28,13 +28,11 @@
 
     <!-- NETSEER AD IN-IMAGE-->
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-     
+     	
       <!-- LELO -->
       <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 ){?>
-       <!-- <script type="text/javascript">
-        netseer_tag_id="19129"; 
-        </script>
-        <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>-->
+        <!-- GUM GUM -->
+        <script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>
       <?php } ?>
     <?php }  ?>
 
@@ -116,19 +114,14 @@
 	       	<?php } ?>
 
           
-
-
-         <!-- NETSEER AD IN-IMAGE 
-            <script type="text/javascript">
-            netseer_tag_id="19129"; 
-            </script>
-            <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script> -->
-		
+			<!-- GUM GUM -->
+        	<script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>
+        
       <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488) { ?>
             <!-- kixer adhesion -->
-            <!-- Start Pucker Mob - Adhesion - iframe buster code -->
+            <!-- Start Pucker Mob - Adhesion - iframe buster code 
             <div id='__kx_ad_4915'></div>
             <script type="text/javascript" language="javascript" id="__kx_tag_4915">
             var __kx_ad_slots = __kx_ad_slots || [];
@@ -163,7 +156,7 @@
                 }
               }
             })();
-            </script>
+            </script>-->
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
             <?php  } ?>
       <?php  } ?>

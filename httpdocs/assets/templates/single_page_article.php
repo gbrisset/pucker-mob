@@ -180,12 +180,21 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 				<?php include_once($config['include_path'].'header_social.php'); ?> 
 
-				<?php if( $article_id == 16638 ){?>
-				<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
-					<!-- strike  TEST PAGE -->
-					<div id="adunit-300x250-3159"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3159/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>
+				<!-- BRANOVATE -->
+				<div id="mobile-instream-branovate-ad">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+						<?php if( $detect->is('iOS') ){ ?>
+							<div id="branovate-ad" class="columns small-12 margin-top margin-bottom IOS" >
+								<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
+	 						</div>
+						<?php }else{ ?>
+						 	<div id="branovate-ad" class="columns small-12 margin-top margin-bottom" >
+								<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>						
+							</div>
+						<?php }?>
+					</div>
 				</div>
-				<?php }?>
+
 			</div>
 
 			<!-- READ MORE  -->
@@ -195,10 +204,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			</div> 
 			
-			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 3.7rem;"></div>
+			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 3.5rem;"></div>
 			
-			
-
 			<!-- LELO -->
 			<?php if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 ){?>
 				<div id="mobile-instream-branovate-ad"  class="margin-top padding-top small-12 row no-padding">
@@ -236,12 +243,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			
 			
 			<?php if( !$sponsored_aricle ){ ?>
-			<!-- KIXER -->
+			<!-- KIXER 
 			<div id="mobile-instream-branovate-ad"  class="margin-top columns " style="margin-top: 2rem;">
 				<div id="get-content" style="text-align:center; display: inline-block;">
 					<div id='__kx_ad_4251'></div><script type="text/javascript" language="javascript" id="__kx_tag_4251">var __kx_ad_slots = __kx_ad_slots || []; (function () { var slot = 4251; var h = false; var doc = document; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == 'function') { __kx_ad_start(); } else { if (top == self) { var s = doc.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//cdn.kixer.com/ad/load.js'; s.onload = s.onreadystatechange = function(){ if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = doc.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } else { var tag = doc.getElementById('__kx_tag_'+slot); var win = window.parent; doc = win.document; var top_div = doc.createElement("div"); top_div.id = '__kx_ad_'+slot; doc.body.appendChild(top_div); var top_tag = doc.createElement("script"); top_tag.id = '__kx_top_tag_'+slot; top_tag.innerHTML = tag.innerHTML; doc.body.appendChild(top_tag); }}})();</script>
 				</div>
-			</div>
+			</div>-->
 
 			<?php } ?>
 			<?php } ?>
@@ -320,18 +327,25 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php if(  $article_id != 16562  &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 ){?>
 
 			
-			<!-- BRANOVATE -->
+			<!-- BRANOVATE 
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
-					<?php if( $detect->is('iOS') ){ ?>
+					<?php //if( $detect->is('iOS') ){ ?>
 						<div id="branovate-ad" class="columns small-12 margin-top margin-bottom IOS" >
 							<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
  						</div>
-					<?php }else{ ?>
+					<?php //}else{ ?>
 					 	<div id="branovate-ad" class="columns small-12 margin-top margin-bottom" >
 							<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>						
 						</div>
-					<?php }?>
+					<?php //}?>
+				</div>
+			</div>
+			-->
+			<div id="mobile-instream-branovate-ad">
+				<div id="get-content" style="text-align:center; display: inline-block;">
+					<script type="text/javascript">var __refURL = "%%REFERRER_URL_UNESC%%";</script>
+					<script type="text/javascript" src="http://babaroll.com/js/gcapuckermobmw"></script>
 				</div>
 			</div>
 
@@ -463,7 +477,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		
 			
 			<!-- Social Media Icons -->
-			<div class="row social-media-container social-cont-1 padding-top" style="margin-bottom: 0rem; display:block !important;">
+			<div class="row social-media-container social-cont-1 padding-top clear" style="margin-bottom: 0rem; display:block !important;">
 				<?php include($config['include_path'].'social_media_article_buttons.php'); ?>
 			</div>
 

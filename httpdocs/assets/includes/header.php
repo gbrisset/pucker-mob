@@ -106,12 +106,13 @@
             <?php }?>
             <li><a  class="my-account-header-link" href="<?php echo $config['this_admin_url']; ?>/logout/">LOG OUT </a></li>
              <div id="searchbox"></div>
-           <!-- <li class="right">
+             <li class="right">
               <div id="topbar-container">
                 <input id="topbar-search-contents-login"  value="" class="topbar-search-contents" type="search" placeholder="SEARCH">
                 <button id="topbar-search-submit-login" class="alert button expand" style="background-color: #10580d;"><i class="fa fa-search"></i></button>
               </div>
-            </li>-->
+            </li>
+         
           </ul>
         <?php }?>
     </div>
@@ -132,12 +133,12 @@
               <a class="my-account-header-link" href="http://www.puckermob.com/admin/login">LOGIN</a>
             </li>
             <div id="searchbox"></div>
-           <!-- <li class="right">
+             <li class="right">
              <div id="topbar-container">
                 <input id="topbar-search-contents" value="" class="topbar-search-contents" type="search" placeholder="SEARCH">
                 <button id="topbar-search-submit" class="alert button expand" style="background-color: #10580d;"><i class="fa fa-search"></i></button>
               </div>
-            </li>-->
+            </li>
         </ul>
     </div>
     </div>

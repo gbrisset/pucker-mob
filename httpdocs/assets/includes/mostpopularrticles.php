@@ -52,20 +52,20 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						echo $mostReadArticle;
 
 						//Replace 2nd article with Adblade
-						if($articleNumber == 1 ){?>
-							<?php //if( !$has_sponsored  ){ ?>
+						if($articleNumber == 3 ){?>
 							<?php if( $articleInfoObj['article_id'] != 14472 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
-							<style>#bbrlContainer{ left:-10px; }</style>
+							<!--<style>#bbrlContainer{ left:-10px; }</style>
 							<div class="columns todays-favorites fade-in-out">
-								<!-- BEGIN JS TAG - puckermob.com Desktop 300x250 
-								<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5975094&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>-->
-								<!-- END TAG -->
-								<!--<script type="text/javascript">var __refURL = "%%REFERRER_URL_UNESC%%";</script>
-								<script type="text/javascript" src="http://babaroll.com/js/gcapuckermob"></script>-->
-							</div>
+								<script type="text/javascript">
+									var __refURL = "%%REFERRER_URL_UNESC%%";
+									var _bbrl_SLIDER = 'br';
+									var _bbrl_SLIDERAUTO = true;
+								</script>
+								<script type="text/javascript" src="http://babaroll.com/js/gcapuckermob_sl"></script>
+							</div>-->
 							<?php } ?>
-						<?php //		}
-							//continue;
+						<?php
+							
 						}
 
 						//Replace 6th article ntent ad

@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_3456788708e" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_34567887055" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     
@@ -121,7 +121,7 @@
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488) { ?>
             <!-- kixer adhesion -->
-            <!-- Start Pucker Mob - Adhesion - iframe buster code -->
+            <!-- Start Pucker Mob - Adhesion - iframe buster code 
             <div id='__kx_ad_4915'></div>
             <script type="text/javascript" language="javascript" id="__kx_tag_4915">
             var __kx_ad_slots = __kx_ad_slots || [];
@@ -156,7 +156,7 @@
                 }
               }
             })();
-            </script>
+            </script>-->
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
             <?php  } ?>
       <?php  } ?>

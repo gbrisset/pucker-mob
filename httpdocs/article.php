@@ -84,22 +84,25 @@ if(!is_null($categoryInfo)){
 	<body id="article" class="mobile">
 		<?php } ?>
 		
-
-		<?php if(isset($article_id) && $article_id == 13305 ){?>
-			<div id="ros_adoop"></div> 
-		<?php } ?>
 		
 		<?php include_once($config['include_path'].'header.php');?>
 				<?php include_once($config['include_path'].'header_ad.php');?>
 
 			<!-- UNDERTONE -->
 		<?php //if( isset($article_id) && ( $article_id == 15104 || $article_id == 14613 || $article_id == 14873) ) { ?>
-			<!-- /73970039/UT_SS_FP -->
+			<!--/73970039/UT_SS_FP -->
 			<div id='div-gpt-ad-1461622964696-3'>
 				<script type='text/javascript'>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
 				</script>
 			</div>
+			
+			<!-- /73970039/UT_SS_FP 
+			<div id='div-gpt-ad-1467069211350-0' style='height:1px; width:1px;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467069211350-0'); });
+				</script>
+			</div>-->
 
 		<?php //} ?>
 		

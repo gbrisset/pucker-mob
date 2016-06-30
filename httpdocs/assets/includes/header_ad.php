@@ -1,6 +1,6 @@
 <?php if(!$detect->isMobile()){ ?>
     
-	<div id="header-ad" class="ad-unit hide-for-print" style=" background:#fff;  width: 100%; max-width:46rem; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+	<div id="header-ad" class="ad-unit hide-for-print" style=" background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
 		<style> #ros_1193, #home_1181{ display:inline-block !important; }</style>
 
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
@@ -17,25 +17,30 @@
 							</div>
 	      			<?php }else{?>
 			      		<?php if($articleInfoObj['article_id'] != 14613 && $articleInfoObj['article_id'] != 14873 && $articleInfoObj['article_id'] != 12966 && $articleInfoObj['article_id'] != 15284 ){?>
-								<!--<div id="ros_1193" style="display: inline-block !important;"></div> -->
-								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-								<script type="text/javascript" language="javascript">
-								//<![CDATA[
-								aax_getad_mpb({
-								  "slot_uuid":"4dccafa1-4eba-4f93-a40f-2c0f5348f76d"
-								});
-								//]]>
-								</script>
-						<?php }else{?>
-							<?php if($articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
-							<!-- /73970039/UT_BB -->
-							<div id='div-gpt-ad-1461622964696-0' style='height:250px; width:970px;'>
-								<script type='text/javascript'>
-								googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-0'); });
-								</script>
-							</div>
+								<?php if($articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
+								<!-- /73970039/UT_BB 
+								<div id='div-gpt-ad-1461622964696-0' style='height:250px; width:970px;'>
+									<script type='text/javascript'>
+									googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-0'); });
+									</script>
+								</div>-->
+								<!-- /73970039/UT_BB -->
+								<div id='div-gpt-ad-1467068250785-0' style='height:250px; width:970px;'>
+									<script type='text/javascript'>
+									googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467068250785-0'); });
+									</script>
+								</div>
+							<?php }else{ ?>
+									<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+									<script type="text/javascript" language="javascript">
+									//<![CDATA[
+									aax_getad_mpb({
+									  "slot_uuid":"4dccafa1-4eba-4f93-a40f-2c0f5348f76d"
+									});
+									//]]>
+									</script>
 							<?php } ?>
-						<?php } ?>
+					<?php } ?>
 					<?php } ?>
 				<?php }else{?>
 					<div class="">
@@ -47,14 +52,20 @@
 			
 		<?php }else{?>
 
-			<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+			<!--<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 			<script type="text/javascript" language="javascript">
 			//<![CDATA[
 			aax_getad_mpb({
 			  "slot_uuid":"4dccafa1-4eba-4f93-a40f-2c0f5348f76d"
 			});
 			//]]>
-			</script>
+			</script>-->
+			<!-- /73970039/UT_BB -->
+								<div id='div-gpt-ad-1467068250785-0' style='height:250px; width:970px;'>
+									<script type='text/javascript'>
+									googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467068250785-0'); });
+									</script>
+								</div>
 
 		<?php }?> 
 	</div>

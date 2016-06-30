@@ -95,6 +95,14 @@
 		    googletag.enableServices();
 		  });
 		</script>
+		<script type='text/javascript'>
+		  googletag.cmd.push(function() {
+		    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1467068250785-0').addService(googletag.pubads());
+		    googletag.defineSlot('/73970039/UT_SS', [1, 1], 'div-gpt-ad-1467068250785-1').addService(googletag.pubads());
+		    googletag.pubads().enableSingleRequest();
+		    googletag.enableServices();
+		  });
+		</script>
 	<?php //} ?>
 
 	<!-- Undertone 970x250 VIRGINIA CAMP-->
@@ -130,13 +138,15 @@
 
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
+	<?php if(isset($article_id) && $article_id == 6144 ){?>
 		<!-- CODEFUEL SEARCH -->
 		<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
-
+	<?php } ?>
 <?php }else{ ?>
+		<?php if(isset($article_id) && $article_id == 6144 ){?>
 			<!-- CODEFUEL SEARCH -->
 			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
-
+		<?php } ?>	
 
 		<?php if(isset($article_id) && $article_id == 15078 ){?>
 			<!-- ICELAND AIRLINE -->

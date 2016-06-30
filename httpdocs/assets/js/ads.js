@@ -150,7 +150,7 @@ if($('body').hasClass('mobile')) {
 			
 
 				//LELO
-				if( $article_id == 16562 || article_id == 14479 || article_id == 14576 || article_id == 14472 || article_id == 15104 ||  article_id == 15109 || article_id == 15271){}else{
+				if( article_id == 16562 || article_id == 14479 || article_id == 14576 || article_id == 14472 || article_id == 15104 ||  article_id == 15109 || article_id == 15271){}else{
 					if( second_p > 0 ){
 						
 						if(article_id != 15284 && article_id != 15488){

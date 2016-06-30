@@ -164,10 +164,10 @@
 						</div>
 					</div>
 
-					<?php if( $admin_user ){?>
+					<?php //if( $admin_user ){?>
 				  	<!-- RELATED ARTICLES -->
 					<?php include_once($config['include_path_admin'].'related_edit_articles.php'); ?>
-					<?php } ?>
+					<?php //} ?>
 					
 					<?php if($pro_admin){ ?>
 						<!-- ADVERTISING OVERRIDE (IN-STREAM) -->

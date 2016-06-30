@@ -11,15 +11,22 @@
   <?php require('modals/welcome-modal-profile.php'); ?>
 </div>
 
-<div id="payment-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="profile-modal-title" aria-hidden="true" role="dialog">
+<div id="payment-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="payment-modal-title" aria-hidden="true" role="dialog">
   <?php require('modals/welcome-modal-payment.php'); ?>
+</div>
+
+<div id="social-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="social-modal-title" aria-hidden="true" role="dialog">
+  <?php require('modals/welcome-modal-social.php'); ?>
+</div>
+
+<div id="last-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="last-modal-title" aria-hidden="true" role="dialog">
+  <?php require('modals/welcome-modal-last-step.php'); ?>
 </div>
 
   
 
 <script>
 	$(document).foundation().foundation();
-
 	// trigger by event
 	$('a.reveal-link').trigger('click');
 	$('a.close-reveal-modal').trigger('click');

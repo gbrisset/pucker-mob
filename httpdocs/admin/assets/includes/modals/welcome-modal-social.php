@@ -1,14 +1,11 @@
-<div class="main-content-modal small-12 columns payment-modal">
+<div class="main-content-modal small-12 columns social-modal">
 	 <div class="columns small-3">
-	 	<h2 id="payment-modal-title">STEP 2: UPLOAD PAYMENT INFO</h2>
-	 	<p>As a new writer, you’re automatically start at the Basic Level. </p>
-		<p>Please read the “Blogger Levels” page in your dashboard to learn more. </p>
-		<p>Fill out your tax and PayPal info so we can pay you for your traffic. </p>
-		<p>We pay approximately 45 days after the end of each month. Please note we can’t pay you until your tax and Paypal info has been provided.  </p>
+	 	<h2 id="social-modal-title">STEP 3: ACCESS US ON FACEBOOK</h2>
+	 	<p>PuckerMob has a number of pages on Facebook. Like them all - being part of the PuckerMob community will help you get greater exposure for your articles.  </p>
 	 </div>
 	 
 	 <div class="columns small-9 no-padding-right">
-	 	<?php include('modal-payment-form.php'); ?>
+	 	<?php //include('modal-payment-form.php'); ?>
 	 </div>
 		  
 		  
@@ -23,8 +20,8 @@
     	<ul role="pagination" class="small-12 columns pagination" >
 	      <li><a href="#" data-reveal-id="intro-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
 	      <li><a href="#" data-reveal-id="profile-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
-	      <li class="current"><a href="#" data-reveal-id="payment-modal" ><i class="fa fa-circle" aria-hidden="true"></i></a></li>
-	      <li><a href="#" data-reveal-id="social-modal" ><i class="fa fa-circle" aria-hidden="true"></i></a></li>
+	      <li><a href="#" data-reveal-id="payment-modal" ><i class="fa fa-circle" aria-hidden="true"></i></a></li>
+	      <li class="current"><a href="#" data-reveal-id="social-modal" ><i class="fa fa-circle" aria-hidden="true"></i></a></li>
 	      <li><a href="#" data-reveal-id="last-modal" ><i class="fa fa-circle" aria-hidden="true"></i></a></li>
     	</ul>
     </div>

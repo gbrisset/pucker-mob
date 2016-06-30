@@ -261,12 +261,13 @@ class MPArticleAdminController extends MPArticle{
 		else return $result;
 	}*/
 
-	/*MANAGE BILLING INFORMATION*/
+	/*MANAGE BILLING INFORMATION*/ //ADDING THIS TO USER OBJ
 	public function editBillingInformation($data){
 		$email = filter_var($data['paypal-email'], FILTER_SANITIZE_EMAIL);
 		$user_id = filter_var($data['user_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$w9_live = filter_var($data['w9_live'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		
+		$w9_live = 0;//filter_var($data['w9_live'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+
+		if($data['w9_live'] == 'on') $w9_live = 1;
 		
 		//Check if record exists
 		$recordExist = $this->performQuery(array(
@@ -284,7 +285,6 @@ class MPArticleAdminController extends MPArticle{
 
 			}else{
 				$billing_record = $this->performUpdate(array(
-				//'updateString' => "INSERT INTO  user_billing_info  SET paypal_email = ':paypalEmail', user_id = ':userId' ",
 				'updateString' => "INSERT INTO user_billing_info (paypal_email, user_id, w9_live) VALUES ('".$email."', $user_id, $w9_live) ",
 				'updateParams' => array(':paypalEmail'=>$email, ':userId' => $user_id,
 				'isInsert' => true)
@@ -293,7 +293,7 @@ class MPArticleAdminController extends MPArticle{
 				$message = "Email Added Successfully";
 			}
 			
-			if($billing_record === true) return array('hasError' => false, 'message' => 'Your user information has been successfully updated');
+			if($billing_record === true) return array('hasError' => false, 'message' => $message);
 			else return $result;
 
 	}
@@ -345,12 +345,12 @@ class MPArticleAdminController extends MPArticle{
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE users SET {pairs} WHERE user_id = ".$this->user->data['user_id'],
 			'post' => $user_post,
-			'unrequired' => array('user_first_name', 'user_last_name', 'user_display_name', 'contributor_location', 'contributor_twitter_handle', 
-									'contributor_facebook_link', 'contributor_blog_link', 'contributor_bio')
+			'unrequired' => array('user_first_name', 'user_last_name', 'user_display_name', 'user_name')
 		));
 
 
 		$params[':user_email'] = filter_var($params[':user_email'], FILTER_SANITIZE_EMAIL);
+		$params[':user_first_name'] = filter_var($params[':user_first_name'], FILTER_SANITIZE_STRING);
 		$params[':contributor_location'] = filter_var($params[':contributor_location'], FILTER_SANITIZE_STRING);
 		$params[':contributor_twitter_handle'] = filter_var($params[':contributor_twitter_handle'], FILTER_SANITIZE_EMAIL);
 		$params[':contributor_facebook_link'] = filter_var($params[':contributor_facebook_link'], FILTER_SANITIZE_URL);
@@ -361,6 +361,7 @@ class MPArticleAdminController extends MPArticle{
 			$result_cont = $this->updateSiteObject(array(
 				'updateString' => "UPDATE article_contributors 
 									SET contributor_email_address = '".$params[':user_email']."', 
+									contributor_name = '".$params[':user_first_name']."',
 									contributor_location = '".$params[':contributor_location']."',
 									contributor_twitter_handle = '".$params[':contributor_twitter_handle']."', 
 									contributor_facebook_link = '".$params[':contributor_facebook_link']."', 
@@ -370,8 +371,8 @@ class MPArticleAdminController extends MPArticle{
 									WHERE contributor_email_address = '".$this->user->data['user_email']."' 
 									AND contributor_id = ".$post['c_i'],
 				'post' => $post,
-				'unrequired' => array('user_last_name', 'contributor_location', 'contributor_twitter_handle', 
-									'contributor_facebook_link', 'contributor_blog_link', 'contributor_bio')
+				'unrequired' => array('contributor_location', 'contributor_twitter_handle', 
+									'contributor_facebook_link', 'contributor_blog_link', 'contributor_bio', 'user_name')
 			));			
 		}
 

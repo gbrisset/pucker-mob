@@ -32,28 +32,33 @@ $(document).ready(function() {
 
 		$('#article-content').height(wishDisplayHeight);
 
-		$("#read-more-img").on('click', function(e) {
-			e.preventDefault();		
-			e.stopPropagation();
-			$el = $(this);
-			$parent_div  = $('.read-more');
-			$content = $('#article-content');
-											
-			$content.css({
-				//"height": //$content.height(),
-				"max-height": 999999
-			 });
+			$("#read-more-img").on('click', function(e) {
+				e.preventDefault();		
+				e.stopPropagation();
+				$el = $(this);
+				$parent_div  = $('.read-more');
+				$content = $('#article-content');
+				
+				setTimeout(function(){
+							
+					$content.css({
+						//"height": //$content.height(),
+						"max-height": 999999
+					 });
 
-			$content.animate({
-				"height": "auto"
-			 },2000);
-						
-			$parent_div.fadeOut();
-			$('.second-section').css('border-top', '2px solid #bbb');
-							
-			return false;
-							
-		});
+					$content.animate({
+						"height": "auto"
+					 },2000);
+								
+					$parent_div.fadeOut();
+					$('.second-section').css('border-top', '2px solid #bbb');
+
+				}, 1000);
+								
+				return false;
+								
+			});
+		
 
 
 

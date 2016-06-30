@@ -27,7 +27,7 @@
 
 			$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 
-			$contributor_id = 1103;//$this->contributor->contributor_id;
+			$contributor_id = $this->contributor->contributor_id;
 			
 			//	Set the params to be bound
 			$params_to_bind = [ 

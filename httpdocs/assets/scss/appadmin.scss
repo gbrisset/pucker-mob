@@ -2060,3 +2060,18 @@ form#user-account-delete-form {
 	float:right;
 }
 
+
+.notification-msg{
+    background: rgba(0, 128, 0, 0.68);
+	color: #fff;
+	
+	p{
+		padding: 1rem;
+	    margin: 0;
+	    font-size: 1.2rem;
+	    color: #fff;
+	    text-transform: uppercase;
+	    font-family: OswaldRegular;
+	    text-align: center;
+	}
+}

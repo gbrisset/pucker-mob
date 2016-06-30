@@ -71,7 +71,7 @@
 	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 
 	$user_type = $userData["user_type"];
-	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
+	$earnings = $ManageDashboard->getContributorEarningsInfo(  1103 );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 
 ?>
@@ -107,6 +107,8 @@
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
+
+				<?php include_once($config['include_path_admin'].'notifications_temp.php'); ?>
 
 				<?php include_once($config['include_path_admin'].'blogger_status_level.php'); ?>
 

@@ -4,7 +4,7 @@
 	<div class="small-12 columns radius right-side-box half-margin-top">
 		<div class="">
 			<p style="margin:0;">
-				<span class="uppercase"><?php echo date('F'); ?> Incentive Plan:</span>
+				<span class="uppercase"><?php //echo date('F'); ?> JULY Incentive Plan:</span>
 				There are more ways to earn money this month! We’re paying out twice as many people in July, so work hard for one of the top 30 spots:
 			</p>
 			<br />	

@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_3456788708e" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_34567887055" ></script>
 
   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
     

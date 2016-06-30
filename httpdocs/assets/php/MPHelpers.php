@@ -265,6 +265,7 @@ class MPHelpers{
 
 			try{
 				$geo_details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+
 				 $country_code = $geo_details->country;
 				 $region = $geo_details->region;
 

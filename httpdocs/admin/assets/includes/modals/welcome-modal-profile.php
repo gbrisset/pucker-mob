@@ -21,8 +21,8 @@
 	      <li><a href="#" data-reveal-id="intro-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
 	      <li class="current"><a href="#" data-reveal-id="profile-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
 	      <li><a href="#" data-reveal-id="payment-modal" ><i class="fa fa-circle" aria-hidden="true"></i></a></li>
-	      <li><a href="#"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
-	      <li><a href="#"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
+	      <li><a href="#" data-reveal-id="social-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
+	      <li><a href="#" data-reveal-id="last-modal"><i class="fa fa-circle" aria-hidden="true"></i></a></li>
     	</ul>
     </div>
     <p class="small-3 columns align-right no-padding-right"><a href="#" data-reveal-id="payment-modal" class="secondary next-modal-step">GO TO NEXT STEP <i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>

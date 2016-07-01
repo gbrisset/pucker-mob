@@ -343,7 +343,7 @@
 	padding: 2% 1%;
 
 	//INTRO MODAL
-	.intro-modal{
+	.intro-modal, .last-modal{
 		h2{
 		    font-size: 180%;
 			text-align: center;
@@ -365,9 +365,23 @@
 
 	//ALL MODALS STYLE
 	.profile-modal, .payment-modal{
-		h2{ color: $dark-main-color; font-size: 1.2rem; font-family: OswaldRegular;}
-		p{ font-size: 1rem; font-family: Oslo;}
+		h2{ color: $dark-main-color; font-size: 1.5rem; font-family: OswaldRegular;}
+		p{ font-size: 1.2rem; font-family: OswaldLight;}
+		#edit-my-profile .header-style, #billing-page .header-style{ 
+			background: #efefef; padding: 10px; 
+			h2{
+				color: #000;
+			    text-transform: uppercase;
+			    font-family: OswaldLight;
+			    padding-top: 3px;
+			    line-height: 1;
+			    margin: 0;
+			}
+		}
+		.image-profile-box img{ width: 100%;}
+		.photo-instructions{ font-size: 12px; font-family:Oslo;}
 	}
+
 
 	//FOOTER
 	ul.pagination{

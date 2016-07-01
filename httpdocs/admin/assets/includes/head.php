@@ -36,6 +36,7 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
 	  <script>
+
       $(function() {	
           $('.editor').froalaEditor({
           	  key: 'UcbaE2hlypyospbD3ali==',
@@ -48,8 +49,8 @@
       		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
           });
       });
-</script> 
 
+</script>
 </head>
 <?php 
 	$blogger = false; $pro_blogger = false; $admin_user = false; $externalWriter = false; $pro_admin = false;

@@ -362,10 +362,11 @@
 			    margin-bottom: 2rem;
 			}
 		}
+		
 	}
 
 	//ALL MODALS STYLE
-	.profile-modal, .payment-modal{
+	.profile-modal, .payment-modal, .social-modal{
 		h2{ color: $dark-main-color; font-size: 1.3rem; font-family: OswaldRegular;}
 		p{ font-size: 1.2rem; font-family: OswaldLight;}
 		#edit-my-profile .header-style, #billing-page .header-style{ 

@@ -9,7 +9,7 @@
 	 </div>
 	 
 	 <div class="columns small-12 large-9 no-padding-right">
-	 	<?php //include('modal-payment-form.php'); ?>
+	 	<?php include('modal-social-form.php'); ?>
 	 </div>
 		  
 		  

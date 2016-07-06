@@ -1817,12 +1817,13 @@ form#user-account-delete-form {
 
 		h2{ color: #fff; font-size: 18px;}
 	}
+		.incentive-second-table{ display: table;}
 
-	.incentive-second-table{ display:none;}
-	table tr.even, table tr.alt, table tr:nth-of-type(even) { background: rgba(1, 98, 1, 0.18); }
-	table tr.even, table tr.alt, table tr.gray-out:nth-of-type(even) { background: #ddd; }
+	//.incentive-second-table{ display:none;}
+	table tr.even, table tr.alt, table tr:nth-of-type(even) { background: #efefef }
+	table tr.even, table tr.alt, table tr.gray-out:nth-of-type(even) { background: #efefef; }
 	table thead{ 
-		background: #016201;
+		background: #666;
 		td{ color: #fff;}
 	}
 
@@ -1830,7 +1831,7 @@ form#user-account-delete-form {
 		background: #666;
 		td{ color: #fff;}
 	}
-	.incentive-second-table tr.even, .incentive-second-table tr.alt, .incentive-second-table tr:nth-of-type(even) { background: #ddd; }
+	.incentive-second-table tr.even, .incentive-second-table tr.alt, .incentive-second-table tr:nth-of-type(even) { background: #efefef; }
 
 	@media #{$large-up} {
 		h1{ font-size: 1.7rem;}
@@ -2059,3 +2060,18 @@ form#user-account-delete-form {
 	float:right;
 }
 
+
+.notification-msg{
+    background: rgba(0, 128, 0, 0.68);
+	color: #fff;
+	
+	p{
+		padding: 1rem;
+	    margin: 0;
+	    font-size: 1.2rem;
+	    color: #fff;
+	    text-transform: uppercase;
+	    font-family: OswaldRegular;
+	    text-align: center;
+	}
+}

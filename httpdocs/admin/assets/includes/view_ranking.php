@@ -22,8 +22,8 @@
 <div class="small-12 columns no-padding-right half-margin-bottom show-for-large-up no-padding">
 	<div  class="small-12 large-7 xlarge-6 columns ">
 		<div style="background-color: #867BB5; " class="small-12 columns articles_resume radius valign-middle" >
-			<h3 class="small-12 columns uppercase bold" style="line-height: 1.2;">
-			<span style="color: yellow; " class="uppercase"><?php echo date('F'); ?> Incentive:</span> Top 10 Bloggers Get $100 Each</h3>
+			<h3 class="small-12 columns uppercase bold align-left" style="line-height: 1.2;">
+			<span style="color: yellow; " class="uppercase"><?php //echo date('F'); ?> JULY Incentive:</span><br>#1-5: $100 Bonus | #6-10: $50 Bonus | #11-20: $25 Bonus | #21-30: $10 Bonus</h3>
 		</div>
 	</div>
 	<div class="small-12 large-4 xlarge-3 columns  no-padding">

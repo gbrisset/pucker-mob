@@ -195,6 +195,26 @@ class ManageAdminDashboard{
 		return $q;
 	}
 
+
+	public function getLastMonthEarningsInfo($contributor_id, $month, $year){
+
+		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);;
+
+		$s = "SELECT total_earnings, total_us_pageviews, contributor_id, to_be_pay
+		FROM contributor_earnings 
+		WHERE  year = $year AND month = $month ";
+
+		if( $contributor_id != 0 ) $s .= " AND contributor_id = $contributor_id ";
+		$s .= " ORDER BY total_earnings DESC";
+
+		$q = $this->performQuery(['queryString' => $s]);
+
+		return $q;
+	}
+
+
 	public function getContributorEarningsInfo( $contributor_id ){
 		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = date('Y');

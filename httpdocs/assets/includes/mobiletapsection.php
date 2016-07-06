@@ -58,16 +58,15 @@
 						</div>
 						<div class="columns ad-unit hide-for-print padding-top no-padding" style="margin-bottom: 10px !important;">
 								<?php if($index == 1){?>
-								<!--<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 								<script type="text/javascript" language="javascript">
 								//<![CDATA[
 								aax_getad_mpb({
 								  "slot_uuid":"07cc8194-4eca-4036-8ef3-43e0a582fdbd"
 								});
 								//]]>
-								</script>-->
-								<div class="row inarticle-ad ad-unit hide-for-print" id="inarticle3-ad"><a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&amp;utm_medium=banner&amp;utm_content=puckermob&amp;utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg"></a></div>
-
+								</script>
+								
 								<?php } ?>
 
 								<?php if($index == 2){?>

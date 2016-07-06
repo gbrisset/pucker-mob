@@ -15,7 +15,7 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
 
-<script>
+<!--<script>
 $(function() {	
   $('.editor').froalaEditor({
   	  key: 'UcbaE2hlypyospbD3ali==',
@@ -27,7 +27,7 @@ $(function() {
 		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
   });
 });
-</script> 
+</script> -->
 
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>

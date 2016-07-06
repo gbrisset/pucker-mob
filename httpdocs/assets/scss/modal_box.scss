@@ -113,6 +113,7 @@
 	.close{ right: 1%; top: 1%; width: 35px; height:35px; font: 150% Oslo, arial;}
 }
 
+
 @media #{$mobile-only}{
 	.modalDialog > div img, 
 	.modalDialogLib > div img,
@@ -340,12 +341,12 @@
 
 /* Welcome Modal */
 .welcome-modal{
-	padding: 2% 1%;
+	padding: 7% 1% 1% 1%;
 
 	//INTRO MODAL
 	.intro-modal, .last-modal{
 		h2{
-		    font-size: 180%;
+		    font-size: 1.8rem;
 			text-align: center;
 			color: $dark-main-color;
     		font-family: OswaldRegular;
@@ -354,7 +355,7 @@
 		div.intro-modal-wrapper{
 			padding: 1rem;
 			p{
-				font-size: 150%;
+				font-size: 140%;
 			    font-family: OswaldLight;
 			    line-height: 1.5;
 			    text-align: center;
@@ -365,7 +366,7 @@
 
 	//ALL MODALS STYLE
 	.profile-modal, .payment-modal{
-		h2{ color: $dark-main-color; font-size: 1.5rem; font-family: OswaldRegular;}
+		h2{ color: $dark-main-color; font-size: 1.3rem; font-family: OswaldRegular;}
 		p{ font-size: 1.2rem; font-family: OswaldLight;}
 		#edit-my-profile .header-style, #billing-page .header-style{ 
 			background: #efefef; padding: 10px; 
@@ -379,13 +380,18 @@
 			}
 		}
 		.image-profile-box img{ width: 100%;}
-		.photo-instructions{ font-size: 12px; font-family:Oslo;}
+		.photo-instructions p{ font-size: 12px !important; font-family:Oslo !important; padding-top: 5px; margin:0;}
+	}
+
+	.payment-modal{
+
 	}
 
 
 	//FOOTER
 	ul.pagination{
 		margin: 0;
+		top:-5px;
 		li{     
 			
 		    width: 20px;
@@ -425,14 +431,14 @@
 	.welcome-modal-footer{
 		p{ margin:0;}
 	}
-	.next-modal-step{
+	.next-modal-step, .next-modal-step label{ 
 		color: green;
 	    font-family: OswaldLight;
 	    font-size: 100%;
 	    line-height: 1;
 	}
 
-	.close-reveal-modal {
+	.close-reveal-modal, .close-reveal-modal label {
 		font-size: 100%;
 	    line-height: 1;
 	    position: relative;

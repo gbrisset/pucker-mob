@@ -27,20 +27,20 @@
 <div id="edit-my-profile">
 
 	<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
-	<div id="content" class="columns small-9 large-11">
+	<div id="content" class="columns small-12 no-padding">
 		<div class="small-12 columns radius header-style">
 			<h2>STEP 1: ADD A PICTURE</h2>
 		</div>
 
 		<!-- IMAGE SECTION -->
-		<div class="small-12 columns margin-bottom margin-top no-padding">
+		<div class="small-12 columns margin-top no-padding">
 			<div class="small-12 image-profile-box radius">
-				<div class="small-12 large-3 xlarge-2 columns align-center no-padding-left">
+				<div class="small-12 large-3 xlarge-2 columns align-center no-padding">
 					<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" />
 				</div>
-				<div class="small-12 large-9 xlarge-10 columns no-padding-left">
+				<div class="small-12 large-9 xlarge-10 columns no-padding">
 					<div class="div-file-upload">
-						<a href="#" class="b-upload small-12 upload-photo radius" name="image-file-link" id="image-file-link">Click Here to Upload Photo</a>
+						<a href="#" class="b-upload small-12 upload-photo" style="margin:0;" name="image-file-link" id="image-file-link">Upload Photo</a>
 						 <div class="file-upload-container hidden">
 				    	<input type="file" name="contributor_wide_img" id="contributor_wide_img" class="upload-img-file account-file-input" />
 					</div>  
@@ -79,18 +79,18 @@
 					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset( $contributorInfo->contributor_email_address)) echo  $contributorInfo->contributor_email_address; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
 
 					<div class="columns small-12 large-6 no-padding">
-						<div class="columns small-12 margin-top">
+						<div class="columns small-12 margin-top no-padding">
 							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($contributorInfo->contributor_name)) echo $contributorInfo->contributor_name; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_name') echo 'autofocus'; ?> />
 						</div>
-						<div class="columns small-12 margin-top">
+						<div class="columns small-12 margin-top no-padding">
 							<input type="email" name="user_email-e" id="user_email-e" placeholder="YOUR E-MAIL ADDRESS" value="<?php if(isset($contributorInfo->contributor_email_address)) echo $contributorInfo->contributor_email_address; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
 						</div>
-						<div class="columns small-12 margin-top">
+						<div class="columns small-12 margin-top no-padding">
 							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="YOUR LOCATION" value="<?php if(isset($contributorInfo->contributor_location)) echo $contributorInfo->contributor_location; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
 						</div>
 					</div>
 					<div class="columns small-12 large-6  no-padding">
-						<div class="columns small-12 no-padding-right">
+						<div class="columns small-12 no-padding">
 							<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($contributorInfo->contributor_bio)) echo $contributorInfo->contributor_bio; ?></textarea>
 						</div>
 					</div>
@@ -138,7 +138,7 @@
       	  toolbarSticky: false,
       	  height: 140,
       	  placeholderText: 'WRITE A SHORT BIO',
-	      toolbarButtons:   ['bold', 'italic', 'align', 'formatUL', 'insertHR', 'insertLink'],
+	      toolbarButtons: ['bold', 'italic', 'align', 'insertLink']
       });
   });
 	</script> 

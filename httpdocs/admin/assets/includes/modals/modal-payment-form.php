@@ -20,18 +20,18 @@
 ?>
 <div id="billing-page">
 	<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
-	<div id="content" class="columns small-12">
+	<div id="content" class="columns small-12 no-padding">
 			<div class="small-12 columns radius header-style">
 				<h2>W9 Tax Forms</h2>
 			</div>
 
 				<div class="billing-cont">
-					<div class="small-12 billing-form-box margin-top">
+					<div class="small-12 billing-form-box half-margin-top">
 
-						<img class="small-2 left" id="billing-img" src="http://www.puckermob.com/assets/img/Download-Form.png" alt="Upload W9 Form" />
-						<div class="small-10 left image-wrapper">
-							<div class="left">
-								<a href="http://www.puckermob.com/assets/download/fw9.pdf" class="b-upload" download>Download Form</a>
+						<img class="small-1 left show-for-large-up" id="billing-img" src="http://www.puckermob.com/assets/img/Download-Form.png" alt="Upload W9 Form" />
+						<div class="small-10 columns no-padding image-wrapper">
+							<div class="small-5 columns no-padding">
+								<a href="http://www.puckermob.com/assets/download/fw9.pdf" class="b-upload" download>Download</a>
 								<div class="small-12 instructions">
 									<label>Instructions</label>
 									<ul>
@@ -41,11 +41,11 @@
 									</ul>
 								</div>
 							</div>
-							<div>
-								<span class="and left">and</span>
+							<div class="small-2 columns">
+								<span class="uppercase">and</span>
 							</div>
-							<div class="left">
-								<a href="mailto:taxes@sequelmediainternational.com?subject=W9 form (<?php echo $contributor_name; ?>)&body=Please add your completed form Here." class="b-upload" id="upload_form_file">Send Completed Form</a>
+							<div class="small-5 columns no-padding">
+								<a href="mailto:taxes@sequelmediainternational.com?subject=W9 form (<?php echo $contributor_name; ?>)&body=Please add your completed form Here." class="b-upload" id="upload_form_file">Send</a>
 								<input type="file" class="hidden" id="upload_form" name="upload_form" />
 									<div class="small-12 instructions">
 									<label>Instructions</label>
@@ -60,8 +60,8 @@
 					</div>
 				</div>
 			
-				<div class="paypal-info small-12 columns no-padding margin-top">
-					<form    method="POST" class="ajax-submit-form  small-12 columns no-padding margin-top clear " id="paypal-form" name="paypal-form">
+				<div class="paypal-info small-12 columns no-padding half-margin-top">
+					<form  method="POST" class="ajax-submit-form  small-12 columns no-padding half-margin-top clear " id="paypal-form" name="paypal-form">
 						<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 						<input type="text" class="hidden" id="user_id" name="user_id" value="<?php  echo $userData['user_id']; ?>" >
 						
@@ -71,16 +71,14 @@
 							<h2>Paypal Information</h2>
 						</div>
 						
-						<label class="small-12 columns margin-top no-padding" style="color: #ddd; ">Paypal Email Address</label>
-						<div class="columns small-12  no-padding">
-							<div class="small-12 margin-top">
+						<label class="small-12 large-3 columns uppercase half-margin-top no-padding" style="color: #ddd; padding-top:13px; ">Paypal Email Address:</label>
+						<div class="columns small-12 large-9  no-padding">
+							<div class="small-12 half-margin-top">
 								<input type="email" required id="paypal-email" name="paypal-email" placeholder="example@email.com" value="<?php echo $billingInfo['paypal_email']; ?>">
 							</div>
 						
 						</div>
 
-
-						
 						<div class="columns mobile-12 small-12 large-12 half-margin-top half-margin-bottom">
 							<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'paypal-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
 							

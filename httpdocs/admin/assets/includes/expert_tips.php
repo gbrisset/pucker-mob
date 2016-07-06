@@ -1,34 +1,23 @@
 	<div class="small-12 radius experttips">
 		<h3 class="margin-top bold uppercase">EXPERT TIPS <br />
-		Getting Featured ON
-		PUCKERMOB’S FB FAN PAGE</h3>
+		INCREASE YOUR PAGEVIEWS WITH RELATED ARTICLES</h3>
 		<div class="">
-			<p>Getting featured on PuckerMob’s primary Facebook Fan page can help you increase the traffic to one or more of your articles. 
-			It’s never a guarantee that your articles will be included on this page, but there are some steps you can take to increase your odds:
+			<p>Did you know that you can increase your pageviews (and earnings), by giving your readers greater access to your articles? 
+				Click View & Edit Articles in the menu bar on the left, and open an article that you’ve written. Scroll down, and you’ll 
+				see a tool called “Related Articles.” (Please note you can only access this tool on desktop only)
+			</p>
+			<p>
+				Use the search bars to find other articles you’ve written (or that other people have written), that are similar to the article 
+				you’re editing. You can choose up to three different ones. 
 			</p>
 
-			<ol>
-				<li> Pay attention to our Hot Topics - 		
-					chances are, those are topics that 
-					we’re looking to feature.
-				</li>
-				<li> Like our PuckerMob Voice page on 
-					Facebook. Voices is where we feature 
-					only articles written by our bloggers. 
-					Invite your friend netork to like the 
-					page as well.
-				</li>
-				<li> Check the Voices page regularly to see 
-					if your most recent articles have been 
-					included (every Pro-level article, and 
-					some Basic-level articles will be added).
-				</li>
-				<li> If you see your article included on 
-					Voices, share it - articles with higher 	
-					social engagement on this page will be 
-					more likely to be be included on our 
-					main Facebook fan page.
-				</li>
-			</ol>
+			<p>Once you find the most relevant posts and hit Save, your readers will have options at the end of each article to read other titles 
+				they may be interested - driving them to other topics that you’ve written and increasing your overall pageviews.
+			</p>
 		</div>
 	</div>
+
+
+
+
+

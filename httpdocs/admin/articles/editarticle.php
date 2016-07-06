@@ -116,7 +116,12 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <body id="editarticle">
 	<?php include_once($config['include_path_admin'].'header.php');?>
-
+	<style>
+		.dropzone .dz-error .dz-error-message, .dropzone-previews .dz-error .dz-error-message {
+		    top: 0rem !important;
+		    display: inline-block !important;
+		}
+    </style>
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
@@ -164,10 +169,10 @@
 						</div>
 					</div>
 
-					<?php if( $admin_user ){?>
+					<?php //if( $admin_user ){?>
 				  	<!-- RELATED ARTICLES -->
 					<?php include_once($config['include_path_admin'].'related_edit_articles.php'); ?>
-					<?php } ?>
+					<?php //} ?>
 					
 					<?php if($pro_admin){ ?>
 						<!-- ADVERTISING OVERRIDE (IN-STREAM) -->

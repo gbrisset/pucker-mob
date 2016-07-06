@@ -6,7 +6,7 @@
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
 				 <!-- LELO -->
-	      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id']  != 16562  &&  $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 ){ //echo $_COOKIE['region']; ?>
+	      		<?php if(isset($articleInfoObj['article_id']) && $articleInfoObj['article_id']  != 16562  &&  $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 &&  $articleInfoObj['article_id']  != 17286){ //echo $_COOKIE['region']; ?>
 	      			
 	      			<?php if( $_COOKIE['region'] == 'Virginia'){ ?>
 	      					<!-- /73970039/UT_970x250 -->

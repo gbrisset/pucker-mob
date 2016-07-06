@@ -30,7 +30,7 @@
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
      	
       <!-- LELO -->
-      <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 ){?>
+      <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 &&  $article_id  != 17286){?>
         <!-- GUM GUM -->
         <script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>
       <?php } ?>
@@ -79,7 +79,7 @@
         <!-- LELO -->
         <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
-        && $article_id != 15488) { ?>
+        && $article_id != 15488 &&  $article_id != 17286) { ?>
         
           <!--<script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>     
            <div id="vm_inline"></div>
@@ -119,7 +119,7 @@
         
       <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
-        && $article_id != 15488) { ?>
+        && $article_id != 15488 &&  $article_id  != 17286) { ?>
             <!-- kixer adhesion -->
             <!-- Start Pucker Mob - Adhesion - iframe buster code 
             <div id='__kx_ad_4915'></div>
@@ -161,7 +161,7 @@
             <?php  } ?>
       <?php  } ?>
     <?php  } ?>
-      <?php if( $article_id != 16562  && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 ){ ?>
+      <?php if( $article_id != 16562  && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286){ ?>
           <script>
             (function() 
             { 

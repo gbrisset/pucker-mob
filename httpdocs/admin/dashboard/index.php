@@ -124,8 +124,6 @@
 				</div>
 			</div>
 
-		
-
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" style="padding: 0 15px !important;" >
 				<!-- HOT TOPICS --> 
@@ -147,8 +145,6 @@
 					}
 				?>
 
-
-				
 			</div>
 
 

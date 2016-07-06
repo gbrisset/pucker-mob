@@ -78,7 +78,7 @@
 					<input type="hidden" id="c_i" name="c_i" value="<?php echo $contributorInfo->contributor_id; ?>" />
 					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset( $contributorInfo->contributor_email_address)) echo  $contributorInfo->contributor_email_address; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
 
-					<div class="columns small-12 large-6 no-padding">
+					<div class="columns small-12 large-6">
 						<div class="columns small-12 margin-top no-padding">
 							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($contributorInfo->contributor_name)) echo $contributorInfo->contributor_name; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_name') echo 'autofocus'; ?> />
 						</div>
@@ -89,7 +89,7 @@
 							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="YOUR LOCATION" value="<?php if(isset($contributorInfo->contributor_location)) echo $contributorInfo->contributor_location; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
 						</div>
 					</div>
-					<div class="columns small-12 large-6  no-padding">
+					<div class="columns small-12 large-6">
 						<div class="columns small-12 no-padding">
 							<textarea class="mceEditor" name="contributor_bio-nf" id="contributor_bio-nf" rows="10" placeholder="Tell us something about yourself! Start writing Bio here." ><?php if(isset($contributorInfo->contributor_bio)) echo $contributorInfo->contributor_bio; ?></textarea>
 						</div>

@@ -19,6 +19,12 @@
  <div class="column small-12 welcome-modal-footer">
   	  	<?php require('welcome-modal-footer.php'); ?>
 
-    <p class="small-3 columns align-right no-padding-right"><a href="http://www.puckermob.com/admin/articles/new" class="secondary next-modal-step">WRITE YOUR FIRST ARTICLE<i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>
+    <p class="small-3 columns align-right no-padding-right">
+    	<a href="http://www.puckermob.com/admin/articles/newarticle/" class="secondary next-modal-step">
+	    	<label class="show-for-large-up"> WRITE YOUR FIRST ARTICLE</label>
+	    	<label class="hide-for-large-up"> START!</label>
+	    	<i class="fa fa-chevron-right" aria-hidden="true"></i>
+    	</a>
+    </p>
 	
   </div>

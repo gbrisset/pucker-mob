@@ -15,20 +15,6 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
 
-<!--<script>
-$(function() {	
-  $('.editor').froalaEditor({
-  	  key: 'UcbaE2hlypyospbD3ali==',
-  	  height: 420,
-  	  placeholderText: 'Start Writing Here.',
-      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
-		  toolbarButtonsXS: ['bold', 'italic', 'align', 'formatUL',  'insertHR', 'insertLink']
-  });
-});
-</script> -->
-
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/jquery.sortable.js"></script>
 <script src="<?php echo $config['this_url']; ?>assets/js/jquery.Jcrop.js"></script>
 
@@ -50,9 +36,6 @@ $(function() {
 ?>
 
 <script>
-//$(function() {
-	//$('#sortable2').sortable();
-//});
 
 if($('#fb-login')){
 	$('#fb-login').on('click', function(e){
@@ -64,7 +47,6 @@ if($('#fb-login')){
 
 // Load the Visualization API 
   google.charts.load('current', {'packages':['bar']});
- //google.load('visualization', '1', {packages: ['corechart', 'bar']});
 
 </script>
 
@@ -73,4 +55,13 @@ if($('#fb-login')){
 	<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
 
+<!-- FACEBOOK API -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=781998645209691";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 

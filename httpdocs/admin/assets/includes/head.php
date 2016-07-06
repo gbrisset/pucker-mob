@@ -9,7 +9,12 @@
 	?>
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
-	<meta name="author" content="Sequel Media Group">
+	<meta name="author" content="Sequel Media International">
+	<meta property="og:url"           content="http://puckermob.com" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Pucker Mob | We're All Part of It" />
+	<meta property="og:description"   content="General interest news, information, articles and advice for a world on the move" />
+	<meta property="og:image"         content="http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png" />
 	
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
 	<link type="text/plain" rel="author" href="<?php echo $config['this_url']; ?>humans.txt" />
@@ -20,9 +25,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/tooltipster.css" />
-	
-
-	
 	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 	<!-- Include Editor style. -->

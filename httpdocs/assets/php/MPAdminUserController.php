@@ -1484,10 +1484,11 @@ End password reset methods
 		));
 
 		if($user){
+			
 			if($user['user_verified'] == 1){
 				$r = $this->helpers->returnStatus(200);
 				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\dashboard\">here</a>.";
-				return $r;
+				//return $r;
 			}
 
 			$q = $this->performUpdate(array('updateString' => "UPDATE users SET user_verified = 1 WHERE user_id = ".$user['user_id']));

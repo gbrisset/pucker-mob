@@ -20,6 +20,12 @@
 <!-- MODAL FOOTER -->
  <div class="column small-12 welcome-modal-footer">
   	<?php require('welcome-modal-footer.php'); ?>
-    <p class="small-3 columns align-right no-padding-right"><a href="#" data-reveal-id="third" class="secondary next-modal-step">GO TO NEXT STEP <i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>
+    <p class="small-3 columns align-right no-padding-right">
+    	<a href="#" data-reveal-id="last-modal" class="secondary next-modal-step">
+	    	<label class="show-for-large-up"> GO TO NEXT STEP</label> 
+	    	<label class="hide-for-large-up"> NEXT</label> 
+	    	<i class="fa fa-chevron-right" aria-hidden="true"></i>
+    	</a>
+    </p>
 	
   </div>

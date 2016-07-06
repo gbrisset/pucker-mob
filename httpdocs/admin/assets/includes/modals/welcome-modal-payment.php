@@ -13,17 +13,20 @@
 	 
 	 <div class="columns small-12 large-9 no-padding-right">
 	 	<?php include('modal-payment-form.php'); ?>
-	 </div>
-		  
-		  
+	 </div>	  
 </div>
 
 <hr />
-
 <!-- MODAL FOOTER -->
  <div class="column small-12 welcome-modal-footer">
-    	<?php require('welcome-modal-footer.php'); ?>
+    <?php require('welcome-modal-footer.php'); ?>
 
-    <p class="small-3 columns align-right no-padding-right"><a href="#" data-reveal-id="third" class="secondary next-modal-step">GO TO NEXT STEP <i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>
+    <p class="small-3 columns align-right no-padding-right">
+    	<a href="#" data-reveal-id="social-modal" class="secondary next-modal-step">
+    		<label class="show-for-large-up"> GO TO STEP 3</label> 
+	    	<label class="hide-for-large-up"> STEP 3</label> 
+	    	<i class="fa fa-chevron-right" aria-hidden="true"></i>
+   		</a>
+   	</p>
 	
   </div>

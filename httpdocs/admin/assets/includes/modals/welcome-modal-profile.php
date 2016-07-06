@@ -1,6 +1,7 @@
 <?php 
 	$current_profile = "current";
 	 $current_intro = $current_payment = $current_social =  $current_last = '';
+	 $_SESSION['show_welcome_modal'] = 1; 
 ?>
 <div class="main-content-modal small-12 columns profile-modal">
 	 <div class="columns small-12 large-3">
@@ -21,6 +22,11 @@
  <div class="column small-12 welcome-modal-footer">
   	  	<?php require('welcome-modal-footer.php'); ?>
 
-    <p class="small-3 columns align-right no-padding-right"><a href="#" data-reveal-id="payment-modal" class="secondary next-modal-step"><label class="show-for-large-up"> GO TO </label> STEP 2<i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>
+    <p class="small-3 columns align-right no-padding-right">
+    	<a href="#" data-reveal-id="payment-modal" class="secondary next-modal-step">
+    		<label class="show-for-large-up"> GO TO </label> STEP 2
+    		<i class="fa fa-chevron-right" aria-hidden="true"></i>
+    	</a>
+    </p>
 	
   </div>

@@ -139,7 +139,13 @@
 				<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
 					<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
 				</div>
-						<?php include_once($config['include_path_admin'].'welcome_modal.php'); ?>
+				
+				<!-- WELCOME MODAL -->
+				<?php
+					if(	$userData['user_login_count'] <= 1  && !isset($_SESSION['show_welcome_modal']) ){
+						include_once($config['include_path_admin'].'welcome_modal.php'); 
+					}
+				?>
 
 
 				

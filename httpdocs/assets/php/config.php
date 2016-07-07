@@ -93,7 +93,11 @@ if($local)
 	require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
 
-	//require_once $config['assets_path'].'/class.User.php';
+	if($admin){
+		require_once dirname(__FILE__).'/class.User.php';
+		require_once dirname(__FILE__).'/class.Contributor.php';
+		require_once dirname(__FILE__).'/class.ContributorEarnings.php';
+	}
 
 	
 }else{

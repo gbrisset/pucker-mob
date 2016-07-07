@@ -1,6 +1,7 @@
 <?php
 	$userInfo = $adminController->user->data;
 	$userObj = new User($userInfo['user_email']);
+	
 	$contributorInfo = $userObj->contributor->data;
 	
 	$image = (isset($contributorInfo->contributor_image) && !empty($contributorInfo->contributor_image)) ? $contributorInfo->contributor_image : 'pm_avatars_1.png';

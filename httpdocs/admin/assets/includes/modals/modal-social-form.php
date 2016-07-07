@@ -10,7 +10,7 @@
 
 	<div class="small-12 columns main-social-box radius valign-middle">
 		<div class="small-2 columns social-img align-right">
-			<img src ="<?php echo $config['this_admin_url']; ?>assets/img/pm-image-modal-social.png" alt="social-modal"/>
+			<img src ="<?php echo $config['this_admin_url']; ?>assets/img/bloggers.jpg" alt="social-modal" style="width: 80%;"/>
 		</div>
 		<div class="small-8 columns social-copy">
 			<h2>Please Join the PuckerMob Blogger Group Page</h2>
@@ -29,7 +29,7 @@
 	<div class="small-12 columns div-wrapper no-padding">
 		<div class="small-12 columns valign-middle">
 			<div class="small-2 columns social-img align-right">
-				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/pm-image-modal-social.png" alt="social-modal"/>
+				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/puckermob.png" alt="social-modal" style="width: 80%;"/>
 			</div>
 			<div class="small-8 columns social-copy">
 				<h2>PuckerMob (Main Fan Page)</h2>
@@ -44,7 +44,7 @@
 		<hr />
 		<div class="small-12 columns valign-middle">
 			<div class="small-2 columns social-img align-right">
-				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/pm-image-modal-social.png" alt="social-modal"/>
+				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/passionmob.png" alt="social-modal" style="width: 80%;"/>
 			</div>
 			<div class="small-8 columns social-copy">
 				<h2>PassionMob</h2>
@@ -59,7 +59,7 @@
 		<hr />
 		<div class="small-12 columns valign-middle">
 			<div class="small-3 large-2 columns social-img align-right">
-				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/pm-image-modal-social.png" alt="social-modal"/>
+				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/passionmob_logo.png" alt="social-modal" style="width: 80%;"/>
 			</div>
 			<div class="small-8  columns social-copy">
 				<h2>PuckerMob Passion</h2>
@@ -74,7 +74,7 @@
 		<hr />
 		<div class="small-12 columns valign-middle">
 			<div class="small-2 columns social-img align-right">
-				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/pm-image-modal-social.png" alt="social-modal"/>
+				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/pm_voices.png" alt="social-modal" style="width: 80%;"/>
 			</div>
 			<div class="small-8 columns social-copy">
 				<h2>PuckerMob Voices</h2>
@@ -90,7 +90,7 @@
 
 		<div class="small-12 columns valign-middle">
 			<div class="small-2 columns social-img align-right">
-				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/pm-image-modal-social.png" alt="social-modal"/>
+				<img src ="<?php echo $config['this_admin_url']; ?>assets/img/open_letters.png" alt="social-modal" style="width: 80%;"/>
 			</div>
 			<div class="small-8 columns social-copy">
 				<h2>Open Letter, Open Hearts</h2>

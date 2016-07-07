@@ -1,7 +1,7 @@
 <?php 
 	$current_profile = "current";
 	 $current_intro = $current_payment = $current_social =  $current_last = '';
-	 $_SESSION['show_welcome_modal'] = 1; 
+	
 ?>
 <div class="main-content-modal small-12 columns profile-modal">
 	 <div class="columns small-12 large-3">

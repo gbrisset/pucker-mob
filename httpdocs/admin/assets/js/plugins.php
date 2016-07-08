@@ -96,10 +96,6 @@ var EarningsObj = {
 					amount = parseFloat(amount.toFixed(2));
 					last_month_amount = parseFloat(last_month_amount.toFixed(2));
 
-					//var lm = val[0].date;
-					//var current_date = moment(lm); 
-					//var last_month_date = current_date.subtract(1, 'months').format('MM/DD'); 
-
 					total_earned = total_earned + amount;
 					info = [ val[0].date, amount, last_month_amount];
 					chart.push(info);
@@ -360,6 +356,34 @@ $.fn.SDToggler = function(hiddenDiv){
 	});
 }
 
+/*
+$.fn.mpTooltip = function(){
+	return this.each(function(){
+		var thisToolTip = $(this),
+		thisToolTipInfo = $(thisToolTip).find('.tooltip-info'),
+		ttIconOver = false, ttOver = false, ttTimeout = null;
+
+		$(thisToolTip).mouseenter(function(e){
+			$(thisToolTipInfo).fadeTo(200, 1);
+			ttIconOver = true;
+		}).mouseleave(function(e){
+			ttIconOver = false;
+			ttTimeout = setTimeout(onTimeout, 200);
+		});
+
+		$(thisToolTipInfo).mouseenter(function(e){
+			ttOver = true;
+		}).mouseleave(function(e){
+			ttOver = false;
+			ttTimeout = setTimeout(onTimeout, 200);
+		});
+
+		function onTimeout(){
+			if(!ttOver && !ttIconOver) $(thisToolTipInfo).fadeTo(200, 0, function(){$(this).hide();});
+			clearTimeout(ttTimeout);
+		};
+	});
+};*/
 
 /* Begin Scrollable Element Detection */
 function scrollableElement(els) {
@@ -711,7 +735,7 @@ $.fn.filterByText = function(textbox, selectSingleMatch) {
                 options.push({value: $(this).val(), text: $(this).text()});
             });
             $(select).data('options', options);
-            $(textbox).bind('change keyup', function() {
+            $(textbox).bind('change', function() {
                 var options = $(select).empty().data('options');
                 var search = $(this).val().trim();
                 var regex = new RegExp(search,"gi");
@@ -729,46 +753,4 @@ $.fn.filterByText = function(textbox, selectSingleMatch) {
                 }
             });            
         });
-};
-
-$.fn.autoEdit = function(){
-
-	$(this).each(function(e){
-		let elm = $(this);
-		let category = $(elm).attr('data-category');
-		let id = $(elm).attr('data-info');
-		let content = $(elm).attr('data-src');
-		let edit = $('#edit-list');
-		let save = $('<button id="save_button">save</button>');
-		let current_data = $('.current-data');
-		let textarea = $('<textarea>'+content+'</textarea>');
-
-		
-
-		$(edit).on('click', function(e){
-			$(this).hide();
-			$(current_data).remove();
-			$(elm).append(textarea);
-			$('.button-box').append(save);
-		});
-		
-
-		$(save).on('click', function(e){
-			console.log('save');
-			console.log($(textarea).val());
-			let data = $(textarea).val();
-			$(edit).show();
-			$(save).hide();
-			
-
-			/*$.ajax(
-				//AJAX CALL HERE
-			);*/
-
-
-		});
-		
-		console.log(content);
-	});
-	
 };

@@ -53,7 +53,7 @@
           	  key: 'UcbaE2hlypyospbD3ali==',
           	  height: 420,
           	  toolbarSticky: false,
-          	  placeholderText: 'Start Writing Here.',
+			  placeholderText: 'Start Writing Here.',
 		      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
       		  toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikethrough', 'align', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],
       		  toolbarButtonsSM: ['bold', 'italic', 'underline', 'align', 'formatUL', 'quote', 'insertHR', 'insertLink', 'clearFormatting'],

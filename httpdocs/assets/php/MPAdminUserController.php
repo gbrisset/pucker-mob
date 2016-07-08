@@ -895,7 +895,7 @@ End password reset methods
 		}
 	}
 
-	//FOLLOW AUTHOR NOT IN USE
+	//FOLLOW AUTHOR
 	public function followAnAuthor($reader_email, $author_id){
 
 		$email = filter_var(trim($reader_email), FILTER_SANITIZE_STRING, PDO::PARAM_STR);
@@ -924,7 +924,6 @@ End password reset methods
 
 		return false;
 	}
-	//FOLLOW AUTHOR NOT IN USE
 
 	public function thisfollowerexist( $userInput, $uthor_id){
 		$options = array(

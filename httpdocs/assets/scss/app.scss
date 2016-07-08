@@ -45,6 +45,7 @@ $text-type-color: #01b88a;
 $header-padding: rem-calc(8);
 $header-color: #747371;
 $header-font-color: #ffffff;
+$dark-main-color: #016201;
 
 $sidebar-header-bg-color: $primary-color;
 $sidebar-header-padding: rem-calc(6);
@@ -1679,7 +1680,7 @@ div.adblade-dyna.zone-989 div.zone div.ad:last-child{ border-bottom:none;}
 .border-bottom { border-bottom: 1px solid #ddd; }
 
 /*POPUP*/
-#myModal, .reveal-modal-bg{z-index: 999; }
+#myModal, .reveal-modal-bg{z-index: 9; }
 
 //HighLight Article
 .highlighted{ background: #FFE83A; padding: 0.5rem; margin-top: -0.8rem !important; margin-bottom: 1rem; box-shadow: 1px 1px 3px #ddd; top:8rem;} 

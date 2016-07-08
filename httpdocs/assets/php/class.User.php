@@ -1,4 +1,11 @@
 <?php
+/**
+   * User
+   * Manage User Object - Table
+   * 
+   * @package    DatabaseObject
+   * @author     Flor Guzman <fguzman@sequelmediainternational.com>
+**/
 
 require 'config.php';
 
@@ -17,10 +24,10 @@ class User extends DatabaseObject{
 	//	Object Vars
 	protected static $db_fields = array('user_id', 'user_name', 'user_email', 'user_type');
 
-	public function __construct( $email = null){ 
+	public function __construct( $email = null ){ 
 		$this->user_email = $email;
 		$this->user = $this->getUser($email);
-		$this->contributor = $this->getContributorInfo($email);
+		$this->contributor = $this->getContributorInfo();
 	}
 
 	public static function getUser($user_email){
@@ -30,6 +37,41 @@ class User extends DatabaseObject{
 		$user = static::find_by_sql("SELECT * FROM users WHERE user_email = :user_email;", $params_to_bind);
 
 		return  array_shift($user);
+	}
+
+	/* Get All Users */
+	public function all( $user_type = false ){
+		if(!$user_type ){
+
+			$users = static::find_by_sql(
+					"SELECT users.*, user_logins.user_login_creation_date 
+					FROM users 
+					INNER JOIN user_logins 
+						ON ( users.user_id = user_logins.user_id )
+					WHERE user_logins.user_login_creation_date > '2016-01-01 0:0:0' 
+					GROUP BY users.user_id
+				");
+		}else{
+			$users = static::find_by_sql(
+				"SELECT users.*, user_logins.user_login_creation_date 
+				FROM users 
+				INNER JOIN user_logins 
+					ON ( users.user_id = user_logins.user_id )
+				WHERE user_logins.user_login_creation_date > '2016-01-01 0:0:0' AND user_type in ($user_type)
+				GROUP BY users.user_id
+			");
+		}
+		return $users;
+	}
+
+	/* GET user by ID */
+
+	public function getObj( $id ){
+		$params_to_bind = [ 'user_id' => $id ];
+
+		$user = static::find_by_sql("SELECT * FROM users WHERE user_id = :user_id ", $params_to_bind);
+
+		return $user;
 	}
 
 	/*
@@ -76,12 +118,11 @@ class User extends DatabaseObject{
 		return $this->user->user_type;
 	}
 
-	public function setUserType( $data ){
+	public function updateObj( $data ){
 
-		$save = static::update($data);
+		$update = static::update($data);
 		
-		if( $save )
-			$this->user_type = $data['user_type'];
+		return $update;
 
 	}
 
@@ -95,8 +136,5 @@ class User extends DatabaseObject{
 		return $contributor;
 	}
 
-	public function getPermission(){
-
-	}
 }
 ?>

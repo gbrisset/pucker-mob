@@ -230,6 +230,7 @@
           $('#contributor_bio-nf').froalaEditor({
           	  key: 'UcbaE2hlypyospbD3ali==',
           	  height: 140,
+          	  toolbarSticky: false,
           	  placeholderText: 'WRITE A SHORT BIO',
 		      toolbarButtons:   ['bold', 'italic', 'align', 'formatUL', 'insertHR', 'insertLink'],
           });

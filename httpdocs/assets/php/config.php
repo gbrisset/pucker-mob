@@ -4,8 +4,9 @@ $version = "";
 
 if($local)
 {
-	//	error_reporting(E_ALL);
-//ini_set('display_errors', '1');
+		//error_reporting(E_ALL);
+		//ini_set('display_errors', '1');
+
 
 	define("DB_SERVER", "localhost");
 	define("DB_USER", "root");
@@ -92,7 +93,11 @@ if($local)
 	require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
 
-	//require_once $config['assets_path'].'/class.User.php';
+	if($admin){
+		require_once dirname(__FILE__).'/class.User.php';
+		require_once dirname(__FILE__).'/class.Contributor.php';
+		require_once dirname(__FILE__).'/class.ContributorEarnings.php';
+	}
 
 	
 }else{

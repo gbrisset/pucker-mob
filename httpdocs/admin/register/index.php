@@ -91,12 +91,12 @@ $(document).ready(function() {
 							<div class="row">
 								<p class="">
 									<?php 
-										$url = $config['this_admin_url'].'account/user/'.$registrationStatus['username'];
+										$url = $config['this_admin_url'].'dashboard/';
 										//echo $url;
 										echo $registrationStatus['message']; 
 									?>
 								</p>
-								<script>setTimeout(function(){window.location = "<?php echo $url; ?>"}, 3000);</script>
+								<script>setTimeout(function(){window.location = "<?php echo $url; ?>"}, 1000);</script>
 
 							</div>
 						</div>

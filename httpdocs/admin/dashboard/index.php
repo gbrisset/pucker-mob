@@ -1,6 +1,10 @@
 <?php 
-	$admin = true; 
+	$admin = true;
 	require_once('../../assets/php/config.php');
+
+	$userInfo = $adminController->user->data;
+	$userObj = new User( $userInfo['user_email'] ); 
+	
 	$ManageDashboard = new ManageAdminDashboard( $config );
 	
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
@@ -59,6 +63,8 @@
 
 	$rate = $dashboard->get_current_rate( $month, $contributor_type );
 	if(isset($rate['rate'])) $rate = $rate['rate'];
+
+
 	$total = 0;
 	
 	$last_month = $current_month-1;
@@ -102,7 +108,7 @@
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
 			
-			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+			<input type="hidden" value="<?php echo $rate; ?>" id="current-user-rate" />
 
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
@@ -122,8 +128,6 @@
 				</div>
 			</div>
 
-		
-
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" style="padding: 0 15px !important;" >
 				<!-- HOT TOPICS --> 
@@ -137,8 +141,14 @@
 				<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
 					<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
 				</div>
-
 				
+				<!-- WELCOME MODAL -->
+				<?php
+					//if(	$userData['user_login_count'] <= 1  && !isset($_SESSION['show_welcome_modal']) ){
+						include_once($config['include_path_admin'].'welcome_modal.php'); 
+					//}
+				?>
+
 			</div>
 
 

@@ -9,16 +9,54 @@ class Contributor extends DatabaseObject{
 	public $contributor_id;
 	public $contributor_name;
 	public $contributor_email_address;
-	public $contributor;
+	public $contributor_seo_name;
+	public $contributor_location;
+	public $contributor_bio;
+	public $contributor_image;
+	public $contributor_blog_link;
+	public $contributor_twitter_handle;
+	public $contributor_facebook_link;
+	public $creation_date;
+	public $data;
 	
 	//	Object Vars
 	// 
 	protected static $db_fields = array('contributor_id', 'contributor_name', 'contributor_seo_name', 'contributor_email_address', 'contributor_location', 'contributor_image', 'contributor_blog_link', 'contributor_twitter_handle', 'contributor_facebook_link', 'creation_date');
 
 	public function __construct( $email = null){ 
-		$this->contributor = $this->getContributor($email);
+		$this->data = $this->getContributor($email);
 		$this->contributor_email_address = $email;
+		$this->contributor_name = $this->getContributorName();
+		$this->contributor_id= $this->getContributorId();
+		$this->contributor_seo_name = $this->getContributorSeoName();
 	}
+
+	//Get all contributors 
+	public static function all(){
+		
+		$contributors = static::find_by_sql("SELECT * FROM article_contributors");
+		
+		return  $contributors;
+	}
+
+	//Update
+	public function updateObj( $data ){
+
+		$update = static::update($data);
+		
+		return $update;
+
+	}
+
+	//Insert into notify_users table
+	public function saveObj( $data ){
+
+		$save = static::create($data);
+		
+		return $save;
+
+	}
+
 
 	public static function getContributor($email){
 		//	Set the params to be bound
@@ -29,16 +67,20 @@ class Contributor extends DatabaseObject{
 		return  array_shift($contributor);
 	}
 
+	public function getContributorSeoName(){
+		return $this->data->contributor_seo_name;
+	}
+
 	public function getContributorName(){
-		return $this->contributor->contributor_name;
+		return $this->data->contributor_name;
 	}
 
 	public function getContributorId(){
-		return $this->contributor->contributor_id;
+		return $this->data->contributor_id;
 	}
 
 	public function getContributorEmail(){
-		return $this->contributor->contributor_email_address;
+		return $this->data->contributor_email_address;
 	}
 
 	public function getContributorEarnings( Contributor $contributor, $limit = 99999){
@@ -48,6 +90,13 @@ class Contributor extends DatabaseObject{
 		if( !is_null( $contributor_earnings )) 	return $contributor_earnings->getEarnings( $limit );
 		else return false;
 
+	}
+
+	public function getContributorArticles(Contributor $contributor){
+
+		$article = new Article( $contributor );
+
+		
 	}
 
 }

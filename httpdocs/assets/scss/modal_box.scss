@@ -113,6 +113,7 @@
 	.close{ right: 1%; top: 1%; width: 35px; height:35px; font: 150% Oslo, arial;}
 }
 
+
 @media #{$mobile-only}{
 	.modalDialog > div img, 
 	.modalDialogLib > div img,
@@ -338,4 +339,241 @@
 	#register-form .g-recaptcha{ margin-top:1rem !important; margin-left:-4rem !important;}
 }
 
+/* Welcome Modal */
+.reveal-modal{ min-height: auto;}
+.welcome-modal{
+	padding: 3% 1% 1% 1%;
+	top:25px !important;
 
+	//INTRO MODAL
+	.intro-modal, .last-modal{
+		h2{
+		    font-size: 1.8rem;
+			text-align: center;
+			color: $dark-main-color;
+    		font-family: OswaldRegular;
+		}
+
+		div.intro-modal-wrapper{
+			padding: 1rem;
+			p{
+				font-size: 140%;
+			    font-family: OswaldLight;
+			    line-height: 1.5;
+			    text-align: center;
+			    margin-bottom: 2rem;
+			}
+		}
+	}
+
+	//ALL MODALS STYLE
+	.profile-modal, .payment-modal, .social-modal{
+		h2{ color: $dark-main-color; font-size: 1.3rem; font-family: OswaldRegular;}
+		p{ font-size: 1.2rem; font-family: OswaldLight;}
+		#edit-my-profile .header-style, #billing-page .header-style{ 
+			background: #efefef; padding: 10px; 
+			h2{
+				color: #000;
+			    text-transform: uppercase;
+			    font-family: OswaldLight;
+			    padding-top: 3px;
+			    line-height: 1;
+			    margin: 0;
+			}
+		}
+		.image-profile-box img{ width: 100%;}
+		.photo-instructions p{ font-size: 12px !important; font-family:Oslo !important; padding-top: 5px; margin:0;}
+	}
+
+	.social-modal #social-page{
+		h2{
+			font-size: 16px;
+			font-family: OswaldLight;
+		}
+		p{
+			font-size: 1rem;
+			font-family: OsloRegular;
+			line-height: 1.2;
+			margin: 0;
+		}
+		.main-social-box{
+			background: #eee;
+			padding: 10px;
+
+			.social-button{
+				label{ 
+					background: #4c66a4;
+			    	color: white;
+			    	a{ color: #fff !important; }
+			    }
+			}
+		}
+
+		.social-button{
+			label{ 
+				//background: #4c66a4;
+			    //color: white;
+			    border-radius: 3px;
+			    max-width: 7rem;
+			    font-size: 1.1rem !important;
+			    padding: 5px 5px 0px 8px;
+			    text-transform: Capitalize;
+
+			    i{
+			    	font-size: 1.3rem !important;
+			    	margin-bottom: 6px;
+			    }
+   			 }
+		}
+
+		.div-wrapper{
+			margin-top: 20px; 
+			div{
+				margin: 15px 0;
+				border-bottom: 1pz soid #ddd;
+			}
+		}
+
+		.social-img{ display:none;}
+
+		@media #{$large-up} { 
+			h2{ font-size: 1.5rem; }
+			.main-social-box{ padding: 20px; }
+			.social-button label{  font-size: 1.2rem !important; margin-bottom:5px;}
+			.social-button label i{ font-size: 1.5rem !important; }
+			.social-img{ display: table-cell;}
+		}
+
+
+	}
+
+
+	//FOOTER
+	ul.pagination{
+		margin: 0;
+		top:-5px;
+		li{     
+			
+		    width: 20px;
+		    position: relative; 
+		    list-style: none;
+		    color: #ddd;
+
+		    i{
+		    	font-size:  100%;
+		    }
+
+		    a{
+				padding: 0;
+			    border: none;
+			    top: 5px;
+			    color: #ddd !important; 
+			    background: none !important;
+			}
+		}
+
+		li.current a{
+			color: $dark-main-color !important;
+
+		}
+
+		li.next{
+			a{
+				padding: 0;
+			    border: none;
+			    top: 5px;
+			    color: #ddd !important; 
+			}
+			
+		}
+	}
+
+	.welcome-modal-footer{
+		p{ margin:0;}
+	}
+
+	.paypal-info{
+		label{ font-size: 12px !important; margin-top: -1px; }
+		#w9-live{ margin-right: 1rem; }
+		@media #{$large-up} { 
+			label{
+				font-size: 16px !important;
+			}
+		}
+	}
+
+	.billing-cont{
+		.image-wrapper{
+		 	padding-left: 1rem;
+		    display: inline-flex;
+		    padding-top: 0;
+		}
+		.b-upload {
+		    background: none;
+		    margin: 5px;
+		    color: green;
+		    padding: 0;
+		    font-family: OswaldRegular;
+		    font-size: 1.2rem;
+		    text-transform: uppercase;
+		    i{ font-size: 30px;}
+		}
+		.instructions ul, .billing-cont .billing-form-box .instructions label {
+		    font-size: 0.8rem;
+		    color: #777;
+		    margin-left: 2rem;
+		    margin-bottom: 0;
+		}
+
+		label {
+			a{
+			    background: none;
+			    margin: 0;
+			    color: green;
+			    font-family: OswaldRegular;
+			    padding: 0;
+			    text-transform: uppercase;
+
+			    i{ font-size: 25px;}
+			}
+		}
+
+		.billing-form-box{ display: none !important; }
+		@media #{$large-up} { 
+			.billing-form-box{ display: inline-block !important; }
+			.b-upload {
+			    color: green;
+			    padding: 0;
+			    font-size: 1.5rem;
+			    text-transform: uppercase;
+			    i{ font-size: 30px;}
+			}
+		}
+	}
+
+
+	.next-modal-step, .next-modal-step label{ 
+		color: green;
+	    font-family: OswaldLight;
+	    font-size: 100%;
+	    line-height: 1;
+	}
+
+	.close-reveal-modal, .close-reveal-modal label {
+		font-size: 100%;
+	    line-height: 1;
+	    position: relative;
+	    color: #aaa;
+	    top:0;
+	    font-weight: normal;
+	    font-family: OswaldLight;
+	    cursor: pointer;
+	    width: 100%;
+	}
+
+}
+@media #{$large-up} { 
+	.welcome-modal{
+		top:80px !important;
+	}
+}

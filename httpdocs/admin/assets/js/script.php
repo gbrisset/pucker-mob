@@ -7,7 +7,7 @@ $(document).ready(function (){
 
 let body = $('body');
 let base_url = 'http://www.puckermob.com';
-let admin_url = 'http://localhost:8888/projects/pucker-mob//httpdocs/admin/'; //'http://www.puckermob.com/admin/';
+let admin_url = 'http://www.puckermob.com/admin/';
 let img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
 
 let page = document.body.id;

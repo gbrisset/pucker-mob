@@ -1,6 +1,8 @@
 <a href="#" data-reveal-id="intro-modal" class="reveal-link hide"  data-animation="fadeAndPop" data-animationspeed="300" data-closeonbackgroundclick="true" data-dismissmodalclass="close-reveal-modal"
 >Modal in a modal</a>
-
+<?php
+	$_SESSION['show_welcome_modal'] = '1';
+?>
 <!-- Reveal Modals begin -->
 <!-- Reveal Modals begin -->
 <div id="intro-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="intro-modal-title" aria-hidden="true" role="dialog">
@@ -22,7 +24,6 @@
 <div id="last-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="last-modal-title" aria-hidden="true" role="dialog">
   <?php require('modals/welcome-modal-last-step.php'); ?>
 </div>
-
   
 
 <script>

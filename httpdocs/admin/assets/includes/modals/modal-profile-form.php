@@ -34,10 +34,10 @@
 		</div>
 
 		<!-- IMAGE SECTION -->
-		<div class="small-12 columns margin-top no-padding">
+		<div class="small-12 columns half-margin-top no-padding">
 			<div class="small-12 image-profile-box radius">
 				<div class="small-12 large-3 xlarge-2 columns align-center no-padding">
-					<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" />
+					<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" style="width: 95%;"/>
 				</div>
 				<div class="small-12 large-9 xlarge-10 columns no-padding">
 					<div class="div-file-upload">
@@ -73,20 +73,20 @@
 		</div>
 		<!-- PROFILE SETTINGS -->
 		<form class="ajax-submit-form clear" id="account-settings-form" name="account-settings-form" action="<?php echo $config['this_admin_url']; ?>account/user/	<?php echo $uri[2]; ?>" method="POST">
-				<div class="small-12 columns margin-bottom margin-top no-padding">
+				<div class="small-12 columns half-margin-bottom half-margin-top no-padding">
 
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="c_i" name="c_i" value="<?php echo $contributorInfo->contributor_id; ?>" />
 					<input type="hidden" name="contributor_email_address-e" id="contributor_email_address-e" value="<?php if(isset( $contributorInfo->contributor_email_address)) echo  $contributorInfo->contributor_email_address; ?>" <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
 
 					<div class="columns small-12 large-6">
-						<div class="columns small-12 margin-top no-padding">
+						<div class="columns small-12 half-margin-top no-padding">
 							<input type="text" name="user_first_name-s" id="user_first_name-s" placeholder="Your Name" value="<?php if(isset($contributorInfo->contributor_name)) echo $contributorInfo->contributor_name; ?>" required  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_name') echo 'autofocus'; ?> />
 						</div>
-						<div class="columns small-12 margin-top no-padding">
+						<div class="columns small-12 half-margin-top no-padding">
 							<input type="email" name="user_email-e" id="user_email-e" placeholder="YOUR E-MAIL ADDRESS" value="<?php if(isset($contributorInfo->contributor_email_address)) echo $contributorInfo->contributor_email_address; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
 						</div>
-						<div class="columns small-12 margin-top no-padding">
+						<div class="columns small-12 half-margin-top no-padding">
 							<input type="text" name="contributor_location-s" id="contributor_location-s" placeholder="YOUR LOCATION" value="<?php if(isset($contributorInfo->contributor_location)) echo $contributorInfo->contributor_location; ?>"  <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_location') echo 'autofocus'; ?> />
 						</div>
 					</div>
@@ -105,8 +105,8 @@
 							</p>
 						</div>
 						<div class="columns mobile-12 small-12 large-6 align-right no-padding">
-							<button class="columns small-6 radius wide-button elm"><a href="http://www.puckermob.com/contributors/<?php echo $contributorInfo->contributor_seo_name; ?>" target="_blank">PROFILE</a></button>
-							<button class="columns small-6  radius wide-button" style="margin-right: -5px;" type="submit" id="submit" name="submit">SAVE</button>
+							<button class="columns small-6 radius wide-button elm half-margin-bottom"><a href="http://www.puckermob.com/contributors/<?php echo $contributorInfo->contributor_seo_name; ?>" target="_blank">PROFILE</a></button>
+							<button class="columns small-6  radius wide-button  half-margin-bottom" style="margin-right: -5px;" type="submit" id="submit" name="submit">SAVE</button>
 						</div>
 				</div>
 

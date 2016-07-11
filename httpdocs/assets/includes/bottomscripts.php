@@ -81,45 +81,14 @@
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488 &&  $article_id != 17286) { ?>
         
-          <!--<script type="text/javascript" src="http://video.bnmla.com/video?vzid=5959&vast=0&jstype=7&vWidth=501&vHeight=282&closeable=false&automute=false&skipTime=5"></script>     
-           <div id="vm_inline"></div>
-          <script>
-              window._videomosh = window._videomosh || [];
-              !function (e, f, u) {
-                  e.async = 1;
-                  e.src = u;
-                  f.parentNode.insertBefore(e, f);
-              }(document.createElement('script'),
-                      document.getElementsByTagName('script')[0],
-                      'http://player.videomosh.com/players/loader/loader_final4.js');
-              _videomosh.push({
-                  publisher_key: "sequelmedia",
-                  mode: "slider",
-                  container: "vm_inline",
-                  incontent_mobile_id: "23002",
-                  incontent_desktop_id: "42300",
-                  target_type: "mix"
-                          });
-          </script>-->
+          <!-- Begin Kiosked - puckermob.com -->
+          <script type="text/javascript" async="async" src="//scripts.kiosked.com/loader/kiosked-loader.js?pub=11623&site=12230"></script>
+          <!-- End Kiosked - puckermob.com -->
 
-          <?php if($article_id == 12964 ){ ?>
-          <!-- AIRPUSH MOBILE -->
-            <script type="text/javascript">
-      		    this.airpushConfig = {
-      		        "siteid": 291995,
-      		        "smartwall": 1
-      		    };
-      		  </script>
-  		      <script type="text/javascript" src="//ab.airpush.com/apportal/v2/cdn/airpush.js"></script>
-	       	<?php } ?>
-
-          
-			<!-- GUM GUM 
-        	<script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>-->
         
-      <?php if(isset($article_id) && $article_id != 16562  &&  $article_id !=  17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
-        && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
-        && $article_id != 15488 &&  $article_id  != 17286) { ?>
+      <?php //if(isset($article_id) && $article_id != 16562  &&  $article_id !=  17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
+       // && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
+       // && $article_id != 15488 &&  $article_id  != 17286) { ?>
             <!-- kixer adhesion -->
             <!-- Start Pucker Mob - Adhesion - iframe buster code 
             <div id='__kx_ad_4915'></div>
@@ -158,7 +127,7 @@
             })();
             </script>-->
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
-            <?php  } ?>
+            <?php  //} ?>
       <?php  } ?>
     <?php  } ?>
       <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286){ ?>

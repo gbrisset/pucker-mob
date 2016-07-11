@@ -1969,6 +1969,76 @@ form#user-account-delete-form {
 	.status-level{ display: inline; }
 }
 
+
+.incentive-plan-box{
+	.main-title{
+		background: #ddd;
+		padding:8px;
+		
+		h3{
+			margin: 0;
+		    font-family: OswaldRegular;
+		    line-height: 1.6;
+		    color: #555;
+		    top: 2px;
+		    text-align: center;
+		    position: relative;
+		}
+	}
+
+	.inner-box{
+		background: #f5f5f5;
+
+		h4{
+			font-family: OswaldRegular;
+		    color: green;
+		    font-size: 18px;
+		    margin-top: 15px;
+		    margin-bottom: 15px;
+		}
+
+		ol{
+			li{
+				list-style: none;
+				p{
+					span{ margin-right: 10px; }
+					margin-bottom: 6px;
+				    color: #777;
+				    font-family: OswaldLight;
+				}
+			}
+		}
+	}
+
+	.inner-box.border-right{
+		border-right: none;
+		margin-bottom:5px;
+	}
+
+	.incentive-plan-msg{
+		margin-top: 15%;
+		p{
+			font-size:16px;
+			color: #777;
+			font-family: OswaldRegular;
+		}
+	}
+
+	.merge-box{
+		display:inline-block;
+	}
+	@media #{$large-up} {
+		.merge-box{
+			display:inline-flex;
+		}
+		.inner-box.border-right{
+			border-right: 5px solid #fff;
+			margin-bottom:0;
+		}
+	}
+}
+
+
 #connect-with-us-fb{
 	h3{
 		font-size: 1.5rem !important;
@@ -2073,5 +2143,30 @@ form#user-account-delete-form {
 	    text-transform: uppercase;
 	    font-family: OswaldRegular;
 	    text-align: center;
+	}
+}
+
+#questions{
+	h3{
+		font-family: OswaldRegular;
+	}
+	p{
+		font-size: 14px;
+	    color: #888;
+	    line-height: 1.2;
+	    font-family: Oslo;
+	    margin-bottom: 12px;
+	}
+	a.facebook-link{
+	    padding: 5px 8px 1px 3px;
+	    background: $facebook-color;
+	    color: #fff;
+	    font-family: Oslo;
+
+	    i{
+		    font-size: 18px;
+	    	margin-right: 1px;
+	    }
+
 	}
 }

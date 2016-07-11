@@ -94,9 +94,9 @@ if($local)
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
 
 	if($admin){
-		require_once dirname(__FILE__).'/class.User.php';
-		require_once dirname(__FILE__).'/class.Contributor.php';
-		require_once dirname(__FILE__).'/class.ContributorEarnings.php';
+		require_once $config['assets_path'].'/class.User.php';
+		require_once $config['assets_path'].'/class.Contributor.php';
+		require_once $config['assets_path'].'/class.ContributorEarnings.php';
 	}
 
 	

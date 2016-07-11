@@ -129,6 +129,31 @@
 	  });
 	</script>
 	<!-- END Undertone 970x250 VIRGINIA CAMP-->
+	<!-- UNDERTONE TENNESSE CAMP -->
+	<script type='text/javascript'>
+	  var googletag = googletag || {};
+	  googletag.cmd = googletag.cmd || [];
+	  (function() {
+	    var gads = document.createElement('script');
+	    gads.async = true;
+	    gads.type = 'text/javascript';
+	    var useSSL = 'https:' == document.location.protocol;
+	    gads.src = (useSSL ? 'https:' : 'http:') +
+	      '//www.googletagservices.com/tag/js/gpt.js';
+	    var node = document.getElementsByTagName('script')[0];
+	    node.parentNode.insertBefore(gads, node);
+	  })();
+	</script>
+
+	<script type='text/javascript'>
+	  googletag.cmd.push(function() {
+	    googletag.defineSlot('/73970039/UT_SS_Knox', [1, 1], 'div-gpt-ad-1467926983040-0').addService(googletag.pubads());
+	    googletag.pubads().enableSingleRequest();
+	    googletag.enableServices();
+	  });
+	</script>
+	<!-- UNDERTONE TENNESSE CAMP END -->
+
 
 <?php 
 	$sponsored_aricle = true; 
@@ -186,7 +211,7 @@
 			</script>
 		<?php } ?>
 
-	<?php if( isset( $articleInfo['article_id'] ) && (   $articleInfo['article_id']  != 16562 &&  $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488 &&  $articleInfo['article_id']  != 17286) ){ ?>
+	<?php if( isset( $articleInfo['article_id'] ) && (   $articleInfo['article_id']  != 16562 &&   $articleInfo['article_id'] != 17425 && $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488 &&  $articleInfo['article_id']  != 17286) ){ ?>
 
         <!-- Start Pucker Mob - Interstitial 
 		<div id='__kx_ad_5270'></div>

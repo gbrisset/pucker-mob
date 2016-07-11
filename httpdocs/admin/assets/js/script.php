@@ -5,12 +5,13 @@
 
 $(document).ready(function (){
 
-let body = $('body');
-let base_url = 'http://www.puckermob.com';
-let admin_url = 'http://www.puckermob.com/admin/';
-let img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
+var body = $('body');
+console.log(body );
+var base_url = 'http://www.puckermob.com';
+var admin_url = 'http://www.puckermob.com/admin/';
+var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
 
-let page = document.body.id;
+var page = document.body.id;
 
 //Menu Toggler Functionality Mobile
 $('#menu-icon').click(function(e){
@@ -26,7 +27,7 @@ $('#menu-icon').click(function(e){
 //ADD Reports export
 $('#export').on('click', function(e){
 	e.preventDefault();
-	let ahref ="http://www.puckermob.com/admin/reports/getsocialcsvreport.php?month="+$('#month-option').val()+"&year="+$('#year-option').val()+"&contributor="+$('#contributor-option').val();
+	var ahref ="http://www.puckermob.com/admin/reports/getsocialcsvreport.php?month="+$('#month-option').val()+"&year="+$('#year-option').val()+"&contributor="+$('#contributor-option').val();
 	location.href = ahref;
 });
 
@@ -561,12 +562,12 @@ if($('#preview')){
 //ADS
 if(document.body.id == 'editarticle'){
 	
-	let body_art = $('#article_body-nf').text();
-	let li_parent = $(body_art).find('ol');
-	let p_length = $(body_art).children('p').length;
-	let li_length = $(li_parent).find('li').length;
-	let isListArticle = false;
-	let article_id = $('#a_i').val();
+	var body_art = $('#article_body-nf').text();
+	var li_parent = $(body_art).find('ol');
+	var p_length = $(body_art).children('p').length;
+	var li_length = $(li_parent).find('li').length;
+	var isListArticle = false;
+	var article_id = $('#a_i').val();
 
 	if($(li_parent) && $(li_parent).length == 0 ) li_parent = $(body_art).find('ul');
 	if(li_length > p_length){
@@ -743,7 +744,7 @@ if( $('#newarticle').length > 0 ){
 	$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
 }
 
-$('.auto-edit').autoEdit();
+//$('.auto-edit').autoEdit();
 
 }); 
  

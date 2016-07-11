@@ -1,22 +1,30 @@
 <?php 
 	//MOST POPULAR
-	//$mostReadArticlesList = $mpArticle->getMostRecentArticleListMobile();
 	$article_id = isset($articleInfoObj['article_id']) ? $articleInfoObj['article_id'] : false;
-
 	$featured_articles = $mpArticle->getFeaturedArticles();
-	//var_dump(count($featured_articles), $featured_articles); 
 
 ?>
 <style>
 	nav.menu{ background: #78ad6c; }
 	nav.slide-menu-left:after{background: #78ad6c;}
-	iframe{ display:inline; }
+	iframe{ display:inline-block; z-index:1000000000 !important;}
+	/*div#mobile-instream-branovate-ad.row.ad-unit.hide-for-print.padding-top.no-padding{ 
+		position:relative;
+		z-index:777777777;
+		height:260px; 
+	}
+	#tap-section ins.adsbygoogle{
+		position:relative;
+		top:-250px;
+		height: 250px;
+	}*/
+
 </style>
 <div class="small-12" id="slide-menu-left-div">
 	<nav class="menu slide-menu-left small-12" id="tap-section" >
 		<h2 class="uppercase featured-title">Featured Articles</h2>
 		<div class="content-wrapper columns no-padding small-12">
-		<?php //var_dump($featured_articles);
+		<?php 
 				if($featured_articles){
 					$index = 0;
 					foreach($featured_articles as $farticle){
@@ -37,11 +45,10 @@
 						<div id="article-summary" class="small-12 column ">
 							
 							<!-- TITLE -->
-							<h1><?php echo $article_title; ?></h1>
+							<h1 style="font-size: 1.55rem;"><?php echo $article_title; ?></h1>
 							
-							<div class="small-12">
+							<div class="small-12 padding-bottom">
 								<?php if(!empty($article_desc) ){?><p class="description" style="margin-bottom:0;"><?php echo $article_desc; ?></p><?php }?>
-								<p class="author">by <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo $name; ?></a></p>
 							</div>
 
 							<!-- Article Image -->
@@ -56,16 +63,17 @@
 							</div>
 							
 						</div>
-						<div class="columns ad-unit hide-for-print padding-top no-padding" style="margin-bottom: 10px !important;">
+							<div id = "mobile-instream-branovate-ad" class="row ad-unit hide-for-print padding-top no-padding" style="margin-bottom: 10px !important; z-index:1000000000 !important	">
+								<!--<div style="height: 250px;background:transparent; z-index:6666666666666; position:relative;"></div>-->
 								<?php if($index == 1){?>
-								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-								<script type="text/javascript" language="javascript">
-								//<![CDATA[
-								aax_getad_mpb({
-								  "slot_uuid":"07cc8194-4eca-4036-8ef3-43e0a582fdbd"
-								});
-								//]]>
-								</script>
+									<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+									<script type="text/javascript" language="javascript">
+									//<![CDATA[
+									aax_getad_mpb({
+									  "slot_uuid":"07cc8194-4eca-4036-8ef3-43e0a582fdbd"
+									});
+									//]]>
+									</script>
 								
 								<?php } ?>
 
@@ -83,13 +91,24 @@
 								<?php if($index == 3){?>
 								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 								<script type="text/javascript" language="javascript">
-								//<![CDATA[
-								aax_getad_mpb({
-								  "slot_uuid":"2bef2550-d479-4b9b-9aea-31455c8df746"
-								});
-								//]]>
+									//<![CDATA[
+									aax_getad_mpb({
+									  "slot_uuid":"2bef2550-d479-4b9b-9aea-31455c8df746"
+									});
+									//]]>
 								</script>
 								<?php } ?>
+
+								<?php if($index == 4){?>
+								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+								<script type="text/javascript" language="javascript">
+								  //<![CDATA[
+								    aax_getad_mpb({
+								      "slot_uuid":"03f85f04-b643-46d8-8e87-66735eac98f4"
+								    });
+								  //]]>
+								</script>
+								<?php }?>
 							</div>
 					</div>
 					</div>

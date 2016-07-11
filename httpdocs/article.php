@@ -89,11 +89,18 @@ if(!is_null($categoryInfo)){
 				<?php include_once($config['include_path'].'header_ad.php');?>
 
 			<!-- UNDERTONE -->
-		<?php //if( isset($article_id) && ( $article_id == 15104 || $article_id == 14613 || $article_id == 14873) ) { ?>
+	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 &&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 && $articleInfoObj['article_id'] != 17286  ){?>
 			<!--/73970039/UT_SS_FP -->
 			<div id='div-gpt-ad-1461622964696-3'>
 				<script type='text/javascript'>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
+				</script>
+			</div>
+
+				<!-- /73970039/UT_SS_Knox -->
+			<div id='div-gpt-ad-1467926983040-0' style='height:1px; width:1px;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467926983040-0'); });
 				</script>
 			</div>
 			
@@ -104,7 +111,7 @@ if(!is_null($categoryInfo)){
 				</script>
 			</div>-->
 
-		<?php //} ?>
+		<?php } ?>
 		
 		<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-bottom: 5px; margin-top: 5px;  }</style>
 
@@ -184,7 +191,7 @@ if(!is_null($categoryInfo)){
 	<?php } ?>
 
 		<!-- UNDERTONE -->
-		<?php //if( isset($articleInfoObj) && ( $articleInfoObj['article_id'] == 15104 || $articleInfoObj['article_id'] == 14613 || $articleInfoObj['article_id'] == 14873) ) { ?>
+	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 &&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 && $articleInfoObj['article_id'] != 17286  ){?>
 			<!-- /73970039/UT_SS_FP -->
 			<div id='div-gpt-ad-1461622964696-3'>
 				<script type='text/javascript'>
@@ -192,7 +199,7 @@ if(!is_null($categoryInfo)){
 				</script>
 			</div>
 
-		<?php //} ?>
+		<?php } ?>
 
 		<!--<div id="ros_adoop"></div>-->
 		<?php include_once($config['include_path'].'header.php');?>
@@ -236,12 +243,7 @@ if(!is_null($categoryInfo)){
 			
 			<?php }
 		}?>
-		<?php if( $article_id != 16562 &&  $article_id != 17286 && $article_id != 14479 && $article_id != 14576  && $article_id != 15109   && $article_id != 15271 && $article_id != 15284  && $article_id != 15488 ){?>
-		<!-- NewsMax 
-		<div class="columns small-12 margin-top">
-			<div id="NmWg4152" ></div>
-			<script type="text/javascript" src ='https://cdn.nmcdn.us/js/connectV3.js'></script><script type="text/javascript">  NM.init({WidgetID: 4152})</script>
-		</div>-->
+		<?php if( $article_id != 16562 &&   $article_id != 17425 && $article_id != 17286 && $article_id != 14479 && $article_id != 14576  && $article_id != 15109   && $article_id != 15271 && $article_id != 15284  && $article_id != 15488 ){?>
 		<!-- ADBLADE-->
 		<div class="columns small-12 margin-top">
 			<ins class="adbladeads" data-cid="21331-3493314697" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins>

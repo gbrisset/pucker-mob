@@ -112,7 +112,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 				
 					<?php //LELO
-						if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 || $article_id == 17286 ){?>
+						if(  $article_id == 16562 || $article_id == 17425 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109  || $article_id == 15271 || $article_id == 17286 ){?>
 						<!--<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
 
 							<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
@@ -196,7 +196,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 3.5rem;"></div>
 			
 			<!-- LELO -->
-			<?php if(  $article_id == 16562 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 || $article_id == 17286  ){?>
+			<?php if(  $article_id == 16562 ||  $article_id == 17425 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 || $article_id == 17286  ){?>
 				<div id="mobile-instream-branovate-ad"  class="margin-top padding-top small-12 row no-padding">
 					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
 						<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
@@ -303,7 +303,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 			
 			<!-- LELO -->
-			<?php if(  $article_id != 16562  &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
+			<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
 			
 			<!-- BRANOVATE -->
@@ -326,7 +326,14 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					<script type="text/javascript" src="http://babaroll.com/js/gcapuckermobmw"></script>-->
 
 					<!-- STRIKE -->
-					<div id="adunit-300x250-3159"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3159/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>
+						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+						<script type="text/javascript" language="javascript">
+						  //<![CDATA[
+						    aax_getad_mpb({
+						      "slot_uuid":"2e18cb00-0578-49b4-8214-1f204e8327a2"
+						    });
+						  //]]>
+						</script>
 				</div>
 			</div>
 
@@ -342,6 +349,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		</div>
 	
 	</section>
+	<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
+
 	<!-- UNDERTONE -->
 		<!-- /73970039/UT_SA -->
 		<div id='div-gpt-ad-1461622964696-5' style='height:50px; width:320px;'>
@@ -356,6 +365,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-2'); });
 		</script>
 		</div>
+		<?php } ?>
 
 
 </article>
@@ -376,7 +386,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 		<!-- Article Image -->
 		<div class="row">
 			<div id="article-image" class="small-12 columns half-padding-right-on-lg padding-top">
-				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+				<?php if( $article_id == 5191 ){ ?>
+					<script src="http://player.videomosh.com/player-v4/sequelmedia/player/video/79822/Top%205%20Facts%20about%20Kissing.js"></script>
+				<?php }else{ ?>
+					<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+				<?php } ?>
 			</div>
 		</div>
 			
@@ -406,7 +420,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			
 				<!-- LELO -->
-				<?php if(  $article_id == 16562  || $article_id == 14479 || $article_id == 14576 ||  $article_id == 15109 || $article_id == 15271 || $article_id  == 17286  ){?>
+				<?php if(  $article_id == 16562  ||  $article_id == 17425 || $article_id == 14479 || $article_id == 14576 ||  $article_id == 15109 || $article_id == 15271 || $article_id  == 17286  ){?>
 				<div class="columns inarticle-ad ad-unit hide-for-print padding-top"  style="display:inline">
 					<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
 						<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/lelo_desk.png" />
@@ -423,7 +437,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 					</script>
 					</div>
 				<?php }else{?>
-					<?php if(  $article_id != 16562 && $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){?>
+					<?php if(  $article_id != 16562 &&  $article_id != 17425 && $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){?>
 					<!-- SHARETH -->
 					<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0;">
 						<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
@@ -463,7 +477,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			</div>
 
 			<hr>
-			<?php if(!$sponsored_aricle &&  $article_id != 16562 && $article_id != 14613 && $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){ ?>
+			<?php if(!$sponsored_aricle &&  $article_id != 16562 &&   $article_id != 17425  && $article_id != 14613 && $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){ ?>
 			<!-- TABOOLA -->
 			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
 				<div id="taboola-below-article-thumbnails"></div>

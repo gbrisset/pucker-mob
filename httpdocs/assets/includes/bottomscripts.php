@@ -30,7 +30,7 @@
     <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
      	
       <!-- LELO -->
-      <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 &&  $article_id  != 17286){?>
+      <?php if(isset($article_id) && $article_id != 16562 &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 &&  $article_id  != 17286){?>
         <!-- GUM GUM -->
         <script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>
       <?php } ?>
@@ -77,7 +77,7 @@
       
       if(isset($articleInfoObj) && $articleInfoObj){ ?>
         <!-- LELO -->
-        <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
+        <?php if(isset($article_id) && $article_id != 16562  &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488 &&  $article_id != 17286) { ?>
         
@@ -114,10 +114,10 @@
 	       	<?php } ?>
 
           
-			<!-- GUM GUM -->
-        	<script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>
+			<!-- GUM GUM 
+        	<script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>-->
         
-      <?php if(isset($article_id) && $article_id != 16562  && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
+      <?php if(isset($article_id) && $article_id != 16562  &&  $article_id !=  17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488 &&  $article_id  != 17286) { ?>
             <!-- kixer adhesion -->
@@ -161,7 +161,7 @@
             <?php  } ?>
       <?php  } ?>
     <?php  } ?>
-      <?php if( $article_id != 16562  && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286){ ?>
+      <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286){ ?>
           <script>
             (function() 
             { 

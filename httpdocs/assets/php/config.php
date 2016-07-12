@@ -207,9 +207,6 @@ $detect = new Mobile_Detect;
 $mpHelpers->geotargeting();
 
 
-
-
-
 //recaptcha public key
 define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");
 define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");

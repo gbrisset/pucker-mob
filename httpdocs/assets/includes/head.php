@@ -163,15 +163,15 @@
 
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
-	<?php if(isset($article_id) && $article_id == 6144 ){?>
+	<?php //if(isset($article_id) && $article_id == 6144 ){?>
 		<!-- CODEFUEL SEARCH -->
 		<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
-	<?php } ?>
+	<?php //} ?>
 <?php }else{ ?>
-		<?php if(isset($article_id) && $article_id == 6144 ){?>
+		<?php //if(isset($article_id) && $article_id == 6144 ){?>
 			<!-- CODEFUEL SEARCH -->
 			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
-		<?php } ?>	
+		<?php //} ?>	
 
 		<?php if(isset($article_id) && $article_id == 15078 ){?>
 			<!-- ICELAND AIRLINE -->

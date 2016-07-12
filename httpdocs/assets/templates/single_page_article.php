@@ -45,13 +45,13 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 <style>
 	div#inarticle12-ad{ display:inline; }
 		#article-caption p, #article-caption li, #article-content p, #article-content li{font-size: 1rem !important;}
-
 </style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	<input type="hidden" value="<?php echo $second_image; ?>" id="second-mob-img" />
 	<input type="hidden" value="<?php echo $read_more_pct; ?>" id="read_more_pct" />
+	<input type="hidden" value="<?php echo $detect->is('iOS'); ?>" id="IOS" />
 	
 	<section id="article-summary" class="small-12 column">
 		
@@ -230,32 +230,16 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php } ?>
 
 				<?php include_once($config['include_path'].'header_social.php'); ?> 
-
-				<!-- BRANOVATE -->
-				<div id="mobile-instream-branovate-ad">
-					<div id="get-content" style="text-align:center; display: inline-block;">
-						<?php if( $detect->is('iOS') ){ ?>
-							<div id="branovate-ad" class="columns small-12 margin-top margin-bottom IOS" >
-								<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
-	 						</div>
-						<?php }else{ ?>
-						 	<div id="branovate-ad" class="columns small-12 margin-top margin-bottom" >
-								<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>						
-							</div>
-						<?php }?>
-					</div>
-				</div>
-
 			</div>
 
 			<!-- READ MORE  -->
 			<div class=" read-more  small-12 columns margin-bottom" style="background: white; border: 3px solid green; padding: 5px;">
 				<div class="button" style="border-top-width: 0px;  width:100%;">
-					<label id="read-more-img" style="    color: green; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
+					<label id="read-more-img" style=" color: green; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
 				</div>
 			</div> 
 			
-			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 3.5rem;"></div>
+			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 0.5rem;"></div>
 			
 			<!-- LELO -->
 			<?php if(  $article_id == 16562 ||  $article_id == 17425 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 || $article_id == 17286  ){?>
@@ -306,27 +290,50 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<!-- LELO -->
 			<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
-			
-			<!-- BRANOVATE -->
+			<!-- ANSWERS -->
 			<div id="mobile-instream-branovate-ad">
 				<div id="get-content" style="text-align:center; display: inline-block;">
-					<?php if( $detect->is('iOS') ){ ?>
-						<div id="branovate-ad" class="columns small-12 margin-top margin-bottom IOS" >
-							<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
- 						</div>
-					<?php }else{ ?>
-					 	<div id="branovate-ad" class="columns small-12 margin-top margin-bottom" >
-							<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>						
-						</div>
-					<?php }?>
+				<div id="vm_inline"></div>
+				<script type='text/javascript'>
+					window._videomosh = window._videomosh || []; 
+					!function (e, f, u) { 
+						e.async = 1; 
+						e.src = u; 
+						f.parentNode.insertBefore(e, f); 
+					}(document.createElement('script'), 
+						document.getElementsByTagName('script')[0], 
+						'http://player.videomosh.com/players/loader/loader_final4.js'); 
+					_videomosh.push({  
+							publisher_key: "sequelmedia",  
+							mode: "incontent",  
+							container: "vm_inline", 
+							incontent_mobile_id: "9834", 
+							incontent_desktop_id: "42296",  
+							target_type: "mix", 
+							backfill:"<script src='//ib.3lift.com/ttj?inv_code=puckermob_article_sub'></scr\" + \"ipt>"
+						}); 
+				</script>
 				</div>
 			</div>
-			<div id="mobile-instream-branovate-ad">
-				<div id="get-content" style="text-align:center; display: inline-block;">
-					<!--<script type="text/javascript">var __refURL = "%%REFERRER_URL_UNESC%%";</script>
-					<script type="text/javascript" src="http://babaroll.com/js/gcapuckermobmw"></script>-->
 
-					<!-- STRIKE -->
+			<!-- BRANOVATE -->
+			<!--<div id="mobile-instream-branovate-ad">
+				<div id="get-content" style="text-align:center; display: inline-block;">-->
+					<?php //if( $detect->is('iOS') ){ ?>
+						<!--<div id="branovate-ad" class="columns small-12 margin-top margin-bottom IOS" >
+							<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
+ 						</div>-->
+					<?php //}else{ ?>
+					 	<!--<div id="branovate-ad" class="columns small-12 margin-top margin-bottom" >
+							<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>						
+						</div>-->
+					<?php //}?>
+				<!--</div>
+			</div>-->
+
+			<!-- AMAZON -->
+			<div id="mobile-instream-branovate-ad" style="text-align: center;">
+				<div id="get-content" style="text-align:center; display: inline-block;">
 						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 						<script type="text/javascript" language="javascript">
 						  //<![CDATA[

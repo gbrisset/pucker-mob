@@ -3,7 +3,7 @@
 	$author_list = $ManageDashboard->getTopShareWritesRank( $prev_month, 15);
 
 ?>
-<div class="small-12 xxlarge-7 columns incentive-plan-box no-padding margin-bottom margin-top">
+<div class="small-12 xxlarge-7 columns incentive-plan-box no-padding-left margin-bottom margin-top">
 	<div class="small-12 columns main-title radius">
 		<h3 class="small-12 uppercase">Congrats To the June 2016 Incentive plan winners</h3>
 	</div>

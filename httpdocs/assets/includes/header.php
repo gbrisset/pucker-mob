@@ -242,12 +242,12 @@
             
             <ul class="info-list">
                <h1 style="width:50%;">INFO</h1>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px;" href="http://www.sequelmediainternational.com/">Publications</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 73px;" href="http://www.puckermob.com/privacy/">Privacy</a></li>
-                <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 30px;" href="http://www.puckermob.com/policy/">Terms Of Service</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px;" href="http://www.puckermob.com/policy/">Legal</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px;" href="http://www.sequelmediainternational.com/">Advertise</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 67px;" href="http://www.sequelmediainternational.com/">Contact</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px; position:relative !important;" href="http://www.sequelmediainternational.com/">Publications</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 73px; position:relative !important;" href="http://www.puckermob.com/privacy/">Privacy</a></li>
+                <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 30px; position:relative !important;" href="http://www.puckermob.com/policy/">Terms Of Service</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px; position:relative !important;" href="http://www.puckermob.com/policy/">Legal</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px; position:relative !important;" href="http://www.sequelmediainternational.com/">Advertise</a></li>
+               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 67px; position:relative !important;" href="http://www.sequelmediainternational.com/">Contact</a></li>
             </ul>
             </center>
             <ul class="social-links">

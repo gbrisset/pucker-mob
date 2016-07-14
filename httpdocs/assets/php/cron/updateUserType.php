@@ -7,7 +7,6 @@
 
 	//Get all blogger Basic and Pro
 	$user_list = $userObj->all("3, 8");
-
 	foreach($user_list as $user){
 
 		$user_id = $user->user_id;
@@ -34,33 +33,50 @@
 			//Upgrade to PRO BLOGGER [8]
 			if( $prev_pageviews >= $min_pv && $current_pageviews >=  $min_pv ){
 				//UPGRADE
+
 				$data = [ "user_id" => $user_id, "user_type" => 8 ];
-				$not  = [ "user_id" => $user_id, "notification_id" => 3, "status" => 1 ];
+				$not  = [ "user_id" => $user_id, "message" => "Upgrade to PRO BLOGGER", "type" => 2 , "date" => date( 'Y-m-d H:s:i', strtotime('now'))];
 
 				//Update User Type value
 				$user->updateObj( $data );
 				
 				//Add a  Notification for this user
-				$notification_obj->saveObj( $not );
-
+				$already_notified = $notification_obj->getByType(2, $user_id);
+				if( count($already_notified) > 0 ){
+					$not['notification_id'] = $already_notified[0]->notification_id;
+					$notification_obj->updateObj( $not );
+				}else{
+					$notification_obj->saveObj( $not );
+				}
+				
 			}elseif( $prev_pageviews < $max_pv && $current_pageviews < $max_pv ){
 
 				// Verify if Prev & Current are below the minimum pageviews per month
 				//Downgrade from PRO to BLOGGER [3]
 				$data = [ "user_id" => $user_id, "user_type" => 3 ];
-				$not  = [ "user_id" => $user_id, "notification_id" => 4, "status" => 1 ];
+				$not  = [ "user_id" => $user_id, "message" => "Downgrade from PRO to BLOGGER", "type" => 2, "date" => date( 'Y-m-d H:s:i', strtotime('now')) ];
 
 				//Update User Type value
 				$user->updateObj( $data );
 				
-				//Add a  Notification for this user
-				$notification_obj->saveObj( $not );
+				///Add a  Notification for this user
+				$already_notified = $notification_obj->getByType(2, $user_id);var_dump($already_notified);
+				if( count($already_notified) > 0 ){
+					$not['notification_id'] = $already_notified[0]->notification_id;
+
+					$notification_obj->updateObj( $not );
+				}else{
+					$notification_obj->saveObj( $not );
+				}
 
 				
 
-			}elseif($prev_pageviews < $max_pv || $current_pageviews < $max_pv ){
+			}
+
+			if($prev_pageviews < $max_pv || $current_pageviews < $max_pv ){
 				//WARNING
-				$not  = [ "user_id" => $user_id, "notification_id" => 5, "status" => 1 ];
+				
+				$not  = [ "user_id" => $user_id, "message" => "Warnings", "type" => 2 , "date" => date( 'Y-m-d H:s:i', strtotime('now'))];
 
 				$notification_obj->saveObj( $not );
 

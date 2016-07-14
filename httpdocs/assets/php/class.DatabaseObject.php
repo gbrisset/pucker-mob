@@ -324,6 +324,7 @@ class DatabaseObject{
 					$q->bindParam((":".$attribute), $value, PDO::PARAM_STR);  // bind the variable to the statement
 				}
 		}
+
 		//	Execute the query	
 		if ($q->execute()) {
 			foreach($files as $file){

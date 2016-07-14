@@ -88,30 +88,7 @@ if(!is_null($categoryInfo)){
 		<?php include_once($config['include_path'].'header.php');?>
 				<?php include_once($config['include_path'].'header_ad.php');?>
 
-			<!-- UNDERTONE -->
-	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 &&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 && $articleInfoObj['article_id'] != 17286  ){?>
-			<!--/73970039/UT_SS_FP -->
-			<div id='div-gpt-ad-1461622964696-3'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
-				</script>
-			</div>
-
-				<!-- /73970039/UT_SS_Knox -->
-			<div id='div-gpt-ad-1467926983040-0' style='height:1px; width:1px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467926983040-0'); });
-				</script>
-			</div>
-			
-			<!-- /73970039/UT_SS_FP 
-			<div id='div-gpt-ad-1467069211350-0' style='height:1px; width:1px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467069211350-0'); });
-				</script>
-			</div>-->
-
-		<?php } ?>
+		
 		
 		<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-bottom: 5px; margin-top: 5px;  }</style>
 
@@ -151,7 +128,30 @@ if(!is_null($categoryInfo)){
 		</section>
 		<?php }?>
 	</main>
+		<!-- UNDERTONE -->
+	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 &&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 && $articleInfoObj['article_id'] != 17286  ){?>
+			<!--/73970039/UT_SS_FP -->
+			<div id='div-gpt-ad-1461622964696-3'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
+				</script>
+			</div>
 
+				<!-- /73970039/UT_SS_Knox -->
+			<div id='div-gpt-ad-1467926983040-0' style='height:1px; width:1px;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467926983040-0'); });
+				</script>
+			</div>
+			
+			<!-- /73970039/UT_SS_FP 
+			<div id='div-gpt-ad-1467069211350-0' style='height:1px; width:1px;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467069211350-0'); });
+				</script>
+			</div>-->
+
+		<?php } ?>
 	<?php include_once('admin/fb/fbfunctions.php'); ?>
 	<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
 

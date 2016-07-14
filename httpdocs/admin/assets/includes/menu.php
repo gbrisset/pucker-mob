@@ -7,7 +7,7 @@
 
 <div id="nav-cont" class="columns small-3 large-1 no-padding sticky hide-for-print fixed-content padding-top">
 	<nav id="nav-sidemenu">
-		<ul>
+		<ul class="small-12">
 
 			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
 
@@ -105,6 +105,11 @@
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
 				 <a href="<?php echo $config['this_admin_url']; ?>/logout/">Log Out</a>
 			</li>
+			
 		</ul>
+		
+			<a style="color: #555; font-family:OsloBold; margin-top: 50%;" class="padding-top small-12 columns align-right" href="http://www.puckermob.com/policy/" target="_blank">Terms Of Service</a>
+			<a style="color: #555; font-family:OsloBold;"  class="padding-top small-12 columns align-right" href="http://www.puckermob.com/privacy/" target="_blank">Privacy</a>
+	
 	</nav>
 </div>

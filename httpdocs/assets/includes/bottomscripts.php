@@ -8,9 +8,6 @@
 <?php if (!$local){?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_34567887055" ></script>
 
-  <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
-    
-  <?php } ?>
 <?php }else {?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
@@ -73,7 +70,7 @@
 <?php }else{ ?>
   <!-- MOBILE -->
 
-  <?php if( isset($promotedArticle) && !$promotedArticle ){ 
+  <?php if(  isset($promotedArticle) && !$promotedArticle ){ 
       
       if(isset($articleInfoObj) && $articleInfoObj){ ?>
         <!-- LELO -->
@@ -81,16 +78,16 @@
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488 &&  $article_id != 17286) { ?>
         
-          <!-- Begin Kiosked - puckermob.com -->
-          <script type="text/javascript" async="async" src="//scripts.kiosked.com/loader/kiosked-loader.js?pub=11623&site=12230"></script>
-          <!-- End Kiosked - puckermob.com -->
 
         
-      <?php //if(isset($article_id) && $article_id != 16562  &&  $article_id !=  17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
-       // && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
-       // && $article_id != 15488 &&  $article_id  != 17286) { ?>
+      <?php 
+            $current_time = new DateTime(); // Today
+            $start_time = new DateTime('3:00pm');
+            $end_time  = new DateTime('11:59pm');
+           
+            if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ ?>
             <!-- kixer adhesion -->
-            <!-- Start Pucker Mob - Adhesion - iframe buster code 
+            <!-- Start Pucker Mob - Adhesion - iframe buster code -->
             <div id='__kx_ad_4915'></div>
             <script type="text/javascript" language="javascript" id="__kx_tag_4915">
             var __kx_ad_slots = __kx_ad_slots || [];
@@ -125,9 +122,11 @@
                 }
               }
             })();
-            </script>-->
+            </script>
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
-            <?php  //} ?>
+            <?php  } 
+            ?>
+       
       <?php  } ?>
     <?php  } ?>
       <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286){ ?>

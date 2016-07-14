@@ -1,8 +1,7 @@
 <?php if(!$detect->isMobile()){ ?>
     
 	<div id="header-ad" class="ad-unit hide-for-print" style=" background:#fff;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
-	<input type="hidden" value="<?php echo $_COOKIE['city']; ?>" />
-	<input id="IP" type="hidden" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>" />
+
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
 				
@@ -31,6 +30,7 @@
 								</div>
 	      			<?php }else{?>
 			      		<?php if($articleInfoObj['article_id'] != 14613 && $articleInfoObj['article_id'] != 14873 && $articleInfoObj['article_id'] != 12966 && $articleInfoObj['article_id'] != 15284 ){?>
+								
 								<?php if($articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
 								<!-- /73970039/UT_BB -->
 								<div id='div-gpt-ad-1467068250785-0' style='height:250px; width:970px;'>
@@ -38,18 +38,18 @@
 									googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467068250785-0'); });
 									</script>
 								</div>
-							<?php }else{ ?>
-									<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+								<?php } //else{ ?>
+									<!--<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 									<script type="text/javascript" language="javascript">
 									//<![CDATA[
 									aax_getad_mpb({
 									  "slot_uuid":"4dccafa1-4eba-4f93-a40f-2c0f5348f76d"
 									});
 									//]]>
-									</script>
-							<?php } ?>
+									</script>-->
+							<?php //} ?>
 					<?php } ?>
-					<?php } ?>
+				<?php } ?>
 				<?php }else{?>
 					<!-- LELO -->
 					<div class="lelo">

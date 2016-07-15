@@ -2,7 +2,6 @@
 	$uri = $adminController->helpers->getURI($mpHelpers->curPageURL());
 	($adminController->user->data['contributor_seo_name']) ? $userLink = 'profile/edit/'.$adminController->user->data['contributor_seo_name'] : $userLink = 'noacess';
 	($adminController->user->data['contributor_seo_name']) ? $userLinkPublic = 'profile/user/'.$adminController->user->data['contributor_seo_name'] : $userLinkPublic = 'noacess';
-
 ?>
 
 <div id="nav-cont" class="columns small-3 large-1 no-padding sticky hide-for-print fixed-content padding-top">
@@ -77,7 +76,6 @@
 			</li>
 				<ul class="" style="opacity: 1; z-index: 1; display: none;">
 					<li class="small-12 columns border-bottom border-top padding-top padding-bottom" id="edit_contributors"><a href="<?php echo $config['this_admin_url']; ?>contributors/">View Contributor</a></li>
-					<!--<li class="small-12 columns  padding-top padding-bottom" id="new_contributor"><a href="<?php echo $config['this_admin_url']; ?>contributors/new/">New Contributor</a></li>-->
 				</ul>
 			</li>
 			<?php }?>
@@ -92,9 +90,19 @@
 				</ul>
 			</li>
 
-			<li class="small-12 columns border-top border-bottom padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>library/">Library</a>
-			</li>	
+			
+			<li class="parent small-12 columns border-top  padding-top padding-bottom">
+				<a href="<?php echo $config['this_admin_url']; ?>admin_control_panel/">Admin Control Panel<i class="fa fa-chevron-down"></i></a></li>
+				<ul class="" style="opacity: 1; z-index: 1; display: none;"><h2>Admin Control Panel</h2>
+					<li class="small-12 columns border-top border-bottom padding-top padding-bottom">
+						<a href="<?php echo $config['this_admin_url']; ?>library/">Library</a>
+					</li>
+					<li class="small-12 columns border-top border-bottom padding-top padding-bottom" id="bloggers_report">
+						<a href="<?php echo $config['this_admin_url']; ?>alerts/"> Alerts</a>
+					</li>
+				</ul>
+			</li>
+
 			<?php }?>
 
 	

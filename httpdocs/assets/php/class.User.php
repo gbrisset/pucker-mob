@@ -49,6 +49,7 @@ class User extends DatabaseObject{
 					INNER JOIN user_logins 
 						ON ( users.user_id = user_logins.user_id )
 					WHERE user_logins.user_login_creation_date > '2016-01-01 0:0:0' 
+					ORDER BY user_logins.user_login_count DESC 
 					GROUP BY users.user_id
 				");
 		}else{
@@ -58,6 +59,7 @@ class User extends DatabaseObject{
 				INNER JOIN user_logins 
 					ON ( users.user_id = user_logins.user_id )
 				WHERE user_logins.user_login_creation_date > '2016-01-01 0:0:0' AND user_type in ($user_type)
+				ORDER BY user_logins.user_login_count DESC 
 				GROUP BY users.user_id
 			");
 		}

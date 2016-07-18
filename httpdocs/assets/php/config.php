@@ -4,8 +4,8 @@ $version = "";
 
 if($local)
 {
-		error_reporting(E_ALL);
-		ini_set('display_errors', '1');
+	//	error_reporting(E_ALL);
+	//	ini_set('display_errors', '1');
 
 
 	define("DB_SERVER", "localhost");
@@ -89,14 +89,15 @@ if($local)
 	require_once $config['assets_path'].'/MPArticleAdminController.php';
 	require_once $config['assets_path'].'/class.recaptchalib.php';
 	require_once $config['assets_path'].'/class.FollowAuthor.php';
-	require_once $config['assets_path'].'/class.Dashboard.php';
-	require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
+
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
 
 	if($admin){
 		require_once $config['assets_path'].'/class.User.php';
 		require_once $config['assets_path'].'/class.Contributor.php';
 		require_once $config['assets_path'].'/class.ContributorEarnings.php';
+		require_once $config['assets_path'].'/class.Dashboard.php';
+		require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 	}
 
 	

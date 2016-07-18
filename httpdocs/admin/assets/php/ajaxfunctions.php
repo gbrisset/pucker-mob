@@ -74,6 +74,18 @@
 			//echo json_encode($adminController->featuredArticle($_POST));
 		//break;
 
+		//ADMIN CONTENT MANAGEMENT
+		//Set Alerts
+		case 'set_new_alert':
+			$data  = [ 	"user_id" => $_POST['user_id'], 
+						"message" => $_POST['msg'], 
+						"type" => 1 , 
+						"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+					];
+			$notification_obj = new Notification(); 
+			echo json_encode( $notification_obj->saveObj( $data ) );
+		break;
+
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));
 		break;

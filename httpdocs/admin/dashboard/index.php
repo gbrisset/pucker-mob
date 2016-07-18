@@ -2,14 +2,12 @@
 	$admin = true;
 	require_once('../../assets/php/config.php');
 
-	$userInfo = $adminController->user->data;
-	$userObj = new User( $userInfo['user_email'] ); 
-	
+	$userData = $adminController->user->data = $adminController->user->getUserInfo();
+	$userObj = new User( $userData['user_email'] ); 
+
 	$ManageDashboard = new ManageAdminDashboard( $config );
 	
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
-	
-	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	
 	// 1. the current page number ($current_page)
 	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;

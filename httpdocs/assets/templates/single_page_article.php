@@ -291,8 +291,8 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
 			<!-- ANSWERS -->
-			<div id="mobile-instream-branovate-ad">
-				<div id="get-content" style="text-align:center; display: inline-block;">
+			<div id="mobile-instream-branovate-ad" style="margin-top:7px; margin-bottom: 7px;">
+				<div id="get-content" style="text-align:center;">
 				<div id="vm_inline"></div>
 				<script type='text/javascript'>
 					window._videomosh = window._videomosh || []; 
@@ -310,7 +310,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							incontent_mobile_id: "9834", 
 							incontent_desktop_id: "42296",  
 							target_type: "mix", 
-							backfill:"<script src='//ib.3lift.com/ttj?inv_code=puckermob_article_sub'></scr\" + \"ipt>"
+							backfill:"<script src='//ib.3lift.com/ttj?inv_code=puckermob_article_sub'><\/script>"
 						}); 
 				</script>
 				</div>

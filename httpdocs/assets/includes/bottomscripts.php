@@ -28,8 +28,14 @@
      	
       <!-- LELO -->
       <?php if(isset($article_id) && $article_id != 16562 &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 &&  $article_id  != 17286){?>
-        <!-- GUM GUM -->
-        <script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>
+        <!-- GUM GUM 
+        <script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>-->
+
+        <!-- NET SEER -->
+        <script type="text/javascript">
+         netseer_tag_id="26742"; 
+        </script>
+        <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
       <?php } ?>
     <?php }  ?>
 
@@ -78,14 +84,20 @@
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488 &&  $article_id != 17286) { ?>
         
-
+            <!-- NET SEER -->
+            <script type="text/javascript">
+            netseer_tag_id="26742"; 
+            </script>
+            <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
         
       <?php 
             $current_time = new DateTime(); // Today
             $start_time = new DateTime('3:00pm');
             $end_time  = new DateTime('11:59pm');
+          
+            if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ 
            
-            if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ ?>
+            ?>
             <!-- kixer adhesion -->
             <!-- Start Pucker Mob - Adhesion - iframe buster code -->
             <div id='__kx_ad_4915'></div>
@@ -183,6 +195,5 @@
   <?php } ?>
 
 <?php } ?>
-
 <!-- SHARETHROUNG -->
 <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>

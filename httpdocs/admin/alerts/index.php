@@ -2,16 +2,14 @@
 	$admin = true;
 	require_once('../../assets/php/config.php');
 
-	$userInfo = $adminController->user->data;
-	$userObj = new User( $userInfo['user_email'] ); 
-	
 	$ManageDashboard = new ManageAdminDashboard( $config );
-	
-	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
-	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
+	$userObj = new User( $userData['user_email'] ); 
 
+
+	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 ?>
+
 <!DOCTYPE html>
 
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -21,9 +19,7 @@
 
 <?php include_once($config['include_path_admin'].'head.php');?>
 
-<body id="earnings">
-	<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
-	
+<body id="control-panel">
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -41,6 +37,10 @@
 			
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
 				<?php include_once($config['include_path_admin'].'manage_alerts.php'); ?>
+			</div>
+
+			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
+				<?php include_once($config['include_path_admin'].'manage_hottopics.php'); ?>
 			</div>
 
 			

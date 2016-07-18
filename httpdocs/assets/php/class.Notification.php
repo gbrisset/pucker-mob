@@ -43,6 +43,13 @@ class Notification extends DatabaseObject{
 	}
 
 	//Insert into notify_users table
+	/* $data  = [ 
+		"user_id" => xx, 
+		"message" => "xx", 
+		"type" => 2 , 
+		"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+		];
+ 	*/
 	public function saveObj( $data ){
 
 		$save = static::create($data);

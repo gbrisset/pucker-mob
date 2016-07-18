@@ -526,7 +526,7 @@ $('.img_categories').click(function(e){
 /*PREVIEW BUTTON*/
 if($('#preview')){
 	$('.preview-button').each(function() {
-	console.log($(this));
+	
 		$(this).click(function(e){
 			e.preventDefault();
 			var preview = $(this),
@@ -744,6 +744,32 @@ if( $('#newarticle').length > 0 ){
 	$('input[name="article_title-s"]').SeoTitleAutoComplete("article_seo_title-s");
 }
 
+//MANAGE ALERTS
+if( $('#form-alert') ){
+	$('#save-alert').each(function(){
+		$(this).on('click', function(e){
+			var user_id = $('#user-to-alert').val();
+			var alert = $('#alert-input').val();
+
+			if(alert.length > 0){
+				admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+				$.ajax({
+				  type: "POST",
+				  url:   admin_url + 'assets/php/ajaxfunctions.php',
+				  data: { user_id: user_id, msg: alert, task:'set_new_alert' },
+				}).done(function(data) {
+					if(data){
+						var result = $.parseJSON(data);
+						if(result['hasError']) $('#show-msg-alerts').removeClass('new-success').addClass('error').text('There was an error setting this alert, please try again.');
+						else $('#show-msg-alerts').addClass('new-success').removeClass('error').text('Your alert was set successfully.');
+					}
+				});
+			}else{
+				$('#show-msg-alerts').removeClass('new-success').addClass('error').text('You need to add an alert message first!');
+			}
+		});
+	});
+}
 //$('.auto-edit').autoEdit();
 
 }); 

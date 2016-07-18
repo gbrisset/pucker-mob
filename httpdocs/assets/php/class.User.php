@@ -7,7 +7,7 @@
    * @author     Flor Guzman <fguzman@sequelmediainternational.com>
 **/
 
-require 'config.php';
+//require 'config.php';
 
 class User extends DatabaseObject{
 
@@ -49,8 +49,9 @@ class User extends DatabaseObject{
 					INNER JOIN user_logins 
 						ON ( users.user_id = user_logins.user_id )
 					WHERE user_logins.user_login_creation_date > '2016-01-01 0:0:0' 
-					ORDER BY user_logins.user_login_count DESC 
 					GROUP BY users.user_id
+					ORDER BY users.user_login_count DESC 
+					
 				");
 		}else{
 			$users = static::find_by_sql(
@@ -59,8 +60,9 @@ class User extends DatabaseObject{
 				INNER JOIN user_logins 
 					ON ( users.user_id = user_logins.user_id )
 				WHERE user_logins.user_login_creation_date > '2016-01-01 0:0:0' AND user_type in ($user_type)
-				ORDER BY user_logins.user_login_count DESC 
 				GROUP BY users.user_id
+				ORDER BY users.user_login_count DESC 
+				
 			");
 		}
 		return $users;
@@ -133,8 +135,8 @@ class User extends DatabaseObject{
 	*  	This will return an instance of the Contributor Object. 
 	*   DB Table  Affected: Article_Contributors
 	*/
-	public function getContributorInfo(){
-		$contributor = new Contributor($this->user_email);
+	public function getContributorInfo(){ 
+		$contributor = new Contributor($this->user_email); 
 		return $contributor;
 	}
 

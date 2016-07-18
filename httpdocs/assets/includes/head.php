@@ -173,6 +173,17 @@
 			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
 		<?php //} ?>	
 
+		<?php
+			 $current_time = new DateTime(); // Today
+             $start_time = new DateTime('3:00pm');
+             $end_time  = new DateTime('11:59pm');
+             $branovate_on = false;
+             if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ 
+              $branovate_on = true;
+          	 }
+		?>
+		<input type="hidden" value = "<?php echo $branovate_on; ?>" id="branovate_on"/>
+
 		<?php if(isset($article_id) && $article_id == 15078 ){?>
 			<!-- ICELAND AIRLINE -->
 			<script type='text/javascript'>

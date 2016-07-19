@@ -1,7 +1,14 @@
 <?php 
 	
-	//GET ALL USERS
-	//$users = $userObj->all();
+	$hotTopicsObj = new HotTopics();
+	$hot_topics = $hotTopicsObj->all();
+	
+	if(isset($hot_topics[0])){
+		$hot_topics = $hot_topics[0];
+	}
+	
+	$topics_msg = $hot_topics->hot_topics_message;
+	$topics_list = explode(PHP_EOL, $hot_topics->hot_topics_message);
 
 ?>
 
@@ -10,13 +17,13 @@
 		<h3 class="small-12 columns margin-top uppercase">Hot Topics:</h3>
 	</div>
 	<div class="row hotopics-div">
-	 	<form class="clear" name="form-hotopics" id="form-hotopics" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-	 		<div class="small-12 large-7 columns">
-	 			<input placeholder="" type="text" name="hottopics-input" id="alert-input"  class="radius" />
+	 	<form class="clear" name="form-hottopics" id="form-hottopics" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+	 		<div class="small-12 large-12 columns">
+	 			<textarea placeholder="Enter Hot Topics here, separete by enter..."  name="hottopics-input" id="hottopics-input"  class="radius" ><?php echo $topics_msg; ?></textarea>
 	 		</div>
 	 		
-	 		<div class="small-12 large-2 columns">
-	 			<button type="button" id="save-hotopics" name="save-hotopics" class="radius" >SAVE</button>
+	 		<div class="small-12 large-12 columns">
+	 			<button type="button" id="save-hottopics" name="save-hottopics" class="radius" >SAVE</button>
 	 		</div>
 	 		<div class="columns small-12">
 	 			<label class="success" id="show-msg-hotopics"></label>

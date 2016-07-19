@@ -86,6 +86,17 @@
 			echo json_encode( $notification_obj->saveObj( $data ) );
 		break;
 
+		//Set HotTopics
+		case 'set_hot_topics':
+			$hotTopicsObj = new HotTopics();
+			$data  = [ 	"hot_topics_id" => 1, 
+						"hot_topics_message" => $_POST['hot_topics_message']
+					];
+
+			echo json_encode($hotTopicsObj->updateObj($data) );
+			
+			break;
+
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));
 		break;

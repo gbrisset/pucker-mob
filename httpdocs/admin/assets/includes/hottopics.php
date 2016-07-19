@@ -1,14 +1,31 @@
+	<?php 
+		$hotTopicsObj = new HotTopics();
+		$hot_topics = $hotTopicsObj->all();
+
+		if(isset($hot_topics[0])){
+			$hot_topics = $hot_topics[0];
+		}
+		
+		$topics_msg = $hot_topics->hot_topics_message;
+		$topics_list = explode(PHP_EOL, $hot_topics->hot_topics_message);
+
+	?>
 	<div class="small-12 columns radius hottopics">
-		<h3 class="margin-top bold">HOT TOPICS </h3>
-		<!--<span id="edit-list">Edit</span>-->
-		<div id="hottopics" data-info="1" data-category="hottopics" data-src="Dating Musicians, Family Related, Popular TV Show quotes, Annoying marketing managers, Wine Fridays">
+		<h3 class="margin-top bold">HOT TOPICS 
+			<?php if($admin_user){ ?><a href="<?php echo $config['this_admin_url'].'alerts/'; ?>" id="edit-list">Edit</a><?php }?>
+		</h3>
+
+
+		<div id="hottopics" data-info="1" data-category="hottopics">
 			<div class="current-data">
-				<label>Dating Musicians</label>
-				<label>Family Related</label>
-				<label>Popular TV Show quotes</label>
-				<label>Annoying marketing managers</label>
-				<label>Wine Fridays</label>
+
+				<?php if($topics_list){
+					foreach($topics_list as $topics){ 
+						echo  '<label>'.$topics.'</label>';
+					}
+				}else{
+					echo '<label>No Topics Set...</label>';
+				}?>
 			</div>
-			<!--<div class="button-box"></div>-->
 		</div>
 	</div>

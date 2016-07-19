@@ -770,6 +770,32 @@ if( $('#form-alert') ){
 		});
 	});
 }
+
+//MANAGE ALERTS
+if( $('#form-hottopics') ){
+	$('#save-hottopics').each(function(){
+		$(this).on('click', function(e){
+			var topics_msg = $('#hottopics-input').val();
+
+			if(topics_msg.length > 0){
+				admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+				$.ajax({
+				  type: "POST",
+				  url:   admin_url + 'assets/php/ajaxfunctions.php',
+				  data: { hot_topics_message: topics_msg, task:'set_hot_topics' },
+				}).done(function(data) {
+					if(data){
+						var result = $.parseJSON(data);
+						if(result['hasError']) $('#show-msg-hotopics').removeClass('new-success').addClass('error').text('There was an error adding the topics, please try again.');
+						else $('#show-msg-hotopics').addClass('new-success').removeClass('error').text('Your Topics were set successfully.');
+					}
+				});
+			}else{
+				$('#show-msg-hotopics').removeClass('new-success').addClass('error').text('You need to add at least one topic!');
+			}
+		});
+	});
+}
 //$('.auto-edit').autoEdit();
 
 }); 

@@ -752,7 +752,7 @@ if( $('#form-alert') ){
 			var alert = $('#alert-input').val();
 
 			if(alert.length > 0){
-				admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+				
 				$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',
@@ -795,6 +795,33 @@ if( $('#form-hottopics') ){
 			}
 		});
 	});
+}
+
+if( $('#form-send-email') ){
+	$('#send-email').each(function(){
+		$(this).on('click', function(e){
+			var email_msg = $('#email_message').val(),
+			user_email = $('#user-email').val();
+			if(email_msg.length > 0){
+				admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+				$.ajax({
+				  type: "POST",
+				  url:   admin_url + 'assets/php/ajaxfunctions.php',
+				  data: { user_emal: user_email, email_msg: email_msg, task:'send_email' },
+				}).done(function(data) {
+					if(data){
+						var result = $.parseJSON(data);
+						if(result['hasError']) $('#show-msg-email').removeClass('new-success').addClass('error').text('There was an error adding the topics, please try again.');
+						else $('#show-msg-email').addClass('new-success').removeClass('error').text('Your Topics were set successfully.');
+					}
+				});
+			}else{
+				$('#show-msg-email').removeClass('new-success').addClass('error').text('Add a Message!');
+			}
+		});
+	});
+
+	$('#blogger_id').filterByText($('#bloggers_list_search'), false);
 }
 //$('.auto-edit').autoEdit();
 

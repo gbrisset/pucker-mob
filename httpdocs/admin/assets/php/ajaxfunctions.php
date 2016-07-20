@@ -97,6 +97,14 @@
 			
 			break;
 
+		//Set HotTopics
+		case 'send_email':
+			$helpers = new Helpers();
+			echo json_encode( $helpers->sendEmail($_POST) );
+			
+			break;
+
+
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));
 		break;

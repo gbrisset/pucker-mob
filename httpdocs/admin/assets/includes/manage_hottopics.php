@@ -21,13 +21,13 @@
 	 		<div class="small-12 large-12 columns">
 	 			<textarea placeholder="Enter Hot Topics here, separete by enter..."  name="hottopics-input" id="hottopics-input"  class="radius" ><?php echo $topics_msg; ?></textarea>
 	 		</div>
-	 		
-	 		<div class="small-12 large-12 columns">
-	 			<button type="button" id="save-hottopics" name="save-hottopics" class="radius" >SAVE</button>
-	 		</div>
-	 		<div class="columns small-12">
+	 		<div class="columns small-12 large-10">
 	 			<label class="success" id="show-msg-hotopics"></label>
 	 		</div>
+	 		<div class="small-12 large-2 columns">
+	 			<button type="button" id="save-hottopics" name="save-hottopics" class="radius columns small-12" >SAVE</button>
+	 		</div>
+	 	
 	 	</form>
 	 
 	</div>

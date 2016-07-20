@@ -2185,6 +2185,8 @@ form#user-account-delete-form {
 
 	.alerts-div{
 		padding: 0 1px 5px 1px;
+		max-height:23rem;
+		overflow:scroll;
 
 		ul{
 			li{
@@ -2228,3 +2230,35 @@ form#user-account-delete-form {
 		}
 	}
 }
+
+.send-email{
+	.send-email-div{
+		#blogger_id{
+		 background-color: #fff;
+		}
+
+		#bloggers_list_search{
+			width: 100%;
+		    padding: 0.52rem;
+		    border: 1px solid #ddd;
+		}
+
+		.fa-search{
+			font-size: 2rem;
+    		color: #ccc;
+		}
+	}
+}
+
+.twitter-typeahead::before {
+    content: '\f16c';
+    display: block;
+    position: absolute;
+    top: 0.4rem;
+    left: 0.9rem;
+    z-index: 1;
+    font-family: 'foundation-icons';
+    font-size: 1.75rem;
+    color: #2199e8;
+}
+

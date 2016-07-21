@@ -100,7 +100,7 @@
 		//Set HotTopics
 		case 'send_email':
 			$helpers = new Helpers();
-			echo json_encode( $helpers->sendEmail($_POST) );
+			echo json_encode( $helpers->sendEmailToBloggers($_POST) );
 			
 			break;
 

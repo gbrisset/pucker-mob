@@ -37,6 +37,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/modernizr-2.5.3.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+<script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script>
 	  
 </head>
 <?php 

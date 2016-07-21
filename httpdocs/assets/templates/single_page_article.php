@@ -293,7 +293,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<!-- ANSWERS -->
 			<div id="mobile-instream-branovate-ad" style="margin-top:7px; margin-bottom: 7px;">
 				<div id="get-content" style="text-align:center;">
-				<div id="vm_inline"></div>
+				<!--<div id="vm_inline"></div>
 				<script type='text/javascript'>
 					window._videomosh = window._videomosh || []; 
 					!function (e, f, u) { 
@@ -312,6 +312,26 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 							target_type: "mix", 
 							backfill:"<script src='//ib.3lift.com/ttj?inv_code=puckermob_article_sub'><\/script>"
 						}); 
+				</script>-->
+				<div id="vm_inline"></div>
+				<script>
+				    window._videomosh = window._videomosh || [];
+				    !function (e, f, u) {
+				        e.async = 1;
+				        e.src = u;
+				        f.parentNode.insertBefore(e, f);
+				    }(document.createElement('script'),
+				            document.getElementsByTagName('script')[0],
+				            'http://player.videomosh.com/players/loader/loader_final4.js');
+				    _videomosh.push({
+				        publisher_key: "sequelmedia",
+				        mode: "incontent",
+				        container: "vm_inline",
+				        incontent_mobile_id: "9834",
+				        incontent_desktop_id: "42296",
+				        target_type: "mix",
+					backfill: "<div id='gpt-backfill'></div><script type='text/javascript'> var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); })();  googletag.cmd.push(function() {googletag.defineSlot('/27755252/sequel_media/puckermob.com', [300, 250], 'gpt-backfill').addService(googletag.pubads());googletag.pubads().enableSingleRequest();googletag.enableServices();});googletag.cmd.push(function() { googletag.display('gpt-backfill'); });</scr"+"ipt>"
+				       });
 				</script>
 				</div>
 			</div>

@@ -61,8 +61,25 @@
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
 				case isset($_POST['article_title-s']):
+			if( $_POST["a_i"] == 17835) {
 
+				if($_POST['article_status'] == 1){
+					if($artImageExists){
+						$updateStatus = $adminController->updateArticleInfo($_POST);
+					}else{
+						$updateStatus["hasError"] = true;
+						$updateStatus["message"] = "You need to add an image to make an article live!"; ?>
+
+						<script>alert( "<?php echo $updateStatus["message"]; ?>" );</script>
+						<?php
+
+					}
+				}else{
 					$updateStatus = $adminController->updateArticleInfo($_POST);
+				}
+			}else{
+				$updateStatus = $adminController->updateArticleInfo($_POST);
+			}
 					$updateStatus['arrayId'] = 'article-info-form';
 					break;
 				case isset($_FILES['article_post_tall_img']):

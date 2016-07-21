@@ -2213,7 +2213,6 @@ form#user-account-delete-form {
 			border-bottom: none;
 		    height: 3rem;
 		}
-
 		select{
 			margin: 0;
 		    padding: 0 10px;
@@ -2230,7 +2229,6 @@ form#user-account-delete-form {
 		}
 	}
 }
-
 .send-email{
 	.send-email-div{
 		#blogger_id{
@@ -2239,7 +2237,10 @@ form#user-account-delete-form {
 
 		#bloggers_list_search{
 			width: 100%;
-		    padding: 0.52rem;
+		    margin-bottom: 7px;
+		    top: 0px;
+		    padding: 0.55rem;
+		    height: 2.3rem;
 		    border: 1px solid #ddd;
 		}
 

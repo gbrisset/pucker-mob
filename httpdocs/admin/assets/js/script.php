@@ -6,7 +6,6 @@
 $(document).ready(function (){
 
 var body = $('body');
-console.log(body );
 var base_url = 'http://www.puckermob.com';
 var admin_url = 'http://www.puckermob.com/admin/';
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
@@ -801,18 +800,20 @@ if( $('#form-send-email') ){
 	$('#send-email').each(function(){
 		$(this).on('click', function(e){
 			var email_msg = $('#email_message').val(),
-			user_email = $('#user-email').val();
+			email_add = $('#blogger_email').val();
+
+			console.log(email_add);
 			if(email_msg.length > 0){
 				admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
 				$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',
-				  data: { user_emal: user_email, email_msg: email_msg, task:'send_email' },
+				  data: { email_msg: email_msg, task:'send_email', email_add: email_add },
 				}).done(function(data) {
 					if(data){
 						var result = $.parseJSON(data);
-						if(result['hasError']) $('#show-msg-email').removeClass('new-success').addClass('error').text('There was an error adding the topics, please try again.');
-						else $('#show-msg-email').addClass('new-success').removeClass('error').text('Your Topics were set successfully.');
+						if(result['hasError']) $('#show-msg-email').removeClass('new-success').addClass('error').text('There was an error sending the email, please try again.');
+						else $('#show-msg-email').addClass('new-success').removeClass('error').text('The Email was sent successfully.');
 					}
 				});
 			}else{
@@ -821,7 +822,7 @@ if( $('#form-send-email') ){
 		});
 	});
 
-	$('#blogger_id').filterByText($('#bloggers_list_search'), false);
+	$('#blogger_email').filterByText($('#bloggers_list_search'), false);
 }
 //$('.auto-edit').autoEdit();
 

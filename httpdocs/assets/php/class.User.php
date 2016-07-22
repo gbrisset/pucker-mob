@@ -68,6 +68,24 @@ class User extends DatabaseObject{
 		return $users;
 	}
 
+	public function where($where = false){
+		$query = " SELECT users.*, user_logins.user_login_creation_date 
+					FROM users 
+					INNER JOIN user_logins 
+						ON ( users.user_id = user_logins.user_id )
+				";
+		
+		if($where ){
+			$query .= " ". $where." ";
+		}
+
+		$query .= " GROUP BY users.user_id
+					ORDER BY users.user_login_count DESC  ";
+		$users = static::find_by_sql($query);
+
+		return $users;
+	}
+
 	/* GET user by ID */
 
 	public function getObj( $id ){

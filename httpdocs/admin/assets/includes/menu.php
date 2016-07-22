@@ -98,7 +98,7 @@
 						<a href="<?php echo $config['this_admin_url']; ?>library/">Library</a>
 					</li>
 					<li class="small-12 columns border-top border-bottom padding-top padding-bottom" id="bloggers_report">
-						<a href="<?php echo $config['this_admin_url']; ?>alerts/"> Alerts</a>
+						<a href="<?php echo $config['this_admin_url']; ?>cpanel/"> CPanel</a>
 					</li>
 				</ul>
 			</li>

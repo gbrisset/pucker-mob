@@ -37,13 +37,9 @@
 			
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
 				<?php include_once($config['include_path_admin'].'manage_alerts.php'); ?>
-			</div>
-
-			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
+						
 				<?php include_once($config['include_path_admin'].'manage_hottopics.php'); ?>
-			</div>
-
-			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
+					
 				<?php include_once($config['include_path_admin'].'send_email.php'); ?>
 			</div>
 
@@ -51,10 +47,10 @@
 
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" style="padding: 0 15px !important;" >
-				<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
 				
-					<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
-				</div>
+				
+					<?php include_once($config['include_path_admin'].'control_panel_general_info.php'); ?>
+				
 			</div>
 
 		</div>

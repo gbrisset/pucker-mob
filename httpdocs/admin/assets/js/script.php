@@ -777,7 +777,7 @@ if( $('#form-hottopics') ){
 			var topics_msg = $('#hottopics-input').val();
 
 			if(topics_msg.length > 0){
-				admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+				//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
 				$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',
@@ -804,7 +804,7 @@ if( $('#form-send-email') ){
 
 			console.log(email_add);
 			if(email_msg.length > 0){
-				admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+			//	admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
 				$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',

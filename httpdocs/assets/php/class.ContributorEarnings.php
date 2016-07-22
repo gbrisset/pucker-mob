@@ -16,6 +16,7 @@
 		public $paid;
 		public $rate;
 		public $month_label;
+		public $pageviews;
 
 
 		//	Object Vars
@@ -32,9 +33,7 @@
 			$contributor_id = $this->contributor->contributor_id;
 			
 			//	Set the params to be bound
-			$params_to_bind = [ 
-				':contributor_id' => $contributor_id
-			];
+			$params_to_bind = [ ':contributor_id' => $contributor_id ];
 			
 			$earnings = static::find_by_sql( "SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id  ORDER BY id DESC LIMIT $limit ", $params_to_bind );
 
@@ -53,12 +52,34 @@
 				':year' => $year,
 				':user_type' => $user_type
 			];
-			
-			$rate = static::find_by_sql( "SELECT * FROM user_rate WHERE user_type = 8 and month = 3 and year = 2016 LIMIT 1", $params_to_bind );
+
+			$rate = static::find_by_sql( "SELECT * FROM user_rate WHERE user_type = $user_type and month = $month and year = $year LIMIT 1", $params_to_bind );
 			$this->rate = $rate[0]->rate;
 			$this->month_label = $rate[0]->month_label;
 
 			return  $rate;
+
+		}
+
+		public function getEarningsPerUserType( $user_type, $conditions = null ){
+			
+			$query = "SELECT sum(contributor_earnings.total_us_pageviews) as pageviews, contributor_earnings.contributor_id, contributor_name, user_type, month, year, user_email, total_earnings, updated_date  
+				FROM `contributor_earnings` 
+				inner join (article_contributors, users )  
+				on article_contributors.contributor_id =  contributor_earnings.contributor_id and article_contributors.contributor_email_address = users.user_email ";
+				
+				if($user_type){
+					$query .= " WHERE user_type IN ( $user_type )";
+				}
+				if($conditions){
+					$query .= " ".$conditions." ";
+				}
+
+				$query .= " group by contributor_earnings.contributor_id ";
+				$earnings = static::find_by_sql( $query );
+
+			return  $earnings;
+
 
 		}
 

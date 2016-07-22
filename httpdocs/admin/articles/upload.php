@@ -19,7 +19,6 @@ if(isset($_POST) && empty($_POST['a_i'] ) ){
 	$action = "new";
 }
 
-var_dump($_FILES); die;
 
 if($action === "new"){
 	if($isLib){
@@ -34,7 +33,7 @@ if($action === "new"){
 			'desHeight' => 431
 		], false), ['arrayId' => 'article-tall-image-upload-form']);
 		echo json_encode($updateStatus) ;
-	}else{
+	}else{ 
 	if (!empty($_FILES)) { 
 	    $updateStatus = array_merge($mpArticleAdmin->uploadTempImage($_FILES, [
 						'allowedExtensions' => 'png,jpg,jpeg,gif',
@@ -62,18 +61,7 @@ if($action === "new"){
 			'desHeight' => 431
 		], true), ['arrayId' => 'article-tall-image-upload-form']);
 		echo json_encode($updateStatus) ;
-	}elseif($is_second_img){
-		if (!empty($_FILES)) { 
-			$updateStatus = array_merge($mpArticleAdmin->uploadBasicImage($_FILES, [
-				'allowedExtensions' => 'png,jpg,jpeg,gif',
-				'uploadDirectory' => $config['image_upload_dir'].'articlesites/puckermob/second_image/',
-				'articleId' => $_POST['a_i'],
-				'imgData' => $_POST,
-				'desWidth' => 300,
-				'desHeight' => 250
-			]), ['arrayId' => 'second-article-image']);
-		}
-	}else{
+	}else{ 
 		if (!empty($_FILES)) { 
 	    $updateStatus = array_merge($mpArticleAdmin->uploadNewImage($_FILES, [
 						'allowedExtensions' => 'png,jpg,jpeg,gif',
@@ -85,6 +73,8 @@ if($action === "new"){
 						'desWidth' => 784,
 						'desHeight' => 431
 					]), ['arrayId' => 'article-tall-image-upload-form']);
+	    		echo json_encode($updateStatus) ;
+
 		}
 	}
 }

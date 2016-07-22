@@ -1106,6 +1106,7 @@ class MPArticleAdmin{
 
 					break;
 			}
+
 			if(move_uploaded_file($fileTempName, $uploadFile)){
 				
 				if($data['imgType'] == 'contributor'){
@@ -1113,12 +1114,11 @@ class MPArticleAdmin{
 
         	    	return $this->updateContributorImageRecord($updateArr);
             	}elseif($data['imgType'] == 'article'){
-            		
             		$this->createArticleLargeImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
             		//$this->createArticlePreviewImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-					$this->createArticleTallImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-					$this->createArticleMediumImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
-					$this->createArticleSquareImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+					//$this->createArticleTallImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+					//$this->createArticleMediumImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
+					//$this->createArticleSquareImage($extension, $uploadFile, $fileTempName, $updateArr['value'], $src_w, $src_h);
             		
             		return ['hasError' => false, 'message' => "", 'filename' => $uploadFile];
             		

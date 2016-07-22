@@ -12,7 +12,7 @@
 	?>
 	<div class="small-12 columns radius hottopics">
 		<h3 class="margin-top bold">HOT TOPICS 
-			<?php if($admin_user){ ?><a href="<?php echo $config['this_admin_url'].'alerts/'; ?>" id="edit-list">Edit</a><?php }?>
+			<?php if($admin_user){ ?><a href="<?php echo $config['this_admin_url'].'cpanel/'; ?>" id="edit-list">Edit</a><?php }?>
 		</h3>
 
 

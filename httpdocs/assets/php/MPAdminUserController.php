@@ -1062,11 +1062,29 @@ End password reset methods
 
 	}
 
+	public function getRatePerUser($id, $year, $month){
+
+		$s = "	SELECT 	share_rate 
+				FROM `contributor_earnings` 
+				WHERE month = $month AND year = $year AND contributor_id = $id
+				LIMIT 1 
+			";
+
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'returnRowAsSingleArray' => true
+			));
+
+		return $data;
+
+	}
+
 	public function getContributorEarningChartDataRange($data){
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$s = "SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
+		$s = "SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', DATE_FORMAT(updated_date, '%c') as 'month', DATE_FORMAT(updated_date, '%Y') as 'year', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
 			   FROM google_analytics_data_daily 
 			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
 					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 
@@ -1092,6 +1110,10 @@ End password reset methods
 
 		foreach($result as $earnings){
 			$earnings_chart['date'] = $earnings['date'];
+			$earnings_chart['month'] = $earnings['month'];
+			$earnings_chart['year'] = $earnings['year'];
+			$rate =  $this->getRatePerUser($contributor_id, $earnings['year'], $earnings['month']);
+			$earnings_chart['rate'] = $rate['share_rate'];
 			$earnings_chart['current_pageviews'] = $earnings['total_usa_pageviews'];
 			//$earnings_chart['last_month_pageviews']  = 0;
 
@@ -1100,6 +1122,10 @@ End password reset methods
 				foreach($last_month_data as $last_month_earnings){
 					if( date('d', strtotime($earnings_chart['date'])) == date('d', strtotime($last_month_earnings['date']))){
 						$earnings_chart['last_month_pageviews'] = $last_month_earnings['total_usa_pageviews'];
+						$earnings_chart['last_month'] = $last_month_earnings['month'];
+						$earnings_chart['last_month_year'] = $last_month_earnings['year'];
+						$rate =  $this->getRatePerUser($contributor_id, $last_month_earnings['year'], $last_month_earnings['month']);
+						$earnings_chart['last_month_rate'] = $rate['share_rate'];
 					}
 				}
 
@@ -1114,7 +1140,7 @@ End password reset methods
 		$last_month_start_date = date('Y-m-d', strtotime("last month", strtotime($data['start_date'])));
 		$last_month_end_date = date('Y-m-d', strtotime("last month", strtotime($data['end_date'])));
 		
-		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
+		$s = " SELECT DATE_FORMAT(updated_date, '%c/%d') as 'date', DATE_FORMAT(updated_date, '%c') as 'month', DATE_FORMAT(updated_date, '%Y') as 'year', sum(pageviews) as 'total_pageviews', sum(usa_pageviews) as  'total_usa_pageviews'
 			   FROM google_analytics_data_daily 
 			   INNER JOIN (article_contributor_articles, articles, article_categories, categories ) 
 					ON  (article_contributor_articles.article_id = google_analytics_data_daily.article_id ) 

@@ -74,25 +74,30 @@ var EarningsObj = {
 		chart = [['', 'Selected Month', 'Previous Month'] ], 
 		contributor_id = $('#contributor_id').val(), 
 		total_earned = 0;
+		var all_pv = 0;
     	$.ajax({
 			type: "POST",
 			async: false,
 			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
 			data: { task:'get_chart_data_range', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
 		}).done(function(data) {
-		
+
 			if( data != "false" ){ 
 				data = $.parseJSON(data);
 				$(data).each( function(e){	
 					var val = $(this);
-					var rate = $('#current-user-rate').val();
-					var pageviews = parseInt(val[0].current_pageviews),
-					last_month_pageviews = parseInt(val[0].last_month_pageviews),
+					var rate = parseFloat(val[0].rate); //$('#current-user-rate').val();
+					var rate_lm = parseFloat(val[0].last_month_rate);
+					var pageviews = parseFloat(val[0].current_pageviews),
+				
+					last_month_pageviews = parseFloat(val[0].last_month_pageviews),
 					amount = 0, 
 					last_month_amount = 0;
+		
 
-					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;
-					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
+
+					if(pageviews > 0 ){ amount = ( pageviews / 1000 ) * rate; all_pv += ( pageviews / 1000 ); }
+					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate_lm ;
 					amount = parseFloat(amount.toFixed(2));
 					last_month_amount = parseFloat(last_month_amount.toFixed(2));
 
@@ -101,9 +106,10 @@ var EarningsObj = {
 					chart.push(info);
 				});
 
-				
+				//console.log(all_pv, total_earned);
 
 			}
+
 			EarningsObj.total_earnings = total_earned;
 			EarningsObj.chart_info = chart;
 

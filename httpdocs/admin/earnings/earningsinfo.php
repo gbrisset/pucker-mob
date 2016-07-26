@@ -41,6 +41,16 @@
 	$contributor_email = $contributorInfo["contributor_email_address"]; 
 	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
 
+	
+	if(isset($_GET['show']) && $_GET['show'] == true){
+			$user_info = new User($contributor_email);
+			$contributor = $user_info->contributor;
+			$contributor_earnings = new ContributorEarnings( $contributor );
+		//	$rate = $contributor_earnings->getRate( 6, 2016, $user_type )
+			var_dump($contributor_earnings); die;
+
+	}
+
 	$newCalc = true;
 	if( $year < 2015 || ( $year == 2015 && $month <= 2)){
 		$articles = $dashboard->get_dashboardArticles($limit, $order, $articleStatus, $userArticlesFilter, $offset, $month, $year);
@@ -60,6 +70,7 @@
 	}
 
 	$rate = $dashboard->get_current_rate( $current_month, $contributor_type );
+	//$user_id = $userData['user_id'];
 	if($rate) $rate = $rate['rate'];
 	$total = 0;
 	
@@ -103,6 +114,8 @@
 			</div>
 			
 			<input type="hidden" value="<?php echo $rate; ?>" id="current-user-rate" />
+			<input type="hidden" value="<?php echo $user_type; ?>" id="current-user-type" />
+
 
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>

@@ -83,5 +83,24 @@
 
 		}
 
+		public function getEarningsPerUser( $contributor_id, $conditions = null ){
+			
+			$query = "SELECT sum(contributor_earnings.total_us_pageviews) as pageviews, contributor_earnings.contributor_id, contributor_name, user_type, month, year, user_email, total_earnings, updated_date  
+				FROM `contributor_earnings` 
+				inner join (article_contributors, users )  
+				on article_contributors.contributor_id =  contributor_earnings.contributor_id and article_contributors.contributor_email_address = users.user_email  WHERE article_contributors.contributor_id = $contributor_id ";
+				
+				if($conditions){
+					$query .= " ".$conditions." ";
+				}
+
+				$query .= " group by contributor_earnings.contributor_id ";
+				$earnings = static::find_by_sql( $query );
+
+			return  $earnings;
+
+
+		}
+
 	}
 ?>

@@ -802,7 +802,7 @@ if( $('#form-send-email') ){
 			var email_msg = $('#email_message').val(),
 			email_add = $('#blogger_email').val();
 
-			console.log(email_add);
+			//console.log(email_add);
 			if(email_msg.length > 0){
 			//	admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
 				$.ajax({
@@ -822,7 +822,39 @@ if( $('#form-send-email') ){
 		});
 	});
 
-	$('#blogger_email').filterByText($('#bloggers_list_search'), false);
+	$('#blogger_email').filterByText( $('#bloggers_list_search'), false );
+}
+
+if( $('.facebook-sites') ){
+	$('.facebook-sites').each( function(){
+		$(this).on('change', function(e){
+			var value = $(this).val();
+			var parent = $(this).parent();
+			var article_id = $(parent).attr('data-info');
+			var facebook_page =  $("option:selected", this).text();
+
+			var promoted = false;
+
+			if( value != '0') promoted = true;
+
+			admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+				$.ajax({
+				  type: "POST",
+				  url:   admin_url + 'assets/php/ajaxfunctions.php',
+				  data: { article_id: article_id, facebook_page_id : value, promoted: promoted, task:'promote_articles' },
+				}).done(function(data) {
+					if(data){
+						var result = $.parseJSON(data);
+						console.log(data);
+						//if(result['hasError']) $('#show-msg-hotopics').removeClass('new-success').addClass('error').text('There was an error adding the topics, please try again.');
+						//else $('#show-msg-hotopics').addClass('new-success').removeClass('error').text('Your Topics were set successfully.');
+					}
+				});
+
+			console.log(value, parent, article_id);
+
+		});
+	});
 }
 //$('.auto-edit').autoEdit();
 

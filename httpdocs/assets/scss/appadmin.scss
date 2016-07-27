@@ -528,12 +528,14 @@ padding: 0 0 0 1em; position: relative; width: auto; }
 #articles-list table tr.even, #articles-list table tr.alt, #articles-list table tr:nth-of-type(even){
 	background: #eee;
 }
-
 #articles-list table tr td { border: none; vertical-align: middle; padding: 0.2rem; text-align: center; font-size: 1rem;}
 #articles-list table tr td:first-child, articles-list table thead tr th:first-child{ text-align: left;}
 #articles-list table tr td h2 { font-size: 1.2rem; padding-top:5px;}
 #articles-list table tr td h2 i{ padding:0; width: 10px;     height: 20px;}
 #articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: auto;}
+#articles-list table tr td label { padding: 5px;}
+#articles-list table tr td label select { font-size: 12px;}
+
 
 @media #{$large-up} {
 	#articles-list table tr td { border-right: 1px solid #ddd;}

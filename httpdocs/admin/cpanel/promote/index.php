@@ -31,14 +31,14 @@
 		<div id="content" class="columns small-9 large-11">
 			
 			<div class="  mobile-12 small-12 columns padding-bottom ">
-				<h1>ADMIN CONTROL PANEL</h1>
+				<h1>PROMOTE</h1>
 			</div>
 			
 			<!-- ARTICLES RESUME INFO --> 
-			<?php include_once($config['include_path_admin'].'view_control_panel_resume.php'); ?>
+			<?php //include_once($config['include_path_admin'].'view_control_panel_resume.php'); ?>
 			
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
-				<?php include_once($config['include_path_admin'].'manage_alerts.php'); ?>
+				<?php include_once($config['include_path_admin'].'articles_to_promote.php'); ?>
 			</div>
 
 			
@@ -46,7 +46,7 @@
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" style="padding: 0 15px !important;" >
 				
-					<?php include_once($config['include_path_admin'].'articles_to_promote.php'); ?>
+					<?php //include_once($config['include_path_admin'].'articles_to_promote.php'); ?>
 				
 			</div>
 

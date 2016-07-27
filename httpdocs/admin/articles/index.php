@@ -94,6 +94,10 @@
 		$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
 	}
 
+	$promoteArticles = new PromoteArticles();
+	$fb_pages = $promoteArticles->getAllFacebookPages();
+	//var_dump($fb_pages); die;
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -144,6 +148,9 @@
 								    <tr>
 								       <th width="400" class="align-left">Title</th>
 								       <th width="100" class="show-for-large-up">Added</th>
+								       <?php if($admin_user){?>
+								       		<th width="100" class="show-for-large-up">Promotion</th>
+									   <?php }?>
 								       <th width="100"  class="show-for-large-up">status</th>
 								       <th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
 								       <th  width="50" class="show-for-large-up"></th>
@@ -196,6 +203,25 @@
 									  	</td>
 
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
+									  	<?php if( $admin_user ){ ?>
+									  	<td class="show-for-large-up  border-right">
+									  		<label data-info="<?php echo $article_id; ?>">
+									  			<select class="facebook-sites">
+									  				<option value = '0' >NONE</option>
+									  				<?php foreach( $fb_pages as $page ){
+									  					$isPromotedObj = $promoteArticles->promotedInfo($article_id);
+									  					$facebook_page_id_promoted = $isPromotedObj[0]->facebook_page_id;
+									  					?>
+									  					
+										  					<option value = "<?php echo $page->facebook_page_id; ?>" <?php if($facebook_page_id_promoted == $page->facebook_page_id) echo ' selected '; ?> >
+										  						<?php echo $page->facebook_page_name; ?>
+										  					</option>
+									  				<?php }?>
+									  			</select>
+									  		</label>
+									  	</td>
+									  	<?php } ?>
+
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
 										<!-- REMOVE ARTICLE -->
 										<td class="show-for-xlarge-up  border-right" ><label><?php echo $article_us_traffic; ?></label></td>

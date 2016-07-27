@@ -92,7 +92,6 @@
 			$data  = [ 	"hot_topics_id" => 1, 
 						"hot_topics_message" => $_POST['hot_topics_message']
 					];
-
 			echo json_encode($hotTopicsObj->updateObj($data) );
 			
 			break;
@@ -101,6 +100,13 @@
 		case 'send_email':
 			$helpers = new Helpers();
 			echo json_encode( $helpers->sendEmailToBloggers($_POST) );
+			
+			break;
+		
+		//Set FaceBook Articles to Promote
+		case 'promote_articles':
+			$promote = new PromoteArticles();
+			echo json_encode( $promote->promoteArticles( $_POST) );
 			
 			break;
 

@@ -95,7 +95,7 @@
             $start_time = new DateTime('3:00pm');
             $end_time  = new DateTime('11:59pm');
           
-            if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ 
+           // if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ 
            
             ?>
             <!-- kixer adhesion -->
@@ -136,7 +136,7 @@
             })();
             </script>
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
-            <?php  } 
+            <?php  //} 
             ?>
        
       <?php  } ?>

@@ -239,7 +239,7 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			</div> 
 			
-			<div class="row" style="clear: both; border: 1px solid #ddd; margin-top: 0.5rem;"></div>
+			<div class="row" style="clear: both; border-bottom: 1px solid #ddd; padding-top: 1rem;"></div>
 			
 			<!-- LELO -->
 			<?php if(  $article_id == 16562 ||  $article_id == 17425 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 || $article_id == 17286  ){?>

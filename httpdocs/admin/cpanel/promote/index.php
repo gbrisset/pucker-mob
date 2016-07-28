@@ -10,6 +10,10 @@
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 
 	//GET PROMOTED ARTICLES
+	$promoteObj = new PromoteArticles();
+	$articles = $promoteObj->getArticlesToPromote();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +39,7 @@
 			</div>
 			
 			<!-- ARTICLES RESUME INFO --> 
-			<?php //include_once($config['include_path_admin'].'view_control_panel_resume.php'); ?>
+			<?php include_once($config['include_path_admin'].'view_control_panel_resume.php'); ?>
 			
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
 				<?php include_once($config['include_path_admin'].'articles_to_promote.php'); ?>

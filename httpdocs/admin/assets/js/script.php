@@ -833,9 +833,10 @@ if( $('.facebook-sites') ){
 			var article_id = $(parent).attr('data-info');
 			var facebook_page =  $("option:selected", this).text();
 
-			var promoted = false;
+			var promoted = 0;
+			//if( value != '0') promoted = 1;
 
-			if( value != '0') promoted = true;
+			console.log(value, article_id, facebook_page, promoted);
 
 			admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
 				$.ajax({
@@ -845,7 +846,7 @@ if( $('.facebook-sites') ){
 				}).done(function(data) {
 					if(data){
 						var result = $.parseJSON(data);
-						console.log(data);
+
 						//if(result['hasError']) $('#show-msg-hotopics').removeClass('new-success').addClass('error').text('There was an error adding the topics, please try again.');
 						//else $('#show-msg-hotopics').addClass('new-success').removeClass('error').text('Your Topics were set successfully.');
 					}

@@ -15,6 +15,12 @@
 		public $facebook_page_id;
 		public $promoted;
 		public $facebook_page_name;
+		public $article_title;
+		public $article_seo_title;
+		public $cat_dir_name;
+		public $usa_pageviews;
+		public $contributor_name;
+		public $contributor_name_seo;
 
 
 		//	Object Vars
@@ -26,15 +32,15 @@
 		// GET ALL RECORDS ON THIS TABLE
 		public function all(){
 
-			$result = static::find_by_sql("SELECT * FROM $table_name ");
+			$result = static::find_by_sql("SELECT * FROM $table_name INNER JOIN (articles");
 		
 		return  $result;
 		}
 
 		// GET RECORDS DEPENDING ON THE CONDITIONAL WHERE
-		public function getObj( $fields = ' * ', $where = false ){
+		public function getObj( $fields = ' * ', $conditions = false ){
 			if( $where ){
-				return static::find_by_sql("SELECT $fields FROM $table_name WHERE $where ");
+				return static::find_by_sql("SELECT $fields FROM $table_name $conditions ");
 			}
 			return $this->all();
 		}
@@ -79,6 +85,14 @@
 		public function promotedInfo( $article_id ){
 			$article =  static::find_by_sql("SELECT * FROM promote_articles WHERE article_id = $article_id ");
 			return $article;
+		}
+
+		public function getArticlesToPromote( $where = false ){
+
+			if( $where ){
+				return  static::find_by_sql("SELECT * FROM articles_list_admin  WHERE $where ");
+			}
+			return  static::find_by_sql("SELECT * FROM articles_list_admin ");
 		}
 
 		//List all facebook pages

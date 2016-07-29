@@ -836,9 +836,9 @@ if( $('.facebook-sites') ){
 			var promoted = 0;
 			//if( value != '0') promoted = 1;
 
-			console.log(value, article_id, facebook_page, promoted);
+			//console.log(value, article_id, facebook_page, promoted);
 
-			admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+			//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
 				$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',
@@ -852,11 +852,37 @@ if( $('.facebook-sites') ){
 					}
 				});
 
-			console.log(value, parent, article_id);
+			//console.log(value, parent, article_id);
 
 		});
 	});
 }
+
+if( $('#promote_articles_list') ){
+	$('.promoted-cb').each( function(){
+		$(this).on('click', function(){
+			var ele = this,
+			isCheck = $(this).is(':checked'),
+			article_id = $(this).attr('data-info');
+			//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+
+			$.ajax({
+				  type: "POST",
+				  url:   admin_url + 'assets/php/ajaxfunctions.php',
+				  data: { article_id: article_id, promoted : isCheck,  task:'article_promoted' },
+				}).done(function(data) {
+					if(data){
+						var result = $.parseJSON(data);
+
+					}
+				});
+
+			//console.log(isCheck, article_id);
+
+		});
+	});
+}
+
 //$('.auto-edit').autoEdit();
 
 }); 

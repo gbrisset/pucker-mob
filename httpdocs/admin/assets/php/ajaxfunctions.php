@@ -110,6 +110,11 @@
 			
 			break;
 
+		case 'article_promoted': 
+			$promote = new PromoteArticles();
+			echo json_encode( $promote->promoteThisArticle( $_POST) );
+			break;
+ 
 
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));

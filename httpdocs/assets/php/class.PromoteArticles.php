@@ -15,12 +15,18 @@
 		public $facebook_page_id;
 		public $promoted;
 		public $facebook_page_name;
+		public $facebook_page_url;
 		public $article_title;
 		public $article_seo_title;
 		public $cat_dir_name;
 		public $usa_pageviews;
 		public $contributor_name;
-		public $contributor_name_seo;
+		public $contributor_seo_name;
+		public $contributor_email_address;
+		public $user_type;
+
+		public $article_status;
+		public $creation_date;
 
 
 		//	Object Vars
@@ -47,11 +53,12 @@
 
 		//Update, Delete or Save Records into table dependen on user action
 		public function promoteArticles( $data = false ){
+			$result = false;
 			if($data){
 				$article_id = $data['article_id'];
 				$facebook_page_id = $data['facebook_page_id'];
 				$promoted = $data['promoted'];
-				$result = false;
+				
 				
 				//Get article info 
 				$article =  static::find_by_sql("SELECT * FROM promote_articles WHERE article_id = $article_id ");
@@ -85,6 +92,31 @@
 		public function promotedInfo( $article_id ){
 			$article =  static::find_by_sql("SELECT * FROM promote_articles WHERE article_id = $article_id ");
 			return $article;
+		}
+
+		public function promoteThisArticle( $data ){
+			$article_id =  filter_var($data['article_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+			$promoted =  $data['promoted'];	
+
+			if($promoted == "true") $promoted = 1;
+			else $promoted = 0;
+
+			$article =  static::find_by_sql("SELECT * FROM promote_articles WHERE article_id = $article_id ");
+			$row_id = isset($article) ? $article[0]->promote_articles_id : 0 ;
+			$facebook_page_id = isset($article) ? $article[0]->facebook_page_id : 0 ;
+
+			$info = [ 
+						"article_id" => $article_id,
+						"promoted" => $promoted,
+						"facebook_page_id" => $facebook_page_id,
+						"promote_articles_id" => $row_id 
+					];
+			
+			$result = static::update($info);
+			var_dump($article_id, $promoted, $result);
+
+			return $result;
+
 		}
 
 		public function getArticlesToPromote( $where = false ){

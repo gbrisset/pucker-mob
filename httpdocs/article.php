@@ -36,10 +36,10 @@ if(!is_null($categoryInfo)){
 	$articleInfo = $mpArticle->getSingleArticleInfo(['articleSEOTitle' => $articleTitle]);
 	
 	//ISSUE WITH WENDESDAY ARTICLE 
-	if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
+	/*if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
 		header('Location: http://www.puckermob.com/lifestyle/so-youd-like-to-be-a-phonesex-operator-a-helpful-quiz');
 		die;
-	}
+	}*/
 	$article_link = '';
 	//CHECK IF ARTICLES IN REGISTER UNDER THAT CATEGORY
 	$verifyInCat = $mpArticle->verifyArticleInCategory( $articleInfo['article_id'], $categoryInfo['cat_id']);
@@ -144,12 +144,14 @@ if(!is_null($categoryInfo)){
 				</script>
 			</div>
 			
-			<!-- /73970039/UT_SS_FP 
-			<div id='div-gpt-ad-1467069211350-0' style='height:1px; width:1px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467069211350-0'); });
+
+			<!-- /73970039/SS_FP_US 
+			<div id='div-gpt-ad-1469818259945-0' style='height:1px; width:1px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1469818259945-0'); });
 				</script>
 			</div>-->
+			
 
 		<?php } ?>
 	<?php include_once('admin/fb/fbfunctions.php'); ?>
@@ -196,6 +198,14 @@ if(!is_null($categoryInfo)){
 			<div id='div-gpt-ad-1461622964696-3'>
 				<script type='text/javascript'>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
+				</script>
+			</div>
+
+			
+			<!-- /73970039/SS_FP_US -->
+			<div id='div-gpt-ad-1469818259945-0' style='height:1px; width:1px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1469818259945-0'); });
 				</script>
 			</div>
 

@@ -28,8 +28,7 @@
      	
       <!-- LELO -->
       <?php if(isset($article_id) && $article_id != 16562 &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 &&  $article_id  != 17286){?>
-        <!-- GUM GUM 
-        <script>ggv2id='64bad626';</script><script src="https://g2.gumgum.com/javascripts/ggv2.js"></script>-->
+     
 
         <!-- NET SEER -->
         <script type="text/javascript">
@@ -71,7 +70,62 @@
           target_type: "mix"
                   });
   </script>
-<?php }?>
+<?php } ?>
+
+<?php if($article_id == 14597){ ?>
+  <SCRIPT TYPE="text/javascript">
+    (function(){
+        var data = {
+            CM8Server       : "web2.checkm8.com",
+            CM8Static       : "ch2lb.checkm8.com",
+            CM8Cat          : "Will.Will_Category",
+            CM8Id           : 874101,
+            CM8Profile      : "",
+            CM8Redir        : { click: "", ad_play: ""},
+            CM8Req          : 'x',
+            CM8NoBustIFrame : false,
+            CM8RemoveIFrame : true,
+            CM8IFrameBuster : ''
+    };
+    function auto(event, url, test) { if (! test.test(url)) data.CM8Redir[event] = data.CM8Redir[event] || url; }
+    auto('click', '%%CLICK_URL_UNESC%%', /^%%/); auto('ad_play', '%%VIEW_URL_UNESC%%', /^%%/); /* DFP */
+    auto('click', '%c', /^%[c]/); auto('ad_play', '%i', /^%[i]/); /* DFP Legacy */
+    auto('click', '${clickurl}', /^\$/); /* Yahoo APT */
+    auto('click', '{clickurl}', /^{/); /* OpenX */
+    function callUrl(url) {
+        var tag = document.createElement('script');
+            tag.src = ((document.location.protocol=='https:')?'https':'http') + '://' + (data.CM8Static || data.CM8Server) + '/adam/' + url;
+            var tagParent = document.body || document.head || document.documentElement;
+            tagParent.insertBefore(tag, tagParent.firstChild);
+    }
+    if ((! data.CM8NoBustIFrame) && (top != window)) {
+        var alone = window.CM8Cat;
+        for (var p in data) window[p + (alone ? '_' + data.CM8Id : '')] = data[p];
+        callUrl('cm8adam_iframe_buster' + (alone ? '_alone.js?' + data.CM8Id : '.js'));
+    }
+    else {
+        if (document.currentScript && (document.currentScript.tagName == 'SCRIPT'))
+            var anchor1 = document.currentScript;
+        var scripts = document.getElementsByTagName('script');
+        for (var i = 0; i < scripts.length; i++) {
+            var text = (scripts[i].text || '').replace(/\s/g, '');
+            if ((text.match(/[{,]CM8Id:([0-9]+)[,}]/) || {})[1] == data.CM8Id)
+                var anchor2 = scripts[i];
+            if ((text.match(/[{,]CM8Server:["']([^"']+)["'][,}]/) || {})[1] == data.CM8Server)
+                var anchor3 = scripts[i];
+        }
+        var anchor = anchor1 || anchor2 || anchor3 || scripts[scripts.length - 1];
+        var ph = document.createElement('div');
+        ((anchor && anchor.parentNode) || document.body).insertBefore(ph, anchor || null);
+        for (var p in data) ph[p] = data[p];
+        window.CM8AjaxPH = window.CM8AjaxPH || [];
+        window.CM8AjaxPH.push(ph);
+        callUrl('cm8_detect_ad_ajax.js');
+    }
+    })();
+    </SCRIPT>
+<?php } ?>
+
 
 <?php }else{ ?>
   <!-- MOBILE -->

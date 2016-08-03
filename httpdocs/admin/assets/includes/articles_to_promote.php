@@ -2,7 +2,7 @@
 <?php
 	if(isset($articles) && $articles ){ ?>
 
-	<table class="columns small-12 no-padding">
+	<table class="columns small-12 no-padding" id="promote_articles_list">
 		<thead>
 		    <tr>
 		       <th width="400" class="align-left">Title</th>
@@ -28,10 +28,6 @@
 			$contributor_name = $articleInfo->contributor_name;
 			$contributor_seo_name = $articleInfo->contributor_seo_name;
 			$promoted = $articleInfo->promoted;
-
-			/*if(!is_null($pageviews_list[$article_id])){
-		    	$article_us_traffic = $pageviews_list[$article_id];
-			}*/
 
 			if(file_exists($pathToImage)){
 				$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo->article_id.'_tall.jpg';
@@ -68,13 +64,7 @@
 				<!-- REMOVE ARTICLE -->
 				<td class="show-for-xlarge-up  border-right" ><label><?php  echo (!is_null($article_us_traffic) ) ?   $article_us_traffic :  0; ?></label></td>
 				<td class="show-for-large-up no-border-right valign-middle">
-					<?php if($admin_user ){?>
-						<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-							<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-							<input type="checkbox" name="promoted" value="<?php echo $promoted ?>" <?php if( $promoted == 1 ) echo 'checked'; ?>
-						</form>
-					<?php }?>
+					<input type="checkbox" name="promoted" value="<?php echo $promoted ?>" <?php if( $promoted == 1 ) echo 'checked'; ?> class="promoted-cb" data-info="<?php echo $article_id; ?>">
 				</td>							  			
 			</tr>
 		<?php }?>

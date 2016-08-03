@@ -32,11 +32,17 @@
 			      		<?php if($articleInfoObj['article_id'] != 14613 && $articleInfoObj['article_id'] != 14873 && $articleInfoObj['article_id'] != 12966 && $articleInfoObj['article_id'] != 15284 ){?>
 								
 								<?php if($articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
-								<!-- /73970039/UT_BB -->
+								<!-- /73970039/UT_BB 
 								<div id='div-gpt-ad-1467068250785-0' style='height:250px; width:970px;'>
 									<script type='text/javascript'>
 									googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467068250785-0'); });
 									</script>
+								</div>-->
+								<!-- /73970039/UT_BB -->
+								<div id='div-gpt-ad-1470066258166-1' style='height:250px; width:970px;'>
+								<script>
+									googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470066258166-1'); });
+								</script>
 								</div>
 								<?php } //else{ ?>
 									<!--<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>

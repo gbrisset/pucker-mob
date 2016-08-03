@@ -91,6 +91,7 @@ if($local)
 	require_once $config['assets_path'].'/class.FollowAuthor.php';
 
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
+	require_once $config['assets_path'].'/class.Helpers.php';
 
 	if($admin){
 		require_once $config['assets_path'].'/class.User.php';

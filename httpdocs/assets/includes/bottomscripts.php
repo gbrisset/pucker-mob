@@ -72,7 +72,9 @@
   </script>
 <?php } ?>
 
+
 <?php if( isset($article_id) && $article_id == 14597){ ?>
+
   <SCRIPT TYPE="text/javascript">
     (function(){
         var data = {

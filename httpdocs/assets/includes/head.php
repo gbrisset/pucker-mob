@@ -91,6 +91,9 @@
 		    googletag.defineSlot('/73970039/UT_ST', [300, 250], 'div-gpt-ad-1461622964696-4').addService(googletag.pubads());
 		    googletag.defineSlot('/73970039/UT_SA', [320, 50], 'div-gpt-ad-1461622964696-5').addService(googletag.pubads());
 		    googletag.defineSlot('/73970039/UT_SP', [320, 50], 'div-gpt-ad-1461622964696-6').addService(googletag.pubads());
+		    googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470066258166-0').addService(googletag.pubads());
+   			googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470066258166-1').addService(googletag.pubads());
+
 		    googletag.pubads().enableSingleRequest();
 		    googletag.enableServices();
 		  });
@@ -103,6 +106,7 @@
 		    googletag.enableServices();
 		  });
 		</script>
+
 	<?php //} ?>
 
 	<!-- Undertone 970x250 VIRGINIA CAMP-->
@@ -153,6 +157,23 @@
 	  });
 	</script>
 	<!-- UNDERTONE TENNESSE CAMP END -->
+
+	<!-- UNDERTONE CAPMP UNTIL 31st 
+	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+	<script>
+	  var googletag = googletag || {};
+	  googletag.cmd = googletag.cmd || [];
+	</script>
+
+	<script>
+	  googletag.cmd.push(function() {
+	    googletag.defineSlot('/73970039/SS_FP_US', [1, 1], 'div-gpt-ad-1469818259945-0').addService(googletag.pubads());
+	    googletag.pubads().enableSingleRequest();
+	    googletag.enableServices();
+	  });
+	</script>
+	 END UNDERTONE CAPMP UNTIL 31st -->
+
 
 
 <?php 

@@ -7,17 +7,17 @@ $postnumbers = is_numeric($_POST['number']) ? $_POST['number'] : 11;
 $page = isset( $_POST['page'] ) ? $_POST['page'] : 1;
 
 $omitThis = '';
-$featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
+/*$featuredArticle = $mpArticle->getFeaturedArticle( $cat_id );
 if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$omitThis =  $featuredArticle['article_id'];
-}
+}*/
 
 if( isset($page) ){
 
 	if( $cat_id == 1 ){
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis,  'withMobLogs'=> true ] );
+		$articlesList = $mpArticle->getArticlesListView(['limit' => $postnumbers, 'offset' => $offset, 'omit' => $omitThis,  'user_type'=> '1, 6, 7, 8' ] );
 	}else{
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => $postnumbers, 'offset'=>$offset, 'omit' => $omitThis , 'pageId' => $cat_id,  'withMobLogs'=> false ]);
+		$articlesList = $mpArticle->getArticlesListView(['limit' => $postnumbers, 'offset'=>$offset, 'omit' => $omitThis , 'pageId' => $cat_id ]);
 	}
 }else{
 	/*FROM ARTICLE PAGE*/

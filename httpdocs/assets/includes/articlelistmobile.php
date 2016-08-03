@@ -10,20 +10,11 @@
 		$cat_id = $categoryInfo['cat_id'];
 	}
 
-	$featuredArticle = false;//$mpArticle->getFeaturedArticle( $cat_id );
-	if( $featuredArticle && $featuredArticle['article_status'] == 1){
-		$articleIndex++;
-		$quantity = 31	;
-		$omitThis =  $featuredArticle['article_id'];
-		include_once($config['include_path'].'featured_article.php');
-	}
-
 	// If is HomePage Get new article List
 	if( $cat_id == 1){
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis, 'withMobLogs'=> true ]);
-		//selse $articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
+		$articlesList = $mpArticle->getArticlesListView(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis, 'user_type'=> '1, 6, 7, 8' ]);
 	}else{
-		$articlesList = $mpArticle->getMobileArticleList(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id, 'withMobLogs'=> false ] );
+		$articlesList = $mpArticle->getArticlesListView(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id ] );
 	}
 
 	if(isset($articlesList) && $articlesList){
@@ -33,12 +24,9 @@
 		$date = date("M d, Y", strtotime($articles['date_updated']));
 		$article_id = $articles['article_id'];
 		$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';//$config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
-		$totalShares = isset( $shares_arr[$article_id] ) ? $shares_arr[$article_id] : 1 ;
+		//$totalShares = isset( $shares_arr[$article_id] ) ? $shares_arr[$article_id] : 1 ;
 		$cat_name = $articles['cat_dir_name'];
 	
-		//IGNORE MOBLOG ARTICLES
-		if( !isset($category_page) && $cat_name === "moblog" && $articles['article_featured_hp'] != 1) continue;
-
 		$articleIndex++; ?>
 
 		<!-- SHARETHROUGH HOMEPAGE Mobile Placement -->

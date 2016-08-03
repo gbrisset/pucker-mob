@@ -50,7 +50,8 @@
 	if($contributor_type != false) $contributor_type =  $contributor_type["user_type"]; else $contributor_type = false;
 	
 	//GET ALL ARTICLES 
-	$allarticles = $mpArticle->getAllLiveArticles();
+	//$allarticles = $mpArticle->getAllLiveArticles();
+	$allarticles = $mpArticle->getAllLiveArticlesPerContributor( $contributor_id );
 
 	//Relate Articles
 	$related_to_this_article = $mpArticle->getRelatedToArticle( $article['article_id'] );

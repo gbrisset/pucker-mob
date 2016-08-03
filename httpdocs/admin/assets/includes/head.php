@@ -10,7 +10,7 @@
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
 	<meta name="author" content="Sequel Media International">
-	<meta property="og:url"           content="http://puckermob.com" />
+	<meta property="og:url"           content="http://www.puckermob.com" />
 	<meta property="og:type"          content="website" />
 	<meta property="og:title"         content="Pucker Mob | We're All Part of It" />
 	<meta property="og:description"   content="General interest news, information, articles and advice for a world on the move" />

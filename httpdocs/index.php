@@ -11,6 +11,24 @@ $isHomepage = true;
 $has_sponsored = true;// $mpArticle->data['has_sponsored_by'];
 $is_takeover = true;
 
+if (empty($_GET['per_page'])) {
+	$quantity = 46;
+} else {
+	$quantity = $_GET['per_page'];
+}
+
+
+if (empty($_GET['page'])) {
+	$page = 0;
+} else {
+	$page = $_GET['page'];
+}
+$has_sponsored = 0;
+$omitThis = 0;
+$offset = $quantity * $page;
+$cat_id = $mpArticle->data['cat_id'];
+$articlesList = $mpArticle->getArticlesListView(['limit' => $quantity, 'omit' => $omitThis, 'offset' => $offset, 'user_type' => "1, 6, 7, 8" ]);
+
 if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -27,7 +45,7 @@ if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 		
 		<section id="puc-articles" class="sidebar-right  mobile-12 small-12 medium-11 columns translate-fix sidebar-main-left">
 			<?php 
-				$articlesList = $mpArticle->getArticles(['count' => 24]);
+				//$articlesList = $mpArticle->getArticles(['count' => 24]);
 				include_once($config['include_path'].'articlelistmobile.php'); ?>
 		</section>
 	</main>

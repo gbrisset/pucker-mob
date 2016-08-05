@@ -225,7 +225,7 @@ public function getMoBlogsArticlesFB( $current_article_id = 0){
 	return $q;
 
 }
-//DELETE
+
 public function getMobileArticleList( $args = [], $attempts = 0 ){
 	$options = array_merge([
 		'pageId' => null, 
@@ -271,7 +271,6 @@ public function getMobileArticleList( $args = [], $attempts = 0 ){
 	return $q;	   
 }
 
-//DELETE THIS
 public function getArticlesList( $args = [] ){
 	$options = array_merge([
 		'pageId' => null, 
@@ -287,21 +286,20 @@ public function getArticlesList( $args = [] ){
 	], $args);
 
 	$s = " SELECT articles.article_id, articles.creation_date, articles.date_updated, articles.article_title, articles.article_seo_title, categories.cat_id, categories.cat_name, categories.cat_dir_name, 
-	article_contributors.contributor_id, article_contributors.contributor_seo_name, article_contributors.contributor_name, article_contributors.contributor_image, users.user_type ";
+	article_contributors.contributor_id, article_contributors.contributor_seo_name, article_contributors.contributor_name, article_contributors.contributor_image ";
 
-	/*if( $options['withMobLogs'] == true ){
+	if( $options['withMobLogs'] == true ){
 		$s .= ", article_moblogs_featured.article_featured_hp ";
-	}*/
+	}
 	
 	$s .= " FROM articles 
-		   INNER JOIN ( article_categories, categories, article_contributor_articles, article_contributors, users ) 
+		   INNER JOIN ( article_categories, categories, article_contributor_articles, article_contributors ) 
 		   	ON ( articles.article_id = article_categories.article_id AND article_categories.cat_id = categories.cat_id 
-		   	AND article_contributor_articles.article_id = articles.article_id AND article_contributors.contributor_id = article_contributor_articles.contributor_id ) 
-		   	AND article_contributors.contributor_email_address = users.user_email ";
+		   	AND article_contributor_articles.article_id = articles.article_id AND article_contributors.contributor_id = article_contributor_articles.contributor_id ) ";
 		   
-	/*if( $options['withMobLogs'] == true ){
+	if( $options['withMobLogs'] == true ){
 		$s .= " LEFT JOIN article_moblogs_featured ON ( article_moblogs_featured.article_id = articles.article_id ) ";
-	}*/
+	}
 	
 	$s .= " WHERE  articles.article_status = 1 ";
 

@@ -2,6 +2,7 @@
 $articleIndex = 0;
 $bigImageCounter =  1;
 $smallImageCounter = 0;
+
 if (empty($_GET['per_page'])) {
 	$quantity = 46;
 } else {
@@ -15,20 +16,19 @@ if (empty($_GET['page'])) {
 	$page = $_GET['page'];
 }
 $has_sponsored = 0;
-
 $omitThis = 0;
 $offset = $quantity * $page;
 $cat_id = $mpArticle->data['cat_id'];
 
 $featuredArticle = false;
-if( $featuredArticle && $featuredArticle['article_status'] == 1){
+/*if( $featuredArticle && $featuredArticle['article_status'] == 1){
 	$articleIndex++;
 	$omitThis =  $featuredArticle['article_id'];
 
 	//FEATURED ARTICLE
 	//include_once($config['include_path'].'featured_article.php');
 
-	if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+	if(isset($has_sponsored) && $has_sponsored){ 
 	else{ if( $page == 0 ){?>
 		<!-- ShareT -->
 		<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
@@ -37,8 +37,9 @@ if( $featuredArticle && $featuredArticle['article_status'] == 1){
 		</div>
 		<hr class="padding-top">
 	<?php }}
-}
-$articlesList = $mpArticle->getArticlesListView(['limit' => $quantity, 'omit' => $omitThis, 'offset' => $offset, 'user_type' => "1, 6, 7, 8" ]);
+}*/
+
+
 
 /* Article List */
 $totalArticles = count($articlesList);

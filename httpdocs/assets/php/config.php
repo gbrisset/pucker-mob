@@ -93,7 +93,7 @@ if($local)
 	require_once $config['assets_path'].'/class.FacebookDebugger.php';
 	require_once $config['assets_path'].'/class.Helpers.php';
 
-	if($admin){
+	if(isset($admin) && $admin){
 		require_once $config['assets_path'].'/class.User.php';
 		require_once $config['assets_path'].'/class.Contributor.php';
 		require_once $config['assets_path'].'/class.ContributorEarnings.php';

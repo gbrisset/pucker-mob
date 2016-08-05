@@ -21,7 +21,7 @@ $contributorInfo = $mpArticle->getContributors(['contributorSEOName' => $_GET['c
 //$mostReadArticles = $mpArticle->getArticles(['count' => 5, 'sortType' => 2]);
 
 // Dish of the Day the same on every page
-$featuredArticle = $mpArticle->getFeatured(['featureType' => 2, 'articleCount' => 1, 'pageId' => 1]);
+//$featuredArticle = $mpArticle->getFeatured(['featureType' => 2, 'articleCount' => 1, 'pageId' => 1]);
 
 if($contributorInfo['contributors']){
 	$omits = [];
@@ -36,7 +36,7 @@ if($contributorInfo['contributors']){
 	
 	$pageName = $contributorInfoObj['contributor_name'].' | '.$mpArticle->data['article_page_name'];
 
-	$articlesPerPage = 24;
+	$articlesPerPage = 30;
 
 	$totalPages = ceil(count($contributorInfo['articles']['articles']) / $articlesPerPage);
 	if($totalPages > 1){

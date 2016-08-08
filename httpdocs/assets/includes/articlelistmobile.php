@@ -11,20 +11,20 @@
 	}
 
 	// If is HomePage Get new article List
-	if( $cat_id == 1){
+	/*if( $cat_id == 1){
 		$articlesList = $mpArticle->getArticlesListView(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis, 'user_type'=> '1, 6, 7, 8' ]);
 	}else{
 		$articlesList = $mpArticle->getArticlesListView(['limit' => '30', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id ] );
-	}
+	}*/
 
 	if(isset($articlesList) && $articlesList){
+	
 	foreach ($articlesList as $articles){
 
 		$linkToArticle = 'http://www.puckermob.com/'.$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 		$date = date("M d, Y", strtotime($articles['date_updated']));
 		$article_id = $articles['article_id'];
 		$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';//$config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
-		//$totalShares = isset( $shares_arr[$article_id] ) ? $shares_arr[$article_id] : 1 ;
 		$cat_name = $articles['cat_dir_name'];
 	
 		$articleIndex++; ?>

@@ -50,30 +50,6 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						$mostReadArticle .= '</a>';
 						$mostReadArticle .= '';
 						echo $mostReadArticle;
-
-						//Replace 2nd article with Adblade
-						if($articleNumber == 3 ){?>
-							<?php if( $articleInfoObj['article_id'] != 14472 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ ?>
-							<!--<style>#bbrlContainer{ left:-10px; }</style>
-							<div class="columns todays-favorites fade-in-out">
-								<script type="text/javascript">
-									var __refURL = "%%REFERRER_URL_UNESC%%";
-									var _bbrl_SLIDER = 'br';
-									var _bbrl_SLIDERAUTO = true;
-								</script>
-								<script type="text/javascript" src="http://babaroll.com/js/gcapuckermob_sl"></script>
-							</div>-->
-							<?php } ?>
-						<?php
-							
-						}
-
-						//Replace 6th article ntent ad
-						if($articleNumber == 6 ){
-							if(!$has_sponsored && (isset($isHomepage) && !$isHomepage ) && !$sponsored_aricle  && $article['article_id'] != 14472 ){ ?>
-						
-						<?php } 
-					}
 					
 				}
 			?>

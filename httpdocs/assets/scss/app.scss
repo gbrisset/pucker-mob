@@ -130,6 +130,14 @@ a{ outline: none !important; }
 .no-background{ background: none !important;}
 .clear{ clear:both; }
 
+.font-1-5x{ font-size:1.5rem !important; }
+.font-2-5x{ font-size:2.5rem !important; }
+.font-2x{ font-size:2rem !important; }
+.font-3x{ font-size:3rem !important; }
+.font-4x{ font-size:4rem !important; }
+$main-color: #016201;
+.main-color{ color: $main-color !important; }
+
 /*Arrows*/
 .arrow-left, .arrow-right{
 	background-color: $text-type-color;
@@ -2378,3 +2386,43 @@ div#inarticle12-ad {
 }
 #playerHolder{ height: 250px !important; width: 300px !important; display: inline-block !important;}
 #article-content li{ clear:both; }
+
+/****REGISTRATION*****/
+#registration{
+	h1{ 
+		font-family: Oslo;
+		line-height: 1.4;
+		text-align: center;
+	}
+	h2{ font-family: OsloBold; }
+	.small-registration-text, .small-registration-text{ font-size: 12px;  color: #888;}
+
+	.hsContent input[type="text"], .hsContent input[type="password"], .hsContent input[type="email"] {
+	    color: #fff;
+	    text-transform: lowercase;
+	    background-color: transparent !important;
+	    border-top: none;
+	    border-left: none;
+	    border-right: none;
+	    border-bottom: 2px solid #ddd;
+	    box-shadow: none;
+	    height: 1.8rem;
+	    }
+
+	::-webkit-input-placeholder {
+	   color: red;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: red;  
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: red;  
+	}
+
+	:-ms-input-placeholder {  
+	   color: red;  
+	}
+}
+.mozilla  .hsContent input[type="text"], .hsContent input[type="password"], .hsContent input[type="email"] { height: 2rem; }

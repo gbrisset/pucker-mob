@@ -883,6 +883,17 @@ if( $('#promote_articles_list') ){
 	});
 }
 
+if( $('#ranking')){
+	$('#month-option').on('change', function(){
+	 	var month = $(this).val(),
+	 	form = $('#social-media-shares-form');
+
+		console.log(month);
+
+		form.submit();
+	});
+}
+
 //$('.auto-edit').autoEdit();
 
 }); 

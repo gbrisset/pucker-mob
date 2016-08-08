@@ -9,11 +9,7 @@
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 
 	//GET RANK POSITION FOR CURRENT USER.
-	$limit = 40;
-	if($detect->isMobile()){
-		$limit = 30;
-	}
-	 $rank_list = $ManageDashboard->getTopShareWritesRank( date('n'), $limit);
+	
 	 $rank = '9999';
 	
 ?>

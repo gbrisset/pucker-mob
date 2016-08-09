@@ -126,6 +126,10 @@ a{ outline: none !important; }
 .align-left{
 	text-align: left;
 }
+//Display Options
+.inline{display:inline;}
+.inline-block{display: inline-block;}
+.inline-flex{ display: inline-flex; }
 
 .no-background{ background: none !important;}
 .clear{ clear:both; }
@@ -2389,16 +2393,22 @@ div#inarticle12-ad {
 
 /****REGISTRATION*****/
 #registration{
+	#header-ad{ margin-top: 10px !important;}
+	#registration-wrapper{
+		display:inline;
+		background: rgba(238, 238, 238, 0.33);
+    	border-radius: 4px;
+	}
 	h1{ 
 		font-family: Oslo;
 		line-height: 1.4;
 		text-align: center;
+		font-size:1.5rem;
 	}
-	h2{ font-family: OsloBold; }
+	h2{ font-family: OsloBold; font-size: 1.3rem; }
 	.small-registration-text, .small-registration-text{ font-size: 12px;  color: #888;}
 
 	.hsContent input[type="text"], .hsContent input[type="password"], .hsContent input[type="email"] {
-	    color: #fff;
 	    text-transform: lowercase;
 	    background-color: transparent !important;
 	    border-top: none;
@@ -2406,23 +2416,96 @@ div#inarticle12-ad {
 	    border-right: none;
 	    border-bottom: 2px solid #ddd;
 	    box-shadow: none;
-	    height: 1.8rem;
-	    }
+	    height: 2rem;
+	    margin-bottom: 1.5rem;
+	    font-size: 1.6rem;
+	    padding: 0;
+	}
+
+	.login-label-link{
+		text-align: center;
+	    font-size: 1.2rem;
+	    font-family: Oslo;
+	}
 
 	::-webkit-input-placeholder {
-	   color: red;
+	    
+	    text-transform: capitalize;
+	    margin-bottom: 1.5rem;
+	   
+	    font-family: OswaldLight;
+	    color:#bbb;
 	}
 
 	:-moz-placeholder { /* Firefox 18- */
-	   color: red;  
+	    font-size: 1.5rem;
+	    text-transform: capitalize;
+	    margin-bottom: 1.5rem;
+	    padding: 0;
+	    font-family: OswaldLight;
+	    color:#bbb;
 	}
 
 	::-moz-placeholder {  /* Firefox 19+ */
-	   color: red;  
+	    font-size: 1.5rem;
+	    text-transform: capitalize;
+	    margin-bottom: 1.5rem;
+	    padding: 0;
+	    font-family: OswaldLight;
+	    color:#bbb;
 	}
 
 	:-ms-input-placeholder {  
-	   color: red;  
+	    font-size: 1.5rem;
+	    text-transform: capitalize;
+	    margin-bottom: 1.5rem;
+	    padding: 0;
+	    font-family: OswaldLight;
+	    color:#bbb;  
+	}
+
+	#submit{
+		background: #CBC501;
+		text-transform: uppercase;
+	}
+
+	.line{ 
+		border-bottom: 1px solid #39569A;
+	}
+	.or{
+		color: #39569A;
+		text-transform: uppercase;
+		text-align: center;
+    	top: -7px;
+	}
+
+	#fb-login{
+		background: #39569A;
+		text-transform: capitalize;
+		font-family: Oslo;
+		font-size: 1.2rem;
+		padding: 12px;
+		margin-bottom: 7px;
+
+		i{
+			font-size: 1.5rem;
+    		margin-left: 1rem;
+		}
+	}
+
+	.line-box, #log-in-box{ display: none; }
+
+	@media #{$large-up} { 
+		#registration-wrapper{
+			display:inline-flex;
+			background: none;
+		}
+		#header-ad{ margin-top: 110px !important;}
+		.line-box, #log-in-box{ display: inline-block; }
+		#log-in-box{ background: none; }
+
+		h1{ font-size: 3rem; margin-bottom: 4rem !important;}
+		h2{ font-size: 1.6rem;}
 	}
 }
 .mozilla  .hsContent input[type="text"], .hsContent input[type="password"], .hsContent input[type="email"] { height: 2rem; }

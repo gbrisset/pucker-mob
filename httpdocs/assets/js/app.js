@@ -487,4 +487,18 @@ if($('#article')){
 
 }
 
+if($('#login-link')){
+	$('#login-link').on('click', function(){
+		$('#registration-box').hide();
+		$('#log-in-box').show();
+
+	});
+
+	$('#register-link').on('click', function(){
+		$('#log-in-box').hide();
+		$('#registration-box').show();
+
+	});
+}
+
 });

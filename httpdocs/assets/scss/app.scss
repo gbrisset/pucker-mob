@@ -2395,7 +2395,7 @@ div#inarticle12-ad {
 #registration{
 	background: #392D2D;
 	#header-ad{ 
-		background: #000; padding: 3rem; 
+		background: #000; padding: 1rem; 
 		p{ 
 			font-family: OswaldRegular;
 		    color: #fff;
@@ -2407,7 +2407,7 @@ div#inarticle12-ad {
 	#main{ margin: 0 auto; }
 	#header-ad{ margin-top: 10px !important;}
 	#registration-wrapper{
-		display:inline;
+		display:none;
 		background: rgba(238, 238, 238, 0.33);
     	border-radius: 4px;
 	}
@@ -2420,7 +2420,7 @@ div#inarticle12-ad {
 		text-transform: uppercase;
 	}
 
-	h2{ font-family: OsloBold; font-size: 1.3rem;    color: #fff; margin-bottom: 0;}
+	h2{ font-family: OsloBold; font-size: 1.3rem; color: #fff; margin-bottom: 0;}
 	.small-registration-text, .small-registration-text a{ 
 		font-size: 12px;  color: #888;
 	}
@@ -2437,7 +2437,17 @@ div#inarticle12-ad {
 	    margin-bottom: 1.5rem;
 	    font-size: 1.6rem;
 	    padding: 0;
+	    color: #fff;
 	}
+
+	.hsContent button {
+	    text-transform: uppercase;
+	    font-size: 1.05rem;
+	    padding: 0.5rem;
+	    margin-bottom: 0;
+	    background-color: #cbc500;
+	}
+
 
 
 	.login-label-link{
@@ -2488,7 +2498,7 @@ div#inarticle12-ad {
 	}
 
 	.line{ 
-		border-bottom: 1px solid #777;
+		border-bottom: 1px solid #777;     margin-top: 2rem;
 	}
 	.or{
 		color: #777;
@@ -2496,6 +2506,7 @@ div#inarticle12-ad {
 		text-align: center;
     	top: -7px;
     	font-size: 12px;
+    	margin-top: 2rem;
 	}
 	.find-more{
 		color: #fff;
@@ -2520,7 +2531,7 @@ div#inarticle12-ad {
 		}
 	}
 
-	.line-box, #log-in-box{ display: none; }
+	.line-box, #log-in-box{ display: inline; }
 	#log-in-box{
 		border-right: 1px solid #777;
     	padding-right: 3%;
@@ -2533,7 +2544,7 @@ div#inarticle12-ad {
 			background: none;
 		}
 		#header-ad{ margin-top: 110px !important;}
-		.line-box, #log-in-box{ display: inline-block; }
+		.line-box, #log-in-box{ display: none; }
 		#log-in-box{ background: none; }
 
 		h1{ font-size: 2.5rem; margin-bottom: 1rem !important;}
@@ -2541,3 +2552,11 @@ div#inarticle12-ad {
 	}
 }
 .mozilla  .hsContent input[type="text"], .hsContent input[type="password"], .hsContent input[type="email"] { height: 2rem; }
+
+#logout{
+	background: #000;
+	#main-cont{ margin-top: 10%; }
+	.admin-logout-content h1{ text-transform: uppercase; font-size: 2.5rem; color: #fff; text-align: center; font-family: OswaldRegular; margin-bottom: 1.5rem;}
+	.admin-logout-content p{font-size: 1.5rem; color: #fff; box-shadow: none; text-align: center;}
+	.admin-logout-content .admin-form-cont  a{ color: #fff; border-bottom:1px solid #999;}
+}

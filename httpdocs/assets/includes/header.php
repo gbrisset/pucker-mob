@@ -127,10 +127,10 @@
             <li> <a class="my-account-header-link" href="https://twitter.com/Puckermob" target="_blank"><i class="fa fa-twitter fade-in-out"></i></a></li>
             <li class="empty-list "></li>
             <li class="registration-link">
-              <a class="my-account-header-link" href="http://www.puckermob.com/admin/register">REGISTER</a>
+              <a class="my-account-header-link" href="http://www.puckermob.com/login">REGISTER</a>
             </li>
             <li class="login-link">
-              <a class="my-account-header-link" href="http://www.puckermob.com/admin/login">LOGIN</a>
+              <a class="my-account-header-link" href="http://www.puckermob.com/login">LOGIN</a>
             </li>
             <div id="searchbox"></div>
              <li class="right">

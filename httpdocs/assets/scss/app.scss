@@ -2393,6 +2393,18 @@ div#inarticle12-ad {
 
 /****REGISTRATION*****/
 #registration{
+	background: #392D2D;
+	#header-ad{ 
+		background: #000; padding: 3rem; 
+		p{ 
+			font-family: OswaldRegular;
+		    color: #fff;
+		    text-align: center;
+		    font-size: 1.4rem;
+		    text-transform: uppercase;
+		}
+	}
+	#main{ margin: 0 auto; }
 	#header-ad{ margin-top: 10px !important;}
 	#registration-wrapper{
 		display:inline;
@@ -2400,13 +2412,18 @@ div#inarticle12-ad {
     	border-radius: 4px;
 	}
 	h1{ 
-		font-family: Oslo;
+		font-family: OswaldRegular;
 		line-height: 1.4;
 		text-align: center;
 		font-size:1.5rem;
+		color: #fff;
+		text-transform: uppercase;
 	}
-	h2{ font-family: OsloBold; font-size: 1.3rem; }
-	.small-registration-text, .small-registration-text{ font-size: 12px;  color: #888;}
+
+	h2{ font-family: OsloBold; font-size: 1.3rem;    color: #fff; margin-bottom: 0;}
+	.small-registration-text, .small-registration-text a{ 
+		font-size: 12px;  color: #888;
+	}
 
 	.hsContent input[type="text"], .hsContent input[type="password"], .hsContent input[type="email"] {
 	    text-transform: lowercase;
@@ -2421,6 +2438,7 @@ div#inarticle12-ad {
 	    font-size: 1.6rem;
 	    padding: 0;
 	}
+
 
 	.login-label-link{
 		text-align: center;
@@ -2470,13 +2488,22 @@ div#inarticle12-ad {
 	}
 
 	.line{ 
-		border-bottom: 1px solid #39569A;
+		border-bottom: 1px solid #777;
 	}
 	.or{
-		color: #39569A;
+		color: #777;
 		text-transform: uppercase;
 		text-align: center;
     	top: -7px;
+    	font-size: 12px;
+	}
+	.find-more{
+		color: #fff;
+		font-family: OswaldRegular;
+		font-size:1.3rem;
+		text-transform : uppercase;
+
+		a{ color: #fff; cursor: pointer;}
 	}
 
 	#fb-login{
@@ -2494,7 +2521,12 @@ div#inarticle12-ad {
 	}
 
 	.line-box, #log-in-box{ display: none; }
+	#log-in-box{
+		border-right: 1px solid #777;
+    	padding-right: 3%;
+	}
 
+	#registration-box{     margin-left: 1%; }
 	@media #{$large-up} { 
 		#registration-wrapper{
 			display:inline-flex;
@@ -2504,7 +2536,7 @@ div#inarticle12-ad {
 		.line-box, #log-in-box{ display: inline-block; }
 		#log-in-box{ background: none; }
 
-		h1{ font-size: 3rem; margin-bottom: 4rem !important;}
+		h1{ font-size: 2.5rem; margin-bottom: 1rem !important;}
 		h2{ font-size: 1.6rem;}
 	}
 }

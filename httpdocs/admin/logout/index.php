@@ -18,13 +18,12 @@
 		<section id="verify-cont" class="admin-logout-content admin-box mobile-12 small-12 large-4 auto-margin">
 			
 			<div class="admin-box mobile-12 small-12 auto-margin" id="login-cont">
-				<h1>MOBlog</h1>
 				
 			<div class="white-box">
 						<div class="row margin-top">
 						<p>You've been successfully logged out.  You'll be redirected momentarily to the main site.  
 					If not, click <a href="<?php echo $config['this_url']; ?>">Here</a></p>
-				<p>Or you can  <a href="http://www.puckermob.com/admin/login/">Log in to existing account here!</a></p>
+				<p>Or you can  <a href="http://www.puckermob.com/login/">Log in to existing account here!</a></p>
 
 						</div>
 						

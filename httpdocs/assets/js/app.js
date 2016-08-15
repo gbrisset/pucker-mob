@@ -487,8 +487,9 @@ if($('#article')){
 
 }
 
+
 if($('#login-link')){
-	$('#login-link').on('click', function(){
+	/*$('#login-link').on('click', function(){
 		$('#registration-box').hide();
 		$('#log-in-box').show();
 
@@ -498,7 +499,9 @@ if($('#login-link')){
 		$('#log-in-box').hide();
 		$('#registration-box').show();
 
-	});
+	});*/
+
+
 }
 
 });

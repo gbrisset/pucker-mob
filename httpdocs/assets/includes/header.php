@@ -188,7 +188,7 @@
               <li class="toggle-topbar menu-icon"><a href="#"></a></li>
                <li class="name">
                  <a href="<?php echo $config['this_url']; ?>">
-                     <h2 style="margin-top:-3px; color: #fff; font-size: 1.4rem; ">PUCKERMOB</h2> 
+                     <h2 style="margin-top:-3px; color: #fff; font-size: 1.6rem; ">PUCKER<span style="color:green; font-weight: 900;">MOB</span></h2> 
                  </a>
               </li>
             </ul>
@@ -212,8 +212,7 @@
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.sequelmediainternational.com"  target="_blank" class="relationships" >Info & About Us</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/privacy/"  target="_blank" class="" >Privacy Policy</a></li>
 
-           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/login"  target="_blank" class="relationships" >LOGIN</a></li>
-            <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/register"  target="_blank" class="relationships" >REGISTER</a></li>
+           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/login" class="relationships" >LOGIN</a></li>
             <?php } ?>
         </ul>
       </section>
@@ -260,4 +259,4 @@
         </div>
 
         <div id="fade" class="black_overlay" href= "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
-        <div id="mobilesearchbox"></div>
+        <div id="mobilesearchbox" style="top:8px;"></div>

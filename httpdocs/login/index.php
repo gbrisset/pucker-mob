@@ -42,8 +42,12 @@
 <!-- BODY -->
 <body id="registration">
 	
-	<!-- HEADER [ Navigation ]-->
-	<?php include_once($config['include_path'].'header.php'); ?>
+	<!-- HEADER [ Navigation ] -->
+	<?php if($detect->isMobile()){
+			include_once($config['include_path'].'header.php'); 
+		}else{
+			include_once($config['include_path'].'new_header.php'); 
+		}?>
 
 	<!-- HEADER TITLE CONTENT -->
 	<div id="header-ad">

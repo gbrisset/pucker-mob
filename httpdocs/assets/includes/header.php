@@ -183,12 +183,13 @@
          </ul>
 
           <?php }else{?>
-                   <ul class="title-area columns small-12 no-padding">
+             <ul class="title-area columns small-12 no-padding">
 
               <li class="toggle-topbar menu-icon"><a href="#"></a></li>
                <li class="name">
-                 <a href="<?php echo $config['this_url']; ?>">
-                     <h2 style="margin-top:-3px; color: #fff; font-size: 1.6rem; ">PUCKER<span style="color:green; font-weight: 900;">MOB</span></h2> 
+                 <a href="<?php echo $config['this_url']; ?>" >
+
+                     <h2 style="margin-top:-3px; color: #fff; font-size: 1.4rem; ">PUCKER<span style="color:green; ">MOB</span></h2> 
                  </a>
               </li>
             </ul>
@@ -212,7 +213,8 @@
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.sequelmediainternational.com"  target="_blank" class="relationships" >Info & About Us</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/privacy/"  target="_blank" class="" >Privacy Policy</a></li>
 
-           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/login" class="relationships" >LOGIN</a></li>
+           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/login"  target="_blank" class="relationships" >LOGIN</a></li>
+            <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/register"  target="_blank" class="relationships" >REGISTER</a></li>
             <?php } ?>
         </ul>
       </section>
@@ -235,28 +237,28 @@
   <?php }?>
 
 
-          <div id="light" class="white_content">
-            <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><i class="fa fa-times-circle fa-lg"></i></a>
-            <center>
-            
-            <ul class="info-list">
-               <h1 style="width:50%;">INFO</h1>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px; position:relative !important;" href="http://www.sequelmediainternational.com/">Publications</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 73px; position:relative !important;" href="http://www.puckermob.com/privacy/">Privacy</a></li>
-                <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 30px; position:relative !important;" href="http://www.puckermob.com/policy/">Terms Of Service</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px; position:relative !important;" href="http://www.puckermob.com/policy/">Legal</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px; position:relative !important;" href="http://www.sequelmediainternational.com/">Advertise</a></li>
-               <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 67px; position:relative !important;" href="http://www.sequelmediainternational.com/">Contact</a></li>
-            </ul>
-            </center>
-            <ul class="social-links">
-               <li class="pop-up-links"><a href="https://www.facebook.com/puckermob"><i class="fa fa-facebook-square"></i></a></li>
-               <li class="pop-up-links"><a href="https://twitter.com/Puckermob"><i class="fa fa-twitter"></i></a></li>
-               <li class="pop-up-links"><a href="https://www.pinterest.com/puckermob/"><i class="fa fa-pinterest"></i></a></li>
-               <li class="pop-up-links"><a href="https://plus.google.com/112707727253651609975/posts"><i class="fa fa-google-plus-square"></i></a></li>
-            </ul>
-            </center>
-        </div>
+  <div id="light" class="white_content">
+      <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><i class="fa fa-times-circle fa-lg"></i></a>
+      <center>
+      
+      <ul class="info-list">
+         <h1 style="width:50%;">INFO</h1>
+         <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 50px; position:relative !important;" href="http://www.sequelmediainternational.com/">Publications</a></li>
+         <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 73px; position:relative !important;" href="http://www.puckermob.com/privacy/">Privacy</a></li>
+          <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 30px; position:relative !important;" href="http://www.puckermob.com/policy/">Terms Of Service</a></li>
+         <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 77px; position:relative !important;" href="http://www.puckermob.com/policy/">Legal</a></li>
+         <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 60px; position:relative !important;" href="http://www.sequelmediainternational.com/">Advertise</a></li>
+         <li class="pop-up-link"><a class="action-button shadow animate red" style="padding: 5px 67px; position:relative !important;" href="http://www.sequelmediainternational.com/">Contact</a></li>
+      </ul>
+      </center>
+      <ul class="social-links">
+         <li class="pop-up-links"><a href="https://www.facebook.com/puckermob"><i class="fa fa-facebook-square"></i></a></li>
+         <li class="pop-up-links"><a href="https://twitter.com/Puckermob"><i class="fa fa-twitter"></i></a></li>
+         <li class="pop-up-links"><a href="https://www.pinterest.com/puckermob/"><i class="fa fa-pinterest"></i></a></li>
+         <li class="pop-up-links"><a href="https://plus.google.com/112707727253651609975/posts"><i class="fa fa-google-plus-square"></i></a></li>
+      </ul>
+      </center>
+  </div>
 
-        <div id="fade" class="black_overlay" href= "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
-        <div id="mobilesearchbox" style="top:8px;"></div>
+  <div id="fade" class="black_overlay" href= "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
+  <div id="mobilesearchbox"></div>

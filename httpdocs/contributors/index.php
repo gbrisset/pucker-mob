@@ -31,11 +31,14 @@ if($totalPages > 1){
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="contributors">
-	<?php include_once($config['include_path'].'header.php'); ?>
+	<?php if($detect->isMobile()){
+		include_once($config['include_path'].'header.php'); 
+	}else{
+		include_once($config['include_path'].'new_header.php'); 
+	}
+	?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<!-- LEFT SIDE BAR -->
-		<?php include_once($config['include_path'].'left_side_bar.php'); ?>
 		
 		<section id="puc-articles" class="contributor_page sidebar-right small-12 large-11 columns translate-fix sidebar-main-left">
 					<!-- IN HOUSE WRITERS -->
@@ -180,17 +183,11 @@ if($totalPages > 1){
 						<?php } ?>
 					</div>
 					<?php } ?>
-				<?php //include_once($config['shared_include'].'pagination.php');?>
-				<?php if (!$detect->isMobile()) { ?>
-				<!--<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>-->
-				<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
-				<?php include_once($config['include_path'].'aroundtheweb.php'); 
-			}?>
+			
 		</section>
 		<?php if (!$detect->isMobile()) { 
 			include_once($config['include_path'].'rightsidebar.php');
 
-			//include_once($config['include_path'].'left_side_bar.php');
 		} ?>
 	</main>
 	

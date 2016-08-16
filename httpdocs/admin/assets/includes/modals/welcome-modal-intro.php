@@ -1,6 +1,6 @@
 <?php 
 	$current_intro = "current";
-   $current_profile = $current_payment = $current_social =  $current_last = '';
+   $current_profile = $current_payment = $current_social =  $current_last = $current_to_know = '';
 ?>
 <div class="main-content-modal small-12 columns intro-modal">
 	<h2 id="intro-modal-title">WELCOME TO THE PUCKERMOB BLOG</h2>

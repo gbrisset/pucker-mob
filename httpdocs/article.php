@@ -34,19 +34,13 @@ foreach($MPNavigation->categories as $category){
 
 if(!is_null($categoryInfo)){
 	$articleInfo = $mpArticle->getSingleArticleInfo(['articleSEOTitle' => $articleTitle]);
-	
-	//ISSUE WITH WENDESDAY ARTICLE 
-	/*if( $articleInfo['article_id'] == 5074 && $categoryInfo['cat_id'] == 7){
-		header('Location: http://www.puckermob.com/lifestyle/so-youd-like-to-be-a-phonesex-operator-a-helpful-quiz');
-		die;
-	}*/
 	$article_link = '';
+	
 	//CHECK IF ARTICLES IN REGISTER UNDER THAT CATEGORY
 	$verifyInCat = $mpArticle->verifyArticleInCategory( $articleInfo['article_id'], $categoryInfo['cat_id']);
 	
 	if(isset($articleInfo) &&  $articleInfo && $verifyInCat ){
 		$articleInfoObj = $articleInfo;
-
 
 		$pageName = $articleInfoObj['article_title'];
 		//get Article ADS info
@@ -86,7 +80,7 @@ if(!is_null($categoryInfo)){
 		
 		
 		<?php include_once($config['include_path'].'header.php');?>
-				<?php include_once($config['include_path'].'header_ad.php');?>
+		<?php include_once($config['include_path'].'header_ad.php');?>
 
 		
 		
@@ -120,6 +114,7 @@ if(!is_null($categoryInfo)){
 			<?php }?>
 		
 		</section>
+		
 		<?php if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0){	?>
 		
 		<section class="clear second-section low-index">
@@ -130,29 +125,40 @@ if(!is_null($categoryInfo)){
 	</main>
 		<!-- UNDERTONE -->
 	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 &&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 && $articleInfoObj['article_id'] != 17286  ){?>
-			<!--/73970039/UT_SS_FP -->
+			<?php if($articleInfoObj['article_id'] == 5813 ){?>
+				<!-- PROPELLER TAG 
+				<script src="//go.mobstitialtag.com/notice.php?p=724477&interstitial=1"></script>-->
+				<!-- /10394362/paz_724477 -->
+				<div id='div-gpt-ad-1470928349713-0'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470928349713-0'); });
+				</script>
+				</div>
+
+			<?php }else{?>
+			<!--/73970039/UT_SS_FP 
 			<div id='div-gpt-ad-1461622964696-3'>
 				<script type='text/javascript'>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
 				</script>
+			</div>-->
+
+			<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+			<!-- /73970039/UT_SS_FP -->
+			<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+			<script>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+			</script>
 			</div>
 
-				<!-- /73970039/UT_SS_Knox -->
+				<!-- /73970039/UT_SS_Knox 
 			<div id='div-gpt-ad-1467926983040-0' style='height:1px; width:1px;'>
 				<script type='text/javascript'>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467926983040-0'); });
 				</script>
-			</div>
-			
-
-			<!-- /73970039/SS_FP_US 
-			<div id='div-gpt-ad-1469818259945-0' style='height:1px; width:1px;'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1469818259945-0'); });
-				</script>
 			</div>-->
+			<?php }?>
 			
-
 		<?php } ?>
 	<?php include_once('admin/fb/fbfunctions.php'); ?>
 	<?php include_once($config['include_path'].'mobiletapsection.php'); ?>
@@ -162,11 +168,6 @@ if(!is_null($categoryInfo)){
 	<?php include_once($config['include_path'].'ads_to_load.php'); ?>
 	<?php include_once($config['include_path'].'bottomscripts.php');?>
 
-	<!--<div id="evolve_footer"></div> -->
-
-
-	<!-- MODAL BOX POPUP -->
-	<?php //if($articleInfoObj['article_id'] == 4314 ) include_once($config['include_path'].'modalbox.php'); ?>
 
 	<!-- FACEBOOK COMMENTS BOX -->
 	<div id="fb-root"></div>
@@ -194,25 +195,33 @@ if(!is_null($categoryInfo)){
 
 		<!-- UNDERTONE -->
 	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 &&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 && $articleInfoObj['article_id'] != 17286  ){?>
-			<!-- /73970039/UT_SS_FP -->
+			<!-- /73970039/UT_SS_FP
 			<div id='div-gpt-ad-1461622964696-3'>
 				<script type='text/javascript'>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
 				</script>
+			</div> -->
+
+			<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+			<!-- /73970039/UT_SS_FP -->
+			<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+			<script>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+			</script>
 			</div>
 
 			
-			<!-- /73970039/SS_FP_US -->
+			<!-- /73970039/SS_FP_US 
 			<div id='div-gpt-ad-1469818259945-0' style='height:1px; width:1px;'>
 				<script>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1469818259945-0'); });
 				</script>
-			</div>
+			</div>-->
 
 		<?php } ?>
 
 		<!--<div id="ros_adoop"></div>-->
-		<?php include_once($config['include_path'].'header.php');?>
+		<?php include_once($config['include_path'].'new_header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 
 	<main id="main" class="row panel sidebar-on-right" role="main">
@@ -231,7 +240,6 @@ if(!is_null($categoryInfo)){
 				include_once($config['template_path'].'single_page_article.php'); 
 			} ?>
 
-			<?php //if(isset($articleInfoObj['page_list_id']) && $articleInfoObj['page_list_id'] == 0) echo "<hr>"; ?>
 			
 			<!-- Setting the Poll -->			
 			<?php if(strlen($articleInfoObj['article_poll_id']) > 0){ ?>

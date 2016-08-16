@@ -93,7 +93,7 @@ else if($ajax) {
 	<!-- Sponsored By Totally Her -->
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
 
-	<?php include_once($config['include_path'].'header.php'); ?>
+	<?php include_once($config['include_path'].'new_header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 
 	<main id="main" class="row panel sidebar-on-right" role="main">

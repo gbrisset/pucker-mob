@@ -76,7 +76,7 @@ if ( $detect->isMobile() ) { ?>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 	<body id="category">
-		<?php include_once($config['include_path'].'header.php');?>
+		<?php include_once($config['include_path'].'new_header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<div id="ros_adoop"></div>
 		<main id="main" class="row panel sidebar-on-right" role="main">
@@ -85,16 +85,11 @@ if ( $detect->isMobile() ) { ?>
 					<h1 id="category-name" class="h1-large-article"><?php echo $categoryInfo['cat_name']; ?></h1>
 			
 					<?php include_once($config['include_path'].'categoryresults.php');?>
-					<!--<section class="hide-for-print ">
-						<div id="ingageunit" class="hide-for-print"></div>
-					</section>-->
 					<hr>
-					<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
 			</section>
 			<?php 
 				include_once($config['include_path'].'rightsidebar.php');
 
-				//include_once($config['include_path'].'left_side_bar.php');
 			?>
 		</main>
 		<?php include_once($config['include_path'].'footer.php');?>

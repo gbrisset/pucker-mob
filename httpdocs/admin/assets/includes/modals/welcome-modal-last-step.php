@@ -1,6 +1,6 @@
 <?php 
 	$current_last = "current";
-	$current_intro =  $current_profile = $current_payment = $current_social = '';
+	$current_intro =  $current_profile = $current_payment = $current_social = $current_to_know = '';
 ?>
 <div class="main-content-modal small-12 columns last-modal">
 	<h2 id="last-modal-title">STEP 4: START WRITING!</h2>

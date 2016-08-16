@@ -8,7 +8,13 @@
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="policy">
-<?php include_once($config['include_path'].'header.php');?>
+
+<?php if( $detect->isMobile() ){
+	include_once($config['include_path'].'header.php');
+}else{
+	include_once($config['include_path'].'new_header.php');
+}?>
+<?php //include_once($config['include_path'].'header.php');?>
 <?php include_once($config['include_path'].'header_ad.php'); ?>
 
 <main id="main" class="row panel sidebar-on-right" role="main">

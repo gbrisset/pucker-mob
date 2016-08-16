@@ -44,7 +44,9 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 <?php if($detect->isMobile()){?>
 <style>
 	div#inarticle12-ad{ display:inline; }
-		#article-caption p, #article-caption li, #article-content p, #article-content li{font-size: 1rem !important;}
+	#article-caption p, #article-caption li, #article-content p, #article-content li{font-size: 1rem !important;}
+	.adblade-dyna ul{ max-height: 350px;}
+
 </style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
@@ -96,7 +98,14 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
 		</div>
-			
+
+		<!-- PULSE POINT -->
+		<div id="mobile-instream-branovate-ad" style="margin-top:7px; margin-bottom: 15px;">
+			<div id="get-content" style="text-align:center;">
+				<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>	
+			</div>
+		</div>
+
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>
 		<div class="columns no-padding padding-top disclaimer">
@@ -252,33 +261,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 				</div>
 			<?php }elseif( $article_id != 8560 &&  $article_id != 14613  &&  $article_id != 15104 	&& $article_id != 15284  && $article_id != 15488 ){ ?>
 
-			<?php if($article_id == 15212){?>
-				<!-- /73970039/ROS1x1 -->
-				<div id='div-gpt-ad-1462751375432-0' style='height:1px; width:1px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462751375432-0'); });
-				</script>
-				</div>
-			<?php }elseif($article_id == 15078){?>
-				<!-- /73970039/ROS1x1 -->
-
-				<div id='div-gpt-ad-1462751375432-0' style='height:1px; width:1px;'>
-					<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462751375432-0'); });
-					</script>
-					</div>
-					<script src="//ebdr3.com/serve?ynjs=1&zid=128905&pid=4040&click=%%CLICK_URL_ESC_ESC%%" type="text/javascript" ></script>
-			
-				<?php }else{ ?>
 					<!-- SHARETH -->
 					<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">
 						<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
 					</div>
-				<?php }?>
 			
 			<?php } ?>
-
-			
 
 			<?php if( !$sponsored_aricle ){ ?>
 				<?php if( $article_id != 14479 &&  $article_id != 14576 && 	$article_id != 15284  && $article_id != 15488 ){?>
@@ -290,66 +278,28 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<!-- LELO -->
 			<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
-			<!-- ANSWERS -->
 			<div id="mobile-instream-branovate-ad" style="margin-top:7px; margin-bottom: 7px;">
 				<div id="get-content" style="text-align:center;">
-				<!--<div id="vm_inline"></div>
-				<script type='text/javascript'>
-					window._videomosh = window._videomosh || []; 
-					!function (e, f, u) { 
-						e.async = 1; 
-						e.src = u; 
-						f.parentNode.insertBefore(e, f); 
-					}(document.createElement('script'), 
-						document.getElementsByTagName('script')[0], 
-						'http://player.videomosh.com/players/loader/loader_final4.js'); 
-					_videomosh.push({  
-							publisher_key: "sequelmedia",  
-							mode: "incontent",  
-							container: "vm_inline", 
-							incontent_mobile_id: "9834", 
-							incontent_desktop_id: "42296",  
-							target_type: "mix", 
-							backfill:"<script src='//ib.3lift.com/ttj?inv_code=puckermob_article_sub'><\/script>"
-						}); 
-				</script>-->
-				<div id="vm_inline"></div>
-				<script>
-				    window._videomosh = window._videomosh || [];
-				    !function (e, f, u) {
-				        e.async = 1;
-				        e.src = u;
-				        f.parentNode.insertBefore(e, f);
-				    }(document.createElement('script'),
-				            document.getElementsByTagName('script')[0],
-				            'http://player.videomosh.com/players/loader/loader_final4.js');
-				    _videomosh.push({
-				        publisher_key: "sequelmedia",
-				        mode: "incontent",
-				        container: "vm_inline",
-				        incontent_mobile_id: "9834",
-				        incontent_desktop_id: "42296",
-				        target_type: "mix",
-					backfill: "<div id='gpt-backfill'></div><script type='text/javascript'> var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); })();  googletag.cmd.push(function() {googletag.defineSlot('/27755252/sequel_media/puckermob.com', [300, 250], 'gpt-backfill').addService(googletag.pubads());googletag.pubads().enableSingleRequest();googletag.enableServices();});googletag.cmd.push(function() { googletag.display('gpt-backfill'); });</scr"+"ipt>"
-				       });
-				</script>
+				<!--STRIKE-->
+				<!-- /73970039/SV_300x250 -->
+				<div id='div-gpt-ad-1471285633174-0' style='height:250px; width:300px;'>
+					<script> googletag.cmd.push(function() { googletag.display('div-gpt-ad-1471285633174-0'); }); </script>
+				</div>
+
+				<!-- BRANOVATE -->
+				<?php //if($detect->is('iOS') == 1 ){ //BRANOVATE ?>
+					<!--
+					<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
+					 -->
+				<?php //}else{ ?>
+					<!--
+					<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
+					 -->
+				<?php //} ?>
+			
 				</div>
 			</div>
 
-			<!-- BRANOVATE -->
-			<!--<div id="mobile-instream-branovate-ad">
-				<div id="get-content" style="text-align:center; display: inline-block;">-->
-					<?php //if( $detect->is('iOS') ){ ?>
-						<!--<div id="branovate-ad" class="columns small-12 margin-top margin-bottom IOS" >
-							<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
- 						</div>-->
-					<?php //}else{ ?>
-					 	<!--<div id="branovate-ad" class="columns small-12 margin-top margin-bottom" >
-							<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>						
-						</div>-->
-					<?php //}?>
-				<!--</div>
-			</div>-->
 
 			<!-- AMAZON -->
 			<div id="mobile-instream-branovate-ad" style="text-align: center;">
@@ -380,19 +330,19 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
 	<!-- UNDERTONE -->
-		<!-- /73970039/UT_SA -->
+		<!-- /73970039/UT_SA 
 		<div id='div-gpt-ad-1461622964696-5' style='height:50px; width:320px;'>
 			<script type='text/javascript'>
 			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-5'); });
 			</script>
-		</div>
+		</div> -->
 
-		<!-- /73970039/UT_SS -->
+		<!-- /73970039/UT_SS 
 		<div id='div-gpt-ad-1461622964696-2'>
 		<script type='text/javascript'>
 		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-2'); });
 		</script>
-		</div>
+		</div>-->
 		<?php } ?>
 
 
@@ -458,12 +408,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 
 				<?php if($article_id == 15212){?>
-					<!-- /73970039/ROS1x1 -->
+					<!-- /73970039/ROS1x1 
 					<div id='div-gpt-ad-1462751375432-0' style='height:1px; width:1px;'>
 					<script type='text/javascript'>
 					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462751375432-0'); });
 					</script>
-					</div>
+					</div> -->
 				<?php }else{?>
 					<?php if(  $article_id != 16562 &&  $article_id != 17425 && $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){?>
 					<!-- SHARETH -->

@@ -346,7 +346,7 @@
 	top:25px !important;
 
 	//INTRO MODAL
-	.intro-modal, .last-modal{
+	.intro-modal, .last-modal, .to-know-modal{
 		h2{
 		    font-size: 1.8rem;
 			text-align: center;
@@ -384,7 +384,13 @@
 		.image-profile-box img{ width: 100%;}
 		.photo-instructions p{ font-size: 12px !important; font-family:Oslo !important; padding-top: 5px; margin:0;}
 	}
-
+	.to-know-modal{
+		ul li{
+			font-family: OswaldLight;
+			 line-height: 2;
+			 font-size: 1.4rem;
+		}
+	}
 	.social-modal #social-page{
 		h2{
 			font-size: 16px;

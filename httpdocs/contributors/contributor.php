@@ -18,17 +18,12 @@ if(isset($_GET['sort'])){
 	}
 }
 $contributorInfo = $mpArticle->getContributors(['contributorSEOName' => $_GET['c'], 'sortType' => $sortId]);
-//$mostReadArticles = $mpArticle->getArticles(['count' => 5, 'sortType' => 2]);
-
-// Dish of the Day the same on every page
-//$featuredArticle = $mpArticle->getFeatured(['featureType' => 2, 'articleCount' => 1, 'pageId' => 1]);
 
 if($contributorInfo['contributors']){
 	$omits = [];
 	
 	$contributorInfoObj = $contributorInfo['contributors'][0];
 	$contributor_image = 'http://images.puckermob.com/articlesites/contributors_redesign/'.$contributorInfoObj['contributor_image'];
-	//'http://images.puckermob.com/articlesites/contributors_redesign/1103_contributor.png';
 	$fromFB = preg_match("/facebook/", $contributorInfoObj['contributor_image']);
 	if($fromFB){
 		$contributor_image = $contributorInfoObj['contributor_image'].'?type=large';
@@ -54,12 +49,14 @@ if($contributorInfo['contributors']){
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="contributor">
-	<?php include_once($config['include_path'].'header.php'); ?>
+	<?php if($detect->isMobile()){
+		include_once($config['include_path'].'header.php'); 
+	}else{
+		include_once($config['include_path'].'new_header.php'); 
+	}
+	?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<!-- LEFT SIDE BAR -->
-		<?php //include_once($config['include_path'].'left_side_bar.php'); ?>
-		
 		<section id="puc-articles" class="contributor_page sidebar-right small-12 large-11 columns translate-fix sidebar-main-left">
 			<h1 class="contributor-title">Contributors</h1>
 			<section id="contributor-intro" class="small-12 left">
@@ -178,16 +175,10 @@ if($contributorInfo['contributors']){
 			</section>
 			<?php } ?>
 			<?php include_once($config['include_path'].'pagination.php');?>
-			<?php //if (!$detect->isMobile()) { ?>
-			<!--<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>-->
-			<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
-			<?php //include_once($config['include_path'].'aroundtheweb.php'); 
-		//}?>
+	
 	</section>
 	<?php if (!$detect->isMobile()) { 
 		include_once($config['include_path'].'rightsidebar.php');
-
-		//include_once($config['include_path'].'left_side_bar.php');
 	} ?>
 </main>
 <?php include_once($config['include_path'].'footer.php'); ?>

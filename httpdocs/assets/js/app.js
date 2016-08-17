@@ -429,6 +429,8 @@ $(document).ready(function() {
 	    $("#main").css("margin-top", "120px");
     }
 
+    console.log($('#header-ad').height());
+
 	function loadArt() {
         current_page++;
 	    // ajax call should go here
@@ -483,24 +485,7 @@ if($('#article')){
 	var shares = formatNumber(parseFloat(562434).toFixed(1));
 	$(element).children('span').text(shares);
 
-	console.log(current_value, shares);
-
-}
-
-
-if($('#login-link')){
-	/*$('#login-link').on('click', function(){
-		$('#registration-box').hide();
-		$('#log-in-box').show();
-
-	});
-
-	$('#register-link').on('click', function(){
-		$('#log-in-box').hide();
-		$('#registration-box').show();
-
-	});*/
-
+//	console.log(current_value, shares);
 
 }
 

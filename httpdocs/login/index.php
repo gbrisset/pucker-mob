@@ -1,5 +1,6 @@
 <?php
 	$admin = true;
+	$registration = true;
 	require_once('../assets/php/config.php');
 	
 	//Admin Class To handle login
@@ -50,7 +51,7 @@
 		}?>
 
 	<!-- HEADER TITLE CONTENT -->
-	<div id="header-ad">
+	<div id="header-div">
 		<div class="inner-div">
 			<h1 class="center margin-bottom hide-for-large-up">Make Money Blogging!</h1>
 

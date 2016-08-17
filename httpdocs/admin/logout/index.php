@@ -12,7 +12,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <?php include_once($config['include_path'].'head.php');?>
 <body id="logout">
-	<?php include_once($config['include_path'].'header.php');?>
+	<?php include_once($config['include_path'].'new_header.php');?>
 
 	<main id="main-cont" class="row" role="main">
 		<section id="verify-cont" class="admin-logout-content small-12 columns">

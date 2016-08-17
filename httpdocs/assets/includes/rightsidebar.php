@@ -61,7 +61,7 @@
       
     <section id="sub-sidebar-2" class="sidebar sticky" style="padding-top:10px; ">
           <a href="https://www.facebook.com/puckermob" target="_blank"> <img src="http://www.puckermob.com/assets/img/homepage/likeuson.jpg" style="margin-bottom: 8px;"></a>
-          <a href="http://sequelmediainternational.com/contact" target="_blank"> <img src="http://www.puckermob.com/assets/img/homepage/WriteForPuckerMob.jpg" style="margin-bottom:15px;"></a>
+          <a href="http://www.puckermob.com/login"> <img src="http://www.puckermob.com/assets/img/homepage/WriteForPuckerMob.jpg" style="margin-bottom:15px;"></a>
           <a href="#" class="back-to-top btn"> Back to top  &#8682; </a>
     </section>
 </aside>
@@ -101,7 +101,7 @@
 
     <section id="sub-sidebar-2" class="sidebar sticky" style="padding-top:10px; ">
       <a href="https://www.facebook.com/puckermob" target="_blank"> <img src="http://www.puckermob.com/assets/img/homepage/likeuson.jpg" style="margin-bottom: 8px;"></a>
-      <a href="http://sequelmediainternational.com/contact" target="_blank"> <img src="http://www.puckermob.com/assets/img/homepage/WriteForPuckerMob.jpg" style="margin-bottom:15px;"></a>
+      <a href="http://www.puckermob.com/login"> <img src="http://www.puckermob.com/assets/img/homepage/WriteForPuckerMob.jpg" style="margin-bottom:15px;"></a>
       <a href="#" class="back-to-top btn"> Back to top  &#8682; </a>
     </section>
 </aside>

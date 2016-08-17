@@ -2185,6 +2185,7 @@ form#user-account-delete-form {
 	    margin-bottom: 2px;
 	}
 
+
 	.alerts-div{
 		padding: 0 1px 5px 1px;
 		max-height:23rem;
@@ -2193,9 +2194,9 @@ form#user-account-delete-form {
 		ul{
 			li{
 				list-style: none;
-			    font-family: OswaldLight;
+			    font-family: inherit;
 			    color: black;
-			    font-size: 14px;
+			    font-size: 16px;
 			    padding: 5px 10px;
 			    border-bottom: 1px solid #69b869;
 			    margin-bottom: 6px;

@@ -56,19 +56,18 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 	<input type="hidden" value="<?php echo $detect->is('iOS'); ?>" id="IOS" />
 	
 	<section id="article-summary" class="small-12 column">
-		
+		<div class="puc-articles-top">
 		<!-- TITLE -->
-		<h1 id="social_catcher" style="margin: 1rem 0 0.5rem 0;"><?php echo $article_title; ?></h1>
+		<h1 id="social_catcher" class="columns padding" style="padding-bottom: 2px;"><?php echo $article_title; ?></h1>
 		
-		<div class="small-12">
-			<?php if(!empty($article_desc) ){?><p class="description" style="margin-bottom:8px;"><?php echo $article_desc; ?></p><?php }?>
-			<p class="author">by <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo $name; ?></a></p>
+		<div class="small-12 columns puc-articles-padding">
+			<p class="author"> <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo 'By '.$name; ?></a></p>
 		</div>
 
 		<div id="article-content-2" class="clear">
-			<div class="social-media-container   small-12 columns no-padding padding-bottom social_sticky clear ">
+			<div class="social-media-container   small-12 columns no-padding social_sticky clear " style="padding-bottom: 2px;">
 					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-    					<a class="a2a_button_facebook small-5  columns" style="background: #3b5998;">
+    					<a class="a2a_button_facebook small-6  columns" style="background: #3b5998;">
     						<label class="label-social-button-2-mobile" style="padding:9px 0 3px 0;">
     							<i class="fa fa-facebook" style="margin-right: 10px; font-size: 1.8rem;" ></i></label>
     					</a>
@@ -94,13 +93,14 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 
 		<!-- Article Image -->
 		<div class="clear margin-bottom">
-			<div id="article-image" class=" no-padding">
+			<div id="article-image">
 				<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 			</div>
 		</div>
+		</div>
 
 		<!-- PULSE POINT -->
-		<div id="mobile-instream-branovate-ad" style="margin-top:7px; margin-bottom: 15px;">
+		<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:7px; margin-bottom: 15px;">
 			<div id="get-content" style="text-align:center;">
 				<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>	
 			</div>
@@ -278,11 +278,11 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<!-- LELO -->
 			<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
-			<div id="mobile-instream-branovate-ad" style="margin-top:7px; margin-bottom: 7px;">
+			<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 				<div id="get-content" style="text-align:center;">
 				<!--STRIKE-->
 				<!-- /73970039/SV_300x250 -->
-				<div id='div-gpt-ad-1471285633174-0' style='height:250px; width:300px;'>
+				<div id='div-gpt-ad-1471285633174-0' style='height:250px; width:300px; margin: 0 auto;'>
 					<script> googletag.cmd.push(function() { googletag.display('div-gpt-ad-1471285633174-0'); }); </script>
 				</div>
 

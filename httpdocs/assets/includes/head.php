@@ -25,27 +25,28 @@
 
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
-	<meta name="author" content="Sequel Media International">
+
 	<meta property="og:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />
 	<meta property="og:description" content="<?php echo $headDesc; ?>" />
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />
 	<meta property="og:site_name" content="<?php echo $mpArticle->data['article_page_name']; ?>" />
 	<meta property="og:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
 	<?php if(isset($articleInfo) && $articleInfo){ ?>
-	<meta property="article:published_time" content="<?php if (isset($articleInfo)) echo date('Y-m-d\TH:i', strtotime($articleInfo['creation_date'])); ?>" />
-	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
-	<meta property="article:tag" content="<?php echo $headTags; ?>" />
-	
-	<meta property="og:image"  content="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg'; ?>" />
-	<meta name="twitter:image" content="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg'; ?>" />
-
+		<meta property="article:published_time" content="<?php if (isset($articleInfo)) echo date('Y-m-d\TH:i', strtotime($articleInfo['creation_date'])); ?>" />
+		<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
+		<meta property="article:tag" content="<?php echo $headTags; ?>" />
+		<meta name="author" content="<?php echo $articleInfoObj['contributor_name']; ?>" />
+		<meta property="og:image"  content="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg'; ?>" />
+		<meta name="twitter:image" content="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg'; ?>" />
 
 	<?php }elseif(isset($registration) && $registration){ ?>
 		<meta property="og:image"  content="<?php echo 'http://images.puckermob.com/articlesites/featured/registration_img.jpg'; ?>" />
 		<meta name="twitter:image" content="<?php echo 'http://images.puckermob.com/articlesites/featured/registration_img.jpg'; ?>" />
+		<meta name="author" content="Sequel Media International" />
 	<?php }else{?>
 		<meta property="og:image"  content="<?php echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png'; ?>" />
 		<meta name="twitter:image" content="<?php echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png'; ?>" />
+		<meta name="author" content="Sequel Media International" />
 	<?php } ?>
 	
 	<meta name="twitter:card" content="photo" />
@@ -56,7 +57,7 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=A494" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=A484" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />

@@ -281,10 +281,12 @@ if (isset($articleInfoObj) && $articleInfoObj ){
 			<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 				<div id="get-content" style="text-align:center;">
 				<!--STRIKE-->
-				<!-- /73970039/SV_300x250 -->
+				<!-- /73970039/SV_300x250 
 				<div id='div-gpt-ad-1471285633174-0' style='height:250px; width:300px; margin: 0 auto;'>
 					<script> googletag.cmd.push(function() { googletag.display('div-gpt-ad-1471285633174-0'); }); </script>
-				</div>
+				</div>-->
+				<!-- PULSE POINT -->
+				<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=495846"></script>
 
 				<!-- BRANOVATE -->
 				<?php //if($detect->is('iOS') == 1 ){ //BRANOVATE ?>

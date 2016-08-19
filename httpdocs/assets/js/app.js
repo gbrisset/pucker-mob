@@ -26,7 +26,7 @@ $(document).ready(function() {
 		var $el, $ps, $up, totalHeight;
 		var parentOrgHeight = $('#article-body').outerHeight();
 
-		var pct_to_show = parseInt($('#read_more_pct').val());
+		var pct_to_show = 18;//parseInt($('#read_more_pct').val());
 		var height_value = pct_to_show / 100 ;
 		var wishDisplayHeight = parentOrgHeight * height_value;
 
@@ -426,7 +426,7 @@ $(document).ready(function() {
 
     //Detect if adblock is enabled 
     if ($('#header-ad').height() == 0) {
-	    $("#main").css("margin-top", "120px");
+	    $(".puc-articles-top").css("margin-top", "80px");
     }
 
     console.log($('#header-ad').height());

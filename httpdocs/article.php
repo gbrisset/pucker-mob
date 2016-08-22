@@ -254,6 +254,7 @@ if(!is_null($categoryInfo)){
 					<p class="author"> <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo 'By '.$name; ?></a></p>
 				</div>
 
+				<!-- SOCIAL MEDIA -->
 				<div class="columns small-12 large-9 no-padding sidebar-right left-div">
 					<!-- SOCIAL MEDIA CONTENT -->
 					<div id="article-content-2" class="clear">
@@ -292,6 +293,7 @@ if(!is_null($categoryInfo)){
 						<?php } ?>
 					</div>
 				</div>
+				<!-- RIGHT SIDE SECTION -->
 				<div class="columns small-3 no-padding-right right-div">
 					<aside id="aside-top" class="fixed-width-sidebar column no-padding hide-for-print">
 
@@ -303,7 +305,7 @@ if(!is_null($categoryInfo)){
 					       
 					        <?php if( $articleInfoObj['article_id'] != 14613){?>     
 					           <?php if(   $articleInfoObj['article_id'] != 15284 && $articleInfoObj['article_id'] != 15488){?>
-					              <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
+					              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
 					                <style> a#adContent-clickOverlay{z-index: 9 !important;}</style>
 					                <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 					                <script type="text/javascript" language="javascript">
@@ -324,7 +326,7 @@ if(!is_null($categoryInfo)){
 					          </div>
 					       <?php } ?>
 					      <?php }else{?>
-					          <div id="atf-ad" class="ad-unit ad300 show-on-large-up" style="height:auto;">
+					          <div id="atf-ad" class="ad-unit ad300">
 					              <a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
 					              		<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" />
 					              </a>
@@ -333,7 +335,7 @@ if(!is_null($categoryInfo)){
 
 					    <div id="sub-sidebar-2" class="ad-unit ad300 show-on-large-up" style="">
 					          <a href="http://www.puckermob.com/login"> 
-					          	<img src="http://www.puckermob.com/assets/img/homepage/WriteForPuckerMob.jpg" style="width: 300px;">
+					          	<img src="http://www.puckermob.com/assets/img/homepage/write-box.jpg" style="width: 300px; height: 200px;">
 					         </a>
 					    </div>
 

@@ -118,6 +118,24 @@ a{ outline: none !important; }
 .font-3x{ font-size:3rem !important; }
 .font-4x{ font-size:4rem !important; }
 
+
+/*VERTICAL ALIGN */
+
+.valign-middle {
+    display: table;
+}
+
+.valign-middle .columns {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.valign-middle .columns,
+.valign-middle [class*="column"] + [class*="column"]:last-child {
+    float: none;
+}
+
+
 /*Arrows*/
 .arrow-left, .arrow-right{
 	background-color: $text-type-color;
@@ -208,7 +226,8 @@ header {
 #puc-articles a > h5{ text-align: left;}
 
 // Advertisements
-#btf1-ad, #btf2-ad, #atf-ad {height: 0; overflow: hidden;}
+#atf-ad{ height:auto !important; margin-bottom: 9px !important; }
+#btf1-ad, #btf2-ad, #atf-ad {height: 0; overflow: hidden; }
 #btf1-ad.ad250, #atf-ad.ad250, #atf-ad.ad600 {margin-bottom: $panel-padding;}
 #btf2-ad.ad250 {margin-top: $panel-padding;}
 #medianet-ad {height: 0;}
@@ -799,7 +818,7 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 	background: #000;
     margin-left: -1.5rem;
     margin-right: -1.5rem;
-    padding-top: 15px;
+    padding-top: 10px;
 
 	h1{
 		margin: 0.5rem 0 0.5rem 0 !important;
@@ -820,7 +839,7 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 .puc-articles-top-inner{
 	max-width: 69rem;
     margin: 0 auto;
-    padding-top: 10px;
+    padding-top: 2px;
     overflow: hidden;
 	
 	.left-div{ max-width: 730px;}
@@ -838,7 +857,7 @@ html.no-js #trending-now, html.no-js #around-the-web, html.no-js #content-ad-aro
 	    overflow: hidden;
 
 	    h1{
-	    	font-size: 2.5rem;
+	    	font-size: 2.8rem;
 	    	font-family: OswaldRegular;
     		line-height: 1.3;
     		text-align: left;
@@ -1045,26 +1064,32 @@ body{padding-top:0 !important;}
 @media #{$large-up} {
 .sidebar-main-left{
 	background: none repeat scroll 0 0 #fff;
-    border: 1px solid #ddd;
+   /* border: 1px solid #ddd;*/
     padding: 1rem;
 }
 .top-bar{ max-width: 69rem !important; }
 .todays-favorites .imageContainer { 
     position: relative;
     overflow: hidden;
-    height: 210px;
-    width: 279px;
+   /* height: 210px; 
+    width: 279px;*/
     padding-right: 0;
     margin-right: 0px;
     margin-left: 0px;
 }
 .todays-favorites  .imageCenterer {
-  height: inherit;width: 400px;left: 43%;top: 0;margin-left: -190px;
+  	height: 95px; 
+  	width: 220px; 
+  	left: 20%; 
+  	margin-left: -150px; 
+  	overflow: hidden; 
+
+	img {
+	    left: 26%;
+	    position: relative;
+	}
 }
-.todays-favorites  .imageCenterer img {
-  display: block;
-  margin: 0 auto;
-}
+
 .h1-large-article{ 	font-size: 1.8rem !important; }
 .h1-small-article{ font-size: 1.1rem !important; }
 
@@ -2262,7 +2287,11 @@ div#sticker {
 
 #header-ad {
 	margin-top:110px !important;
+	background:#fff;  
+	width: 100%;
 }
+#article #header-ad { background: #000 !important;}
+
 
 .loader {
 	margin-right: 20px;

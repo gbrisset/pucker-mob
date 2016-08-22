@@ -1,50 +1,55 @@
 //SideBar General Settings
 .sidebar {
-padding:0.6rem;
+padding:0;
 background: #fff;
-border: 1px solid #ddd;
+border: none;
+margin-top: 10px;
+
+position: relative;
 
 .h4-container{
-background: none;
-padding-bottom: 0.08rem;
+	background: none;
+	padding-bottom: 5px;
 }
 h4{
-font-size: 1.625rem; 
-color: $main-color; 
-text-transform: uppercase;
+	font-size: 1.625rem; 
+	color: $main-color; 
+	text-transform: uppercase;
 }
 
 #last-trending-now {
-border-bottom: none;
+	border-bottom: none;
+	}
 }
+
+#article .sidebar{
+	left: -15px;
 }
 
 #popular-articles {
-overflow-y: auto; 
-overflow-x: hidden; 
+	overflow-y: auto; 
+	overflow-x: hidden; 
 
-p{
-	margin-bottom:0;
-}
-
+	p{
+		margin-bottom:0;
+	}
 }
 
 #popular-sister-articles{
 	overflow-y: auto; 
-overflow-x: hidden; 
-margin: $panel-padding 0 0 !important;
+	overflow-x: hidden; 
+	margin: $panel-padding 0 0 !important;
 }
 
-
 .todays-favorites {
-padding: $todays-favorites-padding 0 2px;
-border-top: 0;
+	padding: $todays-favorites-padding 0 2px;
+	border-top: 0;
 
-h5 {margin-top: 0.2rem; margin-bottom: 0.2rem; font-size: 15px;  line-height: 1.2; padding:4px;}
+	h5 {margin-top: 0; margin-bottom: 0; font-size: 15px;  line-height: 1.4; padding:4px; height: 96px;}
 }
 
 .connect-with-us{
-padding-top: 5px;
+	padding-top: 5px;
 }
 
 .newsletter, .writeforus{
@@ -64,143 +69,120 @@ padding-top: 5px;
 	.sidebar h4, .sidebar div h4 {
 		padding-top: 0.3rem ;
 		padding-bottom: 0.2rem;
-		padding-left: $sidebar-header-padding;
+		padding-left: 0;
 		margin: 0;
 		color: #222;
 		font-family: OswaldRegular, arial;
 		font-size: 1.3rem;
 		background-color:#fff;
 		border-bottom: none;
-		text-align: center;
+		text-align: left;
 	}
 
 	.sidebar .todays-favorites {
 		border-top: 0; 
 		margin-bottom: 0; 
 		border-radius: 0; 
-		//border-bottom: 2px solid #232323;
-
-		.article-information{ border-bottom: 2px solid #232323; }
 	}
 }
 
 .sidebar h4 {
-		padding-top: 0.3rem ;
-		padding-bottom: 0.1rem;
-		padding-left: $sidebar-header-padding;
-		margin: 0;
-		color: $main-color;
-		background-color: $topbar-bg-color;
-		font-size: 1rem;
-		border-bottom: 1px solid $main-color;
-	}
+	padding-top: 0.3rem ;
+	padding-bottom: 0.1rem;
+	padding-left: $sidebar-header-padding;
+	margin: 0;
+	color: $main-color;
+	background-color: $topbar-bg-color;
+	font-size: 1rem;
+	border-bottom: 1px solid $main-color;
+}
 .social{
-
-float:left;
-width: 49%;
-margin-bottom: 0 !important;
+	float:left;
+	width: 49%;
+	margin-bottom: 0 !important;
 }
 
 
 .newsletter{
-background: #b2b2b2;
-padding: $panel-padding /2;
+	background: #b2b2b2;
+	padding: $panel-padding /2;
 
-.newsletter-container{
-background: #c9c9c9;
-padding: $panel-padding;
+	.newsletter-container{
+		background: #c9c9c9;
+		padding: $panel-padding;
 
-h3 {
-font-family: oslo;
-text-align: center;
-text-transform: uppercase;
-}
+		h3 {
+			font-family: oslo;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		form input {
+			background: none repeat scroll 0 0 #e7e7e7;
+			box-shadow: none;
+			height: 2.08rem;
+			margin: 0;
+			width: 99%;
+		}
 
-strong{
-font-size: 140%;
-}
+		.tiny.button.secondary {
+			color: #fff;
+			height: 2rem;
+			margin: 0.05rem 0 0;
+			padding: 0.1rem;
+		}
 
-
-
-form input {
-background: none repeat scroll 0 0 #e7e7e7;
-box-shadow: none;
-height: 2.08rem;
-margin: 0;
-width: 99%;
-
-}
-
-.tiny.button.secondary {
-color: #fff;
-height: 2rem;
-margin: 0.05rem 0 0;
-padding: 0.1rem;
-}
-
-}
-
-
-
+	}
 }
 
 .writeforus{
+	background: #b581cf;
+	padding: $panel-padding / 2;
 
-background: #b581cf;
-padding: $panel-padding / 2;
+	.writeforus-container{
+		background: #BF93D6;
+		padding: $panel-padding;
+		color:#fff;
 
-.writeforus-container{
-background: #BF93D6;
-padding: $panel-padding;
-color:#fff;
+		strong{
+			font-size: 1.5rem;
+		}
 
-strong{
-font-size: 1.5rem;
-}
+		h3 {
+			font-size: 1.7rem;
+			color:#fff;
+			font-family: oslo;
+			text-align: center;
+			text-transform: uppercase;
+		}
 
-h3 {
-font-size: 1.7rem;
-color:#fff;
-font-family: oslo;
-text-align: center;
-text-transform: uppercase;
-}
-
-.writeforus-button
-{
-	background: #EBCCFF;
-	text-transform: uppercase;
-	margin-bottom: 0;
-}
-}
+		.writeforus-button
+		{
+			background: #EBCCFF;
+			text-transform: uppercase;
+			margin-bottom: 0;
+		}
+	}
 }
 
 //From our sister site
-
 .sister-logo{
-
     padding: 0.9rem 0 0;
-p {
-    font-size: 85%;
-    margin-bottom: 0;
-    padding-left: 0.4rem !important;
-    padding-top: 0.2rem;
-    text-transform: capitalize;
-}
-
+	p {
+	    font-size: 85%;
+	    margin-bottom: 0;
+	    padding-left: 0.4rem !important;
+	    padding-top: 0.2rem;
+	    text-transform: capitalize;
+	}
 }
 
 .sister-article-img, .sister-article-title{
 	padding:0 !important;
 }
 
-.last-child{
-	border-bottom:none !important;
-}
+.last-child{ border-bottom:none !important; }
 
-#sub-sidebar-3{
-	margin-bottom: 0 !important;
-}
+#sub-sidebar-3{ margin-bottom: 0 !important; }
 
 .h4-no-box-container h4{
 	padding-top: 0.3rem;
@@ -218,5 +200,5 @@ p {
 
 .h4-no-box-container{
 	background: none repeat scroll 0 0 #232323;
-padding-bottom: 0.06rem;
+	padding-bottom: 0.06rem;
 }

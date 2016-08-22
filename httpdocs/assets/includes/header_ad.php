@@ -1,5 +1,5 @@
 <?php if(!$detect->isMobile()){ ?>
-	<div id="header-ad" class="ad-unit hide-for-print" style=" background:#000;  width: 100%; <?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+	<div id="header-ad" class="ad-unit hide-for-print" style="<?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
 		<!-- ARTICLES -->
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 

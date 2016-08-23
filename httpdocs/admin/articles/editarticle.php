@@ -313,7 +313,12 @@
 						<div class="row <?php if(isset($content_provider) && $content_provider ) echo 'hide'; ?>">
 						    <div>
 						    		<label for="article_status" class="small-label">Status:</label>
-									<select name="article_status" id="article_status">
+						    		<?php if($starter_blogger){ ?>
+						    				<select name="article_status" id="article_status" disable>
+						    		<?php }else{?>
+						    			<select name="article_status" id="article_status">
+						    		<?php }?>
+									
 									<?php
 										if(!isset($content_provider)){ 
 											foreach($allStatuses as $statusInfo){

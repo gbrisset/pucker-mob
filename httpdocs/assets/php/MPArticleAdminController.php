@@ -481,29 +481,40 @@ class MPArticleAdminController extends MPArticle{
 	
 	public function addArticle($post){ 
 		
-		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
-		if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags Required'));
-		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description Required'));
-		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
-		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
+		//Validate
+		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+		if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags Required'));
+		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description Required'));
+		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
+		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
-		$unrequired = array(
-			'article_body', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments'
-		);
+		//Unrequired Fields
+		$unrequired = array( 'article_body', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments' );
 
+		//Generate SEO Title
 		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
 		
+		//Get User Info
+		$user =  $this->user->data;
+		$user_type = isset($user) ? $user['user_type'] : 0;
+
+		//IF IS AN STARTER BLOGGER
+		if($user_type == 30 ){
+			$post['article_status-s'] = 2; //PENDING FOR REVIEW
+		}
+
 		$params = $this->helpers->compileParams($post);
 		$pairs = array_unique($this->helpers->compilePairs($post));
 		
-
 		$params[':article_seo_title'] = $post['article_seo_title-s'];
-
-
 		$pairs[] = "date_updated = :date_updated";
 		$params[':date_updated'] =  date("Y-m-d H:i:s");
 
-		//var_dump($pairs, $params); die;
 		$valid = $this->helpers->validateRequired($params, $unrequired);
 		if($valid !== true) return $valid;
 
@@ -513,7 +524,9 @@ class MPArticleAdminController extends MPArticle{
 			'queryParams' => array(':seoTitle' => $params[':article_seo_title'])
 		));
 
-		if($seoTitleCheck !== false) return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_title'));
+		//Duplicate Title
+		if($seoTitleCheck !== false) 
+			return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_title'));
 
 		//Insert article, get new article id
 		$articleId = $this->performUpdate(array(

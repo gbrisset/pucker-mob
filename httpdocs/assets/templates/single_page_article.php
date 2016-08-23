@@ -13,7 +13,6 @@
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
-	<!--	<input type="hidden" value="<?php echo $second_image; ?>" id="second-mob-img" /> -->
 	<input type="hidden" value="<?php echo $read_more_pct; ?>" id="read_more_pct" />
 	<input type="hidden" value="<?php echo $detect->is('iOS'); ?>" id="IOS" />
 	
@@ -68,7 +67,6 @@
 		<!-- AMAZON REPLACE PULSE POINT AD -->
 		<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:7px; margin-bottom: 15px;">
 			<div id="get-content" style="text-align:center;">
-				<!--<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>	-->
 				<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 				<script type="text/javascript" language="javascript">
 				  //<![CDATA[
@@ -293,31 +291,10 @@
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 	
-		
-			</section>
 		</div>
 	
 	</section>
-	<!-- UNDERTONE -->
-	<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 
-				&& $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 
-				&& $article_id != 17286  ){?>
 
-				<!-- UNDERTONE -->
-				<!-- /73970039/UT_SA 
-				<div id='div-gpt-ad-1461622964696-5' style='height:50px; width:320px;'>
-					<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-5'); });
-					</script>
-				</div> -->
-
-				<!-- /73970039/UT_SS 
-				<div id='div-gpt-ad-1461622964696-2'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-2'); });
-				</script>
-				</div>-->
-	<?php } ?>
 </article>
 
 <!-- *******************************************END MOBILE******************************************* -->

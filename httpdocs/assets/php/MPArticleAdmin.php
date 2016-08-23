@@ -289,72 +289,6 @@ class MPArticleAdmin{
 		return $r;
 	}
 
-	public function updateAskTheChef($post){
-		$params = $this->compileParams($post);
-		$pairs = $this->compilePairs($post);
-		$unrequired = ['ask_title', 'ask_image', 'ask_question', 'ask_article_id'];
-		
-		$valid = $this->validateRequired($params, $unrequired);
-		if($valid !== true) return $valid;
-
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$q = $pdo->prepare("UPDATE ask_the_chef SET ".join(', ', $pairs)." WHERE ask_id = ".$post['c_p_i']);
-		
-		try{
-			$q->execute($params);
-		}catch(PDOException $e){
-			$this->con->closeCon();
-			return array_merge($this->returnStatus(500), ['hasError' => true]);
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = preg_replace('/\{formname\}/', 'Ask the Chef', $r['message']);
-		return $r;
-	}
-
-	public function updateTodaysFavorites($post){
-		$params = [];
-		$pairs = [];
-		$articleIds = [];
-		$pairs[] = "article_id = :article_page_featured_articles_sidebar_1";
-		$pairs[] = "article_id = :article_page_featured_articles_sidebar_2";
-		$pairs[] = "article_id = :article_page_featured_articles_sidebar_3";
-		$pairs[] = "article_id = :article_page_featured_articles_sidebar_4";
-		$pairs[] = "article_id = :article_page_featured_articles_sidebar_5";
-		$pairs[] = "article_id = :article_page_featured_articles_sidebar_6";
-
-		foreach($post as $key => $value){
-			if($key !== "submit") $articleIds[] = $value;
-		}
-		foreach($articleIds as $i => $id){
-			$dupTest = $this->dupTest($id, $articleIds);
-			if($dupTest !== $i){
-				$r = array_merge($this->returnStatus(400), ['field' => key(array_slice($post, $i, 1)), 'hasError' => true]);
-				$r['message'] = 'You\'ve selected duplicate articles for the sidebar section!  Please select four unique articles and try again.';
-				return $r;
-			}
-		}
-
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$i = 0;
-		foreach($pairs as $pair){
-
-			$q = $pdo->prepare("UPDATE article_todays_favorites SET ".$pair." WHERE slot = ".(++$i));
-			$params = [':article_page_featured_articles_sidebar_'.$i => (strlen(preg_replace('/[^0-9]/', '', $post['article_page_featured_articles_sidebar_'.$i]))) ? preg_replace('/[^0-9]/', '', $post['article_page_featured_articles_sidebar_'.$i]) : 0];
-			try{
-				$q->execute($params);
-			}catch(PDOException $e){
-				$this->con->closeCon();
-				return array_merge($this->returnStatus(500), ['hasError' => true]);
-			}
-		}
-		$this->con->closeCon();
-		$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-		$r['message'] = preg_replace('/\{formname\}/', 'Sidebar Articles', $r['message']);
-		return $r;
-	}
 	/* End Site Generic Update Functions */
 
 
@@ -493,7 +427,7 @@ class MPArticleAdmin{
 		$r['message'] = preg_replace('/\{formname\}/', 'Category Information', $r['message']);
 		return $r;
 	}
-
+/*
 	public function updateCategoryFeautedContributor($post){
 		$params = [];
 		$pairs = [];
@@ -606,9 +540,10 @@ class MPArticleAdmin{
 		
 		return $r;
 	}
+*/
 	/* End Category Update Function */
 
-	/*Begin Collection Information*/
+	/*Begin Collection Information
 	public function updateCollectionInfo($post){
 
 		$params = $this->compileParams($post);
@@ -692,7 +627,7 @@ class MPArticleAdmin{
 		$r['article_data'] =  $post['collection_id'];
 		return $r;
 	}
-
+*/
 	/*End Collection Information*/
 
 

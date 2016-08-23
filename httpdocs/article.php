@@ -229,12 +229,12 @@ if(!is_null($categoryInfo)){
 					</script>
 				</div> -->
 <!-- CURRENT -->
-				<!-- /73970039/UT_SS_FP Screen Shift Full Page 
+				<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
 				<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
 				<script>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
 				</script>
-				</div>-->
+				</div>
 	<?php } ?>
 
 	<!-- HEADER MENU -->
@@ -246,14 +246,15 @@ if(!is_null($categoryInfo)){
 	<!-- ARTICLE INFO TOP -->
 		<div class="puc-articles-top">
 			<div class="puc-articles-top-inner small-12 padding">
-				<!-- TITLE -->
-				<h1 style="margin-bottom: 0.5rem;" class=""><?php echo $article_title; ?></h1>
-				
-				<!-- AUTHOR INFO -->
-				<div class="small-12">
-					<p class="author"> <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo 'By '.$name; ?></a></p>
+				<div class="columns small-12 large-9 no-padding sidebar-right left-div">
+					<!-- TITLE -->
+					<h1 style="margin-bottom: 0.5rem;" class=""><?php echo $article_title; ?></h1>
+					
+					<!-- AUTHOR INFO -->
+					<div class="small-12">
+						<p class="author"> <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo 'By '.$name; ?></a></p>
+					</div>
 				</div>
-
 				<!-- SOCIAL MEDIA -->
 				<div class="columns small-12 large-9 no-padding sidebar-right left-div">
 					<!-- SOCIAL MEDIA CONTENT -->

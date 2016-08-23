@@ -48,33 +48,29 @@
 
 	$userArticlesFilter = $userData['user_email'];
 	$order = '';
-	//$filterLabel = 'Most Recent';
-// Sorting information
+	
+	// Sorting information
 	$article_sort_by = "mr";
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
 		$articleStatus = $sortingMethod['articleStatus'];
-		//$filterLabel = $sortingMethod['filterLabel'];
 		$order = $sortingMethod['order'];
 		$article_sort_by = $_GET['sort'];
 	}
 
 
-	// if (isset($_GET['category'])) {$category = $_GET['category'];}
 	if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
 	if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
 	if (isset($userData['user_permission_show_other_user_articles']) && $userData['user_permission_show_other_user_articles'] == 1){
 		$userArticlesFilter = 'all';
 	}
-// 3. total record count ($total_count)	
+	// 3. total record count ($total_count)	
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter, $artType));
 	$pagination = new Pagination($page, $per_page, $total_count);	
 	$offset = $pagination->offset();
 
 
-	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 2){
-		$articleStatus = '1, 2, 3';
-	}
+	$articleStatus = '2';
 
 	//GET ALL ARTICLES BASE ON THE FILTER BY STATUS, USERTYPE, ETC...
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
@@ -86,19 +82,6 @@
 	//IMPLODE ALL THE IDS FOR EACH ARTICLE ON THE CURRENT INDEX PAGE.
 	$comma_separated = implode(",", $arr_ids);
 
-	//GET USA PAGEVIEWS FOR EACH ARTICLE ON THE LIST
-	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
-	$pageviews_list = [];
-	if($usa_pageview_list){
-		foreach($usa_pageview_list as $key=>$value){
-			//var_dump($key, $value, $value['article_id'], $value['total_usa_pv']);
-			$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
-		}
-	}
-	$promoteArticles = new PromoteArticles();
-	$fb_pages = $promoteArticles->getAllFacebookPages();
-	//var_dump($fb_pages); die;
-
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -108,7 +91,7 @@
 
 <?php include_once($config['include_path_admin'].'head.php');?>
 
-<body>
+<body id="approval">
 	
 	<?php include_once($config['include_path_admin'].'header.php');?>
 
@@ -117,7 +100,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<div class="  mobile-12 small-12 columns padding-bottom ">
-				<h1>View & Edit Articles</h1>
+				<h1>APPROVAL REQUIRED</h1>
 			</div>
 			
 			<section id="edit-articles">
@@ -125,7 +108,7 @@
 				<?php include_once($config['include_path_admin'].'view_articles_resume.php'); ?>
 				
 				<?php 
-		     		$userType_URL = $config['this_admin_url'].'articles/';
+		     		$userType_URL = $config['this_admin_url'].'approval/';
 
 		     		if($page > 1){
 		     			$userType_URL .= '?page='.$page;
@@ -147,14 +130,10 @@
 							<table class="columns small-12 no-padding">
 								<thead>
 								    <tr>
-								       <th width="400" class="align-left">Title</th>
-								       <th width="100" class="show-for-large-up">Added</th>
-								       <?php if($admin_user){?>
-								       		<th width="100" class="show-for-large-up">Promotion</th>
-									   <?php }?>
-								       <th width="100"  class="show-for-large-up">status</th>
-								       <th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
-								       <th  width="50" class="show-for-large-up"></th>
+								       <th width="350" class="align-left">Title</th>
+								       <th width="50" class="show-for-large-up">Added</th>
+								       <th width="700" class="show-for-xlarge-up">Approve or Reject</th>
+								       <th width="50" class="show-for-large-up">Delete Account</th>
 								    </tr>
 								</thead>
 								
@@ -204,46 +183,26 @@
 									  	</td>
 
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
-									  	<?php if( $admin_user ){ ?>
-									  	<td class="show-for-large-up  border-right">
-									  		<label data-info="<?php echo $article_id; ?>">
-									  			<select class="facebook-sites">
-									  				<option value = '0' >NONE</option>
-									  				<?php foreach( $fb_pages as $page ){
-									  					$isPromotedObj = $promoteArticles->promotedInfo($article_id);
-									  					$facebook_page_id_promoted = isset($isPromotedObj[0]) ? $isPromotedObj[0]->facebook_page_id : 0;
-									  					?>
-									  					
-										  					<option value = "<?php echo $page->facebook_page_id; ?>" <?php if($facebook_page_id_promoted == $page->facebook_page_id) echo ' selected '; ?> >
-										  						<?php echo $page->facebook_page_name; ?>
-										  					</option>
-									  				<?php }?>
-									  			</select>
-									  		</label>
-									  	</td>
-									  	<?php } ?>
+									  	
+										<td class="show-for-xlarge-up  border-right" >
+											<div class="small-12 columns">
+												<div class="small-3 columns"><a class="approve">APPROVE</a></div>
+												<div class="small-2 columns"><a class="reject">REJECT</a></div>
+												<div class="small-7 columns"><input type="text" class="reject-msg"/></div>
+											</div>
 
-									  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
-										<!-- REMOVE ARTICLE -->
-										<td class="show-for-xlarge-up  border-right" ><label><?php echo $article_us_traffic; ?></label></td>
+										</td>
+										
 										<td class="show-for-large-up no-border-right valign-middle">
 											<?php if($admin_user || $blogger ){?>
-												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+												<form class="article-delete-form" id="account-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'approval/';?>"
+												 method="POST">
 													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
 													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
 													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 												</form>
 											<?php }else{?>
-												<?php if($articleInfo["article_status"] != 1 ){?>
-												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
-												</form>
-												<?php }else{ ?>
-													<!-- REQUEST TO DELETE THIS ARTICLE -->
-													<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
-												<?php } ?>
+												
 											<?php }?>
 										</td>							  			
 									</tr>

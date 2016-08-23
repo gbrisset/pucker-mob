@@ -8,7 +8,7 @@
 	<nav id="nav-sidemenu">
 		<ul class="small-12">
 
-			<?php if($adminController->user->checkPermission('user_permission_show_add_article') ){?>
+			<?php if($adminController->user->data['user_permission_show_add_article'] ){?>
 
 			<li class="small-12 columns no-border-top search-in-menu">
 				<form method="get" action="<?php echo $config['this_url']; ?>admin/search" id="serch-menu-form">
@@ -20,7 +20,7 @@
 							<span><i class="fa fa-search"></i></span>
 						</div>
 					</div>
-			  </form>
+			  	</form>
 			</li>
 			
 			<li class="small-12 columns border-top border-bottom padding-top padding-bottom">
@@ -33,13 +33,19 @@
 
 			<?php }?>
 			
-			<?php if($adminController->user->checkPermission('user_permission_show_edit_article') ){?>
+			<?php if($adminController->user->data['user_permission_show_edit_article'] ){?>
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url']; ?>articles/?page=1&sort=1&artype=">View & Edit Articles</a>
 			</li>
 			<?php }?>
 
-			<?php if($adminController->user->checkPermission('user_permission_show_edit_article') ){?>
+			<?php if($adminController->user->data['user_permission_show_other_contributors'] ){?>
+			<li class="small-12 columns border-bottom padding-top padding-bottom approval-menu">
+				<a href="<?php echo $config['this_admin_url']; ?>approval/"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Approval Required</a>
+			</li>
+			<?php }?>
+
+			<?php if($adminController->user->data['user_permission_show_edit_article'] ){?>
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url']; ?>earnings/<?php echo $adminController->user->data['contributor_seo_name']; ?>">Earnings & Analytics</a>
 			</li>

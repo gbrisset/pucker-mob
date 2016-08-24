@@ -668,6 +668,15 @@ class MPArticleAdminController extends MPArticle{
 	public function updateArticleInfo($post){
 		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category.'));
 		
+		//Get User Info
+		$user =  $this->user->data;
+		$user_type = isset($user) ? $user['user_type'] : 0;
+
+		//IF IS AN STARTER BLOGGER
+		if($user_type == 30 ){
+			$post['article_status-s'] = 2; //PENDING FOR REVIEW
+		}
+		
 		$params = $this->helpers->compileParams($post);
 
 		$seoTitleCheck = $this->performQuery(array(

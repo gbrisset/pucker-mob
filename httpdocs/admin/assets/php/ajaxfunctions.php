@@ -70,10 +70,6 @@
 			echo json_encode( $adminController->user->getContributorEarningsData( $_POST ));
 		break;
 
-		//case "featured-article":
-			//echo json_encode($adminController->featuredArticle($_POST));
-		//break;
-
 		//ADMIN CONTENT MANAGEMENT
 		//Set Alerts
 		case 'set_new_alert':
@@ -114,7 +110,34 @@
 			$promote = new PromoteArticles();
 			echo json_encode( $promote->promoteThisArticle( $_POST) );
 			break;
- 
+ 		//APPROVE AN ARTICLE FOR STARTER BLOGGERS
+		case 'approve-article':
+			$status =  $adminController->updateArticleStatus( $_POST ) ;
+			if($status){
+				$data  = [ 	"user_id" => $_POST['user_id'], 
+							"message" => $_POST['reasons'], 
+							"type" => 1 , 
+							"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+					];
+				$notification_obj = new Notification(); 
+				
+				echo json_encode( $notification_obj->saveObj( $data ) );
+			}
+			break;
+		//REJECT AN ARTICLE FOR STARTER BLOGGERS
+		case 'reject-article':
+			$status =  $adminController->updateArticleStatus( $_POST ) ;
+			if($status){
+				$data  = [ 	"user_id" => $_POST['user_id'], 
+						"message" => $_POST['reasons'], 
+						"type" => 1 , 
+						"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+					];
+				$notification_obj = new Notification(); 
+
+				echo json_encode( $notification_obj->saveObj( $data ) );
+			}
+		break;
 
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));

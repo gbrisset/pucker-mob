@@ -5,7 +5,7 @@
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
-	
+
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
@@ -64,13 +64,15 @@
 	if (isset($userData['user_permission_show_other_user_articles']) && $userData['user_permission_show_other_user_articles'] == 1){
 		$userArticlesFilter = 'all';
 	}
+
+	$articleStatus = '2';
+
 	// 3. total record count ($total_count)	
 	$total_count = ($mpArticle->countFiltered($order, $articleStatus, $userArticlesFilter, $artType));
 	$pagination = new Pagination($page, $per_page, $total_count);	
 	$offset = $pagination->offset();
 
 
-	$articleStatus = '2';
 
 	//GET ALL ARTICLES BASE ON THE FILTER BY STATUS, USERTYPE, ETC...
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
@@ -133,7 +135,7 @@
 								       <th width="350" class="align-left">Title</th>
 								       <th width="50" class="show-for-large-up">Added</th>
 								       <th width="700" class="show-for-xlarge-up">Approve or Reject</th>
-								       <th width="50" class="show-for-large-up">Delete Account</th>
+								      <!-- <th width="50" class="show-for-large-up">Delete Account</th>-->
 								    </tr>
 								</thead>
 								
@@ -149,6 +151,7 @@
 									$article_us_traffic = 0;
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
+									$user_id = $articleInfo['user_id'];
 
 									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
@@ -162,7 +165,7 @@
 
 									?>
 									<tr id="<?php echo 'article-'.$article_id; ?>">
-									  	<td class="border-right">
+										<td class="border-right">
 									  		<div class=" large-4 columns no-padding-left show-for-large-up">
 												<a href="<?php echo $articleUrl; ?>">
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
@@ -171,7 +174,7 @@
 											<div class="large-8 columns no-padding" style="display: table-caption">
 												<h2 class="small-12 columns no-padding">
 													<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
-													<a href="<?php echo $articleUrl; ?>">
+													<a class="article-title" href="<?php echo $articleUrl; ?>">
 														<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
 													</a>
 													<?php if($admin){?>
@@ -186,14 +189,16 @@
 									  	
 										<td class="show-for-xlarge-up  border-right" >
 											<div class="small-12 columns">
-												<div class="small-3 columns"><a class="approve">APPROVE</a></div>
-												<div class="small-2 columns"><a class="reject">REJECT</a></div>
-												<div class="small-7 columns"><input type="text" class="reject-msg"/></div>
+												<div class="small-3 columns">
+													<a data-title = "<?php echo $article_title; ?>" data-id="<?php echo  $article_id; ?>" data-user-id="<?php echo $user_id; ?>"  class="approve">APPROVE</a>
+												</div>
+												<div class="small-2 columns"><a class="reject" data-title = "<?php echo $article_title; ?>" data-user-id="<?php echo $user_id; ?>" data-id="<?php echo  $article_id; ?>" >REJECT</a></div>
+												<div class="small-7 columns"><input type="text" placeholder="Reasons here..." class="reject-msg"/><button id="send-reasons"  data-user-id="<?php echo $user_id; ?>" >SEND</button></div>
 											</div>
 
 										</td>
 										
-										<td class="show-for-large-up no-border-right valign-middle">
+										<!--<td class="show-for-large-up no-border-right valign-middle">
 											<?php if($admin_user || $blogger ){?>
 												<form class="article-delete-form" id="account-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'approval/';?>"
 												 method="POST">
@@ -204,19 +209,16 @@
 											<?php }else{?>
 												
 											<?php }?>
-										</td>							  			
+										</td>	-->						  			
 									</tr>
 								<?php }?>
 							    </tbody>
 							</table>
 										
 							<?php }else{ ?>
+							
 							<p class="not-found">
-								Sorry, no articles were found!
-							</p>
-							<p class="not-found">
-								<span>Upload Articles:</span>
-								Start adding your own articles to our site clicking <a href="<?php echo $config['this_admin_url']?>articles/newarticle/">HERE</a>.
+								<span>No Articles On Pending Approval</span>
 							</p>
 							
 							<?php } ?>
@@ -225,8 +227,8 @@
 				</div>
 					
 				<div class="small-12 xxlarge-3 right padding" >
-					<?php include_once($config['include_path_admin'].'statuses.php'); ?>
-					<?php include_once($config['include_path_admin'].'filter_by_usertype.php'); ?>
+					<?php //include_once($config['include_path_admin'].'statuses.php'); ?>
+					<?php //include_once($config['include_path_admin'].'filter_by_usertype.php'); ?>
 
 					<div class="small-12 columns show-for-large-up half-margin-top no-padding">
 						<?php include_once($config['include_path_admin'].'hottopics.php'); ?>

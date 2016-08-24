@@ -100,7 +100,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 						<!-- ARTICLE CATEGORY -->
 						<?php
-						if( $blogger ){?>
+						if( $blogger || $starter ){?>
 							<input type="hidden"  name="article_categories" id="article_categories" value="9" />
 						<?php }else{
 							$allCategories = $MPNavigation->getAllCategoriesWithArticles();

@@ -37,30 +37,29 @@
 
 	$sortType = '';
 	$allSort = 'current';
-	$liveCurrent = $draftCurrent = '';
+	$liveCurrent = $draftCurrent = $pendingCurrent= '';
 	
 	if(  isset($_GET['sort']) && $_GET['sort']){
 		$allSort = '';
 		$sortType = $_GET["sort"];
 		if($sortType === "3") $draftCurrent = 'current';
 		elseif($sortType === "1")  $liveCurrent = 'current';
+		elseif($sortType === "2")  $pendingCurrent = 'current';
+
 	}
 
 	$userArticlesFilter = $userData['user_email'];
 	$order = '';
-	//$filterLabel = 'Most Recent';
 // Sorting information
 	$article_sort_by = "mr";
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
 		$articleStatus = $sortingMethod['articleStatus'];
-		//$filterLabel = $sortingMethod['filterLabel'];
 		$order = $sortingMethod['order'];
 		$article_sort_by = $_GET['sort'];
 	}
 
 
-	// if (isset($_GET['category'])) {$category = $_GET['category'];}
 	if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
 	if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
 	if (isset($userData['user_permission_show_other_user_articles']) && $userData['user_permission_show_other_user_articles'] == 1){

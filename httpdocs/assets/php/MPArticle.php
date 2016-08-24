@@ -1858,12 +1858,14 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	
 	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date,
-	nc.cat_id, '0' as us_traffic, article_contributors.contributor_name, article_contributors.contributor_seo_name FROM articles as a
-	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles)
+	nc.cat_id, '0' as us_traffic, article_contributors.contributor_name, article_contributors.contributor_seo_name, users.user_email, users.user_type, users.user_id 
+	FROM articles as a
+	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles, users)
 	ON a_c.article_id = a.article_id
 	AND a_c.cat_id = nc.cat_id
 	AND a.article_id = article_contributor_articles.article_id
-	AND article_contributors.contributor_id = article_contributor_articles.contributor_id ";
+	AND article_contributors.contributor_id = article_contributor_articles.contributor_id 
+	AND users.user_email = article_contributors.contributor_email_address ";
 	$s .= $status_sql;
 
 	if ($userArticlesFilter != 'all'){

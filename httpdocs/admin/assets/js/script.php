@@ -894,6 +894,99 @@ if( $('#ranking')){
 	});
 }
 
+if($('#approval')){
+	$('.approve').on('click', function(e){
+		var title = $(this).attr('data-title');
+		var id = $(this).attr('data-id');
+		var user_id = $(this).attr('data-user-id');
+		var reasons = "Congratulations! You article "+title+" has been approved and is now live on PuckerMob.com.";
+
+
+		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+
+		$.ajax({
+		  type: "POST",
+		  url:   admin_url + 'assets/php/ajaxfunctions.php',
+		  data: { 
+		  	a_i: id, 
+		  	task:'approve-article', 
+		  	article_status: 1,
+		  	reasons: reasons, 
+		  	user_id : user_id 
+
+		  },
+		}).done(function(response) {
+			if(response){
+				var result = $.parseJSON(response);
+				var txt_id = '#article-'+id;
+				$(txt_id).slideUp(300);
+			}
+		});
+
+	});
+	$('.reject').on('click', function(e){
+		var reasons = $('.reject-msg').val();
+		var title = $(this).attr('data-title');
+		var id = $(this).attr('data-id');
+		var user_id = $(this).attr('data-user-id');
+		
+		if($(reasons).length <= 0) {
+			reasons = "We're sorry, but your article '"+title+"' could not be approved. Please review our terms and conditions to ensure future articles meet the necessary requirements."
+		}
+	
+		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+
+		$.ajax({
+		  type: "POST",
+		  url:   admin_url + 'assets/php/ajaxfunctions.php',
+		  data: { 
+		  		a_i: id, 
+		  		task:'reject-article', 
+		  		reasons: reasons, 
+		  		article_status: 3, 
+		  		user_id : user_id 
+		  	},
+		}).done(function(response){
+			if(response){
+				var result = $.parseJSON(response);
+				var txt_id = '#article-'+id;
+				$(txt_id).slideUp(300);
+			}
+		});
+
+	});
+
+	$('#send-reasons').each(function(){
+		$(this).on('click', function(e){
+			var user_id = $(this).attr('data-user-id');
+			var reasons = $('.reject-msg').val();
+		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+
+			if(reasons.length > 0){
+				
+				$.ajax({
+				  type: "POST",
+				  url:   admin_url + 'assets/php/ajaxfunctions.php',
+				  data: { user_id: user_id, msg: alert, task:'set_new_alert' },
+				}).done(function(data) {
+					if(data){
+						var result = $.parseJSON(data);
+						var alert_msg = "Sent!" ;
+						if(result['hasError']) alert_msg = "Error Sending "; 
+
+						$('.reject-msg').val( alert_msg ).addClass('new-success');
+						setTimeout(function(){
+							$('.reject-msg').val('').removeClass('new-success');
+						}, 2000);
+					}
+				});
+			}
+		});
+	});
+
+
+}
+
 //$('.auto-edit').autoEdit();
 
 }); 

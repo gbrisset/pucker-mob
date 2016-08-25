@@ -346,7 +346,7 @@
 	top:25px !important;
 
 	//INTRO MODAL
-	.intro-modal, .last-modal, .to-know-modal{
+	.intro-modal, .last-modal{
 		h2{
 		    font-size: 1.8rem;
 			text-align: center;
@@ -363,6 +363,39 @@
 			    text-align: center;
 			    margin-bottom: 2rem;
 			}
+		}
+	}
+
+	.to-know-modal{
+		padding: 0 3rem;
+		p{
+			font-family: Oslo;
+    		font-size: 20px;
+		}
+		li{
+			font-size: 20px;
+		    font-family: Oslo;
+		    margin-bottom: 1.5rem;
+		    line-height: 1.4;
+		}
+		h2{
+			font-size: 2.5rem;
+		    text-align: left;
+		    color: #016201;
+		    font-family: OswaldLight;
+		}
+
+		.levels{
+			display: inline-flex;
+			margin: 20px 0px;
+			
+			div{ padding: 0 2rem; }
+			.basic{
+				border-left: 1px solid #ccc;
+			    border-right: 1px solid #ccc;
+			    opacity: 0.5;
+			}
+			.pro{ opacity: 0.5; }
 		}
 	}
 
@@ -384,13 +417,7 @@
 		.image-profile-box img{ width: 100%;}
 		.photo-instructions p{ font-size: 12px !important; font-family:Oslo !important; padding-top: 5px; margin:0;}
 	}
-	.to-know-modal{
-		ul li{
-			font-family: OswaldLight;
-			 line-height: 2;
-			 font-size: 1.4rem;
-		}
-	}
+
 	.social-modal #social-page{
 		h2{
 			font-size: 16px;

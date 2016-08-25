@@ -113,18 +113,17 @@
 					];
 			
 			$result = static::update($info);
-			var_dump($article_id, $promoted, $result);
 
 			return $result;
 
 		}
 
-		public function getArticlesToPromote( $where = false ){
+		public function getArticlesToPromote( $where = false, $filters = ''){
 
 			if( $where ){
-				return  static::find_by_sql("SELECT * FROM articles_list_admin  WHERE $where ");
+				return  static::find_by_sql("SELECT * FROM articles_list_admin  WHERE $where $filters");
 			}
-			return  static::find_by_sql("SELECT * FROM articles_list_admin ");
+			return  static::find_by_sql("SELECT * FROM articles_list_admin  $filters");
 		}
 
 		//List all facebook pages

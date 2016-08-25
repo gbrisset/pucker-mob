@@ -832,27 +832,27 @@ if( $('.facebook-sites') ){
 			var parent = $(this).parent();
 			var article_id = $(parent).attr('data-info');
 			var facebook_page =  $("option:selected", this).text();
-
+			var user_id = $(parent).attr('data-user-id');
+			var article_title = $(parent).attr('data-title');
 			var promoted = 0;
-			//if( value != '0') promoted = 1;
-
-			//console.log(value, article_id, facebook_page, promoted);
-
-			//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
-				$.ajax({
-				  type: "POST",
-				  url:   admin_url + 'assets/php/ajaxfunctions.php',
-				  data: { article_id: article_id, facebook_page_id : value, promoted: promoted, task:'promote_articles' },
-				}).done(function(data) {
-					if(data){
-						var result = $.parseJSON(data);
-
-						//if(result['hasError']) $('#show-msg-hotopics').removeClass('new-success').addClass('error').text('There was an error adding the topics, please try again.');
-						//else $('#show-msg-hotopics').addClass('new-success').removeClass('error').text('Your Topics were set successfully.');
-					}
-				});
-
-			//console.log(value, parent, article_id);
+			
+			$.ajax({
+			  type: "POST",
+			  url:   admin_url + 'assets/php/ajaxfunctions.php',
+			  data: { 
+			  	article_id: article_id, 
+			  	facebook_page_id : value,
+			  	facebook_page_name : facebook_page, 
+			  	promoted: promoted, 
+			  	user_id: user_id, 
+			  	article_title : article_title, 
+			  	task:'promote_articles' 
+			  },
+			}).done(function(data) {
+				if(data){
+					var result = $.parseJSON(data);
+				}
+			});
 
 		});
 	});
@@ -864,8 +864,7 @@ if( $('#promote_articles_list') ){
 			var ele = this,
 			isCheck = $(this).is(':checked'),
 			article_id = $(this).attr('data-info');
-			//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
-
+			
 			$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',
@@ -876,8 +875,6 @@ if( $('#promote_articles_list') ){
 
 					}
 				});
-
-			//console.log(isCheck, article_id);
 
 		});
 	});
@@ -894,15 +891,14 @@ if( $('#ranking')){
 	});
 }
 
+//APPROVAL REQUIRED
 if($('#approval')){
+	//APPROVE ARTICLE
 	$('.approve').on('click', function(e){
 		var title = $(this).attr('data-title');
 		var id = $(this).attr('data-id');
 		var user_id = $(this).attr('data-user-id');
-		var reasons = "Congratulations! You article "+title+" has been approved and is now live on PuckerMob.com.";
-
-
-		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+		var reasons = "Congratulations! Your article "+title+" has been approved and is now live on PuckerMob.com.";
 
 		$.ajax({
 		  type: "POST",
@@ -924,67 +920,49 @@ if($('#approval')){
 		});
 
 	});
-	$('.reject').on('click', function(e){
-		var reasons = $('.reject-msg').val();
+	
+	//REJECT ARTICLE
+	$('.send-reasons').on('click', function(e){
 		var title = $(this).attr('data-title');
 		var id = $(this).attr('data-id');
 		var user_id = $(this).attr('data-user-id');
-		
-		if($(reasons).length <= 0) {
+		var reasons_el = $(this).parent().find('.reject-msg');
+		var reasons = $(reasons_el).val();
+
+		if($(reasons_el).val().length <= 0) {
 			reasons = "We're sorry, but your article '"+title+"' could not be approved. Please review our terms and conditions to ensure future articles meet the necessary requirements."
 		}
 	
-		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
-
 		$.ajax({
 		  type: "POST",
 		  url:   admin_url + 'assets/php/ajaxfunctions.php',
 		  data: { 
-		  		a_i: id, 
-		  		task:'reject-article', 
-		  		reasons: reasons, 
-		  		article_status: 3, 
-		  		user_id : user_id 
-		  	},
-		}).done(function(response){
-			if(response){
-				var result = $.parseJSON(response);
+		  	a_i: id, 
+	  		task:'reject-article', 
+	  		msg: reasons, 
+	  		article_status: 3, 
+	  		user_id : user_id 
+		  },
+		}).done(function(data) {
+			if(data){
+				var result = $.parseJSON(data);
+				var alert_msg = "Sent!" ;
 				var txt_id = '#article-'+id;
-				$(txt_id).slideUp(300);
-			}
-		});
-
-	});
-
-	$('#send-reasons').each(function(){
-		$(this).on('click', function(e){
-			var user_id = $(this).attr('data-user-id');
-			var reasons = $('.reject-msg').val();
-		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
-
-			if(reasons.length > 0){
 				
-				$.ajax({
-				  type: "POST",
-				  url:   admin_url + 'assets/php/ajaxfunctions.php',
-				  data: { user_id: user_id, msg: alert, task:'set_new_alert' },
-				}).done(function(data) {
-					if(data){
-						var result = $.parseJSON(data);
-						var alert_msg = "Sent!" ;
-						if(result['hasError']) alert_msg = "Error Sending "; 
+				var class_name = 'new-success';
+				if(result['hasError']){
+					alert_msg = " Error Rejecting Article "; 
+					class_name = "error-msg";
+				} 
 
-						$('.reject-msg').val( alert_msg ).addClass('new-success');
-						setTimeout(function(){
-							$('.reject-msg').val('').removeClass('new-success');
-						}, 2000);
-					}
-				});
+				$(reasons_el).val( alert_msg ).addClass(class_name );
+				setTimeout(function(){
+					$(reasons_el).val('').removeClass(class_name );
+					$(txt_id).slideUp(300);
+				}, 2000);
 			}
 		});
 	});
-
-
 }
 
 //$('.auto-edit').autoEdit();

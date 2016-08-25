@@ -18,43 +18,53 @@
 	//GET PROMOTED ARTICLES
 	$promoteObj = new PromoteArticles();
 
-	//Articles
-	$allCurrent = 'current';
+	/********** PAGINATION ***********/
+	// 1. the current page number ($current_page)
+		$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+		$per_page = 25;
+		$limit=25;
 
-		$artType = isset($_GET["artype"]) ? $_GET["artype"] : '';
-		$allCurrent = '';
-		switch($artType){
-			case 'bloggers':
-				$articles = $promoteObj->getArticlesToPromote( " user_type IN (3, 8) " );
-				$bloggersCurrent = 'current';
-			break;
-
-			case 'writers':
-				$articles = $promoteObj->getArticlesToPromote( " user_type IN (1, 6, 7) " );
-				$writersCurrent = 'current';
-			break;
-
-			default:
-				$articles = $promoteObj->getArticlesToPromote();
-				$allCurrent = 'current';
-
-				break;
-		}
+	//total record count ($total_count)	
+	$articles = $promoteObj->getArticlesToPromote( " facebook_page_id != 7 ");	
 	
+	$total_count = count($articles);
+	$pagination = new Pagination($page, $per_page, $total_count);	
+	$offset = $pagination->offset();
+	$filters = " LIMIT $limit  OFFSET $offset ";
+ 	/********** END PAGINATION ***********/
+	
+	//Filter Articles 
+	$allCurrent = 'current';
+	$writersCurrent = $bloggersCurrent = '';
 
+	$artType = isset($_GET["artype"]) ? $_GET["artype"] : '';
+	$allCurrent = '';
+	switch($artType){
+		case 'bloggers':
+			$articles = $promoteObj->getArticlesToPromote( " user_type IN (3, 8) ", $filters );
+			$bloggersCurrent = 'current';
+		break;
+
+		case 'writers':
+			$articles = $promoteObj->getArticlesToPromote( " user_type IN (1, 6, 7) ",  $filters);
+			$writersCurrent = 'current';
+		break;
+
+		default:
+			$articles = $promoteObj->getArticlesToPromote( " facebook_page_id != 7  ",  $filters);
+			$allCurrent = 'current';
+			break;
+	}
+	
 	$userType_URL = $config['this_admin_url'].'cpanel/promote?page=1';
 	$order='';
-
 
 	//Facebook Pages
 	$facebook_pages = $promoteObj->getAllFacebookPages();
 
-	//$articles  = $helper->array_sort($articles, 'user_type', SORT_DESC); // Sort by oldest first
-
 ?>
 
 <!DOCTYPE html>
-
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -81,6 +91,8 @@
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
 				<?php include_once($config['include_path_admin'].'articles_to_promote.php'); ?>
 			</div>
+
+			<?php include_once($config['include_path_admin'].'pages.php'); ?>
 
 			
 

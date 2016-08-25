@@ -3,20 +3,51 @@
    $current_profile = $current_payment = $current_social =  $current_last = $current_intro = '';
 ?>
 <div class="main-content-modal small-12 columns to-know-modal ">
-	<h2 id="intro-modal-title">THE LEAST YOU NEED TO KNOW</h2>
-	<div class="intro-modal-wrapper">
-		<ul>
-			<li>PuckerMob reaches over 8M people per month</li>
-			<li>All bloggers are paid a CPM rate (a pre-set, monthly rate for every 1,000 U.S. viewers that read your articles)</li>
-			<li>Since you’ve just registered, you’ll automatically start as a Basic Level blogger. </li>
-			<li>Basic Level bloggers earn a lower CPM rate (but something’s better than nothing!) - see the dashboard for this month’s rate</li>
-			<li>Once you reach 25,000 visits per month, you’ll be promoted to Pro Level status, where you’ll earn more and get much greater exposure</li>
-			<li>You’ll be able to earn more through monthly incentive plans and other programs</li>
-			<li>We pay roughly 50 days after each month </li>
-			<li>You’re free to write (virtually) anything you want - check our Terms and Conditions to see the limitations</li>
-		</ul>
+	
+	<div class="columns small-12">
+		<p>PuckerMob classifies all of all our bloggers into three distinct levels, each with different benefits and pay rates:</p>
 	</div>
-</div>
+	<div class="levels columns small-12">
+		<!-- STARTER -->
+		<div class="small-4 columns starter">
+			<h2>STARTER</h2>
+			<ul>
+				<li>All newly registered bloggers start at this level (this includes you!)</li>
+				<li>Your posts must be approved by a PuckerMob.com editor before appearing live on the site.</li>
+				<li>You’ll earn a low CPM rate, but hey, something’s better than nothing! </li>
+				<li>Take part in monthly incentive plans to earn bonus money!</li>
+				<li>You’ll be automatically promoted to Basic level when you reach 5,000 lifetime U.S. visits to your articles.</li>
+			</ul>
+		</div>
+
+		<!-- BASIC -->
+		<div class="small-4 columns basic">
+			<h2>BASIC</h2>
+			<ul>
+				<li>Articles don’t need to be approved - you can post them live on the site yourself.</li>
+				<li>You’ll earn a slightly higher CPM rate.</li>
+				<li>Take part in monthly incentive plans to earn bonus money!</li>
+				<li>You’ll be automatically promoted to Pro level when you reach 25,000 U.S. visits per month for two months straight.</li>
+			</ul>
+		</div>
+
+		<!-- PRO -->
+		<div class="small-4 columns pro">
+			<h2>PRO</h2>
+			<ul>
+				<li>Articles don’t need to be approved - you can post them live on the site yourself.</li>
+				<li>You’ll earn a significantly higher CPM rate.</li>
+				<li>Take part in monthly incentive plans to earn bonus money!</li>
+				<li>You’ll be automatically demoted back to Basic level if your traffic falls below 35,000 U.S. visits per month for two months straight.</li>
+			</ul>
+		</div>
+	</div>
+	<div class="columns small-12">
+		<p>We pay all of our bloggers between 50-55 days after the end of each month. You must have at least $25 in earnings before 
+			getting paid. Any earnings below $25 will accumulate until the threshold is reached. </p>
+	</div>
+	</div>
+
 
 <hr style="0.8rem 0" />
 
@@ -24,6 +55,11 @@
  <div class="column small-12 welcome-modal-footer">
     	<?php require('welcome-modal-footer.php'); ?>
 
-    <p class="small-3 large-3 columns align-right no-padding-right"><a href="#" data-reveal-id="profile-modal" class="secondary next-modal-step"><label class="show-for-large-up"> GO TO </label> STEP 2<i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>
-	
-  </div>
+    <p class="small-3 large-3 columns align-right no-padding-right">
+    	<a href="#" data-reveal-id="profile-modal" class="secondary next-modal-step">
+    		<label class="show-for-large-up"> GO TO NEXT STEP</label> 
+	    	<label class="hide-for-large-up"> NEXT</label> 
+	    	<i class="fa fa-chevron-right" aria-hidden="true"></i>
+    	</a>
+    </p>
+</div>

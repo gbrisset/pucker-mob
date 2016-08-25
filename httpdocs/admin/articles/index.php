@@ -50,7 +50,7 @@
 
 	$userArticlesFilter = $userData['user_email'];
 	$order = '';
-// Sorting information
+	// Sorting information
 	$article_sort_by = "mr";
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
@@ -71,7 +71,7 @@
 	$offset = $pagination->offset();
 
 
-	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 2){
+	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 30){
 		$articleStatus = '1, 2, 3';
 	}
 
@@ -169,6 +169,7 @@
 									$article_us_traffic = 0;
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
+									$user_id = $articleInfo['user_id'];
 
 									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
@@ -205,7 +206,7 @@
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
 									  	<?php if( $admin_user ){ ?>
 									  	<td class="show-for-large-up  border-right">
-									  		<label data-info="<?php echo $article_id; ?>">
+									  		<label data-info="<?php echo $article_id; ?>" data-user-id="<?php echo $user_id; ?>" data-title="<?php echo $article_title; ?>" >
 									  			<select class="facebook-sites">
 									  				<option value = '0' >NONE</option>
 									  				<?php foreach( $fb_pages as $page ){

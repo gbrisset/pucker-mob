@@ -2232,6 +2232,7 @@ form#user-account-delete-form {
 		}
 	}
 }
+
 .send-email{
 	.send-email-div{
 		#blogger_id{
@@ -2286,5 +2287,5 @@ form#user-account-delete-form {
 	.approve{ color: #4bbe4b; font-size: 14px; font-family: OsloBold;}
 	.reject{ color: #FF0000; font-size: 14px; font-family: OsloBold;}
 	.reject-msg{ background: #fff !important; border: 1px solid #ddd; width: 75%; float: left; height: 26px; font-size: 13px;}
-	#send-reasons{ display: inline-block; float: left; width: 21%; padding: 5px; font-size: 13px; }
+	.send-reasons{ display: inline-block; float: left; width: 21%; padding: 5px; font-size: 13px; text-transform: uppercase; background: #d50909;}
 }

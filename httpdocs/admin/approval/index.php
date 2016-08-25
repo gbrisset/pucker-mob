@@ -192,23 +192,22 @@
 												<div class="small-3 columns">
 													<a data-title = "<?php echo $article_title; ?>" data-id="<?php echo  $article_id; ?>" data-user-id="<?php echo $user_id; ?>"  class="approve">APPROVE</a>
 												</div>
-												<div class="small-2 columns"><a class="reject" data-title = "<?php echo $article_title; ?>" data-user-id="<?php echo $user_id; ?>" data-id="<?php echo  $article_id; ?>" >REJECT</a></div>
-												<div class="small-7 columns"><input type="text" placeholder="Reasons here..." class="reject-msg"/><button id="send-reasons"  data-user-id="<?php echo $user_id; ?>" >SEND</button></div>
+												<!--<div class="small-2 columns"><a class="reject" data-title = "<?php echo $article_title; ?>" data-user-id="<?php echo $user_id; ?>" data-id="<?php echo  $article_id; ?>" >REJECT</a></div>-->
+												<div class="small-9 columns"><input type="text" placeholder="Reasons here (Optional)" class="reject-msg"/>
+												<button class="send-reasons"   data-id="<?php echo  $article_id; ?>" data-user-id="<?php echo $user_id; ?>" data-title = "<?php echo $article_title; ?>" >Reject</button></div>
 											</div>
 
 										</td>
 										
 										<!--<td class="show-for-large-up no-border-right valign-middle">
-											<?php if($admin_user || $blogger ){?>
+											<?php //if($admin_user || $blogger ){?>
 												<form class="article-delete-form" id="account-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'approval/';?>"
 												 method="POST">
 													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
 													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
 													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 												</form>
-											<?php }else{?>
-												
-											<?php }?>
+											<?php //} ?>
 										</td>	-->						  			
 									</tr>
 								<?php }?>
@@ -227,8 +226,6 @@
 				</div>
 					
 				<div class="small-12 xxlarge-3 right padding" >
-					<?php //include_once($config['include_path_admin'].'statuses.php'); ?>
-					<?php //include_once($config['include_path_admin'].'filter_by_usertype.php'); ?>
 
 					<div class="small-12 columns show-for-large-up half-margin-top no-padding">
 						<?php include_once($config['include_path_admin'].'hottopics.php'); ?>

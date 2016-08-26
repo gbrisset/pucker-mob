@@ -6,11 +6,10 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 	<div id="popup-content">
 		<a href="#close" title="Close" class="close">X</a>
 		<div>
-			<?php 
-				
-				echo $updateStatus['message']; 
-
-			?>
+			<h2 style=" color: red; font-family: OswaldLight; font-size: 1.8rem;">Sorry...</h2>
+			<p>
+			<?php echo $updateStatus['message']; ?>
+			</p>
 		</div>
 	</div>
 </div>
@@ -31,7 +30,11 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 	<div id="openModal" class="modalDialog">
 	<div id="popup-content">
 		<div>
-			<p>Your article was created Succesfully!!</p>
+			<?php if($starter_blogger){?>
+				<h2 style=" color: green; font-family: OswaldLight; font-size: 1.8rem;">Thank you for posting this!</h2> <p>A PuckerMob editor will review it for possible publication on the site shortly.</p>
+			<?php }else{?>
+				<h2 style=" color: green; font-family: OswaldLight; font-size: 1.8rem;">Thank you for posting this!</h2><p>Your article was created Succesfully!!</p>
+			<?php }?>
 		</div>
 	</div>
 	</div>

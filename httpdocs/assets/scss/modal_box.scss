@@ -106,13 +106,12 @@
 	.modalDialogpPreviewArticle > div,
 	.modalDialogFollow > div, 
 	.modalDialogFollowPopUp > div,
-	.modalDialogfacebook > div { width: 35%; max-width: 50rem; margin: 6% auto; }
+	.modalDialogfacebook > div { width: 35%; max-width: 50rem; margin: 18% auto; }
 }
 
 @media #{$medium-up} { 
 	.close{ right: 1%; top: 1%; width: 35px; height:35px; font: 150% Oslo, arial;}
 }
-
 
 @media #{$mobile-only}{
 	.modalDialog > div img, 

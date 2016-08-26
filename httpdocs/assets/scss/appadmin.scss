@@ -595,7 +595,7 @@ width: auto; }
 .buttons-container button { padding: 0.5rem 0.5rem; }
 select#categories{background-color: #01b88a; color: #fff; font-size: 1.2rem; height: auto;}
 .label-wrapper {
-	button#preview, button#submit, button#publish{ 
+	button#preview, button#submit, button#publish, button#review{ 
 		background: #5A9859;
 	    padding: 1%;
 	    width: 100%;
@@ -604,9 +604,10 @@ select#categories{background-color: #01b88a; color: #fff; font-size: 1.2rem; hei
 	    height: 100%;
 	} 
 }
+
 @media #{$large-up}{
 	.label-wrapper {
-		button#preview, button#submit, button#publish{ 
+		button#preview, button#submit, button#publish,  button#review{ 
 			padding: 10%;
 		}
 	}

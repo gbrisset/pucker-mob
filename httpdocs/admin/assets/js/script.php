@@ -891,6 +891,33 @@ if( $('#ranking')){
 	});
 }
 
+
+
+//REVIEW BUTTON
+if($('.review-button')){
+	//APPROVE ARTICLE
+	$('.review-button').on('click', function(e){
+		var id = $('#a_i').val();
+		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+
+		$.ajax({
+		  type: "POST",
+		  url:   admin_url + 'assets/php/ajaxfunctions.php',
+		  data: { 
+		  	a_i: id, 
+		  	task:'article_status', 
+		  	article_status: 2,
+		  },
+		}).done(function(response) {
+			if(response){
+				location.reload();
+			}
+		});
+
+	});
+}
+	
+
 //APPROVAL REQUIRED
 if($('#approval')){
 	//APPROVE ARTICLE

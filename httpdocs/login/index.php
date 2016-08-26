@@ -14,19 +14,18 @@
 	//Verify Login
 	if(isset($_POST['login'])) {
 		$loginStatus = $adminController->user->handleLogin($_POST);
-
 		if($loginStatus['hasError'] == true) {
 			//	Failure
 			$adminController->user->invalidateAllTokens();
 		} else {
-
 			//	Success
 			$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 			$redirectString = $adminController->user->redirectAfterLogin();
-			
 			//echo $redirectString;
+			//file_put_contents($file, $redirectString.PHP_EOL);
+			$url = $config['this_admin_url'].'dashboard/';
 
-			file_put_contents($file, $redirectString.PHP_EOL);
+			header( "Location: $url" ) ; 
 		}
 	}
 
@@ -72,26 +71,7 @@
 
 		<div id="registration-wrapper" class="columns small-12 padding-top">
 	 	   
-	 	   	<!-- REGISTRATION STATUS -->
-		    <?php if(isset($registrationStatus) && $registrationStatus['hasError'] == false){ ?>
-				<h2>Almost Done!</h2>
-				<div class="hsContent dark-bg">
-					<div id="register-form-cont-new" class="admin-form-cont success-msg">
-						<div class="row">
-							<p class="">
-								<?php 
-									$url = $config['this_admin_url'].'dashboard/';
-									echo $registrationStatus['message']; 
-								?>
-							</p>
-							<script>setTimeout(function(){window.location = "<?php echo $url; ?>"}, 1000);</script>
-
-						</div>
-					</div>
-				</div>
-			<?php } ?>
-		    
-		    <div class="tabs-content">
+	 	   	<div class="tabs-content">
 				<section role="tabpanel" aria-hidden="false" class="content active  columns small-6" id="login">
 			    	<!-- LOGIN -->
 			    	<div class="columns small-12 large-12 hsContent" id="log-in-box">
@@ -113,13 +93,8 @@
 
 				   			<!-- LOGIN BUTTON & ERROR MESSAGE -->
 				   			<div class="margin-top">
-								<?php if(isset($loginStatus)){ ?>
-									<p class="<?php echo ($loginStatus['hasError'] == true) ? 'error' : 'success'; ?>"><?php echo $loginStatus['message']; ?></p>
-									<?php
-										$url = $config['this_admin_url'].'dashboard/';
-									?>
-									<script>setTimeout(function(){window.location = "<?php echo $url; ?>"}, 1000);</script>
-
+								<?php if(isset($loginStatus) && $loginStatus['hasError'] ){ ?>
+									<p class="error"><?php echo $loginStatus['message']; ?></p>
 								<?php } ?>
 								<button type="submit" id="login" name="login" class="button left small-12">Login</button>
 							</div>
@@ -174,7 +149,24 @@
 									<button type="submit" id="register" name="register" class="button left small-12">Register</button>
 								</div>
 						   	</form>
+						   	<!-- REGISTRATION STATUS -->
+						    <?php if(isset($registrationStatus) && $registrationStatus['hasError'] == false){ ?>
+								<h2>Almost Done!</h2>
+								<div class="hsContent dark-bg">
+									<div id="register-form-cont-new" class="admin-form-cont success-msg">
+										<div class="row">
+											<p class="">
+												<?php 
+													$url = $config['this_admin_url'].'dashboard/';
+													echo $registrationStatus['message']; 
+												?>
+											</p>
+											<script>setTimeout(function(){window.location = "<?php echo $url; ?>"}, 1000);</script>
 
+										</div>
+									</div>
+								</div>
+							<?php } ?>
 						   	<!-- OR -->
 							<div class="columns no-padding or-box">
 								<span class="small-5 columns line"></span>

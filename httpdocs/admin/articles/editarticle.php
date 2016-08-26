@@ -168,6 +168,7 @@
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 					<input type="hidden" id="creation_date" name="creation_date" value="<?php echo $article['creation_date']; ?>" />
+					<input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
 
 					<div class="small-12 xxlarge-8 columns margin-top">
 					<!-- ARTICLE TITLE -->
@@ -177,7 +178,6 @@
 						</div>
 					</div>
 
-					<input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
 					
 					
 					<!-- BODY -->
@@ -198,7 +198,8 @@
 					<?php } ?>
 				
 					</div>
-					
+					<input  type="hidden" id="is_starter" name="is_starter" value ="<?php echo $starter_blogger; ?>" >
+
 					<div class="small-12 xxlarge-4 right padding " id="right-new-article">		
 						<div class="row label-wrapper show-for-xxlarge-up ">
 							<div class="small-12 large-4 column no-padding">
@@ -207,14 +208,20 @@
 							<div class="small-12 large-4 column">
 								<button type="submit" id="submit" class="columns small-6 radius wide-button elm" name="submit"  style="height: 3.3rem;" >SAVE</button>
 							</div>
-							<?php if( $admin_user || $blogger || $externalWriter ){
-							$label = "PUBLISH";
-							$val = 1;
-							if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
-							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
+							<?php if($starter_blogger){?>
 								<div class="small-12 large-4 column  left no-padding">
-									<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" ><?php echo $label; ?></button>
+									<button type="button" data-info = "2" id="review" name="review"  class="columns small-6 radius wide-button elm show-for-large-up review-button" style="height: 3.3rem;" >REVIEW</button>
 								</div>
+							<?php }else{?>
+								<?php if( $admin_user || $blogger || $externalWriter ){
+								$label = "PUBLISH";
+								$val = 1;
+								if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
+								if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
+									<div class="small-12 large-4 column  left no-padding">
+										<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" ><?php echo $label; ?></button>
+									</div>
+								<?php }?>
 							<?php }?>
 						</div>		
 
@@ -413,13 +420,21 @@
 						<div class="row label-wrapper show-for-large-up">
 							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up radius preview-button"  style="height: 3.3rem;">PREVIEW</button></div>
 							<div class="small-12 large-4 column"><button class="radius" type="submit" id="submit" name="submit" style="height: 3.3rem;" >SAVE</button></div>
-							<?php if( $admin_user || $blogger || $externalWriter ){
-							$label = "PUBLISH";
-							$val = 1;
-							if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
-							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
-								<div class="small-12 large-4 column  left no-padding"><button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up  publish-button"  style="height: 3.3rem;"><?php echo $label; ?></button></div>
-							<?php }?>
+							<?php if($starter_blogger){?>
+									<div class="small-12 large-4 column  left no-padding">
+										<button type="button" data-info = "2" id="review" name="review"  class="columns small-6 radius wide-button elm show-for-large-up review-button" style="height: 3.3rem;" >REVIEW</button>
+									</div>
+								<?php }else{?>
+									<?php if( $admin_user || $blogger || $externalWriter ){
+									$label = "PUBLISH";
+									$val = 1;
+									if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
+									if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
+										<div class="small-12 large-4 column  left no-padding">
+											<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" ><?php echo $label; ?></button>
+										</div>
+									<?php }?>
+								<?php }?>
 						</div>
 					
 						<div class="row label-wrapper hide-for-large-up ">

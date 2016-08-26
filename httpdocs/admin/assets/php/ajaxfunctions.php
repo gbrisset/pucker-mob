@@ -127,6 +127,10 @@
 			echo json_encode( $promote->promoteThisArticle( $_POST ) );
 			break;
 
+		case 'article_status':
+			echo json_encode( $adminController->updateArticleStatus( $_POST ) ) ;
+			break;
+
  		//APPROVE AN ARTICLE FOR STARTER BLOGGERS
 		case 'approve-article':
 	

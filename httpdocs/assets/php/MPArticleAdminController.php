@@ -504,9 +504,9 @@ class MPArticleAdminController extends MPArticle{
 		$user_type = isset($user) ? $user['user_type'] : 0;
 
 		//IF IS AN STARTER BLOGGER
-		if($user_type == 30 ){
-			$post['article_status-s'] = 2; //PENDING FOR REVIEW
-		}
+		//if($user_type == 30 ){
+		//	$post['article_status-s'] = 2; //PENDING FOR REVIEW
+		//}
 
 		$params = $this->helpers->compileParams($post);
 		$pairs = array_unique($this->helpers->compilePairs($post));
@@ -673,8 +673,8 @@ class MPArticleAdminController extends MPArticle{
 		$user_type = isset($user) ? $user['user_type'] : 0;
 
 		//IF IS AN STARTER BLOGGER
-		if($user_type == 30 ){
-			$post['article_status-s'] = 2; //PENDING FOR REVIEW
+		if($user_type == 30 &&  $post['article_status-s'] != 2 ){
+			$post['article_status-s'] = 3; //DRAFT
 		}
 		
 		$params = $this->helpers->compileParams($post);
@@ -803,11 +803,10 @@ class MPArticleAdminController extends MPArticle{
 
 	public function republishArticle($data){
 		$articleId = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);	
-
 		$status = $data['status'];
-		
 		$currentDate = date("Y-m-d H:i:s");
-	
+		
+
 		//	Set the paths to the image
 		$image = $articleId.'_tall.jpg';
 		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
@@ -817,10 +816,12 @@ class MPArticleAdminController extends MPArticle{
 			$imageExists = file_exists($imageDir);
 		}
 
-		if( $status === "3"){
+		if( $status === "3" || $status === "2"){
+
 			$statusChange = $this->performUpdate(array(
-				'updateString' => "UPDATE articles SET article_status = 3, date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
+				'updateString' => "UPDATE articles SET article_status = $status, date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
 			));
+			
 		}else if( $status === "1"){
 			if($imageExists){
 				$statusChange = $this->performUpdate(array(

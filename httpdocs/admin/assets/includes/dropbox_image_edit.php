@@ -8,13 +8,13 @@
 		<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 				
  		<div class="dz-message inline-flex dropzone-previews" data-dz-message >
-				<div id="img-container" class="small-4 large-5 columns" style="height:270px; padding: 10px 4%;" >
-			   		<label class="padding-top uppercase main-color  show-for-large-up font-125-pct" style="margin-top: 5%;     font-size: 1.2rem !important;">
+				<div id="img-container" class="small-4 large-7 columns" style="height:270px; padding: 10px 4%;" >
+			   		<label class="padding-top uppercase main-color  show-for-large-up font-125-pct" style="margin-top: 5%; font-size: 1.2rem !important;">
 			   			Change Image
 			   		</label>
-					<p class=" hide-small"><a>Click to choose</a> your own image</p>				
-					<p class=" hide-small small-12 columns no-padding">OR</p>
-			   		<p class="hide-small"> Choose from our  <span class="photo-library underline" id="search-lib">Photo Library!</span></p>
+					<p class=" hide-small small-12"><a>Click to choose</a> your own image</p>				
+					<p class=" hide-small small-12 columns no-padding hide">OR</p>
+			   		<p class="hide-small hide"> Choose from our  <span class="photo-library underline" id="search-lib">Photo Library!</span></p>
 			   	</div>
 		   	
 				<?php if(isset($artImageExists) && $artImageExists ){?>
@@ -105,7 +105,7 @@
  		
  		<div class="dz-message dropzone-previews" data-dz-message >
  			<div id="img-container" class="small-12 large-4 columns radius" >
- 				<div class="columns small-12">
+ 				<div class="columns small-12 hide">
  					<div class="image-icon small-3 columns"><i class="fa fa-file-image-o font-4x"></i></div>
  			   		<label class="small-9 columns" style="line-height: 1.4; margin-top: 4px;">  <span class="photo-library" id="search-lib">Choose An image from our Photo Library!</span> </label>
  			   	</div>

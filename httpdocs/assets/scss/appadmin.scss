@@ -698,10 +698,11 @@ img[data-dz-thumbnail]{ padding:10px;}
 	opacity:0.7;
 }
 
+
 @media #{$large-up} {
 img[data-dz-thumbnail]{ padding:0;}
 	#img-container{ 
-		padding: 5px 4%;
+		padding: 8% 9%;
 	}
 	#image-drop{
 		background: url('http://images.puckermom.com/articlesites/sharedimages/DropImageBG.png') no-repeat !important;
@@ -718,7 +719,7 @@ img[data-dz-thumbnail]{ padding:0;}
 
 		#img-container{
 		    text-align: center;
-		    padding: 3rem 4% !important;
+		    padding: 3rem 9% !important;
 
 		 #search-lib{
 		 	color: #fff;

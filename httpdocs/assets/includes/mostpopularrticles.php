@@ -64,14 +64,11 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 							      <?php if($articleInfoObj['article_id'] != 8560 &&  $articleInfoObj['article_id'] != 14613){ ?>
 							        <?php if(  $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){?>
 							            <div id="btf1-ad" class="ad-unit ad300" style="height:auto;     margin-left: -15px;">
-							              <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-							              <script type="text/javascript" language="javascript">
-							              //<![CDATA[
-							              aax_getad_mpb({
-							                "slot_uuid":"25fba8a5-f806-45fe-82d5-718e86f3d9f2"
-							              });
-							              //]]>
-							              </script>
+							            <?php if( isset($articleInfoObj) && $articleInfoObj['article_id'] == 19295){?>
+							                 <!-- MEMEGLOBAL -->
+										      <script id="main_script" type="text/javascript" src="http://growfoodsmart.com/sas/player/directPlayer.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=12&cb=12345&sDomain=puckermob.com"></script>	
+							          
+							           <?php } ?>
 							            </div>
 							        <?php } ?>
 							      <?php } ?>

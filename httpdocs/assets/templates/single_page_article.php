@@ -64,17 +64,13 @@
 			</div>
 		</div>
 
-		<!-- AMAZON REPLACE PULSE POINT AD -->
+		<!-- MEME GLOBAL -->
 		<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:7px; margin-bottom: 15px;">
 			<div id="get-content" style="text-align:center;">
-				<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-				<script type="text/javascript" language="javascript">
-				  //<![CDATA[
-				    aax_getad_mpb({
-				      "slot_uuid":"cbed7a67-80a8-43f3-a883-1c12273cb50a"
-				    });
-				  //]]>
-				</script>
+				<script>var ourBBBDomain = "growfoodsmart.com"; </script>
+				<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+				<div id="mvp"></div>
+				<script id="tme3" type="text/javascript" src ='http://growfoodsmart.com/sas/player/avMul.php?&sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=puckermob.com'></script>
 			</div>
 		</div>
 
@@ -236,37 +232,12 @@
 			<!-- LELO -->
 			<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
+			<!-- MEMEGLOBAL -->
 			<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 				<div id="get-content" style="text-align:center;">
-				<!--STRIKE-->
-				<!-- /73970039/SV_300x250 
-				<div id='div-gpt-ad-1471285633174-0' style='height:250px; width:300px; margin: 0 auto;'>
-					<script> googletag.cmd.push(function() { googletag.display('div-gpt-ad-1471285633174-0'); }); </script>
-				</div>-->
-				
-				<!-- PULSE POINT 
-				<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=495846"></script>
-				-->
-				<!-- AMAZON -->
-				<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-				<script type="text/javascript" language="javascript">
-				  //<![CDATA[
-				    aax_getad_mpb({
-				      "slot_uuid":"0742d92e-1167-4044-a5e6-c8b3d70f63c6"
-				    });
-				  //]]>
-				</script>
-				<!-- BRANOVATE -->
-				<?php //if($detect->is('iOS') == 1 ){ //BRANOVATE ?>
-					<!--
-					<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
-					 -->
-				<?php //}else{ ?>
-					<!--
-					<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
-					 -->
-				<?php //} ?>
-			
+					<script>var ourBBBDomain = "growfoodsmart.com"; </script>
+					<div id="mvp"></div>
+					<script id="tme3" type="text/javascript" src = 'http://growfoodsmart.com/sas/player/avMul.php?&sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=puckermob.com'></script>
 				</div>
 			</div>
 

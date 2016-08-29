@@ -490,10 +490,6 @@ $.fn.mpValidate = function(opts){
 			submit.attr('disabled', true);
 			var confirmed = false;
 
-			//if(tinyMCE){
-			//	tinyMCE.triggerSave();
-			//}
-
 			if(options.additionalParams == 'file' && $(options.imageFile)[0].files[0] != null){
 				
 				if( !window.FormData ) return;
@@ -542,23 +538,21 @@ $.fn.mpValidate = function(opts){
 					//	Perform the ajax post (or delete)...
 					
 						$.post(options.updateUrl, {
-								formData : thisForm.serialize(),
-								formId : thisId,
-								additionalParams : options.additionalParams
-							},
-							function(data){
-								//console.log(data);
-								//alert(data);
-								data = JSON.parse(data);
+							formData : thisForm.serialize(),
+							formId : thisId,
+							additionalParams : options.additionalParams
+						},
+						function(data){
+							data = JSON.parse(data);
 
-								options.callback(thisForm, data);
+							options.callback(thisForm, data);
 
-								if(data.message) result.empty().append(data.message);
-								if(data.hasError !== undefined) result.addClass((!data.hasError) ? 'new-success' : 'error').slideDown('slow').delay(5000).slideUp('slow');
-								
-								submit.attr('disabled', false);
-							}
-						);
+							if(data.message) result.empty().append(data.message);
+							if(data.hasError !== undefined) result.addClass((!data.hasError) ? 'new-success' : 'error').slideDown('slow').delay(5000).slideUp('slow');
+							
+							submit.attr('disabled', false);
+						}
+					);
 				}
 			}
 			

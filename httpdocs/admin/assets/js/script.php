@@ -9,8 +9,12 @@ var body = $('body');
 var base_url = 'http://www.puckermob.com';
 var admin_url = 'http://www.puckermob.com/admin/';
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
-
 var page = document.body.id;
+
+
+admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+
+
 
 //Menu Toggler Functionality Mobile
 $('#menu-icon').click(function(e){
@@ -227,29 +231,6 @@ var ajaxCallbacks = {
 	
 	},
 
-	'list-delete-form': function(form, data){
-		var thisForm = $(form),
-		list_div = '#'+data.pagelist_data;
-		thisId = thisForm.attr('id');
-			$(list_div).remove();
-			thisForm.mpValidate({
-				updateUrl : admin_url+'assets/php/ajaxsubmitroute.php',
-				callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-			});
-	},
-
-	'list-item-delete-form': function(form, data){
-		var thisForm = $(form),
-		list_div = '#'+data.pagelistitem_data;
-		console.log(data.pagelistitem_data);
-		thisId = thisForm.attr('id');
-			$(list_div).remove();
-			thisForm.mpValidate({
-				updateUrl :  admin_url+'assets/php/ajaxsubmitroute.php',
-				callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-			});
-	},		
-
 	'article-add-form' : function(form, data){
 		var thisForm = $(form), 
 		statusCode = data.statusCode,
@@ -258,19 +239,19 @@ var ajaxCallbacks = {
 		if(statusCode == 200) {
 
 			if(data.articleID){
-				$('#article-id').val(data.articleID);
+				//$('#article-id').val(data.articleID);
 				$('#a_i').val(data.articleID);
 			}
-			$('#article-inline-settings').slideDown(500);
-			$('.review').css('display', 'inline');
-			$('#main-buttons-text').css('display', 'inline');
+			//$('#article-inline-settings').slideDown(500);
+			//$('.review').css('display', 'inline');
+			//$('#main-buttons-text').css('display', 'inline');
 			
 
 			var article_seo = data.articleInfo[":article_seo_title"];
-			var data_prev = data.article_prev_content;
-			data_prev_element.attr('data-preview', data_prev);
+			//var data_prev = data.article_prev_content;
+			//data_prev_element.attr('data-preview', data_prev);
 			
-			$('#preview-recipe').css('display', 'inline');
+			//$('#preview-recipe').css('display', 'inline');
 
 		}
 	},
@@ -306,18 +287,6 @@ var ajaxCallbacks = {
 
 	},
 
-	'bug-delete-form': function(form, data){
-		var thisForm = $(form),
-		bug_div = '#'+data.bug_data;
-		thisId = thisForm.attr('id');
-			$(bug_div).remove();
-			thisForm.mpValidate({
-				updateUrl :  admin_url + 'assets/php/ajaxsubmitroute.php',
-				callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-			});
-
-	},
-	
 	'article-tall-image-upload-form': function( form, data ){
 		var thisForm = $(form),
 		article_id = $('#article-id').val(),
@@ -368,13 +337,26 @@ var ajaxCallbacks = {
 $('.article-delete-form').each(function(){
 	var thisForm = $(this),
 	thisId = thisForm.attr('id');
-	console.log(thisId);
 		thisForm.mpValidate({
 			updateUrl :  admin_url + 'assets/php/ajaxsubmitroute.php',
 			additionalParams : 'confirm',
 			callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
 		});
 });
+
+
+// SAVE ARTICLE
+/*if($('#article-add-form')){
+	$('#submit').on('click', function(e){
+		var thisForm = $(this),
+		thisId = thisForm.attr('id');
+		thisForm.mpValidate({
+			updateUrl :  admin_url + 'assets/php/ajaxsubmitroute.php',
+			callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
+		});
+	});	
+}*/
+
 
 
 //AJAX HANDLERS
@@ -898,7 +880,7 @@ if($('.review-button')){
 	//APPROVE ARTICLE
 	$('.review-button').on('click', function(e){
 		var id = $('#a_i').val();
-		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+		admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
 
 		$.ajax({
 		  type: "POST",

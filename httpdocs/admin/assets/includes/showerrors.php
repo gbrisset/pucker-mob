@@ -27,7 +27,7 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 <?php }else{?>
 
 <?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-add-form' && $updateStatus['hasError'] !== true){ ?>
-	<div id="openModal" class="modalDialog">
+<div id="openModal" class="modalDialog">
 	<div id="popup-content">
 		<div>
 			<?php if($starter_blogger){?>
@@ -37,12 +37,14 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 			<?php }?>
 		</div>
 	</div>
-	</div>
+</div>
 	<script type="text/javascript">
 	$('body').addClass('show-modal-box');
 		setTimeout(function(){
-			window.location = "<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $updateStatus['articleInfo'][':article_seo_title']; ?>";
+			//window.location = "<?php //echo $config['this_admin_url']; ?>articles/edit/<?php //echo $updateStatus['articleInfo'][':article_seo_title']; ?>";
+			window.location = "<?php echo $config['this_admin_url']; ?>articles/ ?>";
 	}, 2000);
 	</script>
-	<?php } ?>
+<?php } ?>
+
 <?php }?>

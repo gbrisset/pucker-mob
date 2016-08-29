@@ -36,6 +36,7 @@
 			echo json_encode($mpArticleAdmin->getImagesPerCategory($_POST));
 		break;
 
+		//ADD NEW ARTICLE
 		case 'unfollow-author':
 			$author_id = $_POST['author_id'];
 			$reader_email = $_POST['reader_email'];
@@ -105,7 +106,6 @@
 			$status = json_encode( $promote->promoteArticles( $_POST) );
 
 			if($status){
-			
 				if( $_POST['facebook_page_id'] != 7 ){
 					$data  = [ 	
 							"user_id" => $_POST['user_id'], 
@@ -118,8 +118,6 @@
 					echo json_encode( $notification_obj->saveObj( $data ) );
 				}
 			}
-			
-			
 			break;
 
 		case 'article_promoted': 
@@ -133,17 +131,14 @@
 
  		//APPROVE AN ARTICLE FOR STARTER BLOGGERS
 		case 'approve-article':
-	
 			$status =  $adminController->updateArticleStatus( $_POST ) ;
-
 			if($status){
 				$data  = [ 	"user_id" => $_POST['user_id'], 
 							"message" => $_POST['reasons'], 
 							"type" => 1 , 
 							"date" => date( 'Y-m-d H:s:i', strtotime('now'))
-					];
+						 ];
 				$notification_obj = new Notification(); 
-				
 				echo json_encode( $notification_obj->saveObj( $data ) );
 			}
 			break;

@@ -489,10 +489,23 @@ class MPArticleAdminController extends MPArticle{
 		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
 			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description Required'));
 		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
-			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) 
 			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
+		//VERIFY IF IMAGE EXIST WHEN REVIEW OR PUBLISH IMAGE
+		if(isset($post['review'])){
+			//	Set the paths to the image
+			$user_id = $post['u_i'];
+			$image = 'temp_u_'.$user_id.'_'. substr($_POST['c_t'], 0, 7).'_tall.jpg';
+
+			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+			$imageExists = false;
+			//	Verify if the usr has ever SELECTED an image
+			if(isset($image)){
+				$imageExists = file_exists($imageDir);
+			}
+		}
 		//Unrequired Fields
 		$unrequired = array( 'article_body', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments' );
 
@@ -503,6 +516,8 @@ class MPArticleAdminController extends MPArticle{
 		$user =  $this->user->data;
 		$user_type = isset($user) ? $user['user_type'] : 0;
 
+
+		var_dump($post, $imageDir, $user_id, $imageExists  ); die;
 		//IF IS AN STARTER BLOGGER
 		//if($user_type == 30 ){
 		//	$post['article_status-s'] = 2; //PENDING FOR REVIEW

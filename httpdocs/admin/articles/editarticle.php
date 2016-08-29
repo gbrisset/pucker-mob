@@ -303,7 +303,8 @@
 									</select>
 								</div>
 								<input type="hidden" value="<?php echo $contributor_name; ?>" id="contributor-name" />
-							
+								<label for="article_contributor" class="small-label margin-bottom">Email: <?php echo $article['contributor_email_address']; ?></label>
+
 						</div>
 
 						<?php }

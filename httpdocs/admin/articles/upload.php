@@ -21,6 +21,7 @@ if(isset($_POST) && empty($_POST['a_i'] ) ){
 
 
 if($action === "new"){
+	
 	if($isLib){
 		$updateStatus = array_merge($mpArticleAdmin->uploadTempImageFromLib([
 			'allowedExtensions' => 'png,jpg,jpeg,gif',
@@ -35,6 +36,7 @@ if($action === "new"){
 		echo json_encode($updateStatus) ;
 	}else{ 
 	if (!empty($_FILES)) { 
+
 	    $updateStatus = array_merge($mpArticleAdmin->uploadTempImage($_FILES, [
 						'allowedExtensions' => 'png,jpg,jpeg,gif',
 						'imgType' => 'article',

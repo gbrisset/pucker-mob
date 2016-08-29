@@ -64,15 +64,30 @@
 			</div>
 		</div>
 
-		<!-- MEME GLOBAL -->
+		
 		<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:7px; margin-bottom: 15px;">
 			<div id="get-content" style="text-align:center;">
+			<?php if( $article_id == 19197 ){?>
+				<!-- MEME GLOBAL -->
 				<script>var ourBBBDomain = "growfoodsmart.com"; </script>
 				<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 				<div id="mvp"></div>
 				<script id="tme3" type="text/javascript" src ='http://growfoodsmart.com/sas/player/avMul.php?&sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=puckermob.com'></script>
+			<?php }else{?>
+				<!-- AMAZON -->
+				<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+				<script type="text/javascript" language="javascript">
+				 //<![CDATA[
+				   aax_getad_mpb({
+				     "slot_uuid":"cbed7a67-80a8-43f3-a883-1c12273cb50a"
+				   });
+				 //]]>
+				</script>
+			<?php }?>
 			</div>
+		
 		</div>
+
 
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>

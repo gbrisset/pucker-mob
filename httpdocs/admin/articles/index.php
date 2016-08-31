@@ -22,7 +22,7 @@
 	$limit=40;
 	$post_date = 'all';
 
-	$articleStatus = 1;
+	$articleStatus = '1';
 	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 8  || $adminController->user->data['user_type'] == 9  || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 30){
 		$articleStatus = '1, 2, 3';
 	}
@@ -90,7 +90,6 @@
 	$pageviews_list = [];
 	if($usa_pageview_list){
 		foreach($usa_pageview_list as $key=>$value){
-			//var_dump($key, $value, $value['article_id'], $value['total_usa_pv']);
 			$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
 		}
 	}
@@ -139,7 +138,7 @@
 				<div class="small-12 xxlarge-9 columns no-padding">
 						<section id="articles-list" class="columns margin-top no-padding">
 						<?php
-							if(isset($articles) && $articles ){ ?>
+							if(isset( $articles) && $articles ){ ?>
 
 							<?php include_once($config['include_path_admin'].'statuses-mobile.php'); ?>
 

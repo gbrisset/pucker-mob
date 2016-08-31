@@ -421,10 +421,10 @@ function triggerErrorPopup(data){
 		var save = data['save'];
 
 		if(data['statusCode'] == 200){
-			$(h2).text('Thank you for posting this!').addClass('successTxt');
+			$(h2).text('Thank you for posting this!').removeClass('errorTxt').addClass('successTxt');
 			redirect = true;
 		}else{
-			$(h2).text('Sorry...').addClass('errorTxt');
+			$(h2).text('Sorry...').removeClass('successTxt').addClass('errorTxt');
 		}
 
 		if(save){
@@ -480,8 +480,8 @@ if( $('#save-article') ){
 				data = $.parseJSON(data);
 				var id = data['articleID'];
 				if( typeof id != 'undefined'){
-					$('#a_i').val(id);
-					location.hash = data['articleSEO'];
+					$('.a_i').val(id);
+					location.hash = data['articleID']; //data['articleSEO'];
 				} 
 				
 				
@@ -516,6 +516,7 @@ if($('#save-existing-article')){
 		$(this).on('click', function(e){
 			var thisForm = $('#article-info-form');
 			var formData = thisForm.serialize();
+		//	console.log(formData);
 
 			$.ajax({
 			  type: "POST",
@@ -872,7 +873,7 @@ if( $('#form-alert') ){
 	});
 }
 
-//MANAGE ALERTS
+//MANAGE HOTTOPICS
 if( $('#form-hottopics') ){
 	$('#save-hottopics').each(function(){
 		$(this).on('click', function(e){
@@ -1000,7 +1001,7 @@ if($('.review-button')){
 	//APPROVE ARTICLE
 	$('.review-button').on('click', function(e){
 		var id = $('#a_i').val();
-		admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
 
 		$.ajax({
 		  type: "POST",

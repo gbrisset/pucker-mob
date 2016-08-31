@@ -4,6 +4,7 @@
 	<form id="image-drop" class="dropzone dz-clickable small-12 column no-padding" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
  		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
  		<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
+ 		<input type="hidden" id="a_i" name="a_i" class="a_i" value="0" />
 
  		<div class="dz-message inline-flex dropzone-previews" data-dz-message >
  			<div class="dz-preview dz-file-preview small-12 large-7" id="template">  <!-- template for images -->

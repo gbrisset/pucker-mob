@@ -98,7 +98,7 @@
 								<?php } ?>
 								<button type="submit" id="login" name="login" class="button left small-12">Login</button>
 							</div>
-										</div>
+							</div>
 
 
 						</form>
@@ -115,6 +115,9 @@
 						</div>
 
 						<p class="small-registration-text">We'll never post to your Facebook without permission.</p>
+						<div class="hsContentLink" style="margin-top: 1rem;">
+							<a style="text-transform: uppercase; font-size: 14px;     font-family: OsloBold; color: #ddd;" href="<?php echo $config['this_admin_url']; ?>forgot/" class="align-center">Forgot Password? Click Here</a>
+						</div>
 			    	</div>
 			    	<!-- END LOGIN -->
 			    </section>

@@ -1291,8 +1291,9 @@ z-index: 999; width: 33.57rem; display:none;}
 	font-family: OswaldLight; font-size: 1.8rem;
 }
 
-#show-status-msg.errorTxt{ color: red; }
-#show-status-msg.successTxt{ color: green; }
+
+#show-status-msg.errorTxt{ color: red !important; }
+#show-status-msg.successTxt{ color: green !important; }
 .error-msg {     
 	font-family: OsloBold;
     font-size: 1.3rem; 

@@ -62,7 +62,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 				<form  id="article-add-form" class="margin-top" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-					<input type="hidden" id="a_i" name="a_i" value="0" />
+					<input type="hidden" id="a_i" class="a_i" name="a_i" value="0" />
 
 					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 					<input type="hidden" id="u_type" name="u_type" value="<?php echo $adminController->user->data['user_type']; ?>" />

@@ -314,7 +314,7 @@
 						<div class="row <?php if(isset($content_provider) && $content_provider ) echo 'hide'; ?>">
 						    <div>
 						    		<label for="article_status" class="small-label padding-bottom padding-top">Status:
-						    		<?php if( !$user_admin){ 
+						    		<?php if( !$admin_user){ 
 					    				switch($article['article_status']){
 					    					case '1': $status = "LIVE";
 					    					break;
@@ -325,7 +325,9 @@
 					    					default: $status="DRAFT";
 					    				}
 						    		?>
-						    			<span style=" color: #aaa; font-size: 1.2rem !important; margin-left: 1rem;" id="status-label"><?php echo $status?></span>
+						    			<span style=" color: #aaa; font-size: 1.2rem !important; margin-left: 1rem;" id="status-label">
+						    				<?php echo $status?>
+						    			</span>
 						    		</label>
 						    		<?php }else{?>
 						    			</label>

@@ -168,37 +168,34 @@
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
 					<input type="hidden" id="creation_date" name="creation_date" value="<?php echo $article['creation_date']; ?>" />
-					<input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
+					<input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
+					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
+					<input type="hidden" id="u_type" name="u_type" value="<?php echo $adminController->user->data['user_type']; ?>" />
+					<input  type="hidden" id="is_starter" name="is_starter" value ="<?php echo $starter_blogger; ?>" >
 
 					<div class="small-12 xxlarge-8 columns margin-top">
-					<!-- ARTICLE TITLE -->
-					<div class="row ">
-						<div>
-							<input type="text" name="article_title-s" id="article_title-s" placeholder="WRITE YOUR TITLE" value="<?php if(isset($article['article_title'])) echo $article['article_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
+						<!-- ARTICLE TITLE -->
+						<div class="row ">
+							<div>
+								<input type="text" name="article_title-s" id="article_title-s" placeholder="WRITE YOUR TITLE" value="<?php if(isset($article['article_title'])) echo $article['article_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
+							</div>
 						</div>
-					</div>
 
-					
-					
-					<!-- BODY -->
-					<div class="row margin-bottom margin-top" >
-						<div>
-							<textarea class="editor" name="article_body-nf" id="article_editor" required  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+						<!-- BODY -->
+						<div class="row margin-bottom margin-top" >
+							<div>
+								<textarea class="editor" name="article_body-nf" id="article_editor" required  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+							</div>
 						</div>
-					</div>
 
-					<?php //if( $admin_user ){?>
-				  	<!-- RELATED ARTICLES -->
-					<?php include_once($config['include_path_admin'].'related_edit_articles.php'); ?>
-					<?php //} ?>
-					
-					<?php if($pro_admin){ ?>
-						<!-- ADVERTISING OVERRIDE (IN-STREAM) -->
-						<?php include_once($config['include_path_admin'].'ads_override.php'); ?>
-					<?php } ?>
-				
+						<!-- RELATED ARTICLES -->
+						<?php include_once($config['include_path_admin'].'related_edit_articles.php'); ?>
+						
+						<?php if($pro_admin){ ?>
+							<!-- ADVERTISING OVERRIDE (IN-STREAM) -->
+							<?php include_once($config['include_path_admin'].'ads_override.php'); ?>
+						<?php } ?>
 					</div>
-					<input  type="hidden" id="is_starter" name="is_starter" value ="<?php echo $starter_blogger; ?>" >
 
 					<div class="small-12 xxlarge-4 right padding " id="right-new-article">		
 						<div class="row label-wrapper show-for-xxlarge-up ">
@@ -206,29 +203,25 @@
 								<button type="button" id="preview" name="preview" class="show-for-large-up radius wide-button preview-button" style="height: 3.3rem;">PREVIEW</button>
 							</div>
 							<div class="small-12 large-4 column">
-								<button type="submit" id="submit" class="columns small-6 radius wide-button elm" name="submit"  style="height: 3.3rem;" >SAVE</button>
+								<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
 							</div>
-							<?php if($starter_blogger){?>
+							
+							<?php if( $admin_user || $blogger || $externalWriter ){
+							$label = "PUBLISH";
+							$val = 1;
+							//if( ($blogger  || $starter_blogger )  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
+							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
 								<div class="small-12 large-4 column  left no-padding">
-									<button type="button" data-info = "2" id="review" name="review"  class="columns small-6 radius wide-button elm show-for-large-up review-button" style="height: 3.3rem;" >REVIEW</button>
+									<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" >PUBLISH</button>
 								</div>
-							<?php }else{?>
-								<?php if( $admin_user || $blogger || $externalWriter ){
-								$label = "PUBLISH";
-								$val = 1;
-								if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
-								if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
-									<div class="small-12 large-4 column  left no-padding">
-										<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" ><?php echo $label; ?></button>
-									</div>
-								<?php }?>
 							<?php }?>
+						
 						</div>		
 
 						<!-- KEYWORDS -->
 						<div class="row">
 						    <div>
-						    	<textarea  class="" name="article_tags-s" id="article_tags-s"  placeholder="Enter tags"  required ><?php if(isset($article['article_tags'])) echo $article['article_tags']; ?></textarea>
+						    	<textarea  class="" name="article_tags-nf" id="article_tags-s"  placeholder="Enter tags"  required ><?php if(isset($article['article_tags'])) echo $article['article_tags']; ?></textarea>
 							</div>
 						</div>	
 						
@@ -320,13 +313,24 @@
 						?>
 						<div class="row <?php if(isset($content_provider) && $content_provider ) echo 'hide'; ?>">
 						    <div>
-						    		<label for="article_status" class="small-label">Status:</label>
-						    		<?php if( $starter_blogger){ ?>
-						    				<select name="article_status" id="article_status" disable>
+						    		<label for="article_status" class="small-label padding-bottom padding-top">Status:
+						    		<?php if( !$user_admin){ 
+					    				switch($article['article_status']){
+					    					case '1': $status = "LIVE";
+					    					break;
+					    					case '2': $status = "REVIEW";
+					    					break;
+					    					case '3': $status = "DRAFT";
+					    					break;
+					    					default: $status="DRAFT";
+					    				}
+						    		?>
+						    			<span style=" color: #aaa; font-size: 1.2rem !important; margin-left: 1rem;" id="status-label"><?php echo $status?></span>
+						    		</label>
 						    		<?php }else{?>
-						    			<select name="article_status" id="article_status">
-						    		<?php }?>
-									
+						    			</label>
+										<select name="article_status" id="article_status">
+
 									<?php
 										if(!isset($content_provider)){ 
 											foreach($allStatuses as $statusInfo){
@@ -345,6 +349,7 @@
 										}
 									?>
 									</select>
+									<?php }?>
 							</div>
 						
 						</div>
@@ -420,22 +425,21 @@
 
 						<div class="row label-wrapper show-for-large-up">
 							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up radius preview-button"  style="height: 3.3rem;">PREVIEW</button></div>
-							<div class="small-12 large-4 column"><button class="radius" type="submit" id="submit" name="submit" style="height: 3.3rem;" >SAVE</button></div>
-							<?php if($starter_blogger){?>
-									<div class="small-12 large-4 column  left no-padding">
-										<button type="button" data-info = "2" id="review" name="review"  class="columns small-6 radius wide-button elm show-for-large-up review-button" style="height: 3.3rem;" >REVIEW</button>
-									</div>
-								<?php }else{?>
+							<div class="small-12 large-4 column">
+								<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
+
+							</div>
+							
 									<?php if( $admin_user || $blogger || $externalWriter ){
 									$label = "PUBLISH";
 									$val = 1;
-									if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
+									//if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
 									if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
 										<div class="small-12 large-4 column  left no-padding">
-											<button type="button" data-info = "<?php echo $val; ?>" id="publish" name="publish"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" ><?php echo $label; ?></button>
+											<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" >PUBLISH</button>
 										</div>
 									<?php }?>
-								<?php }?>
+							
 						</div>
 					
 						<div class="row label-wrapper hide-for-large-up ">
@@ -472,6 +476,8 @@
 	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
 		<?php include($config['include_path_admin'].'info-badge.php');?>
 	</div>
+
+	<?php include_once($config['include_path_admin'].'showerrors_articles.php'); ?>
 
 	<!-- ARTICLE PREV TEMPLATE -->
 	<?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>

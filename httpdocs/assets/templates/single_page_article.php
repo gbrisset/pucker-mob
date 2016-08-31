@@ -74,7 +74,7 @@
 				<div id="mvp"></div>
 				<script id="tme3" type="text/javascript" src ='http://growfoodsmart.com/sas/player/avMul.php?&sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=puckermob.com'></script>
 			<?php }else{?>
-				<!-- AMAZON -->
+				<!-- AMAZON 
 				<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 				<script type="text/javascript" language="javascript">
 				 //<![CDATA[
@@ -82,7 +82,10 @@
 				     "slot_uuid":"cbed7a67-80a8-43f3-a883-1c12273cb50a"
 				   });
 				 //]]>
-				</script>
+				</script>-->
+				
+				<!-- PULSE POINT -->
+				<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>
 			<?php }?>
 			</div>
 		

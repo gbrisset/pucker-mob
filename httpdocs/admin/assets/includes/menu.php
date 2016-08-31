@@ -35,7 +35,7 @@
 			
 			<?php if($adminController->user->data['user_permission_show_edit_article'] ){?>
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>articles/?page=1&sort=1&artype=">View & Edit Articles</a>
+				<a href="<?php echo $config['this_admin_url']; ?>articles/?page=1&artype=">View & Edit Articles</a>
 			</li>
 			<?php }?>
 

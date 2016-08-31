@@ -23,6 +23,10 @@
 	$post_date = 'all';
 
 	$articleStatus = 1;
+	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 8  || $adminController->user->data['user_type'] == 9  || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 30){
+		$articleStatus = '1, 2, 3';
+	}
+	
 
 	$artType = '';
 	$allCurrent = 'current';
@@ -70,10 +74,6 @@
 	$pagination = new Pagination($page, $per_page, $total_count);	
 	$offset = $pagination->offset();
 
-
-	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 30){
-		$articleStatus = '1, 2, 3';
-	}
 
 	//GET ALL ARTICLES BASE ON THE FILTER BY STATUS, USERTYPE, ETC...
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);

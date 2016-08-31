@@ -27,6 +27,12 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 		}else $adminController->redirectTo('logout/');
 	}
 
+	//Article Status Base on Blogger Type.
+	$default_status = 3;
+	if( $adminController->user->data['user_type'] == 30 ){
+		$default_status = 2;
+	}
+
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributorInfo = $contributorInfo[0];
 ?>
@@ -56,10 +62,12 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 				<form  id="article-add-form" class="margin-top" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
-					<input type="hidden" id="article_status-s" name="article_status-s" value="3" />
-					<input type="hidden" id="a_i" name="a_i" value="" />
+					<input type="hidden" id="a_i" name="a_i" value="0" />
 
+					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
+					<input type="hidden" id="u_type" name="u_type" value="<?php echo $adminController->user->data['user_type']; ?>" />
+					<input type="hidden" id="article_status-s" name="article_status-s" value=" <?php echo $default_status; ?>" />
+					
 					<div class="small-12 xxlarge-8 columns margin-top">
 						<!-- ARTICLE TITLE -->
 						<div class="row ">
@@ -68,6 +76,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							</div>
 						</div>
 
+						<!-- SEO TITLE -->
 						<?php if($admin_user){?>
 						<div class="row">
 						    <div>
@@ -212,14 +221,10 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 								<button type="button" id="preview" name="preview" class="radius preview-button small-12">PREVIEW</button>
 							</div>
 							<div class="small-12 large-4 columns">
-								<button type="submit" id="submit" name="submit" class="radius small-12" data-info="3">SAVE</button>
+								<button type="button" id="save-article" name="save-article" class="radius small-12" data-info="3">SAVE</button>
 							</div>
 							<div class="small-12 large-4 columns no-padding">
-								<?php if( $starter_blogger ){?>
-									<button type="submit" id="review" name="review" class="radius small-12 " data-info="2">REVIEW</button>
-								<?php }else{?>
-									<button type="button" id="publish" name="publish" class="radius small-12" data-info="1">PUBLISH</button>
-								<?php }?>
+								<button type="button" id="publish-article" name="publish-article" class="radius small-12 publish-article">PUBLISH</button>
 							</div>
 						</div>
 						
@@ -241,7 +246,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 <?php //include_once($config['include_path_admin'].'articlelib.php');?>
 
-<?php include_once($config['include_path_admin'].'showerrors.php'); ?>
+<?php include_once($config['include_path_admin'].'showerrors_articles.php'); ?>
 
 <?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 

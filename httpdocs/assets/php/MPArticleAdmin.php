@@ -1070,12 +1070,7 @@ class MPArticleAdmin{
 		$uploadDir = $data['uploadDirectory'];
 		$columnName = '';
 
-		//REMOVE ANY EXISTING TEMP IMAGE WITH THIS NAME
-		if(file_exists($uploadDir.'/'.$data['articleId'].'_tall.jpg')){
-			    unlink($uploadDir.'/'.$data['articleId'].'_tall.jpg');
-		}
-    
-
+		
 		// destination image dimensions
 		$desWidth = $data['desWidth'];
 		$desHeight = $data['desHeight']; 

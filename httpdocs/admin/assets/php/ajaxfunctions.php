@@ -129,6 +129,14 @@
 			echo json_encode( $adminController->updateArticleStatus( $_POST ) ) ;
 			break;
 
+		case 'publish-article':
+			echo json_encode( $adminController->publishNewArticle( $_POST ) );
+		 	break;
+
+		 case 'save-article':
+		 	echo json_encode( $adminController->saveNewArticle( $_POST ) );
+		 	break;
+
  		//APPROVE AN ARTICLE FOR STARTER BLOGGERS
 		case 'approve-article':
 			$status =  $adminController->updateArticleStatus( $_POST ) ;

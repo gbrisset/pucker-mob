@@ -477,13 +477,123 @@ class MPArticleAdminController extends MPArticle{
 		 return $q;
 	}
 
-	/* Begin Article Creation Functions */
-	
-	public function addArticle($post){ 
+	/* IMAGE VALIDATION */
+	public function verifyImageExist( $post ){
+		//	Set the paths to the image
+		$user_id = $post['u_i'];
+		$image = 'temp_u_'.$user_id.'_tall.jpg';
+		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+		if( $post['a_i'] != "0"){
+			$image = $post["a_i"].'_tall.jpg';
+			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+		}
+
+		$imageExists = false;
+		//	Verify if the usr has ever SELECTED an image
+		if(isset($image)){
+			$imageExists = file_exists($imageDir);
+		}
+		return $imageExists;
+	}
+
+	public function validateImageDime($post){
 		
-		//Validate
+		$user_id = $post['u_i'];
+		$image = 'temp_u_'.$user_id.'_tall.jpg';
+		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+		if( $post['a_i'] != "0"){
+			$image = $post["a_i"].'_tall.jpg';
+			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+		}
+		$size = getimagesize($imageDir);
+
+		$width = $height = 0;
+		if($size){
+			$width = $size[0];
+			$height = $size[1];
+		}
+		
+		if($width == 784 && $height == 431){
+			return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Saved Successfully!'));
+		}
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Image dimensions must be 728x43 px '));
+	}
+
+	public function moveImageFromTemp($post){
+		if($this->verifyImageExist($post)){
+			//MOVE and rename image from the temp folder if exists.
+			$img_temp = 'temp_u_'.$post['u_i'].'_tall.jpg';
+			$img_temp_path =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$img_temp;
+
+			//New Image Name and Path to Save
+			$img_name = $post['a_i'].'_tall.jpg';
+			$img_path = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_name;
+
+			//Copy & Remove Image from Temp Folder
+			if(copy($img_temp_path, $img_path)){
+				unlink($img_temp_path);	
+				return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Added Successfully!'));
+			}	
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Sorry, there was an error trying to create the image, please contact us info@sequelmediainternational.com'));
+		}
+	}
+
+	public function publishNewArticle($post){
+		$post = isset($post['formData']) ? $post['formData'] : $post;
+
+		//If is not an Starter Blogger
+		if($post['user_type'] != 30)
+			$post['article_status-s'] = "1";
+
+		//Verify If Image Exist
+		$imageExist = $this->verifyImageExist($post);
+		if($imageExist){
+			//Validate Image Dimentions 
+			$validSize = $this->validateImageDime($post);
+			if($validSize['statusCode'] == 200){
+				//Save Article Info
+				if( $post['a_i'] != "0"){
+					$post['save'] = false;
+					return $this->updateArticleInfo($post);
+				}
+				else return $this->addArticle($post);
+			}else return $validSize;
+		}
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Please upload an image before publishing.'));
+	}
+	/* IMAGE VALIDATION END */
+
+	public function saveNewArticle($post){
+		$post = isset($post['formData']) ? $post['formData'] : $post;
+		$post['save'] = true;
+		//If is not an Starter Blogger
+		if($post['user_type'] != 30)
+			$post['article_status-s'] = "3";
+
+		//Verify If Image Exist
+		$imageExist = $this->verifyImageExist($post);
+		if($imageExist){
+			//Validate Image Dimentions 
+			$validSize = $this->validateImageDime($post);
+			if($validSize['statusCode'] == 500){
+				return $validSize;	
+			} 
+		}
+
+		if(isset($post['a_i']) && $post['a_i'] != '0' )
+			return $this->updateArticleInfo($post);
+		else return $this->addArticle($post);	
+	}
+	/* Begin Article Creation Functions */
+	public function addArticle($post){ 
+		//Validate Fields
+
+
 		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
 			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+	
+		if(!isset($post['article_body-nf']) || empty($post['article_body-nf'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_body', 'message' => 'Your are trying to save an empty article. Please add content to your article. Thanks'));
 		if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
 			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags Required'));
 		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
@@ -494,35 +604,20 @@ class MPArticleAdminController extends MPArticle{
 			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
 		//VERIFY IF IMAGE EXIST WHEN REVIEW OR PUBLISH IMAGE
-		if(isset($post['review'])){
-			//	Set the paths to the image
-			$user_id = $post['u_i'];
-			$image = 'temp_u_'.$user_id.'_'. substr($_POST['c_t'], 0, 7).'_tall.jpg';
-
-			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
-			$imageExists = false;
-			//	Verify if the usr has ever SELECTED an image
-			if(isset($image)){
-				$imageExists = file_exists($imageDir);
-			}
-		}
+		//$imageExists = $this->verifyImageExist($post);
+		
 		//Unrequired Fields
-		$unrequired = array( 'article_body', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments' );
+		$unrequired = array( 'article_img_credits', 'article_img_credits_url', 'article_additional_comments' );
 
 		//Generate SEO Title
 		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
-		
+
 		//Get User Info
 		$user =  $this->user->data;
-		$user_type = isset($user) ? $user['user_type'] : 0;
-
-
-		var_dump($post, $imageDir, $user_id, $imageExists  ); die;
-		//IF IS AN STARTER BLOGGER
-		//if($user_type == 30 ){
-		//	$post['article_status-s'] = 2; //PENDING FOR REVIEW
-		//}
-
+		$user_type = $post['u_type'];
+		$save = $post['save'];
+		
+		//COMPILE PARAMETERS
 		$params = $this->helpers->compileParams($post);
 		$pairs = array_unique($this->helpers->compilePairs($post));
 		
@@ -543,6 +638,7 @@ class MPArticleAdminController extends MPArticle{
 		if($seoTitleCheck !== false) 
 			return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_title'));
 
+
 		//Insert article, get new article id
 		$articleId = $this->performUpdate(array(
 			'updateString' => str_replace('{pairs}', join(', ', $pairs), "INSERT INTO articles SET {pairs}"),
@@ -553,7 +649,7 @@ class MPArticleAdminController extends MPArticle{
 		if($articleId === false) return $this->helpers->returnStatus(500);
 
 		//Insert article images row, check for success
-		$articleImageId = $this->performUpdate(array(
+		/*$articleImageId = $this->performUpdate(array(
 			'updateString' => "INSERT INTO article_images SET article_id = :articleId",
 			'updateParams' => array(':articleId' => $articleId),
 			'isInsert' => true
@@ -566,24 +662,11 @@ class MPArticleAdminController extends MPArticle{
 				'updateParams' => array(':articleId' => $articleId)
 			));
 			return $this->helpers->returnStatus(500);
-		}
+		}*/
 
-		//Give the new article some love in the ratings department
-		for($i =0; $i < 5; $i++){
-			//Garauntees a rating anywhere from 4 - 5 starts to start out
-			$rand = rand(3, 5);
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO article_ratings SET article_id = :articleId, rating = :rating",
-				'updateParams' => array(':articleId' => $articleId, ':rating' => $rand)
-			));
-		}
-		
-		//Add to each category
+		//Add category
 		if(isset($post['article_categories']) && $post['article_categories'] != 0){
-		//foreach($post['article_categories'] as $category => $on){
-			//$categoryId = intval(str_replace('category-', '', $category));
 			$categoryId = $post['article_categories'];
-
 			$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_categories SET article_id = :articleId, cat_id = :categoryPageId",
 				'updateParams' => array(':articleId' => $articleId, ':categoryPageId' => filter_var($categoryId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT))
@@ -600,38 +683,31 @@ class MPArticleAdminController extends MPArticle{
 		}
 		
 		$post['a_i'] = $articleId;
+
+		//UPDATE ARTICLE ADS
 		$this->updateArticleAdsInfo($post);
 
-		//MOVE and rename image from the temp folder if exists.
-			$img_temp = 'temp_u_'.$_POST['u_i'].'_'.substr($_POST['c_t'], 0, 7).'_tall.jpg';
-			$img_temp_path =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$img_temp;
 
-			$img_name = $articleId.'_tall.jpg';
-			$img_path = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_name;
+		//Move and Rename Image From Temp to Large Folder
+		$this->moveImageFromTemp($post);
 
-			$imageExists = false;
-			//	Verify if the usr has ever SELECTED an image
-			if(isset($img_temp)){
-				$imageExists = file_exists($img_temp_path);
-			}
-			//var_dump($img_temp, $img_temp_dir,$img_name, $imgDir, $imageExists  ); die;
-
-			if($imageExists){
-				copy($img_temp_path, $img_path);
-				unlink($img_temp_path);
-				unlink($this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_temp);
-			}
-		//END
-
-		//$article_prev_content = $this->getPreviewRecipe(array('articleId' => $articleId ));
-		
+		if($save){
+			 $msg = "Congratulations! Your article has been saved!";
+		}else{
+			if($user_type == 30 ) $msg = "Thank you! A PuckerMob editor will review your posts shortly to approve for publication.";
+			else $msg = "Congratulations! Your article has been published and is now live on the site.";
+		}
+		 
 		//Return status
-		return array_merge($this->helpers->returnStatus(200), array(
-			'articleInfo' => $params,
-			'articleID' => $articleId,
-			'message' => 'Next Step: Add an Image.',
-			'article_prev_content' => ''
-		));
+		return array_merge(
+			$this->helpers->returnStatus(200), array(
+				'articleInfo' => $params,
+				'articleID' => $articleId,
+				'articleSEO' =>$post['article_seo_title-s'],
+				'message' => $msg,
+				'save' => $save
+			)
+		);
 	}
 	/* End Article Creation Functions */
 
@@ -681,16 +757,34 @@ class MPArticleAdminController extends MPArticle{
 
 	/* Begin Article Updating Function */
 	public function updateArticleInfo($post){
-		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category.'));
-		
+		//Validate Fields
+
+		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+		if(!isset($post['article_body-nf']) || empty($post['article_body-nf'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_body', 'message' => 'Your are trying to save an empty article. Please add content to your article. Thanks'));
+		if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags Required'));
+		if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description Required'));
+		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
+		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
+
 		//Get User Info
 		$user =  $this->user->data;
-		$user_type = isset($user) ? $user['user_type'] : 0;
+		$user_type = $post['u_type'];
+		$save = isset($post['save']) ? $post['save'] : true;
 
 		//IF IS AN STARTER BLOGGER
-		if($user_type == 30 &&  $post['article_status-s'] != 2 ){
+		if( $user_type == 30 ){
 			$post['article_status-s'] = 3; //DRAFT
+			if( $save == false ) $post['article_status-s'] = 2; //REVIEW
 		}
+		$pairs[] = "date_updated = :date_updated";
+		$params[':date_updated'] =  date("Y-m-d H:i:s");
+
 		
 		$params = $this->helpers->compileParams($post);
 
@@ -699,7 +793,7 @@ class MPArticleAdminController extends MPArticle{
 			'queryParams' => array(':seoTitle' => $params[':article_seo_title'], ':articleId' => $post['a_i'])
 		));
 
-		if($seoTitleCheck !== false) return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_seo_title'));
+		//if($seoTitleCheck !== false) return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_seo_title'));
 
 		$statusUpdate = $this->updateArticleStatus($post);
 		if($statusUpdate !== true) return $statusUpdate;
@@ -746,36 +840,10 @@ class MPArticleAdminController extends MPArticle{
 		));
 		
 		
-		//Update Featured Article
-		/*if(isset($post['feature_article']) && $post['feature_article'] > 0){
-			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article '));
-			$featureArticle = intval(filter_var($post['feature_article'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO featured_article SET  article_id = :articleId, category_id = 1",
-				'updateParams' => array(':articleId' => $post['a_i'])
-			));
-		}else{
-			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article WHERE article_id = '.$post['a_i']));
-		}*/
-
 		//FEATURED THIS ARTICLE ON LEFT SIDE BAR MOBILE TAP SECTION
-
 		if(isset($post['article_featured']) &&  $post['article_featured'] !== "-1" ){
 			$this->featuredArticle( $post );
 		}
-
-
-		//Show in homepage moblog article
-		/*if(isset($post['featured_hp']) ){
-			$this->performUpdate(array('updateString' => 'DELETE FROM article_moblogs_featured WHERE article_id = '.$post['a_i']));
-			$featureArticleHp = intval(filter_var($post['featured_hp'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-			$featureArticleId = intval(filter_var($post['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO article_moblogs_featured SET  article_id = :articleId, article_cat = 'moblog', article_featured_hp = :articleHPFeature ",
-				'updateParams' => array(':articleId' => $featureArticleId, ':articleHPFeature'=> $featureArticleHp )
-			));
-		}*/
 
 		//UPDATE / INSERT ARTICLE ADS SETTINGS
 		$this->updateArticleAdsInfo($post);
@@ -783,18 +851,30 @@ class MPArticleAdminController extends MPArticle{
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
 			'post' => $post,
-			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 
-				'article_body', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 
+			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 
 				'article_poll_id', 'article_desc', 'featured_hp')
 		));
 		
 		if($result === true) {
-			$user = $this->user->getUserInfo();
-			if ($user['user_permission_show_global_settings']){
-				return array('hasError' => false, 'message' => 'Article information updated successfully!', 'article_prev_content' => '' );
-			} else {
-				return array('hasError' => false, 'message' => 'Your changes have been saved', 'article_prev_content' => '');				
+			//Move and Rename Image From Temp to Large Folder
+			$this->moveImageFromTemp($post);
+
+			if($save){
+				$msg = "Thank you. Your article has been saved successfully! ";
+			}else{ 
+				if($user_type == 30 ) $msg = "Thank you! A PuckerMob editor will review your posts shortly to approve for publication.";
+				else $msg = "Congratulations! Your article has been published and is now live on the site.";
 			}
+			//Return status
+			return array_merge(
+				$this->helpers->returnStatus(200), array(
+					'articleInfo' => $params,
+					'articleID' => $post['a_i'],
+					'articleSEO' =>$post['article_seo_title-s'],
+					'message' => $msg,
+					'save' => $save
+				)
+			);
 		}
 		else return $result;
 	}

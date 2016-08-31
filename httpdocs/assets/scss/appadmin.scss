@@ -595,7 +595,7 @@ width: auto; }
 .buttons-container button { padding: 0.5rem 0.5rem; }
 select#categories{background-color: #01b88a; color: #fff; font-size: 1.2rem; height: auto;}
 .label-wrapper {
-	button#preview, button#submit, button#publish, button#review{ 
+	button#preview, button#submit, button#publish, button#review, #save-existing-article, #publish-article{ 
 		background: #5A9859;
 	    padding: 1%;
 	    width: 100%;
@@ -1287,7 +1287,16 @@ select#recent-articles{margin-bottom: 0; border: none; font-size: 1.3rem; text-t
 z-index: 999; width: 33.57rem; display:none;}
 #dd-shares-content div p{ color: #000; font-family:OsloBold; line-height: 1.2;}
 
+#show-status-msg{
+	font-family: OswaldLight; font-size: 1.8rem;
+}
 
+#show-status-msg.errorTxt{ color: red; }
+#show-status-msg.successTxt{ color: green; }
+.error-msg {     
+	font-family: OsloBold;
+    font-size: 1.3rem; 
+}
 .b-disable{ color: #aaa !important;}
 
 #adv-contact-form label{width:4.3rem; min-width:4rem; float:left; padding-top: 0.3rem;}

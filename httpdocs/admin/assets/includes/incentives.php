@@ -4,14 +4,14 @@
 	<div class="small-12 columns radius right-side-box half-margin-top">
 		<div class="">
 			<p style="margin:0;">
-				<span class="uppercase"><?php //echo date('F'); ?> AUGUST Incentive Plan:</span>
+				<span class="uppercase"><?php //echo date('F'); ?> September Incentive Plan:</span>
 				This is a great one for Basic Level bloggers!
 			</p>
 			<br />	
 			<ul>
-				<li style="padding: 7px;">#1-10: $75 Bonus</li>
-				<li style="padding: 7px;">#11-20: $25 Bonus</li>
-				<li style="padding: 7px;">#1-30: Automatic promotion to Pro Level status, starting September 1</li>
+				<li style="padding: 7px;">#1-5: $100 Bonus</li>
+				<li style="padding: 7px;">#6-10: $50 Bonus</li>
+				<li style="padding: 7px;">#11-20: $10 Bonus</li>
 			</ul>
 			
 			<br />

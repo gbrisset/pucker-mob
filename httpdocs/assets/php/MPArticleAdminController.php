@@ -586,7 +586,7 @@ class MPArticleAdminController extends MPArticle{
 
 		//IF IS AN STARTER BLOGGER
 		if( $user_type == 30 ){
-			$post['article_status-s'] = 3; //DRAFT
+			//$post['article_status-s'] = 3; //DRAFT
 			if( $save == false ) $post['article_status-s'] = 2; //REVIEW
 		}
 

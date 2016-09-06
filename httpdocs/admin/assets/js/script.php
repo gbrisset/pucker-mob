@@ -524,8 +524,8 @@ if($('#save-existing-article')){
 			  data: { formData: formData, a_i: $('#a_i').val(), task:'save-article' }
 			}).done(function(data) {
 				data = $.parseJSON(data);
-				$('#status-label').text('DRAFT');
-				$('.see-article-link').hide();
+				//$('#status-label').text('DRAFT');
+				//$('.see-article-link').hide();
 				triggerErrorPopup(data);
 			});
 		});

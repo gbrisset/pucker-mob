@@ -18,32 +18,29 @@ if(isset($_GET['sort'])){
 	}
 }
 $contributorInfo = $mpArticle->getContributors(['contributorSEOName' => $_GET['c'], 'sortType' => $sortId]);
-//$mostReadArticles = $mpArticle->getArticles(['count' => 5, 'sortType' => 2]);
-
-// Dish of the Day the same on every page
-$featuredArticle = $mpArticle->getFeatured(['featureType' => 2, 'articleCount' => 1, 'pageId' => 1]);
 
 if($contributorInfo['contributors']){
 	$omits = [];
 	
 	$contributorInfoObj = $contributorInfo['contributors'][0];
 	$contributor_image = 'http://images.puckermob.com/articlesites/contributors_redesign/'.$contributorInfoObj['contributor_image'];
-	//'http://images.puckermob.com/articlesites/contributors_redesign/1103_contributor.png';
 	$fromFB = preg_match("/facebook/", $contributorInfoObj['contributor_image']);
 	if($fromFB){
 		$contributor_image = $contributorInfoObj['contributor_image'].'?type=large';
 	}
 	
 	$pageName = $contributorInfoObj['contributor_name'].' | '.$mpArticle->data['article_page_name'];
+	$articleList = $mpArticle->getContributorsArticleList($contributorInfoObj['contributor_id']);
+	//var_dump(count($articleList), $articleList); die;
+	$articlesPerPage = 30;
+	//var_dump($mpArticle->getContributorsArticleList($contributorInfoObj['contributor_id'])); die;
 
-	$articlesPerPage = 24;
-
-	$totalPages = ceil(count($contributorInfo['articles']['articles']) / $articlesPerPage);
+	$totalPages = ceil(count($articleList) / $articlesPerPage);
 	if($totalPages > 1){
 		$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
 		if($currentPage > $totalPages) $currentPage = 1;
 		$offset = ($currentPage - 1) * $articlesPerPage;
-		$contributorInfo['articles']['articles'] = array_slice($contributorInfo['articles']['articles'], $offset, $articlesPerPage);
+		$contributorInfo['articles']['articles'] = array_slice($articleList, $offset, $articlesPerPage);
 		$pagesArray['url'] = $config['this_url'].'contributors/'.$contributorInfoObj['contributor_seo_name'];
 		$pagesArray['pages'] = $mpHelpers->getPages($currentPage, $totalPages);
 	}
@@ -54,12 +51,14 @@ if($contributorInfo['contributors']){
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 <body id="contributor">
-	<?php include_once($config['include_path'].'header.php'); ?>
+	<?php if($detect->isMobile()){
+		include_once($config['include_path'].'header.php'); 
+	}else{
+		include_once($config['include_path'].'new_header.php'); 
+	}
+	?>
 	<?php include_once($config['include_path'].'header_ad.php');?>
 	<main id="main" class="row panel sidebar-on-right" role="main">
-		<!-- LEFT SIDE BAR -->
-		<?php //include_once($config['include_path'].'left_side_bar.php'); ?>
-		
 		<section id="puc-articles" class="contributor_page sidebar-right small-12 large-11 columns translate-fix sidebar-main-left">
 			<h1 class="contributor-title">Contributors</h1>
 			<section id="contributor-intro" class="small-12 left">
@@ -120,22 +119,22 @@ if($contributorInfo['contributors']){
 				</div>
 				<?php }?>
 			</section>
-			<?php if(isset($contributorInfo['articles']['articles']) && $contributorInfo['articles']['articles']){ ?>
+			<?php if(isset($articleList) && $articleList){ ?>
 			<section id="results" class="clear">
 				<h2 class="padding-top clear"><?php echo $contributorInfoObj['contributor_name']; ?>'s Articles</h2>
 				<?php
 				$articleIndex = 1; 
 				foreach ($contributorInfo['articles']['articles'] as $article) {
-					if (isset($article['parent_category_page_directory']) && $article['parent_category_page_directory'] != 'categories-root/'){ 
-						$link = $config['this_url'].$mpHelpers::linkToArticle($article['cat_dir_name'], $article['parent_category_page_directory']).$article['article_seo_title'];
-					} else {
+					//if (isset($article['parent_category_page_directory']) && $article['parent_category_page_directory'] != 'categories-root/'){ 
+					//	$link = $config['this_url'].$mpHelpers::linkToArticle($article['cat_dir_name'], $article['parent_category_page_directory']).$article['article_seo_title'];
+					//} else {
 						$link = $config['this_url'].$mpHelpers::linkToArticle($article['cat_dir_name']).$article['article_seo_title'];
-					}
+					//}
 
 					$articleDesc = (isset($article['article_desc']) && strlen($article['article_desc'])) ? $article['article_desc'] : $article['article_body'];
 					$linkToImage = 'http://cdn.puckermob.com/articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$article['article_id'].'_tall.jpg';
 					$date = date("M d, Y", strtotime($article['creation_date']));
-					$linkToContributor = $config['this_url'].'contributors/'.$article['contributor_seo_name'];
+					$linkToContributor = $config['this_url'].'contributors/'.$contributorInfoObj['contributor_seo_name'];
 					?>
 
 					<article class="row" id="<?php echo 'article-'.$articleIndex;?>">
@@ -146,13 +145,10 @@ if($contributorInfo['contributors']){
 							</a>
 							<div class="mobile-12 small-12 large-7 xlarge-7 no-padding" style="padding:0 !important;">
 								<p style="margin:0;">
-									<!--<span class="span-category"><?php //echo $article['cat_name']?></span>
-									<small><?php //echo $date; ?></small>-->
 								</p>
 								<a href="<?php echo $link; ?>">
 									<h1 style="margin-bottom:0;"><?php echo $article['article_title']?></h1>
 								</a>
-								<!--<p><small>By <a href="<?php //echo $linkToContributor; ?>" ><?php //echo $article['contributor_name']; ?></a></small></p>-->
 							</div>
 							<?php }else{?>
 							<?php $articleIndex++; ?>
@@ -161,13 +157,11 @@ if($contributorInfo['contributors']){
 							</a>
 							<div class="mobile-7 small-7 medium-7 large-6 xlarge-6 mobile-vertical-center vertical-align-center half-padding-left half-padding-right">
 								<p class="uppercase">
-									<!--<span class="span-category"><?php //echo $article['cat_name']?></span>
-									<span class="span-date"><?php //echo $date; ?></span>-->
 								</p>
 								<a href="<?php echo $link; ?>">
 									<h1><?php echo $article['article_title']?></h1>
 								</a>
-								<p class="uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $article['contributor_name']; ?></a></span></p>
+								<p class="uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributorInfoObj['contributor_name']; ?></a></span></p>
 							</div>
 							<?php } ?>
 						</div>
@@ -178,16 +172,10 @@ if($contributorInfo['contributors']){
 			</section>
 			<?php } ?>
 			<?php include_once($config['include_path'].'pagination.php');?>
-			<?php //if (!$detect->isMobile()) { ?>
-			<!--<div id="medianet-ad" class="ad-unit hide-for-print padding-right show-for-xxlarge-only"></div>-->
-			<?php //include_once($config['include_path'].'fromourpartners.php'); ?>
-			<?php //include_once($config['include_path'].'aroundtheweb.php'); 
-		//}?>
+	
 	</section>
 	<?php if (!$detect->isMobile()) { 
 		include_once($config['include_path'].'rightsidebar.php');
-
-		//include_once($config['include_path'].'left_side_bar.php');
 	} ?>
 </main>
 <?php include_once($config['include_path'].'footer.php'); ?>

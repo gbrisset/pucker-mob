@@ -425,8 +425,13 @@ $(document).ready(function() {
 
 
     //Detect if adblock is enabled 
-    if ($('#header-ad').height() == 0) {
-	    $("#main").css("margin-top", "120px");
+    if ($('#header-ad').height() <= 0) {
+
+    	if( $('#article').length > 0 ){
+    		$(".puc-articles-top-inner").css("margin-top", "120px");
+    	}else{
+    		$("#main").css("margin-top", "120px");
+    	}  
     }
 
 	function loadArt() {

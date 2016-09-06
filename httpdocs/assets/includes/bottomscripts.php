@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_34567887055" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_5575" ></script>
 
 <?php }else {?>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
@@ -14,7 +14,11 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
+<<<<<<< HEAD
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_349455" ></script>
+=======
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_35599" ></script>
+>>>>>>> master
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -28,13 +32,11 @@
      	
       <!-- LELO -->
       <?php if(isset($article_id) && $article_id != 16562 &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 &&  $article_id  != 17286){?>
-     
-
-        <!-- NET SEER -->
+        <!-- NET SEER 
         <script type="text/javascript">
          netseer_tag_id="26742"; 
         </script>
-        <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
+        <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>-->
       <?php } ?>
     <?php }  ?>
 
@@ -138,6 +140,7 @@
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
         && $article_id != 15488 &&  $article_id != 17286) { ?>
            <!-- NET SEER --> 
+<<<<<<< HEAD
             <?php if( $detect->is('iOS') == "1" ){?>
            
             <script type="text/javascript">
@@ -145,6 +148,15 @@
             </script>
             <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>
           <?php } ?>
+=======
+            <?php //if( $detect->is('iOS') == "1" ){?>
+           
+            <!--<script type="text/javascript">
+            netseer_tag_id="26742"; 
+            </script>
+            <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>-->
+          <?php //} ?>
+>>>>>>> master
       <?php 
             $current_time = new DateTime(); // Today
             $start_time = new DateTime('3:00pm');
@@ -154,7 +166,7 @@
            
             ?>
             <!-- kixer adhesion -->
-            <!-- Start Pucker Mob - Adhesion - iframe buster code -->
+            <!-- Start Pucker Mob - Adhesion - iframe buster code 
             <div id='__kx_ad_4915'></div>
             <script type="text/javascript" language="javascript" id="__kx_tag_4915">
             var __kx_ad_slots = __kx_ad_slots || [];
@@ -189,7 +201,7 @@
                 }
               }
             })();
-            </script>
+            </script>-->
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
             <?php  //} 
             ?>

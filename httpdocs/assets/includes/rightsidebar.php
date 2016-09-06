@@ -6,28 +6,7 @@
     <!-- MOST POPULAR -->
     <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
 
-    <!-- LELO -->
-    <?php /*if(isset($articleInfoObj['article_id']) &&   $articleInfoObj['article_id'] != 17425  && $articleInfoObj['article_id'] != 16562 && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 &&   $articleInfoObj['article_id']  != 17286){?>
-      <?php if($articleInfoObj['article_id'] != 8560 &&  $articleInfoObj['article_id'] != 14613){ ?>
-        <?php if(  $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){ */?>
-          <!--  <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
-              <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-              <script type="text/javascript" language="javascript">
-              //<![CDATA[
-              aax_getad_mpb({
-                "slot_uuid":"25fba8a5-f806-45fe-82d5-718e86f3d9f2"
-              });
-              //]]>
-              </script>
-            </div>-->
-        <?php //} ?>
-      <?php //} ?>
-    <?php //}else{ ?>
-   <!--   <div id="btf1-ad" class="ad-unit ad300" style="height:auto;">
-          <a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>
-      </div>-->
-    <?php //} ?>
-
+      <!-- AMAZON -->
       <div id="btf2-ad" class="ad-unit ad300"  style="height: auto;     padding-top: 1rem; margin-left: -15px;">
         <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
         <script type="text/javascript" language="javascript">
@@ -39,28 +18,13 @@
         </script>
       </div>
       
-   
 </aside>
 <?php }else{ ?>
 <aside id="aside" class="fixed-width-sidebar column no-padding hide-for-print home">
-  <!--  <style>
-      .fixed-width-sidebar{width: auto !important;}
-    </style>
-   
-    <div id="btf1-ad" class="ad-unit ad300 show-on-large-up" style="height: auto;">
-      <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-      <script type="text/javascript" language="javascript">
-      //<![CDATA[
-      aax_getad_mpb({
-        "slot_uuid":"ad4fe546-5060-4729-89ff-0bcae94681e2"
-      });
-      //]]>
-      </script>
-    </div> -->
-    
-     <!-- MOST POPULAR -->
+    <!-- MOST POPULAR -->
     <?php include_once($config['include_path'].'mostpopularrticles.php'); ?>
     
+    <!-- AMAZON -->
     <div id="btf2-ad" class="ad-unit ad300 catcher"  style="height: auto; padding-top:1rem; ">
       <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
       <script type="text/javascript" language="javascript">
@@ -72,9 +36,7 @@
       </script>
     </div>
     
-    <!--<div id="btf3-ad" style="margin-top: 1rem !important; " class="ad-unit ad300"  style="height: auto;">
-    </div>-->
-
+  
     <section id="sub-sidebar-2" class="sidebar sticky"">
       <a href="https://www.facebook.com/puckermob" target="_blank"> <img src="http://www.puckermob.com/assets/img/homepage/likeuson.jpg" style="margin-bottom: 8px;"></a>
       <a href="http://www.puckermob.com/login"> <img src="http://www.puckermob.com/assets/img/homepage/WriteForPuckerMob.jpg" style="margin-bottom:15px;"></a>

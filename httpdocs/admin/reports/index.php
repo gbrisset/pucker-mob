@@ -171,7 +171,7 @@
 						  	?>
 						  	<tr>
 							  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
-							  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
+							  		<a href="http://www.puckermob.com/admin/earnings/<?php echo $contributor['contributor_seo_name']//.'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
 							  			<?php echo $contributor['contributor_name']; ?>
 							  		</a>
 							  		<label>
@@ -296,7 +296,7 @@
 					  		<?php if(!$no_cover_in_house ){  ?>
 							<tr style="<?php echo $style; ?>">
 							  	<td  class="align-left" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
-							  		<a href="http://www.puckermob.com/admin/dashboard/contributor/<?php echo $contributor['contributor_seo_name'].'?month='.$selected_month.'&year='.$selected_year; ?>" target="blank">
+							  		<a href="http://www.puckermob.com/admin/earnings/<?php echo $contributor['contributor_seo_name']; ?>" target="blank">
 							  			<?php echo $contributor['contributor_name']; ?><?php if($contributor['w9_live'] === '1') echo "<strong style='color:green;  margin-left: 5px;' >(W9 <i class='fa fa-check' style='margin-left:0; margin-right: 0;'></i>)</strong>"?>
 							  		</a>
 							  		<label>

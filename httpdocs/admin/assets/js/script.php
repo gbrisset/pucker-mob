@@ -16,6 +16,7 @@ admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 
+
 //Menu Toggler Functionality Mobile
 $('#menu-icon').click(function(e){
 	if($('#nav-cont').hasClass('shown')) $('#nav-cont').slideUp(500);
@@ -524,8 +525,10 @@ if($('#save-existing-article')){
 			  data: { formData: formData, a_i: $('#a_i').val(), task:'save-article' }
 			}).done(function(data) {
 				data = $.parseJSON(data);
-				$('#status-label').text('DRAFT');
-				$('.see-article-link').hide();
+
+				//$('#status-label').text('DRAFT');
+				//$('.see-article-link').hide();
+
 				triggerErrorPopup(data);
 			});
 		});

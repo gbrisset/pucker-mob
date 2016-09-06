@@ -26,7 +26,7 @@ $(document).ready(function() {
 		var $el, $ps, $up, totalHeight;
 		var parentOrgHeight = $('#article-body').outerHeight();
 
-		var pct_to_show = 18;//parseInt($('#read_more_pct').val());
+		var pct_to_show = parseInt($('#read_more_pct').val());
 		var height_value = pct_to_show / 100 ;
 		var wishDisplayHeight = parentOrgHeight * height_value;
 
@@ -39,7 +39,7 @@ $(document).ready(function() {
 				$parent_div  = $('.read-more');
 				$content = $('#article-content');
 				
-				//setTimeout(function(){
+				setTimeout(function(){
 							
 					$content.css({
 						//"height": //$content.height(),
@@ -53,7 +53,7 @@ $(document).ready(function() {
 					$parent_div.fadeOut();
 					$('.second-section').css('border-top', '2px solid #bbb');
 
-				//}, 1000);
+				}, 1000);
 								
 				return false;
 								
@@ -371,10 +371,10 @@ $(document).ready(function() {
 			if(sticky.length > 0 ){
 		        if(isScrolledTo(sticky)) {
 		   	        sticky.css('position','fixed');
-		            sticky.css('top','70px');
+		            sticky.css('top','110px');
                    $('.back-to-top').fadeIn(duration);
 		        }
-		       var stopHeight = catcher.offset().top - 50;/*+ (sideAd.height() ) + catcher.height()*/;
+		       var stopHeight = catcher.offset().top + (sideAd.height() ) + catcher.height();
 		       if ( stopHeight > sticky.offset().top) {
 		       		//console.log(stopHeight, sticky.offset().top);
 		            sticky.css('position','absolute');
@@ -388,7 +388,7 @@ $(document).ready(function() {
 		    if(articleStick.length > 0 ){
 		        if(isScrolledTo(articleStick)) {
 		   	        articleStick.css('position','fixed');
-		            articleStick.css('top','70px');
+		            articleStick.css('top','110px');
                    $('.back-to-top').fadeIn(duration);
 		        }
 		       var stopHeight = catcher.offset().top + (sideAd.height() * 21.2) + catcher.height();
@@ -426,10 +426,8 @@ $(document).ready(function() {
 
     //Detect if adblock is enabled 
     if ($('#header-ad').height() == 0) {
-	    $(".puc-articles-top").css("margin-top", "80px");
+	    $("#main").css("margin-top", "120px");
     }
-
-    console.log($('#header-ad').height());
 
 	function loadArt() {
         current_page++;
@@ -485,7 +483,7 @@ if($('#article')){
 	var shares = formatNumber(parseFloat(562434).toFixed(1));
 	$(element).children('span').text(shares);
 
-//	console.log(current_value, shares);
+	console.log(current_value, shares);
 
 }
 

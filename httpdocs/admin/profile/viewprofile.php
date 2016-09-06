@@ -107,14 +107,15 @@
 					<?php if(isset($article_list) && $article_list ){?>
 					<table class="small-12">
 						<?php foreach($article_list as $article){
-							$article_url = $config['this_url'].'/'.$article['cat_dir_name'].'/'.$article['article_seo_title'];
+							$article_url = $config['this_admin_url'].'articles/edit/'.$article['article_seo_title'];
+							//$config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
 						?>
 						<tr id="article_<?php echo $article['article_id'];?>">
 							<td width="160" class="show-for-large-up">
 								<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $article['article_id'];?>_tall.jpg" alt="Article Image"/>
 							</td>
 							<td class="no-padding-right">
-								<a href="<?php echo $article_url; ?>" target="blanck"><?php echo $article['article_title'];?></a>
+								<a href="<?php echo $article_url; ?>" ><?php echo $article['article_title'];?></a>
 							</td>
 						</tr>
 						<?php }?>

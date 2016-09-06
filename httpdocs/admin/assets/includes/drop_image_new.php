@@ -47,7 +47,7 @@
 	 		<div id="img-container" class="small-12 large-8 columns" >
 					<div >
 	 			   		<p>Images need to be 784x431</label>
-	 			   		<p>If your image is not this size, <a href="#" onclick="return launchEditor('main-image-src', $('#main-image-src').attr('src') );">click here </a> to resize or crop </label>
+	 			   		<p>If your image is not this size, >click here </a> to resize or crop </label>
 				   	 </div>
 	 		   	</div>
 	 	</div>
@@ -78,7 +78,10 @@
  	</form>
 </div>-->
 <?php //} ?>
-
+<style>
+.avpw_is_fullscreen #avpw_controls{ z-index: 9999999999; }
+#avpw_controls{min-width: auto;
+	min-height: auto;}</style>
 
 <!-- Load widget code -->
 <script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>   
@@ -91,11 +94,12 @@
 
 
 	    var featherEditor = new Aviary.Feather({
-	        apiKey: '1234567',
+	        apiKey: '13146877c1064663b3054f86cf4d2b4a',
 	        tools: ['resize', 'crop'],
 	        cropPresets: ['784x431'],
+	        theme: 'minimum',
 	        displayImageSize: true,
-	        fileFormat: 'jpg',
+	        fileFormat: 'jpg, png, jpeg',
 
 	        onSave: function(imageID, newURL) {
 	            var img = document.getElementById(imageID);
@@ -116,6 +120,9 @@
 	            featherEditor.close();
 
 	        },
+	        onError: function(errorObj) {
+           		alert(errorObj.message);
+       		},
 	        onClose:function(isDirty){
 	        	featherEditor.close();
 	        }
@@ -125,9 +132,9 @@
 	        featherEditor.launch({
 	            image: id,
 	            url: src,
-	            forceCropMessage: 'Please crop your photo to this size: 784x431',
+  				forceCropMessage: 'Crop your Article picture:',
 	        });
-	        return false;
+	        //return false;
 	    }
 
 
@@ -153,7 +160,7 @@
 			  if(this.files[1]!=null){
 			    this.removeFile(this.files[0]);
 			  } 
-			
+			 
 			  if($('#template_copy').length > 0 ){
 			  	$('#template_copy').remove();
 			  }
@@ -162,6 +169,7 @@
 
 			  currentWidth = 0;
 	          currentHeight = 0;
+
 
 	         
 			});
@@ -172,14 +180,18 @@
 			});
 
 			this.on("thumbnail", function(file) {
-                if (file.width != maxImageWidth || file.height != maxImageHeight) {
+				return launchEditor('main-image-src', $('#main-image-src').attr('src') );
+
+                /*if (file.width != maxImageWidth || file.height != maxImageHeight) {
                   file.rejectDimensions();
                   
                   //$('.show-error').html($('.dz-error-message').html());
                 }
                 else {
+
                   file.acceptDimensions();
-                }
+                }*/
+
               });
 
 		 },

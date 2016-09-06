@@ -703,6 +703,34 @@ public function getContributorInfo( $seo_name ){
 	return $r;
 }
 
+	public function getContributorsArticleList( $contributor_id){
+
+		$contributor_id = $contributor_id;
+
+		$s = "SELECT * FROM article_contributor_articles
+		 INNER JOIN ( articles, article_categories, categories)
+		 ON ( article_contributor_articles.article_id = articles.article_id 
+		 	AND articles.article_id = article_categories.article_id 
+		 	AND article_categories.cat_id = categories.cat_id
+		 ) 
+		WHERE article_contributor_articles.contributor_id = $contributor_id 
+		AND articles.article_status = 1 
+		ORDER BY articles.article_id DESC";
+
+		$pdo = $this->con->openCon();
+		$q = $pdo->query($s);
+		if($q && $q->rowCount()){
+			$q->setFetchMode(PDO::FETCH_ASSOC);
+			while($row = $q->fetch()){
+				$r[] = $row;
+			}
+			$q->closeCursor();
+		}else $r = false;
+		$this->con->closeCon();
+		return $r;
+
+	}
+
 
 public function getContributors($args = [], $attempts = 0){
 	$options = array_merge([

@@ -57,7 +57,7 @@
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=A484" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=B484" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -150,6 +150,7 @@
 				    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470929060933-0').addService(googletag.pubads());
 				   	googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470934220433-0').addService(googletag.pubads());
 
+
 				   	//STRIKE
 				   	googletag.defineSlot('/73970039/SV_300x250', [300, 250], 'div-gpt-ad-1471285633174-0').addService(googletag.pubads());
 				    googletag.pubads().enableSingleRequest();
@@ -223,11 +224,7 @@
 			</script>
 		<?php } ?>
 
-	<?php // if( isset( $articleInfo['article_id'] ) && (  $articleInfo['article_id']  != 16562 
-		  //&& $articleInfo['article_id'] != 17425 && $articleInfo['article_id'] != 14613 
-		  //&& $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 
-		  //&& $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  
-		  //&& $articleInfo['article_id'] != 15488 &&  $articleInfo['article_id']  != 17286 ) ){ ?>
+	<?php if( isset( $articleInfo['article_id'] ) && (   $articleInfo['article_id']  != 16562 &&   $articleInfo['article_id'] != 17425 && $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488 &&  $articleInfo['article_id']  != 17286) ){ ?>
         <!-- Start Pucker Mob - Interstitial 
 		<div id='__kx_ad_5270'></div>
 		<script type="text/javascript" language="javascript">
@@ -258,7 +255,7 @@
 		</script>-->
 		<!-- End Pucker Mob - Interstitial -->
 		
-	<?php //} ?>
+<?php } ?>
 <?php } ?>
 
 

@@ -342,11 +342,12 @@ class MPArticleAdminController extends MPArticle{
 	public function verifyImageExist( $post ){
 		//	Set the paths to the image
 		$user_id = $post['u_i'];
-		$image = $imageTemp = 'temp_u_'.$user_id.'_tall.jpg';
-		$imageDir = $path = $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+
+		$image = 'temp_u_'.$user_id.'_tall.jpg';
+		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
 		if( $post['a_i'] != "0"){
 			$image = $post["a_i"].'_tall.jpg';
-			$imageDir =  $path =  $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
 		}
 
 		$imageExists = false;
@@ -354,24 +355,21 @@ class MPArticleAdminController extends MPArticle{
 		if(isset($image)){
 			$imageExists = file_exists($imageDir);
 
-			if(!$imageExists){ 
-				$imageTempDir =   $path = $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$imageTemp;
-				$imageExists = file_exists($imageTempDir);
-			}
 		}
-
-		return array( 'exist' => $imageExists, 'path'=> $path);
+		return $imageExists;
 	}
 
-	public function validateImageDime($post, $imgExist){
-		//$user_id = $post['u_i'];
-		//$image = 'temp_u_'.$user_id.'_tall.jpg';
-		//$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
-		//if( $post['a_i'] != "0"){
-		//	$image = $post["a_i"].'_tall.jpg';
-		//	$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
-		//}
-		$size = getimagesize($imgExist['path']);
+	public function validateImageDime($post){
+		
+		$user_id = $post['u_i'];
+		$image = 'temp_u_'.$user_id.'_tall.jpg';
+		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+		if( $post['a_i'] != "0"){
+			$image = $post["a_i"].'_tall.jpg';
+			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+		}
+		$size = getimagesize($imageDir);
+
 		$width = $height = 0;
 		if($size){
 			$width = $size[0];
@@ -381,7 +379,9 @@ class MPArticleAdminController extends MPArticle{
 		if($width == 784 && $height == 431){
 			return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Saved Successfully!'));
 		}
-		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Image dimensions must be 784x431px '));
+
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Image dimensions must be 728x43 px '));
+
 	}
 
 	public function moveImageFromTemp($post){
@@ -393,8 +393,9 @@ class MPArticleAdminController extends MPArticle{
 			//New Image Name and Path to Save
 			$img_name = $post['a_i'].'_tall.jpg';
 			$img_path = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_name;
-			//Copy & Remove Image from Temp Folder
 
+
+			//Copy & Remove Image from Temp Folder
 			if(copy($img_temp_path, $img_path)){
 				unlink($img_temp_path);	
 				return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Added Successfully!'));
@@ -416,7 +417,8 @@ class MPArticleAdminController extends MPArticle{
 		$imageExist = $this->verifyImageExist($post);
 		if($imageExist){
 			//Validate Image Dimentions 
-			$validSize = $this->validateImageDime($post, $imageExist);
+
+			$validSize = $this->validateImageDime($post);
 			if($validSize['statusCode'] == 200){
 				//Save Article Info
 				if( $post['a_i'] != "0"){
@@ -445,7 +447,8 @@ class MPArticleAdminController extends MPArticle{
 		$imageExist = $this->verifyImageExist($post);
 		if($imageExist){
 			//Validate Image Dimentions 
-			$validSize = $this->validateImageDime($post, $imageExist);
+
+			$validSize = $this->validateImageDime($post);
 			if($validSize['statusCode'] == 500){
 				return $validSize;	
 			} 
@@ -590,7 +593,7 @@ class MPArticleAdminController extends MPArticle{
 
 		//IF IS AN STARTER BLOGGER
 		if( $user_type == 30 ){
-			$post['article_status-s'] = 3; //DRAFT
+			//$post['article_status-s'] = 3; //DRAFT
 			if( $save == false ) $post['article_status-s'] = 2; //REVIEW
 		}
 

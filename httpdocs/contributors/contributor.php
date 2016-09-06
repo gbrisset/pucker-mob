@@ -30,15 +30,17 @@ if($contributorInfo['contributors']){
 	}
 	
 	$pageName = $contributorInfoObj['contributor_name'].' | '.$mpArticle->data['article_page_name'];
-
+	$articleList = $mpArticle->getContributorsArticleList($contributorInfoObj['contributor_id']);
+	//var_dump(count($articleList), $articleList); die;
 	$articlesPerPage = 30;
+	//var_dump($mpArticle->getContributorsArticleList($contributorInfoObj['contributor_id'])); die;
 
-	$totalPages = ceil(count($contributorInfo['articles']['articles']) / $articlesPerPage);
+	$totalPages = ceil(count($articleList) / $articlesPerPage);
 	if($totalPages > 1){
 		$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
 		if($currentPage > $totalPages) $currentPage = 1;
 		$offset = ($currentPage - 1) * $articlesPerPage;
-		$contributorInfo['articles']['articles'] = array_slice($contributorInfo['articles']['articles'], $offset, $articlesPerPage);
+		$contributorInfo['articles']['articles'] = array_slice($articleList, $offset, $articlesPerPage);
 		$pagesArray['url'] = $config['this_url'].'contributors/'.$contributorInfoObj['contributor_seo_name'];
 		$pagesArray['pages'] = $mpHelpers->getPages($currentPage, $totalPages);
 	}
@@ -117,22 +119,22 @@ if($contributorInfo['contributors']){
 				</div>
 				<?php }?>
 			</section>
-			<?php if(isset($contributorInfo['articles']['articles']) && $contributorInfo['articles']['articles']){ ?>
+			<?php if(isset($articleList) && $articleList){ ?>
 			<section id="results" class="clear">
 				<h2 class="padding-top clear"><?php echo $contributorInfoObj['contributor_name']; ?>'s Articles</h2>
 				<?php
 				$articleIndex = 1; 
 				foreach ($contributorInfo['articles']['articles'] as $article) {
-					if (isset($article['parent_category_page_directory']) && $article['parent_category_page_directory'] != 'categories-root/'){ 
-						$link = $config['this_url'].$mpHelpers::linkToArticle($article['cat_dir_name'], $article['parent_category_page_directory']).$article['article_seo_title'];
-					} else {
+					//if (isset($article['parent_category_page_directory']) && $article['parent_category_page_directory'] != 'categories-root/'){ 
+					//	$link = $config['this_url'].$mpHelpers::linkToArticle($article['cat_dir_name'], $article['parent_category_page_directory']).$article['article_seo_title'];
+					//} else {
 						$link = $config['this_url'].$mpHelpers::linkToArticle($article['cat_dir_name']).$article['article_seo_title'];
-					}
+					//}
 
 					$articleDesc = (isset($article['article_desc']) && strlen($article['article_desc'])) ? $article['article_desc'] : $article['article_body'];
 					$linkToImage = 'http://cdn.puckermob.com/articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$article['article_id'].'_tall.jpg';
 					$date = date("M d, Y", strtotime($article['creation_date']));
-					$linkToContributor = $config['this_url'].'contributors/'.$article['contributor_seo_name'];
+					$linkToContributor = $config['this_url'].'contributors/'.$contributorInfoObj['contributor_seo_name'];
 					?>
 
 					<article class="row" id="<?php echo 'article-'.$articleIndex;?>">
@@ -143,13 +145,10 @@ if($contributorInfo['contributors']){
 							</a>
 							<div class="mobile-12 small-12 large-7 xlarge-7 no-padding" style="padding:0 !important;">
 								<p style="margin:0;">
-									<!--<span class="span-category"><?php //echo $article['cat_name']?></span>
-									<small><?php //echo $date; ?></small>-->
 								</p>
 								<a href="<?php echo $link; ?>">
 									<h1 style="margin-bottom:0;"><?php echo $article['article_title']?></h1>
 								</a>
-								<!--<p><small>By <a href="<?php //echo $linkToContributor; ?>" ><?php //echo $article['contributor_name']; ?></a></small></p>-->
 							</div>
 							<?php }else{?>
 							<?php $articleIndex++; ?>
@@ -158,13 +157,11 @@ if($contributorInfo['contributors']){
 							</a>
 							<div class="mobile-7 small-7 medium-7 large-6 xlarge-6 mobile-vertical-center vertical-align-center half-padding-left half-padding-right">
 								<p class="uppercase">
-									<!--<span class="span-category"><?php //echo $article['cat_name']?></span>
-									<span class="span-date"><?php //echo $date; ?></span>-->
 								</p>
 								<a href="<?php echo $link; ?>">
 									<h1><?php echo $article['article_title']?></h1>
 								</a>
-								<p class="uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $article['contributor_name']; ?></a></span></p>
+								<p class="uppercase"><span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributorInfoObj['contributor_name']; ?></a></span></p>
 							</div>
 							<?php } ?>
 						</div>

@@ -44,6 +44,7 @@
 </div>
 
 <script>
+
 	var maxImageWidth = 784, maxImageHeight = 431, currentWidth = 0, currentHeight = 0;
 	  var previewNode = document.querySelector("#template");
 	  previewNode.id = "";
@@ -114,7 +115,9 @@
 			  if(this.files[1]!=null){
 			    this.removeFile(this.files[0]);
 			  } 
-			  console.log(file);
+
+			  $('#main-image-src').click();
+			 // console.log(file);
 			  if($('#template_copy').length > 0 ){
 			  	$('#template_copy').remove();
 			  }
@@ -122,8 +125,8 @@
 			  currentWidth = 0;
 	          currentHeight = 0;
 
-	          var img_url = 'http://images.puckermob.com/articlesites/puckermob/large/19552_tall.jpg';
-	          return launchEditor('main-image-src',  img_url );
+	         // var img_url = 'http://images.puckermob.com/articlesites/puckermob/large/19552_tall.jpg';
+	        //  return launchEditor('main-image-src',  img_url );
 
 			});
 

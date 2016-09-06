@@ -448,6 +448,9 @@
 							<div class="small-12 large-4 column no-padding hide-for-large-up">
 								<button class="small-12 large-5 columns radius" type="submit" id="submit" name="submit" style="background-color: #016201;" >SAVE</button>
 							</div>
+							<div class="small-12 large-4 column  left no-padding hide-for-large-up">
+								<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm publish-button" style="background-color: #016201;" >PUBLISH</button>
+							</div>
 							
 						</div>	
 					

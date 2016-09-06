@@ -1,4 +1,7 @@
 
+<!-- Load widget code -->
+<script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>
+
 <?php if(!$detect->isMobile()){?>
 <div class="radius small-12 xxlarge-8 columns no-padding"  >
 	<form id="image-drop" class="dropzone dz-clickable small-12 column no-padding" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
@@ -33,6 +36,11 @@
  		   	</div>
  		</div>
  	</form>
+ 	<!-- original line of HTML here: -->
+<img id="editableimage1" src=""/>
+<br>
+<a href="#" onclick="return launchEditor('main-image-src', $('#main-image-src').attr('src') );" style="">Edit!</a>
+
 </div>
 
 <script>
@@ -41,7 +49,47 @@
 	  previewNode.id = "";
 	  var previewTemplate = previewNode.parentNode.innerHTML;
 	  previewNode.parentNode.removeChild(previewNode);
-		
+
+
+	    var featherEditor = new Aviary.Feather({
+	        apiKey: '1234567',
+	        tools: ['crop', 'resize'],
+	        onSave: function(imageID, newURL) {
+	            var img = document.getElementById(imageID);
+	            img.src = newURL;
+
+	               $.ajax({
+	                type: 'POST',
+	                dataType: 'json',
+	                data: { task: 'get_edited_image', articleId: 3, url:newURL, dirDest:'temp' },
+	                url: "http://www.puckermob.com/getImage.php",
+	                success: function(msg) {
+	                    var status = 'success';
+	                    if(msg['hasError']) status = 'error';
+
+	                    $('#msg').html(msg['message']).addClass(status);
+	                },
+	                error: function(){
+	                    var status = 'error';
+	                    var msg = 'Ouch! something happend!';
+
+	                    $('#msg').show();
+	                }
+	            });
+
+	            featherEditor.close();
+
+	        }
+	    });
+
+	    function launchEditor(id, src) {
+	    	console.log('launchEditor', id, src);
+	        featherEditor.launch({
+	            image: id,
+	            url: src
+	        });
+	        return false;
+	    }
 
 
 		Dropzone.options.imageDrop = {
@@ -66,13 +114,16 @@
 			  if(this.files[1]!=null){
 			    this.removeFile(this.files[0]);
 			  } 
-
+			  console.log(file);
 			  if($('#template_copy').length > 0 ){
-			  		$('#template_copy').remove();
+			  	$('#template_copy').remove();
 			  }
 
 			  currentWidth = 0;
 	          currentHeight = 0;
+
+	          var img_url = 'http://images.puckermob.com/articlesites/puckermob/large/19552_tall.jpg';
+	          return launchEditor('main-image-src',  img_url );
 
 			});
 
@@ -118,4 +169,4 @@
  		</div>
  	</form>
 </div>
-<?php } ?>
+<?php } ?>   

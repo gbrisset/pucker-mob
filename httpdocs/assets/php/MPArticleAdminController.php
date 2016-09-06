@@ -342,32 +342,36 @@ class MPArticleAdminController extends MPArticle{
 	public function verifyImageExist( $post ){
 		//	Set the paths to the image
 		$user_id = $post['u_i'];
-		$image = 'temp_u_'.$user_id.'_tall.jpg';
-		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+		$image = $imageTemp = 'temp_u_'.$user_id.'_tall.jpg';
+		$imageDir = $path = $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
 		if( $post['a_i'] != "0"){
 			$image = $post["a_i"].'_tall.jpg';
-			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+			$imageDir =  $path =  $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
 		}
 
 		$imageExists = false;
 		//	Verify if the usr has ever SELECTED an image
 		if(isset($image)){
 			$imageExists = file_exists($imageDir);
+
+			if(!$imageExists){ 
+				$imageTempDir =   $path = $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$imageTemp;
+				$imageExists = file_exists($imageTempDir);
+			}
 		}
-		return $imageExists;
+
+		return array( 'exist' => $imageExists, 'path'=> $path);
 	}
 
-	public function validateImageDime($post){
-		
-		$user_id = $post['u_i'];
-		$image = 'temp_u_'.$user_id.'_tall.jpg';
-		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
-		if( $post['a_i'] != "0"){
-			$image = $post["a_i"].'_tall.jpg';
-			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
-		}
-		$size = getimagesize($imageDir);
-
+	public function validateImageDime($post, $imgExist){
+		//$user_id = $post['u_i'];
+		//$image = 'temp_u_'.$user_id.'_tall.jpg';
+		//$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+		//if( $post['a_i'] != "0"){
+		//	$image = $post["a_i"].'_tall.jpg';
+		//	$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+		//}
+		$size = getimagesize($imgExist['path']);
 		$width = $height = 0;
 		if($size){
 			$width = $size[0];
@@ -377,7 +381,7 @@ class MPArticleAdminController extends MPArticle{
 		if($width == 784 && $height == 431){
 			return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Saved Successfully!'));
 		}
-		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Image dimensions must be 728x43 px '));
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Image dimensions must be 784x431px '));
 	}
 
 	public function moveImageFromTemp($post){
@@ -389,8 +393,8 @@ class MPArticleAdminController extends MPArticle{
 			//New Image Name and Path to Save
 			$img_name = $post['a_i'].'_tall.jpg';
 			$img_path = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_name;
-
 			//Copy & Remove Image from Temp Folder
+
 			if(copy($img_temp_path, $img_path)){
 				unlink($img_temp_path);	
 				return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Added Successfully!'));
@@ -412,7 +416,7 @@ class MPArticleAdminController extends MPArticle{
 		$imageExist = $this->verifyImageExist($post);
 		if($imageExist){
 			//Validate Image Dimentions 
-			$validSize = $this->validateImageDime($post);
+			$validSize = $this->validateImageDime($post, $imageExist);
 			if($validSize['statusCode'] == 200){
 				//Save Article Info
 				if( $post['a_i'] != "0"){
@@ -441,7 +445,7 @@ class MPArticleAdminController extends MPArticle{
 		$imageExist = $this->verifyImageExist($post);
 		if($imageExist){
 			//Validate Image Dimentions 
-			$validSize = $this->validateImageDime($post);
+			$validSize = $this->validateImageDime($post, $imageExist);
 			if($validSize['statusCode'] == 500){
 				return $validSize;	
 			} 

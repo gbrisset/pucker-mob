@@ -58,7 +58,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 			
 			<section id="article-info" class="small-12 columns">
 				
-				<?php include_once($config['include_path_admin'].'dropbox_image.php'); ?>	
+				<?php include_once($config['include_path_admin'].'drop_image_new.php'); ?>	
 
 				<form  id="article-add-form" class="margin-top" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >

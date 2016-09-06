@@ -1,6 +1,6 @@
 <?php 
 	$current_social = "current";
-	$current_profile = $current_payment = $current_intro =  $current_last = '';
+	$current_profile = $current_payment = $current_intro =  $current_last = $current_to_know = '';
 ?>
 <div class="main-content-modal small-12 columns social-modal">
 	 <div class="columns small-12 large-3">

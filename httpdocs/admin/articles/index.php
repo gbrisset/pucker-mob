@@ -22,7 +22,11 @@
 	$limit=40;
 	$post_date = 'all';
 
-	$articleStatus = 1;
+	$articleStatus = '1';
+	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 8  || $adminController->user->data['user_type'] == 9  || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 30){
+		$articleStatus = '1, 2, 3';
+	}
+	
 
 	$artType = '';
 	$allCurrent = 'current';
@@ -37,30 +41,29 @@
 
 	$sortType = '';
 	$allSort = 'current';
-	$liveCurrent = $draftCurrent = '';
+	$liveCurrent = $draftCurrent = $pendingCurrent= '';
 	
 	if(  isset($_GET['sort']) && $_GET['sort']){
 		$allSort = '';
 		$sortType = $_GET["sort"];
 		if($sortType === "3") $draftCurrent = 'current';
 		elseif($sortType === "1")  $liveCurrent = 'current';
+		elseif($sortType === "2")  $pendingCurrent = 'current';
+
 	}
 
 	$userArticlesFilter = $userData['user_email'];
 	$order = '';
-	//$filterLabel = 'Most Recent';
-// Sorting information
+	// Sorting information
 	$article_sort_by = "mr";
 	if (isset($_GET['sort'])) {
 		$sortingMethod = $mpArticleAdmin->getSortOrder($_GET['sort']);
 		$articleStatus = $sortingMethod['articleStatus'];
-		//$filterLabel = $sortingMethod['filterLabel'];
 		$order = $sortingMethod['order'];
 		$article_sort_by = $_GET['sort'];
 	}
 
 
-	// if (isset($_GET['category'])) {$category = $_GET['category'];}
 	if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
 	if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
 	if (isset($userData['user_permission_show_other_user_articles']) && $userData['user_permission_show_other_user_articles'] == 1){
@@ -71,10 +74,6 @@
 	$pagination = new Pagination($page, $per_page, $total_count);	
 	$offset = $pagination->offset();
 
-
-	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 2){
-		$articleStatus = '1, 2, 3';
-	}
 
 	//GET ALL ARTICLES BASE ON THE FILTER BY STATUS, USERTYPE, ETC...
 	$articles = $mpArticle->get_filtered($limit, $order, $articleStatus, $userArticlesFilter, $offset, $artType);
@@ -89,11 +88,11 @@
 	//GET USA PAGEVIEWS FOR EACH ARTICLE ON THE LIST
 	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
 	$pageviews_list = [];
-	foreach($usa_pageview_list as $key=>$value){
-		//var_dump($key, $value, $value['article_id'], $value['total_usa_pv']);
-		$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
+	if($usa_pageview_list){
+		foreach($usa_pageview_list as $key=>$value){
+			$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
+		}
 	}
-
 	$promoteArticles = new PromoteArticles();
 	$fb_pages = $promoteArticles->getAllFacebookPages();
 	//var_dump($fb_pages); die;
@@ -139,7 +138,7 @@
 				<div class="small-12 xxlarge-9 columns no-padding">
 						<section id="articles-list" class="columns margin-top no-padding">
 						<?php
-							if(isset($articles) && $articles ){ ?>
+							if(isset( $articles) && $articles ){ ?>
 
 							<?php include_once($config['include_path_admin'].'statuses-mobile.php'); ?>
 
@@ -169,8 +168,9 @@
 									$article_us_traffic = 0;
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
+									$user_id = $articleInfo['user_id'];
 
-									if(!is_null($pageviews_list[$article_id])){
+									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
 									}
 
@@ -205,12 +205,12 @@
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
 									  	<?php if( $admin_user ){ ?>
 									  	<td class="show-for-large-up  border-right">
-									  		<label data-info="<?php echo $article_id; ?>">
+									  		<label data-info="<?php echo $article_id; ?>" data-user-id="<?php echo $user_id; ?>" data-title="<?php echo $article_title; ?>" >
 									  			<select class="facebook-sites">
 									  				<option value = '0' >NONE</option>
 									  				<?php foreach( $fb_pages as $page ){
 									  					$isPromotedObj = $promoteArticles->promotedInfo($article_id);
-									  					$facebook_page_id_promoted = $isPromotedObj[0]->facebook_page_id;
+									  					$facebook_page_id_promoted = isset($isPromotedObj[0]) ? $isPromotedObj[0]->facebook_page_id : 0;
 									  					?>
 									  					
 										  					<option value = "<?php echo $page->facebook_page_id; ?>" <?php if($facebook_page_id_promoted == $page->facebook_page_id) echo ' selected '; ?> >

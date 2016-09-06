@@ -7,8 +7,6 @@
    * @author     Flor Guzman <fguzman@sequelmediainternational.com>
 **/
 
-//require 'config.php';
-
 class User extends DatabaseObject{
 
 	protected static $table_name = "users";

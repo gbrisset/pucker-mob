@@ -4,9 +4,13 @@
 	$_SESSION['show_welcome_modal'] = '1';
 ?>
 <!-- Reveal Modals begin -->
-<!-- Reveal Modals begin -->
+
 <div id="intro-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="intro-modal-title" aria-hidden="true" role="dialog">
   <?php require('modals/welcome-modal-intro.php'); ?>
+</div>
+
+<div id="to-know-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="to-know-modal-title" aria-hidden="true" role="dialog">
+  <?php require('modals/least-to-know-modal.php'); ?>
 </div>
 
 <div id="profile-modal" class="reveal-modal xlarge welcome-modal" data-reveal aria-labelledby="profile-modal-title" aria-hidden="true" role="dialog">

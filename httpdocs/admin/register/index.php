@@ -1,4 +1,8 @@
 <?php
+
+	header('Location: http://www.puckermob.com/login');
+	die;
+	
 	$admin = true;
 	require_once('../../assets/php/config.php');
 	if($adminController->user->getLoginStatus()) $adminController->redirectTo('');
@@ -18,34 +22,12 @@
 <?php include_once($config['include_path_admin'].'head.php');?>
 <script>
    
-//JQUERY FOR SLIDING NAVIGATION -->   
-$(document).ready(function() {
-  $('a[href*=#]').each(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-    && location.hostname == this.hostname
-    && this.hash.replace(/#/,'') ) {
-      var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
-      var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
-       if ($target) {
-         var targetOffset = $target.offset().top;
-
-// JQUERY CLICK FUNCTION REMOVE AND ADD CLASS "ACTIVE" + SCROLL TO THE #DIV
-         $(this).click(function() {
-            $(".next-step h2 a").removeClass("active");
-            $(this).addClass('active');
-           $('html, body').animate({scrollTop: targetOffset}, 1000);
-           return false;
-         });
-      }
-    }
-  });
-
-});
-
 
 </script>
 <body id="registration_p1" class="">       	
     <main>
+    	<?php include_once($config['include_path_admin'].'header.php');?>
+
        	<section id="slide-1" class="homeSlide">
 	        <div class="bcg">
 		       	<div class="hsContainer">
@@ -108,95 +90,12 @@ $(document).ready(function() {
 							</div>
 						</form>
 			    	</div>
-			    	<div class=" hsContentLink dark-bg ">
-		        		<p>ALREADY REGISTERED?</p>
-		        		<a href="http://www.puckermob.com/admin">CLICK HERE TO LOGIN</a>
-		        	
-		        	</div>
+			    	
 			    	<?php }?>
-		        	<div class="next-step" style="margin-top:0.5rem; margin-bottom: 2.5rem;">
-		        		<ul>
-		        			<li><a href="http://www.puckermob.com">PUCKERMOB HOME</a></li>
-		        		    <li><a href="http://www.puckermob.com/policy/"  target="blank">Terms of Service</a></li>
-							<li><a href="http://www.puckermob.com/policy/#privacy"  target="blank">Privacy Policy</a></li>
-		        		</ul>
-		        	</div>
-		        	<div class="full-width dark-bg next-step active">
-		        		<h2><a href="#slide-2">What is The Mob?</a></h2>
-		        	</div>
+		        	
 		        </div>
 		        
 		</section>
-		<section id="slide-2" class="homeSlide">
-		   	<div class="bcg">
-			   	<div class="hsContainer in-slider-2">
-			    	<h1 class="smaller-h1 move-left uppercase padding-bottom">Understanding your </h1>
-				    <hr>
-				    <div class="move-left">
-				    <img id="moblog-img" src = "<?php echo $config['this_url'].'assets/img/registration/MOBLOG.png'; ?>" alt="moglog" />
-			    
-			    	<div class="hsContent">
-				    	<p>It's pretty  simple: The Mob is a tool that lets you make money by blogging on our site</p>
-				    	<p>You can write what you want, when you want. </p>
-				    	<p>Be creative.</p>
-				    	<p>Express an opinion.</p>
-				    	<p>Make people laugh.</p>
-				    	<p>Teach people something new.</p>
-
-				    	<p class="p-large margin-top margin-bottom">The Floor is Yours</p>
-
-				    	<p>It's super easy - just sign up and start writing</p>
-			    	</div>
-			    </div>
-			    	<div class="next-step " style="margin-top:1rem; margin-bottom: 3rem;">
-		        		<ul>
-		        			<li><a href="http://www.puckermob.com">PUCKERMOB HOME</a></li>
-		        		    <li><a href="http://www.puckermob.com/policy/"  target="blank">Terms of Service</a></li>
-							<li><a href="http://www.puckermob.com/policy/#privacy"  target="blank">Privacy Policy</a></li>
-		        		</ul>
-		        	</div>
-		        	<div class="full-width dark-bg next-step">
-		        		<h2><a href="#slide-3">How can i earn money?</a></h2>
-		        	</div>
-		        </div>
-		    </div>
-		</section>
-		 
-		<section id="slide-3" class="homeSlide">
-			<div class="bcg">
-		    		<div class="hsContainer in-slider-3">
-			    	<h1 class="smaller-h1 move-right uppercase padding-bottom">Earning money with your</h1>
-				    <hr>
-			   		<div class="move-right">
-			   		<img id="moblog-img" src = "<?php echo $config['this_url'].'assets/img/registration/MOBLOG.png'; ?>" alt="moglog" />
-			    	<div class="hsContent">
-				    	<p>This is also pretty easy: Write really good content and share it with your online networks.</p>
-				    	<p>You get paid as more people share your work. </p>
-				    	<p>It's simple as that. No need to apply with various ad networks or install confusing ad tags.</p>
-				    	<p>The better your articles, the more people will share them.</p>
-				    	
-				    	<p class="p-large margin-top margin-bottom">The More people share it,<br> the more money you make.</p>
-
-				    	<p>Pretty easy, right?</p>
-				    	<p>So what are you waiting for?</p>
-				    	<p>Getting started is quick and easy!</p>
-			    	</div>
-			    </div>
-		    		<div class="next-step " style="margin-top:1rem; margin-bottom: 3rem;">
-		        		<ul>
-		        			<li><a href="http://www.puckermob.com">PUCKERMOB HOME</a></li>
-		        		    <li><a href="http://www.puckermob.com/policy/"  target="blank">Terms of Service</a></li>
-							<li><a href="http://www.puckermob.com/policy/#privacy"  target="blank">Privacy Policy</a></li>
-		        		</ul>
-		        	</div>
-		        	<div class="full-width dark-bg next-step">
-		        		<h2><a href="#slide-1">I'm ready to get started!</a></h2>
-		        	</div>
-			    </div>
-			    	
-			</div>
-		</section>
-		
 	</main>
 	
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>

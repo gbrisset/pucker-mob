@@ -25,29 +25,39 @@
 
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
-	<meta name="author" content="Sequel Media International">
+
 	<meta property="og:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />
 	<meta property="og:description" content="<?php echo $headDesc; ?>" />
 	<meta property="og:type" content="<?php if(isset($articleInfo) && $articleInfo){echo 'article';}else{echo 'website';} ?>" />
 	<meta property="og:site_name" content="<?php echo $mpArticle->data['article_page_name']; ?>" />
 	<meta property="og:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
-	<meta property="og:image" content="<?php if(isset($articleInfo) && $articleInfo ){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg';}else{echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png';}?>" />
 	<?php if(isset($articleInfo) && $articleInfo){ ?>
-	<meta property="article:published_time" content="<?php if (isset($articleInfo)) echo date('Y-m-d\TH:i', strtotime($articleInfo['creation_date'])); ?>" />
-	<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
-	<meta property="article:tag" content="<?php echo $headTags; ?>" />
+		<meta property="article:published_time" content="<?php if (isset($articleInfo)) echo date('Y-m-d\TH:i', strtotime($articleInfo['creation_date'])); ?>" />
+		<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
+		<meta property="article:tag" content="<?php echo $headTags; ?>" />
+		<meta name="author" content="<?php echo $articleInfoObj['contributor_name']; ?>" />
+		<meta property="og:image"  content="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg'; ?>" />
+		<meta name="twitter:image" content="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg'; ?>" />
+
+	<?php }elseif(isset($registration) && $registration){ ?>
+		<meta property="og:image"  content="<?php echo 'http://images.puckermob.com/articlesites/featured/registration_img.jpg'; ?>" />
+		<meta name="twitter:image" content="<?php echo 'http://images.puckermob.com/articlesites/featured/registration_img.jpg'; ?>" />
+		<meta name="author" content="Sequel Media International" />
+	<?php }else{?>
+		<meta property="og:image"  content="<?php echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png'; ?>" />
+		<meta name="twitter:image" content="<?php echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png'; ?>" />
+		<meta name="author" content="Sequel Media International" />
 	<?php } ?>
 	
 	<meta name="twitter:card" content="photo" />
 	<meta name="twitter:site" content="@PuckerMob" />
 	<meta name="twitter:title" content="<?php if(isset($pageName) && strlen($pageName)){echo $pageName;}else{echo "Pucker Mob: We're All Part of It.";} ?>" />
-	<meta name="twitter:image" content="<?php if(isset($articleInfo) && $articleInfo ){echo $config['image_url'].'articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg';}else{echo 'http://images.puckermob.com/articlesites/featured/puckermobfeaturedimage.png';}?>" />
 	<meta name="twitter:url" content="<?php echo $mpHelpers->curPageURL(); ?>" />
 
 
 	<link type="text/plain" rel="author" href="humans.txt" />
 	<link rel="shortcut icon" href="<?php echo $config['this_url']; ?>assets/img/mini.ico" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=_1237434" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver=B484" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
 	<link href="<?php echo $config['this_url']; ?>assets/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
@@ -65,8 +75,7 @@
   ga('send', 'pageview');
 </script>
 
-	<!-- UNDERTONE -->
-	<?php //if( isset($articleInfo) && ($articleInfo['article_id'] == 14613 || $articleInfo['article_id'] == 15104 || $articleInfo['article_id'] == 14873 || $articleInfo['article_id'] == 12966) ){?>
+	<!-- UNDERTONE 
 		<script type='text/javascript'>
 		  var googletag = googletag || {};
 		  googletag.cmd = googletag.cmd || [];
@@ -80,9 +89,9 @@
 		    var node = document.getElementsByTagName('script')[0];
 		    node.parentNode.insertBefore(gads, node);
 		  })();
-		</script>
+		</script>-->
 
-		<script type='text/javascript'>
+		<!--<script type='text/javascript'>
 		  googletag.cmd.push(function() {
 		    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1461622964696-0').addService(googletag.pubads());
 		    googletag.defineSlot('/73970039/UT_P', [300, 1050], 'div-gpt-ad-1461622964696-1').addService(googletag.pubads());
@@ -93,6 +102,13 @@
 		    googletag.defineSlot('/73970039/UT_SP', [320, 50], 'div-gpt-ad-1461622964696-6').addService(googletag.pubads());
 		    googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470066258166-0').addService(googletag.pubads());
    			googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470066258166-1').addService(googletag.pubads());
+   			
+   			// Undertone 970x250 VIRGINIA CAMP
+   			googletag.defineSlot('/73970039/UT_970x250', [970, 250], 'div-gpt-ad-1466610548103-0').addService(googletag.pubads());
+
+   			//UNDERTONE TENNESSE CAMP
+   			 googletag.defineSlot('/73970039/UT_SS_Knox', [1, 1], 'div-gpt-ad-1467926983040-0').addService(googletag.pubads());
+
 
 		    googletag.pubads().enableSingleRequest();
 		    googletag.enableServices();
@@ -105,100 +121,65 @@
 		    googletag.pubads().enableSingleRequest();
 		    googletag.enableServices();
 		  });
-		</script>
+		</script>-->
+		<?php if( isset($articleInfo) && $articleInfo['article_id']  == 5813 ){?>
+			<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+				<script>
+				  var googletag = googletag || {};
+				  googletag.cmd = googletag.cmd || [];
+				</script>
 
-	<?php //} ?>
+				<script>
+				  googletag.cmd.push(function() {
+				    googletag.defineOutOfPageSlot('/10394362/paz_724477', 'div-gpt-ad-1470928349713-0').addService(googletag.pubads());
+				    googletag.pubads().enableSingleRequest();
+				    googletag.enableServices();
+				  });
+				</script>
 
-	<!-- Undertone 970x250 VIRGINIA CAMP-->
-	<script type='text/javascript'>
-	  var googletag = googletag || {};
-	  googletag.cmd = googletag.cmd || [];
-	  (function() {
-	    var gads = document.createElement('script');
-	    gads.async = true;
-	    gads.type = 'text/javascript';
-	    var useSSL = 'https:' == document.location.protocol;
-	    gads.src = (useSSL ? 'https:' : 'http:') +
-	      '//www.googletagservices.com/tag/js/gpt.js';
-	    var node = document.getElementsByTagName('script')[0];
-	    node.parentNode.insertBefore(gads, node);
-	  })();
-	</script>
+		<?php }else{?>
+			<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+			<script>
+			  var googletag = googletag || {};
+			  googletag.cmd = googletag.cmd || [];
+			</script>
 
-	<script type='text/javascript'>
-	  	googletag.cmd.push(function() {
-	    googletag.defineSlot('/73970039/UT_970x250', [970, 250], 'div-gpt-ad-1466610548103-0').addService(googletag.pubads());
-	    googletag.pubads().enableSingleRequest();
-	    googletag.enableServices();
-	  });
-	</script>
-	<!-- END Undertone 970x250 VIRGINIA CAMP-->
-	<!-- UNDERTONE TENNESSE CAMP -->
-	<script type='text/javascript'>
-	  var googletag = googletag || {};
-	  googletag.cmd = googletag.cmd || [];
-	  (function() {
-	    var gads = document.createElement('script');
-	    gads.async = true;
-	    gads.type = 'text/javascript';
-	    var useSSL = 'https:' == document.location.protocol;
-	    gads.src = (useSSL ? 'https:' : 'http:') +
-	      '//www.googletagservices.com/tag/js/gpt.js';
-	    var node = document.getElementsByTagName('script')[0];
-	    node.parentNode.insertBefore(gads, node);
-	  })();
-	</script>
-
-	<script type='text/javascript'>
-	  googletag.cmd.push(function() {
-	    googletag.defineSlot('/73970039/UT_SS_Knox', [1, 1], 'div-gpt-ad-1467926983040-0').addService(googletag.pubads());
-	    googletag.pubads().enableSingleRequest();
-	    googletag.enableServices();
-	  });
-	</script>
-	<!-- UNDERTONE TENNESSE CAMP END -->
-
-	<!-- UNDERTONE CAPMP UNTIL 31st 
-	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-	<script>
-	  var googletag = googletag || {};
-	  googletag.cmd = googletag.cmd || [];
-	</script>
-
-	<script>
-	  googletag.cmd.push(function() {
-	    googletag.defineSlot('/73970039/SS_FP_US', [1, 1], 'div-gpt-ad-1469818259945-0').addService(googletag.pubads());
-	    googletag.pubads().enableSingleRequest();
-	    googletag.enableServices();
-	  });
-	</script>
-	 END UNDERTONE CAPMP UNTIL 31st -->
+			<script>
+				  googletag.cmd.push(function(){
+				  	//UNDERTONE
+				    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470929060933-0').addService(googletag.pubads());
+				   	googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470934220433-0').addService(googletag.pubads());
 
 
-
+				   	//STRIKE
+				   	googletag.defineSlot('/73970039/SV_300x250', [300, 250], 'div-gpt-ad-1471285633174-0').addService(googletag.pubads());
+				    googletag.pubads().enableSingleRequest();
+				    googletag.enableServices();
+				  });
+			</script>
+		<?php }?>
 <?php 
 	$sponsored_aricle = true; 
-	//if($articleInfoObj['article_id'] == 14785 ) $sponsored_aricle = true;
 ?>
 
 
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
 	<?php //if(isset($article_id) && $article_id == 6144 ){?>
-		<!-- CODEFUEL SEARCH -->
+		<!-- CODEFUEL SEARCH  -->
 		<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
 	<?php //} ?>
 <?php }else{ ?>
 		<?php //if(isset($article_id) && $article_id == 6144 ){?>
-			<!-- CODEFUEL SEARCH -->
-			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
+			<!-- CODEFUEL SEARCH 
+			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>-->
 		<?php //} ?>	
 
 		<?php
 			 $current_time = new DateTime(); // Today
              $start_time = new DateTime('3:00pm');
              $end_time  = new DateTime('11:59pm');
-             $branovate_on = false;
+             $branovate_on = true;
              if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ 
               $branovate_on = true;
           	 }

@@ -43,7 +43,7 @@
 <script src="<?php echo $config['this_url']; ?>assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
 
-<script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php" async></script>
+<script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php?ver=2343" async></script>
 <script src="<?php echo $config['this_url']; ?>/assets/js/main.js"></script>
 
 <?php

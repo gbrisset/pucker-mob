@@ -151,6 +151,21 @@ public function getAllLiveArticles(){
 
 }
 
+public function getAllLiveArticlesPerContributor( $contributor_id ){
+	$s = "SELECT articles.article_id, article_title, article_seo_title, cat_dir_name  
+	FROM articles 
+	INNER JOIN (categories, article_categories, article_contributor_articles) 
+	ON ( articles.article_id = article_categories.article_id )
+	AND (article_categories.cat_id = categories.cat_id )
+	AND (articles.article_id = article_contributor_articles.article_id )
+	WHERE articles.article_status = 1 AND article_contributor_articles.contributor_id = $contributor_id
+	ORDER BY articles.article_id DESC ";
+
+	$q = $this->performQuery(['queryString' => $s]);
+	return $q;
+
+}
+
 public function getRelatedToArticle( $article_id ){
 	$article_id = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$s = "SELECT related_article_id_1, related_article_id_2, related_article_id_3 
@@ -188,7 +203,7 @@ public function getMoBlogsArticles( $current_article_id = 0){
 		$s .= " AND articles.article_id != $current_article_id ";
 	}
 	 
-	$s .= " ORDER BY articles.date_updated DESC LIMIT 8 ";
+	$s .= " ORDER BY articles.date_updated DESC LIMIT 12 ";
 
 	$q = $this->performQuery(['queryString' => $s]);
 		
@@ -302,6 +317,45 @@ public function getArticlesList( $args = [] ){
 
 	if( isset( $options['limit'] )  &&  $options['limit']) {
 		$s .= "  LIMIT ". $options['limit'] ." OFFSET ".$options['offset'];
+	}
+
+	$q = $this->performQuery(['queryString' => $s]);
+		
+	return $q;	   
+}
+
+public function getArticlesListView( $args = [] ){
+	$options = array_merge([
+		'pageId' => null, 
+		'contributorId' => null, 
+		'omit'=> [],
+		'articleId' => null, 
+		'articleSEOTitle' => '',
+		'limit' => '',
+		'offset' => 0,
+		'withMobLogs' => false,
+		'user_type' => ''
+	], $args);
+
+	$s = " SELECT * FROM articles_list WHERE  article_status = 1 ";		  
+
+
+	if( isset( $options['omit'] )  &&  $options['omit']) {
+		$s .= " AND article_id != ". $options['omit'] ;
+	}
+
+	if( isset( $options['pageId'] )  &&  $options['pageId']) {
+		$s .= " AND cat_id = ". $options['pageId'] ;
+	}
+
+	if( isset( $options['user_type'] )  &&  $options['user_type']) {
+		$s .= " AND user_type IN ( ".$options['user_type']." )";
+	}
+
+	$s .= " ORDER BY date_updated DESC, article_id DESC ";
+
+	if( isset( $options['limit'] )  &&  $options['limit']) {
+		$s .= " LIMIT ". $options['limit'] ." OFFSET ".$options['offset'];
 	}
 
 	$q = $this->performQuery(['queryString' => $s]);
@@ -1804,12 +1858,14 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	
 	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date,
-	nc.cat_id, '0' as us_traffic, article_contributors.contributor_name, article_contributors.contributor_seo_name FROM articles as a
-	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles)
+	nc.cat_id, '0' as us_traffic, article_contributors.contributor_name, article_contributors.contributor_seo_name, users.user_email, users.user_type, users.user_id 
+	FROM articles as a
+	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles, users)
 	ON a_c.article_id = a.article_id
 	AND a_c.cat_id = nc.cat_id
 	AND a.article_id = article_contributor_articles.article_id
-	AND article_contributors.contributor_id = article_contributor_articles.contributor_id ";
+	AND article_contributors.contributor_id = article_contributor_articles.contributor_id 
+	AND users.user_email = article_contributors.contributor_email_address ";
 	$s .= $status_sql;
 
 	if ($userArticlesFilter != 'all'){

@@ -677,10 +677,10 @@ End password reset methods
 
 /* Begin Registration Functions */
 	public function doRegistration($post){
-
+		
 		$isReader = false;
 		if(isset($post['isReader']) && $post['isReader']) $isReader = true;
-
+		
 		if($isReader && !isset($post['user_facebook_id-s'])){
 			$post["g-recaptcha-response"] = $post["recaptcha"];
 			unset($post["recaptcha"]);

@@ -38,6 +38,17 @@
 			$earnings = static::find_by_sql( "SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id  ORDER BY id DESC LIMIT $limit ", $params_to_bind );
 
 			return  $earnings;
+		}
+
+		public function getEarningsPerMonthYear( $month, $year ){
+
+			$contributor_id = $this->contributor->contributor_id;
+			
+			//	Set the params to be bound
+			$params_to_bind = [ ':contributor_id' => $contributor_id ];
+			$earnings = static::find_by_sql( "SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id  AND month IN (".$month.") AND year = ".$year." ORDER BY id DESC ", $params_to_bind );
+
+			return  $earnings;
 		}	
 
 		public function getPageviews(){

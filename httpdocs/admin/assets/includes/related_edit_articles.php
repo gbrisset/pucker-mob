@@ -1,6 +1,6 @@
-<div class="row" id="related-articles-section">
+<div class="row left" id="related-articles-section">
 	<header class="inner-header">Related Articles</header>
-	<div class="related_articles_box">
+	<div class="related_articles_box small-12 columns no-padding">
 		<div class="small-6 columns no-padding-left">
 			<select name="related_article_1" id="related_article_1"  class="related_articles small-12">
 				<option value="-1">Choose an article</option>
@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	
-	<div class="related_articles_box">
+	<div class="related_articles_box small-12 columns no-padding">
 		<div class="small-6 columns no-padding-left">
 			<select name="related_article_2" id="related_article_2" class="related_articles small-12">
 				<option value="-1">Choose an article</option>
@@ -42,7 +42,7 @@
 		</div>
 	</div>
 
-	<div class="related_articles_box">
+	<div class="related_articles_box small-12 columns no-padding">
 		<div class="small-6 columns no-padding-left">
 			<select name="related_article_3" id="related_article_3" class="related_articles small-12" >
 				<option value="-1">Choose an article</option>

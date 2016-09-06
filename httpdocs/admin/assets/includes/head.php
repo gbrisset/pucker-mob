@@ -10,7 +10,7 @@
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
 	<meta name="author" content="Sequel Media International">
-	<meta property="og:url"           content="http://puckermob.com" />
+	<meta property="og:url"           content="http://www.puckermob.com" />
 	<meta property="og:type"          content="website" />
 	<meta property="og:title"         content="Pucker Mob | We're All Part of It" />
 	<meta property="og:description"   content="General interest news, information, articles and advice for a world on the move" />
@@ -20,8 +20,8 @@
 	<link type="text/plain" rel="author" href="<?php echo $config['this_url']; ?>humans.txt" />
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3.3.2/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/1/daterangepicker-bs3.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver_3w43445">
-	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/appadmin.css?ver_3w43445">
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/app.css?ver_33445">
+	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/appadmin.css?ver_33445">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/tooltipster.css" />
@@ -41,11 +41,13 @@
 	  
 </head>
 <?php 
-	$blogger = false; $pro_blogger = false; $admin_user = false; $externalWriter = false; $pro_admin = false;
-	if( $adminController->user->data['user_type'] == 3 ||  $adminController->user->data['user_type'] == 8 ||  $adminController->user->data['user_type'] == 9 ) $blogger = true;
-	if( $adminController->user->data['user_type'] == 4 ) $blogger = true;
+	$blogger =  $pro_blogger =  $admin_user =  $externalWriter = $pro_admin =  $starter_blogger =  $suspended = false;
+	if( $adminController->user->data['user_type'] == 3 ||  $adminController->user->data['user_type'] == 8 ||  $adminController->user->data['user_type'] == 9 || $adminController->user->data['user_type'] == 4 || $adminController->user->data['user_type'] == 30 ) $blogger = true;
 	if( $adminController->user->data['user_type'] == 8 ) $pro_blogger = true;
 	if( $adminController->user->data['user_type'] == 1 ) $pro_admin = true;
 	if( $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 6) $admin_user = true;
 	if( $adminController->user->data['user_type'] == 7 ) $externalWriter = true;
+	if( $adminController->user->data['user_type'] == 30 ) $starter_blogger = true;
+	if( $adminController->user->data['user_type'] == 0 ) $suspended = true;
+	
 ?>

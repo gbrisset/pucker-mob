@@ -18,9 +18,8 @@ if(isset($uri[0]) && $uri[0]){
 
 }
 
-//var_dump($articlesList);
 //TRENDING
-	$mostReadArticlesList = $mpArticle->getMostRecentArticleListMobile();
+$mostReadArticlesList = $mpArticle->getMostRecentArticleListMobile();
 
 /* Article List */
 $totalArticles = count($articlesList );
@@ -35,7 +34,7 @@ foreach ($articlesList as $articles){
 	$cat_name = $articles['cat_dir_name'];
 	
 	//IGNORE MOBLOG ARTICLES
-	if( !isset($category_page) && $cat_name === "moblog" && $articles['article_featured_hp'] != 1) continue;
+	//if( !isset($category_page) && $cat_name === "moblog" && $articles['article_featured_hp'] != 1) continue;
 
 	if( $articleIndex % 7 == 0 ) { 
 		$articleIndex++;

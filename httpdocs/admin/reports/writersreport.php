@@ -99,7 +99,7 @@
 						  		<td class=" align-left" ><?php echo $contributor['contributor_name']; ?></td>
 						  		<td><?php echo $contributor['total_articles']; ?></td>
 						  		<td><?php echo '$'.number_format($rate, 2, '.', ','); ?></td>
-						  		<td><?php echo number_format($pageviews, 2, '.', ','); ?></td>
+						  		<td><?php echo number_format($pageviews, 0, '.', ','); ?></td>
 						  		<td><?php echo '$'.number_format($total_CPM_earned, 2, '.', ','); ?></td>
 						  		<td class="align-right" <?php echo $styling; ?>><?php echo '$'.number_format($total, 2, '.', ','); ?></td>
 					  		</tr>

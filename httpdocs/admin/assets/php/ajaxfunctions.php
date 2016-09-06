@@ -36,6 +36,7 @@
 			echo json_encode($mpArticleAdmin->getImagesPerCategory($_POST));
 		break;
 
+		//ADD NEW ARTICLE
 		case 'unfollow-author':
 			$author_id = $_POST['author_id'];
 			$reader_email = $_POST['reader_email'];
@@ -70,10 +71,6 @@
 			echo json_encode( $adminController->user->getContributorEarningsData( $_POST ));
 		break;
 
-		//case "featured-article":
-			//echo json_encode($adminController->featuredArticle($_POST));
-		//break;
-
 		//ADMIN CONTENT MANAGEMENT
 		//Set Alerts
 		case 'set_new_alert':
@@ -105,16 +102,68 @@
 		
 		//Set FaceBook Articles to Promote
 		case 'promote_articles':
-			$promote = new PromoteArticles();
-			echo json_encode( $promote->promoteArticles( $_POST) );
-			
+			$promote = new PromoteArticles(); 
+			$status = json_encode( $promote->promoteArticles( $_POST) );
+
+			if($status){
+				if( $_POST['facebook_page_id'] != 7 ){
+					$data  = [ 	
+							"user_id" => $_POST['user_id'], 
+							"message" => "Congratulations! Your article '".$_POST['article_title']."' has been scheduled for promotion on ".$_POST['facebook_page_name'], 
+							"type" => 1 , 
+							"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+						];
+					
+					$notification_obj = new Notification(); 
+					echo json_encode( $notification_obj->saveObj( $data ) );
+				}
+			}
 			break;
 
 		case 'article_promoted': 
 			$promote = new PromoteArticles();
-			echo json_encode( $promote->promoteThisArticle( $_POST) );
+			echo json_encode( $promote->promoteThisArticle( $_POST ) );
 			break;
- 
+
+		case 'article_status':
+			echo json_encode( $adminController->updateArticleStatus( $_POST ) ) ;
+			break;
+
+		case 'publish-article':
+			echo json_encode( $adminController->publishNewArticle( $_POST ) );
+		 	break;
+
+		 case 'save-article':
+		 	echo json_encode( $adminController->saveNewArticle( $_POST ) );
+		 	break;
+
+ 		//APPROVE AN ARTICLE FOR STARTER BLOGGERS
+		case 'approve-article':
+			$status =  $adminController->updateArticleStatus( $_POST ) ;
+			if($status){
+				$data  = [ 	"user_id" => $_POST['user_id'], 
+							"message" => $_POST['reasons'], 
+							"type" => 1 , 
+							"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+						 ];
+				$notification_obj = new Notification(); 
+				echo json_encode( $notification_obj->saveObj( $data ) );
+			}
+			break;
+		//REJECT AN ARTICLE FOR STARTER BLOGGERS
+		case 'reject-article':
+			$status =  $adminController->updateArticleStatus( $_POST ) ;
+			if($status){
+				$data  = [ 	"user_id" => $_POST['user_id'], 
+						"message" => $_POST['msg'], 
+						"type" => 1 , 
+						"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+					];
+				$notification_obj = new Notification(); 
+
+				echo json_encode( $notification_obj->saveObj( $data ) );
+			}
+		break;
 
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));

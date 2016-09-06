@@ -10,10 +10,10 @@
 	<div class="small-12 columns half-margin-top no-padding merge-box">
 		<div class="columns small-12 xlarge-6 radius inner-box border-right">
 			
-				<h4>Ranked 1-5 ($100 Bonus):</h4>
+				<h4>Ranked 1-10 ($75 Bonus + PRO):</h4>
 				<div class="small-12 half-margin-bottom">
 					<ol class="row no-margin">
-					<?php for( $i = 0; $i< 5; $i++){
+					<?php for( $i = 0; $i< 10; $i++){
 						$index  = $i + 1;
 					?>
 						<li class="small-12 columns" id="cont_id_<?php echo $author_list[$i]['contributor_id']; ?>">
@@ -25,7 +25,7 @@
 				</div>
 			
 				
-				<h4>Ranked 11-20 ($25 Bonus):</h4>
+				<h4>Ranked 11-20 ($25 Bonus + PRO):</h4>
 				<div class="small-12 half-margin-bottom">
 				<ol class="row no-margin">
 					<?php for( $i = 10; $i< 20; $i++){
@@ -41,22 +41,9 @@
 		</div>
 			<div class="columns small-12 xlarge-6 radius inner-box">
 				
-				<h4>Ranked 6-10 ($50 Bonus):</h4>
+				<h4>Ranked 21-30 ($0 + PRO):</h4>
 				<div class="small-12 half-margin-bottom">
 					<ol class="row no-margin">
-					<?php for( $i = 5; $i< 10; $i++){
-						$index  = $i + 1;
-					?>
-						<li class="small-12 columns" id="cont_id_<?php echo $author_list[$i]['contributor_id']; ?>">
-							<div class="small-6 columns no-padding"><p><span><?php echo $index.'.';?></span><?php echo $author_list[$i]['contributor_name']; ?></p></div>
-							<div class="small-6 columns no-padding align-right"><p><?php echo number_format($author_list[$i]['total_us_pageviews']).' Visits'; ?></p></div>
-						</li>
-					<?php }?>
-					</ol>
-				</div>
-				<h4>Ranked 21-30 ($10 Bonus):</h4>
-				<div class="small-12 half-margin-bottom">
-				<ol class="row no-margin">
 					<?php for( $i = 20; $i< 30; $i++){
 						$index  = $i + 1;
 					?>
@@ -67,6 +54,19 @@
 					<?php }?>
 					</ol>
 				</div>
+				<!--<h4>Ranked 21-30 ($10 Bonus):</h4>
+				<div class="small-12 half-margin-bottom">
+				<ol class="row no-margin">
+					<?php //for( $i = 20; $i< 30; $i++){
+						//$index  = $i + 1;
+					?>
+						<li class="small-12 columns" id="cont_id_<?php //echo $author_list[$i]['contributor_id']; ?>">
+							<div class="small-6 columns no-padding"><p><span><?php //echo $index.'.';?></span><?php //echo $author_list[$i]['contributor_name']; ?></p></div>
+							<div class="small-6 columns no-padding align-right"><p><?php //echo number_format($author_list[$i]['total_us_pageviews']).' Visits'; ?></p></div>
+						</li>
+					<?php //}?>
+					</ol>
+				</div>-->
 
 		
 			<div class="incentive-plan-msg">

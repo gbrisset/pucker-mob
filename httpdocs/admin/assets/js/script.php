@@ -9,8 +9,12 @@ var body = $('body');
 var base_url = 'http://www.puckermob.com';
 var admin_url = 'http://www.puckermob.com/admin/';
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
-
 var page = document.body.id;
+
+
+//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+
+
 
 //Menu Toggler Functionality Mobile
 $('#menu-icon').click(function(e){
@@ -227,29 +231,6 @@ var ajaxCallbacks = {
 	
 	},
 
-	'list-delete-form': function(form, data){
-		var thisForm = $(form),
-		list_div = '#'+data.pagelist_data;
-		thisId = thisForm.attr('id');
-			$(list_div).remove();
-			thisForm.mpValidate({
-				updateUrl : admin_url+'assets/php/ajaxsubmitroute.php',
-				callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-			});
-	},
-
-	'list-item-delete-form': function(form, data){
-		var thisForm = $(form),
-		list_div = '#'+data.pagelistitem_data;
-		console.log(data.pagelistitem_data);
-		thisId = thisForm.attr('id');
-			$(list_div).remove();
-			thisForm.mpValidate({
-				updateUrl :  admin_url+'assets/php/ajaxsubmitroute.php',
-				callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-			});
-	},		
-
 	'article-add-form' : function(form, data){
 		var thisForm = $(form), 
 		statusCode = data.statusCode,
@@ -258,19 +239,19 @@ var ajaxCallbacks = {
 		if(statusCode == 200) {
 
 			if(data.articleID){
-				$('#article-id').val(data.articleID);
+				//$('#article-id').val(data.articleID);
 				$('#a_i').val(data.articleID);
 			}
-			$('#article-inline-settings').slideDown(500);
-			$('.review').css('display', 'inline');
-			$('#main-buttons-text').css('display', 'inline');
+			//$('#article-inline-settings').slideDown(500);
+			//$('.review').css('display', 'inline');
+			//$('#main-buttons-text').css('display', 'inline');
 			
 
 			var article_seo = data.articleInfo[":article_seo_title"];
-			var data_prev = data.article_prev_content;
-			data_prev_element.attr('data-preview', data_prev);
+			//var data_prev = data.article_prev_content;
+			//data_prev_element.attr('data-preview', data_prev);
 			
-			$('#preview-recipe').css('display', 'inline');
+			//$('#preview-recipe').css('display', 'inline');
 
 		}
 	},
@@ -306,18 +287,6 @@ var ajaxCallbacks = {
 
 	},
 
-	'bug-delete-form': function(form, data){
-		var thisForm = $(form),
-		bug_div = '#'+data.bug_data;
-		thisId = thisForm.attr('id');
-			$(bug_div).remove();
-			thisForm.mpValidate({
-				updateUrl :  admin_url + 'assets/php/ajaxsubmitroute.php',
-				callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
-			});
-
-	},
-	
 	'article-tall-image-upload-form': function( form, data ){
 		var thisForm = $(form),
 		article_id = $('#article-id').val(),
@@ -368,13 +337,26 @@ var ajaxCallbacks = {
 $('.article-delete-form').each(function(){
 	var thisForm = $(this),
 	thisId = thisForm.attr('id');
-	console.log(thisId);
 		thisForm.mpValidate({
 			updateUrl :  admin_url + 'assets/php/ajaxsubmitroute.php',
 			additionalParams : 'confirm',
 			callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
 		});
 });
+
+
+// SAVE ARTICLE
+/*if($('#article-add-form')){
+	$('#submit').on('click', function(e){
+		var thisForm = $(this),
+		thisId = thisForm.attr('id');
+		thisForm.mpValidate({
+			updateUrl :  admin_url + 'assets/php/ajaxsubmitroute.php',
+			callback : (ajaxCallbacks[thisId]) ? ajaxCallbacks[thisId] : function(){}
+		});
+	});	
+}*/
+
 
 
 //AJAX HANDLERS
@@ -429,8 +411,129 @@ $('#sub-menu-button').click(function(e){
 });
 
 
+function triggerErrorPopup(data){
+	if(data){
+		
+		//Data to Replace
+		var h2 = $('.show-status-msg');
+		var msg = $('.error-msg');
+		var redirect = false;
+		var save = data['save'];
+
+		if(data['statusCode'] == 200){
+			$(h2).text('Thank you for posting this!').removeClass('errorTxt').addClass('successTxt');
+			redirect = true;
+		}else{
+			$(h2).text('Sorry...').removeClass('successTxt').addClass('errorTxt');
+		}
+
+		if(save){
+			redirect = false;
+		}
+		
+		$(msg).html(data['message']);
+		//Validation Modal
+		$(document).foundation().foundation();
+		$('#show-status').foundation('reveal', 'open');
+		$('#show-status').foundation('reveal', 'close');
+
+		if(redirect){
+			setTimeout(function(){
+				window.location = admin_url + '/articles/';
+			}, 2000);
+		}
+
+	}
+}
+//PUBLISH ARTICLE FROM NEW ARTICLE PAGE.
+if( $('#publish-article') ){
+	$('.publish-article').each(function(){
+		$(this).on('click', function(e){
+			var thisForm = $('#article-add-form');
+			var formData = thisForm.serialize();
+
+			$.ajax({
+			  type: "POST",
+			  url:   admin_url + 'assets/php/ajaxfunctions.php',
+			  data: { formData: formData, a_i: $('#a_i').val() ,task:'publish-article' }
+			}).done(function(data) {
+				data = $.parseJSON(data);
+
+				triggerErrorPopup(data);
+			});
+		});
+	});
+}
+
+//SAVE ARTICLE FROM NEW ARTICLE PAGE.
+if( $('#save-article') ){
+	$('#save-article').each(function(){
+		$(this).on('click', function(e){
+			var thisForm = $('#article-add-form');
+			var formData = thisForm.serialize();
+
+			$.ajax({
+			  type: "POST",
+			  url:   admin_url + 'assets/php/ajaxfunctions.php',
+			  data: { formData: formData, a_i: $('#a_i').val() ,task:'save-article' }
+			}).done(function(data) {
+				data = $.parseJSON(data);
+				var id = data['articleID'];
+				if( typeof id != 'undefined'){
+					$('.a_i').val(id);
+					location.hash = data['articleID']; //data['articleSEO'];
+				} 
+				
+				
+				triggerErrorPopup(data);
+			});
+		});
+	});
+}
+
+//PUBLISH ARTICLE FROM EDIT PAGE
+if($('.publish-button')){
+	$('.publish-button').each(function(){
+		$(this).on('click', function(e){
+			var statusVal = $(this).attr('data-info');
+			var thisForm = $('#article-info-form');
+			var formData = thisForm.serialize();
+			$.ajax({
+			  type: "POST",
+			  url:   admin_url + 'assets/php/ajaxfunctions.php',
+			  data: { formData: formData, status: statusVal, a_i: $('#a_i').val(), task:'publish-article' }
+			}).done(function(data) {
+				data = $.parseJSON(data);
+				triggerErrorPopup(data);			
+			});
+		});
+	});
+}
+
+//SAVE ARTICLE FROM EDIT PAGE
+if($('#save-existing-article')){
+	$('.save-existing-article').each(function(e){
+		$(this).on('click', function(e){
+			var thisForm = $('#article-info-form');
+			var formData = thisForm.serialize();
+		//	console.log(formData);
+
+			$.ajax({
+			  type: "POST",
+			  url:   admin_url + 'assets/php/ajaxfunctions.php',
+			  data: { formData: formData, a_i: $('#a_i').val(), task:'save-article' }
+			}).done(function(data) {
+				data = $.parseJSON(data);
+				$('#status-label').text('DRAFT');
+				$('.see-article-link').hide();
+				triggerErrorPopup(data);
+			});
+		});
+	});	
+}
+
 //PUBLISH ARTICLE
-if( $('#publish') ){
+/*if( $('#publish') ){
 	$('.publish-button').each(function(){
 		$(this).on('click', function(e){
 			var statusVal = $(this).attr('data-info');
@@ -448,7 +551,7 @@ if( $('#publish') ){
 			});
 		});
 	});
-}
+}*/
 
 //AVATAR
 if($('.avatar-span')){
@@ -770,7 +873,7 @@ if( $('#form-alert') ){
 	});
 }
 
-//MANAGE ALERTS
+//MANAGE HOTTOPICS
 if( $('#form-hottopics') ){
 	$('#save-hottopics').each(function(){
 		$(this).on('click', function(e){
@@ -832,27 +935,27 @@ if( $('.facebook-sites') ){
 			var parent = $(this).parent();
 			var article_id = $(parent).attr('data-info');
 			var facebook_page =  $("option:selected", this).text();
-
+			var user_id = $(parent).attr('data-user-id');
+			var article_title = $(parent).attr('data-title');
 			var promoted = 0;
-			//if( value != '0') promoted = 1;
-
-			//console.log(value, article_id, facebook_page, promoted);
-
-			//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
-				$.ajax({
-				  type: "POST",
-				  url:   admin_url + 'assets/php/ajaxfunctions.php',
-				  data: { article_id: article_id, facebook_page_id : value, promoted: promoted, task:'promote_articles' },
-				}).done(function(data) {
-					if(data){
-						var result = $.parseJSON(data);
-
-						//if(result['hasError']) $('#show-msg-hotopics').removeClass('new-success').addClass('error').text('There was an error adding the topics, please try again.');
-						//else $('#show-msg-hotopics').addClass('new-success').removeClass('error').text('Your Topics were set successfully.');
-					}
-				});
-
-			//console.log(value, parent, article_id);
+			
+			$.ajax({
+			  type: "POST",
+			  url:   admin_url + 'assets/php/ajaxfunctions.php',
+			  data: { 
+			  	article_id: article_id, 
+			  	facebook_page_id : value,
+			  	facebook_page_name : facebook_page, 
+			  	promoted: promoted, 
+			  	user_id: user_id, 
+			  	article_title : article_title, 
+			  	task:'promote_articles' 
+			  },
+			}).done(function(data) {
+				if(data){
+					var result = $.parseJSON(data);
+				}
+			});
 
 		});
 	});
@@ -864,8 +967,7 @@ if( $('#promote_articles_list') ){
 			var ele = this,
 			isCheck = $(this).is(':checked'),
 			article_id = $(this).attr('data-info');
-			//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
-
+			
 			$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',
@@ -876,8 +978,6 @@ if( $('#promote_articles_list') ){
 
 					}
 				});
-
-			//console.log(isCheck, article_id);
 
 		});
 	});
@@ -891,6 +991,107 @@ if( $('#ranking')){
 		console.log(month);
 
 		form.submit();
+	});
+}
+
+
+
+//REVIEW BUTTON
+if($('.review-button')){
+	//APPROVE ARTICLE
+	$('.review-button').on('click', function(e){
+		var id = $('#a_i').val();
+		//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/'
+
+		$.ajax({
+		  type: "POST",
+		  url:   admin_url + 'assets/php/ajaxfunctions.php',
+		  data: { 
+		  	a_i: id, 
+		  	task:'article_status', 
+		  	article_status: 2,
+		  },
+		}).done(function(response) {
+			if(response){
+				location.reload();
+			}
+		});
+
+	});
+}
+	
+
+//APPROVAL REQUIRED
+if($('#approval')){
+	//APPROVE ARTICLE
+	$('.approve').on('click', function(e){
+		var title = $(this).attr('data-title');
+		var id = $(this).attr('data-id');
+		var user_id = $(this).attr('data-user-id');
+		var reasons = "Congratulations! Your article "+title+" has been approved and is now live on PuckerMob.com.";
+
+		$.ajax({
+		  type: "POST",
+		  url:   admin_url + 'assets/php/ajaxfunctions.php',
+		  data: { 
+		  	a_i: id, 
+		  	task:'approve-article', 
+		  	article_status: 1,
+		  	reasons: reasons, 
+		  	user_id : user_id 
+
+		  },
+		}).done(function(response) {
+			if(response){
+				var result = $.parseJSON(response);
+				var txt_id = '#article-'+id;
+				$(txt_id).slideUp(300);
+			}
+		});
+
+	});
+	
+	//REJECT ARTICLE
+	$('.send-reasons').on('click', function(e){
+		var title = $(this).attr('data-title');
+		var id = $(this).attr('data-id');
+		var user_id = $(this).attr('data-user-id');
+		var reasons_el = $(this).parent().find('.reject-msg');
+		var reasons = $(reasons_el).val();
+
+		if($(reasons_el).val().length <= 0) {
+			reasons = "We're sorry, but your article '"+title+"' could not be approved. Please review our terms and conditions to ensure future articles meet the necessary requirements."
+		}
+	
+		$.ajax({
+		  type: "POST",
+		  url:   admin_url + 'assets/php/ajaxfunctions.php',
+		  data: { 
+		  	a_i: id, 
+	  		task:'reject-article', 
+	  		msg: reasons, 
+	  		article_status: 3, 
+	  		user_id : user_id 
+		  },
+		}).done(function(data) {
+			if(data){
+				var result = $.parseJSON(data);
+				var alert_msg = "Sent!" ;
+				var txt_id = '#article-'+id;
+				
+				var class_name = 'new-success';
+				if(result['hasError']){
+					alert_msg = " Error Rejecting Article "; 
+					class_name = "error-msg";
+				} 
+
+				$(reasons_el).val( alert_msg ).addClass(class_name );
+				setTimeout(function(){
+					$(reasons_el).val('').removeClass(class_name );
+					$(txt_id).slideUp(300);
+				}, 2000);
+			}
+		});
 	});
 }
 

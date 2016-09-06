@@ -1,6 +1,6 @@
 <?php 
 	$current_profile = "current";
-	 $current_intro = $current_payment = $current_social =  $current_last = '';
+	 $current_intro = $current_payment = $current_social =  $current_last = $current_to_know = '';
 	
 ?>
 <div class="main-content-modal small-12 columns profile-modal">
@@ -24,7 +24,7 @@
 
     <p class="small-3 columns align-right no-padding-right">
     	<a href="#" data-reveal-id="payment-modal" class="secondary next-modal-step">
-    		<label class="show-for-large-up"> GO TO </label> STEP 2
+    		<label class="show-for-large-up"> GO TO </label> STEP 3
     		<i class="fa fa-chevron-right" aria-hidden="true"></i>
     	</a>
     </p>

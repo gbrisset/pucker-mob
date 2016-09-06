@@ -4,13 +4,13 @@
 	<form id="image-drop" class="dropzone dz-clickable small-12 column no-padding" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
  		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
  		<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
+ 		<input type="hidden" id="a_i" name="a_i" class="a_i" value="0" />
 
  		<div class="dz-message inline-flex dropzone-previews" data-dz-message >
  			<div class="dz-preview dz-file-preview small-12 large-7" id="template">  <!-- template for images -->
 	            <div class="dz-details dztemplate">
 	              <div class="dz-filename" style="display:none;"><span data-dz-name></span></div>
 	              <div class="dz-size"  style="display:none;" data-dz-size></div>
-
 	              <img data-dz-thumbnail style="display:inline;" id="main-image-src" src=""/>
 	            </div>
 	            <div class="dz-progress" style="display:none;"><span class="dz-upload" data-dz-uploadprogress></span></div>
@@ -21,14 +21,14 @@
  			<div id="img-container" class="small-12 large-5" >
  				<div class="hide-for-large-up">
  					<div class="image-icon small-3 columns "><i class="fa fa-file-image-o font-4x"></i></div>
- 			   		<label class="small-9 columns">  <span class="photo-library" id="search-lib">Choose An image from our Photo Library!</span> </label>
- 			   		<label class="mini-fonts mini-fonts small-12 columns">(If you'd like to upload your own photo please login from a desktop computer</label>
+ 			   		<label class="small-9 columns hide">  <span class="photo-library" id="search-lib">Choose An image from our Photo Library!</span> </label>
+ 			   		<label class="mini-fonts mini-fonts small-12 columns">(If you'd like to upload your own photo please login from a desktop computer)</label>
  		   		</div>
- 		   		<div class="show-for-large-up" style="margin: 12% 0;">
+ 		   		<div class="show-for-large-up" style="margin:25% 10px">
  			   		<label class="large-10 columns uppercase bold no-padding main-label">ADD An Image</label>
  			   		<label style="color: #ccc;" class="large-10 columns no-padding margin-bottom">Drag Image Here or <a>Click to Upload</a> (784x431) </label>
-			   		<label class="large-10 columns uppercase bold no-padding font-1x margin-bottom second-label">Don't have your own image? Don't worry!</label>
- 			   		<label class="large-10 columns no-padding left" style="color: #ccc;" >  Pick An image from our free <a href="#" class="photo-library" id="search-lib">Photo Library!</a> </label>
+			   		<label class="large-10 columns uppercase bold no-padding font-1x margin-bottom second-label hide">Don't have your own image? Don't worry!</label>
+ 			   		<label class="large-10 columns no-padding left hide" style="color: #ccc;" >  Pick An image from our free <a href="#" class="photo-library" id="search-lib">Photo Library!</a> </label>
  		   		</div>
  		   	</div>
  		</div>
@@ -106,12 +106,12 @@
  		
  		<div class="dz-message  dropzone-previews" data-dz-message >
  			<div id="img-container" class="small-12 large-4 columns radius" >
- 				<div class="columns small-12">
+ 				<div class="columns small-12 hide">
  					<div class="image-icon small-3 columns"><i class="fa fa-file-image-o font-4x"></i></div>
  			   		<label class="small-9 columns" style="line-height: 1.4; margin-top: 4px;">  <span class="photo-library" id="search-lib">Choose An image from our Photo Library!</span> </label>
  			   	</div>
  			   	<div class="columns small-12">
- 			   		<label class="center" style="font-size: 14px !important; line-height: 1.2;">(If you'd like to upload your own photo please login from a desktop computer</label>
+ 			   		<label class="center" style="font-size: 14px !important; line-height: 1.2;">If you'd like to upload your own photo please login from a desktop computer</label>
  		   		</div>
  		   		
  		   	</div>

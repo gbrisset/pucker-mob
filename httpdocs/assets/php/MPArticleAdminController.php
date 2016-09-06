@@ -19,8 +19,7 @@ class MPArticleAdminController extends MPArticle{
 		$this->user = new  MPAdminUserController(array('config' => $this->config, 'mpArticle' => $this->mpArticle));
 	}
 
-
-	/* Begin Admin Controller Get Information Functions */
+//NOT SURE IF STILL IN USE
 	public function getSiteObjectAll($opts){
 		$options = array_merge(array(
 			'table' => '',
@@ -41,226 +40,7 @@ class MPArticleAdminController extends MPArticle{
 		return $result;
 	}
 
-	public function deleteArticleById($post){
-
-		if(isset($post['article_id']) && $post['article_id'] > 0){
-			$articleId = intval(filter_var($post['article_id'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-
-			$params = [];
-			$pairs = [];
-			$unrequired = [];
-			$pairs[] = "article_id = :article_id";
-			$params[':article_id'] = (strlen(preg_replace('/[^0-9]/', '', $post['article_id']))) ? preg_replace('/[^0-9]/', '', $post['article_id']) : 0;
-
-			$tablesArray = ['articles', 'article_images', 'article_ratings', 'article_categories', 'article_contributor_articles', 'article_videos'];
-			
-			$pdo = $this->con->openCon();
-			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-			foreach ($tablesArray as $table){
-				$q = $pdo->prepare("DELETE FROM {$table} WHERE article_id = :article_id");
-				
-				try{
-					$q->execute($params);
-				}catch(PDOException $e){
-					$this->con->closeCon();
-					return array_merge($this->returnStatus(500), ['hasError' => true]);
-				}
-
-			}
-
-			$this->con->closeCon();
-
-			$r['message'] = "Article deleted successfully!";
-			$r = array_merge($this->returnStatus(200), ['hasError' => false]);
-			$r['article_data'] =  $post['article_id'];
-			
-			return $r;
-
-		} else {
-			return array_merge($this->helpers->returnStatus(500), array('message' => 'The article_id is not set. The article was not deleted.'));
-		}
-
-	}
-
-	public function returnStatus($code){
-		$r = ['statusCode' => $code];
-		switch($code){
-			case 200:
-				$r['message'] = '{formname} updated successfully!';
-				break;
-			case 400:
-				$r['message'] = "Sorry, one or more required fields were missing.  Please fill in all required fields and try again.";
-				break;
-			case 500:
-				$r['message'] = 'Sorry, looks like something went wrong.  Please try again or contact <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a> for assitance.';
-				break;
-			default: 
-				$r['message'] = '';
-				break;
-		}
-		return $r;
-	}
-
-	public function getSingleArticle($opts){
-		$options = array_merge(array(
-			'seoTitle' => '',
-			'articleId' => -1
-		), $opts);
-
-
-		$sql = "SELECT *, a.article_id FROM articles as a 
-			LEFT JOIN (article_images as ai, article_statuses as astatus, article_moblogs_featured as af) 
-			ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id AND af.article_id = a.article_id ) 
-			WHERE a.article_seo_title = :seoTitle OR a.article_id = :articleId";
-		
-		$params = array(
-			'seoTitle' => filter_var($options['seoTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR),
-			'articleId' => filter_var($options['articleId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
-		);
-
-		$article = $this->performQuery(array(
-			'queryString' => $sql,
-			'queryParams' => $params,
-			'returnRowAsSingleArray' => true
-		));
-
-		if(!$article) return false;
-
-		$article['categories'] = $this->performQuery(array(
-			'queryString' => 'SELECT * FROM article_categories as ac INNER JOIN (categories as acp) ON (ac.category_page_id = acp.category_page_id) WHERE ac.article_id = '.$article['article_id'],
-			'returnRowAsSingleArray' => false
-		));
-
-		$article['contributor'] = $this->performQuery(array(
-			'queryString' => 'SELECT * FROM article_contributor_articles as aca INNER JOIN (article_contributors as ac) ON (aca.contributor_id = ac.contributor_id) WHERE aca.article_id = '.$article['article_id']
-		));
-
-			return $article;
-	}
-	/* End Admin Controller Get Information Functions */
-
-
-	/* Begin Admin Controller Site Updating Functions */
-	/*public function updateSiteSettings($post){
-		//$siteCategoryUpdate = $this->performUpdate(array(
-			//'updateString' => "UPDATE article_pages SET cat_id = :cat_id WHERE article_page_id = ".$this->config['articlepageid'],
-			//'updateParams' => array(':cat_id' => (strlen(preg_replace('/[^0-9]/', '', $post['cat_id']))) ? preg_replace('/[^0-9]/', '', $post['cat_id']) : 0)
-		//));
-
-		$siteStatusUpdate = $this->performUpdate(array(
-			'updateString' => "UPDATE article_pages SET article_page_live = :article_page_live WHERE article_page_id = ".$this->config['articlepageid'],
-			'updateParams' => array(':article_page_live' => (isset($post['article_page_live']) && $post['article_page_live'] == "article_page_live_live") ? 1 : 0)
-		));
-
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE article_pages SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
-			'post' => $post
-		));
-		if($result === true) return array('hasError' => false, 'message' => 'Site information updated successfully!');
-		else return $result;
-	}*/
-
-/*	public function updateSiteFeautedObject($opts){
-		$options = array_merge(array(
-			'table' => 'articles_featured',
-			'column' => '',
-			'additionalWhere'=> '',
-			'post' => array(),
-			'successMessage' => ''
-		), $opts);
-	
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE ".$options['table']." SET ".$options['column']." = :".$options['column']." WHERE cat_id = 1".$options['additionalWhere'],
-			'post' => $options['post']
-		));
-		if($result === true) return array('hasError' => false, 'message' => $options['successMessage']);
-		else return $result;
-	}*/
-
-/*	public function updateSiteSearch($post){
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE article_page_social_settings SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
-			'post' => $post
-		));
-		if($result === true) return array('hasError' => false, 'message' => 'Search settings updated successfully!');
-		else return $result;	
-	}*/
-
-	/*public function updateSocialSettings($post){
-		$post = array_merge(array(
-			'articles_have_facebook-n' => (isset($post['articles_have_facebook'])) ? 1 : 0,
-			'articles_have_twitter-n' => (isset($post['articles_have_twitter'])) ? 1 : 0,
-			'articles_have_pinterest-n' => (isset($post['articles_have_pinterest'])) ? 1 : 0,
-			'articles_have_googleplus-n' => (isset($post['articles_have_googleplus'])) ? 1 : 0,
-			'articles_have_linkedin-n' => (isset($post['articles_have_linkedin'])) ? 1 : 0,
-			'articles_have_ziplist-n' => (isset($post['articles_have_ziplist'])) ? 1 : 0
-		), $post);
-
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE article_page_social_settings SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
-			'post' => $post
-		));
-		if($result === true) return array('hasError' => false, 'message' => 'Social settings updated successfully!');
-		else return $result;
-	}*/
-
-	/*public function updateAdCodes($post){
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE article_page_ads SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
-			'post' => $post
-		));
-		if($result === true) return array('hasError' => false, 'message' => 'Ad placement settings updated successfully!');
-		else return $result;
-	}*/
-
-	/*public function updateAdTiming($post){
-		$post = array_merge(array(
-			'ads_rotate-n' => (isset($post['ads_rotate']) && $post['ads_rotate'] == "ads_rotate_enabled") ? 1 : 0
-		), $post);
-
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE article_page_ads SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
-			'post' => $post
-		));
-		if($result === true) return array('hasError' => false, 'message' => 'Ad timing settings updated successfully!');
-		else return $result;
-	}*/
-
-/*	public function updateStylingSettings($post){
-		$params = $this->helpers->compileParams($post);
-
-		foreach($params as $key => $value){
-			preg_match('/^#?(([a-fA-F0-9]){3}){1,2}$/', $value, $matches);
-			if(strlen($value) == 0) return array_merge($this->returnStatus(400), array('field' => substr($key, 1), 'hasError' => true));
-			elseif(empty($matches) || !isset($matches[1])){
-				$r = array_merge($this->returnStatus(400), array('field' => substr($key, 1), 'hasError' => true));
-				$r['message'] = 'Sorry, one or more fields didn\'t contain the correct input.  Please try again with the correct syntax.';
-				return $r;
-			}
-		}
-
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE article_page_styling SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
-			'post' => $post
-		));
-
-		if(file_exists($this->config['shared_css'].'/articlestyling.css')) unlink($this->config['shared_css'].'/articlestyling.css');
-		if(file_exists($this->config['shared_css'].'/articlestylingie78.css')) unlink($this->config['shared_css'].'/articlestylingie78.css');
-		
-		if($result === true) return array('hasError' => false, 'message' => 'Styling settings updated successfully!');
-		else return $result;
-	}
-
-	public function updateFeautredImageLink($post){
-		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE article_page_images SET {pairs} WHERE article_page_id = ".$this->config['articlepageid'],
-			'post' => $post
-		));
-		if($result === true) return array('hasError' => false, 'message' => 'Featured image link information updated successfully!');
-		else return $result;
-	}*/
-
+/* END USERS & CONTRIBUTORS */
 	/*MANAGE BILLING INFORMATION*/ //ADDING THIS TO USER OBJ
 	public function editBillingInformation($data){
 		$email = filter_var($data['paypal-email'], FILTER_SANITIZE_EMAIL);
@@ -307,7 +87,6 @@ class MPArticleAdminController extends MPArticle{
 
 		return $billingInfo;
 	}
-
 	/*END MANAGE BILLING INFORMATION*/
 
 
@@ -462,46 +241,255 @@ class MPArticleAdminController extends MPArticle{
 		if($result_cont === true) return array('hasError' => false, 'message' => 'Your Bio has been successfully updated');
 		else return $result;
 	}
-	/* End Admin Controller Site Updating Functions */
 
 	public function getContributorUserType( $contributor_id ){
-		 $contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT);
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT);
 
-		 $s = " SELECT users.user_type FROM article_contributors INNER JOIN ( users ) ON ( users.user_email = article_contributors.contributor_email_address ) WHERE  article_contributors.contributor_id =  :contributor_id";
+		$s = " SELECT users.user_type FROM article_contributors INNER JOIN ( users ) ON ( users.user_email = article_contributors.contributor_email_address ) WHERE  article_contributors.contributor_id =  :contributor_id";
 
-		 $q = $this->performQuery(array(
+		$q = $this->performQuery(array(
 			'queryString' => $s,
 			'queryParams' => array( ':contributor_id' => $contributor_id )
 		));
 
-		 return $q;
+		return $q;
+	}
+/* END USERS & CONTRIBUTORS */
+
+
+/* MANAGE ARTICLES SELECT, INSERTION, VALIDATION & UPDATES */
+	//DELETE AN ARTICLE
+	public function deleteArticleById($post){
+
+		if(isset($post['article_id']) && $post['article_id'] > 0){
+			$articleId = intval(filter_var($post['article_id'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
+
+			$params = [];
+			$pairs = [];
+			$unrequired = [];
+			$pairs[] = "article_id = :article_id";
+			$params[':article_id'] = (strlen(preg_replace('/[^0-9]/', '', $post['article_id']))) ? preg_replace('/[^0-9]/', '', $post['article_id']) : 0;
+
+			$tablesArray = ['articles', 'article_images', 'article_ratings', 'article_categories', 'article_contributor_articles', 'article_videos'];
+			
+			$pdo = $this->con->openCon();
+			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+			foreach ($tablesArray as $table){
+				$q = $pdo->prepare("DELETE FROM {$table} WHERE article_id = :article_id");
+				
+				try{
+					$q->execute($params);
+				}catch(PDOException $e){
+					$this->con->closeCon();
+					return array_merge($this->returnStatus(500), ['hasError' => true]);
+				}
+
+			}
+
+			$this->con->closeCon();
+
+			$r['message'] = "Article deleted successfully!";
+			$r = array_merge($this->returnStatus(200), ['hasError' => false]);
+			$r['article_data'] =  $post['article_id'];
+			
+			return $r;
+
+		} else {
+			return array_merge($this->helpers->returnStatus(500), array('message' => 'The article_id is not set. The article was not deleted.'));
+		}
 	}
 
-	/* Begin Article Creation Functions */
-	
-	public function addArticle($post){ 
-		
-		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'You must insert a title'));
-		if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select at least one category for an article.'));		
-		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
+	// GET SINGLE ARTICLE
+	public function getSingleArticle($opts){
+		$options = array_merge(array(
+			'seoTitle' => '',
+			'articleId' => -1
+		), $opts);
 
-		$unrequired = array(
-			'article_tags', 'article_body', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 'article_desc'
+
+		$sql = "SELECT *, a.article_id FROM articles as a 
+			LEFT JOIN (article_images as ai, article_statuses as astatus, article_moblogs_featured as af) 
+			ON (a.article_id = ai.article_id AND a.article_status = astatus.status_id AND af.article_id = a.article_id ) 
+			WHERE a.article_seo_title = :seoTitle OR a.article_id = :articleId";
+		
+		$params = array(
+			'seoTitle' => filter_var($options['seoTitle'], FILTER_SANITIZE_STRING, PDO::PARAM_STR),
+			'articleId' => filter_var($options['articleId'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
 		);
 
-		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
+		$article = $this->performQuery(array(
+			'queryString' => $sql,
+			'queryParams' => $params,
+			'returnRowAsSingleArray' => true
+		));
+
+		if(!$article) return false;
+
+		$article['categories'] = $this->performQuery(array(
+			'queryString' => 'SELECT * FROM article_categories as ac INNER JOIN (categories as acp) ON (ac.category_page_id = acp.category_page_id) WHERE ac.article_id = '.$article['article_id'],
+			'returnRowAsSingleArray' => false
+		));
+
+		$article['contributor'] = $this->performQuery(array(
+			'queryString' => 'SELECT * FROM article_contributor_articles as aca INNER JOIN (article_contributors as ac) ON (aca.contributor_id = ac.contributor_id) WHERE aca.article_id = '.$article['article_id']
+		));
+
+			return $article;
+	}
+
+	/* IMAGE VALIDATION */
+	public function verifyImageExist( $post ){
+		//	Set the paths to the image
+		$user_id = $post['u_i'];
+		$image = 'temp_u_'.$user_id.'_tall.jpg';
+		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+		if( $post['a_i'] != "0"){
+			$image = $post["a_i"].'_tall.jpg';
+			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+		}
+
+		$imageExists = false;
+		//	Verify if the usr has ever SELECTED an image
+		if(isset($image)){
+			$imageExists = file_exists($imageDir);
+		}
+		return $imageExists;
+	}
+
+	public function validateImageDime($post){
 		
+		$user_id = $post['u_i'];
+		$image = 'temp_u_'.$user_id.'_tall.jpg';
+		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+		if( $post['a_i'] != "0"){
+			$image = $post["a_i"].'_tall.jpg';
+			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
+		}
+		$size = getimagesize($imageDir);
+
+		$width = $height = 0;
+		if($size){
+			$width = $size[0];
+			$height = $size[1];
+		}
+		
+		if($width == 784 && $height == 431){
+			return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Saved Successfully!'));
+		}
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Image dimensions must be 728x43 px '));
+	}
+
+	public function moveImageFromTemp($post){
+		if($this->verifyImageExist($post)){
+			//MOVE and rename image from the temp folder if exists.
+			$img_temp = 'temp_u_'.$post['u_i'].'_tall.jpg';
+			$img_temp_path =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$img_temp;
+
+			//New Image Name and Path to Save
+			$img_name = $post['a_i'].'_tall.jpg';
+			$img_path = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_name;
+
+			//Copy & Remove Image from Temp Folder
+			if(copy($img_temp_path, $img_path)){
+				unlink($img_temp_path);	
+				return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Added Successfully!'));
+			}	
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Sorry, there was an error trying to create the image, please contact us info@sequelmediainternational.com'));
+		}
+	}
+	/* END IMAGE VALIDATION */
+
+	//PUBLISH A NEW ARTICLE
+	public function publishNewArticle($post){
+		$post = isset($post['formData']) ? $post['formData'] : $post;
+		$post['validate'] = true;
+		//If is not an Starter Blogger
+		if($post['user_type'] != 30)
+			$post['article_status-s'] = "1";
+
+		//Verify If Image Exist
+		$imageExist = $this->verifyImageExist($post);
+		if($imageExist){
+			//Validate Image Dimentions 
+			$validSize = $this->validateImageDime($post);
+			if($validSize['statusCode'] == 200){
+				//Save Article Info
+				if( $post['a_i'] != "0"){
+					$post['save'] = false;
+					return $this->updateArticleInfo($post);
+				}
+				else return $this->addArticle($post);
+			}else return $validSize;
+		}
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Please upload an image before publishing.'));
+	}
+	/* IMAGE VALIDATION END */
+
+	// SAVE A NEW ARTICLE
+	public function saveNewArticle($post){
+		$post = isset($post['formData']) ? $post['formData'] : $post;
+
+		$post['save'] = true;
+		$post['validate'] = false;
+		//If is not an Starter Blogger
+		if($post['user_type'] == 30)
+			$post['article_status-s'] = "3";
+		else $post['article_status'] = $post['article_status'];
+
+		//Verify If Image Exist
+		$imageExist = $this->verifyImageExist($post);
+		if($imageExist){
+			//Validate Image Dimentions 
+			$validSize = $this->validateImageDime($post);
+			if($validSize['statusCode'] == 500){
+				return $validSize;	
+			} 
+		}
+
+		if(isset($post['a_i']) && $post['a_i'] != '0' )
+			return $this->updateArticleInfo($post);
+		else return $this->addArticle($post);	
+	}
+
+	/* ADD NEW ARTICLE [INSERT] */
+	public function addArticle($post){ 
+		//Validate Fields
+		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+		if(isset($post['validate']) && $post['validate']){
+			if(!isset($post['article_body-nf']) || empty($post['article_body-nf'])) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_body', 'message' => 'Your are trying to publish an empty article. Please add content to your article. Thanks'));
+			if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags Required'));
+			if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description Required'));
+			if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
+		}
+		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) 
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
+		
+
+		//Unrequired Fields
+		$unrequired = array('article_body', 'article_tags', 'article_desc', 'article_status', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments' );
+
+		//Generate SEO Title
+		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
+
+		//Get User Info
+		$user =  $this->user->data;
+		$user_type = $post['u_type'];
+		$save = $post['save'];
+		
+		//COMPILE PARAMETERS
 		$params = $this->helpers->compileParams($post);
 		$pairs = array_unique($this->helpers->compilePairs($post));
-		
 
 		$params[':article_seo_title'] = $post['article_seo_title-s'];
-
-
 		$pairs[] = "date_updated = :date_updated";
 		$params[':date_updated'] =  date("Y-m-d H:i:s");
 
-		//var_dump($pairs, $params); die;
 		$valid = $this->helpers->validateRequired($params, $unrequired);
 		if($valid !== true) return $valid;
 
@@ -511,7 +499,10 @@ class MPArticleAdminController extends MPArticle{
 			'queryParams' => array(':seoTitle' => $params[':article_seo_title'])
 		));
 
-		if($seoTitleCheck !== false) return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_title'));
+		//Duplicate Title
+		if($seoTitleCheck !== false && $seoTitleCheck['article_id'] != $post['a_i']) 
+			return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_title'));
+
 
 		//Insert article, get new article id
 		$articleId = $this->performUpdate(array(
@@ -522,38 +513,9 @@ class MPArticleAdminController extends MPArticle{
 
 		if($articleId === false) return $this->helpers->returnStatus(500);
 
-		//Insert article images row, check for success
-		$articleImageId = $this->performUpdate(array(
-			'updateString' => "INSERT INTO article_images SET article_id = :articleId",
-			'updateParams' => array(':articleId' => $articleId),
-			'isInsert' => true
-		));
-
-		//Article image insertion failed, delete article and error out
-		if($articleImageId === false){
-			$this->performUpdate(array(
-				'updateString' => "DELETE FROM articles WHERE article_id = :articleId",
-				'updateParams' => array(':articleId' => $articleId)
-			));
-			return $this->helpers->returnStatus(500);
-		}
-
-		//Give the new article some love in the ratings department
-		for($i =0; $i < 5; $i++){
-			//Garauntees a rating anywhere from 4 - 5 starts to start out
-			$rand = rand(3, 5);
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO article_ratings SET article_id = :articleId, rating = :rating",
-				'updateParams' => array(':articleId' => $articleId, ':rating' => $rand)
-			));
-		}
-		
-		//Add to each category
+		//Add category
 		if(isset($post['article_categories']) && $post['article_categories'] != 0){
-		//foreach($post['article_categories'] as $category => $on){
-			//$categoryId = intval(str_replace('category-', '', $category));
 			$categoryId = $post['article_categories'];
-
 			$this->performUpdate(array(
 				'updateString' => "INSERT INTO article_categories SET article_id = :articleId, cat_id = :categoryPageId",
 				'updateParams' => array(':articleId' => $articleId, ':categoryPageId' => filter_var($categoryId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT))
@@ -570,88 +532,67 @@ class MPArticleAdminController extends MPArticle{
 		}
 		
 		$post['a_i'] = $articleId;
+
+		//UPDATE ARTICLE ADS
 		$this->updateArticleAdsInfo($post);
 
-		//MOVE and rename image from the temp folder if exists.
-			$img_temp = 'temp_u_'.$_POST['u_i'].'_'.substr($_POST['c_t'], 0, 7).'_tall.jpg';
-			$img_temp_path =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$img_temp;
+		//Move and Rename Image From Temp to Large Folder
+		$this->moveImageFromTemp($post);
 
-			$img_name = $articleId.'_tall.jpg';
-			$img_path = $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_name;
-
-			$imageExists = false;
-			//	Verify if the usr has ever SELECTED an image
-			if(isset($img_temp)){
-				$imageExists = file_exists($img_temp_path);
-			}
-			//var_dump($img_temp, $img_temp_dir,$img_name, $imgDir, $imageExists  ); die;
-
-			if($imageExists){
-				copy($img_temp_path, $img_path);
-				unlink($img_temp_path);
-				unlink($this->config['image_upload_dir'].'articlesites/puckermob/large/'.$img_temp);
-			}
-		//END
-
-		//$article_prev_content = $this->getPreviewRecipe(array('articleId' => $articleId ));
-		
-		//Return status
-		return array_merge($this->helpers->returnStatus(200), array(
-			'articleInfo' => $params,
-			'articleID' => $articleId,
-			'message' => 'Next Step: Add an Image.',
-			'article_prev_content' => ''
-		));
-	}
-	/* End Article Creation Functions */
-
-	public function updateArticleAdsInfo($post){
-		$mobile_1 = isset($post['mobile_1']) ? $post['mobile_1'] : 2;
-		$mobile_2 = isset($post['mobile_2']) ? $post['mobile_2'] : 5;
-		$mobile_3 = isset($post['mobile_3']) ? $post['mobile_3'] : 9;
-		$mobile_4 = isset($post['mobile_4']) ? $post['mobile_4'] : 15;
-		$mobile_5 = isset($post['mobile_5']) ? $post['mobile_5'] : -1;
-		$desktop_1 = isset($post['desktop_1']) ? $post['desktop_1'] : 2;
-		$desktop_2 = isset($post['desktop_2']) ? $post['desktop_2'] : 5;
-
-		//Check if article already has ads set
-		$ads = $this->performQuery( array(
-			'queryString' => 'SELECT * FROM article_ads WHERE article_id = :articleId',
-			'queryParams' => array(':articleId' => $post['a_i'])
-		) );
-
-		if($ads !== false){ 
-			$this->performUpdate(array(
-				'updateString' => "UPDATE article_ads SET  
-				mobile_1 = $mobile_1, 
-				mobile_2 = $mobile_2, 
-				mobile_3 = $mobile_3, 
-				mobile_4 = $mobile_4, 
-				mobile_5 = $mobile_5, 
-				desktop_1 = $desktop_1, 
-				desktop_2 = $desktop_2
-				WHERE article_id = :articleId",
-				'updateParams' => array(':articleId' => $post['a_i'])
-			));
+		if($save){
+			 $msg = "Congratulations! Your article has been saved!";
 		}else{
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO article_ads SET article_id = :articleId, 
-				mobile_1 = $mobile_1, 
-				mobile_2 = $mobile_2, 
-				mobile_3 = $mobile_3, 
-				mobile_4 = $mobile_4, 
-				mobile_5 = $mobile_5, 
-				desktop_1 = $desktop_1, 
-				desktop_2 = $desktop_2",
-				'updateParams' => array(':articleId' => $post['a_i'])
-			));
+			if($user_type == 30 ) $msg = "Thank you! A PuckerMob editor will review your posts shortly to approve for publication.";
+			else $msg = "Congratulations! Your article has been published and is now live on the site.";
+		}
+		 
+		//Return status
+		return array_merge(
+			$this->helpers->returnStatus(200), array(
+				'articleInfo' => $params,
+				'articleID' => $articleId,
+				'articleSEO' =>$post['article_seo_title-s'],
+				'message' => $msg,
+				'save' => $save
+			)
+		);
+	}
+	
+	// UPDATE EXISTING ARTICLE 
+	public function updateArticleInfo($post){
+		//Validate Fields
+
+		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
+			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+		
+		if(isset($post['validate']) && $post['validate']){
+			if(!isset($post['article_body-nf']) || empty($post['article_body-nf'])) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_body', 'message' => 'Your are trying to publish an empty article. Please add content to your article. Thanks'));
+			if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags are Required'));
+			if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description is Required'));
+			if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
 		}
 
-	}
+		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) 
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
 
-	/* Begin Article Updating Function */
-	public function updateArticleInfo($post){
-		if(!isset($post['article_categories'])) return array_merge($this->helpers->returnStatus(500), array('message' => 'You must select at least one category.'));
+		//Get User Info
+		$user =  $this->user->data;
+		$user_type = $post['u_type'];
+		$save = isset($post['save']) ? $post['save'] : true;
+
+		//IF IS AN STARTER BLOGGER
+		if( $user_type == 30 ){
+			$post['article_status-s'] = 3; //DRAFT
+			if( $save == false ) $post['article_status-s'] = 2; //REVIEW
+		}
+
+		$pairs[] = "date_updated = :date_updated";
+		$params[':date_updated'] =  date("Y-m-d H:i:s");
+
 		
 		$params = $this->helpers->compileParams($post);
 
@@ -660,7 +601,7 @@ class MPArticleAdminController extends MPArticle{
 			'queryParams' => array(':seoTitle' => $params[':article_seo_title'], ':articleId' => $post['a_i'])
 		));
 
-		if($seoTitleCheck !== false) return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_seo_title'));
+		//if($seoTitleCheck !== false) return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_seo_title'));
 
 		$statusUpdate = $this->updateArticleStatus($post);
 		if($statusUpdate !== true) return $statusUpdate;
@@ -707,36 +648,10 @@ class MPArticleAdminController extends MPArticle{
 		));
 		
 		
-		//Update Featured Article
-		/*if(isset($post['feature_article']) && $post['feature_article'] > 0){
-			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article '));
-			$featureArticle = intval(filter_var($post['feature_article'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO featured_article SET  article_id = :articleId, category_id = 1",
-				'updateParams' => array(':articleId' => $post['a_i'])
-			));
-		}else{
-			$this->performUpdate(array('updateString' => 'DELETE FROM featured_article WHERE article_id = '.$post['a_i']));
-		}*/
-
 		//FEATURED THIS ARTICLE ON LEFT SIDE BAR MOBILE TAP SECTION
-
 		if(isset($post['article_featured']) &&  $post['article_featured'] !== "-1" ){
 			$this->featuredArticle( $post );
 		}
-
-
-		//Show in homepage moblog article
-		/*if(isset($post['featured_hp']) ){
-			$this->performUpdate(array('updateString' => 'DELETE FROM article_moblogs_featured WHERE article_id = '.$post['a_i']));
-			$featureArticleHp = intval(filter_var($post['featured_hp'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-			$featureArticleId = intval(filter_var($post['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT));
-
-			$this->performUpdate(array(
-				'updateString' => "INSERT INTO article_moblogs_featured SET  article_id = :articleId, article_cat = 'moblog', article_featured_hp = :articleHPFeature ",
-				'updateParams' => array(':articleId' => $featureArticleId, ':articleHPFeature'=> $featureArticleHp )
-			));
-		}*/
 
 		//UPDATE / INSERT ARTICLE ADS SETTINGS
 		$this->updateArticleAdsInfo($post);
@@ -744,22 +659,79 @@ class MPArticleAdminController extends MPArticle{
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
 			'post' => $post,
-			'unrequired' => array('article_tags', 'article_yield', 'article_prep_time', 'article_cook_time', 
-				'article_body', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 
+			'unrequired' => array('article_body', 'article_tags', 'article_status', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 
 				'article_poll_id', 'article_desc', 'featured_hp')
 		));
 		
 		if($result === true) {
-			$user = $this->user->getUserInfo();
-			if ($user['user_permission_show_global_settings']){
-				return array('hasError' => false, 'message' => 'Article information updated successfully!', 'article_prev_content' => '' );
-			} else {
-				return array('hasError' => false, 'message' => 'Your changes have been saved', 'article_prev_content' => '');				
+			//Move and Rename Image From Temp to Large Folder
+			$this->moveImageFromTemp($post);
+
+			if($save){
+				$msg = "Thank you. Your article has been saved successfully! ";
+			}else{ 
+				if($user_type == 30 ) $msg = "Thank you! A PuckerMob editor will review your posts shortly to approve for publication.";
+				else $msg = "Congratulations! Your article has been published and is now live on the site.";
 			}
+			//Return status
+			return array_merge(
+				$this->helpers->returnStatus(200), array(
+					'articleInfo' => $params,
+					'articleID' => $post['a_i'],
+					'articleSEO' =>$post['article_seo_title-s'],
+					'message' => $msg,
+					'save' => $save
+				)
+			);
 		}
 		else return $result;
 	}
 	
+	//ADS INSTREAM PER ARTICLE
+	public function updateArticleAdsInfo($post){
+		$mobile_1 = isset($post['mobile_1']) ? $post['mobile_1'] : 2;
+		$mobile_2 = isset($post['mobile_2']) ? $post['mobile_2'] : 5;
+		$mobile_3 = isset($post['mobile_3']) ? $post['mobile_3'] : 9;
+		$mobile_4 = isset($post['mobile_4']) ? $post['mobile_4'] : 15;
+		$mobile_5 = isset($post['mobile_5']) ? $post['mobile_5'] : -1;
+		$desktop_1 = isset($post['desktop_1']) ? $post['desktop_1'] : 2;
+		$desktop_2 = isset($post['desktop_2']) ? $post['desktop_2'] : 5;
+
+		//Check if article already has ads set
+		$ads = $this->performQuery( array(
+			'queryString' => 'SELECT * FROM article_ads WHERE article_id = :articleId',
+			'queryParams' => array(':articleId' => $post['a_i'])
+		) );
+
+		if($ads !== false){ 
+			$this->performUpdate(array(
+				'updateString' => "UPDATE article_ads SET  
+				mobile_1 = $mobile_1, 
+				mobile_2 = $mobile_2, 
+				mobile_3 = $mobile_3, 
+				mobile_4 = $mobile_4, 
+				mobile_5 = $mobile_5, 
+				desktop_1 = $desktop_1, 
+				desktop_2 = $desktop_2
+				WHERE article_id = :articleId",
+				'updateParams' => array(':articleId' => $post['a_i'])
+			));
+		}else{
+			$this->performUpdate(array(
+				'updateString' => "INSERT INTO article_ads SET article_id = :articleId, 
+				mobile_1 = $mobile_1, 
+				mobile_2 = $mobile_2, 
+				mobile_3 = $mobile_3, 
+				mobile_4 = $mobile_4, 
+				mobile_5 = $mobile_5, 
+				desktop_1 = $desktop_1, 
+				desktop_2 = $desktop_2",
+				'updateParams' => array(':articleId' => $post['a_i'])
+			));
+		}
+	}
+
+	//ARTICLE STATUS
 	public function updateArticleStatus($post){
 		$articleId = filter_var($post['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$articleInfo = $this->getSingleArticle(array('articleId' => $articleId));
@@ -777,13 +749,14 @@ class MPArticleAdminController extends MPArticle{
 		return $statusChange;
 	}
 
+	//REPUBLIS ARTICLE
+	//DELETE SOON
 	public function republishArticle($data){
 		$articleId = filter_var($data['a_i'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);	
-
 		$status = $data['status'];
-		
 		$currentDate = date("Y-m-d H:i:s");
-	
+		
+
 		//	Set the paths to the image
 		$image = $articleId.'_tall.jpg';
 		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
@@ -793,10 +766,12 @@ class MPArticleAdminController extends MPArticle{
 			$imageExists = file_exists($imageDir);
 		}
 
-		if( $status === "3"){
+		if( $status === "3" || $status === "2"){
+
 			$statusChange = $this->performUpdate(array(
-				'updateString' => "UPDATE articles SET article_status = 3, date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
+				'updateString' => "UPDATE articles SET article_status = $status, date_updated = '".$currentDate."'  WHERE article_id = ".$articleId
 			));
+			
 		}else if( $status === "1"){
 			if($imageExists){
 				$statusChange = $this->performUpdate(array(
@@ -809,8 +784,10 @@ class MPArticleAdminController extends MPArticle{
 		if($statusChange === true) return true;
 		return false;
 	}
+/* END MANAGE ARTICLES INSERTION, VALIDATION & UPDATES */
 
-	//FEATURED THIS ARTICLE 
+
+/* FEATURED ARTICLES FUNCTIONALITIES */
 	public function featuredArticle($data){
 	
 		$is_featured = filter_var($data['article_featured'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
@@ -904,13 +881,10 @@ class MPArticleAdminController extends MPArticle{
 		$this->con->closeCon();
 		return $row ; 
 	}
-
-	/* End Featured Article Function */
-
-	/* End Article Updating Fucntion */
+/* END FEATURED ARTICLE FUNCTIONALITIES */
 
 
-	/* Begin Admin Image Uploading Functions */
+/* MANAGE IMAGES FUNCTIONS TO CREATE AND UPDATE STILL NEEDS REVISION */
 	public function updateImageRecord($files, $opts){
 		$options = array_merge(array(
 			// Set defaults
@@ -938,30 +912,6 @@ class MPArticleAdminController extends MPArticle{
 
 				return $result;
 			}
-	}
-
-	protected function performUpdate($opts){
-		if (isset($opts['updatingDatabase']) && $opts['updatingDatabase'] == false ) { return true; }
-		$options = array_merge(array(
-			'updateString' => '',
-			'updateParams' => array(),
-			'isInsert' => false
-		), $opts);
-
-		$pdo = $this->con->openCon();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-		$q = $pdo->prepare($options['updateString']);
-
-		try{
-			$q->execute($options['updateParams']);
-
-		}catch(PDOException $e){
-			$r = false;
-		}
-		$this->con->closeCon();
-		$r = ($options['isInsert']) ? $pdo->lastInsertId() : true;
-		return $r;
 	}
 
 	function getImageObj($ext, $file) {   
@@ -1116,7 +1066,6 @@ class MPArticleAdminController extends MPArticle{
 		unset($files);
 	}
 
-	/* Begin Admin Controller Helper Functions */
 	public function getFileExtension($name){
 
 		$name = glob ($name."*");
@@ -1128,7 +1077,29 @@ class MPArticleAdminController extends MPArticle{
 			return false;
 		}
 	}
+/* END MANAGE IMAGES FUNCTIONS  */
 
+//RETURN STATUS
+	public function returnStatus($code){
+		$r = ['statusCode' => $code];
+		switch($code){
+			case 200:
+				$r['message'] = '{formname} updated successfully!';
+				break;
+			case 400:
+				$r['message'] = "Sorry, one or more required fields were missing.  Please fill in all required fields and try again.";
+				break;
+			case 500:
+				$r['message'] = 'Sorry, looks like something went wrong.  Please try again or contact <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a> for assitance.';
+				break;
+			default: 
+				$r['message'] = '';
+				break;
+		}
+		return $r;
+	}
+	
+//NOT SURE IF STILL IN USE
 	protected function updateSiteObject($opts){
 
 		$options = array_merge(array(
@@ -1151,18 +1122,44 @@ class MPArticleAdminController extends MPArticle{
 		else return true;
 	}
 
+//CSRF
 	public function checkCSRF($post){
 		return $this->helpers->checkCSRF($post);
 	}
 
+//PAGINATION
 	public function getPagination($opts){
 		return $this->helpers->getPagination($opts);
 	}
 
+//REDIRECT HELPER
 	public function redirectTo($location = ''){
 		header('Location: '.$this->config['this_admin_url'].$location);
 	}
-	/* End Admin Controller Helper Functions */
-}
 
+//PERFORM QUERY ( REVISIT DUPLICATION )
+	protected function performUpdate($opts){
+		if (isset($opts['updatingDatabase']) && $opts['updatingDatabase'] == false ) { return true; }
+		$options = array_merge(array(
+			'updateString' => '',
+			'updateParams' => array(),
+			'isInsert' => false
+		), $opts);
+
+		$pdo = $this->con->openCon();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		$q = $pdo->prepare($options['updateString']);
+
+		try{
+			$q->execute($options['updateParams']);
+
+		}catch(PDOException $e){
+			$r = false;
+		}
+		$this->con->closeCon();
+		$r = ($options['isInsert']) ? $pdo->lastInsertId() : true;
+		return $r;
+	}
+}
 ?>

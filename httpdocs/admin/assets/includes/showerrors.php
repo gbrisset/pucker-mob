@@ -6,11 +6,10 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 	<div id="popup-content">
 		<a href="#close" title="Close" class="close">X</a>
 		<div>
-			<?php 
-				
-				echo $updateStatus['message']; 
-
-			?>
+			<h2 style=" color: red; font-family: OswaldLight; font-size: 1.8rem;">Sorry...</h2>
+			<p>
+			<?php echo $updateStatus['message']; ?>
+			</p>
 		</div>
 	</div>
 </div>
@@ -28,18 +27,24 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 <?php }else{?>
 
 <?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'article-add-form' && $updateStatus['hasError'] !== true){ ?>
-	<div id="openModal" class="modalDialog">
+<div id="openModal" class="modalDialog">
 	<div id="popup-content">
 		<div>
-			<p>Your article was created Succesfully!!</p>
+			<?php if($starter_blogger){?>
+				<h2 style=" color: green; font-family: OswaldLight; font-size: 1.8rem;">Thank you for posting this!</h2> <p>A PuckerMob editor will review it for possible publication on the site shortly.</p>
+			<?php }else{?>
+				<h2 style=" color: green; font-family: OswaldLight; font-size: 1.8rem;">Thank you for posting this!</h2><p>Your article was created Succesfully!!</p>
+			<?php }?>
 		</div>
 	</div>
-	</div>
+</div>
 	<script type="text/javascript">
 	$('body').addClass('show-modal-box');
 		setTimeout(function(){
-			window.location = "<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $updateStatus['articleInfo'][':article_seo_title']; ?>";
+			//window.location = "<?php //echo $config['this_admin_url']; ?>articles/edit/<?php //echo $updateStatus['articleInfo'][':article_seo_title']; ?>";
+			window.location = "<?php echo $config['this_admin_url']; ?>articles/ ?>";
 	}, 2000);
 	</script>
-	<?php } ?>
+<?php } ?>
+
 <?php }?>

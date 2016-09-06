@@ -193,12 +193,11 @@ class Dashboard{
 
 		//$year = date('Y');
 		$s=" SELECT * FROM user_rate WHERE month = $month AND year = $year ";
-		if( $user_type != 8  && $user_type != 9  && $user_type != 6 ){ $user_type = 0; }
+		if( $user_type != 8  && $user_type != 9  && $user_type != 6 && $user_type != 7 ){ $user_type = 0; }
 			$s .= " AND user_type =  ".$user_type;
 		
 		$s .= " LIMIT 1 ";
 
-		//var_dump( $s );
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 		
@@ -269,13 +268,21 @@ class Dashboard{
 	public function get_articlesbypageviews_new( $contributor_id, $month, $year ){
 
 		//$month = 2;
-		$s = "SELECT * FROM  google_analytics_data_daily 
+		/*$s = "SELECT * FROM  google_analytics_data_daily 
 				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
 				ON ( article_contributor_articles.article_id = google_analytics_data_daily.article_id )
 				AND ( articles.article_id = google_analytics_data_daily.article_id )
 				AND ( article_categories.article_id = google_analytics_data_daily.article_id )
 				AND (categories.cat_id = article_categories.cat_id )
-				WHERE google_analytics_data_daily.month = ".$month." AND  google_analytics_data_daily.year = ".$year;
+				WHERE google_analytics_data_daily.month = ".$month." AND  google_analytics_data_daily.year = ".$year;*/
+			$s = " SELECT google_analytics_data_daily.*, articles.article_title, articles.article_seo_title, categories.cat_id, categories.cat_name, article_contributor_articles.contributor_id  
+				  	FROM  google_analytics_data_daily 
+					INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
+					ON ( article_contributor_articles.article_id = google_analytics_data_daily.article_id )
+					AND ( articles.article_id = google_analytics_data_daily.article_id )
+					AND ( article_categories.article_id = google_analytics_data_daily.article_id )
+					AND (categories.cat_id = article_categories.cat_id )
+					WHERE google_analytics_data_daily.month = ".$month." AND  google_analytics_data_daily.year = ".$year;;
 
 			if( isset($contributor_id) && $contributor_id != 0){
 				$s.= " AND article_contributor_articles.contributor_id = ".$contributor_id;
@@ -283,7 +290,7 @@ class Dashboard{
 			$s.= " ORDER BY google_analytics_data_daily.usa_pageviews DESC ";
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-		//var_dump($q);
+	
 		if ($q && isset($q[0])){
 				// If $q is an array of only one row (The set only contains one article), return it inside an array
 			return $q;
@@ -575,7 +582,7 @@ class Dashboard{
 	}
 
 	public function pageviewsReport( $month, $year ){
-		$month = 6;//filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$year = filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 	
 		$prev_month = $month;
@@ -595,9 +602,10 @@ class Dashboard{
 				$prev_month_data = $this->getContributorEarnings($id, $prev_month, $prev_year);
 
 				$earnings_info = $this->get_articlesbypageviews_new( $id, $month, $year);
+
 				$total_article_rate = 0;
 				$total_shares = 0;
-				$share_rate = $this->get_current_rate($month, $contributor['user_type']);				
+							
 				$total_share_rev = 0;
 				
 				$total_us_pageviews = 0;
@@ -611,17 +619,22 @@ class Dashboard{
 					}
 				}
 
-				if(isset($update_data ) && $update_data ){
-					$share_rate = floatval($update_data[0]['share_rate']);
-				}
+				//if(isset($update_data ) && $update_data ){
+				//	$share_rate = floatval($update_data[0]['share_rate']);
+				//}else{
+					$share_rate = $this->get_current_rate($month, $contributor['user_type']);	
+				//}
 
+				if($share_rate) $share_rate  = $share_rate['rate'];
+
+	
 				if( $total_us_pageviews > 0 ){
 					$total_earnings = ($total_us_pageviews / 1000 ) * $share_rate;
 				}
 
 				$total_to_be_pay = $total_earnings;
 			
-				//var_dump($id, $total_us_pageviews, $share_rate, $total_to_be_pay);
+				//var_dump($id, $total_us_pageviews, $share_rate, $total_to_be_pay, "<br/>");
 
 
 				if( isset($prev_month_data) && $prev_month_data ){
@@ -630,8 +643,10 @@ class Dashboard{
 					}
 				}
 
+				
 
 				if($update_data){
+					
 					$s = "UPDATE contributor_earnings 
 							SET total_article_rate = $total_article_rate,
 							    total_shares = $total_shares,
@@ -639,7 +654,8 @@ class Dashboard{
 							    total_share_rev = $total_share_rev,
 							    total_earnings = $total_earnings,
 							    total_us_pageviews = $total_us_pageviews,
-							    to_be_pay = $total_to_be_pay 
+							    to_be_pay = $total_to_be_pay,
+							    updated_date = now()
 						WHERE contributor_id = $id AND month = $month AND year = $year ";
 				}else{
 					$s = "INSERT INTO contributor_earnings
@@ -735,7 +751,7 @@ class Dashboard{
 
 	public function getContributorsListTEST(){
 		$s = "SELECT contributor_id, user_type from article_contributors 
-		INNER JOIN users ON users.user_email = article_contributors.contributor_email_address where contributor_id = 1459";
+		INNER JOIN users ON users.user_email = article_contributors.contributor_email_address where contributor_id IN (4317, 5112, 3675, 3612, 1459)";
 
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s]);

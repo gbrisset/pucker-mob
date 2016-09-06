@@ -1,5 +1,7 @@
 <?php
 
+	header('Location: http://www.puckermob.com/login');
+	die;
 
 	$admin = true;
 	require_once('../../assets/php/config.php');

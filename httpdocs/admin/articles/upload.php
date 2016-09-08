@@ -13,7 +13,6 @@ if(isset($_POST['u_i'])) $user_id = $_POST['u_i'];
 $action = "edit";
 $isLib =  isset($_POST['isLib']) ? true : false;
 $is_second_img = isset($_POST['is_second_img']) ? true : false;
-var_dump($_POST);
 if(isset($_POST) && empty($_POST['a_i'] ) ){
 	$_POST['a_i'] = 'temp_u_'.$user_id;//.'_'. substr($_POST['c_t'], 0, 7);
 	$action = "new";

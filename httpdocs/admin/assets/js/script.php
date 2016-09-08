@@ -7,12 +7,12 @@ $(document).ready(function (){
 
 var body = $('body');
 var base_url = 'http://www.puckermob.com';
-var admin_url = 'http://www.puckermob.com/admin/';
+var admin_url = 'http://dev.puckermob.com/admin/';
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
 var page = document.body.id;
 
 
-admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 

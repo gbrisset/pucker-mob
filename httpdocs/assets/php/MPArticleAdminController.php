@@ -342,7 +342,6 @@ class MPArticleAdminController extends MPArticle{
 	public function verifyImageExist( $post ){
 		//	Set the paths to the image
 		$user_id = $post['u_i'];
-
 		$image = 'temp_u_'.$user_id.'_tall.jpg';
 		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
 		if( $post['a_i'] != "0"){
@@ -355,21 +354,20 @@ class MPArticleAdminController extends MPArticle{
 		if(isset($image)){
 			$imageExists = file_exists($imageDir);
 
+			if(!$imageExists){
+				$image = 'temp_u_'.$user_id.'_tall.jpg';
+				$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
+				$imageExists = file_exists($imageDir);
+			}
 		}
-		return $imageExists;
+		return array('imageExist' => $imageExists, 'imageDir' => $imageDir);
 	}
 
 	public function validateImageDime($post){
-		
 		$user_id = $post['u_i'];
-		$image = 'temp_u_'.$user_id.'_tall.jpg';
-		$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/temp/'.$image;
-		if( $post['a_i'] != "0"){
-			$image = $post["a_i"].'_tall.jpg';
-			$imageDir =   $this->config['image_upload_dir'].'articlesites/puckermob/large/'.$image;
-		}
-		$size = getimagesize($imageDir);
 
+		$imageDir = $post['image_path'];
+		$size = getimagesize($imageDir);
 		$width = $height = 0;
 		if($size){
 			$width = $size[0];
@@ -380,7 +378,7 @@ class MPArticleAdminController extends MPArticle{
 			return array_merge($this->helpers->returnStatus(200), array('field'=>'article_image', 'message' => 'Image Saved Successfully!'));
 		}
 
-		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Image dimensions must be 728x43 px '));
+		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_image', 'message' => 'Image dimensions must be 784x431px'));
 
 	}
 
@@ -417,7 +415,7 @@ class MPArticleAdminController extends MPArticle{
 		$imageExist = $this->verifyImageExist($post);
 		if($imageExist){
 			//Validate Image Dimentions 
-
+			$post['image_path'] = $imageExist['imageDir'];
 			$validSize = $this->validateImageDime($post);
 			if($validSize['statusCode'] == 200){
 				//Save Article Info
@@ -447,7 +445,7 @@ class MPArticleAdminController extends MPArticle{
 		$imageExist = $this->verifyImageExist($post);
 		if($imageExist){
 			//Validate Image Dimentions 
-
+			$post['image_path'] = $imageExist['imageDir'];
 			$validSize = $this->validateImageDime($post);
 			if($validSize['statusCode'] == 500){
 				return $validSize;	
@@ -482,13 +480,13 @@ class MPArticleAdminController extends MPArticle{
 		$unrequired = array('article_body', 'article_tags', 'article_desc', 'article_status', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments' );
 
 		//Generate SEO Title
-		if(!isset($post['article_seo_title-s'])) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
+		if( isset($post['article_seo_title-s']) && strlen($post['article_seo_title-s']) <= 0 ) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
 
 		//Get User Info
 		$user =  $this->user->data;
 		$user_type = $post['u_type'];
 		$save = $post['save'];
-		
+
 		//COMPILE PARAMETERS
 		$params = $this->helpers->compileParams($post);
 		$pairs = array_unique($this->helpers->compilePairs($post));

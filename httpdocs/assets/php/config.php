@@ -50,8 +50,7 @@ if($local)
 		'this_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs/',
 		'this_admin_url' => 'http://'.$localIp.':8888/'.$directory.'/httpdocs/admin/',
 		'shared_url' => 'http://'.$localIp.':8888/'.$directory.'/',
-		'image_url' => 'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',
-				
+		'image_url' => 'http://'.$localIp.':8888/'.$directory.'/subdomains/images/httpdocs/',	
 	);
 
 	

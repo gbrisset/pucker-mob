@@ -6,20 +6,17 @@
 		<form id="image-drop" class="dropzone dz-clickable small-12 column no-padding" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
 	 		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 			<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
-	 		<input type="hidden" id="a_i" name="a_i" class="a_i" value="0" />
 	 		<input type="hidden" id="is_mobile" value="<?php echo $detect->isMobile(); ?>" />
-
+	 		
  			<div class="dz-message  dropzone-previews" >
 	 			<div class="dz-preview dz-file-preview small-12 large-12 columns no-padding" id="template" >  <!-- template for images -->
     	            <div class="dz-details dztemplate">
 		              <div class="dz-filename" style="display:none;"><span data-dz-name></span></div>
 		              <div class="dz-size"  style="display:none;" data-dz-size></div>
 		              <img data-dz-thumbnail id="main-image-src" style="display:none;" src=""/>
-		              <div class="loading"><img src="http://dev.puckermob.com/admin/assets/img/loading.gif" /></div>
-
 		               <div class="image-overlay-content" style="display:none;">
 				        <a href="#" ><i class="fa fa-camera" aria-hidden="true"></i>Change</a>
-				       	<a href="#" id="edit-image"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+				       	<a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
 				      </div>
 		            </div>
 		            <div class="dz-progress" style="display:none;"><span class="dz-upload" data-dz-uploadprogress></span></div>
@@ -27,8 +24,16 @@
 		            <div class="dz-error-mark" style="display:none;"><span>✘</span></div>
 		            <div class="dz-error-message large-11 center"><span data-dz-errormessage></span></div>
 	          	</div>
-	         
-	 			<div id="img-container" class="small-12 large-12 columns center padding" >
+
+	          	<?php if(isset($artImageExists) && $artImageExists ){?>
+				 	 <img  id="existing-img"  src="<?php echo $tallImageUrl; ?>"/>
+				 	 <div class="loading"><img src="http://dev.puckermob.com/admin/assets/img/loading.gif" /></div>
+				 	 <div class="image-overlay-content" style="display:none;">
+				        <a href="#" ><i class="fa fa-camera" aria-hidden="true"></i>Change</a>
+				       	<a href="#" id="edit-image" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+				      </div>
+				<?php }else{?>
+		       	<div id="img-container" class="small-12 large-12 columns center padding" >
 					<div class="image-drop-titles">
 						<h2>UPLOAD A PICTURE</h2>
 	 			   		<h3 class="show-for-large-up">Drag your image Here or Click to Upload </h3>
@@ -36,7 +41,8 @@
 	 			   		<br>
 	 			   		<h4>You can now crop and edit your images from our site</h4>
 				   	 </div>
-	 		   	</div>
+		 		</div>
+	 		   	<?php }?>
  			</div>
 	 	</form>
 	 </div>

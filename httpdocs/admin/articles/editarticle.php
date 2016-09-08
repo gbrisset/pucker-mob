@@ -29,10 +29,9 @@
 	if($article_ads && isset($article_ads[0])) $article_ads = $article_ads[0];
 
 	//Image Info
-	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;	
-	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';//.$tallExtension;
+	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';	
+	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';
 	$pathToSecondImage = $config['image_upload_dir'].'articlesites/puckermob/second_image/second_mob_img_'.$article["article_id"].'.jpg';
-	$secondImageUrl = $config['image_url'].'articlesites/puckermob/second_image/second_mob_img_'.$article["article_id"].'.jpg?'.rand(1, 100000000000);	
 	//Verify if Article Image file exists.
 	
 	$artImageDir =  $config['image_upload_dir'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';
@@ -161,7 +160,9 @@
 			<?php 
 
 				$tallImageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg';
-				include_once($config['include_path_admin'].'dropbox_image_edit.php');	
+				//include_once($config['include_path_admin'].'dropbox_image_edit.php');
+				 include_once($config['include_path_admin'].'drop_image_edit_new.php'); 
+	
 			?>
 				
 				<form id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">

@@ -39,8 +39,9 @@
 	 			   		<h3 class="show-for-large-up">Drag your image Here or Click to Upload </h3>
 	 			   		<h4>Picture must be 784x431 </h4>
 	 			   		<br>
-	 			   		<h4>You can now crop and edit your images from our site</h4>
-				   	 </div>
+						<h4 class="hide-for-large-up">You resize your images from our site</h4>
+						<h4 class="show-for-large-up">You can crop and resize your images from our site</h4>				   	 
+					</div>
 		 		</div>
 	 		   	<?php }?>
  			</div>

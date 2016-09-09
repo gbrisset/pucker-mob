@@ -185,7 +185,7 @@
 						<!-- BODY -->
 						<div class="row margin-bottom margin-top" >
 							<div>
-								<textarea class="editor" name="article_body-nf" id="article_editor" required  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+								<textarea class="editor" name="article_body-nf" id="article_editor"  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
 							</div>
 						</div>
 
@@ -222,14 +222,14 @@
 						<!-- KEYWORDS -->
 						<div class="row">
 						    <div>
-						    	<textarea  class="" name="article_tags-nf" id="article_tags-s"  placeholder="Enter tags"  required ><?php if(isset($article['article_tags'])) echo $article['article_tags']; ?></textarea>
+						    	<textarea  class="" name="article_tags-nf" id="article_tags-s"  placeholder="Enter tags"   ><?php if(isset($article['article_tags'])) echo $article['article_tags']; ?></textarea>
 							</div>
 						</div>	
 						
 						<!-- DESCRIPTION -->
 						<div class="row">
 						    <div>
-								<textarea  name="article_desc-s" id="article_desc-s"  required placeholder="Enter description"  maxlength="150"><?php if(isset($article['article_desc'])) echo $article['article_desc']; ?></textarea>
+								<textarea  name="article_desc-s" id="article_desc-s"  placeholder="Enter description"  maxlength="150"><?php if(isset($article['article_desc'])) echo $article['article_desc']; ?></textarea>
 							</div>
 						</div>	
 						

@@ -35,6 +35,7 @@ var featherEditor = new Aviary.Feather({
     			$('.image-drop-titles').css('display', 'none');
     		}else{
     			$('#main-image-src').hide();
+    			$('#main-image-src').attr('src', '');
     			$('.image-drop-titles').css('display', 'inline-block');
     			triggerErrorPopup(result);
     		}
@@ -49,6 +50,9 @@ var featherEditor = new Aviary.Feather({
 	},
     onClose:function(isDirty){
     	featherEditor.close();
+		$('#main-image-src').hide();
+		$('.image-drop-titles').css('display', 'inline-block');
+
     }
 });
 
@@ -73,8 +77,8 @@ Dropzone.options.imageDrop = {
 	  acceptedFiles: '.jpg, .gif, .png, .jpeg',       // allowed image types don't use image/*
 	  maxFilesize: 3, // MB
 	  uploadMultiple: false,
-	  thumbnailWidth: 784,
-	  thumbnailHeight: 431,
+	  thumbnailWidth: null,
+	  thumbnailHeight: null,
 	  previewsContainer: ".dropzone-previews",
 	  previewTemplate: previewTemplate,
 
@@ -116,7 +120,9 @@ Dropzone.options.imageDrop = {
  },
  accept: function(file, done) {
       file.acceptDimensions = done;
-      file.rejectDimensions = function() { done("Invalid dimension. Must be 784x431"); };
+      file.rejectDimensions = function() { 
+      	$('#main-image-src').attr('src', "");
+      	done("Invalid dimension. Must be 784x431"); };
   }
 };
 
@@ -156,7 +162,8 @@ function triggerErrorPopup(data){
 }
 
 $("#image-drop").hover(function(){
-	if($('#main-image-src').attr('src')  != undefined || $('#existing-img').attr('src') != undefined ){
+	if( ( $('#main-image-src').attr('src') != undefined   &&  $('#main-image-src').css('display') != 'none' ) || 
+		( $('#existing-img').attr('src') != undefined  && $('#existing-img').css('display') != 'none' ) ){
 		    $('.image-overlay-content').show();
 	}
 }, function() {

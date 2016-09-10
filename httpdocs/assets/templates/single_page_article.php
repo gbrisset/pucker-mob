@@ -67,8 +67,24 @@
 		
 		<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:7px; margin-bottom: 15px;">
 			<div id="get-content" style="text-align:center;">
-				<!-- MEME GLOBAL -->
-				<iframe id='m_iframe'  src="http://web-testing.gce.memeglobal.tech/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=[CACHE_BUSTER]&channelID=56e97118181f4655728b4618&sDmn=[PUB_URL_MACRO]" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+			<?php //if( $article_id == 19197 ){?>
+				<!-- MEME GLOBAL 
+				<iframe id='m_iframe'  src="http://web-testing.gce.memeglobal.tech/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=12344&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+				-->
+			<?php //}else{?>
+				<!-- AMAZON 
+				<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+				<script type="text/javascript" language="javascript">
+				 //<![CDATA[
+				   aax_getad_mpb({
+				     "slot_uuid":"cbed7a67-80a8-43f3-a883-1c12273cb50a"
+				   });
+				 //]]>
+				</script>-->
+				
+				<!-- PULSE POINT -->
+				<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>
+			<?php //}?>
 			</div>
 		
 		</div>
@@ -232,14 +248,29 @@
 			<!-- LELO -->
 			<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
-
+			<?php //if(  $article_id == 19524 ){ ?>
 			<!-- MEME GLOBAL -->
 			<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 				<div id="get-content" style="text-align:center;">
-					<iframe id='m_iframe'  src="http://web-testing.gce.memeglobal.tech/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=[CACHE_BUSTER]&channelID=56e97118181f4655728b4618&sDmn=[PUB_URL_MACRO]" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+					<iframe id='m_iframe'  src="http://web-testing.gce.memeglobal.tech/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
 				</div>
 			</div>
-	
+			<?php //}else{ ?>
+				<!--<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
+					<div id="get-content" style="text-align:center;">
+						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+						<script type="text/javascript" language="javascript">
+						 //<![CDATA[
+						   aax_getad_mpb({
+						     "slot_uuid":"0742d92e-1167-4044-a5e6-c8b3d70f63c6"
+						   });
+						 //]]>
+						</script>
+					</div>
+				</div>-->
+			<?php //} ?>
+
+
 			<!-- AMAZON -->
 			<div id="mobile-instream-branovate-ad" style="text-align: center;">
 				<div id="get-content" style="text-align:center; display: inline-block;">

@@ -8,7 +8,6 @@
 	div#inarticle12-ad{ display:inline; }
 	#article-caption p, #article-caption li, #article-content p, #article-content li{font-size: 1rem !important;}
 	.adblade-dyna ul{ max-height: 350px;}
-
 </style>
 
 <article id="article-<?php echo $article_id; ?>" class="columns small-12 no-padding">
@@ -64,32 +63,6 @@
 			</div>
 		</div>
 
-		
-		<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:7px; margin-bottom: 15px;">
-			<div id="get-content" style="text-align:center;">
-			<?php //if( $article_id == 19197 ){?>
-				<!-- MEME GLOBAL 
-				<iframe id='m_iframe'  src="http://web-testing.gce.memeglobal.tech/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=12344&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-				-->
-			<?php //}else{?>
-				<!-- AMAZON 
-				<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-				<script type="text/javascript" language="javascript">
-				 //<![CDATA[
-				   aax_getad_mpb({
-				     "slot_uuid":"cbed7a67-80a8-43f3-a883-1c12273cb50a"
-				   });
-				 //]]>
-				</script>-->
-				
-				<!-- PULSE POINT -->
-				<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>
-			<?php //}?>
-			</div>
-		
-		</div>
-
-
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>
 		<div class="columns no-padding padding-top disclaimer">
@@ -103,41 +76,10 @@
 		<!-- ARTICLE CONTENT -->
 		<div class="row clear" style="margin-top: -1rem;">
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
-				<!-- ENGAGE BDR && ADS TEST -->
-				<?php if( $article_id == 8787 ){?>
-					<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
-					<!-- /73970039/ROS300x250 -->
-						<div id='div-gpt-ad-1462440432230-0' style='height:250px; width:300px; display:inline-block;'>
-						<script type='text/javascript'>
-						googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462440432230-0'); });
-						</script>
-						</div>
-					</div>
-				<?php }else{ ?>
-					<?php if($article_id != 15284 && $article_id != 15488 ){?>
-						<?php if($article_id == 13465 ){?>
-							<div class="columns ad-unit hide-for-print padding-top no-padding"  style="display:inline">
-
-							<div id="mobile-instream-branovate-ad">
-								<div id="adunit-300x250-3159"></div><script src="http://4cad707bbe7099c8f3c8-1d22a0d4135badeea192d868b304eb1e.r26.cf5.rackcdn.com/ad_units/3159/unit.js?ord=%%CACHEBUSTER%%" async="true"></script>
-							</div>
-							</div>
-						<?php } ?>
-					<?php } ?>
-				<?php } ?>
-
+				
 				<!-- ARTICLE BODY -->
-				<div class="nmWidgetContainerArticle"><!-- News Max -->
-				<style>
-					.nmx_ad_prefix, .nmx_ad_slot  {
-					       display: inline;
-						    position: relative;
-						    bottom: 10px;
-					}
-				</style>
 				<div id="article-body">
 					<?php echo $article_body; ?>
-				</div>
 				</div>
 
 				<!-- IMAGE SOURCE -->
@@ -148,82 +90,105 @@
 				<?php }?>
 
 				<!-- RELATED ARTICLES -->
-			<?php 
-			$related = [];
-			if(isset($related_articles) && $related_articles && 
-				($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
-				
-				$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
-				$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
-				$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
-			?>
-				<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:-8px !important; margin-bottom:15px !important;">
+				<?php 
+				$related = [];
+				if(isset($related_articles) && $related_articles && 
+					($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
 					
-					<div class="rel-articles-wrapper remember-to-share" style="padding-top: 0;">
-						<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
-						<ul>
-							<?php if( $related['related_article_id_1']['info'] ) {?>
-							<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-								<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
-									<div class="article-image small-5 left" style="padding-right:10px">
-										<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
-											<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
-										</a>
-									</div>
-									<div class="article-title small-7 left" style="padding-right:10px">
-										<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></h1>
-									</div>
-								</article>
-							</li>
-							<?php }?>
-							<?php if( $related['related_article_id_2']['info'] ) {?>
-							<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-								<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
-									<div class="article-image small-5 left" style="padding-right:10px">
-										<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
-											<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
-										</a>
-									</div>
-									<div class="article-title small-7 left">
-										<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></h1>
-									</div>
-								</article>
-							</li>
-							<?php }?>
-							<?php if( $related['related_article_id_3']['info'] ) {?>
-							<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-								<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
-									<div class="article-image small-5 left" style="padding-right:10px">
-										<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">
-											<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
-										</a>
-									</div>
-									<div class="article-title small-7 left" style="padding-right:10px">
-										<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></h1>
-									</div>
-								</article>
-							</li>
-							<?php }?>
-						</ul>
+					$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
+					$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
+					$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
+				?>
+					<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:-8px !important; margin-bottom:15px !important;">
+						
+						<div class="rel-articles-wrapper remember-to-share" style="padding-top: 0;">
+							<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
+							<ul>
+								<?php if( $related['related_article_id_1']['info'] ) {?>
+								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+									<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
+										<div class="article-image small-5 left" style="padding-right:10px">
+											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
+												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
+											</a>
+										</div>
+										<div class="article-title small-7 left" style="padding-right:10px">
+											<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></h1>
+										</div>
+									</article>
+								</li>
+								<?php }?>
+								<?php if( $related['related_article_id_2']['info'] ) {?>
+								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+									<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
+										<div class="article-image small-5 left" style="padding-right:10px">
+											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
+												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
+											</a>
+										</div>
+										<div class="article-title small-7 left">
+											<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></h1>
+										</div>
+									</article>
+								</li>
+								<?php }?>
+								<?php if( $related['related_article_id_3']['info'] ) {?>
+								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+									<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
+										<div class="article-image small-5 left" style="padding-right:10px">
+											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">
+												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
+											</a>
+										</div>
+										<div class="article-title small-7 left" style="padding-right:10px">
+											<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></h1>
+										</div>
+									</article>
+								</li>
+								<?php }?>
+							</ul>
+						</div>
+						
 					</div>
-					
-				</div>
-			<?php } ?>
+				<?php } ?>
 
-				<?php include_once($config['include_path'].'header_social.php'); ?> 
+				<!-- PULSE POINT 
+				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:7px; margin-bottom: 15px;">
+					<div id="get-content" style="text-align:center;">
+						<script src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631"></script>
+					</div>
+				</div>-->
+					<!-- AMAZON >-->
+			<div id="mobile-instream-branovate-ad" style="text-align: center;">
+				<div id="get-content" style="text-align:center; display: inline-block;">
+						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+						<script type="text/javascript" language="javascript">
+						  //<![CDATA[
+						    aax_getad_mpb({
+						      "slot_uuid":"2e18cb00-0578-49b4-8214-1f204e8327a2"
+						    });
+						  //]]>
+						</script>
+				</div>
+			</div
+
+
+				<!-- SOCIAL BUTTONS -->
+				<?php //include_once($config['include_path'].'header_social.php'); ?> 
 		</div>
 
 		<!-- READ MORE  -->
 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
-			<div class="button" style="width: 83%; padding: 4px; border: 3px solid green;">
-				<label id="read-more-img" style=" color: green; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
+			<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #78AD6C;">
+				<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
 			</div>
 		</div> 
 		
 		<!-- ADS LELO & SHARET -->
 		<div class="row" style="clear: both; border-bottom: 1px solid #ddd; padding-top: 1rem;"></div>
 			<!-- LELO -->
-			<?php if(  $article_id == 16562 ||  $article_id == 17425 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || $article_id == 15271 || $article_id == 17286  ){?>
+			<?php if(  $article_id == 16562 ||  $article_id == 17425 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || 
+					   $article_id == 15271 || $article_id == 17286  ){?>
 				<div id="mobile-instream-branovate-ad"  class="margin-top padding-top small-12 row no-padding">
 					<div id="get-content" style="text-align:center; display: inline-block; width:100%; margin-bottom: 10px;">
 						<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
@@ -238,40 +203,19 @@
 				</div>
 			<?php } ?>
 
-			<?php if( !$sponsored_aricle ){ ?>
-				<?php if( $article_id != 14479 &&  $article_id != 14576 && 	$article_id != 15284  && $article_id != 15488 ){?>
-					<div id="NmWg4157" ></div><script type="text/javascript" src ='https://cdn.nmcdn.us/js/connectV3.js'></script><script type="text/javascript">  NM.init({WidgetID: 4157})</script>
-	 			<?php } ?>
- 			<?php } ?>
-
+			
 			
 			<!-- LELO -->
-			<?php if(  $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
+			<?php // if( $article_id != 16562  &&  $article_id != 17425 &&  $article_id != 14479 &&  $article_id != 14576 && $article_id !=  15109 && $article_id != 15271  && 	$article_id != 15284  && $article_id != 15488 && $article_id != 17286  ){?>
 
-			<?php //if(  $article_id == 19524 ){ ?>
 			<!-- MEME GLOBAL -->
 			<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 				<div id="get-content" style="text-align:center;">
-					<iframe id='m_iframe'  src="http://web-testing.gce.memeglobal.tech/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+					<iframe id='m_iframe'  src="http://web-testing.gce.memeglobal.tech/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
 				</div>
 			</div>
-			<?php //}else{ ?>
-				<!--<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
-					<div id="get-content" style="text-align:center;">
-						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-						<script type="text/javascript" language="javascript">
-						 //<![CDATA[
-						   aax_getad_mpb({
-						     "slot_uuid":"0742d92e-1167-4044-a5e6-c8b3d70f63c6"
-						   });
-						 //]]>
-						</script>
-					</div>
-				</div>-->
-			<?php //} ?>
 
-
-			<!-- AMAZON -->
+			<!-- AMAZON 
 			<div id="mobile-instream-branovate-ad" style="text-align: center;">
 				<div id="get-content" style="text-align:center; display: inline-block;">
 						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
@@ -283,10 +227,10 @@
 						  //]]>
 						</script>
 				</div>
-			</div>
+			</div>-->
 
 
-			<?php } ?>
+			<?php //} ?>
 
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>

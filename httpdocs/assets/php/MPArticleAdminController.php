@@ -443,7 +443,8 @@ class MPArticleAdminController extends MPArticle{
 
 		//Verify If Image Exist
 		$imageExist = $this->verifyImageExist($post);
-		if($imageExist){
+		
+		if($imageExist && $imageExist['imageExist']){
 			//Validate Image Dimentions 
 			$post['image_path'] = $imageExist['imageDir'];
 			$validSize = $this->validateImageDime($post);

@@ -1,4 +1,4 @@
-<?php //if(!$detect->isMobile()){?>
+<?php if(!$detect->isMobile()){?>
 <div class="small-12 xxlarge-8 columns no-padding inline-flex"  >	
 	
 	<div class="small-12 large-8 columns image-drop-wrapper">
@@ -16,7 +16,7 @@
 		              <img data-dz-thumbnail id="main-image-src" style="display:none;" src=""/>
 		               <div class="image-overlay-content" style="display:none;">
 				        <a href="#" ><i class="fa fa-camera" aria-hidden="true"></i>Change</a>
-				       	<a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+				       	<!--<a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>-->
 				      </div>
 		            </div>
 		            <div class="dz-progress" style="display:none;"><span class="dz-upload" data-dz-uploadprogress></span></div>
@@ -30,7 +30,7 @@
 				 	 <div class="loading"><img src="http://dev.puckermob.com/admin/assets/img/loading.gif" /></div>
 				 	 <div class="image-overlay-content" style="display:none;">
 				        <a href="#" ><i class="fa fa-camera" aria-hidden="true"></i>Change</a>
-				       	<a href="#" id="edit-image" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+				       <!--	<a href="#" id="edit-image" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>-->
 				      </div>
 				<?php }else{?>
 		       	<div id="img-container" class="small-12 large-12 columns center padding" >
@@ -59,7 +59,19 @@
 <!-- Load widget code -->
 <script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>   
 <script type="text/javascript" src="<?php echo $config['this_admin_url'].'assets/js/imagehandler.js'?>"></script>   
-
-<script>
-	  
-	</script>
+<?php }else{ ?>
+<div class="small-12 xxlarge-8 columns no-padding inline-flex"  >	
+	<div class="small-12 large-8 columns image-drop-wrapper">
+		<div id="img-container" class="small-12 large-12 columns center no-padding" style="border: 3px dotted #FFE;">
+			<?php if(isset($artImageExists) && $artImageExists ){?>
+				<img  id="existing-img"  src="<?php echo $tallImageUrl; ?>"/>
+			<?php }else{?>
+				<div class="image-drop-titles">
+					<h2 style="line-height: 1.4; font-size: 1.6rem; margin-bottom: 1rem;">IMAGE UPLOAD AVAILABLE ON DESKTOP ONLY</h2>
+					<h4 style="color: #ddd;" class="">MOBILE UPLOAD AND RESIZING COMING SOON</h4>
+			   	 </div>
+		   	 <?php }?>
+	   	</div>
+ 	</div>
+</div>
+<?php }?>

@@ -1,26 +1,30 @@
 $(document).ready(function (){
 
 //var admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/assets/php/';
-var admin_url = 'http://dev.puckermob.com/admin/';
+var admin_url = 'http://www.puckermob.com/admin/';
 
-
+var maxsize =1024;
 var tools = ['resize', 'crop'];
 if($('#is_mobile').val() == '1'){
 	tools = ['resize'];
+	maxsize = 1024;
 }
 var featherEditor = new Aviary.Feather({
     apiKey: '13146877c1064663b3054f86cf4d2b4a',
     tools: tools,
    // cropPresets: ['784x431'],
     theme: 'minimum',
-    displayImageSize: true,
-    fileFormat: 'jpg, png, jpeg',
+   // displayImageSize: true,
+  //  fileFormat: 'jpg, png, jpeg',
+   // maxSize: maxsize,
 
     onSave: function(imageID, newURL) {
-        $('.loading').show();
+        //$('.loading').show();
         var img = document.getElementById(imageID);
         img.src = newURL;
         var id = $('#a_i').val();
+
+    	//alert($('#avpw_resize_width').val()+' - '+$('#avpw_resize_height').val());
 
         $.ajax({
             type: 'POST',
@@ -28,7 +32,7 @@ var featherEditor = new Aviary.Feather({
             data: { task: 'get_edited_image', articleId: id, url:newURL, u_i: $('#u_i').val() },
             url: admin_url+"assets/php/getImage.php"
         }).done(function(result) {
-        	$('.loading').hide();
+        	//$('.loading').hide();
     		if(result['statusCode'] == 200){
     			if($('#existing-img').length > 0 ) $('#existing-img').remove();
     			$('#main-image-src').show();
@@ -60,7 +64,7 @@ function launchEditor(id, src) {
     featherEditor.launch({
         image: id,
         url: src,
-			forceCropMessage: 'Crop your Article picture:',
+		forceCropMessage: 'Crop your Article picture:',
     });
     //return false;
 }
@@ -113,6 +117,7 @@ Dropzone.options.imageDrop = {
 	});
 
 	this.on("thumbnail", function(file) {
+		
 		return launchEditor('main-image-src', $('#main-image-src').attr('src') );
 
       });

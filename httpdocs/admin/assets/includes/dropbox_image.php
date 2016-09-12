@@ -125,9 +125,6 @@
 			  currentWidth = 0;
 	          currentHeight = 0;
 
-	         // var img_url = 'http://images.puckermob.com/articlesites/puckermob/large/19552_tall.jpg';
-	        //  return launchEditor('main-image-src',  img_url );
-
 			});
 
 			// Will send the filesize along with the file as POST data.

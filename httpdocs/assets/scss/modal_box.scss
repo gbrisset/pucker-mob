@@ -339,29 +339,53 @@
 }
 
 /* Welcome Modal */
-.reveal-modal{ min-height: auto;}
+.reveal-modal{ min-height: auto; margin: 0;}
+.modal-inside-wrapper{ 
+	border: 2px solid green; margin: 0;
+}
+.main-content-modal{ margin-top: 2rem; margin-bottom: 2rem;}
+
 .welcome-modal{
-	padding: 3% 1% 1% 1%;
+	padding: 7px;
 	top:25px !important;
 
 	//INTRO MODAL
 	.intro-modal, .last-modal{
 		h2{
-		    font-size: 1.8rem;
+		    font-size: 2.5rem;
 			text-align: center;
-			color: $dark-main-color;
-    		font-family: OswaldRegular;
+			color: #3ca43c;
+    		font-family: OsloBold;
+    		margin-bottom: 2rem;
 		}
 
 		div.intro-modal-wrapper{
-			padding: 1rem;
+			margin-top: 1rem;
 			p{
-				font-size: 140%;
-			    font-family: OswaldLight;
+			    font-family: Oslo;
 			    line-height: 1.5;
 			    text-align: center;
 			    margin-bottom: 2rem;
 			}
+			h3{
+				font-family: Oslo;
+			}
+		}
+	}
+
+	.wait{
+		background: #3ca43c;
+		text-align: center;
+		margin-left: -9px;
+		margin-right: -9px;
+
+		span{
+			font-size: 7rem;
+		    color: #fff;
+		    font-family: Impact;
+		    line-height: 0.9;
+		    position: relative;
+			
 		}
 	}
 
@@ -369,39 +393,105 @@
 		padding: 0 3rem;
 		p{
 			font-family: Oslo;
-    		font-size: 20px;
 		}
 		li{
-			font-size: 20px;
 		    font-family: Oslo;
-		    margin-bottom: 1.5rem;
-		    line-height: 1.4;
+		    margin-bottom: 1rem;
+    		line-height: 1.3;
 		}
-		h2{
-			font-size: 2.5rem;
-		    text-align: left;
-		    color: #016201;
-		    font-family: OswaldLight;
+		h3{
+			font-size: 35px;
+		    color: green;
+		    font-family: OsloBold;
+		    margin-bottom: 1rem;
+		}
+	}
+
+	.profile-modal{
+		.image-profile-box{
+			background: #ddd;
+		}
+		
+		.avatar{     
+			margin-top: 10px;
+    		text-align: center; 
+    	}
+		.avatar-span img{
+			 max-width: 17px !important;
+		}
+		.upload-photo{
+			margin: 0;
+		    color: #444;
+		    font-family: Oslo;
+		    margin-bottom: 15px !important;
+		    margin-top: 3px !important;
+		    padding: 0;
 		}
 
-		.levels{
-			display: inline-flex;
-			margin: 20px 0px;
-			
-			div{ padding: 0 2rem; }
-			.basic{
-				border-left: 1px solid #ccc;
-			    border-right: 1px solid #ccc;
-			    opacity: 0.5;
-			}
-			.pro{ opacity: 0.5; }
+		.div-images label{
+			font-size: 14px !important;
+		    text-align: center;
+		    color: #666;
 		}
+
+		#contributor_bio-nf{
+			background: #efefef !important;
+		    min-height: 10px !important;
+		    position: relative;
+		    overflow: scroll;
+		    height: 100px;
+		}
+
+		#edit-my-profile .wide-button{
+		    margin-right: -5px;
+		    padding: 7px;
+		    width: 40%;
+		    background: #fff;
+		    color: green;
+		    border: 1px solid green;
+		}
+	}
+
+	.social-modal{
+		.image-bg{
+			min-height: 21rem;
+		    background-repeat: no-repeat;
+		    background-size: 100%;
+		    width: 100%;
+		    background-image: url("http://www.puckermob.com/admin/assets/img/Facebook-slide.jpg");
+		    padding: 3rem;
+		}
+
+		h3.first{
+			font-family: oslobold;
+		    margin-top: 2rem;
+		    line-height: 1.2;
+		    margin-bottom: 0px;
+		}
+		h3.second{
+			color: green;
+		    line-height: 1.2;
+		    width: 60%;
+		}
+
+		ul{
+			li{
+				font-size: 14px;
+    			font-family: oslo;
+			}
+		}
+
+
 	}
 
 	//ALL MODALS STYLE
 	.profile-modal, .payment-modal, .social-modal{
 		h2{ color: $dark-main-color; font-size: 1.3rem; font-family: OswaldRegular;}
-		p{ font-size: 1.2rem; font-family: OswaldLight;}
+		p{     
+			font-family: Oslo;
+		    line-height: 1.4;
+		    margin-top: 1rem; 
+		}
 		#edit-my-profile .header-style, #billing-page .header-style{ 
 			background: #efefef; padding: 10px; 
 			h2{
@@ -412,6 +502,7 @@
 			    line-height: 1;
 			    margin: 0;
 			}
+			
 		}
 		.image-profile-box img{ width: 100%;}
 		.photo-instructions p{ font-size: 12px !important; font-family:Oslo !important; padding-top: 5px; margin:0;}
@@ -606,6 +697,6 @@
 }
 @media #{$large-up} { 
 	.welcome-modal{
-		top:80px !important;
+		top:20% !important;
 	}
 }

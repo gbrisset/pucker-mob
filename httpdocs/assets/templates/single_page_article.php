@@ -282,21 +282,16 @@
 				</div>
 				<?php } ?>
 
-
-				<?php if($article_id == 15212){?>
-					<!-- /73970039/ROS1x1 
-					<div id='div-gpt-ad-1462751375432-0' style='height:1px; width:1px;'>
-					<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1462751375432-0'); });
-					</script>
-					</div> -->
-				<?php }else{?>
-					<?php if(  $article_id != 16562 &&  $article_id != 17425 && $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){?>
+				<?php if(  $article_id != 16562 &&  $article_id != 17425 && $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){?>
 					<!-- SHARETH -->
 					<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0;">
 						<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
 					</section>
-					<?php } ?>
+					
+					<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0; display: inline;">
+						<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=640&height=360&brandId=211&sCampaignID=10754&sSeller=178&creativeID=123&cb=[CACHE_BUSTER]&sDomain=[URL_REFERRER_MACRO]" style="width:640px;height:360px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+					</section>
+
 				<?php } ?>
 				
 				<!-- RELATED ARTICLES -->

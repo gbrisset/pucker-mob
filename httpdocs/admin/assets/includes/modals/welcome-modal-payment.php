@@ -2,21 +2,20 @@
 	$current_payment = "current";
 	 $current_profile = $current_intro = $current_social =  $current_last = $current_to_know = '';
 ?>
-<div class="main-content-modal small-12 columns payment-modal">
-	 <div class="columns small-12 large-3">
-	 	<h2 id="payment-modal-title">STEP 2: UPLOAD PAYMENT INFO</h2>
-	 	<p>As a new writer, you’re automatically start at the Basic Level. </p>
-		<p>Please read the “Blogger Levels” page in your dashboard to learn more. </p>
-		<p>Fill out your tax and PayPal info so we can pay you for your traffic. </p>
-		<p>We pay approximately 45 days after the end of each month. Please note we can’t pay you until your tax and Paypal info has been provided.  </p>
-	 </div>
-	 
-	 <div class="columns small-12 large-9 no-padding-right">
-	 	<?php include('modal-payment-form.php'); ?>
-	 </div>	  
-</div>
+<div class="main-content-modal small-12 columns payment-modal border-radius-10x no-padding  modal-inside-wrapper">
+	 <div class="wait clear" style="    margin-top: -9px; border-top-right-radius: 10px; border-top-left-radius: 10px;">
+		<span>MONEY</span>
+	</div>
+	<div class="small-12 columns center" style="margin-top: 2rem;">
+		<p  class="small-12 columns" style="color: green; font-family: oslobold">You want to get paid right> Well, we want to pay you!</p>
+	</div>
+	<div class="small-12 columns center">
+		<p class="small-12 columns">You’ll get paid as soon as you earn a total of $25.00. Once you reach that level, we’ll need some tax and payment info from you (a W9 form and a PayPal account ID).</p>
+	</div>
+	<div class="small-12 columns center" style="margin-bottom: 2rem;">
+		<p class="small-12 columns">But you don’t have to worry about that right now. We’ll let you know as soon as you’ve earned enough to get paid, and we’ll work with you at that point to get the info that we need.</p>
+	</div>	
 
-<hr />
 <!-- MODAL FOOTER -->
  <div class="column small-12 welcome-modal-footer">
     <?php require('welcome-modal-footer.php'); ?>
@@ -30,3 +29,15 @@
    	</p>
 	
   </div>
+
+</div>
+  <!-- 
+
+MONEY
+
+
+
+
+
+
+  -->

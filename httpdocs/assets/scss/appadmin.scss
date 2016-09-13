@@ -176,6 +176,11 @@ transform: translateZ(0);
 }
 
 .radius{ border-radius: $button-radius; }
+.border-radius-10x{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
 .border-radius{
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;

@@ -2,12 +2,13 @@
 	$current_payment = "current";
 	 $current_profile = $current_intro = $current_social =  $current_last = $current_to_know = '';
 ?>
+
 <div class="main-content-modal small-12 columns payment-modal border-radius-10x no-padding  modal-inside-wrapper">
 	 <div class="wait clear" style="    margin-top: -9px; border-top-right-radius: 10px; border-top-left-radius: 10px;">
 		<span>MONEY</span>
 	</div>
 	<div class="small-12 columns center" style="margin-top: 2rem;">
-		<p  class="small-12 columns" style="color: green; font-family: oslobold">You want to get paid right> Well, we want to pay you!</p>
+		<p  class="small-12 columns" style="color: green; font-family: oslobold">You want to get paid, right? Well, we want to pay you! </p>
 	</div>
 	<div class="small-12 columns center">
 		<p class="small-12 columns">You’ll get paid as soon as you earn a total of $25.00. Once you reach that level, we’ll need some tax and payment info from you (a W9 form and a PayPal account ID).</p>

@@ -2,9 +2,10 @@
 	$current_social = "current";
 	$current_profile = $current_payment = $current_intro =  $current_last = $current_to_know = '';
 ?>
+
 <div class="main-content-modal small-12 columns social-modal border-radius-10x no-padding  modal-inside-wrapper">
 
- 	<div class="wait clear" style="    margin-top: -9px; border-top-right-radius: 10px; border-top-left-radius: 10px;">
+ 	<div class="wait clear" style="margin-top: -9px; border-top-right-radius: 10px; border-top-left-radius: 10px;">
 		<span>FACEBOOK</span>
 	</div>
 	<div class="small-12 columns image-bg">
@@ -19,12 +20,16 @@
 			<li> Get updates on events and site changes</li>
 			<li> Learn valuable marketing tips for increasing your audience </li>
 		</ul>
-		<p>Join the Group now and stay connected!</p>
-		<div class="small-4 large-2 columns social-button no-padding-right">
-			<label class="small-12">
+		
+		<div class="small-12 large-12 columns social-button">
+			<p class="small-12 show-for-large-up">Join the Group now and stay connected!
 			<a href="https://www.facebook.com/groups/1678546779082833/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> 
 					Follow</a>
-			</label>
+			</p>
+			<p class="small-12 hide-for-large-up">Join the Group
+			<a href="https://www.facebook.com/groups/1678546779082833/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> 
+					Follow</a>
+			</p>
 		</div>
 	</div>	  
 

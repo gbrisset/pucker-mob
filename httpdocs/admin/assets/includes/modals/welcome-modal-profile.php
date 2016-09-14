@@ -3,13 +3,16 @@
 	 $current_intro = $current_payment = $current_social =  $current_last = $current_to_know = '';
 	
 ?>
+
 <div class="main-content-modal small-12 columns profile-modal border-radius-10x no-padding  modal-inside-wrapper">
 	<div class="wait clear" style="    margin-top: -9px; border-top-right-radius: 10px; border-top-left-radius: 10px;">
 		<span>PROFILE</span>
 	</div>
 
 	 <div class="columns small-12">
-		  <p>When you complete your profile, you’ve got a much higher chance of people reading your articles. Readers want to know who you are!</p>
+		  <p class="show-for-large-up">When you complete your profile, you’ve got a much higher chance of people reading your articles. Readers want to know who you are!</p>
+		  <p class="hide-for-large-up center">Readers want to know who you are!</p>
+	 
 	 </div>
 	 
 	 <div class="columns small-12">

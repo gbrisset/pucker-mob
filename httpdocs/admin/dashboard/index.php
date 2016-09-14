@@ -147,9 +147,9 @@
 				
 				<!-- WELCOME MODAL -->
 				<?php 
-					//if(	$userData['user_login_count'] == 0  && !isset($_SESSION['show_welcome_modal']) ){
+					if(	$userData['user_login_count'] == 0  && !isset($_SESSION['show_welcome_modal']) ){
 						include_once($config['include_path_admin'].'welcome_modal.php'); 
-					//}
+					}
 				?>
 
 			</div>

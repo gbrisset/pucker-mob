@@ -339,11 +339,22 @@
 }
 
 /* Welcome Modal */
-.reveal-modal{ min-height: auto; margin: 0;}
+
+#intro-modal{ min-height: 31rem; }
+.reveal-modal{ min-height: 31rem; margin: 0;}
+
 .modal-inside-wrapper{ 
 	border: 2px solid green; margin: 0;
+	max-height: 39rem;
+	
 }
 .main-content-modal{ margin-top: 2rem; margin-bottom: 2rem;}
+@media #{$large-up} { 
+	.reveal-modal{ min-height: 29rem; margin: 0;}
+	.modal-inside-wrapper{ 	max-height: none;
+ }
+
+}
 
 .welcome-modal{
 	padding: 7px;
@@ -352,7 +363,7 @@
 	//INTRO MODAL
 	.intro-modal, .last-modal{
 		h2{
-		    font-size: 2.5rem;
+		    font-size: 1.8rem;
 			text-align: center;
 			color: #3ca43c;
     		font-family: OsloBold;
@@ -371,6 +382,10 @@
 				font-family: Oslo;
 			}
 		}
+
+		@media #{$large-up} { 
+			h2{ font-size: 2.5rem;}
+		}
 	}
 
 	.wait{
@@ -380,12 +395,18 @@
 		margin-right: -9px;
 
 		span{
-			font-size: 7rem;
+			font-size: 5rem;
 		    color: #fff;
 		    font-family: Impact;
 		    line-height: 0.9;
 		    position: relative;
 			
+		}
+
+		@media #{$large-up} { 
+			span{
+				font-size: 7rem;
+			}
 		}
 	}
 
@@ -393,23 +414,32 @@
 		padding: 0 3rem;
 		p{
 			font-family: Oslo;
+			margin-bottom: 5px;
 		}
 		li{
 		    font-family: Oslo;
-		    margin-bottom: 1rem;
+		    margin-bottom: 9px;
     		line-height: 1.3;
 		}
 		h3{
-			font-size: 35px;
+			font-size: 25px;
 		    color: green;
 		    font-family: OsloBold;
-		    margin-bottom: 1rem;
+		    margin-bottom: 10px;
+		}
+
+		@media #{$large-up} { 
+			p{     margin-bottom: 15px;}
+			h3{     font-size: 35px;     margin-bottom: 1rem; }
+			li{  margin-bottom: 1rem; }
 		}
 	}
 
 	.profile-modal{
+		p{ margin-bottom: 5px; }
 		.image-profile-box{
 			background: #ddd;
+			padding: 7px !important;
 		}
 		
 		.avatar{     
@@ -423,9 +453,10 @@
 			margin: 0;
 		    color: #444;
 		    font-family: Oslo;
-		    margin-bottom: 15px !important;
+		    margin-bottom: 0px !important;
 		    margin-top: 3px !important;
 		    padding: 0;
+		    font-size: 14px;
 		}
 
 		.div-images label{
@@ -439,7 +470,7 @@
 		    min-height: 10px !important;
 		    position: relative;
 		    overflow: scroll;
-		    height: 100px;
+		    height: 75px;
 		}
 
 		#edit-my-profile .wide-button{
@@ -450,23 +481,54 @@
 		    color: green;
 		    border: 1px solid green;
 		}
+		.image-profile-box img{ width: 30%;}
+
+		@media #{$large-up} { 
+			p{
+				margin-bottom: 15px;
+			}
+			.image-profile-box{ padding: 0.8rem !important; }
+
+			.image-profile-box img{ width: 95%;}
+
+			.upload-photo{
+				margin-bottom: 15px !important;
+				font-size: 15px;
+			}
+			#contributor_bio-nf{ height: 120px;}
+		}
+	}
+
+	.image-bg{
+		min-height: 21rem;
+	    background-repeat: no-repeat;
+	    background-size: 100%;
+	    width: 100%;
+	    background-image: url("http://www.puckermob.com/admin/assets/img/Facebook-slide.jpg");
+	    padding: 0 1rem;
+
+	    @media #{$large-up} { 
+			padding: 2rem;
+		}
+	    
+	}
+
+	.social-button{
+		a{ 
+			background: #4c66a4;
+	    	color: white !important; 
+    	    padding: 3px 10px;
+			margin-left: 15px;
+	    }
 	}
 
 	.social-modal{
-		.image-bg{
-			min-height: 21rem;
-		    background-repeat: no-repeat;
-		    background-size: 100%;
-		    width: 100%;
-		    background-image: url("http://www.puckermob.com/admin/assets/img/Facebook-slide.jpg");
-		    padding: 3rem;
-		}
-
 		h3.first{
 			font-family: oslobold;
 		    margin-top: 2rem;
 		    line-height: 1.2;
 		    margin-bottom: 0px;
+		    font-size: 1.5rem;
 		}
 		h3.second{
 			color: green;
@@ -480,8 +542,22 @@
     			font-family: oslo;
 			}
 		}
+	}
 
-
+	.last-modal{
+		h3{
+			text-align: center;
+		    font-size: 1.6rem;
+		    font-family: oslobold;
+		}
+		.image-box-start{
+			label{
+				color: green;
+			    font-family: oslobold;
+			    text-align: center;
+			    margin: 7px 0;
+			}
+		}
 	}
 
 	//ALL MODALS STYLE
@@ -504,7 +580,7 @@
 			}
 			
 		}
-		.image-profile-box img{ width: 100%;}
+		
 		.photo-instructions p{ font-size: 12px !important; font-family:Oslo !important; padding-top: 5px; margin:0;}
 	}
 

@@ -4,8 +4,8 @@
 	
 	$contributorInfo = $userObj->contributor->data;
 	
-	//$image = (isset($contributorInfo->contributor_image) && !empty($contributorInfo->contributor_image)) ? $contributorInfo->contributor_image : 'default_profile_img.png';
-$image = 'default_profile_img.png';
+	$image = (isset($contributorInfo->contributor_image) && !empty($contributorInfo->contributor_image)) ? $contributorInfo->contributor_image : 'default_profile_img.png';
+//$image = 'default_profile_img.png';
 	//	Set the paths to the image
 	$contImageDir =  $config['image_upload_dir'].'articlesites/contributors_redesign/'.$image;
 	$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$image; 
@@ -28,12 +28,12 @@ $image = 'default_profile_img.png';
 <div id="edit-my-profile">
 
 	<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
-	<div id="content" class="columns small-12">
+	<div id="" class="columns small-12">
 		<!-- IMAGE SECTION -->
 		<div class="small-12 columns half-margin-top no-padding">
 			<div class="small-12 image-profile-box radius">
 				<div class="small-12 large-3 columns align-center no-padding">
-					<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" style="width: 95%;"/>
+					<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" />
 				</div>
 				<div class="small-12 large-9 columns no-padding"  style="    margin-top: 8px !important;">
 					<div class="div-file-upload">
@@ -77,7 +77,7 @@ $image = 'default_profile_img.png';
 
 				<div class="small-12 columns no-padding">
 					<div class="columns mobile-12 small-12 large-12 center">
-						<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
+						<p class="hide <?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo ($updateStatus['hasError'] == true) ? 'error' : 'new-success'; ?>" id="result">
 						
 						<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'account-settings-form') echo $updateStatus['message']; ?>
 						</p>
@@ -85,7 +85,7 @@ $image = 'default_profile_img.png';
 					<div class="columns mobile-12 small-12 large-12 center">
 						<button class="radius wide-button" type="submit" id="submit" name="submit">SAVE</button>
 					</div>
-					<p class="clear center">Later, you can add social networks from the Profile menu.</p>
+					<p class="clear center show-for-large-up">Later, you can add social networks from My Profile.</p>
 				</div>
 
 		</form>
@@ -111,7 +111,7 @@ $image = 'default_profile_img.png';
 </div>
 
 <script>
-  /*$(function() {	
+  $(function() {	
       $('#contributor_bio-nf').froalaEditor({
       	  key: 'UcbaE2hlypyospbD3ali==',
       	  toolbarSticky: false,
@@ -119,7 +119,7 @@ $image = 'default_profile_img.png';
       	  placeholderText: 'WRITE A SHORT BIO',
 	      toolbarButtons: ['bold', 'italic', 'align', 'insertLink']
       });
-  });*/
+  });
 	</script> 
 
   	

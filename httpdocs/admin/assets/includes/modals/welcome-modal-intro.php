@@ -21,8 +21,8 @@
 					Take two minutes to read through this super quick intro, and we promise you’ll enjoy your experience with us a lot more (and have fewer questions!)
 				</p>
 			</div>
-			<div class="center   ">
-				<h3>GET STARTED</h3>
+			<div class="center">
+				<h3><a href="#" data-reveal-id="to-know-modal" class="secondary next-modal-step">GET STARTED</a></h3>
 			</div>
 		</div>
 	</div>
@@ -30,6 +30,6 @@
 	<!-- MODAL FOOTER -->
 	<div class="column small-12 welcome-modal-footer">
     	<?php require('welcome-modal-footer.php'); ?>
-		<p class="small-3 large-3 columns align-right no-padding-right"><a href="#" data-reveal-id="profile-modal" class="secondary next-modal-step"><label class="show-for-large-up"> GO TO </label> STEP 1<i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>
+		<p class="small-3 large-3 columns align-right no-padding-right"><a href="#" data-reveal-id="to-know-modal" class="secondary next-modal-step"><label class="show-for-large-up"> GO TO </label> STEP 1<i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>
 	</div>
 </div>

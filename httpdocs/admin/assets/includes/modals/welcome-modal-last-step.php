@@ -2,29 +2,54 @@
 	$current_last = "current";
 	$current_intro =  $current_profile = $current_payment = $current_social = $current_to_know = '';
 ?>
-<div class="main-content-modal small-12 columns last-modal">
-	<h2 id="last-modal-title">STEP 4: START WRITING!</h2>
-	<div class="intro-modal-wrapper">
-		<p>Have an idea for your first article? Then get started writing your first article. Take some time to look around the dashboard and don’t forget that if you have any questions, ask them in the Facebook Bloggers group page for a quick reply.</p>
-
-		<p>For the best results, please make sure to read through out formatting tips ­ if your articles aren’t formatted properly, we won’t be able to promote them more heavily.</p>
-
-		<p>Good luck!</p>
+<div class="main-content-modal small-12 columns last-modal border-radius-10x no-padding  modal-inside-wrapper">
+	<div class="wait clear" style="margin-top: -9px; border-top-right-radius: 10px; border-top-left-radius: 10px;">
+		<span>START!</span>
 	</div>
-</div>
+	<div class="intro-modal-wrapper columns" style="margin-top:2rem;">
+		<h3 class="first">THAT’S IT - YOU’RE READY TO GO!</h3>
 
-<hr />
+		<p style="margin-top:1.5rem;">There’s a lot more to it, but you’ll figure the rest out as you go. So where do you want to start?</p>
 
-<!-- MODAL FOOTER -->
- <div class="column small-12 welcome-modal-footer">
-  	  	<?php require('welcome-modal-footer.php'); ?>
+		<div class="small-12 columns">
+			<div class="small-6 columns image-box-start">
+				<a href="http://www.puckermob.com/admin/dashboard/">
+					<img src ="http://www.puckermob.com/admin/assets/img/Start-Slide-Dashboard.jpg" alt="dashboard image"/>
+					<label class="show-for-large-up">CHECK OUT THE DASHBOARD</label>
+					<label class="hide-for-large-up">DASHBOARD</label>
 
-    <p class="small-3 columns align-right no-padding-right">
-    	<a href="http://www.puckermob.com/admin/articles/newarticle/" class="secondary next-modal-step">
-	    	<label class="show-for-large-up"> WRITE YOUR FIRST ARTICLE</label>
-	    	<label class="hide-for-large-up"> START!</label>
-	    	<i class="fa fa-chevron-right" aria-hidden="true"></i>
-    	</a>
-    </p>
-	
+				</a>
+				
+			</div>
+			<div class="small-6 columns image-box-start">
+				<a href="http://www.puckermob.com/admin/articles/newarticle">
+					<img src ="http://www.puckermob.com/admin/assets/img/Start-Slide-Add-New-Article.jpg" alt="new article page image"/>
+					<label class="show-for-large-up">START WRITING AN ARTICLE</label>
+					<label class="hide-for-large-up">START WRITING</label>
+
+				</a>
+				
+
+			</div>
+
+		</div>
+
+		<div class="small-12 columns" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+			<p>Good luck! We can’t wait to read your posts!</p>
+		</div>
+	</div>
+
+
+	<!-- MODAL FOOTER -->
+	<div class="column small-12 welcome-modal-footer">
+	  	  	<?php require('welcome-modal-footer.php'); ?>
+
+	    <p class="small-3 columns align-right no-padding-right">
+	    	<a href="http://www.puckermob.com/admin/articles/newarticle/" class="secondary next-modal-step">
+		    	<label class="show-for-large-up"> START!</label>
+		    	<label class="hide-for-large-up"> START!</label>
+		    	<i class="fa fa-chevron-right" aria-hidden="true"></i>
+	    	</a>
+	    </p>
+	  </div>
   </div>

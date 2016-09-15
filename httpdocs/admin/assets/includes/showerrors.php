@@ -31,9 +31,9 @@ if(isset($updateStatus) && $updateStatus['hasError']){ ?>
 	<div id="popup-content">
 		<div>
 			<?php if($starter_blogger){?>
-				<h2 style=" color: green; font-family: OswaldLight; font-size: 1.8rem;">Thank you for posting this!</h2> <p>A PuckerMob editor will review it for possible publication on the site shortly.</p>
+				<h2 style=" color: green; font-family: OswaldLight; font-size: 1.8rem;">Thank you!</h2> <p>A PuckerMob editor will review it for possible publication on the site shortly.</p>
 			<?php }else{?>
-				<h2 style=" color: green; font-family: OswaldLight; font-size: 1.8rem;">Thank you for posting this!</h2><p>Your article was created Succesfully!!</p>
+				<h2 style=" color: green; font-family: OswaldLight; font-size: 1.8rem;">Thank you!</h2><p>Your article was created Succesfully!!</p>
 			<?php }?>
 		</div>
 	</div>

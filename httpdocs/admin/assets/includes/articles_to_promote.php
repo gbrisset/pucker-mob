@@ -17,6 +17,7 @@
 		<tbody>
 		 <?php foreach($articles as $articleInfo){
 			$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo->article_seo_title;
+			$articleUrlLive = $config['this_url'].'/'.$articleInfo->cat_dir_name.'/'.$articleInfo->article_seo_title;
 			$article_id = $articleInfo->article_id;
 			$facebook_page = $articleInfo->facebook_page_name;
 			$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo->article_id.'_tall');
@@ -43,7 +44,7 @@
 							<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 						</a>
 					</div>
-					<div class="large-8 columns no-padding" style="display: table-caption">
+					<div class="large-7 columns no-padding" style="display: table-caption">
 						<h2 class="small-12 columns no-padding">
 							<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
 							<a href="<?php echo $articleUrl; ?>">
@@ -54,6 +55,10 @@
 							<?php }?>
 						</h2>
 						
+					</div>
+
+					<div class="large-1 columns no-padding show-for-large-up">
+					<?php if($articleInfo->article_status == 1 ) { ?>	<a href="<?php echo $articleUrlLive; ?>" target="_blank" style="position: relative; top: 1.5rem;"><i class="fa fa-external-link"></i></a> <?php }?>
 					</div>
 			  	</td>
 

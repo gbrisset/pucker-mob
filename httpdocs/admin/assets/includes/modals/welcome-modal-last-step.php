@@ -6,13 +6,13 @@
 	<div class="wait clear" style="margin-top: -9px; border-top-right-radius: 10px; border-top-left-radius: 10px;">
 		<span>START!</span>
 	</div>
-	<div class="intro-modal-wrapper columns" style="margin-top:2rem;">
+	<div class="intro-modal-wrapper columns" style="margin-top:1rem;">
 		<h3 class="first">THAT’S IT - YOU’RE READY TO GO!</h3>
 
-		<p style="margin-top:1.5rem;">There’s a lot more to it, but you’ll figure the rest out as you go. So where do you want to start?</p>
+		<p>There’s a lot more to it, but you’ll figure the rest out as you go. So where do you want to start?</p>
 
 		<div class="small-12 columns">
-			<div class="small-6 columns image-box-start">
+			<div class="small-6 columns image-box-start center">
 				<a href="http://www.puckermob.com/admin/dashboard/">
 					<img src ="http://www.puckermob.com/admin/assets/img/Start-Slide-Dashboard.jpg" alt="dashboard image"/>
 					<label class="show-for-large-up">CHECK OUT THE DASHBOARD</label>
@@ -21,7 +21,7 @@
 				</a>
 				
 			</div>
-			<div class="small-6 columns image-box-start">
+			<div class="small-6 columns image-box-start center">
 				<a href="http://www.puckermob.com/admin/articles/newarticle">
 					<img src ="http://www.puckermob.com/admin/assets/img/Start-Slide-Add-New-Article.jpg" alt="new article page image"/>
 					<label class="show-for-large-up">START WRITING AN ARTICLE</label>
@@ -34,7 +34,7 @@
 
 		</div>
 
-		<div class="small-12 columns" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+		<div class="small-12 columns" style="margin-top: 15px; margin-bottom: 10px;">
 			<p>Good luck! We can’t wait to read your posts!</p>
 		</div>
 	</div>

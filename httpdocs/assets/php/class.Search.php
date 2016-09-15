@@ -96,7 +96,7 @@ class Search {
 		$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, 
-					nc.cat_id, article_contributors.contributor_name, article_contributors.contributor_seo_name, a.creation_date, a.article_status
+					nc.cat_id, nc.cat_dir_name, article_contributors.contributor_name, article_contributors.contributor_seo_name, a.creation_date, a.article_status
 
 				FROM articles as a
 

@@ -40,6 +40,7 @@
 <script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script>
 	  
 </head>
+
 <?php 
 	$blogger =  $pro_blogger =  $admin_user =  $externalWriter = $pro_admin =  $starter_blogger =  $suspended = false;
 	if( $adminController->user->data['user_type'] == 3 ||  $adminController->user->data['user_type'] == 8 ||  $adminController->user->data['user_type'] == 9 || $adminController->user->data['user_type'] == 4 || $adminController->user->data['user_type'] == 30 ) $blogger = true;

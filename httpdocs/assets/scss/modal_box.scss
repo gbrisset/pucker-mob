@@ -340,9 +340,10 @@
 
 /* Welcome Modal */
 
-#intro-modal{ min-height: 31rem; }
-.reveal-modal{ min-height: 31rem; margin: 0;}
-
+#intro-modal{ min-height: 28rem; }
+#newarticle, #editarticle{
+	.reveal-modal{ min-height: 0;}
+}
 .modal-inside-wrapper{ 
 	border: 2px solid green; margin: 0;
 	max-height: 39rem;
@@ -350,7 +351,7 @@
 }
 .main-content-modal{ margin-top: 2rem; margin-bottom: 2rem;}
 @media #{$large-up} { 
-	.reveal-modal{ min-height: 29rem; margin: 0;}
+	.reveal-modal{ min-height: 26rem; margin: 0;}
 	.modal-inside-wrapper{ 	max-height: none;
  }
 
@@ -358,7 +359,7 @@
 
 .welcome-modal{
 	padding: 7px;
-	top:25px !important;
+	top:25px;
 
 	//INTRO MODAL
 	.intro-modal, .last-modal{
@@ -376,7 +377,7 @@
 			    font-family: Oslo;
 			    line-height: 1.5;
 			    text-align: center;
-			    margin-bottom: 2rem;
+			    margin-bottom: 15px;
 			}
 			h3{
 				font-family: Oslo;
@@ -395,7 +396,7 @@
 		margin-right: -9px;
 
 		span{
-			font-size: 5rem;
+			font-size: 4rem;
 		    color: #fff;
 		    font-family: Impact;
 		    line-height: 0.9;
@@ -429,14 +430,15 @@
 		}
 
 		@media #{$large-up} { 
-			p{     margin-bottom: 15px;}
-			h3{     font-size: 35px;     margin-bottom: 1rem; }
+			p{     margin-bottom: 10px;}
+			h3{     font-size: 26px;     margin-bottom: 10px; }
 			li{  margin-bottom: 1rem; }
 		}
 	}
 
+
 	.profile-modal{
-		p{ margin-bottom: 5px; }
+		p{ margin-bottom: 10px; }
 		.image-profile-box{
 			background: #ddd;
 			padding: 7px !important;
@@ -470,7 +472,7 @@
 		    min-height: 10px !important;
 		    position: relative;
 		    overflow: scroll;
-		    height: 75px;
+		    height: 50px;
 		}
 
 		#edit-my-profile .wide-button{
@@ -489,7 +491,7 @@
 			}
 			.image-profile-box{ padding: 0.8rem !important; }
 
-			.image-profile-box img{ width: 95%;}
+			.image-profile-box img{ width: 60%;}
 
 			.upload-photo{
 				margin-bottom: 15px !important;
@@ -508,7 +510,7 @@
 	    padding: 0 1rem;
 
 	    @media #{$large-up} { 
-			padding: 2rem;
+			padding: 1rem 2rem;
 		}
 	    
 	}
@@ -533,7 +535,7 @@
 		h3.second{
 			color: green;
 		    line-height: 1.2;
-		    width: 60%;
+		    width: 70%;
 		}
 
 		ul{
@@ -541,6 +543,10 @@
 				font-size: 14px;
     			font-family: oslo;
 			}
+		}
+
+		 @media #{$large-up} { 
+			h3.second{   width: 40%; }
 		}
 	}
 
@@ -565,8 +571,8 @@
 		h2{ color: $dark-main-color; font-size: 1.3rem; font-family: OswaldRegular;}
 		p{     
 			font-family: Oslo;
-		    line-height: 1.4;
-		    margin-top: 1rem; 
+		    line-height: 1.3;
+		    margin-top: 10px; 
 		}
 		#edit-my-profile .header-style, #billing-page .header-style{ 
 			background: #efefef; padding: 10px; 

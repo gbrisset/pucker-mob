@@ -33,17 +33,17 @@
 		<div class="small-12 columns half-margin-top no-padding">
 			<div class="small-12 image-profile-box radius">
 				<div class="small-12 large-3 columns align-center no-padding">
-					<img id="img-profile" src="<?php echo $contImageUrl; ?>" alt="User Image" />
+					<img id="img-profile" class="upload-photo" src="<?php echo $contImageUrl; ?>" alt="User Image" />
 				</div>
 				<div class="small-12 large-9 columns no-padding"  style="    margin-top: 8px !important;">
 					<div class="div-file-upload">
-						<a href="#" class="small-12 upload-photo" style="margin:0;" name="image-file-link" id="image-file-link">Upload Photo</a>
+						<a href="#" class="small-12 upload-photo" style="margin:0; font-family: OsloBold; font-size: 18px;" name="image-file-link" id="image-file-link">Upload Photo</a>
 						 <div class="file-upload-container hidden">
 				    		<input type="file" name="contributor_wide_img" id="contributor_wide_img" class="upload-img-file account-file-input" />
 						</div>  
 						<input type="file" class="hidden" id="upload_form" name="upload_form" />
 					</div>
-					<div class="small-12 columns div-images no-padding show-for-large-up">
+					<div class="small-12 columns div-images no-padding show-for-large-up center">
 						<input type="hidden" id="cont_i" name="cont_i" value="<?php echo $contributorInfo->contributor_id; ?>" />
 						<div class="small-12 large-12 columns no-padding">
 							<label style="margin-bottom: 10px;">Don't have a pic? Choose an avatar:</label>
@@ -115,9 +115,9 @@
       $('#contributor_bio-nf').froalaEditor({
       	  key: 'UcbaE2hlypyospbD3ali==',
       	  toolbarSticky: false,
-      	  height: 140,
+      	  height: 80,
       	  placeholderText: 'WRITE A SHORT BIO',
-	      toolbarButtons: ['bold', 'italic', 'align', 'insertLink']
+	      toolbarButtons: ['insertLink']
       });
   });
 	</script> 

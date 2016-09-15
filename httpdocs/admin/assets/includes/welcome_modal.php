@@ -1,10 +1,11 @@
-<a href="#" data-reveal-id="intro-modal" class="reveal-link hide"  data-animation="fadeAndPop" data-animationspeed="300" data-closeonbackgroundclick="true" data-dismissmodalclass="close-reveal-modal"
->Modal in a modal</a>
+
 <?php
 	$_SESSION['show_welcome_modal'] = '1';
 ?>
-<!-- Reveal Modals begin -->
+<input type="hidden" value="<?php echo $adminController->user->data['user_login_count']; ?>" id="user_login"/>
+<input type="hidden" value="<?php echo $_SESSION['show_welcome_modal']; ?>" id="show_welcome_modal"/>
 
+<!-- Reveal Modals begin -->
 <div id="intro-modal" class="reveal-modal small welcome-modal border-radius-10x" data-reveal aria-labelledby="intro-modal-title" aria-hidden="true" role="dialog">
   <?php require('modals/welcome-modal-intro.php'); ?>
 </div>
@@ -29,10 +30,11 @@
   <?php require('modals/welcome-modal-last-step.php'); ?>
 </div>
   
-
 <script>
 	$(document).foundation().foundation();
 	// trigger by event
-	$('a.reveal-link').trigger('click');
+  if($('#user_login').val() == 0 && $('#show_welcome_modal').val() != 1 ){
+	   $('a.reveal-link').trigger('click');
+  }
 	$('a.close-reveal-modal').trigger('click');
 </script>

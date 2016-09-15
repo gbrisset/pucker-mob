@@ -141,7 +141,7 @@ function triggerErrorPopup(data){
 		var save = data['save'];
 
 		if(data['statusCode'] == 200){
-			$(h2).text('Thank you for posting this!').removeClass('errorTxt').addClass('successTxt');
+			$(h2).text('Thank you!').removeClass('errorTxt').addClass('successTxt');
 			redirect = true;
 		}else{
 			$(h2).text('Sorry...').removeClass('successTxt').addClass('errorTxt');

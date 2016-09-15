@@ -145,12 +145,7 @@
 					<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
 				</div>
 				
-				<!-- WELCOME MODAL -->
-				<?php 
-					if(	$userData['user_login_count'] == 0  && !isset($_SESSION['show_welcome_modal']) ){
-						include_once($config['include_path_admin'].'welcome_modal.php'); 
-					}
-				?>
+
 
 			</div>
 
@@ -159,10 +154,10 @@
 
 	</main>
 
-	<!-- INFO BADGE -->
+	<!-- INFO BADGE 
 	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
-		<?php include($config['include_path_admin'].'info-badge.php');?>
-	</div>
+		<?php //include($config['include_path_admin'].'info-badge.php');?>
+	</div>-->
 	<?php //include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php');?>
 </body>

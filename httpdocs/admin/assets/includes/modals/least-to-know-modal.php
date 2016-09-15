@@ -16,16 +16,16 @@
 			<h3>STARTER LEVEL</h3>
 			<ul>
 				<li>You’ll earn our base CPM rate (check the dashboard for details)</li>
-				<li>Your articles will need approval from a PuckerMob editor before being posted live</li>
+				<li>Your articles will need approval from  PuckerMob before being published</li>
 				<li>Take part in monthly incentive events to earn more</li>
 				<li>You’ll automatically be promoted to our next level, Basic, after getting just 5,000 total 
-					views on your articles. Once you'r Basic, you’ll start to earn more and get more exposure.</li>
+					views on your articles. Once you’re Basic, you’ll start to earn more and get more exposure</li>
 			</ul>
 		</div>
 		<div class="columns small-12">
 			<p class="hide-for-large-up">You’ll find out about higher levels later.</p>
 
-			<p class="show-for-large-up">There are other levels higher than Basic, but you’ll find out more about them later.</p>
+			<p class="show-for-large-up">There are other levels, but you’ll find out more about them later.</p>
 		</div>
 	</div>
 	

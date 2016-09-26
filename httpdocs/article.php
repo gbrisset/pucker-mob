@@ -118,6 +118,22 @@ if(!is_null($categoryInfo)){
 <!-- BODY -->
 <?php include_once($config['include_path'].'head.php');?>
 
+<!-- UNDERTONE -->
+<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 
+		&&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 
+		&& $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  
+		&& $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
+		&& $articleInfoObj['article_id'] != 17286  ){?>
+		
+		<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+		<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+		<script>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+		</script>
+		</div>
+		
+<?php } ?>
+
 <!-- HEAD -->
 <body id="article" class="mobile">
 	<!-- HEADER MENU -->
@@ -149,39 +165,7 @@ if(!is_null($categoryInfo)){
 		</section>
 	</main>
 	
-	<!-- UNDERTONE -->
-	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 
-				&&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 
-				&& $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  
-				&& $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
-				&& $articleInfoObj['article_id'] != 17286  ){?>
-			
-			<?php if($articleInfoObj['article_id'] == 5813 ){?>
-				<!-- /10394362/paz_724477 -->
-				<div id='div-gpt-ad-1470928349713-0'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470928349713-0'); });
-				</script>
-				</div>
-
-			<?php }else{?>
-				<!--/73970039/UT_SS_FP 
-				<div id='div-gpt-ad-1461622964696-3'>
-					<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
-					</script>
-				</div>-->
-
-				<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-				<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-				</script>
-				</div>
-
-			<?php }?>
-			
-		<?php } ?>
+	
 
 		<!-- FACEBOOK FUNCTIONS -->
 		<?php include_once('admin/fb/fbfunctions.php'); ?>
@@ -222,19 +206,14 @@ if(!is_null($categoryInfo)){
 			   && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  
 			   && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
 			   && $articleInfoObj['article_id'] != 17286  ){?>
-				<!-- /73970039/UT_SS_FP
-				<div id='div-gpt-ad-1461622964696-3'>
-					<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
-					</script>
-				</div> -->
-<!-- CURRENT -->
-				<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-				<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-				</script>
-				</div>
+
+		<!-- CURRENT -->
+		<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+		<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+		<script>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+		</script>
+		</div>
 	<?php } ?>
 
 	<!-- HEADER MENU -->
@@ -307,7 +286,7 @@ if(!is_null($categoryInfo)){
 					        <?php if( $articleInfoObj['article_id'] != 14613){?>     
 					           <?php if(   $articleInfoObj['article_id'] != 15284 && $articleInfoObj['article_id'] != 15488){?>
 					              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-					                <style> a#adContent-clickOverlay{z-index: 9 !important;}</style>
+					               <!-- <style> a#adContent-clickOverlay{z-index: 9 !important;}</style>
 					                <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 					                <script type="text/javascript" language="javascript">
 					                //<![CDATA[
@@ -315,7 +294,8 @@ if(!is_null($categoryInfo)){
 					                  "slot_uuid":"ad4fe546-5060-4729-89ff-0bcae94681e2"
 					                });
 					                //]]>
-					                </script>
+					                </script>-->
+					                <iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=162&sCampaignID=10821&sSeller=178&creativeID=12&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
 					              </div>
 					            <?php }?> 
 					        <?php }else{ ?>

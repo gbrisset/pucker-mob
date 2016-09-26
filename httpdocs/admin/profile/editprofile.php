@@ -62,7 +62,7 @@
 					$contImageUrl =  'http://images.puckermob.com/articlesites/contributors_redesign/'.$contributorInfo['contributor_image']; ;
 					break;
 				case isset($_POST['c_i_d']):
-					$mpArticleAdmin->deleteuserInfo($_POST);
+					$mpArticleAdmin->deleteUserAccount($_POST);
 					$adminController->redirectTo('contributors/');
 					break;
 				}
@@ -198,6 +198,31 @@
 						</div>
 
 					</form>
+					<?php if($admin){?>
+					<hr>
+					<section id="contributor-delete">
+						<div class="small-12 columns radius header-style">
+							<h2>DELETE CONTRIBUTOR INFO AND ACCOUNT</h2>
+						</div>
+						<form class="ajax-submit-form" id="contributor-delete-form" name="contributor-delete-form" action="<?php echo $config['this_admin_url']; ?>contributors/" method="POST">
+							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
+							<input type="hidden" id="c_i" name="c_i" value="<?php echo $contributorInfo['contributor_id']; ?>" />
+							<input type="hidden" id="c_i_d" name="c_i_d" value="<?php echo $contributorInfo['contributor_id']; ?>" />
+							
+							<div class="small-12 columns">
+							<p class="small-12 columns margin-top margin-bottom">Deleting this contributor will remove their account credentials and articles. </p>
+								<div class="btn-wrapper">
+								
+									<p class="<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-delete-form') echo ($updateStatus['hasError'] == true) ? 'radius alert label' : 'raduis success label'; ?>" id="result">
+										<?php if(isset($updateStatus) && $updateStatus['arrayId'] == 'contributor-delete-form') echo $updateStatus['message']; ?>
+									</p>
+
+									<button type="submit" id="submit" name="submit" class="radius">Delete Contributor</button>
+								</div>
+							</div>
+						</form>
+					</section>
+					<?php }?>
 			</div>
 			
 			<!-- Right Side -->
@@ -236,10 +261,10 @@
       });
   	</script> 
 
-  	<!-- INFO BADGE -->
+  	<!-- INFO BADGE 
 	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
-		<?php include($config['include_path_admin'].'info-badge.php');?>
-	</div>
+		<?php //include($config['include_path_admin'].'info-badge.php');?>
+	</div>-->
 
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>

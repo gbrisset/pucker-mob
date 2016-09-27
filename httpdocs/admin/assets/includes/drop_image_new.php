@@ -1,4 +1,4 @@
-<?php if(!$detect->isMobile()){?>
+<?php //if(!$detect->isMobile()){?>
 <div class="small-12 xxlarge-8 columns no-padding inline-flex"  >	
 	
 	<div class="small-12 large-8 columns image-drop-wrapper">
@@ -19,7 +19,6 @@
 
 		               <div class="image-overlay-content" style="display:none;">
 				        <a href="#" ><i class="fa fa-camera" aria-hidden="true"></i>Change</a>
-				       <!--	<a href="#" id="edit-image"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>-->
 				      </div>
 		            </div>
 		            <div class="dz-progress" style="display:none;"><span class="dz-upload" data-dz-uploadprogress></span></div>
@@ -51,21 +50,13 @@
 	 </div>
 
 </div>
-		<!--  <div class="load-editor" id="load-editor" style="position: fixed;
-		    clear: both;
-		    top: 3rem;
-		    height: 100%;
-		    width: 100%;
-		    overflow: hidden;
-		    z-index: 99999;
-		    left: 0;">
-		</div>-->
 
 <!-- Load widget code -->
 <script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>   
 <script type="text/javascript" src="<?php echo $config['this_admin_url'].'assets/js/imagehandler.js'?>"></script>   
-<?php }else{ ?>
-<div class="small-12 xxlarge-8 columns no-padding inline-flex"  >	
+
+<?php //}else{ ?>
+<!--<div class="small-12 xxlarge-8 columns no-padding inline-flex"  >	
 	<div class="small-12 large-8 columns image-drop-wrapper">
 		<div id="img-container" class="small-12 large-12 columns center no-padding" style="border: 3px dotted #FFE;">
 			<div class="image-drop-titles">
@@ -74,5 +65,37 @@
 		   	 </div>
 	   	</div>
  	</div>
-</div>
-<?php }?>
+</div>-->
+
+<!-- Load widget code -->
+<script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>
+<script type="text/javascript" src="<?php echo $config['this_admin_url'].'assets/js/imagehandler.js'?>"></script>   
+<!-- Instantiate the widget 
+<script type="text/javascript">
+
+    var featherEditor = new Aviary.Feather({
+        apiKey: '1234567',
+        onSave: function(imageID, newURL) {
+            var img = document.getElementById(imageID);
+            img.src = newURL;
+        }
+    });
+
+    function launchEditor(id, src) {
+        featherEditor.launch({
+            image: id,
+            url: src
+        });
+        return false;
+    }
+
+</script>    -->                     
+
+<!-- Add an edit button, passing the HTML id of the image
+    and the public URL to the image 
+<a href="#" onclick="return launchEditor('editableimage1', 
+    'http://images.puckermob.com/articlesites/puckermob/large/22029_tall.jpg');">Edit!</a>-->
+
+<!-- original line of HTML here:
+<img id="editableimage1" src="http://images.puckermob.com/articlesites/puckermob/large/22029_tall.jpg"/> -->
+<?php// }?>

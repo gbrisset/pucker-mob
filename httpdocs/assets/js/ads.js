@@ -95,9 +95,8 @@ if($('body').hasClass('mobile')) {
 				if( article_id == 16562 ||  article_id == 17425 || article_id == 14479 || article_id == 14576 ||  article_id == 15109 || article_id == 15271 ||  article_id == 17286){
 					inBodyAd.loadInArticleAd( 'article-body', 3, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
 					inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
-				}
-				//else{ 
-					//if(article_id != 15284 &&  article_id != 15488 && article_id != 20080){
+				}else{ 
+					if( article_id != 18521 ){
 						
 						//ADBLADE
 					//	inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<ins class="adbladeads" data-cid="23726-4286472148" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>', tag);
@@ -126,7 +125,7 @@ if($('body').hasClass('mobile')) {
       					//inBodyAd.loadInArticleAd('article-body', 9, 0, "<script type=\"text/javascript\"> window._ttf = window._ttf || []; _ttf.push({ pid : 1 , vast: 'http://a.teads.tv/vast/get/1550', lang: \"en\", slot: '#article-content #article-body > p', format: \"inread\", minSlot: 4 ,components: { skip: {delay : 0}}, css: \"margin: 0px auto 0px; max-width: 550px;\"}); (function (d) { var js, s = d.getElementsByTagName('script')[0]; js = d.createElement('script'); js.async = true; js.src = '//cdn.teads.tv/media/format.js'; s.parentNode.insertBefore(js, s); })(window.document);</script>", tag);
 
       					//Meme
-      					inBodyAd.loadInArticleAd('article-body', 8, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/iframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);
+      					inBodyAd.loadInArticleAd('article-body', 4, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);
 						
 						//if($('#branovate_on').val() === '1'){
 							//BRANOVATE
@@ -144,11 +143,8 @@ if($('body').hasClass('mobile')) {
 						//	}
 						//}
 						
-					//}
-					
-				
-			//}
-		
+					}
+				}
 		}
 		$('#adunit-300x250-3159').attr('style', 'background:#ddd; height: 250px; width: 300px;');
 		//$('.inarticle-ad').prepend("<p style='margin-left: 0.5rem !important;color: #bbb;font-size: 0.9rem !important;font-style: italic; margin-bottom:7px !important;'>Advertisement</p>");

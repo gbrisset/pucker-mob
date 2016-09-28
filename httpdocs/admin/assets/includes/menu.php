@@ -77,12 +77,8 @@
 			
 			<!-- CONTRIBUTORS -->
 			<?php  if($adminController->user->data['user_permission_show_other_contributors']){?>
-			<li class="parent small-12 columns  padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>contributors/">Contributors<i class="fa fa-chevron-down"></i></a>
-			</li>
-				<ul class="" style="opacity: 1; z-index: 1; display: none;">
-					<li class="small-12 columns border-bottom border-top padding-top padding-bottom" id="edit_contributors"><a href="<?php echo $config['this_admin_url']; ?>contributors/">View Contributor</a></li>
-				</ul>
+			<li class=" small-12 columns  padding-top padding-bottom">
+				<a href="<?php echo $config['this_admin_url']; ?>contributors/">contributors</a>
 			</li>
 			<?php }?>
 
@@ -111,10 +107,10 @@
 					</li>
 				</ul>
 			</li>
-
 			<?php }?>
-
-	
+			<!--<li class="small-12 columns border-top border-bottom padding-top padding-bottom">
+				<a href="#" data-reveal-id="intro-modal" class="reveal-link"  data-animation="fadeAndPop" data-animationspeed="300" data-closeonbackgroundclick="true" data-dismissmodalclass="close-reveal-modal">Re-Watch Intro</a> 
+			</li>-->
 			<li class="small-12 columns border-top border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url']; ?>contact/">Contact Us</a>
 			</li>			
@@ -124,9 +120,14 @@
 			</li>
 			
 		</ul>
-		
-			<a style="color: #555; font-family:OsloBold; margin-top: 50%;" class="padding-top small-12 columns align-right" href="http://www.puckermob.com/policy/" target="_blank">Terms Of Service</a>
+			
+			<a style="color: #555; font-family:OsloBold; margin-top:50%;" class="padding-top small-12 columns align-right" href="http://www.puckermob.com/policy/" target="_blank">Terms Of Service</a>
 			<a style="color: #555; font-family:OsloBold;"  class="padding-top small-12 columns align-right" href="http://www.puckermob.com/privacy/" target="_blank">Privacy</a>
 	
 	</nav>
 </div>
+
+<!-- WELCOME MODAL -->
+<?php 
+	//include_once($config['include_path_admin'].'welcome_modal.php'); 
+?>

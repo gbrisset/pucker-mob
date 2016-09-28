@@ -81,8 +81,8 @@ Dropzone.options.imageDrop = {
 	  acceptedFiles: '.jpg, .gif, .png, .jpeg',       // allowed image types don't use image/*
 	  maxFilesize: 3, // MB
 	  uploadMultiple: false,
-	  thumbnailWidth: null,
-	  thumbnailHeight: null,
+	  thumbnailWidth: 784,
+	  thumbnailHeight: 431,
 	  previewsContainer: ".dropzone-previews",
 	  previewTemplate: previewTemplate,
 

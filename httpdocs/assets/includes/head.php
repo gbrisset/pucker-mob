@@ -74,68 +74,44 @@
   ga('create', 'UA-6839498-81', 'auto');
   ga('send', 'pageview');
 </script>
+		<?php if( $detect->isMobile() && isset($articleInfo) && $articleInfo['article_id']  == 7521 ){?>
+				<!-- Start Puckermob - interstitial - iframe buster code -->
+				<div id='__kx_ad_1486'></div>
+				<script type="text/javascript" language="javascript" id="__kx_tag_1486">
+				var __kx_ad_slots = __kx_ad_slots || [];
 
-	<!-- UNDERTONE 
-		<script type='text/javascript'>
-		  var googletag = googletag || {};
-		  googletag.cmd = googletag.cmd || [];
-		  (function() {
-		    var gads = document.createElement('script');
-		    gads.async = true;
-		    gads.type = 'text/javascript';
-		    var useSSL = 'https:' == document.location.protocol;
-		    gads.src = (useSSL ? 'https:' : 'http:') +
-		      '//www.googletagservices.com/tag/js/gpt.js';
-		    var node = document.getElementsByTagName('script')[0];
-		    node.parentNode.insertBefore(gads, node);
-		  })();
-		</script>-->
-
-		<!--<script type='text/javascript'>
-		  googletag.cmd.push(function() {
-		    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1461622964696-0').addService(googletag.pubads());
-		    googletag.defineSlot('/73970039/UT_P', [300, 1050], 'div-gpt-ad-1461622964696-1').addService(googletag.pubads());
-		    googletag.defineSlot('/73970039/UT_SS', [1, 1], 'div-gpt-ad-1461622964696-2').addService(googletag.pubads());
-		    googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1461622964696-3').addService(googletag.pubads());
-		    googletag.defineSlot('/73970039/UT_ST', [300, 250], 'div-gpt-ad-1461622964696-4').addService(googletag.pubads());
-		    googletag.defineSlot('/73970039/UT_SA', [320, 50], 'div-gpt-ad-1461622964696-5').addService(googletag.pubads());
-		    googletag.defineSlot('/73970039/UT_SP', [320, 50], 'div-gpt-ad-1461622964696-6').addService(googletag.pubads());
-		    googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470066258166-0').addService(googletag.pubads());
-   			googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470066258166-1').addService(googletag.pubads());
-   			
-   			// Undertone 970x250 VIRGINIA CAMP
-   			googletag.defineSlot('/73970039/UT_970x250', [970, 250], 'div-gpt-ad-1466610548103-0').addService(googletag.pubads());
-
-   			//UNDERTONE TENNESSE CAMP
-   			 googletag.defineSlot('/73970039/UT_SS_Knox', [1, 1], 'div-gpt-ad-1467926983040-0').addService(googletag.pubads());
-
-
-		    googletag.pubads().enableSingleRequest();
-		    googletag.enableServices();
-		  });
-		</script>
-		<script type='text/javascript'>
-		  googletag.cmd.push(function() {
-		    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1467068250785-0').addService(googletag.pubads());
-		    googletag.defineSlot('/73970039/UT_SS', [1, 1], 'div-gpt-ad-1467068250785-1').addService(googletag.pubads());
-		    googletag.pubads().enableSingleRequest();
-		    googletag.enableServices();
-		  });
-		</script>-->
-		<?php if( isset($articleInfo) && $articleInfo['article_id']  == 5813 ){?>
-			<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-				<script>
-				  var googletag = googletag || {};
-				  googletag.cmd = googletag.cmd || [];
+				(function () {
+					var slot = 1486;
+					var h = false;
+					var doc = document;
+					__kx_ad_slots.push(slot);
+					if (typeof __kx_ad_start == 'function') {
+						__kx_ad_start();
+					} else {
+						if (top == self) { 			var s = doc.createElement('script');
+							s.type = 'text/javascript';
+							s.async = true;
+							s.src = '//cdn.kixer.com/ad/load.js';
+							s.onload = s.onreadystatechange = function(){
+								if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+									h = true;
+									s.onload = s.onreadystatechange = null;
+									__kx_ad_start();
+								}
+							};
+							var x = doc.getElementsByTagName('script')[0];
+							x.parentNode.insertBefore(s, x);
+						} else {  			var tag = doc.getElementById('__kx_tag_'+slot); 			var win = window.parent;
+							doc = win.document; 			var top_div = doc.createElement("div"); 			top_div.id = '__kx_ad_'+slot;
+							doc.body.appendChild(top_div);
+							var top_tag = doc.createElement("script"); 			top_tag.id = '__kx_top_tag_'+slot;
+							top_tag.innerHTML = tag.innerHTML;
+							doc.body.appendChild(top_tag);
+						}
+					}
+				})();
 				</script>
-
-				<script>
-				  googletag.cmd.push(function() {
-				    googletag.defineOutOfPageSlot('/10394362/paz_724477', 'div-gpt-ad-1470928349713-0').addService(googletag.pubads());
-				    googletag.pubads().enableSingleRequest();
-				    googletag.enableServices();
-				  });
-				</script>
+				<!-- End Puckermob - interstitial - iframe buster code -->
 
 		<?php }else{?>
 			<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
@@ -150,13 +126,13 @@
 				    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470929060933-0').addService(googletag.pubads());
 				   	googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470934220433-0').addService(googletag.pubads());
 
-
 				   	//STRIKE
 				   	googletag.defineSlot('/73970039/SV_300x250', [300, 250], 'div-gpt-ad-1471285633174-0').addService(googletag.pubads());
 				    googletag.pubads().enableSingleRequest();
 				    googletag.enableServices();
 				  });
 			</script>
+
 		<?php }?>
 <?php 
 	$sponsored_aricle = true; 
@@ -170,10 +146,6 @@
 		<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
 	<?php //} ?>
 <?php }else{ ?>
-		<?php //if(isset($article_id) && $article_id == 6144 ){?>
-			<!-- CODEFUEL SEARCH 
-			<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>-->
-		<?php //} ?>	
 
 		<?php
 			 $current_time = new DateTime(); // Today
@@ -186,43 +158,6 @@
 		?>
 		<input type="hidden" value = "<?php echo $branovate_on; ?>" id="branovate_on"/>
 
-		<?php if(isset($article_id) && $article_id == 15078 ){?>
-			<!-- ICELAND AIRLINE -->
-			<script type='text/javascript'>
-
-			  var googletag = googletag || {};
-
-			  googletag.cmd = googletag.cmd || [];
-
-			  (function() {
-
-			    var gads = document.createElement('script');
-
-			    gads.async = true;
-
-			    gads.type = 'text/javascript';
-
-			    var useSSL = 'https:' == document.location.protocol;
-
-			    gads.src = (useSSL ? 'https:' : 'http:') +
-
-			      '//www.googletagservices.com/tag/js/gpt.js';
-
-			    var node = document.getElementsByTagName('script')[0];
-
-			    node.parentNode.insertBefore(gads, node);
-
-			  })();
-
-			</script>
-			<script type='text/javascript'>
-			  googletag.cmd.push(function() {
-			    googletag.defineSlot('/73970039/ROS1x1', [1, 1], 'div-gpt-ad-1462751375432-0').addService(googletag.pubads());
-			    googletag.pubads().enableSingleRequest();
-			    googletag.enableServices();
-			  });
-			</script>
-		<?php } ?>
 
 	<?php if( isset( $articleInfo['article_id'] ) && (   $articleInfo['article_id']  != 16562 &&   $articleInfo['article_id'] != 17425 && $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488 &&  $articleInfo['article_id']  != 17286) ){ ?>
         <!-- Start Pucker Mob - Interstitial 
@@ -258,33 +193,6 @@
 <?php } ?>
 <?php } ?>
 
-
-
-<!-- ShareT DFP-->
-<?php if( isset($articleInfo) && ($articleInfo['article_id'] == 15212 ) ) {?>
-<script type='text/javascript'>
-  var googletag = googletag || {};
-  googletag.cmd = googletag.cmd || [];
-  (function() {
-    var gads = document.createElement('script');
-    gads.async = true;
-    gads.type = 'text/javascript';
-    var useSSL = 'https:' == document.location.protocol;
-    gads.src = (useSSL ? 'https:' : 'http:') +
-      '//www.googletagservices.com/tag/js/gpt.js';
-    var node = document.getElementsByTagName('script')[0];
-    node.parentNode.insertBefore(gads, node);
-  })();
-</script>
-
-<script type='text/javascript'>
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/73970039/ROS1x1', [1, 1], 'div-gpt-ad-1462751375432-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
-  });
-</script>
-<?php }?>
 
 <?php if (!$local){?>
 	

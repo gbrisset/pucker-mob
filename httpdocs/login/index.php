@@ -111,7 +111,7 @@
 
 						<!-- FACEBOOK -->
 			   			<div class="fb-login-button clear">
-			   				<button id="fb-login" class="small-12 columns no-padding">Log-In with facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
+			   				<button id="fb-login" class="fb-login small-12 columns no-padding">Log-In with facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
 						</div>
 
 						<p class="small-registration-text">We'll never post to your Facebook without permission.</p>
@@ -179,7 +179,7 @@
 				   			
 							<!-- FACEBOOK -->
 				   			<div class="fb-login-button clear">
-				   				<button id="fb-login" class="small-12 columns no-padding">Register with facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
+				   				<button id="fb-login" class=" fb-login small-12 columns no-padding">Register with facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
 							</div>
 
 							<p class="small-registration-text">We'll never post to your Facebook without permission.</p>
@@ -198,11 +198,15 @@
 	<!-- FACEBOOK LOGIN & REGITER API -->
 	<script>
 		if($('#fb-login')){
-			$('#fb-login').on('click', function(e){
-			    FB.login(function(response) {
-			  	  checkLoginState();
-			    }, {scope: 'public_profile,email'});
+			$('.fb-login').each(function(){
+				$(this).on('click', function(e){
+					console.log('fb click');
+				    FB.login(function(response) {
+				  	  checkLoginState();
+				    }, {scope: 'public_profile,email'});
+				});
 			});
+			
 		}
 	</script>
 

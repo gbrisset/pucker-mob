@@ -6,7 +6,7 @@
 		<thead>
 		    <tr>
 		       <th width="400" class="align-left">Title</th>
-		       <th width="100" class="show-for-large-up">Added</th>
+		       <th width="100" class="show-for-large-up">Updated</th>
 		       <th width="100" class="show-for-large-up">Promotion</th>
 		       <th width="100"  class="show-for-large-up">status</th>
 		       <th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
@@ -28,6 +28,7 @@
 			$contributor_name = $articleInfo->contributor_name;
 			$contributor_seo_name = $articleInfo->contributor_seo_name;
 			$promoted = $articleInfo->promoted;
+			$article_date_updated = date_format(date_create($articleInfo->date_updated), 'm/d/y');
 
 			if(file_exists($pathToImage)){
 				$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo->article_id.'_tall.jpg';
@@ -57,7 +58,7 @@
 					</div>
 			  	</td>
 
-			  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
+			  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_updated; ?></label></td>
 			  	<td class="show-for-large-up  border-right"><label><?php echo $facebook_page; ?></label></td>
 			  	
 			  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	

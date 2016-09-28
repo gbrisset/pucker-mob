@@ -41,17 +41,17 @@
 	$allCurrent = '';
 	switch($artType){
 		case 'bloggers':
-			$articles = $promoteObj->getArticlesToPromote( " user_type IN (3, 8) ", $filters );
+			$articles = $promoteObj->getArticlesToPromote( " user_type IN (3, 8)  ORDER BY date_updated ASC ", $filters );
 			$bloggersCurrent = 'current';
 		break;
 
 		case 'writers':
-			$articles = $promoteObj->getArticlesToPromote( " user_type IN (1, 6, 7) ",  $filters);
+			$articles = $promoteObj->getArticlesToPromote( " user_type IN (1, 6, 7)  ORDER BY date_updated ASC ",  $filters);
 			$writersCurrent = 'current';
 		break;
 
 		default:
-			$articles = $promoteObj->getArticlesToPromote( " facebook_page_id != 7  ",  $filters);
+			$articles = $promoteObj->getArticlesToPromote( " facebook_page_id != 7   ORDER BY date_updated ASC ",  $filters);
 			$allCurrent = 'current';
 			break;
 	}
@@ -90,9 +90,11 @@
 			
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">				
 				<?php include_once($config['include_path_admin'].'articles_to_promote.php'); ?>
+
+							<?php include_once($config['include_path_admin'].'pages.php'); ?>
+
 			</div>
 
-			<?php include_once($config['include_path_admin'].'pages.php'); ?>
 
 			
 

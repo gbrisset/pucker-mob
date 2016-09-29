@@ -1261,6 +1261,10 @@ End password reset methods
 			'bypassCache' => true
 		));
 
+		if ($article && !isset($article[0])){
+			$article = array($article);
+		}
+
 		return $article;
 
 	}

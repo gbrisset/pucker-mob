@@ -93,7 +93,6 @@ class Contributor extends DatabaseObject{
 	}
 
 	public function getContributorEarningsPerMonth( Contributor $contributor, $month, $year){
-
 		$contributor_earnings = new ContributorEarnings( $contributor);
 
 		if( !is_null( $contributor_earnings )) 	return $contributor_earnings->getEarningsPerMonthYear( $month, $year );

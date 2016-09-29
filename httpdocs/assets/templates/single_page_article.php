@@ -80,8 +80,9 @@
 				<div id="mobile-instream-branovate-ad" style="text-align: center; margin-bottom: 10px; margin-top: 5px;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
 						<?php if( $article_id == 15832 ){?>
-							<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+							<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
 						<?php }else{?>
+							<?php //if( $article_id != 18521 ){?>
 							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 							<!-- PM Mobile Below Picture -->
 							<ins class="adsbygoogle"
@@ -91,6 +92,7 @@
 							<script>
 							(adsbygoogle = window.adsbygoogle || []).push({});
 							</script>
+							<?php //} ?>
 						<?php } ?>
 					</div>
 				</div>
@@ -169,7 +171,7 @@
 						
 					</div>
 				<?php } ?>
-				
+				<?php //if($article_id != 18521 ){?>
 				<!-- AMAZON >-->
 				<div id="mobile-instream-branovate-ad" style="text-align: center;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
@@ -183,6 +185,7 @@
 						</script>
 					</div>
 				</div>
+				<?php //} ?>
 
 		</div>
 
@@ -210,34 +213,57 @@
 				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">
 					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
 				</div>
-			<?php } ?>
+			
+				<!-- MEME GLOBAL 
+				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
+					<div id="get-content" style="text-align:center;">
+						<iframe id='m_iframe'  src="http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+					</div>
+				</div>-->
 
-
-			<!-- MEME GLOBAL 
-			<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
-				<div id="get-content" style="text-align:center;">
-					<iframe id='m_iframe'  src="http://web-testing.gce.memeglobal.tech/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-				</div>
-			</div>-->
-			<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
-				<div id="get-content" style="text-align:center;">
-					<iframe id='m_iframe'  src="http://growfoodsmart.com/sas/player/iframe.php?sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-				</div>
-			</div>
-			<!-- AMAZON 
-			<div id="mobile-instream-branovate-ad" style="text-align: center;">
-				<div id="get-content" style="text-align:center; display: inline-block;">
+				<!-- AMAZON >-->
+				<div id="mobile-instream-branovate-ad" style="text-align: center;">
+					<div id="get-content" style="text-align:center; display: inline-block;">
 						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 						<script type="text/javascript" language="javascript">
 						  //<![CDATA[
 						    aax_getad_mpb({
-						      "slot_uuid":"2e18cb00-0578-49b4-8214-1f204e8327a2"
+						      "slot_uuid":"aa8bf1b2-a34c-41c3-810a-4dc0dccc55c4"
 						    });
 						  //]]>
 						</script>
+					</div>
 				</div>
-			</div>-->
 
+				
+				<?php if( $article_id == 22165 ){?>
+				<div id="mobile-instream-branovate-ad" style="text-align: center;">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+						<div id="vm_inline"></div>
+						<script>
+						    window._videomosh = window._videomosh || [];
+						    !function (e, f, u) {
+						        e.async = 1;
+						        e.src = u;
+						        f.parentNode.insertBefore(e, f);
+						    }(document.createElement('script'),
+						            document.getElementsByTagName('script')[0],
+						            'http://player.videomosh.com/players/loader/loader_final4.js');
+						    _videomosh.push({
+						        publisher_key: "sequelmedia",
+						        mode: "incontent",
+						        container: "vm_inline",
+						        incontent_mobile_id: "9834",
+						        incontent_desktop_id: "42296",
+						        target_type: "mix",
+						backfill: ""
+						       });
+						</script>
+					</div>
+				</div>
+				<?php } ?>
+			<?php } ?>
+			
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>
 	
@@ -257,7 +283,6 @@
 	<input type="hidden" value="<?php echo $article_id; ?>" id="article-id" />
 	
 	<section id="article-summary" class="small-12 column">
-		
 		<!-- DISCLAIMER -->
 		<?php if($article_disclaimer){?>
 		<div class="columns no-padding padding-top disclaimer">
@@ -287,15 +312,14 @@
 				<?php } ?>
 
 				<?php if(  $article_id != 16562 &&  $article_id != 17425 && $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){?>
-					<!-- SHARETH -->
-					<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0;">
-						<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
-					</section>
-					
-					<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0; display: inline;">
-						<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=640&height=360&brandId=211&sCampaignID=10754&sSeller=178&creativeID=123&cb=12345&sDomain=puckermob.com" style="width:640px;height:360px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-					</section>
-
+				<!-- SHARETH -->
+				<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0;">
+					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
+				</section>
+				
+				<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0; display: inline;">
+					<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=640&height=360&brandId=211&sCampaignID=10754&sSeller=178&creativeID=123&cb=12345&sDomain=puckermob.com" style="width:640px;height:360px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+				</section>
 				<?php } ?>
 				
 				<!-- RELATED ARTICLES -->
@@ -312,44 +336,45 @@
 					<div class="rel-articles-wrapper">
 						<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
 						<ul>
-							<?php if( $related['related_article_id_1']['info'] ) {?>
-								<li class="related_to_this_article" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php }?>
-								<?php if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php }?>
-									<?php if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></li><?php }?>
+						<?php if( $related['related_article_id_1']['info'] ) {?>
+							<li class="related_to_this_article" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php }?>
+							<?php if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php }?>
+								<?php if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a>
+							</li>
+						<?php }?>
 						</ul>
 					</div>
 					<hr>
 				</div>
 				<?php }?>
-
-		
 			
-			<!-- Social Media Icons -->
-			<div class="row social-media-container social-cont-1 padding-top clear" style="margin-bottom: 0rem; display:block !important;">
-				<?php include($config['include_path'].'social_media_article_buttons.php'); ?>
-			</div>
+				<!-- Social Media Icons -->
+				<div class="row social-media-container social-cont-1 padding-top clear" style="margin-bottom: 0rem; display:block !important;">
+					<?php include($config['include_path'].'social_media_article_buttons.php'); ?>
+				</div>
 
-			<hr>
-			<?php if(!$sponsored_aricle &&  $article_id != 16562 &&   $article_id != 17425  && $article_id != 14613 && $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){ ?>
-			<!-- TABOOLA -->
-			<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
-				<div id="taboola-below-article-thumbnails"></div>
-				<script type="text/javascript">
-				  window._taboola = window._taboola || [];
-				  _taboola.push({
-				    mode: 'thumbnails-a',
-				    container: 'taboola-below-article-thumbnails',
-				    placement: 'Below Article Thumbnails',
-				    target_type: 'mix'
-				  });
-				</script>
-			</section>
-			<?php } ?>
+				<hr>
+
+				<?php if(!$sponsored_aricle &&  $article_id != 16562 &&   $article_id != 17425  && $article_id != 14613 && $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){ ?>
+				
+				<!-- TABOOLA -->
+				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
+					<div id="taboola-below-article-thumbnails"></div>
+					<script type="text/javascript">
+					  window._taboola = window._taboola || [];
+					  _taboola.push({
+					    mode: 'thumbnails-a',
+					    container: 'taboola-below-article-thumbnails',
+					    placement: 'Below Article Thumbnails',
+					    target_type: 'mix'
+					  });
+					</script>
+				</section>
+				<?php } ?>
 			
-
-			<!-- COMMENTS BOX -->
-			<?php include_once($config['include_path'].'disqus.php'); ?>
-			<br>
+				<!-- COMMENTS BOX -->
+				<?php include_once($config['include_path'].'disqus.php'); ?>
+				<br>
 			
 			<!-- IMAGE SOURCE -->
 			<?php if( isset($article_img_credits) && !empty($article_img_credits)){?>
@@ -360,7 +385,6 @@
 			</section>
 		</div>
 	</section>
-
 </article>
 <?php } ?>
 <!-- *******************************************END DESKTOP******************************************* -->

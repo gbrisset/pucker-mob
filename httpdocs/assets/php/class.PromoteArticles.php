@@ -24,6 +24,7 @@
 		public $contributor_seo_name;
 		public $contributor_email_address;
 		public $user_type;
+		public $user_id;
 
 		public $article_status;
 		public $creation_date;

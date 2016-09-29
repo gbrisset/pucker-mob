@@ -398,6 +398,13 @@ $('#image-file-link').click(function(e){
 });
 
 
+$('#img-profile').click(function(e){
+	e.preventDefault();
+	$('#contributor_wide_img').click()
+	$('#update-article-image').show();
+});
+
+
 //	Upload account image link
 $(function(){
     $("#upload_link").on('click', function(e){
@@ -422,7 +429,7 @@ function triggerErrorPopup(data){
 		var save = data['save'];
 
 		if(data['statusCode'] == 200){
-			$(h2).text('Thank you for posting this!').removeClass('errorTxt').addClass('successTxt');
+			$(h2).text('Thank you').removeClass('errorTxt').addClass('successTxt');
 			redirect = true;
 		}else{
 			$(h2).text('Sorry...').removeClass('successTxt').addClass('errorTxt');
@@ -969,12 +976,24 @@ if( $('#promote_articles_list') ){
 		$(this).on('click', function(){
 			var ele = this,
 			isCheck = $(this).is(':checked'),
-			article_id = $(this).attr('data-info');
+			article_id = $(this).attr('data-info'),
+			user_id = $(this).attr('data-user'), 
+			facebook_page_id = $(this).attr('data-fb-id'), 
+			facebook_page_name = $(this).attr('data-fb-name'),
+			article_title = $(this).attr('data-title');
 			
 			$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',
-				  data: { article_id: article_id, promoted : isCheck,  task:'article_promoted' },
+				  data: { 
+				  	article_id: article_id, 
+				  	promoted : isCheck,  
+				  	task:'article_promoted', 
+				  	user_id: user_id, 
+				  	facebook_page_id : facebook_page_id, 
+				  	facebook_page_name : facebook_page_name, 
+				  	article_title : article_title  
+				  },
 				}).done(function(data) {
 					if(data){
 						var result = $.parseJSON(data);

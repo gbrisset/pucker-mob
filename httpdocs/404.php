@@ -1,6 +1,9 @@
 <?php
 	require_once('assets/php/config.php');
 	$pageName = $mpArticle->data['article_page_name'];
+
+	//RELATE ARTICLES LIST 
+	$relatedArticles = $mpArticle->getArticlesList([ 'limit'=> 20,  'pageId' => 9 ]);
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -9,7 +12,7 @@
 		<?php include_once($config['include_path'].'new_header.php');?>
 		<?php include_once($config['include_path'].'header_ad.php');?>
 		<main id="main" class="row panel sidebar-on-right " role="main">
-			<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-11 columns translate-fix sidebar-main-left" style="z-index: 999;">
+			<section id="puc-articles" class="sidebar-right  small-12 medium-12 large-12 columns translate-fix" style="z-index: 999;">
 
 				<div class="small-12 columns sidebar-right">
 					<h1>Uh oh, something's missing!</h1>
@@ -23,13 +26,14 @@
 							<button id="notfound-search-submit" class="button postfix alert"><i class="fa fa-search"></i>Search</button>
 						</div>
 					</div>
-
-					<?php include_once($config['include_path'].'aroundtheweb.php'); ?>
+					
+					<!-- ALSO IN PM ARTICLES -->
+					<?php include_once( $config['include_path'].'similararticles.php'); ?>
 				</div>
 			</section>
 			<?php include_once($config['include_path'].'rightsidebar.php');?>
 		</main>
-		<?php include_once($config['include_path'].'footer.php');?>
+		<?php //include_once($config['include_path'].'footer.php');?>
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
 	</body>
 </html>

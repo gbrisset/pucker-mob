@@ -153,6 +153,7 @@ class User extends DatabaseObject{
 	*/
 	public function getContributorInfo(){ 
 		$contributor = new Contributor($this->user_email); 
+		$this->contributor = $contributor;
 		return $contributor;
 	}
 

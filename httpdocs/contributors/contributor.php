@@ -31,10 +31,9 @@ if($contributorInfo['contributors']){
 	
 	$pageName = $contributorInfoObj['contributor_name'].' | '.$mpArticle->data['article_page_name'];
 	$articleList = $mpArticle->getContributorsArticleList($contributorInfoObj['contributor_id']);
-	//var_dump(count($articleList), $articleList); die;
-	$articlesPerPage = 30;
-	//var_dump($mpArticle->getContributorsArticleList($contributorInfoObj['contributor_id'])); die;
-
+	$articlesPerPage = 50;
+	$contributorInfo['articles']['articles'] = $articleList;
+	//var_dump($contributorInfoObj['contributor_id'], $articleList); die;
 	$totalPages = ceil(count($articleList) / $articlesPerPage);
 	if($totalPages > 1){
 		$currentPage = (isset($_GET['p'])) ? preg_replace('/[^0-9]/', '', $_GET['p']) : 1;
@@ -122,7 +121,7 @@ if($contributorInfo['contributors']){
 			<?php if(isset($articleList) && $articleList){ ?>
 			<section id="results" class="clear">
 				<h2 class="padding-top clear"><?php echo $contributorInfoObj['contributor_name']; ?>'s Articles</h2>
-				<?php
+				<?php 
 				$articleIndex = 1; 
 				foreach ($contributorInfo['articles']['articles'] as $article) {
 					//if (isset($article['parent_category_page_directory']) && $article['parent_category_page_directory'] != 'categories-root/'){ 
@@ -178,7 +177,7 @@ if($contributorInfo['contributors']){
 		include_once($config['include_path'].'rightsidebar.php');
 	} ?>
 </main>
-<?php include_once($config['include_path'].'footer.php'); ?>
+<?php //include_once($config['include_path'].'footer.php'); ?>
 <?php include_once($config['include_path'].'bottomscripts.php'); ?>
 </body>
 </html>

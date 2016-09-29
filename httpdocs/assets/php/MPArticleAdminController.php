@@ -438,7 +438,7 @@ class MPArticleAdminController extends MPArticle{
 		$post['validate'] = false;
 		//If is not an Starter Blogger
 		if($post['user_type'] == 30)
-			$post['article_status-s'] = "3";
+			$post['article_status-s'] = $post['article_status']; //"3";
 		else $post['article_status'] = $post['article_status'];
 
 		//Verify If Image Exist
@@ -598,7 +598,6 @@ class MPArticleAdminController extends MPArticle{
 
 		$pairs[] = "date_updated = :date_updated";
 		$params[':date_updated'] =  date("Y-m-d H:i:s");
-
 		
 		$params = $this->helpers->compileParams($post);
 

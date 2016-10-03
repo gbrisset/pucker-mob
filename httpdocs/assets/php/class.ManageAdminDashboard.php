@@ -117,23 +117,36 @@ class ManageAdminDashboard{
 		}
 	}
 
-	public function getTopShareWritesRank($month, $limit = 1000000){
+	public function getTopShareWritesRank($month, $limit = 1000000, $user_type = false ){
 
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = date('Y');
 
-		$s = "SELECT contributor_earnings.*, article_contributors.*, users.user_type 
+		if($user_type){
+			$s = "SELECT contributor_earnings.*, article_contributors.*, users.user_type 
+			  FROM contributor_earnings 
+			  INNER JOIN ( article_contributors, users) 
+			  	ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
+			  	AND ( article_contributors.contributor_email_address = users.user_email)
+			  WHERE month = $month AND year = $year  AND users.user_type IN ( $user_type)
+			  ORDER BY total_us_pageviews DESC LIMIT ".$limit;
+		}else{
+			$s = "SELECT contributor_earnings.*, article_contributors.*, users.user_type 
 			  FROM contributor_earnings 
 			  INNER JOIN ( article_contributors, users) 
 			  	ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
 			  	AND ( article_contributors.contributor_email_address = users.user_email)
 			  WHERE month = $month AND year = $year  AND users.user_type IN (3, 8, 9)
 			  ORDER BY total_us_pageviews DESC LIMIT ".$limit;
+		}
+		
 
 		$q = $this->performQuery(['queryString' => $s]);
 
 		return $q;
 	}
+
+	
 
 	public function getTopShareWritesRankHeader($month, $year = 0){
 

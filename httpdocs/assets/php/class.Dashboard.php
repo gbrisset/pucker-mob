@@ -193,7 +193,6 @@ class Dashboard{
 
 		//$year = date('Y');
 		$s=" SELECT * FROM user_rate WHERE month = $month AND year = $year ";
-
 		if( $user_type != 8  && $user_type != 9  && $user_type != 6 && $user_type != 7 ){ $user_type = 0; }
 			$s .= " AND user_type =  ".$user_type;
 		
@@ -269,13 +268,11 @@ class Dashboard{
 	public function get_articlesbypageviews_new( $contributor_id, $month, $year ){
 
 		//$month = 2;
-
 		/*$s = "SELECT * FROM  google_analytics_data_daily 
-
 				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
-				ON ( article_contributor_articles.article_id = google_analytics_data_new.article_id )
-				AND ( articles.article_id = google_analytics_data_new.article_id )
-				AND ( article_categories.article_id = google_analytics_data_new.article_id )
+				ON ( article_contributor_articles.article_id = google_analytics_data_daily.article_id )
+				AND ( articles.article_id = google_analytics_data_daily.article_id )
+				AND ( article_categories.article_id = google_analytics_data_daily.article_id )
 				AND (categories.cat_id = article_categories.cat_id )
 				WHERE google_analytics_data_daily.month = ".$month." AND  google_analytics_data_daily.year = ".$year;*/
 			$s = " SELECT google_analytics_data_daily.*, articles.article_title, articles.article_seo_title, categories.cat_id, categories.cat_name, article_contributor_articles.contributor_id  
@@ -287,11 +284,10 @@ class Dashboard{
 					AND (categories.cat_id = article_categories.cat_id )
 					WHERE google_analytics_data_daily.month = ".$month." AND  google_analytics_data_daily.year = ".$year;;
 
-
 			if( isset($contributor_id) && $contributor_id != 0){
 				$s.= " AND article_contributor_articles.contributor_id = ".$contributor_id;
 			}
-			$s.= " ORDER BY google_analytics_data_new.usa_pageviews DESC ";
+			$s.= " ORDER BY google_analytics_data_daily.usa_pageviews DESC ";
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 	
@@ -601,10 +597,12 @@ class Dashboard{
 		if($contributors){
 			foreach($contributors as $contributor){
 				$id = $contributor['contributor_id'];
+				
 				$update_data = $this->getContributorEarnings($id, $month, $year);
 				$prev_month_data = $this->getContributorEarnings($id, $prev_month, $prev_year);
-			
+
 				$earnings_info = $this->get_articlesbypageviews_new( $id, $month, $year);
+
 				$total_article_rate = 0;
 				$total_shares = 0;
 							
@@ -621,8 +619,11 @@ class Dashboard{
 					}
 				}
 
+				//if(isset($update_data ) && $update_data ){
+				//	$share_rate = floatval($update_data[0]['share_rate']);
+				//}else{
 					$share_rate = $this->get_current_rate($month, $contributor['user_type']);	
-				
+				//}
 
 				if($share_rate) $share_rate  = $share_rate['rate'];
 
@@ -632,13 +633,17 @@ class Dashboard{
 				}
 
 				$total_to_be_pay = $total_earnings;
+			
+				//var_dump($id, $total_us_pageviews, $share_rate, $total_to_be_pay, "<br/>");
 
-				
+
 				if( isset($prev_month_data) && $prev_month_data ){
 					if($prev_month_data[0]['paid'] == 0){
 						$total_to_be_pay = $total_to_be_pay + $prev_month_data[0]['to_be_pay'];
 					}
 				}
+
+				
 
 				if($update_data){
 					
@@ -693,6 +698,7 @@ class Dashboard{
 				$total_earnings = 0;
 				
 				if($earnings_info && $earnings_info[0]){
+
 					$earnings_info = $earnings_info[0];
 					$total_article_rate = $earnings_info["total_rate"]; //RATE PER ARTICLE 25/10
 					$total_shares = $earnings_info["total_shares"]; //NUMBER OF SHARES

@@ -130,11 +130,13 @@ if($('body').hasClass('mobile')) {
 						
 						//}
 
+						inBodyAd.loadInArticleAd('article-body', 5, 0, "<script src=\"http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631\"><\/script>", tag);
+
 						//BRANOVATE
 						if(is_IOS){
-							inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>', tag );
+							inBodyAd.loadInArticleAd( 'article-body', 10, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>', tag );
 						}else{
-							inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>', tag );
+							inBodyAd.loadInArticleAd( 'article-body', 10, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>', tag );
 						}
 
 						//if(article_id == 22165){

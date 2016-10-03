@@ -213,13 +213,6 @@
 				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">
 					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
 				</div>
-			
-				<!-- MEME GLOBAL 
-				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
-					<div id="get-content" style="text-align:center;">
-						<iframe id='m_iframe'  src="http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10704&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-					</div>
-				</div>-->
 
 				<!-- AMAZON >-->
 				<div id="mobile-instream-branovate-ad" style="text-align: center;">
@@ -228,14 +221,20 @@
 						<script type="text/javascript" language="javascript">
 						  //<![CDATA[
 						    aax_getad_mpb({
-						      "slot_uuid":"aa8bf1b2-a34c-41c3-810a-4dc0dccc55c4"
+						      "slot_uuid":"5eee194a-0abb-4002-b5ee-2375da3806b4"
 						    });
 						  //]]>
 						</script>
 					</div>
 				</div>
+			
+				<!-- MEME GLOBAL -->
+				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
+					<div id="get-content" style="text-align:center;">
+						<iframe id='m_iframe'  src="http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10845&sSlr=178&creativeID=123&cb=12345&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+					</div>
+				</div>
 
-				
 				<?php if( $article_id == 22165 ){?>
 				<div id="mobile-instream-branovate-ad" style="text-align: center;">
 					<div id="get-content" style="text-align:center; display: inline-block;">

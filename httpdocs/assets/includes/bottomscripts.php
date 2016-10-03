@@ -14,7 +14,7 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3636949" ></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3636950" ></script>
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -56,18 +56,18 @@
           <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
       </div>
       <script async src="//static.addtoany.com/menu/page.js" async></script>
+
   <?php } ?>
 
 <?php }else{ ?>
   <!-- MOBILE -->
-
   <?php if( isset($promotedArticle) && !$promotedArticle ){ 
       
       if(isset($articleInfoObj) && $articleInfoObj){ ?>
         <!-- LELO -->
         <?php if(isset($article_id) && $article_id != 16562  &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
-        && $article_id != 15488 &&  $article_id != 17286 &&  $article_id != 18521 ){ ?>
+        && $article_id != 15488 &&  $article_id != 17286 ){ ?>
            
           <?php 
                //     $current_time = new DateTime(); // Today
@@ -116,9 +116,9 @@
             })();
             </script>-->
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
-            <?php if( $articleInfoObj['article_id'] != 18521){?>
+            <?php //if( $articleInfoObj['article_id'] != 18521){?>
 
-              <!-- SPOUTABLE REPLACE ADHESION -->
+              <!-- SPOUTABLE REPLACE ADHESION 
               <script type='text/javascript'>
               (function(){
                 var spoutjs=document.createElement('script'),firstjs=document.getElementsByTagName('script')[0];
@@ -126,8 +126,8 @@
                 spoutjs.src='//cdn.spoutable.com/1deb0b13-48fb-4eec-8af0-a5e05f8b6272/spoutable.js';
                 firstjs.parentNode.insertBefore(spoutjs,firstjs)
               })();
-              </script>
-           <?php  } ?>
+              </script>-->
+           <?php  //} ?>
       <?php  } ?>
     <?php  } ?>
       <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286  &&  $article_id != 18521){ ?>
@@ -187,5 +187,6 @@
   <?php } ?>
 
 <?php } ?>
+
 <!-- SHARETHROUNG -->
 <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>

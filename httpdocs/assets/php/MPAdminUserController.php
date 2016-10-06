@@ -1329,7 +1329,7 @@ End password reset methods
 		AND articles.article_status = 1 
 		AND google_analytics_data_new.month = $month 
 		AND google_analytics_data_new.year = $year 
-		ORDER BY google_analytics_data_new.usa_pageviews DESC LIMIT 1";
+		ORDER BY google_analytics_data_new.usa_pageviews DESC LIMIT 3";
 
 		$article = $this->performQuery(array(
 			'queryString' => $s,

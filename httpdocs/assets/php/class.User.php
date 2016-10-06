@@ -66,6 +66,34 @@ class User extends DatabaseObject{
 		return $users;
 	}
 
+	public function allTest( $user_type = false ){
+		if(!$user_type ){
+
+			$users = static::find_by_sql(
+					"SELECT users.*, user_logins.user_login_creation_date 
+					FROM users 
+					INNER JOIN user_logins 
+						ON ( users.user_id = user_logins.user_id )
+					WHERE user_logins.user_login_creation_date > '2016-01-01 0:0:0' 
+					GROUP BY users.user_id
+					ORDER BY users.user_login_count DESC 
+					
+				");
+		}else{
+			$users = static::find_by_sql(
+				"SELECT users.*, user_logins.user_login_creation_date 
+				FROM users 
+				INNER JOIN user_logins 
+					ON ( users.user_id = user_logins.user_id )
+				WHERE user_logins.user_login_creation_date > '2016-01-01 0:0:0' AND user_type in ($user_type)
+				GROUP BY users.user_id
+				ORDER BY users.user_login_count DESC LIMIT 2000
+				
+			");
+		}
+		return $users;
+	}
+
 	public function where($where = false){
 		$query = " SELECT users.*, user_logins.user_login_creation_date 
 					FROM users 

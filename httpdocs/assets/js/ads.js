@@ -130,7 +130,7 @@ if($('body').hasClass('mobile')) {
 						
 						//}
 
-						inBodyAd.loadInArticleAd('article-body', 5, 0, "<script src=\"http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=560057&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=442631\"><\/script>", tag);
+						inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="vm_inline"></div><script>  window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement(\'script\'),  document.getElementsByTagName(\'script\')[0], \'http://player.videomosh.com/players/loader/loader_final4.js\');  _videomosh.push({publisher_key: "sequelmedia", mode: "incontent",  container: "vm_inline",  incontent_mobile_id: "9834",  incontent_desktop_id: "42296",  target_type: "mix" });</script>' , tag);
 
 						//BRANOVATE
 						if(is_IOS){

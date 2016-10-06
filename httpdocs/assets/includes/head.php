@@ -127,7 +127,7 @@
 				   	googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470934220433-0').addService(googletag.pubads());
 
 				   	//STRIKE
-				   	googletag.defineSlot('/73970039/SV_300x250', [300, 250], 'div-gpt-ad-1471285633174-0').addService(googletag.pubads());
+				   	//googletag.defineSlot('/73970039/SV_300x250', [300, 250], 'div-gpt-ad-1471285633174-0').addService(googletag.pubads());
 				    googletag.pubads().enableSingleRequest();
 				    googletag.enableServices();
 				  });
@@ -142,8 +142,8 @@
 <!-- IF ARTICLE PAGE -->
 <?php if(!$detect->isMobile()){ ?>
 	<?php //if(isset($article_id) && $article_id == 6144 ){?>
-		<!-- CODEFUEL SEARCH  -->
-		<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
+		<!-- CODEFUEL SEARCH  
+		<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>-->
 	<?php //} ?>
 <?php }else{ ?>
 

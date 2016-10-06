@@ -58,10 +58,6 @@ if(!is_null($categoryInfo)){
 		//ARTICLE ADS SETTINGS
 		$article_ads = $mpArticleAdmin->getArticleAds($articleInfoObj);
 
-		//if($articleInfoObj['article_id'] == "4349"){
-		//	$pageName = strtoupper($articleInfoObj['article_title']).' | Sponsored by Smarties Candies';
-		//}
-
 		//RELATE ARTICLES LIST 
 		$relatedArticles = $mpArticle->getArticlesList([ 'limit'=> 6,  'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['article_id']]);
 		$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
@@ -284,20 +280,16 @@ if(!is_null($categoryInfo)){
 					      && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id']  != 17286){?>
 					       
 					        <?php if( $articleInfoObj['article_id'] != 14613){?>     
-					           <?php if(   $articleInfoObj['article_id'] != 15284 && $articleInfoObj['article_id'] != 15488){?>
-					              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-					               <!-- <style> a#adContent-clickOverlay{z-index: 9 !important;}</style>
-					                <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-					                <script type="text/javascript" language="javascript">
-					                //<![CDATA[
-					                aax_getad_mpb({
-					                  "slot_uuid":"ad4fe546-5060-4729-89ff-0bcae94681e2"
-					                });
-					                //]]>
-					                </script>-->
-					                <iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=162&sCampaignID=10821&sSeller=178&creativeID=12&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-					              </div>
-					            <?php }?> 
+				              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
+					           <!-- BEGIN JS TAG - puckermob.com Desktop 300x250 < - DO NOT MODIFY 
+								<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5975094&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>-->
+
+								<!-- END TAG -->
+
+								  <!-- MEME GLOBAL -->
+								<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+						    
+				              </div>
 					        <?php }else{ ?>
 					         <!-- /73970039/UT_P -->
 					          <div id='div-gpt-ad-1461622964696-1' style='height:1050px; width:300px;'>

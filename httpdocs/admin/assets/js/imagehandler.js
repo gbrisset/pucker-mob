@@ -1,7 +1,7 @@
 $(document).ready(function (){
 
-var admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/assets/php/';
-//var admin_url = 'http://www.puckermob.com/admin/';
+//var admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/assets/php/';
+var admin_url = 'http://www.puckermob.com/admin/';
 
 var maxsize =1024;
 var tools = ['resize', 'crop'];

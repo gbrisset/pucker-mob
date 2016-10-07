@@ -12,7 +12,7 @@ var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/
 var page = document.body.id;
 
 
-admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 

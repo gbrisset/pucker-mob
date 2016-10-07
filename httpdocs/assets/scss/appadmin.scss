@@ -27,7 +27,9 @@ $bgColor: #ffffff;
 "foundation/components/labels",
 "foundation/components/tables",
 "foundation/components/tooltips",
-"foundation/components/thumbs";
+"foundation/components/thumbs",
+"foundation/components/reveal";
+
 // Custom variables
 
 $topbar-megamenu-bg-color: #fff;
@@ -634,7 +636,7 @@ padding: 0.7rem;
 }
 
 .image-drop-wrapper{
-	background: #888;
+	background: #999;
 	padding: 1rem;
 }
 
@@ -648,7 +650,11 @@ padding: 0.7rem;
 	background: #888; 
 	border: 3px dashed #ddd !important;
 }
-.image-drop-titles{ padding: 1rem;}
+.image-drop-titles{ padding: 0rem;}
+@media #{$large-up} {
+  .image-drop-titles{ padding: 1rem;}
+}
+
 
 .inner-header{
 	background: #888 !important;

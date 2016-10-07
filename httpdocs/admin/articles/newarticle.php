@@ -29,9 +29,9 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 	//Article Status Base on Blogger Type.
 	$default_status = 3;
-	if( $adminController->user->data['user_type'] == 30 ){
-		$default_status = 2;
-	}
+	//if( //$adminController->user->data['user_type'] == 30 ){
+		//$default_status = 2;
+	//}
 
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributorInfo = $contributorInfo[0];
@@ -149,32 +149,32 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					
 						
 						<!-- CONTRIBUTORS -->
-						<?php if($admin_user){
+						<?php if( $admin_user){ 
 							$allContributors = $adminController->getSiteObjectAll(array('queryString' => 'SELECT * FROM article_contributors ORDER BY contributor_name ASC'));
 							if($allContributors && count($allContributors)){
 						?>
-						<div class="row">
-						    <div>
-								<select name="article_contributor" id="article_contributor" class="small-12">
-									<option value="-1">Contributors</option>
-									<?php
-										foreach($allContributors as $contributorInfo){
-											$selected = '';
-											if(isset($_POST['article_contributor']) && $_POST['article_contributor'] == $contributorInfo['contributor_id']){ 
-												$selected = 'selected';
+							<div class="row">
+							    <div>
+									<select name="article_contributor" id="article_contributor" class="small-12">
+										<option value="-1">Contributors</option>
+										<?php
+											foreach($allContributors as $contributorInfo){
+												$selected = '';
+												if(isset($_POST['article_contributor']) && $_POST['article_contributor'] == $contributorInfo['contributor_id']){ 
+													$selected = 'selected';
+												}
+												$option = '<option value="'.$contributorInfo['contributor_id'].'" '. $selected;
+												$option .= '>'.$contributorInfo['contributor_name'].'</option>';
+												echo $option;
 											}
-											$option = '<option value="'.$contributorInfo['contributor_id'].'" '. $selected;
-											$option .= '>'.$contributorInfo['contributor_name'].'</option>';
-											echo $option;
-										}
-									?>
-								</select>
+										?>
+									</select>
+								</div>
 							</div>
-						</div>
-						<?php } 
+							<?php } 
 						}else{ ?>
-							<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo['contributor_id']?>" />
-						<?php } ?>
+							<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo['contributor_id']; ?>" />
+						<?php }  ?>
 
 						<!-- HIDDEN ARTICLE TEMPLATE TYPE - SINGLE -->
 						<input type="hidden" class="hidden" id="article_template_type-s" name="article_template_type-s" value="0" />
@@ -236,10 +236,10 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 		</div>
 	</main>	
 
-<!-- INFO BADGE -->
+<!-- INFO BADGE 
 <div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
-	<?php include($config['include_path_admin'].'info-badge.php');?>
-</div>
+	<?php //include($config['include_path_admin'].'info-badge.php');?>
+</div>-->
 
 	<!-- ARTICLE PREV TEMPLATE -->
 <?php include_once($config['include_path_admin'].'article_prev_template.php'); ?>

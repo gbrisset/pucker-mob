@@ -9,7 +9,10 @@
 	}
 	$incentives_month = $incentives->where(' month = '.$selected_month.' AND year = '.date('Y').' ' );
 	$rank_list = $ManageDashboard->getTopShareWritesRank( $selected_month, $limit);
+	$rank_list_basic = $ManageDashboard->getTopShareWritesRank( $selected_month, 25, '3');
+	$rank_list_pro = $ManageDashboard->getTopShareWritesRank( $selected_month, 25, '8');
 
+	//var_dump($rank_list_basic );
 	if( isset($rank_list) && count($rank_list) > 0 ){
 		$index = 1;
 ?>
@@ -33,6 +36,8 @@
 		</select>
 		</div>
 	</form>
+	<h2 style=" color: green; font-family: OsloBold; font-size: 22px;">OVERALL RANKING</h2>
+
 	<div class="small-12 no-padding margin-bottom" style="height: 40rem; overflow: scroll;">
 	<table  class="small-12 large-12 columns" >
 		<thead>
@@ -82,47 +87,56 @@
 	</div>
 </div>
 
-<div class="small-6 columns no-padding-left margin-top"  style="height: 40rem; overflow: scroll;">
+<div class="small-6 columns no-padding-left margin-top">
+	<h2 style=" color: green; font-family: OsloBold; font-size: 22px;">PRO BLOGGERS</h2>
+
+	<div style="height: 40rem; overflow: scroll;" >
 	<table  class="small-12 large-12 columns">
 		<thead>
 			<td class="bold">RANK</td>
 			<td class="bold">NAME</td>
 			<td class="bold align-center">VIEWS</td>
-			<td class="bold align-center">BONUS</td>
+			<!--<td class="bold align-center">BONUS</td>-->
 		</thead>
 		<tbody>
 			<?php 
-			foreach( $pro as $blogger ) { ?>
+			$index = 1;
+			foreach( $rank_list_pro as $blogger ) { ?>
 				
 				<tr id="contributor_id_<?php echo $blogger['contributor_id']; ?>" data-type="<?php echo $blogger['user_type']; ?> ">
-					<td style="padding-left: 20px; "><?php echo $blogger['index']; ?></td>
+					<td style="padding-left: 20px; "><?php echo $index; ?></td>
 					<td><?php echo $blogger['contributor_name']; ?></td>
 					<td class="align-center"><?php echo number_format($blogger['total_us_pageviews']); ?></td>
-					<td class="align-center" style="    color: green; font-size: 1rem;"><?php echo $blogger['bonus']; ?></td>
 				</tr>
-			<?php }?>
+			<?php $index++; }?>
 		</tbody>
 	</table>
+	</div>
 </div>
-<div class="small-6 columns no-padding-right margin-top" style="height: 40rem; overflow: scroll;" >
+
+<div class="small-6 columns no-padding-right margin-top" >
+	<h2 style=" color: green; font-family: OsloBold; font-size: 22px;">BASIC BLOGGERS</h2>
+	<div style="height: 40rem; overflow: scroll;" >
 	<table  class="small-12 large-12 columns" >
 		<thead>
 			<td class="bold">RANK</td>
 			<td class="bold">NAME</td>
 			<td class="bold align-center">VIEWS</td>
-			<td class="bold align-center">BONUS</td>
+			<!--<td class="bold align-center">BONUS</td>-->
 		</thead>
 		<tbody>
-			<?php foreach( $basic as $blogger ) { ?>
-				
+			<?php 
+			$index = 1;
+			foreach( $rank_list_basic as $blogger ) { ?>
+					
 				<tr id="contributor_id_<?php echo $blogger['contributor_id']; ?>" data-type="<?php echo $blogger['user_type']; ?> ">
-					<td style="padding-left: 20px; "><?php echo $blogger['index']; ?></td>
+					<td style="padding-left: 20px; "><?php echo $index; ?></td>
 					<td><?php echo $blogger['contributor_name']; ?></td>
 					<td class="align-center"><?php echo number_format($blogger['total_us_pageviews']); ?></td>
-					<td class="align-center" style="    color: green; font-size: 1rem;"><?php echo $blogger['bonus']; ?></td>
 				</tr>
-			<?php }?>
+			<?php $index++; }?>
 		</tbody>
 	</table>
+	</div>
 </div>
 <?php } ?>

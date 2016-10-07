@@ -47,7 +47,12 @@
 //var_dump("UPGRADE TO PRO: ", $user_name, $user_id,  "--------------------------------------");
 				
 					$data = [ "user_id" => $user_id, "user_type" => 8 ];
-					$not  = [ "user_id" => $user_id, "message" => "Upgrade to PRO BLOGGER", "type" => 2 , "date" => date( 'Y-m-d H:s:i', strtotime('now'))];
+					$not  = [ 
+						"user_id" => $user_id, 
+						"message" => "Congratulations! You’re now officially a Pro Level blogger. Yeah, your friend will be jealous…", 
+						"type" => 2 , 
+						"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+					];
 
 					//Update User Type value
 					$user->updateObj( $data );
@@ -69,7 +74,12 @@
 					// Verify if Prev & Current are below the minimum pageviews per month
 					//Downgrade from PRO to BLOGGER [3]
 					$data = [ "user_id" => $user_id, "user_type" => 3 ];
-					$not  = [ "user_id" => $user_id, "message" => "Downgrade from PRO to BLOGGER", "type" => 2, "date" => date( 'Y-m-d H:s:i', strtotime('now')) ];
+					$not  = [ 
+						"user_id" => $user_id, 
+						"message" => "Ugh! Sorry, but you had less than 25,000 US visits for two months, so we had to move you back to Basic. Get your traffic back up, and we’ll put you back up to Pro!", 
+						"type" => 2, 
+						"date" => date( 'Y-m-d H:s:i', strtotime('now')) 
+					];
 
 					//Update User Type value
 					$user->updateObj( $data );
@@ -89,9 +99,22 @@
 				//WARNING
 				if( $user_type == 8 ||  $user_type == 9 ){
 //var_dump("WARNING: ", $user_name, $user_id,  "--------------------------------------");
-					$not  = [ "user_id" => $user_id, "message" => "Warnings", "type" => 2 , "date" => date( 'Y-m-d H:s:i', strtotime('now'))];
-					$notification_obj->saveObj( $not );
+					$not  = [ 
+						"user_id" => $user_id, 
+						"message" => "Opps! You fell below 25,000 US visits last month. It’s ok - we all hit bumps in the road. But get your traffic back up this month so we don’t have to banish you back to Basic!", 
+						"type" => 2 , 
+						"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+					];
+				}else{
+					$not  = [ 
+						"user_id" => $user_id, 
+						"message" => "Keep going! Once you get 25,000 U.S. views for two months in a row, we’ll promote you to Pro Level.", 
+						"type" => 2 , 
+						"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+					];
 				}
+				$notification_obj->saveObj( $not );
+
 
 			}
 

@@ -1119,6 +1119,10 @@ if($('#approval')){
 
 //$('.auto-edit').autoEdit();
 
+
+if($('#reveal-link')){
+	$('#reveal-link').trigger('click');
+}
 }); 
  
 

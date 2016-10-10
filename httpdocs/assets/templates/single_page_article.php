@@ -119,21 +119,22 @@
 					$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
 					$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
 				?>
-					<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:-8px !important; margin-bottom:15px !important;">
+					<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:-8px !important; margin-bottom: -10px !important;">
 						
 						<div class="rel-articles-wrapper remember-to-share" style="padding-top: 0;">
-							<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
+							<h3 style="margin-bottom: 0.5rem !important;     color: green;">RELATED ARTICLES</h3>
 							<ul>
 								<?php if( $related['related_article_id_1']['info'] ) {?>
 								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
 									<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
-										<div class="article-image small-5 left" style="padding-right:10px">
-											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
+										<div class="article-image small-4 left" style="padding-right:10px">
+											<a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
 												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
 											</a>
 										</div>
-										<div class="article-title small-7 left" style="padding-right:10px">
-											<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></h1>
+										<div class="article-title small-8 left" style="padding-right:10px">
+											<h1 style="margin-left: 0.5rem;font-size: 1.2rem; height: 55px; ">
+												<a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></h1>
 										</div>
 									</article>
 								</li>
@@ -141,13 +142,13 @@
 								<?php if( $related['related_article_id_2']['info'] ) {?>
 								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
 									<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
-										<div class="article-image small-5 left" style="padding-right:10px">
+										<div class="article-image small-4 left" style="padding-right:10px">
 											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
 												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
 											</a>
 										</div>
-										<div class="article-title small-7 left">
-											<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></h1>
+										<div class="article-title small-8 left">
+											<h1 style="margin-left: 0.5rem;font-size: 1.2rem; height: 55px;"><a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></h1>
 										</div>
 									</article>
 								</li>
@@ -155,13 +156,13 @@
 								<?php if( $related['related_article_id_3']['info'] ) {?>
 								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
 									<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
-										<div class="article-image small-5 left" style="padding-right:10px">
+										<div class="article-image small-4 left" style="padding-right:10px">
 											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">
 												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
 											</a>
 										</div>
-										<div class="article-title small-7 left" style="padding-right:10px">
-											<h1 style="margin-left: 0.5rem;font-size: 1.2rem;"><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></h1>
+										<div class="article-title small-8 left" style="padding-right:10px">
+											<h1 style="margin-left: 0.5rem;font-size: 1.2rem; height: 55px;"><a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></h1>
 										</div>
 									</article>
 								</li>
@@ -171,9 +172,8 @@
 						
 					</div>
 				<?php } ?>
-				<?php //if($article_id != 18521 ){?>
-				<!-- AMAZON >-->
-				<div id="mobile-instream-branovate-ad" style="text-align: center;">
+				<!-- AMAZON -->
+				<div id="mobile-instream-branovate-ad" style="text-align: center; clear: both; padding-top: 1rem;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
 						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 						<script type="text/javascript" language="javascript">
@@ -185,8 +185,6 @@
 						</script>
 					</div>
 				</div>
-				<?php //} ?>
-
 		</div>
 
 		<!-- READ MORE  -->
@@ -197,7 +195,7 @@
 		</div> 
 		
 		<!-- ADS LELO & SHARET -->
-		<div class="row" style="clear: both; border-bottom: 1px solid #ddd; padding-top: 1rem;"></div>
+		<div class="row" style="clear: both; padding-top: 0; border: 1px solid #ddd;"></div>
 			<!-- LELO -->
 			<?php if( $article_id == 16562 ||  $article_id == 17425 || $article_id == 14479 || $article_id == 14576 || $article_id == 15109 || 
 					   $article_id == 15271 || $article_id == 17286  ){?>
@@ -209,6 +207,7 @@
 					</div>
 				</div>
 			<?php }elseif( $article_id != 8560 &&  $article_id != 14613  &&  $article_id != 15104 	&& $article_id != 15284  && $article_id != 15488 ){ ?>
+				
 				<!-- SHARETH -->
 				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">
 					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>

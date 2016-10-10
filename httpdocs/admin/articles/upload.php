@@ -10,16 +10,16 @@ $storeFolder = 'uploads';   //2
 $user_id = 0;
 if(isset($_POST['u_i'])) $user_id = $_POST['u_i'];
 
-$action = "edit";
-$isLib =  isset($_POST['isLib']) ? true : false;
-$is_second_img = isset($_POST['is_second_img']) ? true : false;
+$action = "edit"; //var_dump($_POST);
+//$isLib =  isset($_POST['isLib']) ? true : false;
+//$is_second_img = isset($_POST['is_second_img']) ? true : false;
 if(isset($_POST) && empty($_POST['a_i'] ) ){
 	$_POST['a_i'] = 'temp_u_'.$user_id;//.'_'. substr($_POST['c_t'], 0, 7);
 	$action = "new";
 }
 
 if($action === "new"){
-	if($isLib){
+	/*if($isLib){
 		$updateStatus = array_merge($mpArticleAdmin->uploadTempImageFromLib([
 			'allowedExtensions' => 'png,jpg,jpeg,gif',
 			'imgType' => 'article',
@@ -31,7 +31,7 @@ if($action === "new"){
 			'desHeight' => 431
 		], false), ['arrayId' => 'article-tall-image-upload-form']);
 		echo json_encode($updateStatus) ;
-	}else{ 
+	}else{ */
 	if (!empty($_FILES)) { 
 	    $updateStatus = 
 	    	array_merge($mpArticleAdmin->uploadTempImage($_FILES, [
@@ -45,10 +45,10 @@ if($action === "new"){
 				'desHeight' => 431
 			]), ['arrayId' => 'article-tall-image-upload-form']);
 		}
-	}
+	//}
 }else{
 
-	if($isLib){
+	/*if($isLib){
 		$updateStatus = array_merge($mpArticleAdmin->uploadTempImageFromLib([
 			'allowedExtensions' => 'png,jpg,jpeg,gif',
 			'imgType' => 'article',
@@ -60,7 +60,7 @@ if($action === "new"){
 			'desHeight' => 431
 		], true), ['arrayId' => 'article-tall-image-upload-form']);
 		echo json_encode($updateStatus) ;
-	}else{ 
+	}else{*/ 
 		if (!empty($_FILES)) { 
 	    $updateStatus = array_merge($mpArticleAdmin->uploadNewImage($_FILES, [
 						'allowedExtensions' => 'png,jpg,jpeg,gif',
@@ -75,6 +75,6 @@ if($action === "new"){
 	    		echo json_encode($updateStatus) ;
 
 		}
-	}
+	//}
 }
 ?>     

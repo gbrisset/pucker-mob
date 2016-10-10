@@ -6,7 +6,7 @@
 		<form id="image-drop" class="dropzone dz-clickable small-12 column no-padding" action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
 	 		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 			<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
-	 		<input type="hidden" id="is_mobile" value="<?php echo $detect->isMobile(); ?>" />
+	 		<input type="hidden" id="is_mobile" value="0" />
 	 		
  			<div class="dz-message  dropzone-previews" >
 	 			<div class="dz-preview dz-file-preview small-12 large-12 columns no-padding" id="template" >  <!-- template for images -->
@@ -69,8 +69,8 @@
 		<form id="image-drop" class="dropzone dz-clickable small-12 column no-padding" style="border:none !important; background:none !important;"action="<?php echo $config['this_admin_url']; ?>articles/upload.php">
 	 		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 			<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
-	 		<input type="hidden" id="a_i" name="a_i" class="a_i" value="0" />
-	 		<input type="hidden" id="is_mobile" value="<?php echo $detect->isMobile(); ?>" />
+	 		<input type="hidden" id="a_i" name="a_i" class="a_i" value=<?php echo $article_id; ?> />
+	 		<input type="hidden" id="is_mobile" value="1" />
 
 	 		<div id="img-container" class="small-12 large-12 columns center padding" >
 					<div class="image-drop-titles">

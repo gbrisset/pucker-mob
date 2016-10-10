@@ -653,6 +653,7 @@ padding: 0.7rem;
 .image-drop-titles{ padding: 0rem;}
 @media #{$large-up} {
   .image-drop-titles{ padding: 1rem;}
+  #image-drop{  background: none;  }
 }
 
 
@@ -1273,18 +1274,24 @@ p{ font-size: 15px; }
 .earnings-info .last-month-earnings{border-left: 1px solid #555; border-right: 1px solid #555; margin: 0 1rem; padding: 0 1rem;}
 
 .dropzone .dz-error .dz-error-message, .dropzone-previews .dz-error .dz-error-message{
-
 	top: 0% !important;
+  position: relative !important;
+  font-size: 17px;
+  background: rgba(255,0,0,0.6) !important;
+  padding: 10px;
+  z-index: 1000;
+  font-family: OsloBold;
+  opacity: 1 !important;
+  color: #fff;
+  height:100%;
+  margin-top: 5px;
+}
 
-    position: absolute !important;
-    font-size: 17px;
-    background: rgba(255,0,0,0.6) !important;
-    padding: 10px;
-    z-index: 1000;
-    font-family: OsloBold;
-    opacity: 1 !important;
-    color: #fff;
-    height:100%;
+@media #{$large-up} {
+  .dropzone .dz-error .dz-error-message, .dropzone-previews .dz-error .dz-error-message{
+      position: absolute !important;
+
+  }
 }
 
 .small-styled-select select {
@@ -1727,21 +1734,21 @@ color: #666;
 }
 }
 
-.articles_resume{
-height: 7rem;
-padding:15px;
-color: #fff;
-text-align: center;
-h3, span{
-font-size: 18px;
-color: #fff;
-}
+  .articles_resume{
+    height: 7rem;
+    padding:15px;
+    color: #fff;
+    text-align: center;
+    h3, span{
+    font-size: 18px;
+    color: #fff;
+  }
 
-span{ font-size: 24px;}
+  span{ font-size: 24px;}
 
-.mini-fonts{
-margin-top:4px;
-}
+  .mini-fonts{
+    margin-top:4px;
+  }
 }
 
 .hottopics{ margin-top: 0.95rem !important; }

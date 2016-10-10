@@ -167,7 +167,7 @@
 				
 				<form id="article-info-form" class="margin-top" name="article-info-form" action="<?php echo $config['this_admin_url']; ?>articles/edit/<?php echo $uri[2]; ?>" method="POST">
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
-					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article['article_id']; ?>" />
+					<input type="hidden" id="a_i" name="a_i" value="<?php echo $article_id; ?>" />
 					<input type="hidden" id="creation_date" name="creation_date" value="<?php echo $article['creation_date']; ?>" />
 					<input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
 					<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />

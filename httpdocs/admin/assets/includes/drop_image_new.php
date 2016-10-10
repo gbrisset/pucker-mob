@@ -7,7 +7,7 @@
 	 		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 			<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 	 		<input type="hidden" id="a_i" name="a_i" class="a_i" value="0" />
-	 		<input type="hidden" id="is_mobile" value="<?php echo $detect->isMobile(); ?>" />
+	 		<input type="hidden" id="is_mobile" value="0" />
 
  			<div class="dz-message  dropzone-previews" >
 	 			<div class="dz-preview dz-file-preview small-12 large-12 columns no-padding" id="template" >  <!-- template for images -->
@@ -65,7 +65,7 @@
 	 		<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 			<input type="hidden" id="u_i" name="u_i" value="<?php echo $adminController->user->data['user_id']; ?>" />
 	 		<input type="hidden" id="a_i" name="a_i" class="a_i" value="0" />
-	 		<input type="hidden" id="is_mobile" value="<?php echo $detect->isMobile(); ?>" />
+	 		<input type="hidden" id="is_mobile" value="1" />
 
 	 		<div id="img-container" class="small-12 large-12 columns center padding" >
 					<div class="image-drop-titles">
@@ -103,6 +103,10 @@
 </div>
 <!-- MODAL -->
 <div id="img-modal" class="reveal-modal tiny border-radius-10x" data-reveal aria-labelledby="intro-modal-title" aria-hidden="true" role="dialog" style="margin-top: 1.7rem; min-height: auto !important; ">
+  <a href="#close" title="Close" class="close-reveal-modal" style="top: -8px; right: 3px;">
+  	<i class="fa fa-times" style="font-size: 26px; color: #222; top: 0; position: relative;" aria-hidden="true"></i>
+  </a>
+
   <h2 style="font-family: OswaldRegular; font-size: 22px;" id="modalTitle">IMAGE CROPPING & RESIZING TOOLS</h2>
   	<p style="font-size: 15px;">If you need help cropping or resizing your images, try one of these sites or apps: </p>
 	<p style="margin-bottom: 5px;">
@@ -116,7 +120,7 @@
 	<p style="margin-bottom: 5px;">
 		<i style="margin-right: 0px; font-size: 18px;" class="fa fa-caret-right" aria-hidden="true"></i>
 		<i style="margin-right: 0px; font-size: 18px;" class="fa fa-apple" aria-hidden="true"></i>
-		<a style="color: #222;" href="https://appsto.re/us/BoIa5.i" target="_blank">Piczoo (iPhone app)</a>
+		<a style="color: #222;" href="https://appsto.re/us/RRvwY.i" target="_blank">Resize it Free (iPhone app)</a>
 	</p>
 	<p style="margin-bottom: 5px;">
 		<i style="margin-right: 0px; font-size: 18px;" class="fa fa-caret-right" aria-hidden="true"></i>
@@ -127,7 +131,13 @@
 </div>
 <script>
 	$(document).foundation().foundation();
+
+	$('body').addClass('show-modal-box');
+		$('a.close-reveal-modal').trigger('click');
+
+		$('.close').click(function(e){
+			$('body').removeClass('show-modal-box');
+		});
 </script>
 <script type="text/javascript" src="<?php echo $config['this_admin_url'].'assets/js/imagehandler.js'?>"></script>   
-
 <?php }?>

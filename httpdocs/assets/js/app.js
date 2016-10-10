@@ -39,7 +39,7 @@ $(document).ready(function() {
 				$parent_div  = $('.read-more');
 				$content = $('#article-content');
 				
-				setTimeout(function(){
+				//setTimeout(function(){
 							
 					$content.css({
 						//"height": //$content.height(),
@@ -53,7 +53,7 @@ $(document).ready(function() {
 					$parent_div.fadeOut();
 					$('.second-section').css('border-top', '2px solid #bbb');
 
-				}, 1000);
+				//}, 1000);
 								
 				return false;
 								

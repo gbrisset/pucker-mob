@@ -408,8 +408,10 @@ class MPArticleAdminController extends MPArticle{
 		$post = isset($post['formData']) ? $post['formData'] : $post;
 		$post['validate'] = true;
 		//If is not an Starter Blogger
-		if($post['user_type'] != 30)
+		if($post['u_type'] != 30) // MPublich the article
 			$post['article_status-s'] = "1";
+		else //Set it to Review
+			$post['article_status-s'] = "2";
 
 		//Verify If Image Exist
 		$imageExist = $this->verifyImageExist($post);
@@ -437,9 +439,10 @@ class MPArticleAdminController extends MPArticle{
 		$post['save'] = true;
 		$post['validate'] = false;
 		//If is not an Starter Blogger
-		if($post['user_type'] == 30)
-			$post['article_status-s'] = $post['article_status']; //"3";
-		else $post['article_status'] = $post['article_status'];
+		//if($post['user_type'] == 30)
+		//	$post['article_status-s'] = $post['article_status']; //"3";
+		//else 
+		$post['article_status'] = $post['article_status'];
 
 		//Verify If Image Exist
 		$imageExist = $this->verifyImageExist($post);

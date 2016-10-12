@@ -129,8 +129,13 @@ if($('body').hasClass('mobile')) {
       						//inBodyAd.loadInArticleAd('article-body', 4, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);
 						
 						//}
+						if( article_id == 22231 ){
+							inBodyAd.loadInArticleAd('article-body', 4, 0, '<div id="nativo-id"></div>' , tag);
+						}else{ //, backfill: "<script src=\"cdn.thoughtleadr.com/v4/page.js\" placement-id=\"e34fc238e71e1dd6a98a47668a9881ba7867205f92bd422ed1fe67b650685273\"></scr\"+\"ipt>"
+							//inBodyAd.loadInArticleAd('article-body', 5, 0, '<script type="text/javascript" src="//cdn.thoughtleadr.com/v4/page.js" placement-id="e34fc238e71e1dd6a98a47668a9881ba7867205f92bd422ed1fe67b650685273"></script>' , tag);
 
-						inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="vm_inline"></div><script>  window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement(\'script\'),  document.getElementsByTagName(\'script\')[0], \'http://player.videomosh.com/players/loader/loader_final4.js\');  _videomosh.push({publisher_key: "sequelmedia", mode: "incontent",  container: "vm_inline",  incontent_mobile_id: "9834",  incontent_desktop_id: "42296",  target_type: "mix" });</script>' , tag);
+							inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="vm_inline"></div><script>  window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement(\'script\'),  document.getElementsByTagName(\'script\')[0], \'http://player.videomosh.com/players/loader/loader_final4.js\');  _videomosh.push({publisher_key: "sequelmedia", mode: "incontent",  container: "vm_inline",  incontent_mobile_id: "9834",  incontent_desktop_id: "42296",  target_type: "mix", backfill: \'<script type="text/javascript" src="//cdn.thoughtleadr.com/v4/page.js" placement-id="e34fc238e71e1dd6a98a47668a9881ba7867205f92bd422ed1fe67b650685273"></<script>\' });</script>' , tag);
+						}						
 
 						//BRANOVATE
 						if(is_IOS){
@@ -181,8 +186,8 @@ if($('body').hasClass('mobile')) {
 
 							//inBodyAd.loadInArticleAd( 'article-body', 5, 0, '<div id="vm_inline"></div><script> window._videomosh = window._videomosh || [];   !function (e, f, u) {  e.async = 1;  e.src = u;  f.parentNode.insertBefore(e, f);  }(document.createElement(\'script\'), document.getElementsByTagName(\'script\')[0], "http://player.videomosh.com/players/loader/loader_final4.js");  _videomosh.push({ publisher_key: "sequelmedia", mode: "slider", container: "vm_inline", incontent_mobile_id: "23002", incontent_desktop_id: "42300", target_type: "mix", backfill: "<script async src=\'http://ads.allscreen.tv/embed?placement=181\' ><\/scr"+"ipt>"});<\/script>', tag);
 							
-
-
+							inBodyAd.loadInArticleAd('article-body', 4, 0, '<div id="nativo-id"></div>' , tag);
+							
 							$('#inarticle3-ad').removeClass('columns');
 							//inBodyAd.loadInArticleAd( 'article-body', 8, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_mid_article"></script>', tag);
 						}

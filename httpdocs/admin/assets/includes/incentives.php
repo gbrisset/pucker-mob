@@ -4,16 +4,18 @@
 	<div class="small-12 columns radius right-side-box half-margin-top">
 		<div class="">
 			<p style="margin:0;">
-				<span class="uppercase"><?php //echo date('F'); ?> SEPTEMBER INCENTIVE PLAN:</span>
+				<span class="uppercase"><?php //echo date('F'); ?> OCTOBER INCENTIVE PLAN:</span>
 			</p>
 			<br />	
-			<ul>
+			<!--<ul>
 				<li style="padding: 7px;">#1-5: $100 Bonus</li>
 				<li style="padding: 7px;">#6-10: $50 Bonus</li>
 				<li style="padding: 7px;">#11-20: $10 Bonus</li>
-			</ul>
-			
-			<br />
+				</ul>
+				
+				<br />
+			-->
+			<p>Sorry - due to a mix-up, there is no incentive plan for October. Look for a larger one in November!</p>
 			
 			<p>This incentive is open to both Pro and Basic bloggers. Final outcome is based off of traffic as recorded on our dashboard, which is provided to us via Google Analytics.</p>
 			<p>Final numbers and winners will not be determined officially until September 2nd, and monetary prizes will be awarded along with September’s standard payment (on or around November 22nd).</p>

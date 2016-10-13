@@ -418,6 +418,7 @@ End password reset methods
 ***/
 
 
+	//DO LOGIN VERIFICATION
 	public function doVerification($hash){
 		//Check for needed variables in session and for matching session and input hashes
 		if(!isset($_SESSION['login_hash']) || !isset($_SESSION['user_id']) || $_SESSION['login_hash'] !== $hash) return $this->helpers->returnStatus(500);
@@ -581,8 +582,6 @@ End password reset methods
 		}
 	}
 
-
-
 	public function usernameExists($userInput){
 		$options = array(
 			'queryString' => "SELECT * FROM users WHERE user_name = :userInput OR user_email = :userInput LIMIT 0, 1",
@@ -615,10 +614,7 @@ End password reset methods
 		if($updateImage === true) return true;
 		return false;
 	}
-	/* End Article Updating Fucntion */
-
-
-	
+	/* End Article Updating Function */
 
 
 /**
@@ -765,8 +761,10 @@ End password reset methods
 		$valid = $this->helpers->validateRequired($params, $unrequired);
 		if($valid !== true) return $valid;
 
+		//Verifycation Hash
 		$verificationHash = $this->generateHash();
 
+		//SET KEY VALUES FROM USER POST
 		$keys = array();
 		$values = array();
 		foreach($pairs as $key => $value){
@@ -795,18 +793,17 @@ End password reset methods
 		$params[':user_name'] = $username;
 		$post['user_name-nf'] = $username;
 
+		//CREATE USER
 		$s = "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")";
 		$result = $this->performUpdate(array(
 			'updateString' => "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")",
 			'updateParams' => $params
 		));
 
-	
-		if($result){
-			if(!$isReader){
-				//ADD USER TO MAILCHIMP LIST
-				$this->registerInMailChimpList($post);
 
+		if($result){
+			//if(!$isReader){
+				
 				//Add Contributor Info
 				$contributor_name = $post['user_first_name-s'];//.' '.$post['user_last_name-s'];
 				$email = $post['user_first_name-s'].' '.$post['user_email-e'];
@@ -814,6 +811,7 @@ End password reset methods
 				
 				if(isset($contributor_seo_name)) $contributor_seo_name = join(explode(' ', strtolower(preg_replace('/[^A-Za-z0-9- ]/', '', $contributor_seo_name))), '-');
 
+				//CHECK IF CONTRIBUTOR INFO ALREADY EXIST
 				$dupCheck = $this->mpArticle->getContributors(['contributorSEOName' => $contributor_seo_name] );
 				$dupCheckEmail = $this->mpArticle->getContributors(['contributorEmail' => $post['user_email-e'] ] );
 
@@ -823,15 +821,18 @@ End password reset methods
 				}
 
 				if(count($dupCheckEmail['contributors']) <= 0){
+					//REGISTER FROM FACEBOOK
 					if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
 						$contributor_image_fb = "http://graph.facebook.com/".$post['user_facebook_id-s']."/picture";
 						$contributor_facebook_link = $post['fb_user_link'];
 						
+						//CREATE CONTRIBUTOR RECORD
 						$contributor_id = $this->performUpdate(array(
 							'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address, contributor_image, contributor_facebook_link ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."', '".$contributor_image_fb."', '".$contributor_facebook_link."')",
 							'updateParams' => $params
 						));
 					}else{
+
 						$contributor_id = $this->performUpdate(array(
 							'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."')",
 							'updateParams' => $params
@@ -839,13 +840,17 @@ End password reset methods
 					}
 				}
 
+				//ADD USER TO MAILCHIMP LIST
+				$this->registerInMailChimpList($post);
+
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
-				return $this->doUserActivation($verificationHash);
-			}else{ 
+				return $this->resendUserVerify($verificationHash);
+				//return $this->doUserActivation($verificationHash);
+			/*}else{ 
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 				return $this->doUserActivation($verificationHash);
 
-			}
+			}*/
 		}else return $this->helpers->returnStatus(500);
 	
 	}	
@@ -1430,6 +1435,7 @@ End password reset methods
 		}else return array_merge($this->helpers->returnStatus(500), array('hasError' => true));
 	}
 	
+	//SEND EMAIL TO BLOGGERS TEMPLATE
 	public function send_email($opts){
 		$options = array_merge(array(
 			'email' => '',
@@ -1467,7 +1473,7 @@ End password reset methods
 
 		$mail->Subject = $opts['subject'];
 		$mail->Body    = $body;
-		$mail->AltBody = 'Thank you for registering with puckermob.com!  Go to '.$options['hashUrl'].' to complete the registration process.';
+		//$mail->AltBody = 'Thank you for registering with puckermob.com!  Go to '.$options['hashUrl'].' to complete the registration process.';
 
 		if(!$mail->send()) {
 		   //return 'Message could not be sent.';
@@ -1481,6 +1487,7 @@ End password reset methods
 		return true;
 	}
 
+	//OLD SEND EMAIL FUNCTION
 	public function sendEmail($opts){
 		$options = array_merge(array(
 			'email' => '',
@@ -1514,11 +1521,13 @@ End password reset methods
 
 		if($user){
 			
+			
 			if($user['user_verified'] == 1){
 				$r = $this->helpers->returnStatus(200);
 				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\dashboard\">here</a>.";
 				//return $r;
 			}
+
 
 			$q = $this->performUpdate(array('updateString' => "UPDATE users SET user_verified = 1 WHERE user_id = ".$user['user_id']));
 			
@@ -1541,24 +1550,35 @@ End password reset methods
 		}else return $this->helpers->returnStatus(500);
 	}
 
-	public function resendUserVerify(){
-		if(!isset($_SESSION['user_id'])) $this->helpers->returnStatus(500);
+
+	//SEND USER VERIFY ACCOUNT
+	public function resendUserVerify( $hash_code = false ){
+
+		if(!isset($_SESSION['user_id']) && !$hash_code ) $this->helpers->returnStatus(500);
+
+		$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+		
+		$queryString = "SELECT * FROM users WHERE user_id = :userId ";
+		if($hash_code){
+			$queryString .= " OR  user_verification_code = '".$hash_code."' ";
+		}
+		$queryString .=" LIMIT 0, 1";
 
 		$user = $this->performQuery(array(
-			'queryString' => "SELECT * FROM users WHERE user_id = :userId LIMIT 0, 1",
-			'queryParams' => array(':userId' => filter_var($_SESSION['user_id'], FILTER_SANITIZE_STRING, PDO::PARAM_STR))
+			'queryString' => $queryString,
+			'queryParams' => array(':userId' => filter_var($user_id, FILTER_SANITIZE_STRING, PDO::PARAM_STR))
 		));
-
+		
 		if($user){
-			if(!$registerEmail = $this->sendEmail(array(
-				'email' => $user['user_email'],
+			if(!$registerEmail = $this->sendemail(array(
+				'email' => 'flor.guzmanb@gmail.com',//$user['user_email'],
 				'hashUrl' => $this->config['this_admin_url'].'activate/'.$user['user_verification_code'],
 				'action' => 'access',
-				'subject' => $this->mpArticle->data['article_page_visible_name']." Registration Email",
+				'subject' => "Puckermob Registration Email",
 				'username' => $user['user_name']
 			))) return $registerEmail;
 			$r = $this->helpers->returnStatus(200);
-			$r['message'] = "Thanks for registering.  We've resent your verification email to the email address on file.";
+			$r['message'] = "Welcome to Puckermob.  We've sent you an email to verify your account, please go to your email account and click the link provided.";
 			return $r;
 		}else $this->helpers->returnStatus(500);
 	}

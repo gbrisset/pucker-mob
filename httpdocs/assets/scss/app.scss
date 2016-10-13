@@ -2082,6 +2082,32 @@ input#email::-webkit-input-placeholder { color: #222; }
 input#email:-moz-placeholder { /* Firefox 18- */ color: #222; }
 input#email::-moz-placeholder {  /* Firefox 19+ */ color: #222;  }
 input#email:-ms-input-placeholder {  color: #222;  }
+.new-success{
+		background: #368a54;
+	    padding: 8px;
+	    color: #fff !important;
+	    font-size: 18px;
+	    font-family: OsloRegular;
+
+	    a{
+	    color: #fff;
+	    font-size: 18px;
+	    text-transform: uppercase;
+	    }
+	}
+
+	.new-error{
+		background: #c43333;
+	    padding: 8px;
+	    color: #fff !important;
+	    font-size: 18px;
+	    font-family: OsloRegular;
+	    a{
+	    color: #fff;
+	    font-size: 18px;
+	    text-transform: uppercase;
+	    }
+	}
 .error{color:red !important;}
 .success{color: green !important;}
 
@@ -2521,12 +2547,15 @@ div#inarticle12-ad {
 #article-content li{ clear:both; }
 /* END ADS */
 
-
+	
 /****REGISTRATION*****/
 #registration{
 	top: -2rem; 
 	background: #292929;
 	#nav-bar{ box-shadow: none !important; }
+
+
+
 	#header-div{ 
 		margin-top: 30 !important;
 		background: #000; padding: 1rem; 
@@ -2544,10 +2573,12 @@ div#inarticle12-ad {
 			top:1rem;
 		}
 	}
+
 	#main{ margin: 0 auto; min-height: auto;}
 	#registration-wrapper, #log-in-box{
 		padding:0;
 	}
+
 	#header-div h1{ 
 		font-family: OswaldRegular;
 		line-height: 1.4;
@@ -2747,7 +2778,31 @@ div#inarticle12-ad {
 #logout{
 	background: #000;
 	#main-cont{ margin-top: 10%; }
-	.admin-logout-content h1{ text-transform: uppercase; font-size: 2.5rem; color: #fff; text-align: center; font-family: OswaldRegular; margin-bottom: 1.5rem;}
+	.admin-logout-content h1{ text-transform: uppercase; font-size: 2.5rem; color: #222; text-align: center; font-family: OsloBold; margin-bottom: 1.5rem;}
 	.admin-logout-content p{font-size: 1.5rem; color: #fff; box-shadow: none; text-align: center;}
 	.admin-logout-content .admin-form-cont  a{ color: #fff; border-bottom:1px solid #999;}
 }
+
+#verify-cont{
+	margin: 20% auto;
+}
+#login-cont{
+	h1{
+		font-size: 2.5rem;
+	    color: #222;
+	    text-align: center;
+	    font-family: OsloBold;
+	}
+	.activate-cont{
+		margin: 0 auto;
+	    position: relative;
+	    border: 1px solid #ddd;
+	    padding: 1rem;
+	    border-radius: 5px;
+	}
+	p{ 
+		font-size: 19px;
+    	text-align: center;
+    }
+}
+

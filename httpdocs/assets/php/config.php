@@ -4,8 +4,8 @@ $version = "";
 
 if($local)
 {
-	//	error_reporting(E_ALL);
-	//	ini_set('display_errors', '1');
+		error_reporting(E_ALL);
+		ini_set('display_errors', '1');
 
 
 	define("DB_SERVER", "localhost");
@@ -100,6 +100,8 @@ if($local)
 		require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 		require_once $config['assets_path'].'/class.PromoteArticles.php';
 		require_once $config['assets_path'].'/class.Incentives.php';
+		require_once $config['assets_path'].'/class.AdMatching.php';
+		//require_once $config['assets_path'].'/class.OrderAds.php';
 
 	}
 

@@ -1342,6 +1342,10 @@ End password reset methods
 			'bypassCache' => true
 		));
 
+		if ($article && !isset($article[0])){
+			$article = array($article);
+		}
+
 		return $article;
 
 	}
@@ -1571,7 +1575,7 @@ End password reset methods
 		
 		if($user){
 			if(!$registerEmail = $this->sendemail(array(
-				'email' => 'flor.guzmanb@gmail.com',//$user['user_email'],
+				'email' => $user['user_email'],
 				'hashUrl' => $this->config['this_admin_url'].'activate/'.$user['user_verification_code'],
 				'action' => 'access',
 				'subject' => "Puckermob Registration Email",

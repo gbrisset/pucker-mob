@@ -44,7 +44,6 @@
 
 			$contributor_id = $this->contributor->contributor_id;
 			$query =  " SELECT * FROM contributor_earnings WHERE contributor_id = $contributor_id  AND month IN (".$month.") AND year = ".$year." ORDER BY id DESC ";
-
 			//	Set the params to be bound
 			$params_to_bind = [ ':contributor_id' => $contributor_id ];
 			$earnings = static::find_by_sql( $query, $params_to_bind );

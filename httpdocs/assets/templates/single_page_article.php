@@ -227,15 +227,28 @@
 					</div>
 				</div>
 			
-				<!-- MEME GLOBAL -->
+				<?php if( $detect->is('iOS') ){ ?>
+				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
+					<div id="get-content" style="text-align:center;">
+						<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
+					</div>
+				</div>
+				<?php }else { ?>
+				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
+					<div id="get-content" style="text-align:center;">
+						<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
+					</div>
+				</div>
+				<?php } ?>
+				<!-- MEME GLOBAL 
 				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 					<div id="get-content" style="text-align:center;">
 						<iframe id='m_iframe'  src="http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10845&sSlr=178&creativeID=123&cb=12345&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
 					</div>
-				</div>
+				</div>-->
 
-				<?php if( $article_id == 22165 ){?>
-				<div id="mobile-instream-branovate-ad" style="text-align: center;">
+				<?php //if( $article_id == 22165 ){?>
+				<!--<div id="mobile-instream-branovate-ad" style="text-align: center;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
 						<div id="vm_inline"></div>
 						<script>
@@ -258,8 +271,8 @@
 						       });
 						</script>
 					</div>
-				</div>
-				<?php } ?>
+				</div>-->
+				<?php // } ?>
 			<?php } ?>
 			
 			<!-- COMMENTS BOX -->

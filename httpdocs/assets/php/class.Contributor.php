@@ -26,9 +26,9 @@ class Contributor extends DatabaseObject{
 	public function __construct( $email = null){ 
 		$this->data = $this->getContributor($email);
 		$this->contributor_email_address = $email;
-		$this->contributor_name = $this->getContributorName();
-		$this->contributor_id= $this->getContributorId();
-		$this->contributor_seo_name = $this->getContributorSeoName();
+	//	$this->contributor_name = $this->getContributorName();
+	//	$this->contributor_id= $this->getContributorId();
+		//$this->contributor_seo_name = $this->getContributorSeoName();
 	}
 
 	//Get all contributors 

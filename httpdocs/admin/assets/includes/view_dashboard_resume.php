@@ -20,8 +20,8 @@
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 	$balance_due = isset($earnings['to_be_pay']) ? $earnings['to_be_pay'] : 0;
 	$contributor_type = $userData['user_type_label'];
-
-								
+	$rate = $dashboard->get_current_rate( $current_month, $contributor_type );
+	$rate = isset($rate['rate']) ? $rate['rate'] : 0;
 
 ?>
 

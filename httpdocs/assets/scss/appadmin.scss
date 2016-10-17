@@ -1891,29 +1891,68 @@ h1{ font-size: 1.7rem;}
 }
 }
 
+//AD MATCHING PAGE
+#admatching{
+  h2{
+    font-size: 3rem;
+    font-family: OsloBold;
+  }
+  .payment-balance-copy{
+    font-size: 20px;
+    font-family: Oslo;
+
+  }
+
+  .box-bonus{
+    border: 1px solid #3E6A91;
+    .heading-div{
+      background: #3E6A91;
+      h2{ color: #fff; opacity: 0.5;  font-size: 3.2rem; margin-top: 1.8rem;}
+    }
+
+    .bonus-info{ 
+      background: #EBF0F4;
+      span{ padding: 5px; }
+      label{ 
+        font-family: Oslo; 
+        font-size:18px !important;
+       
+        p{ font-family:OsloBold; font-size: 15px; margin-left: 12px; }
+      }
+    }
+
+    .ad-match-me{
+      padding-top:1.2rem; padding-bottom: 1rem; background:  #EBF0F4;
+      input[type=checkbox]{ visibility: hidden; }
+      .ad-match-me-element{ height: 2rem; width: 2rem; background: #fff; border: 2px solid #000; position:absolute; left: 12px; }
+      .ad-match-me-label{ font-size: 28px !important; font-family: OsloBold;  top: -3px; color: #000;  left: 12px;}
+    }
+  }
+}
+
 #edit-my-profile, #view-my-profile, #account-info{
-.header-style{
-background: #aaa;
-padding: 10px;
-h2{
-color:#fff;
-text-transform: uppercase;
-margin:0;
-}
-}
-h1{
-.fa-circle{ position:relative; top: -5px; font-size: 7px;}
-}
-.wide-button{ 
-padding: 1.3rem 2.2rem;
+  .header-style{
+    background: #aaa;
+    padding: 10px;
+    h2{
+      color:#fff;
+      text-transform: uppercase;
+      margin:0;
+    }
+  }
+  h1{
+    .fa-circle{ position:relative; top: -5px; font-size: 7px;}
+  }
+  .wide-button{ 
+    padding: 1.3rem 2.2rem;
 
-span{ background: #207673;}
-a{
-color:#fff; font-size:1.2rem;
+    span{ background: #207673;}
+    a{
+      color:#fff; font-size:1.2rem;
 
-&:hover{ text-decoration:none;}
-}
-}
+      &:hover{ text-decoration:none;}
+    }
+  }
 }
 
 //VIEW EDIT PROFILE

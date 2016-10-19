@@ -101,7 +101,7 @@ if($local)
 		require_once $config['assets_path'].'/class.PromoteArticles.php';
 		require_once $config['assets_path'].'/class.Incentives.php';
 		require_once $config['assets_path'].'/class.AdMatching.php';
-		//require_once $config['assets_path'].'/class.OrderAds.php';
+		require_once $config['assets_path'].'/class.OrderAds.php';
 
 	}
 

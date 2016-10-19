@@ -167,6 +167,13 @@
 			}
 		break;
 
+		//ORDERS
+		case 'submit_order':
+			$OrderObj = new OrderAds();
+
+			echo json_encode(  $OrderObj->saveObj($_POST) ); 
+		break;
+
 		default:
 			echo json_encode(array_merge($mpArticleAdmin->returnStatus(500), ['hasError' => true]));
 		break;

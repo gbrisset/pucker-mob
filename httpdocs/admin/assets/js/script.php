@@ -12,7 +12,7 @@ var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/
 var page = document.body.id;
 
 
-//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 
@@ -1123,6 +1123,222 @@ if($('#approval')){
 if($('#reveal-link')){
 	$('#reveal-link').trigger('click');
 }
+
+var adMatching = {
+	bonusObj: null,
+	userCommit: 0,
+	matchCommit: 0,
+	totalCommit: 0,
+	bonusID: 0,
+	bonusPCT: 0, 
+	bonusMatch: 0,
+
+	init: function(){},
+
+	formatNumbers: function( value ){
+		return '$' + parseFloat(value, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
+	},
+
+	replaceValues: function( element ){
+		var bonus_obj = $(element).parent().parent().find('.bonus-info');
+		var user_commit = $(bonus_obj).find('#user_commit').attr('data-amount');
+		var match_commit  = $(bonus_obj).find('#match_commit').attr('data-amount');
+		var total_commit = $(bonus_obj).find('#total_commit').attr('data-amount');
+
+		adMatching.bonusObj = bonus_obj;
+		adMatching.userCommit = user_commit;
+		adMatching.matchCommit = match_commit;
+		adMatching.totalCommit = total_commit; 
+		adMatching.bonusID = $(element).attr('data-bonus-id') ;
+		adMatching.bonusPCT = $(element).attr('data-bonus') ;
+		adMatching.bonusMatch = $(element).attr('data-bonus-match');
+
+		var schedule_payment = $('#schedule-payment').attr('data-bonus');
+		var deducted_payment = $('#deducted-payment');
+		var total_deducted = $('#total-deducted');
+		var your_contribution = $('#your-contribution');
+		var our_contribution = $('#our-contribution');
+		var total_contribution = $('#total-contribution');
+	
+		var total_ded = parseInt(schedule_payment) - parseInt(user_commit);
+
+		$(deducted_payment).text(adMatching.formatNumbers(user_commit));
+		$(total_deducted).text(adMatching.formatNumbers(total_ded));
+		$(your_contribution).text(adMatching.formatNumbers(user_commit));
+		$(our_contribution).text(adMatching.formatNumbers(match_commit));
+		$(total_contribution).text(adMatching.formatNumbers(total_commit));
+	},
+
+	clearValues: function(element){
+		var deducted_payment = $('#deducted-payment');
+		var total_deducted = $('#total-deducted');
+		var your_contribution = $('#your-contribution');
+		var our_contribution = $('#our-contribution');
+		var total_contribution = $('#total-contribution');
+
+		adMatching.bonusObj = null;
+		adMatching.userCommit = 0;
+		adMatching.matchCommit = 0;
+		adMatching.totalCommit = 0;
+		adMatching.bonusID = 0 ;
+		adMatching.bonusPCT = 0 ;
+		adMatching.bonusMatch = 0;
+
+		$(deducted_payment).text(adMatching.formatNumbers(0));
+		$(total_deducted).text(adMatching.formatNumbers(0));
+		$(your_contribution).text(adMatching.formatNumbers(0));
+		$(our_contribution).text(adMatching.formatNumbers(0));
+		$(total_contribution).text(adMatching.formatNumbers(0));
+	},
+	
+	selectAdMatch: function(element){
+
+		var parent = $(element).parent();
+		var cbox = $(parent).find('input:checkbox');
+		
+		//CLEAR SELECTION
+		$('.ad-match-me-element').parent().find('input:checkbox').not(cbox).attr( 'checked', false );
+		$('.ad-match-me-element').html('');
+
+		if( $(cbox).attr('checked') === "checked" ){
+			 $(cbox).attr('checked', false);
+			 $(element).html('');
+			 adMatching.clearValues( cbox );
+		}else{
+			 $(cbox).attr('checked', true);
+			$(element).html('<i class="fa fa-check checkd-label" aria-hidden="true"></i>');
+			adMatching.replaceValues( cbox );
+		} 
+	}
+
+
+}
+
+var OrderObj = {
+	bonus: false,
+	agree: false,
+	submitStatus : false,//OrderObj.submitReady(false),
+	currentDate:  moment().format("YYYY-MM-DD"),
+	init: function(){
+		//AGREE ORDER
+		$('.agree-element').on('click', function(){
+			OrderObj.setAgree(this);
+		});
+
+		$('#submit-order').on('click', function(){
+			OrderObj.clickSubmit();
+		});
+	},
+	setAgree: function(element){
+		var parent = $(element).parent();
+		var cbox = $(parent).find('#agree');
+		
+		if( $(cbox).attr('checked') === "checked" ){
+			 OrderObj.agree = false;
+			 OrderObj.submitReady(false);
+			 $(cbox).attr('checked', false);
+			 $(element).html('');
+		}else{
+			OrderObj.agree = true;
+			OrderObj.submitReady(true);
+			$(cbox).attr('checked', true);
+			$(element).html('<i class="fa fa-check checkd-label" aria-hidden="true"></i>');
+		} 
+	},
+	verifyBonusSelected: function(){
+		var bonus = $('.ad-match-me-element').parent().find('input:checkbox');
+		var bonus_info = false;
+		$(bonus).each(function(){
+			if($(this).is(':checked')) bonus_info = $(this);
+		});
+
+		return bonus_info;
+	},
+	submitReady: function( status ){
+		if( status === true ){
+			OrderObj.submitStatus = true;
+			//$('#submit-order').attr('disabled', true);
+		}else{
+			OrderObj.submitStatus = false;
+			//$('#submit-order').attr('disabled', false);
+		}
+	},
+	submitOrder: function( $data ){
+		OrderObj.bonus = OrderObj.verifyBonusSelected();
+
+		var contributor_id = $('#contributor_id').val(),
+			month_relation = $('#month_relation').val(),
+			year_relation = $('#year_relation').val(),
+			total_earnings = $('#to_be_pay').val(),
+			amount_commit = adMatching.userCommit,
+			amount_match = adMatching.matchCommit,
+			total_commit = adMatching.totalCommit,
+			agree = OrderObj.agree, 
+			bonus_id = adMatching.bonusID,
+			bonus_pct = adMatching.bonusPCT ,
+			bonus_match = adMatching.bonusMatch;
+
+			if(	OrderObj.validate() === true ){
+
+		    	$.ajax({
+					type: "POST",
+					async: false,
+					url:  admin_url + 'assets/php/ajaxfunctions.php',
+					data: { 
+						task           : 'submit_order', 
+						date           : OrderObj.currentDate,
+						contributor_id : contributor_id, 
+						month_relation : month_relation,
+						year_relation  : year_relation,
+						total_earnings : total_earnings, 
+						amount_commit  : amount_commit,
+						amount_match   : amount_match,
+						total_commit   : total_commit,
+						agree          : agree,
+						bonus_id       : bonus_id,
+						bonus_pct      : bonus_pct,
+						bonus_match    : bonus_match
+					}
+				}).done(function(data) {
+					if( data != "false" ){ 
+						data = $.parseJSON(data);
+					}
+				});
+			}else{
+				alert('SORRY YOU NEED TO SELECT BONUS AND AGREE WITH US');
+			}
+	},
+	validate: function(){
+		var valid  = false;
+		var day = parseInt( moment().format("DD") );
+
+		if( day >= 1 && day <= 21) {
+			if( adMatching.bonusID !== 0 && OrderObj.agree === true) valid = true;
+		}	
+		return valid;
+	},
+	clickSubmit: function(){
+		OrderObj.submitOrder();
+	},
+	disableSubmit:function(){},
+	showModalOrderStatus: function(){}
+
+	}
+
+
+$('.ad-match-me-element').each( function(){
+	$(this).on('click', function(){
+		adMatching.selectAdMatch(this);
+	});
+});
+
+OrderObj.init();
+
+
+
+
+
+
 }); 
  
 

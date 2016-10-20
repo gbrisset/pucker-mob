@@ -132,7 +132,7 @@
            <?php  } ?>
       <?php  } ?>
     <?php  } ?>
-      <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286  &&  $article_id != 18521){ ?>
+      <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286  &&  $article_id != 18521 && $article_id != 23564 ){ ?>
           <script>
             (function() 
             { 

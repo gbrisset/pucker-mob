@@ -247,8 +247,8 @@
 					</div>
 				</div>-->
 
-				<?php //if( $article_id == 22165 ){?>
-				<!--<div id="mobile-instream-branovate-ad" style="text-align: center;">
+				<?php if( $article_id == 22165 ){?>
+				<div id="mobile-instream-branovate-ad" style="text-align: center;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
 						<div id="vm_inline"></div>
 						<script>
@@ -271,8 +271,8 @@
 						       });
 						</script>
 					</div>
-				</div>-->
-				<?php // } ?>
+				</div>
+				<?php  } ?>
 			<?php } ?>
 			
 			<!-- COMMENTS BOX -->

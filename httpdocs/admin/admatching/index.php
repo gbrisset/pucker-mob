@@ -1,6 +1,9 @@
 <?php 
 	$admin = true; 
 	require_once('../../assets/php/config.php');
+
+	if( $detect->isMobile() )  $adminController->redirectTo('dashboard/');
+
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	$email = isset($userData['contributor_email_address']) ? $userData['contributor_email_address'] : 'none';
@@ -73,9 +76,9 @@
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
 
 			
-			<div class="small-12 large-10 xxlarge-8 columns no-padding-right" style="margin-top: 3rem;">
+			<div class="small-12 xxlarge-8 columns no-padding-right padding-top">
 
-				<h2 class="small-12 columns uppercase no-padding-left">More reach, more traffic, more money!</h2>
+				<h2 class="small-12 columns uppercase no-padding-left padding-top">More reach, more traffic, more money!</h2>
 				<p class="small-12 columns no-padding payment-balance-copy">For your next payment, you are scheduled to receive: <span class="bold"><?php echo '$'.number_format( $to_be_pay, 2); ?></span></p>
 				
 				<?php if( isset($bonuses) && $bonuses){?>
@@ -98,7 +101,7 @@
 
 						
 						?>
-						<div id="bonus-box-<?php echo $index; ?>" class="small-12 medium-4 columns" data-equalizer-watch>
+						<div id="bonus-box-<?php echo $index; ?>" class="small-12 xxlarge-4 columns margin-bottom" data-equalizer-watch>
 							<div data-equalizer-watch class="small-12 columns radius box-bonus no-padding">
 								<input type="hidden" value="<?php echo $year_relation?>" id="year_relation" />
 								<input type="hidden" value="<?php echo $month_relation?>" id="month_relation" />
@@ -107,7 +110,7 @@
 									'opacity: 0.9'; ?>"><?php echo $bonus_label; ?></h2>
 								</div>
 								<div class="small-12 columns bonus-info padding-top">
-									<div class="small-12 columns padding-top no-padding">
+									<div class="small-12 columns no-padding">
 										<label class="small-8 columns no-padding">
 											<i class="fa fa-caret-right" aria-hidden="true"></i>You commit <?php echo $bonus_user_pct.'%'; ?>:
 											<p>of your past earnings</p>
@@ -157,10 +160,13 @@
 					<p>NO BONUS SET THIS MONTH...</p>
 				<?php }?>
 
+				<!-- HOW AD MATCHING WORKS BOX -->
+				<?php include_once($config['include_path_admin'].'add-screen-shots.php'); ?>
+
 			</div>
 
 			<!-- Right Side -->
-			<div class="small-12 xxlarge-4 right padding rightside-padding  show-for-large-up" >
+			<div class="small-12 xxlarge-4 right padding rightside-padding" >
 				<!-- HOW AD MATCHING WORKS BOX -->
 				<?php include_once($config['include_path_admin'].'how-admatching-works.php'); ?>
 			

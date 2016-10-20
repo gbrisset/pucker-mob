@@ -89,15 +89,27 @@ if($('body').hasClass('mobile')) {
 				second_p = second_p;
 				third_p = third_p;
 			}
-	
-			
+
 				//LELO
 				if( article_id == 16562 ||  article_id == 17425 || article_id == 14479 || article_id == 14576 ||  article_id == 15109 || article_id == 15271 ||  article_id == 17286){
 					inBodyAd.loadInArticleAd( 'article-body', 3, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
 					inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
 				}else{ 
+
+					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
+					//inBodyAd.loadInArticleAd('article-body', 12, 0, '<script type="text/javascript" src="//cdn.thoughtleadr.com/v4/page.js" placement-id="e34fc238e71e1dd6a98a47668a9881ba7867205f92bd422ed1fe67b650685273"></script>', tag);
 					
-						
+					//if(article_id == 23319 ){
+					//inBodyAd.loadInArticleAd('article-body', 12, 0, "<script type=\"text/javascript\"> window._ttf = window._ttf || []; _ttf.push({ pid: 59726, lang: \"en\", slot: '#article-content #article-body > p', format: \"inread\", minSlot: 4, components: { skip: {delay : 0}}, css : \"margin: 0px auto 0px; max-width: 550px;\" }); (function (d) { var js, s = d.getElementsByTagName('script')[0]; js = d.createElement('script'); js.async = true; js.src = '//cdn.teads.tv/media/format.js'; s.parentNode.insertBefore(js, s); })(window.document); </script>", tag);
+					inBodyAd.loadInArticleAd( "article-body", 10, 0, '<div id="external-unit-answers-test" ></div>', tag);
+					$('#external-unit-answers-test').load('http://www.puckermob.com/external-unit-answers-test.html');
+
+
+						//}else{
+						//	inBodyAd.loadInArticleAd('article-body', 10, 0, '<div id="vm_inline"></div><script> window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement(\'script\'),  document.getElementsByTagName(\'script\')[0], \'http://player.videomosh.com/players/loader/loader_final4.js\');  _videomosh.push({ publisher_key: "sequelmedia", mode: "incontent",  container: "vm_inline",  incontent_mobile_id: "9834",  incontent_desktop_id: "42296",  target_type: "mix"  });</script>' , tag);
+
+						//}
+
 						//ADBLADE
 					//	inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<ins class="adbladeads" data-cid="23726-4286472148" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins><script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>', tag);
 
@@ -130,11 +142,8 @@ if($('body').hasClass('mobile')) {
 						
 						//}
 						//if( article_id == 22231 ){
-							inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>' , tag);
-						//}						
 
-						inBodyAd.loadInArticleAd('article-body', 10, 0, '<div id="vm_inline"></div><script>  window._videomosh = window._videomosh || []; !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement(\'script\'),  document.getElementsByTagName(\'script\')[0], \'http://player.videomosh.com/players/loader/loader_final4.js\');  _videomosh.push({publisher_key: "sequelmedia", mode: "incontent",  container: "vm_inline",  incontent_mobile_id: "9834",  incontent_desktop_id: "42296",  target_type: "mix", backfill: \'<script type="text/javascript" src="//cdn.thoughtleadr.com/v4/page.js" placement-id="e34fc238e71e1dd6a98a47668a9881ba7867205f92bd422ed1fe67b650685273"></<script>\' });</script>' , tag);
-
+					
 						//BRANOVATE
 						/*if(is_IOS){
 							inBodyAd.loadInArticleAd( 'article-body', 10, 0, '<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>', tag );
@@ -177,7 +186,7 @@ if($('body').hasClass('mobile')) {
 				if( article_id == 16562 ||  article_id == 17425 || article_id == 14479 || article_id == 14576 || article_id == 14472 || article_id == 15104 ||  article_id == 15109 || article_id == 15271 || article_id ==  17286){}else{
 					if( second_p > 0 ){
 						
-						if(article_id != 15284 && article_id != 15488 && article_id != 14597 ){
+						if(article_id != 15284 && article_id != 15488 && article_id != 14597 && article_id != 23564){
 
 
 							//inBodyAd.loadInArticleAd( 'article-body', 5, 0, '<script async src="http://ads.allscreen.tv/embed?placement=181" ></script>', tag);

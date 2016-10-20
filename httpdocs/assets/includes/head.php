@@ -76,21 +76,50 @@
 	</script>	
 
 	<!-- UNDERTONE -->
-	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-	<script>
-	  var googletag = googletag || {};
-	  googletag.cmd = googletag.cmd || [];
-	</script>
+	<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  != 23564  ) ){?>
+		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+		<script>
+		  var googletag = googletag || {};
+		  googletag.cmd = googletag.cmd || [];
+		</script>
 
-	<script>
-		  googletag.cmd.push(function(){
-		  	//UNDERTONE
-		    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470929060933-0').addService(googletag.pubads());
-		   	googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470934220433-0').addService(googletag.pubads());
-		    googletag.pubads().enableSingleRequest();
-		    googletag.enableServices();
-		  });
-	</script>
+		<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  == 23319 || $articleInfo['article_id']  == 23305 ) ){?>
+			<?php if($articleInfo['article_id']  == 23319) {?>
+
+			<script>
+			  googletag.cmd.push(function(){
+			  	//UNDERTONE
+	   			googletag.defineSlot('/73970039/UT_SS', [1, 1], 'div-gpt-ad-1476806620904-1').addService(googletag.pubads());
+	   
+			    googletag.pubads().enableSingleRequest();
+			    googletag.enableServices();
+			  });
+			</script>
+			<?php }else{?>
+			<script>
+			  googletag.cmd.push(function(){
+			  	//UNDERTONE
+	    		googletag.defineSlot('/73970039/UT_Flex', [1, 1], 'div-gpt-ad-1476806620904-0').addService(googletag.pubads());
+			   
+			    googletag.pubads().enableSingleRequest();
+			    googletag.enableServices();
+			  });
+			</script>
+			<?php }?>
+		
+
+		<?php }else{?>
+			<script>
+				  googletag.cmd.push(function(){
+				  	//UNDERTONE
+				    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470929060933-0').addService(googletag.pubads());
+				   	googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470934220433-0').addService(googletag.pubads());
+				    googletag.pubads().enableSingleRequest();
+				    googletag.enableServices();
+				  });
+			</script>
+		<?php }?>
+	<?php }?>
 
 	<?php 
 		$sponsored_aricle = true; 
@@ -219,7 +248,7 @@
 	</script>
 
 	<!-- NATIVO SCRIPT -->
-	<?php if( isset( $articleInfo['article_id'] ) &&   $articleInfo['article_id']  == 22231 ){?>
+	<?php if( isset( $articleInfo['article_id'] ) &&   $articleInfo['article_id']  != 23564 ){?>
 		<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
 	<?php }?>
 

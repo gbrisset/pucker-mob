@@ -121,12 +121,32 @@ if(!is_null($categoryInfo)){
 		&& $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
 		&& $articleInfoObj['article_id'] != 17286  ){?>
 		
-		<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-		<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-		<script>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-		</script>
-		</div>
+		<?php if($articleInfoObj['article_id'] == 23319 ){ ?>
+			<!-- /73970039/UT_SS -->
+			<div id='div-gpt-ad-1476806620904-1' style='height:1px; width:1px;'>
+			<script>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-1'); });
+			</script>
+			</div>
+
+			<!-- end Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
+		<?php }elseif( $articleInfoObj['article_id'] == 23305 ){?>
+			<!-- /73970039/UT_Flex -->
+			<div id='div-gpt-ad-1476806620904-0' style='height:1px; width:1px;'>
+			<script>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-0'); });
+			</script>
+			</div>
+
+			<!-- end Undertone Ad Tag for INT00 - Flex - Testing Certification Purposes Only Tag -->
+		<?php }else{?>
+			<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+			<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+			<script>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+			</script>
+			</div>
+		<?php } ?>
 		
 <?php } ?>
 
@@ -203,13 +223,27 @@ if(!is_null($categoryInfo)){
 			   && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
 			   && $articleInfoObj['article_id'] != 17286  ){?>
 
-		<!-- CURRENT -->
-		<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-		<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-		<script>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-		</script>
-		</div>
+			<?php if($articleInfoObj['article_id'] == 23319 ){ ?>
+			<!-- begin Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
+				<!-- /73970039/UT_SS -->
+				<div id='div-gpt-ad-1476806620904-1' style='height:1px; width:1px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-1'); });
+				</script>
+				</div>
+
+			<!-- end Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
+			<?php }else{?>
+
+				<!-- CURRENT -->
+				<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+				<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+				</script>
+				</div>
+			<?php } ?>
+
 	<?php } ?>
 
 	<!-- HEADER MENU -->
@@ -219,15 +253,17 @@ if(!is_null($categoryInfo)){
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
 
 	<!-- ARTICLE INFO TOP -->
-		<div class="puc-articles-top">
+		<div class="puc-articles-top" style="background:#fff !important;">
 			<div class="puc-articles-top-inner small-12 padding">
 				<div class="columns small-12 large-9 no-padding sidebar-right left-div">
 					<!-- TITLE -->
-					<h1 style="margin-bottom: 0.5rem;" class=""><?php echo $article_title; ?></h1>
+					<h1 style="margin-bottom: 0.5rem; color: #222 !important;" class=""><?php echo $article_title; ?></h1>
 					
 					<!-- AUTHOR INFO -->
 					<div class="small-12">
-						<p class="author"> <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo 'By '.$name; ?></a></p>
+						<p class="author" style="color: #222 !important;"> 
+							<a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>" style="color:#222 !important;"><?php echo 'By '.$name; ?></a>
+						</p>
 					</div>
 				</div>
 				<!-- SOCIAL MEDIA -->
@@ -316,8 +352,6 @@ if(!is_null($categoryInfo)){
 				</div>
 			</div>
 				
-			<!-- ABOUT THE AUTHOR -->
-			<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
 		</div>
 
 	<!-- MAIN CONTENT -->

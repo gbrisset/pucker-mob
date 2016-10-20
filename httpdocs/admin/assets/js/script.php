@@ -12,9 +12,7 @@ var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/
 var page = document.body.id;
 
 
-admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
-
-
+//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 //Menu Toggler Functionality Mobile
@@ -1117,9 +1115,6 @@ if($('#approval')){
 	});
 }
 
-//$('.auto-edit').autoEdit();
-
-
 if($('#reveal-link')){
 	$('#reveal-link').trigger('click');
 }
@@ -1137,12 +1132,14 @@ $('#more-link').on('click', function(e){
 		$('#more-link').text('...Less');
 	}else{
 		$('.current-data').css({ "max-height": "999999"});
-		$('.current-data').animate({"height": "200px"});
+		$('.current-data').animate({"height": "100px"});
 		$('#more-link').text('...More');
 
 	}	
 });
 
+
+//AD MATCH OBJECT
 var adMatching = {
 	bonusObj: null,
 	userCommit: 0,
@@ -1229,9 +1226,14 @@ var adMatching = {
 			adMatching.replaceValues( cbox );
 		} 
 	}
-
 }
+$('.ad-match-me-element').each( function(){
+	$(this).on('click', function(){
+		adMatching.selectAdMatch(this);
+	});
+});
 
+//ORDER OBJECT
 var OrderObj = {
 	bonus: false,
 	agree: false,
@@ -1322,13 +1324,18 @@ var OrderObj = {
 						data = $.parseJSON(data);
 
 						if(data.hasError === false ){
-							$('.agree-box').html('<label class="main-color center uppercase small-12 columns">Your order Has been summited. Thanks</label>');
+							$('.order-error').remove();
+							$('.agree-box').html('<label class="center uppercase small-12 columns radius order-submitted">Your order Has been summited. Thanks</label>');
 							$('#submit-order').hide();
+						}else{
+							$('.order-error').remove();
+							$('.agree-box').before('<label class="center uppercase small-12 columns radius order-error">SORRY... Something Happend. Please try to make the order again. Thanks</label>');
 						}		
 					}
 				});
 			}else{
-				alert('SORRY YOU NEED TO SELECT BONUS AND AGREE WITH US');
+				$('.order-error').remove();
+				$('.agree-box').before('<label class="center uppercase small-12 columns radius order-error">SORRY YOU NEED TO SELECT BONUS AND AGREE WITH US</label>');
 			}
 	},
 	validate: function(){
@@ -1345,21 +1352,8 @@ var OrderObj = {
 	},
 	disableSubmit:function(){},
 	showModalOrderStatus: function(){}
-
 	}
-
-
-$('.ad-match-me-element').each( function(){
-	$(this).on('click', function(){
-		adMatching.selectAdMatch(this);
-	});
-});
-
 OrderObj.init();
-
-
-
-
 
 
 }); 

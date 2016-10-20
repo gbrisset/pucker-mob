@@ -53,9 +53,11 @@
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url']; ?>ranking">Ranking & Incentives</a>
 			</li>	
+			<?php if( !$detect->isMobile() ){ ?>
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url']; ?>admatching">Ad Matching</a>
 			</li>	
+			<?php }?>
 
 			<li class="parent small-12 columns border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url'].$userLinkPublic; ?>">My Profile<i class="fa fa-chevron-down"></i></a>

@@ -2,7 +2,7 @@
 		<h3 class="margin-top bold">HOW AD MATCHING WORKS</h3>
 
 		<div id="admatching-box" >
-			<div class="current-data" style="height: 200px; overflow: hidden;">
+			<div class="current-data" style="height: 100px; overflow: hidden;">
 				<p>PuckerMob’s Ad Matching program gives you the opportunity to reach a far wider audience and significantly increase the traffic to your articles by leveraging the power of advertising on Facebook. We handle everything for you - we’ll pick which of your articles to post on our fan page, set up the ads and track the results. </p>
 				<p>Even better, when you commit some of your money to advertise your articles, we’ll commit some of our own money as well - so you get all the reach for a fraction of the price!</p>
 				<p>Don’t worry - you’ll never have to take any money out of your own pocket for Ad Matching purposes - instead, you tell us how much you want to spend, and we’ll deduct it from your previous earnings. The more of your earnings you commit, the more of our own money we’ll spend to advertise your articles! </p>

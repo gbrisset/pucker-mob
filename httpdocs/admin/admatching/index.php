@@ -4,42 +4,42 @@
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	$email = isset($userData['contributor_email_address']) ? $userData['contributor_email_address'] : 'none';
-	$contributor_id = 1103;//$userData['contributor_id'];
+	$contributor_id = $userData['contributor_id'];
 	$user_id = $userData['user_id'];
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 
 	$ManageDashboard = new ManageAdminDashboard( $config );
-	$contributorObj = new Contributor( 'annabashkova@hotmail.com' );
+	$contributorObj = new Contributor( $email );
 	$ContributorEarnings = new ContributorEarnings( $contributorObj );
 	$adMatching = new AdMatching(); //AD Matching Object
-	$OrderObj = new OrderAds();
+	$OrderObj = new OrderAds(); //ORDER OBJECT
 
-	//GET RANK POSITION FOR CURRENT USER.
-	/*$limit = 40;
-	if($detect->isMobile()){
-		$limit = 30;
-	}
-	 $rank_list = $ManageDashboard->getTopShareWritesRank( date('n'), $limit);
-	 */
-	 $rank = '9999';
+	$rank = '9999';
 
 	//GET ALL FOR CURRENT MONTH
 	$month = date('n');
 	$year = date('Y');
 
-	$bonuses = $adMatching->where(' bonus_month = $month AND bonus_year = $year AND user_type = 0 ');
+	//BONUS
+	$bonuses = $adMatching->where(" bonus_month = $month AND bonus_year = $year AND user_type = 0 ");
 
 	//GET EARNINGS SPECIFIC MONTH
 	$month_relation = date('n')-2;
 	$year_relation = date('Y');
 
+	//CHECK IF ORDER EXIST THIS MONTH
 	$orderExist = $OrderObj->where(" contributor_id = $contributor_id AND month_relation = $month_relation AND year_relation = $year_relation ");
-var_dump($orderExist); die;
+
+	$exist_bonus_id = 0;
+	if($orderExist){
+		$exist_bonus_id = $orderExist[0]->bonus_id;
+	}
+
+	//EARNINS INFORMATION
 	$earnings_info = $ContributorEarnings->getEarningsPerMonthYear($month_relation, $year_relation);	
 	$earnings_info = isset($earnings_info[0]) ? $earnings_info[0] : $earnings_info;
 
-	$to_be_pay = $earnings_info->to_be_pay;
-
+	$to_be_pay = ( isset($earnings_info) && $earnings_info ) ? $earnings_info->to_be_pay : 0;
 	
 ?>
 
@@ -136,8 +136,13 @@ var_dump($orderExist); die;
 									</div>
 								</div>
 								<div class="small-1 columns small-12 columns ad-match-me">
-								     <input id="ad-match-me-<?php echo $index; ?>" name="ad-match-me" data-bonus="<?php echo $bonus_user_pct; ?>" data-bonus-id = "<?php echo $bonus_id; ?>"  data-bonus-match="<?php echo $bonus_match_pct; ?>" type="checkbox">
+									<?php if( $exist_bonus_id == $bonus_id ){ ?>
+										<input id="ad-match-me-<?php echo $index; ?>" name="ad-match-me" data-bonus="<?php echo $bonus_user_pct; ?>" data-bonus-id = "<?php echo $bonus_id; ?>"  data-bonus-match="<?php echo $bonus_match_pct; ?>" type="checkbox" checked="checked" >
+									     <label class="ad-match-me-element small-1 columns"><i class="fa fa-check checkd-label" aria-hidden="true"></i></label>
+									<?php }else {?>
+								     <input id="ad-match-me-<?php echo $index; ?>" name="ad-match-me" data-bonus="<?php echo $bonus_user_pct; ?>" data-bonus-id = "<?php echo $bonus_id; ?>"  data-bonus-match="<?php echo $bonus_match_pct; ?>" type="checkbox"  >
 								     <label class="ad-match-me-element small-1 columns"></label>
+								     <?php } ?>
 								     <label for="ad-match-me-<?php echo $index; ?>" class=" ad-match-me-label small-11 columns">Ad Match Me</label>
 								</div>
 				 	 		</div>
@@ -158,9 +163,9 @@ var_dump($orderExist); die;
 			<div class="small-12 xxlarge-4 right padding rightside-padding  show-for-large-up" >
 				<!-- HOW AD MATCHING WORKS BOX -->
 				<?php include_once($config['include_path_admin'].'how-admatching-works.php'); ?>
+			
 				<!-- ORDER INFORMATION AND EXECUTION -->
 				<?php include_once($config['include_path_admin'].'order-info.php'); ?>
-
 			</div>
 
 		</div>

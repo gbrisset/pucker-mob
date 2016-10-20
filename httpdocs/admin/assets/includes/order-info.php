@@ -34,7 +34,11 @@
 					<p class="small-12 columns no-padding bold">TOTAL TO BE SPENT PROMOTING YOUR POSTS: <span id="total-contribution" name="total-contribution">$0.00</span></p>
 				</div>
 			</div>
-
+			<?php if( $orderExist){ ?>
+				<div class="small-12 columns margin-top margin-bottom  agree-box">
+					<label class="main-color center uppercase small-12 columns">Your order was already summited for this month. Thanks</label>
+				</div>
+			<?php }else{?>
 			<div class="small-12 columns margin-top margin-bottom agree-box">
 					<input  id="agree" name="agree" type="checkbox"> 
 					<label class="agree-element small-1 columns"></label>
@@ -44,6 +48,7 @@
 			<div class="small-12 columns right">
 				<input type="button" value="SUBMIT" id="submit-order" />
 			</div>
+			<?php } ?>
 		</div>
 		</form>
 	</div>

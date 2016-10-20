@@ -1124,6 +1124,25 @@ if($('#reveal-link')){
 	$('#reveal-link').trigger('click');
 }
 
+$('#more-link').on('click', function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	$el = $(this);
+	
+	$('.current-data').toggleClass('show');
+
+	if( $('.current-data').is('.show') ){
+		$('.current-data').css({ "max-height": "999999"});
+		$('.current-data').animate({"height": "auto"});
+		$('#more-link').text('...Less');
+	}else{
+		$('.current-data').css({ "max-height": "999999"});
+		$('.current-data').animate({"height": "200px"});
+		$('#more-link').text('...More');
+
+	}	
+});
+
 var adMatching = {
 	bonusObj: null,
 	userCommit: 0,
@@ -1210,7 +1229,6 @@ var adMatching = {
 			adMatching.replaceValues( cbox );
 		} 
 	}
-
 
 }
 
@@ -1302,6 +1320,11 @@ var OrderObj = {
 				}).done(function(data) {
 					if( data != "false" ){ 
 						data = $.parseJSON(data);
+
+						if(data.hasError === false ){
+							$('.agree-box').html('<label class="main-color center uppercase small-12 columns">Your order Has been summited. Thanks</label>');
+							$('#submit-order').hide();
+						}		
 					}
 				});
 			}else{

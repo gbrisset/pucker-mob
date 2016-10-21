@@ -67,6 +67,15 @@ class Contributor extends DatabaseObject{
 		return  array_shift($contributor);
 	}
 
+	public static function getContributorById($id){
+		//	Set the params to be bound
+		$params_to_bind = [':contributor_id' => $id];
+		
+		$contributor = static::find_by_sql("SELECT * FROM article_contributors WHERE contributor_id = :contributor_id;", $params_to_bind);
+
+		return  array_shift($contributor);
+	}
+
 	public function getContributorSeoName(){
 		return $this->data->contributor_seo_name;
 	}

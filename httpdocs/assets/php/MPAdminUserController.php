@@ -673,10 +673,14 @@ End password reset methods
 
 /* Begin Registration Functions */
 	public function doRegistration($post){
-		
+
+
 		$isReader = false;
+		$fromFB = false;
+		if(isset($post['from_fb']) && $post['from_fb']) $fromFB = true;
+
 		if(isset($post['isReader']) && $post['isReader']) $isReader = true;
-		
+		//var_dump($fromFB);
 		if($isReader && !isset($post['user_facebook_id-s'])){
 			$post["g-recaptcha-response"] = $post["recaptcha"];
 			unset($post["recaptcha"]);
@@ -700,16 +704,19 @@ End password reset methods
 		$reCaptcha = new ReCaptcha( RECAPTCHASECRETKEY );
 
 		// Was there a reCAPTCHA response?
-		if($post["g-recaptcha-response"] && !empty($post["g-recaptcha-response"])) {
-		    $resp = $reCaptcha->verifyResponse( $_SERVER["REMOTE_ADDR"], $post["g-recaptcha-response"]);
-			
-			if ($resp != null && !$resp->success) return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
- 			
-		}else return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
+		if( !$fromFB ){
+			if($post["g-recaptcha-response"] && !empty($post["g-recaptcha-response"])) {
+			    $resp = $reCaptcha->verifyResponse( $_SERVER["REMOTE_ADDR"], $post["g-recaptcha-response"]);
+				
+				if ($resp != null && !$resp->success) return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
+	 			
+			}else return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
 
-		$recaptcha = $post['g-recaptcha-response'];
+			$recaptcha = $post['g-recaptcha-response'];
+		}else{
+			$recaptcha =true;
+		}
 		unset($post['g-recaptcha-response']);
-
 		//	Make sure the password match
 		if(empty($post['user_password-s'])){
 			return array('hasError' => true, 'message' => "Oops!  You must fill out password fields.");
@@ -743,8 +750,8 @@ End password reset methods
 			$rand = rand(1, 100000000);
 			$username = $username.'-'.$rand;
 		}	
-		$post['user_name-s'] = $username;
-		unset($post['user_name-s']);
+		//$post['user_name-s'] = $username;
+		//unset($post['user_name-s']);
 		$user = $this->userAlreadyExists($post);
 
 		//IF USER EXISTS AND IS FROM FACEBOOK
@@ -788,19 +795,18 @@ End password reset methods
 		$post['user_salt-nf'] = $salt;
 
 		
-		$keys[] = 'user_name';
-		$values[] = ':user_name';
+		//$keys[] = 'user_name';
+		//$values[] = ':user_name';
 		$params[':user_name'] = $username;
 		$post['user_name-nf'] = $username;
 
 		//CREATE USER
 		$s = "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")";
+
 		$result = $this->performUpdate(array(
 			'updateString' => "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")",
 			'updateParams' => $params
 		));
-
-
 		if($result){
 			//if(!$isReader){
 				
@@ -819,7 +825,6 @@ End password reset methods
 					  $rand = rand(1, 100000000);
 					  $contributor_seo_name = $contributor_seo_name.'-'.$rand;
 				}
-
 				if(count($dupCheckEmail['contributors']) <= 0){
 					//REGISTER FROM FACEBOOK
 					if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
@@ -844,7 +849,12 @@ End password reset methods
 				$this->registerInMailChimpList($post);
 
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
-				return $this->resendUserVerify($verificationHash);
+
+				if( $fromFB ){
+					return $this->doUserActivation($verificationHash);
+				}else{
+					return $this->resendUserVerify($verificationHash);
+				}
 				//return $this->doUserActivation($verificationHash);
 			/*}else{ 
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
@@ -1522,7 +1532,7 @@ End password reset methods
 			'returnRowAsSingleArray' => true,
 			'bypassCache' => true
 		));
-
+		
 		if($user){
 			
 			
@@ -1557,7 +1567,6 @@ End password reset methods
 
 	//SEND USER VERIFY ACCOUNT
 	public function resendUserVerify( $hash_code = false ){
-
 		if(!isset($_SESSION['user_id']) && !$hash_code ) $this->helpers->returnStatus(500);
 
 		$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
@@ -1572,7 +1581,8 @@ End password reset methods
 			'queryString' => $queryString,
 			'queryParams' => array(':userId' => filter_var($user_id, FILTER_SANITIZE_STRING, PDO::PARAM_STR))
 		));
-		
+	//	var_dump($user_id);
+
 		if($user){
 			if(!$registerEmail = $this->sendemail(array(
 				'email' => $user['user_email'],

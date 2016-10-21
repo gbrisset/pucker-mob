@@ -110,6 +110,9 @@
 					<li class="small-12 columns border-top border-bottom padding-top padding-bottom" id="bloggers_report">
 						<a href="<?php echo $config['this_admin_url']; ?>cpanel/promote"> Promote</a>
 					</li>
+					<li class="small-12 columns border-top border-bottom padding-top padding-bottom" id="cpanel-ad-matching">
+						<a href="<?php echo $config['this_admin_url']; ?>cpanel/admatching"> Ad Matching</a>
+					</li>
 				</ul>
 			</li>
 			<?php }?>

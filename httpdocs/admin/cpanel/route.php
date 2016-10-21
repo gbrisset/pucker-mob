@@ -13,6 +13,12 @@
 			if(isset($uri[2]) && strlen($uri[2])) include_once('promote/index.php');
 			else $mpShared->get404();
 			break;
+
+		case "admatching":
+			if(isset($uri[2]) && strlen($uri[2])) include_once('admatching/index.php');
+			else $mpShared->get404();
+			break;
+			
 		default:
 			$mpShared->get404();
 			break;	

@@ -2807,3 +2807,13 @@ div#inarticle12-ad {
     }
 }
 
+#velarochat {
+	input[type="text"], input[type="email"], input[type="url"], input[type="password"]{
+	 	margin-top: 3px !important;
+		height: 1rem !important;
+	}
+
+	button.survey-submit{
+		padding: 0 !important;
+	}
+}

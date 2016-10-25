@@ -75,7 +75,7 @@
 	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 
 	$user_type = $userData["user_type"];
-	$earnings = $ManageDashboard->getContributorEarningsInfo(  1103 );
+	$earnings = $ManageDashboard->getContributorEarningsInfo( $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 
 ?>
@@ -111,7 +111,10 @@
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
-
+				
+				<div class="small-12 columns margin-top">
+					<p style="color: #777; font-family:OsloBold; font-size:16px;">Please Note: Earnings shown are estimates only. Actual earnings may be more or less, based on traffic measured via Google Anaytics, and not finalized until after the end of each month.</p>
+				</div>
 				<?php include_once($config['include_path_admin'].'notifications_temp.php'); ?>
 
 				<?php include_once($config['include_path_admin'].'incentive_plan_winners.php'); ?>
@@ -147,10 +150,11 @@
 				
 				<!-- WELCOME MODAL -->
 				<?php 
-					//if(	$userData['user_login_count'] == 0  && !isset($_SESSION['show_welcome_modal']) ){
+					if(	$userData['user_login_count'] == 0  && !isset($_SESSION['show_welcome_modal']) ){
 						include_once($config['include_path_admin'].'welcome_modal.php'); 
-					//}
+					}
 				?>
+
 
 			</div>
 
@@ -159,11 +163,10 @@
 
 	</main>
 
-	<!-- INFO BADGE -->
+	<!-- INFO BADGE 
 	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
-		<?php include($config['include_path_admin'].'info-badge.php');?>
-	</div>
-	<?php //include_once($config['include_path_admin'].'footer.php');?>
+		<?php //include($config['include_path_admin'].'info-badge.php');?>
+	</div>-->
 	<?php include_once($config['include_path_admin'].'bottomscripts.php');?>
 </body>
 </html>

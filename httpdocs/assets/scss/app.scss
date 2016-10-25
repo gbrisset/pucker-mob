@@ -2084,28 +2084,30 @@ input#email::-moz-placeholder {  /* Firefox 19+ */ color: #222;  }
 input#email:-ms-input-placeholder {  color: #222;  }
 .new-success{
 		background: #368a54;
-	    padding: 8px;
+	    padding: 15px;
 	    color: #fff !important;
 	    font-size: 18px;
-	    font-family: OsloRegular;
+	    font-family: Oslo;
 
 	    a{
 	    color: #fff;
 	    font-size: 18px;
 	    text-transform: uppercase;
+	     text-decoration: underline;
 	    }
 	}
 
 	.new-error{
 		background: #c43333;
-	    padding: 8px;
+	    padding: 15px;
 	    color: #fff !important;
 	    font-size: 18px;
-	    font-family: OsloRegular;
+	    font-family: Oslo;
 	    a{
 	    color: #fff;
 	    font-size: 18px;
 	    text-transform: uppercase;
+	    text-decoration: underline;
 	    }
 	}
 .error{color:red !important;}

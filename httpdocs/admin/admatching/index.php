@@ -7,6 +7,7 @@
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	$email = isset($userData['contributor_email_address']) ? $userData['contributor_email_address'] : 'none';
+	
 	$contributor_id = $userData['contributor_id'];
 	$user_id = $userData['user_id'];
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');

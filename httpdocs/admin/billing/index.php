@@ -7,16 +7,17 @@
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	$billingInfo = $adminController->getBillingInformation($userData['user_id']);
+
 	
 	$w9_live = 0;
 	if( isset($billingInfo['w9_live']) && $billingInfo['w9_live']) $w9_live = $billingInfo['w9_live'];
 	
+
 	if(isset($_POST['submit'])){
-		
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
+			$pp_email = "";
+			if(isset($_POST['paypal-email'])) $pp_email= $_POST['paypal-email'];
 			
-		$pp_email = "";
-		if(isset($_POST['paypal-email'])) $pp_email= $_POST['paypal-email'];
 			if(isset($_POST['w9_live']) && $_POST['w9_live'] == 'on') $_POST['w9_live'] = 1;
 			else $_POST['w9_live'] = 0;
 
@@ -108,11 +109,11 @@
 					</div>
 				
 					<div class="paypal-info small-12 columns no-padding">
-						<form    method="POST" class="small-12 columns no-padding margin-top" id="paypal-form" name="paypal-form">
+						<form  action="<?php echo $_SERVER['PHP_SELF']; ?>"  method="POST" class="small-12 columns no-padding margin-top" id="paypal-form" name="paypal-form">
 							<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 							<input type="text" class="hidden" id="user_id" name="user_id" value="<?php  echo $userData['user_id']; ?>" >
 							
-							<input type="checkbox" name="w9_live" id="w9-live" <?php if($w9_live && $w9_live == 1) echo 'checked'; ?>><label>Yes, I have completed and uploaded my W9 form.</label>
+							<input type="checkbox" name="w9_live" id="w9-live" <?php if($w9_live && $w9_live == 1) echo 'checked="checked"'; ?>><label>Yes, I have completed and uploaded my W9 form.</label>
 							
 							<div class="small-12 columns radius header-style">
 								<h2>Paypal Information</h2>
@@ -151,10 +152,10 @@
 		</div>
 	</main>
 
-	<!-- INFO BADGE -->
+	<!-- INFO BADGE 
 	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
-		<?php include($config['include_path_admin'].'info-badge.php');?>
-	</div>
+		<?php //include($config['include_path_admin'].'info-badge.php');?>
+	</div>-->
 	
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>

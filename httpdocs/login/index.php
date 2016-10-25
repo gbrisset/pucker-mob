@@ -144,7 +144,9 @@
 					   			<!-- REGISTER BUTTON & ERROR MESSAGE -->
 					   			<div class="margin-top">
 									<?php if(isset($registrationStatus)){ ?>
-										<p class="<?php echo ($registrationStatus['hasError'] == true) ? ' new-error' : ' new-success'; ?>"><?php echo $registrationStatus['message']; ?></p>
+									<div class="columns small-12 new-error margin-bottom" style="border-radius: 5px;">
+										<?php echo $registrationStatus['message']; ?>
+										</div>
 									<?php } ?>
 									<button type="submit" id="register" name="register" class="button left small-12">Register</button>
 								</div>

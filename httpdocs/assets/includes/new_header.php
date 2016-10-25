@@ -68,7 +68,7 @@
 
  
  <!-- Social Media Icons -->
-<div id="nav_bar" style="z-index:1000000000 !important; position: absolute !important;"> 
+<div id="nav_bar" style="z-index:1000000000 !important;"> 
    <nav id="top-bar-header-cont" class="new-header" data-topbar role="navigation">
         <div class="row inner-div">
           

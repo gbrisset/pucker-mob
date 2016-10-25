@@ -794,9 +794,11 @@ End password reset methods
 		$params[':user_salt'] = $salt;
 		$post['user_salt-nf'] = $salt;
 
-		
-		//$keys[] = 'user_name';
-		//$values[] = ':user_name';
+		if( !$fromFB ){
+			$keys[] = 'user_name';
+			$values[] = ':user_name';
+		}
+	
 		$params[':user_name'] = $username;
 		$post['user_name-nf'] = $username;
 
@@ -807,6 +809,8 @@ End password reset methods
 			'updateString' => "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")",
 			'updateParams' => $params
 		));
+
+		//var_dump($params, $result); die;
 		if($result){
 			//if(!$isReader){
 				
@@ -1592,7 +1596,7 @@ End password reset methods
 				'username' => $user['user_name']
 			))) return $registerEmail;
 			$r = $this->helpers->returnStatus(200);
-			$r['message'] = "Welcome to Puckermob.  We've sent you an email to verify your account, please go to your email account and click the link provided.";
+			$r['message'] = "<h2 class=\"uppercase\">To Complete your Registration: </h2><p>Please check your email  and click  the link  provided to complete your registration.</p><p>Didn't get an e-mail from us? Check your spam folder or <a href=\"".$this->config['this_admin_url'].'activate/resend'."\">Click Here</a> to resend.";
 			return $r;
 		}else $this->helpers->returnStatus(500);
 	}

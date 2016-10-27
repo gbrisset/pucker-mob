@@ -51,9 +51,9 @@
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
 
 			
-			<div class="small-12 xxlarge-8 columns no-padding-right padding-top">
+			<div class="small-12 columns padding-top">
 				<?php if(isset($orders) && $orders ){?>
-				<table>
+				<table class="small-12 columns">
 					<thead>
 						<tr>
 							<td>DATE</td>
@@ -61,10 +61,8 @@
 							<td>EMAIL</td>
 							<td>PKG</td>
 							<td>TOTAL</td>
-							<td>RECEIPT</td>
-							<td>SPENT</td>
-							<td>DATE</td>
-							<td>BALANCE</td>
+							<td></td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -81,10 +79,8 @@
 							<td><?php echo $pkg.'%'; ?></td>
 							<td><?php echo '$'.number_format( $total, 2); ?></td>
 							<td><a href="">Articles</a></td>
-							<td>RECEIPT</td>
-							<td>SPENT</td>
-							<td>DATE</td>
-							<td>BALANCE</td>
+							<td><a href="#" id="history-link" data-info-id = "<?php echo $order->contributor_id; ?>" data-reveal-id="history-modal">History</a></td>
+							
 						</tr>
 						<?php } ?>
 					</tbody>
@@ -94,16 +90,18 @@
 				}?>
 			</div>
 
-			<!-- Right Side -->
+			<!-- Right Side 
 			<div class="small-12 xxlarge-4 right padding rightside-padding" >
 			
-			</div>
+			</div>-->
 
 		</div>
 
 	</main>
+	<?php include_once($config['include_path_admin'].'history.php');?>
 
 	<?php include_once($config['include_path_admin'].'bottomscripts.php');?>
+							
 </body>
 </html>
 

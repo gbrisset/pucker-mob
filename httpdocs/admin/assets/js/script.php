@@ -11,8 +11,9 @@ var admin_url = 'http://www.puckermob.com/admin/';
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
 var page = document.body.id;
 
+$(document).foundation().foundation();
 
-//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 //Menu Toggler Functionality Mobile
@@ -1353,7 +1354,8 @@ var OrderObj = {
 	disableSubmit:function(){},
 	showModalOrderStatus: function(){}
 	}
-OrderObj.init();
+	
+	OrderObj.init();
 
 
 }); 

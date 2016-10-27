@@ -9,37 +9,35 @@
 	$contributor_id = isset($_POST['contributor_id']) ? $_POST['contributor_id'] : 0;
 	
 	$transactions = $AdMatchingTransactions->where('contributor_id = '.$contributor_id);
-	var_dump($transactions);
 
-	if($transactions ){ ?>
-		<div class="">
+	?>
+		<div id="order-history" class="">
+		
 		<table class="columns small-12">
 			<thead>
 				<tr>
-					<td>RECEIPT</td>
-					<td>SPENT</td>
-					<td>DATE</td>
-					<td>BALANCE</td>
+					<td width="200">RECEIPT</td>
+					<td width="200">SPENT</td>
+					<td width="200">DATE</td>
+					<td width="200">BALANCE</td>
+					<td></td>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($transactions as $transaction ){?>
-				<tr>
-					<td><div><label>SEND<input type="checkbox" name="receipt_sent" /></div></td>
-					<td><?php echo $transaction->spent; ?></td>
-					<td><?php echo date("m/d/Y", $transaction->date); ?></td>
-					<td><?php echo $transaction->balance; ?></td>
-				</tr>
-				<?php }?>
-				<tr>
-					<td><a href="" id="add-history" >+ROW</a></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+
+			<?php if($transactions ){ 
+					foreach($transactions as $transaction ){?>
+					<tr>
+						<td width="200"><div><label>SEND<input type="checkbox" name="receipt_sent" /></div></td>
+						<td width="200"><?php echo $transaction->spent; ?></td>
+						<td width="200"><?php echo date("m/d/Y", $transaction->date); ?></td>
+						<td width="200"><?php echo $transaction->balance; ?></td>
+						<td></td>
+					</tr>
+				<?php }
+				} ?>
+
 			</tbody>
 		</table>
+		<label id="add-history" name="add-history" class="add-history-link clear">+ROW</label>
 	</div>
-	<?php }else{ ?>
-		<p>No Transactions.</p>
-	<?php } ?>

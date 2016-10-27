@@ -2504,3 +2504,15 @@ p, ul li{ font-size: 14px;}
 	.reject-msg{ background: #fff !important; border: 1px solid #ddd; width: 75%; float: left; height: 26px; font-size: 13px;}
 	.send-reasons{ display: inline-block; float: left; width: 21%; padding: 5px; font-size: 13px; text-transform: uppercase; background: #d50909;}
 }
+
+#order-history{
+  .add-history-link{
+    color: #888;
+    text-transform: uppercase;
+    font-family: OsloBold;
+  }
+}
+
+#history-transaccions{
+  table tr td input{ height: 1.8rem; margin-bottom: 0; font-size: 16px;  padding: 7px 30px;}
+}

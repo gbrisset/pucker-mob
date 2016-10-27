@@ -1357,6 +1357,57 @@ var OrderObj = {
 	
 	OrderObj.init();
 
+	var OrderHistory = {
+		target : null,
+		onClick: function(ele){
+			var contributor_id = $(ele).parents().find('#history-link').attr('data-info-id');
+			var balance = $(ele).parents().find('#history-link').attr('data-info-total-balance');
+			OrderHistory.target = ele;
+
+			OrderHistory.createForm( contributor_id );
+		},
+		createForm: function( id ){
+			$.ajax({
+			   type: "POST",
+			   url:   admin_url + 'assets/php/ajaxfunctions.php',
+			   data: { contributor_id:id , balance: OrderHistory.balance,task:'get_form_history' }
+			}).done(function(data) {
+			console.log(data);
+				$('#add-history').hide();
+				$('#order-history').append(data);
+
+			});
+
+		},
+		createTdTable: function( data ){
+			console.log(data);
+		}
+	}
+	$('#history-modal').on('click', '#add-history', function(e){
+		OrderHistory.onClick(this);
+	});
+
+	
+	$('#history-modal').on('click', '#save-transaction', function(e){
+		var thisForm = $(this).parents('form');
+		var formData = thisForm.serialize();
+		$.ajax({
+		  type: "POST",
+		  url:   admin_url + 'assets/php/ajaxfunctions.php',
+		  data: { formData: formData ,task:'save-transaction' }
+		}).done(function(data) {
+			data = $.parseJSON(data);
+			if(data.hasError === false ){
+				$('#add-history').show();
+				OrderHistory.createTdTable(data);
+
+			}
+
+		});
+			console.log(formData);
+
+	});
+
 
 }); 
  

@@ -7,18 +7,14 @@
 </div>
 
 <script>	
+	var admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 	// trigger by event
 	$('a#history-link').on('click', function(e){
-			e.preventDefault();
-			var contributor_id = $(this).attr('data-info-id');
-			console.log(contributor_id);
-		///\	$(this).trigger('click');
-
+		e.preventDefault();
+		var contributor_id = $(this).attr('data-info-id');
 		$('#history-transaccions').load( admin_url + 'assets/includes/history_orders.php', { "contributor_id" : contributor_id } );
-
 	});
+	
 	$('a.close-reveal-modal').trigger('click');
-	 var admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
-
 
 </script>

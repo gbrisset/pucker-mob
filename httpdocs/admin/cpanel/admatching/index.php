@@ -61,6 +61,8 @@
 							<td>EMAIL</td>
 							<td>PKG</td>
 							<td>TOTAL</td>
+							<td>SPENT</td>
+							<td>BALANCE</td>
 							<td></td>
 							<td></td>
 						</tr>
@@ -78,9 +80,10 @@
 							<td><?php echo $contributorInfo->contributor_email_address; ?></td>
 							<td><?php echo $pkg.'%'; ?></td>
 							<td><?php echo '$'.number_format( $total, 2); ?></td>
+							<td><?php echo '$'.number_format( $total, 2); ?></td>
+							<td><?php echo '$'.number_format( $total, 2); ?></td>
 							<td><a href="">Articles</a></td>
-							<td><a href="#" id="history-link" data-info-id = "<?php echo $order->contributor_id; ?>" data-reveal-id="history-modal">History</a></td>
-							
+							<td><a href="#" id="history-link" data-info-id = "<?php echo $order->contributor_id; ?> " data-info-total-balance = "<?php echo $total; ?>" data-reveal-id="history-modal">History</a></td>
 						</tr>
 						<?php } ?>
 					</tbody>

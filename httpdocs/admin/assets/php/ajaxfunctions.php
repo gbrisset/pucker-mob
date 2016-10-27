@@ -3,7 +3,6 @@
 	require_once('../../../assets/php/config.php');
 
 	if(isset($_POST['formData'])) parse_str($_POST['formData'], $_POST['formData']);
-
 	switch($_POST['task']){
 		case 'update_status':
 			echo json_encode($adminController->republishArticle($_POST));
@@ -172,6 +171,17 @@
 			$OrderObj = new OrderAds();
 
 			echo json_encode(  $OrderObj->saveObj($_POST) ); 
+		break;
+
+		case 'get_form_history':
+			$AdMatchingTransactions = new AdMatchingTransactions();
+			echo $AdMatchingTransactions->generateForm( $_POST['contributor_id'], $_POST['balance'] ); 
+		break;
+		
+		case 'save-transaction':
+			$AdMatchingTransactions = new AdMatchingTransactions();
+			var_dump($_POST); die;
+			echo json_encode($AdMatchingTransactions->saveObj( $_POST ));
 		break;
 
 		default:

@@ -169,19 +169,45 @@
 		//ORDERS
 		case 'submit_order':
 			$OrderObj = new OrderAds();
+			$AdMatchingTransactions = new AdMatchingTransactions();
+			$dataTrans = [
+				'contributor_id' => $_POST['contributor_id'],
+				'spent'   => 0,
+				'balance' => $_POST['total_commit'],
+				'date'    => $_POST['date'],
+				'receipt' => 1
+			];
 
-			echo json_encode(  $OrderObj->saveObj($_POST) ); 
+			$order = $OrderObj->saveObj($_POST);
+			if( $order ){
+				$AdMatchingTransactions->saveObj( $dataTrans );
+			}
+			echo json_encode( $order ); 
 		break;
 
 		case 'get_form_history':
-			$AdMatchingTransactions = new AdMatchingTransactions();
-			echo $AdMatchingTransactions->generateForm( $_POST['contributor_id'], $_POST['balance'] ); 
+			$AdMatchingTransactions = new AdMatchingTransactions(); 
+			$transactions = $AdMatchingTransactions->where('contributor_id = '.$_POST['contributor_id'].' ORDER BY id DESC LIMIT 1');
+ 			$balance = ( isset($transactions)  && $transactions ) ? $transactions->balance : 0;
+			echo $AdMatchingTransactions->generateForm( $_POST['contributor_id'], $balance ); 
 		break;
 		
 		case 'save-transaction':
 			$AdMatchingTransactions = new AdMatchingTransactions();
-			var_dump($_POST); die;
-			echo json_encode($AdMatchingTransactions->saveObj( $_POST ));
+			$data = isset($_POST['formData']) ? $_POST['formData'] : $_POST;
+			$data['receipt'] = ( $data['receipt'] === "on") ? 1 : 0;
+			$transactions = $AdMatchingTransactions->where('contributor_id = '.$data['contributor_id'].' ORDER BY id DESC LIMIT 1');
+			$currentBalance = ( isset($transactions[0])  && $transactions[0] ) ? $transactions[0]->balance : 0;
+			$spent = isset($data['spent']) ? $data['spent'] : 0;
+			$newBalance = $currentBalance - $spent;
+			$data['balance'] = $newBalance; 
+
+			$result = $AdMatchingTransactions->saveObj( $data );
+			$data['date'] =date("n/d/Y", strtotime($data['date']));
+			$data['spent'] ='$'.number_format( $data['spent'], 2);
+			$data['balance'] ='$'.number_format( $data['balance'], 2);
+			$result['data'] = $data;
+			echo json_encode( $result );
 		break;
 
 		default:

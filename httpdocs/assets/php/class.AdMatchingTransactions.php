@@ -48,7 +48,6 @@ class AdMatchingTransactions extends DatabaseObject{
 
 
 	public function saveObj( $data ){
-
 		$save = static::create($data);
 		
 		return $save;
@@ -60,11 +59,11 @@ class AdMatchingTransactions extends DatabaseObject{
 		$form = "";
 		$form .= "<div>";
 		$form .= "<form action='' method='POST' id='form-transaction'>";
-		$form .= "<input type='hidden' val='".$contributor_id."'  name='contributor_id' id='contributor_id' />";
-		$form .= "<input type='hidden' val='".$balance."'  name='balance' id='balance-transaccion' />";
+		$form .= "<input type='hidden' value='".$contributor_id."'  name='contributor_id' id='contributor_id' />";
+		$form .= "<input type='hidden' value='".$balance."'  name='balance' id='balance-transaccion' />";
 		$form .= "<table class='columns small-12'>";
 		$form .= "<tr>";
-		$form .= "<td width=\"200\"><div><input type='checkbox' name='receipt' id='receipt-transaction' \/></div></td>";
+		$form .= "<td width=\"200\"><div><input type='checkbox' name='receipt' id='receipt-transaction' /></div></td>";
 		$form .= "<td width=\"200\"><div><input type='number' placeholder='0.00' name='spent' id='spent-transaction' /></div></td>";
 		$form .= "<td width=\"200\"><div><input type='date' name='date'  id='date-transaction' value='".date("m/d/Y")."'' /></div></td>";
 		$form .= "<td width=\"200\"><div><label>---</label></div></td>";

@@ -13,7 +13,7 @@ var page = document.body.id;
 
 $(document).foundation().foundation();
 
-admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 //Menu Toggler Functionality Mobile
@@ -1380,7 +1380,23 @@ var OrderObj = {
 
 		},
 		createTdTable: function( data ){
-			console.log(data);
+			var row = '';
+			row += '<tr>';
+			row += '<td width="200">';
+			if(data.receipt == 1 ){
+				row += '<div><label><i class="fa fa-check main-color" aria-hidden="true"></i></label><input type="checkbox" name="receipt_sent" checked="" class="hidden receipt_sent"></div>';
+			}else{
+				row += '<div><label>SEND<input type="checkbox" name="receipt_sent" style="margin: 10px; top: 5px; position: relative;" class="receipt_sent"></label></div>';
+			}
+			row += '</td>';
+			row += '<td width="200"><label>'+data.spent+'</label></td>';
+			row += '<td width="200"><label>'+data.date+'</label></td>';
+			row += '<td width="200"></label>'+data.balance+'</label></td>';
+			row += '<td></td>';
+			row += '</tr>';
+
+			$('#order-history table tbody').append(row);
+			$('#form-transaction').remove();
 		}
 	}
 	$('#history-modal').on('click', '#add-history', function(e){
@@ -1399,14 +1415,16 @@ var OrderObj = {
 			data = $.parseJSON(data);
 			if(data.hasError === false ){
 				$('#add-history').show();
-				OrderHistory.createTdTable(data);
-
+				OrderHistory.createTdTable(data.data);
 			}
-
 		});
 			console.log(formData);
-
 	});
+
+	//$('#history-modal').on('click', '.receipt_sent', function(e){
+	// console.log($(this).parents());
+	//});
+
 
 
 }); 

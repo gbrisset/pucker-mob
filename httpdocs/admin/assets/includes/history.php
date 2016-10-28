@@ -7,7 +7,7 @@
 </div>
 
 <script>	
-	var admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+	var admin_url = 'http://www.puckermob.com/admin/';
 	// trigger by event
 	$('a#history-link').on('click', function(e){
 		e.preventDefault();

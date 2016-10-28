@@ -26,12 +26,23 @@
 			<tbody>
 
 			<?php if($transactions ){ 
-					foreach($transactions as $transaction ){?>
+					foreach($transactions as $transaction ){ ?>
 					<tr>
-						<td width="200"><div><label>SEND<input type="checkbox" name="receipt_sent" /></div></td>
-						<td width="200"><?php echo $transaction->spent; ?></td>
-						<td width="200"><?php echo date("m/d/Y", $transaction->date); ?></td>
-						<td width="200"><?php echo $transaction->balance; ?></td>
+						<?php if($transaction->receipt == 1){?>
+						<td width="200">
+							<div>
+								<label>SENT <i class="fa fa-check main-color" aria-hidden="true" ></i></label>
+								<input type="checkbox" name="receipt_sent" checked class="hidden receipt_sent"/>
+							</div>
+						</td>
+						<?php }else{?>
+							<td width="200">
+								<div><label>SEND<input type="checkbox" name="receipt_sent" class="receipt_sent" style="margin: 10px; top: 5px; position: relative;"/></div>
+							</td>
+						<?php }?>
+						<td width="200"><div><label><?php echo '$'.number_format( $transaction->spent, 2); ?></label></div></td>
+						<td width="200"><div><label><?php echo date("n/d/Y", strtotime($transaction->date)); ?></label></div></td>
+						<td width="200"><div><label><?php echo '$'.number_format( $transaction->balance, 2);  ?></label></div></td>
 						<td></td>
 					</tr>
 				<?php }

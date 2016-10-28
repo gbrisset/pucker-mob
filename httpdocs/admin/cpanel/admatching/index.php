@@ -12,6 +12,8 @@
 	$contributorObj = new Contributor( );
 	$adMatching = new AdMatching(); //AD Matching Object
 	$OrderObj = new OrderAds(); //ORDER OBJECT
+	$AdMatchingTransactions = new AdMatchingTransactions();
+
 
 	//GET ALL FOR CURRENT MONTH
 	$month = date('n');
@@ -19,6 +21,8 @@
 
 	//GET ORDERS
 	$orders = $OrderObj->all();
+	
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +64,7 @@
 							<td>NAME</td>
 							<td>EMAIL</td>
 							<td>PKG</td>
-							<td>TOTAL</td>
+							<td>COMMIT</td>
 							<td>SPENT</td>
 							<td>BALANCE</td>
 							<td></td>
@@ -70,9 +74,18 @@
 					<tbody>
 						<?php foreach($orders as $order){
 							$contributorInfo = $contributorObj->getContributorById($order->contributor_id);
+							$transactions = $AdMatchingTransactions->where(' contributor_id = '.$order->contributor_id.' ORDER BY id DESC LIMIT 1');
+
+							$spent = ( $transactions && isset($transactions[0]) ) ? $transactions[0]->balance : 0;
 							$date = date("n/d/Y", strtotime($order->date));
 							$pkg = $order->bonus_pct;
 							$total = $order->total_commit;
+ 
+							if($spent > 0 ){
+								$spent = $total - $spent;
+							}
+							$balance = $total - $spent;
+							$link = 'http://www.puckermob.com/admin/profile/user/'.$contributorInfo->contributor_seo_name;
 						?>
 						<tr>
 							<td><?php echo $date; ?></td>
@@ -80,10 +93,10 @@
 							<td><?php echo $contributorInfo->contributor_email_address; ?></td>
 							<td><?php echo $pkg.'%'; ?></td>
 							<td><?php echo '$'.number_format( $total, 2); ?></td>
-							<td><?php echo '$'.number_format( $total, 2); ?></td>
-							<td><?php echo '$'.number_format( $total, 2); ?></td>
-							<td><a href="">Articles</a></td>
-							<td><a href="#" id="history-link" data-info-id = "<?php echo $order->contributor_id; ?> " data-info-total-balance = "<?php echo $total; ?>" data-reveal-id="history-modal">History</a></td>
+							<td><?php echo '$'.number_format( $spent, 2); ?></td>
+							<td><?php echo '$'.number_format( $balance, 2); ?></td>
+							<td><a href="<?php echo $link; ?>" style="text-transform: uppercase; color: #777;">Articles</a></td>
+							<td><a href="#" style="text-transform: uppercase; color: #777;" id="history-link" data-info-id = "<?php echo $order->contributor_id; ?> " data-info-total-balance = "<?php echo $total; ?>" data-reveal-id="history-modal">History</a></td>
 						</tr>
 						<?php } ?>
 					</tbody>

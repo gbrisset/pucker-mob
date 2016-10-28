@@ -4,8 +4,8 @@ $version = "";
 
 if($local)
 {
-	//	error_reporting(E_ALL);
-	//	ini_set('display_errors', '1');
+		//error_reporting(E_ALL);
+		//ini_set('display_errors', '1');
 
 
 	define("DB_SERVER", "localhost");
@@ -210,7 +210,7 @@ $follow = new FollowAuthor($config);
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
-$mpHelpers->geotargeting();
+//$mpHelpers->geotargeting();
 
 
 //recaptcha public key

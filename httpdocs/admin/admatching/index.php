@@ -43,7 +43,7 @@
 	$earnings_info = $ContributorEarnings->getEarningsPerMonthYear($month_relation, $year_relation);	
 	$earnings_info = isset($earnings_info[0]) ? $earnings_info[0] : $earnings_info;
 
-	$to_be_pay = ( isset($earnings_info) && $earnings_info ) ? $earnings_info->to_be_pay : 0;
+	$to_be_pay = 1000;//( isset($earnings_info) && $earnings_info ) ? $earnings_info->to_be_pay : 0;
 	
 ?>
 

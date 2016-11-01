@@ -19,10 +19,11 @@ class Incentives extends DatabaseObject{
 	public $limit;
 	public $start;
 	public $end;
+	public $user_type;
 
 
 	//	Object Vars
-	protected static $db_fields = array('incentives_id', 'bonus', 'month', 'year', 'limit', 'start', 'end');
+	protected static $db_fields = array('incentives_id', 'bonus', 'month', 'year', 'limit', 'start', 'end', 'user_type');
 
 	//Get Values
 	public function all(){

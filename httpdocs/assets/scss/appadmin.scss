@@ -2520,3 +2520,24 @@ p, ul li{ font-size: 14px;}
 #history-transaccions{
   table tr td input{ height: 1.8rem; margin-bottom: 0; font-size: 16px;  padding: 7px 30px;}
 }
+
+.warning-banner{
+    background: #ab1212;
+    max-height: 4.3rem;
+    margin-top: 5px;
+  h2{
+    color: #fff;
+    font-size: 6rem;
+    font-family: OsloBold;
+    top: -11px;
+    margin: 0;
+  }
+  p{
+    color: #fff;
+    font-family: OsloBold;
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 0;
+    margin-top: 1.5%;
+  }
+}

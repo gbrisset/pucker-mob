@@ -230,7 +230,13 @@
 				<?php if( $detect->is('iOS') ){ ?>
 				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 					<div id="get-content" style="text-align:center;">
-						<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
+						<!--<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME> -->
+						<!-- /73970039/300x250_ROS -->
+						<div id='div-gpt-ad-1477948030478-0' style='height:250px; width:300px;'>
+						<script>
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1477948030478-0'); });
+						</script>
+						</div>
 					</div>
 				</div>
 				<?php }else { ?>
@@ -240,39 +246,7 @@
 					</div>
 				</div>
 				<?php } ?>
-				<!-- MEME GLOBAL 
-				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
-					<div id="get-content" style="text-align:center;">
-						<iframe id='m_iframe'  src="http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10845&sSlr=178&creativeID=123&cb=12345&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-					</div>
-				</div>-->
 
-				<?php if( $article_id == 22165 ){?>
-				<div id="mobile-instream-branovate-ad" style="text-align: center;">
-					<div id="get-content" style="text-align:center; display: inline-block;">
-						<div id="vm_inline"></div>
-						<script>
-						    window._videomosh = window._videomosh || [];
-						    !function (e, f, u) {
-						        e.async = 1;
-						        e.src = u;
-						        f.parentNode.insertBefore(e, f);
-						    }(document.createElement('script'),
-						            document.getElementsByTagName('script')[0],
-						            'http://player.videomosh.com/players/loader/loader_final4.js');
-						    _videomosh.push({
-						        publisher_key: "sequelmedia",
-						        mode: "incontent",
-						        container: "vm_inline",
-						        incontent_mobile_id: "9834",
-						        incontent_desktop_id: "42296",
-						        target_type: "mix",
-						backfill: ""
-						       });
-						</script>
-					</div>
-				</div>
-				<?php  } ?>
 			<?php } ?>
 			
 			<!-- COMMENTS BOX -->

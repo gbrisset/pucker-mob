@@ -59,7 +59,6 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 			<section id="article-info" class="small-12 columns">
 				
 				<?php include_once($config['include_path_admin'].'drop_image_new.php'); ?>	
-
 				<form  id="article-add-form" class="margin-top" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" class="a_i" name="a_i" value="0" />
@@ -68,6 +67,12 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<input type="hidden" id="u_type" name="u_type" value="<?php echo $adminController->user->data['user_type']; ?>" />
 					<input type="hidden" id="article_status-s" name="article_status-s" value=" <?php echo $default_status; ?>" />
 					
+					<div class="small-12 xxlarge-8 columns  warning-banner show-for-large-up vertical-center">
+					<h2 class="small-4 columns no-padding-left">WAIT</h2>
+					<p class="small-8 columns">We recommend that you write and save your articles off-line first, and then copy and paste them here.</p>
+					</div>
+
+
 					<div class="small-12 xxlarge-8 columns margin-top">
 						<!-- ARTICLE TITLE -->
 						<div class="row ">

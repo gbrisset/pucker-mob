@@ -13,7 +13,7 @@
 	if($detect->isMobile()){
 		$limit = 30;
 	}
-	 //$rank_list = $ManageDashboard->getTopShareWritesRank( date('n'), $limit);
+	 $rank_list = $ManageDashboard->getTopShareWritesRank( date('n'), $limit);
 	 $rank = '9999';
 	
 ?>
@@ -56,13 +56,13 @@
 				</div>
 				<?php include_once($config['include_path_admin'].'rank_authors_list.php'); ?>
 
-				<div class="small-12 columns no-padding hide-for-large-up radius mobile-ranking-div margin-bottom" >
-					<h2 class="bold uppercase"><?php echo date('F'); ?> INCENTIVE PLAN</h2>
+				<!--<div class="small-12 columns no-padding hide-for-large-up radius mobile-ranking-div margin-bottom" >
+					<h2 class="bold uppercase"><?php //echo date('F'); ?> INCENTIVE PLAN</h2>
 				</div>
 				<div class="small-12 columns no-padding hide-for-large-up margin-bottom" >
 					<label class="main-color font-1-5x">$100 TOP 10 BONUS</label>
 					<p>It's really simple: finish among the Top 10 for the month, and we'll add $100 to your earning total for the month!</p>
-					</div>
+				</div>-->
 
 			</div>
 			<!-- Right Side -->

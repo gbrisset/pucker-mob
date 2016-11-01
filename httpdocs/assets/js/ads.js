@@ -99,10 +99,15 @@ if($('body').hasClass('mobile')) {
 					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
 					//inBodyAd.loadInArticleAd('article-body', 12, 0, '<script type="text/javascript" src="//cdn.thoughtleadr.com/v4/page.js" placement-id="e34fc238e71e1dd6a98a47668a9881ba7867205f92bd422ed1fe67b650685273"></script>', tag);
 					
+					//Meme
+      				inBodyAd.loadInArticleAd('article-body', 10, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);
+
 					//if(article_id == 23319 ){
 					//inBodyAd.loadInArticleAd('article-body', 12, 0, "<script type=\"text/javascript\"> window._ttf = window._ttf || []; _ttf.push({ pid: 59726, lang: \"en\", slot: '#article-content #article-body > p', format: \"inread\", minSlot: 4, components: { skip: {delay : 0}}, css : \"margin: 0px auto 0px; max-width: 550px;\" }); (function (d) { var js, s = d.getElementsByTagName('script')[0]; js = d.createElement('script'); js.async = true; js.src = '//cdn.teads.tv/media/format.js'; s.parentNode.insertBefore(js, s); })(window.document); </script>", tag);
-					inBodyAd.loadInArticleAd( "article-body", 10, 0, '<div id="external-unit-answers-test" ></div>', tag);
-					$('#external-unit-answers-test').load('http://www.puckermob.com/external-unit-answers-test.html');
+					//inBodyAd.loadInArticleAd( "article-body", 10, 0, '<div id="external-unit-answers-test" ></div>', tag);
+					//$('#external-unit-answers-test').load('http://www.puckermob.com/external-unit-answers-test.html');
+					//inBodyAd.loadInArticleAd( "article-body", 10, 0, "<script type=\"text/javascript\"> window._ttf = window._ttf || []; _ttf.push({ pid: 59726, lang: \"en\", slot: '#article-content #article-body > p', format: \"inread\", minSlot: 4, components: { skip: {delay : 0}}, css : \"margin: 0px auto 0px; max-width: 550px;\" }); (function (d) { var js, s = d.getElementsByTagName('script')[0]; js = d.createElement('script'); js.async = true; js.src = '//cdn.teads.tv/media/format.js'; s.parentNode.insertBefore(js, s); })(window.document);</scr"+"ipt>", tag);
+
 
 
 						//}else{
@@ -136,11 +141,7 @@ if($('body').hasClass('mobile')) {
 						//inBodyAd.loadInArticleAd('article-body', 8, 0, "<script type=\"text/javascript\"> window._ttf = window._ttf || []; _ttf.push({ pid: 59726, lang: \"en\", slot: '#article-content #article-body > p', format: \"inread\", minSlot: 4, components: { skip: {delay : 0}}, css : \"margin: 0px auto 0px; max-width: 550px;\" }); (function (d) { var js, s = d.getElementsByTagName('script')[0]; js = d.createElement('script'); js.async = true; js.src = '//cdn.teads.tv/media/format.js'; s.parentNode.insertBefore(js, s); })(window.document); </script>", tag);
       					//inBodyAd.loadInArticleAd('article-body', 9, 0, "<script type=\"text/javascript\"> window._ttf = window._ttf || []; _ttf.push({ pid : 1 , vast: 'http://a.teads.tv/vast/get/1550', lang: \"en\", slot: '#article-content #article-body > p', format: \"inread\", minSlot: 4 ,components: { skip: {delay : 0}}, css: \"margin: 0px auto 0px; max-width: 550px;\"}); (function (d) { var js, s = d.getElementsByTagName('script')[0]; js = d.createElement('script'); js.async = true; js.src = '//cdn.teads.tv/media/format.js'; s.parentNode.insertBefore(js, s); })(window.document);</script>", tag);
 
-      					//if( article_id != 18521 ){
-      						//Meme
-      						//inBodyAd.loadInArticleAd('article-body', 4, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);
-						
-						//}
+      											
 						//if( article_id == 22231 ){
 
 					

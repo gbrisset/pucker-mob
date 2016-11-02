@@ -30,7 +30,7 @@
 			break;
 
 		case 3:
-			$contributor_type_label = 'Basic';
+			$contributor_type_label = 'Community';
 			break;
 		case 8: case 9:
 			$contributor_type_label = 'PRO';

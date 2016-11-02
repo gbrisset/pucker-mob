@@ -12,11 +12,13 @@
 	$incentives_month = $incentives->where(' month = '.$selected_month.' AND year = '.date('Y').' ' );
 	
 	$rank_list = $ManageDashboard->getTopShareWritesRank( $selected_month, $limit);
-	$rank_list_basic = $ManageDashboard->getTopShareWritesRank( $selected_month, 25, '3');
-	$rank_list_pro = $ManageDashboard->getTopShareWritesRank( $selected_month, 25, '8');
+	$rank_list_basic = $ManageDashboard->getTopShareWritesRank( $selected_month, $limit , '3');
+	$rank_list_pro = $ManageDashboard->getTopShareWritesRank( $selected_month, $limit , '8');
 
 	if( isset($rank_list) && count($rank_list) > 0 ){
 		$index = 1;
+	$old = false; 
+	if( $selected_month < 11 && $year == 2016 ) $old = true;
 ?>
 
 <div class = "small-12 columns">
@@ -46,21 +48,22 @@
 			<td class="bold">RANK</td>
 			<td class="bold">NAME</td>
 			<td class="bold align-center">VIEWS</td>
-			<td class="bold align-center">BONUS</td>
+			<?php if($old){?>
+				<td class="bold align-center">BONUS</td>
+			<?php }else{?>
+				<td class="bold align-center">TYPE</td>
+			<?php }?>
 		</thead>
 		<tbody>
-			<?php
-			foreach( $incentives_month as $inc ) {
+			<?php if($old){
+
+				foreach( $incentives_month as $inc ) {
 				$bonus_user = $inc->user_type;
 				$user_type = explode(", ", $inc->user_type);
-				$bonuses = explode(", ", $inc->bonus);
+				$bonus = $inc->bonus;
 
-				for( $j = $inc->start; $j <= $inc->end; $j++ ){ 
-					$bonus = $bonuses[0]; 
-				
-					if( $rank_list[$j]['user_type'] == 8 && isset($bonuses[1])){
-						$bonus = $bonuses[1];
-					}
+				for( $j = $inc->start; $j <= $inc->end -1; $j++ ){ 
+
 				?>
 				<tr id="contributor_id_<?php echo $rank_list[$j]['contributor_id']; ?>" data-type="<?php echo $rank_list[$j]['user_type']; ?> ">
 					<td style="padding-left: 20px; "><?php echo $index; ?></td>
@@ -71,7 +74,30 @@
 			<?php 
 			 $index++;
 				}	
-			}?>
+			}
+
+			}else{
+			
+				foreach( $incentives_month as $inc ) {
+					$bonus_user = $inc->user_type;
+					$user_type = explode(", ", $inc->user_type);
+					
+					for( $j = $inc->start; $j <= $inc->end -1; $j++ ){ 
+					
+						$label_type = 'C';
+						if( $rank_list[$j]['user_type'] == 8) $label_type = 'P';
+					?>
+					<tr id="contributor_id_<?php echo $rank_list[$j]['contributor_id']; ?>" data-type="<?php echo $rank_list[$j]['user_type']; ?> ">
+						<td style="padding-left: 20px; "><?php echo $index; ?></td>
+						<td><?php echo $rank_list[$j]['contributor_name']; ?></td>
+						<td class="align-center"><?php echo number_format($rank_list[$j]['total_us_pageviews']); ?></td>
+						<td class="align-center" style="color: green; font-size: 1rem;"><?php echo $label_type; ?></td>
+					</tr>
+				<?php 
+				 $index++;
+					}	
+				}
+			} ?>
 		</tbody>
 	</table>
 	</div>
@@ -86,42 +112,69 @@
 			<td class="bold">RANK</td>
 			<td class="bold">NAME</td>
 			<td class="bold align-center">VIEWS</td>
+			<?php if( !$old){?>
+			<td class="bold">BONUS</td>
+			<?php }?>
+
 		</thead>
 		<tbody>
 			<?php 
-			$index = 1;
-			foreach( $rank_list_pro as $blogger ) { ?>
-				<tr id="contributor_id_<?php echo $blogger['contributor_id']; ?>" data-type="<?php echo $blogger['user_type']; ?> ">
+			foreach( $incentives_month as $inc ) {
+				$bonus_user = $inc->user_type;
+				$user_type = explode(", ", $inc->user_type);
+				$bonuses = explode(", ", $inc->bonus);
+
+				$bonus = $bonuses[1];
+
+				$index = 1;
+				for( $j = $inc->start; $j < $inc->end; $j++ ){ 
+				if( $j > count($rank_list_pro)) break;
+				//foreach( $rank_list_pro as $blogger ) { ?>
+				<tr id="contributor_id_<?php echo $rank_list_pro[$j]['contributor_id']; ?>" data-type="<?php echo $rank_list_pro[$j]['user_type']; ?> ">
 					<td style="padding-left: 20px; "><?php echo $index; ?></td>
-					<td><?php echo $blogger['contributor_name']; ?></td>
-					<td class="align-center"><?php echo number_format($blogger['total_us_pageviews']); ?></td>
+					<td><?php echo $rank_list_pro[$j]['contributor_name']; ?></td>
+					<td class="align-center"><?php echo number_format($rank_list_pro[$j]['total_us_pageviews']); ?></td>
+					<?php if( !$old){?><td><?php echo $bonus; ?></td><?php }?>
 				</tr>
-			<?php $index++; }?>
+			<?php $index++; }
+		}?>
 		</tbody>
 	</table>
 	</div>
 </div>
 
 <div class="small-12 xlarge-6 columns  margin-top margin-bottom" >
-	<h2 style=" color: green; font-family: OsloBold; font-size: 22px;">BASIC BLOGGERS</h2>
+	<h2 style=" color: green; font-family: OsloBold; font-size: 22px;">COMMUNITY BLOGGERS</h2>
 	<div style="height: 40rem; overflow: scroll;" >
 	<table  class="small-12 large-12 columns" >
 		<thead>
 			<td class="bold">RANK</td>
 			<td class="bold">NAME</td>
 			<td class="bold align-center">VIEWS</td>
+			<?php if( !$old){?><td class="bold">BONUS</td><?php }?>
 		</thead>
 		<tbody>
 			<?php 
+			foreach( $incentives_month as $inc ) {
+				$bonus_user = $inc->user_type;
+				$user_type = explode(", ", $inc->user_type);
+				$bonuses = explode(", ", $inc->bonus);
+
+				$bonus = $bonuses[0];
+
 			$index = 1;
-			foreach( $rank_list_basic as $blogger ) { ?>
+			for( $j = $inc->start; $j < $inc->end ; $j++ ){ 
+			//foreach( $rank_list_basic as $blogger ) { ?>
 					
-				<tr id="contributor_id_<?php echo $blogger['contributor_id']; ?>" data-type="<?php echo $blogger['user_type']; ?> ">
+				<tr id="contributor_id_<?php echo $rank_list_pro[$j]['contributor_id']; ?>" data-type="<?php echo $rank_list_basic[$j]['user_type']; ?> ">
 					<td style="padding-left: 20px; "><?php echo $index; ?></td>
-					<td><?php echo $blogger['contributor_name']; ?></td>
-					<td class="align-center"><?php echo number_format($blogger['total_us_pageviews']); ?></td>
+					<td><?php echo $rank_list_basic[$j]['contributor_name']; ?></td>
+					<td class="align-center"><?php echo number_format($rank_list_basic[$j]['total_us_pageviews']); ?></td>
+					<?php if( !$old){?><td><?php echo $bonus; ?></td><?php }?>
 				</tr>
-			<?php $index++; }?>
+			<?php $index++; }
+
+		}?>
 		</tbody>
 	</table>
 	</div>

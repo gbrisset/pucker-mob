@@ -4,13 +4,7 @@ $new_layout = true;
 if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articleInfoObj['article_id']){
 	$mostReadArticlesList = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );
 }else{
-	//if(isset($categoryInfo) && $categoryInfo['cat_id'] == 9 ){
-	//	$mostReadArticlesList = $mpArticle->getMostRecentArticleList();	
-	//	$new_layout = false;
-	//	$label = "MOST POPULAR";
-	//}else{
-		$mostReadArticlesList = $mpArticle->getMoBlogsArticles( );
-	//}
+	$mostReadArticlesList = $mpArticle->getMoBlogsArticles( );
 } 
 
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
@@ -65,8 +59,9 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 							        <?php if(  $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){?>
 							            <div id="btf1-ad" class="ad-unit ad300" style="height:auto;     margin-left: -15px;">
 							            <?php //if( isset($articleInfoObj) && $articleInfoObj['article_id'] == 19295){?>
-							                 <!-- MEME GLOBAL -->
-										   	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+							                 <!-- MEME GLOBAL
+										   	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe> -->
+										   <!--	<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5975094&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>-->
 							           <?php //} ?>
 							            </div>
 							        <?php } ?>
@@ -79,7 +74,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						<?php }else{ ?>
 							 <div id="btf1-ad" class="ad-unit ad300 show-on-large-up" style="height: auto;">
 							      <!-- MEME GLOBAL -->
-										   	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+								   	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
 						    </div>
 						<?php } ?>
 						<section class="sidebar  margin-bottom">

@@ -208,6 +208,11 @@
 				</div>
 			<?php }elseif( $article_id != 8560 &&  $article_id != 14613  &&  $article_id != 15104 	&& $article_id != 15284  && $article_id != 15488 ){ ?>
 				
+				<!-- NATIVO 2nd UNIT -->
+				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">	
+					<div id="nativo-second-id"></div>
+				</div>
+
 				<!-- SHARETH -->
 				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">
 					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
@@ -227,25 +232,23 @@
 					</div>
 				</div>
 			
-				<?php if( $detect->is('iOS') ){ ?>
-				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
+				<?php //if( $detect->is('iOS') ){ ?>
+				<!--<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 					<div id="get-content" style="text-align:center;">
-						<!--<IFRAME SRC="http://ib.adnxs.com/tt?id=5839932&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME> -->
-						<!-- /73970039/300x250_ROS -->
 						<div id='div-gpt-ad-1477948030478-0' style='height:250px; width:300px;'>
 						<script>
 							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1477948030478-0'); });
 						</script>
 						</div>
 					</div>
-				</div>
-				<?php }else { ?>
-				<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
+				</div>-->
+				<?php //}else { ?>
+				<!--<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
 					<div id="get-content" style="text-align:center;">
 						<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
 					</div>
-				</div>
-				<?php } ?>
+				</div>-->
+				<?php //} ?>
 
 			<?php } ?>
 			

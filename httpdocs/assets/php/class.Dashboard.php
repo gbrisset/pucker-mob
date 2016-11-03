@@ -740,7 +740,7 @@ class Dashboard{
 	public function getContributorsList(){
 		$s = "SELECT contributor_id, user_type from article_contributors 
 		INNER JOIN users ON users.user_email = article_contributors.contributor_email_address 
-		where users.user_login_count > 0 
+		where users.user_login_count > 1 
 		ORDER BY users.user_login_count DESC ";
 
 		$queryParams = [ ];			

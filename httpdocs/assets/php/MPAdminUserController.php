@@ -1264,7 +1264,7 @@ End password reset methods
 
 		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 
-		$s= "SELECT articles.article_title, articles.article_seo_title, articles.article_id, categories.cat_dir_name FROM article_contributor_articles
+		$s = "SELECT articles.article_title, articles.article_seo_title, articles.article_id, categories.cat_dir_name FROM article_contributor_articles
 		 INNER JOIN ( articles, article_categories, categories)
 		 ON ( article_contributor_articles.article_id = articles.article_id 
 		 	AND articles.article_id = article_categories.article_id 

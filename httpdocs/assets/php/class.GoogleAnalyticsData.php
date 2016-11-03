@@ -1,11 +1,5 @@
 <?php
 
-/*
-* GoogleAnalyticsData Class
-*
-*
-*/
-//Daabase Connection
 require_once dirname(__FILE__).'/Connector.php';
 
 class GoogleAnalyticsData{
@@ -129,7 +123,44 @@ class GoogleAnalyticsData{
 		return $arr;
 	}
 
-/*
+	public function getArticlesTEST(){
+		$month = 11;
+		$year = 2015;
+		
+		$arr = [];
+		$s = "SELECT articles.article_id, article_seo_title, article_title  
+			  FROM  articles 
+			  INNER JOIN article_contributor_articles
+			  ON ( article_contributor_articles.article_id = articles.article_id )
+			  WHERE article_status = 1 and article_contributor_articles.contributor_id = 3612 
+			  ORDER BY articles.article_id DESC ";
+
+		$q = $this->performQuery(['queryString' => $s]);
+		
+		if ($q && isset($q[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			$q = $q;
+		} else if ($q && !isset($q[0])){
+				// If $q is an array of rows, return it as normal
+			$q = array($q);
+			//return $q;
+		} else {
+			$q = false;
+		}
+		
+		if($q){
+			foreach($q as $article){
+				$arr[] = [	'article_id' => $article['article_id'], 
+							'article_title' => $article['article_title'],
+							'article_seo' => $article['article_seo_title']//,
+							//'category' => $article['category']
+						 ];
+			}
+		}
+
+		return $arr;
+	}
+
 	public function verifyArticleid( $articleId , $month, $year ){
 			$s="SELECT article_id FROM google_analytics_data WHERE article_id = $articleId AND month = $month AND year = $year LIMIT 1";
 
@@ -154,7 +185,7 @@ class GoogleAnalyticsData{
 
 			return $row;
 	}
-*/
+
 	public function verifyArticleidNew( $articleId , $month, $year ){
 			$s="SELECT article_id FROM google_analytics_data_new WHERE article_id = $articleId AND month = $month AND year = $year LIMIT 1";
 
@@ -212,7 +243,6 @@ class GoogleAnalyticsData{
 
 	public function saveGoogleAnalyticsMostViewArticles( $data ){
 		if(!empty($data) && $data){
-			
 			foreach($data as $article){
 				$pageviews =  $article['pageviews'];
 				$title= $article['title'];
@@ -344,19 +374,29 @@ class GoogleAnalyticsData{
 		}
 	}
 
+	//SAVE ANALYTICS INFORMATION TO GOOGLE ANALYTICS TABLE 
 	public function saveGoogleAnalyticsInformationDaily( $data, $month, $year ){
 		if(!empty($data) && $data){
+				$numItems = count($data);
+				$i = 0;
+				$s = " INSERT INTO google_analytics_data_daily  (`article_id`, `pageviews`, `usa_pageviews`, `pct_pageviews`,  `month`, `year`, `updated_date` ) VALUES ";
 				
-				$articleId = $data['article_id'];
-				$pageviews =  $data['pageviews'];
-				$usa_pageviews= $data['usa_pageviews'];
-				$pct_pageviews= $data['pct_pageviews'];
-				$current_date = date('Y-m-d H:i:s', time());
-				
-				$s = " INSERT INTO google_analytics_data_daily 
-					   (`article_id`, `pageviews`, `usa_pageviews`, `pct_pageviews`,  `month`, `year`) 
-					   VALUES ( $articleId, $pageviews, $usa_pageviews, $pct_pageviews,  $month, $year) ";
-				
+				foreach($data as $row ){
+					$articleId = $row['article_id'];
+					$pageviews =  $row['pageviews'];
+					$usa_pageviews= $row['usa_pageviews'];
+					$pct_pageviews= $row['pct_pageviews'];
+					$current_date = date('Y-m-d H:i:s', time());
+					
+					$s .= "( ". $articleId .", ".$pageviews.", ".$usa_pageviews.", ".$pct_pageviews.", ".$month.", ".$year.", '".$current_date."' ) ";
+
+					if(++$i < $numItems) {
+						$s .= ", ";
+					}
+					
+				}
+
+				//echo $s;
 				$queryParams = [
 					':articleId' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
 				];
@@ -368,7 +408,7 @@ class GoogleAnalyticsData{
 
 				$this->con->closeCon();
 				
-				return $row; 
+				return true;//$row; 
 			}else{
 				return false;
 		}

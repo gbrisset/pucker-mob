@@ -12,8 +12,9 @@ $client = $GoogleAnalyticsApi->connect_to_client();
 
 // Create Google Service Analytics object with our preconfigured Google_Client
 $analytics = new Google_Service_Analytics($client);
-$startDate = date('Y-m-d');
-$endDate = date('Y-m-d');
+$startDate = $endDate =  date('Y-m-d');
+//$endDate = date('Y-m-d');
+
 
 $arrArticle = $GoogleAnalyticsData->getArticlesNew();
 
@@ -26,7 +27,8 @@ $articles_pageviews_from_ga_USA = $analytics->data_ga->get('ga:88041867', $start
 ));
 
 $fromUSA  = array();
-				
+
+
 /*GET USA PAGE VIEWS TRAFFIC*/
 if(count($articles_pageviews_from_ga_USA->getRows()) > 0 ){
 	foreach($articles_pageviews_from_ga_USA->getRows() as $articles_ga_us){
@@ -43,6 +45,7 @@ if(count($articles_pageviews_from_ga_USA->getRows()) > 0 ){
 		$arr['seo'] = explode('?', $seo[count($seo) -1 ])[0];
 		$seo = $arr['seo'];
 
+		if($articles_ga_us[2] < 2 ) continue;
 
 		if(array_key_exists($seo, $fromUSA)){
 			$arr['usa_pageviews'] = $fromUSA[$seo]['usa_pageviews'] + $articles_ga_us[2];
@@ -52,10 +55,13 @@ if(count($articles_pageviews_from_ga_USA->getRows()) > 0 ){
 	}
 }
 
+//var_dump(count($fromUSA)); 
+
 /*MATCH GA RESULTS WITH ARTICLES FROM DB AND UPDATE GADATA DATABASE*/
+
 $month= date('n');
 $year = date('Y');
-
+$data = null;
 foreach( $arrArticle as $article ){		
 	$article_id = $article['article_id'];
 	$article_seo = $article['article_seo'];
@@ -66,15 +72,19 @@ foreach( $arrArticle as $article ){
 		$pageviews = $info['all_pageviews'];
 		$usa_pageviews = $info['usa_pageviews'] + 1;
 
-		$data = [
+		$data[] = [
 			'article_id' => $article_id,
 			'pageviews' => $usa_pageviews,
 			'usa_pageviews' => $usa_pageviews,
 			'pct_pageviews' =>  100
 		];
-		$GoogleAnalyticsData->saveGoogleAnalyticsInformationDaily($data, $month, $year);
+
 	}
 }
+
+//var_dump($data, "<br>");
+$GoogleAnalyticsData->saveGoogleAnalyticsInformationDaily($data, $month, $year);
+
 
 
 

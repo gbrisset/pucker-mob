@@ -40,8 +40,8 @@
                container: "vm_inline", 
                incontent_mobile_id: "23002", 
                incontent_desktop_id: "42300", 
-               target_type: "mix", 
-               backfill: "<script async src='http://ads.allscreen.tv/embed?placement=181' ><\/scr"+"ipt>"
+               target_type: "mix"
+               //backfill: "<script async src='http://ads.allscreen.tv/embed?placement=181' ><\/scr"+"ipt>"
            });
       </script>
     <?php }  ?>

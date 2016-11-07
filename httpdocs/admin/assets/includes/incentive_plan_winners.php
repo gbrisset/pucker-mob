@@ -10,7 +10,7 @@
 	<div class="small-12 columns half-margin-top no-padding merge-box">
 		<div class="columns small-12 xlarge-6 radius inner-box border-right">
 			
-				<h4>Ranked 1-5 ($100 Bonus):</h4>
+				<h4>Ranked 1-5:</h4>
 				<div class="small-12 half-margin-bottom">
 					<ol class="row no-margin">
 					<?php for( $i = 0; $i< 5; $i++){
@@ -25,7 +25,7 @@
 				</div>
 			
 				
-				<h4>Ranked 6-10 ($50 Bonus):</h4>
+				<h4>Ranked 6-10:</h4>
 				<div class="small-12 half-margin-bottom">
 				<ol class="row no-margin">
 					<?php for( $i = 5; $i< 10; $i++){
@@ -41,7 +41,7 @@
 		</div>
 			<div class="columns small-12 xlarge-6 radius inner-box">
 				
-				<h4>Ranked 11-20 ($10 Bonus):</h4>
+				<h4>Ranked 11-20:</h4>
 				<div class="small-12 half-margin-bottom">
 					<ol class="row no-margin">
 					<?php for( $i = 10; $i< 20; $i++){

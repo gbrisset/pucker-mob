@@ -266,15 +266,6 @@ class Dashboard{
 	}
 
 	public function get_articlesbypageviews_new( $contributor_id, $month, $year ){
-
-		//$month = 2;
-		/*$s = "SELECT * FROM  google_analytics_data_daily 
-				INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
-				ON ( article_contributor_articles.article_id = google_analytics_data_daily.article_id )
-				AND ( articles.article_id = google_analytics_data_daily.article_id )
-				AND ( article_categories.article_id = google_analytics_data_daily.article_id )
-				AND (categories.cat_id = article_categories.cat_id )
-				WHERE google_analytics_data_daily.month = ".$month." AND  google_analytics_data_daily.year = ".$year;*/
 			$s = " SELECT google_analytics_data_daily.*, articles.article_title, articles.article_seo_title, categories.cat_id, categories.cat_name, article_contributor_articles.contributor_id  
 				  	FROM  google_analytics_data_daily 
 					INNER JOIN ( article_contributor_articles, articles, article_categories, categories ) 
@@ -282,7 +273,7 @@ class Dashboard{
 					AND ( articles.article_id = google_analytics_data_daily.article_id )
 					AND ( article_categories.article_id = google_analytics_data_daily.article_id )
 					AND (categories.cat_id = article_categories.cat_id )
-					WHERE google_analytics_data_daily.month = ".$month." AND  google_analytics_data_daily.year = ".$year;;
+					WHERE google_analytics_data_daily.month = ".$month." AND  google_analytics_data_daily.year = ".$year;
 
 			if( isset($contributor_id) && $contributor_id != 0){
 				$s.= " AND article_contributor_articles.contributor_id = ".$contributor_id;
@@ -302,6 +293,28 @@ class Dashboard{
 			return false;
 		}
 	}
+
+	public function get_articlesbypageviews_new_2( $contributor_id, $month, $year ){
+
+			$s = " SELECT *, sum(usa_pageviews) as pvs 
+					FROM `article_daily_earnings` 
+					WHERE month = $month AND year = $year AND contributor_id = $contributor_id GROUP BY month ";
+
+			$queryParams = [];			
+			$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		
+			if ($q && isset($q[0])){
+					// If $q is an array of only one row (The set only contains one article), return it inside an array
+				return $q;
+			} else if ($q && !isset($q[0])){
+					// If $q is an array of rows, return it as normal
+				$q = array($q);
+				return $q;
+			} else {
+				return false;
+			}
+	}
+
 
 	//Return All Articles per month for each contributor
 	public function get_dashboardArticles( $limit = 10, $order = '', $articleStatus = '1, 2, 3', $userArticlesFilter, $offset, $month, $year) {
@@ -490,6 +503,8 @@ class Dashboard{
 		}else return false;
 
 	}
+
+	//DEPRECATED
 	public function socialMediaSharesReport($data){
 
 		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
@@ -576,9 +591,6 @@ class Dashboard{
 			$q = array($q);
 			return $q;
 		}else return false;
-
-
-
 	}
 
 	public function pageviewsReport( $month, $year ){
@@ -592,61 +604,59 @@ class Dashboard{
 			$prev_year = $year - 1;
 		}else $prev_month = $month - 1;
 
+
+		if($month == 10) $prev_month = 9;
+
+		//CONTRIBUTOR LIST ACTIVE
 		$contributors = $this->getContributorsList();
 
 		if($contributors){
 			foreach($contributors as $contributor){
 				$id = $contributor['contributor_id'];
-				
-				$update_data = $this->getContributorEarnings($id, $month, $year);
-				$prev_month_data = $this->getContributorEarnings($id, $prev_month, $prev_year);
 
-				$earnings_info = $this->get_articlesbypageviews_new( $id, $month, $year);
+				$current_month = false;
+				$prev_month_data = false;
+				
+				//CONTRIBUTOR EARNINGS
+				$update_data = $this->getContributorEarnings($id, $prev_month.', '.$month, $year);
+
+				//if(count($update_data) > 1){
+				if( $update_data ){
+					$current_month = isset($update_data[0]) ? $update_data[0] : false;
+					$prev_month_data = isset($update_data[1]) ? $update_data[1] : false;
+				}
+
+				//GET PAGEVIEWS TOTAL PER MONTH
+				$earnings_info = $this->get_articlesbypageviews_new_2( $id, $month, $year);
 
 				$total_article_rate = 0;
 				$total_shares = 0;
-							
 				$total_share_rev = 0;
-				
 				$total_us_pageviews = 0;
 				$total_earnings = 0;
 	            $total_to_be_pay = 0;
+
+	            if($earnings_info) $total_us_pageviews = $earnings_info[0]['pvs'];
+				$share_rate = $this->get_current_rate($month, $contributor['user_type']);	
 				
-				if($earnings_info && $earnings_info[0]){
-					foreach ($earnings_info as $earnings) {
-						$total_us_pageviews += $earnings['usa_pageviews']; 
-
-					}
-				}
-
-				//if(isset($update_data ) && $update_data ){
-				//	$share_rate = floatval($update_data[0]['share_rate']);
-				//}else{
-					$share_rate = $this->get_current_rate($month, $contributor['user_type']);	
-				//}
-
 				if($share_rate) $share_rate  = $share_rate['rate'];
 
-	
+				//Calc Total Earnings
 				if( $total_us_pageviews > 0 ){
 					$total_earnings = ($total_us_pageviews / 1000 ) * $share_rate;
 				}
 
 				$total_to_be_pay = $total_earnings;
-			
-				//var_dump($id, $total_us_pageviews, $share_rate, $total_to_be_pay, "<br/>");
-
-
+				//Verify if the previews Month this contributor was paid, if not you will carry the pending amount to next month.
 				if( isset($prev_month_data) && $prev_month_data ){
-					if($prev_month_data[0]['paid'] == 0){
-						$total_to_be_pay = $total_to_be_pay + $prev_month_data[0]['to_be_pay'];
+					if($prev_month_data['paid'] == 0){
+						$total_to_be_pay = $total_to_be_pay + $prev_month_data['to_be_pay'];
 					}
 				}
+//var_dump($prev_month_data, $current_month, $total_to_be_pay); die;
 
-				
-
-				if($update_data){
-					
+				//IF CURRENT MONTH DATA EXIST UPDATE THE RECORD
+				if($current_month){
 					$s = "UPDATE contributor_earnings 
 							SET total_article_rate = $total_article_rate,
 							    total_shares = $total_shares,
@@ -658,21 +668,21 @@ class Dashboard{
 							    updated_date = now()
 						WHERE contributor_id = $id AND month = $month AND year = $year ";
 				}else{
+					//INSERT NEW RECORD
 					$s = "INSERT INTO contributor_earnings
 						  (`id`, `contributor_id`, `month`, `year`, `total_article_rate`, `total_shares`, `share_rate`, `total_us_pageviews`,  
-						  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`)
+						  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`,  `updated_date`)
 						  VALUES (NULL, '".$id."', '".$month."', '".$year."', '".$total_article_rate."', '".$total_shares."', 
-						  	'".$total_shares."', '".$total_us_pageviews."', '".$share_rate."', '".$total_earnings."', '0', '".$total_to_be_pay."') ";
+						  	'".$total_shares."', '".$total_us_pageviews."', '".$share_rate."', '".$total_earnings."', '0', '".$total_to_be_pay."', now() ) ";
 				}
 
 				$queryParams = [ ];			
 				$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-			}
-		}
-
-		
+			} 
+		}	
 	}
 
+	//OLD ONE REPLACED BY pageviewsReport()
 	public function updateContributorsEarnings( $month, $year){
 		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$year = filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
@@ -738,10 +748,7 @@ class Dashboard{
 	}
 
 	public function getContributorsList(){
-		$s = "SELECT contributor_id, user_type from article_contributors 
-		INNER JOIN users ON users.user_email = article_contributors.contributor_email_address 
-		where users.user_login_count > 1 
-		ORDER BY users.user_login_count DESC ";
+		$s = "SELECT contributor_id, user_type from active_user_contributors ";
 
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s]);
@@ -749,20 +756,19 @@ class Dashboard{
 		return $q;
 	}
 
+	//ONLY FOR TESTING WITH 2 CONTRIBUTORS
 	public function getContributorsListTEST(){
-		$s = "SELECT contributor_id, user_type from article_contributors 
-		INNER JOIN users ON users.user_email = article_contributors.contributor_email_address where contributor_id IN (4317, 5112, 3675, 3612, 1459)";
-
+		//$s = "SELECT contributor_id, user_type from article_contributors 
+		//INNER JOIN users ON users.user_email = article_contributors.contributor_email_address where contributor_id IN (4317, 5112, 3675, 3612, 1459)";
+		$s  = " SELECT contributor_id, user_type FROM active_user_contributors where contributor_id IN (3612, 5264) ";
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s]);
 
 		return $q;
 	}
-
 
 	public function getContributorEarnings( $id, $month, $year){
-		$s = "SELECT * from contributor_earnings where contributor_id = $id AND month = $month AND year = $year ";
-
+		$s = "SELECT * from contributor_earnings where contributor_id = $id AND month IN ( $month ) AND year = $year ORDER BY updated_date DESC ";
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 
@@ -775,6 +781,7 @@ class Dashboard{
 		}else return false;
 	}
 
+	//DEPRECATED
 	public function getSocialSharesAndContributors(){
 		$s=" SELECT social_media_records.*, article_contributors.contributor_id, article_contributors.contributor_name, article_contributors.contributor_seo_name FROM social_media_records 
 			 INNER JOIN ( article_contributors, article_contributor_articles) 

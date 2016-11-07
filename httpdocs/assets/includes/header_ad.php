@@ -1,5 +1,5 @@
 <?php if(!$detect->isMobile()){ ?>
-	<div id="header-ad" class="ad-unit hide-for-print padding-top" style="background: #fff !important; margin-top:170px !important">
+	<div id="header-ad" class="ad-unit hide-for-print padding-top" style="background: #fff !important; margin-top:100px !important">
 		<!-- ARTICLES -->
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 

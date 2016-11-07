@@ -25,7 +25,7 @@
 	
 	//Get all Starter Bloggers
 	$user_list = $userObj->all("30"); 
-	
+
 	//GET CURRENT MONTH & YEAR 
 	$current_month =  date('n');
 	$current_year = date('Y');
@@ -38,6 +38,7 @@
 		
 		//Initialize Contributor Information
 		$contributor = $user->getContributorInfo();
+		//$contributor = isset($contributor->data) ? $contributor->data : $contributor;
 		
 		$user_id = $user->user_id;
 		$user_name = $user->user_name;
@@ -46,18 +47,19 @@
 		$contributor_earnings = null;
 		$limit = 5000;
 		$index = 0;
-		
-		if($contributor && isset($contributor->contributor_id) ) {
-			$contributor_name = $contributor->contributor_name;
-			$contributor_email = $contributor->contributor_email_address;
+
+		if($contributor->data && isset($contributor->data->contributor_id) ) {
+			$contributor_name = $contributor->data->contributor_name;
+			$contributor_email = $contributor->data->contributor_email_address;
 			
 			//Get Earnings for each contributor
-			$contributor_earnings = $contributor->getContributorEarningsPerMonth( $contributor, "$current_month", "$current_year" );
+			$contributor_earnings = $contributor->getContributorEarningsPerMonth( $contributor, $current_month, $current_year );
 			$current_month_obj = isset($contributor_earnings[0]) ? $contributor_earnings[0] : false;
-
-			if(isset($current_month_obj) && $current_month_obj) $current_pageviews = $current_month_obj->total_us_pageviews;
 			
+			if(isset($current_month_obj) && $current_month_obj) $current_pageviews = $current_month_obj->total_us_pageviews;
 			// Verify if Prev & Current are above the minimum pageviews per month.
+
+
 			if( $current_pageviews >= $limit ){
 				//EMAIL MESSAGE DATA
 				$msg .= "<tr><td>".$user_id." </td><td>".$contributor_name."</td><td>".$contributor_email."</td><td>".$current_pageviews."</td></tr>";
@@ -71,7 +73,6 @@
 						"type" => 2 , 
 						"date" => date( 'Y-m-d H:s:i', strtotime('now'))
 					];
-
 
 					//Update User Type value
 					$user->updateObj( $data );

@@ -371,13 +371,13 @@ if(!is_null($categoryInfo)){
 				</p>
 			</div>	 
 			
-			<!-- ADBLADE-->
+			<!-- ADBLADE
 			<?php if( $article_id != 16562 &&   $article_id != 17425 && $article_id != 17286 && $article_id != 14479 && $article_id != 14576  && $article_id != 15109   && $article_id != 15271 && $article_id != 15284  && $article_id != 15488 ){?>
 			<div class="columns small-12 margin-top">
 				<ins class="adbladeads" data-cid="21331-3493314697" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins>
 				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
 			</div>
-			<?php }?>
+			<?php }?>-->
 			
 			<!-- ALSO IN PM ARTICLES -->
 			<?php include_once( $config['include_path'].'similararticles.php'); ?>

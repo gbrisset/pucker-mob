@@ -222,18 +222,20 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<?php }?>	
 
 						<div class="row padding-top">
-							<div class="small-12 large-4 columns no-padding show-for-large-up">
+							<div class="small-12 large-6 columns no-padding show-for-large-up">
 								<button type="button" id="preview" name="preview" class="radius preview-button small-12">PREVIEW</button>
 							</div>
-							<div class="small-12 large-4 columns">
+							<div class="small-12 large-6 columns">
 								<button type="button" id="save-article" name="save-article" class="radius small-12" data-info="3">SAVE</button>
 							</div>
-							<div class="small-12 large-4 columns no-padding">
+							<!--<div class="small-12 large-4 columns no-padding">
 								<button type="button" id="publish-article" name="publish-article" class="radius small-12 publish-article">PUBLISH</button>
-							</div>
+							</div>-->
 						</div>
+
+						<?php include_once($config['include_path_admin'].'agreement_edits.php');?>
 						
-						<?php include_once($config['include_path_admin'].'formatting_tips.php');?>
+						<?php //include_once($config['include_path_admin'].'formatting_tips.php');?>
 
 					</div>
 				</form>

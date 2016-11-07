@@ -137,6 +137,11 @@
 					
 				<div class="small-12 xxlarge-9 columns no-padding">
 						<section id="articles-list" class="columns margin-top no-padding">
+						<div class="" id="view-articles-legend">
+							<label><i class="fa fa-lock" aria-hidden="true"></i>: Article Locked. Click to request access</label>
+							<label><i class="fa fa-external-link" aria-hidden="true"></i>: View article.</label>
+						</div>
+						
 						<?php
 							if(isset( $articles) && $articles ){ ?>
 
@@ -151,14 +156,17 @@
 								       		<th width="100" class="show-for-large-up">Promotion</th>
 									   <?php }?>
 								       <th width="100"  class="show-for-large-up">status</th>
-								       <th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
+								       <th width="70" class="show-for-xlarge-up">U.S. Traffic</th>
+								       <th width="30" class="show-for-xlarge-up">EDIT?</th>
 								       <th  width="50" class="show-for-large-up"></th>
 								    </tr>
 								</thead>
 								
 								<tbody>
 								 <?php foreach($articles as $articleInfo){
-									$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
+								 	$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
+
+									$articleExternalUrl = $config['this_admin_url'].$articleInfo['cat_dir_name'].'/'.$articleInfo['article_seo_title'];
 									$article_id = $articleInfo["article_id"];
 									$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
 									$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
@@ -169,10 +177,17 @@
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
 									$user_id = $articleInfo['user_id'];
+									$edits = $articleInfo['article_agree_edits'];
+									$lock_status = $articleInfo['article_lock_status'];
 
 									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
 									}
+
+									//WHEN EDITS AGREEMENT AND IS LOCKED. Don't ACCESS ARTICLE
+									if($admin == false && $edits == 1 && $lock_status == 1){
+								 		$articleUrl = '';
+								 	}
 
 									if(file_exists($pathToImage)){
 										$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
@@ -183,12 +198,12 @@
 									?>
 									<tr id="<?php echo 'article-'.$article_id; ?>">
 									  	<td class="border-right">
-									  		<div class=" large-4 columns no-padding-left show-for-large-up">
+									  		<div class=" large-2 columns no-padding-left show-for-large-up">
 												<a href="<?php echo $articleUrl; ?>">
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 												</a>
 											</div>
-											<div class="large-8 columns no-padding" style="display: table-caption">
+											<div class="large-7 columns no-padding" style="display: table-caption">
 												<h2 class="small-12 columns no-padding">
 													<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
 													<a href="<?php echo $articleUrl; ?>">
@@ -199,6 +214,25 @@
 													<?php }?>
 												</h2>
 												
+											</div>
+											<div class="small-3 columns align-right" id="article-list-table-legend">
+												<?php if( $edits ==  1 ){ 
+												 if( $lock_status ==  1 ){ ?>
+												<label class="inline">
+													<a  id="unlock-article" data-status-lock="<?php echo $edits; ?>">
+														<i class="fa fa-lock" aria-hidden="true"></i>
+													</a>
+												</label>
+												<?php }else{ ?>
+													<a  id="unlock-article" data-status-lock="<?php echo $edits; ?>">
+														<i class="fa fa-unlock" aria-hidden="true"></i>
+													</a>
+												<?php }
+												}?>
+												
+												<?php if($articleInfo["article_status"] == 1 ){?>
+												<label class="inline"><a href="<?php echo $articleExternalUrl; ?>" target="_blank" class="main-color" id="view-article-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></label>
+												<?php } ?>
 											</div>
 									  	</td>
 
@@ -223,8 +257,18 @@
 									  	<?php } ?>
 
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
+										
 										<!-- REMOVE ARTICLE -->
 										<td class="show-for-xlarge-up  border-right" ><label><?php echo $article_us_traffic; ?></label></td>
+
+										<!-- ARTICLE EDITS ALLOW ?-->
+										<td  class="show-for-xlarge-up  border-right">
+										<?php if( $edits ==  1 ){ ?>
+											<i class="fa fa-circle" style="color: #23ab23; font-size: 150%;" aria-hidden="true"></i>
+										<?php }else{?>
+											<i class="fa fa-circle " style="color:red; font-size: 150%;" aria-hidden="true"></i>
+										<?php }?>
+										</td>
 										<td class="show-for-large-up no-border-right valign-middle">
 											<?php if($admin_user || $blogger ){?>
 												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">

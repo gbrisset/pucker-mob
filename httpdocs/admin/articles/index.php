@@ -178,16 +178,16 @@
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
 									$user_id = $articleInfo['user_id'];
 									$edits = $articleInfo['article_agree_edits'];
-									$lock_status = $articleInfo['article_lock_status'];
+									//$lock_status = $articleInfo['article_lock_status'];
 
 									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
 									}
 
 									//WHEN EDITS AGREEMENT AND IS LOCKED. Don't ACCESS ARTICLE
-									if($admin == false && $edits == 1 && $lock_status == 1){
-								 		$articleUrl = '';
-								 	}
+									//if(/*$admin == false &&*/ $edits == 1 && $lock_status == 1){
+								 	//	$articleUrl = '';
+								 	//}
 
 									if(file_exists($pathToImage)){
 										$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';

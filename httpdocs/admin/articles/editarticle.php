@@ -5,7 +5,14 @@
 	$article = $articleResultSet['articles'];
 	$category = $articleResultSet['categories'];
 
+	//If no content return 404 Not Found.
 	if(empty($article)) $mpShared->get404();
+	
+	//Check if this user has access to this article.
+	$edits = $article['article_agree_edits'];
+	//$lock_status = $article['article_lock_status'];
+	if($admin == false && $edits == 1)   $adminController->redirectTo('noaccess/');
+	
 
 	// If the article exists and has an id, check to see if this user has permissions to edit this article...
 	if (isset($article['article_id']) ){
@@ -32,8 +39,8 @@
 	$tallImageUrl = $config['image_url'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';	
 	$pathToTallImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$article["article_id"].'_tall.jpg';
 	$pathToSecondImage = $config['image_upload_dir'].'articlesites/puckermob/second_image/second_mob_img_'.$article["article_id"].'.jpg';
-	//Verify if Article Image file exists.
 	
+	//Verify if Article Image file exists.
 	$artImageDir =  $config['image_upload_dir'].'articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';
 	$artImageExists = false;
 	if(isset($artImageDir) && !empty($artImageDir) && !is_null($artImageDir)){
@@ -49,7 +56,6 @@
 	if($contributor_type != false) $contributor_type =  $contributor_type["user_type"]; else $contributor_type = false;
 	
 	//GET ALL ARTICLES 
-	//$allarticles = $mpArticle->getAllLiveArticles();
 	$allarticles = $mpArticle->getAllLiveArticlesPerContributor( $contributor_id );
 
 	//Relate Articles
@@ -69,10 +75,8 @@
 					}else{
 						$updateStatus["hasError"] = true;
 						$updateStatus["message"] = "You need to add an image to make an article live!"; ?>
-
 						<script>alert( "<?php echo $updateStatus["message"]; ?>" );</script>
 						<?php
-
 					}
 				}else{
 					$updateStatus = $adminController->updateArticleInfo($_POST);

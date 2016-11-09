@@ -20,17 +20,13 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			<section id="categories-list">
-				<header class="section-bar">
-					<h2>Access Denied</h2>
-				</header>
-
+				<h2>Access Denied</h2>
+			
 				<p>Sorry, it looks like you don't have permission to view the requested page.  If you feel this is an error, please contact support at <a href="mailto:info@sequelmediainternational.com">info@sequelmediainternational.com</a>.</p>
-			</section>
 		</div>
 	</main>
 
-	<?php include_once($config['include_path_admin'].'footer.php');?>
+	<?php //include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

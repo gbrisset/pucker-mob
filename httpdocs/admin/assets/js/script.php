@@ -5,13 +5,14 @@
 
 $(document).ready(function (){
 
+
 var body = $('body');
 var base_url = 'http://www.puckermob.com';
 var admin_url = 'http://www.puckermob.com/admin/';
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
 var page = document.body.id;
 
-$(document).foundation().foundation();
+$(document).foundation();
 
 //admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
@@ -1425,7 +1426,9 @@ var OrderObj = {
 	// console.log($(this).parents());
 	//});
 
-
+$('.show-msg').on('click', function(e){
+	alert('This article has been edited by the PuckerMob staff and can no longer be altered.');
+});
 
 }); 
  

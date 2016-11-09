@@ -11,9 +11,10 @@
 	//Check if this user has access to this article.
 	$edits = $article['article_agree_edits'];
 	//$lock_status = $article['article_lock_status'];
-	if($admin == false && $edits == 1)   $adminController->redirectTo('noaccess/');
+	$admin_user = false;
+	if( $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 6) $admin_user = true;
+	if( !$admin_user  && $edits == 1)   $adminController->redirectTo('noaccess/');
 	
-
 	// If the article exists and has an id, check to see if this user has permissions to edit this article...
 	if (isset($article['article_id']) ){
 		$article_id = $article['article_id'];
@@ -32,6 +33,7 @@
 			else $desktop_ad[] = $ad;
 		}
 	}
+
 	$article_ads = $mpArticleAdmin->getArticleAds($article);
 	if($article_ads && isset($article_ads[0])) $article_ads = $article_ads[0];
 
@@ -126,7 +128,6 @@
 			
 		}else $adminController->redirectTo('logout/');
 	}
-	
 ?>
 
 <!DOCTYPE html>

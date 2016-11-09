@@ -1,6 +1,4 @@
 
-
-
 <!-- Include JS files. -->
 <script src="<?php echo $config['this_url']; ?>assets/js/froalajs/froala_editor.min.js"></script>
 
@@ -13,6 +11,7 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/lists.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
 
@@ -45,6 +44,7 @@
 
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php?ver=2343" async></script>
 <script src="<?php echo $config['this_url']; ?>/assets/js/main.js"></script>
+
 
 <?php
 	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);

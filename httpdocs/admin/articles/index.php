@@ -184,11 +184,6 @@
 								    	$article_us_traffic = $pageviews_list[$article_id];
 									}
 
-									//WHEN EDITS AGREEMENT AND IS LOCKED. Don't ACCESS ARTICLE
-									//if(/*$admin == false &&*/ $edits == 1 && $lock_status == 1){
-								 	//	$articleUrl = '';
-								 	//}
-
 									if(file_exists($pathToImage)){
 										$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
 									} else {
@@ -199,16 +194,30 @@
 									<tr id="<?php echo 'article-'.$article_id; ?>">
 									  	<td class="border-right">
 									  		<div class=" large-2 columns no-padding-left show-for-large-up">
+									  			<?php if( $edits ==  1){ ?>
+													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
+										
+									  			<?php }else{ ?>
 												<a href="<?php echo $articleUrl; ?>">
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 												</a>
+												<?php } ?>
 											</div>
 											<div class="large-7 columns no-padding" style="display: table-caption">
+												
 												<h2 class="small-12 columns no-padding">
 													<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
-													<a href="<?php echo $articleUrl; ?>">
+													<?php if( $edits ==  1){ ?>
+													
+														<p class="show-msg has-tooltip" title="This article has been edited by the PuckerMob staff and can no longer be altered" style="cursor: pointer;">
 														<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
-													</a>
+														</p>
+													<?php }else{?>
+														<a href="<?php echo $articleUrl; ?>">
+															<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
+														</a>
+													<?php }?>
+													
 													<?php if($admin){?>
 														<span class="show-for-large-up"><a href="<?php echo $config['this_admin_url']; ?>profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>
 													<?php }?>
@@ -216,19 +225,13 @@
 												
 											</div>
 											<div class="small-3 columns align-right" id="article-list-table-legend">
-												<?php if( $edits ==  1 ){ 
-												 if( $lock_status ==  1 ){ ?>
+												<?php if( $edits ==  1){ ?>
 												<label class="inline">
 													<a  id="unlock-article" data-status-lock="<?php echo $edits; ?>">
 														<i class="fa fa-lock" aria-hidden="true"></i>
 													</a>
 												</label>
-												<?php }else{ ?>
-													<a  id="unlock-article" data-status-lock="<?php echo $edits; ?>">
-														<i class="fa fa-unlock" aria-hidden="true"></i>
-													</a>
-												<?php }
-												}?>
+												<?php }?>
 												
 												<?php if($articleInfo["article_status"] == 1 ){?>
 												<label class="inline"><a href="<?php echo $articleExternalUrl; ?>" target="_blank" class="main-color" id="view-article-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></label>
@@ -270,14 +273,14 @@
 										<?php }?>
 										</td>
 										<td class="show-for-large-up no-border-right valign-middle">
-											<?php if($admin_user || $blogger ){?>
+											<?php if($admin_user || ( $blogger && $edits != 1 ) ){?>
 												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
 													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
 													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
 													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 												</form>
 											<?php }else{?>
-												<?php if($articleInfo["article_status"] != 1 ){?>
+												<?php if($articleInfo["article_status"] != 1 && $edits != 1 ){?>
 												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
 													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
 													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />

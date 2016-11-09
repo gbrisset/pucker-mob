@@ -26,9 +26,11 @@ $bgColor: #ffffff;
 "foundation/components/tooltips",
 "foundation/components/labels",
 "foundation/components/tables",
-"foundation/components/tooltips",
 "foundation/components/thumbs",
 "foundation/components/reveal";
+
+@import "foundation/components/tooltips";
+
 
 // Custom variables
 
@@ -2547,13 +2549,13 @@ p, ul li{ font-size: 14px;}
 
   h2{
     color: green;
-    font-family: OsloRegular;
+    font-family: Oslo;
     line-height: 1.2;
   }
 
   p{
     font-size: 15px;
-    font-family: OsloRegular;
+    font-family: Oslo;
     line-height: 1.3;
 
     span{ color: green;}
@@ -2577,6 +2579,6 @@ p, ul li{ font-size: 14px;}
 #articles-list #article-list-table-legend{ 
   top:15px;
   label{ color: #888 !important; font-size: 24px !important;}
-  a{color: #888 !important; font-size: 20px !important; }
+  a{color: #888 !important; font-size: 20px !important; text-decoration:none;}
 
 }

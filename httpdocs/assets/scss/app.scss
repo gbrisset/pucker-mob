@@ -2176,7 +2176,7 @@ input#email:-ms-input-placeholder {  color: #222;  }
 	.new-header{
 		background: #000;
 	    border-bottom: 2px solid #fff;
-	    height: 3rem;
+	    height: 92px !important;
 
 	    .inner-div{ max-width: 69rem; }
 	    .logo{
@@ -2254,10 +2254,10 @@ input#email:-ms-input-placeholder {  color: #222;  }
 	}
 
 	@media #{$large-up} { 
-	    	.new-header{ height: 5rem; }
-	    	.new-header .logo{ padding-top:7px;}
-	    	.new-header .logo .above a{ font-size: 1.8rem !important; }
-	    }
+    	.new-header{ height: 5rem; }
+    	.new-header .logo{ padding-top:15px;}
+    	.new-header .logo .above a{ font-size: 1.8rem !important; }
+	}
 
 
 .category-colors ul li a{ color: black !important; }

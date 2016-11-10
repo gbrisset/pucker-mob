@@ -71,7 +71,6 @@
 <div id="nav_bar" style="z-index:1000000000 !important;"> 
    <nav id="top-bar-header-cont" class="new-header" data-topbar role="navigation">
         <div class="row inner-div">
-          
           <div class="columns small-4 large-3 logo">
              <h1 class="above hide-for-large-up">  
               <a style="font-size: 1.4rem;" href="<?php echo $config['this_url']; ?>">PUCKERMOB</a>
@@ -81,7 +80,7 @@
               <span class="below">MOB</span></a>
             </h1>
           </div>
-          <div class="columns small-8 large-9 " style="margin-top: 11px;">
+          <div class="columns small-8 large-9 " style="margin-top: 19px;">
           <?php if($loginActive) { ?>
             <!-- LOGIN ACTIVE -->
               <div class="columns small-12 no-padding-right " style="margin-top: 2px;">

@@ -178,7 +178,7 @@
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
 									$user_id = $articleInfo['user_id'];
 									$edits = $articleInfo['article_agree_edits'];
-									//$lock_status = $articleInfo['article_lock_status'];
+									$article_locked = ( $edits == 1 && $articleInfo['article_status'] == 1);
 
 									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
@@ -189,15 +189,13 @@
 									} else {
 										$imageUrl = 'http://cdn.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
 									}
-
 									?>
 									<tr id="<?php echo 'article-'.$article_id; ?>">
 									  	<td class="border-right">
 									  		<div class=" large-2 columns no-padding-left show-for-large-up">
-									  			<?php if( $edits ==  1){ ?>
+									  			<?php if( $article_locked && $blogger ){ ?>
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
-										
-									  			<?php }else{ ?>
+												<?php }else{ ?>
 												<a href="<?php echo $articleUrl; ?>">
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 												</a>
@@ -207,9 +205,9 @@
 												
 												<h2 class="small-12 columns no-padding">
 													<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
-													<?php if( $edits ==  1){ ?>
+													<?php if( $article_locked && $blogger ){ ?>
 													
-														<p class="show-msg has-tooltip" title="This article has been edited by the PuckerMob staff and can no longer be altered" style="cursor: pointer;">
+														<p class="show-msg has-tooltip" title="This article has been edited by the PuckerMob staff and can no longer be altered" style="cursor: help;">
 														<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
 														</p>
 													<?php }else{?>
@@ -225,7 +223,7 @@
 												
 											</div>
 											<div class="small-3 columns align-right" id="article-list-table-legend">
-												<?php if( $edits ==  1){ ?>
+												<?php if( $article_locked ){ ?>
 												<label class="inline">
 													<a  id="unlock-article" data-status-lock="<?php echo $edits; ?>">
 														<i class="fa fa-lock" aria-hidden="true"></i>
@@ -238,8 +236,12 @@
 												<?php } ?>
 											</div>
 									  	</td>
-
-									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
+									  	<!-- DATE ADDED -->
+									  	<td class="show-for-large-up  border-right">
+									  		<label><?php echo $article_date_created; ?></label>
+									  	</td>
+									  	
+									  	<!-- PROMOTE PAGE LIST -->
 									  	<?php if( $admin_user ){ ?>
 									  	<td class="show-for-large-up  border-right">
 									  		<label data-info="<?php echo $article_id; ?>" data-user-id="<?php echo $user_id; ?>" data-title="<?php echo $article_title; ?>" >
@@ -249,8 +251,7 @@
 									  					$isPromotedObj = $promoteArticles->promotedInfo($article_id);
 									  					$facebook_page_id_promoted = isset($isPromotedObj[0]) ? $isPromotedObj[0]->facebook_page_id : 0;
 									  					?>
-									  					
-										  					<option value = "<?php echo $page->facebook_page_id; ?>" <?php if($facebook_page_id_promoted == $page->facebook_page_id) echo ' selected '; ?> >
+									  						<option value = "<?php echo $page->facebook_page_id; ?>" <?php if($facebook_page_id_promoted == $page->facebook_page_id) echo ' selected '; ?> >
 										  						<?php echo $page->facebook_page_name; ?>
 										  					</option>
 									  				<?php }?>
@@ -258,38 +259,41 @@
 									  		</label>
 									  	</td>
 									  	<?php } ?>
-
+									  	
+									  	<!-- ARTICLE STATUS -->
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
 										
-										<!-- REMOVE ARTICLE -->
+										<!-- ARTICLE TRAFFIC -->
 										<td class="show-for-xlarge-up  border-right" ><label><?php echo $article_us_traffic; ?></label></td>
 
 										<!-- ARTICLE EDITS ALLOW ?-->
 										<td  class="show-for-xlarge-up  border-right">
-										<?php if( $edits ==  1 ){ ?>
-											<i class="fa fa-circle" style="color: #23ab23; font-size: 150%;" aria-hidden="true"></i>
-										<?php }else{?>
-											<i class="fa fa-circle " style="color:red; font-size: 150%;" aria-hidden="true"></i>
-										<?php }?>
+											<?php if( $article_locked ){ ?>
+												<i class="fa fa-circle" style="color: #23ab23; font-size: 150%;" aria-hidden="true"></i>
+											<?php }else{?>
+												<i class="fa fa-circle " style="color:red; font-size: 150%;" aria-hidden="true"></i>
+											<?php }?>
 										</td>
+										
+										<!-- DELETE ARTICLE FORM -->
 										<td class="show-for-large-up no-border-right valign-middle">
-											<?php if($admin_user || ( $blogger && $edits != 1 ) ){?>
+											<?php if( $admin_user || ( $blogger && !$article_locked ) ){?>
 												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
 													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
 													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
 													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 												</form>
 											<?php }else{?>
-												<?php if($articleInfo["article_status"] != 1 && $edits != 1 ){?>
-												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+												<?php //if($articleInfo["article_status"] != 1 ){?>
+												<!--<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
 													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
 													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
 													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
-												</form>
-												<?php }else{ ?>
+												</form>-->
+												<?php //}else{ ?>
 													<!-- REQUEST TO DELETE THIS ARTICLE -->
 													<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
-												<?php } ?>
+												<?php //} ?>
 											<?php }?>
 										</td>							  			
 									</tr>

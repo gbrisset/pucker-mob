@@ -11,7 +11,7 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/lists.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/quote.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/froalajs/plugins/url.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <script>
 
@@ -42,9 +42,8 @@
 <script src="<?php echo $config['this_url']; ?>assets/js/plugins.php"></script>
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
 
-<script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php?ver=2343" async></script>
+<script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php?ver=2373" async></script>
 <script src="<?php echo $config['this_url']; ?>/assets/js/main.js"></script>
-
 
 <?php
 	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);
@@ -80,4 +79,36 @@ if($('#fb-login')){
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=781998645209691";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<!-- VALERO CHAT-->
+<script type="text/javascript">
+    (function(){
+        var globals = document.createElement('script');
+        globals.src = 'https://galleryuseastprod.blob.core.windows.net/velaroscripts/20307/globals.js';
+
+        var inline = document.createElement('script');
+        inline.src = 'https://eastprodcdn.azureedge.net/bundles/velaro.inline.js';
+
+        var scriptNode = document.getElementsByTagName('script')[0];
+        scriptNode.parentNode.insertBefore(globals, scriptNode)
+
+        globals.onload = function() {
+            scriptNode.parentNode.insertBefore(inline, scriptNode)
+        }
+
+        inline.onload = function() {
+            Velaro.Globals.ActiveSite = 20307;
+            Velaro.Globals.ActiveGroup = 0;
+            Velaro.Globals.InlineEnabled = true;
+            Velaro.Globals.VisitorMonitoringEnabled = true;
+            Velaro.Globals.InlinePosition = 0;
+        }
+    }())
+</script>
+<noscript>
+    <a href="https://www.velaro.com" title="Contact us" target="_blank">Questions?</a>
+    powered by <a href="http://www.velaro.com" title="Velaro live chat">velaro live chat</a>
+</noscript>
 

@@ -1,4 +1,5 @@
 <?php
+	$edit_page = true;
 	if(!$adminController->user->checkPermission('user_permission_show_edit_article')) $adminController->redirectTo('noaccess/');
 
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
@@ -13,7 +14,7 @@
 	//$lock_status = $article['article_lock_status'];
 	$admin_user = false;
 	if( $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 6) $admin_user = true;
-	if( !$admin_user  && $edits == 1)   $adminController->redirectTo('noaccess/');
+	if( !$admin_user  && $edits == 1 && $article['article_status'] == 1)   $adminController->redirectTo('noaccess/');
 	
 	// If the article exists and has an id, check to see if this user has permissions to edit this article...
 	if (isset($article['article_id']) ){
@@ -432,23 +433,18 @@
 						<?php }?> 
 
 						<div class="row label-wrapper show-for-large-up">
-							<div class="small-12 large-4 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up radius preview-button"  style="height: 3.3rem;">PREVIEW</button></div>
-							<div class="small-12 large-4 column">
+							<div class="small-12 large-6 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up radius preview-button"  style="height: 3.3rem;">PREVIEW</button></div>
+							<div class="small-12 large-6 column">
 								<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
 
 							</div>
 							
-									<?php if( $admin_user || $blogger || $externalWriter ){
-									$label = "PUBLISH";
-									$val = 1;
-									//if( ($blogger  || $pro_blogger)  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
-									if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
-										<div class="small-12 large-4 column  left no-padding">
-											<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" >PUBLISH</button>
-										</div>
-									<?php }?>
+							
 							
 						</div>
+
+						<?php include_once($config['include_path_admin'].'agreement_edits.php');?>
+
 					
 						<div class="row label-wrapper hide-for-large-up ">
 							<div class="small-12 large-4 column no-padding hide-for-large-up">

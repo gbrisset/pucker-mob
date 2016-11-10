@@ -232,24 +232,6 @@
 					</div>
 				</div>
 			
-				<?php //if( $detect->is('iOS') ){ ?>
-				<!--<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
-					<div id="get-content" style="text-align:center;">
-						<div id='div-gpt-ad-1477948030478-0' style='height:250px; width:300px;'>
-						<script>
-							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1477948030478-0'); });
-						</script>
-						</div>
-					</div>
-				</div>-->
-				<?php //}else { ?>
-				<!--<div id="mobile-instream-branovate-ad" class="columns" style="margin-top:10px; margin-bottom: 10px;">
-					<div id="get-content" style="text-align:center;">
-						<IFRAME SRC="http://ib.adnxs.com/tt?id=4408970&cb=[CACHEBUSTER]" FRAMEBORDER="0" SCROLLING="no" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0" ALLOWTRANSPARENCY="true" WIDTH="300" HEIGHT="250"></IFRAME>
-					</div>
-				</div>-->
-				<?php //} ?>
-
 			<?php } ?>
 			
 			<!-- COMMENTS BOX -->
@@ -300,14 +282,18 @@
 				<?php } ?>
 
 				<?php if(  $article_id != 16562 &&  $article_id != 17425 && $article_id != 15271 &&  $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){?>
+
+				<!-- NATIVO 2nd UNIT -->
+				<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0; display: inline;">
+					<div id="nativo-second-id"></div>
+				</section>
+				
 				<!-- SHARETH -->
 				<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0;">
 					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
 				</section>
 				
-				<section id="content-ad-around-the-web" class="sidebar-right small-12 row hide-for-print no-padding margin-bottom" style="padding-bottom:0; display: inline;">
-					<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=640&height=360&brandId=211&sCampaignID=10754&sSeller=178&creativeID=123&cb=12345&sDomain=puckermob.com" style="width:640px;height:360px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-				</section>
+				
 				<?php } ?>
 				
 				<!-- RELATED ARTICLES -->

@@ -24,7 +24,6 @@ f<head>
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/appadmin.css?ver_4446">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/jquery.Jcrop.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/dropzone.css">
-	<!--<link rel="stylesheet" type="text/css" href="<?php echo $config['this_url']; ?>assets/css/tooltipster.css" />-->
 
 	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -37,7 +36,7 @@ f<head>
 
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/modernizr-2.5.3.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+<script src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
 <script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script>
 	 
  

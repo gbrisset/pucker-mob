@@ -12,7 +12,8 @@ var admin_url = 'http://www.puckermob.com/admin/';
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
 var page = document.body.id;
 
-$(document).foundation();
+$(document).foundation().foundation();
+
 
 //admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
@@ -441,7 +442,7 @@ function triggerErrorPopup(data){
 		
 		$(msg).html(data['message']);
 		//Validation Modal
-		$(document).foundation().foundation();
+		$(document).foundation().foundation();	
 		$('#show-status').foundation('reveal', 'open');
 		$('#show-status').foundation('reveal', 'close');
 

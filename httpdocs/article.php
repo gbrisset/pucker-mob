@@ -317,14 +317,20 @@ if(!is_null($categoryInfo)){
 					       
 					        <?php if( $articleInfoObj['article_id'] != 14613){?>     
 				              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-					           <!-- BEGIN JS TAG - puckermob.com Desktop 300x250 < - DO NOT MODIFY 
-								<SCRIPT SRC="http://ib.adnxs.com/ttj?id=5975094&cb=[CACHEBUSTER]" TYPE="text/javascript"></SCRIPT>-->
-
-								<!-- END TAG -->
-
-								  <!-- MEME GLOBAL -->
+					             <!-- MEME GLOBAL 
 								<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-						    
+						    -->
+						    <!-- AMAZON -->
+						   
+						      <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+						      <script type="text/javascript" language="javascript">
+						      //<![CDATA[
+						      aax_getad_mpb({
+						        "slot_uuid":"25fba8a5-f806-45fe-82d5-718e86f3d9f2"
+						      });
+						      //]]>
+						      </script>
+						  
 				              </div>
 					        <?php }else{ ?>
 					         <!-- /73970039/UT_P -->
@@ -370,14 +376,6 @@ if(!is_null($categoryInfo)){
 					</div>	 
 				</p>
 			</div>	 
-			
-			<!-- ADBLADE
-			<?php if( $article_id != 16562 &&   $article_id != 17425 && $article_id != 17286 && $article_id != 14479 && $article_id != 14576  && $article_id != 15109   && $article_id != 15271 && $article_id != 15284  && $article_id != 15488 ){?>
-			<div class="columns small-12 margin-top">
-				<ins class="adbladeads" data-cid="21331-3493314697" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins>
-				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
-			</div>
-			<?php }?>-->
 			
 			<!-- ALSO IN PM ARTICLES -->
 			<?php include_once( $config['include_path'].'similararticles.php'); ?>

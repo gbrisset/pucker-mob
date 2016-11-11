@@ -124,7 +124,7 @@ var EarningsObj = {
 			type: "POST",
 			async: false,
 			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-			data: { task:'get_chart_article_data', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
+			data: { task:'get_chart_article_data_per_day', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
 		}).done(function(data) {
 			var total_amount = 0, total_pageviews = 0,  t_body = $('#article-list tbody'), html = "";
 			if( data != "false" ){ 
@@ -133,18 +133,15 @@ var EarningsObj = {
 				
 				$(data).each( function(e){	
 					var val = $(this),
-					pageviews = parseInt(val[0].usa_pageviews),
+					pageviews = parseInt(val[0].us_pageviews),
 					amount = 0;
 					var tr = "";
 
 					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;	
 
-					tr += "<tr id='article-'"+ val[0].article_id + ">";
-						tr += "<td class='article align-left'>";
-							tr += "<a href='http://puckermob.com/"+ val[0].cat_dir_name +"/"+ val[0].article_seo_title +" 'target='blank' > "+ val[0].article_title.substring(0,40) +"... </a>";
-						tr += "</td>";
-						tr += "<td>" + moment( val[0].creation_date ).format("ll") + "</td>";
-						tr += "<td>" + pageviews + "</td>";
+					tr += "<tr>";
+						tr += "<td>" + moment( val[0].updated_date ).format("ll") + "</td>";
+						tr += "<td>" + parseFloat(pageviews, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + "</td>";
 						tr += "<td>" + rate + "</td>";
 						tr += "<td class='bold align-right'>$"+ parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() +"</td>";
 					tr += "</tr>";
@@ -154,7 +151,6 @@ var EarningsObj = {
 				});
 				var total_tr = '<tr class="total">';
 					total_tr += '<td class="bold">TOTAL</td>';
-					total_tr += '<td></td>';
 					total_tr += '<td class="bold">'+total_pageviews+'</td>';
 					total_tr += '<td class="bold">$'+rate+'</td>';
 					total_tr += '<td class="bold align-right">$'+parseFloat(total_amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
@@ -169,7 +165,8 @@ var EarningsObj = {
 	},
 
 	getWritersReport: function(){
-		var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0, total_amount = 0, total_pageviews=0;
+		var info = {}, articles = [], contributor_id = $('#contributor_id').val(), 
+		total_earned = 0, total_amount = 0, total_pageviews=0;
 		////$dataInfo = ['start_date' => $start_date, 'end_date' => $end_date];
 
     	$.ajax({

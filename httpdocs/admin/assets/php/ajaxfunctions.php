@@ -66,6 +66,10 @@
 			echo json_encode( $adminController->user->getContributorEarningChartArticleData( $_POST ));
 		break;
 
+		case 'get_chart_article_data_per_day':
+			echo json_encode( $adminController->user->getContributorEarningChartArticleDataPerDay( $_POST ));
+		break;
+
 		case 'get_report_writers_data':
 			echo json_encode( $adminController->user->getContributorEarningsData( $_POST ));
 		break;

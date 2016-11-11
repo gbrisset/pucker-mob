@@ -136,6 +136,21 @@
 				</div>
 			</div>
 
+			<div id="article-list">
+				<table>
+					<thead>
+						<tr>
+							<td>Date</td>
+							<td>US. Traffic</td>
+							<td>Rate</td>
+							<td>Earnings</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" >
 				<?php include_once($config['include_path_admin'].'earnings_info.php'); ?>

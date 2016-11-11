@@ -839,7 +839,7 @@ if($('#earnings').length > 0  || $('#reports').length > 0 ){
 		  if($('#earnings').length > 0 ){
 			  EarningsObj.getChartDataRange();
 			  EarningsObj.drawChart();
-			  //EarningsObj.getArticlesListData();
+			  EarningsObj.getArticlesListData();
 			  EarningsObj.updateTotalEarnings();   
 		  }else{
 			  if($('#reports').length > 0 ){

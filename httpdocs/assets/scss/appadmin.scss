@@ -31,7 +31,6 @@ $bgColor: #ffffff;
 
 @import "foundation/components/tooltips";
 
-
 // Custom variables
 
 $topbar-megamenu-bg-color: #fff;
@@ -398,7 +397,11 @@ cursor: pointer;
 
 .parent .fa-chevron-down:before{ color: #777}
 
-#related-articles-section, .advertising-override{ display:none; }
+#related-articles-section{ 
+  display:inline-block;
+
+}
+.advertising-override{ display:none; }
 
 
 @media #{$large-up} {

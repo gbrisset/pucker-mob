@@ -1196,9 +1196,39 @@ End password reset methods
 		$data = $this->performQuery(array(
 			'queryString' => $s,
 			'queryParams' => array( ),
-			//'returnRowAsSingleArray' => true,
 			'bypassCache' => true
 			));
+
+		if ($data && isset($data[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $data;
+		} else if ($data && !isset($data[0])){
+				// If $q is an array of rows, return it as normal
+			$data = array($data);
+			return $data;
+		} else {
+			return false;
+		}
+	}
+
+	public function getContributorEarningChartArticleDataPerDay($data){
+
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
+		$s = " SELECT sum(usa_pageviews) as 'us_pageviews', month, year, updated_date 
+				FROM `article_daily_earnings` 
+				WHERE contributor_id = $contributor_id 
+					AND updated_date BETWEEN '$start_date' AND '$end_date' 
+				GROUP BY DATE_FORMAT( updated_date,'%Y-%m-%d') 
+				ORDER BY updated_date ASC ";
+
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
 
 		if ($data && isset($data[0])){
 				// If $q is an array of only one row (The set only contains one article), return it inside an array

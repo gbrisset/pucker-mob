@@ -406,7 +406,12 @@ class MPArticleAdminController extends MPArticle{
 	//PUBLISH A NEW ARTICLE
 	public function publishNewArticle($post){
 		$post = isset($post['formData']) ? $post['formData'] : $post;
+		
 		$post['validate'] = true;
+		if( isset($post['is_locked']) && $post['is_locked'] == '1' ){
+			$post['validate'] = false;
+		}
+
 		//If is not an Starter Blogger
 		if($post['u_type'] != 30) // MPublich the article
 			$post['article_status-s'] = "1";
@@ -419,6 +424,7 @@ class MPArticleAdminController extends MPArticle{
 			//Validate Image Dimentions 
 			$post['image_path'] = $imageExist['imageDir'];
 			$validSize = $this->validateImageDime($post);
+			//$validSize['statusCode'] = 200;
 			if($validSize['statusCode'] == 200){
 				//Save Article Info
 				if( $post['a_i'] != "0"){
@@ -569,21 +575,24 @@ class MPArticleAdminController extends MPArticle{
 	
 	// UPDATE EXISTING ARTICLE 
 	public function updateArticleInfo($post){
-		//Validate Fields
 
-		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
-			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+
+		//Validate Fields
+			if(isset($post['is_locked']) && $post['is_locked'] != '1'){
+			if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+			}
+			if(isset($post['validate']) && $post['validate']){
+				if(!isset($post['article_body-nf']) || empty($post['article_body-nf'])) 
+					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_body', 'message' => 'Your are trying to publish an empty article. Please add content to your article. Thanks'));
+				if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
+					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags are Required'));
+				if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
+					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description is Required'));
+				if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
+					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
+			}
 		
-		if(isset($post['validate']) && $post['validate']){
-			if(!isset($post['article_body-nf']) || empty($post['article_body-nf'])) 
-				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_body', 'message' => 'Your are trying to publish an empty article. Please add content to your article. Thanks'));
-			if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
-				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags are Required'));
-			if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
-				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description is Required'));
-			if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
-				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
-		}
 
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) 
 		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));

@@ -15,7 +15,7 @@ var page = document.body.id;
 $(document).foundation().foundation();
 
 
-//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 //Menu Toggler Functionality Mobile

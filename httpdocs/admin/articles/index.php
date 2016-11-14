@@ -193,28 +193,21 @@
 									<tr id="<?php echo 'article-'.$article_id; ?>">
 									  	<td class="border-right">
 									  		<div class=" large-2 columns no-padding-left show-for-large-up">
-									  			<?php if( $article_locked && $blogger ){ ?>
-													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
-												<?php }else{ ?>
+									  			
 												<a href="<?php echo $articleUrl; ?>">
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 												</a>
-												<?php } ?>
+										
 											</div>
 											<div class="large-7 columns no-padding" style="display: table-caption">
 												
 												<h2 class="small-12 columns no-padding">
 													<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
-													<?php if( $article_locked && $blogger ){ ?>
 													
-														<p class="show-msg has-tooltip" title="This article has been edited by the PuckerMob staff and can no longer be altered" style="cursor: help;">
-														<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
-														</p>
-													<?php }else{?>
 														<a href="<?php echo $articleUrl; ?>">
 															<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
 														</a>
-													<?php }?>
+													
 													
 													<?php if($admin){?>
 														<span class="show-for-large-up"><a href="<?php echo $config['this_admin_url']; ?>profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>

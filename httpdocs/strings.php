@@ -1,4 +1,4 @@
-<?php 
+<?php /*
 $my_string = "This is a string to look into";
 $reverse = "";
 for($i = strlen($my_string)-1; $i >= 0; $i-- ){
@@ -29,6 +29,21 @@ echo wordwrap($name, $limit); //wrap string into one line until the limit specif
 
 echo number_format(1232434, 2, ':', ',');
 
-//ARRAYS
+//ARRAYS */
 
+
+$file = fopen ("https://www.agorafy.com/sitemap", "r");
+if (!$file) {
+    echo "<p>Unable to open remote file.\n";
+    exit;
+}
+while (!feof ($file)) {
+    $line = fgets ($file, 1024);
+    /* This only works if the title and its tags are on one line */
+    if (preg_match ("@\<title\>(.*)\</title\>@i", $line, $out)) {
+        $title = $out[1];
+        break;
+    }
+}
+fclose($file);
 ?>

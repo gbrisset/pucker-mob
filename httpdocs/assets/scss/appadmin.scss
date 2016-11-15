@@ -2585,3 +2585,27 @@ p, ul li{ font-size: 14px;}
   a{color: #888 !important; font-size: 20px !important; text-decoration:none;}
 
 }
+
+#earnings-list{
+  #daily-earnings{
+    border:none;
+    thead {
+      background: #fff;
+
+
+    }
+
+    tbody{
+       tr.odd,  tr:nth-of-type(odd){
+        background:rgba(54, 138, 84, 0.15);
+       }
+    }
+
+    tr td{
+        font-family: OswaldRegular;
+        font-size: 14px;
+        color: #aaa;
+        text-transform:uppercase;
+      }
+  }
+}

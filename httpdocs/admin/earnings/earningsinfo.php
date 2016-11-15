@@ -73,7 +73,6 @@
 	//$user_id = $userData['user_id'];
 	if($rate) $rate = $rate['rate'];
 	$total = 0;
-	
 
 	$last_month = $current_month-1;
 	$last_year = $current_year;
@@ -100,7 +99,7 @@
 
 <body id="earnings">
 	<input type="hidden" value="<?php echo $contributor_id; ?>" id="contributor_id"/>
-	
+	<input type="hidden" value="<?php echo $user_type; ?>" id="user_type" />
 	<?php include_once($config['include_path_admin'].'header.php');?>
 	
 	<main id="main-cont" class="row panel sidebar-on-right" role="main">
@@ -127,6 +126,20 @@
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
+
+				<div id="earnings-list" class="small-12 columns no-padding margin-top">
+				<table class="small-12 columns no-padding" id="daily-earnings">
+					<thead>
+						<tr>
+							<td class="align-left">Date</td>
+							<td class="align-center">US. Traffic | 1K</td>
+							<td class="align-center">CPM Rate</td>
+							<td class="align-right">Earnings</td>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				</div>
 			</div>
 
 			<div class="small-12 columns no-padding margin-top hide-for-large-up">
@@ -136,20 +149,7 @@
 				</div>
 			</div>
 
-			<div id="article-list">
-				<table>
-					<thead>
-						<tr>
-							<td>Date</td>
-							<td>US. Traffic</td>
-							<td>Rate</td>
-							<td>Earnings</td>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
+		
 
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" >

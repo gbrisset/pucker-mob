@@ -1214,13 +1214,18 @@ End password reset methods
 	public function getContributorEarningChartArticleDataPerDay($data){
 
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$user_type = filter_var($data['user_type'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
-		$s = " SELECT sum(usa_pageviews) as 'us_pageviews', month, year, updated_date 
+		if($user_type == 3 ) $user_type = 0;
+
+		$s = " SELECT sum(usa_pageviews) as 'us_pageviews', article_daily_earnings.month, article_daily_earnings.year, updated_date, user_rate.rate
 				FROM `article_daily_earnings` 
+				INNER JOIN user_rate ON ( user_rate.month = article_daily_earnings.month AND user_rate.year = article_daily_earnings.year)
 				WHERE contributor_id = $contributor_id 
-					AND updated_date BETWEEN '$start_date' AND '$end_date' 
+					AND  updated_date BETWEEN '".$start_date."' AND DATE_ADD( '".$end_date."' , INTERVAL 1 DAY) 
+					AND user_rate.user_type = $user_type
 				GROUP BY DATE_FORMAT( updated_date,'%Y-%m-%d') 
 				ORDER BY updated_date ASC ";
 

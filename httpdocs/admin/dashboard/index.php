@@ -98,9 +98,14 @@
 		<?php include_once($config['include_path_admin'].'menu.php');?>
 		
 		<div id="content" class="columns small-9 large-11">
-			
 			<div class="  mobile-12 small-12 columns padding-bottom ">
 				<h1>MY DASHBOARD</h1>
+			</div>
+
+			<div class="mobile-12 small-12 columns padding-bottom">
+				<a href="http://www.puckermob.com/admin/admatching/" >
+					<img src="http://www.puckermob.com/admin/assets/img/Ad_Matching_ad.jpg" />
+				</a>
 			</div>
 			
 			<!-- ARTICLES RESUME INFO --> 

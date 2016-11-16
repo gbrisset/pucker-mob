@@ -104,7 +104,7 @@
 
 			<div class="mobile-12 small-12 columns padding-bottom">
 				<a href="http://www.puckermob.com/admin/admatching/" >
-					<img src="http://www.puckermob.com/admin/assets/img/Ad_Matching_ad.jpg" />
+					<img style="width: 100%;" src="http://www.puckermob.com/admin/assets/img/Ad_Matching_ad.jpg" />
 				</a>
 			</div>
 			

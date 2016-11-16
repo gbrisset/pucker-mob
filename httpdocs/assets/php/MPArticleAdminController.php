@@ -469,6 +469,8 @@ class MPArticleAdminController extends MPArticle{
 
 	/* ADD NEW ARTICLE [INSERT] */
 	public function addArticle($post){ 
+
+		
 		//Validate Fields
 		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
 			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
@@ -547,6 +549,24 @@ class MPArticleAdminController extends MPArticle{
 		}
 		
 		$post['a_i'] = $articleId;
+
+		//Add Related Articles if any
+		$this->performUpdate(array('updateString' => 'DELETE FROM related_articles WHERE main_article_id = '.$post['a_i'] ));
+		$related_article_1 = $related_article_2 = $related_article_3 = -1;
+		if(isset($post['related_article_1']) && $post['related_article_1'] != '-1' ) $related_article_1 = $post['related_article_1'];
+		if(isset($post['related_article_2']) && $post['related_article_2'] != '-1' ) $related_article_2 = $post['related_article_2'];
+		if(isset($post['related_article_3']) && $post['related_article_3'] != '-1' ) $related_article_3 = $post['related_article_3'];
+
+		$this->performUpdate(array(
+			'updateString' => "INSERT INTO related_articles SET  main_article_id = :articleId,  related_article_id_1= :related_article_1, 
+			 related_article_id_2 = :related_article_2, related_article_id_3 = :related_article_3 ",
+			'updateParams' => array(
+				':articleId' => $post['a_i'], 
+				':related_article_1'=>$related_article_1,
+				':related_article_2'=>$related_article_2,
+				':related_article_3'=>$related_article_3 
+			)
+		));
 
 		//UPDATE ARTICLE ADS
 		$this->updateArticleAdsInfo($post);

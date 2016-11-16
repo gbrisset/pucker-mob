@@ -29,12 +29,12 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 	//Article Status Base on Blogger Type.
 	$default_status = 3;
-	//if( //$adminController->user->data['user_type'] == 30 ){
-		//$default_status = 2;
-	//}
 
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributorInfo = $contributorInfo[0];
+
+	//GET ALL ARTICLES 
+	$allarticles = $mpArticle->getAllLiveArticlesPerContributor( $contributorInfo['contributor_id'] );
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -103,6 +103,9 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 								<textarea  class=" editor " name="article_body-nf" id="article_editor"  required ><?php if( isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
 							</div>
 						</div>
+
+						<!-- RELATED ARTICLES -->
+						<?php include_once($config['include_path_admin'].'related_edit_articles.php'); ?>
 					
 					</div>
 
@@ -228,9 +231,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							<div class="small-12 large-6 columns">
 								<button type="button" id="save-article" name="save-article" class="radius small-12" data-info="3">SAVE</button>
 							</div>
-							<!--<div class="small-12 large-4 columns no-padding">
-								<button type="button" id="publish-article" name="publish-article" class="radius small-12 publish-article">PUBLISH</button>
-							</div>-->
+
 						</div>
 
 						<?php include_once($config['include_path_admin'].'agreement_edits.php');?>
@@ -256,6 +257,8 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 <?php include_once($config['include_path_admin'].'showerrors_articles.php'); ?>
 
 <?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
+
+
 
 </body>
 </html>

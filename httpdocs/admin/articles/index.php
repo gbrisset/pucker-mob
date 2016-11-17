@@ -166,7 +166,7 @@
 								 <?php foreach($articles as $articleInfo){
 								 	$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
 
-									$articleExternalUrl = $config['this_admin_url'].$articleInfo['cat_dir_name'].'/'.$articleInfo['article_seo_title'];
+									$articleExternalUrl = $config['this_url'].$articleInfo['cat_dir_name'].'/'.$articleInfo['article_seo_title'];
 									$article_id = $articleInfo["article_id"];
 									$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
 									$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';

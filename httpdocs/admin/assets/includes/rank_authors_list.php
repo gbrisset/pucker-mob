@@ -1,24 +1,22 @@
 <?php 
 	$incentives = new Incentives();
-
 	$selected_month =  date('n');
 	$year = date('Y');
-
 	$limit = 50;
-
-	if(count($_POST) > 0){
-		$selected_month = $_POST['month'];
-	}
+	if(count($_POST) > 0) $selected_month = $_POST['month'];
+	
+	//Incentives Infor Current Month
 	$incentives_month = $incentives->where(' month = '.$selected_month.' AND year = '.date('Y').' ' );
 	
+	//GET RANK LIST INFORMATION
 	$rank_list = $ManageDashboard->getTopShareWritesRank( $selected_month, $limit);
 	$rank_list_basic = $ManageDashboard->getTopShareWritesRank( $selected_month, $limit , '3');
 	$rank_list_pro = $ManageDashboard->getTopShareWritesRank( $selected_month, $limit , '8');
 
 	if( isset($rank_list) && count($rank_list) > 0 ){
 		$index = 1;
-	$old = false; 
-	if( $selected_month < 11 && $year == 2016 ) $old = true;
+		$old = false; 
+		if( $selected_month < 11 && $year == 2016 ) $old = true;
 ?>
 
 <div class = "small-12 columns">
@@ -67,7 +65,7 @@
 				?>
 				<tr id="contributor_id_<?php echo $rank_list[$j]['contributor_id']; ?>" data-type="<?php echo $rank_list[$j]['user_type']; ?> ">
 					<td style="padding-left: 20px; "><?php echo $index; ?></td>
-					<td><?php echo $rank_list[$j]['contributor_name']; ?></td>
+					<td><a href="http://www.puckermob.com/admin/profile/user/<?php echo $rank_list[$j]['contributor_seo_name']; ?>"><?php echo $rank_list[$j]['contributor_name']; ?></a></td>
 					<td class="align-center"><?php echo number_format($rank_list[$j]['total_us_pageviews']); ?></td>
 					<td class="align-center" style="color: green; font-size: 1rem;"><?php echo $bonus; ?></td>
 				</tr>
@@ -89,7 +87,7 @@
 					?>
 					<tr id="contributor_id_<?php echo $rank_list[$j]['contributor_id']; ?>" data-type="<?php echo $rank_list[$j]['user_type']; ?> ">
 						<td style="padding-left: 20px; "><?php echo $index; ?></td>
-						<td><?php echo $rank_list[$j]['contributor_name']; ?></td>
+						<td><a style="color:#222;" href="http://www.puckermob.com/admin/profile/user/<?php echo $rank_list[$j]['contributor_seo_name']; ?>"><?php echo $rank_list[$j]['contributor_name']; ?></a></td>
 						<td class="align-center"><?php echo number_format($rank_list[$j]['total_us_pageviews']); ?></td>
 						<td class="align-center" style="color: green; font-size: 1rem;"><?php echo $label_type; ?></td>
 					</tr>
@@ -123,16 +121,14 @@
 				$bonus_user = $inc->user_type;
 				$user_type = explode(", ", $inc->user_type);
 				$bonuses = explode(", ", $inc->bonus);
-
 				$bonus = $bonuses[1];
-
 				$index = 1;
 				for( $j = $inc->start; $j < $inc->end; $j++ ){ 
 				if( $j > count($rank_list_pro)) break;
-				//foreach( $rank_list_pro as $blogger ) { ?>
+			 ?>
 				<tr id="contributor_id_<?php echo $rank_list_pro[$j]['contributor_id']; ?>" data-type="<?php echo $rank_list_pro[$j]['user_type']; ?> ">
 					<td style="padding-left: 20px; "><?php echo $index; ?></td>
-					<td><?php echo $rank_list_pro[$j]['contributor_name']; ?></td>
+					<td><a style="color:#222;" href="http://www.puckermob.com/admin/profile/user/<?php echo $rank_list_pro[$j]['contributor_seo_name']; ?>"><?php echo $rank_list_pro[$j]['contributor_name']; ?></a></td>
 					<td class="align-center"><?php echo number_format($rank_list_pro[$j]['total_us_pageviews']); ?></td>
 					<?php if( !$old){?><td><?php echo $bonus; ?></td><?php }?>
 				</tr>
@@ -163,12 +159,11 @@
 				$bonus = $bonuses[0];
 
 			$index = 1;
-			for( $j = $inc->start; $j < $inc->end ; $j++ ){ 
-			//foreach( $rank_list_basic as $blogger ) { ?>
+			for( $j = $inc->start; $j < $inc->end ; $j++ ){ ?>
 					
 				<tr id="contributor_id_<?php echo $rank_list_pro[$j]['contributor_id']; ?>" data-type="<?php echo $rank_list_basic[$j]['user_type']; ?> ">
 					<td style="padding-left: 20px; "><?php echo $index; ?></td>
-					<td><?php echo $rank_list_basic[$j]['contributor_name']; ?></td>
+					<td><a style="color:#222;" href="http://www.puckermob.com/admin/profile/user/<?php echo $rank_list_pro[$j]['contributor_seo_name']; ?>"><?php echo $rank_list_basic[$j]['contributor_name']; ?></a></td>
 					<td class="align-center"><?php echo number_format($rank_list_basic[$j]['total_us_pageviews']); ?></td>
 					<?php if( !$old){?><td><?php echo $bonus; ?></td><?php }?>
 				</tr>

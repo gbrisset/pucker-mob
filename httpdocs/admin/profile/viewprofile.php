@@ -58,9 +58,15 @@
 			<div class="small-12 columns padding-bottom ">
 				<h1 class="columns small-12 no-padding" >My Profile
 					<div class="inline right show-for-large-up">
+					<?php
+						if( $contributorInfo['contributor_email_address'] == $userInfo['contributor_email_address'] ||  $admin_user === true ){ ?>
 						<a href="<?php echo $config['this_url'].'admin/profile/edit/'.$contributor_seo_name; ?>" class="font-1-5x black ">SET UP</a>
+						
 						<i class="fa fa-circle"></i>
 						<a href="<?php echo $config['this_url'].'admin/profile/user/'.$contributor_seo_name; ?>" class="font-1-5x main-color">VIEW PUBLIC</a>
+						<i class="fa fa-circle"></i>
+						<a href="<?php echo $config['this_url'].'admin/earnings/'.$contributor_seo_name; ?>" class="font-1-5x">DASHBOARD</a>
+						<?php } ?>
 					</div>
 				</h1>
 			</div>
@@ -107,8 +113,11 @@
 					<?php if(isset($article_list) && $article_list ){?>
 					<table class="small-12">
 						<?php foreach($article_list as $article){
-							$article_url = $config['this_admin_url'].'articles/edit/'.$article['article_seo_title'];
-							//$config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
+							$article_url = '';
+							if( $contributorInfo['contributor_email_address'] == $userInfo['contributor_email_address'] ||  $admin_user === true ){
+
+								$article_url = $config['this_admin_url'].'articles/edit/'.$article['article_seo_title'];
+							}
 						?>
 						<tr id="article_<?php echo $article['article_id'];?>">
 							<td width="160" class="show-for-large-up">

@@ -174,6 +174,9 @@
 		case 'submit_order':
 			$OrderObj = new OrderAds();
 			$AdMatchingTransactions = new AdMatchingTransactions();
+			$contributor = new Contributor();
+			$helpers = new Helpers();
+			$contributor_info = $contributor->getContributorById($_POST['contributor_id']);
 			$dataTrans = [
 				'contributor_id' => $_POST['contributor_id'],
 				'spent'   => 0,
@@ -182,9 +185,18 @@
 				'receipt' => 1
 			];
 
+			$msg = $helpers->getEmailTemplate($config, 'ad_matching_tp', $_POST);
+			$email_data = [
+				'email_add' => $contributor_info->contributor_email_address,
+				'email_msg' => $msg,
+				'subject'   => 'Congratulations! You’ve signed up for Ad Matching.'
+			];
+
 			$order = $OrderObj->saveObj($_POST);
 			if( $order ){
-				$AdMatchingTransactions->saveObj( $dataTrans );
+				if( $AdMatchingTransactions->saveObj( $dataTrans ) )
+					$helpers->sendEmailToBloggers($email_data);
+
 			}
 			echo json_encode( $order ); 
 		break;

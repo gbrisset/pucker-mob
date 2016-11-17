@@ -15,7 +15,7 @@ var page = document.body.id;
 $(document).foundation().foundation();
 
 
-admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
 
 
 //Menu Toggler Functionality Mobile
@@ -1346,10 +1346,11 @@ var OrderObj = {
 	validate: function(){
 		var valid  = false;
 		var day = parseInt( moment().format("DD") );
-
+		
 		if( day >= 1 && day <= 21) {
-			if( adMatching.bonusID !== 0 && OrderObj.agree === true) valid = true;
+			if( adMatching.bonusID !== 0 && OrderObj.agree === true && adMatching.userCommit > 20 ) valid = true;
 		}	
+		
 		return valid;
 	},
 	clickSubmit: function(){

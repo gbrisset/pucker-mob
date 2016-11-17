@@ -14,13 +14,6 @@ switch ($options['action']) {
 		break;
 }
 
-//$body = '<html>';
-//	$body .= '<body>';
-//		$body .= '<div id="email-cont" style="margin: 0px auto; width: 100%; padding: 0px; position: relative; max-width: 500px; min-height: 600px;">';
-//			$body .= '<div style="position: relative; text-align: center; border-bottom: 3px solid rgb(238, 238, 238); padding: 1.5%;">';
-				//$body .= '<img style="max-height:8em;" src="'. $this->config['image_url'].'articlesites/logos/'.$this->mpArticle->data['article_page_logo'].'" alt="'. $this->mpArticle->data['article_page_visible_name'].' Logo" />';
-//			$body .= '</div>';
-
 $body .= '<body alink="#ffffff" bgcolor="#FFFFFF" link="#ffffff" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #333333;">';
 	$body .= '<table cellpadding="0" cellspacing="0" border="0" width="650" align="center" style="background-color: #157910;">';
 		$body .= '<tbody>';

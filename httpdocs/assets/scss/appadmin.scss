@@ -961,17 +961,38 @@ form span.preview-close p {text-align: right;width: 100%;margin:0 !important;}
 #dashboard h2{ font-weight: bold; margin-bottom: 5rem;}
 #dashboard table{ background: #fff; border:none; width:100%;}
 #dashboard table thead{background: #fff;}
-#dashboard table th{ text-align: center; font-size:1.05rem; font-weight: normal; min-width: 7rem;}
+#dashboard table th{ text-align: center; font-size:1.05rem; font-weight: normal; /* min-width: 7rem; */ }
 #dashboard table tr{ background: none; border-bottom: 1px solid #aaa;}
 #dashboard table tr.total { border-bottom:  none;}
 #dashboard table tr.total td{text-align: center; font-size: 1.2rem; padding-top:1rem; font-family: OsloBold;}
 #dashboard table tr.total td:first-child{ text-align: left; }
 #dashboard table tr.total td:last-child{ text-align:center;}
-#dashboard table td{ min-width: 7rem; text-align:center;}
+#dashboard table td{ /*min-width: 7rem;*/ text-align:center;}
 #dashboard table td a{ font-size: 1rem;}
 #dashboard table td label{ font-size: 0.9rem;}
 #dashboard table td.article{ text-align:left;}
 #dashboard table tr.even, #dashboard table tr.alt, #dashboard table tr:nth-of-type(even){ background: none;}
+
+#reports-div{
+  .reports-sub-tables{ 
+    display:flex;
+
+    .subdivition{
+      padding: 8px;
+      margin-right: 4px;
+      background: rgba(147, 239, 230, 0.16);
+      border: 1px solid #bbb;
+
+
+    }
+
+
+
+  }
+  .reports-sub-tables:nth-child(2){   background: #fff; }
+
+
+}
 
 #month-form{display:inline;}
 #month-form select{width:12rem;text-transform:capitalize;text-align:center;font-size:1rem;}
@@ -1417,7 +1438,7 @@ span{ margin-left:10px;}
 #month-form select { background-color: #000 !important; font-size: 0.8rem !important; margin: 0 !important; height: auto; top: -6px !important; text-transform: uppercase;  background-size: 15px 10px; background-position: 95% 50%; width: 8rem !important;}
 .dd-field-month{width: 90%; margin: 0; display: inline-flex; font-size: 0.8rem; color: #fff !important;}
 #month-form { display: inline; margin-left: -1.4rem; padding: 0rem; margin: 0 !important;}
-#dashboard table td{min-width: 6rem !important;}
+#dashboard table td{ /*min-width: 6rem !important; */}
 #dashboard table th{ min-width:6rem !important; font-size: 1.05rem;}
 
 .show-modal-box2 .modalDialog, .show-modal-box-facebook {

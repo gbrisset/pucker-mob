@@ -109,6 +109,7 @@
             <!-- LOGIN INACTIVE -->
               <div class="columns small-12 no-padding-right " style="margin-top: 2px;">
                   <ul class="inline-list right icons">
+                  <li> <a class="my-account-header-link show-for-large-up" href="<?php echo $config['this_url']; ?>login">WRITE FOR US</a></li>
                     <li> <a class="my-account-header-link show-for-large-up" href="<?php echo $config['this_url']; ?>login">LOGIN</a></li>
                     <li class="show-for-large-up"> <a class="my-account-header-link" href="<?php echo $config['this_url']; ?>login">REGISTER</a></li>
                     <li class="fb-li show-for-large-up"><a href="https://www.facebook.com/puckermob" target="_blank" ><i class="fa fa-facebook" aria-hidden="true"></i></a></li>

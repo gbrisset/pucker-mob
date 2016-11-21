@@ -315,7 +315,7 @@ if(!is_null($categoryInfo)){
 					      && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 
 					      && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id']  != 17286){?>
 					       
-					        <?php if( $articleInfoObj['article_id'] != 14613){?>     
+					        <?php if( $articleInfoObj['article_id'] != 25362 ){ //14613 ?>     
 				              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
 					             <!-- MEME GLOBAL  
 								<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
@@ -333,12 +333,15 @@ if(!is_null($categoryInfo)){
 						  
 				              </div>
 					        <?php }else{ ?>
-					         <!-- /73970039/UT_P -->
+					         <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
+					        	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+					        	</div>
+					         <!-- /73970039/UT_P 
 					          <div id='div-gpt-ad-1461622964696-1' style='height:1050px; width:300px;'>
 					            <script type='text/javascript'>
 					            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-1'); });
 					            </script>
-					          </div>
+					          </div>-->
 					       <?php } ?>
 					      <?php }else{?>
 					          <div id="atf-ad" class="ad-unit ad300">

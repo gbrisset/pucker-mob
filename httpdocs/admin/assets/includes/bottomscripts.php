@@ -1,3 +1,5 @@
+<script src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+<script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script>
 
 <!-- Include JS files. -->
 <script src="<?php echo $config['this_url']; ?>assets/js/froalajs/froala_editor.min.js"></script>

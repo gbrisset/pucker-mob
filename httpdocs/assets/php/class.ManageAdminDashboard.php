@@ -117,6 +117,26 @@ class ManageAdminDashboard{
 		}
 	}
 
+	public function getTopShareWritesRankWithIncentives($month, $incentives ){
+		$author_list = $this->getTopShareWritesRank($month, 50, false);
+		$writers = [];
+		if($incentives){
+
+			foreach($incentives as $inc){
+
+				for($i = $inc->start; $i < $inc->end; $i++){
+					//$author_list[$i]['bonus'] = $inc->bonus;
+					$writers[$author_list[$i]['contributor_id']] = $inc->bonus;
+					
+				}
+			}
+
+			return $writers;
+		}
+
+	}
+
+
 	public function getTopShareWritesRank($month, $limit = 1000000, $user_type = false ){
 
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);

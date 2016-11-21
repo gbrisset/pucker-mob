@@ -102,11 +102,11 @@
 				<h1>MY DASHBOARD</h1>
 			</div>
 
-			<div class="mobile-12 small-12 columns padding-bottom">
+			<!--<div class="mobile-12 small-12 columns padding-bottom">
 				<a href="http://www.puckermob.com/admin/admatching/" >
 					<img style="width: 100%;" src="http://www.puckermob.com/admin/assets/img/Ad_Matching_ad.jpg" />
 				</a>
-			</div>
+			</div>-->
 			
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>

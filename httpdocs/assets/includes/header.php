@@ -126,6 +126,7 @@
             <li style="margin-left: 1px;"> <a class="my-account-header-link" href="https://www.facebook.com/puckermob" target="_blank"><i class="fa fa-facebook fade-in-out"></i></a></li>
             <li> <a class="my-account-header-link" href="https://twitter.com/Puckermob" target="_blank"><i class="fa fa-twitter fade-in-out"></i></a></li>
             <li class="empty-list "></li>
+        
             <li class="registration-link">
               <a class="my-account-header-link" href="http://www.puckermob.com/login">REGISTER</a>
             </li>
@@ -187,10 +188,10 @@
 
               <li class="toggle-topbar menu-icon"><a href="#"></a></li>
                <li class="name">
-                 <a href="<?php echo $config['this_url']; ?>" >
+                 
 
-                     <h2 style="margin-top:-3px; color: #fff; font-size: 1.4rem; ">PUCKER<span style="color:green; ">MOB</span></h2> 
-                 </a>
+                     <h2 style="margin-top: -6px;" ><a style=" color: #fff !important; font-size: 1.4rem; " href="<?php echo $config['this_url']; ?>" >PUCKER<span style="color:green; ">MOB</span> </a></h2> 
+                
               </li>
             </ul>
           <?php }?>
@@ -212,6 +213,7 @@
             <?php if($detect->isMobile()){?>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.sequelmediainternational.com"  target="_blank" class="relationships" >Info & About Us</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/privacy/"  target="_blank" class="" >Privacy Policy</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/login"  target="_blank" class="relationships" >WRITE FOR US</a></li>
 
            <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/login"  target="_blank" class="relationships" >LOGIN</a></li>
             <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/register"  target="_blank" class="relationships" >REGISTER</a></li>

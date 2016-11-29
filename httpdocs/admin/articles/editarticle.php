@@ -422,28 +422,38 @@
 									</select>
 								</div>
 							</div>
+							
+							<!-- VIDEO SCRIPT -->
+							<div class="row">
+								<div>
+									<label for="article_featured" class="small-label">VIDEO SCRIPT:</label>
+									<textarea  class="" name="article_video_script-nf" id="article_video_script-nf"  placeholder="VIDEO SCRIPT"><?php echo $article['article_video_script']; ?></textarea>
+								</div>
+							</div>
+
+
 						<?php }?>
 						<?php if( !$article_locked ){ ?>
-						<!-- IMAGE CREDITS -->
-						<div class="row">
-							<div>
-								<textarea  class="" name="article_img_credits-s" id="article_img_credits-s"  placeholder="image credits"><?php if(isset($_POST['article_img_credits-s'])) echo $_POST['article_img_credits-s']; ?></textarea>
+							<!-- IMAGE CREDITS -->
+							<div class="row">
+								<div>
+									<textarea  class="" name="article_img_credits-s" id="article_img_credits-s"  placeholder="image credits"><?php if(isset($_POST['article_img_credits-s'])) echo $_POST['article_img_credits-s']; ?></textarea>
+								</div>
 							</div>
-						</div>
 
-						<!-- IMAGE CREDITS URL-->
-						<div class="row">
-							<div>
-								<textarea  class="" name="article_img_credits_url-s" id="article_img_credits_url-s"  placeholder="image credits URL"><?php if(isset($_POST['article_img_credits_url-s'])) echo $_POST['article_img_credits_url-s']; ?></textarea>
+							<!-- IMAGE CREDITS URL-->
+							<div class="row">
+								<div>
+									<textarea  class="" name="article_img_credits_url-s" id="article_img_credits_url-s"  placeholder="image credits URL"><?php if(isset($_POST['article_img_credits_url-s'])) echo $_POST['article_img_credits_url-s']; ?></textarea>
+								</div>
 							</div>
-						</div>
 
-						<!-- COMMENTS -->
-						<div class="row">
-							<div>
-							   	<textarea type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="comments" ><?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?></textarea>
+							<!-- COMMENTS -->
+							<div class="row">
+								<div>
+								   	<textarea type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="comments" ><?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?></textarea>
+								</div>
 							</div>
-						</div>
 						<?php }?>
 						
 						<?php if($pro_admin){?>

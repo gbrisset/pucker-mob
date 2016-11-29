@@ -45,10 +45,6 @@
 
 		}else $adminController->redirectTo('logout/');
 	}
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -181,18 +177,19 @@
 				</div>
 				<?php
 			  		$total = 0;
-			  		$total_rate = 0;
+			  		$total_rate =  $total_rate_started = $total_rate_pro = $total_rate_basic = 0;
 			  		$total_us_viewers = 0;
 			  		$total_us_viewers_by_thousands = 0;
 			  		$all_us_viewers = 0;
-			  		$all_us_viwers_by_thousand = 0;
+			  		$all_us_viwers_by_thousand = $all_us_viwers_by_thousand_started = 0;
 			  		$all_total = 0;
 			  		$all_total_to_pay = 0;
-			  		$all_basic_total = 0;
-			  		$all_pro_total = 0;
-			  		$all_us_viwers_by_thousand_pro = $all_us_viwers_by_thousand_basic = 0;
+			  		$all_basic_total = $all_started_total = 0;
+			  		$all_pro_total = $all_unpaid_total = 0;
+			  		$all_us_viwers_by_thousand_pro = $all_us_viwers_by_thousand_basic = $all_total_to_pay_over_25 = $all_unpaid_total_over_25 = 0;
 			  		$new = 0;
-			  		$all_adMatch_rev = $total_rev = 0;
+			  		$all_adMatch_rev = $total_incentives = $total_rev = $total_pro_incentives = $total_basic_incentives = $total_started_incentives = $all_unpaid_total_pro = $all_unpaid_total_basic = $all_unpaid_total_started= 0;
+			  		$total_over_25 = 0;
 
 			  		foreach( $results as $contributor){
 			  			$total_rate = $contributor['share_rate'];
@@ -201,28 +198,30 @@
 			  			$user_type = $contributor['user_type'];
 		  				$unpaid = $adMatchBalance = 0;
 		  				$incentives = 0;
+		  				
+		  				//AD MATCHING
 		  				if($adMatchInfo){
-		  				foreach($adMatchInfo as $match){
-		  					if($match->contributor_id == $contributor['contributor_id']){
-		  						$adMatchBalance = $match->amount_commit;
-		  						break;
-		  					}
+			  				foreach($adMatchInfo as $match){
+			  					if($match->contributor_id == $contributor['contributor_id']){
+			  						$adMatchBalance = $match->amount_commit;
+			  						break;
+			  					}
 
-		  					
+			  					
+			  				}
 		  				}
-		  			}
-
-		  				if($rank_list){
-		  				foreach($rank_list as $key => $val ){
-		  					if($key == $contributor['contributor_id']){
-		  						if (strpos($val, '$') !== false) {
-		  							$incentives = substr($val, 1);
-		  							break;
-		  						}
-		  						
-		  					}
-		  				}
-		  				}
+		  				//RANKLIST
+			  			if($rank_list){ var_dump($rank_list); die;
+			  				foreach($rank_list as $key => $val ){
+			  					if($key == $contributor['contributor_id']){
+			  						if (strpos($val, '$') !== false) {
+			  							$incentives = substr($val, 1);
+			  							break;
+			  						}
+			  						
+			  					}
+			  				}
+			  			}
 
 			  			$no_cover_in_house = false;
 						$blogger = $problogger = $basicblogger = false;
@@ -230,7 +229,7 @@
 						if( $user_type == '8' || $user_type == '9') $problogger = true;
 						if( $user_type == '3' ) $basicblogger = true;
 
-
+						//IS A BLOGGER
 			  			if( !$blogger ){
 				  			$total_traffic_rev = 0;
 				  			$total_to_pay  = 0;
@@ -247,83 +246,235 @@
 				  		if($paid == 1) $paid_cb = 'checked=true';
 				  		
 				  		$total_rev = ( $total_traffic_rev + $incentives ) - $adMatchBalance;
-				  		
-				  		//TOTALS
+				  						  		
 				  		if( $blogger ){
-					  		if( $problogger ){
-					  			$all_pro_total += $total_traffic_rev;
-					  			$all_us_viwers_by_thousand_pro += $total_us_viewers_by_thousands ;
-					  			$total_rate_pro = $total_rate;
-					  		}else{ 
-					  			$all_basic_total += $total_traffic_rev;
-					  			$all_us_viwers_by_thousand_basic += $total_us_viewers_by_thousands;
-					  			$total_rate_basic = $total_rate;
-					  		}
+				  			if($user_type == '30'){ //STARTED
+				  				$all_started_total += $total_traffic_rev;
+						  		$all_us_viwers_by_thousand_started += $total_us_viewers_by_thousands ;
+						  		$total_rate_started = $total_rate;
+						  		$total_started_incentives += $incentives;
+						  		$all_unpaid_total_started += $unpaid;
+				  			}else{
+						  		if( $problogger ){
+						  			$all_pro_total += $total_traffic_rev;
+						  			$all_us_viwers_by_thousand_pro += $total_us_viewers_by_thousands ;
+						  			$total_rate_pro = $total_rate;
+						  			$total_pro_incentives += $incentives;
+						  			$all_unpaid_total_pro += $unpaid;
+						  		}else{ 
+						  			$all_basic_total += $total_traffic_rev;
+						  			$all_us_viwers_by_thousand_basic += $total_us_viewers_by_thousands;
+						  			$total_rate_basic = $total_rate;
+						  			$total_basic_incentives += $incentives;
+						  			$all_unpaid_total_basic += $unpaid;
+						  		}
+						  	}
 
+						  	//TOTALS
+				  			if( ( $total_rev  + $unpaid ) < 25) continue;
+				  			//{
+					  		/*	$all_total_to_pay_over_25 += $total_to_pay;
+					  			$all_unpaid_total_over_25 += $unpaid;
+				  			}*/
+
+						  	$all_unpaid_total += $unpaid;
 				  			$all_us_viewers += $total_us_viewers;
-				  			$all_adMatch_rev += $all_adMatch_rev;
+				  			$total_incentives += $incentives;
 				  			$all_us_viwers_by_thousand += $total_us_viewers_by_thousands;
 				  			$all_total += $total_traffic_rev; 
 				  			$all_rate = $total_rate;
 				  			$all_total_to_pay += $total_to_pay;
 					  	}
 
-					  	if($total_to_pay < 20) continue;
+					  	//TOTALS
+				  		if($total_to_pay < 1) continue;
 			  			
 					  			
 						?>	
 						<?php if(!$no_cover_in_house ){  ?>
 						
-						<div class="small-12 columns">
-						<div class="row reports-sub-tables">
-							<!-- ANALYTICS & RATE INFO -->
-							<div class="small-4 columns subdivition">
-							  	<div class="row">
-								  	<!-- NAME -->
-								  	<div class="columns small-5" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
-								  		<a href="http://www.puckermob.com/admin/earnings/<?php echo $contributor['contributor_seo_name']; ?>" target="blank">
-									  		<?php echo $contributor['contributor_name']; ?>
-									  	</a>
-									  	<label style="font-size: 11px !important; "><?php echo $contributor['paypal_email'];?></label>
+							<div class="small-12 columns">
+							<div class="row reports-sub-tables">
+								<!-- ANALYTICS & RATE INFO -->
+								<div class="small-4 columns subdivition">
+								  	<div class="row">
+									  	<!-- NAME -->
+									  	<div class="columns small-5" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
+									  		<a href="http://www.puckermob.com/admin/earnings/<?php echo $contributor['contributor_seo_name']; ?>" target="blank">
+										  		<?php echo $contributor['contributor_name']; ?>
+										  	</a>
+										  	<label style="font-size: 11px !important; "><?php echo $contributor['paypal_email'];?></label>
+									  	</div>
+									  	<!-- w9 -->
+									  	<div class="columns small-2">
+									  		<?php if($contributor['w9_live'] === '1'){ ?>
+										  		<i class='fa fa-check' style='margin-left:0; margin-right: 0; color:green;'></i>
+										  	<?php }else echo "--" ?>
+									  	</div>
+									  	<!-- TOTAL US PAGEVIEWS -->
+									  	<div class="columns small-3"><label><?php echo number_format($total_us_viewers_by_thousands, 2, '.', ','); ?></label></div>
+									  	<!-- RATE -->
+									  	<div class="columns small-2"><label><?php echo '$'.number_format($total_rate, 2, '.', ','); ?></label></div>
 								  	</div>
-								  	<!-- w9 -->
-								  	<div class="columns small-2">
-								  		<?php if($contributor['w9_live'] === '1'){ ?>
-									  		<i class='fa fa-check' style='margin-left:0; margin-right: 0; color:green;'></i>
-									  	<?php }else echo "--" ?>
-								  	</div>
-								  	<!-- TOTAL US PAGEVIEWS -->
-								  	<div class="columns small-3"><label><?php echo number_format($total_us_viewers_by_thousands, 2, '.', ','); ?></label></div>
-								  	<!-- RATE -->
-								  	<div class="columns small-2"><label><?php echo '$'.number_format($total_rate, 2, '.', ','); ?></label></div>
-							  	</div>
+								</div>
+								<!-- EARNINGS TOTALS INFO -->
+								<div class="small-5 columns subdivition">
+								  <div class="row">
+								  	<div class="columns small-3"><label><?php echo '$'.number_format($total_traffic_rev, 2, '.', ','); ?></label></div>
+								  	<div class="columns small-3"><label><?php echo '$'.number_format($incentives, 2, '.', ','); ?></label></div>
+								  	<div class="columns small-3"><label style="color: red;"><?php echo '-$'.number_format($adMatchBalance, 2, '.', ','); ?></label></div>
+								  	<div class="columns small-3"><label><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></label></div>
+								  </div>
+								</div>
+								<!-- TOTALS -->
+								<div class="small-3 columns subdivition">
+								  <div class="row">
+								  	  	<div class="columns small-5"><label><?php echo '$'.number_format($unpaid, 2, '.', ','); ?></label></div>
+									  	<div class="columns small-5"><label><?php echo '$'.number_format($total_to_pay, 2, '.', ','); ?></label></div>
+									  	<div class="columns small-2">
+									  		<input type="checkbox" id="input-<?php echo $contributor['contributor_id']; ?>" month-info="<?php echo $contributor['month']; ?>" year-info="<?php echo $contributor['year']; ?>" contributor-info="<?php echo $contributor['contributor_id']; ?>" <?php echo $paid_cb; ?> class="paid-checkbox" />
+									  	</div>
+								  </div>
+								</div>
 							</div>
-							<!-- EARNINGS TOTALS INFO -->
-							<div class="small-5 columns subdivition">
-							  <div class="row">
-							  	<div class="columns small-3"><label><?php echo '$'.number_format($total_traffic_rev, 2, '.', ','); ?></label></div>
-							  	<div class="columns small-3"><label><?php echo '$'.number_format($incentives, 2, '.', ','); ?></label></div>
-							  	<div class="columns small-3"><label style="color: red;"><?php echo '-$'.number_format($adMatchBalance, 2, '.', ','); ?></label></div>
-							  	<div class="columns small-3"><label><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></label></div>
-							  </div>
 							</div>
-							<!-- TOTALS -->
-							<div class="small-3 columns subdivition">
-							  <div class="row">
-							  	  	<div class="columns small-5"><label><?php echo '$'.number_format($unpaid, 2, '.', ','); ?></label></div>
-								  	<div class="columns small-5"><label><?php echo '$'.number_format($total_to_pay, 2, '.', ','); ?></label></div>
-								  	<div class="columns small-2">
-								  		<input type="checkbox" id="input-<?php echo $contributor['contributor_id']; ?>" month-info="<?php echo $contributor['month']; ?>" year-info="<?php echo $contributor['year']; ?>" contributor-info="<?php echo $contributor['contributor_id']; ?>" <?php echo $paid_cb; ?> class="paid-checkbox" />
-								  	</div>
-							  </div>
-							</div>
-						</div>
-						</div>
 
 						<?php } ?>  
-				  	  <?php  }  ?>	
+				 <?php  }  ?>	
 						
-		
+				<!-- TOTALS -->
+				<div class="small-12 columns show-totals">
+					<!-- PRO TOTALS -->
+					<div class="row reports-sub-tables">
+						<div class="small-4 columns subdivition">
+							<div class="row">
+							  <div class="columns small-7 uppercase bold">PRO</div>
+							  <div class="columns small-3"><label><?php echo $all_us_viwers_by_thousand_pro; ?></label></div>
+							  <div class="columns small-2"><label><?php echo '$'.number_format($total_rate_pro, 2, '.', ','); ?></label></div>
+							</div>
+						</div>
+						<div class="small-5 columns subdivition">
+							<div class="row">
+							  <div class="columns small-3"><label><?php //echo '$'.number_format($all_pro_total, 2, '.', ','); ?></label></div>
+							  <div class="columns small-3"></label><?php //echo '$'.number_format($total_pro_incentives, 2, '.', ','); ?></div>
+							  <div class="columns small-3"></label></div>
+							  <div class="columns small-3"><label><?php echo '$'.number_format(($all_pro_total + $total_pro_incentives ), 2, '.', ','); ?></label></div>
+							</div>
+						</div>
+						<div class="small-3 columns subdivition">
+							<div class="row">
+							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total_pro, 2, '.', ','); ?></label></div>
+							  <div class="columns small-5"><label><?php echo '$'.number_format( ( $all_pro_total + $total_pro_incentives  + $all_unpaid_total_pro), 2, '.', ','); ?></label></div>
+							  <div class="columns small-2"><label></label></div>
+							</div>
+						</div>
+					</div>
+					<!-- COMMUNITY TOTALS -->
+					<div class="row reports-sub-tables">
+						<div class="small-4 columns subdivition">
+							<div class="row">
+							  <div class="columns small-7 uppercase bold">COMMUNITY</div>
+							  <div class="columns small-3"><label><?php echo $all_us_viwers_by_thousand_basic; ?></label></div>
+							  <div class="columns small-2"><label><?php echo '$'.number_format($total_rate_basic, 2, '.', ','); ?></label></div>
+							</div>
+						</div>
+						<div class="small-5 columns subdivition">
+							<div class="row">
+							  <div class="columns small-3"><label><?php //echo '$'.number_format($all_basic_total, 2, '.', ','); ?></label></div>
+							  <div class="columns small-3"></label><?php //echo '$'.number_format($total_basic_incentives, 2, '.', ','); ?></div>
+							  <div class="columns small-3"></label></div>
+							  <div class="columns small-3"><label><?php echo '$'.number_format(($all_basic_total + $total_basic_incentives ), 2, '.', ','); ?></label></div>
+							</div>
+						</div>
+						<div class="small-3 columns subdivition">
+							<div class="row">
+							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total_basic, 2, '.', ','); ?></label></div>
+							  <div class="columns small-5"><label><?php echo '$'.number_format(( $all_basic_total + $total_basic_incentives  + $all_unpaid_total_basic), 2, '.', ','); ?></label></div>
+							  <div class="columns small-2"><label></label></div>
+							</div>
+						</div>
+					</div>
+					<!-- STARTED TOTALS -->
+					<div class="row reports-sub-tables">
+						<div class="small-4 columns subdivition">
+							<div class="row">
+							  <div class="columns small-7 uppercase bold">STARTED</div>
+							  <div class="columns small-3"><label><?php  echo $all_us_viwers_by_thousand_started; ?></label></div>
+							  <div class="columns small-2"><label><?php echo '$'.number_format($total_rate_started, 2, '.', ','); ?></label></div>
+							</div>
+						</div>
+						<div class="small-5 columns subdivition">
+							<div class="row">
+							  <div class="columns small-3"><label><?php // echo '$'.number_format($all_started_total, 2, '.', ','); ?></label></div>
+							  <div class="columns small-3"></label><?php // echo '$'.number_format($total_started_incentives, 2, '.', ','); ?></div>
+							  <div class="columns small-3"></label></div>
+							  <div class="columns small-3"><label><?php echo '$'.number_format(($all_started_total + $total_started_incentives ), 2, '.', ','); ?></label></div>
+							</div>
+						</div>
+						<div class="small-3 columns subdivition">
+							<div class="row">
+							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total_started, 2, '.', ','); ?></label></div>
+							  <div class="columns small-5"><label><?php echo '$'.number_format(( $all_started_total + $total_started_incentives  + $all_unpaid_total_started), 2, '.', ','); ?></label></div>
+							  <div class="columns small-2"><label></label></div>
+							</div>
+						</div>
+					</div>
+					<!-- OVERALL TOTAL -->
+					<div class="row reports-sub-tables">
+						<div class="small-4 columns subdivition">
+							<div class="row">
+							  <div class="columns small-7 uppercase bold">Totals</div>
+							  <div class="columns small-3"><label><?php echo number_format($all_us_viwers_by_thousand, 2, '.', ','); ?></label></div>
+							  <div class="columns small-2"><label></label></div>
+							</div>
+						</div>
+						<div class="small-5 columns subdivition">
+							<div class="row">
+							  <div class="columns small-3"><label><?php echo '$'.number_format($all_total, 2, '.', ','); ?></label></div>
+							  <div class="columns small-3"></label><?php echo '$'.number_format($total_incentives, 2, '.', ','); ?></div>
+							  <div class="columns small-3"></label></div>
+							  <div class="columns small-3"><label><?php echo '$'.number_format(($all_total + $total_incentives ), 2, '.', ','); ?></label></div>
+							</div>
+						</div>
+						<div class="small-3 columns subdivition">
+							<div class="row">
+							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total, 2, '.', ','); ?></label></div>
+							  <div class="columns small-5"><label><?php echo '$'.number_format($all_total_to_pay, 2, '.', ','); ?></label></div>
+							  <div class="columns small-2"><label></label></div>
+							</div>
+						</div>
+					</div>
+
+				<!--  TOTAL OVER 25
+					<div class="row reports-sub-tables">
+						<div class="small-4 columns subdivition">
+							<div class="row">
+							  <div class="columns small-7 uppercase bold">Totals Over 25</div>
+							  <div class="columns small-3"><label></label></div>
+							  <div class="columns small-2"><label></label></div>
+							</div>
+						</div>
+						<div class="small-5 columns subdivition">
+							<div class="row">
+							  <div class="columns small-3"><label><?php echo '$'.number_format($all_total_to_pay_over_25, 2, '.', ','); ?></label></div>
+							  <div class="columns small-3"></label></div>
+							  <div class="columns small-3"></label></div>
+							  <div class="columns small-3"><label></label></div>
+							</div>
+						</div>
+						<div class="small-3 columns subdivition">
+							<div class="row">
+							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total_over_25, 2, '.', ','); ?></label></div>
+							  <div class="columns small-5"><label><?php echo '$'.number_format(( $all_total_to_pay_over_25 + $all_unpaid_total_over_25), 2, '.', ','); ?></label></div>
+							  <div class="columns small-2"><label></label></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>-->
+
+				
+				
 				
 				<?php }else{
 					echo "<p>No records found!</p>";

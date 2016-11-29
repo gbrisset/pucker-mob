@@ -298,9 +298,11 @@ if(!is_null($categoryInfo)){
 					
 					<!-- IMAGE -->
 					<div id="article-image" class="small-12 clear">
-						<?php if( $article_id == 5191 ){ ?>
-							<script src="http://player.videomosh.com/player-v4/sequelmedia/player/video/79822/Top%205%20Facts%20about%20Kissing.js"></script>
-						<?php }else{ ?>
+						<?php if( !empty($articleInfoObj['article_video_script']) ){ ?>
+							
+							 <?php echo $articleInfoObj['article_video_script'];  ?>
+					
+						 <?php }else { ?>
 							<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 						<?php } ?>
 					</div>
@@ -317,10 +319,10 @@ if(!is_null($categoryInfo)){
 					       
 					        <?php if( $articleInfoObj['article_id'] != 25362 ){ //14613 ?>     
 				              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-					             <!-- MEME GLOBAL  
+					             <!-- MEME GLOBAL   -->
 								<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-						   -->
-						    <!-- AMAZON -->
+						  
+						    <!-- AMAZON 
 						   
 						      <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 						      <script type="text/javascript" language="javascript">
@@ -330,6 +332,7 @@ if(!is_null($categoryInfo)){
 						      });
 						      //]]>
 						      </script>
+						      -->
 						  
 				              </div>
 					        <?php }else{ ?>

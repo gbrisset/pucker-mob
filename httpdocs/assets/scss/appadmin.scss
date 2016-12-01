@@ -1964,7 +1964,7 @@ h1{ font-size: 1.7rem;}
     background: #eee;  
     height: 8rem;
     border: 1px solid #777;
-
+    .ss-box{ overflow: scroll; height: 124px; }
     .ss-label{
       margin-top:1rem;
       label{ 
@@ -1975,10 +1975,15 @@ h1{ font-size: 1.7rem;}
       }
 
       p{ font-family: Oslo;  text-align: right; }
-    .ss-box{
-     
+    
     }
-    }
+    .dropzone{ min-height: 125px; }
+    .dropzone.dz-clickable{ overflow: scroll; padding: 0;}
+    .dropzone .dz-preview.dz-image-preview{background: white; margin: 5px; }
+    .dropzone .dz-preview .dz-details{ position: relative; opacity: 1; padding:5px;}
+    .dropzone .dz-preview .dz-details .dz-filename:not(:hover){     display: none; }
+    .dropzone .dz-preview .dz-details .dz-filename:not(:hover) span, .dropzone .dz-preview .dz-details .dz-size{     display: none; }
+
   }
   @media #{$xxlarge-up} {
     #bonus-box-1{ padding-right: 5px; }

@@ -83,9 +83,10 @@
 	}
 
 	//IMPLODE ALL THE IDS FOR EACH ARTICLE ON THE CURRENT INDEX PAGE.
-	$comma_separated = implode(",", $arr_ids);
+	$comma_separated = implode(", ", $arr_ids);
 
 	//GET USA PAGEVIEWS FOR EACH ARTICLE ON THE LIST
+	
 	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
 	$pageviews_list = [];
 	if($usa_pageview_list){
@@ -93,9 +94,10 @@
 			$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
 		}
 	}
+
+	
 	$promoteArticles = new PromoteArticles();
 	$fb_pages = $promoteArticles->getAllFacebookPages();
-	//var_dump($fb_pages); die;
 
 ?>
 <!DOCTYPE html>
@@ -153,6 +155,8 @@
 								       <th width="400" class="align-left">Title</th>
 								       <th width="100" class="show-for-large-up">Added</th>
 								       <?php if($admin_user){?>
+								       <th width="100" class="show-for-large-up">Updated</th>
+								       
 								       		<th width="100" class="show-for-large-up">Promotion</th>
 									   <?php }?>
 								       <th width="100"  class="show-for-large-up">status</th>
@@ -163,7 +167,8 @@
 								</thead>
 								
 								<tbody>
-								 <?php foreach($articles as $articleInfo){
+								 <?php 
+								 foreach($articles as $articleInfo){
 								 	$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
 
 									$articleExternalUrl = $config['this_url'].$articleInfo['cat_dir_name'].'/'.$articleInfo['article_seo_title'];
@@ -173,6 +178,8 @@
 									$article_title = $articleInfo['article_title'];
 									$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
 									$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
+									$article_date_updated =  date_format(date_create($articleInfo['date_updated']), 'm/d/y');
+
 									$article_us_traffic = 0;
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
@@ -189,6 +196,8 @@
 									} else {
 										$imageUrl = 'http://cdn.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
 									}
+
+									
 									?>
 									<tr id="<?php echo 'article-'.$article_id; ?>">
 									  	<td class="border-right">
@@ -233,6 +242,13 @@
 									  	<td class="show-for-large-up  border-right">
 									  		<label><?php echo $article_date_created; ?></label>
 									  	</td>
+
+									  	<?php if( $admin_user ){ ?>
+									  	<!-- DATE Updated -->
+									  	<td class="show-for-large-up  border-right">
+									  		<label><?php echo $article_date_updated; ?></label>
+									  	</td>
+									  	<?php }?>
 									  	
 									  	<!-- PROMOTE PAGE LIST -->
 									  	<?php if( $admin_user ){ ?>
@@ -278,10 +294,10 @@
 												</form>
 											<?php }else{?>
 												<?php //if($articleInfo["article_status"] != 1 ){?>
-												<!--<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+												<!--<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php //echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php //echo $_SESSION['csrf'];?>" >
+													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php //echo $article_id;?>" />
+													<a class="manage-links" href="<?php //echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 												</form>-->
 												<?php //}else{ ?>
 													<!-- REQUEST TO DELETE THIS ARTICLE -->

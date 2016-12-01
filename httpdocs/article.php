@@ -300,7 +300,11 @@ if(!is_null($categoryInfo)){
 					<div id="article-image" class="small-12 clear">
 						<?php if( !empty($articleInfoObj['article_video_script']) ){ ?>
 							
-							 <?php echo $articleInfoObj['article_video_script'];  ?>
+							 <?php 
+							 	if(get_magic_quotes_gpc()) echo stripslashes($articleInfoObj['article_video_script']);
+    							else echo $articleInfoObj['article_video_script'];
+							 	
+							 ?>
 					
 						 <?php }else { ?>
 							<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">

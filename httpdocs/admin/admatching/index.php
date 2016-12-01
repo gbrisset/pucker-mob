@@ -6,10 +6,22 @@
 
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
-	$email = isset($userData['contributor_email_address']) ? $userData['contributor_email_address'] : 'none';
+
+	if(isset($_GET['seo'])){
+		$contributorInfo = $mpArticle->getContributorInfo( $_GET['seo'] );
+	}else $contributorInfo = $mpArticle->getContributorInfo( $userData['contributor_seo_name'] );
 	
-	$contributor_id = $userData['contributor_id'];
-	$user_id = $userData['user_id'];
+	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
+	if (isset($contributorInfo['contributor_id'])){
+		if ( !($adminController->user->checkUserCanEditOthers('contributor', $userData['contributor_email_address'])) && $contributorInfo['contributor_email_address'] !== $userData['contributor_email_address']  ) $adminController->redirectTo('noaccess/');
+	} else $mpShared->get404();
+
+	if(empty($contributorInfo)) $mpShared->get404();
+
+	$email = isset($contributorInfo['contributor_email_address']) ? $contributorInfo['contributor_email_address'] : 'none';
+	
+	$contributor_id = $contributorInfo['contributor_id'];
+	$user_id = $contributorInfo['user_id'];
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 
 	$ManageDashboard = new ManageAdminDashboard( $config );

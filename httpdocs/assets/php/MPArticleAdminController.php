@@ -628,12 +628,11 @@ class MPArticleAdminController extends MPArticle{
 			if( $save == false ) $post['article_status-s'] = 2; //REVIEW
 		}
 
-		//if(isset($post['article_video_script-nf'])) $post['article_video_script-nf'] = mysql_real_escape_string( $post['article_video_script-nf'] );
-
 		$pairs[] = "date_updated = :date_updated";
 		$params[':date_updated'] =  date("Y-m-d H:i:s");
-
+		
 		$params = $this->helpers->compileParams($post);
+
 		$seoTitleCheck = $this->performQuery(array(
 			'queryString' => 'SELECT * FROM articles WHERE article_seo_title = :seoTitle AND article_id != :articleId',
 			'queryParams' => array(':seoTitle' => $params[':article_seo_title'], ':articleId' => $post['a_i'])
@@ -697,7 +696,8 @@ class MPArticleAdminController extends MPArticle{
 		$result = $this->updateSiteObject(array(
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
 			'post' => $post,
-			'unrequired' => array('article_body', 'article_tags', 'article_status', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 'article_poll_id', 'article_desc', 'featured_hp', 'article_video_script')
+			'unrequired' => array('article_body', 'article_tags', 'article_status', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 
+				'article_poll_id', 'article_desc', 'featured_hp', 'article_video_script' )
 		));
 		
 		if($result === true) {

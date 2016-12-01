@@ -55,7 +55,7 @@
 			</li>	
 			<?php if( !$detect->isMobile() ){ ?>
 			<li class="small-12 columns border-bottom padding-top padding-bottom">
-				<a href="<?php echo $config['this_admin_url']; ?>admatching">Ad Matching</a>
+				<a href="<?php echo $config['this_admin_url']; ?>admatching?seo=<?php echo $adminController->user->data['contributor_seo_name']; ?>">Ad Matching</a>
 			</li>	
 			<?php }?>
 

@@ -83,31 +83,36 @@
 		  googletag.cmd = googletag.cmd || [];
 		</script>
 
-		<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  == 23319 || $articleInfo['article_id']  == 23305 ) ){?>
+		<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  == 23319 || $articleInfo['article_id']  == 23305 || $articleInfo['article_id']  == 25829 ) ){?>
 			<?php if($articleInfo['article_id']  == 23319) {?>
-
-			<script>
-			  googletag.cmd.push(function(){
-			  	//UNDERTONE
-	   			googletag.defineSlot('/73970039/UT_SS', [1, 1], 'div-gpt-ad-1476806620904-1').addService(googletag.pubads());
-	   
-			    googletag.pubads().enableSingleRequest();
-			    googletag.enableServices();
-			  });
-			</script>
+				<script>
+				  googletag.cmd.push(function(){
+				  	//UNDERTONE
+		   			googletag.defineSlot('/73970039/UT_SS', [1, 1], 'div-gpt-ad-1476806620904-1').addService(googletag.pubads());
+				    googletag.pubads().enableSingleRequest();
+				    googletag.enableServices();
+				  });
+				</script>
+			<?php }elseif($articleInfo['article_id']  == 25829 ){?>	
+			<!-- http://www.puckermob.com/moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you -->
+				<script>
+				  googletag.cmd.push(function() {
+				    googletag.defineSlot('/73970039/UT_Adhesion', [1, 1], 'div-gpt-ad-1480951070701-0').addService(googletag.pubads());
+				    googletag.pubads().enableSingleRequest();
+				    googletag.enableServices();
+				  });
+				</script>
 			<?php }else{?>
-			<script>
-			  googletag.cmd.push(function(){
-			  	//UNDERTONE
-	    		googletag.defineSlot('/73970039/UT_Flex', [1, 1], 'div-gpt-ad-1476806620904-0').addService(googletag.pubads());
-			   
-			    googletag.pubads().enableSingleRequest();
-			    googletag.enableServices();
-			  });
-			</script>
+				<script>
+				  googletag.cmd.push(function(){
+				  	//UNDERTONE
+		    		googletag.defineSlot('/73970039/UT_Flex', [1, 1], 'div-gpt-ad-1476806620904-0').addService(googletag.pubads());
+				   
+				    googletag.pubads().enableSingleRequest();
+				    googletag.enableServices();
+				  });
+				</script>
 			<?php }?>
-		
-
 		<?php }else{?>
 			<script>
 				  googletag.cmd.push(function(){
@@ -121,7 +126,6 @@
 				    googletag.enableServices();
 				  });
 			</script>
-
 		<?php }?>
 	<?php }?>
 

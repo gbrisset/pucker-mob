@@ -139,6 +139,13 @@ if(!is_null($categoryInfo)){
 			</div>
 
 			<!-- end Undertone Ad Tag for INT00 - Flex - Testing Certification Purposes Only Tag -->
+		<?php }elseif( $articleInfoObj['article_id'] == 25829 ){?>
+			<!-- /73970039/UT_Adhesion -->
+			<div id='div-gpt-ad-1480951070701-0' style='height:1px; width:1px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1480951070701-0'); });
+				</script>
+			</div>
 		<?php }else{?>
 			<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
 			<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>

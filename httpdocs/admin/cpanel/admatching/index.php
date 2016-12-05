@@ -64,7 +64,9 @@
 							<td>NAME</td>
 							<td>EMAIL</td>
 							<td>PKG</td>
-							<td>COMMIT</td>
+							<td>THEIR COMMIT</td>
+							<td>OUR COMMIT</td>
+							<td>TOTAL</td>
 							<td>SPENT</td>
 							<td>BALANCE</td>
 							<td></td>
@@ -80,9 +82,11 @@
 							$date = date("n/d/Y", strtotime($order->date));
 							$pkg = $order->bonus_pct;
 							$total = $order->total_commit;
+							$our_commit = $order->amount_match;
+							$blogger_commit = $order->amount_commit;
  
 							if($spent > 0 ){
-								$spent = $total - $spent;
+								$spent = 0;//$total - $spent;
 							}
 							$balance = $total - $spent;
 							$link = 'http://www.puckermob.com/admin/profile/user/'.$contributorInfo->contributor_seo_name;
@@ -92,6 +96,8 @@
 							<td><?php echo $contributorInfo->contributor_name; ?></td>
 							<td><?php echo $contributorInfo->contributor_email_address; ?></td>
 							<td><?php echo $pkg.'%'; ?></td>
+							<td><?php echo '$'.number_format( $blogger_commit, 2); ?></td>
+							<td><?php echo '$'.number_format( $our_commit, 2); ?></td>
 							<td><?php echo '$'.number_format( $total, 2); ?></td>
 							<td><?php echo '$'.number_format( $spent, 2); ?></td>
 							<td><?php echo '$'.number_format( $balance, 2); ?></td>

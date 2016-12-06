@@ -595,7 +595,7 @@ class Dashboard{
 
 	public function pageviewsReport( $month, $year ){
 		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$year = filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year =  filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 	
 		$prev_month = $month;
 		$prev_year = $year;
@@ -604,11 +604,8 @@ class Dashboard{
 			$prev_year = $year - 1;
 		}else $prev_month = $month - 1;
 
-
-		if($month == 10) $prev_month = 9;
-
 		//CONTRIBUTOR LIST ACTIVE
-		$contributors = $this->getContributorsList();
+		$contributors = $this->getContributorsList(); 
 
 		if($contributors){
 			foreach($contributors as $contributor){
@@ -620,10 +617,21 @@ class Dashboard{
 				//CONTRIBUTOR EARNINGS
 				$update_data = $this->getContributorEarnings($id, $prev_month.', '.$month, $year);
 
-				//if(count($update_data) > 1){
+				
 				if( $update_data ){
-					$current_month = isset($update_data[0]) ? $update_data[0] : false;
-					$prev_month_data = isset($update_data[1]) ? $update_data[1] : false;
+					if(count($update_data) > 1){
+						$current_month = isset($update_data[0]) ? $update_data[0] : false;
+						$prev_month_data = isset($update_data[1]) ? $update_data[1] : false;
+					}else{
+						if($update_data[0]['month'] == $month ){
+							$current_month = isset($update_data[0]) ? $update_data[0] : false;
+							$prev_month_data = false;
+						}else{
+							$current_month =  false;
+							$prev_month_data = isset($update_data[0]) ? $update_data[0] : false;
+						}
+					}
+					
 				}
 
 				//GET PAGEVIEWS TOTAL PER MONTH
@@ -638,7 +646,7 @@ class Dashboard{
 
 	            if($earnings_info) $total_us_pageviews = $earnings_info[0]['pvs'];
 				$share_rate = $this->get_current_rate($month, $contributor['user_type']);	
-				
+			
 				if($share_rate) $share_rate  = $share_rate['rate'];
 
 				//Calc Total Earnings
@@ -653,10 +661,9 @@ class Dashboard{
 						$total_to_be_pay = $total_to_be_pay + $prev_month_data['to_be_pay'];
 					}
 				}
-//var_dump($prev_month_data, $current_month, $total_to_be_pay); die;
 
 				//IF CURRENT MONTH DATA EXIST UPDATE THE RECORD
-				if($current_month){
+				if($current_month){ 
 					$s = "UPDATE contributor_earnings 
 							SET total_article_rate = $total_article_rate,
 							    total_shares = $total_shares,
@@ -667,19 +674,81 @@ class Dashboard{
 							    to_be_pay = $total_to_be_pay,
 							    updated_date = now()
 						WHERE contributor_id = $id AND month = $month AND year = $year ";
+
+					$queryParams = [ ];			
+					$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 				}else{
 					//INSERT NEW RECORD
-					$s = "INSERT INTO contributor_earnings
-						  (`id`, `contributor_id`, `month`, `year`, `total_article_rate`, `total_shares`, `share_rate`, `total_us_pageviews`,  
-						  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`,  `updated_date`)
-						  VALUES (NULL, '".$id."', '".$month."', '".$year."', '".$total_article_rate."', '".$total_shares."', 
-						  	'".$total_shares."', '".$total_us_pageviews."', '".$share_rate."', '".$total_earnings."', '0', '".$total_to_be_pay."', now() ) ";
+					$data[] = [
+						'id' => NULL,
+						'contributor_id' => $id,
+						'month' => $month,
+						'year' =>  $year,
+						'total_article_rate' => $total_article_rate,
+						'total_shares' => $total_shares,
+						'share_rate' => $total_shares,
+						'total_us_pageviews' => $total_us_pageviews,
+						'total_share_rev' => $total_share_rev,
+						'total_earnings' => $total_earnings,
+						'paid' => 0,
+						'to_be_pay' =>  $total_to_be_pay,
+						'updated_date' => date('Y-m-d H:i:s', time())
+					];
+
+				}
+				
+			} 
+
+			if(isset($data) && $data) $this->saveContributorsEarningsInformationDaily($data, $month, $year);
+		}	
+	}
+
+	public function saveContributorsEarningsInformationDaily( $data, $month, $year ){
+		if(!empty($data) && $data){
+				$numItems = count($data);
+				$i = 0;
+				$s = " INSERT INTO contributor_earnings (`contributor_id`, `month`, `year`,  `total_article_rate`, `total_shares`, `share_rate`, `total_us_pageviews`,  
+						  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`,  `updated_date` ) VALUES ";
+				
+				foreach($data as $row ){
+					$id = $row['id'];
+					$contributor_id= $row['contributor_id'];
+					$month =  $row['month'];
+					$year= $row['year'];
+					$total_article_rate= $row['total_article_rate'];
+					$total_shares= $row['total_shares'];
+					$share_rate= $row['share_rate'];
+					$total_us_pageviews= $row['total_us_pageviews'];
+					$total_share_rev= $row['total_share_rev'];
+					$total_earnings= $row['total_earnings'];
+					$paid= $row['paid'];
+					$to_be_pay= $row['to_be_pay'];
+					$updated_date = date('Y-m-d H:i:s', time());
+					
+					$s .= "( ".$contributor_id.", ".$month.", ".$year.", ".$total_article_rate.", ".$total_shares.", ".$share_rate.", ".$total_us_pageviews.", ".$total_share_rev.", "
+					.$total_earnings.", ".$paid.", ".$to_be_pay.", '".$updated_date."' ) ";
+					
+					if(++$i < $numItems) {
+						$s .= ", ";
+					}
+					
 				}
 
-				$queryParams = [ ];			
-				$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-			} 
-		}	
+				$queryParams = [
+					//':articleId' => filter_var($articleId, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT)
+				];
+
+				$pdo = $this->con->openCon();
+				$q = $pdo->prepare($s);
+
+				$row = $q->execute($queryParams);
+
+				$this->con->closeCon();
+				
+				return true;//$row; 
+			}else{
+				return false;
+		}
 	}
 
 	//OLD ONE REPLACED BY pageviewsReport()
@@ -748,7 +817,7 @@ class Dashboard{
 	}
 
 	public function getContributorsList(){
-		$s = "SELECT contributor_id, user_type from active_user_contributors ";
+		$s = " SELECT contributor_id, user_type from active_user_contributors ORDER BY user_login_count DESC";
 
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s]);
@@ -760,7 +829,7 @@ class Dashboard{
 	public function getContributorsListTEST(){
 		//$s = "SELECT contributor_id, user_type from article_contributors 
 		//INNER JOIN users ON users.user_email = article_contributors.contributor_email_address where contributor_id IN (4317, 5112, 3675, 3612, 1459)";
-		$s  = " SELECT contributor_id, user_type FROM active_user_contributors where contributor_id IN (3612, 5264) ";
+		$s  = " SELECT contributor_id, user_type FROM active_user_contributors where contributor_id IN (3612, 5264, 5112, 6371) ";
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s]);
 

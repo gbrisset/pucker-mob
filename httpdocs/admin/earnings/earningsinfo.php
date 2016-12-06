@@ -42,14 +42,14 @@
 	$contributor_type = $mpArticle->getContributorUserType($contributor_email);
 
 	
-	if(isset($_GET['show']) && $_GET['show'] == true){
+	//if(isset($_GET['show']) && $_GET['show'] == true){
 			$user_info = new User($contributor_email);
 			$contributor = $user_info->contributor;
 			$contributor_earnings = new ContributorEarnings( $contributor );
 		//	$rate = $contributor_earnings->getRate( 6, 2016, $user_type )
-			var_dump($contributor_earnings); die;
+		//	var_dump($contributor_earnings); die;
 
-	}
+	//}
 
 	$newCalc = true;
 	if( $year < 2015 || ( $year == 2015 && $month <= 2)){
@@ -69,7 +69,7 @@
 		}
 	}
 
-	$rate = $dashboard->get_current_rate( $current_month, $contributor_type );
+	$rate = $dashboard->get_current_rate( $$current_month, $contributor_type );
 	//$user_id = $userData['user_id'];
 	if($rate) $rate = $rate['rate'];
 	$total = 0;
@@ -81,12 +81,14 @@
 		 $last_year = $current_year - 1;
 	}
 	$show_art_rate = false;
-	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
+	//if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 
 	$user_type = $contributor_type; 
 	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 	$best_article = $ManageDashboard->get_bestArticle($contributor_id,  date('n'), date('Y'));
+
+	if(isset($_GET['show']) && $_GET['show'] == true){ var_dump($contributor_earnings, $user_type, $earnings, $current_earnings); }
 ?>
 <!DOCTYPE html>
 

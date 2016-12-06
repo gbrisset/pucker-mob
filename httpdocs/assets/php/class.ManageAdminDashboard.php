@@ -160,7 +160,7 @@ class ManageAdminDashboard{
 			  ORDER BY total_us_pageviews DESC LIMIT ".$limit;
 		}
 		
-
+//echo $s;
 		$q = $this->performQuery(['queryString' => $s]);
 
 		return $q;
@@ -253,7 +253,7 @@ class ManageAdminDashboard{
 
 		if( $contributor_id != 0 ) $s .= " AND contributor_id = $contributor_id ";
 		$s .= " ORDER BY total_earnings DESC";
-
+//var_dump($contributor_id, $year, $month, $s); die;
 		$q = $this->performQuery(['queryString' => $s]);
 		return $q;	
 	}

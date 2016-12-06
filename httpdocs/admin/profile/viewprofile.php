@@ -66,6 +66,8 @@
 						<a href="<?php echo $config['this_url'].'admin/profile/user/'.$contributor_seo_name; ?>" class="font-1-5x main-color">VIEW PUBLIC</a>
 						<i class="fa fa-circle"></i>
 						<a href="<?php echo $config['this_url'].'admin/earnings/'.$contributor_seo_name; ?>" class="font-1-5x">DASHBOARD</a>
+						<i class="fa fa-circle"></i>
+						<a href="<?php echo $config['this_url'].'admin/admatching?seo='.$contributor_seo_name; ?>" class="font-1-5x">AD MATCHING</a>
 						<?php } ?>
 					</div>
 				</h1>

@@ -14,7 +14,6 @@ $year = date('Y');
 $data = [];
 $articles_data = $dashboard->get_articlesbypageviews_daily($startDate, $endDate);
 
-
 foreach( $articles_data as $article ){
 		$data[] = [
 			'article_id' => $article['article_id'],

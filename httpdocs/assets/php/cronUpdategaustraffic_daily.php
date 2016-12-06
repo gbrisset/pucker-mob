@@ -3,8 +3,8 @@ require 'config.php';
 require 'class.GoogleAnalyticsApi.php';
 require 'class.GoogleAnalyticsData.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+//error_reporting(E_ALL);
+//ini_set('display_errors', '1');
 
 $GoogleAnalyticsApi = new GoogleAnalyticsApi($config);
 $GoogleAnalyticsData = new GoogleAnalyticsData($config);
@@ -55,8 +55,6 @@ if(count($articles_pageviews_from_ga_USA->getRows()) > 0 ){
 	}
 }
 
-//var_dump(count($fromUSA)); 
-
 /*MATCH GA RESULTS WITH ARTICLES FROM DB AND UPDATE GADATA DATABASE*/
 
 $month= date('n');
@@ -81,12 +79,6 @@ foreach( $arrArticle as $article ){
 
 	}
 }
-
-//var_dump($data, "<br>");
 $GoogleAnalyticsData->saveGoogleAnalyticsInformationDaily($data, $month, $year);
-
-
-
-
 ?>
 		

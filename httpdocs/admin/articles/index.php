@@ -83,9 +83,10 @@
 	}
 
 	//IMPLODE ALL THE IDS FOR EACH ARTICLE ON THE CURRENT INDEX PAGE.
-	$comma_separated = implode(",", $arr_ids);
+	$comma_separated = implode(", ", $arr_ids);
 
 	//GET USA PAGEVIEWS FOR EACH ARTICLE ON THE LIST
+	
 	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
 	$pageviews_list = [];
 	if($usa_pageview_list){
@@ -93,9 +94,10 @@
 			$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
 		}
 	}
+
+	
 	$promoteArticles = new PromoteArticles();
 	$fb_pages = $promoteArticles->getAllFacebookPages();
-	//var_dump($fb_pages); die;
 
 ?>
 <!DOCTYPE html>
@@ -137,6 +139,11 @@
 					
 				<div class="small-12 xxlarge-9 columns no-padding">
 						<section id="articles-list" class="columns margin-top no-padding">
+						<div class="" id="view-articles-legend">
+							<label><i class="fa fa-lock" aria-hidden="true"></i>: Article Locked. Click to request access</label>
+							<label><i class="fa fa-external-link" aria-hidden="true"></i>: View article.</label>
+						</div>
+						
 						<?php
 							if(isset( $articles) && $articles ){ ?>
 
@@ -148,28 +155,37 @@
 								       <th width="400" class="align-left">Title</th>
 								       <th width="100" class="show-for-large-up">Added</th>
 								       <?php if($admin_user){?>
+								       <th width="100" class="show-for-large-up">Updated</th>
+								       
 								       		<th width="100" class="show-for-large-up">Promotion</th>
 									   <?php }?>
 								       <th width="100"  class="show-for-large-up">status</th>
-								       <th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
+								       <th width="70" class="show-for-xlarge-up">U.S. Traffic</th>
+								       <th width="30" class="show-for-xlarge-up">EDIT?</th>
 								       <th  width="50" class="show-for-large-up"></th>
 								    </tr>
 								</thead>
 								
 								<tbody>
-								 <?php foreach($articles as $articleInfo){
-									$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
-									$articleUrlLive = $config['this_url'].'/'.$articleInfo['cat_dir_name'].'/'.$articleInfo['article_seo_title'];
+								 <?php 
+								 foreach($articles as $articleInfo){
+								 	$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo['article_seo_title'];
+
+									$articleExternalUrl = $config['this_url'].$articleInfo['cat_dir_name'].'/'.$articleInfo['article_seo_title'];
 									$article_id = $articleInfo["article_id"];
 									$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo["article_id"].'_tall');
 									$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
 									$article_title = $articleInfo['article_title'];
 									$article_status = (isset($articleInfo["article_status"])) ? MPArticleAdmin::displayArticleStatus($articleInfo["article_status"]) : '';
 									$article_date_created =  date_format(date_create($articleInfo['creation_date']), 'm/d/y');
+									$article_date_updated =  date_format(date_create($articleInfo['date_updated']), 'm/d/y');
+
 									$article_us_traffic = 0;
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
 									$user_id = $articleInfo['user_id'];
+									$edits = $articleInfo['article_agree_edits'];
+									$article_locked = ( $edits == 1 && $articleInfo['article_status'] == 1);
 
 									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
@@ -181,33 +197,60 @@
 										$imageUrl = 'http://cdn.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
 									}
 
+									
 									?>
 									<tr id="<?php echo 'article-'.$article_id; ?>">
 									  	<td class="border-right">
-									  		<div class=" large-4 columns no-padding-left show-for-large-up">
+									  		<div class=" large-2 columns no-padding-left show-for-large-up">
+									  			
 												<a href="<?php echo $articleUrl; ?>">
 													<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 												</a>
+										
 											</div>
 											<div class="large-7 columns no-padding" style="display: table-caption">
+												
 												<h2 class="small-12 columns no-padding">
 													<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
-													<a href="<?php echo $articleUrl; ?>">
-														<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
-													</a>
+													
+														<a href="<?php echo $articleUrl; ?>">
+															<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
+														</a>
+													
+													
 													<?php if($admin){?>
 														<span class="show-for-large-up"><a href="<?php echo $config['this_admin_url']; ?>profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>
 													<?php }?>
 												</h2>
 												
 											</div>
-
-											<div class="large-1 columns no-padding show-for-large-up">
-											<?php if($articleInfo["article_status"] == 1 ) { ?>	<a href="<?php echo $articleUrlLive; ?>" target="_blank" style="position: relative; top: 1.5rem;"><i class="fa fa-external-link"></i></a> <?php }?>
+											<div class="small-3 columns align-right" id="article-list-table-legend">
+												<?php if( $article_locked ){ ?>
+												<label class="inline">
+													<a  id="unlock-article" data-status-lock="<?php echo $edits; ?>">
+														<i class="fa fa-lock" aria-hidden="true"></i>
+													</a>
+												</label>
+												<?php }?>
+												
+												<?php if($articleInfo["article_status"] == 1 ){?>
+												<label class="inline"><a href="<?php echo $articleExternalUrl; ?>" target="_blank" class="main-color" id="view-article-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></label>
+												<?php } ?>
 											</div>
 									  	</td>
-							
-									  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
+									  	<!-- DATE ADDED -->
+									  	<td class="show-for-large-up  border-right">
+									  		<label><?php echo $article_date_created; ?></label>
+									  	</td>
+
+									  	<?php if( $admin_user ){ ?>
+									  	<!-- DATE Updated -->
+									  	<td class="show-for-large-up  border-right">
+									  		<label><?php echo $article_date_updated; ?></label>
+									  	</td>
+									  	<?php }?>
+									  	
+									  	<!-- PROMOTE PAGE LIST -->
 									  	<?php if( $admin_user ){ ?>
 									  	<td class="show-for-large-up  border-right">
 									  		<label data-info="<?php echo $article_id; ?>" data-user-id="<?php echo $user_id; ?>" data-title="<?php echo $article_title; ?>" >
@@ -217,8 +260,7 @@
 									  					$isPromotedObj = $promoteArticles->promotedInfo($article_id);
 									  					$facebook_page_id_promoted = isset($isPromotedObj[0]) ? $isPromotedObj[0]->facebook_page_id : 0;
 									  					?>
-									  					
-										  					<option value = "<?php echo $page->facebook_page_id; ?>" <?php if($facebook_page_id_promoted == $page->facebook_page_id) echo ' selected '; ?> >
+									  						<option value = "<?php echo $page->facebook_page_id; ?>" <?php if($facebook_page_id_promoted == $page->facebook_page_id) echo ' selected '; ?> >
 										  						<?php echo $page->facebook_page_name; ?>
 										  					</option>
 									  				<?php }?>
@@ -226,28 +268,41 @@
 									  		</label>
 									  	</td>
 									  	<?php } ?>
-
+									  	
+									  	<!-- ARTICLE STATUS -->
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
-										<!-- REMOVE ARTICLE -->
+										
+										<!-- ARTICLE TRAFFIC -->
 										<td class="show-for-xlarge-up  border-right" ><label><?php echo $article_us_traffic; ?></label></td>
+
+										<!-- ARTICLE EDITS ALLOW ?-->
+										<td  class="show-for-xlarge-up  border-right">
+											<?php if( $article_locked ){ ?>
+												<i class="fa fa-circle" style="color: #23ab23; font-size: 150%;" aria-hidden="true"></i>
+											<?php }else{?>
+												<i class="fa fa-circle " style="color:red; font-size: 150%;" aria-hidden="true"></i>
+											<?php }?>
+										</td>
+										
+										<!-- DELETE ARTICLE FORM -->
 										<td class="show-for-large-up no-border-right valign-middle">
-											<?php if($admin_user || $blogger ){?>
+											<?php if( $admin_user || ( $blogger && !$article_locked ) ){?>
 												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
 													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
 													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
 													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
 												</form>
 											<?php }else{?>
-												<?php if($articleInfo["article_status"] != 1 ){?>
-												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
-													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf'];?>" >
-													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php echo $article_id;?>" />
-													<a class="manage-links" href="<?php echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
-												</form>
-												<?php }else{ ?>
+												<?php //if($articleInfo["article_status"] != 1 ){?>
+												<!--<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php //echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
+													<input type="text" class="hidden" id="c_t" name="c_t" value="<?php //echo $_SESSION['csrf'];?>" >
+													<input type="text" class="hidden" id="article_id" name="article_id" value="<?php //echo $article_id;?>" />
+													<a class="manage-links" href="<?php //echo $articleUrl;?>" class="b-delete" name="submit" id="submit"><i class="fa fa-times"></i></a>
+												</form>-->
+												<?php //}else{ ?>
 													<!-- REQUEST TO DELETE THIS ARTICLE -->
 													<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
-												<?php } ?>
+												<?php //} ?>
 											<?php }?>
 										</td>							  			
 									</tr>

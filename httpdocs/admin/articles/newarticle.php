@@ -29,12 +29,12 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 
 	//Article Status Base on Blogger Type.
 	$default_status = 3;
-	//if( //$adminController->user->data['user_type'] == 30 ){
-		//$default_status = 2;
-	//}
 
 	$contributorInfo = $mpArticle->getContributors(['contributorEmail' => $adminController->user->data['user_email']])['contributors'];
 	$contributorInfo = $contributorInfo[0];
+
+	//GET ALL ARTICLES 
+	$allarticles = $mpArticle->getAllLiveArticlesPerContributor( $contributorInfo['contributor_id'] );
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -59,7 +59,6 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 			<section id="article-info" class="small-12 columns">
 				
 				<?php include_once($config['include_path_admin'].'drop_image_new.php'); ?>	
-
 				<form  id="article-add-form" class="margin-top" name="article-add-form" action="<?php echo $config['this_admin_url']; ?>articles/newarticle/" method="POST" novalidate>
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 					<input type="hidden" id="a_i" class="a_i" name="a_i" value="0" />
@@ -68,6 +67,12 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 					<input type="hidden" id="u_type" name="u_type" value="<?php echo $adminController->user->data['user_type']; ?>" />
 					<input type="hidden" id="article_status-s" name="article_status-s" value=" <?php echo $default_status; ?>" />
 					
+					<div class="small-12 xxlarge-8 columns  warning-banner show-for-large-up vertical-center">
+					<h2 class="small-4 columns no-padding-left">WAIT</h2>
+					<p class="small-8 columns">We recommend that you write and save your articles off-line first, and then copy and paste them here.</p>
+					</div>
+
+
 					<div class="small-12 xxlarge-8 columns margin-top">
 						<!-- ARTICLE TITLE -->
 						<div class="row ">
@@ -98,6 +103,9 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 								<textarea  class=" editor " name="article_body-nf" id="article_editor"  required ><?php if( isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
 							</div>
 						</div>
+
+						<!-- RELATED ARTICLES -->
+						<?php include_once($config['include_path_admin'].'related_edit_articles.php'); ?>
 					
 					</div>
 
@@ -173,7 +181,7 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 							</div>
 							<?php } 
 						}else{ ?>
-							<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo->contributor_id; ?>" />
+							<input type="hidden"  name="article_contributor" id="article_contributor" value="<?php echo $contributorInfo['contributor_id']; ?>" />
 						<?php }  ?>
 
 						<!-- HIDDEN ARTICLE TEMPLATE TYPE - SINGLE -->
@@ -217,18 +225,18 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 						<?php }?>	
 
 						<div class="row padding-top">
-							<div class="small-12 large-4 columns no-padding show-for-large-up">
+							<div class="small-12 large-6 columns no-padding show-for-large-up">
 								<button type="button" id="preview" name="preview" class="radius preview-button small-12">PREVIEW</button>
 							</div>
-							<div class="small-12 large-4 columns">
+							<div class="small-12 large-6 columns">
 								<button type="button" id="save-article" name="save-article" class="radius small-12" data-info="3">SAVE</button>
 							</div>
-							<div class="small-12 large-4 columns no-padding">
-								<button type="button" id="publish-article" name="publish-article" class="radius small-12 publish-article">PUBLISH</button>
-							</div>
+
 						</div>
+
+						<?php include_once($config['include_path_admin'].'agreement_edits.php');?>
 						
-						<?php include_once($config['include_path_admin'].'formatting_tips.php');?>
+						<?php //include_once($config['include_path_admin'].'formatting_tips.php');?>
 
 					</div>
 				</form>
@@ -249,6 +257,8 @@ if(!$adminController->user->checkPermission('user_permission_show_add_article'))
 <?php include_once($config['include_path_admin'].'showerrors_articles.php'); ?>
 
 <?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
+
+
 
 </body>
 </html>

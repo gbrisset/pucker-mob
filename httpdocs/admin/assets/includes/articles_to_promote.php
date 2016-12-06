@@ -6,7 +6,7 @@
 		<thead>
 		    <tr>
 		       <th width="400" class="align-left">Title</th>
-		       <th width="100" class="show-for-large-up">Added</th>
+		       <th width="100" class="show-for-large-up">Updated</th>
 		       <th width="100" class="show-for-large-up">Promotion</th>
 		       <th width="100"  class="show-for-large-up">status</th>
 		       <th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
@@ -20,6 +20,7 @@
 			$articleUrlLive = $config['this_url'].'/'.$articleInfo->cat_dir_name.'/'.$articleInfo->article_seo_title;
 			$article_id = $articleInfo->article_id;
 			$facebook_page = $articleInfo->facebook_page_name;
+			$facebook_id = $articleInfo->facebook_page_id;
 			$ext = $adminController->getFileExtension($config['image_upload_dir'].'articlesites/puckermob/tall/'.$articleInfo->article_id.'_tall');
 			$pathToImage = $config['image_upload_dir'].'articlesites/puckermob/large/'.$articleInfo->article_id.'_tall.jpg';
 			$article_title = $articleInfo->article_title;
@@ -29,6 +30,9 @@
 			$contributor_name = $articleInfo->contributor_name;
 			$contributor_seo_name = $articleInfo->contributor_seo_name;
 			$promoted = $articleInfo->promoted;
+			$article_date_updated = date_format(date_create($articleInfo->date_updated), 'm/d/y');
+			$user_id = $articleInfo->user_id;
+			//var_dump($articleInfo); die;
 
 			if(file_exists($pathToImage)){
 				$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo->article_id.'_tall.jpg';
@@ -37,8 +41,11 @@
 			}
 
 			?>
-			<tr id="<?php echo 'article-'.$article_id; ?>">
+
+			<tr id="<?php echo 'article-'.$article_id; ?>" data-user= "<?php echo $user_id; ?>">
+
 			  	<td class="border-right">
+			  		<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
 			  		<div class=" large-4 columns no-padding-left show-for-large-up">
 						<a href="<?php echo $articleUrl; ?>">
 							<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
@@ -62,14 +69,20 @@
 					</div>
 			  	</td>
 
-			  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_created; ?></label></td>
+			  	<td class="show-for-large-up  border-right"><label><?php echo $article_date_updated; ?></label></td>
 			  	<td class="show-for-large-up  border-right"><label><?php echo $facebook_page; ?></label></td>
 			  	
 			  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
 				<!-- REMOVE ARTICLE -->
 				<td class="show-for-xlarge-up  border-right" ><label><?php  echo (!is_null($article_us_traffic) ) ?   $article_us_traffic :  0; ?></label></td>
 				<td class="show-for-large-up no-border-right valign-middle">
-					<input type="checkbox" name="promoted" value="<?php echo $promoted ?>" <?php if( $promoted == 1 ) echo 'checked'; ?> class="promoted-cb" data-info="<?php echo $article_id; ?>">
+					<input type="checkbox" name="promoted" value="<?php echo $promoted ?>" <?php if( $promoted == 1 ) echo 'checked'; ?> class="promoted-cb" 
+						data-info = "<?php echo $article_id; ?>"
+						data-user = "<?php echo $user_id; ?>"
+						data-title = "<?php echo $article_title; ?>" 
+						data-fb-id = "<?php echo $facebook_id; ?>" 
+						data-fb-name = "<?php echo $facebook_page; ?>"
+					/>
 				</td>							  			
 			</tr>
 		<?php }?>

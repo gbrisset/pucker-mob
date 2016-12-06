@@ -26,9 +26,9 @@ class Contributor extends DatabaseObject{
 	public function __construct( $email = null){ 
 		$this->data = $this->getContributor($email);
 		$this->contributor_email_address = $email;
-		$this->contributor_name = $this->getContributorName();
-		$this->contributor_id= $this->getContributorId();
-		$this->contributor_seo_name = $this->getContributorSeoName();
+	//	$this->contributor_name = $this->getContributorName();
+	//	$this->contributor_id= $this->getContributorId();
+		//$this->contributor_seo_name = $this->getContributorSeoName();
 	}
 
 	//Get all contributors 
@@ -67,6 +67,15 @@ class Contributor extends DatabaseObject{
 		return  array_shift($contributor);
 	}
 
+	public static function getContributorById($id){
+		//	Set the params to be bound
+		$params_to_bind = [':contributor_id' => $id];
+		
+		$contributor = static::find_by_sql("SELECT * FROM article_contributors WHERE contributor_id = :contributor_id;", $params_to_bind);
+
+		return  array_shift($contributor);
+	}
+
 	public function getContributorSeoName(){
 		return $this->data->contributor_seo_name;
 	}
@@ -93,7 +102,6 @@ class Contributor extends DatabaseObject{
 	}
 
 	public function getContributorEarningsPerMonth( Contributor $contributor, $month, $year){
-
 		$contributor_earnings = new ContributorEarnings( $contributor);
 
 		if( !is_null( $contributor_earnings )) 	return $contributor_earnings->getEarningsPerMonthYear( $month, $year );

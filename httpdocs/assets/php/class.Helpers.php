@@ -14,6 +14,7 @@ class Helpers extends DatabaseObject{
 		$email_body = $data['email_msg'];
 		$blogger_name = 'Bloggers!';
 		$to = '';
+		$subject = isset($data['subject']) ? $data['subject'] : 'A message from Puckermob Staff';
 
 		//EMAIL ALL USERS 
 		if($blogger_email == "0" ){
@@ -30,9 +31,6 @@ class Helpers extends DatabaseObject{
 		}
 		
 		//$to  = 'fguzman@sequelmediainternational.com';
-
-		// SUBJECT
-		$subject = 'A message from Puckermob Staff';
 
 		//DETECT THE ENTERS INSERTED IN THE TEXTAREA AND REPLACE WITH <p> tags
 		$message = explode(PHP_EOL, $email_body);
@@ -95,6 +93,15 @@ class Helpers extends DatabaseObject{
 		}
 		return array('hasError' => true, 'message'=>'There was an error sending your email...');
 
+	}
+
+	public function getEmailTemplate($config, $fileName, $data){
+		
+		$msg_email = '';
+
+		include_once( $config['include_path_admin'].$fileName.'.php');
+
+		return $msg_email;
 	}
 
 	public function array_sort($array, $on, $order=SORT_ASC)

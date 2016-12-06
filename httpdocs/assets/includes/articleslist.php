@@ -21,25 +21,6 @@ $offset = $quantity * $page;
 $cat_id = $mpArticle->data['cat_id'];
 
 $featuredArticle = false;
-/*if( $featuredArticle && $featuredArticle['article_status'] == 1){
-	$articleIndex++;
-	$omitThis =  $featuredArticle['article_id'];
-
-	//FEATURED ARTICLE
-	//include_once($config['include_path'].'featured_article.php');
-
-	if(isset($has_sponsored) && $has_sponsored){ 
-	else{ if( $page == 0 ){?>
-		<!-- ShareT -->
-		<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
-			<div data-str-native-key="6898172d" style="display: none;"></div>
-			<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
-		</div>
-		<hr class="padding-top">
-	<?php }}
-}*/
-
-
 
 /* Article List */
 $totalArticles = count($articlesList);
@@ -56,8 +37,6 @@ if(isset($articlesList) && $articlesList){
 	$articleTitle = $articles['article_title'];
 	
 	//IGNORE MOBLOG ARTICLES
-	//if( !isset($category_page) && $cat_name === "moblog" && $articles['article_featured_hp'] != 1) continue;
-
 	if( $articleIndex % 7 == 0 ) { 
 		$articleIndex++; $bigImageCounter++; 
 

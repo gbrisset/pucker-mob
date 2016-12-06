@@ -4,7 +4,7 @@ $version = "";
 
 if($local)
 {
-	//	error_reporting(E_ALL);
+		//error_reporting(E_ALL);
 	//	ini_set('display_errors', '1');
 
 
@@ -22,7 +22,7 @@ if($local)
 
 	/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
-	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0");	
+	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0ΩA	vcq3g4fgsfzdsexzw");	
 
 	$localIp = 'localhost';
 	$directory = 'projects/pucker-mob/';
@@ -100,7 +100,9 @@ if($local)
 		require_once $config['assets_path'].'/class.ManageAdminDashboard.php';
 		require_once $config['assets_path'].'/class.PromoteArticles.php';
 		require_once $config['assets_path'].'/class.Incentives.php';
-
+		require_once $config['assets_path'].'/class.AdMatching.php';
+		require_once $config['assets_path'].'/class.OrderAds.php';
+		require_once $config['assets_path'].'/class.AdMatchingTransactions.php';
 	}
 
 	
@@ -208,7 +210,7 @@ $follow = new FollowAuthor($config);
 
 $mpHelpers->start_session();
 $detect = new Mobile_Detect;
-$mpHelpers->geotargeting();
+//$mpHelpers->geotargeting();
 
 
 //recaptcha public key

@@ -4,13 +4,7 @@ $new_layout = true;
 if( isset( $articleInfoObj ) && isset( $articleInfoObj['article_id']) && $articleInfoObj['article_id']){
 	$mostReadArticlesList = $mpArticle->getMoBlogsArticles( $articleInfoObj['article_id'] );
 }else{
-	//if(isset($categoryInfo) && $categoryInfo['cat_id'] == 9 ){
-	//	$mostReadArticlesList = $mpArticle->getMostRecentArticleList();	
-	//	$new_layout = false;
-	//	$label = "MOST POPULAR";
-	//}else{
-		$mostReadArticlesList = $mpArticle->getMoBlogsArticles( );
-	//}
+	$mostReadArticlesList = $mpArticle->getMoBlogsArticles( );
 } 
 
 if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
@@ -53,38 +47,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 
 						?>
 						
-						<?php
-							
-						//Replace 6th article ntent ad
-						if($articleNumber == 6 ){ ?> 
-							</section>
-							<?php if( isset($articleInfoObj) ){ ?>
-								<!-- LELO -->
-							    <?php if(isset($articleInfoObj['article_id']) &&   $articleInfoObj['article_id'] != 17425  && $articleInfoObj['article_id'] != 16562 && $articleInfoObj['article_id'] != 14479 && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 && $articleInfoObj['article_id'] != 15271 &&   $articleInfoObj['article_id']  != 17286){?>
-							      <?php if($articleInfoObj['article_id'] != 8560 &&  $articleInfoObj['article_id'] != 14613){ ?>
-							        <?php if(  $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488){?>
-							            <div id="btf1-ad" class="ad-unit ad300" style="height:auto;     margin-left: -15px;">
-							            <?php //if( isset($articleInfoObj) && $articleInfoObj['article_id'] == 19295){?>
-							                 <!-- MEME GLOBAL -->
-										   	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-							           <?php //} ?>
-							            </div>
-							        <?php } ?>
-							      <?php } ?>
-							    <?php }else{ ?>
-							      <div id="btf1-ad" class="ad-unit ad300" style="height:auto;     margin-left: -15px;">
-							          <a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>
-							      </div>
-							    <?php } ?>
-						<?php }else{ ?>
-							 <div id="btf1-ad" class="ad-unit ad300 show-on-large-up" style="height: auto;">
-							      <!-- MEME GLOBAL -->
-										   	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-						    </div>
-						<?php } ?>
-						<section class="sidebar  margin-bottom">
-					<?php }
-					
+						<?php 	
 				}
 			?>
 

@@ -14,7 +14,7 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3636949" ></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3768" ></script>
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
@@ -22,19 +22,29 @@
 
 <?php if ( !$detect->isMobile() ) { ?>
     <!-- DESKTOP -->
-
-    <!-- NETSEER AD IN-IMAGE-->
-    <?php //if(isset($articleInfoObj) && $articleInfoObj){ ?>
-     	
-      <!-- LELO -->
-      <?php //if(isset($article_id) && $article_id != 16562 &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 && $article_id != 14472 && $article_id != 15109 && $article_id != 15271  && $article_id != 15488 &&  $article_id  != 17286){?>
-        <!-- NET SEER 
-        <script type="text/javascript">
-         netseer_tag_id="26742"; 
-        </script>
-        <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>-->
-      <?php //} ?>
-    <?php //}  ?>
+    <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+     	<div id="vm_inline"></div>
+      <script>
+           window._videomosh = window._videomosh || []; 
+           !function (e, f, u) { 
+               e.async = 1; 
+               e.src = u; 
+               f.parentNode.insertBefore(e, f); 
+           }(document.createElement('script'), 
+           document.getElementsByTagName('script')[0], 
+           "http://player.videomosh.com/players/loader/loader_final4.js"); 
+           
+           _videomosh.push({ 
+               publisher_key: "sequelmedia", 
+               mode: "slider", 
+               container: "vm_inline", 
+               incontent_mobile_id: "23002", 
+               incontent_desktop_id: "42300", 
+               target_type: "mix"
+               //backfill: "<script async src='http://ads.allscreen.tv/embed?placement=181' ><\/scr"+"ipt>"
+           });
+      </script>
+    <?php }  ?>
 
    <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
      <!--SHAREBUTTONS BAR VERTICAL-->
@@ -46,26 +56,19 @@
           <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
       </div>
       <script async src="//static.addtoany.com/menu/page.js" async></script>
+
   <?php } ?>
 
 <?php }else{ ?>
   <!-- MOBILE -->
-
   <?php if( isset($promotedArticle) && !$promotedArticle ){ 
       
       if(isset($articleInfoObj) && $articleInfoObj){ ?>
         <!-- LELO -->
         <?php if(isset($article_id) && $article_id != 16562  &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
-        && $article_id != 15488 &&  $article_id != 17286) { ?>
-           <!-- NET SEER --> 
-            <?php //if( $detect->is('iOS') == "1" ){?>
+        && $article_id != 15488 &&  $article_id != 17286 ){ ?>
            
-            <!--<script type="text/javascript">
-            netseer_tag_id="26742"; 
-            </script>
-            <script src="http://ps.ns-cdn.com/dsatserving2/scripts/ns_vmtag.js" type="text/javascript"></script>-->
-          <?php //} ?>
           <?php 
                //     $current_time = new DateTime(); // Today
               //      $start_time = new DateTime('3:00pm');
@@ -75,8 +78,9 @@
            
             ?>
 
+             <?php if( $articleInfoObj['article_id'] == 22227){?>
             <!-- kixer adhesion -->
-            <!-- Start Pucker Mob - Adhesion - iframe buster code -->
+            <!-- Start Pucker Mob - Adhesion - iframe buster code-->
             <div id='__kx_ad_4915'></div>
             <script type="text/javascript" language="javascript" id="__kx_tag_4915">
             var __kx_ad_slots = __kx_ad_slots || [];
@@ -112,11 +116,23 @@
               }
             })();
             </script>
+            <?php }?>
             <!-- End Pucker Mob - Adhesion - iframe buster code -->
-       
+            <?php if( $articleInfoObj['article_id'] == 22475){?>
+
+              <!-- SPOUTABLE REPLACE ADHESION -->
+              <script type='text/javascript'>
+              (function(){
+                var spoutjs=document.createElement('script'),firstjs=document.getElementsByTagName('script')[0];
+                spoutjs.async=1;
+                spoutjs.src='//cdn.spoutable.com/1deb0b13-48fb-4eec-8af0-a5e05f8b6272/spoutable.js';
+                firstjs.parentNode.insertBefore(spoutjs,firstjs)
+              })();
+              </script>
+           <?php  } ?>
       <?php  } ?>
     <?php  } ?>
-      <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286){ ?>
+      <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286  &&  $article_id != 18521 && $article_id != 23564 ){ ?>
           <script>
             (function() 
             { 
@@ -173,5 +189,6 @@
   <?php } ?>
 
 <?php } ?>
+
 <!-- SHARETHROUNG -->
 <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>

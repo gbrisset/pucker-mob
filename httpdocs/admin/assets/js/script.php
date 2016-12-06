@@ -5,16 +5,17 @@
 
 $(document).ready(function (){
 
+
 var body = $('body');
 var base_url = 'http://www.puckermob.com';
 var admin_url = 'http://www.puckermob.com/admin/';
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
 var page = document.body.id;
 
+$(document).foundation().foundation();
+
 
 //admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
-
-
 
 
 //Menu Toggler Functionality Mobile
@@ -441,7 +442,7 @@ function triggerErrorPopup(data){
 		
 		$(msg).html(data['message']);
 		//Validation Modal
-		$(document).foundation().foundation();
+		$(document).foundation().foundation();	
 		$('#show-status').foundation('reveal', 'open');
 		$('#show-status').foundation('reveal', 'close');
 
@@ -826,6 +827,8 @@ if($('#earnings').length > 0  || $('#reports').length > 0 ){
 	if($('#earnings').length > 0 ){
 		EarningsObj.initChart();
 		EarningsObj.getChartData();
+		EarningsObj.getArticlesListData();
+
 		EarningsObj.updateTotalEarnings(); 
 	}
 
@@ -838,7 +841,7 @@ if($('#earnings').length > 0  || $('#reports').length > 0 ){
 		  if($('#earnings').length > 0 ){
 			  EarningsObj.getChartDataRange();
 			  EarningsObj.drawChart();
-			  //EarningsObj.getArticlesListData();
+			  EarningsObj.getArticlesListData();
 			  EarningsObj.updateTotalEarnings();   
 		  }else{
 			  if($('#reports').length > 0 ){
@@ -976,12 +979,24 @@ if( $('#promote_articles_list') ){
 		$(this).on('click', function(){
 			var ele = this,
 			isCheck = $(this).is(':checked'),
-			article_id = $(this).attr('data-info');
+			article_id = $(this).attr('data-info'),
+			user_id = $(this).attr('data-user'), 
+			facebook_page_id = $(this).attr('data-fb-id'), 
+			facebook_page_name = $(this).attr('data-fb-name'),
+			article_title = $(this).attr('data-title');
 			
 			$.ajax({
 				  type: "POST",
 				  url:   admin_url + 'assets/php/ajaxfunctions.php',
-				  data: { article_id: article_id, promoted : isCheck,  task:'article_promoted' },
+				  data: { 
+				  	article_id: article_id, 
+				  	promoted : isCheck,  
+				  	task:'article_promoted', 
+				  	user_id: user_id, 
+				  	facebook_page_id : facebook_page_id, 
+				  	facebook_page_name : facebook_page_name, 
+				  	article_title : article_title  
+				  },
 				}).done(function(data) {
 					if(data){
 						var result = $.parseJSON(data);
@@ -1105,7 +1120,319 @@ if($('#approval')){
 	});
 }
 
-//$('.auto-edit').autoEdit();
+if($('#reveal-link')){
+	$('#reveal-link').trigger('click');
+}
+
+$('#more-link').on('click', function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	$el = $(this);
+	
+	$('.current-data').toggleClass('show');
+
+	if( $('.current-data').is('.show') ){
+		$('.current-data').css({ "max-height": "999999"});
+		$('.current-data').animate({"height": "auto"});
+		$('#more-link').text('...Less');
+	}else{
+		$('.current-data').css({ "max-height": "999999"});
+		$('.current-data').animate({"height": "100px"});
+		$('#more-link').text('...More');
+
+	}	
+});
+
+
+//AD MATCH OBJECT
+var adMatching = {
+	bonusObj: null,
+	userCommit: 0,
+	matchCommit: 0,
+	totalCommit: 0,
+	bonusID: 0,
+	bonusPCT: 0, 
+	bonusMatch: 0,
+
+	init: function(){},
+
+	formatNumbers: function( value ){
+		return '$' + parseFloat(value, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
+	},
+
+	replaceValues: function( element ){
+		var bonus_obj = $(element).parent().parent().find('.bonus-info');
+		var user_commit = $(bonus_obj).find('#user_commit').attr('data-amount');
+		var match_commit  = $(bonus_obj).find('#match_commit').attr('data-amount');
+		var total_commit = $(bonus_obj).find('#total_commit').attr('data-amount');
+
+		adMatching.bonusObj = bonus_obj;
+		adMatching.userCommit = user_commit;
+		adMatching.matchCommit = match_commit;
+		adMatching.totalCommit = total_commit; 
+		adMatching.bonusID = $(element).attr('data-bonus-id') ;
+		adMatching.bonusPCT = $(element).attr('data-bonus') ;
+		adMatching.bonusMatch = $(element).attr('data-bonus-match');
+
+		var schedule_payment = $('#schedule-payment').attr('data-bonus');
+		var deducted_payment = $('#deducted-payment');
+		var total_deducted = $('#total-deducted');
+		var your_contribution = $('#your-contribution');
+		var our_contribution = $('#our-contribution');
+		var total_contribution = $('#total-contribution');
+	
+		var total_ded = parseInt(schedule_payment) - parseInt(user_commit);
+
+		$(deducted_payment).text(adMatching.formatNumbers(user_commit));
+		$(total_deducted).text(adMatching.formatNumbers(total_ded));
+		$(your_contribution).text(adMatching.formatNumbers(user_commit));
+		$(our_contribution).text(adMatching.formatNumbers(match_commit));
+		$(total_contribution).text(adMatching.formatNumbers(total_commit));
+	},
+
+	clearValues: function(element){
+		var deducted_payment = $('#deducted-payment');
+		var total_deducted = $('#total-deducted');
+		var your_contribution = $('#your-contribution');
+		var our_contribution = $('#our-contribution');
+		var total_contribution = $('#total-contribution');
+
+		adMatching.bonusObj = null;
+		adMatching.userCommit = 0;
+		adMatching.matchCommit = 0;
+		adMatching.totalCommit = 0;
+		adMatching.bonusID = 0 ;
+		adMatching.bonusPCT = 0 ;
+		adMatching.bonusMatch = 0;
+
+		$(deducted_payment).text(adMatching.formatNumbers(0));
+		$(total_deducted).text(adMatching.formatNumbers(0));
+		$(your_contribution).text(adMatching.formatNumbers(0));
+		$(our_contribution).text(adMatching.formatNumbers(0));
+		$(total_contribution).text(adMatching.formatNumbers(0));
+	},
+	
+	selectAdMatch: function(element){
+
+		var parent = $(element).parent();
+		var cbox = $(parent).find('input:checkbox');
+		
+		//CLEAR SELECTION
+		$('.ad-match-me-element').parent().find('input:checkbox').not(cbox).attr( 'checked', false );
+		$('.ad-match-me-element').html('');
+
+		if( $(cbox).attr('checked') === "checked" ){
+			 $(cbox).attr('checked', false);
+			 $(element).html('');
+			 adMatching.clearValues( cbox );
+		}else{
+			 $(cbox).attr('checked', true);
+			$(element).html('<i class="fa fa-check checkd-label" aria-hidden="true"></i>');
+			adMatching.replaceValues( cbox );
+		} 
+	}
+}
+$('.ad-match-me-element').each( function(){
+	$(this).on('click', function(){
+		adMatching.selectAdMatch(this);
+	});
+});
+
+//ORDER OBJECT
+var OrderObj = {
+	bonus: false,
+	agree: false,
+	submitStatus : false,//OrderObj.submitReady(false),
+	currentDate:  moment().format("YYYY-MM-DD"),
+	init: function(){
+		//AGREE ORDER
+		$('.agree-element').on('click', function(){
+			OrderObj.setAgree(this);
+		});
+
+		$('#submit-order').on('click', function(){
+			OrderObj.clickSubmit();
+		});
+	},
+	setAgree: function(element){
+		var parent = $(element).parent();
+		var cbox = $(parent).find('#agree');
+		
+		if( $(cbox).attr('checked') === "checked" ){
+			 OrderObj.agree = false;
+			 OrderObj.submitReady(false);
+			 $(cbox).attr('checked', false);
+			 $(element).html('');
+		}else{
+			OrderObj.agree = true;
+			OrderObj.submitReady(true);
+			$(cbox).attr('checked', true);
+			$(element).html('<i class="fa fa-check checkd-label" aria-hidden="true"></i>');
+		} 
+	},
+	verifyBonusSelected: function(){
+		var bonus = $('.ad-match-me-element').parent().find('input:checkbox');
+		var bonus_info = false;
+		$(bonus).each(function(){
+			if($(this).is(':checked')) bonus_info = $(this);
+		});
+
+		return bonus_info;
+	},
+	submitReady: function( status ){
+		if( status === true ){
+			OrderObj.submitStatus = true;
+			//$('#submit-order').attr('disabled', true);
+		}else{
+			OrderObj.submitStatus = false;
+			//$('#submit-order').attr('disabled', false);
+		}
+	},
+	submitOrder: function( $data ){
+		OrderObj.bonus = OrderObj.verifyBonusSelected();
+
+		var contributor_id = $('#contributor_id').val(),
+			month_relation = $('#month_relation').val(),
+			year_relation = $('#year_relation').val(),
+			total_earnings = $('#to_be_pay').val(),
+			amount_commit = adMatching.userCommit,
+			amount_match = adMatching.matchCommit,
+			total_commit = adMatching.totalCommit,
+			agree = OrderObj.agree, 
+			bonus_id = adMatching.bonusID,
+			bonus_pct = adMatching.bonusPCT ,
+			bonus_match = adMatching.bonusMatch;
+
+			if(	OrderObj.validate() === true ){
+
+		    	$.ajax({
+					type: "POST",
+					async: false,
+					url:  admin_url + 'assets/php/ajaxfunctions.php',
+					data: { 
+						task           : 'submit_order', 
+						date           : OrderObj.currentDate,
+						contributor_id : contributor_id, 
+						month_relation : month_relation,
+						year_relation  : year_relation,
+						total_earnings : total_earnings, 
+						amount_commit  : amount_commit,
+						amount_match   : amount_match,
+						total_commit   : total_commit,
+						agree          : agree,
+						bonus_id       : bonus_id,
+						bonus_pct      : bonus_pct,
+						bonus_match    : bonus_match
+					}
+				}).done(function(data) {
+					if( data != "false" ){ 
+						data = $.parseJSON(data);
+
+						if(data.hasError === false ){
+							$('.order-error').remove();
+							$('.agree-box').html('<label class="center uppercase small-12 columns radius order-submitted">Your order Has been summited. Thanks</label>');
+							$('#submit-order').hide();
+						}else{
+							$('.order-error').remove();
+							$('.agree-box').before('<label class="center uppercase small-12 columns radius order-error">SORRY... Something Happend. Please try to make the order again. Thanks</label>');
+						}		
+					}
+				});
+			}else{
+				$('.order-error').remove();
+				$('.agree-box').before('<label class="center uppercase small-12 columns radius order-error">SORRY YOU NEED TO SELECT BONUS AND AGREE WITH US</label>');
+			}
+	},
+	validate: function(){
+		var valid  = false;
+		var day = parseInt( moment().format("DD") );
+		
+		if( day >= 1 && day <= 21) {
+			if( adMatching.bonusID !== 0 && OrderObj.agree === true && adMatching.userCommit > 20 ) valid = true;
+		}	
+		
+		return valid;
+	},
+	clickSubmit: function(){
+		OrderObj.submitOrder();
+	},
+	disableSubmit:function(){},
+	showModalOrderStatus: function(){}
+	}
+	
+	OrderObj.init();
+
+	var OrderHistory = {
+		target : null,
+		onClick: function(ele){
+			var contributor_id = $(ele).parents().find('#history-link').attr('data-info-id');
+			var balance = $(ele).parents().find('#history-link').attr('data-info-total-balance');
+			OrderHistory.target = ele;
+
+			OrderHistory.createForm( contributor_id );
+		},
+		createForm: function( id ){
+			$.ajax({
+			   type: "POST",
+			   url:   admin_url + 'assets/php/ajaxfunctions.php',
+			   data: { contributor_id:id , balance: OrderHistory.balance,task:'get_form_history' }
+			}).done(function(data) {
+			console.log(data);
+				$('#add-history').hide();
+				$('#order-history').append(data);
+
+			});
+
+		},
+		createTdTable: function( data ){
+			var row = '';
+			row += '<tr>';
+			row += '<td width="200">';
+			if(data.receipt == 1 ){
+				row += '<div><label><i class="fa fa-check main-color" aria-hidden="true"></i></label><input type="checkbox" name="receipt_sent" checked="" class="hidden receipt_sent"></div>';
+			}else{
+				row += '<div><label>SEND<input type="checkbox" name="receipt_sent" style="margin: 10px; top: 5px; position: relative;" class="receipt_sent"></label></div>';
+			}
+			row += '</td>';
+			row += '<td width="200"><label>'+data.spent+'</label></td>';
+			row += '<td width="200"><label>'+data.date+'</label></td>';
+			row += '<td width="200"></label>'+data.balance+'</label></td>';
+			row += '<td></td>';
+			row += '</tr>';
+
+			$('#order-history table tbody').append(row);
+			$('#form-transaction').remove();
+		}
+	}
+	$('#history-modal').on('click', '#add-history', function(e){
+		OrderHistory.onClick(this);
+	});
+
+	
+	$('#history-modal').on('click', '#save-transaction', function(e){
+		var thisForm = $(this).parents('form');
+		var formData = thisForm.serialize();
+		$.ajax({
+		  type: "POST",
+		  url:   admin_url + 'assets/php/ajaxfunctions.php',
+		  data: { formData: formData ,task:'save-transaction' }
+		}).done(function(data) {
+			data = $.parseJSON(data);
+			if(data.hasError === false ){
+				$('#add-history').show();
+				OrderHistory.createTdTable(data.data);
+			}
+		});
+			console.log(formData);
+	});
+
+	//$('#history-modal').on('click', '.receipt_sent', function(e){
+	// console.log($(this).parents());
+	//});
+
+$('.show-msg').on('click', function(e){
+	alert('This article has been edited by the PuckerMob staff and can no longer be altered.');
+});
 
 }); 
  

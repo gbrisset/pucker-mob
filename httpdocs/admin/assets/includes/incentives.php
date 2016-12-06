@@ -4,21 +4,22 @@
 	<div class="small-12 columns radius right-side-box half-margin-top">
 		<div class="">
 			<p style="margin:0;">
-				<span class="uppercase"><?php //echo date('F'); ?> SEPTEMBER INCENTIVE PLAN:</span>
+				<span class="uppercase"><?php //echo date('F'); ?> DECEMBER INCENTIVE PLAN:</span>
 			</p>
 			<br />	
 			<ul>
-				<li style="padding: 7px;">#1-5: $100 Bonus</li>
-				<li style="padding: 7px;">#6-10: $50 Bonus</li>
-				<li style="padding: 7px;">#11-20: $10 Bonus</li>
+				<li style="padding: 7px;">FOR EVERY 100,000 U.S. VISITS TO YOUR ARTICLES: $25 </li>
 			</ul>
-			
+				
 			<br />
-			
+
+			<p>The more traffic you get, the more you make! For example, let's say you get 418,000 visits in December, you'd earn an extra $100!</p>
+
 			<p>This incentive is open to both Pro and Basic bloggers. Final outcome is based off of traffic as recorded on our dashboard, which is provided to us via Google Analytics.</p>
-			<p>Final numbers and winners will not be determined officially until September 2nd, and monetary prizes will be awarded along with September’s standard payment (on or around November 22nd).</p>
-			<p>PuckerMob.com reserves the right to promote or boost articles written by bloggers as needed, regardless of how it may effect the outcome of this incentive campaign. All articles must adhere to our standard terms and conditions - any traffic derived from articles that deviate from these terms may be cause for disqualification from this incentive campaign. In the event of technical or reporting difficulties, winners will be determined by data manually checked by PuckerMob staff, whose decisions will be final.</p>	
-		</div>
+
+			<p>Final numbers and winners will not be determined officially until January 2nd, and monetary prizes will be awarded along with December’s standard payment (on or around February 22nd).</p>
+			
+			</div>
 	</div>
 
 

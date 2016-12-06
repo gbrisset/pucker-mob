@@ -58,10 +58,6 @@ if(!is_null($categoryInfo)){
 		//ARTICLE ADS SETTINGS
 		$article_ads = $mpArticleAdmin->getArticleAds($articleInfoObj);
 
-		//if($articleInfoObj['article_id'] == "4349"){
-		//	$pageName = strtoupper($articleInfoObj['article_title']).' | Sponsored by Smarties Candies';
-		//}
-
 		//RELATE ARTICLES LIST 
 		$relatedArticles = $mpArticle->getArticlesList([ 'limit'=> 6,  'pageId' => $categoryInfo['cat_id'], 'omit' => $articleInfo['article_id']]);
 		$pagesArray['url'] = $config['this_url'].$categoryInfo['cat_dir_name'];
@@ -118,6 +114,49 @@ if(!is_null($categoryInfo)){
 <!-- BODY -->
 <?php include_once($config['include_path'].'head.php');?>
 
+<!-- UNDERTONE -->
+<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 
+		&&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 
+		&& $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  
+		&& $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
+		&& $articleInfoObj['article_id'] != 17286  ){?>
+		
+		<?php if($articleInfoObj['article_id'] == 23319 ){ ?>
+			<!-- /73970039/UT_SS -->
+			<div id='div-gpt-ad-1476806620904-1' style='height:1px; width:1px;'>
+			<script>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-1'); });
+			</script>
+			</div>
+
+			<!-- end Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
+		<?php }elseif( $articleInfoObj['article_id'] == 23305 ){?>
+			<!-- /73970039/UT_Flex -->
+			<div id='div-gpt-ad-1476806620904-0' style='height:1px; width:1px;'>
+			<script>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-0'); });
+			</script>
+			</div>
+
+			<!-- end Undertone Ad Tag for INT00 - Flex - Testing Certification Purposes Only Tag -->
+		<?php }elseif( $articleInfoObj['article_id'] == 25829 ){?>
+			<!-- /73970039/UT_Adhesion -->
+			<div id='div-gpt-ad-1480951070701-0' style='height:1px; width:1px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1480951070701-0'); });
+				</script>
+			</div>
+		<?php }else{?>
+			<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+			<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+			<script>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+			</script>
+			</div>
+		<?php } ?>
+		
+<?php } ?>
+
 <!-- HEAD -->
 <body id="article" class="mobile">
 	<!-- HEADER MENU -->
@@ -149,39 +188,7 @@ if(!is_null($categoryInfo)){
 		</section>
 	</main>
 	
-	<!-- UNDERTONE -->
-	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 
-				&&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 
-				&& $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  
-				&& $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
-				&& $articleInfoObj['article_id'] != 17286  ){?>
-			
-			<?php if($articleInfoObj['article_id'] == 5813 ){?>
-				<!-- /10394362/paz_724477 -->
-				<div id='div-gpt-ad-1470928349713-0'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470928349713-0'); });
-				</script>
-				</div>
-
-			<?php }else{?>
-				<!--/73970039/UT_SS_FP 
-				<div id='div-gpt-ad-1461622964696-3'>
-					<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
-					</script>
-				</div>-->
-
-				<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-				<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-				</script>
-				</div>
-
-			<?php }?>
-			
-		<?php } ?>
+	
 
 		<!-- FACEBOOK FUNCTIONS -->
 		<?php include_once('admin/fb/fbfunctions.php'); ?>
@@ -222,19 +229,28 @@ if(!is_null($categoryInfo)){
 			   && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  
 			   && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
 			   && $articleInfoObj['article_id'] != 17286  ){?>
-				<!-- /73970039/UT_SS_FP
-				<div id='div-gpt-ad-1461622964696-3'>
-					<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-3'); });
-					</script>
-				</div> -->
-<!-- CURRENT -->
+
+			<?php if($articleInfoObj['article_id'] == 23319 ){ ?>
+			<!-- begin Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
+				<!-- /73970039/UT_SS -->
+				<div id='div-gpt-ad-1476806620904-1' style='height:1px; width:1px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-1'); });
+				</script>
+				</div>
+
+			<!-- end Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
+			<?php }else{?>
+
+				<!-- CURRENT -->
 				<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
 				<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
 				<script>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
 				</script>
 				</div>
+			<?php } ?>
+
 	<?php } ?>
 
 	<!-- HEADER MENU -->
@@ -244,15 +260,17 @@ if(!is_null($categoryInfo)){
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
 
 	<!-- ARTICLE INFO TOP -->
-		<div class="puc-articles-top">
+		<div class="puc-articles-top" style="background:#fff !important;">
 			<div class="puc-articles-top-inner small-12 padding">
 				<div class="columns small-12 large-9 no-padding sidebar-right left-div">
 					<!-- TITLE -->
-					<h1 style="margin-bottom: 0.5rem;" class=""><?php echo $article_title; ?></h1>
+					<h1 style="margin-bottom: 0.5rem; color: #222 !important;" class=""><?php echo $article_title; ?></h1>
 					
 					<!-- AUTHOR INFO -->
 					<div class="small-12">
-						<p class="author"> <a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>"><?php echo 'By '.$name; ?></a></p>
+						<p class="author" style="color: #222 !important;"> 
+							<a href = "<?php echo $config['this_url'].'contributors/'.$seo_name; ?>" style="color:#222 !important;"><?php echo 'By '.$name; ?></a>
+						</p>
 					</div>
 				</div>
 				<!-- SOCIAL MEDIA -->
@@ -287,9 +305,15 @@ if(!is_null($categoryInfo)){
 					
 					<!-- IMAGE -->
 					<div id="article-image" class="small-12 clear">
-						<?php if( $article_id == 5191 ){ ?>
-							<script src="http://player.videomosh.com/player-v4/sequelmedia/player/video/79822/Top%205%20Facts%20about%20Kissing.js"></script>
-						<?php }else{ ?>
+						<?php if( !empty($articleInfoObj['article_video_script']) ){ ?>
+							
+							 <?php 
+							 	if(get_magic_quotes_gpc()) echo stripslashes($articleInfoObj['article_video_script']);
+    							else echo $articleInfoObj['article_video_script'];
+							 	
+							 ?>
+					
+						 <?php }else { ?>
 							<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 						<?php } ?>
 					</div>
@@ -304,27 +328,34 @@ if(!is_null($categoryInfo)){
 					      && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 
 					      && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id']  != 17286){?>
 					       
-					        <?php if( $articleInfoObj['article_id'] != 14613){?>     
-					           <?php if(   $articleInfoObj['article_id'] != 15284 && $articleInfoObj['article_id'] != 15488){?>
-					              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-					                <style> a#adContent-clickOverlay{z-index: 9 !important;}</style>
-					                <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-					                <script type="text/javascript" language="javascript">
-					                //<![CDATA[
-					                aax_getad_mpb({
-					                  "slot_uuid":"ad4fe546-5060-4729-89ff-0bcae94681e2"
-					                });
-					                //]]>
-					                </script>
-					              </div>
-					            <?php }?> 
+					        <?php if( $articleInfoObj['article_id'] != 25362 ){ //14613 ?>     
+				              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
+					             <!-- MEME GLOBAL   -->
+								<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+						  
+						    <!-- AMAZON 
+						   
+						      <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+						      <script type="text/javascript" language="javascript">
+						      //<![CDATA[
+						      aax_getad_mpb({
+						        "slot_uuid":"25fba8a5-f806-45fe-82d5-718e86f3d9f2"
+						      });
+						      //]]>
+						      </script>
+						      -->
+						  
+				              </div>
 					        <?php }else{ ?>
-					         <!-- /73970039/UT_P -->
+					         <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
+					        	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+					        	</div>
+					         <!-- /73970039/UT_P 
 					          <div id='div-gpt-ad-1461622964696-1' style='height:1050px; width:300px;'>
 					            <script type='text/javascript'>
 					            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-1'); });
 					            </script>
-					          </div>
+					          </div>-->
 					       <?php } ?>
 					      <?php }else{?>
 					          <div id="atf-ad" class="ad-unit ad300">
@@ -344,8 +375,6 @@ if(!is_null($categoryInfo)){
 				</div>
 			</div>
 				
-			<!-- ABOUT THE AUTHOR -->
-			<?php //include_once($config['include_path'].'abouttheauthor.php'); ?>
 		</div>
 
 	<!-- MAIN CONTENT -->
@@ -364,14 +393,6 @@ if(!is_null($categoryInfo)){
 					</div>	 
 				</p>
 			</div>	 
-			
-			<!-- ADBLADE-->
-			<?php if( $article_id != 16562 &&   $article_id != 17425 && $article_id != 17286 && $article_id != 14479 && $article_id != 14576  && $article_id != 15109   && $article_id != 15271 && $article_id != 15284  && $article_id != 15488 ){?>
-			<div class="columns small-12 margin-top">
-				<ins class="adbladeads" data-cid="21331-3493314697" data-host="web.adblade.com" data-tag-type="4" style="display:none"></ins>
-				<script async src="http://web.adblade.com/js/ads/async/show.js" type="text/javascript"></script>
-			</div>
-			<?php }?>
 			
 			<!-- ALSO IN PM ARTICLES -->
 			<?php include_once( $config['include_path'].'similararticles.php'); ?>

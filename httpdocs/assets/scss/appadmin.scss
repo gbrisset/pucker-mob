@@ -26,8 +26,11 @@ $bgColor: #ffffff;
 "foundation/components/tooltips",
 "foundation/components/labels",
 "foundation/components/tables",
-"foundation/components/tooltips",
-"foundation/components/thumbs";
+"foundation/components/thumbs",
+"foundation/components/reveal";
+
+@import "foundation/components/tooltips";
+
 // Custom variables
 
 $topbar-megamenu-bg-color: #fff;
@@ -63,23 +66,23 @@ $social-hover-darken-percent: -25%;
 .large-font-size{ font-size: 2.3rem !important; }
 .font-170-pct{ font-size:170% !important; }
 .font-125-pct{ font-size:125% !important; }
-
+.font-small{ font-size: 14px !important; }
 .font-1-5x{ font-size:1.5rem !important; }
 .font-2-5x{ font-size:2.5rem !important; }
 .font-2x{ font-size:2rem !important; }
 .font-3x{ font-size:3rem !important; }
 .font-4x{ font-size:4rem !important; }
 .hide-small{
-display:none;
+  display:none;
 }
 .vertical-center {
-display: table;
+  display: table;
 }
 
 .vertical-center * {
-height: 100%;
-display: table-cell;
-vertical-align: middle;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 //Padding
@@ -133,7 +136,7 @@ margin-top: 7px !important;
 margin-bottom: 7px !important;
 }
 
-.bold{ font-weight: bold !important; font-family:OsloBold; }
+.bold{ font-weight: bold !important; font-family:OsloBold !important; }
 
 //Align
 .align-right{ text-align: right !important; }
@@ -394,7 +397,11 @@ cursor: pointer;
 
 .parent .fa-chevron-down:before{ color: #777}
 
-#related-articles-section, .advertising-override{ display:none; }
+#related-articles-section{ 
+  display:inline-block;
+
+}
+.advertising-override{ display:none; }
 
 
 @media #{$large-up} {
@@ -465,7 +472,7 @@ h1{  border-bottom: 2px solid #ddd; }
 }
 #article-info, #articles{ border: 1px solid #ddd; padding:15px;}
 #nav-bar {
-position:fixed !important;
+position:fixed !important; top:0;
 }
 }
 
@@ -529,7 +536,7 @@ background: #eee;
 }
 #articles-list table tr td { border: none; vertical-align: middle; padding: 0.2rem; text-align: center; font-size: 1rem;}
 #articles-list table tr td:first-child, articles-list table thead tr th:first-child{ text-align: left;}
-#articles-list table tr td h2 { font-size: 1.2rem; padding-top:5px;}
+#articles-list table tr td h2 { font-size: 1.2rem; padding-top:0px;}
 #articles-list table tr td h2 i{ padding:0; width: 10px;     height: 20px;}
 #articles-list table tr td h2 { font-size: 1.2rem;  vertical-align: middle; display: table-cell; height: auto;}
 #articles-list table tr td label { padding: 5px;}
@@ -634,7 +641,7 @@ padding: 0.7rem;
 }
 
 .image-drop-wrapper{
-	background: #888;
+	background: #999;
 	padding: 1rem;
 }
 
@@ -648,7 +655,12 @@ padding: 0.7rem;
 	background: #888; 
 	border: 3px dashed #ddd !important;
 }
-.image-drop-titles{ padding: 1rem;}
+.image-drop-titles{ padding: 0rem;}
+@media #{$large-up} {
+  .image-drop-titles{ padding: 1rem;}
+  #image-drop{  background: none;  }
+}
+
 
 .inner-header{
 	background: #888 !important;
@@ -949,17 +961,34 @@ form span.preview-close p {text-align: right;width: 100%;margin:0 !important;}
 #dashboard h2{ font-weight: bold; margin-bottom: 5rem;}
 #dashboard table{ background: #fff; border:none; width:100%;}
 #dashboard table thead{background: #fff;}
-#dashboard table th{ text-align: center; font-size:1.05rem; font-weight: normal; min-width: 7rem;}
+#dashboard table th{ text-align: center; font-size:1.05rem; font-weight: normal; /* min-width: 7rem; */ }
 #dashboard table tr{ background: none; border-bottom: 1px solid #aaa;}
 #dashboard table tr.total { border-bottom:  none;}
 #dashboard table tr.total td{text-align: center; font-size: 1.2rem; padding-top:1rem; font-family: OsloBold;}
 #dashboard table tr.total td:first-child{ text-align: left; }
 #dashboard table tr.total td:last-child{ text-align:center;}
-#dashboard table td{ min-width: 7rem; text-align:center;}
+#dashboard table td{ /*min-width: 7rem;*/ text-align:center;}
 #dashboard table td a{ font-size: 1rem;}
 #dashboard table td label{ font-size: 0.9rem;}
 #dashboard table td.article{ text-align:left;}
 #dashboard table tr.even, #dashboard table tr.alt, #dashboard table tr:nth-of-type(even){ background: none;}
+
+#reports-div{
+  .reports-sub-tables{ 
+    display:flex;
+
+    .subdivition{
+      padding: 8px;
+      margin-right: 4px;
+      background: rgba(147, 239, 230, 0.16);
+      border: 1px solid #bbb;
+    }
+  }
+  .reports-sub-tables:nth-child(2){   background: #fff; }
+
+  .show-totals .subdivition{ background: #eee !important;}
+
+}
 
 #month-form{display:inline;}
 #month-form select{width:12rem;text-transform:capitalize;text-align:center;font-size:1rem;}
@@ -1267,18 +1296,24 @@ p{ font-size: 15px; }
 .earnings-info .last-month-earnings{border-left: 1px solid #555; border-right: 1px solid #555; margin: 0 1rem; padding: 0 1rem;}
 
 .dropzone .dz-error .dz-error-message, .dropzone-previews .dz-error .dz-error-message{
-
 	top: 0% !important;
+  position: relative !important;
+  font-size: 17px;
+  background: rgba(255,0,0,0.6) !important;
+  padding: 10px;
+  z-index: 1000;
+  font-family: OsloBold;
+  opacity: 1 !important;
+  color: #fff;
+  height:100%;
+  margin-top: 5px;
+}
 
-    position: absolute !important;
-    font-size: 17px;
-    background: rgba(255,0,0,0.6) !important;
-    padding: 10px;
-    z-index: 1000;
-    font-family: OsloBold;
-    opacity: 1 !important;
-    color: #fff;
-    height:100%;
+@media #{$large-up} {
+  .dropzone .dz-error .dz-error-message, .dropzone-previews .dz-error .dz-error-message{
+      position: absolute !important;
+
+  }
 }
 
 .small-styled-select select {
@@ -1399,7 +1434,7 @@ span{ margin-left:10px;}
 #month-form select { background-color: #000 !important; font-size: 0.8rem !important; margin: 0 !important; height: auto; top: -6px !important; text-transform: uppercase;  background-size: 15px 10px; background-position: 95% 50%; width: 8rem !important;}
 .dd-field-month{width: 90%; margin: 0; display: inline-flex; font-size: 0.8rem; color: #fff !important;}
 #month-form { display: inline; margin-left: -1.4rem; padding: 0rem; margin: 0 !important;}
-#dashboard table td{min-width: 6rem !important;}
+#dashboard table td{ /*min-width: 6rem !important; */}
 #dashboard table th{ min-width:6rem !important; font-size: 1.05rem;}
 
 .show-modal-box2 .modalDialog, .show-modal-box-facebook {
@@ -1721,21 +1756,21 @@ color: #666;
 }
 }
 
-.articles_resume{
-height: 7rem;
-padding:15px;
-color: #fff;
-text-align: center;
-h3, span{
-font-size: 18px;
-color: #fff;
-}
+  .articles_resume{
+    height: 7rem;
+    padding:15px;
+    color: #fff;
+    text-align: center;
+    h3, span{
+    font-size: 18px;
+    color: #fff;
+  }
 
-span{ font-size: 24px;}
+  span{ font-size: 24px;}
 
-.mini-fonts{
-margin-top:4px;
-}
+  .mini-fonts{
+    margin-top:4px;
+  }
 }
 
 .hottopics{ margin-top: 0.95rem !important; }
@@ -1757,18 +1792,18 @@ padding-bottom:7px;
 }
 
 @media #{$large-up} {
-.hottopics{ margin-top: 0 !important; }
-.filter-by-status, .hottopics{
-background: #eee;     
-padding-bottom: 10px; 
-padding-top:10px;    
-border: 1px solid #ddd;
-   
-h3{ font-size: 20px; color: #666; margin: 0; margin-bottom: 0.625rem;}
-label{ font-size: 14px !important; color: #888;}
-a{ outline:none;  font-size: 15px; color: #222;}
-.current{ color: #3593C6 !important; font-family:OsloBold;}
-}
+  .hottopics{ margin-top: 0 !important; }
+  .filter-by-status, .hottopics{
+    background: #eee;     
+    padding-bottom: 10px; 
+    padding-top:10px;    
+    border: 1px solid #ddd;
+       
+    h3{ font-size: 20px; color: #666; margin: 0; margin-bottom: 0.625rem;}
+    label{ font-size: 14px !important; color: #888;}
+    a{ outline:none;  font-size: 15px; color: #222;}
+    .current{ color: #3593C6 !important; font-family:OsloBold;}
+  }
 }
 
 .experttips{
@@ -1878,29 +1913,190 @@ h1{ font-size: 1.7rem;}
 }
 }
 
+//AD MATCHING PAGE
+#admatching{
+  h2{
+    font-size: 2.3rem;
+    font-family: OsloBold;
+  }
+  .payment-balance-copy{
+    font-size: 20px;
+    font-family: Oslo;
+
+  }
+
+  .checkd-label {
+    font-size: 1.8rem;
+    color: green;
+    left: -5px;
+    position: absolute;
+    top: 2px;
+  }
+
+
+  .box-bonus{
+    border: 1px solid #3E6A91;
+    .heading-div{
+      background: #3E6A91;
+      h2{ color: #fff; opacity: 0.5;  font-size: 2.5rem; margin-top: 1.2rem;}
+    }
+
+    .bonus-info{ 
+      background: #EBF0F4;
+      span{ padding: 5px; }
+      label{ 
+        font-family: Oslo; 
+        font-size:15px !important;
+       
+        p{ font-family:OsloBold; font-size: 15px; margin-left: 12px; line-height: 0.8;}
+      }
+    }
+
+    .ad-match-me{
+      padding-top:1.2rem; padding-bottom: 1rem; background:  #EBF0F4;
+      input[type=checkbox]{ visibility: hidden; }
+      .ad-match-me-element{ height: 2rem; width: 2rem; background: #fff; border: 2px solid #000; position:absolute; left: 12px; }
+      .ad-match-me-label{ font-size: 24px !important; font-family: OsloBold;  top: -3px; color: #000;  left: 12px;}
+    }
+  }
+
+  #screen-shots-box{
+    background: #eee;  
+    height: 8rem;
+    border: 1px solid #777;
+    .ss-box{ overflow: scroll; height: 124px; }
+    .ss-label{
+      margin-top:1rem;
+      label{ 
+        color: #222;
+        font-size: 1.3rem !important;
+        text-align: right;
+        font-family: OsloBold;
+      }
+
+      p{ font-family: Oslo;  text-align: right; }
+    
+    }
+    .dropzone{ min-height: 125px; }
+    .dropzone.dz-clickable{ overflow: scroll; padding: 0;}
+    .dropzone .dz-preview.dz-image-preview{background: white; margin: 5px; }
+    .dropzone .dz-preview .dz-details{ position: relative; opacity: 1; padding:5px;}
+    .dropzone .dz-preview .dz-details .dz-filename:not(:hover){     display: none; }
+    .dropzone .dz-preview .dz-details .dz-filename:not(:hover) span, .dropzone .dz-preview .dz-details .dz-size{     display: none; }
+
+  }
+  @media #{$xxlarge-up} {
+    #bonus-box-1{ padding-right: 5px; }
+    #bonus-box-2{ padding: 1px !important; }
+    #bonus-box-3{ padding-left: 5px; }
+  }
+
+  #order-info-box{
+    background: #f5f5f5;     
+    padding-bottom: 10px; 
+    padding-top:10px;    
+    border: 1px solid #ddd;
+       
+    h3{ color: green; font-size: 1.5rem; margin-bottom: 8px;}
+    p.font-small{ line-height: 1.2; font-family: Oslo;}
+
+    #order-info-innerbox{
+      h4{
+        color: #444; font-family:OsloBold; font-size: 16px; margin-bottom:3px;
+        span{ float: right; }
+      }
+
+      label.font-small{
+        font-size:9px !important;
+        word-break: keep-all;
+        width:85%;
+        color: #777;
+      }
+
+      h5{
+        font-family: oslobold;
+        font-size: 14px;
+        margin-bottom: 2px;
+      }
+
+      .payment-info{
+        p{ 
+          margin-bottom: 0;
+          font-size: 13px;
+          font-family: Oslo; 
+
+          span{ float: right; }
+          #deducted-payment{ border-bottom: 1px solid #ddd; }
+        }
+      }
+
+      #submit-order{
+        float: right;
+        background: #f5f5f5;
+        padding: 6px 10px;
+        border: 1px solid #bbb;
+        box-shadow: none;
+        font-family: Oslo;
+      }
+    }
+
+    #agree{ visibility:hidden;}
+    .agree-box{
+      label{
+        font-size: 12px;
+      }
+    }
+    .agree-element{ 
+      height: 33px;
+      background: #fff;
+      border: 3px solid green;
+      position: absolute;
+      left: 0px;
+      top: 1px;
+    }
+
+    .order-submitted{
+      font-size: 17px !important;
+      color: #fff !important;
+      background: #6ca774;
+      padding: 8px;
+      font-family: Oslobold;
+    }
+
+    .order-error{
+      font-size: 17px !important;
+      color: #fff !important;
+      background: #e0485d;
+      padding: 8px;
+      font-family: Oslobold;
+    }
+  }
+
+}
+
 #edit-my-profile, #view-my-profile, #account-info{
-.header-style{
-background: #aaa;
-padding: 10px;
-h2{
-color:#fff;
-text-transform: uppercase;
-margin:0;
-}
-}
-h1{
-.fa-circle{ position:relative; top: -5px; font-size: 7px;}
-}
-.wide-button{ 
-padding: 1.3rem 2.2rem;
+  .header-style{
+    background: #aaa;
+    padding: 10px;
+    h2{
+      color:#fff;
+      text-transform: uppercase;
+      margin:0;
+    }
+  }
+  h1{
+    .fa-circle{ position:relative; top: -5px; font-size: 7px;}
+  }
+  .wide-button{ 
+    padding: 1.3rem 2.2rem;
 
-span{ background: #207673;}
-a{
-color:#fff; font-size:1.2rem;
+    span{ background: #207673;}
+    a{
+      color:#fff; font-size:1.2rem;
 
-&:hover{ text-decoration:none;}
-}
-}
+      &:hover{ text-decoration:none;}
+    }
+  }
 }
 
 //VIEW EDIT PROFILE
@@ -2334,4 +2530,104 @@ p, ul li{ font-size: 14px;}
 	.reject{ color: #FF0000; font-size: 14px; font-family: OsloBold;}
 	.reject-msg{ background: #fff !important; border: 1px solid #ddd; width: 75%; float: left; height: 26px; font-size: 13px;}
 	.send-reasons{ display: inline-block; float: left; width: 21%; padding: 5px; font-size: 13px; text-transform: uppercase; background: #d50909;}
+}
+
+#order-history{
+  .add-history-link{
+    color: #888;
+    text-transform: uppercase;
+    font-family: OsloBold;
+  }
+  table tr td{
+    vertical-align: middle;
+  }
+}
+
+#history-transaccions{
+  table tr td input{ height: 1.8rem; margin-bottom: 0; font-size: 16px;  padding: 7px 30px;}
+}
+
+.warning-banner{
+    background: #ab1212;
+    max-height: 4.3rem;
+    margin-top: 5px;
+  h2{
+    color: #fff;
+    font-size: 6rem;
+    font-family: OsloBold;
+    top: -11px;
+    margin: 0;
+  }
+  p{
+    color: #fff;
+    font-family: OsloBold;
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 0;
+    margin-top: 1.5%;
+  }
+}
+
+#agreement-edits{
+  padding:1rem;
+  border: 1px solid green;
+
+  h2{
+    color: green;
+    font-family: Oslo;
+    line-height: 1.2;
+  }
+
+  p{
+    font-size: 15px;
+    font-family: Oslo;
+    line-height: 1.3;
+
+    span{ color: green;}
+  }
+
+  label{
+    font-size: 16px !important;
+    top: -5px;
+    line-height: 1.2;
+  }
+}
+
+#view-articles-legend{
+  label{
+    display: inline;
+    color: #888;
+    margin-right: 3%;
+  }
+}
+
+#articles-list #article-list-table-legend{ 
+  top:15px;
+  label{ color: #888 !important; font-size: 24px !important;}
+  a{color: #888 !important; font-size: 20px !important; text-decoration:none;}
+
+}
+
+#earnings-list{
+  #daily-earnings{
+    border:none;
+    thead {
+      background: #fff;
+
+
+    }
+
+    tbody{
+       tr.odd,  tr:nth-of-type(odd){
+        background:rgba(54, 138, 84, 0.15);
+       }
+    }
+
+    tr td{
+        font-family: OswaldRegular;
+        font-size: 14px;
+        color: #aaa;
+        text-transform:uppercase;
+      }
+  }
 }

@@ -1,5 +1,5 @@
 <?php if(!$detect->isMobile()){ ?>
-	<div id="header-ad" class="ad-unit hide-for-print padding-top" style="<?php if( $has_sponsored && $isHomepage ) echo 'margin-top:0.5rem;'; ?> ">
+	<div id="header-ad" class="ad-unit hide-for-print padding-top" style="background: #fff !important; margin-top:90px !important">
 		<!-- ARTICLES -->
 		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
 
@@ -9,14 +9,17 @@
 	      		&& $articleInfoObj['article_id'] != 15271 &&  $articleInfoObj['article_id']  != 17286
 	      		&& $articleInfoObj['article_id'] != 14613 && $articleInfoObj['article_id'] != 14873 
 			    && $articleInfoObj['article_id'] != 12966 && $articleInfoObj['article_id'] != 15284 
-			    && $articleInfoObj['article_id'] != 15488 ){  ?>
+			    && $articleInfoObj['article_id'] != 15488){  ?>
 	      			
+	      			<?php if(  $articleInfoObj['article_id'] != 23319  && $articleInfoObj['article_id'] != 23305 && $articleInfoObj['article_id'] != 23564 ){?>
+
   					<!-- /73970039/UT_BB -->
 					<div id='div-gpt-ad-1470929060933-0' style='height:250px; width:970px;'>
 					<script>
 					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470929060933-0'); });
 					</script>
 					</div>
+					<?php } ?>
 	
 				<?php }else{?>
 					<!-- LELO -->

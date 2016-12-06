@@ -3,7 +3,6 @@
 	require_once('../../../assets/php/config.php');
 
 	if(isset($_POST['formData'])) parse_str($_POST['formData'], $_POST['formData']);
-
 	switch($_POST['task']){
 		case 'update_status':
 			echo json_encode($adminController->republishArticle($_POST));
@@ -67,6 +66,10 @@
 			echo json_encode( $adminController->user->getContributorEarningChartArticleData( $_POST ));
 		break;
 
+		case 'get_chart_article_data_per_day':
+			echo json_encode( $adminController->user->getContributorEarningChartArticleDataPerDay( $_POST ));
+		break;
+
 		case 'get_report_writers_data':
 			echo json_encode( $adminController->user->getContributorEarningsData( $_POST ));
 		break;
@@ -103,26 +106,28 @@
 		//Set FaceBook Articles to Promote
 		case 'promote_articles':
 			$promote = new PromoteArticles(); 
-			$status = json_encode( $promote->promoteArticles( $_POST) );
+			
+			json_encode( $promote->promoteArticles( $_POST) );
+
+			break;
+
+		case 'article_promoted': 
+			$promote = new PromoteArticles();
+			$status =  json_encode( $promote->promoteThisArticle( $_POST ) );
 
 			if($status){
-				if( $_POST['facebook_page_id'] != 7 ){
+				//var_dump($status, $_POST);  
+				if( $_POST['promoted'] == 'true'  ){
 					$data  = [ 	
 							"user_id" => $_POST['user_id'], 
 							"message" => "Congratulations! Your article '".$_POST['article_title']."' has been scheduled for promotion on ".$_POST['facebook_page_name'], 
 							"type" => 1 , 
 							"date" => date( 'Y-m-d H:s:i', strtotime('now'))
 						];
-					
 					$notification_obj = new Notification(); 
 					echo json_encode( $notification_obj->saveObj( $data ) );
 				}
 			}
-			break;
-
-		case 'article_promoted': 
-			$promote = new PromoteArticles();
-			echo json_encode( $promote->promoteThisArticle( $_POST ) );
 			break;
 
 		case 'article_status':
@@ -163,6 +168,62 @@
 
 				echo json_encode( $notification_obj->saveObj( $data ) );
 			}
+		break;
+
+		//ORDERS
+		case 'submit_order':
+			$OrderObj = new OrderAds();
+			$AdMatchingTransactions = new AdMatchingTransactions();
+			$contributor = new Contributor();
+			$helpers = new Helpers();
+			$contributor_info = $contributor->getContributorById($_POST['contributor_id']);
+			$dataTrans = [
+				'contributor_id' => $_POST['contributor_id'],
+				'spent'   => 0,
+				'balance' => $_POST['total_commit'],
+				'date'    => $_POST['date'],
+				'receipt' => 1
+			];
+
+			$msg = $helpers->getEmailTemplate($config, 'ad_matching_tp', $_POST);
+			$email_data = [
+				'email_add' => $contributor_info->contributor_email_address,
+				'email_msg' => $msg,
+				'subject'   => 'Congratulations! You’ve signed up for Ad Matching.'
+			];
+
+			$order = $OrderObj->saveObj($_POST);
+			if( $order ){
+				if( $AdMatchingTransactions->saveObj( $dataTrans ) )
+					$helpers->sendEmailToBloggers($email_data);
+
+			}
+			echo json_encode( $order ); 
+		break;
+
+		case 'get_form_history':
+			$AdMatchingTransactions = new AdMatchingTransactions(); 
+			$transactions = $AdMatchingTransactions->where('contributor_id = '.$_POST['contributor_id'].' ORDER BY id DESC LIMIT 1');
+ 			$balance = ( isset($transactions)  && $transactions ) ? $transactions->balance : 0;
+			echo $AdMatchingTransactions->generateForm( $_POST['contributor_id'], $balance ); 
+		break;
+		
+		case 'save-transaction':
+			$AdMatchingTransactions = new AdMatchingTransactions();
+			$data = isset($_POST['formData']) ? $_POST['formData'] : $_POST;
+			$data['receipt'] = ( $data['receipt'] === "on") ? 1 : 0;
+			$transactions = $AdMatchingTransactions->where('contributor_id = '.$data['contributor_id'].' ORDER BY id DESC LIMIT 1');
+			$currentBalance = ( isset($transactions[0])  && $transactions[0] ) ? $transactions[0]->balance : 0;
+			$spent = isset($data['spent']) ? $data['spent'] : 0;
+			$newBalance = $currentBalance - $spent;
+			$data['balance'] = $newBalance; 
+
+			$result = $AdMatchingTransactions->saveObj( $data );
+			$data['date'] =date("n/d/Y", strtotime($data['date']));
+			$data['spent'] ='$'.number_format( $data['spent'], 2);
+			$data['balance'] ='$'.number_format( $data['balance'], 2);
+			$result['data'] = $data;
+			echo json_encode( $result );
 		break;
 
 		default:

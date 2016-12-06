@@ -406,10 +406,17 @@ class MPArticleAdminController extends MPArticle{
 	//PUBLISH A NEW ARTICLE
 	public function publishNewArticle($post){
 		$post = isset($post['formData']) ? $post['formData'] : $post;
+		
 		$post['validate'] = true;
+		if( isset($post['is_locked']) && $post['is_locked'] == '1' ){
+			$post['validate'] = false;
+		}
+
 		//If is not an Starter Blogger
-		if($post['user_type'] != 30)
+		if($post['u_type'] != 30) // MPublich the article
 			$post['article_status-s'] = "1";
+		else //Set it to Review
+			$post['article_status-s'] = "2";
 
 		//Verify If Image Exist
 		$imageExist = $this->verifyImageExist($post);
@@ -417,6 +424,7 @@ class MPArticleAdminController extends MPArticle{
 			//Validate Image Dimentions 
 			$post['image_path'] = $imageExist['imageDir'];
 			$validSize = $this->validateImageDime($post);
+			//$validSize['statusCode'] = 200;
 			if($validSize['statusCode'] == 200){
 				//Save Article Info
 				if( $post['a_i'] != "0"){
@@ -437,9 +445,10 @@ class MPArticleAdminController extends MPArticle{
 		$post['save'] = true;
 		$post['validate'] = false;
 		//If is not an Starter Blogger
-		if($post['user_type'] == 30)
-			$post['article_status-s'] = "3";
-		else $post['article_status'] = $post['article_status'];
+		//if($post['user_type'] == 30)
+		//	$post['article_status-s'] = $post['article_status']; //"3";
+		//else 
+		$post['article_status'] = $post['article_status'];
 
 		//Verify If Image Exist
 		$imageExist = $this->verifyImageExist($post);
@@ -460,6 +469,8 @@ class MPArticleAdminController extends MPArticle{
 
 	/* ADD NEW ARTICLE [INSERT] */
 	public function addArticle($post){ 
+
+		
 		//Validate Fields
 		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
 			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
@@ -539,6 +550,24 @@ class MPArticleAdminController extends MPArticle{
 		
 		$post['a_i'] = $articleId;
 
+		//Add Related Articles if any
+		$this->performUpdate(array('updateString' => 'DELETE FROM related_articles WHERE main_article_id = '.$post['a_i'] ));
+		$related_article_1 = $related_article_2 = $related_article_3 = -1;
+		if(isset($post['related_article_1']) && $post['related_article_1'] != '-1' ) $related_article_1 = $post['related_article_1'];
+		if(isset($post['related_article_2']) && $post['related_article_2'] != '-1' ) $related_article_2 = $post['related_article_2'];
+		if(isset($post['related_article_3']) && $post['related_article_3'] != '-1' ) $related_article_3 = $post['related_article_3'];
+
+		$this->performUpdate(array(
+			'updateString' => "INSERT INTO related_articles SET  main_article_id = :articleId,  related_article_id_1= :related_article_1, 
+			 related_article_id_2 = :related_article_2, related_article_id_3 = :related_article_3 ",
+			'updateParams' => array(
+				':articleId' => $post['a_i'], 
+				':related_article_1'=>$related_article_1,
+				':related_article_2'=>$related_article_2,
+				':related_article_3'=>$related_article_3 
+			)
+		));
+
 		//UPDATE ARTICLE ADS
 		$this->updateArticleAdsInfo($post);
 
@@ -566,21 +595,24 @@ class MPArticleAdminController extends MPArticle{
 	
 	// UPDATE EXISTING ARTICLE 
 	public function updateArticleInfo($post){
-		//Validate Fields
 
-		if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
-			return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+
+		//Validate Fields
+			if(isset($post['is_locked']) && $post['is_locked'] != '1'){
+			if(!isset($post['article_title-s']) || empty($post['article_title-s'])) 
+				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_title', 'message' => 'Title Required'));
+			}
+			if(isset($post['validate']) && $post['validate']){
+				if(!isset($post['article_body-nf']) || empty($post['article_body-nf'])) 
+					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_body', 'message' => 'Your are trying to publish an empty article. Please add content to your article. Thanks'));
+				if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
+					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags are Required'));
+				if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
+					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description is Required'));
+				if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
+					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
+			}
 		
-		if(isset($post['validate']) && $post['validate']){
-			if(!isset($post['article_body-nf']) || empty($post['article_body-nf'])) 
-				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_body', 'message' => 'Your are trying to publish an empty article. Please add content to your article. Thanks'));
-			if(!isset($post['article_tags-nf']) || empty($post['article_tags-nf'])) 
-				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_tags-s', 'message' => 'Tags are Required'));
-			if(!isset($post['article_desc-s']) || empty($post['article_desc-s'])) 
-				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_desc-s', 'message' => 'Description is Required'));
-			if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
-				return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
-		}
 
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) 
 		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
@@ -598,7 +630,6 @@ class MPArticleAdminController extends MPArticle{
 
 		$pairs[] = "date_updated = :date_updated";
 		$params[':date_updated'] =  date("Y-m-d H:i:s");
-
 		
 		$params = $this->helpers->compileParams($post);
 
@@ -666,7 +697,7 @@ class MPArticleAdminController extends MPArticle{
 			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
 			'post' => $post,
 			'unrequired' => array('article_body', 'article_tags', 'article_status', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 
-				'article_poll_id', 'article_desc', 'featured_hp')
+				'article_poll_id', 'article_desc', 'featured_hp', 'article_video_script' )
 		));
 		
 		if($result === true) {

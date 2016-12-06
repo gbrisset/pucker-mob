@@ -16,8 +16,6 @@
 
 	<main id="main-cont" class="row" role="main">
 		<section id="verify-cont" class="admin-logout-content small-12 columns">
-			
-				
 			<div class="row margin-top">
 				<h1 class="margin-bottom margin-top uppercase">You've been successfully logged out.</h1>
 				<p>  You'll be redirected momentarily to the main site.  

@@ -418,6 +418,7 @@ End password reset methods
 ***/
 
 
+	//DO LOGIN VERIFICATION
 	public function doVerification($hash){
 		//Check for needed variables in session and for matching session and input hashes
 		if(!isset($_SESSION['login_hash']) || !isset($_SESSION['user_id']) || $_SESSION['login_hash'] !== $hash) return $this->helpers->returnStatus(500);
@@ -581,8 +582,6 @@ End password reset methods
 		}
 	}
 
-
-
 	public function usernameExists($userInput){
 		$options = array(
 			'queryString' => "SELECT * FROM users WHERE user_name = :userInput OR user_email = :userInput LIMIT 0, 1",
@@ -615,10 +614,7 @@ End password reset methods
 		if($updateImage === true) return true;
 		return false;
 	}
-	/* End Article Updating Fucntion */
-
-
-	
+	/* End Article Updating Function */
 
 
 /**
@@ -677,10 +673,14 @@ End password reset methods
 
 /* Begin Registration Functions */
 	public function doRegistration($post){
-		
+
+
 		$isReader = false;
+		$fromFB = false;
+		if(isset($post['from_fb']) && $post['from_fb']) $fromFB = true;
+
 		if(isset($post['isReader']) && $post['isReader']) $isReader = true;
-		
+		//var_dump($fromFB);
 		if($isReader && !isset($post['user_facebook_id-s'])){
 			$post["g-recaptcha-response"] = $post["recaptcha"];
 			unset($post["recaptcha"]);
@@ -704,16 +704,19 @@ End password reset methods
 		$reCaptcha = new ReCaptcha( RECAPTCHASECRETKEY );
 
 		// Was there a reCAPTCHA response?
-		if($post["g-recaptcha-response"] && !empty($post["g-recaptcha-response"])) {
-		    $resp = $reCaptcha->verifyResponse( $_SERVER["REMOTE_ADDR"], $post["g-recaptcha-response"]);
-			
-			if ($resp != null && !$resp->success) return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
- 			
-		}else return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
+		if( !$fromFB ){
+			if($post["g-recaptcha-response"] && !empty($post["g-recaptcha-response"])) {
+			    $resp = $reCaptcha->verifyResponse( $_SERVER["REMOTE_ADDR"], $post["g-recaptcha-response"]);
+				
+				if ($resp != null && !$resp->success) return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
+	 			
+			}else return array('hasError' => true, 'message' => "Oops!  You must verify that you are not a robot!");
 
-		$recaptcha = $post['g-recaptcha-response'];
+			$recaptcha = $post['g-recaptcha-response'];
+		}else{
+			$recaptcha =true;
+		}
 		unset($post['g-recaptcha-response']);
-
 		//	Make sure the password match
 		if(empty($post['user_password-s'])){
 			return array('hasError' => true, 'message' => "Oops!  You must fill out password fields.");
@@ -747,8 +750,8 @@ End password reset methods
 			$rand = rand(1, 100000000);
 			$username = $username.'-'.$rand;
 		}	
-		$post['user_name-s'] = $username;
-		unset($post['user_name-s']);
+		//$post['user_name-s'] = $username;
+		//unset($post['user_name-s']);
 		$user = $this->userAlreadyExists($post);
 
 		//IF USER EXISTS AND IS FROM FACEBOOK
@@ -765,8 +768,10 @@ End password reset methods
 		$valid = $this->helpers->validateRequired($params, $unrequired);
 		if($valid !== true) return $valid;
 
+		//Verifycation Hash
 		$verificationHash = $this->generateHash();
 
+		//SET KEY VALUES FROM USER POST
 		$keys = array();
 		$values = array();
 		foreach($pairs as $key => $value){
@@ -789,24 +794,26 @@ End password reset methods
 		$params[':user_salt'] = $salt;
 		$post['user_salt-nf'] = $salt;
 
-		
-		$keys[] = 'user_name';
-		$values[] = ':user_name';
+		if( !$fromFB ){
+			$keys[] = 'user_name';
+			$values[] = ':user_name';
+		}
+	
 		$params[':user_name'] = $username;
 		$post['user_name-nf'] = $username;
 
+		//CREATE USER
 		$s = "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")";
+
 		$result = $this->performUpdate(array(
 			'updateString' => "INSERT INTO users (".join(', ', $keys).") VALUES (".join(', ', $values).")",
 			'updateParams' => $params
 		));
 
-	
+		//var_dump($params, $result); die;
 		if($result){
-			if(!$isReader){
-				//ADD USER TO MAILCHIMP LIST
-				$this->registerInMailChimpList($post);
-
+			//if(!$isReader){
+				
 				//Add Contributor Info
 				$contributor_name = $post['user_first_name-s'];//.' '.$post['user_last_name-s'];
 				$email = $post['user_first_name-s'].' '.$post['user_email-e'];
@@ -814,6 +821,7 @@ End password reset methods
 				
 				if(isset($contributor_seo_name)) $contributor_seo_name = join(explode(' ', strtolower(preg_replace('/[^A-Za-z0-9- ]/', '', $contributor_seo_name))), '-');
 
+				//CHECK IF CONTRIBUTOR INFO ALREADY EXIST
 				$dupCheck = $this->mpArticle->getContributors(['contributorSEOName' => $contributor_seo_name] );
 				$dupCheckEmail = $this->mpArticle->getContributors(['contributorEmail' => $post['user_email-e'] ] );
 
@@ -821,17 +829,19 @@ End password reset methods
 					  $rand = rand(1, 100000000);
 					  $contributor_seo_name = $contributor_seo_name.'-'.$rand;
 				}
-
 				if(count($dupCheckEmail['contributors']) <= 0){
+					//REGISTER FROM FACEBOOK
 					if(isset($post['user_facebook_id-s']) && $post['user_facebook_id-s']){
 						$contributor_image_fb = "http://graph.facebook.com/".$post['user_facebook_id-s']."/picture";
 						$contributor_facebook_link = $post['fb_user_link'];
 						
+						//CREATE CONTRIBUTOR RECORD
 						$contributor_id = $this->performUpdate(array(
 							'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address, contributor_image, contributor_facebook_link ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."', '".$contributor_image_fb."', '".$contributor_facebook_link."')",
 							'updateParams' => $params
 						));
 					}else{
+
 						$contributor_id = $this->performUpdate(array(
 							'updateString' => "INSERT INTO article_contributors ( contributor_name, contributor_seo_name, contributor_email_address ) VALUES ('".$contributor_name ."', '".$contributor_seo_name."', '".$post['user_email-e']."')",
 							'updateParams' => $params
@@ -839,13 +849,22 @@ End password reset methods
 					}
 				}
 
+				//ADD USER TO MAILCHIMP LIST
+				$this->registerInMailChimpList($post);
+
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
-				return $this->doUserActivation($verificationHash);
-			}else{ 
+
+				if( $fromFB ){
+					return $this->doUserActivation($verificationHash);
+				}else{
+					return $this->resendUserVerify($verificationHash);
+				}
+				//return $this->doUserActivation($verificationHash);
+			/*}else{ 
 				$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 				return $this->doUserActivation($verificationHash);
 
-			}
+			}*/
 		}else return $this->helpers->returnStatus(500);
 	
 	}	
@@ -1177,9 +1196,44 @@ End password reset methods
 		$data = $this->performQuery(array(
 			'queryString' => $s,
 			'queryParams' => array( ),
-			//'returnRowAsSingleArray' => true,
 			'bypassCache' => true
 			));
+
+		if ($data && isset($data[0])){
+				// If $q is an array of only one row (The set only contains one article), return it inside an array
+			return $data;
+		} else if ($data && !isset($data[0])){
+				// If $q is an array of rows, return it as normal
+			$data = array($data);
+			return $data;
+		} else {
+			return false;
+		}
+	}
+
+	public function getContributorEarningChartArticleDataPerDay($data){
+
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$user_type = filter_var($data['user_type'], FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$start_date = filter_var($data['start_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$end_date = filter_var($data['end_date'],  FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
+		if($user_type == 3 ) $user_type = 0;
+
+		$s = " SELECT sum(usa_pageviews) as 'us_pageviews', article_daily_earnings.month, article_daily_earnings.year, updated_date, user_rate.rate
+				FROM `article_daily_earnings` 
+				INNER JOIN user_rate ON ( user_rate.month = article_daily_earnings.month AND user_rate.year = article_daily_earnings.year)
+				WHERE contributor_id = $contributor_id 
+					AND  updated_date BETWEEN '".$start_date."' AND DATE_ADD( '".$end_date."' , INTERVAL 1 DAY) 
+					AND user_rate.user_type = $user_type
+				GROUP BY DATE_FORMAT( updated_date,'%Y-%m-%d') 
+				ORDER BY updated_date ASC ";
+
+		$data = $this->performQuery(array(
+			'queryString' => $s,
+			'queryParams' => array( ),
+			'bypassCache' => true
+		));
 
 		if ($data && isset($data[0])){
 				// If $q is an array of only one row (The set only contains one article), return it inside an array
@@ -1245,7 +1299,7 @@ End password reset methods
 
 		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 
-		$s= "SELECT articles.article_title, articles.article_seo_title, articles.article_id, categories.cat_dir_name FROM article_contributor_articles
+		$s = "SELECT articles.article_title, articles.article_seo_title, articles.article_id, categories.cat_dir_name FROM article_contributor_articles
 		 INNER JOIN ( articles, article_categories, categories)
 		 ON ( article_contributor_articles.article_id = articles.article_id 
 		 	AND articles.article_id = article_categories.article_id 
@@ -1260,6 +1314,10 @@ End password reset methods
 			'queryParams' => array( ),
 			'bypassCache' => true
 		));
+
+		if ($article && !isset($article[0])){
+			$article = array($article);
+		}
 
 		return $article;
 
@@ -1325,13 +1383,17 @@ End password reset methods
 		AND articles.article_status = 1 
 		AND google_analytics_data_new.month = $month 
 		AND google_analytics_data_new.year = $year 
-		ORDER BY google_analytics_data_new.usa_pageviews DESC LIMIT 1";
+		ORDER BY google_analytics_data_new.usa_pageviews DESC LIMIT 3";
 
 		$article = $this->performQuery(array(
 			'queryString' => $s,
 			'queryParams' => array( ),
 			'bypassCache' => true
 		));
+
+		if ($article && !isset($article[0])){
+			$article = array($article);
+		}
 
 		return $article;
 
@@ -1426,6 +1488,7 @@ End password reset methods
 		}else return array_merge($this->helpers->returnStatus(500), array('hasError' => true));
 	}
 	
+	//SEND EMAIL TO BLOGGERS TEMPLATE
 	public function send_email($opts){
 		$options = array_merge(array(
 			'email' => '',
@@ -1463,7 +1526,7 @@ End password reset methods
 
 		$mail->Subject = $opts['subject'];
 		$mail->Body    = $body;
-		$mail->AltBody = 'Thank you for registering with puckermob.com!  Go to '.$options['hashUrl'].' to complete the registration process.';
+		//$mail->AltBody = 'Thank you for registering with puckermob.com!  Go to '.$options['hashUrl'].' to complete the registration process.';
 
 		if(!$mail->send()) {
 		   //return 'Message could not be sent.';
@@ -1477,6 +1540,7 @@ End password reset methods
 		return true;
 	}
 
+	//OLD SEND EMAIL FUNCTION
 	public function sendEmail($opts){
 		$options = array_merge(array(
 			'email' => '',
@@ -1507,14 +1571,16 @@ End password reset methods
 			'returnRowAsSingleArray' => true,
 			'bypassCache' => true
 		));
-
+		
 		if($user){
+			
 			
 			if($user['user_verified'] == 1){
 				$r = $this->helpers->returnStatus(200);
 				$r['message'] = "Thanks for registering.  You'll be redirected momentarily to your account.  If not, click <a href=\"".$this->config['this_admin_url']."\dashboard\">here</a>.";
 				//return $r;
 			}
+
 
 			$q = $this->performUpdate(array('updateString' => "UPDATE users SET user_verified = 1 WHERE user_id = ".$user['user_id']));
 			
@@ -1537,24 +1603,35 @@ End password reset methods
 		}else return $this->helpers->returnStatus(500);
 	}
 
-	public function resendUserVerify(){
-		if(!isset($_SESSION['user_id'])) $this->helpers->returnStatus(500);
+
+	//SEND USER VERIFY ACCOUNT
+	public function resendUserVerify( $hash_code = false ){
+		if(!isset($_SESSION['user_id']) && !$hash_code ) $this->helpers->returnStatus(500);
+
+		$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+		
+		$queryString = "SELECT * FROM users WHERE user_id = :userId ";
+		if($hash_code){
+			$queryString .= " OR  user_verification_code = '".$hash_code."' ";
+		}
+		$queryString .=" LIMIT 0, 1";
 
 		$user = $this->performQuery(array(
-			'queryString' => "SELECT * FROM users WHERE user_id = :userId LIMIT 0, 1",
-			'queryParams' => array(':userId' => filter_var($_SESSION['user_id'], FILTER_SANITIZE_STRING, PDO::PARAM_STR))
+			'queryString' => $queryString,
+			'queryParams' => array(':userId' => filter_var($user_id, FILTER_SANITIZE_STRING, PDO::PARAM_STR))
 		));
+	//	var_dump($user_id);
 
 		if($user){
-			if(!$registerEmail = $this->sendEmail(array(
+			if(!$registerEmail = $this->sendemail(array(
 				'email' => $user['user_email'],
 				'hashUrl' => $this->config['this_admin_url'].'activate/'.$user['user_verification_code'],
 				'action' => 'access',
-				'subject' => $this->mpArticle->data['article_page_visible_name']." Registration Email",
+				'subject' => "Puckermob Registration Email",
 				'username' => $user['user_name']
 			))) return $registerEmail;
 			$r = $this->helpers->returnStatus(200);
-			$r['message'] = "Thanks for registering.  We've resent your verification email to the email address on file.";
+			$r['message'] = "<h2 class=\"uppercase\">To Complete your Registration: </h2><p>Please check your email  and click  the link  provided to complete your registration.</p><p>Didn't get an e-mail from us? Check your spam folder or <a href=\"".$this->config['this_admin_url'].'activate/resend'."\">Click Here</a> to resend.";
 			return $r;
 		}else $this->helpers->returnStatus(500);
 	}

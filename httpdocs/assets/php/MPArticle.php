@@ -1866,16 +1866,16 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	}
 	switch($articleStatus) {
 		case '1':
-		$order_sql = " ORDER BY a.article_status = 1 DESC, a.article_id DESC ";
+		$order_sql = " ORDER BY a.article_status = 1 DESC, a.date_updated DESC ";
 		break;
 		case '2':
-		$order_sql = " ORDER BY a.article_status = 2 DESC, a.article_id DESC ";
+		$order_sql = " ORDER BY a.article_status = 2 DESC, a.date_updated DESC ";
 		break;
 		case '3':
-		$order_sql = " ORDER BY a.article_status = 3 DESC, a.article_id DESC ";
+		$order_sql = " ORDER BY a.article_status = 3 DESC, a.date_updated DESC ";
 		break;
 		default:
-		$order_sql = " ORDER BY a.article_status = 1 DESC, a.article_id DESC ";
+		$order_sql = " ORDER BY a.article_status = 1 DESC, a.date_updated DESC ";
 		break;
 	}
 
@@ -1885,8 +1885,8 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 	
-	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date,
-	nc.cat_id, nc.cat_dir_name, '0' as us_traffic, article_contributors.contributor_name, article_contributors.contributor_seo_name, users.user_email, users.user_type, users.user_id 
+	$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, a.article_status, a.creation_date, a.date_updated, 
+	 a.article_agree_edits, nc.cat_id, nc.cat_dir_name, '0' as us_traffic, article_contributors.contributor_name, article_contributors.contributor_seo_name, users.user_email, users.user_type, users.user_id 
 	FROM articles as a
 	INNER JOIN (article_categories as a_c, categories as nc, article_contributors, article_contributor_articles, users)
 	ON a_c.article_id = a.article_id
@@ -1989,13 +1989,12 @@ public function get_dashboardArticles($limit = 10, $order = '', $articleStatus =
 }
 
 public function getTotalUsPageviews( $ids = null ){
-	 //$ids = filter_var($article_id, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-	 $s = "SELECT sum(usa_pageviews) as total_usa_pv, article_id FROM `google_analytics_data_new` ";
+	/// $ids = filter_var($article_id, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	 $s = " SELECT sum(usa_pageviews) as total_usa_pv, article_id  FROM `google_analytics_data_daily` ";
 
-	 if($ids != null ) $s.= " WHERE article_id IN ( $ids ) ";
+	 if($ids != null ) $s.= ' WHERE article_id IN ( '.$ids.' ) ';
 
-	 $s.= " group by article_id  ";
-
+	 $s.= " group by article_id  LIMIT 1000 ";
 	$q = $this->performQuery(['queryString' => $s]);
 
 

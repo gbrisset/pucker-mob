@@ -119,45 +119,45 @@ var EarningsObj = {
 	},
 	
 	getArticlesListData: function(){
-    	var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0;
+    	var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0, user_type = $('#user_type').val();
     	$.ajax({
 			type: "POST",
 			async: false,
 			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
-			data: { task:'get_chart_article_data', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date  }
+			data: { task:'get_chart_article_data_per_day', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date, user_type:user_type  }
 		}).done(function(data) {
-			var total_amount = 0, total_pageviews = 0,  t_body = $('#article-list tbody'), html = "";
+			var total_amount = 0, total_pageviews = 0,  t_body = $('#earnings-list tbody'), html = "";
 			if( data != "false" ){ 
 				data = $.parseJSON(data);
-				var rate = $('#current-user-rate').val();
 				
 				$(data).each( function(e){	
+
 					var val = $(this),
-					pageviews = parseInt(val[0].usa_pageviews),
-					amount = 0;
-					var tr = "";
+					pageviews = parseInt(val[0].us_pageviews),
+					amount = 0,
+					rate = val[0].rate,
+					tr = "";
 
-					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;	
+					if(pageviews > 0 ){
+						pageviews = pageviews / 1000;
+						amount =  pageviews * rate ;	
+					} 
 
-					tr += "<tr id='article-'"+ val[0].article_id + ">";
-						tr += "<td class='article align-left'>";
-							tr += "<a href='http://puckermob.com/"+ val[0].cat_dir_name +"/"+ val[0].article_seo_title +" 'target='blank' > "+ val[0].article_title.substring(0,40) +"... </a>";
-						tr += "</td>";
-						tr += "<td>" + moment( val[0].creation_date ).format("ll") + "</td>";
-						tr += "<td>" + pageviews + "</td>";
-						tr += "<td>" + rate + "</td>";
-						tr += "<td class='bold align-right'>$"+ parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() +"</td>";
+					tr += "<tr>";
+						tr += "<td class='align-left'>" + moment( val[0].updated_date ).format("ll") + "</td>";
+						tr += "<td class='align-center'>" + parseFloat(pageviews, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + "</td>";
+						tr += "<td class='align-center'>$" + rate + "</td>";
+						tr += "<td class=' align-right'>$"+ parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() +"</td>";
 					tr += "</tr>";
 					html += tr;
 					total_amount += amount;
 					total_pageviews += pageviews;
 				});
 				var total_tr = '<tr class="total">';
-					total_tr += '<td class="bold">TOTAL</td>';
-					total_tr += '<td></td>';
-					total_tr += '<td class="bold">'+total_pageviews+'</td>';
-					total_tr += '<td class="bold">$'+rate+'</td>';
-					total_tr += '<td class="bold align-right">$'+parseFloat(total_amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
+					total_tr += '<td class="align-left">TOTAL</td>';
+					total_tr += '<td class="align-center">'+parseFloat(total_pageviews, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
+					total_tr += '<td class="align-center">--</td>';
+					total_tr += '<td class=" align-right">$'+parseFloat(total_amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+'</td>';
 				total_tr += '</tr>';
 
 				html += total_tr;
@@ -169,7 +169,8 @@ var EarningsObj = {
 	},
 
 	getWritersReport: function(){
-		var info = {}, articles = [], contributor_id = $('#contributor_id').val(), total_earned = 0, total_amount = 0, total_pageviews=0;
+		var info = {}, articles = [], contributor_id = $('#contributor_id').val(), 
+		total_earned = 0, total_amount = 0, total_pageviews=0;
 		////$dataInfo = ['start_date' => $start_date, 'end_date' => $end_date];
 
     	$.ajax({

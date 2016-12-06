@@ -23,8 +23,8 @@
 	<div  class="small-12 large-7 xlarge-6 columns ">
 		<div style="background-color: #867BB5; " class="small-12 columns articles_resume radius valign-middle" >
 			<h3 class="small-12 columns uppercase bold align-left" style="line-height: 1.2;">
-			<span style="color: yellow; " class="uppercase"><?php //echo date('F'); ?> SEPTEMBER Incentive:</span>
-			<br>#1-5: $100 Bonus | #6-10: $50 Bonus | #11-20: $10 </h3>
+			<span style="color: yellow; " class="uppercase"><?php //echo date('F'); ?> DECEMBER Incentive:</span>
+			<br>FOR EVERY 100,000 U.S. VISITS TO YOUR ARTICLES: $25 </h3>
 		</div>
 	</div>
 	<div class="small-12 large-4 xlarge-3 columns  no-padding">

@@ -27,12 +27,22 @@ $has_sponsored = 0;
 $omitThis = 0;
 $offset = $quantity * $page;
 $cat_id = $mpArticle->data['cat_id'];
-$articlesList = $mpArticle->getArticlesListView(['limit' => $quantity, 'omit' => $omitThis, 'offset' => $offset, 'user_type' => "1, 6, 7, 8" ]);
+$articlesList = $mpArticle->getArticlesListView(['limit' => $quantity, 'omit' => $omitThis, 'offset' => $offset, 'user_type' => "1, 6, 7, 8" ]); ?>
 
-if ( $detect->isMobile() && !$detect->isTablet()) { ?>
+
+<?php if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
+		
+<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+</script>
+</div>
+		
+
 <body id="home" class="mobile background-eee">
 	<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-top: 5px;    }</style>
 	<?php include_once($config['include_path'].'header.php'); ?>
@@ -60,6 +70,16 @@ if ( $detect->isMobile() && !$detect->isTablet()) { ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
+
+		
+<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+</script>
+</div>
+		
+
 <body id="home" class="">
 	
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
@@ -89,6 +109,15 @@ else if($ajax) {
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
+
+		
+<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
+<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
+</script>
+</div>
+		
 <body id="home">
 	<!-- Sponsored By Totally Her -->
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">

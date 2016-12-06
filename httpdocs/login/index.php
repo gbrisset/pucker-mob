@@ -21,8 +21,6 @@
 			//	Success
 			$_SESSION['csrf'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'].time());
 			$redirectString = $adminController->user->redirectAfterLogin();
-			//echo $redirectString;
-			//file_put_contents($file, $redirectString.PHP_EOL);
 			$url = $config['this_admin_url'].'dashboard/';
 
 			header( "Location: $url" ) ; 
@@ -59,7 +57,6 @@
 		</div>
 	</div>
 
-
 	 <!-- MOBILE TABS -->
 	 	   <dl class="mobile-tabs hide-for-large-up" data-tab role="tablist">
 			  <dd class="tab-title active small-6 columns login-dd" role="presentation"><a href="#login" role="tab" tabindex="0" aria-selected="true" aria-controls="login">Login</a></dd>
@@ -94,7 +91,7 @@
 				   			<!-- LOGIN BUTTON & ERROR MESSAGE -->
 				   			<div class="margin-top">
 								<?php if(isset($loginStatus) && $loginStatus['hasError'] ){ ?>
-									<p class="error"><?php echo $loginStatus['message']; ?></p>
+									<p class="new-error"><?php echo $loginStatus['message']; ?></p>
 								<?php } ?>
 								<button type="submit" id="login" name="login" class="button left small-12">Login</button>
 							</div>
@@ -111,7 +108,7 @@
 
 						<!-- FACEBOOK -->
 			   			<div class="fb-login-button clear">
-			   				<button id="fb-login" class="small-12 columns no-padding">Log-In with facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
+			   				<button id="fb-login" class="fb-login small-12 columns no-padding">Log-In with facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
 						</div>
 
 						<p class="small-registration-text">We'll never post to your Facebook without permission.</p>
@@ -147,29 +144,14 @@
 					   			<!-- REGISTER BUTTON & ERROR MESSAGE -->
 					   			<div class="margin-top">
 									<?php if(isset($registrationStatus)){ ?>
-										<p class="<?php echo ($registrationStatus['hasError'] == true) ? 'error' : 'success'; ?>"><?php echo $registrationStatus['message']; ?></p>
+									<div class="columns small-12 new-error margin-bottom" style="border-radius: 5px;">
+										<?php echo $registrationStatus['message']; ?>
+										</div>
 									<?php } ?>
 									<button type="submit" id="register" name="register" class="button left small-12">Register</button>
 								</div>
 						   	</form>
-						   	<!-- REGISTRATION STATUS -->
-						    <?php if(isset($registrationStatus) && $registrationStatus['hasError'] == false){ ?>
-								<h2>Almost Done!</h2>
-								<div class="hsContent dark-bg">
-									<div id="register-form-cont-new" class="admin-form-cont success-msg">
-										<div class="row">
-											<p class="">
-												<?php 
-													$url = $config['this_admin_url'].'dashboard/';
-													echo $registrationStatus['message']; 
-												?>
-											</p>
-											<script>setTimeout(function(){window.location = "<?php echo $url; ?>"}, 1000);</script>
-
-										</div>
-									</div>
-								</div>
-							<?php } ?>
+						 
 						   	<!-- OR -->
 							<div class="columns no-padding or-box">
 								<span class="small-5 columns line"></span>
@@ -179,7 +161,7 @@
 				   			
 							<!-- FACEBOOK -->
 				   			<div class="fb-login-button clear">
-				   				<button id="fb-login" class="small-12 columns no-padding">Register with facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
+				   				<button id="fb-login" class=" fb-login small-12 columns no-padding">Register with facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
 							</div>
 
 							<p class="small-registration-text">We'll never post to your Facebook without permission.</p>
@@ -198,11 +180,15 @@
 	<!-- FACEBOOK LOGIN & REGITER API -->
 	<script>
 		if($('#fb-login')){
-			$('#fb-login').on('click', function(e){
-			    FB.login(function(response) {
-			  	  checkLoginState();
-			    }, {scope: 'public_profile,email'});
+			$('.fb-login').each(function(){
+				$(this).on('click', function(e){
+					console.log('fb click');
+				    FB.login(function(response) {
+				  	  checkLoginState();
+				    }, {scope: 'public_profile,email'});
+				});
 			});
+			
 		}
 	</script>
 

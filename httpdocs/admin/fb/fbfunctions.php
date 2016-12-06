@@ -1,7 +1,3 @@
-<?php
-  //Header("content-type: application/x-javascript");
-  //require_once('../../assets/php/config.php');
-?>
 <script>
 
 
@@ -51,25 +47,8 @@
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.1' // use version 2.1
+    version    : 'v2.2' // use version 2.1
   });
-
-   function isaFan(){
-    FB.api({
-      method:     "pages.isFan",
-      page_id:    "781998645209691",
-    }, function(response) {
-        console.log(response);
-        if(response){
-            alert('You Likey');
-        } else {
-            alert('You not Likey :(');
-        }
-    }
-  );
-}
-
-//isaFan();
 
   // Now that we've initialized the JavaScript SDK, we call 
   // FB.getLoginStatus().  This function gets the state of the
@@ -108,26 +87,25 @@
          registerUser(response);
       }
     });
+
  }
 
-
-
-function registerUser(response){
-    var isreader = false, author_id = 0;
-    if($('#isReader').length > 0){
+  function registerUser(response){
+   var isreader = false, author_id = 0;
+   /* if($('#isReader').length > 0){
       isreader = true;
       author_id = $('#author-id').val();
-    }
+    }*/
 
       $.ajax({
         type: "POST",
-        url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
+        url:  'http://www.puckermob.com/admin/assets/php/ajaxfunctions.php',
         data: { user: response, task:'register_fb', isReader:isreader, author_id : author_id}
       }).done(function(data) {
         if(data){
           data = JSON.parse(data);
           
-          if( isreader ){
+         /* if( isreader ){
             if( !data['hasError'] ){
               var email = data['email'],
               container = $('#follow-the-author-bg');
@@ -145,12 +123,30 @@ function registerUser(response){
             }else{
                 $('#register-result').html(data['message']).attr('style', 'color:red; text-transform: inherit;');
             }
-          }else{
+          }else{ */
             if(!data['hasError']){
-             setTimeout(function() {window.location = "<?php echo $config['this_admin_url']; ?>";}, 200);
-          }
+             setTimeout(function() {window.location = "http://www.puckermob.com/admin/dashboard";}, 200);
+         // }
         }
       }
     });
   }
+/*console.log(msg);
+                if(msg['hasError']) $('#login-result').html(msg['message']).attr('style', 'color:red; text-transform: inherit;');
+                else{
+                    var email = msg['email'],
+                    container = $('#follow-the-author-bg');
+                    $('#ss_user_email').val(msg);
+
+                    $(container).html('<label class="follow-author" ><i class="fa fa-check"></i>Author Followed</label>');
+                    $('body').removeClass('show-modal-box');
+                    $('.top-header-logout').find('.welcome-email span').html('Welcome, '+email);
+                    $('.top-header-logout').find('#image-header-profile').attr('src', msg['user_img']);
+                    $('.top-header-login').attr('style', 'display:none !important');
+                    $('.top-header-logout').attr('style', 'display:inherit !important');
+                    $('#follow-msg').html(msg['message']);
+                    $('#my-account-header-link').attr('href', 'http://www.puckermob.com/admin/following/');
+                    $('body').addClass('show-modal-box-follow');
+                }*/
+  
 </script>

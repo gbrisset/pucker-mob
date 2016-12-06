@@ -27,9 +27,9 @@
 		$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 		
 	// 2. records per page ($per_page)
-		$per_page = 20;
+		$per_page = 50;
 		$order="";
-		$limit=20;
+		$limit=50;
 		$category = '';
 		$post_date = 'all';
 		$visible = '';
@@ -37,15 +37,19 @@
 		if (isset($_GET['post_date']) AND $_GET['post_date'] != "all" ) {$post_date = $_GET['post_date'];}				  
 		if (isset($_GET['visible'])) {$visible = intval($_GET['visible']);}
 
-	// 3. total record count ($total_count)	
+		// 3. total record count ($total_count)	
 		$total_count = $mpArticle->count_all_contributors();
 		$pagination = new Pagination($page, $per_page, $total_count);
 		$offset = $pagination->offset();
 		
-
 		if(isset($_POST['searchcontributorinput']) && !empty($_POST['searchcontributorinput'])){
+			
+			$offset = 0;
 			$articleContributors = $mpArticleAdmin->getAllContributors(['sortType' => $sortId, 'limit' => 1000000, 'offset' => $offset, 'condition'=>" contributor_name like '%".$_POST['searchcontributorinput']."%'"]);
-		
+			$total_count = count($articleContributors);
+			$pagination = new Pagination($page, $per_page, $total_count);
+			$offset = $pagination->offset();	
+
 		}else{
 			$articleContributors = $mpArticleAdmin->getAllContributors(['sortType' => $sortId, 'limit' => $limit, 'offset' => $offset]);
 		}
@@ -92,7 +96,7 @@
 					<label class="contributor-info columns small-2">NAME</label>
 					<label class="contributor-info columns small-4 hide-small">EMAIL</label>
 					<label class="contributor-info columns small-1 hide-small">LEVEL</label>
-					<label class="contributor-info columns small-1 hide-small"></label>
+					<label class="contributor-info columns small-1 hide-small">DATE</label>
 					<label class="contributor-info columns small-3"></label>
 				</div>
 				
@@ -123,19 +127,19 @@
 											
 						<div class="admin-contributor small-12 columns no-padding padding-bottom">
 							<div class="contributor-image columns small-1 no-padding-left hide-small">
-								<a href="<?php echo $config['this_admin_url'].'contributors/edit/'.$contributorInfo['contributor_seo_name']?>" >
-									<img src="<?php echo $imageUrl; ?>" alt="<?php echo $contributorInfo['contributor_name']; ?>" style= "min-width: 2rem;" />
+								<a href="<?php echo $config['this_admin_url'].'profile/user/'.$contributorInfo['contributor_seo_name']?>" >
+									<img src="<?php echo $imageUrl; ?>" alt="<?php echo $contributorInfo['contributor_name']; ?>" style= "max-width: 50px;" />
 								</a>
 							</div>
 							<div class="contributor-info columns small-2">
 								<h2 class="left">
-									<a href="<?php echo $config['this_admin_url'].'profile/edit/'.$contributorInfo['contributor_seo_name']; ?>">
+									<a href="<?php echo $config['this_admin_url'].'profile/user/'.$contributorInfo['contributor_seo_name']; ?>" style="margin-top: 5px;">
 										<?php echo $contributorInfo['contributor_name'];?>
 									</a>
 								</h2>
 							</div>
 							<div class="contributor-info columns small-4 hide-small">
-								<p style="margin-right:200px;"><?php echo $contributorInfo['contributor_email_address'] ?></p>
+								<label style="margin-right:200px; margin-top: 10px;"><?php echo $contributorInfo['contributor_email_address'] ?></label>
 							</div>
 							<div class="contributor-info columns small-1 no-margin hide-small">
 								<?php 
@@ -160,15 +164,19 @@
 										$label_level  = "WRITER";
 										$disabled = "disabled";
 										break;
+									default: 
+										$label_level = "STARTER";
+										break;
 								}
 								?>
 								<input <?php echo $disabled; ?> class="mob-level mob-level-contributor no-margin" type="button" value ="<?php echo $label_level; ?>" data-info-user-email = "<?php echo $contributorInfo['contributor_email_address']; ?>"data-info-level= "<?php echo $contributor_type; ?>" />
 							</div>
-							<div class="contributor-links columns small-1 hide-small" >
-								<a href="#" style="font-size:12px;"><?php echo $date_created;?></a>
+							<div class="contributor-links columns small-1 hide-small" style="text-align: left; padding: 0;">
+								<label style="font-size:12px; margin-top: 5px;"><?php echo $date_created;?></label>
 							</div>
 
 							<div class="contributor-links columns small-5 large-3" >
+								<a class="manage-links" href="<?php echo $config['this_admin_url'].'profile/edit/'.$contributorInfo['contributor_seo_name'].'/#contributor-delete-form'; ?>" id="delete"><i class="fa fa-times" aria-hidden="true"></i></a>
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'profile/edit/'.$contributorInfo['contributor_seo_name']; ?>" id="edit"><i class="fa fa-pencil-square-o"></i></a>
 								<a class="manage-links" href="<?php echo $config['this_admin_url'].'earnings/'.$contributorInfo['contributor_seo_name'];?>" ><i class="fa fa-bar-chart"></i></a>
 							</div>

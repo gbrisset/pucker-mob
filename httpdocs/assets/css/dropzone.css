@@ -1,0 +1,9 @@
+
+.ss-label { margin-top:5px !important; }
+.ss-box{ max-height: 8rem; overflow: scroll; }
+.ss-box form#my-awesome-dropzone{height: 8rem;}
+.ss-box .dz-size, .dz-filename, .dz-success-mark, .dz-error-mark{ display:none; }
+.ss-box .dz-details{ padding: 5px; float:left; background: none; max-width:5rem; }
+.ss-box .dz-default.dz-message{ text-align: center !important; padding:10px !important; }
+.ss-box .dz-default.dz-message span{ color: #aaa; font-family: Oslo; font-style: italic; }
+.ss-box .dz-details img{ height: 4rem; width:5rem; }

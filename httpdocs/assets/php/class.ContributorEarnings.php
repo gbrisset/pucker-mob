@@ -24,13 +24,14 @@
 
 		public function __construct( $contributor = null){ 
 			$this->contributor = $contributor;
+			$this->contributor_id = isset($contributor->data->contributor_id) ? $contributor->data->contributor_id : false;
 		}
 
 		public function getEarnings( $limit = 99999999 ){
 
 			$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 
-			$contributor_id = $this->contributor->contributor_id;
+			$contributor_id = $this->contributor_id;
 			
 			//	Set the params to be bound
 			$params_to_bind = [ ':contributor_id' => $contributor_id ];
@@ -42,12 +43,12 @@
 
 		public function getEarningsPerMonthYear( $month, $year ){
 
-			$contributor_id = $this->contributor->contributor_id;
+			$contributor_id = $this->contributor_id;
+			$query =  " SELECT * FROM contributor_earnings WHERE contributor_id = $contributor_id  AND month IN (".$month.") AND year = ".$year." ORDER BY id DESC ";
 			
 			//	Set the params to be bound
 			$params_to_bind = [ ':contributor_id' => $contributor_id ];
-			$earnings = static::find_by_sql( "SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id  AND month IN (".$month.") AND year = ".$year." ORDER BY id DESC ", $params_to_bind );
-
+			$earnings = static::find_by_sql( $query, $params_to_bind );
 			return  $earnings;
 		}	
 

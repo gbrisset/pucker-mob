@@ -127,7 +127,7 @@ if($contributorInfo['contributors']){
 				$articleIndex = 1; 
 				foreach ($contributorInfo['articles']['articles'] as $article) {
 					$link = $config['this_url'].'/'.$article['cat_dir_name'].'/'.$article['article_seo_title'];
-					$linkToImage = 'http://cdn.puckermob.com/articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$article['article_id'].'_tall.jpg';
+					$linkToImage = 'http://images.puckermob.com/articlesites/'.$mpArticle->data['article_page_assets_directory'].'/large/'.$article['article_id'].'_tall.jpg';
 					$date = date("M d, Y", strtotime($article['creation_date']));
 					$article_title = $article['article_title'];
 					$article_id = $article['article_id'];

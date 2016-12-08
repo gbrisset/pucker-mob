@@ -184,7 +184,7 @@ if(!is_null($categoryInfo)){
 		
 		<!-- 10  MOST RECENT ARTICLES ADDED -->
 		<section class="clear second-section low-index">
-			<?php include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
+			<?php //include_once( $config['include_path'].'most_recent_internal_articles.php'); ?>
 		</section>
 	</main>
 	
@@ -314,7 +314,7 @@ if(!is_null($categoryInfo)){
 							 ?>
 					
 						 <?php }else { ?>
-							<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+							<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 						<?php } ?>
 					</div>
 				</div>
@@ -380,7 +380,7 @@ if(!is_null($categoryInfo)){
 	<!-- MAIN CONTENT -->
 	<main id="main" class="row panel sidebar-on-right" role="main">
 
-		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix" style="    max-width: 752px; height:auto; ">
+		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix" style=" max-width: 752px; height:auto; ">
 
 			<!-- ARTICLE CONTENT -->
 			<?php include_once($config['template_path'].'single_page_article.php'); ?>
@@ -395,7 +395,7 @@ if(!is_null($categoryInfo)){
 			</div>	 
 			
 			<!-- ALSO IN PM ARTICLES -->
-			<?php include_once( $config['include_path'].'similararticles.php'); ?>
+			<?php //include_once( $config['include_path'].'similararticles.php'); ?>
 		</section>
 
 		<!-- RIGHT SIDE BAR -->

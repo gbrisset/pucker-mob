@@ -187,9 +187,10 @@
 			  		$all_basic_total = $all_started_total = 0;
 			  		$all_pro_total = $all_unpaid_total = 0;
 			  		$all_us_viwers_by_thousand_pro = $all_us_viwers_by_thousand_basic = $all_total_to_pay_over_25 = $all_unpaid_total_over_25 = 0;
-			  		$new = 0;
-			  		$all_adMatch_rev = $total_incentives = $total_rev = $total_pro_incentives = $total_basic_incentives = $total_started_incentives = $all_unpaid_total_pro = $all_unpaid_total_basic = $all_unpaid_total_started= 0;
-			  		$total_over_25 = 0;
+			  		$new = $total_over_25 = 0;
+			  		$all_adMatch_rev = $total_incentives = $total_rev = $total_pro_incentives = $total_basic_incentives = $total_started_incentives = 0;
+			  		$all_unpaid_total_pro = $all_unpaid_total_basic = $all_unpaid_total_started= 0;
+			  		
 
 			  		foreach( $results as $contributor){
 			  			$total_rate = $contributor['share_rate'];
@@ -206,19 +207,16 @@
 			  						$adMatchBalance = $match->amount_commit;
 			  						break;
 			  					}
-
-			  					
 			  				}
 		  				}
 		  				//RANKLIST
-			  			if($rank_list){ var_dump($rank_list); die;
+			  			if($rank_list){ 
 			  				foreach($rank_list as $key => $val ){
 			  					if($key == $contributor['contributor_id']){
 			  						if (strpos($val, '$') !== false) {
 			  							$incentives = substr($val, 1);
 			  							break;
 			  						}
-			  						
 			  					}
 			  				}
 			  			}

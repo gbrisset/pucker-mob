@@ -13,7 +13,7 @@ if($detect->isMobile()) $paddingTop = " padding-top bottom-border"; ?>
 			foreach($relatedArticles as $article){$relatedArticleIndex++; if($relatedArticleIndex < 7) { ?>
 	
 			<div id="similar-article-<?php echo $relatedArticleIndex; ?>"class="mobile-12 small-12 medium-6 large-6 xlarge-4 columns half-padding<?php if($relatedArticleIndex === 3 || $relatedArticleIndex === 6) echo ' hide-for-small hide-for-large'; ?> <?php echo $paddingTop; ?>">
-			<a href="<?php echo 'http://www.puckermob.com/'.$article['cat_dir_name'].'/'.$article['article_seo_title']; ?>"><img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg'; ?>" alt="<?php echo $article['article_title']; ?>" /></a>
+			<a href="<?php echo 'http://www.puckermob.com/'.$article['cat_dir_name'].'/'.$article['article_seo_title']; ?>"><img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg'; ?>" alt="<?php echo $article['article_title']; ?>" /></a>
 			<a href="<?php echo 'http://www.puckermob.com/'.$article['cat_dir_name'].'/'.$article['article_seo_title']; ?>"><h5><?php echo $article['article_title']; ?></h5></a>
 				
 			</div>

@@ -57,10 +57,10 @@
 
 	</main>
 
-	<!-- INFO BADGE 
+	<!-- INFO BADGE -->
 	<div id="info-badge" class="footer-position bg-black hide-for-print show-for-small-only">
-		<?php //include($config['include_path_admin'].'info-badge.php');?>
-	</div>-->
+		<?php include($config['include_path_admin'].'info-badge.php');?>
+	</div>
 	<?php //include_once($config['include_path_admin'].'footer.php');?>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php');?>
 </body>

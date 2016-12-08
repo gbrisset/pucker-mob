@@ -16,7 +16,7 @@ if( isset($recentArticles) && $recentArticles ){ ?>
 
 		foreach($recentArticles as $article){	
 			$articleUrl = 'http://www.puckermob.com/'.$article['cat_dir_name'].'/'.$article['article_seo_title'];
-			$imgurl = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';	
+			$imgurl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg';	
 			$articletitle = $article['article_title'];	
 			$date = date("M d, Y", strtotime($article['date_updated']));
 			$articleNumber++;

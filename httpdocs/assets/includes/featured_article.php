@@ -2,7 +2,7 @@
 	
 	$date = date("M d, Y", strtotime($featuredArticle['date_updated']));
 	$linkToArticle = 'http://www.puckermob.com/'.$featuredArticle['cat_dir_name'].'/'.$featuredArticle["article_seo_title"];
-	$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$featuredArticle['article_id'].'_tall.jpg';
+	$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/large/'.$featuredArticle['article_id'].'_tall.jpg';
 	$linkToContributor = $config['this_url'].'contributors/'.$featuredArticle['contributor_seo_name'];
 	$linkToACategory = $config['this_url'].$featuredArticle['cat_dir_name'];
 	if ( $detect->isMobile() ) { ?>

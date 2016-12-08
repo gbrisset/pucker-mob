@@ -194,7 +194,7 @@
 									if(file_exists($pathToImage)){
 										$imageUrl = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo["article_id"].'_tall.jpg';
 									} else {
-										$imageUrl = 'http://cdn.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
+										$imageUrl = 'http://images.puckermob.com/articlesites/sharedimages/puckermob-default-image.jpg';
 									}
 
 									

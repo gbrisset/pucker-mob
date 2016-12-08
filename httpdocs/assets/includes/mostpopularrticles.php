@@ -32,7 +32,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 							$mostReadArticle .= '<div class="columns todays-favorites fade-in-out">';
 								$mostReadArticle .= '<div class="small-5 columns imageContainer" >';
 									$mostReadArticle .= '<div class="small-12 columns imageCenterer" >';
-										$mostReadArticle .= '<img src="http://cdn.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg" alt="'.$article_title.'" />';
+										$mostReadArticle .= '<img src="http://images.puckermob.com/articlesites/puckermob/large/'.$article['article_id'].'_tall.jpg" alt="'.$article_title.'" />';
 
 									$mostReadArticle .= '</div>';
 								$mostReadArticle .= '</div>';

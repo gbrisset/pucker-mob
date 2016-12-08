@@ -31,7 +31,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<div id="about-the-author-bg" class="columns small-10 no-padding margin-top">
 				<!--<div class="columns no-padding small-4">
 					<a href="<?php echo $config['this_url'].'contributors/'.$seo_name; ?>">
-						<img src="<?php echo 'http://cdn.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $name; ?> Image" class="author-image right" style="max-height: 90px; "/>
+						<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $name; ?> Image" class="author-image right" style="max-height: 90px; "/>
 					</a>
 				</div>-->
 				<div class="author-info columns no-padding small-12" style="margin: 0;">
@@ -47,7 +47,7 @@ if($detect->isMobile()) $class = " column small-12 hide-for-print sidebar-right 
 			<div id="about-the-author-bg" class="columns small-10 no-padding">
 				<div class="columns no-padding small-2" style="min-width: 70px; margin-right: 1rem;">
 					<a href="<?php echo $config['this_url'].'contributors/'.$seo_name; ?>">
-						<img src="<?php echo 'http://cdn.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $name; ?> Image" class="author-image right" style="max-height: 90px; "/>
+						<img src="<?php echo 'http://images.puckermob.com/articlesites/contributors_redesign/'.$image_name;?>" alt="<?php echo $name; ?> Image" class="author-image right" style="max-height: 90px; "/>
 					</a>
 				</div>
 				<div class="author-info columns no-padding small-7">

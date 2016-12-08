@@ -55,7 +55,7 @@
 							<div class="clear margin-bottom" style="background: black;     margin-bottom: 5px !important;">
 								<div id="article-image " class=" no-padding tinted-image " style="opacity: 0.5;">
 									<a href="<?php echo $link_article; ?>">
-										<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+										<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 									</a>
 								</div>
 								<span class="span-middle-label-img"><a href="<?php echo $link_article; ?>">Click to read full article</a></span>

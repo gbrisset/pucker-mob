@@ -24,7 +24,7 @@
 		$linkToArticle = 'http://www.puckermob.com/'.$articles['cat_dir_name'].'/'.$articles["article_seo_title"];
 		$date = date("M d, Y", strtotime($articles['date_updated']));
 		$article_id = $articles['article_id'];
-		$linkToImage = 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';//$config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
+		$linkToImage = 'http://images.puckermob.com/articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';//$config['image_url'].'articlesites/puckermob/large/'.$articles['article_id'].'_tall.jpg';
 		$cat_name = $articles['cat_dir_name'];
 	
 		$articleIndex++; ?>

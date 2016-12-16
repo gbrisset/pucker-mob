@@ -30,7 +30,7 @@ $(document).ready(function() {
 		var height_value = pct_to_show / 100 ;
 		var wishDisplayHeight = parentOrgHeight * height_value;
 
-		$('#article-content').height(wishDisplayHeight);
+		/*$('#article-content').height(wishDisplayHeight);
 
 			$("#read-more-img").on('click', function(e) {
 				e.preventDefault();		
@@ -59,9 +59,9 @@ $(document).ready(function() {
 								
 			});
 		
+*/
 
-
-
+//I dont think this is in use.
 		if(page === 'article'){
 			$('#newsletter-submit').on('click', function(e){
 				e.preventDefault();

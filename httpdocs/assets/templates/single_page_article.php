@@ -58,7 +58,7 @@
 			<!-- IMAGE -->
 			<div class="clear margin-bottom">
 				<div id="article-image">
-					<img src="<?php echo 'http://cdn.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+					<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 				</div>
 			</div>
 		</div>
@@ -129,7 +129,7 @@
 									<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
 										<div class="article-image small-4 left" style="padding-right:10px">
 											<a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
-												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
+												<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
 											</a>
 										</div>
 										<div class="article-title small-8 left" style="padding-right:10px">
@@ -144,7 +144,7 @@
 									<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
 										<div class="article-image small-4 left" style="padding-right:10px">
 											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
-												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
+												<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
 											</a>
 										</div>
 										<div class="article-title small-8 left">
@@ -158,7 +158,7 @@
 									<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
 										<div class="article-image small-4 left" style="padding-right:10px">
 											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">
-												<img src="http://cdn.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
+												<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
 											</a>
 										</div>
 										<div class="article-title small-8 left" style="padding-right:10px">
@@ -183,6 +183,7 @@
 						    });
 						  //]]>
 						</script>-->
+						<!-- ANSWERS 1st UNIT -->
 						<div id="vm_inbanner"></div>
 						<script>
 						    window._videomosh = window._videomosh || [];
@@ -209,12 +210,13 @@
 				</div>
 		</div>
 
-		<!-- READ MORE  -->
+		<!-- READ MORE  
 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
 			<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #78AD6C;">
 				<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
 			</div>
 		</div> 
+		-->
 		
 		<!-- ADS LELO & SHARET -->
 		<div class="row" style="clear: both; padding-top: 0; border: 1px solid #ddd;"></div>
@@ -236,20 +238,45 @@
 				</div>
 
 				<!-- SHARETH -->
-				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">
+				<div id="mobile-instream-branovate-ad"  class="columns small-12" style="margin-top: 13px;">
 					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
 				</div>
 
-				<!-- AMAZON >-->
-				<div id="mobile-instream-branovate-ad" style="text-align: center;">
+				<!-- AMAZON -->
+				<div id="mobile-instream-branovate-ad" class="columns small-12 padding-top"  style="text-align: center;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
-						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+						<!--<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
 						<script type="text/javascript" language="javascript">
 						  //<![CDATA[
 						    aax_getad_mpb({
 						      "slot_uuid":"5eee194a-0abb-4002-b5ee-2375da3806b4"
 						    });
 						  //]]>
+						</script>-->
+						
+						<!-- http://images.puckermob.com/articlesites/puckermob/large/26517_tall.jpg -->
+						<!-- ANSWERS 2nd UNIT -->
+						<div id="vm_inbanner2"></div>
+						<script>
+						    window._videomosh = window._videomosh || [];
+						    !function (e, f, u) {
+						        e.async = 1;
+						        e.src = u;
+						        f.parentNode.insertBefore(e, f);
+						    }(document.createElement('script'),
+						            document.getElementsByTagName('script')[0],
+						            'http://player.videomosh.com/players/loader/loader_final4.js');
+
+						    _videomosh.push({
+						        publisher_key: "sequelmedia",
+						        mode: "inbanner",
+						        container: "vm_inbanner2",
+						        ad_mobile_id: "120824",
+						        ad_desktop_id: "120826",
+						        target_type: "mix",
+						        passback: true,
+						        backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/5708669677\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
+						    });   
 						</script>
 					</div>
 				</div>

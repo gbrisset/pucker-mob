@@ -82,7 +82,7 @@
 		  var googletag = googletag || {};
 		  googletag.cmd = googletag.cmd || [];
 		</script>
-
+		<!-- Test Pages -->
 		<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  == 23319 || $articleInfo['article_id']  == 23305 || $articleInfo['article_id']  == 25829 ) ){?>
 			<?php if($articleInfo['article_id']  == 23319) {?>
 				<script>
@@ -126,6 +126,15 @@
 				    googletag.enableServices();
 				  });
 			</script>
+		<?php }?>
+		<?php if($detect->isMobile()){?>
+		<script>
+		  googletag.cmd.push(function() {
+		    googletag.defineSlot('/73970039/UT_Adhesion', [1, 1], 'div-gpt-ad-1481648465857-0').addService(googletag.pubads());
+		    googletag.pubads().enableSingleRequest();
+		    googletag.enableServices();
+		  });
+		</script>
 		<?php }?>
 	<?php }?>
 

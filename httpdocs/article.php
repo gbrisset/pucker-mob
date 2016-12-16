@@ -330,21 +330,31 @@ if(!is_null($categoryInfo)){
 					       
 					        <?php if( $articleInfoObj['article_id'] != 25362 ){ //14613 ?>     
 				              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-					             <!-- MEME GLOBAL   -->
+					             <!-- MEME GLOBAL   
 								<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-						  
-						    <!-- AMAZON 
-						   
-						      <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-						      <script type="text/javascript" language="javascript">
-						      //<![CDATA[
-						      aax_getad_mpb({
-						        "slot_uuid":"25fba8a5-f806-45fe-82d5-718e86f3d9f2"
-						      });
-						      //]]>
-						      </script>
-						      -->
-						  
+						  -->
+						    	<div id="vm_inbanner"></div>
+								<script>
+								    window._videomosh = window._videomosh || [];
+								    !function (e, f, u) {
+								        e.async = 1;
+								        e.src = u;
+								        f.parentNode.insertBefore(e, f);
+								    }(document.createElement('script'),
+								            document.getElementsByTagName('script')[0],
+								            'http://player.videomosh.com/players/loader/loader_final4.js');
+
+								    _videomosh.push({
+								        publisher_key: "sequelmedia",
+								        mode: "inbanner",
+								        container: "vm_inbanner",
+								        ad_mobile_id: "22459",
+								        ad_desktop_id: "42296",
+								        target_type: "mix",
+								        passback: true,
+								        backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/3794094997\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
+								    });   
+								</script>
 				              </div>
 					        <?php }else{ ?>
 					         <div id="atf-ad" class="ad-unit ad300 show-on-large-up">

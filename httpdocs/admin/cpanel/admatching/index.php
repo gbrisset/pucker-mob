@@ -93,7 +93,7 @@
 						?>
 						<tr>
 							<td><?php echo $date; ?></td>
-							<td><?php echo $contributorInfo->contributor_name; ?></td>
+							<td><a href="<?php echo $config['this_admin_url'].'admatching?seo='.$contributorInfo->contributor_seo_name; ?>"><?php echo $contributorInfo->contributor_name; ?></a></td>
 							<td><?php echo $contributorInfo->contributor_email_address; ?></td>
 							<td><?php echo $pkg.'%'; ?></td>
 							<td><?php echo '$'.number_format( $blogger_commit, 2); ?></td>

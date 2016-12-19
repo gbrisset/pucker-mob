@@ -173,7 +173,7 @@
 					<p>NO BONUS SET THIS MONTH...</p>
 				<?php }?>
 
-				<!-- HOW AD MATCHING WORKS BOX -->
+				<!-- Screen Shots Upload -->
 				<?php include_once($config['include_path_admin'].'add-screen-shots.php'); ?>
 
 			</div>

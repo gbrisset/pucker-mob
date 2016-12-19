@@ -47,7 +47,7 @@
 
 <?php }?>
 <a id="show-my-modal" class="hidden" href="#" data-reveal-id="myModal">Click Me For A Modal</a>
-<div id="myModal" class="reveal-modal tiny" style="z-index:99999" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+<div id="myModal" class="reveal-modal xlarge" style="z-index:99999" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <img id="modal-image-active" src="" alt="" />
 </div>
 <script>

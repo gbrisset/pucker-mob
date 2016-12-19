@@ -32,11 +32,15 @@ if (!empty($_FILES)) {
     $contributor_id = isset($_REQUEST['c_i']) ? $_REQUEST['c_i'] : 0;
     if ( false!== $files ) {
         foreach ( $files as $file ) { 
+
+            if (strpos($file, $contributor_id) !== false) {
+                           
             if ( '.' != $file && '..' != $file) {    
                     $obj['name'] = $file;
                     $obj['size'] = filesize($storeFolder.$ds.$file);
                     $result[] = $obj;
             }
+        }
         }
     }
      

@@ -210,13 +210,13 @@
 				</div>
 		</div>
 
-		<!-- READ MORE  
+		<!-- READ MORE  -->
 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
 			<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #78AD6C;">
 				<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
 			</div>
 		</div> 
-		-->
+		
 		
 		<!-- ADS LELO & SHARET -->
 		<div class="row" style="clear: both; padding-top: 0; border: 1px solid #ddd;"></div>
@@ -239,7 +239,8 @@
 
 				<!-- SHARETH -->
 				<div id="mobile-instream-branovate-ad"  class="columns small-12" style="margin-top: 13px;">
-					<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>
+					<!--<div data-str-native-key="2cJqb8Tc1Y1neLjgLRvjK5JU" style="display: none;"></div>-->
+					<img height='0' width='0' alt='' src='//pixel.watch/936x' style='display:block;' /><script data-cfasync=\"false\" class=\"carambola_InContent\" type=\"text/javascript\" cbola_wid=\"2\">  (function (i,d,s,o,m,r,c,l,w,q,y,h,g) {  var e=d.getElementById(r);if(e===null){  var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n); var dt=new Date().getTime();  try{i[l][w+y](h,i[l][q+y](h)+'&'+dt);}catch(er){i[h]=dt;}  } else if(typeof i[c]!=='undefined'){i[c]++}  else{i[c]=1;}  })(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_IC','localStorage','set','get','Item','cbolaDt','//route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233&wid=2')  </script>
 				</div>
 
 				<!-- AMAZON -->

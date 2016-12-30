@@ -50,7 +50,7 @@
 	<div  class="small-12 large-3 columns  show-for-xlarge-up ">
 		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius valign-middle">
 			<div class="small-12 columns ">
-				<h3 class="uppercase">Blooger Earnings</h3>
+				<h3 class="uppercase">Blogger Earnings</h3>
 				<span class="bold" ><?php echo '$'. number_format($total_te_bloggers, 2) ?></span>
 			</div>
 		</div>

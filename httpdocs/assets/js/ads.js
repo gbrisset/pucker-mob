@@ -65,9 +65,9 @@ if($('body').hasClass('mobile')) {
 					}else{ 
 						//Regular ad stream -- inline ad	
 						//Meme/Answers/etc.
-						//	inBodyAd.loadInArticleAd('article-body', 10, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=65431&sDmn=puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);			
-						//Amazon
-						inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type=\"text/javascript\" language=\"javascript\" src=\"//c.amazon-adsystem.com/aax2/getads.js\"></script><script type=\"text/javascript\" language=\"javascript\"> //<![CDATA[ aax_getad_mpb({\"slot_uuid\":\"db55ad2f-9089-4239-afa2-0f2ca130805e\" });  //]]></script>", tag);			
+						//inBodyAd.loadInArticleAd('article-body', 10, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=65431&sDmn=puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);	
+						//Google ads
+						inBodyAd.loadInArticleAd('article-body', 10, 0, "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script><!-- Mob 300x250 Para 10 --><ins class=\"adsbygoogle\"     style=\"display:inline-block;width:300px;height:250px\"     data-ad-client=\"ca-pub-8978874786792646\"     data-ad-slot=\"8017774182\"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>", tag);
 					}//end if
 					
 					

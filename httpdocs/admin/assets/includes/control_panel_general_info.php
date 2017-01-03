@@ -12,8 +12,8 @@
 		//EARNINGS INFO
 		$earningsObj = new ContributorEarnings();
 		$pro_rate = $earningsObj->getRate( $current_month, $current_year, 8 );
-		$basic_rate = $earningsObj->getRate( $current_month, $current_year, 0 );
-		$writer_rate = $earningsObj->getRate( $current_month, $current_year, 6 );
+		$community_rate = $earningsObj->getRate( $current_month, $current_year, 0 );
+		$starter_rate = $earningsObj->getRate( $current_month, $current_year, 6 );
 
 	?>
 	<div class="small-12 radius control-panel-general-info">
@@ -39,12 +39,12 @@
 		</div>
 		<div class="small-12 columns radius right-side-box no-margin-top half-margin-bottom">
 		<div class="">
-			<h3>Basic CPM: <span><?php echo '$'.number_format($basic_rate[0]->rate, 2); ?></span></h3>
+			<h3>Community CPM: <span><?php echo '$'.number_format($community_rate[0]->rate, 2); ?></span></h3>
 		</div>
 		</div>
 		<div class="small-12 columns radius right-side-box no-margin-top half-margin-bottom">
 		<div class="">
-			<h3>Writer CPM: <span><?php echo '$'.number_format($writer_rate[0]->rate, 2); ?></span></h3>
+			<h3>Starter CPM: <span><?php echo '$'.number_format($starter_rate[0]->rate, 2); ?></span></h3>
 		</div>
 		</div>
 	</div>

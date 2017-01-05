@@ -148,7 +148,7 @@
 									case 3:
 									case 4:
 									case 5: 
-										$label_level  = "BASIC";
+										$label_level  = "COMMUNITY";
 										$disabled = "";
 										break;
 

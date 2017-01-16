@@ -1,4 +1,4 @@
-x
+
 
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/modernizr.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.min.js"></script>
@@ -12,7 +12,7 @@ x
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js"></script>
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
-<?php }?>
+<?php }//end if (!$local)?>
 
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3769" ></script>
 
@@ -20,9 +20,9 @@ x
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
     <![endif]-->
 
-<?php if ( !$detect->isMobile() ) { ?>
-    <!-- DESKTOP -->
-    <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+<?php if ( !$detect->isMobile() ) { 
+// DESKTOP ************************************************************** 
+ if(isset($articleInfoObj) && $articleInfoObj){ ?>
      	<div id="vm_inline"></div>
       <script>
            window._videomosh = window._videomosh || []; 
@@ -30,7 +30,8 @@ x
                e.async = 1; 
                e.src = u; 
                f.parentNode.insertBefore(e, f); 
-           }(document.createElement('script'), 
+           }//end function
+           (document.createElement('script'), 
            document.getElementsByTagName('script')[0], 
            "http://player.videomosh.com/players/loader/loader_final4.js"); 
            
@@ -42,9 +43,9 @@ x
                incontent_desktop_id: "42300", 
                target_type: "mix"
                //backfill: "<script async src='http://ads.allscreen.tv/embed?placement=181' ><\/scr"+"ipt>"
-           });
+           }// end  _videomosh.push);
       </script>
-    <?php }  ?>
+    <?php }//end  if(isset($articleInfoObj) ...  ?>
 
    <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
      <!--SHAREBUTTONS BAR VERTICAL-->
@@ -57,19 +58,19 @@ x
       </div>
       <script async src="//static.addtoany.com/menu/page.js" async></script>
 
-  <?php } ?>
+  <?php } 
 
-<?php }else{ ?>
-  <!-- MOBILE -->
-  <?php if( isset($promotedArticle) && !$promotedArticle ){ 
+   }else{ 
+    
+// MOBILE ************************************************************** 
+  if( isset($promotedArticle) && !$promotedArticle ){ 
       
-      if(isset($articleInfoObj) && $articleInfoObj){ ?>
-        <!-- LELO -->
-        <?php if(isset($article_id) && $article_id != 16562  &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
+      if(isset($articleInfoObj) && $articleInfoObj){ 
+        //LELO
+        if(isset($article_id) && $article_id != 16562  &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
         && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
-        && $article_id != 15488 &&  $article_id != 17286 ){ ?>
-           
-          <?php 
+        && $article_id != 15488 &&  $article_id != 17286 ){ 
+
                //     $current_time = new DateTime(); // Today
               //      $start_time = new DateTime('3:00pm');
               //      $end_time  = new DateTime('11:59pm');
@@ -77,8 +78,27 @@ x
                // if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ 
            
             ?>
-              
+            <?php if( $articleInfoObj['article_id'] == 27296){?>
+            <!-- TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself  -->
+                    <!-- /73970039/Z_Testing -->
+                    <div id='div-gpt-ad-1484001734438-0' style='height:1px; width:1px;'>
+                    <script>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1484001734438-0'); });
+                    </script>
+                    </div>
+           <?php  }else{ ?>
+
+           <!-- ----- This ad is suspended until Adhesion figures out the test page above -- GB 2017-01-16 ----  -->
+                  <!-- /73970039/UT_Adhesion -->
+               <!--    <div id='div-gpt-ad-1481648465857-0' style='height:1px; width:1px;'>
+                  <script>
+                  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1481648465857-0'); });
+                  </script>
+                  </div>  -->
+          <!-- ----- END OF - This ad is suspended until Adhesion figures out the test page above -- GB 2017-01-16 ----  -->
+           
               <!-- Start Pucker Mob - Adhesion -->
+
               <div id='__kx_ad_4915'></div>
               <img id='__kx_ad_4915_px' src='%%VIEW_URL_UNESC%%http://cdn.kixer.com/img/transparent.gif?cb=%%CACHEBUSTER%%' />
               <script type="text/javascript" language="javascript">
@@ -106,7 +126,23 @@ x
                 }
               })();
               </script>
+ 
               <!-- End Pucker Mob - Adhesion -->
+
+
+
+             <?php  }// end if( $articleInfoObj['article_id'] == 27296 ?> 
+
+               
+              <!-- /73970039/UT_Adhesion_1x1 -->
+           <!--  NOT sure if that is any use anymore - GB 01-10-2017
+              <div id='div-gpt-ad-1483989302416-0' style='height:1px; width:1px;'>
+              <script>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1483989302416-0'); });
+              </script>
+              </div>                
+ -->
+
 
             <?php if( $articleInfoObj['article_id'] == 22475){?>
 
@@ -119,10 +155,12 @@ x
                 firstjs.parentNode.insertBefore(spoutjs,firstjs)
               })();
               </script>
-           <?php  } ?>
-      <?php  } ?>
-    <?php  } ?>
-      <?php if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286  &&  $article_id != 18521 && $article_id != 23564 ){ ?>
+           <?php  }// end if( $articleInfoObj['article_id'] == 22475 
+
+            } //end  if(isset($article_id) ... 
+       }//end if(isset($articleInfoObj) && $articleInfoObj) 
+
+    if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286  &&  $article_id != 18521 && $article_id != 23564 ){ ?>
           <script>
             (function() 
             { 
@@ -174,11 +212,11 @@ x
 
           
 
-      <?php  } ?>
+      <?php  } // enf if( $article_id != 16562 ... 
 
-  <?php } ?>
+      } //end  if( isset($promotedArticle) 
 
-<?php } ?>
+   }// end if ( !$detect->isMobile() ) ?>
 
-<!-- SHARETHROUNG -->
+<!-- SHARETHROUGH -->
 <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>

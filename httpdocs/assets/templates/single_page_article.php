@@ -175,45 +175,53 @@
 				<div id="mobile-instream-branovate-ad" style="text-align: center; clear: both; padding-top: 1rem;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
 					
-						<?php if( $article_id == 27296 ){//Test page to troubleshoot  ANSWERS ads -- 1st unit ?>
-								<!-- ANSWERS 1st UNIT -->
-								<div id="vm_inbanner"></div>
-								<script>
-									window._videomosh = window._videomosh || [];
-									!function (e, f, u) {
-										e.async = 1;
-										e.src = u;
-										f.parentNode.insertBefore(e, f);
-									}(document.createElement('script'),
-											document.getElementsByTagName('script')[0],
-											'http://player.videomosh.com/players/loader/loader_final4.js');
+						<!-- // TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself   -->
+						<?php if( $article_id == 27296 ){?>
 
-									_videomosh.push({
-										publisher_key: "sequelmedia",
-										mode: "inbanner",
-										container: "vm_inbanner",
-										ad_mobile_id: "22459",
-										ad_desktop_id: "42296",
-										target_type: "mix",
-										passback: true,
-										backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/3794094997\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
-									});   
-								</script>	
 						<?php }else{?>
-								<!-- AMAZON -->
-								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-								<script type="text/javascript" language="javascript">
-								  //<![CDATA[
-									aax_getad_mpb({
-									  "slot_uuid":"5eee194a-0abb-4002-b5ee-2375da3806b4"
-									});
-								  //]]>
-								</script>
 						
-						<?php }//end if Test page  to troubleshoot  ANSWERS ads  -- 1st unit ?>
+						<?php }//end if( $article_id == 27296 ) TEST PAGE ?>
 
-					
-						
+
+						<!-- ANSWERS 1st UNIT -->
+
+						<div id="vm_inbanner"></div>
+						<script>
+						    window._videomosh = window._videomosh || [];
+						    !function (e, f, u) {
+						        e.async = 1;
+						        e.src = u;
+						        f.parentNode.insertBefore(e, f);
+						    }(document.createElement('script'),
+						            document.getElementsByTagName('script')[0],
+						            'http://player.videomosh.com/players/loader/loader_final4.js');
+
+						    _videomosh.push({
+						        publisher_key: "sequelmedia",
+						        mode: "inbanner",
+						        container: "vm_inbanner",
+						        ad_mobile_id: "22459",
+						        ad_desktop_id: "42296",
+						        target_type: "mix",
+						        passback: true,
+						        backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/3794094997\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
+						    });   
+						</script>
+
+
+						<!-- AMAZON -->
+						<!-- Placeholder for AMAZON  -->
+						<!-- 
+						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+						<script type="text/javascript" language="javascript">
+						  //<![CDATA[
+							aax_getad_mpb({
+							  "slot_uuid":"5eee194a-0abb-4002-b5ee-2375da3806b4"
+							});
+						  //]]>
+						</script>
+						 -->
+				
 					</div>
 				</div>
 		</div>
@@ -246,7 +254,7 @@
 				</div>
 
 				<!-- CARAMBOLA -->
-				<div id="mobile-instream-branovate-ad"  class="columns small-12" style="margin-top: 13px;">
+				<div id="mobile-instream-branovate-ad"  class="columns small-12" style="margin-top: 13px; min-width: 300px">
 					<!--Carambola Script --> 
 					<img height='0' width='0' alt='' src='//pixel.watch/936x' style='display:block;' /> 
 					<script data-cfasync="false" class="carambola_InContent" type="text/javascript" cbola_wid="2">  
@@ -264,45 +272,50 @@
 
 				<div id="mobile-instream-branovate-ad" class="columns small-12 padding-top"  style="text-align: center;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
-						
-						<?php if( $article_id == 27296 ){//Test page to troubleshoot  ANSWERS ads -- 2nd unit?>
-								<!-- ANSWERS 2nd UNIT -->
-								<div id="vm_inbanner2"></div>
-								<script>
-									window._videomosh = window._videomosh || [];
-									!function (e, f, u) {
-										e.async = 1;
-										e.src = u;
-										f.parentNode.insertBefore(e, f);
-									}(document.createElement('script'),
-											document.getElementsByTagName('script')[0],
-											'http://player.videomosh.com/players/loader/loader_final4.js');
+						<!-- // TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself   -->
+						<?php if( $article_id == 27296 ){?>
 
-									_videomosh.push({
-										publisher_key: "sequelmedia",
-										mode: "inbanner",
-										container: "vm_inbanner2",
-										ad_mobile_id: "120824",
-										ad_desktop_id: "120826",
-										target_type: "mix",
-										passback: true,
-										backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/5708669677\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
-									});   
-								</script>
 						<?php }else{?>
-						<!-- AMAZON -->
-				
-								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-								<script type="text/javascript" language="javascript">
-								//<![CDATA[
-								aax_getad_mpb({
-								"slot_uuid":"25fba8a5-f806-45fe-82d5-718e86f3d9f2"
-								});
-								//]]>
-								</script>
-						<?php }//end if Test page  to troubleshoot  ANSWERS ads -- 2nd unit ?>
+						
+						<?php }//end if( $article_id == 27296 ) TEST PAGE ?>
+						
+						<!-- ANSWERS 2nd UNIT -->
 
-						<!-- http://images.puckermob.com/articlesites/puckermob/large/26517_tall.jpg -->
+							<div id="vm_inbanner2"></div>
+							<script>
+							    window._videomosh = window._videomosh || [];
+							    !function (e, f, u) {
+							        e.async = 1;
+							        e.src = u;
+							        f.parentNode.insertBefore(e, f);
+							    }(document.createElement('script'),
+							            document.getElementsByTagName('script')[0],
+							            'http://player.videomosh.com/players/loader/loader_final4.js');
+							    _videomosh.push({
+							        publisher_key: "sequelmedia",
+							        mode: "inbanner",
+							        container: "vm_inbanner2",
+							        ad_mobile_id: "120824",
+							        ad_desktop_id: "120826",
+							        target_type: "mix",
+							        passback: true,
+							        backfill: "<script type=\"text/javascript\" language=\"javascript\" src=\"//c.amazon-adsystem.com/aax2/getads.js\"></scr"+"ipt><script type=\"text/javascript\" language=\"javascript\">aax_getad_mpb({\"slot_uuid\":\"26d6d4546-c110-4642-a343-a52e42bc4a17\"});</scr"+"ipt>"
+							    });   
+							</script>
+
+						<!-- AMAZON -->
+						<!-- Placeholder for AMAZON  -->
+				
+						<!-- 				
+						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+						<script type="text/javascript" language="javascript">
+						//<![CDATA[
+						aax_getad_mpb({
+						"slot_uuid":"25fba8a5-f806-45fe-82d5-718e86f3d9f2"
+						});
+						//]]>
+						</script>
+						 -->		
 		
 					</div>
 				</div>

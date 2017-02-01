@@ -75,45 +75,81 @@
 	  ga('send', 'pageview');
 	</script>	
 
-	<!-- UNDERTONE -->
-	<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  != 23564  ) ){?>
+	<!-- *** Zoomd: Widget Script *** --> 
+	<script async="async" src="//zdwidget3-bs.sphereup.com/zoomd/SearchUi/Script?clientId=67949597"></script>
+	<!-- *** /Zoomd *** -->
+	<script type = "text/javascript">
+	// this script has been provided by the advertiser but seems useless for many reasons: 
+		// Jquery is not available yet
+		// The elements fetching the search script are already inserted in the physical DOM - no need to append
+		// the element fetching the search script in mobile is a DIV, not an IMG 
+		// -- GB - 2017-02-01
+
+	if($(window).width() <= 1000){
+	$("ul.title-area").append('<li><img src = "http://sucdn.sphereup.com/clients/image/search_icon-white.png" alt = "Zoomd Search Widget" style = "height:1rem; margin-top:0.2rem; position:absolute; top:10px; right:20px" zoomdSearch=\'{"trigger":"OnClick"}\'/></li>');	}
+	</script>
+	
+	<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  != 23564  ) ){
+	// ARTICLE # 23564 is paid content - not subject to regular advertizing ?>
+	
+		<!-- UNDERTONE -->
 		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 		<script>
 		  var googletag = googletag || {};
 		  googletag.cmd = googletag.cmd || [];
 		</script>
-		<!-- Test Pages -->
-		<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  == 23319 || $articleInfo['article_id']  == 23305 || $articleInfo['article_id']  == 25829 ) ){?>
-			<?php if($articleInfo['article_id']  == 23319) {?>
+	
+		
+		<?php 
+		// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- 
+		if( isset( $articleInfo['article_id'] ) &&  
+			(  
+			$articleInfo['article_id']  == 23319 || 
+			$articleInfo['article_id']  == 23305 || 
+			$articleInfo['article_id']  == 25829 || 
+			$articleInfo['article_id']  == 27296 ) 
+			){?>
+	
+			<?php if($articleInfo['article_id']  == 23319 ){ // http://www.puckermob.com/moblog/15-open-letters-to-leave-your-boyfriend ?>	
+				<!--
 				<script>
-				  googletag.cmd.push(function(){
-				  	//UNDERTONE
-		   			googletag.defineSlot('/73970039/UT_SS', [1, 1], 'div-gpt-ad-1476806620904-1').addService(googletag.pubads());
-				    googletag.pubads().enableSingleRequest();
-				    googletag.enableServices();
-				  });
+				place script here
 				</script>
-			<?php }elseif($articleInfo['article_id']  == 25829 ){?>	
-			<!-- http://www.puckermob.com/moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you -->
+				-->
+ 			<?php } //end if($articleInfo['article_id']  == 23319 )?>
+
+			<?php if($articleInfo['article_id']  == 23305 ){ // http://www.puckermob.com/relationships/25-little-white-lies-of-every-long-distance-relationship ?>	
+				<!--
 				<script>
-				  googletag.cmd.push(function() {
-				    googletag.defineSlot('/73970039/UT_Adhesion', [1, 1], 'div-gpt-ad-1480951070701-0').addService(googletag.pubads());
-				    googletag.pubads().enableSingleRequest();
-				    googletag.enableServices();
-				  });
+				place script here
 				</script>
-			<?php }else{?>
+				-->
+ 			<?php } // end if($articleInfo['article_id']  == 23305 )?>
+
+			<?php if($articleInfo['article_id']  == 25829 ){ // http://www.puckermob.com/moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you ?>	
+				<!--
 				<script>
-				  googletag.cmd.push(function(){
-				  	//UNDERTONE
-		    		googletag.defineSlot('/73970039/UT_Flex', [1, 1], 'div-gpt-ad-1476806620904-0').addService(googletag.pubads());
-				   
-				    googletag.pubads().enableSingleRequest();
-				    googletag.enableServices();
-				  });
+				place script here
 				</script>
-			<?php }?>
-		<?php }else{?>
+				-->
+ 			<?php } // end if($articleInfo['article_id']  == 25829 ) ?>
+
+			<?php if($articleInfo['article_id']  == 27296 ){ // http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself ?>	
+				<!--
+				<script>
+				place script here
+				</script>
+				-->
+ 			<?php } //end  if($articleInfo['article_id']  == 27296 ) ?>
+
+
+			<?php 
+			// ABOVE test pages - specific scripts ------------------------------------------------------------------------------------------------------
+			}	else {
+			// BELOW - current scripts - general audience ---------------------------------------------------------------------------------------------------
+			?>
+			
 			<script>
 				  googletag.cmd.push(function(){
 				  	//UNDERTONE
@@ -126,17 +162,87 @@
 				    googletag.enableServices();
 				  });
 			</script>
-		<?php }?>
-		<?php if($detect->isMobile()){?>
-		<script>
-		  googletag.cmd.push(function() {
-		    googletag.defineSlot('/73970039/UT_Adhesion', [1, 1], 'div-gpt-ad-1481648465857-0').addService(googletag.pubads());
-		    googletag.pubads().enableSingleRequest();
-		    googletag.enableServices();
-		  });
-		</script>
-		<?php }?>
-	<?php }?>
+
+
+		<?php } // end if( isset( $articleInfo['article_id'] ) &&  ... 
+		// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		?>
+	
+
+		<?php
+		// ********************************************* MOBILE BELOW ** DESKTOP ABOVE *******************************************
+		 // if($detect->isMobile()){
+		 ?>
+			
+				<?php 
+				// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+				// Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- 
+				if( isset( $articleInfo['article_id'] ) &&  
+					(  
+					$articleInfo['article_id']  == 23319 || 
+					$articleInfo['article_id']  == 23305 || 
+					$articleInfo['article_id']  == 25829 || 
+					$articleInfo['article_id']  == 27296 ) 
+					){?>
+			
+					<?php if($articleInfo['article_id']  == 23319 ){ // http://www.puckermob.com/moblog/15-open-letters-to-leave-your-boyfriend ?>	
+						<!--
+						<script>
+						place script here
+						</script>
+						-->
+		 			<?php } //end if($articleInfo['article_id']  == 23319 )?>
+
+					<?php if($articleInfo['article_id']  == 23305 ){ // http://www.puckermob.com/relationships/25-little-white-lies-of-every-long-distance-relationship ?>	
+						<!--
+						<script>
+						place script here
+						</script>
+						-->
+		 			<?php } // end if($articleInfo['article_id']  == 23305 )?>
+
+					<?php if($articleInfo['article_id']  == 25829 ){ // http://www.puckermob.com/moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you ?>	
+						<!-- //PERION - CodeFuel-->
+						<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
+
+
+		 			<?php } // end if($articleInfo['article_id']  == 25829 ) ?>
+
+					<?php if($articleInfo['article_id']  == 27296 ){ // http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself ?>	
+
+			                    <!-- /73970039/Z_Testing -->
+			                    <div id='div-gpt-ad-1484001734438-0' style='height:1px; width:1px;'>
+			                    <script>
+			                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1484001734438-0'); });
+			                    </script>
+			                    </div>
+						
+		 			<?php } //end  if($articleInfo['article_id']  == 27296 ) ?>
+
+
+					<?php 
+					// ABOVE test pages - specific scripts ------------------------------------------------------------------------------------------------------
+					}	else {
+					// BELOW - current scripts - general audience ---------------------------------------------------------------------------------------------------
+					?>
+					
+							     <!-- UT_adhesion (DIV is is bottomscripts.php) -->
+							        <script>
+							        googletag.cmd.push(function() {
+							          googletag.defineSlot('/73970039/UT_Adhesion_1x1', [1, 1], 'div-gpt-ad-1483989302416-0').addService(googletag.pubads());
+							          googletag.pubads().enableSingleRequest();
+							          googletag.enableServices();
+							        });
+							      </script>
+
+				<?php } // end if( isset( $articleInfo['article_id'] ) &&  ... 
+				// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+				?>
+	
+
+			
+		<?php // } //end  if($detect->isMobile()) ?>
+	<?php } //  end of ARTICLE # 23564 is paid content - not subject to regular advertizing ?>
 
 	<?php 
 		$sponsored_aricle = true; 
@@ -188,7 +294,7 @@
 		
 	<?php //} ?>
 
-	<?php if (!$local){?>
+	<?php if (!$local){ // ----------------------------------------------------------------------------------------------- ?>
 	
 	<!-- COMSCORE -->
 		<script>
@@ -237,7 +343,7 @@
 	  _gs('GSN-829786-N');
 	</script>
 
-	<?php }?>
+	<?php } // end if (!$local) // ----------------------------------------------------------------------------------------------- ?>
 
 
 	<!-- SHARETHROUHGH -->
@@ -265,7 +371,8 @@
 	</script>
 
 	<!-- NATIVO SCRIPT -->
-	<?php if( isset( $articleInfo['article_id'] ) &&   $articleInfo['article_id']  != 23564 ){?>
+	<?php if( isset( $articleInfo['article_id'] ) &&   $articleInfo['article_id']  != 23564 ){
+		//ARTICLE # 23564 is paid content - not subject to regular advertizing ?>
 		<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
 	<?php }?>
 

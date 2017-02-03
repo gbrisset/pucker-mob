@@ -190,7 +190,13 @@
                <li class="name">
                  
 
-                     <h2 style="margin-top: -6px;" ><a style=" color: #fff !important; font-size: 1.4rem; " href="<?php echo $config['this_url']; ?>" >PUCKER<span style="color:green; ">MOB</span> </a></h2> 
+                     <h2 style="margin-top: -6px;" ><a style=" color: #fff !important; font-size: 1.4rem; " href="<?php echo $config['this_url']; ?>" >PUCKER<span style="color:green; ">MOB</span> </a>
+      
+
+<!-- ZoomD search bar -->
+<div style="display: inline; float: right; margin: 0.3em 1em; " ><img src = "http://sucdn.sphereup.com/clients/image/search_icon-white.png" alt = "Zoomd Search Widget" style = "height:1rem; margin-top:0.2rem;" zoomdSearch='{"trigger":"OnClick"}'/></div>      
+
+                     </h2> 
                 
               </li>
             </ul>
@@ -201,23 +207,28 @@
         <?php }else{?>
            <ul class="left">
         <?php }?>
+
+    
+
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-recent"  class="entertainment" ></i>RECENT</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>trending"  class="money" ></i>TRENDING</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>most-popular"  class="wellness" >POPULAR</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>contributors"  class="fun" >CONTRIBUTORS</a></li>
           <?php if(!$detect->isMobile()){?>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"><i class="fa fa-info-circle fa-lg info"></i></a></li>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a>|</a></li>
-          <?php }?>
+              <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"><i class="fa fa-info-circle fa-lg info"></i></a></li>
+              <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a>|</a></li>
+             
+          <?php }//  if(!$detect->isMobile()) ?>
+
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="<?php echo $config['this_url']; ?>moblog"  class="relationships" >THE MOB</a></li>
             <?php if($detect->isMobile()){?>
-          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.sequelmediainternational.com"  target="_blank" class="relationships" >Info & About Us</a></li>
+          <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.sequelmediainternational.com"  target="_blank" class="relationships" >Info &amp; About Us</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/privacy/"  target="_blank" class="" >Privacy Policy</a></li>
           <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/login"  target="_blank" class="relationships" >WRITE FOR US</a></li>
 
            <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/login"  target="_blank" class="relationships" >LOGIN</a></li>
             <li style="<?php if( $has_sponsored && $isHomepage ) echo 'padding: 0 0 0 1.2rem !important; ' ?>"><a href="http://www.puckermob.com/admin/register"  target="_blank" class="relationships" >REGISTER</a></li>
-            <?php } ?>
+            <?php } // if($detect->isMobile())?>
         </ul>
       </section>
     </nav>

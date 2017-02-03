@@ -76,15 +76,21 @@
 		<!-- ARTICLE CONTENT -->
 		<div class="row clear" style="margin-top: -1rem;">
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
-				
+			
+				<!-- Ad below the image -->
 				<div id="mobile-instream-branovate-ad" style="text-align: center; margin-bottom: 10px; margin-top: 5px;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
-						<?php if( $article_id == 15832 ){?>
-							<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10710&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
+						<?php if( $article_id == 999999 ){
+							// http://www.puckermob.com/ ... link here for test page
+							// <script> or iframe here
+
+							?>
+							
 						<?php }else{?>
-							<?php //if( $article_id != 18521 ){?>
-							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-							<!-- PM Mobile Below Picture -->
+
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+							 // PM Mobile Below Picture 
+							</script>
 							<ins class="adsbygoogle"
 							     style="display:inline-block;width:320px;height:50px"
 							     data-ad-client="ca-pub-8978874786792646"
@@ -92,11 +98,12 @@
 							<script>
 							(adsbygoogle = window.adsbygoogle || []).push({});
 							</script>
-							<?php //} ?>
+							
 						<?php } ?>
 					</div>
 				</div>
-				
+			
+
 				<!-- ARTICLE BODY -->
 				<div id="article-body">
 					<?php echo $article_body; ?>

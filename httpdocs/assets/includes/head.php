@@ -85,8 +85,8 @@
 		// the element fetching the search script in mobile is a DIV, not an IMG 
 		// -- GB - 2017-02-01
 
-	if($(window).width() <= 1000){
-	$("ul.title-area").append('<li><img src = "http://sucdn.sphereup.com/clients/image/search_icon-white.png" alt = "Zoomd Search Widget" style = "height:1rem; margin-top:0.2rem; position:absolute; top:10px; right:20px" zoomdSearch=\'{"trigger":"OnClick"}\'/></li>');	}
+	// if($(window).width() <= 1000){
+	// $("ul.title-area").append('<li><img src = "http://sucdn.sphereup.com/clients/image/search_icon-white.png" alt = "Zoomd Search Widget" style = "height:1rem; margin-top:0.2rem; position:absolute; top:10px; right:20px" zoomdSearch=\'{"trigger":"OnClick"}\'/></li>');	}
 	</script>
 	
 	<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  != 23564  ) ){
@@ -111,7 +111,7 @@
 			$articleInfo['article_id']  == 27296 ) 
 			){?>
 	
-			<?php if($articleInfo['article_id']  == 23319 ){ // http://www.puckermob.com/moblog/15-open-letters-to-leave-your-boyfriend ?>	
+			<?php if($articleInfo['article_id']  == 23319 ){ // http://www.puckermob.com/moblog/15-open-letters-to-leave-your-boyfriend	?>	
 				<!--
 				<script>
 				place script here
@@ -156,7 +156,7 @@
 				    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470929060933-0').addService(googletag.pubads());
 				   	googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470934220433-0').addService(googletag.pubads());
 				   	//BRANOVATE
-				   	googletag.defineSlot('/73970039/300x250_ROS', [300, 250], 'div-gpt-ad-1477948030478-0').addService(googletag.pubads());
+				   	// googletag.defineSlot('/73970039/300x250_ROS', [300, 250], 'div-gpt-ad-1477948030478-0').addService(googletag.pubads());
 
 				    googletag.pubads().enableSingleRequest();
 				    googletag.enableServices();
@@ -166,12 +166,13 @@
 
 		<?php } // end if( isset( $articleInfo['article_id'] ) &&  ... 
 		// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		?>
+		
+	?>
 	
 
 		<?php
 		// ********************************************* MOBILE BELOW ** DESKTOP ABOVE *******************************************
-		 // if($detect->isMobile()){
+		 if($detect->isMobile()){
 		 ?>
 			
 				<?php 
@@ -202,10 +203,11 @@
 		 			<?php } // end if($articleInfo['article_id']  == 23305 )?>
 
 					<?php if($articleInfo['article_id']  == 25829 ){ // http://www.puckermob.com/moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you ?>	
-						<!-- //PERION - CodeFuel-->
-						<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
-
-
+						<!--
+						<script>
+						place script here
+						</script>
+						-->
 		 			<?php } // end if($articleInfo['article_id']  == 25829 ) ?>
 
 					<?php if($articleInfo['article_id']  == 27296 ){ // http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself ?>	
@@ -225,15 +227,18 @@
 					}	else {
 					// BELOW - current scripts - general audience ---------------------------------------------------------------------------------------------------
 					?>
+						<!-- //PERION - CodeFuel-->
+						<!-- will inject ad in a set palce on the site (after 2nd paragraph of article body as of 2017-02-02) -->
+						<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
 					
-							     <!-- UT_adhesion (DIV is is bottomscripts.php) -->
-							        <script>
-							        googletag.cmd.push(function() {
-							          googletag.defineSlot('/73970039/UT_Adhesion_1x1', [1, 1], 'div-gpt-ad-1483989302416-0').addService(googletag.pubads());
-							          googletag.pubads().enableSingleRequest();
-							          googletag.enableServices();
-							        });
-							      </script>
+				     <!-- UT_adhesion (DIV is is bottomscripts.php) -->
+				        <script>
+				        googletag.cmd.push(function() {
+				          googletag.defineSlot('/73970039/UT_Adhesion_1x1', [1, 1], 'div-gpt-ad-1483989302416-0').addService(googletag.pubads());
+				          googletag.pubads().enableSingleRequest();
+				          googletag.enableServices();
+				        });
+				      </script>
 
 				<?php } // end if( isset( $articleInfo['article_id'] ) &&  ... 
 				// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -241,7 +246,7 @@
 	
 
 			
-		<?php // } //end  if($detect->isMobile()) ?>
+		<?php  } //end  if($detect->isMobile()) ?>
 	<?php } //  end of ARTICLE # 23564 is paid content - not subject to regular advertizing ?>
 
 	<?php 

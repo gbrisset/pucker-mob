@@ -46,7 +46,6 @@ if($('body').hasClass('mobile')) {
 				}else{ 
 				
 
-					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
 					//inBodyAd.loadInArticleAd('article-body', 12, 0, '<script type="text/javascript" src="//cdn.thoughtleadr.com/v4/page.js" placement-id="e34fc238e71e1dd6a98a47668a9881ba7867205f92bd422ed1fe67b650685273"></script>', tag);
 					
 					//ANSWERS
@@ -60,15 +59,23 @@ if($('body').hasClass('mobile')) {
 				
 					
 					if( article_id == 27296 ){
-						//Test page to troubleshoot  ANSWERS ads -- inline ad						
-						inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type='text/javascript'>window['_rocketyield'] = [];!function (e, f, u) { var c = document.getElementById('article-body'); var d = c.getElementsByTagName('P'); if (d.length > 10) { var my_div = document.createElement('DIV');  my_div.id = 'temp_div'; c.insertBefore(my_div, d[10]);} e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], '//player.videomosh.com/ry/ry.min.js'); window['_rocketyield'].push({ pid: 'puckermob', placementId: '44ee', slot: '#temp_div',width: 600, height: 400});</script>", tag);
+						// TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself  
+
+						// do nothing
+
 					}else{ 
 						//Regular ad stream -- inline ad	
 						//Meme/Answers/etc.
 						//inBodyAd.loadInArticleAd('article-body', 10, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=65431&sDmn=puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);	
 						//Google ads
-						inBodyAd.loadInArticleAd('article-body', 10, 0, "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script><!-- Mob 300x250 Para 10 --><ins class=\"adsbygoogle\"     style=\"display:inline-block;width:300px;height:250px\"     data-ad-client=\"ca-pub-8978874786792646\"     data-ad-slot=\"8017774182\"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>", tag);
+						//inBodyAd.loadInArticleAd('article-body', 10, 0, "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script><!-- Mob 300x250 Para 10 --><ins class=\"adsbygoogle\"     style=\"display:inline-block;width:300px;height:250px\"     data-ad-client=\"ca-pub-8978874786792646\"     data-ad-slot=\"8017774182\"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>", tag);
+						//Outstream Mediation - is that Answers?
+
 					}//end if
+
+
+						inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
+						inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {var c = document.getElementById('article-body');var d = c.getElementsByTagName('P');if (d.length >10) {var my_div = document.createElement('DIV');    my_div.id = 'temp_div';c.insertBefore(my_div, d[10]); }e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//player.videomosh.com/ry/ry.min.js');window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee',slot: '#temp_div',width: 320,height: 240});</script>", tag);			
 					
 					
 					//CARAMBOLA

@@ -23,7 +23,7 @@
 <?php if ( !$detect->isMobile() ) { 
 // DESKTOP ************************************************************** 
  if(isset($articleInfoObj) && $articleInfoObj){ ?>
-     	<div id="vm_inline"></div>
+      <div id="vm_inline"></div>
       <script>
            window._videomosh = window._videomosh || []; 
            !function (e, f, u) { 

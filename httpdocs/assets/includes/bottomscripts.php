@@ -260,5 +260,3 @@
 
    }// end if ( !$detect->isMobile() ) ?>
 
-<!-- SHARETHROUGH -->
-<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>

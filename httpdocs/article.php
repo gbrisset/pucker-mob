@@ -318,6 +318,7 @@ if(!is_null($categoryInfo)){
 						<?php } ?>
 					</div>
 				</div>
+				
 				<!-- RIGHT SIDE SECTION -->
 				<div class="columns small-3 no-padding-right right-div">
 					<aside id="aside-top" class="fixed-width-sidebar column no-padding hide-for-print">

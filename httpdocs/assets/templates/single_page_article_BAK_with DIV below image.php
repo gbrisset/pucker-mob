@@ -58,18 +58,7 @@
 			<!-- IMAGE -->
 			<div class="clear margin-bottom">
 				<div id="article-image">
-						<?php if( !empty($articleInfoObj['article_video_script']) ){ ?>
-							
-							 <?php 
-							 	if(get_magic_quotes_gpc()) echo stripslashes($articleInfoObj['article_video_script']);
-    							else echo $articleInfoObj['article_video_script'];
-							 	
-							 ?>
-					
-						 <?php }else { ?>
-							<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
-						<?php } ?>
-
+					<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
 				</div>
 			</div>
 		</div>
@@ -87,6 +76,33 @@
 		<!-- ARTICLE CONTENT -->
 		<div class="row clear" style="margin-top: -1rem;">
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
+			
+				<!-- Ad below the image -->
+				<div id="mobile-instream-branovate-ad" style="text-align: center; margin-bottom: 10px; margin-top: 5px;">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+						<?php if( $article_id == 999999 ){
+							// http://www.puckermob.com/ ... link here for test page
+							// <script> or iframe here
+
+							?>
+							
+						<?php }else{?>
+<!-- 
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+							 // PM Mobile Below Picture 
+							</script>
+							<ins class="adsbygoogle"
+							     style="display:inline-block;width:320px;height:50px"
+							     data-ad-client="ca-pub-8978874786792646"
+							     data-ad-slot="5086819785"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+							 -->
+						<?php }// end if ( $article_id == 999999 ) ?>
+					</div>
+				</div>
+			
 
 				<!-- ARTICLE BODY -->
 				<div id="article-body">

@@ -58,17 +58,43 @@
 			<!-- IMAGE -->
 			<div class="clear margin-bottom">
 				<div id="article-image">
-						<?php if( !empty($articleInfoObj['article_video_script']) ){ ?>
+<!-- FORCING THE VIDEO INSTEAD THE IMAGE							 -->
 							
-							 <?php 
-							 	if(get_magic_quotes_gpc()) echo stripslashes($articleInfoObj['article_video_script']);
-    							else echo $articleInfoObj['article_video_script'];
-							 	
-							 ?>
-					
-						 <?php }else { ?>
-							<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
-						<?php } ?>
+								<div id="vm_player"></div>
+								<script>
+								window._videomosh = window._videomosh || [];
+
+								!function (e, f, u) {
+								e.async = 1;
+								e.src = u;
+								f.parentNode.insertBefore(e, f);
+								}(document.createElement('script'),
+								document.getElementsByTagName('script')[0],
+								'http://player.videomosh.com/players/loader/loader_final4.js');
+
+								_videomosh.push({publisher_key:"sequelmedia",
+													mode: "player",
+													container: "vm_player",
+													target_type: "mix",
+													type:"video",
+													id:231668});
+								</script>
+
+
+							<?php
+							// OLD CODE PLAYING VIDEOS WHEN VIDEO IS ASSOCIATED WITH THE ARTICLE
+
+							 // if( !empty($articleInfoObj['article_video_script']) ){ 
+								//  	if(get_magic_quotes_gpc()) echo stripslashes($articleInfoObj['article_video_script']);
+	    			// 				else echo $articleInfoObj['article_video_script'];
+							 // }else { ?>
+								<!-- 
+								<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
+								-->
+							<?php // } // end if( !empty($articleInfoObj ...?>
+
+
+						
 
 				</div>
 			</div>

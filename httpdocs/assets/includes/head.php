@@ -354,6 +354,8 @@
 	<!-- SHARETHROUHGH -->
 	<script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js"></script>
 
+	<!-- eyeota Pixel Code -->
+	<script type="text/javascript" async defer src="http://ps.eyeota.net/pixel?pid=9gdtfh1&t=ajs&sid=puckermob"></script>
 
 	<!-- Facebook Pixel Code -->
 	<script>

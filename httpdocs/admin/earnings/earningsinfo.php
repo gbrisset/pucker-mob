@@ -128,7 +128,7 @@
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
 				<?php include_once($config['include_path_admin'].'charts.php'); ?>
-
+<!-- 
 				<div id="earnings-list" class="small-12 columns no-padding margin-top">
 				<table class="small-12 columns no-padding" id="daily-earnings">
 					<thead>
@@ -142,6 +142,8 @@
 					<tbody></tbody>
 				</table>
 				</div>
+ -->
+				
 			</div>
 
 			<div class="small-12 columns no-padding margin-top hide-for-large-up">

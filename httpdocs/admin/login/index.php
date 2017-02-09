@@ -1,7 +1,10 @@
 <?php
 
-	header('Location: http://www.puckermob.com/login');
-	die;
+
+
+
+	// header('Location: http://www.puckermob.com/login');
+	// die;
 
 	$admin = true;
 	require_once('../../assets/php/config.php');
@@ -116,7 +119,7 @@
 			    	</div>
 			    	<div class=" hsContentLink dark-bg ">
 		        		<p>NOT REGISTERED YET?</p>
-		        		<a href="http://www.puckermob.com/admin/register">CLICK HERE TO REGISTER</a>
+		        		<a href="<?php echo $config['this_admin_url']; ?>register">CLICK HERE TO REGISTER</a>
 		        	</div>
 			    	<div class="next-step" style="margin-top:0.5rem; margin-bottom: 2.5rem;">
 		        		<ul>

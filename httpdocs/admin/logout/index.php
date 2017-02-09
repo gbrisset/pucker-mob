@@ -20,14 +20,14 @@
 				<h1 class="margin-bottom margin-top uppercase">You've been successfully logged out.</h1>
 				<p>  You'll be redirected momentarily to the main site.  
 					If not, click <a href="<?php echo $config['this_url']; ?>">Here</a></p>
-				<p>Or you can  <a href="http://www.puckermob.com/login/">Log in to existing account here!</a></p>
+				<p>Or you can  <a href="<?php echo $config['this_admin_url']; ?>login/">Log in to existing account here!</a></p>
 
 			</div>
 		</div>
 	</section>
 	</main>
 
-	<script>setTimeout(function(){window.location = "http://www.puckermob.com"}, 2000);</script>
+	<script>setTimeout(function(){window.location = "<?php echo $config['this_url']; ?>"}, 2000);</script>
 	<?php include_once($config['include_path_admin'].'bottomscripts.php'); ?>
 </body>
 </html>

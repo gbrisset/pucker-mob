@@ -46,22 +46,16 @@ if($('body').hasClass('mobile')) {
 				}else{ 
 				
 
-					//inBodyAd.loadInArticleAd('article-body', 12, 0, '<script type="text/javascript" src="//cdn.thoughtleadr.com/v4/page.js" placement-id="e34fc238e71e1dd6a98a47668a9881ba7867205f92bd422ed1fe67b650685273"></script>', tag);
-					
-					//ANSWERS
-					//inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type='text/javascript'>window['_rocketyield'] = [];!function (e, f, u) { var c = document.getElementById('article-body'); var d = c.getElementsByTagName('P'); if (d.length > 10) { var my_div = document.createElement('DIV');  my_div.id = 'temp_div'; c.insertBefore(my_div, d[10]);} e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], '//player.videomosh.com/ry/ry.min.js'); window['_rocketyield'].push({ pid: 'puckermob', placementId: '44ee', slot: '#temp_div',width: 600, height: 400});</script>", tag);
-					//inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type='text/javascript'>window['_rocketyield'] = [];!function (e, f, u) { var c = document.getElementById('article-body'); var d = c.getElementsByTagName('P'); if (d.length > 7) { var my_div = document.createElement(\"DIV\"); my_div.id = 'temp_div'; c.insertBefore(my_div, d[7]); } e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement('script'), document.getElementsByTagName('script')[0], '//player.videomosh.com/ry/ry.min.js'); window['_rocketyield'].push({ pid: 'puckermob', placementId: '44ee', slot: '#temp_div',width: 600, height: 400});</script>", tag);
-					
-					//Meme
-      				//inBodyAd.loadInArticleAd('article-body', 11, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&cb=12345&channelID=56e97118181f4655728b4618&sDmn=www.puckermob.com\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);
-					//inBodyAd.loadInArticleAd('article-body', 10, 0, "<iframe id='m_iframe'  src=\"http://growfoodsmart.com/sas/player/mobileIframe.php?sPlt=Direct&sCmpID=10822&sSlr=178&creativeID=123&brandId=399&cb=[CACHE_BUSTER]&sDmn=[PUB_URL_MACRO]\" style=\"width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;\" scrolling=\"no\" padding=\"0\" border=\"0\"></iframe>", tag);			
-					//inBodyAd.loadInArticleAd('article-body', 10, 0, "", tag);			
-				
 					
 					if( article_id == 27296 ){
 						// TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself  
 
-						// do nothing
+						inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
+						// inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {var c = document.getElementById('article-body');var d = c.getElementsByTagName('P');if (d.length >10) {var my_div = document.createElement('DIV');    my_div.id = 'temp_div';c.insertBefore(my_div, d[10]); }e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//player.videomosh.com/ry/ry.min.js');window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee',slot: '#temp_div',width: 320,height: 240});</script>", tag);			
+						// inBodyAd.loadInArticleAd('article-body', 10, 0, "", tag);			
+						// inBodyAd.loadInArticleAd('article-body', 10, 0, "", tag);			
+						inBodyAd.loadInArticleAd('article-body', 10, 0, "<script async src=\"//ssp.videostat.com/script/gppAdUnitRequest.js\" type=\"text/javascript\"></script><script>var gppRequestDomain = \"//ssp.videostat.com/ssp\" </script><div class=\"gppadunit\" id=\"gppunit1\" data_ad_pub_id=\"1321\" data_ad_site_id=\"2937\" data_ad_position_id=\"1\" data_ad_page_id=\"1\" data_process_started=\"0\" ></div>", tag);			
+
 
 					}else{ 
 						//Regular ad stream -- inline ad	
@@ -70,12 +64,12 @@ if($('body').hasClass('mobile')) {
 						//Google ads
 						//inBodyAd.loadInArticleAd('article-body', 10, 0, "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script><!-- Mob 300x250 Para 10 --><ins class=\"adsbygoogle\"     style=\"display:inline-block;width:300px;height:250px\"     data-ad-client=\"ca-pub-8978874786792646\"     data-ad-slot=\"8017774182\"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>", tag);
 						//Outstream Mediation - is that Answers?
+						inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
+						inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {var c = document.getElementById('article-body');var d = c.getElementsByTagName('P');if (d.length >10) {var my_div = document.createElement('DIV');    my_div.id = 'temp_div';c.insertBefore(my_div, d[10]); }e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//player.videomosh.com/ry/ry.min.js');window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee',slot: '#temp_div',width: 320,height: 240});</script>", tag);			
 
 					}//end if
 
 
-						inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
-						inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {var c = document.getElementById('article-body');var d = c.getElementsByTagName('P');if (d.length >10) {var my_div = document.createElement('DIV');    my_div.id = 'temp_div';c.insertBefore(my_div, d[10]); }e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//player.videomosh.com/ry/ry.min.js');window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee',slot: '#temp_div',width: 320,height: 240});</script>", tag);			
 					
 					
 					//CARAMBOLA

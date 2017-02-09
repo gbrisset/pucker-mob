@@ -11,17 +11,46 @@
 // Live config could not function on a WAMP server and the Local in GIT repo was not functional on the live site
 
 
-if(isset($_GET['error']) && $_GET['error'] == true){
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
-}
+// Add local detection for MAMP or other WAMP configuration
+// -----------------------------------------------------------------------------------------------------
+// PLEASE NOTE - this does work because a virtual host has been set on WAMP
+// -----------------------------------------------------------------------------------------------------
+// Navigation files (route.php) were originally using complex URI handlings that are not working on WAMP.
+// Navigation files (route.php) have been fitted with code to by pass URI handling when in WAMP.
+
+//Use this code in any route.php
+/*
+if ($local_platform == "WAMP64"){
+	$uri = $adminController->helpers->getURI($_SERVER["REQUEST_URI"]);// local - WAMP
+}else{
+	 $uri = $adminController->helpers->getURI($mpHelpers->curPageURL()); // Live  - ORIGINAL CODE
+}//end if
+*/
+ 
+
+		$local = false; 
+		$localIp = ''; // NOT in use in the live section - For compatibility only - GB 2017-02-09
+		$local_platform = "";// NOT in use in the live section - For compatibility only - GB 2017-02-09
+		$directory = ''; // NOT in use in the live section - For compatibility only - GB 2017-02-09
+		$root_directory =  '/';// NOT in use in the live section - For compatibility only - GB 2017-02-09
+
+
+if ($_SERVER['DOCUMENT_ROOT'] =="C:/wamp64/www/pucker-mob") {
+		$local = true; 
+		$localIp = 'localhost';
+		$local_platform = "WAMP64";
+		$directory = 'pucker-mob'; //that should be the directory created when cloning Git repo locally
+		$root_directory =  $_SERVER['DOCUMENT_ROOT'] . '/';
+}//end if $_SERVER['DOCUMENT_ROOT'] 
+
+
+
 
 // LOCAL IS SET MANUALLY  - SET TO FALSE BEFORE PUSHING TO PRODUCTION
-//$local = true; // LOCAL
+// $local = true; // LOCAL
+// $local = false; // LIVE 
 
-$local = false; // LIVE 
-
-$version = "";
+$version = "SMF 0.1.0";// Sequel Media Framework
 
 
 // ***********************************************************************************************************
@@ -31,9 +60,15 @@ $version = "";
 // ***********************************************************************************************************
 
 if($local){
-		//error_reporting(E_ALL);
-	//	ini_set('display_errors', '1');
 
+
+if(isset($_GET['error']) && $_GET['error'] == true){
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
+}else{
+	error_reporting(0);
+	ini_set('display_errors', '0');
+}//end if
 
 	define("DB_SERVER", "localhost");
 	define("DB_USER", "root");
@@ -51,12 +86,12 @@ if($local){
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
 	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0ΩA	vcq3g4fgsfzdsexzw");	
 
-	$localIp = 'localhost';
-	$directory = 'pucker-mob';
+	// $localIp = 'localhost';
+//	$directory = 'pucker-mob';
 	// $root_directory =   '' . $localIp . '/' . $directory . '/';
 
 	//this does work because a virtual host has been set on WAMP
-	$root_directory =  $_SERVER['DOCUMENT_ROOT'] . '/';
+	//$root_directory =  $_SERVER['DOCUMENT_ROOT'] . '/';
 	//$root_directory =   '/';
 	
 	
@@ -143,7 +178,7 @@ if($local){
 		require_once  'class.PromoteArticles.php';
 		
 		require_once  'class.Incentives.php';
-		require_once  'class.Incentives.php';
+		// require_once  'class.Incentives.php';// SMF version
 		
 		require_once  'class.AdMatching.php';
 		require_once  'class.OrderAds.php';

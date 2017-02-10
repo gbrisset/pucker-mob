@@ -58,27 +58,39 @@
 			<!-- IMAGE -->
 			<div class="clear margin-bottom">
 				<div id="article-image">
-<!-- FORCING THE VIDEO INSTEAD THE IMAGE							 -->
-							
-								<div id="vm_player"></div>
-								<script>
-								window._videomosh = window._videomosh || [];
 
-								!function (e, f, u) {
-								e.async = 1;
-								e.src = u;
-								f.parentNode.insertBefore(e, f);
-								}(document.createElement('script'),
-								document.getElementsByTagName('script')[0],
-								'http://player.videomosh.com/players/loader/loader_final4.js');
+						<!-- FORCING THE VIDEO INSTEAD THE IMAGE							 -->
+							 <?php if(isset($articleInfoObj['article_id']) &&  $articleInfoObj['article_id'] == 23564){ 
+							 	// #23564 -- http://www.puckermob.com/relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
+							 	// This article is paid content
+							 ?>
 
-								_videomosh.push({publisher_key:"sequelmedia",
-													mode: "player",
-													container: "vm_player",
-													target_type: "mix",
-													type:"video",
-													id:231668});
-								</script>
+									<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
+
+							 <?php }else{?>
+
+									<div id="vm_player"></div>
+									<script>
+									window._videomosh = window._videomosh || [];
+
+									!function (e, f, u) {
+									e.async = 1;
+									e.src = u;
+									f.parentNode.insertBefore(e, f);
+									}(document.createElement('script'),
+									document.getElementsByTagName('script')[0],
+									'http://player.videomosh.com/players/loader/loader_final4.js');
+
+									_videomosh.push({publisher_key:"sequelmedia",
+														mode: "player",
+														container: "vm_player",
+														target_type: "mix",
+														type:"video",
+														id:231668});
+									</script>
+
+							 <?php }//end if (isset($articleInfoObj['article_id']) ?>
+
 
 
 							<?php
@@ -89,7 +101,7 @@
 	    			// 				else echo $articleInfoObj['article_video_script'];
 							 // }else { ?>
 								<!-- 
-								<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
+								<img src="<?php // echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
 								-->
 							<?php // } // end if( !empty($articleInfoObj ...?>
 
@@ -221,7 +233,7 @@
 						        ad_desktop_id: "42296",
 						        target_type: "mix",
 						        passback: true,
-						        backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/3794094997\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
+						        backfill: "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></scr"+"ipt> <ins class=\"adsbygoogle\"style=\"display:inline-block;width:300px;height:250px\"data-ad-client=\"ca-pub-8978874786792646\"data-ad-slot=\"6137525383\"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </scr"+"ipt>" 
 						    });   
 						</script>
 
@@ -305,8 +317,8 @@
 							        ad_desktop_id: "120826",
 							        target_type: "mix",
 							        passback: true,
-							        backfill: "<script type=\"text/javascript\" language=\"javascript\" src=\"//c.amazon-adsystem.com/aax2/getads.js\"></scr"+"ipt><script type=\"text/javascript\" language=\"javascript\">aax_getad_mpb({\"slot_uuid\":\"26d6d4546-c110-4642-a343-a52e42bc4a17\"});</scr"+"ipt>"
-							    });   
+							        backfill: "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></scr"+"ipt> <ins class=\"adsbygoogle\"style=\"display:inline-block;width:300px;height:250px\"data-ad-client=\"ca-pub-8978874786792646\"data-ad-slot=\"1196818183\"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </scr"+"ipt>"
+							        });   
 							</script>
 
 						<!-- AMAZON -->

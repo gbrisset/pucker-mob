@@ -306,27 +306,37 @@ if(!is_null($categoryInfo)){
 					<!-- IMAGE -->
 					<div id="article-image" class="small-12 clear">
 
-<!-- FORCING THE VIDEO INSTEAD THE IMAGE							 -->
-							
-								<div id="vm_player"></div>
-								<script>
-								window._videomosh = window._videomosh || [];
+					<!-- FORCING THE VIDEO INSTEAD THE IMAGE							 -->
+							 <?php if(isset($articleInfoObj['article_id']) &&  $articleInfoObj['article_id'] == 23564){ 
+							 	// #23564 -- http://www.puckermob.com/relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
+							 	// This article is paid content
+							 ?>
 
-								!function (e, f, u) {
-								e.async = 1;
-								e.src = u;
-								f.parentNode.insertBefore(e, f);
-								}(document.createElement('script'),
-								document.getElementsByTagName('script')[0],
-								'http://player.videomosh.com/players/loader/loader_final4.js');
+									<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
 
-								_videomosh.push({publisher_key:"sequelmedia",
-													mode: "player",
-													container: "vm_player",
-													target_type: "mix",
-													type:"video",
-													id:231668});
-								</script>
+							 <?php }else{?>
+
+									<div id="vm_player"></div>
+									<script>
+									window._videomosh = window._videomosh || [];
+
+									!function (e, f, u) {
+									e.async = 1;
+									e.src = u;
+									f.parentNode.insertBefore(e, f);
+									}(document.createElement('script'),
+									document.getElementsByTagName('script')[0],
+									'http://player.videomosh.com/players/loader/loader_final4.js');
+
+									_videomosh.push({publisher_key:"sequelmedia",
+														mode: "player",
+														container: "vm_player",
+														target_type: "mix",
+														type:"video",
+														id:231668});
+									</script>
+
+							 <?php }//end if (isset($articleInfoObj['article_id']) ?>
 
 
 							<?php
@@ -337,7 +347,7 @@ if(!is_null($categoryInfo)){
 	    			// 				else echo $articleInfoObj['article_video_script'];
 							 // }else { ?>
 								<!-- 
-								<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
+								<img src="<?php // echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
 								-->
 							<?php // } // end if( !empty($articleInfoObj ...?>
 

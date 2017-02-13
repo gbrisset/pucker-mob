@@ -265,68 +265,24 @@
 				</div>
 			<?php }elseif( $article_id != 8560 &&  $article_id != 14613  &&  $article_id != 15104 	&& $article_id != 15284  && $article_id != 15488 ){ ?>
 				
+				<?php if( $article_id == 27296 ){
+					// TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself  ?>
+
+				<?php }else{?>
+				
+				<?php }//end if( $article_id == 27296 ) TEST PAGE ?>
+						
 				<!-- NATIVO 2nd UNIT -->
 				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">	
 					<div id="nativo-second-id"></div>
 				</div>
 
 				<!-- SHARETHROUGH -->
-				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">	
+<!--
+ 				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">	
 					<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>
 				</div>
-
-
-				<div id="mobile-instream-branovate-ad" class="columns small-12 padding-top"  style="text-align: center;">
-					<div id="get-content" style="text-align:center; display: inline-block;">
-						<!-- // TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself   -->
-						<?php if( $article_id == 27296 ){?>
-
-						<?php }else{?>
-						
-						<?php }//end if( $article_id == 27296 ) TEST PAGE ?>
-						
-						<!-- ANSWERS 2nd UNIT -->
-
-							<div id="vm_inbanner2"></div>
-							<script>
-							    window._videomosh = window._videomosh || [];
-							    !function (e, f, u) {
-							        e.async = 1;
-							        e.src = u;
-							        f.parentNode.insertBefore(e, f);
-							    }(document.createElement('script'),
-							            document.getElementsByTagName('script')[0],
-							            'http://player.videomosh.com/players/loader/loader_final4.js');
-							    _videomosh.push({
-							        publisher_key: "sequelmedia",
-							        mode: "inbanner",
-							        container: "vm_inbanner2",
-							        ad_mobile_id: "120824",
-							        ad_desktop_id: "120826",
-							        target_type: "mix",
-							        passback: true,
-							        backfill: "<script type=\"text/javascript\" language=\"javascript\" src=\"//c.amazon-adsystem.com/aax2/getads.js\"></scr"+"ipt><script type=\"text/javascript\" language=\"javascript\">aax_getad_mpb({\"slot_uuid\":\"26d6d4546-c110-4642-a343-a52e42bc4a17\"});</scr"+"ipt>"
-							    });   
-							</script>
-
-						<!-- AMAZON -->
-						<!-- Placeholder for AMAZON  -->
-				
-						<!-- 				
-						<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-						<script type="text/javascript" language="javascript">
-						//<![CDATA[
-						aax_getad_mpb({
-						"slot_uuid":"25fba8a5-f806-45fe-82d5-718e86f3d9f2"
-						});
-						//]]>
-						</script>
-						 -->		
-		
-					</div>
-				</div>
-
-				
+ -->
 
 				<!-- CARAMBOLA -->
 				<div id="mobile-instream-branovate-ad"  class="columns small-12" style="margin-top: 13px; min-width: 300px">
@@ -342,11 +298,40 @@
 					else{i[c]=1;}  
 					})(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_IC','localStorage','set','get','Item','cbolaDt','//route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233&wid=2')  
 					</script>
+				</div>
 
+
+				<!-- ANSWERS 2nd UNIT -->
+				<div id="mobile-instream-branovate-ad" class="columns small-12 padding-top"  style="text-align: center;">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+
+						<div id="vm_inbanner2"></div>
+						<script>
+						    window._videomosh = window._videomosh || [];
+						    !function (e, f, u) {
+						        e.async = 1;
+						        e.src = u;
+						        f.parentNode.insertBefore(e, f);
+						    }(document.createElement('script'),
+						            document.getElementsByTagName('script')[0],
+						            'http://player.videomosh.com/players/loader/loader_final4.js');
+						    _videomosh.push({
+						        publisher_key: "sequelmedia",
+						        mode: "inbanner",
+						        container: "vm_inbanner2",
+						        ad_mobile_id: "120824",
+						        ad_desktop_id: "120826",
+						        target_type: "mix",
+						        passback: true,
+						        backfill: "<script type=\"text/javascript\" language=\"javascript\" src=\"//c.amazon-adsystem.com/aax2/getads.js\"></scr"+"ipt><script type=\"text/javascript\" language=\"javascript\">aax_getad_mpb({\"slot_uuid\":\"26d6d4546-c110-4642-a343-a52e42bc4a17\"});</scr"+"ipt>"
+						    });   
+						</script>
+		
+					</div>
 				</div>
 
 			
-			<?php } ?>
+			<?php }// end if( $article_id ... (LELO/NOT LELO) ?>
 			
 			<!-- COMMENTS BOX -->
 			<?php include_once($config['include_path'].'disqus.php'); ?>

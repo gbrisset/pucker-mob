@@ -6,11 +6,11 @@
 	
 	$adminController->user->data = $adminController->user->getUserInfo();
 	
-if ($local_platform == "WAMP64"){
-	$uri = $adminController->helpers->getURI($_SERVER["REQUEST_URI"]);// local - WAMP
-}else{
-	 $uri = $adminController->helpers->getURI($mpHelpers->curPageURL()); // Live  - ORIGINAL CODE
-}//end if
+	if ($local_platform == "WAMP64"){
+		$uri = $adminController->helpers->getURI($_SERVER["REQUEST_URI"]);// local - WAMP
+	}else{
+		 $uri = $adminController->helpers->getURI($mpHelpers->curPageURL()); // Live  - ORIGINAL CODE
+	}//end if
 	
 
 	switch($uri[0]){

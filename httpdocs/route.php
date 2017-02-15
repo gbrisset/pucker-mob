@@ -2,7 +2,13 @@
 	require_once('assets/php/config.php');
 	//require_once('assets/php/newsletter.php');
 
-	$uri = $uriHelper->getURI($mpHelpers->curPageURL()); 
+	if ($local_platform == "WAMP64"){
+		$uri = $uriHelper->getURI($_SERVER["REQUEST_URI"]); // local - WAMP
+	}else{
+		 $uri = $uriHelper->getURI($mpHelpers->curPageURL());  // Live  - ORIGINAL CODE
+	}//end if
+
+	
 
 	$mainCategoryArray = $uriHelper::getMainCategoryArray($MPNavigation->mainCategories);	
 	if(isset($uri[2]) && strlen($uri[2]) > 0){

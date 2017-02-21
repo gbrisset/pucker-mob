@@ -148,62 +148,43 @@
 
 				<!-- RELATED ARTICLES -->
 				<?php 
-				$related = [];
-				if(isset($related_articles) && $related_articles && 
-					($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
+
+			// $ddd = new debug($related_articles,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
+
+				if(isset($related_articles) && array_sum ($related_articles)>-3){ 
+					if ( $related_articles['related_article_id_1'] > -1) $related_articles_list[] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
+					if ( $related_articles['related_article_id_2'] > -1) $related_articles_list[] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
+					if ( $related_articles['related_article_id_3'] > -1) $related_articles_list[] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
 					
-					$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
-					$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
-					$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
 				?>
 					<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:-8px !important; margin-bottom: -10px !important;">
 						
 						<div class="rel-articles-wrapper remember-to-share" style="padding-top: 0;">
 							<h3 style="margin-bottom: 0.5rem !important;     color: green;">RELATED ARTICLES</h3>
 							<ul>
-								<?php if( $related['related_article_id_1']['info'] ) {?>
-								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-									<article id="article-<?php echo $related['related_article_id_1']['info']['article_id']; ?>" class="columns no-padding">
+						
+						<?php foreach( $related_articles_list as $k => $related_article) {
+							$related_article_id = $related_article['article_id'];
+							$related_article_href = $config['this_url'] . $related_article['cat_dir_name'].'/'. $related_article['article_seo_title'];
+							$related_article_title = $related_article['article_title']; 
+						?>
+
+								<li class="related_to_this_article  left" id="<?php echo $related_article_id; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
+									<article id="article-<?php echo $related_article_id; ?>" class="columns no-padding">
 										<div class="article-image small-4 left" style="padding-right:10px">
-											<a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>">
-												<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_1']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_1']['info']['article_title']; ?>">
+											<a style="font-size: 16px !important;" href="<?php echo $related_article_href; ?>">
+												<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $related_article_id; ?>_tall.jpg" alt="<?php echo $related_article_title; ?>">
 											</a>
 										</div>
 										<div class="article-title small-8 left" style="padding-right:10px">
 											<h1 style="margin-left: 0.5rem;font-size: 1.2rem; height: 55px; ">
-												<a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></h1>
+												<a style="font-size: 16px !important;" href="<?php echo $related_article_href; ?>"><?php echo $related_article_title; ?></a></h1>
 										</div>
 									</article>
 								</li>
-								<?php }?>
-								<?php if( $related['related_article_id_2']['info'] ) {?>
-								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-									<article id="article-<?php echo $related['related_article_id_2']['info']['article_id']; ?>" class="columns no-padding">
-										<div class="article-image small-4 left" style="padding-right:10px">
-											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>">
-												<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_2']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_2']['info']['article_title']; ?>">
-											</a>
-										</div>
-										<div class="article-title small-8 left">
-											<h1 style="margin-left: 0.5rem;font-size: 1.2rem; height: 55px;"><a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></h1>
-										</div>
-									</article>
-								</li>
-								<?php }?>
-								<?php if( $related['related_article_id_3']['info'] ) {?>
-								<li class="related_to_this_article  left" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;border: 1px solid #ddd;padding: 0.2rem;">
-									<article id="article-<?php echo $related['related_article_id_3']['info']['article_id']; ?>" class="columns no-padding">
-										<div class="article-image small-4 left" style="padding-right:10px">
-											<a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>">
-												<img src="http://images.puckermob.com/articlesites/puckermob/large/<?php echo $related['related_article_id_3']['info']['article_id']; ?>_tall.jpg" alt="<?php echo $related['related_article_id_3']['info']['article_title']; ?>">
-											</a>
-										</div>
-										<div class="article-title small-8 left" style="padding-right:10px">
-											<h1 style="margin-left: 0.5rem;font-size: 1.2rem; height: 55px;"><a style="font-size: 16px !important;" href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a></h1>
-										</div>
-									</article>
-								</li>
-								<?php }?>
+
+						<?php }//end foreach   ?>
+
 							</ul>
 						</div>
 						
@@ -241,7 +222,7 @@
 						        ad_desktop_id: "42296",
 						        target_type: "mix",
 						        passback: true,
-						        backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/3794094997\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
+						        backfill: "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></scr"+"ipt> <ins class=\"adsbygoogle\"style=\"display:inline-block;width:300px;height:250px\"data-ad-client=\"ca-pub-8978874786792646\"data-ad-slot=\"4230568183\"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </scr"+"ipt>"
 						    });   
 						</script>
 
@@ -343,7 +324,7 @@
 						        ad_desktop_id: "120826",
 						        target_type: "mix",
 						        passback: true,
-						        backfill: "<script type=\"text/javascript\" language=\"javascript\" src=\"//c.amazon-adsystem.com/aax2/getads.js\"></scr"+"ipt><script type=\"text/javascript\" language=\"javascript\">aax_getad_mpb({\"slot_uuid\":\"26d6d4546-c110-4642-a343-a52e42bc4a17\"});</scr"+"ipt>"
+						        backfill: "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></scr"+"ipt> <ins class=\"adsbygoogle\"style=\"display:inline-block;width:300px;height:250px\"data-ad-client=\"ca-pub-8978874786792646\"data-ad-slot=\"7184034589\"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </scr"+"ipt>"
 						    });   
 						</script>
 		
@@ -417,24 +398,29 @@
 				
 				<!-- RELATED ARTICLES -->
 				<?php 
-				$related = []; 
-				if(isset($related_articles) && $related_articles && 
-					($related_articles["related_article_id_1"] != '-1' || $related_articles["related_article_id_2"] != '-1' || $related_articles["related_article_id_3"] != '-1') ){ 
-					$related['related_article_id_1']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
-					$related['related_article_id_2']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
-					$related['related_article_id_3']['info'] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
+	
+				if(isset($related_articles) && array_sum ($related_articles)>-3){ 
+					if ( $related_articles['related_article_id_1'] > -1) $related_articles_list[] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_1'] );
+					if ( $related_articles['related_article_id_2'] > -1) $related_articles_list[] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_2'] );
+					if ( $related_articles['related_article_id_3'] > -1) $related_articles_list[] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
+					
 				?>
 				<div class="row small-12 clear related-articles-box half-padding">
 					<hr>
 					<div class="rel-articles-wrapper">
 						<h3 style="margin-bottom: 0.5rem !important;">RELATED ARTICLES</h3>
 						<ul>
-						<?php if( $related['related_article_id_1']['info'] ) {?>
-							<li class="related_to_this_article" id="<?php echo $related['related_article_id_1']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_1']['info']['cat_dir_name'].'/'.$related['related_article_id_1']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_1']['info']['article_title']; ?></a></li><?php }?>
-							<?php if( $related['related_article_id_2']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_2']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_2']['info']['cat_dir_name'].'/'.$related['related_article_id_2']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_2']['info']['article_title']; ?></a></li><?php }?>
-								<?php if( $related['related_article_id_3']['info'] ) {?><li class="related_to_this_article" id="<?php echo $related['related_article_id_3']['info']['article_id']; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo 'http://www.puckermob.com/'.$related['related_article_id_3']['info']['cat_dir_name'].'/'.$related['related_article_id_3']['info']['article_seo_title']; ?>"><?php echo $related['related_article_id_3']['info']['article_title']; ?></a>
-							</li>
-						<?php }?>
+						
+						<?php foreach( $related_articles_list as $k => $related_article) {
+							$related_article_id = $related_article['article_id'];
+							$related_article_href = $config['this_url'] . $related_article['cat_dir_name'].'/'. $related_article['article_seo_title'];
+							$related_article_title = $related_article['article_title']; 
+						?>
+
+							<li class="related_to_this_article" id="<?php echo $related_article_id; ?>" style="margin-bottom: 0.3rem !important;"><i class="fa fa-caret-right"></i><a href="<?php echo $related_article_href; ?>"><?php echo $related_article_title; ?></a></li>
+
+						<?php }//end foreach   ?>
+
 						</ul>
 					</div>
 					<hr>

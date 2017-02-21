@@ -59,17 +59,16 @@
 			<div class="clear margin-bottom">
 				<div id="article-image">
 
-					<!-- FORCING THE VIDEO INSTEAD OF THE IMAGE							 -->
 							 <?php if(isset($articleInfoObj['article_id'])){ 
-								 if($articleInfoObj['article_id'] == 23564 || $articleInfoObj['article_id'] == 26139 ){ 
- 								 	// #23564 -- http://www.puckermob.com/relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
+								 if($articleInfoObj['article_id'] == 27296 ){
+								 // #27296 - http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself 
+								 	/// TEST PAGE for video instead of images
+								 
+								 // if($articleInfoObj['article_id'] == 23564 || $articleInfoObj['article_id'] == 26139 ){ 
+								 	// #23564 -- http://www.puckermob.com/relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
 								 	// #26139 -- http://www.puckermob.com/moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
-								 	// These articles are paid content
+								 	// These articles are paid content and should keep their original image
 								 ?>
-
-									<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
-
-								 <?php }else{?>
 
 										<div id="vm_player"></div>
 										<script>
@@ -91,8 +90,13 @@
 															id:231668});
 										</script>
 
-								 <?php }//end if($articleInfoObj['article_id'] == 23564 ...) 
-								}//end if (isset($articleInfoObj ... ) ?>
+								 <?php }else{?>
+
+										<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image"> 
+
+								 <?php // }//end if($articleInfoObj['article_id'] == 23564 ...) ?>
+								 <?php }//end if($articleInfoObj['article_id'] == 27296 ...) ?>
+							 <?php }//end if (isset($articleInfoObj ... ) ?>
 
 
 

@@ -279,29 +279,11 @@
 				</div>
 
 				<!-- SHARETHROUGH -->
-<!--
+
  				<div id="mobile-instream-branovate-ad"  class="columns " style="margin-top: 13px;">	
 					<script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async="true"></script>
 				</div>
- -->
-
-				<!-- CARAMBOLA -->
-				<div id="mobile-instream-branovate-ad"  class="columns small-12" style="margin-top: 13px; min-width: 300px">
-					<!--Carambola Script --> 
-					<img height='0' width='0' alt='' src='//pixel.watch/936x' style='display:block;' /> 
-					<script data-cfasync="false" class="carambola_InContent" type="text/javascript" cbola_wid="2">  
-					(function (i,d,s,o,m,r,c,l,w,q,y,h,g) {  
-					var e=d.getElementById(r);if(e===null){  
-					var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n); 
-					var dt=new Date().getTime();  
-					try{i[l][w+y](h,i[l][q+y](h)+'&'+dt);}catch(er){i[h]=dt;}  
-					} else if(typeof i[c]!=='undefined'){i[c]++}  
-					else{i[c]=1;}  
-					})(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_IC','localStorage','set','get','Item','cbolaDt','//route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233&wid=2')  
-					</script>
-				</div>
-
-
+ 
 				<!-- ANSWERS 2nd UNIT -->
 				<div id="mobile-instream-branovate-ad" class="columns small-12 padding-top"  style="text-align: center;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
@@ -339,6 +321,99 @@
 	
 		</div>
 	
+	</section>
+
+	<section id="article-summary" class="small-12 column">
+
+	<!-- FEATURED ARTICLES -->
+
+		<h3 style="margin-bottom: 0.5rem !important;  font-size: 22.4px; font-family: OswaldLight; font-weight: bold;   color: green;">FEATURED ARTICLES</h3>
+		<div class="content-wrapper columns no-padding small-12">
+		<?php 
+
+		$featured_articles = $mpArticle->getFeaturedArticles();
+			// $ddd = new debug($featured_articles,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
+				if($featured_articles){
+				
+					// foreach($featured_articles as $farticle){
+					 for($xx=0; $xx<3; $xx++){
+					 $farticle = $featured_articles[$xx];
+						$article_title = $farticle['article_title'];
+						$article_seo_title = $farticle['article_seo_title'];
+						$article_id = $farticle['article_id'];
+						$article_desc = $farticle['article_desc'];
+						$name = $farticle['contributor_name'];
+						$seo_name = $farticle['contributor_seo_name'];
+						$category = $farticle['cat_dir_name'];
+						$link_article = $config['this_url'].$category.'/'.$article_seo_title;
+
+					?>
+					<div class="columns small-12 padding-top featured-wrapper-div">
+					
+					<div id="article-featured-<?php echo $article_id; ?>" class="columns small-12 no-padding remove-border">
+						<div id="article-summary" class="small-12 column ">
+							
+							<!-- TITLE -->
+							<h1 style="font-size: 1.55rem;"><?php echo $article_title; ?></h1>
+							
+							<div class="small-12 padding-bottom">
+								<?php if(!empty($article_desc) ){?><p class="description" style="margin-bottom:0;"><?php echo $article_desc; ?></p><?php }?>
+							</div>
+
+							<!-- Article Image -->
+							<div class="clear margin-bottom" style="background: black;     margin-bottom: 5px !important;">
+								<div id="article-image " class=" no-padding tinted-image " style="opacity: 0.5;">
+									<a href="<?php echo $link_article; ?>">
+										<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php echo $article_title; ?> Image">
+									</a>
+								</div>
+								<span class="span-middle-label-img"><a href="<?php echo $link_article; ?>">Click to read full article</a></span>
+
+							</div>
+							
+						</div>
+						
+					</div>
+
+					</div>
+
+						<?php if($xx == 0){?>
+
+						<!-- CARAMBOLA -->
+							<div id="mobile-instream-branovate-ad"  class="columns small-12" style="margin-top: 13px; min-width: 300px">
+								<!-- Carambola Script   -->
+								<img height='0' width='0' alt='' src='//pixel.watch/936x' style='display:block;' /> 
+								<script data-cfasync="false" class="carambola_InContent" type="text/javascript" cbola_wid="2">  
+								(function (i,d,s,o,m,r,c,l,w,q,y,h,g) {  
+								var e=d.getElementById(r);if(e===null){  
+								var t = d.createElement(o); t.src = g; t.id = r; t.setAttribute(m, s);t.async = 1;var n=d.getElementsByTagName(o)[0];n.parentNode.insertBefore(t, n); 
+								var dt=new Date().getTime();  
+								try{i[l][w+y](h,i[l][q+y](h)+'&'+dt);}catch(er){i[h]=dt;}  
+								} else if(typeof i[c]!=='undefined'){i[c]++}  
+								else{i[c]=1;}  
+								})(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_IC','localStorage','set','get','Item','cbolaDt','//route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233&wid=2')  
+								</script>
+							</div>
+
+						<?php } ?>
+
+
+
+					<?php }//end for ($xx ... )
+				}else{
+					echo '<p>No Featured article available.</p>';
+				}//end if($featured_articles)
+			?>
+		
+		</div>
+
+
+<!-- *************************************** -->
+<!-- *************************************** -->
+<!-- *************************************** -->
+<!-- *************************************** -->
+
 	</section>
 
 </article>

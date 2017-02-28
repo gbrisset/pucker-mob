@@ -14,8 +14,8 @@
   <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
 <?php }//end if (!$local)?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3769" ></script>
-
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3770" ></script>
+<script type="text/javascript">$("#read-more-img").click()</script> 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
     <![endif]-->
@@ -63,198 +63,56 @@
    }else{ 
     
 // MOBILE ************************************************************** 
+    
+
+    // disable the read more button ----------------------------------------------------------------------------------------------------------------------------
+
+?><?php
+
+
+       switch ($article_id) {
+        case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+        case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+          
+           break;
+      
+        default:
+          // do nothing
+       }//end switch ($article_id)
+
   if( isset($promotedArticle) && !$promotedArticle ){ 
       
-      if(isset($articleInfoObj) && $articleInfoObj){ 
-        //LELO
-        if(isset($article_id) && $article_id != 16562  &&  $article_id != 17425 && $article_id != 14479 && $article_id != 14576  && $article_id != 8560 
-        && $article_id != 14613 && $article_id != 15104  && $article_id != 14873 && $article_id != 15271 && $article_id != 15284 
-        && $article_id != 15488 &&  $article_id != 17286 ){ 
+        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+        
+         if(in_array($article_id, $selected_articles_lelo)){
 
-               //     $current_time = new DateTime(); // Today
-              //      $start_time = new DateTime('3:00pm');
-              //      $end_time  = new DateTime('11:59pm');
-              
-               // if ( $current_time->getTimestamp() > $start_time->getTimestamp() && $current_time->getTimestamp() < $end_time->getTimestamp()){ 
-           
-            ?>
-            <?php if( $articleInfoObj['article_id'] == 27296){?>
-            <!-- TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself  -->
-            
-                    <!-- Start Pucker Mob - Adhesion - iframe buster tag -->
-                    <div id='__kx_ad_4915'></div>
-                    <img id='__kx_ad_4915_px' src='%%VIEW_URL_UNESC%%http://cdn.kixer.com/img/transparent.gif?cb=%%CACHEBUSTER%%' />
-                    <script type="text/javascript" language="javascript" id="__kx_tag_4915">
-                    var __kx_ad_slots = __kx_ad_slots || [];
-                    (function () {
-                      var slot = 4915;
-                      var h = false;
-                      var doc = document;
-                      __kx_ad_slots.push(slot);
-                        if (typeof __kx_ad_start == 'function') {
-                        __kx_ad_start();
-                      } else {
-                        if (top == self) {
-                          var s = doc.createElement('script');
-                          s.type = 'text/javascript';
-                          s.async = true;
-                          s.src = '//cdn.kixer.com/ad/load.js';
-                          s.onload = s.onreadystatechange = function(){
-                            if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-                              h = true;
-                              s.onload = s.onreadystatechange = null;
-                              __kx_ad_start();
-                            }
-                          };
-                          var x = doc.getElementsByTagName('script')[0];
-                          x.parentNode.insertBefore(s, x);
-                        } else {
-                          var tag = doc.getElementById('__kx_tag_'+slot);
-                          var win = window.parent;
-                          doc = win.document;
-                          var top_div = doc.createElement("div");
-                          top_div.id = '__kx_ad_'+slot;
-                          doc.body.appendChild(top_div);
-                          var top_tag = doc.createElement("script");
-                          top_tag.id = '__kx_top_tag_'+slot;
-                          top_tag.innerHTML = tag.innerHTML;
-                          doc.body.appendChild(top_tag);
-                        }
-                      }
-                    })();
-                    </script>
-                    <!-- End Pucker Mob - Adhesion - iframe buster code -->
-      
+          // do nothing - no ads to interfer with Lelo paid content
 
+         }else{ 
 
-            <!-- END OF TEST PAGE - article #27296 http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself  -->
-            <?php  }else{ ?>
+      // select ads ----------------------------------------------------------------------------------------------------------------------------
+             switch ($article_id) {
+              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+              case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+                //do nothing - we do not want other ads to interfer with the test page
+                break;
 
-           <!-- ----- This ad is suspended until Adhesion figures out the test page above -- GB 2017-01-16 ----  -->
-                  <!-- /73970039/UT_Adhesion -->
-               <!--    <div id='div-gpt-ad-1481648465857-0' style='height:1px; width:1px;'>
-                  <script>
-                  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1481648465857-0'); });
-                  </script>
-                  </div>  -->
-          <!-- ----- END OF - This ad is suspended until Adhesion figures out the test page above -- GB 2017-01-16 ----  -->
-           
-              <!-- Start Pucker Mob - Adhesion -->
+              case 22475: // not sure why this is separated -- GB 2017-02-27
+                include($config['include_path'] . 'ads/spoutable.php');
+                break;
 
-              <div id='__kx_ad_4915'></div>
-              <img id='__kx_ad_4915_px' src='%%VIEW_URL_UNESC%%http://cdn.kixer.com/img/transparent.gif?cb=%%CACHEBUSTER%%' />
-              <script type="text/javascript" language="javascript">
-              var __kx_ad_slots = __kx_ad_slots || [];
-              (function () {
-                var slot = 4915;
-                var h = false;
-                __kx_ad_slots.push(slot);
-                  if (typeof __kx_ad_start == 'function') {
-                  __kx_ad_start();
-                } else {
-                  var s = document.createElement('script');
-                  s.type = 'text/javascript';
-                  s.async = true;
-                  s.src = '//cdn.kixer.com/ad/load.js';
-                  s.onload = s.onreadystatechange = function(){
-                    if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-                      h = true;
-                      s.onload = s.onreadystatechange = null;
-                      __kx_ad_start();
-                    }
-                  };
-                  var x = document.getElementsByTagName('script')[0];
-                  x.parentNode.insertBefore(s, x);
-                }
-              })();
-              </script>
- 
-              <!-- End Pucker Mob - Adhesion -->
+              default:
+                // include($config['include_path'] . 'ads/adhesion_iframe_buster.php');
+                include($config['include_path'] . 'ads/adhesion_kixer.php');
+
+             }//end switch ($article_id)
 
 
 
-             <?php  }// end if( $articleInfoObj['article_id'] == 27296 ?> 
+             include($config['include_path'] . 'ads/lkqdVPAID_script.php'); // not sure what that does -- GB 2017-02-27
 
-               
-              <!-- /73970039/UT_Adhesion_1x1 -->
-           <!--  NOT sure if that is any use anymore - GB 01-10-2017
-              <div id='div-gpt-ad-1483989302416-0' style='height:1px; width:1px;'>
-              <script>
-              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1483989302416-0'); });
-              </script>
-              </div>                
- -->
-
-
-            <?php if( $articleInfoObj['article_id'] == 22475){?>
-
-              <!-- SPOUTABLE REPLACE ADHESION -->
-              <script type='text/javascript'>
-              (function(){
-                var spoutjs=document.createElement('script'),firstjs=document.getElementsByTagName('script')[0];
-                spoutjs.async=1;
-                spoutjs.src='//cdn.spoutable.com/1deb0b13-48fb-4eec-8af0-a5e05f8b6272/spoutable.js';
-                firstjs.parentNode.insertBefore(spoutjs,firstjs)
-              })();
-              </script>
-           <?php  }// end if( $articleInfoObj['article_id'] == 22475 
-
-            } //end  if(isset($article_id) ... 
-       }//end if(isset($articleInfoObj) && $articleInfoObj) 
-
-    if( $article_id != 16562  &&  $article_id != 17425 && $article_id != 14330 && $article_id != 11339 && $article_id != 14613 && $article_id != 8560 && $article_id != 15104 && $article_id != 15284 && $article_id != 15488 &&  $article_id  != 17286  &&  $article_id != 18521 && $article_id != 23564 ){ ?>
-          <script>
-            (function() 
-            { 
-               var tagqa = '';
-               var playerId = '';
-               var playerContainerId = 'ad' + Math.round(Math.random()*1000000000).toString();
-               var playerWidth = '300';
-               var playerHeight = '250';
-               var controls = '';
-               var render = '';
-               var tracki = '';
-               var trackc = '';
-               var custom1 = '';
-               var custom2 = '';
-               var custom3 = '';
-               var videourl = '';
-               var viewMode = 'normal';
-               var companionId = '';
-               var pubMacros = '';
-               try { if (document.readyState && document.readyState != 'complete') { document.write('<div id="' + playerContainerId + '"></div>'); } } catch (e) {} 
-
-               var lkqdVPAID;
-               var lkqdId = new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString();
-               var environmentVars = { slot: document.getElementById(playerContainerId), videoSlot: document.getElementById(playerId), videoSlotCanAutoPlay: true };
-               var creativeData = '';
-
-               function onVPAIDLoad()
-               {
-                    lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, 'AdLoaded');
-               }
-               var vpaidFrame = document.createElement('iframe');
-               vpaidFrame.id = lkqdId;
-               vpaidFrame.name = lkqdId;
-               vpaidFrame.style.display = 'none';
-               vpaidFrame.onload = function() {
-               vpaidLoader = vpaidFrame.contentWindow.document.createElement('script');
-                    vpaidLoader.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//ad.lkqd.net/serve/pure.js?format=1&vpaid=true&apt=auto&ear=0&pid=85&sid=28814&tagqa=' + tagqa + '&elementid=' + encodeURIComponent(playerId) + '&containerid=' + encodeURIComponent(playerContainerId) + '&render=' + render + '&controls=' + controls + '&width=' + playerWidth + '&height=' + playerHeight + '&mode=' + viewMode + '&companionid=' + encodeURIComponent(companionId) + '&tracki=' + encodeURIComponent(tracki) + '&trackc=' + encodeURIComponent(trackc) + '&c1=' + encodeURIComponent(custom1) + '&c2=' + encodeURIComponent(custom2) + '&c3=' + encodeURIComponent(custom3) + '&videourl=' + encodeURIComponent(videourl) + '&rnd=' + Math.floor(Math.random() * 100000000) + '&m=' + encodeURIComponent(pubMacros);
-                    vpaidLoader.onload = function() {
-                          lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd();
-                          lkqdVPAID.handshakeVersion('2.0');
-                          onVPAIDLoad();
-                          lkqdVPAID.initAd(playerWidth, playerHeight, viewMode, 600, creativeData, environmentVars);
-                    };
-                    vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader);
-               };
-               document.documentElement.appendChild(vpaidFrame);
-            })();
-          </script>
-
-          
-
-      <?php  } // enf if( $article_id != 16562 ... 
+        }//end if( in_array($article_id, $selected_articles_lelo)
 
       } //end  if( isset($promotedArticle) 
 

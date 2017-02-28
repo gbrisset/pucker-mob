@@ -70,6 +70,8 @@ class Dashboard{
 	}
 
 	/* INSERT OR UPDATE RECORDS TO THE SOCIAL MEDIA TABLE */
+// This table has not been updated since 206-04-28  and pu on hold -- GB 2017-02-15
+
 	public function updateSocialMediaShares( $counts, $articleId, $month, $cat ){
 	
 			if( $articleId ){
@@ -593,10 +595,13 @@ class Dashboard{
 		}else return false;
 	}
 
-	public function pageviewsReport( $month, $year ){
+	public function ON_HOLD_UNTIL_TESTING_IS_FINISH_AT_BOTTOM_OF_PAGE_pageviewsReport( $month, $year ){
 		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$year =  filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 	
+		$ddd = new debug("$month $year",0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
+
+
 		$prev_month = $month;
 		$prev_year = $year;
 		if($prev_month == 1){
@@ -751,70 +756,71 @@ class Dashboard{
 		}
 	}
 
-	//OLD ONE REPLACED BY pageviewsReport()
-	public function updateContributorsEarnings( $month, $year){
-		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$year = filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	// //OLD ONE REPLACED BY pageviewsReport()
+	// public function updateContributorsEarnings( $month, $year){
+	// 	$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	// 	$year = filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
-		$contributors = $this->getContributorsList();
-		$data['month'] = $month;
-		$data['year'] = $year;
+	// 	$contributors = $this->getContributorsList();
+	// 	$data['month'] = $month;
+	// 	$data['year'] = $year;
 
-		if($contributors){
-			foreach($contributors as $contributor){
+	// 	if($contributors){
+	// 		foreach($contributors as $contributor){
 
-				$id = $contributor['contributor_id'];
-				$data['contributor'] = $id;
-				$update_data = $this->getContributorEarnings($id, $month, $year);
+	// 			$id = $contributor['contributor_id'];
+	// 			$data['contributor'] = $id;
+	// 			$update_data = $this->getContributorEarnings($id, $month, $year);
 
-				$earnings_info = $this->socialMediaSharesReport($data);
+	// 			$earnings_info = $this->socialMediaSharesReport($data);
 
-				$total_article_rate = 0;
-				$total_shares = 0;
+	// 			$total_article_rate = 0;
+	// 			$total_shares = 0;
 
-				$share_rate = 0.01;				
-				$total_share_rev = 0;
-				$total_earnings = 0;
+	// 			$share_rate = 0.01;				
+	// 			$total_share_rev = 0;
+	// 			$total_earnings = 0;
 				
-				if($earnings_info && $earnings_info[0]){
+	// 			if($earnings_info && $earnings_info[0]){
 
-					$earnings_info = $earnings_info[0];
-					$total_article_rate = $earnings_info["total_rate"]; //RATE PER ARTICLE 25/10
-					$total_shares = $earnings_info["total_shares"]; //NUMBER OF SHARES
-					$share_rate = $earnings_info['share_rate']; 
-					$total_share_rev = $earnings_info["share_revenue"]; 
-					$total_earnings = $earnings_info["total_to_pay"]; //TOTAL RATE PER ARTICLE + NUMBER OF SHARES * 0.02
-				}
+	// 				$earnings_info = $earnings_info[0];
+	// 				$total_article_rate = $earnings_info["total_rate"]; //RATE PER ARTICLE 25/10
+	// 				$total_shares = $earnings_info["total_shares"]; //NUMBER OF SHARES
+	// 				$share_rate = $earnings_info['share_rate']; 
+	// 				$total_share_rev = $earnings_info["share_revenue"]; 
+	// 				$total_earnings = $earnings_info["total_to_pay"]; //TOTAL RATE PER ARTICLE + NUMBER OF SHARES * 0.02
+	// 			}
 
-				if($contributor['user_type'] != 4){
-					$total_earnings = $total_earnings - $total_article_rate;
-				}
+	// 			if($contributor['user_type'] != 4){
+	// 				$total_earnings = $total_earnings - $total_article_rate;
+	// 			}
 
-				if($month >= 2 && $year >=2015){
-					$total_earnings = $total_earnings - $total_article_rate;
-				}
+	// 			if($month >= 2 && $year >=2015){
+	// 				$total_earnings = $total_earnings - $total_article_rate;
+	// 			}
 
-				if($update_data){
-					$s = "UPDATE contributor_earnings 
-							SET total_article_rate = $total_article_rate,
-							    total_shares = $total_shares,
-							    share_rate = $share_rate,
-							    total_share_rev = $total_share_rev,
-							    total_earnings = $total_earnings 
-						WHERE contributor_id = $id AND month = $month AND year = $year ";
-				}else{
-					$s = "INSERT INTO contributor_earnings
-						  (`id`, `contributor_id`, `month`, `year`, `total_article_rate`, `total_shares`, `share_rate`, 
-						  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`)
-						  VALUES (NULL, '".$id."', '".$month."', '".$year."', '".$total_article_rate."', '".$total_shares."', 
-						  	'".$share_rate."', '".$total_share_rev."', '".$total_earnings."', '0', '".$total_earnings."') ";
-				}
-				$queryParams = [ ];			
-				$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+	// 			if($update_data){
+	// 				$s = "UPDATE contributor_earnings 
+	// 						SET total_article_rate = $total_article_rate,
+	// 						    total_shares = $total_shares,
+	// 						    share_rate = $share_rate,
+	// 						    total_share_rev = $total_share_rev,
+	// 						    total_earnings = $total_earnings 
+	// 					WHERE contributor_id = $id AND month = $month AND year = $year ";
+	// 			}else{
+	// 				$s = "INSERT INTO contributor_earnings
+	// 					  (`id`, `contributor_id`, `month`, `year`, `total_article_rate`, `total_shares`, `share_rate`, 
+	// 					  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`)
+	// 					  VALUES (NULL, '".$id."', '".$month."', '".$year."', '".$total_article_rate."', '".$total_shares."', 
+	// 					  	'".$share_rate."', '".$total_share_rev."', '".$total_earnings."', '0', '".$total_earnings."') ";
+	// 			}
+	// 			$queryParams = [ ];			
+	// 			$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 
-			}
-		}
-	}
+	// 		}
+	// 	}
+	// }
+
 
 	public function getContributorsList(){
 		$s = " SELECT contributor_id, user_type from active_user_contributors ORDER BY user_login_count DESC";
@@ -858,5 +864,182 @@ class Dashboard{
 			 AND ( article_contributors.contributor_id = article_contributor_articles.contributor_id ) ";
 	}
 
-}
+
+
+// ****************************************************************************************************
+// ************************ TESTING BELOW TESTING BELOW TESTING BELOW TESTING BELOW *******************
+// ****************************************************************************************************
+// ****************************************************************************************************
+
+	public function pageviewsReport( $month, $year ){
+		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year =  filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	
+		$ddd = new debug("\$month \$year = $month $year",2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
+
+		$prev_month = $month;
+		$prev_year = $year;
+		if($prev_month == 1){
+			$prev_month = 12;
+			$prev_year = $year - 1;
+		}else $prev_month = $month - 1;
+
+
+		$ddd = new debug("\$prev_month \$prev_year = $prev_month $prev_year",2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+		$ddd = new debug(str_repeat("=====", 20),2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
+		//CONTRIBUTOR LIST ACTIVE
+		$contributors = $this->getContributorsList(); 
+
+		// $ddd = new debug($contributors,3); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
+
+/*
+Array
+(
+    [0] => Array
+        (
+            [contributor_id] => 102
+            [user_type] => 1
+        )
+
+*/
+
+		if($contributors){
+			foreach($contributors as $contributor){
+
+				$id = $contributor['contributor_id'];
+
+
+if (
+	$id ==3612 ||
+	$id ==1570 ||
+	$id ==2409 ||
+	$id ==3173 
+	){
+
+				$current_month_data = false;
+				$prev_month_data = false;
+				
+				//CONTRIBUTOR EARNINGS
+				$update_data = $this->getContributorEarnings($id, $prev_month.', '.$month, $year);
+
+$ddd = new debug(str_repeat("$id - ", 6),3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug("update_data",3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug($update_data,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+				
+				if( $update_data ){
+					if(count($update_data) > 1){
+						$current_month_data = isset($update_data[0]) ? $update_data[0] : false;
+						$prev_month_data = isset($update_data[1]) ? $update_data[1] : false;
+					}else{
+						if($update_data[0]['month'] == $month ){
+							$current_month_data = isset($update_data[0]) ? $update_data[0] : false;
+							$prev_month_data = false;
+						}else{
+							$current_month_data =  false;
+							$prev_month_data = isset($update_data[0]) ? $update_data[0] : false;
+						}// end if($update_data[0]
+					}// end if(count($update_data) > 1)
+				}// end if( $update_data )
+
+
+$ddd = new debug("current_month_data",2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug($current_month_data,2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug("prev_month_data",2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug($prev_month_data,2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
+				//GET PAGEVIEWS TOTAL PER MONTH
+				$earnings_info = $this->get_articlesbypageviews_new_2( $id, $month, $year);
+
+
+				$total_article_rate = 0;
+				$total_shares = 0;
+				$total_share_rev = 0;
+				$total_us_pageviews = 0;
+				$total_earnings = 0;
+	            $total_to_be_pay = 0;
+
+	            if($earnings_info) $total_us_pageviews = $earnings_info[0]['pvs'];
+				$share_rate = $this->get_current_rate($month, $contributor['user_type']);	
+			
+				if($share_rate) $share_rate  = $share_rate['rate'];
+
+				//Calc Total Earnings
+				if( $total_us_pageviews > 0 ){
+					$total_earnings = ($total_us_pageviews / 1000 ) * $share_rate;
+				}
+
+				$total_to_be_pay = $total_earnings;
+				//Verify if the previews Month this contributor was paid, if not you will carry the pending amount to next month.
+				if( isset($prev_month_data) && $prev_month_data ){
+					if($prev_month_data['paid'] == 0){
+						$total_to_be_pay = $total_to_be_pay + $prev_month_data['to_be_pay'];
+					}
+				}//end if
+
+
+$ddd = new debug("earnings_info",3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug($earnings_info,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug("$id user_type ==>". $contributor['user_type'],1); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug("\$total_us_pageviews ==>$total_us_pageviews",2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug("\$total_earnings ==> $total_earnings",2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug("\$total_to_be_pay ==> $total_to_be_pay",2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
+
+
+				// //IF CURRENT MONTH DATA EXIST UPDATE THE RECORD
+				// if($current_month_data){ 
+				// 	$s = "UPDATE contributor_earnings 
+				// 			SET total_article_rate = $total_article_rate,
+				// 			    total_shares = $total_shares,
+				// 			    share_rate = $share_rate,
+				// 			    total_share_rev = $total_share_rev,
+				// 			    total_earnings = $total_earnings,
+				// 			    total_us_pageviews = $total_us_pageviews,
+				// 			    to_be_pay = $total_to_be_pay,
+				// 			    updated_date = now()
+				// 		WHERE contributor_id = $id AND month = $month AND year = $year ";
+
+				// 	$queryParams = [ ];			
+				// 	$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+				// }else{
+				// 	//INSERT NEW RECORD
+				// 	$data[] = [
+				// 		'id' => NULL,
+				// 		'contributor_id' => $id,
+				// 		'month' => $month,
+				// 		'year' =>  $year,
+				// 		'total_article_rate' => $total_article_rate,
+				// 		'total_shares' => $total_shares,
+				// 		'share_rate' => $total_shares,
+				// 		'total_us_pageviews' => $total_us_pageviews,
+				// 		'total_share_rev' => $total_share_rev,
+				// 		'total_earnings' => $total_earnings,
+				// 		'paid' => 0,
+				// 		'to_be_pay' =>  $total_to_be_pay,
+				// 		'updated_date' => date('Y-m-d H:i:s', time())
+				// 	];
+
+				// }//end if($current_month_data)
+
+
+}//end if ($id ==3612 || $id ==1570 || $id ==2409 || $id ==3173 )
+
+				
+			} //end foreach($contributors as $contributor)
+
+			//   if(isset($data) && $data) $this->saveContributorsEarningsInformationDaily($data, $month, $year);
+
+		}	// end if($contributors)
+	}//end public function pageviewsReport
+
+// ****************************************************************************************************
+// ************************ TESTING ABOVE TESTING ABOVE TESTING ABOVE TESTING ABOVE *******************
+// ****************************************************************************************************
+// ****************************************************************************************************
+
+}//end class
+
+
 ?>

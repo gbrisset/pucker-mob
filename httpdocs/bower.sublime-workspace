@@ -1,0 +1,490 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"related_article_",
+				"related_article_href"
+			],
+			[
+				"related_",
+				"related_article_title"
+			],
+			[
+				"re",
+				"related_article_href"
+			],
+			[
+				"related_article",
+				"related_articles_list"
+			],
+			[
+				"art",
+				"article_id"
+			],
+			[
+				"str_",
+				"str_repeat"
+			],
+			[
+				"con",
+				"contributors"
+			],
+			[
+				"in",
+				"incentives"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"CO",
+				"contributor_id"
+			],
+			[
+				"co",
+				"contributor_id"
+			],
+			[
+				"echo",
+				"echo\techo \"…\""
+			],
+			[
+				"http",
+				"httpdocs"
+			],
+			[
+				"Proje",
+				"PROJECT_ROOT"
+			],
+			[
+				"lo",
+				"local_platform"
+			],
+			[
+				"d",
+				"d_id"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/config.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/article.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/MPArticle.php",
+		"/C/Users/gbris/OneDrive/Documents/DB/MOB/NewBloggerWeeklyReport/SQL_retrieve_new_contributors.sql",
+		"/C/Users/gbris/OneDrive/Documents/Ads/Answers_passbacks.txt",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/articles/editarticle.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/templates/single_page_article_BAK_with DIV below image.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/class.DatabaseObject.php",
+		"/C/Users/gbris/OneDrive/Documents/DB/MOB/SQL_fetch_VIEWS",
+		"/C/Users/gbris/OneDrive/Documents/DB/MOB/pucker_mob_STRUCTURE.sql",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/assets/php/ajaxfunctions.php",
+		"/C/Users/gbris/OneDrive/Documents/DB/MOB/Keep LocalUpToDate/KeepLocalUpdated.sql",
+		"/C/Users/gbris/OneDrive/Documents/DB/MOB/ContributorEarningInvestigation/SQL_contributor_earning_investigation.sql",
+		"/C/Users/gbris/Downloads/contributor_earnings.sql",
+		"/C/Users/gbris/OneDrive/Documents/DB/MOB/ContributorEarningInvestigation/Procedure.sql",
+		"/C/wamp64/www/pucker-mob/httpdocs/test/cron_simulator.php",
+		"/C/Users/gbris/AppData/Local/Temp/updateContributorEarnings.php_20170215154625.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/Connector.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/MPAdminUserController.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/class.ContributorEarnings.php",
+		"/C/Users/gbris/OneDrive/Documents/DB/MOB/Keep LocalUpToDate/KeepDBClean.sql",
+		"/C/Users/gbris/Downloads/users.sql",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/dashboard/route.php",
+		"/C/Users/gbris/OneDrive/Documents/EarningReportInvestigation/DB_VIEW_article_daily_earnings",
+		"/C/Users/gbris/OneDrive/Documents/EarningReportInvestigation/SQL_google_analytics_data_daily",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/class.Dashboard.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/dashboard/index.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/assets/includes/view_dashboard_resume.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/class.ManageAdminDashboard.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/config_GIT_BAK.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/config_ONTHEWORK.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/dashboard/bycontributor.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/dashboard/.htaccess",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/assets/includes/view_articles_resume.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/earnings/route.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/assets/includes/charts.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/earnings/.htaccess",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/earnings/earningsinfo.php",
+		"/C/Users/gbris/AppData/Local/Temp/route.php_20170209125957.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/admin/articles/route.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/earnings/index.php",
+		"/C/Users/gbris/AppData/Local/Temp/index.php_20170209093311.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/assets/includes/menu.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/assets/includes/head.php",
+		"/C/Users/gbris/AppData/Local/Temp/head.php_20170209090504.php",
+		"/C/Users/gbris/OneDrive/Documents/DB/MOB/SQL_retrieve_new_contributors.sql",
+		"/C/wamp64/www/pucker-mob-live-code/httpdocs/assets/php/config_LIVE_BAK.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/ranking/index.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/admin/assets/includes/head.php",
+		"/C/Users/gbris/AppData/Local/Temp/_BAK_article.php_20170208120922.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/js/smf_video_4chicks_1.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/index.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/admin/index.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/assets/php/class.ManageAdminDashboard.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/admin/assets/includes/view_ranking.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/admin/assets/includes/rank_authors_list.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/admin/ranking/index.php",
+		"/C/wamp64/www/sandbox/sampleGIT/hello-world/index.php",
+		"/C/Users/gbris/AppData/Local/Temp/.gitignore_20170207144741.gitignore",
+		"/C/wamp64/www/sandbox/sampleGIT/hello-world/index - Copy.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/admin/fb/fbfunctions.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/admin/assets/includes/bottomscripts.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/templates/single_page_article.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/assets/templates/single_page_article.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/reports/route.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/admin/reports/index.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/includes/head.php",
+		"/C/Users/gbris/Documents/DB/MOB/SQL_contributor_earning_investigation.sql",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/test/test.UserTest.php",
+		"/C/wamp64/www/pucker-mob-live-code/httpdocs/admin/articles/editarticle.php",
+		"/C/Users/gbris/AppData/Local/Temp/editarticle.php_20170202105354.php",
+		"/C/wamp64/www/sandbox/WAMP_BC/functions.php",
+		"/C/wamp64/www/pucker-mob-live-code/httpdocs/assets/includes/head.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/assets/includes/head.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/assets/php/mobile-detect.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/assets/php/config.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/admin/articles/.htaccess",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/assets/php/MPHelpers.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/assets/php/AdminControllerHelpers.php",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/admin/lists/route.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/assets/js/ads.js",
+		"/C/wamp64/www/pucker-mob-hack/httpdocs/assets/includes/header.php",
+		"/C/Users/gbris/Documents/LBM_BAK/_Extracted/www_lifebeginnersmanual_com-full-2016_10_09_14_44-57/wp-content/Dropbox_Backup/mysqldump.sql",
+		"/C/Users/gbris/Documents/DB/MOB/SQL_find_articles.sql",
+		"/C/Users/gbris/Downloads/error_log",
+		"/C/Users/gbris/Documents/DB/MOB/SQL_retrieve_new_contributors.sql",
+		"/C/wamp64/www/pucker_mom/httpdocs/assets/includes/bottomscripts.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/article.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/assets/includes/header_ad.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/assets/includes/header.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/assets/includes/mobiletapsection.php",
+		"/C/Users/gbris/Downloads/article_contributors.sql",
+		"/C/Users/gbris/Documents/DB/MOB/SQL_create_users_GB.txt",
+		"/C/wamp64/www/index.php",
+		"/C/wamp64/www/sandbox/_sandbox_generic.php",
+		"/C/wamp64/www/sandbox/CSNY/config.php",
+		"/C/wamp64/www/sandbox/CSNY/functions.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/MPNavigation.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/admin/logout/index.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/admin/login/index.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/php/MPNavigation_BU.php",
+		"/C/wamp64/www/pucker-mob-live-code/httpdocs/assets/php/class.DatabaseObject.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/wamp64/www/sandbox/WAMP_BC/config.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/includes/mostpopularrticles.php",
+		"/C/wamp64/www/pucker_mom/httpdocs/assets/includes/mostpopularrticles.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/includes/articleslist.php",
+		"/C/Users/gbris/AppData/Local/Temp/head.php_20170111163902.php",
+		"/C/wamp64/www/pucker-mob-live-code/httpdocs/assets/includes/rightsidebar.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/includes/ads_to_load.php",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/js/ads.js",
+		"/C/wamp64/www/pucker-mob/httpdocs/assets/scss/app.scss",
+		"/C/wamp64/www/sandbox/_sandbox_gb.php",
+		"/C/wamp64/www/sandbox/PMM/PMM_LIVE_config.php",
+		"/C/wamp64/www/sandbox/PMM/PMM_ASSETS_INCLUDES_head.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"C:\\wamp64\\www\\pucker-mob\\httpdocs",
+			"<open files>",
+			"C:\\wamp64\\www\\pucker-mob-hack\\httpdocs",
+			"C:\\wamp64\\www\\pucker-mob\\httpdocs",
+			"C:\\wamp64\\www\\pucker_mom\\httpdocs",
+			"C:\\wamp64\\www\\pucker-mob\\httpdocs",
+			"C:\\wamp64\\www\\pucker-mob-hack\\httpdocs",
+			"C:\\wamp64\\www\\pucker_mom\\httpdocs",
+			"C:\\wamp64\\www\\pucker-mob-hack\\httpdocs",
+			"C:\\wamp64\\www\\pucker-mob\\httpdocs",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"06",
+			"[$k]",
+			"related_article_id_1",
+			"Related",
+			"related",
+			"more tab",
+			"related_article_id_1",
+			"getRelatedToArticle",
+			"['related_article_id_1']",
+			"['info']",
+			"'];\n",
+			"['info']",
+			"related['related_article_id_1']['info']['article_id']",
+			"getRelatedToArticleInfo",
+			"related_articles",
+			"getFeaturedArticle",
+			"featured",
+			"\"",
+			"FORCING",
+			"new(\\s)+ContributorEarnings",
+			"ContributorEarnings",
+			"FROM([^\\$])+?contributor_earnings",
+			"find_by_sql",
+			"FROM([^\\$])+?contributor_earnings",
+			"FROM([^\\$])+contributor_earnings",
+			"FROM(.)*contributor_earnings",
+			"[^\\$]contributor_earnings",
+			"contributor_earnings",
+			"to_be_pay",
+			"_NEW_2",
+			"INSERT(\\s)+INTO(\\s)+contributor_earnings",
+			"delete(\\s)+from(\\s)+contributor_earnings",
+			"select(\\s)+\\*(\\s)+from(\\s)+contributor_earnings",
+			"setContributorEarningsPaid",
+			"current_month_data",
+			"earnings_info",
+			"limit",
+			"max",
+			"MAX",
+			"max",
+			"`",
+			"BELOW",
+			". $contributor['user_type']",
+			"current_month",
+			"/dev/null 2&1",
+			"`",
+			"pageviewsReport",
+			"saveContributorsEarningsInformationDaily",
+			"UPDATE",
+			"insert",
+			"UPDATE",
+			"INSERT",
+			"SELECT",
+			"contributor_earnings",
+			"delete",
+			",",
+			"`",
+			"article_daily_earnings",
+			"shares_rate",
+			"get_articlesbypageviews_new_2",
+			"article_daily_earnings",
+			"and",
+			"on",
+			"join",
+			",",
+			"`",
+			"google_analytics_data_daily",
+			"article_daily_earnings",
+			"pageviewsReport",
+			"updateContributorsEarnings",
+			"\t\t// $ddd = new debug($s,3); $ddd->show();exit;\n",
+			"month",
+			"directory",
+			"root_directory",
+			"$uri = $adminController",
+			"perion",
+			"perio",
+			"user_permission_show_other_contributors",
+			"user_permission_show_add_article",
+			"<div id=\"nav-cont",
+			"resendUserVerify",
+			"activation",
+			"ManageAdminDashboard",
+			"id=\"article-image\"",
+			"id=\"article-image\" ",
+			"single_page_article",
+			"fbfunctions.php",
+			"1892020934365041",
+			"781998645209691",
+			"user_billing_info",
+			"article_contributors",
+			"getRate",
+			"admin_user",
+			"whereClause",
+			"$content_provider",
+			"content_provider",
+			"allStatuses",
+			"chr",
+			"function",
+			"assets/php",
+			"adminController",
+			"curPageURL",
+			"$mpHelpers",
+			"zoomd",
+			"z",
+			"forward breakfast ",
+			"`",
+			"content_provider",
+			"<sel",
+			"status",
+			"`",
+			"googletag.cmd",
+			".js",
+			"javascript",
+			"LIVE SERVER",
+			"include_path",
+			"require_once ",
+			"_directory .'",
+			"irectory .'/",
+			" => '/",
+			"$root_directory .'httpdocs",
+			"$root_directory .'httpdocs/",
+			"//out for testing - 2017-01-12",
+			"$config['assets_path'].'",
+			"MPArticle",
+			"MPNavigation",
+			"puckermob",
+			".'/"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\"",
+			"PATH_ASSETS_PHP",
+			"PROJECT_HTTPDOCS",
+			"\\\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "bower.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

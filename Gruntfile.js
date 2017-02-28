@@ -1,100 +1,29 @@
 module.exports = function(grunt) {
-  grunt.initConfig({
-    
-    pkg: grunt.file.readJSON('package.json'),
 
-    sass: {
-      options: {
-        includePaths: ['bower_components/foundation/scss']
-      },
-      dist: {
-        options: {
-          outputStyle: 'compressed'
-        },
-        files: {
-          'httpdocs/assets/css/app.css': 'httpdocs/assets/scss/app.scss',
-          'httpdocs/assets/css/appadmin.css': 'httpdocs/assets/scss/appadmin.scss'
-        }        
-      }
-    },
+    // 1. All configuration goes here 
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
 
-    browserify: {
-      dev: {
-        options: {
-          debug: true,
-          transform: ['reactify']
-        },
-        files: {
-          'httpdocs/assets/js/app_test.js': 'httpdocs/assets/jsx/**/*.jsx'
-        }
-      },
-      build: {
-        options: {
-          debug: false,
-          transform: ['reactify']
-        },
-        files: {
-          'httpdocs/assets/js/app_test.js': 'httpdocs/assets/jsx/**/*.jsx'
-        }
-      }
-    },
+        concat: {   
+            dist: {
+                src: ['httpdocs/assets/js/app.js'],
+                dest: 'httpdocs/assets/js/app.min.js',
+                }
+        },// end concat,
+        uglify: {
+            build: {
+                src: ['httpdocs/assets/js/app.js'],
+                dest: 'httpdocs/assets/js/app.min.js'
+            }
+        }// end uglify
 
-    uglify: {
-      options: {
-        mangle: false,
-        livereload: true,
-      },
-     
-      jscompress: {
-        files: {
-          'httpdocs/assets/js/app.min.js': ['httpdocs/assets/js/plugins.js', 'httpdocs/assets/js/app.js', 'httpdocs/assets/js/js_scroll.js']
-        }
-      }
-    },
-   
-    cssmin: {
-      options: {
-        shorthandCompacting: false,
-        roundingPrecision: -1
-      },
-   
-      target: {
-        files: {
-          'httpdocs/assets/css/app.min.css': ['httpdocs/assets/css/app.css']
-        }
-      }
-    },
-    
-    watch: {
-      grunt: { files: ['Gruntfile.js'] },
-      
-      sass: {
-        files: 'httpdocs/assets/scss/**//*.scss',
-        tasks: ['sass'],
-        options: {
-          livereload: true,
-        }
-      },
 
-      //browserify: {
-        //files: ['httpdocs/assets/js/**/*.js', 'httpdocs/assets/jsx/**/**/*.jsx'],
-        //tasks: ['browserify:dev'],
-        // options: {
-        //  livereload: true,
-        //}
-      //},
-    }
+    });
 
-  });
+        // 3. Where we tell Grunt we plan to use this plug-in.
+        grunt.loadNpmTasks('grunt-contrib-concat');
+        grunt.loadNpmTasks('grunt-contrib-uglify');
+        // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
+        grunt.registerTask('default', ['concat', 'uglify']);
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-browserify');
-
-  grunt.registerTask('build', ['sass']);
-  grunt.registerTask('jscompress', ['uglify']);
-  grunt.registerTask('csscompress', ['cssmin']);
-  grunt.registerTask('default', ['watch', 'cssmin', 'uglify']);
-}
+};// end module.exports = function(grunt)

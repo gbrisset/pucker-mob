@@ -7,16 +7,44 @@
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
+	 $current_month = date('n');
+	 $current_year = date('Y');
+
+	 $contributor_id = $userData['contributor_id'];
+ 	
+ 	$rank = '9999';
+	$rank_data= $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
+	 if(isset($rank_data) && $rank_data ){
+		 foreach($rank_data as $rank_pw){
+		 	if($contributor_id === $rank_pw['contributor_id']){
+		 		$rank = $rank_pw['rownum'];
+		 	}
+		 }
+	 }
+
+// TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
+echo "<br/>userData";
+echo "<pre>";
+print_r($rank_data);
+echo "</pre>";
+// TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
 
 	//GET RANK POSITION FOR CURRENT USER.
 	$limit = 40;
 	if($detect->isMobile()){
 		$limit = 30;
 	}
-	 $rank_list = $ManageDashboard->getTopShareWritesRank( date('n'), $limit);
-	 $rank = '9999';
+	 $rank_list = $ManageDashboard->getTopShareWritesRank( date('Y'), date('n'), $limit, "30, 3 , 8");
 	
-?>
+// TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
+// echo "<br/>rank_list";
+// echo "<pre>";
+// print_r($rank_list);
+// echo "</pre>";
+// TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+
+
+ ?>
 
 <!DOCTYPE html>
 
@@ -39,10 +67,10 @@
 		<div id="content" class="columns small-9 large-11">
 			
 			<div class="small-12 columns padding-bottom ">
-				<h1>Ranking & Incentives</h1>
+				<h1>Ranking &amp; Incentives</h1>
 			</div>
 
-			<input type="hidden" value="<?php echo $rate['rate']; ?>" id="current-user-rate" />
+			<input type="hidden" value="<?php //echo $rate['rate']; ?>" id="current-user-rate" />
 
 			<?php include_once($config['include_path_admin'].'view_ranking.php');?>
 

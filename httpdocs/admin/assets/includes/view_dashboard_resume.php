@@ -2,18 +2,33 @@
 	 $ManageDashboard = new ManageAdminDashboard( $config );
 	 $current_month = date('n');
 	 $current_year = date('Y');
+
+	 //*****************************************************************************
+	 //*****************TEST ************************************************************
+	 //*****************************************************************************
+	 $current_month = 11;
+	 $current_year = 2016;
+	 //*****************************************************************************
+	 //*****************************************************************************
+	 //*****************************************************************************
 	 $contributor_id = isset($contributor_id) ? $contributor_id : $userData['contributor_id'];
 
+	// //GET RANK POSITION FOR CURRENT USER.
+	//  $rank = '9999';
+	//  $rank_data= $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
+	//  if(isset($rank_data) && $rank_data ){
+	// 	 foreach($rank_data as $rank_pw){
+	// 	 	if($contributor_id === $rank_pw['contributor_id']){
+	// 	 		$rank = $rank_pw['rownum'];
+	// 	 	}
+	// 	 }
+	//  }
+
 	//GET RANK POSITION FOR CURRENT USER.
-	 $rank = '9999';
-	 $rank_data= $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
-	 if(isset($rank_data) && $rank_data ){
-		 foreach($rank_data as $rank_pw){
-		 	if($contributor_id === $rank_pw['contributor_id']){
-		 		$rank = $rank_pw['rownum'];
-		 	}
-		 }
-	 }
+	 $rank = $ManageDashboard->SMFgetContributorRank($contributor_id, $current_month, $current_year);
+
+
+		// $ddd = new debug($rank,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
 
 	//GET PAGEVIEWS THIS MONTH
 	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );

@@ -61,7 +61,9 @@ $version = "SMF 0.1.0";// Sequel Media Framework
 
 if($local){
 
-
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
+	
 if(isset($_GET['error']) && $_GET['error'] == true){
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');
@@ -168,6 +170,11 @@ if(isset($_GET['error']) && $_GET['error'] == true){
 
 	require_once  'class.FacebookDebugger.php';
 	require_once  'class.Helpers.php'; 
+	
+
+	require_once  'z_TestAndFixes.php'; //for local only
+
+
 
 	if(isset($admin) && $admin){
 		require_once  'class.User.php';
@@ -406,7 +413,8 @@ End Dependancies/Soft Links
 
 // This is a temporary import  during the transition period - will be integrated or suppressed in the future
 
-//$ddd = new debug($var,0); $ddd->show();exit;
+// $ddd = new debug($rank,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
+
 
 class debug{
 

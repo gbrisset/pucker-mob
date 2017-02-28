@@ -13,9 +13,11 @@ if(page != 'articleslide' && page != 'home' && page != 'category' && page != 'ar
 
 //PUCKERMOB
 //MOBILE
+var article_id = parseInt($('#article-id').val()); //switch is using exact comparisons
+
 if($('body').hasClass('mobile')) {
 
-		var article_id = $('#article-id').val();
+		
 
 		//SINGLE PAGE ARTICLE
 		if( adPage === 'article' ){

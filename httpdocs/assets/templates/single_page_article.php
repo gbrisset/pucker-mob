@@ -67,19 +67,18 @@
 					 <?php
 
 					 switch ($article_id) {
-					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
-					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
-							 	// These articles are paid content and should keep their original image
-							
-					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
-					 		break;
-					 	
+				 	
 					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
 							include($config['include_path'] . 'ads/_TEST_AD_tout.php'); 
 					 		break;
 					 	
+					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
+					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
+							 	// These articles are paid content and should keep their original image
+							
 					 	default:
-							include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); 
+					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
+							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-02-28
 							
 					 }//end switch ($article_id)
 
@@ -191,11 +190,8 @@
 				 		break;
 				 	
 				 	case 11237: // moblog/girl-whos-just-his-friend
-						include($config['include_path'] . 'ads/_TEST_AD_carambola.php');
-				 		break;
-				 	
 				 	default:
-						include($config['include_path'] . 'ads/answer_inbanner_1.php');
+						include($config['include_path'] . 'ads/_TEST_AD_carambola.php');
 				 }//end switch ($article_id)
 
 
@@ -209,14 +205,28 @@
 
 		<!-- READ MORE ========================================================================================================== -->
 
-	
+			<?php
 
- 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
-			<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #78AD6C;">
-				<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
-			</div>
-		</div> 
-		
+			switch ($article_id) {
+				case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+				case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+			 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+					//do nothing - we do not want the READ MORE BAR  to interfer with the test page
+					break;
+
+				default:
+			?>
+		 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
+					<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #78AD6C;">
+						<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
+					</div>
+				</div> 
+
+			<?php
+
+			}//end switch ($article_id)
+
+			?>
 		
 		<!-- ADS STACK ========================================================================================================== -->
 		<div class="row" style="clear: both; padding-top: 0; border: 1px solid #ddd;"></div>

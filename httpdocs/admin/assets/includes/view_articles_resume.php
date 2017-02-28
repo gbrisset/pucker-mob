@@ -4,16 +4,20 @@
 	 $current_year = date('Y');
 	 $contributor_id = $userData['contributor_id'];
 	
+	// //GET RANK POSITION FOR CURRENT USER.
+	//  $rank_list = $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
+	//  $rank = '9999';
+	//  if(isset($rank_list) && $rank_list ){
+	// 	 foreach($rank_list as $rank_pw){
+	// 	 	if($contributor_id === $rank_pw['contributor_id']){
+	// 	 		$rank = $rank_pw['rownum'];
+	// 	 	}
+	// 	 }
+	// }
+
 	//GET RANK POSITION FOR CURRENT USER.
-	 $rank_list = $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
-	 $rank = '9999';
-	 if(isset($rank_list) && $rank_list ){
-		 foreach($rank_list as $rank_pw){
-		 	if($contributor_id === $rank_pw['contributor_id']){
-		 		$rank = $rank_pw['rownum'];
-		 	}
-		 }
-	}
+	 $rank = $ManageDashboard->SMFgetContributorRank($contributor_id, $current_month, $current_year);
+
 
 	//ARTICLES IN CURRENTLY LIVE AND DRAFT
 	$onDraft = 0;

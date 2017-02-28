@@ -308,22 +308,23 @@ if(!is_null($categoryInfo)){
 
 					 <?php
 
+
 					 switch ($article_id) {
-					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
-					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
-							 	// These articles are paid content and should keep their original image
-							
-					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
-					 		break;
-					 	
+				 	
 					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
 							include($config['include_path'] . 'ads/_TEST_AD_tout.php'); 
 					 		break;
 					 	
+					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
+					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
+							 	// These articles are paid content and should keep their original image
+							
 					 	default:
-							include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); 
+					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
+							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-02-28
 							
 					 }//end switch ($article_id)
+					 
 
 						// OLD CODE PLAYING VIDEOS WHEN VIDEO IS ASSOCIATED WITH THE ARTICLE
 

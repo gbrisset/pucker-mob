@@ -1,22 +1,25 @@
 <?php
 	 $ManageDashboard = new ManageAdminDashboard( $config );
-	 $current_month = date('n');
-	 $current_year = date('Y');
-	 $contributor_id = $userData['contributor_id'];
+	 // $current_month = date('n');
+	 // $current_year = date('Y');
+
+	 // $contributor_id = $userData['contributor_id'];
 
 
-	 $rank_data= $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
-	 if(isset($rank_data) && $rank_data ){
-		 foreach($rank_data as $rank_pw){
-		 	if($contributor_id === $rank_pw['contributor_id']){
-		 		$rank = $rank_pw['rownum'];
-		 	}
-		 }
-	 }
+	 // $rank_data= $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
+	 // if(isset($rank_data) && $rank_data ){
+		//  foreach($rank_data as $rank_pw){
+		//  	if($contributor_id === $rank_pw['contributor_id']){
+		//  		$rank = $rank_pw['rownum'];
+		//  	}
+		//  }
+	 // }
+
 
 	//GET PAGEVIEWS THIS MONTH
 	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
-	$pageviews = isset($earnings['total_us_pageviews']) ? number_format($earnings['total_us_pageviews']) : 0;
+	$pageviews = isset($earnings['total_us_pageviews']) ? $earnings['total_us_pageviews'] : 0;
+
 ?>
 
 <div class="small-12 columns no-padding-right half-margin-bottom show-for-large-up no-padding">

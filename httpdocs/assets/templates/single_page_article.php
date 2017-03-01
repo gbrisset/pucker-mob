@@ -212,7 +212,7 @@
 				case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
 			 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
 					//do nothing - we do not want the READ MORE BAR  to interfer with the test page
-					break;
+					//break; javascipt is not inplace to remove RMB - GB 2017-03-01
 
 				default:
 			?>

@@ -13,7 +13,9 @@ if(page != 'articleslide' && page != 'home' && page != 'category' && page != 'ar
 
 //PUCKERMOB
 //MOBILE
-var article_id = parseInt($('#article-id').val()); //switch is using exact comparisons
+var article_id = 1*parseInt($('#article-id').val()); //switch is using exact comparisons
+
+
 
 if($('body').hasClass('mobile')) {
 
@@ -41,7 +43,8 @@ if($('body').hasClass('mobile')) {
 				third_p = third_p;
 			}//end if
 
-
+//alert ('before switch = ' + article_id*2);
+// article_id = article_id*1;
 			 switch (article_id) {
 			 	case 16562:
 			 	case 17425:
@@ -63,8 +66,11 @@ if($('body').hasClass('mobile')) {
 					
 			 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
 					//Genesis TEST PAGE
-					inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type=\"text/javascript\" id=\"gm-script-tag\" src=\"//adg.bzgint.com/pub/adg/config.js?site_id=146313&publisher_name=SequelMedia_adaptive&css_path=%23adg_main&intercept_id=8001&page_id=769404&ad_url=http%3A%2F%2Fad.crwdcntrl.net%2F5%2Fc%3D1890%2Fpe%3Dy%3Fhttp%3A%2F%2Fadserver.genesismediaus.com%2Fac%3Fsiteid%3D146313%26pgid%3D769404%26fmtid%3D31360%26ab%3D1%26oc%3D1%26out%3Dvast%26ps%3D1%26pb%3D0%26visit%3DS%26vcn%3Dc%26tmstp%3D%5Btimestamp%5D%26tgt%3Dabbr%253D%2524%257Baud_ids%253A%253Babbr%253D%257D%253Bst%253D__KVST__%253Biid%253D__KVIID__%253Bvol%253D__KVVO__&skip_time=10&enableNASA=true&allowed_intercepts=3,8&view_url=%%VIEW_URL_ESC%%\"></script>", tag);
+					inBodyAd.loadInArticleAd('article-body', 8, 0, "<script type=\"text/javascript\" id=\"gm-script-tag\" src=\"//adg.bzgint.com/pub/adg/config.js?site_id=146313&publisher_name=SequelMedia_adaptive&intercept_id=8001&page_id=769404&ad_url=http%3A%2F%2Fad.crwdcntrl.net%2F5%2Fc%3D1890%2Fpe%3Dy%3Fhttp%3A%2F%2Fadserver.genesismediaus.com%2Fac%3Fsiteid%3D146313%26pgid%3D769404%26fmtid%3D31360%26ab%3D1%26oc%3D1%26out%3Dvast%26ps%3D1%26pb%3D0%26visit%3DS%26vcn%3Dc%26tmstp%3D%5Btimestamp%5D%26tgt%3Dabbr%253D%2524%257Baud_ids%253A%253Babbr%253D%257D%253Bst%253D__KVST__%253Biid%253D__KVIID__%253Bvol%253D__KVVO__&skip_time=10&enableNASA=true&allowed_intercepts=3,8&view_url=%%VIEW_URL_ESC%%\"></script>", tag);
 					break;
+
+
+					
 
 				case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 			 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend

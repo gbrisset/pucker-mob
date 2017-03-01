@@ -6,15 +6,15 @@
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/jquery.cookies.2.2.0.min.js"></script>
 <script type="text/javascript" src="http://www.puckermob.com/assets/js/foundation.min.js"></script>
 <?php if (!$local){?>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?ver_55900" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.min.js?<?php echo 'ver_' . date('Ymdgis') ?>" ></script>
 
 <?php }else {?>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js" ></script>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js?ver_1010"></script>
-  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/plugins.js?<?php echo 'ver_' . date('Ymdgis') ?>" ></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/app.js?<?php echo 'ver_' . date('Ymdgis') ?>"></script>
+  <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/js_scroll.js?<?php echo 'ver_' . date('Ymdgis') ?>" ></script>
 <?php }//end if (!$local)?>
 
-<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?ver_3777" ></script>
+<script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?<?php echo 'ver_' . date('Ymdgis') ?>" ></script>
 
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>

@@ -312,9 +312,9 @@ if(!is_null($categoryInfo)){
 					 switch ($article_id) {
 				 	
 					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-							include($config['include_path'] . 'ads/_TEST_AD_tout.php'); 
-					 		break;
-					 	
+					 			// used as a test page
+					 			//break;
+
 					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
 					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
 							 	// These articles are paid content and should keep their original image

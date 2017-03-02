@@ -68,14 +68,13 @@
 
 					 switch ($article_id) {
 				 	
-					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-							include($config['include_path'] . 'ads/_TEST_AD_tout.php'); 
-					 		break;
-					 	
+						
 					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
 					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
 							 	// These articles are paid content and should keep their original image
 							
+					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+					 			// used as a test page
 					 	default:
 					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
 							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-02-28
@@ -417,6 +416,7 @@
 						 		break;
 						 	
 						 	default:
+								include($config['include_path'] . 'ads/answer_tout_desktop.php');
 								include($config['include_path'] . 'ads/nativo_2_desktop.php');
 								include($config['include_path'] . 'ads/sharethrough_desktop.php');
 						 		break;

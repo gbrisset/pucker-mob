@@ -1,3 +1,4 @@
+
 <?php
 $isHomepage = false;
 $isArticle = true;
@@ -344,8 +345,7 @@ if(!is_null($categoryInfo)){
 				
 				<!-- RIGHT SIDE SECTION -->
 				<div class="columns small-3 no-padding-right right-div">
-					<aside id=
-"aside-top" class="fixed-width-sidebar column no-padding hide-for-print">
+					<aside id="aside-top" class="fixed-width-sidebar column no-padding hide-for-print">
 
 						<!-- LELO -->
 					      <?php if(isset($articleInfoObj['article_id']) &&  $articleInfoObj['article_id'] != 17425 

@@ -25,7 +25,7 @@
 	//  }
 
 	//GET RANK POSITION FOR CURRENT USER.
-	 $rank = $ManageDashboard->SMFgetContributorRank($contributor_id, $current_month, $current_year);
+	 $rank = $ManageDashboard-> smf_getContributorRank($contributor_id, $current_month, $current_year);
 
 
 		// $ddd = new debug($rank,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	

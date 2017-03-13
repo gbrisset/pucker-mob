@@ -6,6 +6,8 @@ if (!empty($_GET['ajax'])) {
 }
 
 require_once('assets/php/config.php');
+
+
 $pageName = $mpArticle->data['article_page_name'];
 $isHomepage = true;
 $has_sponsored = true;// $mpArticle->data['has_sponsored_by'];
@@ -139,6 +141,8 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0');
 	<?php 
 		include_once($config['include_path'].'ads_to_load.php');
 		include_once($config['include_path'].'bottomscripts.php'); 
+
+
 	?>
 
 <script>
@@ -147,4 +151,8 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0');
 
 </body>
 </html>
-<?php }?>
+<?php }
+
+
+
+?>

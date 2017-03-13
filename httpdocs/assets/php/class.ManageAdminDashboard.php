@@ -193,7 +193,7 @@ class ManageAdminDashboard{
 
 
 
-	public function SMFgetContributorRank($contributor_id = 0, $month = 0, $year = 0){
+	public function  smf_getContributorRank($contributor_id = 0, $month = 0, $year = 0){
 		// based on getTopShareWritesRankHeader
 		// Query is working fine but the data do not exist for current month in the queried table
 

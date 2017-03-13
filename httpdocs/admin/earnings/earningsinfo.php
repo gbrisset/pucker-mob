@@ -69,17 +69,15 @@
 		}
 	}
 
-	$rate = $dashboard->get_current_rate( $$current_month, $contributor_type );
+	$user_rate = $dashboard->smf_get_user_rate($user_type, $current_month, $current_year );
 	//$user_id = $userData['user_id'];
-	if($rate) $rate = $rate['rate'];
+	if($user_rate) $current_user_rate = $user_rate['rate'];
 	$total = 0;
 
 	$last_month = $current_month-1;
 	$last_year = $current_year;
-	if($current_month == 1){
-		 $last_month = 12;
-		 $last_year = $current_year - 1;
-	}
+	if($current_month == 1){ $last_month = 12; $last_year = $current_year - 1;}//end if
+	
 	$show_art_rate = false;
 	//if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 
@@ -114,7 +112,7 @@
 				<h1>Earnings & Analytics</h1>
 			</div>
 			
-			<input type="hidden" value="<?php echo $rate; ?>" id="current-user-rate" />
+			<input type="hidden" value="<?php echo $current_user_rate; ?>" id="current-user-rate" />
 			<input type="hidden" value="<?php echo $user_type; ?>" id="current-user-type" />
 
 

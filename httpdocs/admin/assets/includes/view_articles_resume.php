@@ -16,7 +16,7 @@
 	// }
 
 	//GET RANK POSITION FOR CURRENT USER.
-	 $rank = $ManageDashboard->SMFgetContributorRank($contributor_id, $current_month, $current_year);
+	 $rank = $ManageDashboard-> smf_getContributorRank($contributor_id, $current_month, $current_year);
 
 
 	//ARTICLES IN CURRENTLY LIVE AND DRAFT

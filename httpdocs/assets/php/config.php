@@ -34,7 +34,6 @@ if ($local_platform == "WAMP64"){
 		$directory = ''; // NOT in use in the live section - For compatibility only - GB 2017-02-09
 		$root_directory =  '/';// NOT in use in the live section - For compatibility only - GB 2017-02-09
 
-
 if ($_SERVER['DOCUMENT_ROOT'] =="C:/wamp64/www/pucker-mob") {
 		$local = true; 
 		$localIp = 'localhost';
@@ -46,7 +45,7 @@ if ($_SERVER['DOCUMENT_ROOT'] =="C:/wamp64/www/pucker-mob") {
 
 
 
-// LOCAL IS SET MANUALLY  - SET TO FALSE BEFORE PUSHING TO PRODUCTION
+// TO SET LOCAL MANUALLY  - SET TO FALSE BEFORE PUSHING TO PRODUCTION
 // $local = true; // LOCAL
 // $local = false; // LIVE 
 
@@ -171,10 +170,7 @@ if(isset($_GET['error']) && $_GET['error'] == true){
 	require_once  'class.FacebookDebugger.php';
 	require_once  'class.Helpers.php'; 
 	
-
-	require_once  'z_TestAndFixes.php'; //for local only
-
-
+	require_once  'z_TestAndFixes.php'; //for testing only
 
 	if(isset($admin) && $admin){
 		require_once  'class.User.php';
@@ -291,7 +287,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPShared.php';
 	require_once dirname(__FILE__).'/MCAPI.class.php';
 	require_once dirname(__FILE__).'/class.pagination.php';
-	require_once dirname(__FILE__).'/class.askTheChef.php';
+	// require_once dirname(__FILE__).'/class.askTheChef.php';/// failed to open stream: No such file or directory 
 
 	require_once dirname(__FILE__).'/class.Connector.php';
 	require_once dirname(__FILE__).'/class.DatabaseObject.php';	
@@ -299,7 +295,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/class.PageListItem.php';
 	require_once dirname(__FILE__).'/class.Bug.php';
 	require_once dirname(__FILE__).'/class.ArticleList.php';
-	require_once dirname(__FILE__).'/class.SlideShow.php';
+	// require_once dirname(__FILE__).'/class.SlideShow.php'; //failed to open stream: No such file or directory 
 
 	require_once dirname(__FILE__).'/PHPMailerAutoload.php';
 	require_once dirname(__FILE__).'/class.phpmailer.php';	
@@ -310,7 +306,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPArticle.php';
 	require_once dirname(__FILE__).'/MPNavigation.php';
 	require_once dirname(__FILE__).'/MPUriHelper.php';
-	require_once dirname(__FILE__).'/MPVideoShows.php';
+	// require_once dirname(__FILE__).'/MPVideoShows.php';//failed to open stream: No such file or directory 
 
 	require_once dirname(__FILE__).'/mobile-detect.php';
 
@@ -325,6 +321,8 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/class.FollowAuthor.php';
 	require_once dirname(__FILE__).'/class.recaptchalib.php';
 	require_once dirname(__FILE__).'/class.Dashboard.php';
+
+	require_once dirname(__FILE__).'/z_TestAndFixes.php'; //for testing only
 	
 	//require_once dirname(__FILE__).'/class.GoogleAnalyticsApi.php';
 	//if(isset($admin) && $admin){
@@ -332,7 +330,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	//}
 
 	require_once dirname(__FILE__).'/class.Helpers.php';
-	if($admin){
+	if(isset($admin) && $admin){
 		require_once dirname(__FILE__).'/class.User.php';
 		require_once dirname(__FILE__).'/class.Notification.php';
 		require_once dirname(__FILE__).'/class.Contributor.php';

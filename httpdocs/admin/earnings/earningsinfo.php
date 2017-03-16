@@ -2,6 +2,13 @@
 	$admin = true; 
 	require_once('../../assets/php/config.php');
 	$ManageDashboard = new ManageAdminDashboard( $config );
+
+//***************** TEST ************************************************************
+//***********************************************************************************
+error_reporting(E_ALL);	ini_set('display_errors', 'on');
+//***************** TEST ************************************************************
+//***********************************************************************************
+
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 

@@ -73,11 +73,13 @@
 					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
 							 	// These articles are paid content and should keep their original image
 							
-					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-					 			// used as a test page
-					 	default:
+						case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+					 			// used as a test page - leave regular image, no video
 					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
-							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-02-28
+							break;
+						
+					 	default:
+							include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-02-28
 							
 					 }//end switch ($article_id)
 
@@ -181,16 +183,21 @@
 				 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
 				 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 				 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+				 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+				 	
 					 	//do nothing - we do not want other ads to interfer with the test page
 					 	break;
 	
+				 	
 				 	case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 						include($config['include_path'] . 'ads/_TEST_AD_seenergy.php');
 				 		break;
-				 	
-				 	case 11237: // moblog/girl-whos-just-his-friend
+					
+				 	// case 11237: // moblog/girl-whos-just-his-friend
+				 	// 	break;
+
 				 	default:
-						include($config['include_path'] . 'ads/_TEST_AD_carambola.php');
+						include($config['include_path'] . 'ads/EOA_carambola.php');
 				 }//end switch ($article_id)
 
 
@@ -207,9 +214,9 @@
 			<?php
 
 			switch ($article_id) {
-				case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-				case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-			 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+				// case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+				// case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+			 // 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
 					//do nothing - we do not want the READ MORE BAR  to interfer with the test page
 					//break; javascipt is not inplace to remove RMB - GB 2017-03-01
 
@@ -243,9 +250,14 @@
 						 switch ($article_id) {
 						 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
 							case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+							
 								//do nothing - we do not want other ads to interfer with the test page
 								break;
 
+						 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+								include($config['include_path'] . 'ads/_TEST_AD_JustPremium.php');
+						 		break;
+						 	
 						 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 								include($config['include_path'] . 'ads/_TEST_AD_SeeThrough.php');
 						 		break;
@@ -256,7 +268,8 @@
 						 	
 						 	default:
 								include($config['include_path'] . 'ads/nativo_2.php');
-								include($config['include_path'] . 'ads/sharethrough.php');
+								// include($config['include_path'] . 'ads/sharethrough.php');
+								include($config['include_path'] . 'ads/meme.php');
 								include($config['include_path'] . 'ads/answer_inbanner_2.php');
 						 		break;
 						 }//end switch ($article_id)
@@ -331,6 +344,7 @@
 
 							 // $farticle_id refers to FEATURED ARTICLES - $article_id refers to the CURRENT ARTICLE ON THE PAGE
 							 switch ($article_id) {
+							 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
 								case 8541: // lifestyle/19-reasons-to-date-the-girl-with-no-filter
 								case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 							 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you

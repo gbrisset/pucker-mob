@@ -195,7 +195,6 @@ class ManageAdminDashboard{
 
 	public function  smf_getContributorRank($contributor_id = 0, $month = 0, $year = 0){
 		// based on getTopShareWritesRankHeader
-		// Query is working fine but the data do not exist for current month in the queried table
 
 		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
@@ -219,10 +218,10 @@ class ManageAdminDashboard{
 		$r = $q [rownum];
 
 
-		// $ddd = new debug($s,3); $ddd->show();exit;
+		 // $ddd = new debug($s,3); $ddd->show();exit;
 
 		return $r;
-	}//end public function SMF_getContributorRank ... 
+	}//end public function smf_getContributorRank ... 
 
 
 	public function getTopShareWritesRankHeader($month = 0, $year = 0){
@@ -302,21 +301,38 @@ class ManageAdminDashboard{
 		return $q;
 	}
 
-	public function getContributorEarningsInfo( $contributor_id ){
+	public function smf_getContributorEarningsInfo( $contributor_id = 0){
 		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = date('Y');
 		$month = date('n');
 
-	 $month = 12;// TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
-	 $year = 2016;// TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
-
-		$s = "SELECT DISTINCT( total_earnings), total_us_pageviews, contributor_id, to_be_pay
+		$s = "SELECT DISTINCT( total_earnings), total_us_pageviews, contributor_id
 		FROM contributor_earnings 
 		WHERE  year = $year AND month = $month ";
 
-		if( $contributor_id != 0 ) $s .= " AND contributor_id = $contributor_id ";
-		$s .= " ORDER BY total_earnings DESC";
+		if( $contributor_id > 0 ) $s .= " AND contributor_id = $contributor_id ";
+		
 // var_dump($contributor_id, $year, $month, $s); die;
+		$q = $this->performQuery(['queryString' => $s]);
+		return $q;	
+	}
+
+	public function smf_getContributorBalanceDue( $contributor_id = 0){
+
+
+		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = date('Y');
+		$month = date('n');
+
+		$s = "
+			SELECT `contributor_id`, SUM(`total_earnings`)
+			FROM `contributor_earnings`
+			WHERE payday_date = 0 AND `contributor_id` = $contributor_id
+
+			GROUP BY contributor_id, payday_date
+			ORDER BY contributor_id, year DESC, month DESC;
+		";
+
 		$q = $this->performQuery(['queryString' => $s]);
 		return $q;	
 	}

@@ -6,34 +6,25 @@
 	 //*****************************************************************************
 	 //*****************TEST ************************************************************
 	 //*****************************************************************************
-	 $current_month = 11;
-	 $current_year = 2016;
+	 // $current_month = 11;
+	 // $current_year = 2016;
 	 //*****************************************************************************
 	 //*****************************************************************************
 	 //*****************************************************************************
 	 $contributor_id = isset($contributor_id) ? $contributor_id : $userData['contributor_id'];
 
-	// //GET RANK POSITION FOR CURRENT USER.
-	//  $rank = '9999';
-	//  $rank_data= $ManageDashboard->getTopShareWritesRankHeader( $current_month, $current_year);
-	//  if(isset($rank_data) && $rank_data ){
-	// 	 foreach($rank_data as $rank_pw){
-	// 	 	if($contributor_id === $rank_pw['contributor_id']){
-	// 	 		$rank = $rank_pw['rownum'];
-	// 	 	}
-	// 	 }
-	//  }
 
-	//GET RANK POSITION FOR CURRENT USER.
+
+	//get rank position for this month.
 	 $rank = $ManageDashboard-> smf_getContributorRank($contributor_id, $current_month, $current_year);
 
-
-		// $ddd = new debug($rank,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
-
-	//GET PAGEVIEWS THIS MONTH
-	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
+	//get earnings and pageviews this month
+	$earnings = $ManageDashboard->smf_getContributorEarningsInfo(  $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
-	$balance_due = isset($earnings['to_be_pay']) ? $earnings['to_be_pay'] : 0;
+	
+	$balance_due = $ManageDashboard->smf_getContributorBalanceDue(  $contributor_id );
+	$ddd = new debug($balance_due,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
+
 	$contributor_type = isset($contributor_type) ? $contributor_type : $userData['user_type'];
 
 	switch( $contributor_type ){

@@ -72,6 +72,7 @@ if($('body').hasClass('mobile')) {
 
 					
 
+				case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
 				case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 			 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 			 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you

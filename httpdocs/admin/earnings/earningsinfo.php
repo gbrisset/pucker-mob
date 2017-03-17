@@ -13,6 +13,8 @@ error_reporting(E_ALL);	ini_set('display_errors', 'on');
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 
 	$contributorInfo = $mpArticle->getContributorInfo( $uri[1] );
+		 // $ddd = new debug($userData,1); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+		 // $ddd = new debug($contributorInfo,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
 
 	//If the contributor exists and has an id, check to see if this user has permissions to edit this contributor...
 	if (isset($contributorInfo['contributor_id'])){
@@ -54,7 +56,7 @@ error_reporting(E_ALL);	ini_set('display_errors', 'on');
 			$contributor = $user_info->contributor;
 			$contributor_earnings = new ContributorEarnings( $contributor );
 		//	$rate = $contributor_earnings->getRate( 6, 2016, $user_type )
-		//	var_dump($contributor_earnings); die;
+			// var_dump($contributor_earnings); die;
 
 	//}
 
@@ -76,9 +78,10 @@ error_reporting(E_ALL);	ini_set('display_errors', 'on');
 		}
 	}
 
+	$user_type = $userData['user_type'];
 	$user_rate = $dashboard->smf_get_user_rate($user_type, $current_month, $current_year );
-	//$user_id = $userData['user_id'];
-	if($user_rate) $current_user_rate = $user_rate['rate'];
+	if($user_rate) $current_user_rate = $user_rate['user_rate'];
+	 // $ddd = new debug($user_rate,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
 	$total = 0;
 
 	$last_month = $current_month-1;
@@ -89,7 +92,7 @@ error_reporting(E_ALL);	ini_set('display_errors', 'on');
 	//if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 
 	$user_type = $contributor_type; 
-	$earnings = $ManageDashboard->getContributorEarningsInfo(  $contributor_id );
+	$earnings = $ManageDashboard->smf_getContributorEarningsInfo(  $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 	$best_article = $ManageDashboard->get_bestArticle($contributor_id,  date('n'), date('Y'));
 
@@ -116,7 +119,7 @@ error_reporting(E_ALL);	ini_set('display_errors', 'on');
 		<div id="content" class="columns small-9 large-11">
 			
 			<div class="small-12 columns padding-bottom ">
-				<h1>Earnings & Analytics</h1>
+				<h1>Earnings &amp; Analytics</h1>
 			</div>
 			
 			<input type="hidden" value="<?php echo $current_user_rate; ?>" id="current-user-rate" />

@@ -12,27 +12,17 @@
 
 
 // Add local detection for MAMP or other WAMP configuration
-// -----------------------------------------------------------------------------------------------------
 // PLEASE NOTE - this does work because a virtual host has been set on WAMP
-// -----------------------------------------------------------------------------------------------------
 // Navigation files (route.php) were originally using complex URI handlings that are not working on WAMP.
 // Navigation files (route.php) have been fitted with code to by pass URI handling when in WAMP.
-
-//Use this code in any route.php
-/*
-if ($local_platform == "WAMP64"){
-	$uri = $adminController->helpers->getURI($_SERVER["REQUEST_URI"]);// local - WAMP
-}else{
-	 $uri = $adminController->helpers->getURI($mpHelpers->curPageURL()); // Live  - ORIGINAL CODE
-}//end if
-*/
- 
+// 
 
 		$local = false; 
 		$localIp = ''; // NOT in use in the live section - For compatibility only - GB 2017-02-09
 		$local_platform = "";// NOT in use in the live section - For compatibility only - GB 2017-02-09
 		$directory = ''; // NOT in use in the live section - For compatibility only - GB 2017-02-09
 		$root_directory =  '/';// NOT in use in the live section - For compatibility only - GB 2017-02-09
+
 
 if ($_SERVER['DOCUMENT_ROOT'] =="C:/wamp64/www/pucker-mob") {
 		$local = true; 
@@ -45,7 +35,7 @@ if ($_SERVER['DOCUMENT_ROOT'] =="C:/wamp64/www/pucker-mob") {
 
 
 
-// TO SET LOCAL MANUALLY  - SET TO FALSE BEFORE PUSHING TO PRODUCTION
+// LOCAL IS SET MANUALLY  - SET TO FALSE BEFORE PUSHING TO PRODUCTION
 // $local = true; // LOCAL
 // $local = false; // LIVE 
 
@@ -60,9 +50,7 @@ $version = "SMF 0.1.0";// Sequel Media Framework
 
 if($local){
 
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
-	
+
 if(isset($_GET['error']) && $_GET['error'] == true){
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');
@@ -169,8 +157,6 @@ if(isset($_GET['error']) && $_GET['error'] == true){
 
 	require_once  'class.FacebookDebugger.php';
 	require_once  'class.Helpers.php'; 
-	
-	require_once  'z_TestAndFixes.php'; //for testing only
 
 	if(isset($admin) && $admin){
 		require_once  'class.User.php';
@@ -287,7 +273,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPShared.php';
 	require_once dirname(__FILE__).'/MCAPI.class.php';
 	require_once dirname(__FILE__).'/class.pagination.php';
-	// require_once dirname(__FILE__).'/class.askTheChef.php';/// failed to open stream: No such file or directory 
+	require_once dirname(__FILE__).'/class.askTheChef.php';
 
 	require_once dirname(__FILE__).'/class.Connector.php';
 	require_once dirname(__FILE__).'/class.DatabaseObject.php';	
@@ -295,7 +281,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/class.PageListItem.php';
 	require_once dirname(__FILE__).'/class.Bug.php';
 	require_once dirname(__FILE__).'/class.ArticleList.php';
-	// require_once dirname(__FILE__).'/class.SlideShow.php'; //failed to open stream: No such file or directory 
+	require_once dirname(__FILE__).'/class.SlideShow.php';
 
 	require_once dirname(__FILE__).'/PHPMailerAutoload.php';
 	require_once dirname(__FILE__).'/class.phpmailer.php';	
@@ -306,7 +292,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPArticle.php';
 	require_once dirname(__FILE__).'/MPNavigation.php';
 	require_once dirname(__FILE__).'/MPUriHelper.php';
-	// require_once dirname(__FILE__).'/MPVideoShows.php';//failed to open stream: No such file or directory 
+	require_once dirname(__FILE__).'/MPVideoShows.php';
 
 	require_once dirname(__FILE__).'/mobile-detect.php';
 
@@ -321,8 +307,6 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/class.FollowAuthor.php';
 	require_once dirname(__FILE__).'/class.recaptchalib.php';
 	require_once dirname(__FILE__).'/class.Dashboard.php';
-
-	require_once dirname(__FILE__).'/z_TestAndFixes.php'; //for testing only
 	
 	//require_once dirname(__FILE__).'/class.GoogleAnalyticsApi.php';
 	//if(isset($admin) && $admin){
@@ -330,7 +314,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	//}
 
 	require_once dirname(__FILE__).'/class.Helpers.php';
-	if(isset($admin) && $admin){
+	if($admin){
 		require_once dirname(__FILE__).'/class.User.php';
 		require_once dirname(__FILE__).'/class.Notification.php';
 		require_once dirname(__FILE__).'/class.Contributor.php';
@@ -411,8 +395,7 @@ End Dependancies/Soft Links
 
 // This is a temporary import  during the transition period - will be integrated or suppressed in the future
 
-// $ddd = new debug($rank,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
-
+//$ddd = new debug($var,0); $ddd->show();exit;
 
 class debug{
 

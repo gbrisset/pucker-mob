@@ -215,7 +215,7 @@ class ManageAdminDashboard{
 			";
 
 		$q = $this->performQuery(['queryString' => $s]);
-		$r = $q [rownum];
+		$r = $q ['rownum'];
 
 
 		 // $ddd = new debug($s,3); $ddd->show();exit;
@@ -325,12 +325,9 @@ class ManageAdminDashboard{
 		$month = date('n');
 
 		$s = "
-			SELECT `contributor_id`, SUM(`total_earnings`)
+			SELECT SUM(`total_earnings`) AS balance_due
 			FROM `contributor_earnings`
 			WHERE payday_date = 0 AND `contributor_id` = $contributor_id
-
-			GROUP BY contributor_id, payday_date
-			ORDER BY contributor_id, year DESC, month DESC;
 		";
 
 		$q = $this->performQuery(['queryString' => $s]);

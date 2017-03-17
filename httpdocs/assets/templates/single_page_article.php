@@ -268,8 +268,7 @@
 						 	
 						 	default:
 								include($config['include_path'] . 'ads/nativo_2.php');
-								// include($config['include_path'] . 'ads/sharethrough.php');
-								include($config['include_path'] . 'ads/meme.php');
+								include($config['include_path'] . 'ads/sharethrough.php');
 								include($config['include_path'] . 'ads/answer_inbanner_2.php');
 						 		break;
 						 }//end switch ($article_id)

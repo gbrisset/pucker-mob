@@ -2,6 +2,13 @@
 	$admin = true;
 	require_once('../../assets/php/config.php');
 
+
+//***************** TEST ************************************************************
+//***********************************************************************************
+error_reporting(E_ALL);	ini_set('display_errors', 'on');
+//***************** TEST ************************************************************
+//***********************************************************************************
+
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
 	$userObj = new User( $userData['user_email'] ); 
 
@@ -58,9 +65,10 @@
 
 		}
 	}
-
-	$rate = $dashboard->get_current_rate( $month, $contributor_type );
-	if(isset($rate['rate'])) $rate = $rate['rate'];
+	$user_type = $userData['user_type'];
+	$user_rate = $dashboard->smf_get_user_rate($user_type, $current_month, $current_year );
+	if($user_rate) $current_user_rate = $user_rate['user_rate'];
+	 // $ddd = new debug($user_rate,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
 
 
 	$total = 0;
@@ -75,7 +83,7 @@
 	if($year == 2014 || $year == 2015 && $month < 2) $show_art_rate = true;
 
 	$user_type = $userData["user_type"];
-	$earnings = $ManageDashboard->getContributorEarningsInfo( $contributor_id );
+	$earnings = $ManageDashboard->smf_getContributorEarningsInfo( $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 
 ?>
@@ -111,7 +119,7 @@
 			<!-- ARTICLES RESUME INFO --> 
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
 			
-			<input type="hidden" value="<?php echo $rate; ?>" id="current-user-rate" />
+			<input type="hidden" value="<?php echo $current_user_rate; ?>" id="current-user-rate" />
 
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">

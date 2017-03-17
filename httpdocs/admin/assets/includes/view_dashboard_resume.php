@@ -22,8 +22,9 @@
 	$earnings = $ManageDashboard->smf_getContributorEarningsInfo(  $contributor_id );
 	$current_earnings = isset($earnings['total_earnings']) ? $earnings['total_earnings'] : 0;
 	
-	$balance_due = $ManageDashboard->smf_getContributorBalanceDue(  $contributor_id );
-	$ddd = new debug($balance_due,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
+	$contributor_balance_due = $ManageDashboard->smf_getContributorBalanceDue(  $contributor_id );
+	$balance_due = $contributor_balance_due['balance_due'];
+	 // $ddd = new debug($balance_due,0); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
 
 	$contributor_type = isset($contributor_type) ? $contributor_type : $userData['user_type'];
 
@@ -87,7 +88,7 @@
 		<div style="background-color: #3593C6; " class="small-12 columns articles_resume radius valign-middle">
 			<div class="small-12 columns ">
 				<h3 class="uppercase">Level</h3>
-				<span class="bold" style="font-size: 22px;"><?php echo $contributor_type_label.' ($'. number_format($rate, 2) .' CPM)' ?></span>
+				<span class="bold" style="font-size: 22px;"><?php echo $contributor_type_label.' <br/>$'. number_format($rate, 2) .' CPM' ?></span>
 			</div>
 		</div>
 	</div>

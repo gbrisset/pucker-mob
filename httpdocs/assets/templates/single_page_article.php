@@ -429,8 +429,9 @@
 						 		break;
 						 	
 						 	default:
-								include($config['include_path'] . 'ads/answer_tout_desktop.php');
+								// include($config['include_path'] . 'ads/answer_tout_desktop.php'); // on hold for now - GB 2017-03-17
 								include($config['include_path'] . 'ads/nativo_2_desktop.php');
+								include($config['include_path'] . 'ads/answer_AB_tout_rocket.php');
 								include($config['include_path'] . 'ads/sharethrough_desktop.php');
 						 		break;
 						 }//end switch ($article_id)

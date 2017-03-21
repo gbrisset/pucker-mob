@@ -137,99 +137,40 @@ class ManageAdminDashboard{
 	}
 
 
-	public function getTopShareWritesRank($year = false, $month, $limit = '', $user_type = false ){
-//$user_type = "30, 3, 8" 
+	public function getTopShareWritesRank($month, $limit = 1000000, $user_type = false ){
+
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		if ($year) {
-			$year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = date('Y');
+
+		if($user_type){
+			$s = "SELECT contributor_earnings.*, article_contributors.*, users.user_type 
+			  FROM contributor_earnings 
+			  INNER JOIN ( article_contributors, users) 
+			  	ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
+			  	AND ( article_contributors.contributor_email_address = users.user_email)
+			  WHERE month = $month AND year = $year  AND users.user_type IN ( $user_type)
+			  ORDER BY total_us_pageviews DESC LIMIT ".$limit;
 		}else{
-			$year = date('Y'); //This function used to be set for the current year only -- GB 2017-01-17
-		}//end if
-
-		$s_limit = ($limit =='')? '' : 'LIMIT $limit';
-		$s = "
-			SELECT DISTINCT( c.contributor_id), c.total_article_rate,c.total_shares, c.share_rate,
-			c.total_us_pageviews, c.total_share_rev, c.total_earnings, c.paid,c.to_be_pay,c.updated_date, 
-			a.*, users.user_type 
-			FROM contributor_earnings c  
-			INNER JOIN ( article_contributors a, users) 
-			ON (c.contributor_id = a.contributor_id) 
-			AND ( a.contributor_email_address = users.user_email) 	  
-			WHERE month = $month AND year = $year  AND users.user_type IN ( $user_type)
-			ORDER BY total_us_pageviews DESC $s_limit ";
+			$s = "SELECT contributor_earnings.*, article_contributors.*, users.user_type 
+			  FROM contributor_earnings 
+			  INNER JOIN ( article_contributors, users) 
+			  	ON (contributor_earnings.contributor_id = article_contributors.contributor_id) 
+			  	AND ( article_contributors.contributor_email_address = users.user_email)
+			  WHERE month = $month AND year = $year  AND users.user_type IN (3, 8, 9)
+			  ORDER BY total_us_pageviews DESC LIMIT ".$limit;
+		}
 		
-// echo "<br/><br/>$s";
+//echo $s;
 		$q = $this->performQuery(['queryString' => $s]);
 
 		return $q;
 	}	
 
-	public function getIncentivesRank($year, $month, $tier = '', $user_type = "30, 3, 8" , $inc_options){
-
-		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$s_limit = ($tier =='')? '' : "LIMIT $tier";
-		$s = "
-				SELECT DISTINCT( c.contributor_id), c.total_us_pageviews, 
-				a.contributor_id, a.contributor_seo_name, a.contributor_name, 
-				users.user_type, 
-				user_type.label
-
-				FROM contributor_earnings c 
-				INNER JOIN ( article_contributors a, users, user_type)
-				ON (c.contributor_id = a.contributor_id) 
-				AND ( a.contributor_email_address = users.user_email) 
-				AND (users.user_type = user_type.user_type)
-
-				WHERE month = $month AND year = $year  AND users.user_type IN ( $user_type) $inc_options
-				ORDER BY total_us_pageviews DESC $s_limit 
-				";
-		
-// echo "<br/><br/>$s";
-		$q = $this->performQuery(['queryString' => $s]);
-
-		return $q;
-	}	
-
-
-
-	public function  smf_getContributorRank($contributor_id = 0, $month = 0, $year = 0){
-		// based on getTopShareWritesRankHeader
-
-		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		 
-		if($month == 0) $month = date('Y');
-		if($year == 0) $year = date('Y');
-
-		$s = "
-			SELECT distinct(t2.contributor_id), t2.rownum 
-			FROM(
-			SELECT t1.contributor_id, (@rownum := @rownum + 1) as rownum 
-			FROM contributor_earnings t1
-			JOIN  (SELECT @rownum := 0) r
-			WHERE  t1.month = $month AND t1.year = $year
-			ORDER BY total_us_pageviews DESC) t2
-			WHERE t2.contributor_id = $contributor_id
-			";
-
-		$q = $this->performQuery(['queryString' => $s]);
-		$r = $q ['rownum'];
-
-
-		 // $ddd = new debug($s,3); $ddd->show();exit;
-
-		return $r;
-	}//end public function smf_getContributorRank ... 
-
-
-	public function getTopShareWritesRankHeader($month = 0, $year = 0){
+	public function getTopShareWritesRankHeader($month, $year = 0){
 
 		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		 
-		if($month == 0) $month = date('Y');
 		if($year == 0) $year = date('Y');
 
 		$s = "SELECT contributor_id, (@rownum := @rownum + 1) as rownum 
@@ -273,7 +214,7 @@ class ManageAdminDashboard{
 		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		//$year = date('Y');
 
-		$s = "SELECT DISTINCT( total_earnings), FROM contributor_earnings WHERE contributor_id = $contributor_id ";
+		$s = "SELECT total_earnings FROM contributor_earnings WHERE contributor_id = $contributor_id ";
 
 		if($year != 0 ) $s .= " AND year = $year ";
 		if($month != 0 ) $s.= " AND month = $month ";
@@ -289,7 +230,7 @@ class ManageAdminDashboard{
 		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);;
 
-		$s = "SELECT DISTINCT( total_earnings), total_us_pageviews, contributor_id, to_be_pay
+		$s = "SELECT total_earnings, total_us_pageviews, contributor_id, to_be_pay
 		FROM contributor_earnings 
 		WHERE  year = $year AND month = $month ";
 
@@ -301,38 +242,26 @@ class ManageAdminDashboard{
 		return $q;
 	}
 
-	public function smf_getContributorEarningsInfo( $contributor_id = 0){
+	public function getContributorEarningsInfo( $contributor_id ){
 		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = date('Y');
 		$month = date('n');
 
-		$s = "SELECT DISTINCT( total_earnings), total_us_pageviews, contributor_id
+		$s = "SELECT total_earnings, total_us_pageviews, contributor_id, to_be_pay
 		FROM contributor_earnings 
 		WHERE  year = $year AND month = $month ";
 
-		if( $contributor_id > 0 ) $s .= " AND contributor_id = $contributor_id ";
-		
-// var_dump($contributor_id, $year, $month, $s); die;
+		if( $contributor_id != 0 ) $s .= " AND contributor_id = $contributor_id ";
+		$s .= " ORDER BY total_earnings DESC";
+//var_dump($contributor_id, $year, $month, $s); die;
 		$q = $this->performQuery(['queryString' => $s]);
 		return $q;	
 	}
 
-	public function smf_getContributorBalanceDue( $contributor_id = 0){
 
 
-		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$year = date('Y');
-		$month = date('n');
 
-		$s = "
-			SELECT SUM(`total_earnings`) AS balance_due
-			FROM `contributor_earnings`
-			WHERE payday_date = 0 AND `contributor_id` = $contributor_id
-		";
 
-		$q = $this->performQuery(['queryString' => $s]);
-		return $q;	
-	}
 
 	public function get_bestArticle( $contributor_id, $month, $year ){
 
@@ -433,5 +362,79 @@ class ManageAdminDashboard{
         
         return number_format($n);
     }
+
+// ----------------------------------------------
+// ----------------------------------------------
+
+	public function smf_getContributorBalanceDue( $contributor_id = 0){
+
+
+		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = date('Y');
+		$month = date('n');
+
+		$s = "
+			SELECT SUM(`total_earnings`) AS balance_due
+			FROM `contributor_earnings`
+			WHERE payday_date = 0 AND `contributor_id` = $contributor_id
+		";
+
+		$q = $this->performQuery(['queryString' => $s]);
+		return $q;	
+	}
+
+
+
+	public function smf_getContributorEarningsInfo( $contributor_id = 0){
+		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = date('Y');
+		$month = date('n');
+
+		$s = "SELECT DISTINCT( total_earnings), total_us_pageviews, contributor_id
+		FROM contributor_earnings 
+		WHERE  year = $year AND month = $month ";
+
+		if( $contributor_id > 0 ) $s .= " AND contributor_id = $contributor_id ";
+		
+// var_dump($contributor_id, $year, $month, $s); die;
+		$q = $this->performQuery(['queryString' => $s]);
+		return $q;	
+	}
+
+
+	public function  smf_getContributorRank($contributor_id = 0, $month = 0, $year = 0){
+		// based on getTopShareWritesRankHeader
+
+		$contributor_id = filter_var($contributor_id,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$month = filter_var($month,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = filter_var($year,  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		 
+		if($month == 0) $month = date('Y');
+		if($year == 0) $year = date('Y');
+
+		$s = "
+			SELECT distinct(t2.contributor_id), t2.rownum 
+			FROM(
+			SELECT t1.contributor_id, (@rownum := @rownum + 1) as rownum 
+			FROM contributor_earnings t1
+			JOIN  (SELECT @rownum := 0) r
+			WHERE  t1.month = $month AND t1.year = $year
+			ORDER BY total_us_pageviews DESC) t2
+			WHERE t2.contributor_id = $contributor_id
+			";
+
+		$q = $this->performQuery(['queryString' => $s]);
+		$r = $q ['rownum'];
+
+
+		 // $ddd = new debug($s,3); $ddd->show();exit;
+
+		return $r;
+	}//end public function smf_getContributorRank ... 
+    
+
+
+
+
 }
 ?>

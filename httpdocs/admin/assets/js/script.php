@@ -734,7 +734,7 @@ $('.paid-checkbox').click( function(e){
 	task = 'pay_contributors', paid = $(current_cb).is(':checked');
 
 	var url =  admin_url + 'assets/php/ajaxfunctions.php';
-
+	
 	$.ajax({
 		type: "POST",
 		url:  url,

@@ -1,22 +1,7 @@
 <?php 
-
-
-
 	$admin = true;
 	require_once('../../assets/php/config.php');
 	if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
-
-
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-		// error_reporting(E_ALL); 	ini_set('display_errors', '1');
-
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
 
 	//Verify if is a content provider user
 	$content_provider = false;
@@ -43,11 +28,9 @@
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 
 			//TRAFFIC & EARNINGS INFO
-			// $results = $dashboard->getPageViewsUSReport($_POST); // Legacy code
-			$results = $dashboard->smf_getPageViewsUSReport($_POST);
-			$results_tobepay = $dashboard->smf_getPageViewsUSReport_tobepay($_POST);
+			$results = $dashboard->getPageViewsUSReport($_POST);
 
-				 // $ddd = new debug($results_tobepay,3); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
+				 $ddd = new debug($_POST,3); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
 
 			
 			//AD MATCH INFO
@@ -212,19 +195,7 @@
 			  		$all_unpaid_total_pro = $all_unpaid_total_basic = $all_unpaid_total_started= 0;
 			  		
 
-			  		// Fix the to_be _pay field 
 			  		foreach( $results as $contributor){
-				  		foreach( $results_tobepay as $to_be_pay_set){
-				  			if ($to_be_pay_set['contributor_id'] == $contributor['contributor_id']){
-				  				$contributor['to_be_pay'] = $to_be_pay_set['to_be_pay_fixed'];
-				  				break;
-				  			}//end if
-				  		}//end foreach
-
-
-				 // $ddd = new debug($contributor,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
-
-
 			  			$total_rate = $contributor['share_rate'];
 			  			$total_us_viewers = $contributor["total_us_pageviews"];
 			  			$total_us_viewers_by_thousands = $total_us_viewers / 1000;
@@ -251,7 +222,7 @@
 			  						}
 			  					}
 			  				}
-			  			}// end if($rank_list)
+			  			}
 
 			  			$no_cover_in_house = false;
 						$blogger = $problogger = $basicblogger = false;
@@ -428,7 +399,7 @@
 					<div class="row reports-sub-tables">
 						<div class="small-4 columns subdivition">
 							<div class="row">
-							  <div class="columns small-7 uppercase bold">STARTER</div>
+							  <div class="columns small-7 uppercase bold">STARTED</div>
 							  <div class="columns small-3"><label><?php  echo $all_us_viwers_by_thousand_started; ?></label></div>
 							  <div class="columns small-2"><label><?php echo '$'.number_format($total_rate_started, 2, '.', ','); ?></label></div>
 							</div>

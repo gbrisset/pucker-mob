@@ -2,6 +2,8 @@
 	$admin = true;
 	require_once('../../../assets/php/config.php');
 
+var_dump($_POST); 
+
 	if(isset($_POST['formData'])) parse_str($_POST['formData'], $_POST['formData']);
 	switch($_POST['task']){
 		case 'update_status':
@@ -47,7 +49,9 @@
 		break;
 
 		case 'pay_contributors':
-			echo json_encode($adminController->user->setContributorEarningsPaid($_POST));
+			// echo json_encode($adminController->user->setContributorEarningsPaid($_POST));// old - flawed - GB 2017-03-20
+			echo json_encode($adminController->user->smf_setContributorEarningsPaid($_POST));// new - in alignment with new payday_date field - GB 2017-03-20
+			// echo("Blah Blah Blah ");// Using GET to test
 		break;
 
 		case 'update_cont_level':

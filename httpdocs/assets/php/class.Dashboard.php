@@ -207,13 +207,6 @@ class Dashboard{
 		else return false;
 	}
 
-	public function smf_get_user_rate($user_type, $month, $year ){
-		$s=" SELECT * FROM smf_user_rates WHERE  user_type =  $user_type AND rate_start_date = CONCAT('$year','-','$month','-01')";
-		$queryParams = [];			
-		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-
-		if($q) return $q; else return false;
-	}
 
 	public function get_articlesbypageviews( $contributor_id, $month, $year ){
 
@@ -295,26 +288,6 @@ class Dashboard{
 		}
 	}
 
-	public function smf_getContributorMonthlyPageviews( $contributor_id, $month, $year ){
-
-			$s = " SELECT *, sum(usa_pageviews) as sum_usa_pageviews 
-					FROM `article_daily_earnings` 
-					WHERE month = $month AND year = $year AND contributor_id = $contributor_id GROUP BY month ";
-
-			$queryParams = [];			
-			$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-		
-			if ($q && isset($q[0])){
-					// If $q is an array of only one row (The set only contains one article), return it inside an array
-				return $q;
-			} else if ($q && !isset($q[0])){
-					// If $q is an array of rows, return it as normal
-				$q = array($q);
-				return $q;
-			} else {
-				return false;
-			}
-	}
 
 
 	//Return All Articles per month for each contributor
@@ -831,16 +804,7 @@ class Dashboard{
 		return $q;
 	}
 
-	//FOR TESTING ONLY -----------------------------------------------------
-	public function smf_getContributorsListTEST(){
-		$s  = " SELECT contributor_id, user_type 
-				FROM active_user_contributors 
-				WHERE contributor_id IN (	3612, 1570, 2409, 3173) ";
-		$queryParams = [ ];			
-		$q = $this->performQuery(['queryString' => $s]);
 
-		return $q;
-	}// end of test function -----------------------------------------------
 
 	public function getContributorEarnings( $contributor_id, $month, $year){
 		$s = "SELECT * from contributor_earnings where contributor_id = $contributor_id AND month IN ( $month ) AND year = $year ORDER BY updated_date DESC ";
@@ -856,21 +820,7 @@ class Dashboard{
 		}else return false;
 	} 
 
-public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $year){
-		$s = "SELECT * FROM contributor_earnings WHERE contributor_id = $contributor_id AND month = $month AND year = $year ";
 
-// var_dump($s);
-		$queryParams = [ ];			
-		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-
-		
-		if ($q && isset($q[0])){
-			return $q;
-		} else if ($q && !isset($q[0])){
-			$q = array($q);
-			return $q;
-		}else return false;
-	} 
 
 	//DEPRECATED
 	public function getSocialSharesAndContributors(){
@@ -880,7 +830,9 @@ public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $y
 			 AND ( article_contributors.contributor_id = article_contributor_articles.contributor_id ) ";
 	}
 
-
+// --------------------------------------------------------
+// --------------- SMF ROUTINES ---------------------------
+// --------------------------------------------------------
 
 // New routine as of 2017-03-07  - GB
 	public function pageviewsReport( $month, $year ){
@@ -967,6 +919,193 @@ public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $y
 
 		}	// end if($contributors)
 	}//end public function pageviewsReport
+
+
+
+
+	public function smf_getPageViewsUSReport($data){
+		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$contributor_id = $data['contributor'];
+
+		$s = "SELECT 
+				c.*, 
+				ac.contributor_name, 
+				ac.contributor_seo_name, 
+				ubi.paypal_email,
+
+				ubi.w9_live,
+				u.user_type 
+
+
+				FROM contributor_earnings c
+				INNER JOIN (article_contributors ac, users u) 
+				ON c.contributor_id = ac.contributor_id 
+				AND ac.contributor_email_address = u.user_email 
+				LEFT JOIN (user_billing_info ubi)
+				ON( u.user_id = ubi.user_id)
+
+				WHERE c.month = $month AND c.year = $year
+				 ";
+
+		if(isset($contributor_id) && $contributor_id >0) {
+		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
+		}
+
+
+
+		$queryParams = [ ];
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if ($q && isset($q[0])){
+		return $q;
+		} else if ($q && !isset($q[0])){
+		$q = array($q);
+		return $q;
+		}else return false;
+
+	}//end function
+
+
+
+	public function smf_getPageViewsUSReport_tobepay($data){
+		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$contributor_id = $data['contributor'];
+
+		$s = "
+
+				SELECT `contributor_id`, SUM(`total_earnings`) AS to_be_pay_fixed
+				FROM `contributor_earnings`
+				WHERE payday_date = 0 
+				AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15'))
+
+				GROUP BY contributor_id, payday_date
+				ORDER BY contributor_id, year DESC, month DESC
+				 ";
+
+		if(isset($contributor_id) && $contributor_id >0) {
+		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
+		}
+
+		
+
+		$queryParams = [ ];
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if ($q && isset($q[0])){
+		return $q;
+		} else if ($q && !isset($q[0])){
+		$q = array($q);
+		return $q;
+		}else return false;
+
+	}//end function
+
+
+//---------------------------------------------------
+//---------------------------------------------------
+	/*
+-- test ---------------------------------------------------
+SELECT *  FROM `contributor_earnings` WHERE `contributor_id` = 3173 ORDER by year DESC, month DESC;
+
+-- test ---------------------------------------------------
+SELECT `contributor_id`, SUM(`total_earnings`)
+FROM `contributor_earnings`
+WHERE 
+payday_date = 0 AND
+`contributor_id` IN( 3173 )
+
+GROUP BY contributor_id, payday_date
+ORDER BY contributor_id, year DESC, month DESC;
+
+-- query on the work ---------------------------------------------------
+SELECT 
+c.*, 
+ac.contributor_name, 
+ac.contributor_seo_name, 
+ubi.paypal_email,
+
+ubi.w9_live,
+u.user_type ,
+
+
+FROM contributor_earnings c
+INNER JOIN (article_contributors ac, users u) 
+ON c.contributor_id = ac.contributor_id 
+AND ac.contributor_email_address = u.user_email 
+LEFT JOIN (user_billing_info ubi)
+ON( u.user_id = ubi.user_id)
+
+WHERE c.month = 1 AND c.year = 2017 
+AND c.contributor_id = 3173
+
+GROUP BY contributor_id
+*/
+
+//---------------------------------------------------
+//---------------------------------------------------
+//---------------------------------------------------
+
+
+public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $year){
+		$s = "SELECT * FROM contributor_earnings WHERE contributor_id = $contributor_id AND month = $month AND year = $year ";
+
+// var_dump($s);
+		$queryParams = [ ];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		
+		if ($q && isset($q[0])){
+			return $q;
+		} else if ($q && !isset($q[0])){
+			$q = array($q);
+			return $q;
+		}else return false;
+	}//end function
+
+
+
+	//FOR TESTING ONLY -----------------------------------------------------
+	public function smf_getContributorsListTEST(){
+		$s  = " SELECT contributor_id, user_type 
+				FROM active_user_contributors 
+				WHERE contributor_id IN (	3612, 1570, 2409, 3173) ";
+		$queryParams = [ ];			
+		$q = $this->performQuery(['queryString' => $s]);
+
+		return $q;
+	}// end of test function -----------------------------------------------
+
+	public function smf_get_user_rate($user_type, $month, $year ){
+		$s=" SELECT * FROM smf_user_rates WHERE  user_type =  $user_type AND rate_start_date = CONCAT('$year','-','$month','-01')";
+		$queryParams = [];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if($q) return $q; else return false;
+	}//end function
+
+
+	public function smf_getContributorMonthlyPageviews( $contributor_id, $month, $year ){
+
+			$s = " SELECT *, sum(usa_pageviews) as sum_usa_pageviews 
+					FROM `article_daily_earnings` 
+					WHERE month = $month AND year = $year AND contributor_id = $contributor_id GROUP BY month ";
+
+			$queryParams = [];			
+			$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		
+			if ($q && isset($q[0])){
+					// If $q is an array of only one row (The set only contains one article), return it inside an array
+				return $q;
+			} else if ($q && !isset($q[0])){
+					// If $q is an array of rows, return it as normal
+				$q = array($q);
+				return $q;
+			} else {
+				return false;
+			}
+	}//end function
 
 
 }//end class

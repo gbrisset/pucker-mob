@@ -991,50 +991,50 @@ End password reset methods
 	}
 
 	/*CONTRIBUTORS*/
-	public function setContributorEarningsPaid($data){
+	// public function setContributorEarningsPaid($data){
 
-		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$paid = $data['paid'];
-		$month = filter_var($data['month'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$year = filter_var($data['year'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		//Check if record exists
+	// 	$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	// 	$paid = $data['paid'];
+	// 	$month = filter_var($data['month'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	// 	$year = filter_var($data['year'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+	// 	//Check if record exists
 
-		$next_month = $month;
-		$next_year = $year;
-		if($next_month == 12){
-			$next_month = 1;
-			$next_year = $year + 1;
-		}else $next_month = $month + 1;
+	// 	$next_month = $month;
+	// 	$next_year = $year;
+	// 	if($next_month == 12){
+	// 		$next_month = 1;
+	// 		$next_year = $year + 1;
+	// 	}else $next_month = $month + 1;
 		
-		$nextMonthrecord = $this->performQuery(array(
-			'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
-			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $next_month, ':year' => $next_year )
-		));
+	// 	$nextMonthrecord = $this->performQuery(array(
+	// 		'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
+	// 		'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $next_month, ':year' => $next_year )
+	// 	));
 
-		$recordExist = $this->performQuery(array(
-			'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
-			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
-		));
+	// 	$recordExist = $this->performQuery(array(
+	// 		'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
+	// 		'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
+	// 	));
 
-		if($recordExist){
-			$payment_record =  $this->performUpdate(array(
-				'updateString' => "UPDATE contributor_earnings SET paid = ".$paid." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
-				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
-			));
-		}
-		if( $nextMonthrecord && $payment_record ){
-			if($paid == "true" ){
-				$to_be_pay_next_month = $nextMonthrecord['total_earnings']; 
-			}else{
-				$to_be_pay_next_month = abs($nextMonthrecord['total_earnings'] + $recordExist['total_earnings']);
-			}
-			$payment_record_next_month =  $this->performUpdate(array(
-				'updateString' => "UPDATE contributor_earnings SET to_be_pay = ".$to_be_pay_next_month." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
-				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $next_month, ':year' => $next_year )
-			));
-		}
-		return $payment_record ;
-	}
+	// 	if($recordExist){
+	// 		$payment_record =  $this->performUpdate(array(
+	// 			'updateString' => "UPDATE contributor_earnings SET paid = ".$paid." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
+	// 			'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
+	// 		));
+	// 	}
+	// 	if( $nextMonthrecord && $payment_record ){
+	// 		if($paid == "true" ){
+	// 			$to_be_pay_next_month = $nextMonthrecord['total_earnings']; 
+	// 		}else{
+	// 			$to_be_pay_next_month = abs($nextMonthrecord['total_earnings'] + $recordExist['total_earnings']);
+	// 		}
+	// 		$payment_record_next_month =  $this->performUpdate(array(
+	// 			'updateString' => "UPDATE contributor_earnings SET to_be_pay = ".$to_be_pay_next_month." WHERE contributor_id = :contributor_id AND month = :month AND year = :year ",
+	// 			'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $next_month, ':year' => $next_year )
+	// 		));
+	// 	}
+	// 	return $payment_record ;
+	// }
 
 	public function getContributorEarningChartData( $data ){
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
@@ -1636,5 +1636,59 @@ End password reset methods
 		}else $this->helpers->returnStatus(500);
 	}
 	/* End Registration Functions */
-}
+
+
+// --------------------------------------------------------
+// --------------- SMF ROUTINES ---------------------------
+// --------------------------------------------------------
+
+	public function smf_setContributorEarningsPaid($data){
+
+// Currently does not work - as of 2017-03-21 - GB		
+		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$paid = $data['paid'];
+		$month = filter_var($data['month'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		$year = filter_var($data['year'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
+		//Check if record exists
+	
+		$recordExist = $this->performQuery(array(
+			'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
+			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
+		));
+
+		
+
+		if($recordExist){
+			$payday_date = date('Y-m-d H:i:s', time());
+			$payment_record =  $this->performUpdate(array(
+				'updateString' => "UPDATE contributor_earnings SET paid = :paid, payday_date = ':payday_date' 
+									WHERE contributor_id = :contributor_id
+									AND payday_date = 0 
+									AND DATE(updated_date) <= LAST_DAY(CONCAT(:year,'-',:month,'-','15')) ",
+				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year, ':paid' => $paid, ':payday_date' => $payday_date  )
+			));
+		}//end if
+
+		// --------------------------- testing -------------------------------
+		// --------------------------- testing -------------------------------
+		// --------------------------- testing -------------------------------
+		// $payday_date = date('Y-m-d H:i:s', time());
+		// $updateString = "UPDATE contributor_earnings SET paid = $paid, payday_date = '$payday_date' 
+		// 				WHERE contributor_id = $contributor_id
+		// 				AND payday_date = 0 
+		// 				AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15')) ";
+
+		// var_dump($updateString);									
+
+		// --------------------------- testing -------------------------------
+		// --------------------------- testing -------------------------------
+
+		return $payment_record ;
+
+	}//end function
+
+
+
+
+}//end class
 ?>

@@ -14,7 +14,6 @@ class MPArticleAdminController extends MPArticle{
 		$this->config = $opts['config'];
 		$this->con = new Connector($this->config);
 		$this->mpArticle = $opts['mpArticle'];
-
 		$this->helpers = new AdminControllerHelpers(array('config' => $this->config));
 		$this->user = new  MPAdminUserController(array('config' => $this->config, 'mpArticle' => $this->mpArticle));
 	}

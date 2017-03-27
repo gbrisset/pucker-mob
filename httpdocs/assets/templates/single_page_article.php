@@ -113,6 +113,33 @@
 		<div class="row clear" style="margin-top: -1rem;">
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 
+				<!-- AD BELOW IMAGE ========================================================================================================== -->
+				<div id="mobile-instream-branovate-ad" style="text-align: center; margin-bottom: 10px; margin-top: 5px;">
+					<div id="get-content" style="text-align:center; display: inline-block;">
+						
+						<?php
+
+							 switch ($article_id) {
+							 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+							 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+							 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+							 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+							 	
+								 	//do nothing - we do not want other ads to interfer with the test pages
+								 	break;
+				
+							 	default:
+									// include($config['include_path'] . 'ads/codefuel.php'); //on hold for now - 2017-03-27
+									include($config['include_path'] . 'ads/below_img_Google.php');
+							 }//end switch ($article_id)
+
+
+						 ?>
+
+					</div>
+				</div>
+
+
 				<!-- ARTICLE BODY ========================================================================================================== -->
 				<div id="article-body">
 					<?php echo $article_body; ?>

@@ -227,9 +227,7 @@
 					}	else {
 					// BELOW - current scripts - general audience ---------------------------------------------------------------------------------------------------
 					?>
-						<!-- //PERION - CodeFuel-->
-						<!-- will inject ad in a set palce on the site (after 2nd paragraph of article body as of 2017-02-02) -->
-						<script src="//sf.mmccint.com/bootstrap?pubid=A-5609307&url=puckermob.com" data-owner="sitefuel"></script>
+						
 					
 				     <!-- UT_adhesion (DIV is is bottomscripts.php) -->
 				        <script>

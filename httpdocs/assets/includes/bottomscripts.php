@@ -113,6 +113,7 @@
                 // include($config['include_path'] . 'ads/adhesion_iframe_buster.php');
                 include($config['include_path'] . 'ads/adhesion_kixer.php');
 
+
              }//end switch ($article_id)
 
 

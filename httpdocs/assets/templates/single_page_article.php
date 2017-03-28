@@ -79,7 +79,8 @@
 							break;
 						
 					 	default:
-							include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-02-28
+							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-03-28
+					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
 							
 					 }//end switch ($article_id)
 
@@ -130,7 +131,8 @@
 				
 							 	default:
 									// include($config['include_path'] . 'ads/codefuel.php'); //on hold for now - 2017-03-27
-									include($config['include_path'] . 'ads/below_img_Google.php');
+									// include($config['include_path'] . 'ads/below_img_Google.php');
+									include($config['include_path'] . 'ads/nativo_1.php');
 							 }//end switch ($article_id)
 
 
@@ -282,7 +284,6 @@
 								break;
 
 						 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-								include($config['include_path'] . 'ads/_TEST_AD_JustPremium.php');
 						 		break;
 						 	
 						 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
@@ -294,6 +295,7 @@
 						 		break;
 						 	
 						 	default:
+								// include($config['include_path'] . 'ads/_TEST_AD_JustPremium.php');//showing at the bottom
 								include($config['include_path'] . 'ads/nativo_2.php');
 								include($config['include_path'] . 'ads/sharethrough.php');
 								include($config['include_path'] . 'ads/answer_inbanner_2.php');

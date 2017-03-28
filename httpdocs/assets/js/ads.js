@@ -80,7 +80,7 @@ if($('body').hasClass('mobile')) {
 					break;
 
 			 	default:
-					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
+					// inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
 					inBodyAd.loadInArticleAd('article-body', 10, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {var c = document.getElementById('article-body');var d = c.getElementsByTagName('P');if (d.length >10) {var my_div = document.createElement('DIV');    my_div.id = 'temp_div';c.insertBefore(my_div, d[10]); }e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js');window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee',slot: '#temp_div',width: 320,height: 240});</script>", tag);			
 
 			 }//end switch ($article_id)

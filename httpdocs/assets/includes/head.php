@@ -76,7 +76,7 @@
 	</script>	
 
 	<!-- *** Zoomd: Widget Script *** --> 
-	<script async="async" src="//zdwidget3-bs.sphereup.com/zoomd/SearchUi/Script?clientId=67949597"></script>
+	<!-- <script async="async" src="//zdwidget3-bs.sphereup.com/zoomd/SearchUi/Script?clientId=67949597"></script> -->
 	<!-- *** /Zoomd *** -->
 	<script type = "text/javascript">
 	// this script has been provided by the advertiser but seems useless for many reasons: 

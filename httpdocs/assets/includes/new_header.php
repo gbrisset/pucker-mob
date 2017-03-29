@@ -118,10 +118,10 @@
                       <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                     </li>
 
-                    <li>
+                    <!-- <li>
                     <img src = "http://sucdn.sphereup.com/clients/image/search_icon-white.png" alt = "Zoomd Search Widget" style = "height:1rem; margin-top:0.2rem;" zoomdSearch='{"trigger":"OnClick"}'/>
                     </li>
-
+ -->
 
                   </ul>
                </div>

@@ -194,9 +194,8 @@
       
 
 <!-- ZoomD search bar -->
-<div style="display: inline; float: right; margin: 0.3em 1em; " ><img src = "http://sucdn.sphereup.com/clients/image/search_icon-white.png" alt = "Zoomd Search Widget" style = "height:1rem; margin-top:0.2rem;" zoomdSearch='{"trigger":"OnClick"}'/></div>      
-
-                     </h2> 
+<!-- <div style="display: inline; float: right; margin: 0.3em 1em; " ><img src = "http://sucdn.sphereup.com/clients/image/search_icon-white.png" alt = "Zoomd Search Widget" style = "height:1rem; margin-top:0.2rem;" zoomdSearch='{"trigger":"OnClick"}'/></div>      
+ -->                     </h2> 
                 
               </li>
             </ul>

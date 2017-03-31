@@ -115,9 +115,9 @@
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 
 				<!-- AD BELOW IMAGE ========================================================================================================== -->
+
 				<div id="mobile-instream-branovate-ad" style="text-align: center; margin-bottom: 10px; margin-top: 5px;">
 					<div id="get-content" style="text-align:center; display: inline-block;">
-						
 						<?php
 
 							 switch ($article_id) {
@@ -130,14 +130,12 @@
 								 	break;
 				
 							 	default:
-									// include($config['include_path'] . 'ads/codefuel.php'); //on hold for now - 2017-03-27
-									// include($config['include_path'] . 'ads/below_img_Google.php');
-									include($config['include_path'] . 'ads/nativo_1.php');
+									// include($config['include_path'] . 'ads/codefuel.php'); //on hold for now - 2017-03-31
+									include($config['include_path'] . 'ads/below_img_Google.php');
+									// include($config['include_path'] . 'ads/nativo_1.php');
 							 }//end switch ($article_id)
 
-
 						 ?>
-
 					</div>
 				</div>
 

@@ -111,14 +111,11 @@
 
               default:
                 // include($config['include_path'] . 'ads/adhesion_iframe_buster.php');
-                // include($config['include_path'] . 'ads/adhesion_kixer.php');
+                include($config['include_path'] . 'ads/adhesion_kixer.php');
 
 
              }//end switch ($article_id)
 
-
-
-             include($config['include_path'] . 'ads/lkqdVPAID_script.php'); // not sure what that does -- GB 2017-02-27
 
         }//end if( in_array($article_id, $selected_articles_lelo)
 

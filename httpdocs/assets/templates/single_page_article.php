@@ -224,7 +224,7 @@
 				 	// 	break;
 
 				 	default:
-						include($config['include_path'] . 'ads/EOA_carambola.php');
+						// include($config['include_path'] . 'ads/EOA_carambola.php');
 				 }//end switch ($article_id)
 
 
@@ -296,7 +296,7 @@
 								// include($config['include_path'] . 'ads/_TEST_AD_JustPremium.php');//showing at the bottom
 								include($config['include_path'] . 'ads/nativo_2.php');
 								include($config['include_path'] . 'ads/sharethrough.php');
-								include($config['include_path'] . 'ads/answer_inbanner_2.php');
+								// include($config['include_path'] . 'ads/answer_inbanner_2.php');
 						 		break;
 						 }//end switch ($article_id)
 
@@ -379,7 +379,7 @@
 							 		break;
 							 	
 							 	default:
-									include($config['include_path'] . 'ads/carambola.php');
+									// include($config['include_path'] . 'ads/carambola.php');
 							 		break;
 							 }//end switch ($article_id)
 

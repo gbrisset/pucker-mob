@@ -224,6 +224,9 @@
 				 	// 	break;
 
 				 	default:
+					 	echo "<div id=\"mobile-instream-branovate-ad\" style=\"text-align: center; clear: both; padding-top: 1rem;\">";
+						include($config['include_path'] . 'ads/amazon_4.php');//this unit was originally in the more bar - 2017-04-04
+						echo "</div>";
 						// include($config['include_path'] . 'ads/EOA_carambola.php');
 				 }//end switch ($article_id)
 
@@ -296,7 +299,7 @@
 								// include($config['include_path'] . 'ads/_TEST_AD_JustPremium.php');//showing at the bottom
 								include($config['include_path'] . 'ads/nativo_2.php');
 								include($config['include_path'] . 'ads/sharethrough.php');
-								// include($config['include_path'] . 'ads/answer_inbanner_2.php');
+								include($config['include_path'] . 'ads/answer_inbanner_2.php');
 						 		break;
 						 }//end switch ($article_id)
 

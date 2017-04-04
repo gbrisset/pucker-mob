@@ -65,50 +65,25 @@
 						</div>
 							<div id = "mobile-instream-branovate-ad" class="row ad-unit hide-for-print padding-top no-padding" style="margin-bottom: 10px !important; z-index:1000000000 !important	">
 								<!--<div style="height: 250px;background:transparent; z-index:6666666666666; position:relative;"></div>-->
-								<?php if($index == 1){?>
-									<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-									<script type="text/javascript" language="javascript">
-									//<![CDATA[
-									aax_getad_mpb({
-									  "slot_uuid":"07cc8194-4eca-4036-8ef3-43e0a582fdbd"
-									});
-									//]]>
-									</script>
-								
-								<?php } ?>
+								<?php
 
-								<?php if($index == 2){?>
-									<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-									<script type="text/javascript" language="javascript">
-									//<![CDATA[
-									aax_getad_mpb({
-									  "slot_uuid":"a19421b0-d555-476b-ba63-e6b89e44cf93"
-									});
-									//]]>
-									</script>
-								<?php } ?>
 
-								<?php if($index == 3){?>
-								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-								<script type="text/javascript" language="javascript">
-									//<![CDATA[
-									aax_getad_mpb({
-									  "slot_uuid":"2bef2550-d479-4b9b-9aea-31455c8df746"
-									});
-									//]]>
-								</script>
-								<?php } ?>
+									 switch ($index) {
+									 	case 1: 
+											include($config['include_path'] . 'ads/amazon_1.php');
+									 		break;
+									 	case 2: 
+											include($config['include_path'] . 'ads/amazon_2.php');
+									 		break;
+									 	case 3: 
+											include($config['include_path'] . 'ads/amazon_3.php');
+									 		break;
+									 	case 4: 
+											// include($config['include_path'] . 'ads/amazon_4.php');//this unit has been moved to End of Article - 2017-04-04
+									 		break;
+									 }//end switch ($article_id)
 
-								<?php if($index == 4){?>
-								<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-								<script type="text/javascript" language="javascript">
-								  //<![CDATA[
-								    aax_getad_mpb({
-								      "slot_uuid":"03f85f04-b643-46d8-8e87-66735eac98f4"
-								    });
-								  //]]>
-								</script>
-								<?php }?>
+								?>
 							</div>
 					</div>
 					</div>

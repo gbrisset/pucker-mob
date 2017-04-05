@@ -19,6 +19,8 @@
 <script type="text/javascript" src="<?php echo $config['this_url']; ?>assets/js/ads.js?<?php echo 'ver_' . date('Ymdgis') ?>" ></script>
 
 
+           <?php include($config['include_path'] . 'ads/Answers_CrossPixel_Puckermob.php');?>
+
   <!--[if !IE]>
     <script type="text/javascript" src="http://uac.advertising.com/wrapper/aceFIF.js "></script>
     <![endif]-->
@@ -29,7 +31,7 @@
       <div id="vm_inline"></div>
 
 
-                include($config['include_path'] . 'ads/answer_tout.php');
+                <?php include($config['include_path'] . 'ads/answer_tout.php');?>
 
       <script>
            window._videomosh = window._videomosh || []; 
@@ -52,6 +54,7 @@
                //backfill: "<script async src='http://ads.allscreen.tv/embed?placement=181' ><\/scr"+"ipt>"
            }// end  _videomosh.push);
       </script>
+
     <?php }//end  if(isset($articleInfoObj) ...  ?>
 
    <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>

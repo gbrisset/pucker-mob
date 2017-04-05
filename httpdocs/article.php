@@ -312,6 +312,10 @@ if(!is_null($categoryInfo)){
 
 					 switch ($article_id) {
 				 	
+					 	
+						case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+							include($config['include_path'] . 'ads/_TEST_AD_video_truvidplayer.php');
+							break;
 					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
 					 			// used as a test page
 					 			//break;

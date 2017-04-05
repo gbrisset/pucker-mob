@@ -1,0 +1,2 @@
+<!-- TruvidPlayer Video -->
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="http://stg.truvidplayer.com/index.php?sub_user_id=92&widget_id=1609&playlist_id=1254&cb='+(Math.random()*10000000000000000)+'"></scr'+'ipt>')</script>

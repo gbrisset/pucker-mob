@@ -77,6 +77,10 @@
 					 			// used as a test page - leave regular image, no video
 					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
 							break;
+
+						case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+							include($config['include_path'] . 'ads/_TEST_AD_video_truvidplayer.php');
+							break;
 						
 					 	default:
 							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-03-28
@@ -128,7 +132,7 @@
 							 	
 								 	//do nothing - we do not want other ads to interfer with the test pages
 								 	break;
-				
+
 							 	default:
 									// include($config['include_path'] . 'ads/codefuel.php'); //on hold for now - 2017-03-31
 									include($config['include_path'] . 'ads/below_img_Google.php');
@@ -217,7 +221,7 @@
 	
 				 	
 				 	case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-						include($config['include_path'] . 'ads/_TEST_AD_seenergy.php');
+						//include($config['include_path'] . 'ads/_TEST_AD_seenergy.php');
 				 		break;
 					
 				 	// case 11237: // moblog/girl-whos-just-his-friend
@@ -289,15 +293,13 @@
 						 		break;
 						 	
 						 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-								include($config['include_path'] . 'ads/_TEST_AD_SeeThrough.php');
+								// include($config['include_path'] . 'ads/_TEST_AD_SeeThrough.php');
 						 		break;
 						 	
 						 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-								include($config['include_path'] . 'ads/_TEST_AD_SSFP.php');
 						 		break;
 						 	
 						 	default:
-								// include($config['include_path'] . 'ads/_TEST_AD_JustPremium.php');//showing at the bottom
 								include($config['include_path'] . 'ads/nativo_2.php');
 								include($config['include_path'] . 'ads/sharethrough.php');
 								include($config['include_path'] . 'ads/answer_inbanner_2.php');

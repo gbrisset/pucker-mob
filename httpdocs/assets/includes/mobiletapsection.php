@@ -79,7 +79,7 @@
 											include($config['include_path'] . 'ads/amazon_3.php');
 									 		break;
 									 	case 4: 
-											// include($config['include_path'] . 'ads/amazon_4.php');//this unit has been moved to End of Article - 2017-04-04
+											include($config['include_path'] . 'ads/amazon_4.php');
 									 		break;
 									 }//end switch ($article_id)
 

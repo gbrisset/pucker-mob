@@ -224,10 +224,11 @@
 				 	// 	break;
 
 				 	default:
-					 	echo "<div id=\"mobile-instream-branovate-ad\" style=\"text-align: center; clear: both; padding-top: 1rem;\">";
-						include($config['include_path'] . 'ads/amazon_4.php');//this unit was originally in the more bar - 2017-04-04
-						echo "</div>";
-						// include($config['include_path'] . 'ads/EOA_carambola.php');
+					 // Some ads need that wrapper to display properly
+					 	// echo "<div id=\"mobile-instream-branovate-ad\" style=\"text-align: center; clear: both; padding-top: 1rem;\">";
+						// include($config['include_path'] . 'ads/amazon_4.php');//this unit was originally in the more bar - 2017-04-04
+						// echo "</div>";
+						include($config['include_path'] . 'ads/EOA_carambola.php');
 				 }//end switch ($article_id)
 
 
@@ -382,7 +383,7 @@
 							 		break;
 							 	
 							 	default:
-									// include($config['include_path'] . 'ads/carambola.php');
+									include($config['include_path'] . 'ads/carambola.php');
 							 		break;
 							 }//end switch ($article_id)
 

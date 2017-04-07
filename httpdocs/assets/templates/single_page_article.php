@@ -78,13 +78,13 @@
 					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
 							break;
 
-						case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-							include($config['include_path'] . 'ads/_TEST_AD_video_truvidplayer.php');
-							break;
+						// case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+							// break;
 						
 					 	default:
 							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-03-28
-					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
+					 		// echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
+							include($config['include_path'] . 'ads/video_truvidplayer.php');
 							
 					 }//end switch ($article_id)
 

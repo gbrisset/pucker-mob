@@ -341,8 +341,7 @@ if(!is_null($categoryInfo)){
 						<img src="<?php //echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$article_id.'_tall.jpg'; ?>" alt="<?php // echo $article_title; ?> Image"> 
 						-->
 						<?php // } // end if( !empty($articleInfoObj ...?>
-
-						
+					
 
 					</div>
 				</div>
@@ -351,58 +350,36 @@ if(!is_null($categoryInfo)){
 				<div class="columns small-3 no-padding-right right-div">
 					<aside id="aside-top" class="fixed-width-sidebar column no-padding hide-for-print">
 
-						<!-- LELO -->
-					      <?php if(isset($articleInfoObj['article_id']) &&  $articleInfoObj['article_id'] != 17425 
-					      &&  $articleInfoObj['article_id'] != 16562 &&   $articleInfoObj['article_id'] != 14479 
-					      && $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 
-					      && $articleInfoObj['article_id'] != 15271 && $articleInfoObj['article_id']  != 17286){?>
-					       
-					        <?php if( $articleInfoObj['article_id'] != 25362 ){ //14613 ?>     
-				              <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-					             <!-- MEME GLOBAL   
-								<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-						  -->
-						    	<div id="vm_inbanner"></div>
-								<script>
-								    window._videomosh = window._videomosh || [];
-								    !function (e, f, u) {
-								        e.async = 1;
-								        e.src = u;
-								        f.parentNode.insertBefore(e, f);
-								    }(document.createElement('script'),
-								            document.getElementsByTagName('script')[0],
-								            'http://player.videomosh.com/players/loader/loader_final4.js');
+							<?php 
+					        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+							
+							 if(in_array($article_id, $selected_articles_lelo)){
 
-								    _videomosh.push({
-								        publisher_key: "sequelmedia",
-								        mode: "inbanner",
-								        container: "vm_inbanner",
-								        ad_mobile_id: "22459",
-								        ad_desktop_id: "42296",
-								        target_type: "mix",
-								        passback: true,
-								        backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/3794094997\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
-								    });   
-								</script>
-				              </div>
-					        <?php }else{ ?>
-					         <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-					        	<iframe id='m_iframe' src="http://growfoodsmart.com/sas/player/iframe.php?dPath=PuckerMob&sPlatform=Direct&playerSetup=PuckerMob&width=300&height=250&brandId=41&sCampaignID=10703&sSeller=178&creativeID=123&cb=12345&sDomain=www.puckermob.com" style="width:300px;height:250px;border:0;padding:0;margin:0;overflow:hidden;" scrolling="no" padding="0" border="0"></iframe>
-					        	</div>
-					         <!-- /73970039/UT_P 
-					          <div id='div-gpt-ad-1461622964696-1' style='height:1050px; width:300px;'>
-					            <script type='text/javascript'>
-					            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1461622964696-1'); });
-					            </script>
-					          </div>-->
-					       <?php } ?>
-					      <?php }else{?>
-					          <div id="atf-ad" class="ad-unit ad300">
-					              <a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
-					              		<img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" />
-					              </a>
-					          </div>
-					      <?php }?>
+								include($config['include_path'] . 'ads/dsk_sidebar_video_lelo.php');
+
+							 }else{	
+
+									 switch ($article_id) {
+									 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+										case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+										case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+									 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+											//do nothing - we do not want other ads to interfer with the test page
+											break;
+				
+									 	
+									 	case 25362: // Sponsored article
+											include($config['include_path'] . 'ads/dsk_sidebar_video_meme.php');
+									 		break;
+									 	
+									 	default:
+											include($config['include_path'] . 'ads/dsk_sidebar_video_answers_2.php');
+											break;
+									 }//end switch ($article_id)
+
+							}//end if( in_array($article_id, $selected_articles_lelo)
+
+							?>
 
 					    <div id="sub-sidebar-2" class="ad-unit ad300 show-on-large-up" style="">
 					          <a href="http://www.puckermob.com/login"> 

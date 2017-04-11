@@ -105,6 +105,8 @@
               case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
               case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
               case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+
                 //do nothing - we do not want other ads to interfer with the test page
                 break;
 

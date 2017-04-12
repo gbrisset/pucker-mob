@@ -27,37 +27,27 @@
 
 <?php if ( !$detect->isMobile() ) { 
 // DESKTOP ************************************************************** 
- if(isset($articleInfoObj) && $articleInfoObj){ ?>
-      <div id="vm_inline"></div>
+ if(isset($articleInfoObj) && $articleInfoObj){
+
+      $article_id = 1*$articleInfo['article_id'] ;
+
+       switch ($article_id) {
+        case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+        case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+        case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+        case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+          //do nothing - we do not want other ads to interfer with the test page
+          break;
+    
+      
+        default:
+             include($config['include_path'] . 'ads/answer_tout.php');
+             include($config['include_path'] . 'ads/btmscript_videomosh.php');
 
 
-                <?php include($config['include_path'] . 'ads/answer_tout.php');?>
+       }//end switch ($article_id)
 
-      <script>
-           window._videomosh = window._videomosh || []; 
-           !function (e, f, u) { 
-               e.async = 1; 
-               e.src = u; 
-               f.parentNode.insertBefore(e, f); 
-           }//end function
-           (document.createElement('script'), 
-           document.getElementsByTagName('script')[0], 
-           "http://player.videomosh.com/players/loader/loader_final4.js"); 
-           
-           _videomosh.push({ 
-               publisher_key: "sequelmedia", 
-               mode: "slider", 
-               container: "vm_inline", 
-               incontent_mobile_id: "23002", 
-               incontent_desktop_id: "42300", 
-               target_type: "mix"
-               //backfill: "<script async src='http://ads.allscreen.tv/embed?placement=181' ><\/scr"+"ipt>"
-           }// end  _videomosh.push);
-      </script>
-
-    <?php }//end  if(isset($articleInfoObj) ...  ?>
-
-   <?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+?>
      <!--SHAREBUTTONS BAR VERTICAL-->
       <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
           <a class="a2a_button_facebook a2a_button_facebook"></a>
@@ -68,7 +58,7 @@
       </div>
       <script async src="//static.addtoany.com/menu/page.js" async></script>
 
-  <?php } 
+  <?php }//end  if(isset($articleInfoObj) ...  
 
    }else{ 
     
@@ -77,18 +67,9 @@
 
     // disable the read more button ----------------------------------------------------------------------------------------------------------------------------
 
-?><?php
+ if(isset($articleInfoObj) && $articleInfoObj){
 
-
-       switch ($article_id) {
-        case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-        case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-          
-           break;
-      
-        default:
-          // do nothing
-       }//end switch ($article_id)
+      $article_id = 1*$articleInfo['article_id'] ;
 
   if( isset($promotedArticle) && !$promotedArticle ){ 
       
@@ -125,6 +106,8 @@
         }//end if( in_array($article_id, $selected_articles_lelo)
 
       } //end  if( isset($promotedArticle) 
+
+    }//end  if(isset($articleInfoObj) && $articleInfoObj)
 
    }// end if ( !$detect->isMobile() ) ?>
 

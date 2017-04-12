@@ -92,7 +92,7 @@
 	<?php if( isset( $articleInfo['article_id'] ) &&  ( $articleInfo['article_id']  != 23564  ) ){
 	// ARTICLE # 23564 is paid content - not subject to regular advertizing ?>
 	
-		<!-- UNDERTONE -->
+		<!-- Google common tage used by UNDERTONE -->
 		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 		<script>
 		  var googletag = googletag || {};
@@ -100,151 +100,58 @@
 		</script>
 	
 		
-		<?php 
-		// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		// Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- 
-		if( isset( $articleInfo['article_id'] ) &&  
-			(  
-			$articleInfo['article_id']  == 23319 || 
-			$articleInfo['article_id']  == 23305 || 
-			$articleInfo['article_id']  == 25829 || 
-			$articleInfo['article_id']  == 27296 ) 
-			){?>
-	
-			<?php if($articleInfo['article_id']  == 23319 ){ // http://www.puckermob.com/moblog/15-open-letters-to-leave-your-boyfriend	?>	
-				<!--
-				<script>
-				place script here
-				</script>
-				-->
- 			<?php } //end if($articleInfo['article_id']  == 23319 )?>
-
-			<?php if($articleInfo['article_id']  == 23305 ){ // http://www.puckermob.com/relationships/25-little-white-lies-of-every-long-distance-relationship ?>	
-				<!--
-				<script>
-				place script here
-				</script>
-				-->
- 			<?php } // end if($articleInfo['article_id']  == 23305 )?>
-
-			<?php if($articleInfo['article_id']  == 25829 ){ // http://www.puckermob.com/moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you ?>	
-				<!--
-				<script>
-				place script here
-				</script>
-				-->
- 			<?php } // end if($articleInfo['article_id']  == 25829 ) ?>
-
-			<?php if($articleInfo['article_id']  == 27296 ){ // http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself ?>	
-				<!--
-				<script>
-				place script here
-				</script>
-				-->
- 			<?php } //end  if($articleInfo['article_id']  == 27296 ) ?>
-
-
-			<?php 
-			// ABOVE test pages - specific scripts ------------------------------------------------------------------------------------------------------
-			}	else {
-			// BELOW - current scripts - general audience ---------------------------------------------------------------------------------------------------
-			?>
-			
-			<script>
-				  googletag.cmd.push(function(){
-				  	//UNDERTONE
-				    googletag.defineSlot('/73970039/UT_BB', [970, 250], 'div-gpt-ad-1470929060933-0').addService(googletag.pubads());
-				   	googletag.defineSlot('/73970039/UT_SS_FP', [1, 1], 'div-gpt-ad-1470934220433-0').addService(googletag.pubads());
-				   	//BRANOVATE
-				   	// googletag.defineSlot('/73970039/300x250_ROS', [300, 250], 'div-gpt-ad-1477948030478-0').addService(googletag.pubads());
-
-				    googletag.pubads().enableSingleRequest();
-				    googletag.enableServices();
-				  });
-			</script>
-
-
-		<?php } // end if( isset( $articleInfo['article_id'] ) &&  ... 
-		// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		
-	?>
-	
 
 		<?php
-		// ********************************************* MOBILE BELOW ** DESKTOP ABOVE *******************************************
+
+		$article_id = 1*$articleInfo['article_id'] ;
+
+		// ********************************************* MOBILE BELOW *******************************************
 		 if($detect->isMobile()){
-		 ?>
-			
-				<?php 
-				// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-				// Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- Scripts for Test Pages --- 
-				if( isset( $articleInfo['article_id'] ) &&  
-					(  
-					$articleInfo['article_id']  == 23319 || 
-					$articleInfo['article_id']  == 23305 || 
-					$articleInfo['article_id']  == 25829 || 
-					$articleInfo['article_id']  == 27296 ) 
-					){?>
-			
-					<?php if($articleInfo['article_id']  == 23319 ){ // http://www.puckermob.com/moblog/15-open-letters-to-leave-your-boyfriend ?>	
-						<!--
-						<script>
-						place script here
-						</script>
-						-->
-		 			<?php } //end if($articleInfo['article_id']  == 23319 )?>
 
-					<?php if($articleInfo['article_id']  == 23305 ){ // http://www.puckermob.com/relationships/25-little-white-lies-of-every-long-distance-relationship ?>	
-						<!--
-						<script>
-						place script here
-						</script>
-						-->
-		 			<?php } // end if($articleInfo['article_id']  == 23305 )?>
+		  // MOBILE select ads ----------------------------------------------------------------------------------------------------------------------------
+             switch ($article_id) {
+              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+              case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
 
-					<?php if($articleInfo['article_id']  == 25829 ){ // http://www.puckermob.com/moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you ?>	
-						<!--
-						<script>
-						place script here
-						</script>
-						-->
-		 			<?php } // end if($articleInfo['article_id']  == 25829 ) ?>
+                //do nothing - we do not want other ads to interfer with the test page
+                break;
 
-					<?php if($articleInfo['article_id']  == 27296 ){ // http://www.puckermob.com/moblog/what-time-doesnt-heal-you-have-to-heal-yourself ?>	
+              default:
+                // include($config['include_path'] . 'ads/adhesion_iframe_buster.php');
+                include($config['include_path'] . 'ads/adhesion_UT_1x1.php');
+                include($config['include_path'] . 'ads/Undertone_Bilboard.php');
+                include($config['include_path'] . 'ads/Undertone_SS_FP.php');
 
-			                    <!-- /73970039/Z_Testing -->
-			                    <div id='div-gpt-ad-1484001734438-0' style='height:1px; width:1px;'>
-			                    <script>
-			                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1484001734438-0'); });
-			                    </script>
-			                    </div>
-						
-		 			<?php } //end  if($articleInfo['article_id']  == 27296 ) ?>
+             }//end switch ($article_id)
 
 
-					<?php 
-					// ABOVE test pages - specific scripts ------------------------------------------------------------------------------------------------------
-					}	else {
-					// BELOW - current scripts - general audience ---------------------------------------------------------------------------------------------------
-					?>
-						
-					
-				     <!-- UT_adhesion (DIV is is bottomscripts.php) -->
-				        <script>
-				        googletag.cmd.push(function() {
-				          googletag.defineSlot('/73970039/UT_Adhesion_1x1', [1, 1], 'div-gpt-ad-1483989302416-0').addService(googletag.pubads());
-				          googletag.pubads().enableSingleRequest();
-				          googletag.enableServices();
-				        });
-				      </script>
+			}else{
 
-				<?php } // end if( isset( $articleInfo['article_id'] ) &&  ... 
-				// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-				?>
-	
+		  // DESKTOP select ads ----------------------------------------------------------------------------------------------------------------------------
+             switch ($article_id) {
+              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+              case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+
+                //do nothing - we do not want other ads to interfer with the test page
+                break;
+
+
+              default:
+				include($config['include_path'] . 'ads/Undertone_Bilboard.php');
+                include($config['include_path'] . 'ads/Undertone_SS_FP.php');
+             }//end switch ($article_id)
 
 			
-		<?php  } //end  if($detect->isMobile()) ?>
+		  } //end  if($detect->isMobile()) ?>
+
+
+
+
 	<?php } //  end of ARTICLE # 23564 is paid content - not subject to regular advertizing ?>
 
 	<?php 
@@ -264,38 +171,6 @@
 	?>
 	<input type="hidden" value = "<?php echo $branovate_on; ?>" id="branovate_on"/>
 
-	<?php //if( isset( $articleInfo['article_id'] ) && (   $articleInfo['article_id']  != 16562 &&   $articleInfo['article_id'] != 17425 && $articleInfo['article_id'] != 14613 && $articleInfo['article_id'] != 15104 && $articleInfo['article_id'] != 14873 && $articleInfo['article_id'] != 12966 && $articleInfo['article_id '] != 15284  && $articleInfo['article_id'] != 15488 &&  $articleInfo['article_id']  != 17286) ){ ?>
-        <!-- Start Pucker Mob - Interstitial 
-		<div id='__kx_ad_5270'></div>
-		<script type="text/javascript" language="javascript">
-		var __kx_ad_slots = __kx_ad_slots || [];
-
-		(function () {
-			var slot = 5270;
-			var h = false;
-			__kx_ad_slots.push(slot);
-			if (typeof __kx_ad_start == 'function') {
-				__kx_ad_start();
-			} else {
-				var s = document.createElement('script');
-				s.type = 'text/javascript';
-				s.async = true;
-				s.src = '//cdn.kixer.com/ad/load.js';
-				s.onload = s.onreadystatechange = function(){
-					if (!h && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-						h = true;
-						s.onload = s.onreadystatechange = null;
-						__kx_ad_start();
-					}
-				};
-				var x = document.getElementsByTagName('script')[0];
-				x.parentNode.insertBefore(s, x);
-			}
-		})();
-		</script>-->
-		<!-- End Pucker Mob - Interstitial -->
-		
-	<?php //} ?>
 
 	<?php if (!$local){ // ----------------------------------------------------------------------------------------------- ?>
 	

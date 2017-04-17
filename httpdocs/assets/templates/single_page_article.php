@@ -326,9 +326,8 @@
 	
 	</section>
 
-	<section id="article-summary" class="small-12 column">
-
 	<!-- FEATURED ARTICLES ========================================================================================================== -->
+	<section id="article-summary" class="small-12 column">
 
 		<h3 style="margin-bottom: 0.5rem !important;  font-size: 22.4px; font-family: OswaldLight; font-weight: bold;   color: green;">FEATURED ARTICLES</h3>
 		<div class="content-wrapper columns no-padding small-12">

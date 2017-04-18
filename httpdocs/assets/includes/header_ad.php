@@ -1,43 +1,42 @@
 <?php if(!$detect->isMobile()){ ?>
 	<div id="header-ad" class="ad-unit hide-for-print padding-top" style="background: #fff !important; margin-top:90px !important">
 		<!-- ARTICLES -->
-		<?php if(isset($articleInfoObj) && $articleInfoObj){ ?>
+		<?php if(isset($articleInfoObj) && $articleInfoObj){
 
-	      		<?php if(isset($articleInfoObj['article_id']) &&   $articleInfoObj['article_id'] != 17425  
-	      		&& $articleInfoObj['article_id']  != 16562  &&  $articleInfoObj['article_id'] != 14479 
-	      		&& $articleInfoObj['article_id'] != 14576 && $articleInfoObj['article_id'] != 15109 
-	      		&& $articleInfoObj['article_id'] != 15271 &&  $articleInfoObj['article_id']  != 17286
-	      		&& $articleInfoObj['article_id'] != 14613 && $articleInfoObj['article_id'] != 14873 
-			    && $articleInfoObj['article_id'] != 12966 && $articleInfoObj['article_id'] != 15284 
-			    && $articleInfoObj['article_id'] != 15488){  ?>
-	      			
-	      			<?php if(  $articleInfoObj['article_id'] != 23319  && $articleInfoObj['article_id'] != 23305 && $articleInfoObj['article_id'] != 23564 ){?>
+		        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+				
+				 if(in_array($article_id, $selected_articles_lelo)){
 
-  					<!-- /73970039/UT_BB -->
-					<div id='div-gpt-ad-1470929060933-0' style='height:250px; width:970px;'>
-					<script>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470929060933-0'); });
-					</script>
-					</div>
-					<?php } ?>
-	
-				<?php }else{?>
+                ?>
 					<!-- LELO -->
 					<div class="lelo">
 						<a href="https://www.lelo.com/hex-condoms-original?utm_source=publisher_puckermob.com&utm_medium=banner&utm_content=&utm_campaign=hex_display" target="_blank">
 							<img src="http://www.puckermob.com/assets/img/campaing/lelo_desk.png" />
 						</a>
 					</div>
-				<?php } ?>
-		<!-- ROS -->	
-		<?php }else{?>
-			<!-- /73970039/UT_BB -->
-			<div id='div-gpt-ad-1470929060933-0' style='height:250px; width:970px;'>
-			<script>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470929060933-0'); });
-			</script>
-			</div>
 
-		<?php }?> 
+
+				<?php
+				 }else{	
+
+		             switch ($article_id) {
+					  case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+		              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+		              case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+		              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+		              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+		              case 20506: // contains explicit content - not approved for Undertone - moblog/pssy-eating-101-five-tips-to-taste-delicious
+
+		                //do nothing - we do not want other ads to interfer with the test page
+		                break;
+
+		              default:
+		                include($config['include_path'] . 'ads/Undertone_DynamicTag.php');
+		                
+		             }//end switch ($article_id)
+
+				}//end if( in_array($article_id, $selected_articles_lelo)
+
+		 }// end if(isset($articleInfoObj) && $articleInfoObj)?> 
 	</div>
-<?php }?>
+<?php } //end if(!$detect->isMobile() ?>

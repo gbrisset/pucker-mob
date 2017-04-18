@@ -99,7 +99,7 @@
 		  googletag.cmd = googletag.cmd || [];
 		</script>
 	
-		
+
 		
 
 		<?php
@@ -115,15 +115,15 @@
               case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
               case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
               case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+              case 20506: // contains explicit content - not approved for Undertone - moblog/pssy-eating-101-five-tips-to-taste-delicious
 
                 //do nothing - we do not want other ads to interfer with the test page
                 break;
 
               default:
-                // include($config['include_path'] . 'ads/adhesion_iframe_buster.php');
-                include($config['include_path'] . 'ads/adhesion_UT_1x1.php');
-                include($config['include_path'] . 'ads/Undertone_Bilboard.php');
-                include($config['include_path'] . 'ads/Undertone_SS_FP.php');
+                // include($config['include_path'] . 'ads/adhesion_UT_1x1.php');
+                // include($config['include_path'] . 'ads/Undertone_Bilboard.php');
+                // include($config['include_path'] . 'ads/Undertone_SS_FP.php');
 
              }//end switch ($article_id)
 
@@ -136,14 +136,15 @@
               case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
               case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
               case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+              case 20506: // contains explicit content - not approved for Undertone - moblog/pssy-eating-101-five-tips-to-taste-delicious
 
                 //do nothing - we do not want other ads to interfer with the test page
                 break;
 
 
               default:
-				include($config['include_path'] . 'ads/Undertone_Bilboard.php');
-                include($config['include_path'] . 'ads/Undertone_SS_FP.php');
+				// include($config['include_path'] . 'ads/Undertone_Bilboard.php');
+    //             include($config['include_path'] . 'ads/Undertone_SS_FP.php');
              }//end switch ($article_id)
 
 			

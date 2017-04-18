@@ -116,47 +116,35 @@ if(!is_null($categoryInfo)){
 <?php include_once($config['include_path'].'head.php');?>
 
 <!-- UNDERTONE -->
-<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 
-		&&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 
-		&& $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  
-		&& $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
-		&& $articleInfoObj['article_id'] != 17286  ){?>
-		
-		<?php if($articleInfoObj['article_id'] == 23319 ){ ?>
-			<!-- /73970039/UT_SS -->
-			<div id='div-gpt-ad-1476806620904-1' style='height:1px; width:1px;'>
-			<script>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-1'); });
-			</script>
-			</div>
+<?php 
+	
+		        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+				
+				 if(in_array($article_id, $selected_articles_lelo)){
 
-			<!-- end Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
-		<?php }elseif( $articleInfoObj['article_id'] == 23305 ){?>
-			<!-- /73970039/UT_Flex -->
-			<div id='div-gpt-ad-1476806620904-0' style='height:1px; width:1px;'>
-			<script>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-0'); });
-			</script>
-			</div>
+                //do nothing - lelo has ads somewhere else
 
-			<!-- end Undertone Ad Tag for INT00 - Flex - Testing Certification Purposes Only Tag -->
-		<?php }elseif( $articleInfoObj['article_id'] == 25829 ){?>
-			<!-- /73970039/UT_Adhesion -->
-			<div id='div-gpt-ad-1480951070701-0' style='height:1px; width:1px;'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1480951070701-0'); });
-				</script>
-			</div>
-		<?php }else{?>
-			<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-			<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-			<script>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-			</script>
-			</div>
-		<?php } ?>
-		
-<?php } ?>
+				 }else{	
+
+		             switch ($article_id) {
+					  case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+		              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+		              case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+		              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+		              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+		              case 20506: // contains explicit content - not approved for Undertone - moblog/pssy-eating-101-five-tips-to-taste-delicious
+
+		                //do nothing - we do not want other ads to interfer with the test page
+		                break;
+
+		              default:
+		                include($config['include_path'] . 'ads/Undertone_DynamicTag.php');
+		                
+		             }//end switch ($article_id)
+
+				}//end if( in_array($article_id, $selected_articles_lelo)
+
+ ?>
 
 <!-- HEAD -->
 <body id="article" class="mobile">
@@ -225,34 +213,35 @@ if(!is_null($categoryInfo)){
 <!-- BODY -->
 <body id="article">
 	<!-- UNDERTONE -->
-	<?php if(  $articleInfoObj['article_id'] != 16562  &&  $articleInfoObj['article_id'] != 17425 
-			   &&  $articleInfoObj['article_id']!= 14479 &&  $articleInfoObj['article_id']!= 14576 
-			   && $articleInfoObj['article_id'] !=  15109 && $articleInfoObj['article_id'] != 15271  
-			   && $articleInfoObj['article_id'] != 15284  && $articleInfoObj['article_id'] != 15488 
-			   && $articleInfoObj['article_id'] != 17286  ){?>
+	<?php
 
-			<?php if($articleInfoObj['article_id'] == 23319 ){ ?>
-			<!-- begin Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
-				<!-- /73970039/UT_SS -->
-				<div id='div-gpt-ad-1476806620904-1' style='height:1px; width:1px;'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476806620904-1'); });
-				</script>
-				</div>
+		        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+				
+				 if(in_array($article_id, $selected_articles_lelo)){
 
-			<!-- end Undertone Ad Tag for INT00 - Screen Shift - TESTING AND CERTIFICATIONS ONLY-->
-			<?php }else{?>
+                //do nothing - lelo has ads somewhere else
 
-				<!-- CURRENT -->
-				<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-				<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-				</script>
-				</div>
-			<?php } ?>
+				 }else{	
 
-	<?php } ?>
+		             switch ($article_id) {
+					  case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+		              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+		              case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+		              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+		              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+		              case 20506: // contains explicit content - not approved for Undertone - moblog/pssy-eating-101-five-tips-to-taste-delicious
+
+		                //do nothing - we do not want other ads to interfer with the test page
+		                break;
+
+		              default:
+		                include($config['include_path'] . 'ads/Undertone_DynamicTag.php');
+		                
+		             }//end switch ($article_id)
+
+				}//end if( in_array($article_id, $selected_articles_lelo)
+
+	 ?>
 
 	<!-- HEADER MENU -->
 	<?php include_once($config['include_path'].'new_header.php'); ?>

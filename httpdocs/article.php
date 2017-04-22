@@ -112,10 +112,11 @@ if(!is_null($categoryInfo)){
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<!-- BODY -->
+<!-- HEAD -->
 <?php include_once($config['include_path'].'head.php');?>
 
-<!-- UNDERTONE -->
+<!-- BODY -->
+<body id="article" class="mobile">
 <?php 
 	
 		        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
@@ -138,7 +139,9 @@ if(!is_null($categoryInfo)){
 		                break;
 
 		              default:
-		                include($config['include_path'] . 'ads/Undertone_DynamicTag.php');
+		                include($config['include_path'] . 'ads/undertone_SS.php');
+		                include($config['include_path'] . 'ads/undertone_SSFP.php');
+		                include($config['include_path'] . 'ads/undertone_Flex.php');
 		                
 		             }//end switch ($article_id)
 
@@ -146,8 +149,6 @@ if(!is_null($categoryInfo)){
 
  ?>
 
-<!-- HEAD -->
-<body id="article" class="mobile">
 	<!-- HEADER MENU -->
 	<?php include_once($config['include_path'].'header.php');?>
 
@@ -235,7 +236,8 @@ if(!is_null($categoryInfo)){
 		                break;
 
 		              default:
-		                include($config['include_path'] . 'ads/Undertone_DynamicTag.php');
+		                include($config['include_path'] . 'ads/undertone_SS.php');
+		                include($config['include_path'] . 'ads/undertone_SSFP.php');
 		                
 		             }//end switch ($article_id)
 

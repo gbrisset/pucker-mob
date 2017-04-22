@@ -31,7 +31,8 @@
 		                break;
 
 		              default:
-		                include($config['include_path'] . 'ads/Undertone_DynamicTag.php');
+		                include($config['include_path'] . 'ads/undertone_BB.php');
+		                // include($config['include_path'] . 'ads/Undertone_DynamicTag.php');
 		                
 		             }//end switch ($article_id)
 

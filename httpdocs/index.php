@@ -36,16 +36,12 @@ $articlesList = $mpArticle->getArticlesListView(['limit' => $quantity, 'omit' =>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
-		
-<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-<script>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-</script>
-</div>
-		
 
 <body id="home" class="mobile background-eee">
+
+<?php include_once($config['include_path'].'ads/undertone_SS.php'); ?>
+<?php include_once($config['include_path'].'ads/undertone_SSFP.php'); ?>
+
 	<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-top: 5px;    }</style>
 	<?php include_once($config['include_path'].'header.php'); ?>
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
@@ -73,16 +69,10 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0');
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 
-		
-<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-<script>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-</script>
-</div>
-		
-
 <body id="home" class="">
+
+	<?php include_once($config['include_path'].'ads/undertone_SSFP.php'); ?>
+	<?php include_once($config['include_path'].'ads/undertone_SSFP.php'); ?>
 	
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
 
@@ -112,15 +102,13 @@ else if($ajax) {
 <html class="no-js" lang="en">
 <?php include_once($config['include_path'].'head.php');?>
 
-		
-<!-- /73970039/UT_SS_FP Screen Shift Full Page -->
-<div id='div-gpt-ad-1470934220433-0' style='height:1px; width:1px;'>
-<script>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470934220433-0'); });
-</script>
-</div>
+
 		
 <body id="home">
+
+<?php include_once($config['include_path'].'ads/undertone_SSFP.php'); ?>
+<?php include_once($config['include_path'].'ads/undertone_SSFP.php'); ?>
+
 	<!-- Sponsored By Totally Her -->
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
 

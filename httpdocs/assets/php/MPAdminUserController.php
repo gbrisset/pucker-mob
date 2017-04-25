@@ -1647,43 +1647,51 @@ End password reset methods
 // Currently does not work - as of 2017-03-21 - GB		
 		$contributor_id = filter_var($data['contributor_id'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$paid = $data['paid'];
+
 		$month = filter_var($data['month'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$year = filter_var($data['year'],  FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		//Check if record exists
-	
 		$recordExist = $this->performQuery(array(
 			'queryString' => 'SELECT * FROM contributor_earnings WHERE contributor_id = :contributor_id AND month = :month AND year = :year ',
 			'queryParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year )
 		));
 
-		
+			// --------------------------- testing -------------------------------
+			// --------------------------- testing -------------------------------
+				// $payday_date = date('Y-m-d H:i:s', time());
+				// $sql = "UPDATE contributor_earnings SET paid = :paid, payday_date = ':payday_date' 
+				// WHERE contributor_id = :contributor_id
+				// AND payday_date = 0 
+				// AND DATE(updated_date) <= LAST_DAY(CONCAT(:year,'-',:month,'-','15')) ";
+
+				// $s = array(':contributor_id' ,':month', ':year', ':paid', ':payday_date'  );
+				// $p = array( $contributor_id, $month, $year, $paid,  $payday_date  );
+				// var_dump("Debug S: ") ;
+				// var_dump($s) ;
+				// var_dump("Debug P: ") ;
+				// var_dump($p) ;
+				// $sql = str_replace($s,$p,$sql);
+				// var_dump("Debug SQL: ".$sql) ;
+
+			// --------------------------- testing -------------------------------
+			// --------------------------- testing -------------------------------
+
 
 		if($recordExist){
 			$payday_date = date('Y-m-d H:i:s', time());
 			$payment_record =  $this->performUpdate(array(
-				'updateString' => "UPDATE contributor_earnings SET paid = :paid, payday_date = ':payday_date' 
-									WHERE contributor_id = :contributor_id
-									AND payday_date = 0 
-									AND DATE(updated_date) <= LAST_DAY(CONCAT(:year,'-',:month,'-','15')) ",
-				'updateParams' => array(':contributor_id' => $contributor_id, ':month' => $month, ':year' => $year, ':paid' => $paid, ':payday_date' => $payday_date  )
+				'updateString' => "UPDATE `contributor_earnings` SET `paid` =  $paid, `payday_date` = '$payday_date' 
+									WHERE `contributor_id` = $contributor_id
+									AND `payday_date` = 0 
+									AND DATE(`updated_date`) <= LAST_DAY(CONCAT($year,'-',$month,'-','15')) ",
+				'updateParams' => array()
 			));
 		}//end if
 
-		// --------------------------- testing -------------------------------
-		// --------------------------- testing -------------------------------
-		// --------------------------- testing -------------------------------
-		// $payday_date = date('Y-m-d H:i:s', time());
-		// $updateString = "UPDATE contributor_earnings SET paid = $paid, payday_date = '$payday_date' 
-		// 				WHERE contributor_id = $contributor_id
-		// 				AND payday_date = 0 
-		// 				AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15')) ";
-
-		// var_dump($updateString);									
-
-		// --------------------------- testing -------------------------------
-		// --------------------------- testing -------------------------------
-
 		return $payment_record ;
+
+
+
 
 	}//end function
 

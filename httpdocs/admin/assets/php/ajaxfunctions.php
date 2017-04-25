@@ -2,7 +2,6 @@
 	$admin = true;
 	require_once('../../../assets/php/config.php');
 
-var_dump($_POST); 
 
 	if(isset($_POST['formData'])) parse_str($_POST['formData'], $_POST['formData']);
 	switch($_POST['task']){

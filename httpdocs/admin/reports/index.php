@@ -35,6 +35,11 @@
 	$selected_month = isset($_POST['month']) ? $_POST['month'] : $current_month;
 	$selected_year = isset($_POST['year']) ? $_POST['year'] : $current_year;
 	$selected_contributor = isset($_POST['contributor']) ? $_POST['contributor'] : 0;
+	
+
+	 
+	 // $ddd = new debug($_POST,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
 	//$new_cal = false;
 	//if( $selected_year == 2015 && $selected_month  > 2 ) $new_cal = true;
 	//if( $selected_year > 2015) $new_cal = true;
@@ -43,13 +48,21 @@
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 
 			//TRAFFIC & EARNINGS INFO
-			// $results = $dashboard->getPageViewsUSReport($_POST); // Legacy code
+			// $results = $dashboard->getPageViewsUSReport($_POST); // Legacy code //OBSOLETE -- DELETE AFTER MAY 31 2017
 			$results = $dashboard->smf_getPageViewsUSReport($_POST);
-			$results_tobepay = $dashboard->smf_getPageViewsUSReport_tobepay($_POST);
+			// $results_tobepay = $dashboard->smf_getPageViewsUSReport_tobepay($_POST); NO LONGER NEEDED - GB 2017-04-24 //OBSOLETE -- DELETE AFTER MAY 31 2017
 
-				 // $ddd = new debug($results_tobepay,3); $ddd->show();exit;// 0- green; 1-red; 2-grey; 3-yellow	
 
-			
+/*
+
+			// ***************************************************************
+			// ***************************************************************
+			// ***************************************************************
+			// ***************************************************************
+
+			// ad matching  - ranking - incentives will be re instated later in time - GB 2017-04-25			
+
+			LEGACY CODE - UNUSED AS OF 2017-04-14			
 			//AD MATCH INFO
 			$OrderObj = new OrderAds(); //ORDER OBJECT
 			$adMatchInfo = $OrderObj->where(" month_relation = $selected_month AND year_relation = $selected_year ");
@@ -63,6 +76,11 @@
 			$ManageDashboard = new ManageAdminDashboard( $config );
 			$rank_list = $ManageDashboard->getTopShareWritesRankWithIncentives( $selected_month, $incentives_month);
 
+			// ***************************************************************
+			// ***************************************************************
+			// ***************************************************************
+			// ***************************************************************
+*/
 		}else $adminController->redirectTo('logout/');
 	}
 ?>
@@ -167,344 +185,316 @@
 			</div>
 			
 			<div id="reports-div" class="columns small-12">
-				<?php  if(isset($results) && $results ){ ?>
-				<div class="small-12 columns">
-					<div class="row ">
-						<div class="small-4 columns">
-							<div class="row">
-							  <div class="columns small-5">Name</div>
-							  <div class="columns small-2"><label>W9</label></div>
-							  <div class="columns small-3"><label>U.S Views</label></div>
-							  <div class="columns small-2"><label>Rate</label></div>
-							</div>
-						</div>
-						<div class="small-5 columns">
-							<div class="row">
-							  <div class="columns small-3"><label>Traffic</label></div>
-							  <div class="columns small-3"><label>Incentives</label></div>
-							  <div class="columns small-3"><label>AD Match</label></div>
-							  <div class="columns small-3"><label>Total</label></div>
-							</div>
-						</div>
-						<div class="small-3 columns">
-							<div class="row">
-							  <div class="columns small-5"><label>Unpaid</label></div>
-							  <div class="columns small-5"><label>Pay</label></div>
-							  <div class="columns small-2"><label>Paid</label></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<?php
-			  		$total = 0;
-			  		$total_rate =  $total_rate_started = $total_rate_pro = $total_rate_basic = 0;
-			  		$total_us_viewers = 0;
-			  		$total_us_viewers_by_thousands = 0;
-			  		$all_us_viewers = 0;
-			  		$all_us_viwers_by_thousand = $all_us_viwers_by_thousand_started = 0;
-			  		$all_total = 0;
-			  		$all_total_to_pay = 0;
-			  		$all_basic_total = $all_started_total = 0;
-			  		$all_pro_total = $all_unpaid_total = 0;
-			  		$all_us_viwers_by_thousand_pro = $all_us_viwers_by_thousand_basic = $all_total_to_pay_over_25 = $all_unpaid_total_over_25 = 0;
-			  		$new = $total_over_25 = 0;
-			  		$all_adMatch_rev = $total_incentives = $total_rev = $total_pro_incentives = $total_basic_incentives = $total_started_incentives = 0;
-			  		$all_unpaid_total_pro = $all_unpaid_total_basic = $all_unpaid_total_started= 0;
-			  		
+				<?php  if(isset($results) && $results ){ 
 
-			  		// Fix the to_be _pay field 
-			  		foreach( $results as $contributor){
-				  		foreach( $results_tobepay as $to_be_pay_set){
-				  			if ($to_be_pay_set['contributor_id'] == $contributor['contributor_id']){
-				  				$contributor['to_be_pay'] = $to_be_pay_set['to_be_pay_fixed'];
-				  				break;
-				  			}//end if
-				  		}//end foreach
+					$report_month = date("M", mktime(0,0,0, $_POST['month'], 1, $_POST['year'])) . " " . $_POST['year']; 
+				
+
+				echo "
+					<table class=\"small-12 columns no-padding\" id=\"daily-earnings\">
+						<thead>
+							<tr>
+								<td style=\" color: #333;\" class=\"align-left\">Name<br/>PP Email</td>
+								<td style=\" color: #333;\" class=\"align-center\">W9</td>
+								<td style=\" color: #333;\" class=\"align-right\">U.S Views</td>
+								<td style=\" color: #333;\" class=\"align-right\">Rate</td>
+
+								<td style=\" color: #333;\" class=\"align-right\">$report_month<br/>Earnings</td>
+								<td style=\" color: #333;\" class=\"align-right\">Incentives</td>
+								<td style=\" color: #333;\" class=\"align-right\">Ad Match</td>
+								<td style=\" color: #333;\" class=\"align-right\">Adjusted<br/>Earnings</td>
+								
+								<td style=\" color: #333;\" class=\"align-right\">Rollover</td>
+								<td style=\" color: #333;\" class=\"align-right\">To Pay</td>
+								<td style=\" color: #333;\" class=\"align-center\">Paid</td>
+							</tr>
+						</thead>
+						<tbody>
+
+					";
+
+				$tally_pviews_all = 0; 
+				$tally_earnings_all = 0; 
+				$tally_rollover_all = 0; 
+				$tally_tbp_all = 0; 
+
+				$tally_pviews_pro = 0; 
+				$tally_earnings_pro = 0; 
+				$tally_rollover_pro = 0; 
+				$tally_tbp_pro = 0; 
+
+				$tally_pviews_community = 0; 
+				$tally_earnings_community = 0; 
+				$tally_rollover_community = 0; 
+				$tally_tbp_community = 0; 
+
+				$tally_pviews_starter = 0; 
+				$tally_earnings_starter = 0; 
+				$tally_rollover_starter = 0; 
+				$tally_tbp_starter = 0; 
+
+			  	 foreach( $results as $contributor){
+
+			  		// // Fix the to_be _pay field //OBSOLETE -- DELETE AFTER MAY 31 2017
+				  	// 	foreach( $results_tobepay as $to_be_pay_set){
+				  	// 		if ($to_be_pay_set['contributor_id'] == $contributor['contributor_id']){
+				  	// 			$contributor['to_be_pay'] = $to_be_pay_set['to_be_pay_fixed'];
+				  	// 			break;
+				  	// 		}//end if
+				  	// 	}//end foreach( $results_tobepay ...//OBSOLETE -- DELETE AFTER MAY 31 2017
 
 
 				 // $ddd = new debug($contributor,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
 
 
-			  			$total_rate = $contributor['share_rate'];
-			  			$total_us_viewers = $contributor["total_us_pageviews"];
-			  			$total_us_viewers_by_thousands = $total_us_viewers / 1000;
-			  			$user_type = $contributor['user_type'];
-		  				$unpaid = $adMatchBalance = 0;
-		  				$incentives = 0;
+
 		  				
-		  				//AD MATCHING
-		  				if($adMatchInfo){
-			  				foreach($adMatchInfo as $match){
-			  					if($match->contributor_id == $contributor['contributor_id']){
-			  						$adMatchBalance = $match->amount_commit;
-			  						break;
-			  					}
-			  				}
-		  				}
-		  				//RANKLIST
-			  			if($rank_list){ 
-			  				foreach($rank_list as $key => $val ){
-			  					if($key == $contributor['contributor_id']){
-			  						if (strpos($val, '$') !== false) {
-			  							$incentives = substr($val, 1);
-			  							break;
-			  						}
-			  					}
-			  				}
-			  			}// end if($rank_list)
 
-			  			$no_cover_in_house = false;
-						$blogger = $problogger = $basicblogger = false;
-						if($user_type == '3' || $user_type == '30' ||  $user_type == '8' || $user_type == '9' ) $blogger = true;
-						if( $user_type == '8' || $user_type == '9') $problogger = true;
-						if( $user_type == '3' ) $basicblogger = true;
+						// ***************************************************************
+						// ***************************************************************
+						// ***************************************************************
+						// ***************************************************************
+						// ad matching  - ranking - incentives will be re instated later in time - GB 2017-04-25			
 
-						//IS A BLOGGER
-			  			if( !$blogger ){
-				  			$total_traffic_rev = 0;
-				  			$total_to_pay  = 0;
-							$no_cover_in_house = true;
-				  		}else{
-				  			$total_traffic_rev = $contributor['total_earnings'];
-				  			$total_to_pay = ( $contributor['to_be_pay'] + $incentives ) - $adMatchBalance;
-				  			$unpaid = $contributor['to_be_pay']  - $total_traffic_rev;
-				  		}
+						// LEGACY CODE - UNUSED AS OF 2017-04-14
+						//AD MATCHING
+						// if($adMatchInfo){
+						// 	foreach($adMatchInfo as $match){
+						// 		if($match->contributor_id == $contributor['contributor_id']){
+						// 			$adMatchBalance = $match->amount_commit;
+						// 			break;
+						// 		}
+						// 	}
+						// }
+						// //RANKLIST
+						// if($rank_list){ 
+						// 	foreach($rank_list as $key => $val ){
+						// 		if($key == $contributor['contributor_id']){
+						// 			if (strpos($val, '$') !== false) {
+						// 				$incentives = substr($val, 1);
+						// 				break;
+						// 			}
+						// 		}
+						// 	}
+						// }// end if($rank_list)
 
-				  		//IF PAID
-				  		$paid = $contributor['paid'];
-				  		$paid_cb = '';
-				  		if($paid == 1) $paid_cb = 'checked=true';
-				  		
-				  		$total_rev = ( $total_traffic_rev + $incentives ) - $adMatchBalance;
-				  						  		
-				  		if( $blogger ){
-				  			if($user_type == '30'){ //STARTED
-				  				$all_started_total += $total_traffic_rev;
-						  		$all_us_viwers_by_thousand_started += $total_us_viewers_by_thousands ;
-						  		$total_rate_started = $total_rate;
-						  		$total_started_incentives += $incentives;
-						  		$all_unpaid_total_started += $unpaid;
-				  			}else{
-						  		if( $problogger ){
-						  			$all_pro_total += $total_traffic_rev;
-						  			$all_us_viwers_by_thousand_pro += $total_us_viewers_by_thousands ;
-						  			$total_rate_pro = $total_rate;
-						  			$total_pro_incentives += $incentives;
-						  			$all_unpaid_total_pro += $unpaid;
-						  		}else{ 
-						  			$all_basic_total += $total_traffic_rev;
-						  			$all_us_viwers_by_thousand_basic += $total_us_viewers_by_thousands;
-						  			$total_rate_basic = $total_rate;
-						  			$total_basic_incentives += $incentives;
-						  			$all_unpaid_total_basic += $unpaid;
-						  		}
-						  	}
 
-						  	//TOTALS
-				  			if( ( $total_rev  + $unpaid ) < 25) continue;
-				  			//{
-					  		/*	$all_total_to_pay_over_25 += $total_to_pay;
-					  			$all_unpaid_total_over_25 += $unpaid;
-				  			}*/
+						// ***************************************************************
+						// ***************************************************************
+						// ***************************************************************
+						// ***************************************************************
 
-						  	$all_unpaid_total += $unpaid;
-				  			$all_us_viewers += $total_us_viewers;
-				  			$total_incentives += $incentives;
-				  			$all_us_viwers_by_thousand += $total_us_viewers_by_thousands;
-				  			$all_total += $total_traffic_rev; 
-				  			$all_rate = $total_rate;
-				  			$all_total_to_pay += $total_to_pay;
-					  	}
 
-					  	//TOTALS
-				  		if($total_to_pay < 1) continue;
-			  			
-					  			
-						?>	
-						<?php if(!$no_cover_in_house ){  ?>
+
+			  			if($contributor['to_be_pay_fixed']  < 25) continue;
+			  			$blg_user_type = $contributor['user_type'];
 						
-							<div class="small-12 columns">
-							<div class="row reports-sub-tables">
-								<!-- ANALYTICS & RATE INFO -->
-								<div class="small-4 columns subdivition">
-								  	<div class="row">
-									  	<!-- NAME -->
-									  	<div class="columns small-5" id="contributor-id-<?php echo $contributor['contributor_id']; ?>">
-									  		<a href="http://www.puckermob.com/admin/earnings/<?php echo $contributor['contributor_seo_name']; ?>" target="blank">
-										  		<?php echo $contributor['contributor_name']; ?>
-										  	</a>
-										  	<label style="font-size: 11px !important; "><?php echo $contributor['paypal_email'];?></label>
-									  	</div>
-									  	<!-- w9 -->
-									  	<div class="columns small-2">
-									  		<?php if($contributor['w9_live'] === '1'){ ?>
-										  		<i class='fa fa-check' style='margin-left:0; margin-right: 0; color:green;'></i>
-										  	<?php }else echo "--" ?>
-									  	</div>
-									  	<!-- TOTAL US PAGEVIEWS -->
-									  	<div class="columns small-3"><label><?php echo number_format($total_us_viewers_by_thousands, 2, '.', ','); ?></label></div>
-									  	<!-- RATE -->
-									  	<div class="columns small-2"><label><?php echo '$'.number_format($total_rate, 2, '.', ','); ?></label></div>
-								  	</div>
-								</div>
-								<!-- EARNINGS TOTALS INFO -->
-								<div class="small-5 columns subdivition">
-								  <div class="row">
-								  	<div class="columns small-3"><label><?php echo '$'.number_format($total_traffic_rev, 2, '.', ','); ?></label></div>
-								  	<div class="columns small-3"><label><?php echo '$'.number_format($incentives, 2, '.', ','); ?></label></div>
-								  	<div class="columns small-3"><label style="color: red;"><?php echo '-$'.number_format($adMatchBalance, 2, '.', ','); ?></label></div>
-								  	<div class="columns small-3"><label><?php echo '$'.number_format($total_rev, 2, '.', ','); ?></label></div>
-								  </div>
-								</div>
-								<!-- TOTALS -->
-								<div class="small-3 columns subdivition">
-								  <div class="row">
-								  	  	<div class="columns small-5"><label><?php echo '$'.number_format($unpaid, 2, '.', ','); ?></label></div>
-									  	<div class="columns small-5"><label><?php echo '$'.number_format($total_to_pay, 2, '.', ','); ?></label></div>
-									  	<div class="columns small-2">
-									  		<input type="checkbox" id="input-<?php echo $contributor['contributor_id']; ?>" month-info="<?php echo $contributor['month']; ?>" year-info="<?php echo $contributor['year']; ?>" contributor-info="<?php echo $contributor['contributor_id']; ?>" <?php echo $paid_cb; ?> class="paid-checkbox" />
-									  	</div>
-								  </div>
-								</div>
-							</div>
-							</div>
+						$blogger = false;
+						switch ($blg_user_type) {
+							case '8':
+							case '3':
+							case '30':
+								$blogger = true;
+								break;
+							
+							default:
+							// Do nothing
+						}//end switch ($blg_user_type)
 
-						<?php } ?>  
-				 <?php  }  ?>	
+
+
+
+						if($blogger){
+							//----------------------------------
+							$blg_id = $contributor['contributor_id'];
+							$blg_ppemail = ($contributor['paypal_email']=="")? "No PP email" : $contributor['paypal_email'];
+							$blg_name = "<a href=\"http://www.puckermob.com/admin/earnings/" . $contributor['contributor_seo_name'] . "\" target=\"blank\">" . $contributor['contributor_name'] . "</a><br/>$blg_ppemail" ;
+
+							$blg_w9 = ($contributor['w9_live'] >0 )? "<i class='fa fa-check' style='margin-left:0; margin-right: 0; color:green;'></i>" :  "&mdash;" ;
+							$blg_pviews = number_format($contributor["total_us_pageviews"], 0, '.', ',');
+							$blg_rate = '$'. number_format($contributor['share_rate'], 2, '.', ',');
+
+							//----------------------------------
+							$blg_earnings_thismonth = $contributor['total_earnings'];
+							$blg_incentives = 0;// actual values are not fetch as of now - GB 2017-04-25
+							$blg_admatch = 0;// actual values are not fetch as of now - GB 2017-04-25
+							$blg_earnings_thismonth_adj = $blg_earnings_thismonth - $blg_admatch + $blg_incentives;
+
+							$blg_traffic = '$'.number_format($blg_earnings_thismonth, 2, '.', ',');
+							$blg_incentives = '$'.number_format(0, 2, '.', ','); 
+							$blg_admatch = '-$'.number_format(0, 2, '.', ',');
+							$blg_total = '$'.number_format($blg_earnings_thismonth_adj, 2, '.', ','); 
+
+							//----------------------------------
+							$blg_earnings_owed = $contributor['to_be_pay_fixed'] ;
+							$blg_earnings_rollover = $blg_earnings_owed - $blg_earnings_thismonth_adj;
+							$blg_rollover = '$'.number_format($blg_earnings_rollover, 2, '.', ',');
+							$blg_topay = '$'.number_format($blg_earnings_owed, 2, '.', ','); 
+
+							$paid_cb = ($contributor['paid'] == 1)? 'checked=true' : '';
+							$blg_paid = "<input type=\"checkbox\" id=\"input-" . $contributor['contributor_id'] . "\" month-info=\"" . $contributor['month']. "\" year-info=\"" . $contributor['year'] . "\" contributor-info=\"" . $contributor['contributor_id'] . "\" $paid_cb class=\"paid-checkbox\" />";
+								
+								echo "
+										<tr>
+											<td style=\" color: #333;\" class=\"align-left\" id=\"contributor-id-$blg_id\">$blg_name</td>
+											<td style=\" color: #333;\" class=\"align-center\">$blg_w9</td>
+											<td style=\" color: #333;\" class=\"align-right\">$blg_pviews</td>
+											<td style=\" color: #333;\" class=\"align-right\">$blg_rate</td>
+
+											<td style=\" color: #333;\" class=\"align-right\">$blg_traffic</td>
+											<td style=\" color: #333;\" class=\"align-right\">$blg_incentives</td>
+											<td style=\" color: #900;\" class=\"align-right\">$blg_admatch</td>
+											<td style=\" color: #333;\" class=\"align-right\">$blg_total</td>
+											
+											<td style=\" color: #333;\" class=\"align-right\">$blg_rollover</td>
+											<td style=\" color: #333;\" class=\"align-right\">$blg_topay</td>
+											<td style=\" color: #333;\" class=\"align-center\">$blg_paid</td>
+										</tr>
+
+								";
+
+							$tally_pviews_all +=  $contributor["total_us_pageviews"];
+							// no tally rate.
+							$tally_earnings_all +=  $contributor['total_earnings'];
+							$tally_rollover_all +=  $blg_earnings_rollover;
+							$tally_tbp_all +=  $blg_earnings_owed;
+
+							switch ($blg_user_type) {
+								case '8':
+									$tally_pviews_pro +=  $contributor["total_us_pageviews"];
+									$tally_earnings_pro +=  $contributor['total_earnings'];
+									$tally_rollover_pro +=  $blg_earnings_rollover;
+									$tally_tbp_pro +=  $blg_earnings_owed;
+									break;
+								case '3':
+									$tally_pviews_community +=  $contributor["total_us_pageviews"];
+									$tally_earnings_community +=  $contributor['total_earnings'];
+									$tally_rollover_community +=  $blg_earnings_rollover;
+									$tally_tbp_community +=  $blg_earnings_owed;
+									break;
+								case '30':
+									$tally_pviews_starter +=  $contributor["total_us_pageviews"];
+									$tally_earnings_starter +=  $contributor['total_earnings'];
+									$tally_rollover_starter +=  $blg_earnings_rollover;
+									$tally_tbp_starter +=  $blg_earnings_owed;
+									break;
+								
+								default:
+								// Do nothing
+							}//end switch ($blg_user_type)
+
+						}//end if($blogger)
+
+						}//end foreach( $results ...
+
+
+
+						// -------- User rate - CPM  --------------------------------------------------------------------------------------
+
+							$fetched_rate = $dashboard->smf_get_user_rate(8, $selected_month, $selected_year );
+							$tally_rate_pro = $fetched_rate ['user_rate'];
+
+							$fetched_rate = $dashboard->smf_get_user_rate(3, $selected_month, $selected_year );
+							$tally_rate_community = $fetched_rate ['user_rate'];
+
+							$fetched_rate = $dashboard->smf_get_user_rate(30, $selected_month, $selected_year );
+							$tally_rate_starter = $fetched_rate ['user_rate'];
+
+							echo "
+								<tr>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-left\">Category</td>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-center\">&nbsp;</td>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">U.S Views</td>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">Rate</td>
+
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">&nbsp;</td>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">&nbsp;</td>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">&nbsp;</td>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">Adjusted<br/>Earnings</td>
+									
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">Rollover</td>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">To Pay</td>
+									<td style=\" font-weight:bold; color: #333;\" class=\"align-center\">&nbsp;</td>
+								</tr>
 						
-				<!-- TOTALS -->
-				<div class="small-12 columns show-totals">
-					<!-- PRO TOTALS -->
-					<div class="row reports-sub-tables">
-						<div class="small-4 columns subdivition">
-							<div class="row">
-							  <div class="columns small-7 uppercase bold">PRO</div>
-							  <div class="columns small-3"><label><?php echo $all_us_viwers_by_thousand_pro; ?></label></div>
-							  <div class="columns small-2"><label><?php echo '$'.number_format($total_rate_pro, 2, '.', ','); ?></label></div>
-							</div>
-						</div>
-						<div class="small-5 columns subdivition">
-							<div class="row">
-							  <div class="columns small-3"><label><?php //echo '$'.number_format($all_pro_total, 2, '.', ','); ?></label></div>
-							  <div class="columns small-3"></label><?php //echo '$'.number_format($total_pro_incentives, 2, '.', ','); ?></div>
-							  <div class="columns small-3"></label></div>
-							  <div class="columns small-3"><label><?php echo '$'.number_format(($all_pro_total + $total_pro_incentives ), 2, '.', ','); ?></label></div>
-							</div>
-						</div>
-						<div class="small-3 columns subdivition">
-							<div class="row">
-							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total_pro, 2, '.', ','); ?></label></div>
-							  <div class="columns small-5"><label><?php echo '$'.number_format( ( $all_pro_total + $total_pro_incentives  + $all_unpaid_total_pro), 2, '.', ','); ?></label></div>
-							  <div class="columns small-2"><label></label></div>
-							</div>
-						</div>
-					</div>
-					<!-- COMMUNITY TOTALS -->
-					<div class="row reports-sub-tables">
-						<div class="small-4 columns subdivition">
-							<div class="row">
-							  <div class="columns small-7 uppercase bold">COMMUNITY</div>
-							  <div class="columns small-3"><label><?php echo $all_us_viwers_by_thousand_basic; ?></label></div>
-							  <div class="columns small-2"><label><?php echo '$'.number_format($total_rate_basic, 2, '.', ','); ?></label></div>
-							</div>
-						</div>
-						<div class="small-5 columns subdivition">
-							<div class="row">
-							  <div class="columns small-3"><label><?php //echo '$'.number_format($all_basic_total, 2, '.', ','); ?></label></div>
-							  <div class="columns small-3"></label><?php //echo '$'.number_format($total_basic_incentives, 2, '.', ','); ?></div>
-							  <div class="columns small-3"></label></div>
-							  <div class="columns small-3"><label><?php echo '$'.number_format(($all_basic_total + $total_basic_incentives ), 2, '.', ','); ?></label></div>
-							</div>
-						</div>
-						<div class="small-3 columns subdivition">
-							<div class="row">
-							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total_basic, 2, '.', ','); ?></label></div>
-							  <div class="columns small-5"><label><?php echo '$'.number_format(( $all_basic_total + $total_basic_incentives  + $all_unpaid_total_basic), 2, '.', ','); ?></label></div>
-							  <div class="columns small-2"><label></label></div>
-							</div>
-						</div>
-					</div>
-					<!-- STARTED TOTALS -->
-					<div class="row reports-sub-tables">
-						<div class="small-4 columns subdivition">
-							<div class="row">
-							  <div class="columns small-7 uppercase bold">STARTER</div>
-							  <div class="columns small-3"><label><?php  echo $all_us_viwers_by_thousand_started; ?></label></div>
-							  <div class="columns small-2"><label><?php echo '$'.number_format($total_rate_started, 2, '.', ','); ?></label></div>
-							</div>
-						</div>
-						<div class="small-5 columns subdivition">
-							<div class="row">
-							  <div class="columns small-3"><label><?php // echo '$'.number_format($all_started_total, 2, '.', ','); ?></label></div>
-							  <div class="columns small-3"></label><?php // echo '$'.number_format($total_started_incentives, 2, '.', ','); ?></div>
-							  <div class="columns small-3"></label></div>
-							  <div class="columns small-3"><label><?php echo '$'.number_format(($all_started_total + $total_started_incentives ), 2, '.', ','); ?></label></div>
-							</div>
-						</div>
-						<div class="small-3 columns subdivition">
-							<div class="row">
-							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total_started, 2, '.', ','); ?></label></div>
-							  <div class="columns small-5"><label><?php echo '$'.number_format(( $all_started_total + $total_started_incentives  + $all_unpaid_total_started), 2, '.', ','); ?></label></div>
-							  <div class="columns small-2"><label></label></div>
-							</div>
-						</div>
-					</div>
-					<!-- OVERALL TOTAL -->
-					<div class="row reports-sub-tables">
-						<div class="small-4 columns subdivition">
-							<div class="row">
-							  <div class="columns small-7 uppercase bold">Totals</div>
-							  <div class="columns small-3"><label><?php echo number_format($all_us_viwers_by_thousand, 2, '.', ','); ?></label></div>
-							  <div class="columns small-2"><label></label></div>
-							</div>
-						</div>
-						<div class="small-5 columns subdivition">
-							<div class="row">
-							  <div class="columns small-3"><label><?php echo '$'.number_format($all_total, 2, '.', ','); ?></label></div>
-							  <div class="columns small-3"></label><?php echo '$'.number_format($total_incentives, 2, '.', ','); ?></div>
-							  <div class="columns small-3"></label></div>
-							  <div class="columns small-3"><label><?php echo '$'.number_format(($all_total + $total_incentives ), 2, '.', ','); ?></label></div>
-							</div>
-						</div>
-						<div class="small-3 columns subdivition">
-							<div class="row">
-							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total, 2, '.', ','); ?></label></div>
-							  <div class="columns small-5"><label><?php echo '$'.number_format($all_total_to_pay, 2, '.', ','); ?></label></div>
-							  <div class="columns small-2"><label></label></div>
-							</div>
-						</div>
-					</div>
+								";
+						// -------- Tally Pro  --------------------------------------------------------------------------------------
+						echo "<tr>";
+							echo "<td style=\" color: #333;\" class=\"align-left\">PRO</td>";
+							echo "<td style=\" color: #333;\" class=\"align-center\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">" . number_format($tally_pviews_pro, 0, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_rate_pro, 2, '.', ',') . "</td>";
 
-				<!--  TOTAL OVER 25
-					<div class="row reports-sub-tables">
-						<div class="small-4 columns subdivition">
-							<div class="row">
-							  <div class="columns small-7 uppercase bold">Totals Over 25</div>
-							  <div class="columns small-3"><label></label></div>
-							  <div class="columns small-2"><label></label></div>
-							</div>
-						</div>
-						<div class="small-5 columns subdivition">
-							<div class="row">
-							  <div class="columns small-3"><label><?php echo '$'.number_format($all_total_to_pay_over_25, 2, '.', ','); ?></label></div>
-							  <div class="columns small-3"></label></div>
-							  <div class="columns small-3"></label></div>
-							  <div class="columns small-3"><label></label></div>
-							</div>
-						</div>
-						<div class="small-3 columns subdivition">
-							<div class="row">
-							  <div class="columns small-5"><label><?php echo '$'.number_format($all_unpaid_total_over_25, 2, '.', ','); ?></label></div>
-							  <div class="columns small-5"><label><?php echo '$'.number_format(( $all_total_to_pay_over_25 + $all_unpaid_total_over_25), 2, '.', ','); ?></label></div>
-							  <div class="columns small-2"><label></label></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</div>-->
+							echo "<td style=\" color: #333;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #900;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_earnings_pro, 2, '.', ',') . "</td>";
 
-				
-				
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_rollover_pro, 2, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_tbp_pro, 2, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-center\">&nbsp;</td>";
+						echo "	</tr> ";
+
+						// -------- Tally Community  --------------------------------------------------------------------------------------
+						echo "<tr>";
+							echo "<td style=\" color: #333;\" class=\"align-left\">COMMUNITY</td>";
+							echo "<td style=\" color: #333;\" class=\"align-center\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">" . number_format($tally_pviews_community, 0, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_rate_community, 2, '.', ',') . "</td>";
+
+							echo "<td style=\" color: #333;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #900;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_earnings_community, 2, '.', ',') . "</td>";
+
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_rollover_community, 2, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_tbp_community, 2, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-center\">&nbsp;</td>";
+						echo "	</tr> ";
+
+						// -------- Tally Starter  --------------------------------------------------------------------------------------
+						echo "<tr>";
+							echo "<td style=\" color: #333;\" class=\"align-left\">STARTER</td>";
+							echo "<td style=\" color: #333;\" class=\"align-center\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">" . number_format($tally_pviews_starter, 0, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_rate_starter, 2, '.', ',') . "</td>";
+
+							echo "<td style=\" color: #333;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #900;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_earnings_starter, 2, '.', ',') . "</td>";
+
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_rollover_starter, 2, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-right\">$" . number_format($tally_tbp_starter, 2, '.', ',') . "</td>";
+							echo "<td style=\" color: #333;\" class=\"align-center\">&nbsp;</td>";
+						echo "	</tr> ";
+
+						// -------- Tally All  --------------------------------------------------------------------------------------
+						echo "<tr>";
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-left\">ALL</td>";
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-center\">&nbsp;</td>";
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">" . number_format($tally_pviews_all, 0, '.', ',') . "</td>";
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">&nbsp;</td>";
+
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" font-weight:bold; color: #900;\" class=\"align-right\">&nbsp;</td>";
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">$" . number_format($tally_earnings_all, 2, '.', ',') . "</td>";
+
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">$" . number_format($tally_rollover_all, 2, '.', ',') . "</td>";
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-right\">$" . number_format($tally_tbp_all, 2, '.', ',') . "</td>";
+							echo "<td style=\" font-weight:bold; color: #333;\" class=\"align-center\">&nbsp;</td>";
+						echo "	</tr> ";
+
+				echo "
+						</tbody>
+						</table>
+				";	
+
+?>
+
+				</div><!-- end of report table -->
+
 				
 				<?php }else{
 					echo "<p>No records found!</p>";

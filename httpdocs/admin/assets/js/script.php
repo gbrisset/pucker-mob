@@ -3,19 +3,31 @@
 	//require_once('../../../assets/php/config.php');
 ?>
 
+
+
 $(document).ready(function (){
 
 
 var body = $('body');
-var base_url = 'http://www.puckermob.com';
-var admin_url = 'http://www.puckermob.com/admin/';
+
+//For LIVE site
+var base_url = 'http://www.puckermob.com/';
+
+//For LOCAL testing
+var base_url = 'http://pucker-mob/';
+
+var admin_url = base_url + 'admin/'; 
+
+console.log(admin_url);
+
+
 var img_url = 'http://images.puckermob.com/'; // http://localhost:8888/projects/pucker-mob/subdomains/images/httpdocs/
 var page = document.body.id;
 
 $(document).foundation().foundation();
 
 
-//admin_url = 'http://localhost:8888/projects/pucker-mob/httpdocs/admin/';
+
 
 
 //Menu Toggler Functionality Mobile
@@ -740,13 +752,19 @@ $('.paid-checkbox').click( function(e){
 		url:  url,
 		data: { contributor_id: contributor_id, task: 'pay_contributors', year: year, month:month, 'paid':  paid},
 		success: function (data) {
-		console.log(data);
+		console.log('received by script: ' + data);
 			if(data == 'true'){
-				if( paid == true )
+				if( paid == true ){
+					console.log('received by script(paid is true)');
 					$(current_cb).prop('checked', true);
-				else 
+				}else {
+					console.log('received by script(paid is false)');
 					$(current_cb).prop('checked', false);
-			}
+				}//end if
+
+			}else {
+				console.log('received by script(data is not true)');				
+			}//end if	
 		}
 	});
 });
@@ -825,11 +843,14 @@ if($('#earnings').length > 0  || $('#reports').length > 0 ){
     //var startDate = moment([year, month - 1]);
     EarningsObj.setValues(moment().startOf('month').format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"));
 	if($('#earnings').length > 0 ){
-		EarningsObj.initChart();
-		EarningsObj.getChartData();
-		EarningsObj.getArticlesListData();
 
-		EarningsObj.updateTotalEarnings(); 
+//do nothing - GB 2017-04-06
+//		EarningsObj.initChart();
+//		EarningsObj.getChartData();
+//		EarningsObj.getArticlesListData();
+//		EarningsObj.updateTotalEarnings(); 
+
+
 	}
 
     $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker){

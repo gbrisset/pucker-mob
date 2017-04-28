@@ -75,13 +75,14 @@
 							
 
 						case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-						case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+						 case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 					 			// used as a test page - leave regular image, no video
 					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
 							break;
 
-						// case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-							// break;
+						case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+							include($config['include_path'] . 'ads/answers_videomosh_no_preroll.php');
+							break;
 						
 					 	default:
 							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-03-28

@@ -231,7 +231,6 @@ if(!is_null($categoryInfo)){
 
 		             switch ($article_id) {
 					  case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-		              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 		              // case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 		              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
 		              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
@@ -239,6 +238,8 @@ if(!is_null($categoryInfo)){
 
 		                //do nothing - we do not want other ads to interfer with the test page
 		                break;
+
+
 		              case 23319: 
 		                include($config['include_path'] . 'ads/undertone_SS.php');
 		                break;
@@ -315,9 +316,11 @@ if(!is_null($categoryInfo)){
 									include($config['include_path'] . 'video_truvidplayer.php');
 									break;
 					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+						include($config['include_path'] . 'ads/answers_videomosh_no_preroll.php');
 					 			// used as a test page
-					 			//break;
+					 			break;
 
+						
 					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
 					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
 							 	// These articles are paid content and should keep their original image

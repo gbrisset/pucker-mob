@@ -1,11 +1,3 @@
-<?php
-				// case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-				// case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-				// case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-				// case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-			 	// case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-
-?>
 
 <!-- *******************************************MOBILE******************************************* -->
 <?php if($detect->isMobile()){?>
@@ -66,30 +58,36 @@
 
 					 <?php
 
-					 switch ($article_id) {
+
+						echo $smf_adManager->display_tags("mbl_image", $article_id, $article_title);//passing title is optional, only needed for img ad slots
+
+			        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017	
+
+
+					 // switch ($article_id) {
 				 	
 						
-					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
-					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
-							 	// These articles are paid content and should keep their original image
+					 // 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
+					 // 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
+						// 	 	// These articles are paid content and should keep their original image
 							
 
-						case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-						 case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-					 			// used as a test page - leave regular image, no video
-					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
-							break;
+						// case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+						//  case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+					 // 			// used as a test page - leave regular image, no video
+					 // 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
+						// 	break;
 
-						case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-							include($config['include_path'] . 'ads/answers_videomosh_no_preroll.php');
-							break;
+						// case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+						// 	include($config['include_path'] . 'ads/dsk_img_answers_videomosh_no_preroll.php');
+						// 	break;
 						
-					 	default:
-							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-03-28
-					 		// echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
-							include($config['include_path'] . 'ads/video_truvidplayer.php');
+					 // 	default:
+						// 	// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-03-28
+					 // 		// echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
+						// 	include($config['include_path'] . 'ads/dsk_img_video_truvidplayer.php');
 							
-					 }//end switch ($article_id)
+					 // }//end switch ($article_id)
 
 						// OLD CODE PLAYING VIDEOS WHEN VIDEO IS ASSOCIATED WITH THE ARTICLE
 
@@ -127,21 +125,24 @@
 					<div id="get-content" style="text-align:center; display: inline-block;">
 						<?php
 
-							 switch ($article_id) {
-							 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-							 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-							 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-							 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-	 							case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+							echo $smf_adManager->display_tags("mbl_below_image", $article_id);
 
-								 	//do nothing - we do not want other ads to interfer with the test pages
-								 	break;
+					        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
+							 // switch ($article_id) {
+							 // 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+							 // 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+							 // 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+							 // 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+	 						// 	case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
 
-							 	default:
-									// include($config['include_path'] . 'ads/codefuel.php'); //on hold for now - 2017-03-31
-									include($config['include_path'] . 'ads/below_img_Google.php');
-									// include($config['include_path'] . 'ads/nativo_1.php');
-							 }//end switch ($article_id)
+								//  	//do nothing - we do not want other ads to interfer with the test pages
+								//  	break;
+
+							 // 	default:
+								// 	// include($config['include_path'] . 'ads/codefuel.php'); //on hold for now - 2017-03-31
+								// 	include($config['include_path'] . 'ads/mbl_below_image_google.php');
+								// 	// include($config['include_path'] . 'ads/nativo_1.php');
+							 // }//end switch ($article_id)
 
 						 ?>
 					</div>
@@ -213,31 +214,33 @@
 		<?php
 
 
+				echo $smf_adManager->display_tags("mbl_eoa", $article_id);
 
-				 switch ($article_id) {
-				 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-				 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-				 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-				 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-					case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+		        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
+				 // switch ($article_id) {
+				 // 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+				 // 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+				 // 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+				 // 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+					// case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
 	
-					 	//do nothing - we do not want other ads to interfer with the test page
-					 	break;
+					//  	//do nothing - we do not want other ads to interfer with the test page
+					//  	break;
 				 	
-				 	case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-				 		//include($config['include_path'] . 'ads/_TEST_AD_seenergy.php');
-				 		break;
+				 // 	case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+				 // 		//include($config['include_path'] . 'ads/_TEST_AD_seenergy.php');
+				 // 		break;
 					
-				 	// case 11237: // moblog/girl-whos-just-his-friend
-				 	// 	break;
+				 // 	// case 11237: // moblog/girl-whos-just-his-friend
+				 // 	// 	break;
 
-				 	default:
-					 // Some ads need that wrapper to display properly
-					 	// echo "<div id=\"mobile-instream-branovate-ad\" style=\"text-align: center; clear: both; padding-top: 1rem;\">";
-						// include($config['include_path'] . 'ads/amazon_4.php');//this unit was originally in the more bar - 2017-04-04
-						// echo "</div>";
-						include($config['include_path'] . 'ads/EOA_carambola.php');
-				 }//end switch ($article_id)
+				 // 	default:
+					//  // Some ads need that wrapper to display properly
+					//  	// echo "<div id=\"mobile-instream-branovate-ad\" style=\"text-align: center; clear: both; padding-top: 1rem;\">";
+					// 	// include($config['include_path'] . 'ads/amazon_4.php');//this unit was originally in the more bar - 2017-04-04
+					// 	// echo "</div>";
+					// 	include($config['include_path'] . 'ads/EOA_carambola.php');
+				 // }//end switch ($article_id)
 
 
 		 ?>
@@ -250,71 +253,57 @@
 
 		<!-- READ MORE ========================================================================================================== -->
 
-			<?php
-
-			switch ($article_id) {
-				// case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-				// case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-			 // 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-					//do nothing - we do not want the READ MORE BAR  to interfer with the test page
-					//break; javascipt is not inplace to remove RMB - GB 2017-03-01
-
-				default:
-			?>
 		 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
 					<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #78AD6C;">
 						<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
 					</div>
 				</div> 
 
-			<?php
-
-			}//end switch ($article_id)
-
-			?>
 		
 		<!-- ADS STACK ========================================================================================================== -->
 		<div class="row" style="clear: both; padding-top: 0; border: 1px solid #ddd;"></div>
 
 				<?php
 
-		        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+			  	echo $smf_adManager->display_tags("mbl_ad_stack_1", $article_id);
+			  	echo $smf_adManager->display_tags("mbl_ad_stack_2", $article_id);
+			  	echo $smf_adManager->display_tags("mbl_ad_stack_3", $article_id);
+
+		        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
+				 // $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
 				
-				 if(in_array($article_id, $selected_articles_lelo)){
+				//  if(in_array($article_id, $selected_articles_lelo)){
 
-					include($config['include_path'] . 'ads/lelo.php');
+				// 	include($config['include_path'] . 'ads/mbl_ad_stack_lelo.php');
 
-				 }else{	
+				//  }else{	
 
-						 switch ($article_id) {
-						 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-							case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+				// 		 switch ($article_id) {
+				// 		 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+				// 			case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 							
-								//do nothing - we do not want other ads to interfer with the test page
-								break;
+				// 				//do nothing - we do not want other ads to interfer with the test page
+				// 				break;
 
-						 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-						 		break;
+				// 		 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+				// 		 		break;
 	
-							case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-								include($config['include_path'] . 'ads/_TEST_AD_PermanentTestTag_Bethany.php');
-							 	break;
+				// 			case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+				// 				include($config['include_path'] . 'ads/_TEST_AD_PermanentTestTag_Bethany.php');
+				// 			 	break;
 						 	
-						 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-								// include($config['include_path'] . 'ads/_TEST_AD_SeeThrough.php');
-						 		break;
+				// 		 	
+				// 		 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+				// 		 		break;
 						 	
-						 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-						 		break;
-						 	
-						 	default:
-								include($config['include_path'] . 'ads/nativo_2.php');
-								include($config['include_path'] . 'ads/sharethrough.php');
-								include($config['include_path'] . 'ads/answer_inbanner_2.php');
-						 		break;
-						 }//end switch ($article_id)
+				// 		 	default:
+				// 				include($config['include_path'] . 'ads/mbl_ad_stack_nativo_2.php');
+				// 				include($config['include_path'] . 'ads/mbl_ad_stack_sharethrough.php');
+				// 				include($config['include_path'] . 'ads/mbl_ad_stack_answer_inbanner_2.php');
+				// 		 		break;
+				// 		 }//end switch ($article_id)
 
-				}//end if( in_array($article_id, $selected_articles_lelo)
+				// }//end if( in_array($article_id, $selected_articles_lelo)
 
 				?>
 
@@ -381,22 +370,27 @@
 
 						<?php if($xx == 0){
 
-							 // $farticle_id refers to FEATURED ARTICLES - $article_id refers to the CURRENT ARTICLE ON THE PAGE
-							 switch ($article_id) {
-							 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-								case 8541: // lifestyle/19-reasons-to-date-the-girl-with-no-filter
-								case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-							 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-								case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-								case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+		 			  	echo $smf_adManager->display_tags("mbl_featured", $article_id);
+
+				        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
+
+
+							 // // $farticle_id refers to FEATURED ARTICLES - $article_id refers to the CURRENT ARTICLE ON THE PAGE
+							 // switch ($article_id) {
+							 // 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+								// case 8541: // lifestyle/19-reasons-to-date-the-girl-with-no-filter
+								// case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+							 // 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+								// case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+								// case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
 	
-								 	//do nothing - we do not want other ads to interfer with the test page
-							 		break;
+								//  	//do nothing - we do not want other ads to interfer with the test page
+							 // 		break;
 							 	
-							 	default:
-									include($config['include_path'] . 'ads/carambola.php');
-							 		break;
-							 }//end switch ($article_id)
+							 // 	default:
+								// 	include($config['include_path'] . 'ads/carambola.php');
+							 // 		break;
+							 // }//end switch ($article_id)
 
 						 } // end if($xx == 0) ?>
 
@@ -448,39 +442,46 @@
 			
 				<?php 
 
-		        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-				
-				 if(in_array($article_id, $selected_articles_lelo)){
+		 			  	echo $smf_adManager->display_tags("dsk_ad_stack_1", $article_id);
+		 			  	echo $smf_adManager->display_tags("dsk_ad_stack_2", $article_id);
+		 			  	echo $smf_adManager->display_tags("dsk_ad_stack_3", $article_id);
 
-					include($config['include_path'] . 'ads/lelo_desktop.php');
+				        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 
-				 }else{	
+								  //   $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+									
+									//  if(in_array($article_id, $selected_articles_lelo)){
 
-						 switch ($article_id) {
-						 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-							case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-							case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-								//do nothing - we do not want other ads to interfer with the test page
-								break;
-	
-						 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-								// include($config['include_path'] . 'ads/_TEST_AD_SeeThrough.php');
-						 		break;
-						 	
-						 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-								// include($config['include_path'] . 'ads/_TEST_AD_SSFP.php');
-						 		break;
-						 	
-						 	default:
-								// include($config['include_path'] . 'ads/answer_tout_desktop.php'); // on hold for now - GB 2017-03-17
-								include($config['include_path'] . 'ads/nativo_2_desktop.php');
-								include($config['include_path'] . 'ads/answer_AB_tout_rocket.php');
-								include($config['include_path'] . 'ads/sharethrough_desktop.php');
-						 		break;
-						 }//end switch ($article_id)
+									// 	include($config['include_path'] . 'ads/dsk_lelo.php');
 
-				}//end if( in_array($article_id, $selected_articles_lelo)
+									//  }else{	
 
+									// 		 switch ($article_id) {
+									// 		 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+									// 			case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+									// 			case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+									// 				//do nothing - we do not want other ads to interfer with the test page
+									// 				break;
+						
+									// 		 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+									// 				// include($config['include_path'] . 'ads/_TEST_AD_SeeThrough.php');
+									// 		 		break;
+											 	
+									// 		 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+									// 				// include($config['include_path'] . 'ads/_TEST_AD_SSFP.php');
+									// 		 		break;
+											 	
+									// 		 	default:
+									// 				// include($config['include_path'] . 'ads/answer_tout_desktop.php'); // on hold for now - GB 2017-03-17
+									// 				include($config['include_path'] . 'ads/dsk_nativo_2.php');
+									// 				include($config['include_path'] . 'ads/dsk_answer_AB_tout_rocket.php');
+									// 				include($config['include_path'] . 'ads/dsk_sharethrough.php');
+									// 		 		break;
+									// 		 }//end switch ($article_id)
+
+									// }//end if( in_array($article_id, $selected_articles_lelo)
+
+				        // CODE ABOVE IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 
  ?>
 				
@@ -522,22 +523,6 @@
 
 				<hr>
 
-				<?php if(!$sponsored_aricle &&  $article_id != 16562 &&   $article_id != 17425  && $article_id != 14613 && $article_id != 15284  && $article_id != 15488 && $article_id  != 17286){ ?>
-				
-				<!-- TABOOLA -->
-				<section id="content-ad-around-the-web" class="sidebar-right small-12 columns hide-for-print no-padding" style="padding-bottom:0;">
-					<div id="taboola-below-article-thumbnails"></div>
-					<script type="text/javascript">
-					  window._taboola = window._taboola || [];
-					  _taboola.push({
-					    mode: 'thumbnails-a',
-					    container: 'taboola-below-article-thumbnails',
-					    placement: 'Below Article Thumbnails',
-					    target_type: 'mix'
-					  });
-					</script>
-				</section>
-				<?php } ?>
 			
 				<!-- COMMENTS BOX -->
 				<?php include_once($config['include_path'].'disqus.php'); ?>

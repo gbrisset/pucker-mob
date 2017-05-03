@@ -1,15 +1,5 @@
 <?php
 
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-		error_reporting(E_ALL); 	ini_set('display_errors', '1');
-
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
 
 // ***********************************************************************************************************
 // ***********************************************************************************************************
@@ -34,8 +24,9 @@
 		$directory = ''; // NOT in use in the live section - For compatibility only - GB 2017-02-09
 		$root_directory =  '/';// NOT in use in the live section - For compatibility only - GB 2017-02-09
 
+// var_dump($_SERVER);exit();
 
-if ($_SERVER['DOCUMENT_ROOT'] =="C:/wamp64/www/pucker-mob") {
+if ($_SERVER['DOCUMENT_ROOT'] =="C:/wamp64/www/pucker-mob/httpdocs") {
 		$local = true; 
 		$localIp = 'localhost';
 		$local_platform = "WAMP64";
@@ -62,13 +53,9 @@ $version = "SMF 0.1.0";// Sequel Media Framework
 if($local){
 
 
-if(isset($_GET['error']) && $_GET['error'] == true){
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');
-}else{
-	error_reporting(0);
-	ini_set('display_errors', '0');
-}//end if
+
 
 	define("DB_SERVER", "localhost");
 	define("DB_USER", "root");
@@ -105,24 +92,24 @@ if(isset($_GET['error']) && $_GET['error'] == true){
 		'main_db' => 'pucker_mob',	
 
 
-		'this_url' => '/httpdocs/', //HACK VERSION
-		'this_admin_url' => '/httpdocs/admin/', //HACK VERSION
+		'this_url' => '/', //HACK VERSION
+		'this_admin_url' => '/admin/', //HACK VERSION
 		'shared_url' => $root_directory ,
 		'image_url' => $root_directory .'subdomains/images/httpdocs/',	
 
-		'include_path' => $root_directory .'httpdocs/assets/includes/',
+		'include_path' => $root_directory .'assets/includes/',
 		
-		'include_path_admin' => $root_directory .'httpdocs/admin/assets/includes/',
-		'image_path_admin' => $root_directory .'httpdocs/admin/assets/img/',
+		'include_path_admin' => $root_directory .'admin/assets/includes/',
+		'image_path_admin' => $root_directory .'admin/assets/img/',
 		
-		'template_path' => $root_directory .'httpdocs/assets/templates/',
+		'template_path' => $root_directory .'assets/templates/',
 		
-		'shared_include' => $root_directory .'httpdocs/assets/includes/',
-		'shared_css' => $root_directory .'httpdocs/assets/css/',
-		'shared_scss' => $root_directory .'httpdocs/assets/scss/',
-		'assets_path' => $root_directory .'httpdocs/assets/php/',
+		'shared_include' => $root_directory .'assets/includes/',
+		'shared_css' => $root_directory .'assets/css/',
+		'shared_scss' => $root_directory .'assets/scss/',
+		'assets_path' => $root_directory .'assets/php/',
 		
-		'image_upload_dir' => $root_directory .'httpdocs/subdomains/images/httpdocs/'
+		'image_upload_dir' => $root_directory .'subdomains/images/httpdocs/'
 		
 	);
 
@@ -131,7 +118,7 @@ if(isset($_GET['error']) && $_GET['error'] == true){
 	$config['memcacheprefix'] = 'puckermob_'.$config['articlepageid'];
 	$config['cp_url'] = 'http://'.$localIp.'/'.$directory.'/subdomains/cp/httpdocs/';
 
-// var_dump($config);
+// var_dump($config);	
 
 
 	require_once  'MPShared.php';
@@ -169,6 +156,10 @@ if(isset($_GET['error']) && $_GET['error'] == true){
 	require_once  'class.FacebookDebugger.php';
 	require_once  'class.Helpers.php'; 
 
+	// SMF classes ----------------------------------------
+	require_once  'smf_adManager.php'; // added 2017-04/26
+	// End of SMF classes ---------------------------------
+
 	if(isset($admin) && $admin){
 		require_once  'class.User.php';
 		require_once  'class.Contributor.php';
@@ -205,6 +196,7 @@ $mpHelpers->start_session();
 $detect = new Mobile_Detect;
 //$mpHelpers->geotargeting();
 
+$smf_adManager = new smf_adManager($config);// added 2017-04/26
 
 //recaptcha public key
 define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");
@@ -284,7 +276,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPShared.php';
 	require_once dirname(__FILE__).'/MCAPI.class.php';
 	require_once dirname(__FILE__).'/class.pagination.php';
-	require_once dirname(__FILE__).'/class.askTheChef.php';
+	require_once dirname(__FILE__).'/class.askTheChef.php';// useless but breaks the site if commented out - GB 2017-05-01
 
 	require_once dirname(__FILE__).'/class.Connector.php';
 	require_once dirname(__FILE__).'/class.DatabaseObject.php';	
@@ -292,7 +284,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/class.PageListItem.php';
 	require_once dirname(__FILE__).'/class.Bug.php';
 	require_once dirname(__FILE__).'/class.ArticleList.php';
-	require_once dirname(__FILE__).'/class.SlideShow.php';
+	require_once dirname(__FILE__).'/class.SlideShow.php';// useless but breaks the site if commented out - GB 2017-05-01
 
 	require_once dirname(__FILE__).'/PHPMailerAutoload.php';
 	require_once dirname(__FILE__).'/class.phpmailer.php';	
@@ -303,7 +295,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPArticle.php';
 	require_once dirname(__FILE__).'/MPNavigation.php';
 	require_once dirname(__FILE__).'/MPUriHelper.php';
-	require_once dirname(__FILE__).'/MPVideoShows.php';
+	require_once dirname(__FILE__).'/MPVideoShows.php';// useless but breaks the site if commented out - GB 2017-05-01
 
 	require_once dirname(__FILE__).'/mobile-detect.php';
 
@@ -323,6 +315,11 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	//if(isset($admin) && $admin){
 		require_once dirname(__FILE__).'/class.ManageAdminDashboard.php';
 	//}
+
+
+	// SMF classes ----------------------------------------
+		require_once dirname(__FILE__).'/smf_adManager.php'; // added 2017-04/26
+	// End of SMF classes ---------------------------------
 
 	require_once dirname(__FILE__).'/class.Helpers.php';
 	if($admin){
@@ -365,6 +362,8 @@ $mpHelpers->start_session();
 //$mpHelpers->geotargeting();
 $detect = new Mobile_Detect;
 
+$smf_adManager = new smf_adManager($config);// added 2017-04/26
+
 //recaptcha public key
 define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");
 define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
@@ -394,6 +393,7 @@ End Dependancies/Soft Links
 // ***********************************************************************************************************
 
 
+
 /* ---------------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------------- */
 /* -------- GB DEBUG FUNCTIONS 2017-02-03 ------------------------------------------- */
@@ -406,7 +406,7 @@ End Dependancies/Soft Links
 
 // This is a temporary import  during the transition period - will be integrated or suppressed in the future
 
-//$ddd = new debug($var,0); $ddd->show();exit;
+		// $ddd = new debug("$s",0); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
 
 class debug{
 

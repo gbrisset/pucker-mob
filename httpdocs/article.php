@@ -119,38 +119,7 @@ if(!is_null($categoryInfo)){
 <body id="article" class="mobile">
 <?php 
 	
-		        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-				
-				 if(in_array($article_id, $selected_articles_lelo)){
-
-                //do nothing - lelo has ads somewhere else
-
-				 }else{	
-
-		             switch ($article_id) {
-					  case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-		              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-		              // case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-		              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-		              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-		              case 20506: // contains explicit content - not approved for Undertone - moblog/pssy-eating-101-five-tips-to-taste-delicious
-
-		                //do nothing - we do not want other ads to interfer with the test page
-		                break;
-		              case 23319: 
-		                include($config['include_path'] . 'ads/undertone_SS.php');
-		                break;
-
-		              case 20506: 
-		                include($config['include_path'] . 'ads/undertone_Flex.php');
-		                break;
-
-		              default:
-		                include($config['include_path'] . 'ads/undertone_SSFP.php');
-		                
-		             }//end switch ($article_id)
-
-				}//end if( in_array($article_id, $selected_articles_lelo)
+	echo $smf_adManager->display_tags("mbl_overlay_top", $article_id);
 
  ?>
 
@@ -221,35 +190,9 @@ if(!is_null($categoryInfo)){
 	<!-- UNDERTONE -->
 	<?php
 
-		        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-				
-				 if(in_array($article_id, $selected_articles_lelo)){
-
-                //do nothing - lelo has ads somewhere else
-
-				 }else{	
-
-		             switch ($article_id) {
-					  case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-		              // case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-		              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-		              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-		              case 20506: // contains explicit content - not approved for Undertone - moblog/pssy-eating-101-five-tips-to-taste-delicious
-
-		                //do nothing - we do not want other ads to interfer with the test page
-		                break;
+				echo $smf_adManager->display_tags("dsk_overlay_top", $article_id);
 
 
-		              case 23319: 
-		                include($config['include_path'] . 'ads/undertone_SS.php');
-		                break;
-
-		              default:
-		                include($config['include_path'] . 'ads/undertone_SSFP.php');
-		                
-		             }//end switch ($article_id)
-
-				}//end if( in_array($article_id, $selected_articles_lelo)
 
 	 ?>
 
@@ -309,27 +252,29 @@ if(!is_null($categoryInfo)){
 					 <?php
 
 
-					 switch ($article_id) {
+
+						echo $smf_adManager->display_tags("dsk_image", $article_id, $article_title); //passing title is optional, only needed for img ad slots
+
+			        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017	
+
+			   // 			 switch ($article_id) {
 				 	
-					 	
-								case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-									include($config['include_path'] . 'video_truvidplayer.php');
-									break;
-					 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-						include($config['include_path'] . 'ads/answers_videomosh_no_preroll.php');
-					 			// used as a test page
-					 			break;
+
+					 // 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+						// include($config['include_path'] . 'ads/answers_videomosh_no_preroll.php');
+					 // 			// used as a test page
+					 // 			break;
 
 						
-					 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
-					 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
-							 	// These articles are paid content and should keep their original image
+					 // 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
+					 // 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
+						// 	 	// These articles are paid content and should keep their original image
 							
-					 	default:
-					 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
-							// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-02-28
+					 // 	default:
+					 // 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
+						// 	// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-02-28
 							
-					 }//end switch ($article_id)
+					 // }//end switch ($article_id)
 					 
 
 						// OLD CODE PLAYING VIDEOS WHEN VIDEO IS ASSOCIATED WITH THE ARTICLE
@@ -352,34 +297,39 @@ if(!is_null($categoryInfo)){
 					<aside id="aside-top" class="fixed-width-sidebar column no-padding hide-for-print">
 
 							<?php 
-					        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+
+
+								echo $smf_adManager->display_tags("dsk_sidebar_1", $article_id);
+
+					        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
+					        //  $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
 							
-							 if(in_array($article_id, $selected_articles_lelo)){
+							//  if(in_array($article_id, $selected_articles_lelo)){
 
-								include($config['include_path'] . 'ads/dsk_sidebar_video_lelo.php');
+							// 	include($config['include_path'] . 'ads/dsk_sidebar_video_lelo.php');
 
-							 }else{	
+							//  }else{	
 
-									 switch ($article_id) {
-									 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-										case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-										case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-									 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-											//do nothing - we do not want other ads to interfer with the test page
-											break;
+							// 		 switch ($article_id) {
+							// 		 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+							// 			case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+							// 			case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+							// 		 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+							// 				//do nothing - we do not want other ads to interfer with the test page
+							// 				break;
 				
 									 	
-									 	case 25362: // Sponsored article
-											include($config['include_path'] . 'ads/dsk_sidebar_video_meme.php');
-									 		break;
+							// 		 	case 25362: // Sponsored article
+							// 				include($config['include_path'] . 'ads/dsk_sidebar_video_meme.php');
+							// 		 		break;
 									 	
-									 	default:
-											include($config['include_path'] . 'ads/dsk_sidebar_video_answers_2.php');
-											break;
-									 }//end switch ($article_id)
+							// 		 	default:
+							// 				include($config['include_path'] . 'ads/dsk_sidebar_video_answers_2.php');
+							// 				break;
+							// 		 }//end switch ($article_id)
 
-							}//end if( in_array($article_id, $selected_articles_lelo)
-
+							// }//end if( in_array($article_id, $selected_articles_lelo)
+							// CODE ABOVE IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 							?>
 
 					    <div id="sub-sidebar-2" class="ad-unit ad300 show-on-large-up" style="">

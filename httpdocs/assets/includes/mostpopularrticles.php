@@ -13,9 +13,7 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 			<?php 
 				$articleNumber = 0;
 				$articleTotalNumber = 0;
-				foreach($mostReadArticlesList as $article){
-					$articleTotalNumber++;
-				}
+				foreach($mostReadArticlesList as $article){	$articleTotalNumber++;}
 				foreach($mostReadArticlesList as $article){
 
 						if($new_layout){
@@ -46,8 +44,10 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 						echo $mostReadArticle;
 
 						if($articleNumber == 6){ ?>
-						<!--Carambola Script --> 
 						<div class="columns todays-favorites fade-in-out">
+
+						<?php //echo $smf_adManager->display_tags("dsk_sidebar_3", $article_id); ?>
+						
 							<img height='0' width='0' alt='' src='//pixel.watch/936x' style='display:block;' /> 
 							<script data-cfasync="false" class="carambola_InContent" type="text/javascript" cbola_wid="2">  
 							(function (i,d,s,o,m,r,c,l,w,q,y,h,g) {  
@@ -60,11 +60,11 @@ if(isset($mostReadArticlesList) && $mostReadArticlesList){ ?>
 							})(window, document, 'InContent', 'script', 'mediaType', 'carambola_proxy','Cbola_IC','localStorage','set','get','Item','cbolaDt','//route.carambo.la/inimage/getlayer?pid=spdsh12&did=110233&wid=2')  
 							</script>
 							</div>
-						<?php }
+						<?php }//end if($articleNumber == 6)
 						?>
 						
 						<?php 	
-				}
+				}//end foreach($mostReadArticlesList as $article
 			?>
 
 	</section>

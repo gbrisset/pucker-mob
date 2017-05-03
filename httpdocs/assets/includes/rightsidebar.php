@@ -7,8 +7,10 @@
     <?php 
 
     include_once($config['include_path'].'mostpopularrticles.php');
-    // include($config['include_path'] . 'ads/dsk_sidebar_amazon.php');
-    include($config['include_path'] . 'ads/dsk_sidebar_video_answers.php');
+    // // include($config['include_path'] . 'ads/dsk_sidebar_amazon.php');
+    // include($config['include_path'] . 'ads/dsk_sidebar_video_answers.php');
+
+       echo $smf_adManager->display_tags("dsk_sidebar_2", $article_id);
 
 
      ?>
@@ -20,9 +22,10 @@
     <?php 
 
     include_once($config['include_path'].'mostpopularrticles.php');
-    // include($config['include_path'] . 'ads/dsk_sidebar_amazon.php');
-    include($config['include_path'] . 'ads/dsk_sidebar_video_answers.php');
+    // // include($config['include_path'] . 'ads/dsk_sidebar_amazon.php');
+    // include($config['include_path'] . 'ads/dsk_sidebar_video_answers.php');
 
+       echo $smf_adManager->display_tags("dsk_sidebar_2", $article_id);
 
      ?>
   

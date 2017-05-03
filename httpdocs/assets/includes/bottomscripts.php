@@ -41,7 +41,7 @@
     
       
         default:
-             include($config['include_path'] . 'ads/answer_tout.php');
+             // include($config['include_path'] . 'ads/answer_tout.php');
              include($config['include_path'] . 'ads/btmscript_videomosh.php');
 
 
@@ -65,45 +65,46 @@
 // MOBILE ************************************************************** 
     
 
-    // disable the read more button ----------------------------------------------------------------------------------------------------------------------------
-
+ 
  if(isset($articleInfoObj) && $articleInfoObj){
 
       $article_id = 1*$articleInfo['article_id'] ;
 
   if( isset($promotedArticle) && !$promotedArticle ){ 
+
+      echo $smf_adManager->display_tags("mbl_overlay_bottom", $article_id);
+
+      // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
       
-        $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-        
-         if(in_array($article_id, $selected_articles_lelo)){
+      //   $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
+       
+      //    if(in_array($article_id, $selected_articles_lelo)){
+      //     // do nothing - no ads to interfer with Lelo paid content
+      //    }else{ 
 
-          // do nothing - no ads to interfer with Lelo paid content
+      // // select ads ----------------------------------------------------------------------------------------------------------------------------
+      //        switch ($article_id) {
+      //         case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+      //         case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
+      //         case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+      //         case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
 
-         }else{ 
+      //           //do nothing - we do not want other ads to interfer with the test page
+      //           break;
 
-      // select ads ----------------------------------------------------------------------------------------------------------------------------
-             switch ($article_id) {
-              case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-              case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-              case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-              case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+      //         case 22475: // not sure why this is separated -- GB 2017-02-27
+      //           include($config['include_path'] . 'ads/spoutable.php');
+      //           break;
 
-                //do nothing - we do not want other ads to interfer with the test page
-                break;
+      //         default:
+      //           // include($config['include_path'] . 'ads/adhesion_iframe_buster.php');
+      //           include($config['include_path'] . 'ads/mbl_overlay_bottom_adhesion_kixer.php');
 
-              case 22475: // not sure why this is separated -- GB 2017-02-27
-                include($config['include_path'] . 'ads/spoutable.php');
-                break;
-
-              default:
-                // include($config['include_path'] . 'ads/adhesion_iframe_buster.php');
-                include($config['include_path'] . 'ads/adhesion_kixer.php');
-
-
-             }//end switch ($article_id)
+      //        }//end switch ($article_id)
+        // }//end if( in_array($article_id, $selected_articles_lelo)
+      // CODE ABOVE IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 
 
-        }//end if( in_array($article_id, $selected_articles_lelo)
 
       } //end  if( isset($promotedArticle) 
 

@@ -1,3 +1,4 @@
+<!-- Answers Video Mosh  no preroll -->
 <div id="vm_content"></div><script type="text/javascript">
 window._videomosh = window._videomosh || [];
 !function (e, f, u) {

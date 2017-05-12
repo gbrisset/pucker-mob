@@ -45,7 +45,7 @@
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/plugins.php"></script>
 
 <script src="<?php echo $config['this_url']; ?>admin/assets/js/script.php?ver=2373" async></script>
-<script src="<?php echo $config['this_url']; ?>/assets/js/main.js"></script>
+<script src="<?php echo $config['this_url']; ?>assets/js/main.js"></script>
 
 <?php
 	if(get_magic_quotes_gpc()) echo stripslashes($mpArticle->data['article_page_analytics']);

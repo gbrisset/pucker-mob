@@ -1,5 +1,17 @@
 <?php
 
+
+// ***********************************
+// ***********************************
+// ***********************************
+// ***********************************
+// 	needs to use that header in ads.js to control the inline ads from teh smf_adManager
+	// Header("content-type: application/x-javascript");
+	// require_once('../../../assets/php/config.php');
+// ***********************************
+// ***********************************
+// ***********************************
+
 // require_once dirname(__FILE__).'/config.php';//not needed here.
 
 // -- Get the link to articles - useful to create a test page

@@ -7,7 +7,7 @@ e.src = u;
 f.parentNode.insertBefore(e, f);
 }(document.createElement("script"),
 document.getElementsByTagName("script")[0],
-"http://qa.www.videomosh.com/players/loader/loader_final4.js");
+"http://player.videomosh.com/players/loader/loader_final4.js");
 _videomosh.push({
 publisher_key: "sequelmedia",
 mode: "player",

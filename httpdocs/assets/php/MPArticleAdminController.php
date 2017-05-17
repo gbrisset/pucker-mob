@@ -1185,6 +1185,8 @@ class MPArticleAdminController extends MPArticle{
 		$pdo = $this->con->openCon();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+ // var_dump($options);
+
 		$q = $pdo->prepare($options['updateString']);
 
 		try{

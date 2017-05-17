@@ -55,7 +55,8 @@
 	<div  class="small-12 large-4 xlarge-3 columns  no-padding ">
 		<div style="background-color: #7BB583; " class="small-12 columns articles_resume radius valign-middle">
 			<div class="small-12 columns ">
-				<h3 class="uppercase">Est. Earnings<span style="color: #fff; font-size: 12px; top: -3px; position: relative;"> (THIS MONTH)</span></h3>
+				<h3 class="uppercase"><?php echo date("F") ?> Earnings<br/>
+				<span style="color: #fff; font-size: smaller;"> (Estimated)</span></h3>
 				<span class="bold"><?php echo '$'.number_format($current_earnings, 2); ?></span>
 			</div>
 		</div>
@@ -63,7 +64,8 @@
 	<div  class="small-12 large-4 xlarge-3 columns ">
 		<div style="background-color: #867BB5; " class="small-12 columns articles_resume radius valign-middle" >
 			<div class="small-12 columns ">
-				<h3 class="uppercase">Balance Due</h3>
+				<h3 class="uppercase">Unpaid Earnings<br/>
+				<span style="color: #fff; font-size: smaller;"> (Estimated)</span></h3>
 				<span class="bold"><?php echo '$'.number_format( $balance_due, 2); ?></span>
 			</div>
 		</div>		

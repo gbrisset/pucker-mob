@@ -70,7 +70,7 @@ class Dashboard{
 	}
 
 	/* INSERT OR UPDATE RECORDS TO THE SOCIAL MEDIA TABLE */
-// This table has not been updated since 206-04-28  and pu on hold -- GB 2017-02-15
+// This table has not been updated since 206-04-28  and put on hold -- GB 2017-02-15
 
 	public function updateSocialMediaShares( $counts, $articleId, $month, $cat ){
 	
@@ -839,10 +839,16 @@ class Dashboard{
 		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$year =  filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 	
-		//CONTRIBUTOR LIST ACTIVE
+
+
+	// $ddd = new debug($year,2); $ddd->show();
+	// $ddd = new debug($month,2); $ddd->show();
+
+	 //CONTRIBUTOR LIST ACTIVE
 		$contributors = $this->getContributorsList(); 
 		// $contributors = $this->smf_getContributorsListTEST(); 
-		// $ddd = new debug($contributors,2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+	// 	$ddd = new debug($contributors,2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+	// $ddd = new debug("So far so good ... ",3); $ddd->show(); exit();
 
 		if($contributors){
 
@@ -928,25 +934,40 @@ class Dashboard{
 		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 		$contributor_id = $data['contributor'];
 
-		$s = "SELECT 
-				c.*, 
-				ac.contributor_name, 
-				ac.contributor_seo_name, 
-				ubi.paypal_email,
+			$s="
+			SELECT 
+			c.*, 
+			ac.contributor_name, 
+			ac.contributor_seo_name, 
+			ubi.paypal_email,
 
-				ubi.w9_live,
-				u.user_type 
+			ubi.w9_live,
+			u.user_type ,
 
+			tbp.to_be_pay_fixed
 
-				FROM contributor_earnings c
-				INNER JOIN (article_contributors ac, users u) 
-				ON c.contributor_id = ac.contributor_id 
-				AND ac.contributor_email_address = u.user_email 
-				LEFT JOIN (user_billing_info ubi)
-				ON( u.user_id = ubi.user_id)
+			FROM contributor_earnings c
+			INNER JOIN (
+			SELECT `contributor_id`, SUM(`total_earnings`) AS to_be_pay_fixed
+			FROM `contributor_earnings`
+			WHERE payday_date = 0 
+			AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15'))
 
-				WHERE c.month = $month AND c.year = $year
-				 ";
+			GROUP BY contributor_id, payday_date
+			ORDER BY contributor_id, year DESC, month DESC
+			) tbp ON tbp.contributor_id = c.contributor_id
+
+			INNER JOIN (article_contributors ac, users u) 
+			ON c.contributor_id = ac.contributor_id 
+			AND ac.contributor_email_address = u.user_email 
+			LEFT JOIN (user_billing_info ubi)
+			ON (u.user_id = ubi.user_id)
+
+			WHERE c.month = $month AND c.year = $year
+			ORDER By tbp.to_be_pay_fixed DESC;
+			";
+
+	
 
 		if(isset($contributor_id) && $contributor_id >0) {
 		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
@@ -968,31 +989,124 @@ class Dashboard{
 
 
 
-	public function smf_getPageViewsUSReport_tobepay($data){
-		$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-		$contributor_id = $data['contributor'];
+	// public function smf_getPageViewsUSReport_tobepay($data){ //OBSOLETE -- DELETE AFTER MAY 31 2017
+	// 	$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	// 	$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	// 	$contributor_id = $data['contributor'];
+
+	// 	$s = "
+
+	// 			SELECT `contributor_id`, SUM(`total_earnings`) AS to_be_pay_fixed
+	// 			FROM `contributor_earnings`
+	// 			WHERE payday_date = 0 
+	// 			AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15'))
+
+	// 			GROUP BY contributor_id, payday_date
+	// 			ORDER BY contributor_id, year DESC, month DESC
+	// 			 ";
+
+	// 	if(isset($contributor_id) && $contributor_id >0) {
+	// 	$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
+	// 	}
+
+		
+
+	// 	$queryParams = [ ];
+	// 	$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+	// 	if ($q && isset($q[0])){
+	// 	return $q;
+	// 	} else if ($q && !isset($q[0])){
+	// 	$q = array($q);
+	// 	return $q;
+	// 	}else return false;
+
+	// }//end function // OBSOLETE -- DELETE AFTER MAY 31 2017
+
+
+	public function smf_getBloggersEarningsReport($contributor_id){
+		// $month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		// $year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
 
 		$s = "
 
-				SELECT `contributor_id`, SUM(`total_earnings`) AS to_be_pay_fixed
-				FROM `contributor_earnings`
-				WHERE payday_date = 0 
-				AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15'))
+				SELECT contributor_id, month, MONTHNAME(CONCAT(year, '-',month, '-', '01')) AS monthname, 
+				year, total_us_pageviews, share_rate,	total_earnings , paid , payday_date
+				FROM contributor_earnings
+				WHERE contributor_id = $contributor_id	
+				ORDER BY  year DESC, month DESC;
 
-				GROUP BY contributor_id, payday_date
-				ORDER BY contributor_id, year DESC, month DESC
 				 ";
-
-		if(isset($contributor_id) && $contributor_id >0) {
-		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
-		}
 
 		
 
 		$queryParams = [ ];
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 
+	// $ddd = new debug($q,3); $ddd->show(); exit;// 0- green; 1-red; 2-grey; 3-yellow	
+	return $q;
+
+	
+	}//end function
+
+
+	public function smf_getBloggersEarningsReportSummary_1($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
+		$s = "
+
+				SELECT 
+					SUM(total_us_pageviews) AS sum_pgv,
+					MAX(total_us_pageviews) AS max_pgv,
+					AVG(total_us_pageviews) AS avg_pgv,
+					MIN(total_us_pageviews) AS min_pgv,
+
+					MAX(share_rate) AS max_cpm,
+					AVG(share_rate) AS avg_cpm,
+					MIN(share_rate) AS min_cpm,
+
+					SUM(total_earnings) AS sum_earnings,
+					MAX(total_earnings) AS max_earnings,
+					AVG(total_earnings) AS avg_earnings,
+					MIN(total_earnings) AS min_earnings
+
+				FROM contributor_earnings
+				WHERE contributor_id = $contributor_id
+				ORDER BY year DESC, month DESC;
+				 ";
+	
+		$queryParams = [ ];
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+	
+		return $q;
+
+	}//end function
+
+
+
+
+public function smf_getBloggersEarningsReportSummary_2($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+
+		$s = "
+
+				SELECT 
+				payday_date, SUM(`total_earnings`) AS earnings_tally
+				FROM `contributor_earnings`
+                
+                WHERE contributor_id = $contributor_id
+
+				GROUP BY payday_date
+				ORDER BY year , month ;
+				
+				 ";
+		
+	// $ddd = new debug($s,2); $ddd->show(); exit;// 0- green; 1-red; 2-grey; 3-yellow	
+		$queryParams = [ ];
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		
 		if ($q && isset($q[0])){
 		return $q;
 		} else if ($q && !isset($q[0])){
@@ -1003,49 +1117,26 @@ class Dashboard{
 	}//end function
 
 
-//---------------------------------------------------
-//---------------------------------------------------
-	/*
--- test ---------------------------------------------------
-SELECT *  FROM `contributor_earnings` WHERE `contributor_id` = 3173 ORDER by year DESC, month DESC;
+public function smf_getBloggersEarningsReportSummary_3($contributor_id){
+		$contributor_id = filter_var($contributor_id, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
 
--- test ---------------------------------------------------
-SELECT `contributor_id`, SUM(`total_earnings`)
-FROM `contributor_earnings`
-WHERE 
-payday_date = 0 AND
-`contributor_id` IN( 3173 )
+		$s = "
+			SELECT 
+			CONCAT(Year(CURRENT_DATE), '-', month(CURRENT_DATE), '-','24') AS next_paydate,
+			LAST_DAY(DATE_SUB(CURRENT_DATE, INTERVAL 2 month)) AS payday_cutoff,
+			SUM(`total_earnings`) AS earnings_tally 
+			FROM `contributor_earnings` 
+			WHERE contributor_id = $contributor_id 
+			AND payday_date = 0 
+			AND updated_date < DATE_ADD(LAST_DAY(DATE_SUB(CURRENT_DATE, INTERVAL 2 month)), INTERVAL 1 DAY)
+			 ";
+// $ddd = new debug($s,3); $ddd->show(); exit;// 0- green; 1-red; 2-grey; 3-yellow	
+		$queryParams = [ ];
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+		return $q;
 
-GROUP BY contributor_id, payday_date
-ORDER BY contributor_id, year DESC, month DESC;
+	}//end function
 
--- query on the work ---------------------------------------------------
-SELECT 
-c.*, 
-ac.contributor_name, 
-ac.contributor_seo_name, 
-ubi.paypal_email,
-
-ubi.w9_live,
-u.user_type ,
-
-
-FROM contributor_earnings c
-INNER JOIN (article_contributors ac, users u) 
-ON c.contributor_id = ac.contributor_id 
-AND ac.contributor_email_address = u.user_email 
-LEFT JOIN (user_billing_info ubi)
-ON( u.user_id = ubi.user_id)
-
-WHERE c.month = 1 AND c.year = 2017 
-AND c.contributor_id = 3173
-
-GROUP BY contributor_id
-*/
-
-//---------------------------------------------------
-//---------------------------------------------------
-//---------------------------------------------------
 
 
 public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $year){

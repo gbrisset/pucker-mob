@@ -126,7 +126,7 @@ var EarningsObj = {
 			url:  '<?php echo $config['this_admin_url']; ?>assets/php/ajaxfunctions.php',
 			data: { task:'get_chart_article_data_per_day', contributor_id : contributor_id, start_date: EarningsObj.start_date, end_date: EarningsObj.end_date, user_type:user_type  }
 		}).done(function(data) {
-			var total_amount = 0, total_pageviews = 0,  t_body = $('#earnings-list tbody'), html = "";
+			var total_amount = 0, total_pageviews = 0,  t_body = $('#earnings-list-THIS-IS-TO-DISABLE-THE-FUNCTION-WHILE-KEEPING-THE-CSS tbody'), html = "";
 			if( data != "false" ){ 
 				data = $.parseJSON(data);
 				

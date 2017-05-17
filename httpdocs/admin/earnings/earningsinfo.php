@@ -1,13 +1,20 @@
 <?php 
+
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+		// error_reporting(E_ALL); 	ini_set('display_errors', '1');
+
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+
+
 	$admin = true; 
 	require_once('../../assets/php/config.php');
 	$ManageDashboard = new ManageAdminDashboard( $config );
-
-//***************** TEST ************************************************************
-//***********************************************************************************
-// error_reporting(E_ALL);	ini_set('display_errors', 'on');
-//***************** TEST ************************************************************
-//***********************************************************************************
 
 	
 	$userData = $adminController->user->data = $adminController->user->getUserInfo();
@@ -130,35 +137,259 @@
 			<?php include_once($config['include_path_admin'].'view_dashboard_resume.php'); ?>
 
 			<!-- Calendar -->
-			<?php include_once($config['include_path_admin'].'calendar.php'); ?>
+			<?php // include_once($config['include_path_admin'].'calendar.php'); ?>
 
 			
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
-				<?php include_once($config['include_path_admin'].'charts.php'); ?>
-<!-- 
-				<div id="earnings-list" class="small-12 columns no-padding margin-top">
-				<table class="small-12 columns no-padding" id="daily-earnings">
-					<thead>
-						<tr>
-							<td class="align-left">Date</td>
-							<td class="align-center">US. Traffic | 1K</td>
-							<td class="align-center">CPM Rate</td>
-							<td class="align-right">Earnings</td>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-				</div>
- -->
-				
-			</div>
+				<?php // include_once($config['include_path_admin'].'charts.php'); ?>
 
-			<div class="small-12 columns no-padding margin-top hide-for-large-up">
-				<div class="month-to-date radius">
-					<label>$<?php echo $current_earnings; ?></label>
-					<span class="uppercase">Month to Date</span>
+				<div id="earnings-list" class="small-12 columns no-padding margin-top">
+				
+	
+<?php 
+
+
+				$results = $dashboard->smf_getBloggersEarningsReport($contributor_id);
+
+				if(isset($results) && $results ){ 
+
+					echo "
+					<table class=\"small-12 columns no-padding\" id=\"daily-earnings\">
+						<thead>
+							<tr>
+								<td style=\" color: #333;\" class=\"align-left\">Month</td>
+								<td style=\" color: #333;\" class=\"align-left\">Year</td>
+								<td style=\" color: #333;\" class=\"align-center\">Paid</td>
+								<td style=\" color: #333;\" class=\"align-right\">US. PageViews</td>
+								<td style=\" color: #333;\" class=\"align-right\">CPM Rate</td>
+								<td style=\" color: #333;\" class=\"align-right\">Earnings</td>
+							</tr>
+						</thead>
+						<tbody>
+
+					";
+
+
+					foreach( $results as $monthly_earnings){
+
+							$monthname = $monthly_earnings['monthname'];
+							$year = $monthly_earnings['year'];
+							$total_us_pageviews = number_format($monthly_earnings['total_us_pageviews'] );
+							$share_rate = "$". number_format( $monthly_earnings['share_rate'], 2);
+							$total_earnings = "$". number_format( $monthly_earnings['total_earnings'], 2);
+
+							if($monthly_earnings['payday_date']==0){
+								$payday_date = "No";
+							}else{
+								$payday_date = date("M j, Y", strtotime($monthly_earnings['payday_date']));
+							}//end if
+
+							echo"
+								<tr>
+									<td class=\"align-left\">$monthname</td>
+									<td class=\"align-left\">$year</td>
+									<td class=\"align-center\">$payday_date</td>
+									<td class=\"align-right\">$total_us_pageviews</td>
+									<td class=\"align-right\">$share_rate</td>
+									<td class=\"align-right\">$total_earnings</td>
+								</tr>
+							";
+								  		
+					}//end foreach
+
+						echo"<tr><td colspan=\"6\" >&nbsp;</td></tr> ";
+
+
+				// max, average, min of pageviews, cpm, earnings
+				// ---------------------------------------------------------------------------------------------------			
+				$results = $dashboard->smf_getBloggersEarningsReportSummary_1($contributor_id);
+				 // $ddd = new debug($results,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
+							$sum_pgv = number_format($results['sum_pgv'] );
+							$max_pgv = number_format($results['max_pgv'] );
+							$avg_pgv = number_format($results['avg_pgv'] );
+							$min_pgv = number_format($results['min_pgv'] );
+
+							$max_cpm = "$". number_format($results['max_cpm'], 2);
+							$avg_cpm = "$". number_format($results['avg_cpm'], 2);
+							$min_cpm = "$". number_format($results['min_cpm'], 2);
+
+							$sum_earnings = "$". number_format($results['sum_earnings'], 2);
+							$max_earnings = "$". number_format($results['max_earnings'], 2);
+							$avg_earnings = "$". number_format($results['avg_earnings'], 2);
+							$min_earnings = "$". number_format($results['min_earnings'], 2);
+
+							echo "	
+							<tr>
+								<td style=\" color: #333;\" class=\"align-left\">&nbsp;</td>
+								<td style=\" color: #333;\" class=\"align-left\">&nbsp;</td>
+								<td style=\" color: #333;\" class=\"align-center\">&nbsp;</td>
+								<td style=\" color: #333;\" class=\"align-right\">US. PageViews</td>
+								<td style=\" color: #333;\" class=\"align-right\">CPM Rate</td>
+								<td style=\" color: #333;\" class=\"align-right\">Earnings</td>
+							</tr>
+							";						
+							echo"
+								<tr>
+									<td style=\" color: #333;\"  class=\"align-left\">All Times</td>
+									<td class=\"align-left\">&nbsp;</td>
+									<td class=\"align-center\">&nbsp;</td>
+									<td class=\"align-right\">$sum_pgv</td>
+									<td class=\"align-right\">N/A</td>
+									<td class=\"align-right\">$sum_earnings</td>
+								</tr>
+							";
+							echo"
+								<tr>
+									<td style=\" color: #333;\"  class=\"align-left\">Max</td>
+									<td class=\"align-left\">&nbsp;</td>
+									<td class=\"align-center\">&nbsp;</td>
+									<td class=\"align-right\">$max_pgv</td>
+									<td class=\"align-right\">$max_cpm</td>
+									<td class=\"align-right\">$max_earnings</td>
+								</tr>
+							";
+							echo"
+								<tr>
+									<td style=\" color: #333;\"  class=\"align-left\">Avg</td>
+									<td class=\"align-left\">&nbsp;</td>
+									<td class=\"align-center\">&nbsp;</td>
+									<td class=\"align-right\">$avg_pgv</td>
+									<td class=\"align-right\">$avg_cpm</td>
+									<td class=\"align-right\">$avg_earnings</td>
+								</tr>
+							";
+							// echo"
+							// 	<tr>
+							// 		<td style=\" color: #333;\"  class=\"align-left\">Min</td>
+							// 		<td class=\"align-left\">&nbsp;</td>
+							// 		<td class=\"align-center\">&nbsp;</td>
+							// 		<td class=\"align-right\">$min_pgv</td>
+							// 		<td class=\"align-right\">$min_cpm</td>
+							// 		<td class=\"align-right\">$min_earnings</td>
+							// 	</tr>
+							// ";
+
+
+							echo"<tr><td colspan=\"6\" >&nbsp;</td></tr> ";
+
+				// Header for the next two sections
+				// ---------------------------------------------------------------------------------------------------			
+
+
+							echo "	
+							<tr>
+								<td style=\" color: #333;\" class=\"align-left\">&nbsp;</td>
+								<td style=\" color: #333;\" class=\"align-left\">&nbsp;</td>
+								<td style=\" color: #333;\" class=\"align-center\">Date</td>
+								<td style=\" color: #333;\" class=\"align-right\">&nbsp;</td>
+								<td style=\" color: #333;\" class=\"align-right\">&nbsp;</td>
+								<td style=\" color: #333;\" class=\"align-right\">Earnings</td>
+							</tr>
+							";
+
+				// list past payments and amount paid
+				// ---------------------------------------------------------------------------------------------------			
+
+				$payments = $dashboard->smf_getBloggersEarningsReportSummary_2($contributor_id);
+					if ($payments){
+
+						foreach( $payments as $payment){
+								$earnings_tally = "$". number_format( $payment['earnings_tally'], 2);
+								if($payment['payday_date']==0){
+									$earning_owed_todate = $earnings_tally;//will be used in next section
+								}else{
+									$paid = "Paid";
+									$payday_date = date("M j, Y", strtotime($payment['payday_date']));
+
+								// Pay history is temporarily on hold - 2017-04-07 - GB
+								// echo"
+								// 	<tr>
+								// 		<td colspan=\"2\" style=\" color: #333;\"  class=\"align-left\">Past payment</td>
+
+								// 		<td class=\"align-center\">$payday_date</td>
+								// 		<td colspan=\"2\" class=\"align-center\">(Ad Matching &amp; Incentives Not included)</td>
+
+								// 		<td class=\"align-right\">$earnings_tally</td>
+								// 	</tr>
+								// ";
+								 }//end if
+								  		
+						}//end foreach
+
+					}//end if  ($payments)
+
+				// next payment
+				// ---------------------------------------------------------------------------------------------------			
+				$next_payday = $dashboard->smf_getBloggersEarningsReportSummary_3($contributor_id);
+					if ($next_payday){
+							$earnings_tally = "$". number_format( $next_payday['earnings_tally'], 2);
+							$current_date = date("M j, Y");
+							$next_paydate = date("M j, Y", strtotime($next_payday['next_paydate']));
+							echo"
+								<tr>
+									<td colspan=\"2\" style=\" color: #333;\"  class=\"align-left\">Next Pay date</td>
+									
+									<td class=\"align-center\">$next_paydate</td>
+									<td colspan=\"2\" class=\"align-center\">(Tentative Date - Estimated Amount)</td>
+
+									<td class=\"align-right\">$earnings_tally</td>
+								</tr>
+							";
+							if($next_payday['earnings_tally']<50){
+								$earnings_msg = "Please remember - earnings below \$25 will be rolled over to the next pay cycle";
+							}else{
+								$earnings_msg = "Please remember - You must submit a W9 form and Paypal information to be part of this pay cycle";
+							} //end if($next_payday['earnings_tally']<25)
+							$earnings_msg .= "<br/><br/>Earnings currently DO NOT reflect Incentive Rewards or AdMatching Commitments ";
+								echo"
+									<tr>
+										<td colspan=\"6\" style=\" color: #c43333;\"  class=\"align-center\">$earnings_msg</td>
+									</tr>
+								";
+
+							// echo"
+							// 	<tr>
+							// 		<td colspan=\"2\" style=\" color: #333;\"  class=\"align-left\">Earnings as of</td>
+									
+							// 		<td class=\"align-center\">$current_date</td>
+							// 		<td colspan=\"2\" class=\"align-center\">(Today - Estimated Amount)</td>
+
+							// 		<td class=\"align-right\">$earning_owed_todate</td>
+							// 	</tr>
+							// ";
+						
+					}//end if ($next_payday)
+
+
+				// closing body and table
+				// ---------------------------------------------------------------------------------------------------			
+							echo "
+									</tbody>
+									</table>
+							";				
+				}else{
+					echo "
+					<table class=\"small-12 columns no-padding\" id=\"daily-earnings\">
+						<thead>
+							<tr>
+								<td style=\" color: #333;\" class=\"align-center\">No earnings to show as of yet.</td>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+
+					";
+
+
+				}//end if(isset($results) && $results )
+				?>
+
+
 				</div>
+
 			</div>
 
 		

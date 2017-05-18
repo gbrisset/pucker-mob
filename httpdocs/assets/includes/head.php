@@ -1,6 +1,10 @@
 <head>
 	<meta charset="utf-8" />
 	<?php 
+
+
+	// $ddd = new debug($articleInfoObj,3); $ddd->show(); exit;// 0- green; 1-red; 2-grey; 3-yellow	
+
 	
 	$promotedArticle = false; $tag = 'smarties'; $has_sponsored = true;
 	if(isset($isArticle) && $isArticle && isset($articleInfoObj)){ ?>
@@ -36,6 +40,7 @@
 		<meta property="article:section" content="<?php if (isset($categoryInfo)) echo $categoryInfo['cat_name']; ?>" />
 		<meta property="article:tag" content="<?php echo $headTags; ?>" />
 		<meta name="author" content="<?php echo $articleInfoObj['contributor_name']; ?>" />
+		<meta property="article:author" content="<?php echo $articleInfoObj['contributor_facebook_link']; ?>" />
 		<meta property="og:image"  content="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg'; ?>" />
 		<meta name="twitter:image" content="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$articleInfo['article_id'].'_tall.jpg'; ?>" />
 

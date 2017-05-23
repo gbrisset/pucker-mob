@@ -1135,7 +1135,7 @@ class MPArticleAdminController extends MPArticle{
 		return $r;
 	}
 	
-//NOT SURE IF STILL IN USE
+
 	protected function updateSiteObject($opts){
 
 		$options = array_merge(array(
@@ -1149,6 +1149,11 @@ class MPArticleAdminController extends MPArticle{
 
 		$valid = $this->helpers->validateRequired($options['updateParams'], $options['unrequired']);
 		if($valid !== true) return $valid;
+		
+		//Added by GB on 2017-05-22 ------------------------------------------------------------------------
+		$updatePairs[] = "date_updated = :date_updated";
+		$options['updateParams'][':date_updated'] =  date("Y-m-d H:i:s");
+		// Enf of Added by GB on 2017-05-22 ------------------------------------------------------------------------
 
 		$options['updateString'] = str_replace('{pairs}', join(', ', $updatePairs), $options['updateString']);
 

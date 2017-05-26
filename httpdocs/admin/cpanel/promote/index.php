@@ -25,8 +25,11 @@
 		$limit=25;
 
 	//total record count ($total_count)	
-	$articles = $promoteObj->getArticlesToPromote( " facebook_page_id != 7   ORDER BY date_updated ASC ");	
-	
+	$articles = $promoteObj->getArticlesToPromote( " facebook_page_id != 7   ORDER BY article_id DESC ");	
+
+// $ddd = new debug($articles,0); $ddd->show();exit;// 0-Green; 1-Red; 2-Dark; 3-Yellow;
+
+
 	$total_count = count($articles);
 	$pagination = new Pagination($page, $per_page, $total_count);	
 	$offset = $pagination->offset();
@@ -41,17 +44,17 @@
 	$allCurrent = '';
 	switch($artType){
 		case 'bloggers':
-			$articles = $promoteObj->getArticlesToPromote( " user_type IN (3, 8)  ORDER BY date_updated ASC ", $filters );
+			$articles = $promoteObj->getArticlesToPromote( " user_type IN (3, 8)  ORDER BY article_id DESC ", $filters );
 			$bloggersCurrent = 'current';
 		break;
 
 		case 'writers':
-			$articles = $promoteObj->getArticlesToPromote( " user_type IN (1, 6, 7)  ORDER BY date_updated ASC ",  $filters);
+			$articles = $promoteObj->getArticlesToPromote( " user_type IN (1, 6, 7)  ORDER BY article_id DESC ",  $filters);
 			$writersCurrent = 'current';
 		break;
 
 		default:
-			$articles = $promoteObj->getArticlesToPromote( " facebook_page_id != 7   ORDER BY date_updated ASC ",  $filters);
+			$articles = $promoteObj->getArticlesToPromote( " facebook_page_id != 7   ORDER BY article_id DESC ",  $filters);
 			$allCurrent = 'current';
 			break;
 	}

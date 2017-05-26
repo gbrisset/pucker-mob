@@ -5,6 +5,7 @@
 	<table class="columns small-12 no-padding" id="promote_articles_list">
 		<thead>
 		    <tr>
+		       <th width="400" class="align-left">Article ID</th>
 		       <th width="400" class="align-left">Title</th>
 		       <th width="100" class="show-for-large-up">Updated</th>
 		       <th width="100" class="show-for-large-up">Promotion</th>
@@ -15,7 +16,10 @@
 		</thead>
 		
 		<tbody>
-		 <?php foreach($articles as $articleInfo){
+		 <?php 
+// $ddd = new debug($articles,0); $ddd->show();exit;// 0-Green; 1-Red; 2-Dark; 3-Yellow;
+
+		 foreach($articles as $articleInfo){
 			$articleUrl = $config['this_admin_url'].'articles/edit/'.$articleInfo->article_seo_title;
 			$articleUrlLive = $config['this_url'].'/'.$articleInfo->cat_dir_name.'/'.$articleInfo->article_seo_title;
 			$article_id = $articleInfo->article_id;
@@ -44,6 +48,7 @@
 
 			<tr id="<?php echo 'article-'.$article_id; ?>" data-user= "<?php echo $user_id; ?>">
 
+			  	<td class="show-for-large-up  large-1  border-right" style="text-align: center;"><label><?php echo $article_id; ?></label></td>
 			  	<td class="border-right">
 			  		<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
 			  		<div class=" large-4 columns no-padding-left show-for-large-up">
@@ -51,7 +56,7 @@
 							<img src="<?php echo $imageUrl; ?>" alt="<?php echo $article_title.' Preview Image'; ?>" />
 						</a>
 					</div>
-					<div class="large-7 columns no-padding" style="display: table-caption">
+					<div class="large-6 columns no-padding" style="display: table-caption">
 						<h2 class="small-12 columns no-padding">
 							<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
 							<a href="<?php echo $articleUrl; ?>">

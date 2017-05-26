@@ -28,6 +28,7 @@
 
 		public $article_status;
 		public $creation_date;
+		public $date_updated; //added by GB - 2017-05-26
 
 
 		//	Object Vars

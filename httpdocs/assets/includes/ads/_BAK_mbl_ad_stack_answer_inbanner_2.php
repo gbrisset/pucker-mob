@@ -20,10 +20,9 @@
 						        ad_desktop_id: "120826",
 						        target_type: "mix",
 						        passback: true,
-						        backfill: "<script type=\"text/javascript\" language=\"javascript\" src=\"//c.amazon-adsystem.com/aax2/getads.js\"></scri"+"pt><scr"+"ipt type=\"text/javascript\" language=\"javascript\"> aax_getad_mpb({\"slot_uuid\":\"90694808-5105-4abe-bdf1-f8963cf2693b\"}); </scr"+"ipt>"
+						        backfill: "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></scr"+"ipt> <ins class=\"adsbygoogle\"style=\"display:inline-block;width:300px;height:250px\"data-ad-client=\"ca-pub-8978874786792646\"data-ad-slot=\"7184034589\"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </scr"+"ipt>"
 						    });   
 						</script>
 		
 					</div>
 				</div>
-

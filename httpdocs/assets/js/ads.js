@@ -147,7 +147,7 @@ if($('body').hasClass('mobile')) {
 					break;
 
 			 	default:
-					inBodyAd.loadInArticleAd('article-body', 4, 0, '<div id="nativo-id"></div>' , tag);
+					inBodyAd.loadInArticleAd('article-body', 6, 0, '<div id="nativo-id"></div>' , tag);
 					$('#inarticle3-ad').removeClass('columns');
 
 			 }//end switch ($article_id)

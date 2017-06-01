@@ -1866,16 +1866,16 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	}
 	switch($articleStatus) {
 		case '1':
-		$order_sql = " ORDER BY a.article_status = 1 DESC, a.date_updated DESC ";
+		$order_sql = " ORDER BY a.article_status = 1 DESC, a.creation_date DESC ";
 		break;
 		case '2':
-		$order_sql = " ORDER BY a.article_status = 2 DESC, a.date_updated DESC ";
+		$order_sql = " ORDER BY a.article_status = 2 DESC, a.creation_date DESC ";
 		break;
 		case '3':
-		$order_sql = " ORDER BY a.article_status = 3 DESC, a.date_updated DESC ";
+		$order_sql = " ORDER BY a.article_status = 3 DESC, a.creation_date DESC ";
 		break;
 		default:
-		$order_sql = " ORDER BY a.article_status = 1 DESC, a.date_updated DESC ";
+		$order_sql = " ORDER BY a.article_status = 1 DESC, a.creation_date DESC ";
 		break;
 	}
 
@@ -1908,6 +1908,8 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$s .= $order_sql;
 	$s .= 	"LIMIT {$limit} 
 	OFFSET {$offset}";	
+
+var_dump($s);
 
 	$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
 

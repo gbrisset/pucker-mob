@@ -43,7 +43,7 @@
 <ul style="margin-left: 3rem;">
 	<li>Lower chance to be featured on our Facebook Fan pages.</li>
 	<li>For articles that are highly personal, and more like diary entries.</li>
-	<li>Your articles will be unlocked, and little, if any, editing will be done by our editing team.</li>
+	<li>Your articles will be unlocked, and no editing will be done by our editing team.</li>
 </ul>
 
 

@@ -1909,7 +1909,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 	$s .= 	"LIMIT {$limit} 
 	OFFSET {$offset}";	
 
-var_dump($s);
+// var_dump($s);
 
 	$queryParams = [':userArticlesFilter' => filter_var($userArticlesFilter, FILTER_SANITIZE_STRING, PDO::PARAM_STR)];			
 

@@ -1,6 +1,6 @@
-<!-- sidebar vm_inbanner -->
+<!-- sidebar vm_inbanner_sidebar -->
 <div id="atf-ad" class="ad-unit ad300 show-on-large-up">
-    <div id="vm_inbanner"></div>
+    <div id="vm_inbanner_sidebar"></div>
     <script>
         window._videomosh = window._videomosh || [];
         !function (e, f, u) {
@@ -14,12 +14,13 @@
         _videomosh.push({
             publisher_key: "sequelmedia",
             mode: "inbanner",
-            container: "vm_inbanner",
+            container: "vm_inbanner_sidebar",
             ad_mobile_id: "22459",
             ad_desktop_id: "42296",
             target_type: "mix",
             passback: true,
-            backfill: "<script type=\"text/javascript\">google_ad_client = \"ca-pub-9021387890731428\"; google_ad_slot = \"2317387117/3794094997\";google_ad_width = 300;google_ad_height = 250;</scr"+"ipt><script type=\"text/javascript\"src=\"//pagead2.googlesyndication.com/pagead/show_ads.js\"></scr"+"ipt>"
+            backfill: "<script type=\"text/javascript\" language=\"javascript\" src=\"//c.amazon-adsystem.com/aax2/getads.js\"></scr"+"ipt><script type=\"text/javascript\" language=\"javascript\">aax_getad_mpb({\"slot_uuid\":\"26d6d4546-c110-4642-a343-a52e42bc4a17\"});</scr"+"ipt>"
         });   
     </script>
 </div>
+

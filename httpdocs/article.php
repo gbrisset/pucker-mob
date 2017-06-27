@@ -299,45 +299,12 @@ if(!is_null($categoryInfo)){
 							<?php 
 
 
+								echo $smf_adManager->display_tags("dsk_sidebar_0", $article_id);
 								echo $smf_adManager->display_tags("dsk_sidebar_1", $article_id);
 
-					        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
-					        //  $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-							
-							//  if(in_array($article_id, $selected_articles_lelo)){
-
-							// 	include($config['include_path'] . 'ads/dsk_sidebar_video_lelo.php');
-
-							//  }else{	
-
-							// 		 switch ($article_id) {
-							// 		 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-							// 			case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-							// 			case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-							// 		 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-							// 				//do nothing - we do not want other ads to interfer with the test page
-							// 				break;
-				
-									 	
-							// 		 	case 25362: // Sponsored article
-							// 				include($config['include_path'] . 'ads/dsk_sidebar_video_meme.php');
-							// 		 		break;
-									 	
-							// 		 	default:
-							// 				include($config['include_path'] . 'ads/dsk_sidebar_video_answers_2.php');
-							// 				break;
-							// 		 }//end switch ($article_id)
-
-							// }//end if( in_array($article_id, $selected_articles_lelo)
-							// CODE ABOVE IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 							?>
 
-					    <div id="sub-sidebar-2" class="ad-unit ad300 show-on-large-up" style="">
-					          <a href="http://www.puckermob.com/login"> 
-					          	<img src="http://www.puckermob.com/assets/img/homepage/write-box.jpg" style="width: 300px; height: 200px;">
-					         </a>
-					    </div>
-
+					  
 					</aside>
 				</div>
 			</div>

@@ -231,7 +231,7 @@
 		<!-- READ MORE ========================================================================================================== -->
 
 		 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
-					<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #78AD6C;">
+					<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #497240; /*#78AD6C - original color*/ ">
 						<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
 					</div>
 				</div> 

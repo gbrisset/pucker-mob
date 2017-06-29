@@ -81,13 +81,13 @@ if($('body').hasClass('mobile')) {
 					break;
 
 			 	default:
-					//UnderTone SeeThrough
-					inBodyAd.loadInArticleAd('article-body', 3, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
+					//Answers
+					inBodyAd.loadInArticleAd('article-body', 2, 0, "<script type=\"text/javascript\"> window[\"_rocketyield\"] = window[\"_rocketyield\"] || []; !function (e, f, u) {e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement(\"script\"), document.getElementsByTagName(\"script\")[0], \"//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js\"); window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee',slot: '#inarticle2-ad',width: 320,height: 240}); </script>", tag);			
 					//Nativo 1
 					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
+					//UnderTone SeeThrough
+					inBodyAd.loadInArticleAd('article-body', 9, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
 
-					//Answers
-					inBodyAd.loadInArticleAd('article-body', 9, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {var c = document.getElementById('article-body');var d = c.getElementsByTagName('P');if (d.length >10) {var my_div = document.createElement('DIV');    my_div.id = 'temp_div';c.insertBefore(my_div, d[8]); }e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js');window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee',slot: '#temp_div',width: 320,height: 240});</script>", tag);			
 
 
 					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<script type="text/javascript" src="http://us.ads.justpremium.com/adserve/js.php?zone=31674"></script>', tag);
@@ -95,8 +95,8 @@ if($('body').hasClass('mobile')) {
 					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script> <script type="text/javascript" language="javascript"> //<![CDATA[aax_getad_mpb({"slot_uuid":"9a325e3c-d956-4bd6-93a4-1faf53d4d8a5"}); //]]> </script>', tag);
 					// Google
 					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <!-- MOB Mobile After 10th paragraph --> <ins class="adsbygoogle"style="display:inline-block;width:300px;height:250px"data-ad-client="ca-pub-8978874786792646"data-ad-slot="6579881382"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script> ', tag);
-					// Kixer
-					inBodyAd.loadInArticleAd('article-body', 12, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
+					// Kixer - tentatively used by Answers as a backfill - 2017-06-29 - GB
+					// inBodyAd.loadInArticleAd('article-body', 12, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
 
 			 }//end switch ($article_id)
 

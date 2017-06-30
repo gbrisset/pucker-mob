@@ -128,7 +128,7 @@
 				<div class="small-12 columns margin-top">
 					<p style="color: #777; font-family:OsloBold; font-size:16px;">Please Note: Earnings shown are estimates only. Actual earnings may be more or less, based on traffic measured via Google Anaytics, and not finalized until after the end of each month.</p>
 				</div>
-				<?php include_once($config['include_path_admin'].'notifications_temp.php'); ?>
+				<?php // include_once($config['include_path_admin'].'notifications_temp.php'); ?>
 
 				<?php include_once($config['include_path_admin'].'incentive_plan_winners.php'); ?>
 
@@ -145,28 +145,93 @@
 
 			<!-- Right Side -->
 			<div class="small-12 xxlarge-3 right padding rightside-padding" style="padding: 0 15px !important;" >
-			<!-- HAVE A QUESTION -->
+			<!-- MERIT RATES -->
 				<div class="small-12  columns half-margin-bottom no-padding">
-					<?php include_once($config['include_path_admin'].'have_question_box.php'); ?>
-				</div>
-				<!-- HOT TOPICS --> 
-				<div class="small-12  columns half-margin-bottom no-padding">
-					<?php include_once($config['include_path_admin'].'hottopics.php'); ?>
-				</div>
-				<div class="small-12  columns half-margin-bottom no-padding">
-					<?php include_once($config['include_path_admin'].'top_bloggers.php'); ?>
-				</div>
+
 
 				<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
-					<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
-				</div>
-				
-				<!-- WELCOME MODAL -->
-				<?php 
-					if(	$userData['user_login_count'] == 0  && !isset($_SESSION['show_welcome_modal']) ){
-						include_once($config['include_path_admin'].'welcome_modal.php'); 
-					}
-				?>
+					<div class="small-12 radius experttips">
+
+						<h2>GET MORE TRAFFIC</h2>
+						<h2 style="color: #008000; ">MAKE MORE MONEY</h2>
+						<div style="margin-bottom: .5rem; ">
+						As your articles get more traffic, you&#39;ll move up to higher pay levels. The higher your level at the end of the month, the more money you&#39;ll earn!
+						</div>
+						<h3 style="color: #008000;     text-transform: uppercase; "><?php echo date("F"); ?>&nbsp;RATES</h3>
+
+						<?php 
+						//include_once($config['include_path_admin'].'have_question_box.php');
+
+						$merit_rates = $dashboard->smf_get_merit_rate_table( $current_month, $current_year);	
+
+						// // ****************************************************************************************************************************************************************************************
+						// $ddd = new debug($merit_rates,0); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	*******************************************************************************************************
+						// $ddd = new debug("So far so good ... ",1); $ddd->show(); exit();// ************************************************************************************************************************
+						// // ****************************************************************************************************************************************************************************************
+
+					echo "
+						<table class=\"small-12 columns no-padding\" id=\"\">
+							<thead>
+								<tr>
+									<td style=\" color: #333;\" class=\"align-center\">LEVEL</td>
+									<td style=\" color: #333;\" class=\"align-left\">MIN US TRAFFIC</td>
+									<td style=\" color: #333;\" class=\"align-left\">EARN</td>
+								</tr>
+							</thead>
+							<tbody>
+
+						";
+
+					foreach ($merit_rates as $key => $merit_rate) {
+						$level = $merit_rate['level'];
+						$threshold = $merit_rate['threshold'];
+						$flat_rate_threshold = $merit_rate['flat_rate_threshold'];
+						if($threshold>0 && $flat_rate_threshold>0){
+
+						echo "
+								<tr>
+									<td style=\" color: #333;\" class=\"align-center\">$level</td>
+									<td style=\" color: #333;\" class=\"align-left\">" . number_format($threshold,0) ."</td>
+									<td style=\" color: #333;\" class=\"align-left\">$" . number_format($flat_rate_threshold,0) ."</td>
+								</tr>
+
+						";
+						}//end if($threshold==0 && $flat_rate_threshold)
+
+					}//end foreach ($merit_rates as $key => $value) 
+
+
+					echo "
+							</tbody>
+							</table>
+					";	
+
+
+
+						 ?>
+
+				 </div><!-- <div class="small-12 radius experttips"> -->
+			</div> <!-- <div class="small-12 columns radius right-side-box no-margin-top margin-bottom"> --> </div>
+			
+
+					<!-- HOT TOPICS --> 
+	<!-- 				<div class="small-12  columns half-margin-bottom no-padding">
+						<?php // include_once($config['include_path_admin'].'hottopics.php'); ?>
+					</div>
+					<div class="small-12  columns half-margin-bottom no-padding">
+						<?php //include_once($config['include_path_admin'].'top_bloggers.php'); ?>
+					</div>
+
+	 -->				
+					<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
+						<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
+					</div>
+					<!-- WELCOME MODAL -->
+					<?php 
+						if(	$userData['user_login_count'] == 0  && !isset($_SESSION['show_welcome_modal']) ){
+							include_once($config['include_path_admin'].'welcome_modal.php'); 
+						}
+					?>
 
 
 			</div>

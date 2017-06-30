@@ -115,22 +115,25 @@
 			break;
 
 		case 'article_promoted': 
-			$promote = new PromoteArticles();
-			$status =  json_encode( $promote->promoteThisArticle( $_POST ) );
+		
+var_dump("qwerty");
 
-			if($status){
-				//var_dump($status, $_POST);  
-				if( $_POST['promoted'] == 'true'  ){
-					$data  = [ 	
-							"user_id" => $_POST['user_id'], 
-							"message" => "Congratulations! Your article '".$_POST['article_title']."' has been scheduled for promotion on ".$_POST['facebook_page_name'], 
-							"type" => 1 , 
-							"date" => date( 'Y-m-d H:s:i', strtotime('now'))
-						];
-					$notification_obj = new Notification(); 
-					echo json_encode( $notification_obj->saveObj( $data ) );
-				}
-			}
+			// $promote = new PromoteArticles();
+			// $status =  json_encode( $promote->promoteThisArticle( $_POST ) );
+
+			// if($status){
+			// 	//var_dump($status, $_POST);  
+			// 	if( $_POST['promoted'] == 'true'  ){
+			// 		$data  = [ 	
+			// 				"user_id" => $_POST['user_id'], 
+			// 				"message" => "Congratulations! Your article '".$_POST['article_title']."' has been scheduled for promotion on ".$_POST['facebook_page_name'], 
+			// 				"type" => 1 , 
+			// 				"date" => date( 'Y-m-d H:s:i', strtotime('now'))
+			// 			];
+			// 		$notification_obj = new Notification(); 
+			// 		echo json_encode( $notification_obj->saveObj( $data ) );
+			// 	}
+			// }
 			break;
 
 		case 'article_status':

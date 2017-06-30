@@ -729,70 +729,6 @@ class Dashboard{
 		}
 	}
 
-	// //OLD ONE REPLACED BY pageviewsReport()
-	// public function updateContributorsEarnings( $month, $year){
-	// 	$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-	// 	$year = filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-
-	// 	$contributors = $this->getContributorsList();
-	// 	$data['month'] = $month;
-	// 	$data['year'] = $year;
-
-	// 	if($contributors){
-	// 		foreach($contributors as $contributor){
-
-	// 			$id = $contributor['contributor_id'];
-	// 			$data['contributor'] = $id;
-	// 			$update_data = $this->getContributorEarnings($id, $month, $year);
-
-	// 			$earnings_info = $this->socialMediaSharesReport($data);
-
-	// 			$total_article_rate = 0;
-	// 			$total_shares = 0;
-
-	// 			$share_rate = 0.01;				
-	// 			$total_share_rev = 0;
-	// 			$total_earnings = 0;
-				
-	// 			if($earnings_info && $earnings_info[0]){
-
-	// 				$earnings_info = $earnings_info[0];
-	// 				$total_article_rate = $earnings_info["total_rate"]; //RATE PER ARTICLE 25/10
-	// 				$total_shares = $earnings_info["total_shares"]; //NUMBER OF SHARES
-	// 				$share_rate = $earnings_info['share_rate']; 
-	// 				$total_share_rev = $earnings_info["share_revenue"]; 
-	// 				$total_earnings = $earnings_info["total_to_pay"]; //TOTAL RATE PER ARTICLE + NUMBER OF SHARES * 0.02
-	// 			}
-
-	// 			if($contributor['user_type'] != 4){
-	// 				$total_earnings = $total_earnings - $total_article_rate;
-	// 			}
-
-	// 			if($month >= 2 && $year >=2015){
-	// 				$total_earnings = $total_earnings - $total_article_rate;
-	// 			}
-
-	// 			if($update_data){
-	// 				$s = "UPDATE contributor_earnings 
-	// 						SET total_article_rate = $total_article_rate,
-	// 						    total_shares = $total_shares,
-	// 						    share_rate = $share_rate,
-	// 						    total_share_rev = $total_share_rev,
-	// 						    total_earnings = $total_earnings 
-	// 					WHERE contributor_id = $id AND month = $month AND year = $year ";
-	// 			}else{
-	// 				$s = "INSERT INTO contributor_earnings
-	// 					  (`id`, `contributor_id`, `month`, `year`, `total_article_rate`, `total_shares`, `share_rate`, 
-	// 					  	`total_share_rev`, `total_earnings`, `paid`, `to_be_pay`)
-	// 					  VALUES (NULL, '".$id."', '".$month."', '".$year."', '".$total_article_rate."', '".$total_shares."', 
-	// 					  	'".$share_rate."', '".$total_share_rev."', '".$total_earnings."', '0', '".$total_earnings."') ";
-	// 			}
-	// 			$queryParams = [ ];			
-	// 			$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-
-	// 		}
-	// 	}
-	// }
 
 
 	public function getContributorsList(){
@@ -927,6 +863,155 @@ class Dashboard{
 	}//end public function pageviewsReport
 
 
+// ----------------------------------------------------------------------------------------
+// New routine as of 2017-06-29  - GB
+	// This routine supports a new logic for contributor earnings
+	// earnings are calculated at the end of the month only
+	// during the current month, only pageviews are accrued and displayed
+	// cpm rates depend on perforfance observed at the end of the month
+
+	public function pageviewsReport_merit( $month, $year ){
+		$month = filter_var($month, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+		$year =  filter_var($year, FILTER_SANITIZE_STRING, PDO::PARAM_STR);
+	
+
+
+// 	$ddd = new debug($year,2); $ddd->show();
+// 	$ddd = new debug($month,2); $ddd->show();
+// exit();
+	 //CONTRIBUTOR LIST ACTIVE
+		$contributors = $this->getContributorsList(); 
+		// $contributors = $this->smf_getContributorsListTEST(); 
+	// 	$ddd = new debug($contributors,2); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+	// $ddd = new debug("So far so good ... ",3); $ddd->show(); exit();
+
+		if($contributors){
+
+			foreach($contributors as $contributor){
+
+				$contributor_id = $contributor['contributor_id'];
+				$user_type = $contributor['user_type'];
+				
+				$total_us_pageviews = 0;
+				$total_earnings = 0;
+				$user_rate = 0;
+
+				//Get  pageviews  for current month
+				$current_month_pageviews = $this->smf_getContributorMonthlyPageviews( $contributor_id, $month, $year);
+	            if($current_month_pageviews) $total_us_pageviews = $current_month_pageviews[0]['sum_usa_pageviews'];
+
+					$updated_date = date('Y-m-d H:i:s', time());
+					$current_day = date('j');
+					$sql_create_record = "";
+					$sql_update_record = "";
+
+					if ($current_day==1){
+					// CREATE NEW MONTHLY RECORD
+					$sql_create_record = "
+					INSERT INTO contributor_earnings (
+					contributor_id,
+					month,
+					year,
+					total_us_pageviews,
+					updated_date ) VALUES (
+					$contributor_id,
+					$month,
+					$year,
+					$total_us_pageviews,
+					'$updated_date' ) ";
+
+
+					//retrieve contributor earnings row
+					$prev_month = date('n', strtotime("last day of -1 month"));	
+					$prev_year = date('Y', strtotime("last day of -1 month"));	
+					$previous_month_data = $this->smf_getContributorEarnings_oneMonth($contributor_id, $prev_month, $prev_year);
+					
+					if($previous_month_data){
+
+						// UPDATE PREVIOUS MONTH WITH $$ VALUE 
+						//Gets the CPM rate accordingly to the pageviews performance. 
+						// (this will need to be revised if merit changes to another mode of calculation - e.g.: slice/tiers)
+						$prev_month_pageviews = $previous_month_data[0]['total_us_pageviews'];
+						$merit_rates = $this->smf_get_merit_rate($prev_month_pageviews, $month, $year );	
+
+						if($merit_rates){
+							$slice = $merit_rates['slice'];
+							$cpm_rate_threshold = $merit_rates['cpm_rate_threshold'];
+							// $cpm_rate_slice = $merit_rates['cpm_rate_slice'];
+							// $cpm_rate_tier = $merit_rates['cpm_rate_tier'];
+
+							$flat_rate_threshold = $merit_rates['flat_rate_threshold'];
+							$flat_rate_slice = $merit_rates['flat_rate_slice'];
+							// $flat_rate_tier = $merit_rates['flat_rate_tier'];
+					
+							//Calculate Total (monthly) Earnings
+							if ($slice>0) 					$total_earnings += ($flat_rate_slice * floor($prev_month_pageviews/$slice));
+							if( $cpm_rate_threshold > 0 )   $total_earnings += ($prev_month_pageviews / 1000 ) * $cpm_rate_threshold; 
+							if( $flat_rate_threshold > 0 )  $total_earnings += $flat_rate_threshold;
+					
+						}//end if
+
+						$sql_update_record = "UPDATE contributor_earnings 
+						SET total_us_pageviews = $prev_month_pageviews, total_earnings = $total_earnings, share_rate = $cpm_rate_threshold,
+						updated_date = '$updated_date'
+						WHERE contributor_id = $contributor_id AND month = $prev_month AND year = $prev_year ";
+					
+
+					}else{
+
+						// DO NOTHING
+						
+					}//end if($update_data)
+
+
+				}else{
+					//retrieve contributor earnings row
+					$current_month_data = $this->smf_getContributorEarnings_oneMonth($contributor_id, $month, $year);
+
+					if($current_month_data){
+
+						// UPDATE CURRENT MONTH WITH PAGEVIEWS
+						$sql_update_record = "UPDATE contributor_earnings 
+						SET total_us_pageviews = $total_us_pageviews,
+						updated_date = '$updated_date'
+						WHERE contributor_id = $contributor_id AND month = $month AND year = $year ";
+
+					}else{
+
+						// CREATE CURRENT MONTH WITH PAGEVIEWS
+						$sql_create_record = "
+						INSERT INTO contributor_earnings (
+						contributor_id,
+						month,
+						year,
+						total_us_pageviews,
+						updated_date ) VALUES (
+						$contributor_id,
+						$month,
+						$year,
+						$total_us_pageviews,
+						'$updated_date' ) ";
+
+					}//end if($update_data)
+
+				}//end if ($current_day==1)
+
+$ddd = new debug($sql_update_record,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug($sql_create_record,0); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+$ddd = new debug("going thru  ... ",3); $ddd->show(); 
+// exit();
+				$queryParams = [ ];			
+				if($sql_update_record != "") $query_update_record = $this->performQuery(['queryString' => $sql_update_record, 'queryParams' => $queryParams]);
+				if($sql_create_record != "") $query_create_record = $this->performQuery(['queryString' => $sql_create_record, 'queryParams' => $queryParams]);
+			
+			} //end foreach($contributors as $contributor)
+
+		} // end if($contributors)
+
+	} //end public function pageviewsReport_merit
+
+
+
 
 
 	public function smf_getPageViewsUSReport($data){
@@ -989,39 +1074,6 @@ class Dashboard{
 
 
 
-	// public function smf_getPageViewsUSReport_tobepay($data){ //OBSOLETE -- DELETE AFTER MAY 31 2017
-	// 	$month = filter_var($data['month'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-	// 	$year = filter_var($data['year'], FILTER_SANITIZE_STRING, PDO::PARAM_STR);
-	// 	$contributor_id = $data['contributor'];
-
-	// 	$s = "
-
-	// 			SELECT `contributor_id`, SUM(`total_earnings`) AS to_be_pay_fixed
-	// 			FROM `contributor_earnings`
-	// 			WHERE payday_date = 0 
-	// 			AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15'))
-
-	// 			GROUP BY contributor_id, payday_date
-	// 			ORDER BY contributor_id, year DESC, month DESC
-	// 			 ";
-
-	// 	if(isset($contributor_id) && $contributor_id >0) {
-	// 	$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
-	// 	}
-
-		
-
-	// 	$queryParams = [ ];
-	// 	$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
-
-	// 	if ($q && isset($q[0])){
-	// 	return $q;
-	// 	} else if ($q && !isset($q[0])){
-	// 	$q = array($q);
-	// 	return $q;
-	// 	}else return false;
-
-	// }//end function // OBSOLETE -- DELETE AFTER MAY 31 2017
 
 
 	public function smf_getBloggersEarningsReport($contributor_id){
@@ -1161,7 +1213,7 @@ public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $y
 	public function smf_getContributorsListTEST(){
 		$s  = " SELECT contributor_id, user_type 
 				FROM active_user_contributors 
-				WHERE contributor_id IN (	3612, 1570, 2409, 3173) ";
+				WHERE contributor_id IN (7062, 3612, 8821, 3173, 2409, 5916 ) "; //7062, 3612, 8821, 3173, 2409, 5916
 		$queryParams = [ ];			
 		$q = $this->performQuery(['queryString' => $s]);
 
@@ -1170,6 +1222,35 @@ public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $y
 
 	public function smf_get_user_rate($user_type, $month, $year ){
 		$s=" SELECT * FROM smf_user_rates WHERE  user_type =  $user_type AND rate_start_date = CONCAT('$year','-','$month','-01')";
+		$queryParams = [];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if($q) return $q; else return false;
+	}//end function
+	
+	public function smf_get_merit_rate($pageviews, $month, $year ){
+		$s=" 
+				SELECT * FROM smf_merit_rates m1 WHERE m1.threshold = (
+				SELECT MAX(m2.threshold) FROM smf_merit_rates m2 WHERE m2.threshold <= $pageviews )
+				AND m1.month = $month 
+				AND m1.year = $year;
+				";
+
+		$queryParams = [];			
+		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
+
+		if($q) return $q; else return false;
+	}//end function
+
+
+	public function smf_get_merit_rate_table($month, $year ){
+		$s=" 
+				SELECT * FROM smf_merit_rates m1 WHERE m1.month = $month AND m1.year = $year
+				 ORDER BY threshold, slice, tier, cpm_rate_threshold, cpm_rate_slice, cpm_rate_tier, flat_rate_threshold, flat_rate_slice, flat_rate_tier
+				";
+				// So it will be sorted accordingly to whichever method is used at the moment of parsing.
+				// level column has been set to Varchar to anticipate non alphabetic order level names - cannot be relied upon to sort rates.  
+
 		$queryParams = [];			
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);
 

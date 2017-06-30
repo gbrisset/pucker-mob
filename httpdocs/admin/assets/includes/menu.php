@@ -24,6 +24,10 @@
 			</li>
 			
 			<li class="small-12 columns border-top border-bottom padding-top padding-bottom">
+				<a href="<?php echo $config['this_admin_url']; ?>faq_earnings/" style="color: #D79324;" >NEW WAY TO EARN IN JULY</a>
+			</li>
+
+			<li class="small-12 columns border-top border-bottom padding-top padding-bottom">
 				<a href="<?php echo $config['this_admin_url']; ?>dashboard/">DASHBOARD</a>
 			</li>
 

@@ -123,7 +123,7 @@
 
 			<!-- CHARTS --> 
 			<div class="small-12 xxlarge-9 columns chart_wrapper_div">
-				<?php // include_once($config['include_path_admin'].'charts.php'); ?>
+				<?php  include_once($config['include_path_admin'].'charts.php'); ?>
 				
 				<div class="small-12 columns margin-top">
 					<p style="color: #777; font-family:OsloBold; font-size:16px;">Please Note: Earnings shown are estimates only. Actual earnings may be more or less, based on traffic measured via Google Anaytics, and not finalized until after the end of each month.</p>
@@ -186,8 +186,7 @@
 						$level = $merit_rate['level'];
 						$threshold = $merit_rate['threshold'];
 						$flat_rate_threshold = $merit_rate['flat_rate_threshold'];
-						if($threshold>0 && $flat_rate_threshold>0){
-
+						
 						echo "
 								<tr>
 									<td style=\" color: #333;\" class=\"align-center\">$level</td>
@@ -196,7 +195,7 @@
 								</tr>
 
 						";
-						}//end if($threshold==0 && $flat_rate_threshold)
+						
 
 					}//end foreach ($merit_rates as $key => $value) 
 
@@ -221,11 +220,11 @@
 					<div class="small-12  columns half-margin-bottom no-padding">
 						<?php //include_once($config['include_path_admin'].'top_bloggers.php'); ?>
 					</div>
-
-	 -->				
 					<div class="small-12 columns radius right-side-box no-margin-top margin-bottom">
 						<?php include_once($config['include_path_admin'].'expert_tips.php'); ?>
 					</div>
+
+	 -->				
 					<!-- WELCOME MODAL -->
 					<?php 
 						if(	$userData['user_login_count'] == 0  && !isset($_SESSION['show_welcome_modal']) ){

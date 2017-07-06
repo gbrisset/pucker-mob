@@ -51,8 +51,11 @@ var EarningsObj = {
 					amount = 0, 
 					last_month_amount = 0;
 
-					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;
-					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;
+					if(pageviews > 0 ) amount = pageviews;
+					if(last_month_pageviews > 0 ) 	last_month_amount = last_month_pageviews;
+
+//					if(pageviews > 0 ) amount = ( pageviews / 1000 ) * rate ;// before July 1 2017
+//					if(last_month_pageviews > 0 ) 	last_month_amount = ( last_month_pageviews / 1000 ) * rate ;// before July 1 2017
 
 					amount = parseFloat(amount.toFixed(2));
 					last_month_amount = parseFloat(last_month_amount.toFixed(2));

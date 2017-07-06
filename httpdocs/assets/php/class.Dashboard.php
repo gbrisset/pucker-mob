@@ -996,9 +996,9 @@ class Dashboard{
 
 				}//end if ($current_day==1)
 
-$ddd = new debug($sql_update_record,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
-$ddd = new debug($sql_create_record,0); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
-$ddd = new debug("going thru  ... ",3); $ddd->show(); 
+// $ddd = new debug($sql_update_record,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+// $ddd = new debug($sql_create_record,0); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+// $ddd = new debug("going thru  ... ",3); $ddd->show(); 
 // exit();
 				$queryParams = [ ];			
 				if($sql_update_record != "") $query_update_record = $this->performQuery(['queryString' => $sql_update_record, 'queryParams' => $queryParams]);

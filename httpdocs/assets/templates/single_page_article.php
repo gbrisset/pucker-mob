@@ -422,44 +422,9 @@
 		 			  	echo $smf_adManager->display_tags("dsk_ad_stack_1", $article_id);
 		 			  	echo $smf_adManager->display_tags("dsk_ad_stack_2", $article_id);
 		 			  	echo $smf_adManager->display_tags("dsk_ad_stack_3", $article_id);
+		 			  	echo $smf_adManager->display_tags("dsk_ad_stack_4", $article_id);
 
-				        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
-
-								  //   $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-									
-									//  if(in_array($article_id, $selected_articles_lelo)){
-
-									// 	include($config['include_path'] . 'ads/dsk_lelo.php');
-
-									//  }else{	
-
-									// 		 switch ($article_id) {
-									// 		 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-									// 			case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-									// 			case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-									// 				//do nothing - we do not want other ads to interfer with the test page
-									// 				break;
-						
-									// 		 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-									// 				// include($config['include_path'] . 'ads/_TEST_AD_SeeThrough.php');
-									// 		 		break;
-											 	
-									// 		 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-									// 				// include($config['include_path'] . 'ads/_TEST_AD_SSFP.php');
-									// 		 		break;
-											 	
-									// 		 	default:
-									// 				// include($config['include_path'] . 'ads/answer_tout_desktop.php'); // on hold for now - GB 2017-03-17
-									// 				include($config['include_path'] . 'ads/dsk_nativo_2.php');
-									// 				include($config['include_path'] . 'ads/dsk_answer_AB_tout_rocket.php');
-									// 				include($config['include_path'] . 'ads/dsk_sharethrough.php');
-									// 		 		break;
-									// 		 }//end switch ($article_id)
-
-									// }//end if( in_array($article_id, $selected_articles_lelo)
-
-				        // CODE ABOVE IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
-
+				      
  ?>
 				
 				<!-- RELATED ARTICLES -->

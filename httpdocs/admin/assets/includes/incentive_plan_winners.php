@@ -7,7 +7,7 @@
 ?>
 <div class="small-12 xxlarge-7 columns incentive-plan-box no-padding-left margin-bottom margin-top">
 	<div class="small-12 columns main-title radius">
-		<h3 class="small-12 uppercase">Congrats To the <?php echo date('F Y', strtotime('last month') )?>  Incentive plan winners</h3>
+		<h3 class="small-12 uppercase">Congrats To the <?php echo date('F Y', strtotime('last month') )?>  Top Bloggers</h3>
 	</div>
 	<div class="small-12 columns half-margin-top no-padding merge-box">
 		<div class="columns small-12 xlarge-6 radius inner-box border-right">
@@ -45,8 +45,7 @@
 
 		
 			<div class="incentive-plan-msg">
-				<p>Great Job everyone!</br>
-				Don't forget to check out this month's incentive program</p>
+				<p>Great Job everyone!</p>
 			</div>
 		</div>
 	</div>

@@ -190,14 +190,17 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	$show_on = $this->sponsored_pages_img; $dont_show_on = array();// These articles are paid content and should keep their original image
 	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	$show_on = array(23305); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
-	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_answers_videomosh_no_preroll.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $show_on = array(23305); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
+	// $tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_answers_videomosh_no_preroll.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	$show_on = array(11237); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
-	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_video_truvidplayer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $show_on = array(11237); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
+	// $tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_video_truvidplayer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+
+	// $show_on = array("all"); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
+	// $tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on = array("all"); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
-	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---------------------------------------
 
@@ -221,27 +224,27 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_ad_stack_nativo_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_BelowButton_300x250.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// ---------------------------------------
 
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$tag_list[]= array('ad_slot' => "mbl_morebar_1", 'tag' => "mbl_morebar_amazon_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_morebar_2", 'tag' => "mbl_morebar_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_morebar_3", 'tag' => "mbl_morebar_amazon_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_morebar_4", 'tag' => "mbl_morebar_amazon_4.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_morebar_1", 'tag' => "mbl_morebar_amazon_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_morebar_2", 'tag' => "mbl_morebar_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_morebar_3", 'tag' => "mbl_morebar_amazon_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_morebar_4", 'tag' => "mbl_morebar_amazon_4.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---------------------------------------
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_featured_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_featured_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	

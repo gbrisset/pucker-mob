@@ -294,7 +294,79 @@
 	</section>
 
 	<!-- FEATURED ARTICLES ========================================================================================================== -->
+	<section id="article-summary" class="small-12 column">
 
+		<h3 style="margin-bottom: 0.5rem !important;  font-size: 22.4px; font-family: OswaldLight; font-weight: bold;   color: green;">FEATURED ARTICLES</h3>
+		<div class="content-wrapper columns no-padding small-12">
+		<?php 
+
+		$featured_articles = $mpArticle->getFeaturedArticles();
+			// $ddd = new debug($featured_articles,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
+				if($featured_articles){
+				
+					// foreach($featured_articles as $farticle){
+					 for($xx=0; $xx<3; $xx++){
+					 $farticle = $featured_articles[$xx];
+						$farticle_title = $farticle['article_title'];
+						$farticle_seo_title = $farticle['article_seo_title'];
+						$farticle_id = $farticle['article_id'];
+						$farticle_desc = $farticle['article_desc'];
+						$farticle_category = $farticle['cat_dir_name'];
+						$farticle_link = $config['this_url'].$farticle_category.'/'.$farticle_seo_title;
+
+					?>
+					<div class="columns small-12 padding-top featured-wrapper-div">
+					
+					<div id="article-featured-<?php echo $farticle_id; ?>" class="columns small-12 no-padding remove-border">
+						<div id="article-summary" class="small-12 column ">
+							
+							<!-- TITLE -->
+							<h1 style="font-size: 1.55rem;"><?php echo $farticle_title; ?></h1>
+							
+							<div class="small-12 padding-bottom">
+								<?php if(!empty($farticle_desc) ){?><p class="description" style="margin-bottom:0;"><?php echo $farticle_desc; ?></p><?php }?>
+							</div>
+
+							<!-- Article Image -->
+							<div class="clear margin-bottom" style="background: black;     margin-bottom: 5px !important;">
+								<div id="article-image " class=" no-padding tinted-image " style="opacity: 0.5;">
+									<a href="<?php echo $farticle_link; ?>">
+										<img src="<?php echo 'http://images.puckermob.com/articlesites/puckermob/large/'.$farticle_id.'_tall.jpg'; ?>" alt="<?php echo $farticle_title; ?> Image">
+									</a>
+								</div>
+								<span class="span-middle-label-img"><a href="<?php echo $farticle_link; ?>">Click to read full article</a></span>
+
+							</div>
+							
+						</div>
+						
+					</div>
+
+					</div>
+
+						<?php if($xx == 0){
+
+		 			  	echo $smf_adManager->display_tags("mbl_featured", $article_id);
+
+				  
+
+						 } // end if($xx == 0) ?>
+
+
+
+					<?php }//end for ($xx ... )
+				}else{
+					echo '<p>No Featured article available.</p>';
+				}//end if($featured_articles)
+
+				?>
+		
+		</div>
+
+
+
+	</section>
 
 </article>
 

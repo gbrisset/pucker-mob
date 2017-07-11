@@ -42,7 +42,7 @@
       
         default:
              // include($config['include_path'] . 'ads/answer_tout.php');
-             include($config['include_path'] . 'ads/btmscript_videomosh.php');
+             // include($config['include_path'] . 'ads/btmscript_videomosh.php');
 
 
        }//end switch ($article_id)

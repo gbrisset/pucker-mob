@@ -39,7 +39,7 @@ $articlesList = $mpArticle->getArticlesListView(['limit' => $quantity, 'omit' =>
 
 <body id="home" class="mobile background-eee">
 
-<?php 	echo $smf_adManager->display_tags("mbl_overlay_top", $article_id); ?>
+<?php 	echo $smf_adManager->display_tags("mbl_overlay_top", 0); ?>
 
 	<style>#nav-bar{ box-shadow: none;} #articlelist-wrapper{ padding-top:0 !important;} .evolve-media{margin-top: 5px;    }</style>
 	<?php include_once($config['include_path'].'header.php'); ?>
@@ -70,7 +70,7 @@ $articlesList = $mpArticle->getArticlesListView(['limit' => $quantity, 'omit' =>
 
 <body id="home" class="">
 
-<?php 	echo $smf_adManager->display_tags("mbl_overlay_top", $article_id); ?>
+<?php 	echo $smf_adManager->display_tags("mbl_overlay_top", 0); ?>
 
 	
 	<input type="hidden" value="<?php echo $has_sponsored; ?>"  id="has-sponsored-by">
@@ -105,7 +105,7 @@ else if($ajax) {
 		
 <body id="home">
 
-<?php 	echo $smf_adManager->display_tags("dsk_overlay_top", $article_id); ?>
+<?php 	echo $smf_adManager->display_tags("dsk_overlay_top", 0); ?>
 
 
 	<!-- Sponsored By Totally Her -->

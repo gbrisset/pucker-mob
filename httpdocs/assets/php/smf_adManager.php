@@ -124,11 +124,11 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	$show_on = array(23305); $dont_show_on = array();
 	$tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "dsk_img_answers_videomosh_no_preroll.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	$show_on = array("all"); $dont_show_on = array(23305);
-	$tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "dsk_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	
 	// $show_on = array("all"); $dont_show_on = array(23305);
-	// $tag_list[]= array('ad_slot' => "dsk_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "dsk_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
+	$show_on = array("all"); $dont_show_on = array(23305);
+	$tag_list[]= array('ad_slot' => "dsk_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	
 	// ---------------------------------------
@@ -144,7 +144,7 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$tag_list[]= array('ad_slot' => "dsk_ad_stack_1", 'tag' => "dsk_nativo_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "dsk_ad_stack_2", 'tag' => "dsk_answer_AB_tout_rocket.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "dsk_ad_stack_2", 'tag' => "dsk_answer_AB_tout_rocket.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$tag_list[]= array('ad_slot' => "dsk_ad_stack_3", 'tag' => "dsk_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$tag_list[]= array('ad_slot' => "dsk_ad_stack_4", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
@@ -152,18 +152,22 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$tag_list[]= array('ad_slot' => "dsk_sidebar_0", 'tag' => "dsk_sidebar_write_for_us.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $tag_list[]= array('ad_slot' => "dsk_sidebar_0", 'tag' => "dsk_sidebar_video_answers.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on =  $this->sponsored_pages_lelo; $dont_show_on = array_diff($this->special_pages, $show_on);
 	$tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "dsk_sidebar_video_lelo.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "dsk_sidebar_video_answers.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "dsk_sidebar_video_answers_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	
-	 // $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "dsk_sidebar_video_answers.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "dsk_sidebar_video_answers_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	 // $tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "dsk_sidebar_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "mbl_morebar_amazon_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "mbl_morebar_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "mbl_morebar_amazon_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 
 // ----------- MOBILE  -------------------------------------------------------------------------------- MOBILE --------------------------------------------
@@ -224,10 +228,10 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_ad_stack_nativo_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_BelowButton_300x250.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// ---------------------------------------
 
@@ -245,7 +249,7 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	// $tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_featured_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 

@@ -158,7 +158,7 @@ if(!is_null($categoryInfo)){
 		<?php include_once('admin/fb/fbfunctions.php'); ?>
 
 		<!-- MOBILE MORE TAB -->
-		<?php // include_once($config['include_path'].'mobiletapsection.php'); ?>
+		<?php  include_once($config['include_path'].'mobiletapsection.php'); ?>
 
 		<!-- SCRIPTS -->
 		<?php include_once($config['include_path'].'bottomscripts.php');?>

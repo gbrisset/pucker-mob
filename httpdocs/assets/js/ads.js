@@ -86,9 +86,9 @@ if($('body').hasClass('mobile')) {
 					//PuckerStore
 					// inBodyAd.loadInArticleAd('article-body', 2, 0, '<a href="https://puckershop.com/collections/sale"><img src="http://www.puckermob.com/assets/img/PuckerStore_300x150.jpg" alt="Pucker Shop"></a>', tag);
 					//Nativo 1
-					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
+					inBodyAd.loadInArticleAd('article-body', 4, 0, '<div id="nativo-id"></div>', tag);
 					//Answers
-					// inBodyAd.loadInArticleAd('article-body', 8, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js'); window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee', slot: '#inarticle8-ad', width: 320,height: 240});</script>", tag);			
+					inBodyAd.loadInArticleAd('article-body', 8, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js'); window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee', slot: '#inarticle8-ad', width: 320,height: 240});</script>", tag);			
 					//UnderTone SeeThrough
 					// inBodyAd.loadInArticleAd('article-body', 3, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
 

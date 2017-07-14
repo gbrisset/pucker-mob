@@ -83,8 +83,9 @@ public function __construct($c){
 		$this->sponsored_pages_img = array(23564, 26139); //These articles are paid content and should keep their original image - the array is used only with image management.
 		$this->sponsored_pages_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
 		$this->test_pages =  array(11237 ,23305 ,23319 ,25829 ,27296 ,4019 ,8158 ,8541);
+		$this->blocked_pages =  array();
 
-		$this->special_pages = array_merge($this->sponsored_pages, $this->test_pages,$this->sponsored_pages_lelo);//sponsored_pages_img purposely not included here
+		$this->special_pages = array_merge($this->sponsored_pages, $this->test_pages, $this->sponsored_pages_lelo, $this->blocked_pages);//sponsored_pages_img purposely not included here
 }//end f	public function __construct
 
 
@@ -174,14 +175,15 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 // ----------- MOBILE  -------------------------------------------------------------------------------- MOBILE --------------------------------------------
 // ----------- MOBILE  -------------------------------------------------------------------------------- MOBILE --------------------------------------------
 	
-	$show_on = array(23319); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_SS.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $show_on = array(23319); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_SS.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on = array(20506); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_Flex.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_SS.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---------------------------------------
 
@@ -236,10 +238,10 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	// ---------------------------------------
 
 	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_morebar_1", 'tag' => "mbl_morebar_amazon_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_morebar_2", 'tag' => "mbl_morebar_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_morebar_3", 'tag' => "mbl_morebar_amazon_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_morebar_4", 'tag' => "mbl_morebar_amazon_4.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_morebar_1", 'tag' => "mbl_morebar_amazon_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_morebar_2", 'tag' => "mbl_morebar_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_morebar_3", 'tag' => "mbl_morebar_amazon_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_morebar_4", 'tag' => "mbl_morebar_amazon_4.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---------------------------------------
 	
@@ -249,8 +251,8 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	// $tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_featured_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 
 

@@ -116,7 +116,7 @@
 
 		case 'article_promoted': 
 		
-var_dump("qwerty");
+// var_dump("qwerty");
 
 			// $promote = new PromoteArticles();
 			// $status =  json_encode( $promote->promoteThisArticle( $_POST ) );

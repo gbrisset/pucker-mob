@@ -1,5 +1,5 @@
-<script src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
-<script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script>
+<!-- <script src="<?php echo $config['this_url']; ?>assets/js/foundation.min.js"></script>
+<script src="<?php echo $config['this_url']; ?>assets/js/dropzone.js"></script> -->
 
 <!-- Include JS files. -->
 <script src="<?php echo $config['this_url']; ?>assets/js/froalajs/froala_editor.min.js"></script>
@@ -78,7 +78,7 @@ if($('#fb-login')){
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=781998645209691";
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=108075136519369";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 

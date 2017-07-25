@@ -692,8 +692,10 @@ class MPArticleAdminController extends MPArticle{
 		//UPDATE / INSERT ARTICLE ADS SETTINGS
 		$this->updateArticleAdsInfo($post);
 
+// , date_updated =  '" . date("Y-m-d H:i:s") . "' -- added by GB on 2017-07-25
+
 		$result = $this->updateSiteObject(array(
-			'updateString' => "UPDATE articles SET {pairs} WHERE article_id = ".$post['a_i'],
+			'updateString' => "UPDATE articles SET {pairs}  , date_updated =  '" . date("Y-m-d H:i:s") . "' WHERE article_id = ".$post['a_i'],
 			'post' => $post,
 			'unrequired' => array('article_body', 'article_tags', 'article_status', 'article_yield', 'article_prep_time', 'article_cook_time', 'article_keywords', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments', 
 				'article_poll_id', 'article_desc', 'featured_hp', 'article_video_script' )
@@ -1150,11 +1152,6 @@ class MPArticleAdminController extends MPArticle{
 		$valid = $this->helpers->validateRequired($options['updateParams'], $options['unrequired']);
 		if($valid !== true) return $valid;
 		
-		//Added by GB on 2017-05-22 ------------------------------------------------------------------------
-		$updatePairs[] = "date_updated = :date_updated";
-		$options['updateParams'][':date_updated'] =  date("Y-m-d H:i:s");
-		// Enf of Added by GB on 2017-05-22 ------------------------------------------------------------------------
-
 		$options['updateString'] = str_replace('{pairs}', join(', ', $updatePairs), $options['updateString']);
 
 		$q = $this->performUpdate($options);

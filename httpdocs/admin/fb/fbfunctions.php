@@ -6,7 +6,7 @@
 //	'secret' => '1660831cfa198d28dcfc1748454e4ca7'
 //));
 //LOCALHOST:
-//appid: 781998645209691
+//appid: 108075136519369
 //secret: b6e49247747c6c667c6dfb167dc0ea70
   
   // This is called with the results from from FB.getLoginStatus().
@@ -45,11 +45,11 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '781998645209691',
+    appId      : '108075136519369',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.1
+    version    : 'v2.9' // Latest version as of 2017-07-18
   });
 
   // Now that we've initialized the JavaScript SDK, we call 
@@ -82,8 +82,8 @@
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function getUserInfoAPI() {
-    FB.api('/me', function(response) {
-    //  console.log(response);
+        FB.api('/me', 'get', {fields: 'id,name, first_name, last_name, email' }, function(response) {
+      console.log(response);
 
       if(response && response.id != null && response.id.length > 0 ){
          registerUser(response);

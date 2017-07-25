@@ -149,6 +149,7 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	$tag_list[]= array('ad_slot' => "dsk_ad_stack_3", 'tag' => "dsk_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$tag_list[]= array('ad_slot' => "dsk_ad_stack_4", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
+	
 	// ---------------------------------------
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
@@ -212,13 +213,15 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_puckerstore.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "mbl_eoa_bravonate.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "mbl_eoa_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "mbl_eoa_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "mbl_ad_stack_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---------------------------------------
 
@@ -233,7 +236,8 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	$tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_BelowButton_300x250.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// ---------------------------------------
 

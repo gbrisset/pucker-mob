@@ -59,35 +59,27 @@
 					 <?php
 
 
-						echo $smf_adManager->display_tags("mbl_image", $article_id, $article_title);//passing title is optional, only needed for img ad slots
 
-			        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017	
-
-
-					 // switch ($article_id) {
+			     
+					 switch ($article_id) {
 				 	
-						
-					 // 	case 23564: // relationships/dating-pitfalls-avoiding-the-freaks-geeks-and-the-thoroughly-undatable
-					 // 	case 26139: // moblog/to-the-20-somethings-looking-for-love-check-out-inner-circle
-						// 	 	// These articles are paid content and should keep their original image
-							
 
-						// case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-						//  case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-					 // 			// used as a test page - leave regular image, no video
-					 // 		echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
-						// 	break;
-
-						// case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-						// 	include($config['include_path'] . 'ads/dsk_img_answers_videomosh_no_preroll.php');
-						// 	break;
+						case 10855: //	to-the-person-who-loves-me-next	
+						case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
+						case 23464: //	ill-always-be-in-your-corner	
+						case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
+						case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
+						case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
 						
-					 // 	default:
-						// 	// include($config['include_path'] . 'ads/video_4chicks_bottle_2.php'); // on HOLD as of 2017-03-28
-					 // 		// echo "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id" . "_tall.jpg\" alt=\" $article_title Image\">";
-						// 	include($config['include_path'] . 'ads/dsk_img_video_truvidplayer.php');
+					 	
+							include($config['include_path'] . 'ads/tout_glade_ad_video.php');
+							break;
+						
+					 	default:
+							echo $smf_adManager->display_tags("mbl_image", $article_id, $article_title);//passing title is optional, only needed for img ad slots
 							
-					 // }//end switch ($article_id)
+					 }//end switch ($article_id)
+
 
 						// OLD CODE PLAYING VIDEOS WHEN VIDEO IS ASSOCIATED WITH THE ARTICLE
 

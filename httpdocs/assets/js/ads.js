@@ -73,12 +73,35 @@ if($('body').hasClass('mobile')) {
 					
 
 				case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
+					//UnderTone SeeThrough
+					inBodyAd.loadInArticleAd('article-body', 4, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
+
+
 				case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 			 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 			 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
 			 	case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
 					//do nothing - we do not want other ads to interfer with the test page
 					break;
+
+
+
+				// Ad stack in relation to the tout Glade ad in image slot
+				case 10855: //	to-the-person-who-loves-me-next	
+				case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
+				case 23464: //	ill-always-be-in-your-corner	
+				case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
+				case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
+				case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
+					//Nativo 1
+					inBodyAd.loadInArticleAd('article-body', 4, 0, '<div id="nativo-id"></div>', tag);
+					// Kixer
+					inBodyAd.loadInArticleAd('article-body', 8, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
+					//UnderTone SeeThrough
+					inBodyAd.loadInArticleAd('article-body', 12, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
+
+				break;
+						
 
 			 	default:
 					//PuckerStore

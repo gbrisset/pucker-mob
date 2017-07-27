@@ -216,6 +216,9 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	$tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
+	// $show_on = array("11237"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "positive_mobile.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "mbl_eoa_bravonate.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_eoa", 'tag' => "mbl_eoa_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);

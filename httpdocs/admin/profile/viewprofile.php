@@ -30,6 +30,40 @@
 	$contributor_seo_name = $contributorInfo['contributor_seo_name'];
 	$article_list = $adminController->user->getContributorsArticleList( $contributor_id );
 
+
+//**************************************************************************************
+//**************************************************************************************
+//**************************************************************************************
+//**************************************************************************************
+
+	//added by GB on 2017-07-27 -----------------------------------
+	$arr_ids = [];
+	foreach($article_list as $article){
+		$arr_ids[] = $article['article_id'];
+	}
+
+	//Implode all the ids for each article on the current index page.
+	$comma_separated = implode(", ", $arr_ids);
+
+	//Get usa pageviews for each article on the list
+	
+	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
+	$pageviews_list = [];
+	if($usa_pageview_list){
+		foreach($usa_pageview_list as $key=>$value){
+			$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
+		}
+	}
+	//end of added by GB on 2017-07-27 -----------------------------------
+
+ // $ddd = new debug($pageviews_list,0); $ddd->show();// 0-Green; 1-Red; 2-Dark; 3-Yellow;
+
+//**************************************************************************************
+//**************************************************************************************
+//**************************************************************************************
+//**************************************************************************************
+//**************************************************************************************
+
 	//	Verify if the usr has ever SELECTED an image
 	if( isset($image) ){ $contImageExists = file_exists($contImageDir); }
 
@@ -127,6 +161,10 @@
 							</td>
 							<td class="no-padding-right">
 								<a href="<?php echo $article_url; ?>" ><?php echo $article['article_title'];?></a>
+							</td>
+							<td class="no-padding-right">
+								<?php echo $pageviews_list[$article['article_id']]; ?>
+						<div style="font-size: smaller;">	Pageviews</div>
 							</td>
 						</tr>
 						<?php }?>

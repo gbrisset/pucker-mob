@@ -98,7 +98,7 @@
 				<a href="<?php echo $config['this_admin_url']; ?>reports/">Reports<i class="fa fa-chevron-down"></i></a></li>
 				<ul class="" style="opacity: 1; z-index: 1; display: none;"><h2>Reports</h2>
 					<li class="small-12 columns border-top border-bottom padding-top padding-bottom" id="bloggers_report"><a href="<?php echo $config['this_admin_url']; ?>reports/"> Bloggers Report</a></li>
-					<li class="small-12 columns  padding-top padding-bottom" id="writers_report"><a href="<?php echo $config['this_admin_url']; ?>reports/writersreport.php">Writers Report</a></li>
+					<li class="small-12 columns  padding-top padding-bottom" id="writers_report"><a href="<?php echo $config['this_admin_url']; ?>reports/levelsreport.php">Bloggers Level Report</a></li>
 				</ul>
 			</li>
 

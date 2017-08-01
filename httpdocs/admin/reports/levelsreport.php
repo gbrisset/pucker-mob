@@ -30,10 +30,10 @@
 
 	if(!$adminController->user->checkPermission('user_permission_show_view_articles')) $adminController->redirectTo('noaccess/');
 
-	// $current_day = date('j');
-	// $current_month = date('n');
-	$current_day = 15;
-	$current_month = 6;
+	$current_day = date('j');
+	$current_month = date('n');
+	// $current_day = 15;
+	// $current_month = 6;
 
 	$current_year = date('Y');
 
@@ -86,7 +86,7 @@
 							<tr>
 								<td colspan=\"2\" style=\" background-color:#e5e5e5; color: #333;\" class=\"align-center\">BLOGGER</td>
 								<td colspan=\"4\" style=\" background-color:#CCE0CC; color: #333;\" class=\"align-center\">TO DATE - $current_day Days</td>
-								<td colspan=\"4\" style=\" background-color:#8DB88D; color: #333;\" class=\"align-center\">NEXT LEVEL EFFORT</td>
+								<td colspan=\"5\" style=\" background-color:#8DB88D; color: #333;\" class=\"align-center\">NEXT LEVEL EFFORT</td>
 								
 								
 							</tr>
@@ -167,8 +167,8 @@
 							$blg_pageviews_needed_to_effort_level = $blg_effort_level_threshold - $blg_pageviews;
 							$blg_effort_ratio = 100*($blg_pageviews_needed_to_effort_level/$blg_pageviews);
 							$blg_flag_level = 10;//percent
-							$blg_flag_bg = (($blg_effort_ratio)<=$blg_flag_level)? "background-color:#F9EFDE;" : ""; 
-							$blg_flag_display = (($blg_effort_ratio)<=100)? number_format($blg_effort_ratio, 2, '.', ',') . "%" : "100%+"; 
+							$blg_flag_bg = ($blg_effort_ratio>0 && $blg_effort_ratio<=$blg_flag_level)? "background-color:#F9EFDE;" : ""; 
+							$blg_flag_display = ($blg_effort_ratio>0 && $blg_effort_ratio<=(2*$blg_flag_level))? number_format($blg_effort_ratio, 2, '.', ',') . "%" : "&mdash;"; 
 
 							
 

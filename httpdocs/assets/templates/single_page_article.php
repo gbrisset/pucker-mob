@@ -64,16 +64,16 @@
 					 switch ($article_id) {
 				 	
 
-						case 10855: //	to-the-person-who-loves-me-next	
-						case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
-						case 23464: //	ill-always-be-in-your-corner	
-						case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
-						case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
-						case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
+						// case 10855: //	to-the-person-who-loves-me-next	
+						// case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
+						// case 23464: //	ill-always-be-in-your-corner	
+						// case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
+						// case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
+						// case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
 						
 					 	
-							include($config['include_path'] . 'ads/tout_glade_ad_video.php');
-							break;
+						// 	include($config['include_path'] . 'ads/tout_glade_ad_video.php');
+						// 	break;
 						
 					 	default:
 							echo $smf_adManager->display_tags("mbl_image", $article_id, $article_title);//passing title is optional, only needed for img ad slots
@@ -119,22 +119,7 @@
 
 							echo $smf_adManager->display_tags("mbl_below_image", $article_id);
 
-					        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
-							 // switch ($article_id) {
-							 // 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-							 // 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-							 // 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-							 // 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-	 						// 	case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-
-								//  	//do nothing - we do not want other ads to interfer with the test pages
-								//  	break;
-
-							 // 	default:
-								// 	// include($config['include_path'] . 'ads/codefuel.php'); //on hold for now - 2017-03-31
-								// 	include($config['include_path'] . 'ads/mbl_below_image_google.php');
-								// 	// include($config['include_path'] . 'ads/nativo_1.php');
-							 // }//end switch ($article_id)
+					     
 
 						 ?>
 					</div>
@@ -238,41 +223,6 @@
 			  	echo $smf_adManager->display_tags("mbl_ad_stack_2", $article_id);
 			  	echo $smf_adManager->display_tags("mbl_ad_stack_3", $article_id);
 
-		        // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
-				 // $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-				
-				//  if(in_array($article_id, $selected_articles_lelo)){
-
-				// 	include($config['include_path'] . 'ads/mbl_ad_stack_lelo.php');
-
-				//  }else{	
-
-				// 		 switch ($article_id) {
-				// 		 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-				// 			case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-							
-				// 				//do nothing - we do not want other ads to interfer with the test page
-				// 				break;
-
-				// 		 	case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-				// 		 		break;
-	
-				// 			case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
-				// 				include($config['include_path'] . 'ads/_TEST_AD_PermanentTestTag_Bethany.php');
-				// 			 	break;
-						 	
-				// 		 	
-				// 		 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-				// 		 		break;
-						 	
-				// 		 	default:
-				// 				include($config['include_path'] . 'ads/mbl_ad_stack_nativo_2.php');
-				// 				include($config['include_path'] . 'ads/mbl_ad_stack_sharethrough.php');
-				// 				include($config['include_path'] . 'ads/mbl_ad_stack_answer_inbanner_2.php');
-				// 		 		break;
-				// 		 }//end switch ($article_id)
-
-				// }//end if( in_array($article_id, $selected_articles_lelo)
 
 				?>
 

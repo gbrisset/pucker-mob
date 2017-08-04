@@ -66,8 +66,16 @@ test_pages
 8158  /relationships/8-things-guys-do-that-make-our-hearts-melt
 8541  /lifestyle/19-reasons-to-date-the-girl-with-no-filter
 
+To test Loreal  - delete after august 31 2017
+------------
+5338: // why-wearing-makeup-isnt-false-advertising
+7378: // 20-things-only-girls-who-love-makeup-understand
+
+//test stack for ANSWERS_ROCKETYIELD_2 - delete after august 31 2017
+case 17219: // loving-someone-you-cant-love
 
 */
+
 
 
 class smf_adManager{
@@ -82,7 +90,7 @@ public function __construct($c){
 		$this->sponsored_pages = array(); //Placeholder for future content
 		$this->sponsored_pages_img = array(23564, 26139); //These articles are paid content and should keep their original image - the array is used only with image management.
 		$this->sponsored_pages_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-		$this->test_pages =  array(11237 ,23305 ,23319 ,25829 ,27296 ,4019 ,8158 ,8541);
+		$this->test_pages =  array(11237 ,23305 ,23319 ,25829 ,27296 ,4019 ,8158 ,8541, 5338, 7378, 17219);//5338, 7378 - to test Loreal only, 17219, temp tets page answers delete after 8/31/2017
 		$this->blocked_pages =  array();
 
 		$this->special_pages = array_merge($this->sponsored_pages, $this->test_pages, $this->sponsored_pages_lelo, $this->blocked_pages);//sponsored_pages_img purposely not included here
@@ -125,17 +133,21 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	$show_on = array(23305); $dont_show_on = array();
 	$tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "dsk_img_answers_videomosh_no_preroll.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	// $show_on = array("all"); $dont_show_on = array(23305);
-	// $tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "dsk_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	
-	$show_on = array("all"); $dont_show_on = array(23305);
+	$show_on = array(5338, 7378); $dont_show_on = array_diff($this->special_pages, $show_on);// Loreal test -remove after 2017-08-31
 	$tag_list[]= array('ad_slot' => "dsk_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "dsk_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
+	// $show_on = array("all"); $dont_show_on = array(23305);
+	// $tag_list[]= array('ad_slot' => "dsk_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	
 	// ---------------------------------------
 
+	$show_on = array(5338, 7378); $dont_show_on = array();// Loreal test -remove after 2017-08-31
+	$tag_list[]= array('ad_slot' => "dsk_below_image", 'tag' => "below_image_loreal.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// These are place holders - there is no such ad slot as of yet - GB 2017-05-03
-	// $tag_list[]= array('ad_slot' => "dsk_below_image", 'tag' => "XXXXX.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "dsk_eoa", 'tag' => "XXXXX.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---------------------------------------
@@ -196,6 +208,9 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 
 	$show_on = $this->sponsored_pages_img; $dont_show_on = array();// These articles are paid content and should keep their original image
 	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
+	$show_on = array(5338, 7378,17219); $dont_show_on = array();// Loreal test and Answer rocketyield test -remove after 2017-08-31
+	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// $show_on = array(23305); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
 	// $tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_answers_videomosh_no_preroll.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -203,17 +218,20 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	// $show_on = array(11237); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
 	// $tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_video_truvidplayer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	// $show_on = array("all"); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
-	// $tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-
 	$show_on = array("all"); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
-	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+
+	// $show_on = array("all"); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
+	// $tag_list[]= array('ad_slot' => "mbl_image", 'tag' => $image_tag, 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---------------------------------------
 
+	$show_on = array(5338, 7378); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "below_image_loreal.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	// $tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_puckerstore.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_puckerstore.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// $show_on = array("11237"); $dont_show_on = array_diff($this->special_pages, $show_on);

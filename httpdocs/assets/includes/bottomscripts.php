@@ -72,37 +72,27 @@
 
   if( isset($promotedArticle) && !$promotedArticle ){ 
 
-      echo $smf_adManager->display_tags("mbl_overlay_bottom", $article_id);
 
-      // CODE BELOW IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
-      
-      //   $selected_articles_lelo = array(16562 , 17425 ,14479 ,14576 ,15109 ,15271 ,17286, 8560, 14613 , 15104 ,15284 ,15488, 14873 );
-       
-      //    if(in_array($article_id, $selected_articles_lelo)){
-      //     // do nothing - no ads to interfer with Lelo paid content
-      //    }else{ 
 
-      // // select ads ----------------------------------------------------------------------------------------------------------------------------
-      //        switch ($article_id) {
-      //         case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
-      //         case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-      //         case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-      //         case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+           switch ($article_id) {
+          
 
-      //           //do nothing - we do not want other ads to interfer with the test page
-      //           break;
+            // case 10855: // to-the-person-who-loves-me-next 
+            // case 18283: // a-letter-to-the-girl-who-hasnt-been-herself-in-awh... 
+            // case 23464: // ill-always-be-in-your-corner  
+            // case 28002: // to-the-girl-who-thinks-he-wont-regret-losing-you  
+            case 29816: //  how-to-heal-your-broken-heart-based-on-your-zodiac  
+            // case 33890: // im-not-afraid-to-fight-with-you-because-i-would-fi... 
+            // // DO NOTHING 
+            
+            break;
+            
+            default:
+              echo $smf_adManager->display_tags("mbl_overlay_bottom", $article_id);
+              
+           }//end switch ($article_id)
 
-      //         case 22475: // not sure why this is separated -- GB 2017-02-27
-      //           include($config['include_path'] . 'ads/spoutable.php');
-      //           break;
 
-      //         default:
-      //           // include($config['include_path'] . 'ads/adhesion_iframe_buster.php');
-      //           include($config['include_path'] . 'ads/mbl_overlay_bottom_adhesion_kixer.php');
-
-      //        }//end switch ($article_id)
-        // }//end if( in_array($article_id, $selected_articles_lelo)
-      // CODE ABOVE IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 
 
 

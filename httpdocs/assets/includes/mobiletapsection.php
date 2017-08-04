@@ -70,21 +70,17 @@
 									 switch ($index) {
 									 	case 1: 
 										  	echo $smf_adManager->display_tags("mbl_morebar_1", $article_id);
-											// include($config['include_path'] . 'ads/mbl_morebar_amazon_1.php'); // THIS CODE  IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 									 		break;
 									 	case 2: 
 										  	echo $smf_adManager->display_tags("mbl_morebar_2", $article_id);
-											// include($config['include_path'] . 'ads/mbl_morebar_amazon_2.php'); // THIS CODE  IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 									 		break;
 									 	case 3: 
 										  	echo $smf_adManager->display_tags("mbl_morebar_3", $article_id);
-											// include($config['include_path'] . 'ads/mbl_morebar_amazon_3.php'); // THIS CODE  IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 									 		break;
 									 	case 4: 
 										  	echo $smf_adManager->display_tags("mbl_morebar_4", $article_id);
-											// include($config['include_path'] . 'ads/mbl_morebar_amazon_4.php'); // THIS CODE  IS REPLACED BY THE SMF_ADMANAGER ABOVE - DELETE COMMENTED OUT CODE AFTER MAY 15 2017
 									 		break;
-									 }//end switch ($article_id)
+									 }//end switch ($index)
 
 								?>
 							</div>

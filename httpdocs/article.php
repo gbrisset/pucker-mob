@@ -121,23 +121,23 @@ if(!is_null($categoryInfo)){
 	
 
 
-					 switch ($article_id) {
-				 	
+		 switch ($article_id) {
+	 	
 
-						// case 10855: //	to-the-person-who-loves-me-next	
-						// case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
-						// case 23464: //	ill-always-be-in-your-corner	
-						// case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
-						// case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
-						// case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
-						// // DO NOTHING 
-					 	
-						// break;
-						
-					 	default:
-							echo $smf_adManager->display_tags("mbl_overlay_top", $article_id);
-							
-					 }//end switch ($article_id)
+			// case 10855: //	to-the-person-who-loves-me-next	
+			// case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
+			// case 23464: //	ill-always-be-in-your-corner	
+			// case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
+			case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
+			// case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
+			// // DO NOTHING 
+		 	
+			break;
+			
+		 	default:
+				echo $smf_adManager->display_tags("mbl_overlay_top", $article_id);
+				
+		 }//end switch ($article_id)
 
  ?>
 
@@ -176,7 +176,17 @@ if(!is_null($categoryInfo)){
 		<?php include_once('admin/fb/fbfunctions.php'); ?>
 
 		<!-- MOBILE MORE TAB -->
-		<?php  include_once($config['include_path'].'mobiletapsection.php'); ?>
+		<?php switch ($article_id) {
+				//Loreal test - DELETE AFTER AUGUST 31 2017
+				case 5338: // why-wearing-makeup-isnt-false-advertising
+				case 7378: // 20-things-only-girls-who-love-makeup-understand
+				// Do Nothing
+				break;
+				
+			 	default:
+			 include_once($config['include_path'].'mobiletapsection.php');
+		 }//end switch ($article_id) ?>		
+
 
 		<!-- SCRIPTS -->
 		<?php include_once($config['include_path'].'bottomscripts.php');?>
@@ -216,11 +226,11 @@ if(!is_null($categoryInfo)){
 						// case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
 						// case 23464: //	ill-always-be-in-your-corner	
 						// case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
-						// case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
+						case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
 						// case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
 						// // DO NOTHING 
 					 	
-						// break;
+						break;
 						
 					 	default:
 					 			echo $smf_adManager->display_tags("dsk_overlay_top", $article_id);
@@ -295,12 +305,12 @@ if(!is_null($categoryInfo)){
 						// case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
 						// case 23464: //	ill-always-be-in-your-corner	
 						// case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
-						// case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
+						case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
 						// case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
 						
 					 	
-						// 	include($config['include_path'] . 'ads/tout_glade_ad_video.php');
-						// 	break;
+							include($config['include_path'] . 'ads/tout_glade_ad_video.php');
+							break;
 						
 					 	default:
 							echo $smf_adManager->display_tags("dsk_image", $article_id, $article_title); //passing title is optional, only needed for img ad slots

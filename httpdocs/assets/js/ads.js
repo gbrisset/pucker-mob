@@ -64,10 +64,8 @@ if($('body').hasClass('mobile')) {
 					inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
 					break;
 					
-			 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-					//Genesis TEST PAGE
-					inBodyAd.loadInArticleAd('article-body', 8, 0, "<div id=\"adg_main\"></div><script type=\"text/javascript\" id=\"gm-script-tag\" src=\"//adg.bzgint.com/pub/adg/config.js?site_id=146313&publisher_name=SequelMedia_adaptive&css_path=%23adg_main&intercept_id=8001&page_id=769404&ad_url=http%3A%2F%2Fad.crwdcntrl.net%2F5%2Fc%3D1890%2Fpe%3Dy%3Fhttp%3A%2F%2Fadserver.genesismediaus.com%2Fac%3Fsiteid%3D146313%26pgid%3D769404%26fmtid%3D31360%26ab%3D1%26oc%3D1%26out%3Dvast%26ps%3D1%26pb%3D0%26visit%3DS%26vcn%3Dc%26tmstp%3D%5Btimestamp%5D%26tgt%3Dabbr%253D%2524%257Baud_ids%253A%253Babbr%253D%257D%253Bst%253D__KVST__%253Biid%253D__KVIID__%253Bvol%253D__KVVO__&skip_time=10&enableNASA=true&mobile_dock_return=true&allowed_intercepts=3,8&view_url=%%VIEW_URL_ESC%%\"></script>", tag);
-					break;
+			 	// case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+					// break;
 
 
 					
@@ -75,12 +73,30 @@ if($('body').hasClass('mobile')) {
 				case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
 					//UnderTone SeeThrough
 					inBodyAd.loadInArticleAd('article-body', 4, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
+					break;
+
+				case 17219: // loving-someone-you-cant-love
+				//test stack for ANSWERS_ROCKETYIELD_2 - delete after august 31 2017
+					//Nativo 1
+					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
+					// ANSWERS_ROCKETYIELD_2 - TEST
+					inBodyAd.loadInArticleAd('article-body', 8, 0, '<!-- ANSWERS_ROCKETYIELD_2 --> <div id="ry_j5xzz1e8"></div><script type="text/javascript"> top["_rocketyield"] = top["_rocketyield"] || []; !function (e, f, u) {e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(top.document.createElement("script"), top.document.getElementsByTagName("script")[0], "//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js"); top["_rocketyield"].push({pid: "puckermob", placementId: "j5xzz1e8", slot: "#ry_j5xzz1e8"}); </script>', tag);
+					//UnderTone SeeThrough
+					inBodyAd.loadInArticleAd('article-body', 12, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
+					// Kixer
+					inBodyAd.loadInArticleAd('article-body', 16, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
+					break;
 
 
 				case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 			 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 			 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
 			 	case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
+
+				//test page for Loreal
+				case 5338: // why-wearing-makeup-isnt-false-advertising
+				case 7378: // 20-things-only-girls-who-love-makeup-understand
+
 					//do nothing - we do not want other ads to interfer with the test page
 					break;
 
@@ -104,7 +120,7 @@ if($('body').hasClass('mobile')) {
 				// 	// Kixer
 				// 	inBodyAd.loadInArticleAd('article-body', 12, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
 
-				break;
+				// break;
 						
 
 			 	default:
@@ -113,7 +129,7 @@ if($('body').hasClass('mobile')) {
 					//PuckerStore
 					// inBodyAd.loadInArticleAd('article-body', 2, 0, '<a href="https://puckershop.com/collections/sale"><img src="http://www.puckermob.com/assets/img/PuckerStore_300x150.jpg" alt="Pucker Shop"></a>', tag);
 					//Nativo 1
-					inBodyAd.loadInArticleAd('article-body', 4, 0, '<div id="nativo-id"></div>', tag);
+					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
 					//Answers
 					inBodyAd.loadInArticleAd('article-body', 8, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js'); window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee', slot: '#inarticle8-ad', width: 320,height: 240});</script>", tag);			
 					//UnderTone SeeThrough
@@ -191,6 +207,13 @@ if($('body').hasClass('mobile')) {
 				// 	inBodyAd.loadInArticleAd('article-body', 8, 0, '<div id="nativo-id"></div>', tag);
 				// break;
 
+
+				//test page for Loreal
+				case 5338: // why-wearing-makeup-isnt-false-advertising
+				case 7378: // 20-things-only-girls-who-love-makeup-understand
+
+					//do nothing - we do not want other ads to interfer with the test page
+					break;
 			 	default:
 					inBodyAd.loadInArticleAd('article-body', 3, 0, '<div id="nativo-id"></div>' , tag);
 					$('#inarticle3-ad').removeClass('columns');

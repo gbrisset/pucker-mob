@@ -62,18 +62,17 @@
 
 			     
 					 switch ($article_id) {
-				 	
 
 						// case 10855: //	to-the-person-who-loves-me-next	
 						// case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
 						// case 23464: //	ill-always-be-in-your-corner	
 						// case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
-						// case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
+						case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
 						// case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
 						
 					 	
-						// 	include($config['include_path'] . 'ads/tout_glade_ad_video.php');
-						// 	break;
+							include($config['include_path'] . 'ads/tout_glade_ad_video.php');
+							break;
 						
 					 	default:
 							echo $smf_adManager->display_tags("mbl_image", $article_id, $article_title);//passing title is optional, only needed for img ad slots
@@ -114,7 +113,7 @@
 				<!-- AD BELOW IMAGE ========================================================================================================== -->
 
 				<div id="mobile-instream-branovate-ad" style="text-align: center; margin-bottom: 10px; margin-top: 5px;">
-					<div id="get-content" style="text-align:center; display: inline-block;">
+					<div id="get-content" style="text-align:center;width: 100%; display: inline-block;">
 						<?php
 
 							echo $smf_adManager->display_tags("mbl_below_image", $article_id);
@@ -207,11 +206,24 @@
 
 		<!-- READ MORE ========================================================================================================== -->
 
-		 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
-					<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #497240; /*#78AD6C - original color*/ ">
-						<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
-					</div>
-				</div> 
+				<?php switch ($article_id) {
+						//Loreal test - DELETE AFTER AUGUST 31 2017
+						case 5338: // why-wearing-makeup-isnt-false-advertising
+						case 7378: // 20-things-only-girls-who-love-makeup-understand
+						case 17219: // loving-someone-you-cant-love
+						// Do Nothing
+						break;
+						
+					 	default:
+				?>						
+
+					 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
+								<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #497240; /*#78AD6C - original color*/ ">
+									<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
+								</div>
+							</div> 
+
+				<?php }//end switch ($article_id) ?>
 
 		
 		<!-- ADS STACK ========================================================================================================== -->
@@ -264,6 +276,15 @@
 		<div class="row clear">
 			<section id="article-content" class="small-12 column sidebar-box padding-top">
 			
+								<div id="get-content" style="text-align:center; width: 100%; display: inline-block;">
+						<?php
+
+							echo $smf_adManager->display_tags("dsk_below_image", $article_id);
+
+					     
+
+						 ?>
+					</div>
 				<!-- ARTICLE BODY -->
 				<div id="article-body">
 					<p><?php echo $article_body; ?></p>

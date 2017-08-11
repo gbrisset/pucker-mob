@@ -287,6 +287,7 @@
 
 
 			  			if($contributor['to_be_pay_fixed']  < 25) continue;
+			  			if($contributor['w9_live']==0) continue;
 			  			$blg_user_type = $contributor['user_type'];
 						
 						$blogger = false;

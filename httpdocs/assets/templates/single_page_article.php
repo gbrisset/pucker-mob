@@ -63,6 +63,17 @@
 			     
 					 switch ($article_id) {
 
+						// To test EGAMI -  - delete after august 31 2017
+
+						// case 10855: // to-the-person-who-loves-me-next
+						// case 18850: // im-not-the-girl-i-was-last-year-and-thats-okay
+						// case 29271: // heres-your-daily-reminder-that-youre-not-an-option
+						// case 34146: // what-happened-to-dating-relationships-and-titles
+						// case 34921: // the-type-of-douche-canoe-you-attract-based-on-your...
+
+						// 	include($config['include_path'] . 'ads/egami_mob_1.php');
+						// 	break;
+
 						// case 10855: //	to-the-person-who-loves-me-next	
 						// case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
 						// case 23464: //	ill-always-be-in-your-corner	

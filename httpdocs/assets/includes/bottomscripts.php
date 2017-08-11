@@ -75,7 +75,15 @@
 
 
            switch ($article_id) {
-          
+          // To test EPOM  -  - delete after august 31 2017
+            // case 25066: // what-her-drink-of-choice-says-about-her
+            // case 28231: // 150-throwback-thursday-jams-we-all-forget-about-an...
+            // case 32860: // this-is-what-youll-miss-when-shes-had-enough
+            // case 33890: // im-not-afraid-to-fight-with-you-because-i-would-fi...
+            case 35814: // whats-a-selfesteem-attack
+
+              include($config['include_path'] . 'ads/epom_catfish.php');
+              break;
 
             // case 10855: // to-the-person-who-loves-me-next 
             // case 18283: // a-letter-to-the-girl-who-hasnt-been-herself-in-awh... 

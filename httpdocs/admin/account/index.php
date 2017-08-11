@@ -1,4 +1,5 @@
 <?php
+
         $admin = true;
         require_once('../../assets/php/config.php');
         if(!$adminController->user->getLoginStatus()) $adminController->redirectTo('login/');
@@ -43,7 +44,7 @@
 							<input type="text" name="user_email" id="user_email" placeholder="CURRENT E-MAIL" value="<?php if(isset($adminController->user->data['user_email'])) echo $adminController->user->data['user_email']; ?>" required  />
 						</div>
 						<div class="columns small-12 margin-top">
-							<input type="email" name="user_email" id="user_email-e" placeholder="NEW E-MAIL" value="" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
+							<input type="email" name="user_email-e" id="user_email-e" placeholder="NEW E-MAIL" value="" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'contributor_email_address') echo 'autofocus'; ?> />
 						</div>		
 					</div>	
 

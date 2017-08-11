@@ -1,0 +1,2 @@
+<!-- egami_mob_1 -->
+<!-- TAG START { player: "PucckerMob", owner: "EGAMI", for: "EGAMI" } --><div id="598c5eab9efa8969320c38ce" class="vdb_player vdb_598c5eab9efa8969320c38ce57d325e276a6057ba4a05a00">    <script async type="text/javascript" src="//delivery.vidible.tv/jsonp/pid=598c5eab9efa8969320c38ce/57d325e276a6057ba4a05a00.js"></script></div><!-- TAG END { date: 08/10/17 } -->

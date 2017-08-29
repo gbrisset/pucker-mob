@@ -120,11 +120,11 @@ if($('#openModal')){
      
         $.ajax({
           type: "POST",
-          url: "<?php $config['this_url']?>assets/ajax/subscribers.php",
+          url: "<?php echo $config['this_url']?>assets/ajax/subscribers.php",
           data: { articleId: $('#articleId').val(), email: $('#email').val()}
         })
           .done(function( msg ) {
-          
+        
             if(msg  == 1) {
 
                msg_return = "Email added successfully!";

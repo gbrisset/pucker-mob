@@ -20,8 +20,9 @@
 
 		case 'register-reader':
 			$reader_email = $data['user_email']; 
-			$author_id = $data['author_id'];	
+			$author_id = $data['author_id'];
 			$register = $adminController->user->doRegistration($data);
+
 			if(!$register['hasError']){
 				echo json_encode($adminController->user->followAnAuthor($reader_email, $author_id));
 			}else{

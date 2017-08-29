@@ -116,9 +116,9 @@
 						// No longer busy!	
 						busy = false;
 
-						/*$.each($('.article-id'),  function( i ){
+						$.each($('.article-id'),  function( i ){
 					 	 	getTotalShares( $(this).attr('data-info-url'), $(this) );
-					 	});*/
+					 	});
 					}	
 						
 				});
@@ -240,9 +240,9 @@
 						// No longer busy!	
 						busy = false;
 
-						/*$.each($('.article-id'),  function( i ){
+						$.each($('.article-id'),  function( i ){
 					 	 	getTotalShares( $(this).attr('data-info-url'), $(this) );
-					 	});*/
+					 	});
 					}	
 						
 				});

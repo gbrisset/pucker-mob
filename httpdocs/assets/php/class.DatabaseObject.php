@@ -206,12 +206,9 @@ class DatabaseObject{
 		//	Get the name of the id field from the classname
 		$id_fieldname = static::get_id_fieldname(get_called_class());
 		//	Set $this's properties
-
-
 		foreach($post as $obj_atributte => $obj_value){ 
 			$this->$obj_atributte = $obj_value; 
 		}
-
 		// A new record won't have an id yet.
 		return isset($this->$id_fieldname) ? $this->update($post, $files) : $this->create($post, $files);
 	}
@@ -288,7 +285,6 @@ class DatabaseObject{
 	public function update($post, $files=[]) {
 		$db = SDConnector::getInstance();
 		$pdo = $db->getConnection();
-
 		//	Get the name of the id field from the classname
 		$id_fieldname = static::get_id_fieldname(get_called_class());
 		//	If the array of files only has one index, shift it out
@@ -315,6 +311,7 @@ class DatabaseObject{
 		$attribute_pairs = array();
 		foreach ($attributes as $attribute => &$value) {
 			$attribute_pairs[] = "{$attribute}=".":"."{$attribute}";
+			//var_dump($attribute_pairs);
 		}
 		$q = $pdo->prepare("UPDATE ".static::$table_name." SET ".join(", ", $attribute_pairs)." WHERE {$id_fieldname}=".$this->$id_fieldname);
 		foreach ($attributes as $attribute => &$value) {
@@ -324,7 +321,6 @@ class DatabaseObject{
 					$q->bindParam((":".$attribute), $value, PDO::PARAM_STR);  // bind the variable to the statement
 				}
 		}
-
 		//	Execute the query	
 		if ($q->execute()) {
 			foreach($files as $file){

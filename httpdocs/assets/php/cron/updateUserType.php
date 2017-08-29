@@ -76,7 +76,7 @@
 					$data = [ "user_id" => $user_id, "user_type" => 3 ];
 					$not  = [ 
 						"user_id" => $user_id, 
-						"message" => "Ugh! Sorry, but you had less than 25,000 US visits for two months, so we had to move you back to Basic. Get your traffic back up, and we’ll put you back up to Pro!", 
+						"message" => "Ugh! Sorry, but you had less than 25,000 US visits for two months, so we had to move you back to Community. Get your traffic back up, and we’ll put you back up to Pro!", 
 						"type" => 2, 
 						"date" => date( 'Y-m-d H:s:i', strtotime('now')) 
 					];
@@ -101,7 +101,7 @@
 //var_dump("WARNING: ", $user_name, $user_id,  "--------------------------------------");
 					$not  = [ 
 						"user_id" => $user_id, 
-						"message" => "Opps! You fell below 25,000 US visits last month. It’s ok - we all hit bumps in the road. But get your traffic back up this month so we don’t have to banish you back to Basic!", 
+						"message" => "Opps! You fell below 25,000 US visits last month. It’s ok - we all hit bumps in the road. But get your traffic back up this month so we don’t have to banish you back to Community!", 
 						"type" => 2 , 
 						"date" => date( 'Y-m-d H:s:i', strtotime('now'))
 					];

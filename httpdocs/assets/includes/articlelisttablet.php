@@ -7,11 +7,32 @@ $quantity = 24;
 $omitThis = 0;
 $cat_id = $mpArticle->data['cat_id'];
 
-// If is HomePage Get new article List
+$featuredArticle = false;//$mpArticle->getFeaturedArticle( $cat_id );
+if( $featuredArticle && $featuredArticle['article_status'] == 1){
+	$articleIndex++;
+	$quantity = 25;
+	$omitThis =  $featuredArticle['article_id'];
+
+	include_once($config['include_path'].'featured_article.php');
+if(isset($has_sponsored) && $has_sponsored){ /*DO NOTHING*/ }
+	else{ ?>
+	<!-- ShareT -->
+	<div id="shareT-ad" style="margin-bottom: 0.5rem;" class="columns mobile-12 small-12 medium-12 large-12 xlarge-12 no-padding padding-bottom">
+		<div data-str-native-key="6898172d" style="display: none;"></div>
+		<script type="text/javascript" src="//native.sharethrough.com/assets/str-dfp.js"></script>
+	</div>
+	<hr class="padding-top">
+	<?php }
+}
+
+//$articlesList = $mpArticle->getArticles(['count' => $quantity, 'omit' => [ $omitThis ]]);
+//$articlesList = $mpArticle->getArticlesList(['limit' => $quantity, 'omit' => $omitThis ]);
+/* Article List */
+	// If is HomePage Get new article List
 if( $cat_id == 1){
-	$articlesList = $mpArticle->getArticlesListView(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis, 'user_type'=> '1, 6, 7, 9' ]);
+	$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis, 'withMobLogs'=> true ]);
 }else{
-	$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id ] );
+	$articlesList = $mpArticle->getMobileArticleList(['limit' => '10', 'offset'=>'0', 'omit' => $omitThis , 'pageId' => $cat_id, 'withMobLogs'=> false ] );
 }
 
 $totalArticles = count($articlesList );

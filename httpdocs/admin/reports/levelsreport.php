@@ -119,12 +119,12 @@
 
 			  	 foreach( $results as $contributor){
 
-					$month_fraction = $current_day/30.4; 
-					$report_minimum_earning = 25 * $month_fraction;
+					// $month_fraction = $current_day/30.4; 
+					// $report_minimum_earning = 25 * $month_fraction;
+				  	// if($contributor['to_be_pay_fixed']  < $report_minimum_earning) continue;
 
 
 
-			  			if($contributor['to_be_pay_fixed']  < $report_minimum_earning) continue;
 			  			$blg_user_type = $contributor['user_type'];
 						
 						$blogger = false;

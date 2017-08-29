@@ -48,13 +48,24 @@
 	//Get usa pageviews for each article on the list
 	
 	$usa_pageview_list = $mpArticle->getTotalUsPageviews( $comma_separated );
-	$pageviews_list = [];
-	if($usa_pageview_list){
-		foreach($usa_pageview_list as $key=>$value){
-			$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
+	if (is_array($usa_pageview_list[0]) ){
+		$pageviews_list = [];
+		if($usa_pageview_list){
+			foreach($usa_pageview_list as $key=>$value){
+				$pageviews_list[$value['article_id']] =$value['total_usa_pv'];
+				
+			}
 		}
-	}
+		
+	}else{
+		$pageviews_list[$usa_pageview_list['article_id']] =$usa_pageview_list['total_usa_pv'];
+
+	}//end if (count($usa_pageview_list)>1 )
+
 	//end of added by GB on 2017-07-27 -----------------------------------
+echo "<!-- vardump ";
+var_dump($pageviews_list);
+echo "end vardump -->";
 
  // $ddd = new debug($pageviews_list,0); $ddd->show();// 0-Green; 1-Red; 2-Dark; 3-Yellow;
 

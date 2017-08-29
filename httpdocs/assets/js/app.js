@@ -23,92 +23,75 @@ $(document).ready(function() {
 
 	//READ MORE 
 	if($('body').hasClass('mobile')) {
-		var article_id = 1*parseInt($('#article-id').val());
+		var $el, $ps, $up, totalHeight;
+		var parentOrgHeight = $('#article-body').outerHeight();
 
-			 switch (article_id) {
-			 	//case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
-			 	//case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
-			 	//case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-					//do nothing - we do not want the READ MORE BAR  to interfer with the test page
-				//	break;
+		var pct_to_show = parseInt($('#read_more_pct').val());
+		var height_value = pct_to_show / 100 ;
+		var wishDisplayHeight = parentOrgHeight * height_value;
 
-			 	default:
+		$('#article-content').height(wishDisplayHeight);
 
-
-					var $el, $ps, $up, totalHeight;
-					var parentOrgHeight = $('#article-body').outerHeight();
-
-					var pct_to_show = parseInt($('#read_more_pct').val());
-					var height_value = pct_to_show / 100 ;
-					var wishDisplayHeight = parentOrgHeight * height_value;
-
-					$('#article-content').height(wishDisplayHeight);
-
-						$("#read-more-img").on('click', function(e) {
-							e.preventDefault();		
-							e.stopPropagation();
-							$el = $(this);
-							$parent_div  = $('.read-more');
-							$content = $('#article-content');
+			$("#read-more-img").on('click', function(e) {
+				e.preventDefault();		
+				e.stopPropagation();
+				$el = $(this);
+				$parent_div  = $('.read-more');
+				$content = $('#article-content');
+				
+				setTimeout(function(){
 							
-							//setTimeout(function(){
-										
-								$content.css({
-									//"height": //$content.height(),
-									"max-height": 999999
-								 });
+					$content.css({
+						//"height": //$content.height(),
+						"max-height": 999999
+					 });
 
-								$content.animate({
-									"height": "auto"
-								 },2000);
-											
-								$parent_div.fadeOut();
-								$('.second-section').css('border-top', '2px solid #bbb');
+					$content.animate({
+						"height": "auto"
+					 },2000);
+								
+					$parent_div.fadeOut();
+					$('.second-section').css('border-top', '2px solid #bbb');
 
-							//}, 1000);
-											
-							return false;
-											
-						}); // end $("#read-more-img").on('click', function(e)
-					
+				}, 1000);
+								
+				return false;
+								
+			});
+		
 
 
-					//I dont think this is in use.
-					if(page === 'article'){
-						$('#newsletter-submit').on('click', function(e){
-							e.preventDefault();
-							var email = $('#visitor_email').val();
-							var article_id = $('#article_id').val();
 
-							  $('#msg').html('Thanks!').addClass('success clear');				
+		if(page === 'article'){
+			$('#newsletter-submit').on('click', function(e){
+				e.preventDefault();
+				var email = $('#visitor_email').val();
+				var article_id = $('#article_id').val();
 
-							  /*$.ajax({
-					            type: 'POST',
-					            dataType: 'json',
-					            data: { task: 'newsletter', articleId: article_id, email: email },
-					            url: "http://www.puckermob.com/assets/ajax/subscribers.php",
-					            success: function(msg) {
-					            	var status = 'success';
-					                if(msg['hasError']) status = 'error';
+				  $('#msg').html('Thanks!').addClass('success clear');				
 
-					                $('#msg').html(msg['message']).addClass(status);
-					            },
-					            error: function(){
-					            	var status = 'error';
-					            	var msg = 'Ouch! something happend!';
+				  /*$.ajax({
+		            type: 'POST',
+		            dataType: 'json',
+		            data: { task: 'newsletter', articleId: article_id, email: email },
+		            url: "http://www.puckermob.com/assets/ajax/subscribers.php",
+		            success: function(msg) {
+		            	var status = 'success';
+		                if(msg['hasError']) status = 'error';
 
-					                $('#msg').html(msg).addClass(status);
-					            }
-				     		});
-						});*/
-					});
-					}// end if(page === 'article')
+		                $('#msg').html(msg['message']).addClass(status);
+		            },
+		            error: function(){
+		            	var status = 'error';
+		            	var msg = 'Ouch! something happend!';
 
-			 }//end switch ($article_id)
-
-	}// end if($('body').hasClass('mobile'))
-
-
+		                $('#msg').html(msg).addClass(status);
+		            }
+	     		});
+			});*/
+		});
+		}
+	}
 
 	function resizeContentByscreenSize(){
 		//HIDE LEFT SIDE BAR WHEN BROWSER IS LESS THAT 1030 px.

@@ -29,7 +29,7 @@ class Connector{
 		return $r;
 	}
 
-	/*public function openSynCon($dbToUse = ''){
+	public function openSynCon($dbToUse = ''){
 		if(!$this->conSynOpen){
 			$db = strlen($dbToUse) ? $dbToUse : $this->config['syn_main_db'];
 			$this->con = new PDO('mysql:host='.$this->config['syn_host'].';dbname='.$db, $this->config['syn_user'], $this->config['syn_pass']);
@@ -43,7 +43,7 @@ class Connector{
 			$r = $this->con;
 		}
 		return $r;
-	}*/
+	}
 
 	public function closeCon(){
 		if($this->conOpen){
@@ -52,11 +52,11 @@ class Connector{
 		}
 	}
 
-	/*public function closeSynCon(){
+	public function closeSynCon(){
 		if($this->conSynOpen){
 			$this->conSynOpen = false;
 			$this->con = null;
 		}
-	}*/
+	}
 }
 ?>

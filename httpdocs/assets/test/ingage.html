@@ -1,0 +1,44 @@
+<html>
+<head>
+
+
+
+</head>
+<body>
+<!-- Place in body part -->
+<div id="ingageunit"></div>
+<!-- Place in body part -->
+
+
+<!-- Place in head part widget:puck002 -->
+<script type="text/javascript">
+ 
+	var sbElementInterval = setInterval(function(){sbElementCheck()}, 50);
+ 
+	function sbElementCheck() {
+ 
+		var targetedElement = document.getElementById('ingageunit');
+		if(targetedElement) {
+			clearInterval(sbElementInterval);
+			(function(d) {
+				var js, s = d.getElementsByTagName('script')[0];
+				js = d.createElement('script');
+				js.async = true;
+				js.onload = function(e) {
+					SbInGageWidget.init({
+						partnerId : 5087,
+						widgetId : 'puck002',
+						cmsPath : 'http://cms.springboardplatform.com'
+					});
+				}
+				js.src = "http://www.springboardplatform.com/storage/js/ingage/apingage.min.js";
+				s.parentNode.insertBefore(js, s);
+			})(window.document);
+		}
+	}
+</script>
+<!-- Place in head part -->
+ 
+</body>
+
+</html>

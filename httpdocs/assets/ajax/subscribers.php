@@ -9,11 +9,14 @@ if(isset($email) && !empty($email)){
 	 	
 	 	$result = $mpArticle->insertSubscribers( $articleId, $email );
         
-	 	echo $result;
+	 	return ['haserror' => false, 'msg'=> 'Email added Successfully.'];
 
 	 }catch (Exception $e) {
-	    echo 'Caught exception: ',  $e->getMessage(), "\n";
+	   // echo 'Caught exception: ',  $e->getMessage(), "\n";
+	 		return ['haserror' => true, 'msg' => "ouch an error occurred."]
 	}
+}else{
+	return ['haserror' => true, 'msg' => "Your email is empty."]
 }
 
 

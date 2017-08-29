@@ -507,10 +507,10 @@ $(document).ready(function (e){
 					adCompanionId: 'ad-300-atf',
 					logoImgUrl:"<?php echo $config['image_url'].'articlesites/logos/'.$mpArticle->data['article_page_player_logo']; ?>",
 					logoImgLink: '',
-					flashSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodHTML5Player.swf",
-					adSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodAdPlayer.swf",
-					playlist : 'http://syndication.playlists.sequelmediainternational.com/foodanddrink&id=<?php echo $mpArticle->data['player_setting_api_key']?>',
-//					playlist : 'http://syndication.playlists.sequelmediainternational.com/testdefault&id=OWEwN2QxMzhkNWYxMDJmZmMzNDVmMTAzNmIzZmRlZmNkYWFjNTI4Zg==',
+					flashSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodHTML5Player.swf",
+					adSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodAdPlayer.swf",
+					playlist : 'http://syndication.playlists.sequelmediagroup.com/foodanddrink&id=<?php echo $mpArticle->data['player_setting_api_key']?>',
+//					playlist : 'http://syndication.playlists.sequelmediagroup.com/testdefault&id=OWEwN2QxMzhkNWYxMDJmZmMzNDVmMTAzNmIzZmRlZmNkYWFjNTI4Zg==',
 
 					callbacks:{
 						adBreakStarted : function(){$('#ad-300-atf-companion').show();},
@@ -578,9 +578,9 @@ $(document).ready(function (e){
 					adCompanionId: 'ad-300-atf',
 					logoImgUrl:"<?php echo $config['image_url'].'articlesites/logos/'.$mpArticle->data['article_page_player_logo']; ?>",
 					logoImgLink: '',
-					flashSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodHTML5Player.swf",
-					adSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodAdPlayer.swf",
-					playlist : 'http://syndication.playlists.sequelmediainternational.com/<?php echo $mpArticle->data['player_setting_playlist_slug']; ?>&id=<?php echo $mpArticle->data['player_setting_api_key']; ?>',
+					flashSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodHTML5Player.swf",
+					adSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodAdPlayer.swf",
+					playlist : 'http://syndication.playlists.sequelmediagroup.com/<?php echo $mpArticle->data['player_setting_playlist_slug']; ?>&id=<?php echo $mpArticle->data['player_setting_api_key']; ?>',
 					callbacks:{
 						adBreakStarted : function(){$('#ad-300-atf-companion').show();},
 		                adBreakEnded : function(){$('#ad-300-atf-companion').hide();},
@@ -654,9 +654,9 @@ $(document).ready(function (e){
 					adCompanionId: 'ad-300-atf',
 					logoImgUrl:"<?php echo $config['image_url'].'articlesites/logos/'.$mpArticle->data['article_page_player_logo']; ?>",
 					logoImgLink: '',
-					flashSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodHTML5Player.swf",
-					adSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodAdPlayer.swf",
-					playlist : 'http://syndication.playlists.sequelmediainternational.com/'+serieInformation+'&id=ZjM2YTcwZDJjZTk1YjUzMWI0NjYwYjdjZTMxODIyZTExNDkyOTBkNQ==',
+					flashSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodHTML5Player.swf",
+					adSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodAdPlayer.swf",
+					playlist : 'http://syndication.playlists.sequelmediagroup.com/'+serieInformation+'&id=ZjM2YTcwZDJjZTk1YjUzMWI0NjYwYjdjZTMxODIyZTExNDkyOTBkNQ==',
 
 					callbacks:{
 						adBreakStarted : function(){$('#ad-300-atf-companion').show();},
@@ -710,9 +710,9 @@ $(document).ready(function (e){
 					adCompanionId: 'ad-300-atf',
 					logoImgUrl:"<?php echo $config['image_url'].'articlesites/logos/'.$mpArticle->data['article_page_player_logo']; ?>",
 					logoImgLink: '',
-					flashSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodHTML5Player.swf",
-					adSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodAdPlayer.swf",
-					playlist : 'http://syndication.playlists.sequelmediainternational.com/'+serieInformation+'&id=ZjM2YTcwZDJjZTk1YjUzMWI0NjYwYjdjZTMxODIyZTExNDkyOTBkNQ==',
+					flashSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodHTML5Player.swf",
+					adSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodAdPlayer.swf",
+					playlist : 'http://syndication.playlists.sequelmediagroup.com/'+serieInformation+'&id=ZjM2YTcwZDJjZTk1YjUzMWI0NjYwYjdjZTMxODIyZTExNDkyOTBkNQ==',
 					callbacks:{
 						adBreakStarted : function(){$('#ad-300-atf-companion').show();},
 		                adBreakEnded : function(){$('#ad-300-atf-companion').hide();},
@@ -760,8 +760,8 @@ $(document).ready(function (e){
 			logoImgUrl:"<?php echo $config['image_url'].'articlesites/logos/'.$mpArticle->data['article_page_player_logo']; ?>",
 			logoImgLink: '',
 			withAds : <?php echo ($mpArticle->data['player_setting_withads'] == 1) ? 'true' : 'false'; ?>,
-			flashSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodHTML5Player.swf",
-			adSwfUrl:"http://syndication.sequelmediainternational.com/assets/swf/MyPodAdPlayer.swf",
+			flashSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodHTML5Player.swf",
+			adSwfUrl:"http://syndication.sequelmediagroup.com/assets/swf/MyPodAdPlayer.swf",
 			playlist : [videoData],
 			adServerKey : '<?php echo (isset($mpArticle->data['player_setting_ad_server_key']) && !is_null($mpArticle->data['player_setting_ad_server_key'])) ? $mpArticle->data['player_setting_ad_server_key'] : 'integration_test'; ?>'
 		});
@@ -1313,7 +1313,7 @@ $(document).ready(function (e){
 	//	}
 	//}
 
-	
+
 
 
 });

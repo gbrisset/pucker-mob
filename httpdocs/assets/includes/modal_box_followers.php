@@ -80,7 +80,7 @@ var image = 'follow-auth-pop.jpg';
 if(res != "seen") {
 document.write('<div id="openModalFollowPopUp" class="modalDialogFollowPopUp">'+
 		'<div id="popup-content">'+
-			'<a href="#close" title="Close" class="close">X</a>'+
+			'<a href="" title="Close" class="close">X</a>'+
 			'<div class="modal-img">'+
 					'<img src="http://www.puckermob.com/assets/img/modelboximg/'+image+'"/>'+
 			'</div>'+

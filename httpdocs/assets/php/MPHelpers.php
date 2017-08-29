@@ -262,16 +262,16 @@ class MPHelpers{
 		$city = 'New York';
 		$region="New York";
 
-			try{
+		//	try{
 				//
-					$geopluginURL='http://www.geoplugin.net/php.gp?ip='.$ip;
-					$addrDetailsArr = unserialize(file_get_contents($geopluginURL)); 
+					//$geopluginURL='http://www.geoplugin.net/php.gp?ip='.$ip;
+					//$addrDetailsArr = unserialize(file_get_contents($geopluginURL)); 
 					
 					/*Get City name by return array*/
-					$city = $addrDetailsArr['geoplugin_city']; 
+					//$city = $addrDetailsArr['geoplugin_city']; 
 					/*Get Country name by return array*/
-					$country_code = $addrDetailsArr['geoplugin_countryCode'];
-					$region = $addrDetailsArr['geoplugin_region'];
+					//$country_code = $addrDetailsArr['geoplugin_countryCode'];
+				//	$region = $addrDetailsArr['geoplugin_region'];
 
 				//
 				//$geo_details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
@@ -280,11 +280,11 @@ class MPHelpers{
 				// $region = $geo_details->region;
 				// $city = $geo_details->city;
 
-			}catch (Exception $e) {
-				$country_code = "US";
-				$region = 'New York';
-				$city = 'New York';
-			}
+		//	}catch (Exception $e) {
+		//		$country_code = "US";
+		//		$region = 'New York';
+		//		$city = 'New York';
+		//	}
 			setcookie('country_code', $country_code, time() + (60*60*24*30) ); //A YEAR
 			setcookie('region' ,$region, time() + (60*60*24*30) ); //A YEAR
 			setcookie('city' ,$city, time() + (60*60*24*30) ); //A YEAR

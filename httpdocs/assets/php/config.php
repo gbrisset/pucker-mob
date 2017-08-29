@@ -153,7 +153,7 @@ if($local){
 	require_once  'class.recaptchalib.php';
 	require_once  'class.FollowAuthor.php';
 
-	require_once  'class.FacebookDebugger.php';
+	// require_once  'class.FacebookDebugger.php';
 	require_once  'class.Helpers.php'; 
 
 	// SMF classes ----------------------------------------

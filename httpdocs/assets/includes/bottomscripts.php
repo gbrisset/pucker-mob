@@ -76,21 +76,25 @@
 
            switch ($article_id) {
           // To test EPOM  -  - delete after august 31 2017
-            // case 25066: // what-her-drink-of-choice-says-about-her
-            // case 28231: // 150-throwback-thursday-jams-we-all-forget-about-an...
-            // case 32860: // this-is-what-youll-miss-when-shes-had-enough
-            // case 33890: // im-not-afraid-to-fight-with-you-because-i-would-fi...
-            case 35814: // whats-a-selfesteem-attack
+            // case  10855 : //  to-the-person-who-loves-me-next
+            // case  18850 : //  im-not-the-girl-i-was-last-year-and-thats-okay
+            // case  29271 : //  heres-your-daily-reminder-that-youre-not-an-option
+            // case  30324 : //  he-doesnt-love-you-he-just-loves-the-idea-of-you
+            // case  32372 : //  to-the-right-person-i-met-at-the-wrong-time-i-hope-one-day-itll-be-the-right-time
+            // case  32860 : //  this-is-what-youll-miss-when-shes-had-enough
+            // case  33885 : //  what-its-like-to-finally-be-narcissist-free
+            // case  33890 : //  im-not-afraid-to-fight-with-you-because-i-would-fight-for-you-every-second-of-everyday
+            // case  34146 : //  what-happened-to-dating-relationships-and-titles
+            // case  34921 : //  the-type-of-douche-canoe-you-attract-based-on-your-zodiac-sig
+            // case  35703 : //  8-qualities-you-should-be-looking-for-in-your-potential-partner
+            // case  35839 : //  i-think-it-was-you-but-our-timing-was-off
+            // case  36553 : //  to-the-guy-who-couldnt-decide-what-he-wanted
+            // case  36574 : //  to-the-girl-who-needs-to-find-herself-again
+            // case  36724 : //  to-the-girl-he-chose-over-me-heres-what-you-need-to-know
+              // include($config['include_path'] . 'ads/epom_catfish.php');
+              // break;
 
-              include($config['include_path'] . 'ads/epom_catfish.php');
-              break;
-
-            // case 10855: // to-the-person-who-loves-me-next 
-            // case 18283: // a-letter-to-the-girl-who-hasnt-been-herself-in-awh... 
-            // case 23464: // ill-always-be-in-your-corner  
-            // case 28002: // to-the-girl-who-thinks-he-wont-regret-losing-you  
             case 29816: //  how-to-heal-your-broken-heart-based-on-your-zodiac  
-            // case 33890: // im-not-afraid-to-fight-with-you-because-i-would-fi... 
             // // DO NOTHING 
             
             break;

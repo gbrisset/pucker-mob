@@ -1,43 +1,15 @@
+<script>
+function dsk_sidebar_03_replace_ad(){
+	var	s2 = '<!-- dsk_sidebar_03_ad_rotation - Google -->';
 
-<script type="text/javascript">
-var x=0;
-function rotate_ads(){
-	if(x%2==0){
-	document.getElementById('dsk-sidebar-ad-refresh-1').style.display='block';
-	document.getElementById('dsk-sidebar-ad-refresh-2').style.display='none';
-	 }else{
-	document.getElementById('dsk-sidebar-ad-refresh-1').style.display='none';
-	document.getElementById('dsk-sidebar-ad-refresh-2').style.display='block';
-	}//end if
-	x++;
+	$("#dsk_sidebar_03_ad").empty();
+	$("#dsk_sidebar_03_ad").append(s2);
+	$("#dsk_sidebar_03_ad").css('border-color: #ff0000', 'border-style: solid', '    border-width: 2px;');
 }//end function
-onload = function(){setInterval(rotate_ads, 30000); };
 </script>
 
-<!-- sidebar-03 ad rotation - amazon -->
-<div id="dsk-sidebar-03-ad-refresh-1" style="display: block;">
-	<!-- Amazon-3 -->
-	<script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-	<script type="text/javascript" language="javascript">
-	//<![CDATA[
-	aax_getad_mpb({
-	"slot_uuid":"2bef2550-d479-4b9b-9aea-31455c8df746"
-	});
-	//]]>
-	</script>
-</div>
+<div id="dsk_sidebar_03_ad" style="display: block;">
+<!-- dsk_sidebar_03_ad_rotation - Amazon -->
 
-<!-- sidebar-03 ad rotation - Google-->
-<div id="dsk-sidebar-03-ad-refresh-2" style="display: none;">
-
-	<!-- GOOGLE - FEATURED -->
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<ins class="adsbygoogle"
-	     style="display:inline-block;width:300px;height:250px"
-	     data-ad-client="ca-pub-8978874786792646"
-	     data-ad-slot="7195535385"></ins>
-	<script>
-	(adsbygoogle = window.adsbygoogle || []).push({});
-	</script>
-
+<script type="text/javascript">setTimeout(dsk_sidebar_03_replace_ad, 45000);</script>
 </div>

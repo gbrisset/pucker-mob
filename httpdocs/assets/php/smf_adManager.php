@@ -132,8 +132,8 @@ function display_tags($ad_slot_id, $article_id, $article_title = ""){
 	// if ($lucky>0 && $lucky<=40) $tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SS.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// if ($lucky>40 && $lucky<=100) $tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on =  array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$tag_list[]= array('ad_slot' => "dsk_banner", 'tag' => "undertone_BB.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);

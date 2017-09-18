@@ -133,6 +133,24 @@
 					</p>
 				<?php }?>
 
+
+
+		<!-- END OF ARTICLE AD ========================================================================================================== -->
+
+		<?php
+
+
+				echo $smf_adManager->display_tags("mbl_eoa", $article_id);
+
+					 // Some ads need that wrapper to display properly
+					  	// echo "<div id=\"mobile-instream-branovate-ad\" style=\"text-align: center; clear: both; padding-top: 1rem;\">";
+					 	// include($config['include_path'] . 'ads/amazon_4.php');//this unit was originally in the more bar - 2017-04-04
+					 	// echo "</div>";
+		 ?>
+
+
+
+
 				<!-- RELATED ARTICLES ========================================================================================================== -->
 				<?php 
 
@@ -144,7 +162,7 @@
 					if ( $related_articles['related_article_id_3'] > -1) $related_articles_list[] = $mpArticle->getRelatedToArticleInfo( $related_articles['related_article_id_3'] );
 					
 				?>
-					<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:-8px !important; margin-bottom: -10px !important;">
+					<div class="row small-12 clear related-articles-box half-padding margin-top columns" style="margin-top:20px !important; margin-bottom: -10px !important;">
 						
 						<div class="rel-articles-wrapper remember-to-share" style="padding-top: 0;">
 							<h3 style="margin-bottom: 0.5rem !important;     color: green;">RELATED ARTICLES</h3>
@@ -180,20 +198,6 @@
 
 
 	
-
-		<!-- END OF ARTICLE AD ========================================================================================================== -->
-
-		<?php
-
-
-				echo $smf_adManager->display_tags("mbl_eoa", $article_id);
-
-					 // Some ads need that wrapper to display properly
-					  	// echo "<div id=\"mobile-instream-branovate-ad\" style=\"text-align: center; clear: both; padding-top: 1rem;\">";
-					 	// include($config['include_path'] . 'ads/amazon_4.php');//this unit was originally in the more bar - 2017-04-04
-					 	// echo "</div>";
-		 ?>
-
 				
 					</div>
 				</div>
@@ -214,12 +218,15 @@
 					 	default:
 				?>						
 
+					 
+					 <!-- 		
 					 		<div class=" read-more  small-12 columns margin-bottom" style="background: white; width: 100%;">
 								<div class="button" style="width: 83%; padding: 4px; border: 1px solid #72a367; background: #497240; /*#78AD6C - original color*/ ">
 									<label id="read-more-img" style=" color: #fff; font-family: oslobold; font-size: 18.5px;">TAP TO READ FULL ARTICLE</label>
 								</div>
-							</div> 
+							</div>  -->
 
+					
 				<?php }//end switch ($article_id) ?>
 
 		

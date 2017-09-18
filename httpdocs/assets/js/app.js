@@ -21,6 +21,7 @@ $(document).ready(function() {
 	
 	if(page != 'articleslide' && page != 'home' && page != 'category' && page != 'article' && page != 'distroscale') {var adPage = 'category';} else {var adPage = page;}
 
+/*
 	//READ MORE 
 	if($('body').hasClass('mobile')) {
 		var $el, $ps, $up, totalHeight;
@@ -70,28 +71,10 @@ $(document).ready(function() {
 
 				  $('#msg').html('Thanks!').addClass('success clear');				
 
-				  /*$.ajax({
-		            type: 'POST',
-		            dataType: 'json',
-		            data: { task: 'newsletter', articleId: article_id, email: email },
-		            url: "http://www.puckermob.com/assets/ajax/subscribers.php",
-		            success: function(msg) {
-		            	var status = 'success';
-		                if(msg['hasError']) status = 'error';
-
-		                $('#msg').html(msg['message']).addClass(status);
-		            },
-		            error: function(){
-		            	var status = 'error';
-		            	var msg = 'Ouch! something happend!';
-
-		                $('#msg').html(msg).addClass(status);
-		            }
-	     		});
-			});*/
 		});
 		}
-	}
+	}//end if($('body').hasClass('mobile'))
+*/
 
 	function resizeContentByscreenSize(){
 		//HIDE LEFT SIDE BAR WHEN BROWSER IS LESS THAT 1030 px.

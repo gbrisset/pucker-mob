@@ -137,7 +137,7 @@ if($('body').hasClass('mobile')) {
 					// Kixer
 					inBodyAd.loadInArticleAd('article-body', 12, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
 					//Google P18
-					inBodyAd.loadInArticleAd('article-body', 18, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle"style="display:block; text-align:center;"data-ad-format="fluid"data-ad-layout="in-article"data-ad-client="ca-pub-8978874786792646"data-ad-slot="3693758426"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>', tag);
+					// inBodyAd.loadInArticleAd('article-body', 18, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle"style="display:block; text-align:center;"data-ad-format="fluid"data-ad-layout="in-article"data-ad-client="ca-pub-8978874786792646"data-ad-slot="3693758426"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>', tag);
 
 
 

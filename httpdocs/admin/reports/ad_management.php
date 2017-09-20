@@ -55,7 +55,7 @@
 		<div id="content" class="columns small-9 large-11">
 			
 			<div class="small-12 columns padding-bottom ">
-				<h1>BLOGGER EARNINGS REPORT</h1>
+				<h1>AD MANAGEMENT</h1>
 			</div>
 
 			<div class="columns small-12 margin-top">
@@ -63,78 +63,24 @@
 					<input type="text" class="hidden" id="c_t" name="c_t" value="<?php echo $_SESSION['csrf']; ?>" >
 
 					<div class="row">
-					    <div class="small-6 columns">
-					      <div class="row">
-					        <div class="small-2 columns">
-					          <label for="right-label" class="half-padding-top">Date:</label>
-					        </div>
-					        <div class="small-5 columns">
-					         	<select  name='month' id="month-option" required style="background-position: 90% 60%">
-							  		<option value='0'>Month</option>
-								  	<?php 
-								  	$index = 1;
-								  	for($m = $index; $m <= 12; $m++){
-								  		$dateObj   = DateTime::createFromFormat('!m', $m);
-								  		$monthName = $dateObj->format('F');
-								  		if($selected_month == $m) $selected  = 'selected'; else $selected = '';
-								  		echo '<option value="'.$m.'" '.$selected.' >'.$monthName.'</option>';
-									} ?>
-								</select>
-					        </div>
-					        <div class="small-4 columns">
-					         	<select  name='year' id="year-option" required style="background-position: 90% 60%">
-							  		<option value='0'>Year</option>
-								  	<?php 
-								  	$index = 2015;
-								  	for($y = $index; $y <= $current_year; $y++){
-								  		if($selected_year == $y) $selected  = 'selected'; else $selected = '';
-								  		echo '<option value="'.$y.'" '.$selected.' >'.$y.'</option>';
-									} ?>
-								</select>
-					         </div>
-					      </div>
-					    </div>
-				 
-					    <div class="small-6 columns">
-					      <div class="row">
-					        <div class="small-3 columns">
-					          <label for="right-label" class="align-right half-padding-top">Contributors:</label>
-					        </div>
-					        <div class="small-9 columns">
 					         	<div class="small-7 columns">
-						       		<select class="small-12 columns" name='contributor' id="contributor-option" onchange = "">
-								  		<option value='0'>All</option>
-										  	<?php  
-										  	if(!$content_provider){
-												$allContributors = $adminController->getSiteObjectAll(array('queryString' => 'SELECT * FROM article_contributors ORDER BY contributor_name ASC'));
-												if($allContributors && count($allContributors)){
-											
-													foreach($allContributors as $contributorInfo){
-														if($selected_contributor == $contributorInfo['contributor_id']) $selected  = 'selected'; else $selected = '';
-														$option = '<option value="'.$contributorInfo['contributor_id'].'" '.$selected.' >';
-														$option .= $contributorInfo['contributor_name'];
-														$option .= '</option>';
-														echo $option;
-													}
-												}
-											}
-											?>
-									</select>
+						       		qqqqqqqqqqqq
+
 					       		</div>
 						       	<div class="small-5 columns">
 						       		<button type="submit" id="submit" name="submit" style="padding: 0.5rem 1rem;text-transform: uppercase; margin-right: 1rem;">Search</button>
 						       	</div>
-					        </div>
-					      </div>
-					    </div>
 				    </div>
 
 					
 				</form>
 			</div>
 			
+
+
 			<div id="reports-div" class="columns small-12">
 
+<input type="checkbox" value="1" name="" >
 
 <?php 
 
@@ -143,12 +89,12 @@
 
 foreach ($smf_adManager->tag_list as $tag_item) {
 
+	echo "<br/><b>Ad Slot:</b> " 
+	echo "<br/><b>Ad Slot:</b> " . $tag_item['ad_slot'];
+	echo "<br/><b>Ad Name:</b> " .  $tag_item['tag'];
+	echo "<br/><b>Articles:</b><br/> " . implode("<br/>",$tag_item['show_on']);
 
-
-
-	echo $tag_item['ad_slot'];
-	echo implode(", ",$tag_item['show_on']);
-	$tag = $tag_item['tag'];
+	// $tag = $tag_item['tag'];
 
 	// if(strpos($tag, 'image_tag')){
 	// 	$fgc = "<img src=\"http://images.puckermob.com/articlesites/puckermob/large/$article_id"  . "_tall.jpg\" alt=\" $article_title Image\">";
@@ -157,7 +103,7 @@ foreach ($smf_adManager->tag_list as $tag_item) {
 	// 	$fgc .= file_get_contents($f);
 	// }//end if
 
-	echo "<div style=\"height: 100px; width: 100px;\" >$tag</div>";
+	// echo "<div style=\"height: 100px; width: 100px;\" >$tag</div>";
 
 	echo"<hr/>";
 	

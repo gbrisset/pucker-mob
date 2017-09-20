@@ -119,8 +119,8 @@ public function __construct($c){
 	// if ($lucky>0 && $lucky<=40) $this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SS.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// if ($lucky>40 && $lucky<=100) $this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	// $this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on =  array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_banner", 'tag' => "undertone_BB.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -131,9 +131,6 @@ public function __construct($c){
 	// ----- IMG ----------------------------------
 	// image treatment is a bit customized
 
-	// 5338, 7378 Loreal test -remove after 2017-08-31
-	$show_on = array(5338, 7378 ); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_image", 'tag' => 'image_tag', 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "egami_mob_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);

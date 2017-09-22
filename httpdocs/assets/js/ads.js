@@ -68,44 +68,16 @@ if($('body').hasClass('mobile')) {
 					// break;
 
 
-				// Test for DubDub for Loren (answers media) - delete after Sept 15 2017	
-				case 28851: //to-the-girl-who-cant-stop-loving-him-read-this
-					inBodyAd.loadInArticleAd('article-body', 2, 0, "<iframe width='320' height='180' src='https://embed.dubdub.com/598debefcd6d9e1200f0b130' frameborder='0' allowfullscreen></iframe>", tag);
-					break;
-
-				// Test for DubDub for Loren (answers media) - delete after Sept 15 2017	
-				// case 36368: //its-called-a-priority-and-im-not-one-of-yours					
-				// 	inBodyAd.loadInArticleAd('article-body',8, 0, '<div id="ry_j6cndmn7"></div><script type="text/javascript"> top["_rocketyield"] = top["_rocketyield"] || []; !function (e, f, u) {e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(top.document.createElement("script"), top.document.getElementsByTagName("script")[0], "//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js"); top["_rocketyield"].push({pid: "puckermob", placementId: "j6cndmn7", slot: "#ry_j6cndmn7"}); </script>', tag);
+				// case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
 				// 	break;
 
-				case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship
-					//UnderTone SeeThrough
-					inBodyAd.loadInArticleAd('article-body', 4, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
-					break;
-
 	
-
-				case 17219: // loving-someone-you-cant-love
-				//test stack for ANSWERS_ROCKETYIELD_2 - delete after august 31 2017
-					//Nativo 1
-					inBodyAd.loadInArticleAd('article-body', 5, 0, '<div id="nativo-id"></div>', tag);
-					// ANSWERS_ROCKETYIELD_2 - TEST
-					inBodyAd.loadInArticleAd('article-body', 8, 0, '<!-- ANSWERS_ROCKETYIELD_2 --> <div id="ry_j5xzz1e8"></div><script type="text/javascript"> top["_rocketyield"] = top["_rocketyield"] || []; !function (e, f, u) {e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(top.document.createElement("script"), top.document.getElementsByTagName("script")[0], "//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js"); top["_rocketyield"].push({pid: "puckermob", placementId: "j5xzz1e8", slot: "#ry_j5xzz1e8"}); </script>', tag);
-					//UnderTone SeeThrough
-					inBodyAd.loadInArticleAd('article-body', 12, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
-					// Kixer
-					inBodyAd.loadInArticleAd('article-body', 16, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
-					break;
-
 
 				case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
 			 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 			 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
 			 	case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
 
-				//test page for Loreal ------------------- delete after august 31 2017
-				case 5338: // why-wearing-makeup-isnt-false-advertising
-				case 7378: // 20-things-only-girls-who-love-makeup-understand
 
 					//do nothing - we do not want other ads to interfer with the test page
 					break;
@@ -123,7 +95,7 @@ if($('body').hasClass('mobile')) {
 					//Nativo 1
 					inBodyAd.loadInArticleAd('article-body', 7, 0, '<div id="nativo-id"></div>', tag);
 					//Answers
-					// inBodyAd.loadInArticleAd('article-body', 8, 0, "<script type=\"text/javascript\">window['_rocketyield'] = [];!function (e, f, u) {e.async = 1;e.src = u;f.parentNode.insertBefore(e, f);}(document.createElement('script'), document.getElementsByTagName('script')[0], '//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js'); window['_rocketyield'].push({pid: 'puckermob',placementId: '44ee', slot: '#inarticle8-ad', width: 320,height: 240});</script>", tag);			
+					inBodyAd.loadInArticleAd('article-body', 11, 0, '<!—- Rocketyield Inline 9th paragraph —> <script type="text/javascript"> top["_rocketyield"] = top["_rocketyield"] || []; !function (e, f, u) {e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(top.document.createElement("script"), top.document.getElementsByTagName("script")[0], "//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js"); top["_rocketyield"].push({pid: "puckermob", placementId: "44ee"}); </script>', tag);			
 					//UnderTone SeeThrough
 					// inBodyAd.loadInArticleAd('article-body', 12, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
 
@@ -135,11 +107,11 @@ if($('body').hasClass('mobile')) {
 					// Google
 					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <!-- MOB Mobile After 10th paragraph --> <ins class="adsbygoogle"style="display:inline-block;width:300px;height:250px"data-ad-client="ca-pub-8978874786792646"data-ad-slot="6579881382"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script> ', tag);
 					// Kixer
-					inBodyAd.loadInArticleAd('article-body', 12, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
+					inBodyAd.loadInArticleAd('article-body', 16, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
 					//Google P18
 					// inBodyAd.loadInArticleAd('article-body', 18, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle"style="display:block; text-align:center;"data-ad-format="fluid"data-ad-layout="in-article"data-ad-client="ca-pub-8978874786792646"data-ad-slot="3693758426"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>', tag);
 					// TripleLift
-					inBodyAd.loadInArticleAd('article-body', 18, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_mid_article"></script>', tag);
+					// inBodyAd.loadInArticleAd('article-body', 18, 0, '<script src="//ib.3lift.com/ttj?inv_code=puckermob_mid_article"></script>', tag);
 
 
 
@@ -190,29 +162,9 @@ if($('body').hasClass('mobile')) {
 					inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
 					break;
 				
-				// // Ad stack to test the tout Glade ad 
-				// case 10855: //	to-the-person-who-loves-me-next	
-				// case 18283: //	a-letter-to-the-girl-who-hasnt-been-herself-in-awh...	
-				// case 23464: //	ill-always-be-in-your-corner	
-				// case 28002: //	to-the-girl-who-thinks-he-wont-regret-losing-you	
-				// case 29816: //	how-to-heal-your-broken-heart-based-on-your-zodiac	
-				// case 33890: //	im-not-afraid-to-fight-with-you-because-i-would-fi...	
-					
 
-				// 	// tout - glade ad
-				// 	inBodyAd.loadInArticleAd('article-body', 4, 0, '<!-- tout_glade_ad_video --> <div id="tout-tr6yvk-target"></div> <script src="//player.tout.com/embeds/tr6yvk.js?content_brand_uid=8919aa&width=auto&height=auto&autoplay=true&element_id=tout-tr6yvk-target"></script>', tag);
-				// 	//Nativo 1
-				// 	inBodyAd.loadInArticleAd('article-body', 8, 0, '<div id="nativo-id"></div>', tag);
-				// break;
-
-
-				//test page for Loreal
-				case 5338: // why-wearing-makeup-isnt-false-advertising
-				case 7378: // 20-things-only-girls-who-love-makeup-understand
-
-					//do nothing - we do not want other ads to interfer with the test page
-					break;
 			 	default:
+				// Nativo 1
 					inBodyAd.loadInArticleAd('article-body', 3, 0, '<div id="nativo-id"></div>' , tag);
 					$('#inarticle3-ad').removeClass('columns');
 

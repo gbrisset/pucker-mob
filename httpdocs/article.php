@@ -176,16 +176,11 @@ if(!is_null($categoryInfo)){
 		<?php include_once('admin/fb/fbfunctions.php'); ?>
 
 		<!-- MOBILE MORE TAB -->
-		<?php switch ($article_id) {
-				//Loreal test - DELETE AFTER AUGUST 31 2017
-				case 5338: // why-wearing-makeup-isnt-false-advertising
-				case 7378: // 20-things-only-girls-who-love-makeup-understand
-				// Do Nothing
-				break;
-				
-			 	default:
-			 include_once($config['include_path'].'mobiletapsection.php');
-		 }//end switch ($article_id) ?>		
+		<?php 	//removed 
+			 // include_once($config['include_path'].'mobiletapsection.php');
+
+		 
+		  ?>		
 
 
 		<!-- SCRIPTS -->

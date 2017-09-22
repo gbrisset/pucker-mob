@@ -107,18 +107,18 @@
 			<section id="article-content" class="small-12 column sidebar-box" style="padding-bottom:0.5rem !important; margin-bottom: -5px;"> 
 
 				<!-- AD BELOW IMAGE ========================================================================================================== -->
-
-				<div id="mobile-instream-branovate-ad" style="text-align: center; margin-bottom: 10px; margin-top: 5px;">
+<!-- 
+				<div id="mobile-instream-branovate-ad" style=" /*text-align: center; margin-bottom: 10px; margin-top: 5px;*/ /*style turned off when no ads is used */ ">
 					<div id="get-content" style="text-align:center;width: 100%; display: inline-block;">
 						<?php
 
-							echo $smf_adManager->display_tags("mbl_below_image", $article_id);
+							// echo $smf_adManager->display_tags("mbl_below_image", $article_id);
 
 					     
 
 						 ?>
 					</div>
-				</div>
+				</div> -->
 
 
 				<!-- ARTICLE BODY ========================================================================================================== -->

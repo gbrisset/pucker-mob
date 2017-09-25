@@ -140,8 +140,6 @@ public function __construct($c){
 
 	// ---------------------------------------
 
-	$show_on = array(5338, 7378); $dont_show_on = array();// Loreal test -remove after 2017-08-31
-	$this->tag_list[]= array('ad_slot' => "dsk_below_image", 'tag' => "below_image_loreal.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// These are place holders - there is no such ad slot as of yet - GB 2017-05-03
 	// $this->tag_list[]= array('ad_slot' => "dsk_eoa", 'tag' => "XXXXX.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
@@ -216,10 +214,6 @@ public function __construct($c){
 	$show_on = $this->sponsored_pages_img; $dont_show_on = array();// These articles are paid content and should keep their original image
 	$this->tag_list[]= array('ad_slot' => "mbl_image", 'tag' => 'image_tag', 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	// 5338, 7378 Loreal test -remove after 2017-08-31
-	// 17219 Answer rocketyield test -remove after 2017-08-31
-	$show_on = array(5338, 7378,17219); $dont_show_on = array();
-	$this->tag_list[]= array('ad_slot' => "mbl_image", 'tag' => 'image_tag', 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// $show_on = array(27296); $dont_show_on = array();
 	// $this->tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "egami_mob_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -236,10 +230,7 @@ public function __construct($c){
 	$this->tag_list[]= array('ad_slot' => "mbl_image", 'tag' => 'image_tag', 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---- BELOW IMAGE -----------------------------------
-	
-	$show_on = array(5338, 7378); $dont_show_on = array_diff($this->special_pages, $show_on);// Loreal test -remove after 2017-08-31
-	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "below_image_loreal.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	
+		
 	// $show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);// rotate ad TEST - remove after Sept 30 2017
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "smf_ad_rotator_below_image.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
@@ -315,7 +306,7 @@ public function __construct($c){
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_answers.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 }//end public function __construct

@@ -19,82 +19,93 @@
 $dev_status = ($local)? "<span style=\"color: #000099;\">LOCAL</span>" : "<span style=\"color: #990000;\">LOCAL</span>" ;
 
 
-$con = new Connector($config);
-       
-function get_article_body($article_id){
-global $con;
-        $pdo = $con->openCon();
-        
-        $pageQueryString = "
 
- SELECT article_id, article_body, 
- CHAR_LENGTH(article_body) AS c_count,
- LENGTH(article_body) - LENGTH(REPLACE(article_body, '</', '1')) AS s_count,
-  LENGTH(article_body) - LENGTH(REPLACE(article_body, '</p>', '123')) AS p_count,
-  LENGTH(article_body) - LENGTH(REPLACE(article_body, '</li>', '1234')) AS l_count 
-  FROM articles WHERE article_id = $article_id;
+   
+class smf_ad_manager extends Connector{
 
-         "; 
-
-            $q = $pdo->query($pageQueryString);
-            if($q && $q->rowCount()){
-                $q->setFetchMode(PDO::FETCH_ASSOC); 
-                $row = $q->fetch();
-                $r = $row;
-                $q->closeCursor();
-            }else $r = false;
+	public function __construct($c){
+		$this->config = $c;
+		$this->con = new Connector($this->config);
+	    
+	}//end function __construct()
 
 
-            $con->closeCon();
-        return $r;
-}//end function
-       
-function get_adtag($article_id, $adslot_id){
-global $con;
-        $pdo = $con->openCon();
-        
-// Check if article is a test page and fetch test tag for this adslot
-        $pageQueryString = "
-            SELECT * FROM smf_ad_special_pages asp 
-            INNER JOIN smf_ad_tags smf_at ON smf_at.at_id = asp.asp_ad_tag_id
-            INNER JOIN smf_ad_slots smf_as ON smf_as.as_id = smf_at.at_ad_slot_id
-            WHERE asp.asp_article_id = $article_id
-            AND smf_as.as_live_display = 1
-            AND smf_at.at_active_status = 2
-         "; 
+		function get_article_body($article_id){
+			$pdo = $this->con->openCon();        
+		        $pageQueryString = "
 
-            $q = $pdo->query($pageQueryString);
-            if($q && $q->rowCount()){
-                $q->setFetchMode(PDO::FETCH_ASSOC); 
-                $row = $q->fetch();
-                $r = $row;
-                $q->closeCursor();
-            }else $r = false;
+		 SELECT article_id, article_body, 
+		 CHAR_LENGTH(article_body) AS c_count,
+		 LENGTH(article_body) - LENGTH(REPLACE(article_body, '</', '1')) AS s_count,
+		  LENGTH(article_body) - LENGTH(REPLACE(article_body, '</p>', '123')) AS p_count,
+		  LENGTH(article_body) - LENGTH(REPLACE(article_body, '</li>', '1234')) AS l_count 
+		  FROM articles WHERE article_id = $article_id;
 
-            if($r===false){
-            // fetch regular tag for this adslot
-                $pageQueryString = "
-                    SELECT * FROM smf_ad_tags smf_at 
-                    INNER JOIN smf_ad_slots smf_as ON smf_as.as_id = smf_at.at_ad_slot_id
-                    WHERE smf_as.as_live_display = 1
-                    AND smf_at.at_active_status = 1
-                 "; 
-
-                    $q = $pdo->query($pageQueryString);
-                    if($q && $q->rowCount()){
-                        $q->setFetchMode(PDO::FETCH_ASSOC); 
-                        $row = $q->fetch();
-                        $r = $row;
-                        $q->closeCursor();
-                    }else $r = false;
+		         "; 
+		            $q = $pdo->query($pageQueryString);
+		            if($q && $q->rowCount()){
+		                $q->setFetchMode(PDO::FETCH_ASSOC); 
+		                $row = $q->fetch();
+		                $r = $row;
+		                $q->closeCursor();
+		            }else $r = false;
 
 
+		            $this->closeCon();
+		        return $r;
+		}//end function
+		       
+		function get_adtag($article_id, $adslot_name){
 
-            }//end if($r===false)
+		        $pdo = $this->con->openCon();
+				// Check if article is a test page and fetch test tag for this adslot
+		        $pageQueryString = "
+		            SELECT * FROM smf_ad_special_pages asp 
+					INNER JOIN smf_ad_tag_to_special_pages atsp ON asp.asp_id = atsp.atsp_ad_special_page_id
+					INNER JOIN smf_ad_tags smf_at ON smf_at.at_id = atsp.atsp_ad_tag_id
+					INNER JOIN smf_ad_tag_to_ad_slot atas ON atas.atas_ad_tag_id = smf_at.at_id
+					INNER JOIN smf_ad_slots smf_as ON smf_as.as_id = atas.atas_ad_slot_id
+		            WHERE smf_as.as_name = '$adslot_name'
+		            AND smf_as.as_live_display = 1
+		            AND smf_at.at_active_status = 2
+		            AND asp.asp_article_id = $article_id
+		         "; 
+		            $q = $pdo->query($pageQueryString);
+		            if($q && $q->rowCount()){
+		                $q->setFetchMode(PDO::FETCH_ASSOC); 
+		                $row = $q->fetch();
+		                $r = $row;
+		                $q->closeCursor();
+		            }else $r = false;
 
-            $con->closeCon();
-        return $r;
-}//end function
+		            if($r===false){
+		            // fetch regular tag for this adslot
+		                $pageQueryString = "
+		                    SELECT * FROM smf_ad_tags smf_at 
+		        			INNER JOIN smf_ad_tag_to_ad_slot atas ON atas.atas_ad_tag_id = smf_at.at_id
+							INNER JOIN smf_ad_slots smf_as ON smf_as.as_id = atas.atas_ad_slot_id
+				            WHERE smf_as.as_name = '$adslot_name'
+		                    AND smf_as.as_live_display = 1
+				            AND smf_at.at_active_status = 1
+		                 "; 
+
+var_dump($pageQueryString)
+		                    $q = $pdo->query($pageQueryString);
+		                    if($q && $q->rowCount()){
+		                        $q->setFetchMode(PDO::FETCH_ASSOC); 
+		                        $row = $q->fetch();
+		                        $r = $row;
+		                        $q->closeCursor();
+		                    }else $r = false;
+
+		            }//end if($r===false)
+
+		            $this->closeCon();
+		        return $r;
+		}//end function
+
+}//end class smf_ad_manager extends Connector
+
 
 ?>
 
@@ -109,16 +120,25 @@ global $con;
 
 <?php
 
+
+$smf_ad_manager = new smf_ad_manager($config);
+
+
 // $article_id = 27328;
 $article_id = 11111;
-$adslot_id = 2;
+$adslot_name = 'dsk_banner';
 
-$ad_to_display = get_adtag($article_id, $adslot_id);
-echo "<pre>";
+$ad_to_display = $smf_ad_manager->get_adtag($article_id, $adslot_name);
+
 var_dump($ad_to_display);
-echo "</pre>";
 
-$sample_tag = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle"style="display:block; text-align:center;"data-ad-format="fluid"data-ad-layout="in-article"data-ad-client="ca-pub-8978874786792646"data-ad-slot="3693758426"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>';
+
+
+exit();
+
+
+
+
 
 $sample_tag = "<div style=\"height: 250px; width: 300px; margin:20px 0; text-align: center;\">" . $sample_tag . "</div>";
 $sample_article = get_article_body($article_id);

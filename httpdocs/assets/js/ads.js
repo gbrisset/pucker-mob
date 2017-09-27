@@ -74,6 +74,11 @@ if($('body').hasClass('mobile')) {
 	
 
 				case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+					// Answers - Rubicon
+					inBodyAd.loadInArticleAd('article-body', 1, 0, '<!-- _TEST_mbl_Answers_Rubicon_2  --> <script type="text/javascript"> (function() {var lkqdSettings = {pid: 130, sid: 483784, playerContainerId: \'ad\' + Math.round(Math.random()*1000000000).toString(), playerId: \'\', playerWidth: 300, playerHeight: 250, execution: \'inbanner\', placement: \'\', passbackFirst: false, playInitiation: \'auto\', volume: 0, pageUrl: \'\', trackImp: \'\', trackClick: \'\', custom1: \'\', custom2: \'\', custom3: \'\', pubMacros: \'\', dfp: false, lkqdId: new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString(), supplyContentVideo: {url: \'\', clickurl: \'\', play: \'pre\'} }; var lkqdVPAID; var creativeData = \'\'; if (!document.getElementById(lkqdSettings.playerContainerId)) { try { if (document.readyState && document.readyState != \'complete\' && document.readyState != \'interactive\'){ document.write(\'<div id=\' + lkqdSettings.playerContainerId + \'></div>\'); }} catch (e) {}} var environmentVars = { slot: document.getElementById(lkqdSettings.playerContainerId), videoSlot: document.getElementById(lkqdSettings.playerId), videoSlotCanAutoPlay: true, lkqdSettings: lkqdSettings }; function onVPAIDLoad() {lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, \'AdLoaded\'); } var vpaidFrame = document.createElement(\'iframe\'); vpaidFrame.id = lkqdSettings.lkqdId; vpaidFrame.name = lkqdSettings.lkqdId; vpaidFrame.style.display = \'none\'; var vpaidFrameLoaded = function() {vpaidLoader = vpaidFrame.contentWindow.document.createElement(\'script\'); vpaidLoader.src = \'https://ad.lkqd.net/vpaid/formats.js?pid=130&sid=483784\'; vpaidLoader.onload = function() {lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd(); onVPAIDLoad(); lkqdVPAID.handshakeVersion(\'2.0\'); lkqdVPAID.initAd(lkqdSettings.playerWidth, lkqdSettings.playerHeight, \'normal\', 600, creativeData, environmentVars); }; vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader); }; vpaidFrame.onload = vpaidFrameLoaded; vpaidFrame.onerror = vpaidFrameLoaded; document.documentElement.appendChild(vpaidFrame); })(); </script>', tag);
+					$('#inarticle1-ad').attr('style', 'height: 250px; width: 300px;  margin: 0px;');//to accomodate  Answers - Rubicon
+
+					break;
 			 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 			 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
 			 	case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
@@ -119,9 +124,11 @@ if($('body').hasClass('mobile')) {
 
 		}// end if( adPage === 'article' )
 
+		// if (article_id*1 == 27296){ $('#inarticle1-ad').attr('style', 'height: 250px; width: 300px;  margin: 0 ;');}//to accomodate  Answers - Rubicon
 
 
-		$('#adunit-300x250-3159').attr('style', 'background:#ddd; height: 250px; width: 300px;');
+
+		// $('#adunit-300x250-3159').attr('style', 'background:#ddd; height: 250px; width: 300px;');
 		//$('.inarticle-ad').prepend("<p style='margin-left: 0.5rem !important;color: #bbb;font-size: 0.9rem !important;font-style: italic; margin-bottom:7px !important;'>Advertisement</p>");
 		//$('.inarticle-ad').prepend("<img style='margin-bottom: 3px; width: 100%;' src='http://www.puckermob.com/assets/img/ad-bar.jpg' alt='adsvertiser' />");
         
@@ -160,6 +167,12 @@ if($('body').hasClass('mobile')) {
 				// Lelo sponsored content
 					inBodyAd.loadInArticleAd( 'article-body', 3, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
 					inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
+					break;
+				case 27296: // moblog/what-time-doesnt-heal-you-have-to-heal-yourself
+					// Answers - Rubicon
+					inBodyAd.loadInArticleAd('article-body', 2, 0, '<!-- _TEST_dsk_Answers_Rubicon_2 --> <script type="text/javascript"> (function() {var lkqdSettings = {pid: 130, sid: 483777, playerContainerId: \'ad\' + Math.round(Math.random()*1000000000).toString(), playerId: \'\', playerWidth: 300, playerHeight: 250, execution: \'inbanner\', placement: \'\', passbackFirst: false, playInitiation: \'auto\', volume: 0, pageUrl: \'\', trackImp: \'\', trackClick: \'\', custom1: \'\', custom2: \'\', custom3: \'\', pubMacros: \'\', dfp: false, lkqdId: new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString(), supplyContentVideo: {url: \'\', clickurl: \'\', play: \'pre\'} }; var lkqdVPAID; var creativeData = \'\'; if (!document.getElementById(lkqdSettings.playerContainerId)) { try { if (document.readyState && document.readyState != \'complete\' && document.readyState != \'interactive\'){ document.write(\'<div id=\' + lkqdSettings.playerContainerId + \'></div>\'); }} catch (e) {}} var environmentVars = { slot: document.getElementById(lkqdSettings.playerContainerId), videoSlot: document.getElementById(lkqdSettings.playerId), videoSlotCanAutoPlay: true, lkqdSettings: lkqdSettings }; function onVPAIDLoad() {lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, \'AdLoaded\'); } var vpaidFrame = document.createElement(\'iframe\'); vpaidFrame.id = lkqdSettings.lkqdId; vpaidFrame.name = lkqdSettings.lkqdId; vpaidFrame.style.display = \'none\'; var vpaidFrameLoaded = function() {vpaidLoader = vpaidFrame.contentWindow.document.createElement(\'script\'); vpaidLoader.src = \'https://ad.lkqd.net/vpaid/formats.js?pid=130&sid=483777\'; vpaidLoader.onload = function() {lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd(); onVPAIDLoad(); lkqdVPAID.handshakeVersion(\'2.0\'); lkqdVPAID.initAd(lkqdSettings.playerWidth, lkqdSettings.playerHeight, \'normal\', 600, creativeData, environmentVars); }; vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader); }; vpaidFrame.onload = vpaidFrameLoaded; vpaidFrame.onerror = vpaidFrameLoaded; document.documentElement.appendChild(vpaidFrame); })(); </script>', tag);
+					$('#inarticle2-ad').attr('style', 'height: 250px; width: 300px;  margin: 0px;');//to accomodate  Answers - Rubicon
+				
 					break;
 				
 

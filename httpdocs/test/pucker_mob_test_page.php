@@ -118,7 +118,8 @@ class smf_ad_manager extends Connector{
 					INNER JOIN smf_ad_slots smf_as ON smf_as.as_id = atas.atas_ad_slot_id
 		            WHERE smf_as.as_name = '$adslot_name'
 		            AND smf_as.as_live_display = 1
-		            AND smf_at.at_active_status = 2
+		            AND smf_at.at_active_status > 1
+		            AND smf_at.at_date_expiration > NOW()
 		            AND asp.asp_article_id = $article_id
 		         "; 
 		            $q = $pdo->query($querystring);
@@ -138,6 +139,8 @@ class smf_ad_manager extends Connector{
 				            WHERE smf_as.as_name = '$adslot_name'
 		                    AND smf_as.as_live_display = 1
 				            AND smf_at.at_active_status = 1
+           		            AND smf_at.at_date_expiration > NOW()
+
 		                 "; 
 
 		                    $q = $pdo->query($querystring);
@@ -154,16 +157,43 @@ class smf_ad_manager extends Connector{
 		        return $r;
 		}//end function ------------------------------------------------------------------------------
 
-		function get_all_adtags(){
+		function admin_get_slot_adtags( $adslot_name){
 
-				// Gets all tags, their adslots and their special pages
+// SELECT * FROM smf_ad_tags smf_at
+// LEFT JOIN smf_ad_tag_to_ad_slot atas ON atas.atas_ad_tag_id = smf_at.at_id
+// LEFT JOIN smf_ad_slots smf_as ON smf_as.as_id = atas.atas_ad_slot_id
+// LEFT JOIN smf_ad_tag_to_special_pages atsp ON smf_at.at_id = atsp.atsp_ad_special_page_id
+// LEFT JOIN smf_ad_special_pages asp  ON  asp.asp_id = atsp.atsp_ad_tag_id
+// WHERE smf_as.as_name = '$adslot_name'
+
 		        $pdo = $this->con->openCon();
 		        $querystring = "
-					SELECT * FROM smf_ad_tags smf_at
-					INNER JOIN smf_ad_tag_to_ad_slot atas ON atas.atas_ad_tag_id = smf_at.at_id
-					INNER JOIN smf_ad_slots smf_as ON smf_as.as_id = atas.atas_ad_slot_id
+		            SELECT smf_at.* FROM smf_ad_tags smf_at
+					LEFT JOIN smf_ad_tag_to_ad_slot atas ON atas.atas_ad_tag_id = smf_at.at_id
+					LEFT JOIN smf_ad_slots smf_as ON smf_as.as_id = atas.atas_ad_slot_id
+		            WHERE smf_as.as_name = '$adslot_name'
 		         "; 
-		         echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST 
+		         // echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST echo "$querystring";//TEST 
+		            $q = $pdo->query($querystring);
+		            if($q && $q->rowCount()){
+		                $q->setFetchMode(PDO::FETCH_ASSOC); 
+		                $row = $q->fetchAll();
+		                $r = $row;
+		                $q->closeCursor();
+		            }else $r = false;
+
+		            $this->closeCon();
+		        return $r;
+		}//end function ------------------------------------------------------------------------------
+
+		function admin_get_all_adslots(){
+
+		        $pdo = $this->con->openCon();
+		        $querystring = "
+					SELECT * FROM `smf_ad_slots`  
+					ORDER BY 
+					`smf_ad_slots`.`as_target_device` ASC,
+					`as_admin_display_order` ASC;		         "; 
 		            $q = $pdo->query($querystring);
 		            if($q && $q->rowCount()){
 		                $q->setFetchMode(PDO::FETCH_ASSOC); 
@@ -195,6 +225,19 @@ class smf_ad_manager extends Connector{
 //CONFIG LEVEL
 $smf_ad_manager = new smf_ad_manager($config);
 
+$smf_target_device[0]['prefix'] = 'dsk_';
+$smf_target_device[0]['pretty_name'] = 'Desktop';
+$smf_target_device[0]['short_name'] = 'DSK';
+
+$smf_target_device[1]['prefix'] = 'mbl_';
+$smf_target_device[1]['pretty_name'] = 'Mobile';
+$smf_target_device[1]['short_name'] = 'MBL';
+
+$smf_tag_active_status[0] = 'Inactive';
+$smf_tag_active_status[1] = 'Active';
+$smf_tag_active_status[2] = 'Test';
+$smf_tag_active_status[3] = 'Sponsored Content';
+
 
 // ARTICLE LEVEL
 // $article_id = 8560; //lelo
@@ -222,14 +265,101 @@ $target_device = 1; //0 = dsk, 1 = mbl
 
 //ADMIN LEVEL
 
+/* ********************************************************************************************************* */
+/* ************ SLOT PAGE - LIST OF AD SLOTS WITH TAGS ***************************************************** */
+/* ********************************************************************************************************* */
 
-$all_adtags = $smf_ad_manager->get_all_adtags();
+$all_adslots = $smf_ad_manager->admin_get_all_adslots();
 
-		$ddd = new debug($all_adtags,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+foreach ($all_adslots as $ad_slot) {
+	$as_name = $ad_slot['as_name'];
+	
+	$as_inline_pos = $ad_slot['as_inline_pos'];
+	$as_inline_pos_txt = ($as_inline_pos>0)? "In Body Text at $as_inline_pos Chars ":"";
+
+	$as_live_display = $ad_slot['as_live_display'];
+	$as_live_display_txt = ($as_live_display==0)? "Off" : "Live";
+	
+	$as_target_device = $ad_slot['as_target_device'];	
+	$as_target_device_txt = $smf_target_device[$as_target_device]['pretty_name'];
+
+$slot_adtags = $smf_ad_manager->admin_get_slot_adtags($as_name);
+
+	echo"
+	<fieldset  style=\"width: 400px;\" ><legend  style=\"padding: 0 10px;\">$as_name</legend>
+	<table style=\"\">
+	<tr><td>as_target_device</td><td>as_live_display</td><td>as_inline_pos</td></tr>
+	<tr><td>$as_target_device_txt</td><td>$as_live_display_txt</td><td>$as_inline_pos_txt</td></tr>
+	</table>	
+	<div style=\"height: 200px; background-color: #aaa000; \">";
+
+	foreach ($slot_adtags as $ad_tag) {
+		$at_id = $ad_tag['at_id'];
+		$at_name = $ad_tag['at_name'];
+		$at_provider = $ad_tag['at_provider'];
+
+		$at_cpm = $ad_tag['at_cpm'];
+		$at_estimated_fill = $ad_tag['at_estimated_fill'];
+		$at_active_status = $ad_tag['at_active_status'];
+		$at_date_creation = $ad_tag['at_date_creation'];
+		$at_date_expiration = $ad_tag['at_date_expiration'];		
+
+		$at_cpm_txt = '$'. number_format($at_cpm,2);
+		$at_estimated_fill_txt = number_format($at_estimated_fill,0) .'%';
+
+		$at_active_status_txt = "Unknown";
+		$at_active_status_txt = $smf_tag_active_status[$at_active_status];
+		$at_date_creation_txt = date('F d, Y ',strtotime($at_date_creation));
+		$at_date_expiration_txt = date('F d, Y ',strtotime($at_date_expiration));
+		$at_expiration_status_txt = (strtotime($at_date_expiration)<strtotime('now'))? 'Current' : 'Expired';
+
+	echo"<div  style=\"width: 100px;\" ><legend  style=\"padding: 0 10px;\">$at_name</legend><ul>";
+
+		echo "<li>$at_provider</li>";
+		echo "<li>$at_cpm_txt</li>";
+		echo "<li>$at_estimated_fill_txt</li>";
+		echo "<li>$at_active_status_txt</li>";
+		echo "<li>$at_date_creation_txt</li>";
+		echo "<li>$at_date_expiration_txt</li>";
+		echo "<li>$at_expiration_status_txt</li>";
+
+		echo"</ul> </div> ";
+
+
+
+	}// end foreach ($slot_adtags as $ad_tag) 
+
+	echo"
+	</div>
+	</fieldset>
+	";
+
+ // $ddd = new debug($slot_adtags,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
+}//end foreach ($all_adslots as $ad_slot)
+
+
+/* ********************************************************************************************************* */
+/* ************ SPECIAL PAGES PAGE ************************************************************************* */
+/* ********************************************************************************************************* */
+
+
+/* ********************************************************************************************************* */
+/* ************ TAG PAGE *********************************************************************************** */
+/* ********************************************************************************************************* */
+
 
 ?>
 
-
+<fieldset  style="width: 400px;" ><legend  style="padding: 0 10px;">$as_name</legend>
+<table style="">
+<tr><td>$as_target_device</td><td>$as_live_display</td><td>$as_inline_pos</td></tr>
+<tr><td>$as_target_device</td><td>$as_live_display</td><td>$as_inline_pos</td></tr>
+</table>	
+<div style="height: 100px; background-color: #aa0000; text-align: center; vertical-align: middle;">
+	Tags here
+</div>
+</fieldset>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>

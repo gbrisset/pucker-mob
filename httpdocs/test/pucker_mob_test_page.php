@@ -11,13 +11,13 @@
 	
 <?php
 
+
 // SELECT article_id, article_body, CHAR_LENGTH(article_body) AS c_count, LENGTH(article_body) - LENGTH(REPLACE(article_body, '</', '1')) AS s_count, LENGTH(article_body) - LENGTH(REPLACE(article_body, '</p>', '123')) AS p_count, LENGTH(article_body) - LENGTH(REPLACE(article_body, '</li>', '1234')) AS l_count FROM articles WHERE article_status=1 ORDER BY `articles`.`article_id` DESC;
 
   include ("../assets/php/config.php"); 
 
 
 $dev_status = ($local)? "<span style=\"color: #000099;\">LOCAL</span>" : "<span style=\"color: #990000;\">LOCAL</span>" ;
-
 
 
    
@@ -293,6 +293,9 @@ $slot_adtags = $smf_ad_manager->admin_get_slot_adtags($as_name);
 	</table>	
 	<div style=\"height: 200px; background-color: #aaa000; \">";
 
+echo "<table><tr>";
+
+
 	foreach ($slot_adtags as $ad_tag) {
 		$at_id = $ad_tag['at_id'];
 		$at_name = $ad_tag['at_name'];
@@ -311,10 +314,11 @@ $slot_adtags = $smf_ad_manager->admin_get_slot_adtags($as_name);
 		$at_active_status_txt = $smf_tag_active_status[$at_active_status];
 		$at_date_creation_txt = date('F d, Y ',strtotime($at_date_creation));
 		$at_date_expiration_txt = date('F d, Y ',strtotime($at_date_expiration));
-		$at_expiration_status_txt = (strtotime($at_date_expiration)<strtotime('now'))? 'Current' : 'Expired';
+		$at_expiration_status_txt = (strtotime($at_date_expiration) < strtotime("now"))? 'Current' : 'Expired';
 
-	echo"<div  style=\"width: 100px;\" ><legend  style=\"padding: 0 10px;\">$at_name</legend><ul>";
+	echo"<td style=\"float:left; width: 200px; margin: 10px; padding: 5px; border: solid 1px #000; background-color: #FFFF00;\" ><ul>";
 
+		echo "<li style = \"font-weight: bold;\">$at_name</li>";
 		echo "<li>$at_provider</li>";
 		echo "<li>$at_cpm_txt</li>";
 		echo "<li>$at_estimated_fill_txt</li>";
@@ -323,8 +327,9 @@ $slot_adtags = $smf_ad_manager->admin_get_slot_adtags($as_name);
 		echo "<li>$at_date_expiration_txt</li>";
 		echo "<li>$at_expiration_status_txt</li>";
 
-		echo"</ul> </div> ";
+		echo"</ul> </td> ";
 
+echo "</tr> </table>";
 
 
 	}// end foreach ($slot_adtags as $ad_tag) 
@@ -350,6 +355,10 @@ $slot_adtags = $smf_ad_manager->admin_get_slot_adtags($as_name);
 
 
 ?>
+
+
+
+
 
 <fieldset  style="width: 400px;" ><legend  style="padding: 0 10px;">$as_name</legend>
 <table style="">

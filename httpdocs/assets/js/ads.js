@@ -64,8 +64,9 @@ if($('body').hasClass('mobile')) {
 					inBodyAd.loadInArticleAd( 'article-body', 7, 0, '<a href="https://www.indiegogo.com/projects/remoji-the-app-that-will-control-your-sex-life--7/?utm_source=display-network&utm_medium=banner&utm_content=puckermob&utm_campaign=remoji-idgg-banners-32016-global" target="_blank"><img style="width: 100%;" src="http://www.puckermob.com/assets/img/campaing/LELO_HEX_PuckerMob_300x250_white.jpg" /></a>', tag);		
 					break;
 					
-			 	// case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
-					// break;
+			 	case 8158: // relationships/8-things-guys-do-that-make-our-hearts-melt
+					inBodyAd.loadInArticleAd('article-body', 2, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\' style=\'height:1px; width:1px;\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+					break;
 
 
 				// case 23305: // relationships/25-little-white-lies-of-every-long-distance-relationship

@@ -1023,6 +1023,20 @@ class Dashboard{
 		$contributor_id = $data['contributor'];
 		$order_by = isset($data['order_by'])? $data['order_by'] : "tbp.to_be_pay_fixed DESC";
 
+		// In July 2017 - earnings were updated on the first day of the following month accordingly to the pageviews accrued in a given month.
+		// before July 2017 - earnings were updated every day accordingly to the pageviews accrued in a the previous day.
+
+		$updated_date = strtotime("$year-$month-15");
+		$updated_date = date('Y-m-t',$updated_date);// last day on the month
+		if (strtotime($updated_date) > strtotime("2017-06-30")){
+			$updated_date = strtotime($updated_date . " +1 day"); // first day of following month
+			$updated_date = date('Y-m-d',$updated_date);
+		}//end if
+			
+
+			// AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15')) // for month before july 2017
+
+
 			$s="
 			SELECT 
 			c.*, 
@@ -1041,7 +1055,7 @@ class Dashboard{
 			SELECT `contributor_id`, SUM(`total_earnings`) AS to_be_pay_fixed
 			FROM `contributor_earnings`
 			WHERE payday_date = 0 
-			AND DATE(updated_date) <= LAST_DAY(CONCAT($year,'-',$month,'-','15'))
+			AND DATE(updated_date) <= '$updated_date'
 
 			GROUP BY contributor_id, payday_date
 			ORDER BY contributor_id, year DESC, month DESC
@@ -1056,14 +1070,6 @@ class Dashboard{
 			WHERE c.month = $month AND c.year = $year
 			ORDER BY $order_by ;
 			";
-
-	
-
-		if(isset($contributor_id) && $contributor_id >0) {
-		$s .= "AND article_contributors.contributor_id = '".$contributor_id."' ";
-		}
-
-
 
 		$queryParams = [ ];
 		$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);

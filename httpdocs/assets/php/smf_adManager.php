@@ -156,7 +156,7 @@ public function __construct($c){
 	$this->tag_list[]= array('ad_slot' => "dsk_ad_stack_1", 'tag' => "dsk_nativo_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "dsk_ad_stack_2", 'tag' => "dsk_answer_AB_tout_rocket.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_ad_stack_3", 'tag' => "dsk_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_ad_stack_4", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "dsk_ad_stack_4", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	
 	// ---------------------------------------
@@ -175,7 +175,7 @@ public function __construct($c){
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "mbl_morebar_amazon_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "mbl_morebar_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "mbl_morebar_amazon_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "answers_rocketyield_inline_9th_paragraph.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// on the work - delete after October 15, 2017
 	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
@@ -276,7 +276,7 @@ public function __construct($c){
 	
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
@@ -302,8 +302,8 @@ public function __construct($c){
 	// ---- OVERLAY BOTTOM ----------------------------------
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_answers.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 }//end public function __construct

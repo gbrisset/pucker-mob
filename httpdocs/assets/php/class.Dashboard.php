@@ -12,7 +12,9 @@ class Dashboard{
 	}
 
 	//Execute Query
-	protected function performQuery($opts){
+	
+	 function performQuery($opts){
+	// protected function performQuery($opts){
 		$options = array_merge(array(
 			'queryString' => '',
 			'queryParams' => array(),
@@ -935,7 +937,7 @@ class Dashboard{
 						//Gets the CPM rate accordingly to the pageviews performance. 
 						// (this will need to be revised if merit changes to another mode of calculation - e.g.: slice/tiers)
 						$prev_month_pageviews = $previous_month_data[0]['total_us_pageviews'];
-						$merit_rates = $this->smf_get_merit_rate($prev_month_pageviews, $month, $year );	
+						$merit_rates = $this->smf_get_merit_rate($prev_month_pageviews, $prev_month, $prev_year);	
 
 						if($merit_rates){
 							$slice = $merit_rates['slice'];
@@ -1242,7 +1244,7 @@ public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $y
 	public function smf_get_merit_rate($pageviews, $month, $year ){
 		$s=" 
 				SELECT * FROM smf_merit_rates m1 WHERE m1.threshold = (
-				SELECT MAX(m2.threshold) FROM smf_merit_rates m2 WHERE m2.threshold <= $pageviews )
+				SELECT MAX(m2.threshold) FROM smf_merit_rates m2 WHERE m2.threshold <= $pageviews  AND m2.month = $month AND m2.year = $year )
 				AND m1.month = $month 
 				AND m1.year = $year;
 				";
@@ -1256,7 +1258,7 @@ public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $y
 	public function smf_get_merit_rate_next_level($pageviews, $month, $year ){
 		$s=" 
 				SELECT * FROM smf_merit_rates m1 WHERE m1.threshold = (
-				SELECT MIN(m2.threshold) FROM smf_merit_rates m2 WHERE m2.threshold >= $pageviews )
+				SELECT MIN(m2.threshold) FROM smf_merit_rates m2 WHERE m2.threshold >= $pageviews AND m2.month = $month AND m2.year = $year )
 				AND m1.month = $month 
 				AND m1.year = $year;
 				";

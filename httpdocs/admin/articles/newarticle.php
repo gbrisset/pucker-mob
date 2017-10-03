@@ -2,6 +2,8 @@
 	$admin = true;
 	require_once('../../assets/php/config.php');
 
+var_dump($_SESSION);exit();
+
 if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
 
 	if (!empty($_FILES)) {

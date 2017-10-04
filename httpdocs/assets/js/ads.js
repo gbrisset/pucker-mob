@@ -106,6 +106,11 @@ if($('body').hasClass('mobile')) {
 					//UnderTone SeeThrough
 					// inBodyAd.loadInArticleAd('article-body', 12, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
 
+			 	//UT - See-Through Via DFP
+			 		// with style
+					// inBodyAd.loadInArticleAd('article-body', 15, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\' style=\'height:1px; width:1px;\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+			 		// without style - height & width were impairing the tag to work properly
+					inBodyAd.loadInArticleAd('article-body', 15, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
 
 
 					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<script type="text/javascript" src="http://us.ads.justpremium.com/adserve/js.php?zone=31674"></script>', tag);
@@ -114,7 +119,7 @@ if($('body').hasClass('mobile')) {
 					// Google
 					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <!-- MOB Mobile After 10th paragraph --> <ins class="adsbygoogle"style="display:inline-block;width:300px;height:250px"data-ad-client="ca-pub-8978874786792646"data-ad-slot="6579881382"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script> ', tag);
 					// Kixer
-					inBodyAd.loadInArticleAd('article-body', 16, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
+					// inBodyAd.loadInArticleAd('article-body', 16, 0, '<!-- Start Pucker Mob - 300x250 - mobile web --> <div id="__kx_ad_8446"></div> <script type="text/javascript" language="javascript"> var __kx_ad_slots = __kx_ad_slots || []; (function () {var slot = 8446; var h = false; __kx_ad_slots.push(slot); if (typeof __kx_ad_start == "function") {__kx_ad_start(); } else {var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = "//cdn.kixer.com/ad/load.js"; s.onload = s.onreadystatechange = function(){if (!h && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {h = true; s.onload = s.onreadystatechange = null; __kx_ad_start(); } }; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); } })(); </script> <!-- End Pucker Mob - 300x250 - mobile web -->', tag);
 					//Google P18
 					// inBodyAd.loadInArticleAd('article-body', 18, 0, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle"style="display:block; text-align:center;"data-ad-format="fluid"data-ad-layout="in-article"data-ad-client="ca-pub-8978874786792646"data-ad-slot="3693758426"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>', tag);
 					// TripleLift
@@ -184,7 +189,10 @@ if($('body').hasClass('mobile')) {
 					inBodyAd.loadInArticleAd('article-body', 3, 0, '<div id="nativo-id"></div>' , tag);
 					$('#inarticle3-ad').removeClass('columns');
 			 	//UT - See-Through Via DFP
-					inBodyAd.loadInArticleAd('article-body', 10, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\' style=\'height:1px; width:1px;\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+			 		// with style
+					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\' style=\'height:1px; width:1px;\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+			 		// without style - height & width were impairing the tag to work properly
+					inBodyAd.loadInArticleAd('article-body', 10, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
 
 			 }//end switch ($article_id)
 

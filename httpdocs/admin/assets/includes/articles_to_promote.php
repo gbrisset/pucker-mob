@@ -60,7 +60,11 @@
 						<h2 class="small-12 columns no-padding">
 							<i class="fa fa-caret-right hide-for-large-up small-1  columns"></i>
 							<a href="<?php echo $articleUrl; ?>">
-								<?php echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45); ?>
+								<?php 
+								echo $article_title;
+								// echo $mpHelpers->truncate(trim(strip_tags($article_title)), 45);
+
+								?>
 							</a>
 							<?php if($admin){?>
 								<span class="show-for-large-up"><a href="<?php echo $config['this_admin_url']; ?>profile/user/<?php echo $contributor_seo_name; ?>"><?php echo $contributor_name?></a></span>

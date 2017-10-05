@@ -125,8 +125,9 @@ public function __construct($c){
 	$show_on =  $this->sponsored_pages_lelo; $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_banner", 'tag' => "dsk_banner_lelo.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-// 8700 17-things-that-have-lowered-the-bar-for-romance  -to tets a UT bug - DELETE AFTER OCT 15
-	$show_on =  array("8700"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// TEST for UT Billboard - DELETE AFTER OCTOBER  20 2017
+	// 8541  /lifestyle/19-reasons-to-date-the-girl-with-no-filter
+	$show_on =  array(8541); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_banner", 'tag' => "undertone_BB_TEST.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on =  array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
@@ -275,6 +276,7 @@ public function __construct($c){
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_eoa_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
+	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "triple_lift.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "Spoutable_Mob_InPage.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
@@ -282,7 +284,6 @@ public function __construct($c){
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
-	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "triple_lift.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// ---- MORE BAR ----------------------------------

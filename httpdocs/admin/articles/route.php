@@ -17,6 +17,10 @@
 			if(isset($uri[2]) && strlen($uri[2])) include_once('editarticle.php');
 			else $mpShared->get404();
 			break;
+		case "edit_test":
+			if(isset($uri[2]) && strlen($uri[2])) include_once('editarticle_test.php');
+			else $mpShared->get404();
+			break;
 		case "newarticle":
 			include_once('newarticle.php');
 			break;

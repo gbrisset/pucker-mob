@@ -108,6 +108,7 @@ if($local){
 		'shared_css' => $root_directory .'assets/css/',
 		'shared_scss' => $root_directory .'assets/scss/',
 		'assets_path' => $root_directory .'assets/php/',
+		'pod_url' => '', //needed locally to avoid an error in pucker-mob\httpdocs\assets\js\plugins.php
 		
 		'image_upload_dir' => $root_directory .'subdomains/images/httpdocs/'
 		

@@ -192,7 +192,7 @@
 					<input  type="hidden" id="is_locked" name="is_locked" value ="<?php echo $article_locked; ?>" >
 
 					<div class="small-12 xxlarge-8 columns margin-top">
-						<!-- ARTICLE LOCKED -->
+						<!-- ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED -->
 						<?php if( $article_locked ){ ?>
 						<!-- ARTICLE TITLE -->
 						<div class="row ">
@@ -220,6 +220,7 @@
 							</div>
 						</div>
 						<?php }else{?>
+						<!-- ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED -->
 						<!-- ARTICLE TITLE -->
 						<div class="row ">
 							<div>

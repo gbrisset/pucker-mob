@@ -97,20 +97,20 @@ if($('body').hasClass('mobile')) {
 					// inBodyAd.loadInArticleAd('article-body', 2, 0, "<!-- BRAVONATE --> <div id=\"mobile-instream-branovate-ad\" style=\"text-align: center; clear: both; padding-top: 1rem;\"> <script type=\"text/javascript\"> (function() {var lkqdSettings = {pid: 16, sid: 346089, playerContainerId: 'ad' + Math.round(Math.random()*1000000000).toString(), playerId: '', playerWidth: 300, playerHeight: 250, execution: 'inbanner', placement: '', playInitiation: 'auto', volume: 0, pageUrl: '', trackImp: '', trackClick: '', custom1: '', custom2: '', custom3: '', pubMacros: '', dfp: false, lkqdId: new Date().getTime().toString() + Math.round(Math.random()*1000000000).toString(), supplyContentVideo: {url: '', clickurl: '', play: 'pre'} }; var lkqdVPAID; var creativeData = ''; if (!document.getElementById(lkqdSettings.playerContainerId)) { try { if (document.readyState && document.readyState != 'complete' && document.readyState != 'interactive'){ document.write('<div id=' + lkqdSettings.playerContainerId + '></div>'); }} catch (e) {}} var environmentVars = { slot: document.getElementById(lkqdSettings.playerContainerId), videoSlot: document.getElementById(lkqdSettings.playerId), videoSlotCanAutoPlay: true, lkqdSettings: lkqdSettings }; function onVPAIDLoad() {lkqdVPAID.subscribe(function() { lkqdVPAID.startAd(); }, 'AdLoaded'); } var vpaidFrame = document.createElement('iframe'); vpaidFrame.id = lkqdSettings.lkqdId; vpaidFrame.name = lkqdSettings.lkqdId; vpaidFrame.style.display = 'none'; var vpaidFrameLoaded = function() {vpaidLoader = vpaidFrame.contentWindow.document.createElement('script'); vpaidLoader.src = 'https://ad.lkqd.net/vpaid/formats.js?pid=16&sid=346089'; vpaidLoader.onload = function() {lkqdVPAID = vpaidFrame.contentWindow.getVPAIDAd(); onVPAIDLoad(); lkqdVPAID.handshakeVersion('2.0'); lkqdVPAID.initAd(lkqdSettings.playerWidth, lkqdSettings.playerHeight, 'normal', 600, creativeData, environmentVars); }; vpaidFrame.contentWindow.document.body.appendChild(vpaidLoader); }; vpaidFrame.onload = vpaidFrameLoaded; vpaidFrame.onerror = vpaidFrameLoaded; document.documentElement.appendChild(vpaidFrame); })(); </script> </div>", tag);
 					//PuckerStore
 					// inBodyAd.loadInArticleAd('article-body', 2, 0, '<a href="https://puckershop.com/collections/sale"><img src="http://www.puckermob.com/assets/img/PuckerStore_300x150.jpg" alt="Pucker Shop"></a>', tag);
-					// Sharethrough
-					inBodyAd.loadInArticleAd('article-body', 3, 0, '<!-- sharethrough --><div data-str-native-key="536c62e7" style="display: none;"></div>', tag);
+	
+				 	//UT - See-Through Via DFP
+			 		// without style - height & width were impairing the tag to work properly
+					inBodyAd.loadInArticleAd('article-body', 3, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+	
 					//Nativo 1
 					inBodyAd.loadInArticleAd('article-body', 7, 0, '<div id="nativo-id"></div>', tag);
+	
 					//Answers
 					inBodyAd.loadInArticleAd('article-body', 11, 0, '<!—- Rocketyield Inline 9th paragraph —> <script type="text/javascript"> top["_rocketyield"] = top["_rocketyield"] || []; !function (e, f, u) {e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(top.document.createElement("script"), top.document.getElementsByTagName("script")[0], "//d1gqcw1vqdwn9k.cloudfront.net/ry.min.js"); top["_rocketyield"].push({pid: "puckermob", placementId: "44ee"}); </script>', tag);			
-					//UnderTone SeeThrough
-					// inBodyAd.loadInArticleAd('article-body', 12, 0, '<script> googletag.cmd.push(function() {googletag.defineSlot("/73970039/UT_ST", [1, 1], "div-gpt-ad-1493987901721-0").addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id="div-gpt-ad-1493987901721-0" style="height:1px; width:1px;"> <script> googletag.cmd.push(function() { googletag.display("div-gpt-ad-1493987901721-0"); }); </script> </div>', tag);
+	
+					// Sharethrough
+					inBodyAd.loadInArticleAd('article-body', 15, 0, '<!-- sharethrough --><div data-str-native-key="536c62e7" style="display: none;"></div>', tag);
 
-			 	//UT - See-Through Via DFP
-			 		// with style
-					// inBodyAd.loadInArticleAd('article-body', 15, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\' style=\'height:1px; width:1px;\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
-			 		// without style - height & width were impairing the tag to work properly
-					inBodyAd.loadInArticleAd('article-body', 15, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
 
 
 					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<script type="text/javascript" src="http://us.ads.justpremium.com/adserve/js.php?zone=31674"></script>', tag);
@@ -197,8 +197,9 @@ if($('body').hasClass('mobile')) {
 			 	//UT - See-Through Via DFP
 			 		// with style
 					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\' style=\'height:1px; width:1px;\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+			 	//UT - See-Through Via DFP
 			 		// without style - height & width were impairing the tag to work properly
-					// inBodyAd.loadInArticleAd('article-body', 10, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+					inBodyAd.loadInArticleAd('article-body', 10, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
 
 			 }//end switch ($article_id)
 

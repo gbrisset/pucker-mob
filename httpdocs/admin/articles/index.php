@@ -117,7 +117,7 @@
 		
 		<div id="content" class="columns small-9 large-11">
 			<div class="  mobile-12 small-12 columns padding-bottom ">
-				<h1>View & Edit Articles</h1>
+				<h1>View &amp; Edit Articles</h1>
 			</div>
 			
 			<section id="edit-articles">

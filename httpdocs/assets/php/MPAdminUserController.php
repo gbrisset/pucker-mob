@@ -1677,13 +1677,21 @@ End password reset methods
 			// --------------------------- testing -------------------------------
 
 
+
 		if($recordExist){
+
+			if(strtotime("$year-$month-01") < strtotime("2017-07-01")){
+				$sql_update_date = " DATE(`updated_date`) <= LAST_DAY(CONCAT($year,'-',$month,'-','15')) ";
+			}else{
+				$sql_update_date = " DATE(`updated_date`) <= DATE_ADD(LAST_DAY(CONCAT($year,'-',$month,'-','15')),INTERVAL 1 DAY) ";// a bit ccomplicated but it works for the december-january transition
+			}//end if
+
 			$payday_date = date('Y-m-d H:i:s', time());
 			$payment_record =  $this->performUpdate(array(
 				'updateString' => "UPDATE `contributor_earnings` SET `paid` =  $paid, `payday_date` = '$payday_date' 
 									WHERE `contributor_id` = $contributor_id
 									AND `payday_date` = 0 
-									AND DATE(`updated_date`) <= LAST_DAY(CONCAT($year,'-',$month,'-','15')) ",
+									AND $sql_update_date "  ,
 				'updateParams' => array()
 			));
 		}//end if

@@ -99,7 +99,8 @@
 
 <h3>MATERIALS</h3>
 <p>License in Materials</p>
-<p>Sequel Media International, LLC does not claim ownership of any data, information (personal or otherwise) or other materials that you enter through the Site (collectively, "Materials”), although it does retain the right to edit and alter all work as deemed necessary.</p>
+<p>
+Sequel Media International, LLC does not claim ownership of any data, information (personal or otherwise) or other materials that you enter through the Site (collectively, "Materials”), although it does retain the right to edit and alter all work as deemed necessary. Once published on our site, Sequel Media International, LLC has the right to use your material in any way it chooses. Should you decide to close your account and/or delete your articles for any reason, SMI has the right to keep your articles live and on our site for up to three years past the request for removal.</p>
 
 
 <p>Feedback</p>

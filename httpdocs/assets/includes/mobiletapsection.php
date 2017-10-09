@@ -45,7 +45,7 @@
 						<div id="article-summary" class="small-12 column ">
 							
 							<!-- TITLE -->
-							<h1 style="font-size: 1.55rem;"><?php echo $article_title; ?></h1>
+							<h3 style="font-size: 1.55rem;"><?php echo $article_title; ?></h3>
 							
 							<div class="small-12 padding-bottom">
 								<?php if(!empty($article_desc) ){?><p class="description" style="margin-bottom:0;"><?php echo $article_desc; ?></p><?php }?>

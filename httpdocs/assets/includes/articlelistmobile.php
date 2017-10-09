@@ -50,7 +50,7 @@
 					<a  class="" href="<?php echo $linkToArticle; ?>" >
 					<?php echo $articles['article_title']; ?>
 				    </a>
-				</h2>
+				</h2>	
 			</div>
 			<div class="second-article-date small-12 clear">
 				<label class="small-6 left" ><?php echo $date; ?></label>

@@ -74,7 +74,7 @@ if(isset($articlesList) && $articlesList){
 					<span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributorName; ?></a></span>
 				</p>
 				<a class="left clear-left" href="<?php echo $linkToArticle; ?>">
-					<h1 class="h1-large-article"><?php echo $articleTitle?></h1>
+					<h3 class="h1-large-article"><?php echo $articleTitle?></h3>
 				</a>
 			</div>
 		</div>
@@ -99,7 +99,7 @@ if(isset($articlesList) && $articlesList){
 					<span class="span-author">By <a href="<?php echo $linkToContributor; ?>" ><?php echo $contributorName ?></a></span>
 				</p>
 				<a class="left clear-left" href="<?php echo $linkToArticle; ?>">
-					<h1 class="h1-small-article"><?php echo $articleTitle?></h1>
+					<h3 class="h1-small-article"><?php echo $articleTitle?></h3>
 				</a>
 			</div>
 		</div>

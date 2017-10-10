@@ -279,7 +279,7 @@ public function __construct($c){
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "triple_lift.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "Spoutable_Mob_InPage.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "meme_mob.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "meme_mob.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);

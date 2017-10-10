@@ -89,7 +89,7 @@
 
 foreach ($smf_adManager->tag_list as $tag_item) {
 
-	echo "<br/><b>Ad Slot:</b> " 
+	echo "<br/><b>Ad Slot:</b> " ;
 	echo "<br/><b>Ad Slot:</b> " . $tag_item['ad_slot'];
 	echo "<br/><b>Ad Name:</b> " .  $tag_item['tag'];
 	echo "<br/><b>Articles:</b><br/> " . implode("<br/>",$tag_item['show_on']);

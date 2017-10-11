@@ -269,6 +269,10 @@ public function __construct($c){
 	$show_on = array(8541); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "_TEST_mbl_Answers_Rubicon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
+	//TEST - DELETE AFTER OCTOBER 31 2017  -- 11237 /moblog/girl-whos-just-his-friend
+	$show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "meme_mob.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+
 	$show_on = $this->sponsored_pages_lelo; $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_ad_stack_lelo.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
@@ -279,7 +283,6 @@ public function __construct($c){
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "triple_lift.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "Spoutable_Mob_InPage.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "meme_mob.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);

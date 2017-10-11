@@ -257,6 +257,8 @@ class smf_ad_manager extends Connector{
 /* ********************************************************************************************************* */
 /* ********************************************************************************************************* */
 
+$target_device = 1; //0 = dsk, 1 = mbl
+
 $smf_ad_manager = new smf_ad_manager($config);
 
 $smf_target_device[0]['prefix'] = 'dsk_';
@@ -285,7 +287,6 @@ $smf_tag_active_status[9] = array('name' => 'Active','bg_color' =>'#66cc66;');
 // $article_id = 11111;		// $ddd = new debug("$s",0); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
 
 
-$target_device = 1; //0 = dsk, 1 = mbl
 
 // $adslot_name = 'dsk_banner';
 // $adslot_name = 'dsk_below_image';

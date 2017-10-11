@@ -119,6 +119,25 @@ if($local){
 	$config['memcacheprefix'] = 'puckermob_'.$config['articlepageid'];
 	$config['cp_url'] = 'http://'.$localIp.'/'.$directory.'/subdomains/cp/httpdocs/';
 
+// admin ad manager data -----------------------------------------------------------
+	
+	$target_device = 1; //0 = dsk, 1 = mbl
+
+	$smf_target_device[0]['prefix'] = 'dsk_';
+	$smf_target_device[0]['pretty_name'] = 'Desktop';
+	$smf_target_device[0]['short_name'] = 'DSK';
+
+	$smf_target_device[1]['prefix'] = 'mbl_';
+	$smf_target_device[1]['pretty_name'] = 'Mobile';
+	$smf_target_device[1]['short_name'] = 'MBL';
+
+	$smf_tag_active_status[0] = array('name' => 'Inactive','bg_color' =>'#ff6666;');
+	$smf_tag_active_status[3] = array('name' => 'Test','bg_color' =>'#ff9933;');
+	$smf_tag_active_status[6] = array('name' => 'Sponsored Content','bg_color' =>'#99ccff;');
+	$smf_tag_active_status[9] = array('name' => 'Active','bg_color' =>'#66cc66;');
+
+// end admin ad manager data -----------------------------------------------------------
+
 // var_dump($config);	
 
 
@@ -158,7 +177,8 @@ if($local){
 	require_once  'class.Helpers.php'; 
 
 	// SMF classes ----------------------------------------
-	require_once  'smf_adManager.php'; // added 2017-04/26
+	require_once  'smf_adManager.php'; // added 2017-04-26
+	require_once  'smf_admin_ad_manager.php'; // added 2017-10-11 -- will replace above class eventually. is currently under test
 	// End of SMF classes ---------------------------------
 
 	if(isset($admin) && $admin){
@@ -198,6 +218,7 @@ $detect = new Mobile_Detect;
 //$mpHelpers->geotargeting();
 
 $smf_adManager = new smf_adManager($config);// added 2017-04/26
+$smf_admin_ad_manager = new smf_admin_ad_manager($config);// added 2017-10-11 -- will replace above class eventually. is currently under test
 
 //recaptcha public key
 define("RECAPTCHAPUBLICKEY", "6LeHLQETAAAAAM6vFkge8SKZotD_1bkDcUQhbr_b");

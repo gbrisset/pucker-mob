@@ -1,0 +1,20 @@
+# Authorized Digital Sellers for
+# Puckermob.com 
+# Last Update: October 18, 2018
+
+# Documentation and References: 
+# https://iabtechlab.com/ads-txt/
+# https://support.google.com/dfp_premium/answer/7441288?hl=en 
+
+# --------------------------------------------------------------
+
+# google.com
+# kixer.com
+# truvid.com
+# truvidplayer.com
+
+
+
+
+
+

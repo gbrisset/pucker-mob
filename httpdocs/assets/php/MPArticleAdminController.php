@@ -411,11 +411,14 @@ class MPArticleAdminController extends MPArticle{
 			$post['validate'] = false;
 		}
 
-		//If is not an Starter Blogger
-		if($post['u_type'] != 30) // MPublich the article
+		//If user is admin
+		if($post['u_type'] == 1) {
+			// Publish the article
 			$post['article_status-s'] = "1";
-		else //Set it to Review
+		}else {
+			//Set it to Review
 			$post['article_status-s'] = "2";
+		}//end if
 
 		//Verify If Image Exist
 		$imageExist = $this->verifyImageExist($post);
@@ -577,7 +580,8 @@ class MPArticleAdminController extends MPArticle{
 			 $msg = "Congratulations! Your article has been saved!";
 		}else{
 			if($user_type == 30 ) $msg = "Thank you! A PuckerMob editor will review your posts shortly to approve for publication.";
-			else $msg = "Congratulations! Your article has been published and is now live on the site.";
+			// else $msg = "Congratulations! Your article has been published and is now live on the site."; // Old definition - October 19, 2017 - GB
+			else $msg = "Congratulations! Your article has been submitted. An editor will review it shortly.";
 		}
 		 
 		//Return status
@@ -611,7 +615,27 @@ class MPArticleAdminController extends MPArticle{
 				if(!isset($post['article_categories']) || $post['article_categories'] === "0" ) 
 					return array_merge($this->helpers->returnStatus(500), array('field'=>'article_categories', 'message' => 'You must select a category for this article.'));		
 			}
-		
+//added on October 20 2017 --- GB --------------------------		
+		//Generate SEO Title
+		if( isset($post['article_title-s'])  ) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
+
+		$params[':article_seo_title'] = $post['article_seo_title-s'];
+
+		//Check for same seo-name
+		$seoTitleCheck = $this->performQuery(array(
+			'queryString' => 'SELECT * FROM articles WHERE article_seo_title = :seoTitle',
+			'queryParams' => array(':seoTitle' => $params[':article_seo_title'])
+		));
+
+		//Duplicate Title
+		if($seoTitleCheck !== false && $seoTitleCheck['article_id'] != $post['a_i']) 
+			return array_merge($this->helpers->returnStatus(500), array('message' => 'This Title is already in use.  Please try again with a new title.', 'field' => 'article_title'));
+
+// end of added on October 20 2017 --- GB --------------------------		
+
+
+
+
 
 		if(!isset($post['article_contributor']) || $post['article_contributor'] == -1) 
 		return array_merge($this->helpers->returnStatus(500), array('field'=>'article_contributor', 'message' => 'You must select a contributor for this article.'));
@@ -709,7 +733,8 @@ class MPArticleAdminController extends MPArticle{
 				$msg = "Thank you. Your article has been saved successfully! ";
 			}else{ 
 				if($user_type == 30 ) $msg = "Thank you! A PuckerMob editor will review your posts shortly to approve for publication.";
-				else $msg = "Congratulations! Your article has been published and is now live on the site.";
+				// else $msg = "Congratulations! Your article has been published and is now live on the site."; // Old definition - October 19, 2017 - GB
+				else $msg = "Congratulations! Your article has been submitted. An editor will review it shortly.";
 			}
 			//Return status
 			return array_merge(

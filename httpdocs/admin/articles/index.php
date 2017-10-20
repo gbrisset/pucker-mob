@@ -161,7 +161,7 @@
 									   <?php }?>
 								       <th width="100"  class="show-for-large-up">status</th>
 								       <th width="70" class="show-for-xlarge-up">U.S. Traffic</th>
-								       <th width="30" class="show-for-xlarge-up">EDIT?</th>
+								       <th width="30" class="show-for-xlarge-up">Track</th>
 								       <th  width="50" class="show-for-large-up"></th>
 								    </tr>
 								</thead>
@@ -185,7 +185,22 @@
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
 									$user_id = $articleInfo['user_id'];
 									$edits = $articleInfo['article_agree_edits'];
-									$article_locked = ( $edits == 1 && $articleInfo['article_status'] == 1);
+									// $article_locked = ( $edits == 1 && $articleInfo['article_status'] == 1); // Old definition - October 19, 2017 - GB
+									
+									// New definition - October 19, 2017 - GB
+									$article_locked = true;
+									if ($articleInfo['article_status'] ==1 && $edits ==0) $article_locked = false;
+									if ($articleInfo['article_status'] ==3) $article_locked = false;
+									if ($admin_user) $article_locked = false;
+
+	/*								
+echo "<br/>article_id = $article_id";
+echo "<br/>article_locked = $article_locked";
+echo "<br/>status = " . $articleInfo['article_status'];
+echo "<br/>status 2 = " . $article_status;
+echo "<br/>admin = $admin_user";
+echo "<br/>edit = $edits";
+	*/								$revenue_track = ( $edits == 1 );// Additional definition - October 19, 2017 - GB
 
 									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
@@ -281,10 +296,10 @@
 
 										<!-- ARTICLE EDITS ALLOW ?-->
 										<td  class="show-for-xlarge-up  border-right">
-											<?php if( $article_locked ){ ?>
-												<i class="fa fa-circle" style="color: #23ab23; font-size: 150%;" aria-hidden="true"></i>
+											<?php if( $revenue_track ){ ?>
+												<i class="fa fa-money" style="color: #23ab23; font-size: 150%;" aria-hidden="true"></i>
 											<?php }else{?>
-												<i class="fa fa-circle " style="color:red; font-size: 150%;" aria-hidden="true"></i>
+												<i class="fa fa-file-text-o " style="color:red; font-size: 150%;" aria-hidden="true"></i>
 											<?php }?>
 										</td>
 										
@@ -310,7 +325,7 @@
 											<?php }?>
 										</td>							  			
 									</tr>
-								<?php }?>
+								<?php }// end foreach($articles as $articleInfo)?>
 							    </tbody>
 							</table>
 										

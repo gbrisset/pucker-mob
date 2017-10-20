@@ -13,11 +13,20 @@
 	//Check if this user has access to this article.
 	$edits = $article['article_agree_edits'];
 	//$lock_status = $article['article_lock_status'];
+
+	// Commented out on October 19, 2017 - GB
+	// $admin_user is already defined in \admin\assets\includes\head.php
 	$admin_user = false;
 	if( $adminController->user->data['user_type'] == 1 || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 6) $admin_user = true;
 
 	//Verify if Article Is locked.
-	$article_locked = ( $edits == 1 && $article['article_status'] == 1 && !$admin_user );
+	// $article_locked = ( $edits == 1 && $article['article_status'] == 1 && !$admin_user );// Old definition - October 19, 2017 - GB
+
+	// New definition - October 19, 2017 - GB
+	$article_locked = true;
+	if ($article['article_status'] ==1 && $edits ==0) $article_locked = false;
+	if ($article['article_status'] ==3) $article_locked = false;
+	if ($admin_user) $article_locked = false;
 
 	// If the article exists and has an id, check to see if this user has permissions to edit this article...
 	if (isset($article['article_id']) ){
@@ -132,8 +141,7 @@
 			
 		}else $adminController->redirectTo('logout/');
 	}
-	$field_disable = '';
-	if($article_locked) $field_disable = 'disabled = "disabled"';
+	$field_disable = ($article_locked)? $field_disable = 'disabled = "disabled"' : '';
 ?>
 
 <!DOCTYPE html>
@@ -156,7 +164,7 @@
 		<div id="content" class="columns small-9 large-11">
 			
 			<div class="small-12">
-				<h1>VIEW & EDIT ARTICLE 
+				<h1>VIEW &amp; EDIT ARTICLE 
 				<?php if( $article['article_status'] == 1 )  { ?> 
 					<a href="http://www.puckermob.com/<?php echo $category[0]['cat_dir_name'].'/'.$article['article_seo_title']; ?>" class="see-article-link right" target="_blank" >
 						<i class="fa fa-external-link"></i>
@@ -191,62 +199,39 @@
 					<input  type="hidden" id="is_starter" name="is_starter" value ="<?php echo $starter_blogger; ?>" >
 					<input  type="hidden" id="is_locked" name="is_locked" value ="<?php echo $article_locked; ?>" >
 
+<!-- - START OF LEFT COLUMN - START OF LEFT COLUMN - START OF LEFT COLUMN -->
+
 					<div class="small-12 xxlarge-8 columns margin-top">
-						<!-- ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED ARTICLE LOCKED -->
-						<?php if( $article_locked ){ ?>
+						<!-- ARTICLE LOCKED -->
+
 						<!-- ARTICLE TITLE -->
 						<div class="row ">
 							<div>
-								<input  type="text" name="article_title-s" id="article_title-s" placeholder="WRITE YOUR TITLE" value="<?php if(isset($article['article_title'])) echo $article['article_title']; ?>" required disabled />
+								<input <?php echo $field_disable; ?>  type="text" name="article_title-s" id="article_title-s" placeholder="WRITE YOUR TITLE" value="<?php if(isset($article['article_title'])) echo $article['article_title']; ?>" required  />
 							</div>
-						<?php if($pro_admin){ ?>
+						</div>
+
 						<!-- ARTICLE  SEO TITLE -->
-						
+<!-- 						<div class="row ">
 							<div>
-								<input  type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="ARTICLE URL" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required  />
+								<input <?php echo $field_disable; ?>  type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="ARTICLE URL" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required  />
 							</div>
-							
-						<?php }else{?>
-							<input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
-						<?php } // end if($pro_admin) ?>
+						</div> -->
 
-
-							<!-- BODY -->
+						<!-- BODY -->
+						<div class="row ">
 							<div class=" margin-bottom margin-top" >
+							<?php if( $article_locked ){ ?>
 								<div>
-
 									<div id="article_editor" class="fr-element" value="<?php echo $article['article_body']; ?>" style="max-height: 350px; overflow: scroll; border: 1px solid #ddd; background-color: white; padding: 10px; "><?php if(isset($article['article_body'])) echo $article['article_body']; ?></div>
 								</div>
-							</div>
+							<?php }else{?>
+								<div>
+									<textarea class="editor" name="article_body-nf" id="article_editor"  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
+								</div>
+							<?php }?>
 						</div>
-						<?php }else{?>
-						<!-- ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED ARTICLE IS NOT LOCKED -->
-						<!-- ARTICLE TITLE -->
-						<div class="row ">
-							<div>
-								<input  type="text" name="article_title-s" id="article_title-s" placeholder="WRITE YOUR TITLE" value="<?php if(isset($article['article_title'])) echo $article['article_title']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_title') echo 'autofocus'; ?> />
-							</div>
-						</div>
-
-						<?php if($pro_admin){ ?>
-						<!-- ARTICLE  SEO TITLE -->
-						
-							<div>
-								<input  type="text" name="article_seo_title-s" id="article_seo_title-s" placeholder="ARTICLE URL" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
-							</div>
-							
-						<?php }else{?>
-							<input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" value="<?php if(isset($article['article_seo_title'])) echo $article['article_seo_title']; ?>" required />
-						<?php } // end if($pro_admin) ?>
-+
-						<!-- BODY -->
-						<div class="row margin-bottom margin-top" >
-							<div>
-								<textarea class="editor" name="article_body-nf" id="article_editor"  ><?php if(isset($article['article_body'])) echo $article['article_body']; ?></textarea>
-							</div>
-						</div>
-
-						<?php }?>
+					</div>
 
 						<!-- RELATED ARTICLES -->
 						<?php include_once($config['include_path_admin'].'related_edit_articles.php'); ?>
@@ -255,22 +240,25 @@
 							<!-- ADVERTISING OVERRIDE (IN-STREAM) -->
 							<?php // include_once($config['include_path_admin'].'ads_override.php'); ?>
 						<?php } ?>
-					</div>
+					
+					</div> <!-- <div class="small-12 xxlarge-8 columns margin-top"> -->
+
+<!-- - END OF LEFT COLUMN - END OF LEFT COLUMN - END OF LEFT COLUMN -->
+
+<!-- - START OF RIGHT COLUMN - START OF RIGHT COLUMN - START OF RIGHT COLUMN -->
 
 					<div class="small-12 xxlarge-4 right padding " id="right-new-article">		
 						<div class="row label-wrapper show-for-xxlarge-up ">
 							<div class="small-12 large-4 column no-padding">
 								<button type="button" id="preview" name="preview" class="show-for-large-up radius wide-button preview-button" style="height: 3.3rem;">PREVIEW</button>
 							</div>
-							<div class="small-12 large-4 column">
-								<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
-							</div>
-							
-							<?php if( $admin_user || $blogger || $externalWriter ){
-							$label = "PUBLISH";
-							$val = 1;
-							//if( ($blogger  || $starter_blogger )  && $article['article_status'] == 1 ){ $label = "DRAFT"; $val = 3;}
-							if( ($admin_user  || $pro_blogger ) && $article['article_status'] == 1 ){ $label = "RE-PUBLISH"; $val = 1;} ?>
+							<?php if( !$article_locked ){ ?>
+								<div class="small-12 large-4 column">
+									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
+								</div>
+							<?php }?>
+						
+							<?php if( $admin_user ){ ?>
 								<div class="small-12 large-4 column  left no-padding">
 									<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" >PUBLISH</button>
 								</div>
@@ -278,35 +266,19 @@
 						
 						</div>		
 
-						<?php if( $article_locked ){ ?>
 						<!-- KEYWORDS -->
 						<div class="row">
 						    <div>
-						    	<textarea  disabled class="" name="article_tags-nf" id="article_tags-s"  placeholder="Enter tags"   ><?php if(isset($article['article_tags'])) echo $article['article_tags']; ?></textarea>
+						    	<textarea   <?php echo $field_disable; ?>  class="" name="article_tags-nf" id="article_tags-s"  placeholder="Enter tags"   ><?php if(isset($article['article_tags'])) echo $article['article_tags']; ?></textarea>
 							</div>
 						</div>	
 						
 						<!-- DESCRIPTION -->
 						<div class="row">
 						    <div>
-								<textarea  disabled name="article_desc-s" id="article_desc-s"  placeholder="Enter description"  maxlength="150"><?php if(isset($article['article_desc'])) echo $article['article_desc']; ?></textarea>
+								<textarea   <?php echo $field_disable; ?>  name="article_desc-s" id="article_desc-s"  placeholder="Enter description"  maxlength="150"><?php if(isset($article['article_desc'])) echo $article['article_desc']; ?></textarea>
 							</div>
 						</div>
-						<?php }else{?>
-						<!-- KEYWORDS -->
-						<div class="row">
-						    <div>
-						    	<textarea   class="" name="article_tags-nf" id="article_tags-s"  placeholder="Enter tags"   ><?php if(isset($article['article_tags'])) echo $article['article_tags']; ?></textarea>
-							</div>
-						</div>	
-						
-						<!-- DESCRIPTION -->
-						<div class="row">
-						    <div>
-								<textarea name="article_desc-s" id="article_desc-s"  placeholder="Enter description"  maxlength="150"><?php if(isset($article['article_desc'])) echo $article['article_desc']; ?></textarea>
-							</div>
-						</div>
-						<?php }?>	
 						
 						<?php if($admin_user){?>
 							<input type="hidden" name="article_type-s" data-info="0" id="staff" value="<?php echo $article['article_type']; ?> " />
@@ -535,6 +507,8 @@
 						<?php }?>
 					
 					</div>
+<!-- - END OF RIGHT COLUMN - END OF RIGHT COLUMN - END OF RIGHT COLUMN -->
+
 				</form>
 			</section>
 

@@ -1875,7 +1875,7 @@ public  function get_filtered($limit = 10, $order = '', $articleStatus = '1, 2, 
 		$order_sql = " ORDER BY a.article_status = 3 DESC, a.creation_date DESC ";
 		break;
 		default:
-		$order_sql = " ORDER BY a.article_status = 1 DESC, a.creation_date DESC ";
+		$order_sql = " ORDER BY a.creation_date DESC ";
 		break;
 	}
 

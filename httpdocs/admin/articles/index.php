@@ -22,11 +22,13 @@
 	$limit=40;
 	$post_date = 'all';
 
-	$articleStatus = '1';
-	if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 8  || $adminController->user->data['user_type'] == 9  || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 30){
-		$articleStatus = '1, 2, 3';
-	}
+
+	// $articleStatus = '1';
+	// if($adminController->user->data['user_type'] == 3 || $adminController->user->data['user_type'] == 8  || $adminController->user->data['user_type'] == 9  || $adminController->user->data['user_type'] == 2 || $adminController->user->data['user_type'] == 30){
+	// 	$articleStatus = '1, 2, 3';
+	// }// end if
 	
+	$articleStatus = '1, 2, 3';
 
 	$artType = '';
 	$allCurrent = 'current';
@@ -193,14 +195,7 @@
 									if ($articleInfo['article_status'] ==3) $article_locked = false;
 									if ($admin_user) $article_locked = false;
 
-	/*								
-echo "<br/>article_id = $article_id";
-echo "<br/>article_locked = $article_locked";
-echo "<br/>status = " . $articleInfo['article_status'];
-echo "<br/>status 2 = " . $article_status;
-echo "<br/>admin = $admin_user";
-echo "<br/>edit = $edits";
-	*/								$revenue_track = ( $edits == 1 );// Additional definition - October 19, 2017 - GB
+									$revenue_track = ( $edits == 1 );// Additional definition - October 19, 2017 - GB
 
 									if(isset($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];

@@ -18,7 +18,7 @@ class MPArticleAdminController extends MPArticle{
 		$this->user = new  MPAdminUserController(array('config' => $this->config, 'mpArticle' => $this->mpArticle));
 	}
 
-//NOT SURE IF STILL IN USE
+//NOT SURE IF STILL IN USE - FG - prior december 2016
 	public function getSiteObjectAll($opts){
 		$options = array_merge(array(
 			'table' => '',

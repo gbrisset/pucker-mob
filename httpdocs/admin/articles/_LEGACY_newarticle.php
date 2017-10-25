@@ -2,7 +2,7 @@
 	$admin = true;
 	require_once('../../assets/php/config.php');
 
-// if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
+if(!$adminController->user->checkPermission('user_permission_show_add_article')) $adminController->redirectTo('noaccess/');
 
 	if (!empty($_FILES)) {
 	    $ds          = DIRECTORY_SEPARATOR;  //1
@@ -72,7 +72,6 @@
 					<p class="small-8 columns">We recommend that you write and save your articles off-line first, and then copy and paste them here.</p>
 					</div>
 
-<!-- - START OF LEFT COLUMN - START OF LEFT COLUMN - START OF LEFT COLUMN -->
 
 					<div class="small-12 xxlarge-8 columns margin-top">
 						<!-- ARTICLE TITLE -->
@@ -82,7 +81,23 @@
 							</div>
 						</div>
 
-					<!-- BODY -->
+						<!-- SEO TITLE -->
+						<?php if($admin_user){?>
+						<div class="row">
+						    <div>
+								<label for="article_seo_title-s" class="small-3 columns no-padding seo-title">SEO URL:</label>
+								  <input type="text" id="article_seo_title-s"  name="article_seo_title-s" aria-describedby="basic-addon3" value="<?php if( isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" class="form-control small-9 columns" >
+							</div>
+						</div>	
+						<?php }else{ ?>
+						<div class="row">
+						    <div>
+						      <input type="hidden"  name="article_seo_title-s" id="article_seo_title-s" placeholder="Enter SEO title" value="<?php if(isset($_POST['article_seo_title-s'])) echo $_POST['article_seo_title-s']; ?>" required <?php if(isset($updateStatus) && isset($updateStatus['field']) && $updateStatus['field'] == 'article_seo_title') echo 'autofocus'; ?> />
+						 	</div>
+						</div>	
+						<?php } ?>
+
+						<!-- BODY -->
 						<div class="row margin-bottom margin-top" >
 						    <div>
 								<textarea  class=" editor " name="article_body-nf" id="article_editor"  required ><?php if( isset($_POST['article_body-nf'])) echo $_POST['article_body-nf']; ?></textarea>
@@ -94,10 +109,7 @@
 					
 					</div>
 
-<!-- - END OF LEFT COLUMN - END OF LEFT COLUMN - END OF LEFT COLUMN -->
-
-<!-- - START OF RIGHT COLUMN - START OF RIGHT COLUMN - START OF RIGHT COLUMN -->
-
+					<!-- RIGHT SIDE BAR -->
 					<div class="small-12 xxlarge-4 right padding" id="right-new-article">
 						<!-- KEYWORDS -->
 						<div class="row">
@@ -227,7 +239,6 @@
 						<?php //include_once($config['include_path_admin'].'formatting_tips.php');?>
 
 					</div>
-	<!-- - END OF RIGHT COLUMN - END OF RIGHT COLUMN - END OF RIGHT COLUMN -->
 				</form>
 			</section>
 		</div>

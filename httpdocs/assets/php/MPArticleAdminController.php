@@ -494,7 +494,13 @@ class MPArticleAdminController extends MPArticle{
 		$unrequired = array('article_body', 'article_tags', 'article_desc', 'article_status', 'article_img_credits', 'article_img_credits_url', 'article_additional_comments' );
 
 		//Generate SEO Title
+		// LEGACY CODE - Before October 20 2017
 		if( isset($post['article_seo_title-s']) && strlen($post['article_seo_title-s']) <= 0 ) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
+
+		// NEW CODE - After October 20 2017
+		if( isset($post['article_title-s'])  ) $post['article_seo_title-s'] = $this->helpers->generateName(array('input' => $post['article_title-s']));
+
+
 
 		//Get User Info
 		$user =  $this->user->data;

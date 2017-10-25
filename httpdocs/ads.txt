@@ -24,6 +24,9 @@ spotxchange.com, 79977, DIRECT, 7842df1d2fe2db34
 spotx.tv, 79977, DIRECT, 7842df1d2fe2db34
 advertising.com, 11197, Reseller 
 
+# ---- SHARETHROUGH RELATED ----------------------------------------------------------
+sharethrough.com, 13f36b1e, DIRECT, d53b998a7bd4ecd2
+
 # ---- XXXXXXXX RELATED ----------------------------------------------------------
 
 # google.com

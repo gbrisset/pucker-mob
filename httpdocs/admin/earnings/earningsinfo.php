@@ -148,9 +148,10 @@
 				
 	
 <?php 
+				$pre_results = $dashboard->smf_getBloggersEarningsReport($contributor_id);
 
 
-				$results = $dashboard->smf_getBloggersEarningsReport($contributor_id);
+if (is_array($pre_results[0])) {$results = $pre_results;} else {$results[0] = $pre_results ;}//end if
 
 				if(isset($results) && $results ){ 
 
@@ -172,6 +173,7 @@
 
 
 					foreach( $results as $monthly_earnings){
+
 
 							$monthname = $monthly_earnings['monthname'];
 							$year = $monthly_earnings['year'];
@@ -204,7 +206,7 @@
 				// max, average, min of pageviews, cpm, earnings
 				// ---------------------------------------------------------------------------------------------------			
 				$results = $dashboard->smf_getBloggersEarningsReportSummary_1($contributor_id);
-				 // $ddd = new debug($results,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+
 
 							$sum_pgv = number_format($results['sum_pgv'] );
 							$max_pgv = number_format($results['max_pgv'] );

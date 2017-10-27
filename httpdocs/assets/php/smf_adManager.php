@@ -174,9 +174,10 @@ public function __construct($c){
 	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "dsk_sidebar_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "mbl_morebar_amazon_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "mbl_morebar_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "answers_rocketyield_inline_9th_paragraph.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "dsk_defy_media_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "dsk_defy_media_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "dsk_defy_media_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "answers_rocketyield_inline_9th_paragraph.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// on the work - delete after October 15, 2017
 	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
@@ -233,7 +234,7 @@ public function __construct($c){
 	// ---- BELOW IMAGE -----------------------------------
 		
 	// $show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);// rotate ad TEST - remove after Sept 30 2017
-	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "smf_ad_rotator_below_image.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_defy_media_below_image.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -271,8 +272,9 @@ public function __construct($c){
 
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_defy_media_adstack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
+	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "triple_lift.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "Spoutable_Mob_InPage.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -280,8 +282,6 @@ public function __construct($c){
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_eoa_composite.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	
-	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_3", 'tag' => "mbl_ad_stack_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// ---- MORE BAR ----------------------------------
 

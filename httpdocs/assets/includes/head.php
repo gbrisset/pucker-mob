@@ -262,4 +262,7 @@
 		<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
 	<?php }?>
 
+	<!-- DEFY MEDIA  -->
+	<script type="text/javascript" src="//pubportal.brkmd.com/tms/hbltfd41f403bd74c016c8b4ec9ca8fb241e.js"></script>
+
 </head>

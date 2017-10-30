@@ -7,22 +7,22 @@
 # https://support.google.com/dfp_premium/answer/7441288?hl=en 
 
 # ---- BRAVONATE RELATED ----------------------------------------------------------
-truvid.com,92 , DIRECT
-truvidplayer.com, 92, DIRECT
-google.com, pub-8544626876536809, DIRECT, f08c47fec0942fa0
-advertising.com, 10990, DIRECT
-adnxs.com, 1895, Reseller, f5ab79cb980f11d1
-appnexus.com, 1895, Reseller, f5ab79cb980f11d1
-lkqd.com, 16, DIRECT
-lkqd.net, 16, DIRECT
-springserve.com, 43, DIRECT
-btrll.com, 80131713, DIRECT
-btrll.com, 80141305, DIRECT
-brightroll.com, 80141305, DIRECT
-brightroll.com, 80131713, DIRECT
-spotxchange.com, 79977, DIRECT, 7842df1d2fe2db34
-spotx.tv, 79977, DIRECT, 7842df1d2fe2db34
-advertising.com, 11197, Reseller 
+truvid.com, 92, RESELLER
+truvidplayer.com, 92, RESELLER
+google.com, pub-8544626876536809, RESELLER, f08c47fec0942fa0
+advertising.com, 10990, RESELLER
+adnxs.com, 1895, RESELLER, f5ab79cb980f11d1
+appnexus.com, 1895, RESELLER, f5ab79cb980f11d1
+lkqd.com, 16, RESELLER , 59c49fa9598a0117
+lkqd.net, 16, RESELLER , 59c49fa9598a0117
+btrll.com, 80131713, RESELLER
+btrll.com, 80141305, RESELLER
+brightroll.com, 80141305, RESELLER
+brightroll.com, 80131713, RESELLER
+spotxchange.com, 79977, RESELLER, 7842df1d2fe2db34
+spotx.tv, 79977, RESELLER, 7842df1d2fe2db34
+advertising.com, 11197, RESELLER
+springserve.com, 43, RESELLER, a24eb641fc82e93d
 
 # ---- SHARETHROUGH RELATED ----------------------------------------------------------
 sharethrough.com, 13f36b1e, DIRECT, d53b998a7bd4ecd2

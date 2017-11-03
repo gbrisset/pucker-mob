@@ -1,7 +1,7 @@
 <?php
 
 
-// git Branch  =  new_admanager
+
 
 // ***********************************
 // ***********************************
@@ -68,7 +68,7 @@ SELECT
 // 8158  /relationships/8-things-guys-do-that-make-our-hearts-melt
 // 8541  /lifestyle/19-reasons-to-date-the-girl-with-no-filter
 
-
+require_once dirname(__FILE__).'/Connector.php';
 
 
 
@@ -94,6 +94,36 @@ public function __construct($c){
 		$this->special_pages = array_merge($this->sponsored_pages, $this->test_pages, $this->sponsored_pages_lelo, $this->blocked_pages);//sponsored_pages_img purposely not included here
 
 
+// -------- Undertone does NOT like to be associated to sexual content ------------------------
+
+		$this->con = new Connector($this->config);
+
+		$pdo = $this->con->openCon();
+		$query_string = "
+			SELECT article_id
+			FROM articles 
+			WHERE article_seo_title LIKE \"%sex%\" 
+			OR article_seo_title LIKE \"%penis%\" 
+			OR article_seo_title LIKE \"%-oral%\"
+			OR article_seo_title LIKE \"%orgasm%\"
+			OR article_seo_title LIKE \"%squirt%\"
+		";
+
+		  $stmt = $pdo->prepare($query_string);
+		  $stmt->execute([]) or die('#SQL:4E74DEJ5DDF8SG4D55E7E');
+		 
+		  $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		  foreach ($r as  $v) {
+		  	$this->sexual_content_pages[]=$v['article_id'];
+		  }//end foreach
+
+		// var_dump($sexual_content_pages);
+
+		$this->special_pages_undertone = array_merge($this->sponsored_pages, $this->test_pages, $this->sponsored_pages_lelo, $this->blocked_pages, $this->sexual_content_pages);//sponsored_pages_img purposely not included here
+
+// -------- END of Undertone does NOT like to be associated to sexual content ------------------------
+
+
 
 	// SET THE TAGS ===================================================================
 
@@ -113,24 +143,19 @@ public function __construct($c){
 // ----------- DESKTOP -------------------------------------------------------------------------------- DESKTOP ---------------------------------------------
 
 
-	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages_undertone, $show_on);
 	// $lucky = rand(0,100);
 	// if ($lucky>0 && $lucky<=20) $this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_Flex.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// if ($lucky>0 && $lucky<=40) $this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SS.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// if ($lucky>40 && $lucky<=100) $this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-
+	
 	$show_on =  $this->sponsored_pages_lelo; $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_banner", 'tag' => "dsk_banner_lelo.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	// TEST for UT Billboard - DELETE AFTER OCTOBER  20 2017
-	// 8541  /lifestyle/19-reasons-to-date-the-girl-with-no-filter
-	$show_on =  array(8541); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_banner", 'tag' => "undertone_BB_TEST.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages_undertone, $show_on);
+	$this->tag_list[]= array('ad_slot' => "dsk_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	$show_on =  array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$show_on =  array("all"); $dont_show_on = array_diff($this->special_pages_undertone, $show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_banner", 'tag' => "undertone_BB.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// ----- IMG ----------------------------------
@@ -174,16 +199,24 @@ public function __construct($c){
 	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "dsk_sidebar_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "dsk_defy_media_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "dsk_defy_media_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "dsk_defy_media_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+
+	//DEFY MEDIA - happens to create redirects - delete if no longer in use after november 30 21017 
+	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "dsk_defy_media_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "dsk_defy_media_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "dsk_defy_media_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
+	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "mbl_morebar_amazon_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "mbl_morebar_amazon_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "mbl_morebar_amazon_3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
+
 	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "answers_rocketyield_inline_9th_paragraph.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
-	// on the work - delete after October 15, 2017
-	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_1", 'tag' => "dsk_sidebar_01_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_2", 'tag' => "dsk_sidebar_02_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $this->tag_list[]= array('ad_slot' => "dsk_sidebar_3", 'tag' => "dsk_sidebar_03_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// ---- NEW BROWSER WINDOW or TAB -- (inserted in bottomscript) ----------------------------
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "_TEST_divisionD.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+		
+
 	
 
 // ----------- MOBILE  -------------------------------------------------------------------------------- MOBILE --------------------------------------------
@@ -194,14 +227,14 @@ public function __construct($c){
 	// $show_on = array(23319); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_SS.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	// // $show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);
-	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $show_on = array(11237); $dont_show_on = array_diff($this->special_pages_undertone, $show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages_undertone, $show_on);
 	// $lucky = rand(0,100);
 	// if ($lucky>0 && $lucky<=20) $this->tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_Flex.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// if ($lucky>0 && $lucky<=40) $this->tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_SS.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// if ($lucky>40 && $lucky<=100) $this->tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages_undertone, $show_on);
 	$this->tag_list[]= array('ad_slot' => "mbl_overlay_top", 'tag' => "undertone_SSFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 
@@ -234,7 +267,8 @@ public function __construct($c){
 	// ---- BELOW IMAGE -----------------------------------
 		
 	// $show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);// rotate ad TEST - remove after Sept 30 2017
-	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_defy_media_below_image.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	//DEFY MEDIA - happens to create redirects - delete if no longer in use after november 30 21017 
+	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_defy_media_below_image.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -261,18 +295,12 @@ public function __construct($c){
 	$show_on = array(4019); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "_TEST_AD_PermanentTestTag_Bethany.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-
-
-	//TEST - DELETE AFTER OCTOBER 31 2017  -- 11237 /moblog/girl-whos-just-his-friend
-	$show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "meme_mob.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-
 	$show_on = $this->sponsored_pages_lelo; $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_ad_stack_lelo.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_defy_media_adstack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	//DEFY MEDIA - happens to create redirects - delete if no longer in use after november 30 21017 
+	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_defy_media_adstack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "triple_lift.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -299,15 +327,19 @@ public function __construct($c){
 	// $this->tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_ad_stack_answer_inbanner_2.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_featured_carambola.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	// on the work - delete after October 15, 2017
-	// $this->tag_list[]= array('ad_slot' => "mbl_featured", 'tag' => "mbl_featured_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
-	// ---- OVERLAY BOTTOM ----------------------------------
+	// ---- OVERLAY BOTTOM -- (inserted in bottomscript) --------------------------------
 	
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages_undertone, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_undertone_SA.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_answers.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
+	// ---- NEW BROWSER WINDOW or TAB -- (inserted in bottomscript) ----------------------------
+	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "_TEST_divisionD.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+
 	
 }//end public function __construct
 

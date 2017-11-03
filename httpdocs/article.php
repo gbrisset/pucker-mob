@@ -75,7 +75,8 @@ if(!is_null($categoryInfo)){
 		$article_notes = $articleInfoObj['article_additional_comments'];
 		$article_disclaimer = $articleInfoObj['article_disclaimer'];
 		$read_more_pct = $articleInfoObj['article_read_more_pct'];
-		$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$articleInfoObj['article_seo_title'];
+		$article_seo_title = $articleInfoObj['article_seo_title'];
+		$article_link = $config['this_url'].$categoryInfo['cat_dir_name'].'/'.$article_seo_title;
 
 
 		//DATE UPDATED 
@@ -242,15 +243,10 @@ if(!is_null($categoryInfo)){
 	<!-- HEADER AD BELOW MENU -->
 	<?php include_once($config['include_path'].'header_ad.php'); ?>
 
-	<!-- ARTICLE INFO TOP ****************************************************************************************** -->
-	<!-- ARTICLE INFO TOP ****************************************************************************************** -->
-	<!-- ARTICLE INFO TOP ****************************************************************************************** -->
-
+	<!-- ARTICLE INFO TOP -->
 		<div class="puc-articles-top" style="background:#fff !important;">
 			<div class="puc-articles-top-inner small-12 padding">
-
-				<!-- LEFT SIDE SECTION -->
-				<div class="columns small-12 large-12 no-padding sidebar-right left-div">
+				<div class="columns small-12 large-9 no-padding sidebar-right left-div">
 					<!-- TITLE -->
 					<h1 style="margin-bottom: 0.5rem; color: #222 !important;" class=""><?php echo $article_title; ?></h1>
 					
@@ -261,7 +257,8 @@ if(!is_null($categoryInfo)){
 						</p>
 					</div>
 				</div>
-				<div class="columns small-12 large-12 no-padding sidebar-right left-div">
+				<!-- SOCIAL MEDIA -->
+				<div class="columns small-12 large-9 no-padding sidebar-right left-div">
 					<!-- SOCIAL MEDIA CONTENT -->
 					<div id="article-content-2" class="clear">
 						<div class="social-media-container   small-12 columns no-padding social_sticky clear " style="padding-bottom: 2px;">
@@ -329,35 +326,30 @@ if(!is_null($categoryInfo)){
 
 					</div>
 				</div>
-				<!-- END OF LEFT SIDE SECTION -->
 				
 				<!-- RIGHT SIDE SECTION -->
-<!-- 				<div class="columns small-3 no-padding-right right-div">
+				<div class="columns small-3 no-padding-right right-div">
 					<aside id="aside-top" class="fixed-width-sidebar column no-padding hide-for-print">
 
 							<?php 
 
 
-								// echo $smf_adManager->display_tags("dsk_sidebar_0", $article_id);
-								// echo $smf_adManager->display_tags("dsk_sidebar_1", $article_id);
+								echo $smf_adManager->display_tags("dsk_sidebar_0", $article_id);
+								echo $smf_adManager->display_tags("dsk_sidebar_1", $article_id);
 
 							?>
 
 					  
 					</aside>
-				</div> -->
-				<!-- END OF RIGHT SIDE SECTION -->
+				</div>
 			</div>
 				
-		</div><!-- END OF ARTICLE INFO TOP -->
+		</div>
 
-	<!-- ARTICLE MAIN CONTENT ********************************************************************************************************** -->
-	<!-- ARTICLE MAIN CONTENT ********************************************************************************************************** -->
-	<!-- ARTICLE MAIN CONTENT ********************************************************************************************************** -->
+	<!-- MAIN CONTENT -->
+	<main id="main" class="row panel sidebar-on-right" role="main">
 
-	<main id="main" class="row panel " role="main">
-
-		<section id="puc-articles" class="cool   small-12 medium-12 large-11 columns translate-fix" style=" max-width: 752px; height:auto; ">
+		<section id="puc-articles" class="cool sidebar-right  small-12 medium-12 large-11 columns translate-fix" style=" max-width: 752px; height:auto; ">
 
 			<!-- ARTICLE CONTENT -->
 			<?php include_once($config['template_path'].'single_page_article.php'); ?>
@@ -376,14 +368,9 @@ if(!is_null($categoryInfo)){
 		</section>
 
 		<!-- RIGHT SIDE BAR -->
-		<?php // include_once($config['include_path'].'rightsidebar.php');?>
+		<?php include_once($config['include_path'].'rightsidebar.php');?>
 
 	</main>
-
-	<!-- ARTICLE BOTTOM CONTENT ********************************************************************************************************** -->
-	<!-- ARTICLE BOTTOM CONTENT ********************************************************************************************************** -->
-	<!-- ARTICLE BOTTOM CONTENT ********************************************************************************************************** -->
-
 	<!-- FACEBOOK FUNCTIONS -->
 	<?php include_once('admin/fb/fbfunctions.php'); ?>
 

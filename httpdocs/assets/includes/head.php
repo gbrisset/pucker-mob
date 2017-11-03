@@ -263,6 +263,7 @@
 	<?php }?>
 
 	<!-- DEFY MEDIA  -->
-	<script type="text/javascript" src="//pubportal.brkmd.com/tms/hbltfd41f403bd74c016c8b4ec9ca8fb241e.js"></script>
+	<!-- happens to create redirects - delete if no longer in use after november 30 21017  -->
+	<!-- <script type="text/javascript" src="//pubportal.brkmd.com/tms/hbltfd41f403bd74c016c8b4ec9ca8fb241e.js"></script> -->
 
 </head>

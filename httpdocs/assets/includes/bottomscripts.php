@@ -40,13 +40,13 @@
           break;
     
         case 11237: //  /moblog/girl-whos-just-his-friend
-          echo $smf_adManager->display_tags("mbl_overlay_bottom", $article_id);
+          // echo $smf_adManager->display_tags("mbl_overlay_bottom", $article_id);
           break;
       
         default:
              // include($config['include_path'] . 'ads/answer_tout.php');
              // include($config['include_path'] . 'ads/btmscript_videomosh.php');
-              // echo $smf_adManager->display_tags("mbl_overlay_bottom", $article_id);
+              echo $smf_adManager->display_tags("mbl_overlay_bottom", $article_id);
 
 
        }//end switch ($article_id)

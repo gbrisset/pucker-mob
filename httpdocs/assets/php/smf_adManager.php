@@ -162,7 +162,8 @@ public function __construct($c){
 	// image treatment is a bit customized
 
 
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$show_on = array("all"); $dont_show_on = array();
 	// $this->tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "egami_mob_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$this->tag_list[]= array('ad_slot' => "dsk_image", 'tag' => 'mbl_img_video_truvidplayer.php', 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "dsk_image", 'tag' => "dsk_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -214,7 +215,7 @@ public function __construct($c){
 	
 	// ---- NEW BROWSER WINDOW or TAB -- (inserted in bottomscript) ----------------------------
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "_TEST_divisionD.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "divisionD.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 		
 
 	
@@ -261,7 +262,8 @@ public function __construct($c){
 	// $this->tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "egami_mob_1.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_image", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
-	$show_on = array("all"); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
+	// $show_on = array("all"); $dont_show_on = array_merge($this->sponsored_pages_img, array_diff($this->special_pages, $show_on));
+	$show_on = array("all"); $dont_show_on = array();
 	$this->tag_list[]= array('ad_slot' => "mbl_image", 'tag' => 'image_tag', 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	// ---- BELOW IMAGE -----------------------------------
@@ -269,6 +271,10 @@ public function __construct($c){
 	// $show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);// rotate ad TEST - remove after Sept 30 2017
 	//DEFY MEDIA - happens to create redirects - delete if no longer in use after november 30 21017 
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_defy_media_below_image.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	
+	$show_on = array(8541); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "_TEST_ad3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "undertone_ST_container_method.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -336,9 +342,6 @@ public function __construct($c){
 	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_adhesion_kixer.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "mbl_overlay_bottom_answers.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
-	// ---- NEW BROWSER WINDOW or TAB -- (inserted in bottomscript) ----------------------------
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_overlay_bottom", 'tag' => "_TEST_divisionD.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 
 	
 }//end public function __construct

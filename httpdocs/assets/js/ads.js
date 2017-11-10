@@ -90,8 +90,6 @@ if($('body').hasClass('mobile')) {
 					break;
 
 			 	case 8541: // /lifestyle/19-reasons-to-date-the-girl-with-no-filter
-			 	// AD3
-			 	inBodyAd.loadInArticleAd('article-body', 3, 0, '<!-- _TEST_ad3 --> <div class="a3m-row"><script async src="http://cdn.a3m.io/i207.js" styling="bottom:0,right:0,width:400"></script></div>', tag);
 			 	break;
 
 					
@@ -102,8 +100,12 @@ if($('body').hasClass('mobile')) {
 					// inBodyAd.loadInArticleAd('article-body', 2, 0, '<a href="https://puckershop.com/collections/sale"><img src="http://www.puckermob.com/assets/img/PuckerStore_300x150.jpg" alt="Pucker Shop"></a>', tag);
 	
 				 	//UT - See-Through Via DFP
-			 		// without style - height & width were impairing the tag to work properly
+			 		// without style - height & width were impeaching the tag to work properly
 					inBodyAd.loadInArticleAd('article-body', 3, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+
+				 	// AD3
+				 	// inBodyAd.loadInArticleAd('article-body', 3, 0, '<!-- _TEST_ad3 --> <div class="a3m-row"><script async src="http://cdn.a3m.io/i207.js" styling="bottom:0,right:0,width:400"></script></div>', tag);
+
 	
 					//Nativo 1
 					inBodyAd.loadInArticleAd('article-body', 7, 0, '<div id="nativo-id"></div>', tag);

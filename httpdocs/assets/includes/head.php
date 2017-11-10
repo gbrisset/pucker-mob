@@ -27,6 +27,7 @@
 		else if(isset($mpArticle->data) && strlen($mpArticle->data['article_page_tags'])) $headTags = $mpArticle->data['article_page_tags'];
 	?>
 
+	<meta property="fb:pages" content="1492027101033794" /> <!-- for FB Instant Articles -->
 	<meta name="description" content="<?php if(isset($headDesc) && strlen($headDesc)) echo $headDesc; ?>">
 	<meta name ="keywords" content="<?php if(isset($headTags) && strlen($headTags)) echo strtolower($headTags); ?>">
 

@@ -2137,5 +2137,25 @@ public function getFeaturedArticles(){
 			return $q;
 	}
 
-}
+
+
+public function get_articles_FB_rss($cvs_id_list){
+		$s = "
+			SELECT * 
+			FROM articles a
+			INNER JOIN article_contributor_articles aca  ON aca.article_id = a.article_id
+			INNER JOIN article_contributors acs  ON aca.contributor_id = acs.contributor_id
+			INNER JOIN article_categories ac  ON a.article_id = ac.article_id
+			INNER JOIN categories c ON c.cat_id = ac.cat_id
+			WHERE a.article_id IN ($cvs_id_list)
+			"; 
+
+		$q = $this->performQuery(['queryString' => $s]);
+
+			return $q;
+		}//end function get_articles_FB_rss ...
+
+
+
+}//end class
 ?>

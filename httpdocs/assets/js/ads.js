@@ -90,6 +90,8 @@ if($('body').hasClass('mobile')) {
 					break;
 
 			 	case 8541: // /lifestyle/19-reasons-to-date-the-girl-with-no-filter
+				//Q1 Media
+				inBodyAd.loadInArticleAd('article-body', 3, 0, '<script src="https://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1"></script>', tag);
 			 	break;
 
 					

@@ -1287,9 +1287,16 @@ public function smf_getContributorEarnings_oneMonth( $contributor_id, $month, $y
 
 	public function smf_getContributorMonthlyPageviews( $contributor_id, $month, $year ){
 
-			$s = " SELECT *, sum(usa_pageviews) as sum_usa_pageviews 
-					FROM `article_daily_earnings` 
-					WHERE month = $month AND year = $year AND contributor_id = $contributor_id GROUP BY month ";
+			$s = " 
+			SELECT ade.*, sum(ade.usa_pageviews) as sum_usa_pageviews 
+					FROM article_daily_earnings ade
+                    INNER JOIN articles a ON a.article_id = ade.article_id
+					WHERE ade.month = $month 
+                    AND ade.year = $year
+                    AND ade.contributor_id = $contributor_id
+                    AND a.article_agree_edits = 1
+                    GROUP BY ade.month
+					";
 
 			$queryParams = [];			
 			$q = $this->performQuery(['queryString' => $s, 'queryParams' => $queryParams]);

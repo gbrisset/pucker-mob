@@ -81,8 +81,12 @@ if($('body').hasClass('mobile')) {
 					$('#inarticle1-ad').attr('style', 'height: 250px; width: 300px;  margin: 0px;');//to accomodate  Answers - Rubicon
 
 					break;
-			 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 			 	case 25829: // moblog/what-do-you-do-when-you-feel-like-youre-parents-are-happy-for-everyone-else-but-you
+
+					//Truvid
+					inBodyAd.loadInArticleAd('article-body', 3, 0, "<!-- Answers Truvid Player w/backfill --> <div id=\"vm_content\"></div><script type=\"text/javascript\"> window._videomosh = window._videomosh || []; !function (e, f, u) {e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }(document.createElement(\"script\"), document.getElementsByTagName(\"script\")[0], \"http://player.videomosh.com/players/loader/loader_final4.js\"); _videomosh.push({publisher_key: \"sequelmedia\", mode: \"player\", preload: false, no_preroll: \"backfill\", container: \"vm_content\", target_type: \"mix\", autoplay: \"true\", type:\"video\", id: \"231668\", backfill: \"<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="http://stg.truvidplayer.com/index.php?sub_user_id=92&widget_id=1609&playlist_id=1254&cb='+(Math.random()*10000000000000000)+'"></scr'+'ipt>')</scr"+"ipt>\"}); </script>", tag);
+					break;
+			 	case 23319: // moblog/15-open-letters-to-leave-your-boyfriend
 			 	case 4019: // TEST PAGE DEDICATED TO BETHANY FOR DFP TESTING /relationships/how-to-date-when-you-are-broke
 
 
@@ -91,8 +95,8 @@ if($('body').hasClass('mobile')) {
 
 			 	case 8541: // /lifestyle/19-reasons-to-date-the-girl-with-no-filter
 				//Q1 Media
-				inBodyAd.loadInArticleAd('article-body', 3, 0, '<script src="https://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1"></script>', tag);
-			 	break;
+				// inBodyAd.loadInArticleAd('article-body', 3, 0, '<script src="https://Q1MediaHydraPlatform.com/ads/video/controller.php?qid=54f36c47ad1d14813295785f&qz=1"></script>', tag);
+			 // 	break;
 
 					
 			 	default:
@@ -103,10 +107,11 @@ if($('body').hasClass('mobile')) {
 	
 				 	//UT - See-Through Via DFP
 			 		// without style - height & width were impeaching the tag to work properly
-					inBodyAd.loadInArticleAd('article-body', 3, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
+					// inBodyAd.loadInArticleAd('article-body', 3, 0, '<!-- /73970039/UT_ST MOB --> <script> googletag.cmd.push(function() {googletag.defineSlot(\'/73970039/UT_ST\', [1, 1], \'div-gpt-ad-1493987901721-0\').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }); </script> <!-- /73970039/UT_ST --> <div id=\'div-gpt-ad-1493987901721-0\'> <script> googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1493987901721-0\'); }); </script> </div>', tag);
 
 				 	// AD3
 				 	// inBodyAd.loadInArticleAd('article-body', 3, 0, '<!-- _TEST_ad3 --> <div class="a3m-row"><script async src="http://cdn.a3m.io/i207.js" styling="bottom:0,right:0,width:400"></script></div>', tag);
+
 
 	
 					//Nativo 1

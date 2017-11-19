@@ -267,7 +267,7 @@ public function __construct($c){
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_defy_media_below_image.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "_TEST_ad3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "_TEST_ad3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "undertone_ST_container_method.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -275,7 +275,7 @@ public function __construct($c){
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_amazon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_puckerstore.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_google.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// ---- END OF ARTICLE -----------------------------------
 

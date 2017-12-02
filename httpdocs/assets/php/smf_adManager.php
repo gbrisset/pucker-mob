@@ -68,6 +68,10 @@ SELECT
 // 8158  /relationships/8-things-guys-do-that-make-our-hearts-melt
 // 8541  /lifestyle/19-reasons-to-date-the-girl-with-no-filter
 
+// These are not test_pages - so when used as such, all other ads are appearing along the test ad
+// -------------
+// 8700 http://www.puckermob.com/relationships/17-things-that-have-lowered-the-bar-for-romance
+
 require_once dirname(__FILE__).'/Connector.php';
 
 
@@ -266,10 +270,13 @@ public function __construct($c){
 	//DEFY MEDIA - happens to create redirects - delete if no longer in use after november 30 21017 
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_defy_media_below_image.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
+	$show_on = array(8700); $dont_show_on = array_diff($this->special_pages, $show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "_TEST_jetpack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	$show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);
-	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "_TEST_ad3.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "_TEST_jetpack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "jetpack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "undertone_ST_container_method.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_below_image_ad_rotator.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);

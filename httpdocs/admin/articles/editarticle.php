@@ -81,26 +81,12 @@
 	if(isset($_POST['submit'])){
 		if($adminController->checkCSRF($_POST)){  //CSRF token check!!!
 			switch(true){
+			
 				case isset($_POST['article_title-s']):
-			if( $_POST["a_i"] == 17835) {
-
-				if($_POST['article_status'] == 1){
-					if($artImageExists){
-						$updateStatus = $adminController->updateArticleInfo($_POST);
-					}else{
-						$updateStatus["hasError"] = true;
-						$updateStatus["message"] = "You need to add an image to make an article live!"; ?>
-						<script>alert( "<?php echo $updateStatus["message"]; ?>" );</script>
-						<?php
-					}
-				}else{
 					$updateStatus = $adminController->updateArticleInfo($_POST);
-				}
-			}else{
-				$updateStatus = $adminController->updateArticleInfo($_POST);
-			}
 					$updateStatus['arrayId'] = 'article-info-form';
 					break;
+			
 				case isset($_FILES['article_post_tall_img']):
 					$updateStatus = array_merge($mpArticleAdmin->uploadNewImage($_FILES, [
 						'allowedExtensions' => 'png,jpg,jpeg,gif',
@@ -113,6 +99,7 @@
 						'desHeight' => 415
 					]), ['arrayId' => 'article-tall-image-upload-form']);
 					break;
+			
 				case isset($_POST['is_second_img']):
 						if (!empty($_FILES)) { 
 							$updateStatus = array_merge($mpArticleAdmin->uploadBasicImage($_FILES, [
@@ -126,7 +113,7 @@
 						}
 				break;
 
-			}
+			}// end switch(true)
 			
 			$articleObj = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 			$category = $articleObj['categories'];
@@ -139,8 +126,12 @@
 			$article_ads = $mpArticleAdmin->getArticleAds($article);
 			if($article_ads && isset($article_ads[0])) $article_ads = $article_ads[0];
 			
-		}else $adminController->redirectTo('logout/');
-	}
+		}else{
+			 $adminController->redirectTo('logout/');
+		}//end if($adminController->checkCSRF($_POST))
+	}//end if(isset($_POST['submit']))
+
+
 	$field_disable = ($article_locked)? $field_disable = 'disabled = "disabled"' : '';
 ?>
 

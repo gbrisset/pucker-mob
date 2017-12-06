@@ -239,23 +239,6 @@
 <!-- - START OF RIGHT COLUMN - START OF RIGHT COLUMN - START OF RIGHT COLUMN -->
 
 					<div class="small-12 xxlarge-4 right padding " id="right-new-article">		
-						<div class="row label-wrapper show-for-xxlarge-up ">
-							<div class="small-12 large-4 column no-padding">
-								<button type="button" id="preview" name="preview" class="show-for-large-up radius wide-button preview-button" style="height: 3.3rem;">PREVIEW</button>
-							</div>
-							<?php if( !$article_locked ){ ?>
-								<div class="small-12 large-4 column">
-									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
-								</div>
-							<?php }?>
-						
-							<?php if( $admin_user ){ ?>
-								<div class="small-12 large-4 column  left no-padding">
-									<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm show-for-large-up publish-button" style="height: 3.3rem;" >PUBLISH</button>
-								</div>
-							<?php }?>
-						
-						</div>		
 
 						<!-- KEYWORDS -->
 						<div class="row">
@@ -390,7 +373,7 @@
 										}
 									?>
 									</select>
-									<?php }?>
+									<?php }// END if(!isset($content_provider)?>
 							</div>
 						
 						</div>
@@ -418,7 +401,8 @@
 							</div>
 
 
-						<?php }?>
+						<?php }// end if($admin_user)?>
+
 						<?php if( !$article_locked ){ ?>
 							<!-- IMAGE CREDITS -->
 							<div class="row">
@@ -440,7 +424,7 @@
 								   	<textarea type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="comments" ><?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?></textarea>
 								</div>
 							</div>
-						<?php }?>
+						<?php }// end if( !$article_locked ) ?>
 						
 						<?php if($pro_admin){?>
 						<!-- Article Read More -->
@@ -457,7 +441,7 @@
 								</div>
 							</div>
 						</div>
-						<?php }?> 
+						<?php }// end if($pro_admin)?> 
 
 						<?php if($admin_user){?>
 						<!-- Article Disclaimer -->
@@ -475,29 +459,39 @@
 						</div>
 						<?php }?> 
 
-						<?php if( !$article_locked ){ ?>
 						<div class="row label-wrapper show-for-large-up">
-							<div class="small-12 large-6 column no-padding"><button type="button" id="preview" name="preview" class="show-for-large-up radius preview-button"  style="height: 3.3rem;">PREVIEW</button></div>
-							<div class="small-12 large-6 column">
-								<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
-							</div>
-						</div>
+						<?php if( !$article_locked )  include_once($config['include_path_admin'].'agreement_edits_test.php'); ?>
 						
+						<?php if ($article['article_status'] ==3) ?>
+
+						<?php }//end if ($article['article_status'] ==3) ?>
+
+
+
+							<?php if( !$article_locked ){ ?>
+								<div class="small-12 large-4 column">
+									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
+								</div>
+							<?php }?>
 						
-						<?php include_once($config['include_path_admin'].'agreement_edits.php');?>
-						
-						<div class="row label-wrapper hide-for-large-up ">
-							<div class="small-12 large-4 column no-padding hide-for-large-up">
-								<button class="small-12 large-5 columns radius" type="submit" id="submit" name="submit" style="background-color: #016201;" >SAVE</button>
-							</div>
-							<div class="small-12 large-4 column  left no-padding hide-for-large-up">
-								<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm publish-button" style="background-color: #016201;" >PUBLISH</button>
-							</div>
+							<?php if( $admin_user ){ ?>
+								<div class="small-12 large-4 column  left no-padding">
+									<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm show-for-large-up " style="height: 3.3rem;" >PUBLISH</button>
+								</div>
+							<?php } // end if( $admin_user )?>
+
+	if ($article['article_status'] ==1 && $edits ==0) $article_locked = false;
+	if ($admin_user) $article_locked = false;
+
+							<div class=" padding-top clear">
+								<div class="small-12 large-12 columns no-padding">
+									<button style="margin-bottom: 0;" type="button" id="publish-article" name="publish-article" class="radius small-12 " data-info="3">SUBMIT FOR FINAL REVIEW</button>
+								</div>
+							</div>								
+
+
 						</div>	
 
-						<?php }?>
-					
-					</div>
 <!-- - END OF RIGHT COLUMN - END OF RIGHT COLUMN - END OF RIGHT COLUMN -->
 
 				</form>

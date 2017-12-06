@@ -390,7 +390,7 @@
 										}
 									?>
 									</select>
-									<?php }?>
+									<?php }// END if(!isset($content_provider)?>
 							</div>
 						
 						</div>
@@ -418,7 +418,8 @@
 							</div>
 
 
-						<?php }?>
+						<?php }// end if($admin_user)?>
+
 						<?php if( !$article_locked ){ ?>
 							<!-- IMAGE CREDITS -->
 							<div class="row">
@@ -440,7 +441,7 @@
 								   	<textarea type="text" name="article_additional_comments-s" id="article_additional_comments-s" placeholder="comments" ><?php if(isset($_POST['article_additional_comments-s'])) echo $_POST['article_additional_comments-s']; ?></textarea>
 								</div>
 							</div>
-						<?php }?>
+						<?php }// end if( !$article_locked ) ?>
 						
 						<?php if($pro_admin){?>
 						<!-- Article Read More -->
@@ -457,7 +458,7 @@
 								</div>
 							</div>
 						</div>
-						<?php }?> 
+						<?php }// end if($pro_admin)?> 
 
 						<?php if($admin_user){?>
 						<!-- Article Disclaimer -->
@@ -484,7 +485,7 @@
 						</div>
 						
 						
-						<?php include_once($config['include_path_admin'].'agreement_edits.php');?>
+						<?php include_once($config['include_path_admin'].'agreement_edits_test.php');?>
 						
 						<div class="row label-wrapper hide-for-large-up ">
 							<div class="small-12 large-4 column no-padding hide-for-large-up">
@@ -495,7 +496,7 @@
 							</div>
 						</div>	
 
-						<?php }?>
+						<?php }//end if( !$article_locked ) ?>
 					
 					</div>
 <!-- - END OF RIGHT COLUMN - END OF RIGHT COLUMN - END OF RIGHT COLUMN -->

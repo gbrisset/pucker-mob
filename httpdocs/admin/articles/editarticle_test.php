@@ -460,35 +460,35 @@
 						<?php }?> 
 
 						<div class="row label-wrapper show-for-large-up">
-						<?php if( !$article_locked )  include_once($config['include_path_admin'].'agreement_edits_test.php'); ?>
-						
-						<?php if ($article['article_status'] ==3) ?>
-
-						<?php }//end if ($article['article_status'] ==3) ?>
-
-
-
-							<?php if( !$article_locked ){ ?>
-								<div class="small-12 large-4 column">
-									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE</button>
+						<?php if( $admin_user ){ ?>
+								<?php  include_once($config['include_path_admin'].'agreement_edits_test.php'); ?>
+								<div class="small-12 large-6 column">
+									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE CHANGES</button>
 								</div>
-							<?php }?>
-						
-							<?php if( $admin_user ){ ?>
-								<div class="small-12 large-4 column  left no-padding">
+								<div class="small-12 large-6 column  left no-padding">
 									<button type="button" data-info = "1" id="publish-article" name="publish-article"  class="columns small-6 radius wide-button elm show-for-large-up " style="height: 3.3rem;" >PUBLISH</button>
 								</div>
-							<?php } // end if( $admin_user )?>
+						<?php }else{ ?>
 
-	if ($article['article_status'] ==1 && $edits ==0) $article_locked = false;
-	if ($admin_user) $article_locked = false;
-
-							<div class=" padding-top clear">
-								<div class="small-12 large-12 columns no-padding">
-									<button style="margin-bottom: 0;" type="button" id="publish-article" name="publish-article" class="radius small-12 " data-info="3">SUBMIT FOR FINAL REVIEW</button>
+							<?php if ($article['article_status'] ==3) ?>
+								<?php  include_once($config['include_path_admin'].'agreement_edits_test.php'); ?>
+								<div class="small-12 large-6 column">
+									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE YOUR DRAFT</button>
 								</div>
-							</div>								
+								<div class=" padding-top clear">
+									<div class="small-12 large-6 columns no-padding">
+										<button style="margin-bottom: 0;" type="button" id="publish-article" name="publish-article" class="radius small-12 " data-info="3">SUBMIT FOR FINAL REVIEW</button>
+									</div>
+								</div>								
+							<?php }//end if ($article['article_status'] ==3) ?>
 
+							<?php if ($article['article_status'] ==1 && $edit==0) ?>
+								<div class="small-12 large-6 column">
+									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE CHANGES</button>
+								</div>
+							<?php }//end if ($article['article_status'] ==3) ?>
+
+						<?php } // end if( $admin_user )?>
 
 						</div>	
 

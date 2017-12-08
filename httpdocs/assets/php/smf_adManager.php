@@ -276,6 +276,10 @@ public function __construct($c){
 	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "_TEST_jetpack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	if (strtotime("now")>strtotime("2017-12-07 08:00:00")){
+		$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon_DFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	}//end if
+	
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "jetpack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "undertone_ST_container_method.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
@@ -309,8 +313,8 @@ public function __construct($c){
 	//DEFY MEDIA - happens to create redirects - delete if no longer in use after november 30 21017 
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "mbl_defy_media_adstack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
+
 	$this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_img_video_truvidplayer_backfill.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
-	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_1", 'tag' => "triple_lift.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "mbl_ad_stack_sharethrough.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_ad_stack_2", 'tag' => "Spoutable_Mob_InPage.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	

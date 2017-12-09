@@ -1,7 +1,14 @@
 <?php
 	$edit_page = true;
 
-	if(!$adminController->user->checkPermission('user_permission_show_edit_article')) $adminController->redirectTo('noaccess/');
+
+
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
+	
+// echo "Hi there"; exit();
+
+ if(!$adminController->user->checkPermission('user_permission_show_edit_article')) $adminController->redirectTo('noaccess/');
 
 	$articleResultSet = $mpArticle->getByName(array('articleSEOTitle' => $uri[2]));
 	$article = $articleResultSet['articles'];
@@ -470,7 +477,7 @@
 								</div>
 						<?php }else{ ?>
 
-							<?php if ($article['article_status'] ==3) ?>
+							<?php if ($article['article_status'] ==3){ ?>
 								<?php  include_once($config['include_path_admin'].'agreement_edits_test.php'); ?>
 								<div class="small-12 large-6 column">
 									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE YOUR DRAFT</button>
@@ -482,7 +489,7 @@
 								</div>								
 							<?php }//end if ($article['article_status'] ==3) ?>
 
-							<?php if ($article['article_status'] ==1 && $edit==0) ?>
+							<?php if ($article['article_status'] ==1 && $edit==0){ ?>
 								<div class="small-12 large-6 column">
 									<button type="button" id="save-existing-article" class="columns small-6 radius wide-button elm save-existing-article" name="save-existing-article"  style="height: 3.3rem;" >SAVE CHANGES</button>
 								</div>

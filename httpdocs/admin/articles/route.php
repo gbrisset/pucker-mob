@@ -11,6 +11,8 @@
 	}else{
 		 $uri = $adminController->helpers->getURI($mpHelpers->curPageURL()); // Live  - ORIGINAL CODE
 	}//end if
+
+	// echo "URI => " ; var_dump($uri); exit();
 	
 	switch($uri[1]){
 		case "edit":

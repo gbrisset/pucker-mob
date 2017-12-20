@@ -1,5 +1,9 @@
 <head>
 	<meta charset="utf-8" />
+
+	<!-- One time verification - remove after December 15, 2017 -->
+	<meta name="google-site-verification" content="xwoU_ko5G6D_htiw9yMQwr347Hhzzj2xwq0UDoxrF5M" />
+	
 	<?php 
 
 

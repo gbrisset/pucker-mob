@@ -1,0 +1,7 @@
+
+SELECT * FROM `contributor_earnings` WHERE `updated_date` >= '2016-10-01';
+SELECT * FROM `contributor_earnings` WHERE `updated_date` < '2016-10-01';
+
+
+SELECT * FROM `articles` WHERE `creation_date` >= '2016-09-01' ORDER BY `creation_date` DESC;
+SELECT * FROM `articles` WHERE `creation_date` < '2016-09-01' ORDER BY `creation_date` DESC;

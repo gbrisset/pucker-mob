@@ -276,8 +276,8 @@ public function __construct($c){
 	// $show_on = array(11237); $dont_show_on = array_diff($this->special_pages, $show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "_TEST_jetpack.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
-	$show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
-	$this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon_DFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
+	// $show_on = array("all"); $dont_show_on = array_diff($this->special_pages, $show_on);
+	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon_DFP.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "undertone_ST_container_method.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);
 	// $this->tag_list[]= array('ad_slot' => "mbl_below_image", 'tag' => "mbl_Answers_Rubicon.php", 'show_on' => $show_on, 'dont_show_on' => $dont_show_on);

@@ -242,10 +242,28 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	define("MAIL_PORT", 465);
 	define("IMAGE_UPLOAD_DIR", "/var/www/storage/images/mypodnetwork/articlesites/puckermob/");
 
+
+// ----------------------
+// LW  credentials
+// ----------------------
+
 	define("DB_SERVER", "192.168.0.4");
 	define("DB_USER", "seq_db_user");
 	define("DB_PASS", "#!14sd2dbFgMr#");
 	define("DB_NAME", "pucker_mob");		
+
+// ----------------------
+// AWS credentials
+// ----------------------
+    // define("DB_SERVER", "sqmi-rds-1.c6gb8zcrvyfr.us-east-2.rds.amazonaws.com");
+    // define("DB_USER", "sqmirds1root");
+    // define("DB_PASS", "Gk358GJyhb47Jhjf18WkF");
+    // define("DB_NAME", "pucker_mob");
+
+// ----------------------
+// End of AWS credentials
+// ----------------------
+
 	
 	/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
@@ -258,6 +276,10 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 		'articlepageid' => 1,
 		'legacypodurl' => 1,
 		
+// ----------------------
+// LW  credentials
+// ----------------------
+
 		'host' => '192.168.0.4',
 		'user' => 'seq_db_user',
 		'pass' => '#!14sd2dbFgMr#',
@@ -269,6 +291,20 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
         'syn_pass' => '#!14sd2dbFgMr#',
         'syn_main_db' => 'mypod_network',
         /*End of Syndication DB Connection*/
+// ----------------------
+// AWS credentials
+// ----------------------
+
+        // 'host' => 'sqmi-rds-1.c6gb8zcrvyfr.us-east-2.rds.amazonaws.com',
+        // 'user' => 'sqmirds1root',
+        // 'pass' => 'Gk358GJyhb47Jhjf18WkF',
+        // 'main_db' => 'pucker_mob',
+
+// ----------------------
+// End of AWS credentials
+// ----------------------
+
+
 		
 		'include_path' => dirname(dirname(__FILE__)).'/includes/',
 		'include_path_admin' => dirname(dirname(dirname(__FILE__))).'/admin/assets/includes/',

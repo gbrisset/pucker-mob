@@ -5,7 +5,7 @@ class MPArticleAdmin{
 	private $config;
 	private $mpArticle;
 	private $mpAdminArticle;
-	private $mpVideoShows;
+	private $mpVideoShows;// This is not in use class has been killed  - GB 2017-12-28
 	private $con;
 	private $escapes;
 	private $helper;
@@ -14,7 +14,7 @@ class MPArticleAdmin{
 		$this->config = $c;
 		$this->mpArticle = $mpA;
 		$this->mpAdminArticle = $mpAdminA;
-		$this->mpVideoShows = $mpvs;
+		$this->mpVideoShows = $mpvs;// This is not in use class has been killed - $mpvs is set to Null in Config - GB 2017-12-28
 		$this->con = new Connector($this->config);
 		$this->helpers = new AdminControllerHelpers(array('config' => $this->config));
 		

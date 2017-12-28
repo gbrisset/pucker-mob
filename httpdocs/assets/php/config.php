@@ -317,7 +317,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPArticle.php';
 	require_once dirname(__FILE__).'/MPNavigation.php';
 	require_once dirname(__FILE__).'/MPUriHelper.php';
-	require_once dirname(__FILE__).'/MPVideoShows.php';// useless but breaks the site if commented out - GB 2017-05-01
+	// require_once dirname(__FILE__).'/MPVideoShows.php';// useless but breaks the site if commented out - GB 2017-05-01
 
 	require_once dirname(__FILE__).'/mobile-detect.php';
 
@@ -370,9 +370,10 @@ $config['catid'] = $mpArticle->data['cat_id'];
 $mpShared = new MPShared($config);
 $mpHelpers = new MPHelpers();
 $uriHelper = new MPUriHelper( $config['this_url'] );
-$mpVideoShows = new MPVideoShows($config);
+// $mpVideoShows = new MPVideoShows($config);
 $MailChimp = new Mailchimp( MAIL_CHIMP_API );
 $adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
+$mpVideoShows = Null;
 $mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, $mpVideoShows, $adminController);
 //if(isset($admin) && $admin){
 

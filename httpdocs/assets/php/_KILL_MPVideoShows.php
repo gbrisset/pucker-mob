@@ -13,6 +13,9 @@ class MPVideoShows{
 		$this->series = $this->getSeriesList(1);
 	}
 
+
+
+
 	private function getSeriesList(){ 
 		$pdo = $this->con->openCon();
 		$q = $pdo->query("SELECT * 

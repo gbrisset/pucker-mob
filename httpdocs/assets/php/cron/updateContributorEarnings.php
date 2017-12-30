@@ -14,9 +14,17 @@
 	$year = date('Y');
 	
 	
+# levels merit flat rate approach
+// from  2017-07-01 to 2017-12-31
+// Earnings based on end of month performance
+// $results = $dashboard->pageviewsReport_merit( $month, $year );
 
-$results = $dashboard->pageviewsReport_merit( $month, $year );// after 2017-07-01 - earnings based on end of month performance
-// $results = $dashboard->pageviewsReport( $month, $year );// before 2017-07-01 - earnings based on blogers level at the beginning of the month
+
+# CPM - pageviews approach
+// before  2017-07-01 
+// and after 2017-12-31
+// Earnings based on bloggers level/rank at the beginning of the month
+$results = $dashboard->pageviewsReport( $month, $year );
 
 
 	echo "DONE! - " . date("h:i:s");$skin = $month%3;

@@ -240,30 +240,33 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	define("MAIL_PASSWORD", "sequel4bria");
 	define("MAIL_ENCRYPTION", "tls");		
 	define("MAIL_PORT", 465);
+
+// Reset this manually using VI once uploaded to AWS EC2
+$hosting = 'LW';
+// $hosting = 'AWS';
+
+
+if($hosting == "LW"){
+	// ----------------------
+	// LW  credentials
+	// ----------------------
 	define("IMAGE_UPLOAD_DIR", "/var/www/storage/images/mypodnetwork/articlesites/puckermob/");
-
-
-// ----------------------
-// LW  credentials
-// ----------------------
-
 	define("DB_SERVER", "192.168.0.4");
 	define("DB_USER", "seq_db_user");
 	define("DB_PASS", "#!14sd2dbFgMr#");
 	define("DB_NAME", "pucker_mob");		
+}//end if($hosting == "LW")
 
-// ----------------------
-// AWS credentials
-// ----------------------
-    // define("DB_SERVER", "sqmi-rds-1.c6gb8zcrvyfr.us-east-2.rds.amazonaws.com");
-    // define("DB_USER", "sqmirds1root");
-    // define("DB_PASS", "Gk358GJyhb47Jhjf18WkF");
-    // define("DB_NAME", "pucker_mob");
-
-// ----------------------
-// End of AWS credentials
-// ----------------------
-
+if($hosting == "AWS"){
+	// ----------------------
+	// AWS credentials
+	// ----------------------
+	define("IMAGE_UPLOAD_DIR", "https://s3.us-east-2.amazonaws.com/sqmi-s3-1/pucker-mob-images/large/");
+    define("DB_SERVER", "sqmi-rds-1.c6gb8zcrvyfr.us-east-2.rds.amazonaws.com");
+    define("DB_USER", "sqmirds1root");
+    define("DB_PASS", "Gk358GJyhb47Jhjf18WkF");
+    define("DB_NAME", "pucker_mob");
+}//end if($hosting == "AWS")
 	
 	/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
@@ -276,33 +279,42 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 		'articlepageid' => 1,
 		'legacypodurl' => 1,
 		
-// ----------------------
-// LW  credentials
-// ----------------------
+
+	if($hosting == "LW"){
+		// ----------------------
+		// LW  credentials
+		// ----------------------
+		'image_upload_dir' => '/var/www/storage/images/mypodnetwork/',
+		'image_url' => 'http://images.puckermob.com/',
 
 		'host' => '192.168.0.4',
 		'user' => 'seq_db_user',
 		'pass' => '#!14sd2dbFgMr#',
 		'main_db' => 'pucker_mob',	
 
-		/*Syndication DB Connection*/
-        'syn_host' => '192.168.0.4',
-		'syn_user' => 'seq_db_user',
-        'syn_pass' => '#!14sd2dbFgMr#',
-        'syn_main_db' => 'mypod_network',
+		/*Syndication DB Connection*/ // obsolete - preserved for reference only - GB 2018-01-02
+//       'syn_host' => '192.168.0.4',
+//		 'syn_user' => 'seq_db_user',
+//       'syn_pass' => '#!14sd2dbFgMr#',
+//       'syn_main_db' => 'mypod_network',
         /*End of Syndication DB Connection*/
-// ----------------------
-// AWS credentials
-// ----------------------
 
-        // 'host' => 'sqmi-rds-1.c6gb8zcrvyfr.us-east-2.rds.amazonaws.com',
-        // 'user' => 'sqmirds1root',
-        // 'pass' => 'Gk358GJyhb47Jhjf18WkF',
-        // 'main_db' => 'pucker_mob',
+	}// if($hosting == "LW")
 
-// ----------------------
-// End of AWS credentials
-// ----------------------
+
+	if($hosting == "AWS"){
+		// ----------------------
+		// AWS credentials
+		// ----------------------
+		//These two cannot work since image_upload_dir is only part of the full path - the rest is hard coded throughough the site
+		'image_upload_dir' => 'https://s3.us-east-2.amazonaws.com/sqmi-s3-1/pucker-mob-images/large/', 
+		'image_url' => 'https://s3.us-east-2.amazonaws.com/sqmi-s3-1/pucker-mob-images/large/',
+
+        'host' => 'sqmi-rds-1.c6gb8zcrvyfr.us-east-2.rds.amazonaws.com',
+        'user' => 'sqmirds1root',
+        'pass' => 'Gk358GJyhb47Jhjf18WkF',
+        'main_db' => 'pucker_mob',
+	}// if($hosting == "AWS")
 
 
 		
@@ -314,11 +326,9 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 		'shared_css' => dirname(dirname(__FILE__)).'/css/',
 		'shared_scss' => dirname(dirname(__FILE__)).'/scss/',
 		
-		'image_upload_dir' => '/var/www/storage/images/mypodnetwork/',
 		
 		'this_url' => 'http://www.puckermob.com/',
 		'this_admin_url' => 'http://www.puckermob.com/admin/',
-		'image_url' => 'http://images.puckermob.com/',
 		
 		'main_url' => 'http://www.sequelmediainternational.com/',
 		'category_url' => '',
@@ -334,7 +344,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPShared.php';
 	require_once dirname(__FILE__).'/MCAPI.class.php';
 	require_once dirname(__FILE__).'/class.pagination.php';
-	require_once dirname(__FILE__).'/class.askTheChef.php';// useless but breaks the site if commented out - GB 2017-05-01
+	require_once dirname(__FILE__).'/class.askTheChef.php';// useless but breaks the site if commented out - GB 2017-05-01 - needs to be tested again since mpVideoShows is obsolete and deactivated - GB 2018-01-02
 
 	require_once dirname(__FILE__).'/class.Connector.php';
 	require_once dirname(__FILE__).'/class.DatabaseObject.php';	
@@ -342,7 +352,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/class.PageListItem.php';
 	require_once dirname(__FILE__).'/class.Bug.php';
 	require_once dirname(__FILE__).'/class.ArticleList.php';
-	require_once dirname(__FILE__).'/class.SlideShow.php';// useless but breaks the site if commented out - GB 2017-05-01
+	require_once dirname(__FILE__).'/class.SlideShow.php';// useless but breaks the site if commented out - GB 2017-05-01 - needs to be tested again since mpVideoShows is obsolete and deactivated - GB 2018-01-02
 
 	require_once dirname(__FILE__).'/PHPMailerAutoload.php';
 	require_once dirname(__FILE__).'/class.phpmailer.php';	
@@ -353,7 +363,7 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 	require_once dirname(__FILE__).'/MPArticle.php';
 	require_once dirname(__FILE__).'/MPNavigation.php';
 	require_once dirname(__FILE__).'/MPUriHelper.php';
-	// require_once dirname(__FILE__).'/MPVideoShows.php';// useless but breaks the site if commented out - GB 2017-05-01
+	// require_once dirname(__FILE__).'/MPVideoShows.php';// mpVideoShows is obsolete and deactivated - GB 2018-01-02
 
 	require_once dirname(__FILE__).'/mobile-detect.php';
 
@@ -406,10 +416,10 @@ $config['catid'] = $mpArticle->data['cat_id'];
 $mpShared = new MPShared($config);
 $mpHelpers = new MPHelpers();
 $uriHelper = new MPUriHelper( $config['this_url'] );
-// $mpVideoShows = new MPVideoShows($config);
+// $mpVideoShows = new MPVideoShows($config);//  mpVideoShows is obsolete and deactivated - GB 2018-01-02
 $MailChimp = new Mailchimp( MAIL_CHIMP_API );
 $adminController = new MPArticleAdminController(array('config' => $config, 'mpArticle' => $mpArticle));
-$mpVideoShows = Null;
+$mpVideoShows = Null;//added to keep MPArticleAdmin from breaking, but mpVideoShows is deactivated - GB 2018-01-02
 $mpArticleAdmin = new MPArticleAdmin($config, $mpArticle, $mpVideoShows, $adminController);
 //if(isset($admin) && $admin){
 

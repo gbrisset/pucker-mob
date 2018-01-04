@@ -234,6 +234,9 @@ define("RECAPTCHASECRETKEY", "6LeHLQETAAAAACFwIDyF4J6H929qbmGiYS6E6ATo");
 // ***********************************************************************************************************
 // ***********************************************************************************************************
 
+// ***********************************************************************************************************
+// **************************   LW VERSION * LW VERSION * LW VERSION *      **********************************
+// ***********************************************************************************************************
 
 	define("MAIL_HOST", "ssl://smtp.gmail.com");
 	define("MAIL_USER", "info@sequelmediainternational.com");
@@ -246,28 +249,12 @@ $hosting = 'LW';
 // $hosting = 'AWS';
 
 
-if($hosting == "LW"){
-	// ----------------------
-	// LW  credentials
-	// ----------------------
 	define("IMAGE_UPLOAD_DIR", "/var/www/storage/images/mypodnetwork/articlesites/puckermob/");
 	define("DB_SERVER", "192.168.0.4");
 	define("DB_USER", "seq_db_user");
 	define("DB_PASS", "#!14sd2dbFgMr#");
 	define("DB_NAME", "pucker_mob");		
-}//end if($hosting == "LW")
 
-if($hosting == "AWS"){
-	// ----------------------
-	// AWS credentials
-	// ----------------------
-	define("IMAGE_UPLOAD_DIR", "https://s3.us-east-2.amazonaws.com/sqmi-s3-1/pucker-mob-images/large/");
-    define("DB_SERVER", "sqmi-rds-1.c6gb8zcrvyfr.us-east-2.rds.amazonaws.com");
-    define("DB_USER", "sqmirds1root");
-    define("DB_PASS", "Gk358GJyhb47Jhjf18WkF");
-    define("DB_NAME", "pucker_mob");
-}//end if($hosting == "AWS")
-	
 	/*MAIL CHIMP SETTINGS*/
 	define("MAIL_CHIMP_API", "9c1095ef61908ad4eab064e7e2c88e24-us10");
 	define("MAIL_CHIMP_SUBS_LIST", "c4b5f70bb0");	
@@ -280,10 +267,6 @@ if($hosting == "AWS"){
 		'legacypodurl' => 1,
 		
 
-	if($hosting == "LW"){
-		// ----------------------
-		// LW  credentials
-		// ----------------------
 		'image_upload_dir' => '/var/www/storage/images/mypodnetwork/',
 		'image_url' => 'http://images.puckermob.com/',
 
@@ -299,22 +282,6 @@ if($hosting == "AWS"){
 //       'syn_main_db' => 'mypod_network',
         /*End of Syndication DB Connection*/
 
-	}// if($hosting == "LW")
-
-
-	if($hosting == "AWS"){
-		// ----------------------
-		// AWS credentials
-		// ----------------------
-		//These two cannot work since image_upload_dir is only part of the full path - the rest is hard coded throughough the site
-		'image_upload_dir' => 'https://s3.us-east-2.amazonaws.com/sqmi-s3-1/pucker-mob-images/large/', 
-		'image_url' => 'https://s3.us-east-2.amazonaws.com/sqmi-s3-1/pucker-mob-images/large/',
-
-        'host' => 'sqmi-rds-1.c6gb8zcrvyfr.us-east-2.rds.amazonaws.com',
-        'user' => 'sqmirds1root',
-        'pass' => 'Gk358GJyhb47Jhjf18WkF',
-        'main_db' => 'pucker_mob',
-	}// if($hosting == "AWS")
 
 
 		

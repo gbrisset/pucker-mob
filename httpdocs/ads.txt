@@ -1,6 +1,6 @@
 # Authorized Digital Sellers for
 # Puckermob.com 
-# Last Update: November 14, 2017
+# Last Update: January 10, 2018
 
 # Documentation and References: 
 # https://iabtechlab.com/ads-txt/
@@ -14,6 +14,7 @@
 truvid.com, 92, RESELLER
 truvidplayer.com, 92, RESELLER
 google.com, pub-8544626876536809, RESELLER, f08c47fec0942fa0
+google.com, pub-2370948078851435, RESELLER, f08c47fec0942fa0
 advertising.com, 10990, RESELLER
 adnxs.com, 1895, RESELLER, f5ab79cb980f11d1
 appnexus.com, 1895, RESELLER, f5ab79cb980f11d1

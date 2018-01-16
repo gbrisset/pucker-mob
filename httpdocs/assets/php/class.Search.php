@@ -18,8 +18,9 @@ class Search {
 		$this->value = $value;
 		$pdo = $this->con->openCon();
 
-		$queryString = "SELECT articles.article_title, articles.creation_date, articles.article_seo_title, articles.article_id, contributor_name, 
-						contributor_seo_name, article_contributors.contributor_id, categories.cat_id, cat_dir_name, cat_name
+		$queryString = "SELECT articles.article_title, articles.creation_date, articles.article_seo_title, articles.article_id,  articles.article_agree_edits, 
+						contributor_name, contributor_seo_name, article_contributors.contributor_id, categories.cat_id, 
+						cat_dir_name, cat_name
 						FROM articles 
 						INNER JOIN ( article_categories, categories, article_contributor_articles, article_contributors ) 
 						ON (articles.article_id =  article_categories.article_id 
@@ -95,7 +96,7 @@ class Search {
 		$status_sql = " WHERE article_status IN (".$articleStatus.") AND  article_title LIKE '%".$title."%'";
 		$limit = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
 		$offset = filter_var($offset, FILTER_SANITIZE_NUMBER_INT, PDO::PARAM_INT);
-		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_body, 
+		$s = "SELECT a.article_id, a.article_title, a.article_seo_title, a.article_desc, a.article_agree_edits,  a.article_body, 
 					nc.cat_id, nc.cat_dir_name, article_contributors.contributor_name, article_contributors.contributor_seo_name, a.creation_date, a.article_status
 
 				FROM articles as a

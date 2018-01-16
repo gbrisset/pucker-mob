@@ -122,14 +122,18 @@
 
 				<div class="small-12 xxlarge-9 columns no-padding">
 					<section id="articles-list" class="columns margin-top no-padding">
-						<?php if(isset($articles) && $articles ){ ?>
+						<?php if(isset($articles) && $articles ){
+
+								// $ddd = new debug($articles,3); $ddd->show();// 0- green; 1-red; 2-grey; 3-yellow	
+ ?>
 						<table class="columns small-12 no-padding">
 								<thead>
 								    <tr>
 								       <th width="400" class="align-left">Title</th>
-								       <th width="100" class="show-for-large-up">Added</th>
-								       <th width="100"  class="show-for-large-up">status</th>
-								       <th width="100" class="show-for-xlarge-up">U.S. Traffic</th>
+								       <th width="90" class="show-for-large-up">Added</th>
+								       <th width="90"  class="show-for-large-up">status</th>
+								       <th width="90" class="show-for-xlarge-up">U.S. Traffic</th>
+								       <th width="30" class="show-for-xlarge-up">Track</th>
 								       <th  width="50" class="show-for-large-up"></th>
 								    </tr>
 								</thead>
@@ -147,6 +151,19 @@
 									$article_us_traffic = 0;
 									$contributor_name = $articleInfo['contributor_name'];
 									$contributor_seo_name = $articleInfo['contributor_seo_name'];
+
+									$edits = $articleInfo['article_agree_edits'];
+									// $article_locked = ( $edits == 1 && $articleInfo['article_status'] == 1); // Old definition - October 19, 2017 - GB
+									
+									// New definition - October 19, 2017 - GB
+									$article_locked = true;
+									if ($articleInfo['article_status'] ==1 && $edits ==0) $article_locked = false;
+									if ($articleInfo['article_status'] ==3) $article_locked = false;
+									if ($admin_user) $article_locked = false;
+
+									$revenue_track = ( $edits == 1 );// Additional definition - October 19, 2017 - GB
+
+
 
 									if(isset($pageviews_list[$article_id]) && !is_null($pageviews_list[$article_id])){
 								    	$article_us_traffic = $pageviews_list[$article_id];
@@ -189,6 +206,15 @@
 									  	<td class="show-for-large-up  border-right"><label><?php echo $article_status ?></label></td>	
 										<!-- REMOVE ARTICLE -->
 										<td class="show-for-xlarge-up  border-right" ><label><?php echo $article_us_traffic; ?></label></td>
+
+										<td  class="show-for-xlarge-up  border-right">
+											<?php if( $revenue_track ){ ?>
+												<i class="fa fa-money" style="color: #23ab23; font-size: 150%;" aria-hidden="true"></i>
+											<?php }else{?>
+												<i class="fa fa-file-text-o " style="color:red; font-size: 150%;" aria-hidden="true"></i>
+											<?php }?>
+										</td>
+
 										<td class="show-for-large-up no-border-right valign-middle">
 											<?php if($admin_user || $blogger ){?>
 												<form class="article-delete-form" id="article-delete-form" name="article-delete-form" action="<?php echo $config['this_admin_url'].'articles/index.php';?>" method="POST">
@@ -208,7 +234,8 @@
 													<a class="manage-links has-tooltip b-delete" title="If you want to delete this article please contact mpinedo@sequelmediainternational.com." href="<?php echo $articleUrl;?>" name="submit" id="submit"><i class="fa fa-times b-disable"></i></a>
 												<?php } ?>
 											<?php }?>
-										</td>							  			
+										</td>	
+
 									</tr>
 								<?php }?>
 							    </tbody>
